@@ -1,0 +1,322 @@
+{
+   "filter" : [
+    {
+        "id": "53fbfb6f-814e-47cf-bcb0-95a2d53f4867",
+        "title": "Категории",
+        "isSearch" : false,
+        "items" : [
+            {
+                "id": 0,
+                "value": "Оправы"
+            },
+            {
+                "id": 1,
+                "value": "Солнцезащитные очки"
+            }
+        ]
+    },
+    {
+        "id": "d1a3c42f-521c-499d-8cd6-867a752d3b0b",
+        "title": "Бренды",
+        "isSearch" : true,
+        "items" : [
+            {
+                "id": 0,
+                "value": "Alexander McQueen"
+            },
+            {
+                "id": 1,
+                "value": "Balenciaga"
+            },
+            {
+                "id": 2,
+                "value": "Barton Perreira"
+            },
+            {
+                "id": 3,
+                "value": "Boss"
+            },
+            {
+                "id": 4,
+                "value": "Bottega Veneta"
+            },
+            {
+                "id": 5,
+                "value": "Burberry"
+            },
+            {
+                "id": 6,
+                "value": "Bvlgari"
+            },
+            {
+                "id": 7,
+                "value": "Carolina Herrera"
+            },
+            {
+                "id": 8,
+                "value": "Carrera"
+            },
+            {
+                "id": 9,
+                "value": "Celine"
+            },
+            {
+                "id": 10,
+                "value": "Chanel"
+            }
+        ]
+    },
+    {
+        "id": "3e80ebf9-5eea-46ba-8f3d-5effc61f23ce",
+        "title": "Возраст",
+        "isSearch" : false,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "10-16"
+            },
+            {
+                "id": 1,
+                "value": "16+"
+            }
+        ] 
+    },
+    {
+        "id": "22e902da-0c8b-4210-bbda-dd00e3ccb8ed",
+        "title": "Диаметр линзы",
+        "isSearch" : true,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "1"
+            },
+            {
+                "id": 1,
+                "value": "39"
+            },
+            {
+                "id": 2,
+                "value": "41"
+            },
+            {
+                "id": 3,
+                "value": "42"
+            },
+            {
+                "id": 4,
+                "value": "43"
+            },
+            {
+                "id": 5,
+                "value": "44"
+            },
+            {
+                "id": 6,
+                "value": "45"
+            },
+            {
+                "id": 7,
+                "value": "46"
+            },
+            {
+                "id": 8,
+                "value": "47"
+            },
+            {
+                "id": 9,
+                "value": "48"
+            }
+        ] 
+    },
+    {
+        "id": "12d8334b-ffdd-48b3-99a9-bffb7ade8f49",
+        "title": "Длина заушника",
+        "isSearch" : true,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "1"
+            },
+            {
+                "id": 1,
+                "value": "145"
+            },
+            {
+                "id": 2,
+                "value": "140"
+            },
+            {
+                "id": 3,
+                "value": "139"
+            },
+            {
+                "id": 4,
+                "value": "138"
+            },
+            {
+                "id": 5,
+                "value": "137"
+            },
+            {
+                "id": 6,
+                "value": "136"
+            },
+            {
+                "id": 7,
+                "value": "135"
+            },
+            {
+                "id": 8,
+                "value": "134"
+            },
+            {
+                "id": 9,
+                "value": "133"
+            }
+        ] 
+    },
+    {
+        "id": "e6e202d9-1ca7-4194-8d98-3c4b0e825559",
+        "title": "Материал оправы",
+        "isSearch" : false,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "Золото"
+            },
+            {
+                "id": 1,
+                "value": "Металл"
+            },
+            {
+                "id": 2,
+                "value": "Пластик"
+            },
+            {
+                "id": 3,
+                "value": "Титан"
+            }
+        ] 
+    },
+    {
+        "id": "d371b832-1297-40ca-a122-648f0e53eb3a",
+        "title": "Пол",
+        "isSearch" : false,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "Женский"
+            },
+            {
+                "id": 1,
+                "value": "Унисекс"
+            }
+        ] 
+    },
+    {
+        "id": "ffb492ce-6a08-4ddb-bc84-a32225bffa47",
+        "title": "Тип оправы",
+        "isSearch" : false,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "Безободковые"
+            },
+            {
+                "id": 1,
+                "value": "Лыжная маска"
+            },
+            {
+                "id": 2,
+                "value": "Ободковые"
+            },
+            {
+                "id": 3,
+                "value": "Полуободковые"
+            }
+        ] 
+    },
+    {
+        "id": "5c9f2ab4-467a-4a8e-bd30-2e37869f936f",
+        "title": "Форма оправы",
+        "isSearch" : false,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "Бабочка"
+            },
+            {
+                "id": 1,
+                "value": "Капли"
+            },
+            {
+                "id": 2,
+                "value": "Квадратные"
+            },
+            {
+                "id": 3,
+                "value": "Кошачий глаз"
+            },
+            {
+                "id": 4,
+                "value": "Круглые"
+            },
+            {
+                "id": 5,
+                "value": "Овальные"
+            },
+            {
+                "id": 6,
+                "value": "Прямоугольные"
+            }
+        ] 
+    },
+    {
+        "id": "fdc8bc92-e645-4254-b926-2262f0350699",
+        "title": "Цвета",
+        "isSearch" : true,
+        "items" : [        
+            {
+                "id": 0,
+                "value": "Бежевый"
+            },
+            {
+                "id": 1,
+                "value": "Белый"
+            },
+            {
+                "id": 2,
+                "value": "Бордовый"
+            },
+            {
+                "id": 3,
+                "value": "Голубой"
+            },
+            {
+                "id": 4,
+                "value": "Желтый"
+            },
+            {
+                "id": 5,
+                "value": "Зеленый"
+            },
+            {
+                "id": 6,
+                "value": "Золотой"
+            },
+            {
+                "id": 7,
+                "value": "Коричневый"
+            },
+            {
+                "id": 8,
+                "value": "Красный"
+            },
+            {
+                "id": 9,
+                "value": "Оранжевый"
+            }
+        ] 
+    }
+   ]
+}

@@ -1,0 +1,19 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'menu_item_response.freezed.dart';
+part 'menu_item_response.g.dart';
+
+@freezed
+class MenuItemResponse with _$MenuItemResponse {
+  const MenuItemResponse._();
+  factory MenuItemResponse({
+    @JsonKey(name: 'id_parent') int? idParent,
+    int? id,
+    String? url,
+    String? name,
+    int? title,
+    int? sub,
+    int? brand,
+  }) = _MenuItemResponse;
+  factory MenuItemResponse.fromJson(Map<String, dynamic> json) => _$MenuItemResponseFromJson(json);
+}

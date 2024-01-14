@@ -1,0 +1,220 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blocs/blocs.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:models/models.dart';
+import 'package:shared/shared.dart';
+
+class CatalogSliderProductItem extends StatefulWidget {
+  const CatalogSliderProductItem({
+    super.key,
+    required this.product,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+  });
+
+  final ProductDataModel product;
+  final List<ProductDataModel> listItems;
+  final List<ProductDataModel> favouritesProducts;
+  final bool isLike;
+
+  @override
+  State<CatalogSliderProductItem> createState() => _CatalogSliderProductItemState();
+}
+
+class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
+  bool _isLike = false;
+
+  @override
+  void initState() {
+    _isLike = widget.isLike;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        context.pushRoute(
+          CatalogCardInfoRoute(
+            item: widget.product,
+            isLike: _isLike,
+            addLike: () {
+              context.read<CatalogBloc>().add(
+                    CatalogEvent.addFavouriteProduct(
+                      product: widget.product,
+                      index: widget.product.id,
+                    ),
+                  );
+            },
+            deleteLike: () {
+              context.read<CatalogBloc>().add(
+                    CatalogEvent.deleteFavouriteProduct(
+                      index: widget.product.id,
+                    ),
+                  );
+            },
+            listItems: widget.listItems,
+            favouritesProducts: widget.favouritesProducts,
+          ),
+        );
+      },
+      child: Container(
+        height: 356,
+        width: 140,
+        margin: const EdgeInsets.only(right: 8),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            width: 140,
+            height: 186,
+            child: Stack(
+              alignment: Alignment.topRight,
+              children: [
+                CachedNetworkImage(
+                  imageUrl: widget.product.images[0],
+                  width: 140,
+                  height: 186,
+                  fit: BoxFit.cover,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      _isLike = !_isLike;
+                      if (_isLike) {
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.addFavouriteProduct(
+                                product: widget.product,
+                                index: widget.product.id,
+                              ),
+                            );
+                      } else {
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.deleteFavouriteProduct(
+                                index: widget.product.id,
+                              ),
+                            );
+                      }
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: SvgPicture.asset(
+                      _isLike ? 'assets/icons/like_active.svg' : 'assets/icons/like.svg',
+                      height: 17.5,
+                      width: 17.5,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
+            widget.product.title,
+            style: Theme.of(context).textTheme.headline2?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          Text(
+            widget.product.catrgory,
+            style: Theme.of(context).textTheme.headline2,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          RichText(
+            text: TextSpan(
+              text: (widget.product.price).toString().spaceSeparateNumbers(),
+              style: Theme.of(context).textTheme.headline3,
+              children: const <TextSpan>[
+                TextSpan(
+                  text: ' ₽',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          RichText(
+            text: TextSpan(
+              text: (widget.product.price).toString().spaceSeparateNumbers(),
+              style: Theme.of(context).textTheme.headline3?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+              children: const <TextSpan>[
+                TextSpan(
+                  text: ' ₽',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          Text(
+            'Ваша цена',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          const SizedBox(
+            height: 4,
+          ),
+          Row(
+            children: [
+              SvgPicture.asset(
+                'assets/icons/lightning.svg',
+                height: 14,
+                width: 14,
+              ),
+              const SizedBox(
+                width: 7,
+              ),
+              Expanded(
+                child: RichText(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  text: TextSpan(
+                    text: 'Выгода до ',
+                    style: Theme.of(context).textTheme.headline3,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: (widget.product.price).toString().spaceSeparateNumbers(),
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                      const TextSpan(
+                        text: ' ₽',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ]),
+      ),
+    );
+  }
+}

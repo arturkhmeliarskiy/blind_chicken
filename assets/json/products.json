@@ -1,0 +1,234 @@
+{
+    "products": [
+        {
+            "id": 0,
+            "title": "Leisure Society",
+            "catrgory": "Солнцезащитные очки",
+            "size": [49, 22, 145],
+            "price": 100950,
+            "brend": "Leisure Society",
+            "lens_diameter": 49,
+            "temple_length": 145,
+            "country": "США",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 1,
+            "title": "Charriol",
+            "catrgory": "Солнцезащитные очки",
+            "size": [58, 18, 145],
+            "price": 46000,
+            "brend": "Charriol",
+            "lens_diameter": 58,
+            "temple_length": 145,
+            "country": "Швейцария",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/f36/600_800_1/s4zvbupy5ei5d0htx5eud4fji5g6eei4.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/2c3/600_800_1/iqq3ph3qdtq7bgzezlenkjly9papfbjm.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/922/600_800_1/yjn7vqrqkpgvh31deez18o2mqcozvrj5.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/682/600_800_1/sb65w0s87vv0o6byrcphgr1gsh2xvn2w.jpg"
+            ]
+            ,
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Charriol",
+            "catrgory": "Солнцезащитные очки",
+            "size": [57, 18, 145],
+            "price": 46000,
+            "brend": "Charriol",
+            "lens_diameter": 57,
+            "temple_length": 145,
+            "country": "Швейцария",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/68f/600_800_1/thi8ud6zxkkj9ok8vra2cxhlkvqcp7hn.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/c45/600_800_1/77roa8w0vtf8opyfo1594f3un33mecdk.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/325/600_800_1/bpekpz536gffbw392qw65ke1bdwsb7ti.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/41b/600_800_1/jyt0lwh3d3lb3x33rt12o6x4uii225zg.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Linda Farrow",
+            "catrgory": "Солнцезащитные очки",
+            "size": [63, 17, 145],
+            "price": 155000,
+            "brend": "Linda Farrow",
+            "lens_diameter": 63,
+            "temple_length": 145,
+            "country": "Великобритания",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/d95/600_800_1/ppst3672dkdxne0tdcroouno2g0a9xqt.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/f9f/600_800_1/7siy3cny4z26y9tsbm1aegg47lysclin.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/f2f/600_800_1/l7w5s5kid9n1omzyhdf6z4r2k6jkfcyj.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d95/600_800_1/ppst3672dkdxne0tdcroouno2g0a9xqt.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Linda Farrow",
+            "catrgory": "Солнцезащитные очки",
+            "size": [58, 19, 145],
+            "price": 99700,
+            "brend": "Linda Farrow",
+            "lens_diameter": 58,
+            "temple_length": 145,
+            "country": "Великобритания",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/98f/600_800_1/dtudc1ycktuubqz6rzs97g38vo52pmkh.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/e55/600_800_1/mu3sbaezk62d81pf1xzn3jn09ia2z7xq.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/24f/600_800_1/ducpd6ahhctjy0po8fx7z42dwe6v744m.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/0c0/600_800_1/mfqx0tjflx524pobeq1f1m75p5mxruqj.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Saint Laurent",
+            "catrgory": "Солнцезащитные очки",
+            "size": [54, 18, 135],
+            "price": 86800,
+            "brend": "Saint Laurent",
+            "lens_diameter": 54,
+            "temple_length": 135,
+            "country": "Франция",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/f1b/600_800_1/i696ufdrw7pb5jp6ncqaqsg3ihihiv86.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Saint Laurent",
+            "catrgory": "Солнцезащитные очки",
+            "size": [54, 20, 140],
+            "price": 46750,
+            "brend": "Saint Laurent",
+            "lens_diameter": 54,
+            "temple_length": 140,
+            "country": "Франция",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/491/600_800_1/jsmblr7z05itlk32anyqdvnktzkoziaq.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/c48/600_800_1/rwl7avdd7z6wtjctes38uuy1eafsh4yd.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/71b/600_800_1/7ikfwzrdhf71ci24f6hl0wfsyrfkem6h.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/5ef/600_800_1/6d309e6cmwdwkyhtqpetrg6x2dqtg399.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/d82/600_800_1/9efrfifw3xx4xq2as3ozxt529thvluwp.jpg"
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Seventh Street",
+            "catrgory": "Оправы",
+            "size": [51, 17, 140],
+            "price": 7050,
+            "brend": "Seventh Street",
+            "lens_diameter": 51,
+            "temple_length": 140,
+            "country": "Италия",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/4e7/600_800_1/px8846znzdqekvisvugnugsix1ka9dmw.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/4e7/600_800_1/px8846znzdqekvisvugnugsix1ka9dmw.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/6da/600_800_1/d31bqsdwyqja8xxyb3mcq8qu2hm6f7f2.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/a25/600_800_1/5xwueidxbs5r77o9ixlnz5bey48o0v4w.jpg"
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Isabel Marant",
+            "catrgory": "Солнцезащитные очки",
+            "size": [99, 3, 135],
+            "price": 27500,
+            "brend": "Isabel Marant",
+            "lens_diameter": 99,
+            "temple_length": 135,
+            "country": "Франция",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/88f/1000_1333_1/1g11weazj1x7s0c08bb9bu750n3iq5lw.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/88f/1000_1333_1/1g11weazj1x7s0c08bb9bu750n3iq5lw.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/208/1000_1333_1/58xjsqbq0a4pqixmxdorqcv2dx653fda.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/83e/1000_1333_1/dknruify6h9rtqdvr6pfbn2y3ax9xipx.jpg"
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Gucci",
+            "catrgory": "Оправы",
+            "size": [52, 19, 140],
+            "price": 34450,
+            "brend": "Gucci",
+            "lens_diameter": 52,
+            "temple_length": 140,
+            "country": "Италия",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/399/1000_1333_1/tzxkzfqazsr15jjcekjb1cw2pisd15oj.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/399/1000_1333_1/tzxkzfqazsr15jjcekjb1cw2pisd15oj.jpg"
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Dsquared2",
+            "catrgory": "Солнцезащитные очки",
+            "size": [63, 14, 145],
+            "price": 30150,
+            "brend": "Dsquared2",
+            "lens_diameter": 63,
+            "temple_length": 145,
+            "country": "Канада",
+            "images": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/868/1000_1333_1/p03spcndl3att5t1ozt1ffy755ntwqw6.jpg"
+            ],
+            "variants": [
+                "https://slepayakurica.ru/upload/resize_cache/foto/868/1000_1333_1/p03spcndl3att5t1ozt1ffy755ntwqw6.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/07c/1000_1333_1/77wua0yg7ipz238wpznk6r0769sre44i.jpg",
+                "https://slepayakurica.ru/upload/resize_cache/foto/582/1000_1333_1/ia9kjxt81m7sikm4tvvucothrpdcmp47.jpg"
+            ]
+        }
+    ]
+}

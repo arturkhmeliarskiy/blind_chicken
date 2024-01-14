@@ -1,0 +1,10 @@
+export 'catalog/catalog_bloc.dart';
+export 'filter/filter_bloc.dart';
+export 'shopping_cart/shopping_cart_bloc.dart';
+export 'boutiques/boutiques_bloc.dart';
+export 'favourites/favourites_bloc.dart';
+export 'login/login_bloc.dart';
+export 'order/order_bloc.dart';
+export 'yandex_map/yandex_map_bloc.dart';
+export 'account/account_bloc.dart';
+export 'search/search_bloc.dart';
