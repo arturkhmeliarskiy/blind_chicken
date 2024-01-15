@@ -37,7 +37,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
               ),
               child: Text(
                 'Избранное',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
             BlocBuilder<FavouritesBloc, FavouritesState>(
@@ -53,7 +53,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                               ),
                               child: Text(
                                 'В избранном пока пусто.',
-                                style: Theme.of(context).textTheme.headline2,
+                                style: Theme.of(context).textTheme.displayMedium,
                               ),
                             )
                           : Column(
@@ -80,9 +80,10 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                         ),
                                         Text(
                                           'Фильтры',
-                                          style: Theme.of(context).textTheme.headline2?.copyWith(
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
                                         ),
                                         if (initState.allSelectFilter.isNotEmpty)
                                           Container(
@@ -100,7 +101,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                             child: Text(
                                               initState.allSelectFilter.length.toString(),
                                               style:
-                                                  Theme.of(context).textTheme.bodyText1?.copyWith(
+                                                  Theme.of(context).textTheme.bodyLarge?.copyWith(
                                                         color: BlindChickenColors.backgroundColor,
                                                         height: 1,
                                                       ),
@@ -154,7 +155,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                                   Text(
                                                     initState
                                                         .allSelectFilter[index].values.first.value,
-                                                    style: Theme.of(context).textTheme.headline3,
+                                                    style: Theme.of(context).textTheme.displaySmall,
                                                   ),
                                                   const SizedBox(
                                                     width: 7,
@@ -181,7 +182,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                       crossAxisCount: 2, // number of items in each row
                                       mainAxisSpacing: 18.0, // spacing between rows
                                       crossAxisSpacing: 18.0, // spacing between columns
-                                      childAspectRatio: 0.45),
+                                      childAspectRatio: 0.46),
                                   padding: const EdgeInsets.only(
                                     top: 8.0,
                                     bottom: 8.0,

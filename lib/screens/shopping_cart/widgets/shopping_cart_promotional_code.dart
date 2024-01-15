@@ -30,7 +30,7 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
       children: [
         Text(
           'Промокод',
-          style: Theme.of(context).textTheme.headline2,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
         const SizedBox(
           height: 4,
@@ -41,7 +41,7 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
               child: SizedBox(
                 height: 37,
                 child: TextField(
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         height: 1,
                       ),
                   controller: _promotional,
@@ -53,6 +53,12 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
                   decoration: InputDecoration(
                     isDense: true,
                     filled: false,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: BlindChickenColors.borderTextField,
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                     border: OutlineInputBorder(
                       borderSide: const BorderSide(
                         color: BlindChickenColors.borderTextField,

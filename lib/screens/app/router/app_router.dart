@@ -18,7 +18,7 @@ import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value_s
 import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_filter_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen_result.dart';
-import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_screen.dart';
 import 'package:blind_chicken/screens/home/sale/sale_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/order/order_screen.dart';

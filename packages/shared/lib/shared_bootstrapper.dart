@@ -17,5 +17,8 @@ Future<void> initShared(GetIt getIt) async {
     ..registerFactory(
       () => ProductsFavouritesService(),
     );
+  // ..registerFactory(
+  //   () => SberbankPaymentService(),
+  // );
   await getIt.get<ProductsFavouritesService>().initHave();
 }

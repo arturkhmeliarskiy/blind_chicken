@@ -84,14 +84,14 @@ class _OrderCardState extends State<OrderCard> {
                     if (widget.product.title == 'Подарочная карта')
                       Text(
                         '${price.toString().spaceSeparateNumbers()} ₽',
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                       )
                     else
                       Text(
                         '${count.toString()} шт',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                   ],
                 ),
@@ -103,13 +103,13 @@ class _OrderCardState extends State<OrderCard> {
                       if (widget.product.title == 'Подарочная карта')
                         Text(
                           'Подарочная карта',
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         )
                       else
                         RichText(
                           text: TextSpan(
                             text: '$price',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),
                             children: const <TextSpan>[
@@ -128,7 +128,7 @@ class _OrderCardState extends State<OrderCard> {
                       ),
                       Text(
                         widget.product.brend,
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w600,
                             ),
                       ),
@@ -137,7 +137,7 @@ class _OrderCardState extends State<OrderCard> {
                       ),
                       Text(
                         widget.product.catrgory,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],
                   ),

@@ -45,7 +45,7 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
                     ),
                     child: Text(
                       title,
-                      style: styleTitle ?? Theme.of(context).textTheme.headline2,
+                      style: styleTitle ?? Theme.of(context).textTheme.displayMedium,
                       overflow: TextOverflow.visible,
                       maxLines: 2,
                     ),
@@ -56,7 +56,7 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       ellipsis(),
-                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             height: 2.4,
                             color: BlindChickenColors.dotItem,
                           ),
@@ -74,7 +74,7 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
               child: Text(
                 value,
                 style: styleValue ??
-                    Theme.of(context).textTheme.headline2?.copyWith(
+                    Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w400,
                         ),
                 overflow: TextOverflow.visible,

@@ -71,7 +71,7 @@ class _GiftPlasticCardSwitchDeliveryTypeState extends State<GiftPlasticCardSwitc
                     : const BoxDecoration(),
                 child: Text(
                   'Самовывоз',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),
@@ -106,7 +106,7 @@ class _GiftPlasticCardSwitchDeliveryTypeState extends State<GiftPlasticCardSwitc
                     : const BoxDecoration(),
                 child: Text(
                   'Доставка',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),

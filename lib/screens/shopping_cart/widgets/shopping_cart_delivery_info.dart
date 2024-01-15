@@ -27,8 +27,8 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
   final TextEditingController _street = TextEditingController();
   final TextEditingController _house = TextEditingController();
   final TextEditingController _flat = TextEditingController();
-  String _deliveryPrice = '';
-  String _total = '';
+  final String _deliveryPrice = '';
+  final String _total = '';
 
   @override
   void dispose() {
@@ -48,7 +48,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
         children: [
           Text(
             'Город',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7,
@@ -62,7 +62,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
               borderRadius: BorderRadius.circular(4),
             ),
             child: TextField(
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     height: 1,
                   ),
               controller: _city,
@@ -117,7 +117,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
           ),
           Text(
             'Улица',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7,
@@ -136,7 +136,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
               borderRadius: BorderRadius.circular(4),
             ),
             child: TextField(
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     height: 1,
                   ),
               controller: _street,
@@ -199,7 +199,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
                     children: [
                       Text(
                         'Дом',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 7,
@@ -218,7 +218,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: TextField(
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 height: 1,
                               ),
                           controller: _house,
@@ -279,7 +279,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
                     children: [
                       Text(
                         'Квартира',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 7,
@@ -298,7 +298,7 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: TextField(
-                          style: Theme.of(context).textTheme.headline2?.copyWith(height: 1),
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                           enabled: _street.text.isNotEmpty,
                           textCapitalization: TextCapitalization.sentences,
                           onChanged: (value) {
@@ -340,11 +340,11 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
                         children: [
                           Text(
                             'Доставка',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                           Text(
                             '$_deliveryPrice ₽',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],
                       ),
@@ -353,13 +353,13 @@ class _ShoppingCartDeliveryInfoState extends State<ShoppingCartDeliveryInfo> {
                         children: [
                           Text(
                             'Итогго',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
                           Text(
                             '$_total ₽',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),

@@ -43,7 +43,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   bool _isSoppingCart = false;
   ScrollController? _controller;
   late ProductDataModel item;
-  List<String> _listSizeProduct = [];
+  final List<String> _listSizeProduct = [];
   List<Map> listBoutiques = [
     {
       'address': 'Москва, ТЦ Афимолл Сити, 2 этаж',
@@ -130,7 +130,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                 children: [
                   Text(
                     widget.item.title,
-                    style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       fontWeight: FontWeight.w700,
                       shadows: [
                         Shadow(
@@ -148,7 +148,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   ),
                   Text(
                     widget.item.catrgory,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
                     height: 28,
@@ -158,7 +158,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                       RichText(
                         text: TextSpan(
                           text: (item.price).toString().spaceSeparateNumbers(),
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w400,
                               ),
                           children: const <TextSpan>[
@@ -186,23 +186,21 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                       RichText(
                         text: TextSpan(
                           text: 'Ваша цена за ',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                           children: <TextSpan>[
                             TextSpan(
                               text: (item.price - 100).toString().spaceSeparateNumbers(),
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),
                             ),
-                            const TextSpan(
+                            TextSpan(
                               text: ' ₽',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                              ),
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
                             ),
                           ],
                         ),
@@ -218,7 +216,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   ),
                   Text(
                     'Размер',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -258,9 +256,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                             ),
                             child: Text(
                               _size,
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                           ),
                           Padding(
@@ -316,7 +312,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   ),
                   Text(
                     'Получение',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -331,14 +327,14 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   ),
                   Text(
                     'Бесплатная доставка по России от 10 000 ₽',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
                     height: 28,
                   ),
                   Text(
                     'Варианты',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -353,7 +349,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   ),
                   Text(
                     'О товаре',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -372,7 +368,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                         ),
                         Text(
                           'Смотрите также',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                         ),
@@ -402,7 +398,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                         ),
                         Text(
                           'С этим товаром смотрят',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                         ),
@@ -426,7 +422,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                       children: [
                         Text(
                           'Товары бренда',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                         ),

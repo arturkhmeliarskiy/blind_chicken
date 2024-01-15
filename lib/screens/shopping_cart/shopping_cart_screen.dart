@@ -20,7 +20,7 @@ class ShoppingCartScreen extends StatefulWidget {
 }
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
-  bool _isAuth = false;
+  final bool _isAuth = false;
   String _receivingType = 'Самовывоз';
   String _typePay = 'Банковской картой';
   String _adress = 'Москва, ТЦ Афимолл Сити, 2 этаж, Department Store';
@@ -45,7 +45,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
           ),
           Text(
             'Корзина',
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
             builder: (context, state) {
@@ -56,7 +56,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           padding: const EdgeInsets.only(top: 14.0),
                           child: Text(
                             'В корзине пока пусто.',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         )
                       : Column(
@@ -166,7 +166,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 Text(
                                   _receivingType.isNotEmpty ? _receivingType : 'Способ получения',
                                   textAlign: TextAlign.start,
-                                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                 ),
@@ -183,7 +183,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                             Text(
                               _adress.isNotEmpty ? _adress : 'Не выбран',
                               textAlign: TextAlign.start,
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                             const SizedBox(
                               height: 24,
@@ -194,7 +194,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 Text(
                                   _typePay.isNotEmpty ? _typePay : 'Способ оплаты не выбран',
                                   textAlign: TextAlign.start,
-                                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                 ),
@@ -214,11 +214,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 Text(
                                   'Товары, ${initState.numberProducts} шт.',
                                   textAlign: TextAlign.start,
-                                  style: Theme.of(context).textTheme.headline2,
+                                  style: Theme.of(context).textTheme.displayMedium,
                                 ),
                                 Text(
                                   '${'${initState.amountPaid}'.spaceSeparateNumbers()} ₽',
-                                  style: Theme.of(context).textTheme.headline2,
+                                  style: Theme.of(context).textTheme.displayMedium,
                                 ),
                               ],
                             ),
@@ -234,11 +234,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       Text(
                                         'Доставка',
                                         textAlign: TextAlign.start,
-                                        style: Theme.of(context).textTheme.headline2,
+                                        style: Theme.of(context).textTheme.displayMedium,
                                       ),
                                       Text(
                                         '${_deliveryPrice.toString().spaceSeparateNumbers()} ₽',
-                                        style: Theme.of(context).textTheme.headline2,
+                                        style: Theme.of(context).textTheme.displayMedium,
                                       ),
                                     ],
                                   ),
@@ -257,13 +257,13 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                 Text(
                                   'Итого',
                                   textAlign: TextAlign.start,
-                                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                 ),
                                 Text(
                                   '${'${initState.amountPaid + _deliveryPrice}'.spaceSeparateNumbers()} ₽',
-                                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
                                 ),

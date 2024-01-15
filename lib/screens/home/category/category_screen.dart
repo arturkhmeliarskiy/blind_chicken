@@ -61,7 +61,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ),
                     Text(
                       'Поиск',
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
                             color: BlindChickenColors.textInput,
                           ),
                     ),
@@ -95,7 +95,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         },
                         child: Text(
                           'Женщинам',
-                          style: Theme.of(context).textTheme.headline1?.copyWith(
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontWeight: _selectIndexType == 0 ? FontWeight.w600 : FontWeight.w400,
                             shadows: [
                               _selectIndexType == 0
@@ -131,7 +131,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         },
                         child: Text(
                           'Мужчинам',
-                          style: Theme.of(context).textTheme.headline1?.copyWith(
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontWeight: _selectIndexType == 1 ? FontWeight.w600 : FontWeight.w400,
                             shadows: [
                               _selectIndexType == 1
@@ -167,7 +167,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         },
                         child: Text(
                           'Детям',
-                          style: Theme.of(context).textTheme.headline1?.copyWith(
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontWeight: _selectIndexType == 2 ? FontWeight.w600 : FontWeight.w400,
                             shadows: [
                               _selectIndexType == 2
@@ -243,13 +243,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                             width: 3,
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(bottom: 3),
+                                            padding: const EdgeInsets.only(bottom: 2),
                                             child: Text(
                                               initState.pathMenu.last.name,
-                                              style:
-                                                  Theme.of(context).textTheme.headline2?.copyWith(
-                                                        fontWeight: FontWeight.w600,
-                                                      ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                             ),
                                           )
                                         ],
@@ -261,7 +263,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       },
                                       child: Text(
                                         'Все товары',
-                                        style: Theme.of(context).textTheme.headline2,
+                                        style: Theme.of(context).textTheme.displayMedium,
                                       ),
                                     ),
                                   ],

@@ -76,7 +76,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                                 padding: const EdgeInsets.only(left: 28),
                                 child: Text(
                                   'Войти или создать профиль',
-                                  style: Theme.of(context).textTheme.subtitle2,
+                                  style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               ),
                               GestureDetector(
@@ -110,7 +110,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                             children: [
                               Text(
                                 'Телефон',
-                                style: Theme.of(context).textTheme.headline2,
+                                style: Theme.of(context).textTheme.displayMedium,
                               ),
                               const SizedBox(
                                 height: 3.5,
@@ -118,53 +118,63 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                               Material(
                                 child: SizedBox(
                                   height: 37,
-                                  child: TextField(
-                                    onTap: () {},
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                    controller: _phone,
-                                    inputFormatters: [maskFormatter],
-                                    cursorColor: BlindChickenColors.activeBorderTextField,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline2
-                                        ?.copyWith(height: 1.4),
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: BlindChickenColors.borderTextField,
-                                        ),
-                                        borderRadius: BorderRadius.circular(4),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: BlindChickenColors.activeBorderTextField,
-                                        ),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      prefixIcon: Padding(
-                                        padding: const EdgeInsets.only(
-                                          left: 10,
-                                          right: 5,
-                                        ),
-                                        child: Text(
-                                          '+7',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline2
-                                              ?.copyWith(height: 1),
-                                        ),
-                                      ),
-                                      focusColor: BlindChickenColors.backgroundColor,
-                                      fillColor: BlindChickenColors.backgroundColor,
-                                      hintStyle: Theme.of(context)
+                                  child: Theme(
+                                    data:
+                                        Theme.of(context).copyWith(splashColor: Colors.transparent),
+                                    child: TextField(
+                                      onTap: () {},
+                                      onChanged: (value) {
+                                        setState(() {});
+                                      },
+                                      controller: _phone,
+                                      inputFormatters: [maskFormatter],
+                                      cursorColor: BlindChickenColors.activeBorderTextField,
+                                      style: Theme.of(context)
                                           .textTheme
-                                          .headline2
-                                          ?.copyWith(height: 1),
-                                      hintText: '000 000 00 00',
-                                      prefixIconConstraints: const BoxConstraints(maxWidth: 40),
-                                      contentPadding: EdgeInsets.zero,
+                                          .displayMedium
+                                          ?.copyWith(height: 1.4),
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: BlindChickenColors.borderTextField,
+                                          ),
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: BlindChickenColors.borderTextField,
+                                          ),
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: BlindChickenColors.activeBorderTextField,
+                                          ),
+                                          borderRadius: BorderRadius.circular(5),
+                                        ),
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 10,
+                                            right: 5,
+                                          ),
+                                          child: Text(
+                                            '+7',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displayMedium
+                                                ?.copyWith(height: 1),
+                                          ),
+                                        ),
+                                        focusColor: BlindChickenColors.backgroundColor,
+                                        fillColor: BlindChickenColors.backgroundColor,
+                                        hintStyle: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium
+                                            ?.copyWith(height: 1),
+                                        hintText: '000 000 00 00',
+                                        prefixIconConstraints: const BoxConstraints(maxWidth: 40),
+                                        contentPadding: EdgeInsets.zero,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -203,7 +213,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                               Text(
                                 '       Даю согласие на обработку моих персональных данных '
                                 'в рамках закона N 152-ФЗ от 27.07.2006',
-                                style: Theme.of(context).textTheme.bodyText2,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               SvgPicture.asset(
                                 'assets/icons/check-square.svg',

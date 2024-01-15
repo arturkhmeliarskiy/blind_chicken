@@ -47,7 +47,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                   ),
                   child: Text(
                     'Оплата подарочной картой',
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
                 GestureDetector(
@@ -89,7 +89,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                       ),
                       Text(
                         'Номер карты',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 3.5,
@@ -104,7 +104,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                             },
                             controller: _numberCard,
                             cursorColor: BlindChickenColors.activeBorderTextField,
-                            style: Theme.of(context).textTheme.headline2?.copyWith(height: 1.4),
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1.4),
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -120,7 +120,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                               ),
                               focusColor: BlindChickenColors.backgroundColor,
                               fillColor: BlindChickenColors.backgroundColor,
-                              hintStyle: Theme.of(context).textTheme.headline2?.copyWith(height: 1),
+                              hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                               prefixIconConstraints: const BoxConstraints(maxWidth: 40),
                               contentPadding: const EdgeInsets.only(left: 12),
                             ),
@@ -132,7 +132,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                       ),
                       Text(
                         'Пин-код',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 3.5,
@@ -147,7 +147,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                             },
                             controller: _numberCard,
                             cursorColor: BlindChickenColors.activeBorderTextField,
-                            style: Theme.of(context).textTheme.headline2?.copyWith(height: 1.4),
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1.4),
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
@@ -163,7 +163,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                               ),
                               focusColor: BlindChickenColors.backgroundColor,
                               fillColor: BlindChickenColors.backgroundColor,
-                              hintStyle: Theme.of(context).textTheme.headline2?.copyWith(height: 1),
+                              hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                               prefixIconConstraints: const BoxConstraints(maxWidth: 40),
                               contentPadding: const EdgeInsets.only(left: 12),
                             ),
@@ -183,7 +183,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                         alignment: Alignment.center,
                         child: Text(
                           'Перейти к оплате',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 color: BlindChickenColors.backgroundColor,
                               ),
                         ),

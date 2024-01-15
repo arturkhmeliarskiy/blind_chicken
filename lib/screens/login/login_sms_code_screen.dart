@@ -48,7 +48,7 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                     padding: const EdgeInsets.only(left: 28),
                     child: Text(
                       'Введите код из сообщения',
-                      style: Theme.of(context).textTheme.subtitle2,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                   GestureDetector(
@@ -82,7 +82,7 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                 children: [
                   Text(
                     'Код выслан на номер + 7 ${widget.phone}',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
                     height: 3.5,
@@ -90,28 +90,37 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                   Material(
                     child: SizedBox(
                       height: 37,
-                      child: TextField(
-                        onTap: () {},
-                        onChanged: (value) {},
-                        controller: _smsCode,
-                        cursorColor: BlindChickenColors.activeBorderTextField,
-                        style: Theme.of(context).textTheme.headline2?.copyWith(height: 1.4),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: BlindChickenColors.borderTextField,
+                      child: Theme(
+                        data: Theme.of(context).copyWith(splashColor: Colors.transparent),
+                        child: TextField(
+                          onTap: () {},
+                          onChanged: (value) {},
+                          controller: _smsCode,
+                          cursorColor: BlindChickenColors.activeBorderTextField,
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1.4),
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: BlindChickenColors.borderTextField,
+                              ),
+                              borderRadius: BorderRadius.circular(4),
                             ),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          focusColor: BlindChickenColors.backgroundColor,
-                          fillColor: BlindChickenColors.backgroundColor,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: BlindChickenColors.activeBorderTextField,
+                            border: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: BlindChickenColors.borderTextField,
+                              ),
+                              borderRadius: BorderRadius.circular(4),
                             ),
-                            borderRadius: BorderRadius.circular(5),
+                            focusColor: BlindChickenColors.backgroundColor,
+                            fillColor: BlindChickenColors.backgroundColor,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: BlindChickenColors.activeBorderTextField,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            contentPadding: const EdgeInsets.only(left: 12),
                           ),
-                          contentPadding: const EdgeInsets.only(left: 12),
                         ),
                       ),
                     ),

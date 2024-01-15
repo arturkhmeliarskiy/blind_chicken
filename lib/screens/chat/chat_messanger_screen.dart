@@ -44,11 +44,11 @@ class _ChatMessangerScreenState extends State<ChatMessangerScreen> {
           children: [
             Text(
               'Напишите ваше сообщение',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             Text(
               'Напишите ваше сообщение',
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: BlindChickenColors.chatSubtitle,
                   ),
             ),

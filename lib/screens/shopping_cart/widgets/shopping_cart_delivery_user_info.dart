@@ -86,7 +86,7 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
           Text(
             widget.title,
             textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(
             height: 14,
@@ -176,7 +176,7 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                     Text(
                       widget.subTitle,
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
                             decoration: TextDecoration.underline,
                           ),
                     ),
@@ -184,7 +184,7 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                       child: Text(
                         widget.subTitle2,
                         textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ),
                   ],
@@ -195,7 +195,7 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                 Text(
                   widget.subTitle3,
                   textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),

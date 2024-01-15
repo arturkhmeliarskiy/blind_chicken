@@ -28,13 +28,11 @@ class BlindChickenCashbackAndDiscountsTitle extends StatelessWidget {
               const SizedBox(
                 width: 7,
               ),
-              RichText(
-                text: TextSpan(
-                  children: BlindChickenCheckWordStyle.textToWords(
-                    title,
-                    context,
-                  ),
-                ),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
               ),
               const SizedBox(
                 width: 7,

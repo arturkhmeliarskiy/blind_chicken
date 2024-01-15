@@ -40,7 +40,7 @@ class _FilterItemCatalogState extends State<FilterItemCatalog> {
               children: [
                 Text(
                   widget.item,
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 SvgPicture.asset(
                   'assets/icons/chevron-right.svg',
@@ -75,7 +75,7 @@ class _FilterItemCatalogState extends State<FilterItemCatalog> {
                           children: [
                             Text(
                               widget.selectFilter[index].value,
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.displaySmall,
                             ),
                             const SizedBox(
                               width: 7,

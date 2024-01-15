@@ -25,7 +25,7 @@ class CatalogHeaderInfo extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.headline1?.copyWith(
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                     ),
               ),

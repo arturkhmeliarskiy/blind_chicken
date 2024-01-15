@@ -39,7 +39,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
           Text(
             widget.title,
             textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(
             height: 14,
@@ -88,7 +88,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                           ),
                           Text(
                             'Банковской картой',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],
                       ),
@@ -135,7 +135,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                           ),
                           Text(
                             'При получении',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],
                       ),
@@ -185,7 +185,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                     Text(
                       widget.subTitle,
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
                             decoration: TextDecoration.underline,
                           ),
                     ),
@@ -193,7 +193,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                       child: Text(
                         widget.subTitle2,
                         textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ),
                   ],
@@ -204,7 +204,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                 Text(
                   widget.subTitle3,
                   textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),

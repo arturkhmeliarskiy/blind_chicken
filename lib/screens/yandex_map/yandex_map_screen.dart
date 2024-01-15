@@ -360,7 +360,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
                             ),
                             Text(
                               'Списком',
-                              style: Theme.of(context).textTheme.headline6?.copyWith(
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                     fontWeight: FontWeight.w400,
                                   ),
                             ),

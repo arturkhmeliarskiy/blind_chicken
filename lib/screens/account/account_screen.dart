@@ -30,7 +30,7 @@ class AccountScreen extends StatelessWidget {
             ),
             Text(
               'Личный кабинет',
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(
               height: 14,
@@ -53,7 +53,7 @@ class AccountScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Телефон',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     BlocBuilder<AccountBloc, AccountState>(
                       builder: (context, state) {
@@ -64,7 +64,7 @@ class AccountScreen extends StatelessWidget {
                                 if (initState.phone.isNotEmpty)
                                   Text(
                                     '+7 ${initState.phone}',
-                                    style: Theme.of(context).textTheme.headline2,
+                                    style: Theme.of(context).textTheme.displayMedium,
                                   ),
                                 if (initState.phone.isNotEmpty)
                                   const SizedBox(
@@ -76,7 +76,7 @@ class AccountScreen extends StatelessWidget {
                                   },
                                   child: Text(
                                     'Выйти',
-                                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                           decoration: TextDecoration.underline,
                                         ),
                                   ),
@@ -111,7 +111,7 @@ class AccountScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Имя',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     BlocBuilder<AccountBloc, AccountState>(
                       builder: (context, state) {
@@ -121,7 +121,7 @@ class AccountScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   initState.name.isNotEmpty ? initState.name : 'Не указано',
-                                  style: Theme.of(context).textTheme.headline2,
+                                  style: Theme.of(context).textTheme.displayMedium,
                                 ),
                                 const SizedBox(
                                   width: 14,
@@ -181,7 +181,7 @@ class AccountScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Email',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     BlocBuilder<AccountBloc, AccountState>(
                       builder: (context, state) {
@@ -191,7 +191,7 @@ class AccountScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   initState.email.isNotEmpty ? initState.email : 'Не указано',
-                                  style: Theme.of(context).textTheme.headline2,
+                                  style: Theme.of(context).textTheme.displayMedium,
                                 ),
                                 const SizedBox(
                                   width: 14,
@@ -234,7 +234,7 @@ class AccountScreen extends StatelessWidget {
               height: 14,
             ),
             Container(
-              height: 210,
+              height: 215,
               padding: const EdgeInsets.only(
                 bottom: 14,
               ),
@@ -248,12 +248,13 @@ class AccountScreen extends StatelessWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(
                   'Скидка',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 const BlindChickenDiscountScale(
+                  isFirstFontWeight: true,
                   indexCurrency: 0,
                   listDiscount: [
                     '0',
@@ -279,15 +280,15 @@ class AccountScreen extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       text: '10 000',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: Theme.of(context).textTheme.displaySmall,
                       children: <TextSpan>[
                         TextSpan(
                           text: ' ₽ ',
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                         TextSpan(
                           text: 'до скидки 5 %',
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     ),
@@ -297,46 +298,29 @@ class AccountScreen extends StatelessWidget {
                   height: 14,
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Бонусы',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                     const SizedBox(
                       width: 8,
                     ),
                     Text(
                       'активно / всего',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 8,
                 ),
-                RichText(
-                  text: TextSpan(
-                    text: '0',
-                    style: Theme.of(context).textTheme.headline2,
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: ' ₽ ',
-                        style: Theme.of(context).textTheme.headline2,
+                Text(
+                  '0 ₽ / 0 ₽',
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
                       ),
-                      TextSpan(
-                        text: '/ 0',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      const TextSpan(
-                        text: ' ₽ ',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
                 const SizedBox(
                   height: 8,
@@ -346,7 +330,7 @@ class AccountScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(2),
                   child: Text(
                     'Кэшбэк до 27 % от суммы покупки',
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
               ]),
@@ -370,15 +354,15 @@ class AccountScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Заказы на сайте',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   Text(
                     'Электронные бланки заказов',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   Text(
                     'Заказы на подшив',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ],
               ),

@@ -70,7 +70,7 @@ class _SortScreenState extends State<SortScreen> {
                           : Colors.transparent,
                       child: Text(
                         _listSort[index],
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: _selectIndex == index ? FontWeight.w600 : FontWeight.w400,
                             ),
                       ),

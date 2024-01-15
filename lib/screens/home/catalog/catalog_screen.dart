@@ -86,7 +86,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                   (item) {
                                     return Text(
                                       '${item.name}  ',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style: Theme.of(context).textTheme.displaySmall,
                                     );
                                   },
                                 ).toList(),
@@ -108,7 +108,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       children: [
                         Text(
                           'Очки',
-                          style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                          style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                 height: 1.1,
                               ),
                         ),
@@ -119,14 +119,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           children: [
                             Text(
                               '5949',
-                              style: Theme.of(context).textTheme.headline3?.copyWith(
+                              style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                     height: 1,
                                     fontWeight: FontWeight.w600,
                                   ),
                             ),
                             Text(
                               ' товаров',
-                              style: Theme.of(context).textTheme.headline3?.copyWith(
+                              style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                     height: 1,
                                   ),
                             ),
@@ -182,7 +182,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                     ),
                                   Text(
                                     listItems[index],
-                                    style: Theme.of(context).textTheme.headline2,
+                                    style: Theme.of(context).textTheme.displayMedium,
                                   ),
                                 ],
                               ),
@@ -217,7 +217,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                             children: [
                               Text(
                                 _selectSortItem,
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
@@ -248,7 +248,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                               ),
                               Text(
                                 'Фильтры',
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
@@ -270,7 +270,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         ),
                                         child: Text(
                                           initState.allSelectFilter.length.toString(),
-                                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                                 color: BlindChickenColors.backgroundColor,
                                                 height: 1,
                                               ),
@@ -329,7 +329,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         children: [
                                           Text(
                                             initState.allSelectFilter[index].values.first.value,
-                                            style: Theme.of(context).textTheme.headline3,
+                                            style: Theme.of(context).textTheme.displaySmall,
                                           ),
                                           const SizedBox(
                                             width: 7,
@@ -364,7 +364,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                 crossAxisCount: 2, // number of items in each row
                                 mainAxisSpacing: 18.0, // spacing between rows
                                 crossAxisSpacing: 18.0, // spacing between columns
-                                childAspectRatio: 0.45),
+                                childAspectRatio: 0.46),
                             padding: const EdgeInsets.only(
                               top: 8.0,
                               bottom: 8.0,

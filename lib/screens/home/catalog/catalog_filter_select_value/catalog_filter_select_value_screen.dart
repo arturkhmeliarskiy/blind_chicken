@@ -61,7 +61,9 @@ class _CatalogFilterSelectValueScreenState extends State<CatalogFilterSelectValu
                         ),
                         Text(
                           widget.title,
-                          style: Theme.of(context).textTheme.headline1,
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                         )
                       ],
                     ),

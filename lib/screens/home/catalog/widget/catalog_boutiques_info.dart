@@ -24,7 +24,7 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
           children: [
             Text(
               'В наличии в ',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             InkWell(
               onTap: () {
@@ -33,24 +33,14 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
                 });
               },
               child: SizedBox(
-                width: 68,
+                width: 70,
                 child: Stack(
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        text: '2 ',
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              height: 1,
-                            ),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'бутиках',
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
-                                    height: 1,
-                                  )),
-                        ],
-                      ),
+                    Text(
+                      '2 бутиках',
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            height: 1,
+                          ),
                     ),
                     const Padding(
                       padding: EdgeInsets.only(top: 14),
@@ -82,14 +72,14 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
                         ),
                         Text(
                           '-',
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                         const SizedBox(
                           width: 5,
                         ),
                         Text(
                           widget.listBoutiques[index]['address'],
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ],
                     ),
@@ -100,9 +90,7 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
                         ),
                         Text(
                           widget.listBoutiques[index]['size'],
-                          style: Theme.of(context).textTheme.headline3?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ],
                     )

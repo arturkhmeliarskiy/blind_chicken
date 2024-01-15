@@ -107,7 +107,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                             children: [
                               Text(
                                 widget.title,
-                                style: Theme.of(context).textTheme.headline1?.copyWith(
+                                style: Theme.of(context).textTheme.displayLarge?.copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),
                               ),
@@ -145,7 +145,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                             },
                             controller: _title,
                             cursorColor: BlindChickenColors.activeBorderTextField,
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   height: 1,
                                 ),
                             maxLines: 1,
@@ -229,7 +229,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                               ),
                               child: Text(
                                 _searchResultCities[index],
-                                style: Theme.of(context).textTheme.headline2,
+                                style: Theme.of(context).textTheme.displayMedium,
                               ),
                             ),
                           );
@@ -247,7 +247,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                         _title.text.isNotEmpty && _searchResultCities.isEmpty && !_isLoading
                             ? 'Ничего не найдено'
                             : 'Введите наименование населенного пункта',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     )
                 ],

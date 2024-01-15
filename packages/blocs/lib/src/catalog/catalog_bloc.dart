@@ -69,15 +69,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
-    menu.add(MenuItemDataModel(
-      url: '',
-      idParent: 0,
-      id: 0,
-      name: 'Sale',
-      sub: -1,
-      title: 1,
-      brand: -1,
-    ));
+    // menu.add(MenuItemDataModel(
+    //   url: '',
+    //   idParent: 0,
+    //   id: 0,
+    //   name: 'Sale',
+    //   sub: -1,
+    //   title: 1,
+    //   brand: -1,
+    // ));
 
     emit(
       CatalogState.preloadDataCompleted(
@@ -109,15 +109,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
 
       List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
-      menu.add(MenuItemDataModel(
-        url: '',
-        idParent: 0,
-        id: 0,
-        name: 'Sale',
-        sub: -1,
-        title: 1,
-        brand: -1,
-      ));
+      // menu.add(MenuItemDataModel(
+      //   url: '',
+      //   idParent: 0,
+      //   id: 0,
+      //   name: 'Sale',
+      //   sub: -1,
+      //   title: 1,
+      //   brand: -1,
+      // ));
 
       MenuItemDataModel? item = event.item;
 
@@ -194,15 +194,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         pid: pathMenu.isNotEmpty ? pathMenu.last.idParent : 0,
       );
 
-      menu.add(MenuItemDataModel(
-        url: '',
-        idParent: 0,
-        id: 0,
-        name: 'Sale',
-        sub: -1,
-        title: 1,
-        brand: -1,
-      ));
+      // menu.add(MenuItemDataModel(
+      //   url: '',
+      //   idParent: 0,
+      //   id: 0,
+      //   name: 'Sale',
+      //   sub: -1,
+      //   title: 1,
+      //   brand: -1,
+      // ));
 
       emit(initState.copyWith(pathMenu: pathMenu, menu: menu));
     });

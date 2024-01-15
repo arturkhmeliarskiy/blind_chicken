@@ -41,7 +41,7 @@ class BoutiqueCard extends StatelessWidget {
             ),
             Text(
               'Department Store',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
             ),
@@ -50,14 +50,14 @@ class BoutiqueCard extends StatelessWidget {
             ),
             Text(
               'Москва, ТЦ Афимолл Сити, 2 этаж',
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(
               height: 8,
             ),
             Text(
               'Пн-Чт 10:00-22:00, Пт-Сб 10:00-23:00, Вс 10:00-22:00',
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontFamily: 'Roboto-Light',
                   ),
             ),

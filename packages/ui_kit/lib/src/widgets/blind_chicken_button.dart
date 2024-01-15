@@ -31,7 +31,7 @@ class BlindChickenButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   color: BlindChickenColors.backgroundColorItemFilter,
                   height: 1,
                 ),

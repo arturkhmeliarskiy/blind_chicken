@@ -44,54 +44,63 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                     left: 11.2,
                     top: 11.2,
                   ),
-                  child: TextField(
-                    onTap: () {},
-                    onChanged: (value) {
-                      setState(() {});
-                      context.read<SearchBloc>().add(
-                            SearchEvent.searchProfucts(value),
-                          );
-                    },
-                    autofocus: true,
-                    controller: _search,
-                    cursorColor: BlindChickenColors.activeBorderTextField,
-                    textCapitalization: TextCapitalization.sentences,
-                    style: Theme.of(context).textTheme.headline2,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: BlindChickenColors.borderTextField,
+                  child: Theme(
+                    data: Theme.of(context).copyWith(splashColor: Colors.transparent),
+                    child: TextField(
+                      onTap: () {},
+                      onChanged: (value) {
+                        setState(() {});
+                        context.read<SearchBloc>().add(
+                              SearchEvent.searchProfucts(value),
+                            );
+                      },
+                      autofocus: true,
+                      controller: _search,
+                      cursorColor: BlindChickenColors.activeBorderTextField,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: Theme.of(context).textTheme.displayMedium,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: BlindChickenColors.borderTextField,
+                          ),
+                          borderRadius: BorderRadius.circular(4),
                         ),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: BlindChickenColors.activeBorderTextField,
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: BlindChickenColors.borderTextField,
+                          ),
+                          borderRadius: BorderRadius.circular(4),
                         ),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      suffixIcon: _search.text.isNotEmpty
-                          ? InkWell(
-                              onTap: () {
-                                _search.clear();
-                                context.read<SearchBloc>().add(
-                                      SearchEvent.searchProfucts(_search.text),
-                                    );
-                              },
-                              child: Transform.scale(
-                                scale: 0.5,
-                                child: SvgPicture.asset('assets/icons/x.svg'),
-                              ),
-                            )
-                          : const SizedBox(),
-                      prefixIcon: Transform.scale(
-                        scale: 0.4,
-                        child: SvgPicture.asset(
-                          'assets/icons/search.svg',
-                          color: BlindChickenColors.textInput,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: BlindChickenColors.activeBorderTextField,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
                         ),
+                        suffixIcon: _search.text.isNotEmpty
+                            ? InkWell(
+                                onTap: () {
+                                  _search.clear();
+                                  context.read<SearchBloc>().add(
+                                        SearchEvent.searchProfucts(_search.text),
+                                      );
+                                },
+                                child: Transform.scale(
+                                  scale: 0.5,
+                                  child: SvgPicture.asset('assets/icons/x.svg'),
+                                ),
+                              )
+                            : const SizedBox(),
+                        prefixIcon: Transform.scale(
+                          scale: 0.4,
+                          child: SvgPicture.asset(
+                            'assets/icons/search.svg',
+                            color: BlindChickenColors.textInput,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.zero,
                       ),
-                      contentPadding: EdgeInsets.zero,
                     ),
                   ),
                 ),
@@ -112,7 +121,7 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                   alignment: Alignment.center,
                   child: Text(
                     'Отмена',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -139,16 +148,17 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                       children: [
                                         Text(
                                           'Разделы ',
-                                          style: Theme.of(context).textTheme.headline2?.copyWith(
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
                                         ),
                                         const SizedBox(
                                           width: 4,
                                         ),
                                         Text(
                                           initState.searchSections.length.toString(),
-                                          style: Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context).textTheme.displayMedium,
                                         )
                                       ],
                                     ),
@@ -186,13 +196,14 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                   children: [
                                                     Text(
                                                       initState.searchSections[index]['section'],
-                                                      style: Theme.of(context).textTheme.headline2,
+                                                      style:
+                                                          Theme.of(context).textTheme.displayMedium,
                                                     ),
                                                     Text(
                                                       initState.searchSections[index]['gender'],
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .bodyText2
+                                                          .bodyMedium
                                                           ?.copyWith(
                                                             fontFamily: 'Roboto-Light',
                                                           ),
@@ -220,17 +231,19 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                           children: [
                                             Text(
                                               'Товары ',
-                                              style:
-                                                  Theme.of(context).textTheme.headline2?.copyWith(
-                                                        fontWeight: FontWeight.w700,
-                                                      ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
                                             ),
                                             const SizedBox(
                                               width: 4,
                                             ),
                                             Text(
                                               initState.searchProducts.length.toString(),
-                                              style: Theme.of(context).textTheme.headline2,
+                                              style: Theme.of(context).textTheme.displayMedium,
                                             )
                                           ],
                                         ),
@@ -240,9 +253,10 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                           },
                                           child: Text(
                                             'Показать все',
-                                            style: Theme.of(context).textTheme.headline2?.copyWith(
-                                                  decoration: TextDecoration.underline,
-                                                ),
+                                            style:
+                                                Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                      decoration: TextDecoration.underline,
+                                                    ),
                                           ),
                                         ),
                                       ],

@@ -56,7 +56,7 @@ class _GiftCardSwitchCardMaterialState extends State<GiftCardSwitchCardMaterial>
               ),
               Text(
                 'Виртуальная',
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ],
           ),
@@ -103,7 +103,7 @@ class _GiftCardSwitchCardMaterialState extends State<GiftCardSwitchCardMaterial>
               ),
               Text(
                 'Пластиковая',
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ],
           ),

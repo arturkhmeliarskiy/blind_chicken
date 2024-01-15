@@ -72,7 +72,7 @@ class MapPointInfo extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Text(
                           point.label,
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
                               ),
                         ),
@@ -84,7 +84,7 @@ class MapPointInfo extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Text(
                           point.location,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                     ),
@@ -120,7 +120,7 @@ class MapPointInfo extends StatelessWidget {
                           children: [
                             Text(
                               'Подробнее',
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     color: BlindChickenColors.backgroundColor,
                                   ),
                             ),

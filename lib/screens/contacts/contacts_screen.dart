@@ -25,14 +25,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
           content: RichText(
             text: TextSpan(
               text: 'WhatsApp',
-              style: Theme.of(context).textTheme.headline3?.copyWith(
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: BlindChickenColors.backgroundColor,
                   ),
               children: <TextSpan>[
                 TextSpan(
                   text: ' не установлен на этом устройстве',
-                  style: Theme.of(context).textTheme.headline3?.copyWith(
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         color: BlindChickenColors.backgroundColor,
                       ),
                 ),
@@ -62,7 +62,9 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'Контакты',
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
             ),
           ),
           Padding(
@@ -71,7 +73,9 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'Онлайн консультация',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
             ),
           ),
           Padding(
@@ -106,7 +110,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'Телефон',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
             ),
@@ -118,9 +122,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               '8 (800) 500-53-29',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
           Padding(
@@ -130,9 +132,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               '8 (495) 120-34-27',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
           Padding(
@@ -142,7 +142,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'Email',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
             ),
@@ -154,9 +154,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'sale@slepayakurica.ru',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
           Padding(
@@ -166,7 +164,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'Сообщества',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
             ),
@@ -178,7 +176,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Text(
               'Вконтакте',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
         ],

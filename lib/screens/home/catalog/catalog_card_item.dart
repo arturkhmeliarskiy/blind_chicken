@@ -93,7 +93,7 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
           ),
           Text(
             widget.brend,
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -102,53 +102,48 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
           ),
           Text(
             widget.catrgory,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
-            height: 10,
+            height: 8,
           ),
           RichText(
             text: TextSpan(
               text: widget.price.spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.headline2,
-              children: const <TextSpan>[
+              style: Theme.of(context).textTheme.displayMedium,
+              children: <TextSpan>[
                 TextSpan(
                   text: ' ₽',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                  ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 4,
           ),
           RichText(
             text: TextSpan(
               text: (int.parse(widget.price) - 100).toString().spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
               children: <TextSpan>[
-                const TextSpan(
+                TextSpan(
                   text: ' ₽',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
                 TextSpan(
                   text: ' Ваша цена',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 4,
           ),
           Row(
             children: [
@@ -160,20 +155,11 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
               RichText(
                 text: TextSpan(
                   text: ' Выгода до ',
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   children: <TextSpan>[
                     TextSpan(
-                      text: '9 492',
-                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ),
-                    const TextSpan(
-                      text: ' ₽',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 13,
-                      ),
+                      text: '9 492 ₽',
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSliderImages extends StatefulWidget {
@@ -73,7 +74,15 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                         width: MediaQuery.of(context).orientation == Orientation.portrait
                             ? width
                             : width / 2,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
+                        imageBuilder: (context, imageProvider) => PhotoView(
+                          tightMode: true,
+                          imageProvider: imageProvider,
+                          filterQuality: FilterQuality.high,
+                          backgroundDecoration: const BoxDecoration(
+                            color: BlindChickenColors.backgroundColorItemFilter,
+                          ),
+                        ),
                         errorWidget: (context, url, error) => const Icon(Icons.error),
                       );
                     },

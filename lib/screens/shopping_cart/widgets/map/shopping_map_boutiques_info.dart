@@ -30,7 +30,7 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
                 padding: const EdgeInsets.all(28.0),
                 child: Text(
                   'Выберите место получения',
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               Padding(
@@ -81,7 +81,7 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
                         ),
                         child: Text(
                           point.name,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         )),
                   );
                 },

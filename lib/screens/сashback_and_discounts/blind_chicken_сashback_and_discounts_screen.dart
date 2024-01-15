@@ -29,7 +29,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
             'Кэшбэк и скидки\n'
             'Покупайте мировые бренды с\n'
             'выгодой до 40%',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(
             height: 14.0,
@@ -40,28 +40,24 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                 TextSpan(
                   text: 'Шопинг должен быть приятным и выгодным!\n'
                       'Получите кэшбэк до ',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 TextSpan(
                   text: '27%',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 TextSpan(
                   text: ', скидки до '
                       'Получите кэшбэк до ',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 TextSpan(
                   text: '15%',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 TextSpan(
                   text: ' и бесплатную доставку по всей России!',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),
@@ -90,28 +86,24 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           ),
           Text(
             'Бонусы лояльности',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7.0,
           ),
-          RichText(
-            text: TextSpan(
-              children: BlindChickenCheckWordStyle.textToWords(
-                'За каждую покупку на бонусный счет зачисляется '
-                'кэшбэк в размере 5% (акционные товары) или 7%.\n'
-                'Кэшбэк можно использовать через 14 дней после '
-                'зачисления в течение 365 дней.',
-                context,
-              ),
-            ),
+          Text(
+            'За каждую покупку на бонусный счет зачисляется '
+            'кэшбэк в размере 5% (акционные товары) или 7%.\n'
+            'Кэшбэк можно использовать через 14 дней после '
+            'зачисления в течение 365 дней.',
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 14.0,
           ),
           Text(
             'Подарочные бонусы',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7.0,
@@ -119,42 +111,27 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           RichText(
             text: TextSpan(
               text: 'За каждую покупку от ',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium,
               children: <TextSpan>[
                 TextSpan(
                   text: '10 000',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
-                const TextSpan(
+                TextSpan(
                   text: ' ₽ ',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                  ),
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 TextSpan(
                   text: 'получайте \n'
                       'дополнительный кэшбэк в размере ',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
                 TextSpan(
-                  text: '10%',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                  text: '10% . Подарочный кэшбэк можно использовать через 14 '
+                      'дней после зачисления в течение 30 дней.',
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
-            ),
-          ),
-          RichText(
-            text: TextSpan(
-              children: BlindChickenCheckWordStyle.textToWords(
-                '. Подарочный кэшбэк можно использовать через 14 \n'
-                'дней после зачисления в течение 30 дней.',
-                context,
-              ),
             ),
           ),
           const SizedBox(
@@ -162,57 +139,16 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           ),
           Text(
             'Годовые бонусы',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7.0,
           ),
-          RichText(
-            text: TextSpan(
-              text: 'При сумме покупок с     '
-                  'текущего года более ',
-              style: Theme.of(context).textTheme.headline2,
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' 1 ',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                TextSpan(
-                  text: 'января по',
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-                TextSpan(
-                  text: ' 31 ',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                TextSpan(
-                  text: 'декабря текущего года более',
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-                TextSpan(
-                  text: ' 300 000',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                const TextSpan(
-                  text: ' ₽ ',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                  ),
-                ),
-                TextSpan(
-                  text: 'на бонусный счет '
-                      'начисляется дополнительный кэшбэк.',
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-              ],
-            ),
+          Text(
+            'При сумме покупок с 1 января по 31 декабря текущего года '
+            'более 300 000 ₽ на бонусный счет начисляется '
+            'дополнительный кэшбэк.',
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 10,
@@ -234,39 +170,16 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          RichText(
-            text: TextSpan(
-              text: 'Кэшбэк начисляется в рамках каждого ',
-              style: Theme.of(context).textTheme.headline2,
-              children: <TextSpan>[
-                TextSpan(
-                  text: '1 000 000',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                const TextSpan(
-                  text: ' ₽ ',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                  ),
-                ),
-                TextSpan(
-                  text: 'из суммы покупок за текущий год.',
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-              ],
-            ),
+          Text(
+            'Кэшбэк начисляется в рамках каждого 1 000 000 ₽ из суммы '
+            'покупок за текущий год.'
+            'Годовые бонусы можно использовать в течение 365 дней после зачисления.',
+            style: Theme.of(context).textTheme.displayMedium,
           ),
-          RichText(
-            text: TextSpan(
-              children: BlindChickenCheckWordStyle.textToWords(
-                'Годовые бонусы можно использовать в течение '
-                '365 дней после зачисления.',
-                context,
-              ),
-            ),
+          Text(
+            'Годовые бонусы можно использовать в течение '
+            '365 дней после зачисления.',
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 17.5,
@@ -281,7 +194,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
             'Покупайте по лучшей цене!\n'
             'Для постоянных покупателей действует '
             'накопительная дисконтная система.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 10,
@@ -309,7 +222,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           Text(
             'Данные скидки не применяются к товарам и '
             'услугам, участвующим в акциях.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 17.5,
@@ -320,35 +233,14 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           const SizedBox(
             height: 7.0,
           ),
-          RichText(
-            text: TextSpan(
-              text: 'Доставка заказов суммой более ',
-              style: Theme.of(context).textTheme.headline2,
-              children: <TextSpan>[
-                TextSpan(
-                  text: '10 000',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                const TextSpan(
-                  text: ' ₽ ',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                  ),
-                ),
-                TextSpan(
-                  text: 'бесплатно по всей России!',
-                  style: Theme.of(context).textTheme.headline2,
-                ),
-              ],
-            ),
+          Text(
+            'Доставка заказов суммой более 10 000 ₽ - бесплатно по всей России!',
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'Сумма заказа определяется фактической '
             'оплатой денежными средствами.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 40.0,

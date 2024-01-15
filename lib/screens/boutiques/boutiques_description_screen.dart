@@ -47,7 +47,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                   },
                   child: Text(
                     'Бутики',
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
                 const SizedBox(
@@ -55,21 +55,21 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                 ),
                 Text(
                   'Афимол ${widget.boutique.title}',
-                  style: Theme.of(context).textTheme.headline3,
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
             ),
           ),
           Text(
             widget.boutique.title,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(
             height: 7,
           ),
           Text(
             widget.boutique.address,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 16,
@@ -94,7 +94,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
           ),
           Text(
             'График работы',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -103,14 +103,14 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
           ),
           Text(
             widget.boutique.workingHours,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 28,
           ),
           Text(
             'Адрес',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -120,7 +120,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
           RichText(
             text: TextSpan(
               text: '${widget.boutique.fullAddress}  ',
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
               children: [
                 TextSpan(
                   text: 'Показать на карте',
@@ -133,7 +133,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                         ),
                       );
                     },
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         decoration: TextDecoration.underline,
                       ),
                 )
@@ -145,7 +145,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
           ),
           Text(
             'Категории товаров',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -154,84 +154,84 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
           ),
           Text(
             widget.boutique.productCategories,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 3.5,
           ),
           Text(
             widget.boutique.productCategoriesBrend,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 28,
           ),
           Text(
             'Бабочки',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 3.5,
           ),
           Text(
             widget.boutique.butterflies,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 28,
           ),
           Text(
             'Балаклавы',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 3.5,
           ),
           Text(
             widget.boutique.balaclavas,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 28,
           ),
           Text(
             'Балетки',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 3.5,
           ),
           Text(
             widget.boutique.balaclavas,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 28,
           ),
           Text(
             'Бальзамы-восстановители для кожи',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 3.5,
           ),
           Text(
             widget.boutique.balmsRestorersSkin,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 28,
           ),
           Text(
             'Бейсболки',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 3.5,
           ),
           Text(
             widget.boutique.baseballCaps,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 40,

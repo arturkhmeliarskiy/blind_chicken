@@ -45,7 +45,7 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                   ),
                   child: Text(
                     'Оплата бонусами',
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
                 GestureDetector(
@@ -77,7 +77,7 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                 padding: const EdgeInsets.all(28),
                 child: Text(
                   'На бонусном счете нет активных бонусов.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               )
           ],

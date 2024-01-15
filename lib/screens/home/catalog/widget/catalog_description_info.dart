@@ -95,7 +95,7 @@ class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
           },
           child: Text(
             _isWrap ? 'Свернуть характеристики' : 'Развернуть характерестики',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   decoration: TextDecoration.underline,
                 ),
           ),

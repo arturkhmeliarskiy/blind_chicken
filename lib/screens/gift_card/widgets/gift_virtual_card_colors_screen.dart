@@ -122,7 +122,7 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
                           ),
                           Text(
                             _listColors[index]['title'],
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],
                       ),

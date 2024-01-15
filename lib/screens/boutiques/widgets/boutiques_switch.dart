@@ -71,7 +71,7 @@ class _BoutiquesSwitchState extends State<BoutiquesSwitch> {
                     : const BoxDecoration(),
                 child: Text(
                   'Списком',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),
@@ -106,7 +106,7 @@ class _BoutiquesSwitchState extends State<BoutiquesSwitch> {
                     : const BoxDecoration(),
                 child: Text(
                   'На карте',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),

@@ -46,7 +46,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
             padding: const EdgeInsets.only(top: 17.5, bottom: 17.5),
             child: Text(
               'Подарочная карта',
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           GiftCardBlindChicken(
@@ -58,7 +58,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
             ),
             child: Text(
               'Вид',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
             ),
@@ -148,7 +148,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
           ),
           Text(
             'О подарочной карте (официальная оферта)',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -165,7 +165,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
               Expanded(
                 child: Text(
                   'Можно отправить получателю или себе, чтобы вручить лично.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 2,
                 ),
               ),
@@ -185,19 +185,19 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                 child: RichText(
                   text: TextSpan(
                     text: 'Доставка подарочных карт номиналом более ',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                     children: <TextSpan>[
                       TextSpan(
                         text: '10 000',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       TextSpan(
                         text: ' ₽',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       TextSpan(
                         text: ' бесплатно.',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],
                   ),
@@ -220,7 +220,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                   'Если после оплаты подарочной картой на ней '
                   'останутся средства, их можно будет использовать '
                   'при оплате следующего заказа.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 3,
                 ),
               ),
@@ -240,7 +240,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                 child: Text(
                   'Использовать подарочную карту можно в любом из '
                   'наших бутиков, предьявив его консультанту.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 3,
                 ),
               ),
@@ -259,7 +259,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
               Expanded(
                 child: Text(
                   'Подарочная карта действует в течение 1 года после покупки.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 3,
                 ),
               ),
@@ -281,7 +281,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                   'активации подарочной карты невозможен. Активация '
                   'подарочной карты происходит в момент выдачи клиенту '
                   'купленной подарочной карты.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 5,
                 ),
               ),
@@ -303,7 +303,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                   'получает секретный код для использования подарочной '
                   'карты. Использование подарочной карты без предоставления '
                   'секретного кода невозможно.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 5,
                 ),
               ),

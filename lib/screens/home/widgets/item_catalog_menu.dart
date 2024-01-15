@@ -35,11 +35,8 @@ class ItemCatalogMenu extends StatelessWidget {
               children: [
                 Text(
                   item.name,
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                    fontWeight:
-                        item.title == 1 || RegExp(r'^[A-Za-z0-9_.]+$').hasMatch(item.name[0])
-                            ? FontWeight.w600
-                            : FontWeight.w400,
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                    fontWeight: item.title == 1 ? FontWeight.w600 : FontWeight.w400,
                     shadows: [
                       item.title != 0
                           ? Shadow(

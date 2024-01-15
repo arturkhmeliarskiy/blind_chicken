@@ -31,7 +31,7 @@ class BoutiquesScreen extends StatelessWidget {
             ),
             child: Text(
               'Бутики Слепая курица',
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
           BoutiquesSwitch(

@@ -43,7 +43,7 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
           ),
           child: Text(
             'Цвет',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -63,7 +63,7 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
           ),
           child: Text(
             'Сумма',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -77,7 +77,7 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
             },
             controller: _sum,
             cursorColor: BlindChickenColors.activeBorderTextField,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(
@@ -110,7 +110,7 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
           ),
           child: Text(
             'Оплата',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -145,7 +145,7 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
             ),
             Text(
               'Банковской картой',
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ],
         ),

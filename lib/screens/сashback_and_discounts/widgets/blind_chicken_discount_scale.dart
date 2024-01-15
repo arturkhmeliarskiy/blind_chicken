@@ -9,6 +9,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
     required this.firstSymbol,
     required this.listPrice,
     this.indexCurrency = -1,
+    this.isFirstFontWeight = false,
   });
 
   final List<String> listDiscount;
@@ -16,6 +17,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
   final String typeValue;
   final String firstSymbol;
   final int indexCurrency;
+  final bool isFirstFontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +36,23 @@ class BlindChickenDiscountScale extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text: firstSymbol,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                     children: <TextSpan>[
                       TextSpan(
                         text: listDiscount[index],
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                              fontWeight: isFirstFontWeight && index == 0
+                                  ? FontWeight.w700
+                                  : FontWeight.w400,
+                            ),
                       ),
                       TextSpan(
                         text: ' $typeValue',
-                        style: const TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 13,
-                        ),
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                              fontWeight: isFirstFontWeight && index == 0
+                                  ? FontWeight.w700
+                                  : FontWeight.w400,
+                            ),
                       ),
                     ],
                   ),
@@ -98,14 +105,11 @@ class BlindChickenDiscountScale extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text: listPrice[index],
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                     children: <TextSpan>[
                       TextSpan(
                         text: indexCurrency == index ? '' : ' ₽',
-                        style: const TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 13,
-                        ),
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],
                   ),

@@ -37,20 +37,20 @@ class CatalogSearchItem extends StatelessWidget {
                 children: [
                   Text(
                     product.title,
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
                   Text(
                     product.catrgory,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
                     height: 7,
                   ),
                   Text(
                     '${product.price} ₽',
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   )
                 ],
               ),

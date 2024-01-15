@@ -28,8 +28,8 @@ class ShoppingCart extends StatefulWidget {
 class _ShoppingCartState extends State<ShoppingCart> {
   int count = 1;
   int price = 0;
-  int _discount = 2000;
-  bool _isAuth = false;
+  final int _discount = 2000;
+  final bool _isAuth = false;
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         children: [
                           Text(
                             '${'$price'.spaceSeparateNumbers()} ₽',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -75,7 +75,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                           if (!_isAuth)
                             Text(
                               '${'${price - _discount}'.spaceSeparateNumbers()} ₽',
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     decoration: TextDecoration.lineThrough,
                                   ),
                             ),
@@ -84,14 +84,14 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       if (!_isAuth)
                         Text(
                           'Ваша скидка $_discount ₽',
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       const SizedBox(
                         height: 8,
                       ),
                       Text(
                         widget.product.brend,
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                       ),
@@ -100,7 +100,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       ),
                       Text(
                         widget.product.catrgory,
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],
                   ),
@@ -154,7 +154,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       width: 84,
                       child: Text(
                         count.toString(),
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ),
                     InkWell(

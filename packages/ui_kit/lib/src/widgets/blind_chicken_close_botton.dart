@@ -37,7 +37,7 @@ class BlindChickenCloseButton extends StatelessWidget {
             children: [
               Text(
                 'Закрыть',
-                style: Theme.of(context).textTheme.headline2?.copyWith(
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                       color: BlindChickenColors.backgroundColor,
                     ),
               ),

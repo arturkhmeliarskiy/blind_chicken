@@ -16,14 +16,14 @@ class BlindChickenCheckWordStyle {
         listWidget.add(
           TextSpan(
             text: words[i],
-            style: textStyle1 ?? Theme.of(contextWord).textTheme.headline2,
+            style: textStyle1 ?? Theme.of(contextWord).textTheme.displayMedium,
           ),
         );
       } else {
         listWidget.add(
           TextSpan(
             text: words[i],
-            style: textStyle2 ?? Theme.of(contextWord).textTheme.headline2,
+            style: textStyle2 ?? Theme.of(contextWord).textTheme.displayMedium,
           ),
         );
       }

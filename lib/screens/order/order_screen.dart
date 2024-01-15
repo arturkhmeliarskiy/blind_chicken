@@ -43,14 +43,14 @@ class OrderScreen extends StatelessWidget {
             children: [
               Text(
                 'Личный кабинет',
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(
                 width: 8,
               ),
               Text(
                 'Заказы на сайте',
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(
                 width: 8,
@@ -60,7 +60,7 @@ class OrderScreen extends StatelessWidget {
                     productsOrder: (initState) {
                       return Text(
                         'Заказ №${initState.orderNumber}',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontFamily: 'Roboto-Light',
                             ),
                       );
@@ -78,7 +78,7 @@ class OrderScreen extends StatelessWidget {
                   productsOrder: (initState) {
                     return Text(
                       'Заказ № ${initState.orderNumber} от ${initState.dateRegistration}',
-                      style: Theme.of(context).textTheme.subtitle2,
+                      style: Theme.of(context).textTheme.titleSmall,
                     );
                   },
                   orElse: () => const SizedBox());
@@ -86,7 +86,7 @@ class OrderScreen extends StatelessWidget {
           ),
           Text(
             'Принят',
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 14,
@@ -103,7 +103,7 @@ class OrderScreen extends StatelessWidget {
               ),
               Text(
                 'Оплата',
-                style: Theme.of(context).textTheme.headline2?.copyWith(
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
               )
@@ -114,7 +114,7 @@ class OrderScreen extends StatelessWidget {
           ),
           Text(
             typePay,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 5,
@@ -126,7 +126,7 @@ class OrderScreen extends StatelessWidget {
                   children: [
                     Text(
                       '${initState.amountPaid.toString().spaceSeparateNumbers()} ₽',
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
                     ),
@@ -135,7 +135,7 @@ class OrderScreen extends StatelessWidget {
                     ),
                     Text(
                       'не оплачено',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: Theme.of(context).textTheme.displaySmall,
                     ),
                   ],
                 );
@@ -172,7 +172,7 @@ class OrderScreen extends StatelessWidget {
               ),
               Text(
                 'Получение',
-                style: Theme.of(context).textTheme.headline2?.copyWith(
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
               ),
@@ -183,21 +183,21 @@ class OrderScreen extends StatelessWidget {
           ),
           Text(
             receivingType,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 14,
           ),
           Text(
             adress,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 4,
           ),
           Text(
             workingHours,
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontFamily: 'Roboto-Light',
                 ),
           ),
@@ -222,7 +222,7 @@ class OrderScreen extends StatelessWidget {
               ),
               Text(
                 'Товары',
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ],
           ),

@@ -32,14 +32,14 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             'Информация',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(
             height: 14.0,
           ),
           Text(
             'Доставка',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -49,11 +49,11 @@ class _InfoScreenState extends State<InfoScreen> {
           Text(
             'Доставка курьером заказов более 10 000 ₽* - бесплатно.'
             'Доставка курьером заказов до 10 000 ₽* - от 300 ₽.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             '* Стоимость заказа определяется фактической оплатой денежными средствами.',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontFamily: 'Roboto-Light',
                 ),
           ),
@@ -62,7 +62,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             'Оплата',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -78,7 +78,7 @@ class _InfoScreenState extends State<InfoScreen> {
             'заказа осуществляется за пределы г. Москва.'
             'Для оплаты банковской картой на сайте необходимо на странице оформления '
             'заказа выбрать способ оплаты "Банковской картой".',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           if (_isWrap)
             Column(
@@ -91,11 +91,11 @@ class _InfoScreenState extends State<InfoScreen> {
                         text:
                             'Оплата на сайте происходит через ПАО Сбербанк с использованием банковских '
                             'карт платежных систем: МИР, ',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       TextSpan(
                         text: 'VISA International, Mastercard Worldwide.',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],
                   ),
@@ -118,7 +118,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   'случаев, предусмотренных законодательством РФ. Проведение платежей по '
                   'банковским картам осуществляется в строгом соответствии с требованиями '
                   'платежных систем МИР, Visa Int. и MasterCard Europe Sprl.',
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
             ),
@@ -130,7 +130,7 @@ class _InfoScreenState extends State<InfoScreen> {
             },
             child: Text(
               _isWrap ? 'Скрыть подробности' : 'Подробнее',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     decoration: TextDecoration.underline,
                   ),
             ),
@@ -140,7 +140,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             'Возврат',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -152,44 +152,44 @@ class _InfoScreenState extends State<InfoScreen> {
             'дней с момента покупки, если товар не был в употреблении, при наличии '
             'кассового чека, сохранения упаковки, товарного вида, потребительских '
             'свойств, пломб, фабричных ярлыков.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'Реализация прав потребителей по замене, возврату и ремонту товаров '
             'ненадлежащего качества осуществляется в соответствии с '
             'законодательством в сфере розничной торговли и защиты прав потребителей.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'При оплате банковской картой возврат переведённых денежных средств '
             'производится на тот счет, с которого была осуществлена оплата, в '
             'течение 5-30 рабочих дней, данный срок зависит от банка, который '
             'выпустил банковскую карту.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'При оплате наличными денежными средствами возврат денежных средств '
             'осуществляется в бутике Слепая курица, в котором была '
             'осуществлена покупка.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'При возврате товаров по заказу/интернет-заказу в первую очередь '
             'возвращается оплата бонусами на бонусный счет, во вторую очередь '
             'оплата подарочными картами на баланс подарочных карт, в третью '
             'очередь денежные средства, оплаченные за заказ/интернет-заказ.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'При возврате заказа/интернет-заказа, по которому были начислены, '
             'активированы и использованы бонусы, сумма возврата денежных '
             'средств уменьшается на сумму использованных бонусов.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             'Постановлением Правительства Российской Федерации от 31 декабря '
             '2020 г. N 2463 утвержден ',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           GestureDetector(
             onTap: () {
@@ -200,7 +200,7 @@ class _InfoScreenState extends State<InfoScreen> {
             child: Text(
               'Перечень непродовольственных товаров надлежащего качества, '
               'не подлежащих обмену',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     decoration: TextDecoration.underline,
                   ),
             ),
@@ -213,7 +213,7 @@ class _InfoScreenState extends State<InfoScreen> {
             },
             child: Text(
               'Пломбирование товара в Слепой курице',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     decoration: TextDecoration.underline,
                   ),
             ),
@@ -223,7 +223,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             'Бонусы по системе лояльности',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -240,14 +240,14 @@ class _InfoScreenState extends State<InfoScreen> {
             'более 500 000 ₽ - 35 000 ₽, более 1 000 000 ₽ - 100 000 ₽, '
             'более 1 300 000 ₽ - 115 000 ₽, более 1 500 000 ₽ - 135 000 ₽, '
             'более 2 000 000 ₽ - 200 000 ₽ и т. д.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 28.0,
           ),
           Text(
             'Подарочные бонусы',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -261,14 +261,14 @@ class _InfoScreenState extends State<InfoScreen> {
             'Подарочные баллы активируются через 14 дней после зачисления и '
             'действуют 30 дней.\n'
             'Подарочные бонусы суммируются с бонусами, начисленными по системе лояльности.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 28.0,
           ),
           Text(
             'Накопительные скидки',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -278,14 +278,14 @@ class _InfoScreenState extends State<InfoScreen> {
           Text(
             'При сумме покупок от 10 000 ₽ - 5%, от 100 000 ₽ - 10%, от 300 000 ₽ - 15%.\n'
             'Накопительные скидки не действуют на товары и услуги, участвующие в акциях.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 28.0,
           ),
           Text(
             'Условия покупки',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -294,7 +294,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             'Оформление заказа клиентом подтверждает:',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           RichText(
             text: TextSpan(
@@ -314,7 +314,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             '  •  Продавец не устанавливает гарантию на проданный товар.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           RichText(
             text: TextSpan(
@@ -342,31 +342,31 @@ class _InfoScreenState extends State<InfoScreen> {
             'линз, параметры, указанные в заказе, являются волеизъявлением '
             'клиента по заключению договора купли-продажи, при этом никаких '
             'медицинских услуг ему не оказывается.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             '     Получение заказа клиентом подтверждает:',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             '  •  Со свойствами и характеристиками линз, оправ '
             'ознакомлен, со стоимостью заказа согласен.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             '  •  Заказ получен в полном объёме надлежащего '
             'качества, претензий не имею.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             '  •  С условиями заказа ознакомлен и согласен.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           Text(
             '  •  В случае передачи товара третьему лицу '
             'переход права собственности, риски повреждения '
             'товара или его утери переходят к покупателю.',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           RichText(
             text: TextSpan(
@@ -382,7 +382,7 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
           Text(
             'Документы',
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -399,7 +399,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 },
                 child: Text(
                   'Политика конфиденциальности, ',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         decoration: TextDecoration.underline,
                       ),
                 ),
@@ -412,7 +412,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 },
                 child: Text(
                   'Пользовательское',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         decoration: TextDecoration.underline,
                       ),
                 ),
@@ -427,7 +427,7 @@ class _InfoScreenState extends State<InfoScreen> {
             },
             child: Text(
               'соглашение',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     decoration: TextDecoration.underline,
                   ),
             ),

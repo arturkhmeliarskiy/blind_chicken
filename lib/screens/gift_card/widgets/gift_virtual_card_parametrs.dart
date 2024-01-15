@@ -77,7 +77,7 @@ class _GiftVirtualCardColorsState extends State<GiftVirtualCardColors> {
                 ),
                 Text(
                   _selectedColor['title'],
-                  style: Theme.of(context).textTheme.headline2,
+                  style: Theme.of(context).textTheme.displayMedium,
                 )
               ],
             ),

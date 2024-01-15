@@ -118,7 +118,7 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           ),
           Text(
             widget.product.title,
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),
@@ -127,25 +127,7 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           ),
           Text(
             widget.product.catrgory,
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          RichText(
-            text: TextSpan(
-              text: (widget.product.price).toString().spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.headline3,
-              children: const <TextSpan>[
-                TextSpan(
-                  text: ' ₽',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                  ),
-                ),
-              ],
-            ),
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 8,
@@ -153,17 +135,11 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           RichText(
             text: TextSpan(
               text: (widget.product.price).toString().spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.headline3?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-              children: const <TextSpan>[
+              style: Theme.of(context).textTheme.displaySmall,
+              children: <TextSpan>[
                 TextSpan(
                   text: ' ₽',
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
             ),
@@ -171,9 +147,26 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           const SizedBox(
             height: 4,
           ),
-          Text(
-            'Ваша цена',
-            style: Theme.of(context).textTheme.headline3,
+          RichText(
+            maxLines: 2,
+            text: TextSpan(
+              text: (widget.product.price).toString().spaceSeparateNumbers(),
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: ' ₽',
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                ),
+                TextSpan(
+                  text: ' Ваша цена',
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             height: 4,
@@ -194,18 +187,15 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
                   overflow: TextOverflow.ellipsis,
                   text: TextSpan(
                     text: 'Выгода до ',
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.displaySmall,
                     children: <TextSpan>[
                       TextSpan(
                         text: (widget.product.price).toString().spaceSeparateNumbers(),
-                        style: Theme.of(context).textTheme.headline3,
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
-                      const TextSpan(
+                      TextSpan(
                         text: ' ₽',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 13,
-                        ),
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ],
                   ),

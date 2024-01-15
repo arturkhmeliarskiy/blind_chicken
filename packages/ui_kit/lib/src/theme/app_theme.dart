@@ -4,7 +4,7 @@ import 'package:ui_kit/ui_kit.dart';
 class AppTheme {
   const AppTheme._();
 
-  static final primarySwatch = const MaterialColor(
+  static const primarySwatch = MaterialColor(
     0xFF000000,
     {
       50: BlindChickenColors.activeBorderTextField,
@@ -21,66 +21,66 @@ class AppTheme {
   );
 
   static final light = ThemeData(
-    primarySwatch: primarySwatch,
     splashColor: Colors.white,
     highlightColor: Colors.white,
     primaryColor: Colors.white,
-    backgroundColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Roboto',
     textTheme: const TextTheme(
-      headline1: TextStyle(
-        fontSize: 15.0,
+      displayLarge: TextStyle(
+        fontSize: 15.4,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         fontSize: 14.0,
         color: BlindChickenColors.activeBorderTextField,
         height: 1.5,
       ),
-      headline3: TextStyle(
+      displaySmall: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 12.0,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         fontSize: 16.0,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      headline5: TextStyle(
+      headlineSmall: TextStyle(
         fontWeight: FontWeight.w800,
         fontSize: 32.0,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         fontWeight: FontWeight.w800,
         fontSize: 18.0,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontSize: 10.5,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontSize: 12.6,
         fontWeight: FontWeight.w400,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         fontWeight: FontWeight.w800,
         fontSize: 18.0,
         color: BlindChickenColors.activeBorderTextField,
       ),
-      subtitle2: TextStyle(
+      titleSmall: TextStyle(
         fontWeight: FontWeight.w700,
         fontSize: 17.5,
         color: BlindChickenColors.activeBorderTextField,
         height: 1,
       ),
-      button: TextStyle(
+      labelLarge: TextStyle(
         fontSize: 18.0,
         fontWeight: FontWeight.w800,
       ),
     ),
+    colorScheme:
+        ColorScheme.fromSwatch(primarySwatch: primarySwatch).copyWith(background: Colors.white),
   );
 }

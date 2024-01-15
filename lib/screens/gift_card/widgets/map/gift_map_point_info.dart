@@ -61,7 +61,7 @@ class GiftMapPointInfo extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Text(
                           point.label,
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                         ),
@@ -73,7 +73,7 @@ class GiftMapPointInfo extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Text(
                           point.location,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                     ),
@@ -83,7 +83,7 @@ class GiftMapPointInfo extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: Text(
                           point.schedule,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                     ),
@@ -105,7 +105,7 @@ class GiftMapPointInfo extends StatelessWidget {
                           children: [
                             Text(
                               'Выбрать',
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     color: BlindChickenColors.backgroundColor,
                                   ),
                             ),

@@ -366,7 +366,7 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
                               padding: const EdgeInsets.only(top: 2),
                               child: Text(
                                 'Списком',
-                                style: Theme.of(context).textTheme.headline6?.copyWith(
+                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                       fontWeight: FontWeight.w400,
                                     ),
                               ),

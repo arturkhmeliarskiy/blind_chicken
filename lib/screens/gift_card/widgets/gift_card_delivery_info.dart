@@ -24,8 +24,8 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
   final TextEditingController _city = TextEditingController();
   final TextEditingController _street = TextEditingController();
   final TextEditingController _house = TextEditingController();
-  String _deliveryPrice = '';
-  String _total = '';
+  final String _deliveryPrice = '';
+  final String _total = '';
 
   @override
   void dispose() {
@@ -44,7 +44,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
         children: [
           Text(
             'Город',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7,
@@ -58,7 +58,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
               borderRadius: BorderRadius.circular(4),
             ),
             child: TextField(
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     height: 1,
                   ),
               controller: _city,
@@ -115,7 +115,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
           ),
           Text(
             'Улица',
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.displayMedium,
           ),
           const SizedBox(
             height: 7,
@@ -134,7 +134,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
               borderRadius: BorderRadius.circular(4),
             ),
             child: TextField(
-              style: Theme.of(context).textTheme.headline2?.copyWith(
+              style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     height: 1,
                   ),
               controller: _street,
@@ -199,7 +199,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                     children: [
                       Text(
                         'Дом',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 7,
@@ -218,7 +218,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: TextField(
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 height: 1,
                               ),
                           controller: _house,
@@ -281,7 +281,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                     children: [
                       Text(
                         'Квартира',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 7,
@@ -300,7 +300,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: TextField(
-                          style: Theme.of(context).textTheme.headline2?.copyWith(height: 1),
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                           enabled: _street.text.isNotEmpty,
                           textCapitalization: TextCapitalization.sentences,
                           decoration: const InputDecoration(
@@ -336,11 +336,11 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                         children: [
                           Text(
                             'Доставка',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                           Text(
                             '$_deliveryPrice ₽',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],
                       ),
@@ -349,13 +349,13 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                         children: [
                           Text(
                             'Итогго',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
                           Text(
                             '$_total ₽',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),

@@ -1,5 +1,4 @@
 import 'package:blocs/blocs.dart';
-import 'package:blocs/src/search/search_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:repositories/repositories.dart';
 

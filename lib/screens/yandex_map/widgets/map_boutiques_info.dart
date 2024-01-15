@@ -30,7 +30,7 @@ class MapBoutiquesInfo extends StatelessWidget {
                 padding: const EdgeInsets.all(28.0),
                 child: Text(
                   'Бутики Слепая курица',
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               Padding(

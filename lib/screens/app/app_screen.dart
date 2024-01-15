@@ -51,14 +51,14 @@ class _DashboardPageState extends State<DashboardPage> {
           content: RichText(
             text: TextSpan(
               text: 'WhatsApp',
-              style: Theme.of(context).textTheme.headline3?.copyWith(
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: BlindChickenColors.backgroundColor,
                   ),
               children: <TextSpan>[
                 TextSpan(
                   text: ' не установлен на этом устройстве',
-                  style: Theme.of(context).textTheme.headline3?.copyWith(
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         color: BlindChickenColors.backgroundColor,
                       ),
                 ),
@@ -144,7 +144,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           listItems[index].title,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                     );

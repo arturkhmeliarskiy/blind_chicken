@@ -95,7 +95,9 @@ class _CatalogFilterSelectValueSearchScreenState
                         ),
                         Text(
                           widget.title,
-                          style: Theme.of(context).textTheme.headline1,
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                         )
                       ],
                     ),
@@ -129,8 +131,14 @@ class _CatalogFilterSelectValueSearchScreenState
                 },
                 controller: _search,
                 cursorColor: BlindChickenColors.activeBorderTextField,
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.displayMedium,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: BlindChickenColors.borderTextField,
+                    ),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                   border: OutlineInputBorder(
                     borderSide: const BorderSide(
                       color: BlindChickenColors.borderTextField,
@@ -144,7 +152,7 @@ class _CatalogFilterSelectValueSearchScreenState
                     borderRadius: BorderRadius.circular(5),
                   ),
                   hintText: 'Поиск',
-                  hintStyle: Theme.of(context).textTheme.headline2?.copyWith(
+                  hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
                         color: BlindChickenColors.textInput,
                       ),
                   suffixIcon: _search.text.isNotEmpty

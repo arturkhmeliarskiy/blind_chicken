@@ -86,7 +86,7 @@ class _SaleScreenState extends State<SaleScreen> {
                       children: [
                         Text(
                           'Sale',
-                          style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                          style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                 height: 1,
                               ),
                         ),
@@ -97,7 +97,7 @@ class _SaleScreenState extends State<SaleScreen> {
                           padding: const EdgeInsets.only(bottom: 2),
                           child: Text(
                             '221 товаров',
-                            style: Theme.of(context).textTheme.headline3?.copyWith(
+                            style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                   height: 1,
                                 ),
                           ),
@@ -134,7 +134,7 @@ class _SaleScreenState extends State<SaleScreen> {
                             ),
                             child: Text(
                               listItems[index],
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.displayMedium,
                             ),
                           );
                         }),
@@ -166,7 +166,7 @@ class _SaleScreenState extends State<SaleScreen> {
                             children: [
                               Text(
                                 _selectSortItem,
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
@@ -197,7 +197,7 @@ class _SaleScreenState extends State<SaleScreen> {
                               ),
                               Text(
                                 'Фильтры',
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
@@ -219,7 +219,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         ),
                                         child: Text(
                                           initState.allSelectFilter.length.toString(),
-                                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                                 color: BlindChickenColors.backgroundColor,
                                               ),
                                         ),
@@ -277,7 +277,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         children: [
                                           Text(
                                             initState.allSelectFilter[index].values.first.value,
-                                            style: Theme.of(context).textTheme.headline3,
+                                            style: Theme.of(context).textTheme.displaySmall,
                                           ),
                                           const SizedBox(
                                             width: 7,

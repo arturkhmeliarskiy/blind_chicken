@@ -40,12 +40,12 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                   children: [
                     Text(
                       'Кэшбэк',
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Expanded(
                       child: Text(
                         ellipsis(),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               height: 1.8,
                               color: BlindChickenColors.dotItem,
                             ),
@@ -54,7 +54,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     RichText(
                       text: TextSpan(
                         text: '5 185',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                         children: const <TextSpan>[
@@ -77,12 +77,12 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                   children: [
                     Text(
                       'Подарок за год',
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Expanded(
                       child: Text(
                         ellipsis(),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               height: 1.8,
                               color: BlindChickenColors.dotItem,
                             ),
@@ -90,17 +90,14 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: 'до 3 050',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                        children: const <TextSpan>[
+                        text: 'до ',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        children: <TextSpan>[
                           TextSpan(
-                            text: ' ₽',
-                            style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 13,
-                            ),
+                            text: '3 050 ₽',
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
                           ),
                         ],
                       ),
@@ -114,12 +111,12 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                   children: [
                     Text(
                       'Ваша скидка',
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Expanded(
                       child: Text(
                         ellipsis(),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               height: 1.8,
                               color: BlindChickenColors.dotItem,
                             ),
@@ -128,7 +125,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     RichText(
                       text: TextSpan(
                         text: '1 525',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                         children: const <TextSpan>[

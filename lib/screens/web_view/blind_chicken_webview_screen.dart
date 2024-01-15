@@ -15,6 +15,7 @@ class BlindChickenWebViewScreen extends StatefulWidget {
 
 class _BlindChickenWebViewScreenState extends State<BlindChickenWebViewScreen> {
   WebViewController controller = WebViewController();
+
   @override
   void initState() {
     controller

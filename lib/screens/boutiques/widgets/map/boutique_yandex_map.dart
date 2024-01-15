@@ -390,7 +390,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                                       children: [
                                         Text(
                                           widget.mapPoint.name,
-                                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                                 fontWeight: FontWeight.w700,
                                               ),
                                           maxLines: 2,
@@ -401,7 +401,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                                         ),
                                         Text(
                                           widget.mapPoint.schedule,
-                                          style: Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context).textTheme.displayMedium,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),

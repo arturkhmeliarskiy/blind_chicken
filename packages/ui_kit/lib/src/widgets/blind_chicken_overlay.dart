@@ -70,7 +70,7 @@ class BlindChickenOverlay {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           listItems[index].title,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                     );

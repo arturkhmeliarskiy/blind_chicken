@@ -42,14 +42,14 @@ class _ShoppingCartEditDeliveryInfoState extends State<ShoppingCartEditDeliveryI
                 children: [
                   Text(
                     widget.mapPoint.name,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
                     height: 7,
                   ),
                   Text(
                     widget.mapPoint.schedule,
-                    style: Theme.of(context).textTheme.bodyText2,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),

@@ -36,7 +36,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                       children: [
                         Text(
                           'По запросу «${initState.query}» найдено',
-                          style: Theme.of(context).textTheme.subtitle2,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                         const SizedBox(
                           width: 7,
@@ -45,7 +45,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                           children: [
                             Text(
                               '${initState.searchProducts.length} товаров'.spaceSeparateNumbers(),
-                              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     height: 1.1,
                                   ),
                             )
@@ -80,7 +80,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                   ),
                   Text(
                     'Фильтры',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -102,7 +102,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                             ),
                             child: Text(
                               initState.allSelectFilter.length.toString(),
-                              style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                     color: BlindChickenColors.backgroundColor,
                                     height: 1,
                                   ),
@@ -158,7 +158,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     initState.allSelectFilter[index].values.first.value,
-                                    style: Theme.of(context).textTheme.headline3,
+                                    style: Theme.of(context).textTheme.displaySmall,
                                   ),
                                   const SizedBox(
                                     width: 7,
@@ -193,7 +193,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                       crossAxisCount: 2, // number of items in each row
                       mainAxisSpacing: 18.0, // spacing between rows
                       crossAxisSpacing: 18.0, // spacing between columns
-                      childAspectRatio: 0.45),
+                      childAspectRatio: 0.46),
                   padding: const EdgeInsets.only(
                     top: 8.0,
                     bottom: 8.0,
