@@ -32,25 +32,23 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
                   _isOpen = !_isOpen;
                 });
               },
-              child: SizedBox(
-                width: 70,
-                child: Stack(
-                  children: [
-                    Text(
-                      '2 бутиках',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            height: 1,
-                          ),
+              child: Stack(
+                children: [
+                  Text(
+                    '2 бутиках',
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                          decoration: TextDecoration.underline,
+                          height: 1,
+                        ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 14),
+                    child: Divider(
+                      height: 1,
+                      color: Colors.black,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 14),
-                      child: Divider(
-                        height: 1,
-                        color: Colors.black,
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
           ],
