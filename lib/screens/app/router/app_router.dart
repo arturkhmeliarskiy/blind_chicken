@@ -41,6 +41,7 @@ import 'package:blind_chicken/screens/login/login_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/map/shopping_yandex_map_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_delivery_info_screen.dart';
 import 'package:blind_chicken/screens/web_view/blind_chicken_webview_screen.dart';
+import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.dart';
 import 'package:blind_chicken/screens/yandex_map/yandex_map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
@@ -140,6 +141,10 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               page: ShoppingCartDeliveryInfoRoute.page,
               path: "shopping_cart_delivery_info",
+            ),
+            AutoRoute(
+              page: SberbankPaymentWebViewRoute.page,
+              path: "sberbank_payment_webview_screen",
             ),
           ]),
           AutoRoute(

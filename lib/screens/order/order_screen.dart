@@ -149,7 +149,9 @@ class OrderScreen extends StatelessWidget {
           BlindChickenButton(
             title: 'Оплатить',
             height: 40,
-            onChenge: () {},
+            onChenge: () {
+              context.navigateTo(const SberbankPaymentWebViewRoute());
+            },
           ),
           const SizedBox(
             height: 14,

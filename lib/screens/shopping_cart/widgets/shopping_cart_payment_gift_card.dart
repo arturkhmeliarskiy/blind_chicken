@@ -12,6 +12,7 @@ class ShoppingCartPaymentGiftCard extends StatefulWidget {
 
 class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCard> {
   final TextEditingController _numberCard = TextEditingController();
+  final TextEditingController _pinCode = TextEditingController();
   bool _isLoading = true;
 
   @override
@@ -22,6 +23,13 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
       });
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _numberCard.dispose();
+    _pinCode.dispose();
+    super.dispose();
   }
 
   @override
@@ -106,6 +114,12 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                             cursorColor: BlindChickenColors.activeBorderTextField,
                             style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1.4),
                             decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: BlindChickenColors.borderTextField,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: BlindChickenColors.borderTextField,
@@ -120,7 +134,8 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                               ),
                               focusColor: BlindChickenColors.backgroundColor,
                               fillColor: BlindChickenColors.backgroundColor,
-                              hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
+                              hintStyle:
+                                  Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                               prefixIconConstraints: const BoxConstraints(maxWidth: 40),
                               contentPadding: const EdgeInsets.only(left: 12),
                             ),
@@ -145,10 +160,16 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                             onChanged: (value) {
                               setState(() {});
                             },
-                            controller: _numberCard,
+                            controller: _pinCode,
                             cursorColor: BlindChickenColors.activeBorderTextField,
                             style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1.4),
                             decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: BlindChickenColors.borderTextField,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
                               border: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: BlindChickenColors.borderTextField,
@@ -163,7 +184,8 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                               ),
                               focusColor: BlindChickenColors.backgroundColor,
                               fillColor: BlindChickenColors.backgroundColor,
-                              hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
+                              hintStyle:
+                                  Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                               prefixIconConstraints: const BoxConstraints(maxWidth: 40),
                               contentPadding: const EdgeInsets.only(left: 12),
                             ),

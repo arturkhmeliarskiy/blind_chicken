@@ -8,4 +8,3 @@ export 'clusterized_icon_painter.dart';
 export 'map_icon_painter.dart';
 export 'blind_chicken_border_button.dart';
 export 'blind_chicken_check_word_style.dart';
-export 'web_view_payment_sberbank.dart';

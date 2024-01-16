@@ -1,3 +1,4 @@
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -144,18 +145,28 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
               ),
             ]),
           ),
-          Container(
-            width: 45.5,
-            height: 54,
-            padding: const EdgeInsets.only(
-              left: 18,
-              bottom: 35,
-              right: 10,
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/info.svg',
-              height: 17.5,
-              width: 17.5,
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const CatalogCashbackInfoModal();
+                },
+              );
+            },
+            child: Container(
+              width: 45.5,
+              height: 54,
+              padding: const EdgeInsets.only(
+                left: 18,
+                bottom: 35,
+                right: 10,
+              ),
+              child: SvgPicture.asset(
+                'assets/icons/info.svg',
+                height: 17.5,
+                width: 17.5,
+              ),
             ),
           )
         ],

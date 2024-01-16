@@ -76,8 +76,9 @@ class AppTheme {
         height: 1,
       ),
       labelLarge: TextStyle(
-        fontSize: 18.0,
-        fontWeight: FontWeight.w800,
+        fontSize: 11.2,
+        color: BlindChickenColors.activeBorderTextField,
+        fontWeight: FontWeight.w400,
       ),
     ),
     colorScheme:

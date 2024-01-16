@@ -13,9 +13,6 @@ dependencies:
   flutter_svg: ^2.0.7
   google_fonts: ^4.0.4
   url_launcher: ^6.2.2
-  flutter_inappwebview: ^6.0.0
-  # sberbank_acquiring: ^2.0.1
-  webview_flutter: ^4.4.4
   models:
     path: ../models
 

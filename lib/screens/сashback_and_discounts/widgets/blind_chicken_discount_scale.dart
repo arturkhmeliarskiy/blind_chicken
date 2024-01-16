@@ -29,7 +29,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
             (index) {
               return Container(
                 width: index != listDiscount.length - 1
-                    ? MediaQuery.of(context).size.width * 0.22
+                    ? MediaQuery.of(context).size.width * 0.20
                     : listDiscount[index].length * 16,
                 height: 20,
                 alignment: Alignment.bottomLeft,
@@ -76,7 +76,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
                     color: Colors.black,
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.22 - 5,
+                    width: MediaQuery.of(context).size.width * 0.20 - 5,
                     height: 4,
                     color: BlindChickenColors.backgroundColorItemFilter,
                   ),
@@ -99,17 +99,17 @@ class BlindChickenDiscountScale extends StatelessWidget {
             listPrice.length,
             (index) {
               return Container(
-                width: MediaQuery.of(context).size.width * 0.22,
+                width: MediaQuery.of(context).size.width * 0.20,
                 height: 20,
                 alignment: Alignment.bottomLeft,
                 child: RichText(
                   text: TextSpan(
                     text: listPrice[index],
-                    style: Theme.of(context).textTheme.displayMedium,
+                    style: Theme.of(context).textTheme.labelLarge,
                     children: <TextSpan>[
                       TextSpan(
                         text: indexCurrency == index ? '' : ' ₽',
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.labelLarge,
                       ),
                     ],
                   ),
