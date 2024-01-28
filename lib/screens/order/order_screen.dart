@@ -41,16 +41,34 @@ class OrderScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              Text(
-                'Личный кабинет',
-                style: Theme.of(context).textTheme.bodyMedium,
+              GestureDetector(
+                onTap: () {
+                  context.navigateTo(
+                    const HomeAutoRouterRoute(
+                      children: [AccountRoute()],
+                    ),
+                  );
+                },
+                child: Text(
+                  'Личный кабинет',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
               ),
               const SizedBox(
                 width: 8,
               ),
-              Text(
-                'Заказы на сайте',
-                style: Theme.of(context).textTheme.bodyMedium,
+              GestureDetector(
+                onTap: () {
+                  context.navigateTo(
+                    const HomeAutoRouterRoute(
+                      children: [MyOrdersRoute()],
+                    ),
+                  );
+                },
+                child: Text(
+                  'Заказы на сайте',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
               ),
               const SizedBox(
                 width: 8,
@@ -241,28 +259,31 @@ class OrderScreen extends StatelessWidget {
                           isBordrerBottom: initState.products.length - 1 != index,
                           onSelectCard: () {
                             context.navigateTo(
-                              CatalogCardInfoRoute(
-                                item: initState.products[index].product,
-                                isLike: false,
-                                addLike: () {
-                                  context.read<CatalogBloc>().add(
-                                        CatalogEvent.addFavouriteProduct(
-                                          product: initState.products[index].product,
-                                          index: index,
-                                        ),
-                                      );
-                                },
-                                deleteLike: () {
-                                  context.read<CatalogBloc>().add(
-                                        CatalogEvent.deleteFavouriteProduct(
-                                          index: initState.favouritesProducts
-                                              .indexOf(initState.products[index].product),
-                                        ),
-                                      );
-                                },
-                                listItems: const [],
-                                favouritesProducts: initState.favouritesProducts,
-                              ),
+                              HomeAutoRouterRoute(children: [
+                                CatalogCardInfoRoute(
+                                  isChildRoute: false,
+                                  item: initState.products[index].product,
+                                  isLike: false,
+                                  addLike: () {
+                                    context.read<CatalogBloc>().add(
+                                          CatalogEvent.addFavouriteProduct(
+                                            product: initState.products[index].product,
+                                            index: index,
+                                          ),
+                                        );
+                                  },
+                                  deleteLike: () {
+                                    context.read<CatalogBloc>().add(
+                                          CatalogEvent.deleteFavouriteProduct(
+                                            index: initState.favouritesProducts
+                                                .indexOf(initState.products[index].product),
+                                          ),
+                                        );
+                                  },
+                                  listItems: const [],
+                                  favouritesProducts: initState.favouritesProducts,
+                                )
+                              ]),
                             );
                           },
                           product: initState.products[index].product,

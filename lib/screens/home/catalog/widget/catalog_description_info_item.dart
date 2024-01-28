@@ -41,7 +41,7 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
                   Container(
                     constraints: BoxConstraints(
                       minHeight: 0,
-                      maxWidth: (MediaQuery.of(context).size.width / 2) - 50,
+                      maxWidth: (MediaQuery.of(context).size.width / 2) - 40,
                     ),
                     child: Text(
                       title,
@@ -57,7 +57,7 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
                     child: Text(
                       ellipsis(),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            height: 2.4,
+                            height: 2.0,
                             color: BlindChickenColors.dotItem,
                           ),
                     ),

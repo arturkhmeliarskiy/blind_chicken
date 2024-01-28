@@ -342,6 +342,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                 onSelect: () {
                                   context.navigateTo(
                                     CatalogCardInfoRoute(
+                                      isChildRoute: false,
                                       item: initState.products[index],
                                       isLike: initState.favouritesProducts
                                           .contains(initState.products[index]),

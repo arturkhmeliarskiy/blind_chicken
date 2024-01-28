@@ -51,7 +51,7 @@ class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
                   value: 'Green Polarized',
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 CatalogDescriptionInfoItem(
                   title: 'Страна',

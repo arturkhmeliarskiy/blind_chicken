@@ -8,5 +8,7 @@ class AccountState with _$AccountState {
     required String phone,
     required String name,
     required String email,
+    required List<OrderDataModel> listOrders,
+    required List<ProductDataModel> favouritesProducts,
   }) = PreloadDataCompletedAccountState;
 }

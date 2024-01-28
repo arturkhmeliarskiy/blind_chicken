@@ -13,6 +13,7 @@ class BlindChickenColors {
   static const dotItem = Color(0xFFd5d5d5);
   static const backgrounInputColor = Color(0xFFf1f0f0);
   static const activeBorderTextField = Color(0xFF000000);
+  static const activePageSelected = Color(0xFF4c4c4c);
   static const chatSubtitle = Color(0xFF222222);
   static const lilac = Color(0xFFab98c6);
   static const green = Color(0xFFb1b94c);

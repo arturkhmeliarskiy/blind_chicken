@@ -64,6 +64,9 @@ class App extends StatelessWidget {
               const SearchEvent.init(),
             ),
         ),
+        BlocProvider(
+          create: (context) => GetIt.I.get<BrandBloc>(),
+        ),
       ],
       child: MaterialApp.router(
         theme: AppTheme.light,

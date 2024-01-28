@@ -41,6 +41,7 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
       onTap: () {
         context.pushRoute(
           CatalogCardInfoRoute(
+            isChildRoute: true,
             item: widget.product,
             isLike: _isLike,
             addLike: () {

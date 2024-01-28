@@ -72,27 +72,34 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                       isBordrerBottom: initState.products.length - 1 != index,
                                       onSelectCard: () {
                                         context.navigateTo(
-                                          CatalogCardInfoRoute(
-                                            item: initState.products[index].product,
-                                            isLike: false,
-                                            addLike: () {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.addFavouriteProduct(
-                                                      product: initState.products[index].product,
-                                                      index: index,
-                                                    ),
-                                                  );
-                                            },
-                                            deleteLike: () {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.deleteFavouriteProduct(
-                                                      index: initState.favouritesProducts.indexOf(
-                                                          initState.products[index].product),
-                                                    ),
-                                                  );
-                                            },
-                                            listItems: const [],
-                                            favouritesProducts: initState.favouritesProducts,
+                                          HomeAutoRouterRoute(
+                                            children: [
+                                              CatalogCardInfoRoute(
+                                                isChildRoute: false,
+                                                item: initState.products[index].product,
+                                                isLike: false,
+                                                addLike: () {
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.addFavouriteProduct(
+                                                          product:
+                                                              initState.products[index].product,
+                                                          index: index,
+                                                        ),
+                                                      );
+                                                },
+                                                deleteLike: () {
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.deleteFavouriteProduct(
+                                                          index: initState.favouritesProducts
+                                                              .indexOf(initState
+                                                                  .products[index].product),
+                                                        ),
+                                                      );
+                                                },
+                                                listItems: const [],
+                                                favouritesProducts: initState.favouritesProducts,
+                                              )
+                                            ],
                                           ),
                                         );
                                       },

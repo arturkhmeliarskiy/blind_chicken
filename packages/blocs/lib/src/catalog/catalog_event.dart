@@ -41,4 +41,19 @@ class CatalogEvent with _$CatalogEvent {
     required int offset,
     required int limit,
   }) = PaginationProductCatalogEvent;
+  const factory CatalogEvent.searchBrand({
+    required String query,
+  }) = SearchBrandCatalogEvent;
+  const factory CatalogEvent.pathMenu({
+    MenuItemDataModel? item,
+  }) = PathMenuCatalogEvent;
+  const factory CatalogEvent.removePathMenu({
+    required List<MenuItemDataModel> items,
+  }) = RemovePathMenuCatalogEvent;
+  const factory CatalogEvent.pathBrandMenu({
+    required List<MenuItemDataModel> items,
+  }) = PathBrandMenuCatalogEvent;
+  const factory CatalogEvent.switchTypePeople({
+    required int selectIndexType,
+  }) = SwitchTypePeopleCatalogEvent;
 }

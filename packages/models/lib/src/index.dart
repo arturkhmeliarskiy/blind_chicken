@@ -5,3 +5,6 @@ export 'boutiques/index.dart';
 export 'map/map_point.dart';
 export 'map/app_lat_long_data_model.dart';
 export 'drop_down/drop_down_data_model.dart';
+export 'order/index.dart';
+export 'main/index.dart';
+export 'brands/index.dart';

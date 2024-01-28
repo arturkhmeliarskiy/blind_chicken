@@ -36,6 +36,11 @@ mixin _$CatalogEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +60,11 @@ mixin _$CatalogEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +84,11 @@ mixin _$CatalogEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,6 +109,12 @@ mixin _$CatalogEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +132,11 @@ mixin _$CatalogEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,6 +154,11 @@ mixin _$CatalogEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -207,6 +238,11 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return preloadData();
   }
@@ -229,6 +265,11 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return preloadData?.call();
   }
@@ -251,6 +292,11 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -277,6 +323,12 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return preloadData(this);
   }
@@ -297,6 +349,11 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return preloadData?.call(this);
   }
@@ -317,6 +374,11 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -391,6 +453,11 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return updateFavouritesProducts();
   }
@@ -413,6 +480,11 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return updateFavouritesProducts?.call();
   }
@@ -435,6 +507,11 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -461,6 +538,12 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return updateFavouritesProducts(this);
   }
@@ -481,6 +564,11 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return updateFavouritesProducts?.call(this);
   }
@@ -501,6 +589,11 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -661,6 +754,11 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return subCategory(a, b, id, u, pid, item);
   }
@@ -683,6 +781,11 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return subCategory?.call(a, b, id, u, pid, item);
   }
@@ -705,6 +808,11 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -731,6 +839,12 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return subCategory(this);
   }
@@ -751,6 +865,11 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return subCategory?.call(this);
   }
@@ -771,6 +890,11 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -886,6 +1010,11 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return backPathMenu(idParent);
   }
@@ -908,6 +1037,11 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return backPathMenu?.call(idParent);
   }
@@ -930,6 +1064,11 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -956,6 +1095,12 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return backPathMenu(this);
   }
@@ -976,6 +1121,11 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return backPathMenu?.call(this);
   }
@@ -996,6 +1146,11 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -1128,6 +1283,11 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -1150,6 +1310,11 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -1172,6 +1337,11 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -1198,6 +1368,12 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return selectFilter(this);
   }
@@ -1218,6 +1394,11 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return selectFilter?.call(this);
   }
@@ -1238,6 +1419,11 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -1375,6 +1561,11 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -1397,6 +1588,11 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -1419,6 +1615,11 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -1445,6 +1646,12 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return deleteFilter(this);
   }
@@ -1465,6 +1672,11 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return deleteFilter?.call(this);
   }
@@ -1485,6 +1697,11 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -1621,6 +1838,11 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -1643,6 +1865,11 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -1665,6 +1892,11 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -1691,6 +1923,12 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -1711,6 +1949,11 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -1731,6 +1974,11 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -1862,6 +2110,11 @@ class _$AddFavouriteProductCatalogEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -1884,6 +2137,11 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -1906,6 +2164,11 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -1932,6 +2195,12 @@ class _$AddFavouriteProductCatalogEventImpl
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return addFavouriteProduct(this);
   }
@@ -1952,6 +2221,11 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -1972,6 +2246,11 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2082,6 +2361,11 @@ class _$DeleteFavouriteProductCatalogEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -2104,6 +2388,11 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -2126,6 +2415,11 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2152,6 +2446,12 @@ class _$DeleteFavouriteProductCatalogEventImpl
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -2172,6 +2472,11 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -2192,6 +2497,11 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2309,6 +2619,11 @@ class _$PaginationProductCatalogEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
   }) {
     return paginationProduct(offset, limit);
   }
@@ -2331,6 +2646,11 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
   }) {
     return paginationProduct?.call(offset, limit);
   }
@@ -2353,6 +2673,11 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -2379,6 +2704,12 @@ class _$PaginationProductCatalogEventImpl
         deleteFavouriteProduct,
     required TResult Function(PaginationProductCatalogEvent value)
         paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
   }) {
     return paginationProduct(this);
   }
@@ -2399,6 +2730,11 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
   }) {
     return paginationProduct?.call(this);
   }
@@ -2419,6 +2755,11 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(DeleteFavouriteProductCatalogEvent value)?
         deleteFavouriteProduct,
     TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -2442,12 +2783,1276 @@ abstract class PaginationProductCatalogEvent implements CatalogEvent {
 }
 
 /// @nodoc
+abstract class _$$SearchBrandCatalogEventImplCopyWith<$Res> {
+  factory _$$SearchBrandCatalogEventImplCopyWith(
+          _$SearchBrandCatalogEventImpl value,
+          $Res Function(_$SearchBrandCatalogEventImpl) then) =
+      __$$SearchBrandCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchBrandCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$SearchBrandCatalogEventImpl>
+    implements _$$SearchBrandCatalogEventImplCopyWith<$Res> {
+  __$$SearchBrandCatalogEventImplCopyWithImpl(
+      _$SearchBrandCatalogEventImpl _value,
+      $Res Function(_$SearchBrandCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchBrandCatalogEventImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
+  const _$SearchBrandCatalogEventImpl({required this.query});
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.searchBrand(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchBrandCatalogEventImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchBrandCatalogEventImplCopyWith<_$SearchBrandCatalogEventImpl>
+      get copyWith => __$$SearchBrandCatalogEventImplCopyWithImpl<
+          _$SearchBrandCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(
+            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+  }) {
+    return searchBrand(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+  }) {
+    return searchBrand?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (searchBrand != null) {
+      return searchBrand(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+  }) {
+    return searchBrand(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+  }) {
+    return searchBrand?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (searchBrand != null) {
+      return searchBrand(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchBrandCatalogEvent implements CatalogEvent {
+  const factory SearchBrandCatalogEvent({required final String query}) =
+      _$SearchBrandCatalogEventImpl;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$SearchBrandCatalogEventImplCopyWith<_$SearchBrandCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PathMenuCatalogEventImplCopyWith<$Res> {
+  factory _$$PathMenuCatalogEventImplCopyWith(_$PathMenuCatalogEventImpl value,
+          $Res Function(_$PathMenuCatalogEventImpl) then) =
+      __$$PathMenuCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MenuItemDataModel? item});
+
+  $MenuItemDataModelCopyWith<$Res>? get item;
+}
+
+/// @nodoc
+class __$$PathMenuCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$PathMenuCatalogEventImpl>
+    implements _$$PathMenuCatalogEventImplCopyWith<$Res> {
+  __$$PathMenuCatalogEventImplCopyWithImpl(_$PathMenuCatalogEventImpl _value,
+      $Res Function(_$PathMenuCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = freezed,
+  }) {
+    return _then(_$PathMenuCatalogEventImpl(
+      item: freezed == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as MenuItemDataModel?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MenuItemDataModelCopyWith<$Res>? get item {
+    if (_value.item == null) {
+      return null;
+    }
+
+    return $MenuItemDataModelCopyWith<$Res>(_value.item!, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
+  const _$PathMenuCatalogEventImpl({this.item});
+
+  @override
+  final MenuItemDataModel? item;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.pathMenu(item: $item)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PathMenuCatalogEventImpl &&
+            (identical(other.item, item) || other.item == item));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PathMenuCatalogEventImplCopyWith<_$PathMenuCatalogEventImpl>
+      get copyWith =>
+          __$$PathMenuCatalogEventImplCopyWithImpl<_$PathMenuCatalogEventImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(
+            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+  }) {
+    return pathMenu(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+  }) {
+    return pathMenu?.call(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (pathMenu != null) {
+      return pathMenu(item);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+  }) {
+    return pathMenu(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+  }) {
+    return pathMenu?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (pathMenu != null) {
+      return pathMenu(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PathMenuCatalogEvent implements CatalogEvent {
+  const factory PathMenuCatalogEvent({final MenuItemDataModel? item}) =
+      _$PathMenuCatalogEventImpl;
+
+  MenuItemDataModel? get item;
+  @JsonKey(ignore: true)
+  _$$PathMenuCatalogEventImplCopyWith<_$PathMenuCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemovePathMenuCatalogEventImplCopyWith<$Res> {
+  factory _$$RemovePathMenuCatalogEventImplCopyWith(
+          _$RemovePathMenuCatalogEventImpl value,
+          $Res Function(_$RemovePathMenuCatalogEventImpl) then) =
+      __$$RemovePathMenuCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<MenuItemDataModel> items});
+}
+
+/// @nodoc
+class __$$RemovePathMenuCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$RemovePathMenuCatalogEventImpl>
+    implements _$$RemovePathMenuCatalogEventImplCopyWith<$Res> {
+  __$$RemovePathMenuCatalogEventImplCopyWithImpl(
+      _$RemovePathMenuCatalogEventImpl _value,
+      $Res Function(_$RemovePathMenuCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_$RemovePathMenuCatalogEventImpl(
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<MenuItemDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
+  const _$RemovePathMenuCatalogEventImpl(
+      {required final List<MenuItemDataModel> items})
+      : _items = items;
+
+  final List<MenuItemDataModel> _items;
+  @override
+  List<MenuItemDataModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
+  @override
+  String toString() {
+    return 'CatalogEvent.removePathMenu(items: $items)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemovePathMenuCatalogEventImpl &&
+            const DeepCollectionEquality().equals(other._items, _items));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemovePathMenuCatalogEventImplCopyWith<_$RemovePathMenuCatalogEventImpl>
+      get copyWith => __$$RemovePathMenuCatalogEventImplCopyWithImpl<
+          _$RemovePathMenuCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(
+            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+  }) {
+    return removePathMenu(items);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+  }) {
+    return removePathMenu?.call(items);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (removePathMenu != null) {
+      return removePathMenu(items);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+  }) {
+    return removePathMenu(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+  }) {
+    return removePathMenu?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (removePathMenu != null) {
+      return removePathMenu(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemovePathMenuCatalogEvent implements CatalogEvent {
+  const factory RemovePathMenuCatalogEvent(
+          {required final List<MenuItemDataModel> items}) =
+      _$RemovePathMenuCatalogEventImpl;
+
+  List<MenuItemDataModel> get items;
+  @JsonKey(ignore: true)
+  _$$RemovePathMenuCatalogEventImplCopyWith<_$RemovePathMenuCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PathBrandMenuCatalogEventImplCopyWith<$Res> {
+  factory _$$PathBrandMenuCatalogEventImplCopyWith(
+          _$PathBrandMenuCatalogEventImpl value,
+          $Res Function(_$PathBrandMenuCatalogEventImpl) then) =
+      __$$PathBrandMenuCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<MenuItemDataModel> items});
+}
+
+/// @nodoc
+class __$$PathBrandMenuCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$PathBrandMenuCatalogEventImpl>
+    implements _$$PathBrandMenuCatalogEventImplCopyWith<$Res> {
+  __$$PathBrandMenuCatalogEventImplCopyWithImpl(
+      _$PathBrandMenuCatalogEventImpl _value,
+      $Res Function(_$PathBrandMenuCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_$PathBrandMenuCatalogEventImpl(
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<MenuItemDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
+  const _$PathBrandMenuCatalogEventImpl(
+      {required final List<MenuItemDataModel> items})
+      : _items = items;
+
+  final List<MenuItemDataModel> _items;
+  @override
+  List<MenuItemDataModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
+  @override
+  String toString() {
+    return 'CatalogEvent.pathBrandMenu(items: $items)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PathBrandMenuCatalogEventImpl &&
+            const DeepCollectionEquality().equals(other._items, _items));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PathBrandMenuCatalogEventImplCopyWith<_$PathBrandMenuCatalogEventImpl>
+      get copyWith => __$$PathBrandMenuCatalogEventImplCopyWithImpl<
+          _$PathBrandMenuCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(
+            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+  }) {
+    return pathBrandMenu(items);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+  }) {
+    return pathBrandMenu?.call(items);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (pathBrandMenu != null) {
+      return pathBrandMenu(items);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+  }) {
+    return pathBrandMenu(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+  }) {
+    return pathBrandMenu?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (pathBrandMenu != null) {
+      return pathBrandMenu(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PathBrandMenuCatalogEvent implements CatalogEvent {
+  const factory PathBrandMenuCatalogEvent(
+          {required final List<MenuItemDataModel> items}) =
+      _$PathBrandMenuCatalogEventImpl;
+
+  List<MenuItemDataModel> get items;
+  @JsonKey(ignore: true)
+  _$$PathBrandMenuCatalogEventImplCopyWith<_$PathBrandMenuCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SwitchTypePeopleCatalogEventImplCopyWith<$Res> {
+  factory _$$SwitchTypePeopleCatalogEventImplCopyWith(
+          _$SwitchTypePeopleCatalogEventImpl value,
+          $Res Function(_$SwitchTypePeopleCatalogEventImpl) then) =
+      __$$SwitchTypePeopleCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int selectIndexType});
+}
+
+/// @nodoc
+class __$$SwitchTypePeopleCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res, _$SwitchTypePeopleCatalogEventImpl>
+    implements _$$SwitchTypePeopleCatalogEventImplCopyWith<$Res> {
+  __$$SwitchTypePeopleCatalogEventImplCopyWithImpl(
+      _$SwitchTypePeopleCatalogEventImpl _value,
+      $Res Function(_$SwitchTypePeopleCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectIndexType = null,
+  }) {
+    return _then(_$SwitchTypePeopleCatalogEventImpl(
+      selectIndexType: null == selectIndexType
+          ? _value.selectIndexType
+          : selectIndexType // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SwitchTypePeopleCatalogEventImpl
+    implements SwitchTypePeopleCatalogEvent {
+  const _$SwitchTypePeopleCatalogEventImpl({required this.selectIndexType});
+
+  @override
+  final int selectIndexType;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.switchTypePeople(selectIndexType: $selectIndexType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SwitchTypePeopleCatalogEventImpl &&
+            (identical(other.selectIndexType, selectIndexType) ||
+                other.selectIndexType == selectIndexType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectIndexType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SwitchTypePeopleCatalogEventImplCopyWith<
+          _$SwitchTypePeopleCatalogEventImpl>
+      get copyWith => __$$SwitchTypePeopleCatalogEventImplCopyWithImpl<
+          _$SwitchTypePeopleCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(
+            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+  }) {
+    return switchTypePeople(selectIndexType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+  }) {
+    return switchTypePeople?.call(selectIndexType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (switchTypePeople != null) {
+      return switchTypePeople(selectIndexType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+  }) {
+    return switchTypePeople(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+  }) {
+    return switchTypePeople?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    required TResult orElse(),
+  }) {
+    if (switchTypePeople != null) {
+      return switchTypePeople(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SwitchTypePeopleCatalogEvent implements CatalogEvent {
+  const factory SwitchTypePeopleCatalogEvent(
+          {required final int selectIndexType}) =
+      _$SwitchTypePeopleCatalogEventImpl;
+
+  int get selectIndexType;
+  @JsonKey(ignore: true)
+  _$$SwitchTypePeopleCatalogEventImplCopyWith<
+          _$SwitchTypePeopleCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CatalogState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2455,7 +4060,8 @@ mixin _$CatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -2464,6 +4070,9 @@ mixin _$CatalogState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2471,7 +4080,8 @@ mixin _$CatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -2480,6 +4090,9 @@ mixin _$CatalogState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2487,7 +4100,8 @@ mixin _$CatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -2578,6 +4192,9 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2585,7 +4202,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)
         preloadDataCompleted,
   }) {
     return init();
@@ -2597,6 +4215,9 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2604,7 +4225,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
   }) {
     return init?.call();
@@ -2616,6 +4238,9 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2623,7 +4248,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -2717,6 +4343,9 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2724,7 +4353,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)
         preloadDataCompleted,
   }) {
     return load();
@@ -2736,6 +4366,9 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2743,7 +4376,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
   }) {
     return load?.call();
@@ -2755,6 +4389,9 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -2762,7 +4399,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -2822,14 +4460,18 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<MenuItemDataModel> menu,
+      {List<String> allBrands,
+      List<String> defaultBrands,
+      List<String> brands,
+      List<MenuItemDataModel> menu,
       List<ProductDataModel> defaultProducts,
       List<ProductDataModel> products,
       List<ProductDataModel> favouritesProducts,
       List<FilterInfoDataModel> filter,
       Map<int, List<FilterItemDataModel>> selectFilter,
       List<Map<int, FilterItemDataModel>> allSelectFilter,
-      List<MenuItemDataModel> pathMenu});
+      List<MenuItemDataModel> pathMenu,
+      List<MainCategoryModel> category});
 }
 
 /// @nodoc
@@ -2845,6 +4487,9 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? allBrands = null,
+    Object? defaultBrands = null,
+    Object? brands = null,
     Object? menu = null,
     Object? defaultProducts = null,
     Object? products = null,
@@ -2853,8 +4498,21 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? selectFilter = null,
     Object? allSelectFilter = null,
     Object? pathMenu = null,
+    Object? category = null,
   }) {
     return _then(_$PreloadDataCompletedCatalogStateImpl(
+      allBrands: null == allBrands
+          ? _value._allBrands
+          : allBrands // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      defaultBrands: null == defaultBrands
+          ? _value._defaultBrands
+          : defaultBrands // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      brands: null == brands
+          ? _value._brands
+          : brands // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       menu: null == menu
           ? _value._menu
           : menu // ignore: cast_nullable_to_non_nullable
@@ -2887,6 +4545,10 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value._pathMenu
           : pathMenu // ignore: cast_nullable_to_non_nullable
               as List<MenuItemDataModel>,
+      category: null == category
+          ? _value._category
+          : category // ignore: cast_nullable_to_non_nullable
+              as List<MainCategoryModel>,
     ));
   }
 }
@@ -2896,22 +4558,54 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
 class _$PreloadDataCompletedCatalogStateImpl
     implements PreloadDataCompletedCatalogState {
   const _$PreloadDataCompletedCatalogStateImpl(
-      {required final List<MenuItemDataModel> menu,
+      {required final List<String> allBrands,
+      required final List<String> defaultBrands,
+      required final List<String> brands,
+      required final List<MenuItemDataModel> menu,
       required final List<ProductDataModel> defaultProducts,
       required final List<ProductDataModel> products,
       required final List<ProductDataModel> favouritesProducts,
       required final List<FilterInfoDataModel> filter,
       required final Map<int, List<FilterItemDataModel>> selectFilter,
       required final List<Map<int, FilterItemDataModel>> allSelectFilter,
-      required final List<MenuItemDataModel> pathMenu})
-      : _menu = menu,
+      required final List<MenuItemDataModel> pathMenu,
+      required final List<MainCategoryModel> category})
+      : _allBrands = allBrands,
+        _defaultBrands = defaultBrands,
+        _brands = brands,
+        _menu = menu,
         _defaultProducts = defaultProducts,
         _products = products,
         _favouritesProducts = favouritesProducts,
         _filter = filter,
         _selectFilter = selectFilter,
         _allSelectFilter = allSelectFilter,
-        _pathMenu = pathMenu;
+        _pathMenu = pathMenu,
+        _category = category;
+
+  final List<String> _allBrands;
+  @override
+  List<String> get allBrands {
+    if (_allBrands is EqualUnmodifiableListView) return _allBrands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allBrands);
+  }
+
+  final List<String> _defaultBrands;
+  @override
+  List<String> get defaultBrands {
+    if (_defaultBrands is EqualUnmodifiableListView) return _defaultBrands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_defaultBrands);
+  }
+
+  final List<String> _brands;
+  @override
+  List<String> get brands {
+    if (_brands is EqualUnmodifiableListView) return _brands;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_brands);
+  }
 
   final List<MenuItemDataModel> _menu;
   @override
@@ -2978,9 +4672,17 @@ class _$PreloadDataCompletedCatalogStateImpl
     return EqualUnmodifiableListView(_pathMenu);
   }
 
+  final List<MainCategoryModel> _category;
+  @override
+  List<MainCategoryModel> get category {
+    if (_category is EqualUnmodifiableListView) return _category;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_category);
+  }
+
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(menu: $menu, defaultProducts: $defaultProducts, products: $products, favouritesProducts: $favouritesProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, favouritesProducts: $favouritesProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category)';
   }
 
   @override
@@ -2988,6 +4690,11 @@ class _$PreloadDataCompletedCatalogStateImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedCatalogStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._allBrands, _allBrands) &&
+            const DeepCollectionEquality()
+                .equals(other._defaultBrands, _defaultBrands) &&
+            const DeepCollectionEquality().equals(other._brands, _brands) &&
             const DeepCollectionEquality().equals(other._menu, _menu) &&
             const DeepCollectionEquality()
                 .equals(other._defaultProducts, _defaultProducts) &&
@@ -2999,12 +4706,16 @@ class _$PreloadDataCompletedCatalogStateImpl
                 .equals(other._selectFilter, _selectFilter) &&
             const DeepCollectionEquality()
                 .equals(other._allSelectFilter, _allSelectFilter) &&
-            const DeepCollectionEquality().equals(other._pathMenu, _pathMenu));
+            const DeepCollectionEquality().equals(other._pathMenu, _pathMenu) &&
+            const DeepCollectionEquality().equals(other._category, _category));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_allBrands),
+      const DeepCollectionEquality().hash(_defaultBrands),
+      const DeepCollectionEquality().hash(_brands),
       const DeepCollectionEquality().hash(_menu),
       const DeepCollectionEquality().hash(_defaultProducts),
       const DeepCollectionEquality().hash(_products),
@@ -3012,7 +4723,8 @@ class _$PreloadDataCompletedCatalogStateImpl
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_selectFilter),
       const DeepCollectionEquality().hash(_allSelectFilter),
-      const DeepCollectionEquality().hash(_pathMenu));
+      const DeepCollectionEquality().hash(_pathMenu),
+      const DeepCollectionEquality().hash(_category));
 
   @JsonKey(ignore: true)
   @override
@@ -3028,6 +4740,9 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -3035,11 +4750,23 @@ class _$PreloadDataCompletedCatalogStateImpl
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted(menu, defaultProducts, products,
-        favouritesProducts, filter, selectFilter, allSelectFilter, pathMenu);
+    return preloadDataCompleted(
+        allBrands,
+        defaultBrands,
+        brands,
+        menu,
+        defaultProducts,
+        products,
+        favouritesProducts,
+        filter,
+        selectFilter,
+        allSelectFilter,
+        pathMenu,
+        category);
   }
 
   @override
@@ -3048,6 +4775,9 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -3055,11 +4785,23 @@ class _$PreloadDataCompletedCatalogStateImpl
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted?.call(menu, defaultProducts, products,
-        favouritesProducts, filter, selectFilter, allSelectFilter, pathMenu);
+    return preloadDataCompleted?.call(
+        allBrands,
+        defaultBrands,
+        brands,
+        menu,
+        defaultProducts,
+        products,
+        favouritesProducts,
+        filter,
+        selectFilter,
+        allSelectFilter,
+        pathMenu,
+        category);
   }
 
   @override
@@ -3068,6 +4810,9 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
             List<MenuItemDataModel> menu,
             List<ProductDataModel> defaultProducts,
             List<ProductDataModel> products,
@@ -3075,13 +4820,25 @@ class _$PreloadDataCompletedCatalogStateImpl
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu)?
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(menu, defaultProducts, products,
-          favouritesProducts, filter, selectFilter, allSelectFilter, pathMenu);
+      return preloadDataCompleted(
+          allBrands,
+          defaultBrands,
+          brands,
+          menu,
+          defaultProducts,
+          products,
+          favouritesProducts,
+          filter,
+          selectFilter,
+          allSelectFilter,
+          pathMenu,
+          category);
     }
     return orElse();
   }
@@ -3126,16 +4883,23 @@ class _$PreloadDataCompletedCatalogStateImpl
 
 abstract class PreloadDataCompletedCatalogState implements CatalogState {
   const factory PreloadDataCompletedCatalogState(
-          {required final List<MenuItemDataModel> menu,
+          {required final List<String> allBrands,
+          required final List<String> defaultBrands,
+          required final List<String> brands,
+          required final List<MenuItemDataModel> menu,
           required final List<ProductDataModel> defaultProducts,
           required final List<ProductDataModel> products,
           required final List<ProductDataModel> favouritesProducts,
           required final List<FilterInfoDataModel> filter,
           required final Map<int, List<FilterItemDataModel>> selectFilter,
           required final List<Map<int, FilterItemDataModel>> allSelectFilter,
-          required final List<MenuItemDataModel> pathMenu}) =
+          required final List<MenuItemDataModel> pathMenu,
+          required final List<MainCategoryModel> category}) =
       _$PreloadDataCompletedCatalogStateImpl;
 
+  List<String> get allBrands;
+  List<String> get defaultBrands;
+  List<String> get brands;
   List<MenuItemDataModel> get menu;
   List<ProductDataModel> get defaultProducts;
   List<ProductDataModel> get products;
@@ -3144,6 +4908,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   Map<int, List<FilterItemDataModel>> get selectFilter;
   List<Map<int, FilterItemDataModel>> get allSelectFilter;
   List<MenuItemDataModel> get pathMenu;
+  List<MainCategoryModel> get category;
   @JsonKey(ignore: true)
   _$$PreloadDataCompletedCatalogStateImplCopyWith<
           _$PreloadDataCompletedCatalogStateImpl>

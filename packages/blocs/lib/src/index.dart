@@ -8,3 +8,4 @@ export 'order/order_bloc.dart';
 export 'yandex_map/yandex_map_bloc.dart';
 export 'account/account_bloc.dart';
 export 'search/search_bloc.dart';
+export 'brand/brand_bloc.dart';

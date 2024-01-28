@@ -1,6 +1,7 @@
 import 'package:blocs/blocs.dart';
 import 'package:get_it/get_it.dart';
 import 'package:repositories/repositories.dart';
+import 'package:shared/shared.dart';
 
 Future<void> initBloc(GetIt getIt) async {
   getIt
@@ -30,6 +31,7 @@ Future<void> initBloc(GetIt getIt) async {
     ..registerFactory(
       () => CatalogBloc(
         getIt.get<CatalogRepository>(),
+        getIt.get<ConstatntsInfo>(),
       ),
     )
     ..registerFactory(
@@ -39,11 +41,19 @@ Future<void> initBloc(GetIt getIt) async {
       () => YandexMapBloc(),
     )
     ..registerFactory(
-      () => AccountBloc(),
+      () => AccountBloc(
+        getIt.get<CatalogRepository>(),
+        getIt.get<ConstatntsInfo>(),
+      ),
     )
     ..registerFactory(
       () => SearchBloc(
         getIt.get<CatalogRepository>(),
+      ),
+    )
+    ..registerFactory(
+      () => BrandBloc(
+        getIt.get<ConstatntsInfo>(),
       ),
     );
 }

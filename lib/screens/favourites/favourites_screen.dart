@@ -197,6 +197,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                       onSelect: () {
                                         context.navigateTo(
                                           CatalogCardInfoRoute(
+                                            isChildRoute: false,
                                             item: initState.favouritesProducts[index],
                                             isLike: true,
                                             addLike: () {

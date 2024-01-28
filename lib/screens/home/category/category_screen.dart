@@ -20,6 +20,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
   int _selectIndexType = 0;
   List<Map<String, String>> selectItems = [];
 
+  String checkTypePeople(int value) {
+    String result = '';
+    switch (value) {
+      case 0:
+        result = 'Женщинам';
+      case 1:
+        result = 'Мужчинам';
+      case 2:
+        result = 'Детям';
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,7 +200,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      context.navigateTo(const CatalogRoute());
+                      context.navigateTo(
+                        CatalogRoute(
+                          title: '',
+                        ),
+                      );
                     },
                     child: SvgPicture.asset(
                       'assets/icons/x.svg',
@@ -259,7 +276,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        context.navigateTo(const CatalogRoute());
+                                        context.navigateTo(
+                                          CatalogRoute(
+                                            title: '',
+                                          ),
+                                        );
                                       },
                                       child: Text(
                                         'Все товары',
@@ -299,9 +320,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               if (initState.menu[index].brand == 0 &&
                                   initState.menu[index].sub == 0 &&
                                   initState.menu[index].name != 'Подарочная карта') {
-                                context.navigateTo(const CatalogRoute());
+                                context.navigateTo(
+                                  CatalogRoute(
+                                    title: initState.menu[index].name,
+                                  ),
+                                );
                               } else if (initState.menu[index].name == 'Подарочная карта') {
                                 context.navigateTo(const GiftCardRoute());
+                              } else if (initState.menu[index].name == 'Бренды') {
+                                context.navigateTo(
+                                  BrandsRoute(
+                                    typePeople: checkTypePeople(_selectIndexType),
+                                  ),
+                                );
                               } else if (initState.menu[index].name == 'Sale') {
                                 context.navigateTo(const SaleRoute());
                               } else {

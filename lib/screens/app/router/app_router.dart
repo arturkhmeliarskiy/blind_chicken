@@ -1,10 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_%D1%81ashback_and_discounts_screen.dart';
 import 'package:blind_chicken/screens/account/account_screen.dart';
+import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
+import 'package:blind_chicken/screens/account/my_purchases_screen.dart';
+import 'package:blind_chicken/screens/account/orders_hemming_screen.dart';
 import 'package:blind_chicken/screens/app/app_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_description_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_screen.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/map/boutique_yandex_map.dart';
+import 'package:blind_chicken/screens/brands/brands_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_messanger_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value/favourites_filter_select_value_screen.dart';
@@ -19,6 +23,9 @@ import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_sc
 import 'package:blind_chicken/screens/home/catalog/catalog_search_filter_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_screen.dart';
+import 'package:blind_chicken/screens/home/main/main_category_screen.dart';
+import 'package:blind_chicken/screens/home/main/main_screen.dart';
+import 'package:blind_chicken/screens/home/order_user_info/order_user_info_screen.dart';
 import 'package:blind_chicken/screens/home/sale/sale_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/order/order_screen.dart';
@@ -58,8 +65,11 @@ class AppRouter extends _$AppRouter {
         AutoRoute(path: '/dashboard', page: DashboardRoute.page, initial: true, children: [
           AutoRoute(path: "home", page: HomeAutoRouterRoute.page, children: [
             AutoRoute(
-              page: CategoryRoute.page,
+              page: MainRoute.page,
               initial: true,
+            ),
+            AutoRoute(
+              page: CategoryRoute.page,
             ),
             AutoRoute(
               page: CatalogRoute.page,
@@ -69,6 +79,7 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               page: CatalogCardInfoRoute.page,
+              path: 'catalog_card_info',
             ),
             AutoRoute(
               page: SortRoute.page,
@@ -117,8 +128,32 @@ class AppRouter extends _$AppRouter {
               path: "account",
             ),
             AutoRoute(
+              page: ElectronicOrderFormsRoute.page,
+              path: "electronic_order",
+            ),
+            AutoRoute(
+              page: OrdersHemmingRoute.page,
+              path: "orders_hemming",
+            ),
+            AutoRoute(
+              page: MyOrdersRoute.page,
+              path: "my_orders",
+            ),
+            AutoRoute(
+              page: OrderUserInfoRoute.page,
+              path: "order_user_info",
+            ),
+            AutoRoute(
               page: CatalogSearchResultRoute.page,
               path: 'catalog_search_result',
+            ),
+            AutoRoute(
+              page: MainCategoryRoute.page,
+              path: 'main_category',
+            ),
+            AutoRoute(
+              page: BrandsRoute.page,
+              path: 'brands',
             ),
           ]),
           AutoRoute(

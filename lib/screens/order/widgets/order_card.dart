@@ -108,7 +108,7 @@ class _OrderCardState extends State<OrderCard> {
                       else
                         RichText(
                           text: TextSpan(
-                            text: '$price',
+                            text: price.toString().spaceSeparateNumbers(),
                             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),

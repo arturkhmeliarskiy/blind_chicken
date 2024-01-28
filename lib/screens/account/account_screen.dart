@@ -352,17 +352,32 @@ class AccountScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    'Заказы на сайте',
-                    style: Theme.of(context).textTheme.displayMedium,
+                  InkWell(
+                    onTap: () {
+                      context.navigateTo(const MyOrdersRoute());
+                    },
+                    child: Text(
+                      'Мои заказы',
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
-                  Text(
-                    'Электронные бланки заказов',
-                    style: Theme.of(context).textTheme.displayMedium,
+                  InkWell(
+                    onTap: () {
+                      context.navigateTo(const ElectronicOrderFormsRoute());
+                    },
+                    child: Text(
+                      'Электронные бланки заказов',
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
-                  Text(
-                    'Заказы на подшив',
-                    style: Theme.of(context).textTheme.displayMedium,
+                  InkWell(
+                    onTap: () {
+                      context.navigateTo(const OrdersHemmingRoute());
+                    },
+                    child: Text(
+                      'Заказы на подшив',
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
                 ],
               ),

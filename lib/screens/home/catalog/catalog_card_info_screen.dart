@@ -25,6 +25,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
     required this.listItems,
     required this.favouritesProducts,
     required this.deleteLike,
+    required this.isChildRoute,
   });
 
   final VoidCallback addLike;
@@ -33,6 +34,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
   final List<ProductDataModel> listItems;
   final List<ProductDataModel> favouritesProducts;
   final bool isLike;
+  final bool isChildRoute;
 
   @override
   State<CatalogCardInfoScreen> createState() => _CatalogCardInfoScreenState();
@@ -41,6 +43,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
 class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   String _size = '';
   bool _isSoppingCart = false;
+  bool _isChildRoute = false;
   ScrollController? _controller;
   late ProductDataModel item;
   final List<String> _listSizeProduct = [];
@@ -62,6 +65,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
     }
     _listSizeProduct.add(_size);
     _listSizeProduct.addAll([' 53 / 19 / 145']);
+    _isChildRoute = widget.isChildRoute;
     item = widget.item;
     super.initState();
   }
@@ -111,8 +115,35 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                 context.pushRoute(
                   CatalogPreviewImagesRoute(
                     listImages: widget.item.images,
-                    goBotton: () {
+                    goBotton: () {},
+                    goBottonInfoProduct: () {
                       context.back();
+                      if (_isChildRoute) {
+                        context.navigateTo(
+                          CatalogCardInfoRoute(
+                            isChildRoute: true,
+                            item: widget.item,
+                            isLike: widget.isLike,
+                            addLike: () {
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.addFavouriteProduct(
+                                      product: widget.item,
+                                      index: widget.item.id,
+                                    ),
+                                  );
+                            },
+                            deleteLike: () {
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.deleteFavouriteProduct(
+                                      index: widget.item.id,
+                                    ),
+                                  );
+                            },
+                            listItems: widget.listItems,
+                            favouritesProducts: widget.favouritesProducts,
+                          ),
+                        );
+                      }
                     },
                   ),
                 );

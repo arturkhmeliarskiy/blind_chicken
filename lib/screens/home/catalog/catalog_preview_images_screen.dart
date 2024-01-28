@@ -9,10 +9,12 @@ class CatalogPreviewImagesScreen extends StatelessWidget {
     super.key,
     required this.listImages,
     required this.goBotton,
+    required this.goBottonInfoProduct,
   });
 
   final List<String> listImages;
   final VoidCallback goBotton;
+  final VoidCallback goBottonInfoProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,7 @@ class CatalogPreviewImagesScreen extends StatelessWidget {
         child: ListView(
           children: [
             InkWell(
-              onTap: () {
-                goBotton();
-              },
+              onTap: goBottonInfoProduct,
               child: Container(
                 margin: const EdgeInsets.only(
                   top: 14,

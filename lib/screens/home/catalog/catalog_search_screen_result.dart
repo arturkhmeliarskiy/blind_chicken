@@ -210,6 +210,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                       onSelect: () {
                         context.navigateTo(
                           CatalogCardInfoRoute(
+                            isChildRoute: false,
                             item: initState.searchProducts[index],
                             isLike: initState.favouritesProducts?.contains(
                                   initState.searchProducts[index],

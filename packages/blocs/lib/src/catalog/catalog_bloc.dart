@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
 import 'package:repositories/repositories.dart';
+import 'package:shared/shared.dart';
 
 part 'catalog_bloc.freezed.dart';
 part 'catalog_event.dart';
@@ -12,26 +13,31 @@ part 'catalog_state.dart';
 
 class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final CatalogRepository _catalogRepository;
+  final ConstatntsInfo _constatntsInfo;
 
   StreamSubscription<dynamic>? otherBlocSubscription;
 
   CatalogBloc(
     this._catalogRepository,
+    this._constatntsInfo,
   ) : super(const CatalogState.init()) {
-    on<CatalogEvent>(
-      (event, emit) => event.map<Future<void>>(
-        preloadData: (event) => _init(event, emit),
-        subCategory: (event) => _subCategory(event, emit),
-        backPathMenu: (event) => _backPathMenu(event, emit),
-        selectFilter: (event) => _selectFilter(event, emit),
-        deleteFilter: (event) => _deleteFilter(event, emit),
-        deleteCatalogFilter: (event) => _deleteFilterCatalog(event, emit),
-        updateFavouritesProducts: (event) => _updateFavouritesProducts(event, emit),
-        addFavouriteProduct: (event) => _addProductToSoppingCart(event, emit),
-        deleteFavouriteProduct: (event) => _deleteProductToFavouritesEvent(event, emit),
-        paginationProduct: (event) => _paginationProduct(event, emit),
-      ),
-    );
+    on<CatalogEvent>((event, emit) => event.map<Future<void>>(
+          preloadData: (event) => _init(event, emit),
+          subCategory: (event) => _subCategory(event, emit),
+          backPathMenu: (event) => _backPathMenu(event, emit),
+          selectFilter: (event) => _selectFilter(event, emit),
+          deleteFilter: (event) => _deleteFilter(event, emit),
+          deleteCatalogFilter: (event) => _deleteFilterCatalog(event, emit),
+          updateFavouritesProducts: (event) => _updateFavouritesProducts(event, emit),
+          addFavouriteProduct: (event) => _addProductToSoppingCart(event, emit),
+          deleteFavouriteProduct: (event) => _deleteProductToFavouritesEvent(event, emit),
+          paginationProduct: (event) => _paginationProduct(event, emit),
+          searchBrand: (event) => _searchBrand(event, emit),
+          pathMenu: (event) => _pathMenu(event, emit),
+          removePathMenu: (event) => _removePathMenu(event, emit),
+          pathBrandMenu: (event) => _pathBrandMenu(event, emit),
+          switchTypePeople: (event) => _switchTypePeople(event, emit),
+        ));
   }
 
   Future<void> _updateFavouritesProducts(
@@ -55,8 +61,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     emit(const CatalogState.load());
     List<ProductDataModel> listProducts = [];
+
     final filter = await _catalogRepository.getFilters();
     final products = await _catalogRepository.getProducts();
+
     for (int i = 0; i < 10; i++) {
       listProducts.add(products[i]);
     }
@@ -69,15 +77,36 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
-    // menu.add(MenuItemDataModel(
-    //   url: '',
-    //   idParent: 0,
-    //   id: 0,
-    //   name: 'Sale',
-    //   sub: -1,
-    //   title: 1,
-    //   brand: -1,
-    // ));
+    menu.addAll([
+      MenuItemDataModel(
+        url: '',
+        idParent: 0,
+        id: 0,
+        name: 'Бренды',
+        sub: -1,
+        title: 0,
+        brand: -1,
+      ),
+      MenuItemDataModel(
+        url: '',
+        idParent: 0,
+        id: 0,
+        name: 'Sale',
+        sub: -1,
+        title: 1,
+        brand: -1,
+      ),
+    ]);
+
+    List<String> allBrands = [];
+
+    allBrands = [
+      ..._constatntsInfo.brandsWoman,
+      ..._constatntsInfo.brandsMan,
+      ..._constatntsInfo.brandsChilren,
+    ];
+
+    allBrands.sort();
 
     emit(
       CatalogState.preloadDataCompleted(
@@ -89,6 +118,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         favouritesProducts: favouritesProducts,
         menu: menu,
         pathMenu: [],
+        brands: _constatntsInfo.brandsWoman,
+        defaultBrands: _constatntsInfo.brandsWoman,
+        category: _constatntsInfo.categoryWoman,
+        allBrands: allBrands,
       ),
     );
   }
@@ -109,15 +142,26 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
 
       List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
-      // menu.add(MenuItemDataModel(
-      //   url: '',
-      //   idParent: 0,
-      //   id: 0,
-      //   name: 'Sale',
-      //   sub: -1,
-      //   title: 1,
-      //   brand: -1,
-      // ));
+      menu.addAll([
+        MenuItemDataModel(
+          url: '',
+          idParent: 0,
+          id: 0,
+          name: 'Бренды',
+          sub: -1,
+          title: 0,
+          brand: -1,
+        ),
+        MenuItemDataModel(
+          url: '',
+          idParent: 0,
+          id: 0,
+          name: 'Sale',
+          sub: -1,
+          title: 1,
+          brand: -1,
+        ),
+      ]);
 
       MenuItemDataModel? item = event.item;
 
@@ -194,15 +238,26 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         pid: pathMenu.isNotEmpty ? pathMenu.last.idParent : 0,
       );
 
-      // menu.add(MenuItemDataModel(
-      //   url: '',
-      //   idParent: 0,
-      //   id: 0,
-      //   name: 'Sale',
-      //   sub: -1,
-      //   title: 1,
-      //   brand: -1,
-      // ));
+      menu.addAll([
+        MenuItemDataModel(
+          url: '',
+          idParent: 0,
+          id: 0,
+          name: 'Бренды',
+          sub: -1,
+          title: 0,
+          brand: -1,
+        ),
+        MenuItemDataModel(
+          url: '',
+          idParent: 0,
+          id: 0,
+          name: 'Sale',
+          sub: -1,
+          title: 1,
+          brand: -1,
+        ),
+      ]);
 
       emit(initState.copyWith(pathMenu: pathMenu, menu: menu));
     });
@@ -337,6 +392,124 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       }
 
       emit(initState.copyWith(products: products));
+    });
+  }
+
+  Future<void> _searchBrand(
+    SearchBrandCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<String> brands = [];
+
+      if (event.query.isNotEmpty) {
+        for (var str in initState.brands) {
+          if (str.toLowerCase().contains(event.query.toLowerCase())) {
+            brands.add(str);
+          }
+        }
+      } else {
+        brands = initState.defaultBrands;
+      }
+
+      emit(initState.copyWith(brands: brands));
+    });
+  }
+
+  Future<void> _pathMenu(
+    PathMenuCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
+      MenuItemDataModel? item = event.item;
+      if (item != null) {
+        pathMenu.add(item);
+      } else {
+        pathMenu = [];
+      }
+      emit(initState.copyWith(
+        pathMenu: pathMenu,
+      ));
+    });
+  }
+
+  Future<void> _removePathMenu(
+    RemovePathMenuCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
+
+      for (int i = 0; i < event.items.length; i++) {
+        pathMenu.remove(event.items[i]);
+      }
+
+      emit(initState.copyWith(
+        pathMenu: pathMenu,
+      ));
+    });
+  }
+
+  Future<void> _pathBrandMenu(
+    PathBrandMenuCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
+      List<MenuItemDataModel> items = event.items.toList();
+      items.addAll(pathMenu);
+
+      emit(initState.copyWith(
+        pathMenu: items,
+      ));
+    });
+  }
+
+  Future<void> _switchTypePeople(
+    SwitchTypePeopleCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      List<MainCategoryModel> category = [];
+      List<String> brands = [];
+      String name = '';
+
+      switch (event.selectIndexType) {
+        case 0:
+          category = _constatntsInfo.categoryWoman;
+          brands = _constatntsInfo.brandsWoman;
+          name = 'Женщинам';
+        case 1:
+          category = _constatntsInfo.categoryMan;
+          brands = _constatntsInfo.brandsMan;
+          name = 'Мужчинам';
+        case 2:
+          category = _constatntsInfo.categoryChild;
+          brands = _constatntsInfo.brandsChilren;
+          name = 'Детям';
+      }
+
+      List<MenuItemDataModel> pathMenu = [
+        MenuItemDataModel(
+          idParent: 0,
+          id: 0,
+          url: '',
+          name: name,
+          sub: 0,
+          title: 0,
+          brand: 0,
+        )
+      ];
+
+      emit(
+        initState.copyWith(
+          category: category,
+          pathMenu: pathMenu,
+          defaultBrands: brands,
+          brands: brands,
+        ),
+      );
     });
   }
 }

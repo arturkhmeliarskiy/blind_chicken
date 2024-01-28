@@ -1,5 +1,6 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get_it/get_it.dart';
+import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 
 Future<void> initShared(GetIt getIt) async {
@@ -16,6 +17,11 @@ Future<void> initShared(GetIt getIt) async {
     )
     ..registerFactory(
       () => ProductsFavouritesService(),
+    )
+    ..registerFactory(
+      () => ConstatntsInfo(
+        getIt.get<CatalogRepository>(),
+      ),
     );
   // ..registerFactory(
   //   () => SberbankPaymentService(),

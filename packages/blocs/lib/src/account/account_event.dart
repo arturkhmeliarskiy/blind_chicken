@@ -12,4 +12,8 @@ class AccountEvent with _$AccountEvent {
     String? name,
     String? email,
   }) = UpdateInfoAccountEvent;
+  const factory AccountEvent.paginationProduct({
+    required int offset,
+    required int limit,
+  }) = PaginationOrdersAccountEvent;
 }

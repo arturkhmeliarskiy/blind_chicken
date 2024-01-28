@@ -22,6 +22,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   bool isOpen = false;
+  bool _isMain = false;
   OverlayEntry? overlayEntry;
   Timer? _timer;
 
@@ -166,7 +167,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        CategoryRoute(),
+        MainRoute(),
         LoginRoute(),
         ShoppingCartAutoRouterRoute(),
         FavouritesRoute(),
@@ -223,7 +224,13 @@ class _DashboardPageState extends State<DashboardPage> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.green[500],
             onTap: (int index) {
-              if (index == 1) {
+              if (index == 0) {
+                if (_isMain) {
+                  context.navigateTo(const MainRoute());
+                } else {
+                  context.navigateTo(const CategoryRoute());
+                }
+              } else if (index == 1) {
                 showDialog(
                     context: context,
                     builder: (context) {
@@ -266,6 +273,9 @@ class _DashboardPageState extends State<DashboardPage> {
               } else {
                 tabsRouter.innerRouterOf<StackRouter>(tabsRouter.current.name)?.popUntilRoot();
               }
+              setState(() {
+                _isMain = !_isMain;
+              });
             });
         return Platform.isAndroid
             ? SizedBox(
