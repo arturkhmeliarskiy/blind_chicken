@@ -178,7 +178,7 @@ class _MainScreenState extends State<MainScreen> {
                   preloadDataCompleted: (initState) {
                     return GridView.builder(
                         shrinkWrap: true,
-                        itemCount: initState.allBrands.length,
+                        itemCount: initState.brands.length,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, // number of items in each row
@@ -208,7 +208,7 @@ class _MainScreenState extends State<MainScreen> {
                                         idParent: 0,
                                         id: index,
                                         url: '',
-                                        name: initState.allBrands[index],
+                                        name: initState.brands[index],
                                         sub: 0,
                                         title: 0,
                                         brand: 0,
@@ -235,7 +235,7 @@ class _MainScreenState extends State<MainScreen> {
                                                 idParent: 0,
                                                 id: index,
                                                 url: '',
-                                                name: initState.allBrands[index],
+                                                name: initState.brands[index],
                                                 sub: 0,
                                                 title: 0,
                                                 brand: 0,
@@ -244,12 +244,12 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                         );
                                   },
-                                  title: initState.allBrands[index],
+                                  title: initState.brands[index],
                                 ),
                               );
                             },
                             child: Text(
-                              initState.allBrands[index],
+                              initState.brands[index],
                               style: Theme.of(context).textTheme.headline2,
                             ),
                           );
