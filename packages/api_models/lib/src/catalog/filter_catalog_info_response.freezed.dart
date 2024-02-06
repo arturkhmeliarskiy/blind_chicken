@@ -1,0 +1,187 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'filter_catalog_info_response.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+FilterCatalogInfoResponse _$FilterCatalogInfoResponseFromJson(
+    Map<String, dynamic> json) {
+  return _FilterCatalogInfoResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$FilterCatalogInfoResponse {
+  List<VResponse>? get v => throw _privateConstructorUsedError;
+  String? get n => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $FilterCatalogInfoResponseCopyWith<FilterCatalogInfoResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FilterCatalogInfoResponseCopyWith<$Res> {
+  factory $FilterCatalogInfoResponseCopyWith(FilterCatalogInfoResponse value,
+          $Res Function(FilterCatalogInfoResponse) then) =
+      _$FilterCatalogInfoResponseCopyWithImpl<$Res, FilterCatalogInfoResponse>;
+  @useResult
+  $Res call({List<VResponse>? v, String? n});
+}
+
+/// @nodoc
+class _$FilterCatalogInfoResponseCopyWithImpl<$Res,
+        $Val extends FilterCatalogInfoResponse>
+    implements $FilterCatalogInfoResponseCopyWith<$Res> {
+  _$FilterCatalogInfoResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? v = freezed,
+    Object? n = freezed,
+  }) {
+    return _then(_value.copyWith(
+      v: freezed == v
+          ? _value.v
+          : v // ignore: cast_nullable_to_non_nullable
+              as List<VResponse>?,
+      n: freezed == n
+          ? _value.n
+          : n // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$FilterCatalogInfoResponseImplCopyWith<$Res>
+    implements $FilterCatalogInfoResponseCopyWith<$Res> {
+  factory _$$FilterCatalogInfoResponseImplCopyWith(
+          _$FilterCatalogInfoResponseImpl value,
+          $Res Function(_$FilterCatalogInfoResponseImpl) then) =
+      __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<VResponse>? v, String? n});
+}
+
+/// @nodoc
+class __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>
+    extends _$FilterCatalogInfoResponseCopyWithImpl<$Res,
+        _$FilterCatalogInfoResponseImpl>
+    implements _$$FilterCatalogInfoResponseImplCopyWith<$Res> {
+  __$$FilterCatalogInfoResponseImplCopyWithImpl(
+      _$FilterCatalogInfoResponseImpl _value,
+      $Res Function(_$FilterCatalogInfoResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? v = freezed,
+    Object? n = freezed,
+  }) {
+    return _then(_$FilterCatalogInfoResponseImpl(
+      v: freezed == v
+          ? _value._v
+          : v // ignore: cast_nullable_to_non_nullable
+              as List<VResponse>?,
+      n: freezed == n
+          ? _value.n
+          : n // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$FilterCatalogInfoResponseImpl extends _FilterCatalogInfoResponse {
+  _$FilterCatalogInfoResponseImpl({final List<VResponse>? v, this.n})
+      : _v = v,
+        super._();
+
+  factory _$FilterCatalogInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FilterCatalogInfoResponseImplFromJson(json);
+
+  final List<VResponse>? _v;
+  @override
+  List<VResponse>? get v {
+    final value = _v;
+    if (value == null) return null;
+    if (_v is EqualUnmodifiableListView) return _v;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? n;
+
+  @override
+  String toString() {
+    return 'FilterCatalogInfoResponse(v: $v, n: $n)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterCatalogInfoResponseImpl &&
+            const DeepCollectionEquality().equals(other._v, _v) &&
+            (identical(other.n, n) || other.n == n));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_v), n);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterCatalogInfoResponseImplCopyWith<_$FilterCatalogInfoResponseImpl>
+      get copyWith => __$$FilterCatalogInfoResponseImplCopyWithImpl<
+          _$FilterCatalogInfoResponseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$FilterCatalogInfoResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _FilterCatalogInfoResponse extends FilterCatalogInfoResponse {
+  factory _FilterCatalogInfoResponse(
+      {final List<VResponse>? v,
+      final String? n}) = _$FilterCatalogInfoResponseImpl;
+  _FilterCatalogInfoResponse._() : super._();
+
+  factory _FilterCatalogInfoResponse.fromJson(Map<String, dynamic> json) =
+      _$FilterCatalogInfoResponseImpl.fromJson;
+
+  @override
+  List<VResponse>? get v;
+  @override
+  String? get n;
+  @override
+  @JsonKey(ignore: true)
+  _$$FilterCatalogInfoResponseImplCopyWith<_$FilterCatalogInfoResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

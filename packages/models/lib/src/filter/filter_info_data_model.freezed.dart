@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FilterInfoDataModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String get typeFilter => throw _privateConstructorUsedError;
   bool get isSearch => throw _privateConstructorUsedError;
   List<FilterItemDataModel> get items => throw _privateConstructorUsedError;
 
@@ -35,6 +36,7 @@ abstract class $FilterInfoDataModelCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
+      String typeFilter,
       bool isSearch,
       List<FilterItemDataModel> items});
 }
@@ -54,6 +56,7 @@ class _$FilterInfoDataModelCopyWithImpl<$Res, $Val extends FilterInfoDataModel>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? typeFilter = null,
     Object? isSearch = null,
     Object? items = null,
   }) {
@@ -65,6 +68,10 @@ class _$FilterInfoDataModelCopyWithImpl<$Res, $Val extends FilterInfoDataModel>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeFilter: null == typeFilter
+          ? _value.typeFilter
+          : typeFilter // ignore: cast_nullable_to_non_nullable
               as String,
       isSearch: null == isSearch
           ? _value.isSearch
@@ -89,6 +96,7 @@ abstract class _$$FilterInfoDataModelImplCopyWith<$Res>
   $Res call(
       {String id,
       String title,
+      String typeFilter,
       bool isSearch,
       List<FilterItemDataModel> items});
 }
@@ -106,6 +114,7 @@ class __$$FilterInfoDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? typeFilter = null,
     Object? isSearch = null,
     Object? items = null,
   }) {
@@ -117,6 +126,10 @@ class __$$FilterInfoDataModelImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeFilter: null == typeFilter
+          ? _value.typeFilter
+          : typeFilter // ignore: cast_nullable_to_non_nullable
               as String,
       isSearch: null == isSearch
           ? _value.isSearch
@@ -136,6 +149,7 @@ class _$FilterInfoDataModelImpl extends _FilterInfoDataModel {
   _$FilterInfoDataModelImpl(
       {required this.id,
       required this.title,
+      required this.typeFilter,
       required this.isSearch,
       required final List<FilterItemDataModel> items})
       : _items = items,
@@ -145,6 +159,8 @@ class _$FilterInfoDataModelImpl extends _FilterInfoDataModel {
   final String id;
   @override
   final String title;
+  @override
+  final String typeFilter;
   @override
   final bool isSearch;
   final List<FilterItemDataModel> _items;
@@ -157,7 +173,7 @@ class _$FilterInfoDataModelImpl extends _FilterInfoDataModel {
 
   @override
   String toString() {
-    return 'FilterInfoDataModel(id: $id, title: $title, isSearch: $isSearch, items: $items)';
+    return 'FilterInfoDataModel(id: $id, title: $title, typeFilter: $typeFilter, isSearch: $isSearch, items: $items)';
   }
 
   @override
@@ -167,13 +183,15 @@ class _$FilterInfoDataModelImpl extends _FilterInfoDataModel {
             other is _$FilterInfoDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.typeFilter, typeFilter) ||
+                other.typeFilter == typeFilter) &&
             (identical(other.isSearch, isSearch) ||
                 other.isSearch == isSearch) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, isSearch,
+  int get hashCode => Object.hash(runtimeType, id, title, typeFilter, isSearch,
       const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
@@ -188,6 +206,7 @@ abstract class _FilterInfoDataModel extends FilterInfoDataModel {
   factory _FilterInfoDataModel(
           {required final String id,
           required final String title,
+          required final String typeFilter,
           required final bool isSearch,
           required final List<FilterItemDataModel> items}) =
       _$FilterInfoDataModelImpl;
@@ -197,6 +216,8 @@ abstract class _FilterInfoDataModel extends FilterInfoDataModel {
   String get id;
   @override
   String get title;
+  @override
+  String get typeFilter;
   @override
   bool get isSearch;
   @override

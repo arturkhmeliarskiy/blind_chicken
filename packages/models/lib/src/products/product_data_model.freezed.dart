@@ -21,12 +21,15 @@ mixin _$ProductDataModel {
   String get catrgory => throw _privateConstructorUsedError;
   List<int> get size => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  int get yourPrice => throw _privateConstructorUsedError;
   String get brend => throw _privateConstructorUsedError;
   int get lensDiameter => throw _privateConstructorUsedError;
-  int? get templeLength => throw _privateConstructorUsedError;
+  int get templeLength => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   List<String> get variants => throw _privateConstructorUsedError;
+  int get maximumCashback => throw _privateConstructorUsedError;
+  int get maximumPersonalDiscount => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -46,12 +49,15 @@ abstract class $ProductDataModelCopyWith<$Res> {
       String catrgory,
       List<int> size,
       int price,
+      int yourPrice,
       String brend,
       int lensDiameter,
-      int? templeLength,
+      int templeLength,
       String country,
       List<String> images,
       List<String> variants,
+      int maximumCashback,
+      int maximumPersonalDiscount,
       Color? color});
 }
 
@@ -73,12 +79,15 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? catrgory = null,
     Object? size = null,
     Object? price = null,
+    Object? yourPrice = null,
     Object? brend = null,
     Object? lensDiameter = null,
-    Object? templeLength = freezed,
+    Object? templeLength = null,
     Object? country = null,
     Object? images = null,
     Object? variants = null,
+    Object? maximumCashback = null,
+    Object? maximumPersonalDiscount = null,
     Object? color = freezed,
   }) {
     return _then(_value.copyWith(
@@ -102,6 +111,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      yourPrice: null == yourPrice
+          ? _value.yourPrice
+          : yourPrice // ignore: cast_nullable_to_non_nullable
+              as int,
       brend: null == brend
           ? _value.brend
           : brend // ignore: cast_nullable_to_non_nullable
@@ -110,10 +123,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.lensDiameter
           : lensDiameter // ignore: cast_nullable_to_non_nullable
               as int,
-      templeLength: freezed == templeLength
+      templeLength: null == templeLength
           ? _value.templeLength
           : templeLength // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -126,6 +139,14 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.variants
           : variants // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      maximumCashback: null == maximumCashback
+          ? _value.maximumCashback
+          : maximumCashback // ignore: cast_nullable_to_non_nullable
+              as int,
+      maximumPersonalDiscount: null == maximumPersonalDiscount
+          ? _value.maximumPersonalDiscount
+          : maximumPersonalDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -148,12 +169,15 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       String catrgory,
       List<int> size,
       int price,
+      int yourPrice,
       String brend,
       int lensDiameter,
-      int? templeLength,
+      int templeLength,
       String country,
       List<String> images,
       List<String> variants,
+      int maximumCashback,
+      int maximumPersonalDiscount,
       Color? color});
 }
 
@@ -173,12 +197,15 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? catrgory = null,
     Object? size = null,
     Object? price = null,
+    Object? yourPrice = null,
     Object? brend = null,
     Object? lensDiameter = null,
-    Object? templeLength = freezed,
+    Object? templeLength = null,
     Object? country = null,
     Object? images = null,
     Object? variants = null,
+    Object? maximumCashback = null,
+    Object? maximumPersonalDiscount = null,
     Object? color = freezed,
   }) {
     return _then(_$ProductDataModelImpl(
@@ -202,6 +229,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      yourPrice: null == yourPrice
+          ? _value.yourPrice
+          : yourPrice // ignore: cast_nullable_to_non_nullable
+              as int,
       brend: null == brend
           ? _value.brend
           : brend // ignore: cast_nullable_to_non_nullable
@@ -210,10 +241,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.lensDiameter
           : lensDiameter // ignore: cast_nullable_to_non_nullable
               as int,
-      templeLength: freezed == templeLength
+      templeLength: null == templeLength
           ? _value.templeLength
           : templeLength // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -226,6 +257,14 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value._variants
           : variants // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      maximumCashback: null == maximumCashback
+          ? _value.maximumCashback
+          : maximumCashback // ignore: cast_nullable_to_non_nullable
+              as int,
+      maximumPersonalDiscount: null == maximumPersonalDiscount
+          ? _value.maximumPersonalDiscount
+          : maximumPersonalDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -243,12 +282,15 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required this.catrgory,
       required final List<int> size,
       required this.price,
+      required this.yourPrice,
       required this.brend,
       required this.lensDiameter,
       required this.templeLength,
       required this.country,
       required final List<String> images,
       required final List<String> variants,
+      required this.maximumCashback,
+      required this.maximumPersonalDiscount,
       this.color})
       : _size = size,
         _images = images,
@@ -272,11 +314,13 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   @override
   final int price;
   @override
+  final int yourPrice;
+  @override
   final String brend;
   @override
   final int lensDiameter;
   @override
-  final int? templeLength;
+  final int templeLength;
   @override
   final String country;
   final List<String> _images;
@@ -296,11 +340,15 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   }
 
   @override
+  final int maximumCashback;
+  @override
+  final int maximumPersonalDiscount;
+  @override
   final Color? color;
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, catrgory: $catrgory, size: $size, price: $price, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, catrgory: $catrgory, size: $size, price: $price, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, color: $color)';
   }
 
   @override
@@ -314,6 +362,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
                 other.catrgory == catrgory) &&
             const DeepCollectionEquality().equals(other._size, _size) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.yourPrice, yourPrice) ||
+                other.yourPrice == yourPrice) &&
             (identical(other.brend, brend) || other.brend == brend) &&
             (identical(other.lensDiameter, lensDiameter) ||
                 other.lensDiameter == lensDiameter) &&
@@ -322,6 +372,11 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             (identical(other.country, country) || other.country == country) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other._variants, _variants) &&
+            (identical(other.maximumCashback, maximumCashback) ||
+                other.maximumCashback == maximumCashback) &&
+            (identical(
+                    other.maximumPersonalDiscount, maximumPersonalDiscount) ||
+                other.maximumPersonalDiscount == maximumPersonalDiscount) &&
             (identical(other.color, color) || other.color == color));
   }
 
@@ -333,12 +388,15 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       catrgory,
       const DeepCollectionEquality().hash(_size),
       price,
+      yourPrice,
       brend,
       lensDiameter,
       templeLength,
       country,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_variants),
+      maximumCashback,
+      maximumPersonalDiscount,
       color);
 
   @JsonKey(ignore: true)
@@ -356,12 +414,15 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final String catrgory,
       required final List<int> size,
       required final int price,
+      required final int yourPrice,
       required final String brend,
       required final int lensDiameter,
-      required final int? templeLength,
+      required final int templeLength,
       required final String country,
       required final List<String> images,
       required final List<String> variants,
+      required final int maximumCashback,
+      required final int maximumPersonalDiscount,
       final Color? color}) = _$ProductDataModelImpl;
   _ProductDataModel._() : super._();
 
@@ -376,17 +437,23 @@ abstract class _ProductDataModel extends ProductDataModel {
   @override
   int get price;
   @override
+  int get yourPrice;
+  @override
   String get brend;
   @override
   int get lensDiameter;
   @override
-  int? get templeLength;
+  int get templeLength;
   @override
   String get country;
   @override
   List<String> get images;
   @override
   List<String> get variants;
+  @override
+  int get maximumCashback;
+  @override
+  int get maximumPersonalDiscount;
   @override
   Color? get color;
   @override

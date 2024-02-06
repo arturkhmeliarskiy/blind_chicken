@@ -227,6 +227,11 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                       imageUrl: initState.favouritesProducts[index].images[0],
                                       brend: initState.favouritesProducts[index].brend,
                                       catrgory: initState.favouritesProducts[index].catrgory,
+                                      yourPrice:
+                                          initState.favouritesProducts[index].yourPrice.toString(),
+                                      maximumCashback: initState
+                                          .favouritesProducts[index].maximumCashback
+                                          .toString(),
                                       price: initState.favouritesProducts[index].price.toString(),
                                       onAddFavouriteProduct: () {
                                         context.read<FavouritesBloc>().add(

@@ -105,6 +105,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                                           FilterItemDataModel(
                                             id: 0,
                                             value: '',
+                                            typeFilter: '',
                                           ),
                                     ),
                                   );

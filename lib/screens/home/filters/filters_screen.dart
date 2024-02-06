@@ -105,6 +105,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                                           FilterItemDataModel(
                                             id: 0,
                                             value: '',
+                                            typeFilter: '',
                                           ),
                                     ),
                                   );

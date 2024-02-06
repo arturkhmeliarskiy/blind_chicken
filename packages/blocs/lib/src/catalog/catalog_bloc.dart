@@ -29,7 +29,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           deleteFilter: (event) => _deleteFilter(event, emit),
           deleteCatalogFilter: (event) => _deleteFilterCatalog(event, emit),
           updateFavouritesProducts: (event) => _updateFavouritesProducts(event, emit),
-          addFavouriteProduct: (event) => _addProductToSoppingCart(event, emit),
+          addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
           deleteFavouriteProduct: (event) => _deleteProductToFavouritesEvent(event, emit),
           paginationProduct: (event) => _paginationProduct(event, emit),
           searchBrand: (event) => _searchBrand(event, emit),
@@ -37,6 +37,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           removePathMenu: (event) => _removePathMenu(event, emit),
           pathBrandMenu: (event) => _pathBrandMenu(event, emit),
           switchTypePeople: (event) => _switchTypePeople(event, emit),
+          getInfoProducts: (event) => _getInfoProducts(event, emit),
+          sortProducts: (event) => _sortProducts(event, emit),
         ));
   }
 
@@ -60,14 +62,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     emit(const CatalogState.load());
-    List<ProductDataModel> listProducts = [];
 
-    final filter = await _catalogRepository.getFilters();
-    final products = await _catalogRepository.getProducts();
-
-    for (int i = 0; i < 10; i++) {
-      listProducts.add(products[i]);
-    }
     final favouritesProducts = _catalogRepository.getFavouritesProducts();
     final menu = await _catalogRepository.postMenuItems(
       auth: 0,
@@ -110,18 +105,20 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
     emit(
       CatalogState.preloadDataCompleted(
-        filter: filter,
+        filter: [],
         selectFilter: {},
         allSelectFilter: [],
-        products: listProducts,
-        defaultProducts: listProducts,
+        products: [],
+        defaultProducts: [],
         favouritesProducts: favouritesProducts,
         menu: menu,
         pathMenu: [],
+        favouritesProductsId: [],
         brands: _constatntsInfo.brandsWoman,
         defaultBrands: _constatntsInfo.brandsWoman,
         category: _constatntsInfo.categoryWoman,
         allBrands: allBrands,
+        request: CatalogProductsRequest(auth: 0, tel: '', url: ''),
       ),
     );
   }
@@ -182,10 +179,22 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     SelectFilterCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      String? ct;
+      String? t26;
+      String? f2;
+      String? f3;
+      String? f10;
+      String? f12;
+      String? f13;
+      String? s61;
+      String? t1;
+      String? t4;
+      String? t9;
+      String? t21;
+      CatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
-      List<ProductDataModel> listProducts = [];
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
       if (selectItem.contains(event.item)) {
         selectItem.insert(event.indexItem, event.item);
@@ -202,20 +211,120 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         List<FilterItemDataModel> filters = selectFilter[key] ?? [];
         for (int j = 0; j < filters.length; j++) {
           allSelectFilter.add({key: filters[j]});
-          listProducts = initState.defaultProducts
-              .where(
-                (element) => element.catrgory == filters[j].value,
-              )
-              .toList();
+          if (filters[j].typeFilter == 'ct') {
+            if (ct != null) {
+              ct = '$ct;${filters[j].id}';
+            } else {
+              ct = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't26') {
+            if (t26 != null) {
+              t26 = '$t26;${filters[j].id}';
+            } else {
+              t26 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f2') {
+            if (f2 != null) {
+              f2 = '$f2;${filters[j].id}';
+            } else {
+              f2 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f3') {
+            if (f3 != null) {
+              f3 = '$f3;${filters[j].id}';
+            } else {
+              f3 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f10') {
+            if (f10 != null) {
+              f10 = '$f10;${filters[j].id}';
+            } else {
+              f10 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f12') {
+            if (f12 != null) {
+              f12 = '$f12;${filters[j].id}';
+            } else {
+              f12 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f13') {
+            if (f13 != null) {
+              f13 = '$f13;${filters[j].id}';
+            } else {
+              f13 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 's61') {
+            if (s61 != null) {
+              s61 = '$s61;${filters[j].id}';
+            } else {
+              s61 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't1') {
+            if (t1 != null) {
+              t1 = '$t1;${filters[j].id}';
+            } else {
+              t1 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't4') {
+            if (t4 != null) {
+              t4 = '$t4;${filters[j].id}';
+            } else {
+              t4 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't9') {
+            if (t9 != null) {
+              t9 = '$t9;${filters[j].id}';
+            } else {
+              t9 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't21') {
+            if (t21 != null) {
+              t21 = '$t21;${filters[j].id}';
+            } else {
+              t21 = '${filters[j].id}';
+            }
+          }
         }
       }
 
-      log(allSelectFilter.length.toString());
+      request = request.copyWith(
+        ct: ct,
+        t26: t26,
+        f2: f2,
+        f3: f3,
+        f10: f10,
+        f12: f12,
+        f13: f13,
+        s61: s61,
+        t1: t1,
+        t4: t4,
+        t9: t9,
+        t21: t21,
+        nav: 'page-1',
+      );
+
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: request,
+      );
+
       emit(const CatalogState.load());
+
       emit(initState.copyWith(
         selectFilter: selectFilter,
         allSelectFilter: allSelectFilter,
-        products: listProducts,
+        products: catalogInfo.products,
+        request: request,
       ));
     });
   }
@@ -267,11 +376,23 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     DeleteFilterCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      String? ct;
+      String? t26;
+      String? f2;
+      String? f3;
+      String? f10;
+      String? f12;
+      String? f13;
+      String? s61;
+      String? t1;
+      String? t4;
+      String? t9;
+      String? t21;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
+      CatalogProductsRequest request = initState.request;
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
-      List<ProductDataModel> listProducts = [];
 
       selectItem.remove(event.item);
       selectFilter[event.index] = selectItem;
@@ -283,21 +404,121 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         List<FilterItemDataModel> filters = selectFilter[key] ?? [];
         for (int j = 0; j < filters.length; j++) {
           allSelectFilter.add({key: filters[j]});
-          listProducts = initState.products
-              .where(
-                (element) => element.catrgory == filters[j].value,
-              )
-              .toList();
+          if (filters[j].typeFilter == 'ct') {
+            if (ct != null) {
+              ct = '$ct;${filters[j].id}';
+            } else {
+              ct = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't26') {
+            if (t26 != null) {
+              t26 = '$t26;${filters[j].id}';
+            } else {
+              t26 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f2') {
+            if (f2 != null) {
+              f2 = '$f2;${filters[j].id}';
+            } else {
+              f2 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f3') {
+            if (f3 != null) {
+              f3 = '$f3;${filters[j].id}';
+            } else {
+              f3 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f10') {
+            if (f10 != null) {
+              f10 = '$f10;${filters[j].id}';
+            } else {
+              f10 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f12') {
+            if (f12 != null) {
+              f12 = '$f12;${filters[j].id}';
+            } else {
+              f12 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 'f13') {
+            if (f13 != null) {
+              f13 = '$f13;${filters[j].id}';
+            } else {
+              f13 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 's61') {
+            if (s61 != null) {
+              s61 = '$s61;${filters[j].id}';
+            } else {
+              s61 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't1') {
+            if (t1 != null) {
+              t1 = '$t1;${filters[j].id}';
+            } else {
+              t1 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't4') {
+            if (t4 != null) {
+              t4 = '$t4;${filters[j].id}';
+            } else {
+              t4 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't9') {
+            if (t9 != null) {
+              t9 = '$t9;${filters[j].id}';
+            } else {
+              t9 = '${filters[j].id}';
+            }
+          }
+          if (filters[j].typeFilter == 't21') {
+            if (t21 != null) {
+              t21 = '$t21;${filters[j].id}';
+            } else {
+              t21 = '${filters[j].id}';
+            }
+          }
         }
       }
+
+      request = request.copyWith(
+        ct: ct,
+        t26: t26,
+        f2: f2,
+        f3: f3,
+        f10: f10,
+        f12: f12,
+        f13: f13,
+        s61: s61,
+        t1: t1,
+        t4: t4,
+        t9: t9,
+        t21: t21,
+        nav: 'page-1',
+      );
+
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: request,
+      );
 
       log(allSelectFilter.length.toString());
       emit(const CatalogState.load());
       emit(
         initState.copyWith(
+          products: catalogInfo.products,
+          request: request,
           selectFilter: selectFilter,
           allSelectFilter: allSelectFilter,
-          products: listProducts,
         ),
       );
     });
@@ -307,9 +528,22 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     DeleteCatalogFilterEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      String? ct;
+      String? t26;
+      String? f2;
+      String? f3;
+      String? f10;
+      String? f12;
+      String? f13;
+      String? s61;
+      String? t1;
+      String? t4;
+      String? t9;
+      String? t21;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
+      CatalogProductsRequest request = initState.request;
       List<ProductDataModel> listProducts = [];
 
       for (int i = 0; i < (selectFilter[event.key]?.length ?? 0); i++) {
@@ -325,24 +559,118 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             element.keys.first == event.key && element.values.first.value == event.item.value,
       );
 
-      listProducts = initState.products
-          .where(
-            (element) => element.catrgory != event.item.value,
-          )
-          .toList();
-
       if (allSelectFilter.isNotEmpty) {
         for (int i = 0; i < allSelectFilter.length; i++) {
-          for (int j = 0; j < initState.products.length; j++) {
-            if (allSelectFilter[i].values.first.value == initState.products[j].catrgory ||
-                allSelectFilter[i].values.first.value == initState.products[j].brend) {
-              listProducts.add(initState.products[j]);
+          if (allSelectFilter[i].values.first.typeFilter == 'ct') {
+            if (ct != null) {
+              ct = '$ct;${allSelectFilter[i].values.first.id}';
+            } else {
+              ct = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 't26') {
+            if (t26 != null) {
+              t26 = '$t26;${allSelectFilter[i].values.first.id}';
+            } else {
+              t26 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 'f2') {
+            if (f2 != null) {
+              f2 = '$f2;${allSelectFilter[i].values.first.id}';
+            } else {
+              f2 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 'f3') {
+            if (f3 != null) {
+              f3 = '$f3;${allSelectFilter[i].values.first.id}';
+            } else {
+              f3 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 'f10') {
+            if (f10 != null) {
+              f10 = '$f10;${allSelectFilter[i].values.first.id}';
+            } else {
+              f10 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 'f12') {
+            if (f12 != null) {
+              f12 = '$f12;${allSelectFilter[i].values.first.id}';
+            } else {
+              f12 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 'f13') {
+            if (f13 != null) {
+              f13 = '$f13;${allSelectFilter[i].values.first.id}';
+            } else {
+              f13 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 's61') {
+            if (s61 != null) {
+              s61 = '$s61;${allSelectFilter[i].values.first.id}';
+            } else {
+              s61 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 't1') {
+            if (t1 != null) {
+              t1 = '$t1;${allSelectFilter[i].values.first.id}';
+            } else {
+              t1 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 't4') {
+            if (t4 != null) {
+              t4 = '$t4;${allSelectFilter[i].values.first.id}';
+            } else {
+              t4 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 't9') {
+            if (t9 != null) {
+              t9 = '$t9;${allSelectFilter[i].values.first.id}';
+            } else {
+              t9 = '${allSelectFilter[i].values.first.id}';
+            }
+          }
+          if (allSelectFilter[i].values.first.typeFilter == 't21') {
+            if (t21 != null) {
+              t21 = '$t21;${allSelectFilter[i].values.first.id}';
+            } else {
+              t21 = '${allSelectFilter[i].values.first.id}';
             }
           }
         }
       } else {
         listProducts = initState.defaultProducts;
       }
+
+      request = request.copyWith(
+        ct: ct,
+        t26: t26,
+        f2: f2,
+        f3: f3,
+        f10: f10,
+        f12: f12,
+        f13: f13,
+        s61: s61,
+        t1: t1,
+        t4: t4,
+        t9: t9,
+        t21: t21,
+        nav: 'page-1',
+      );
+
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: request,
+      );
+
+      listProducts = catalogInfo.products;
 
       log(allSelectFilter.length.toString());
       emit(const CatalogState.load());
@@ -351,20 +679,25 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           selectFilter: selectFilter,
           allSelectFilter: allSelectFilter,
           products: listProducts,
+          request: request,
         ),
       );
     });
   }
 
-  Future<void> _addProductToSoppingCart(
+  Future<void> _addFavouriteProduct(
     AddFavouriteProductCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
       _catalogRepository.addFavouritesProduct(event.product);
       final favouritesProducts = _catalogRepository.getFavouritesProducts();
+      List<int> favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
       emit(const CatalogState.load());
-      emit(initState.copyWith(favouritesProducts: favouritesProducts));
+      emit(initState.copyWith(
+        favouritesProducts: favouritesProducts,
+        favouritesProductsId: favouritesProductsId,
+      ));
     });
   }
 
@@ -375,8 +708,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     state.mapOrNull(preloadDataCompleted: (initState) {
       _catalogRepository.deleteFavouritesProduct(event.index);
       final favouritesProducts = _catalogRepository.getFavouritesProducts();
+      List<int> favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
       emit(const CatalogState.load());
-      emit(initState.copyWith(favouritesProducts: favouritesProducts));
+      emit(initState.copyWith(
+        favouritesProducts: favouritesProducts,
+        favouritesProductsId: favouritesProductsId,
+      ));
     });
   }
 
@@ -385,13 +722,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      CatalogProductsRequest request = initState.request;
       List<ProductDataModel> products = initState.products.toList();
-      final productsList = await _catalogRepository.getProducts();
-      for (int i = event.offset; i < productsList.length; i++) {
-        products.add(productsList[i]);
-      }
 
-      emit(initState.copyWith(products: products));
+      request = request.copyWith(nav: 'page-${event.offset}');
+
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: request,
+      );
+
+      products = [...products, ...catalogInfo.products];
+
+      emit(initState.copyWith(
+        products: products,
+        request: request,
+      ));
     });
   }
 
@@ -510,6 +855,78 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           brands: brands,
         ),
       );
+    });
+  }
+
+  Future<void> _getInfoProducts(
+    GetInfoProductsCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(const CatalogState.load());
+      List<FilterInfoDataModel> filter = [];
+      CatalogProductsRequest request = CatalogProductsRequest(
+        auth: 1,
+        tel: '79156706966',
+        url: event.path,
+        sort: 'n',
+      );
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: request,
+      );
+
+      if (catalogInfo.filter.ct.id.isNotEmpty) {
+        filter.add(catalogInfo.filter.ct);
+      }
+      if (catalogInfo.filter.f3.id.isNotEmpty) {
+        filter.add(catalogInfo.filter.f3);
+      }
+      if (catalogInfo.filter.t21.id.isNotEmpty) {
+        filter.add(catalogInfo.filter.t21);
+      }
+      if (catalogInfo.filter.f2.id.isNotEmpty) {
+        filter.add(catalogInfo.filter.f2);
+      }
+      if (catalogInfo.filter.t1.id.isNotEmpty) {
+        filter.add(catalogInfo.filter.t1);
+      }
+
+      emit(initState.copyWith(
+        filter: filter,
+        request: request,
+        catalogInfo: catalogInfo,
+        products: catalogInfo.products,
+        defaultProducts: catalogInfo.products,
+      ));
+    });
+  }
+
+  Future<void> _sortProducts(
+    SortProductsCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      String sort = '';
+      if (event.value == 'Сначала новинки') {
+        sort = 'n';
+      } else if (event.value == 'По убыванию цены') {
+        sort = 'pd';
+      } else {
+        sort = 'pu';
+      }
+      CatalogProductsRequest request = initState.request;
+      request = request.copyWith(
+        sort: sort,
+        nav: 'page-1',
+      );
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: request,
+      );
+
+      emit(initState.copyWith(
+        request: request,
+        products: catalogInfo.products,
+      ));
     });
   }
 }

@@ -109,11 +109,14 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                 price: 50000,
                 brend: _selectedColor['title'],
                 lensDiameter: 0,
-                templeLength: null,
+                templeLength: 0,
                 country: '',
                 images: [],
                 variants: [],
                 color: _selectedColor['color'],
+                yourPrice: 0,
+                maximumCashback: 0,
+                maximumPersonalDiscount: 0,
               );
               context.navigateTo(
                 ShoppingCartAutoRouterRoute(

@@ -8,3 +8,4 @@ export 'drop_down/drop_down_data_model.dart';
 export 'order/index.dart';
 export 'main/index.dart';
 export 'brands/index.dart';
+export 'catalog/index.dart';

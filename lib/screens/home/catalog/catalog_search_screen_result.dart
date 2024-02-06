@@ -239,7 +239,9 @@ class CatalogSearchResultScreen extends StatelessWidget {
                       imageUrl: initState.searchProducts[index].images[0],
                       brend: initState.searchProducts[index].brend,
                       catrgory: initState.searchProducts[index].catrgory,
+                      yourPrice: initState.searchProducts[index].yourPrice.toString(),
                       price: initState.searchProducts[index].price.toString(),
+                      maximumCashback: initState.searchProducts[index].maximumCashback.toString(),
                       onAddFavouriteProduct: () {
                         context.read<CatalogBloc>().add(
                               CatalogEvent.addFavouriteProduct(

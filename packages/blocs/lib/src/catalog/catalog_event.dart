@@ -56,4 +56,10 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.switchTypePeople({
     required int selectIndexType,
   }) = SwitchTypePeopleCatalogEvent;
+  const factory CatalogEvent.getInfoProducts({
+    required String path,
+  }) = GetInfoProductsCatalogEvent;
+  const factory CatalogEvent.sortProducts({
+    required String value,
+  }) = SortProductsCatalogEvent;
 }

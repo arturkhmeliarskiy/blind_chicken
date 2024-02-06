@@ -3,6 +3,7 @@ part of 'catalog_bloc.dart';
 @freezed
 class CatalogState with _$CatalogState {
   const factory CatalogState.init() = InitCatalogState;
+  const factory CatalogState.upload() = UploadCatalogState;
   const factory CatalogState.load() = LoadingCatalogState;
   const factory CatalogState.preloadDataCompleted({
     required List<String> allBrands,
@@ -12,10 +13,13 @@ class CatalogState with _$CatalogState {
     required List<ProductDataModel> defaultProducts,
     required List<ProductDataModel> products,
     required List<ProductDataModel> favouritesProducts,
+    required List<int> favouritesProductsId,
     required List<FilterInfoDataModel> filter,
     required Map<int, List<FilterItemDataModel>> selectFilter,
     required List<Map<int, FilterItemDataModel>> allSelectFilter,
     required List<MenuItemDataModel> pathMenu,
     required List<MainCategoryModel> category,
+    required CatalogProductsRequest request,
+    CatalogDataModel? catalogInfo,
   }) = PreloadDataCompletedCatalogState;
 }

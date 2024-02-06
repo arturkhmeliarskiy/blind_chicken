@@ -1,0 +1,410 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'catalog_response.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+CatalogResponse _$CatalogResponseFromJson(Map<String, dynamic> json) {
+  return _CatalogResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$CatalogResponse {
+  String? get userDiscount => throw _privateConstructorUsedError;
+  BreadcrumbsResponse? get breadcrumbs => throw _privateConstructorUsedError;
+  String? get h1 => throw _privateConstructorUsedError;
+  String? get count => throw _privateConstructorUsedError;
+  SectionsResponse? get sections => throw _privateConstructorUsedError;
+  String? get countFilter => throw _privateConstructorUsedError;
+  FilterCatalogResponse? get filter => throw _privateConstructorUsedError;
+  List<CatalogProductResponse>? get products =>
+      throw _privateConstructorUsedError;
+  String? get r => throw _privateConstructorUsedError;
+  String? get e => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CatalogResponseCopyWith<CatalogResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CatalogResponseCopyWith<$Res> {
+  factory $CatalogResponseCopyWith(
+          CatalogResponse value, $Res Function(CatalogResponse) then) =
+      _$CatalogResponseCopyWithImpl<$Res, CatalogResponse>;
+  @useResult
+  $Res call(
+      {String? userDiscount,
+      BreadcrumbsResponse? breadcrumbs,
+      String? h1,
+      String? count,
+      SectionsResponse? sections,
+      String? countFilter,
+      FilterCatalogResponse? filter,
+      List<CatalogProductResponse>? products,
+      String? r,
+      String? e});
+
+  $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs;
+  $SectionsResponseCopyWith<$Res>? get sections;
+  $FilterCatalogResponseCopyWith<$Res>? get filter;
+}
+
+/// @nodoc
+class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
+    implements $CatalogResponseCopyWith<$Res> {
+  _$CatalogResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userDiscount = freezed,
+    Object? breadcrumbs = freezed,
+    Object? h1 = freezed,
+    Object? count = freezed,
+    Object? sections = freezed,
+    Object? countFilter = freezed,
+    Object? filter = freezed,
+    Object? products = freezed,
+    Object? r = freezed,
+    Object? e = freezed,
+  }) {
+    return _then(_value.copyWith(
+      userDiscount: freezed == userDiscount
+          ? _value.userDiscount
+          : userDiscount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breadcrumbs: freezed == breadcrumbs
+          ? _value.breadcrumbs
+          : breadcrumbs // ignore: cast_nullable_to_non_nullable
+              as BreadcrumbsResponse?,
+      h1: freezed == h1
+          ? _value.h1
+          : h1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sections: freezed == sections
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as SectionsResponse?,
+      countFilter: freezed == countFilter
+          ? _value.countFilter
+          : countFilter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      filter: freezed == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as FilterCatalogResponse?,
+      products: freezed == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<CatalogProductResponse>?,
+      r: freezed == r
+          ? _value.r
+          : r // ignore: cast_nullable_to_non_nullable
+              as String?,
+      e: freezed == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs {
+    if (_value.breadcrumbs == null) {
+      return null;
+    }
+
+    return $BreadcrumbsResponseCopyWith<$Res>(_value.breadcrumbs!, (value) {
+      return _then(_value.copyWith(breadcrumbs: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SectionsResponseCopyWith<$Res>? get sections {
+    if (_value.sections == null) {
+      return null;
+    }
+
+    return $SectionsResponseCopyWith<$Res>(_value.sections!, (value) {
+      return _then(_value.copyWith(sections: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterCatalogResponseCopyWith<$Res>? get filter {
+    if (_value.filter == null) {
+      return null;
+    }
+
+    return $FilterCatalogResponseCopyWith<$Res>(_value.filter!, (value) {
+      return _then(_value.copyWith(filter: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$CatalogResponseImplCopyWith<$Res>
+    implements $CatalogResponseCopyWith<$Res> {
+  factory _$$CatalogResponseImplCopyWith(_$CatalogResponseImpl value,
+          $Res Function(_$CatalogResponseImpl) then) =
+      __$$CatalogResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String? userDiscount,
+      BreadcrumbsResponse? breadcrumbs,
+      String? h1,
+      String? count,
+      SectionsResponse? sections,
+      String? countFilter,
+      FilterCatalogResponse? filter,
+      List<CatalogProductResponse>? products,
+      String? r,
+      String? e});
+
+  @override
+  $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs;
+  @override
+  $SectionsResponseCopyWith<$Res>? get sections;
+  @override
+  $FilterCatalogResponseCopyWith<$Res>? get filter;
+}
+
+/// @nodoc
+class __$$CatalogResponseImplCopyWithImpl<$Res>
+    extends _$CatalogResponseCopyWithImpl<$Res, _$CatalogResponseImpl>
+    implements _$$CatalogResponseImplCopyWith<$Res> {
+  __$$CatalogResponseImplCopyWithImpl(
+      _$CatalogResponseImpl _value, $Res Function(_$CatalogResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userDiscount = freezed,
+    Object? breadcrumbs = freezed,
+    Object? h1 = freezed,
+    Object? count = freezed,
+    Object? sections = freezed,
+    Object? countFilter = freezed,
+    Object? filter = freezed,
+    Object? products = freezed,
+    Object? r = freezed,
+    Object? e = freezed,
+  }) {
+    return _then(_$CatalogResponseImpl(
+      userDiscount: freezed == userDiscount
+          ? _value.userDiscount
+          : userDiscount // ignore: cast_nullable_to_non_nullable
+              as String?,
+      breadcrumbs: freezed == breadcrumbs
+          ? _value.breadcrumbs
+          : breadcrumbs // ignore: cast_nullable_to_non_nullable
+              as BreadcrumbsResponse?,
+      h1: freezed == h1
+          ? _value.h1
+          : h1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sections: freezed == sections
+          ? _value.sections
+          : sections // ignore: cast_nullable_to_non_nullable
+              as SectionsResponse?,
+      countFilter: freezed == countFilter
+          ? _value.countFilter
+          : countFilter // ignore: cast_nullable_to_non_nullable
+              as String?,
+      filter: freezed == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as FilterCatalogResponse?,
+      products: freezed == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<CatalogProductResponse>?,
+      r: freezed == r
+          ? _value.r
+          : r // ignore: cast_nullable_to_non_nullable
+              as String?,
+      e: freezed == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$CatalogResponseImpl extends _CatalogResponse {
+  _$CatalogResponseImpl(
+      {this.userDiscount,
+      this.breadcrumbs,
+      this.h1,
+      this.count,
+      this.sections,
+      this.countFilter,
+      this.filter,
+      final List<CatalogProductResponse>? products,
+      this.r,
+      this.e})
+      : _products = products,
+        super._();
+
+  factory _$CatalogResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CatalogResponseImplFromJson(json);
+
+  @override
+  final String? userDiscount;
+  @override
+  final BreadcrumbsResponse? breadcrumbs;
+  @override
+  final String? h1;
+  @override
+  final String? count;
+  @override
+  final SectionsResponse? sections;
+  @override
+  final String? countFilter;
+  @override
+  final FilterCatalogResponse? filter;
+  final List<CatalogProductResponse>? _products;
+  @override
+  List<CatalogProductResponse>? get products {
+    final value = _products;
+    if (value == null) return null;
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? r;
+  @override
+  final String? e;
+
+  @override
+  String toString() {
+    return 'CatalogResponse(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CatalogResponseImpl &&
+            (identical(other.userDiscount, userDiscount) ||
+                other.userDiscount == userDiscount) &&
+            (identical(other.breadcrumbs, breadcrumbs) ||
+                other.breadcrumbs == breadcrumbs) &&
+            (identical(other.h1, h1) || other.h1 == h1) &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.sections, sections) ||
+                other.sections == sections) &&
+            (identical(other.countFilter, countFilter) ||
+                other.countFilter == countFilter) &&
+            (identical(other.filter, filter) || other.filter == filter) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            (identical(other.r, r) || other.r == r) &&
+            (identical(other.e, e) || other.e == e));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      userDiscount,
+      breadcrumbs,
+      h1,
+      count,
+      sections,
+      countFilter,
+      filter,
+      const DeepCollectionEquality().hash(_products),
+      r,
+      e);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CatalogResponseImplCopyWith<_$CatalogResponseImpl> get copyWith =>
+      __$$CatalogResponseImplCopyWithImpl<_$CatalogResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CatalogResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _CatalogResponse extends CatalogResponse {
+  factory _CatalogResponse(
+      {final String? userDiscount,
+      final BreadcrumbsResponse? breadcrumbs,
+      final String? h1,
+      final String? count,
+      final SectionsResponse? sections,
+      final String? countFilter,
+      final FilterCatalogResponse? filter,
+      final List<CatalogProductResponse>? products,
+      final String? r,
+      final String? e}) = _$CatalogResponseImpl;
+  _CatalogResponse._() : super._();
+
+  factory _CatalogResponse.fromJson(Map<String, dynamic> json) =
+      _$CatalogResponseImpl.fromJson;
+
+  @override
+  String? get userDiscount;
+  @override
+  BreadcrumbsResponse? get breadcrumbs;
+  @override
+  String? get h1;
+  @override
+  String? get count;
+  @override
+  SectionsResponse? get sections;
+  @override
+  String? get countFilter;
+  @override
+  FilterCatalogResponse? get filter;
+  @override
+  List<CatalogProductResponse>? get products;
+  @override
+  String? get r;
+  @override
+  String? get e;
+  @override
+  @JsonKey(ignore: true)
+  _$$CatalogResponseImplCopyWith<_$CatalogResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

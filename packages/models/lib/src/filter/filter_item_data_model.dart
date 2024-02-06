@@ -8,5 +8,6 @@ class FilterItemDataModel with _$FilterItemDataModel {
   factory FilterItemDataModel({
     required int id,
     required String value,
+    required String typeFilter,
   }) = _FilterItemDataModel;
 }

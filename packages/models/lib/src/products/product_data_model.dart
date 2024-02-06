@@ -12,12 +12,15 @@ class ProductDataModel with _$ProductDataModel {
     required String catrgory,
     required List<int> size,
     required int price,
+    required int yourPrice,
     required String brend,
     required int lensDiameter,
-    required int? templeLength,
+    required int templeLength,
     required String country,
     required List<String> images,
     required List<String> variants,
+    required int maximumCashback,
+    required int maximumPersonalDiscount,
     Color? color,
   }) = _ProductDataModel;
 }

@@ -9,6 +9,7 @@ class FilterInfoDataModel with _$FilterInfoDataModel {
   factory FilterInfoDataModel({
     required String id,
     required String title,
+    required String typeFilter,
     required bool isSearch,
     required List<FilterItemDataModel> items,
   }) = _FilterInfoDataModel;

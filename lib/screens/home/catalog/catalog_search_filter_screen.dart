@@ -105,6 +105,7 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                                           FilterItemDataModel(
                                             id: 0,
                                             value: '',
+                                            typeFilter: '',
                                           ),
                                     ),
                                   );

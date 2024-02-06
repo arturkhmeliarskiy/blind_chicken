@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FilterItemDataModel {
   int get id => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
+  String get typeFilter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FilterItemDataModelCopyWith<FilterItemDataModel> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $FilterItemDataModelCopyWith<$Res> {
           FilterItemDataModel value, $Res Function(FilterItemDataModel) then) =
       _$FilterItemDataModelCopyWithImpl<$Res, FilterItemDataModel>;
   @useResult
-  $Res call({int id, String value});
+  $Res call({int id, String value, String typeFilter});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$FilterItemDataModelCopyWithImpl<$Res, $Val extends FilterItemDataModel>
   $Res call({
     Object? id = null,
     Object? value = null,
+    Object? typeFilter = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -57,6 +59,10 @@ class _$FilterItemDataModelCopyWithImpl<$Res, $Val extends FilterItemDataModel>
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeFilter: null == typeFilter
+          ? _value.typeFilter
+          : typeFilter // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -70,7 +76,7 @@ abstract class _$$FilterItemDataModelImplCopyWith<$Res>
       __$$FilterItemDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String value});
+  $Res call({int id, String value, String typeFilter});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$FilterItemDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? value = null,
+    Object? typeFilter = null,
   }) {
     return _then(_$FilterItemDataModelImpl(
       id: null == id
@@ -96,6 +103,10 @@ class __$$FilterItemDataModelImplCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
+      typeFilter: null == typeFilter
+          ? _value.typeFilter
+          : typeFilter // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -103,17 +114,20 @@ class __$$FilterItemDataModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FilterItemDataModelImpl extends _FilterItemDataModel {
-  _$FilterItemDataModelImpl({required this.id, required this.value})
+  _$FilterItemDataModelImpl(
+      {required this.id, required this.value, required this.typeFilter})
       : super._();
 
   @override
   final int id;
   @override
   final String value;
+  @override
+  final String typeFilter;
 
   @override
   String toString() {
-    return 'FilterItemDataModel(id: $id, value: $value)';
+    return 'FilterItemDataModel(id: $id, value: $value, typeFilter: $typeFilter)';
   }
 
   @override
@@ -122,11 +136,13 @@ class _$FilterItemDataModelImpl extends _FilterItemDataModel {
         (other.runtimeType == runtimeType &&
             other is _$FilterItemDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.typeFilter, typeFilter) ||
+                other.typeFilter == typeFilter));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, value);
+  int get hashCode => Object.hash(runtimeType, id, value, typeFilter);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +155,16 @@ class _$FilterItemDataModelImpl extends _FilterItemDataModel {
 abstract class _FilterItemDataModel extends FilterItemDataModel {
   factory _FilterItemDataModel(
       {required final int id,
-      required final String value}) = _$FilterItemDataModelImpl;
+      required final String value,
+      required final String typeFilter}) = _$FilterItemDataModelImpl;
   _FilterItemDataModel._() : super._();
 
   @override
   int get id;
   @override
   String get value;
+  @override
+  String get typeFilter;
   @override
   @JsonKey(ignore: true)
   _$$FilterItemDataModelImplCopyWith<_$FilterItemDataModelImpl> get copyWith =>

@@ -369,7 +369,10 @@ class _SaleScreenState extends State<SaleScreen> {
                                 imageUrl: initState.products[index].images[0],
                                 brend: initState.products[index].brend,
                                 catrgory: initState.products[index].catrgory,
+                                yourPrice: initState.products[index].yourPrice.toString(),
                                 price: initState.products[index].price.toString(),
+                                maximumCashback:
+                                    initState.favouritesProducts[index].maximumCashback.toString(),
                               );
                             },
                           );

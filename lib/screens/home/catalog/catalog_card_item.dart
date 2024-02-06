@@ -10,7 +10,9 @@ class CatalogCardItem extends StatefulWidget {
     required this.imageUrl,
     required this.brend,
     required this.catrgory,
+    required this.yourPrice,
     required this.price,
+    required this.maximumCashback,
     required this.onSelect,
     required this.onAddFavouriteProduct,
     required this.onDeleteFavouriteProduct,
@@ -20,7 +22,9 @@ class CatalogCardItem extends StatefulWidget {
   final String imageUrl;
   final String brend;
   final String catrgory;
+  final String yourPrice;
   final String price;
+  final String maximumCashback;
   final bool isLike;
   final VoidCallback onSelect;
   final VoidCallback onAddFavouriteProduct;
@@ -124,7 +128,7 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
           ),
           RichText(
             text: TextSpan(
-              text: (int.parse(widget.price) - 100).toString().spaceSeparateNumbers(),
+              text: widget.yourPrice.spaceSeparateNumbers(),
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
@@ -158,7 +162,7 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                   style: Theme.of(context).textTheme.bodyMedium,
                   children: <TextSpan>[
                     TextSpan(
-                      text: '9 492 ₽',
+                      text: '${widget.maximumCashback.spaceSeparateNumbers()} ₽',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
