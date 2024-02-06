@@ -13,7 +13,7 @@ class CatalogDataModel with _$CatalogDataModel {
     required String count,
     required SectionsDataModel sections,
     required String countFilter,
-    required FilterCatalogDataModel filter,
+    required List<FilterInfoDataModel> filter,
     required List<ProductDataModel> products,
     required String r,
     required String e,

@@ -22,7 +22,7 @@ mixin _$CatalogDataModel {
   String get count => throw _privateConstructorUsedError;
   SectionsDataModel get sections => throw _privateConstructorUsedError;
   String get countFilter => throw _privateConstructorUsedError;
-  FilterCatalogDataModel get filter => throw _privateConstructorUsedError;
+  List<FilterInfoDataModel> get filter => throw _privateConstructorUsedError;
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
@@ -45,14 +45,13 @@ abstract class $CatalogDataModelCopyWith<$Res> {
       String count,
       SectionsDataModel sections,
       String countFilter,
-      FilterCatalogDataModel filter,
+      List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
       String e});
 
   $BreadcrumbsDataModelCopyWith<$Res> get breadcrumbs;
   $SectionsDataModelCopyWith<$Res> get sections;
-  $FilterCatalogDataModelCopyWith<$Res> get filter;
 }
 
 /// @nodoc
@@ -107,7 +106,7 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
       filter: null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as FilterCatalogDataModel,
+              as List<FilterInfoDataModel>,
       products: null == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -138,14 +137,6 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
       return _then(_value.copyWith(sections: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterCatalogDataModelCopyWith<$Res> get filter {
-    return $FilterCatalogDataModelCopyWith<$Res>(_value.filter, (value) {
-      return _then(_value.copyWith(filter: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -163,7 +154,7 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
       String count,
       SectionsDataModel sections,
       String countFilter,
-      FilterCatalogDataModel filter,
+      List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
       String e});
@@ -172,8 +163,6 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
   $BreadcrumbsDataModelCopyWith<$Res> get breadcrumbs;
   @override
   $SectionsDataModelCopyWith<$Res> get sections;
-  @override
-  $FilterCatalogDataModelCopyWith<$Res> get filter;
 }
 
 /// @nodoc
@@ -224,9 +213,9 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
           : countFilter // ignore: cast_nullable_to_non_nullable
               as String,
       filter: null == filter
-          ? _value.filter
+          ? _value._filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as FilterCatalogDataModel,
+              as List<FilterInfoDataModel>,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -253,11 +242,12 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       required this.count,
       required this.sections,
       required this.countFilter,
-      required this.filter,
+      required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required this.r,
       required this.e})
-      : _products = products,
+      : _filter = filter,
+        _products = products,
         super._();
 
   @override
@@ -272,8 +262,14 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
   final SectionsDataModel sections;
   @override
   final String countFilter;
+  final List<FilterInfoDataModel> _filter;
   @override
-  final FilterCatalogDataModel filter;
+  List<FilterInfoDataModel> get filter {
+    if (_filter is EqualUnmodifiableListView) return _filter;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_filter);
+  }
+
   final List<ProductDataModel> _products;
   @override
   List<ProductDataModel> get products {
@@ -307,7 +303,7 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
                 other.sections == sections) &&
             (identical(other.countFilter, countFilter) ||
                 other.countFilter == countFilter) &&
-            (identical(other.filter, filter) || other.filter == filter) &&
+            const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e));
@@ -322,7 +318,7 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       count,
       sections,
       countFilter,
-      filter,
+      const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
       e);
@@ -343,7 +339,7 @@ abstract class _CatalogDataModel extends CatalogDataModel {
       required final String count,
       required final SectionsDataModel sections,
       required final String countFilter,
-      required final FilterCatalogDataModel filter,
+      required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required final String r,
       required final String e}) = _$CatalogDataModelImpl;
@@ -362,7 +358,7 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   @override
   String get countFilter;
   @override
-  FilterCatalogDataModel get filter;
+  List<FilterInfoDataModel> get filter;
   @override
   List<ProductDataModel> get products;
   @override

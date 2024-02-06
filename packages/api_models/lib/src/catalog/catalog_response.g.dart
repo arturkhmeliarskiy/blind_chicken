@@ -20,10 +20,7 @@ _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
           ? null
           : SectionsResponse.fromJson(json['sections'] as Map<String, dynamic>),
       countFilter: json['countFilter'] as String?,
-      filter: json['filter'] == null
-          ? null
-          : FilterCatalogResponse.fromJson(
-              json['filter'] as Map<String, dynamic>),
+      filter: _convertFilter(json['filter']),
       products: (json['products'] as List<dynamic>?)
           ?.map(
               (e) => CatalogProductResponse.fromJson(e as Map<String, dynamic>))

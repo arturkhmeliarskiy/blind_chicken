@@ -86,10 +86,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       builder: (context, state) {
                         return state.maybeMap(
                           preloadDataCompleted: (initState) {
-                            List<String> listCategory = initState.catalogInfo?.filter.ct.items
-                                    .map((item) => item.value)
-                                    .toList() ??
-                                [];
+                            List<String> listCategory =
+                                initState.catalogInfo?.filter.map((item) => item.title).toList() ??
+                                    [];
                             List<String> listItems = [
                               initState.catalogInfo?.h1 ?? '',
                               ...listCategory

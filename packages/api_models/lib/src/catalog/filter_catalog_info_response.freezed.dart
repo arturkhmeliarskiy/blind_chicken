@@ -23,6 +23,7 @@ FilterCatalogInfoResponse _$FilterCatalogInfoResponseFromJson(
 mixin _$FilterCatalogInfoResponse {
   List<VResponse>? get v => throw _privateConstructorUsedError;
   String? get n => throw _privateConstructorUsedError;
+  String? get typeFilter => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $FilterCatalogInfoResponseCopyWith<$Res> {
           $Res Function(FilterCatalogInfoResponse) then) =
       _$FilterCatalogInfoResponseCopyWithImpl<$Res, FilterCatalogInfoResponse>;
   @useResult
-  $Res call({List<VResponse>? v, String? n});
+  $Res call({List<VResponse>? v, String? n, String? typeFilter});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$FilterCatalogInfoResponseCopyWithImpl<$Res,
   $Res call({
     Object? v = freezed,
     Object? n = freezed,
+    Object? typeFilter = freezed,
   }) {
     return _then(_value.copyWith(
       v: freezed == v
@@ -64,6 +66,10 @@ class _$FilterCatalogInfoResponseCopyWithImpl<$Res,
       n: freezed == n
           ? _value.n
           : n // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeFilter: freezed == typeFilter
+          ? _value.typeFilter
+          : typeFilter // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -78,7 +84,7 @@ abstract class _$$FilterCatalogInfoResponseImplCopyWith<$Res>
       __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<VResponse>? v, String? n});
+  $Res call({List<VResponse>? v, String? n, String? typeFilter});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? v = freezed,
     Object? n = freezed,
+    Object? typeFilter = freezed,
   }) {
     return _then(_$FilterCatalogInfoResponseImpl(
       v: freezed == v
@@ -106,6 +113,10 @@ class __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>
           ? _value.n
           : n // ignore: cast_nullable_to_non_nullable
               as String?,
+      typeFilter: freezed == typeFilter
+          ? _value.typeFilter
+          : typeFilter // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -113,7 +124,8 @@ class __$$FilterCatalogInfoResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FilterCatalogInfoResponseImpl extends _FilterCatalogInfoResponse {
-  _$FilterCatalogInfoResponseImpl({final List<VResponse>? v, this.n})
+  _$FilterCatalogInfoResponseImpl(
+      {final List<VResponse>? v, this.n, this.typeFilter})
       : _v = v,
         super._();
 
@@ -132,10 +144,12 @@ class _$FilterCatalogInfoResponseImpl extends _FilterCatalogInfoResponse {
 
   @override
   final String? n;
+  @override
+  final String? typeFilter;
 
   @override
   String toString() {
-    return 'FilterCatalogInfoResponse(v: $v, n: $n)';
+    return 'FilterCatalogInfoResponse(v: $v, n: $n, typeFilter: $typeFilter)';
   }
 
   @override
@@ -144,13 +158,15 @@ class _$FilterCatalogInfoResponseImpl extends _FilterCatalogInfoResponse {
         (other.runtimeType == runtimeType &&
             other is _$FilterCatalogInfoResponseImpl &&
             const DeepCollectionEquality().equals(other._v, _v) &&
-            (identical(other.n, n) || other.n == n));
+            (identical(other.n, n) || other.n == n) &&
+            (identical(other.typeFilter, typeFilter) ||
+                other.typeFilter == typeFilter));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_v), n);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_v), n, typeFilter);
 
   @JsonKey(ignore: true)
   @override
@@ -170,7 +186,8 @@ class _$FilterCatalogInfoResponseImpl extends _FilterCatalogInfoResponse {
 abstract class _FilterCatalogInfoResponse extends FilterCatalogInfoResponse {
   factory _FilterCatalogInfoResponse(
       {final List<VResponse>? v,
-      final String? n}) = _$FilterCatalogInfoResponseImpl;
+      final String? n,
+      final String? typeFilter}) = _$FilterCatalogInfoResponseImpl;
   _FilterCatalogInfoResponse._() : super._();
 
   factory _FilterCatalogInfoResponse.fromJson(Map<String, dynamic> json) =
@@ -180,6 +197,8 @@ abstract class _FilterCatalogInfoResponse extends FilterCatalogInfoResponse {
   List<VResponse>? get v;
   @override
   String? get n;
+  @override
+  String? get typeFilter;
   @override
   @JsonKey(ignore: true)
   _$$FilterCatalogInfoResponseImplCopyWith<_$FilterCatalogInfoResponseImpl>

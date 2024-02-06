@@ -1,5 +1,7 @@
+import 'dart:developer';
+
+import 'package:api_models/api_models.dart';
 import 'package:api_models/src/catalog/breadcrumbs_response.dart';
-import 'package:api_models/src/catalog/filter_catalog_response.dart';
 import 'package:api_models/src/catalog/sections_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -18,10 +20,30 @@ class CatalogResponse with _$CatalogResponse {
     String? count,
     SectionsResponse? sections,
     String? countFilter,
-    FilterCatalogResponse? filter,
+    @JsonKey(
+      name: 'filter',
+      fromJson: _convertFilter,
+    )
+    List<FilterCatalogInfoResponse>? filter,
     List<CatalogProductResponse>? products,
     String? r,
     String? e,
   }) = _CatalogResponse;
   factory CatalogResponse.fromJson(Map<String, dynamic> json) => _$CatalogResponseFromJson(json);
+}
+
+List<FilterCatalogInfoResponse> _convertFilter(dynamic json) {
+  List<FilterCatalogInfoResponse> listFilters = [];
+  List<dynamic> keysList = Map.of(json).keys.toList();
+  Map value = Map.of(json);
+  for (int i = 0; i < keysList.length; i++) {
+    listFilters.add(
+      FilterCatalogInfoResponse.fromJson(
+        value[keysList[i]],
+      ).copyWith(
+        typeFilter: keysList[i],
+      ),
+    );
+  }
+  return listFilters;
 }

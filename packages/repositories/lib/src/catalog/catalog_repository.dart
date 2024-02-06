@@ -227,188 +227,23 @@ extension on CatalogResponse {
         ),
       ),
       countFilter: '',
-      filter: FilterCatalogDataModel(
-        ct: FilterInfoDataModel(
-          id: filter?.ct?.v?.isNotEmpty ?? false ? 'ct' : '',
-          title: filter?.ct?.n ?? '',
-          isSearch: false,
-          typeFilter: 'ct',
-          items: List<FilterItemDataModel>.from(
-            filter?.ct?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 'ct',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        f3: FilterInfoDataModel(
-          id: filter?.f3?.v?.isNotEmpty ?? false ? 'f3' : '',
-          title: filter?.f3?.n ?? '',
-          isSearch: true,
-          typeFilter: 'f3',
-          items: List<FilterItemDataModel>.from(
-            filter?.f3?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 'f3',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        t21: FilterInfoDataModel(
-          id: filter?.t21?.v?.isNotEmpty ?? false ? 't21' : '',
-          title: filter?.t21?.n ?? '',
-          isSearch: false,
-          typeFilter: 't21',
-          items: List<FilterItemDataModel>.from(
-            filter?.t21?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 't21',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        f2: FilterInfoDataModel(
-          id: filter?.f2?.v?.isNotEmpty ?? false ? 'f2' : '',
-          title: filter?.f2?.n ?? '',
-          isSearch: false,
-          typeFilter: 'f2',
-          items: List<FilterItemDataModel>.from(
-            filter?.f2?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 'f2',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        t1: FilterInfoDataModel(
-          id: filter?.t1?.v?.isNotEmpty ?? false ? 't1' : '',
-          title: filter?.t1?.n ?? '',
-          isSearch: true,
-          typeFilter: 't1',
-          items: List<FilterItemDataModel>.from(
-            filter?.t1?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 't1',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        f10: FilterInfoDataModel(
-          id: filter?.f10?.v?.isNotEmpty ?? false ? 'f10' : '',
-          title: filter?.f10?.n ?? '',
-          isSearch: false,
-          typeFilter: 'f10',
-          items: List<FilterItemDataModel>.from(
-            filter?.f10?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 'f10',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        f12: FilterInfoDataModel(
-          id: filter?.f12?.v?.isNotEmpty ?? false ? 'f12' : '',
-          title: filter?.f12?.n ?? '',
-          isSearch: true,
-          typeFilter: 'f12',
-          items: List<FilterItemDataModel>.from(
-            filter?.f10?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 'f12',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        f13: FilterInfoDataModel(
-          id: filter?.f13?.v?.isNotEmpty ?? false ? 'f13' : '',
-          title: filter?.f13?.n ?? '',
-          isSearch: true,
-          typeFilter: 'f13',
-          items: List<FilterItemDataModel>.from(
-            filter?.f13?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 'f13',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        t4: FilterInfoDataModel(
-          id: filter?.t4?.v?.isNotEmpty ?? false ? 't4' : '',
-          title: filter?.t4?.n ?? '',
-          isSearch: false,
-          typeFilter: 't4',
-          items: List<FilterItemDataModel>.from(
-            filter?.t4?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 't4',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-        t9: FilterInfoDataModel(
-          id: filter?.t9?.v?.isNotEmpty ?? false ? 't9' : '',
-          title: filter?.t9?.n ?? '',
-          isSearch: false,
-          typeFilter: 't9',
-          items: List<FilterItemDataModel>.from(
-            filter?.t9?.v
-                    ?.map(
-                      (item) => FilterItemDataModel(
-                        id: int.parse(item.id ?? '0'),
-                        value: item.n ?? '',
-                        typeFilter: 't9',
-                      ),
-                    )
-                    .toList() ??
-                <FilterItemDataModel>[],
-          ),
-        ),
-      ),
+      filter: List<FilterInfoDataModel>.from(filter?.map((item) {
+            return FilterInfoDataModel(
+              id: item.n ?? '',
+              title: item.n ?? '',
+              typeFilter: item.n ?? '',
+              isSearch: (item.v?.length ?? 0) > 10,
+              items: item.v?.map((element) {
+                    return FilterItemDataModel(
+                      id: int.parse(element.id ?? '0'),
+                      value: element.n ?? '',
+                      typeFilter: item.typeFilter ?? '',
+                    );
+                  }).toList() ??
+                  [],
+            );
+          }) ??
+          []),
       products: List<ProductDataModel>.from(products?.map(
             (item) => ProductDataModel(
               id: int.parse(item.c ?? '0'),

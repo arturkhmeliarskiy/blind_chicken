@@ -13,6 +13,7 @@ _$FilterCatalogInfoResponseImpl _$$FilterCatalogInfoResponseImplFromJson(
           ?.map((e) => VResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       n: json['n'] as String?,
+      typeFilter: json['typeFilter'] as String?,
     );
 
 Map<String, dynamic> _$$FilterCatalogInfoResponseImplToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$FilterCatalogInfoResponseImplToJson(
     <String, dynamic>{
       'v': instance.v,
       'n': instance.n,
+      'typeFilter': instance.typeFilter,
     };

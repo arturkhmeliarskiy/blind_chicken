@@ -324,6 +324,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       emit(initState.copyWith(
         selectFilter: selectFilter,
+        filter: catalogInfo.filter,
         allSelectFilter: allSelectFilter,
         products: catalogInfo.products,
         catalogInfo: catalogInfo,
@@ -518,6 +519,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(const CatalogState.load());
       emit(
         initState.copyWith(
+          filter: catalogInfo.filter,
           products: catalogInfo.products,
           request: request,
           selectFilter: selectFilter,
@@ -680,6 +682,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(const CatalogState.load());
       emit(
         initState.copyWith(
+          filter: catalogInfo.filter,
           selectFilter: selectFilter,
           allSelectFilter: allSelectFilter,
           products: listProducts,
@@ -869,7 +872,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const CatalogState.load());
-      List<FilterInfoDataModel> filter = [];
+
       CatalogProductsRequest request = CatalogProductsRequest(
         auth: 1,
         tel: '79156706966',
@@ -880,24 +883,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         request: request,
       );
 
-      if (catalogInfo.filter.ct.id.isNotEmpty) {
-        filter.add(catalogInfo.filter.ct);
-      }
-      if (catalogInfo.filter.f3.id.isNotEmpty) {
-        filter.add(catalogInfo.filter.f3);
-      }
-      if (catalogInfo.filter.t21.id.isNotEmpty) {
-        filter.add(catalogInfo.filter.t21);
-      }
-      if (catalogInfo.filter.f2.id.isNotEmpty) {
-        filter.add(catalogInfo.filter.f2);
-      }
-      if (catalogInfo.filter.t1.id.isNotEmpty) {
-        filter.add(catalogInfo.filter.t1);
-      }
-
       emit(initState.copyWith(
-        filter: filter,
+        filter: catalogInfo.filter,
         request: request,
         catalogInfo: catalogInfo,
         products: catalogInfo.products,

@@ -26,7 +26,9 @@ mixin _$CatalogResponse {
   String? get count => throw _privateConstructorUsedError;
   SectionsResponse? get sections => throw _privateConstructorUsedError;
   String? get countFilter => throw _privateConstructorUsedError;
-  FilterCatalogResponse? get filter => throw _privateConstructorUsedError;
+  @JsonKey(name: 'filter', fromJson: _convertFilter)
+  List<FilterCatalogInfoResponse>? get filter =>
+      throw _privateConstructorUsedError;
   List<CatalogProductResponse>? get products =>
       throw _privateConstructorUsedError;
   String? get r => throw _privateConstructorUsedError;
@@ -51,14 +53,14 @@ abstract class $CatalogResponseCopyWith<$Res> {
       String? count,
       SectionsResponse? sections,
       String? countFilter,
-      FilterCatalogResponse? filter,
+      @JsonKey(name: 'filter', fromJson: _convertFilter)
+      List<FilterCatalogInfoResponse>? filter,
       List<CatalogProductResponse>? products,
       String? r,
       String? e});
 
   $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs;
   $SectionsResponseCopyWith<$Res>? get sections;
-  $FilterCatalogResponseCopyWith<$Res>? get filter;
 }
 
 /// @nodoc
@@ -113,7 +115,7 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
       filter: freezed == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as FilterCatalogResponse?,
+              as List<FilterCatalogInfoResponse>?,
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
@@ -152,18 +154,6 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
       return _then(_value.copyWith(sections: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterCatalogResponseCopyWith<$Res>? get filter {
-    if (_value.filter == null) {
-      return null;
-    }
-
-    return $FilterCatalogResponseCopyWith<$Res>(_value.filter!, (value) {
-      return _then(_value.copyWith(filter: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -181,7 +171,8 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
       String? count,
       SectionsResponse? sections,
       String? countFilter,
-      FilterCatalogResponse? filter,
+      @JsonKey(name: 'filter', fromJson: _convertFilter)
+      List<FilterCatalogInfoResponse>? filter,
       List<CatalogProductResponse>? products,
       String? r,
       String? e});
@@ -190,8 +181,6 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
   $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs;
   @override
   $SectionsResponseCopyWith<$Res>? get sections;
-  @override
-  $FilterCatalogResponseCopyWith<$Res>? get filter;
 }
 
 /// @nodoc
@@ -242,9 +231,9 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
           : countFilter // ignore: cast_nullable_to_non_nullable
               as String?,
       filter: freezed == filter
-          ? _value.filter
+          ? _value._filter
           : filter // ignore: cast_nullable_to_non_nullable
-              as FilterCatalogResponse?,
+              as List<FilterCatalogInfoResponse>?,
       products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -271,11 +260,13 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       this.count,
       this.sections,
       this.countFilter,
-      this.filter,
+      @JsonKey(name: 'filter', fromJson: _convertFilter)
+      final List<FilterCatalogInfoResponse>? filter,
       final List<CatalogProductResponse>? products,
       this.r,
       this.e})
-      : _products = products,
+      : _filter = filter,
+        _products = products,
         super._();
 
   factory _$CatalogResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -293,8 +284,17 @@ class _$CatalogResponseImpl extends _CatalogResponse {
   final SectionsResponse? sections;
   @override
   final String? countFilter;
+  final List<FilterCatalogInfoResponse>? _filter;
   @override
-  final FilterCatalogResponse? filter;
+  @JsonKey(name: 'filter', fromJson: _convertFilter)
+  List<FilterCatalogInfoResponse>? get filter {
+    final value = _filter;
+    if (value == null) return null;
+    if (_filter is EqualUnmodifiableListView) return _filter;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<CatalogProductResponse>? _products;
   @override
   List<CatalogProductResponse>? get products {
@@ -330,7 +330,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
                 other.sections == sections) &&
             (identical(other.countFilter, countFilter) ||
                 other.countFilter == countFilter) &&
-            (identical(other.filter, filter) || other.filter == filter) &&
+            const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e));
@@ -346,7 +346,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       count,
       sections,
       countFilter,
-      filter,
+      const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
       e);
@@ -374,7 +374,8 @@ abstract class _CatalogResponse extends CatalogResponse {
       final String? count,
       final SectionsResponse? sections,
       final String? countFilter,
-      final FilterCatalogResponse? filter,
+      @JsonKey(name: 'filter', fromJson: _convertFilter)
+      final List<FilterCatalogInfoResponse>? filter,
       final List<CatalogProductResponse>? products,
       final String? r,
       final String? e}) = _$CatalogResponseImpl;
@@ -396,7 +397,8 @@ abstract class _CatalogResponse extends CatalogResponse {
   @override
   String? get countFilter;
   @override
-  FilterCatalogResponse? get filter;
+  @JsonKey(name: 'filter', fromJson: _convertFilter)
+  List<FilterCatalogInfoResponse>? get filter;
   @override
   List<CatalogProductResponse>? get products;
   @override

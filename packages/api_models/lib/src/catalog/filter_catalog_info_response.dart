@@ -10,6 +10,7 @@ class FilterCatalogInfoResponse with _$FilterCatalogInfoResponse {
   factory FilterCatalogInfoResponse({
     List<VResponse>? v,
     String? n,
+    String? typeFilter,
   }) = _FilterCatalogInfoResponse;
   factory FilterCatalogInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$FilterCatalogInfoResponseFromJson(json);
