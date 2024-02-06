@@ -50,12 +50,12 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                                   title: iniState.filter[index].title,
                                   filterItems: iniState.filter[index].items,
                                   selectFilter: iniState.selectFilter[index] ?? [],
-                                  onDelete: (indexItem) {
+                                  onDelete: (item, indexItem) {
                                     context.read<SearchBloc>().add(
                                           SearchEvent.deleteFilter(
                                             index: index,
                                             indexItem: indexItem,
-                                            item: (iniState.selectFilter[index] ?? [])[indexItem],
+                                            item: item,
                                           ),
                                         );
                                   },
@@ -75,12 +75,12 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                                   title: iniState.filter[index].title,
                                   filterItems: iniState.filter[index].items,
                                   selectFilter: iniState.selectFilter[index] ?? [],
-                                  onDelete: (indexItem) {
+                                  onDelete: (item, indexItem) {
                                     context.read<SearchBloc>().add(
                                           SearchEvent.deleteFilter(
                                             index: index,
                                             indexItem: indexItem,
-                                            item: (iniState.selectFilter[index] ?? [])[indexItem],
+                                            item: item,
                                           ),
                                         );
                                   },

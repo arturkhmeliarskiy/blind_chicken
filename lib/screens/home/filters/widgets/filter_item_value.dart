@@ -14,7 +14,7 @@ class FilterItemValue extends StatefulWidget {
   final bool isSelect;
   final FilterItemDataModel item;
   final ValueChanged<FilterItemDataModel> onSelect;
-  final VoidCallback onDelete;
+  final ValueChanged<FilterItemDataModel> onDelete;
 
   @override
   State<FilterItemValue> createState() => _FilterItemValueState();
@@ -22,6 +22,12 @@ class FilterItemValue extends StatefulWidget {
 
 class _FilterItemValueState extends State<FilterItemValue> {
   bool _isSelect = false;
+
+  @override
+  void initState() {
+    _isSelect = widget.isSelect;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +39,7 @@ class _FilterItemValueState extends State<FilterItemValue> {
         if (_isSelect) {
           widget.onSelect(widget.item);
         } else {
-          widget.onDelete();
+          widget.onDelete(widget.item);
         }
       },
       child: SizedBox(
@@ -57,7 +63,7 @@ class _FilterItemValueState extends State<FilterItemValue> {
                 if (_isSelect) {
                   widget.onSelect(widget.item);
                 } else {
-                  widget.onDelete();
+                  widget.onDelete(widget.item);
                 }
               },
             ),

@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/home/filters/widgets/blind_chicken_close_botton.dart';
 import 'package:blind_chicken/screens/home/filters/widgets/filter_item_value.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -21,7 +25,7 @@ class FilterSelectValueScreen extends StatefulWidget {
   final String title;
   final List<FilterItemDataModel> filterItems;
   final List<FilterItemDataModel> selectFilter;
-  final Function(int) onDelete;
+  final Function(FilterItemDataModel, int) onDelete;
   final Function(FilterItemDataModel, int) onSelect;
 
   @override
@@ -97,8 +101,8 @@ class _FilterSelectValueScreenState extends State<FilterSelectValueScreen> {
                 itemBuilder: (context, indexItem) {
                   return FilterItemValue(
                     item: widget.filterItems[indexItem],
-                    onDelete: () {
-                      widget.onDelete(indexItem);
+                    onDelete: (item) {
+                      widget.onDelete(item, indexItem);
                     },
                     onSelect: (item) {
                       widget.onSelect(item, indexItem);
@@ -107,7 +111,23 @@ class _FilterSelectValueScreenState extends State<FilterSelectValueScreen> {
                   );
                 },
               ),
-            )
+            ),
+            BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+              return state.maybeMap(
+                  preloadDataCompleted: (initState) {
+                    return BlindChickenFilterButton(
+                      onOpen: () {
+                        context.navigateTo(
+                          CatalogRoute(
+                            title: initState.title ?? '',
+                          ),
+                        );
+                      },
+                      countProducts: initState.catalogInfo?.count ?? '',
+                    );
+                  },
+                  orElse: () => const SizedBox());
+            }),
           ],
         ),
       ),

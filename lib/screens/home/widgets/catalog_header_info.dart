@@ -7,10 +7,14 @@ class CatalogHeaderInfo extends StatelessWidget {
     super.key,
     required this.onClose,
     required this.title,
+    this.isRemoveAllFilters = false,
+    this.onRemoveAllFilters,
   });
 
   final VoidCallback onClose;
   final String title;
+  final bool isRemoveAllFilters;
+  final VoidCallback? onRemoveAllFilters;
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +33,38 @@ class CatalogHeaderInfo extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              InkWell(
-                onTap: onClose,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 8,
-                    top: 8,
-                    bottom: 8,
+              Row(
+                children: [
+                  if (isRemoveAllFilters)
+                    GestureDetector(
+                      onTap: onRemoveAllFilters,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text(
+                          'Сбросить все',
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                decoration: TextDecoration.underline,
+                                color: BlindChickenColors.removeFilter,
+                              ),
+                        ),
+                      ),
+                    ),
+                  InkWell(
+                    onTap: onClose,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 8,
+                        top: 8,
+                        bottom: 8,
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/icons/x.svg',
+                        height: 21,
+                        width: 21,
+                      ),
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    'assets/icons/x.svg',
-                    height: 21,
-                    width: 21,
-                  ),
-                ),
+                ],
               )
             ],
           ),

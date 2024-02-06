@@ -21,7 +21,7 @@ class FavouritesFilterSelectValueScreen extends StatefulWidget {
   final String title;
   final List<FilterItemDataModel> filterItems;
   final List<FilterItemDataModel> selectFilter;
-  final Function(int) onDelete;
+  final Function(FilterItemDataModel, int) onDelete;
   final Function(FilterItemDataModel, int) onSelect;
 
   @override
@@ -98,8 +98,8 @@ class _FavouritesFilterSelectValueScreenState extends State<FavouritesFilterSele
                 itemBuilder: (context, indexItem) {
                   return FilterItemValue(
                     item: widget.filterItems[indexItem],
-                    onDelete: () {
-                      widget.onDelete(indexItem);
+                    onDelete: (item) {
+                      widget.onDelete(item, indexItem);
                     },
                     onSelect: (item) {
                       widget.onSelect(item, indexItem);

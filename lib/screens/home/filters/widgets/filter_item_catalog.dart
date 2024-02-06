@@ -10,12 +10,16 @@ class FilterItemCatalog extends StatefulWidget {
     required this.onTap,
     required this.selectFilter,
     required this.onRemove,
+    this.isRemoveAllFilters = false,
+    this.onRemoveAllFilters,
   });
 
   final String item;
   final VoidCallback onTap;
   final ValueChanged<int> onRemove;
   final List<FilterItemDataModel> selectFilter;
+  final bool isRemoveAllFilters;
+  final VoidCallback? onRemoveAllFilters;
 
   @override
   State<FilterItemCatalog> createState() => _FilterItemCatalogState();
@@ -42,8 +46,26 @@ class _FilterItemCatalogState extends State<FilterItemCatalog> {
                   widget.item,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
-                SvgPicture.asset(
-                  'assets/icons/chevron-right.svg',
+                Row(
+                  children: [
+                    if (widget.isRemoveAllFilters)
+                      GestureDetector(
+                        onTap: widget.onRemoveAllFilters,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 15),
+                          child: Text(
+                            'Сбросить',
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  decoration: TextDecoration.underline,
+                                  color: BlindChickenColors.removeFilter,
+                                ),
+                          ),
+                        ),
+                      ),
+                    SvgPicture.asset(
+                      'assets/icons/chevron-right.svg',
+                    ),
+                  ],
                 ),
               ],
             ),

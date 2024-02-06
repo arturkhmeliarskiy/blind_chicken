@@ -701,7 +701,10 @@ class FilterSelectValueSearchRoute
     required String title,
     required List<FilterItemDataModel> filterItems,
     required List<FilterItemDataModel> selectFilter,
-    required dynamic Function(int) onDelete,
+    required dynamic Function(
+      FilterItemDataModel,
+      int,
+    ) onDelete,
     required dynamic Function(
       FilterItemDataModel,
       int,
@@ -748,7 +751,10 @@ class FilterSelectValueSearchRouteArgs {
 
   final List<FilterItemDataModel> selectFilter;
 
-  final dynamic Function(int) onDelete;
+  final dynamic Function(
+    FilterItemDataModel,
+    int,
+  ) onDelete;
 
   final dynamic Function(
     FilterItemDataModel,
@@ -784,7 +790,10 @@ class FilterSelectValueRoute extends PageRouteInfo<FilterSelectValueRouteArgs> {
     required String title,
     required List<FilterItemDataModel> filterItems,
     required List<FilterItemDataModel> selectFilter,
-    required dynamic Function(int) onDelete,
+    required dynamic Function(
+      FilterItemDataModel,
+      int,
+    ) onDelete,
     required dynamic Function(
       FilterItemDataModel,
       int,
@@ -831,7 +840,10 @@ class FilterSelectValueRouteArgs {
 
   final List<FilterItemDataModel> selectFilter;
 
-  final dynamic Function(int) onDelete;
+  final dynamic Function(
+    FilterItemDataModel,
+    int,
+  ) onDelete;
 
   final dynamic Function(
     FilterItemDataModel,
@@ -1055,7 +1067,10 @@ class CatalogFilterSelectValueRoute
     required String title,
     required List<FilterItemDataModel> filterItems,
     required List<FilterItemDataModel> selectFilter,
-    required dynamic Function(int) onDelete,
+    required dynamic Function(
+      FilterItemDataModel,
+      int,
+    ) onDelete,
     required dynamic Function(
       FilterItemDataModel,
       int,
@@ -1102,7 +1117,10 @@ class CatalogFilterSelectValueRouteArgs {
 
   final List<FilterItemDataModel> selectFilter;
 
-  final dynamic Function(int) onDelete;
+  final dynamic Function(
+    FilterItemDataModel,
+    int,
+  ) onDelete;
 
   final dynamic Function(
     FilterItemDataModel,
@@ -1264,7 +1282,10 @@ class CatalogFilterSelectValueSearchRoute
     required String title,
     required List<FilterItemDataModel> filterItems,
     required List<FilterItemDataModel> selectFilter,
-    required dynamic Function(int) onDelete,
+    required dynamic Function(
+      FilterItemDataModel,
+      int,
+    ) onDelete,
     required dynamic Function(
       FilterItemDataModel,
       int,
@@ -1311,7 +1332,10 @@ class CatalogFilterSelectValueSearchRouteArgs {
 
   final List<FilterItemDataModel> selectFilter;
 
-  final dynamic Function(int) onDelete;
+  final dynamic Function(
+    FilterItemDataModel,
+    int,
+  ) onDelete;
 
   final dynamic Function(
     FilterItemDataModel,
@@ -1404,7 +1428,10 @@ class FavouritesFilterSelectValueRoute
     required String title,
     required List<FilterItemDataModel> filterItems,
     required List<FilterItemDataModel> selectFilter,
-    required dynamic Function(int) onDelete,
+    required dynamic Function(
+      FilterItemDataModel,
+      int,
+    ) onDelete,
     required dynamic Function(
       FilterItemDataModel,
       int,
@@ -1451,7 +1478,10 @@ class FavouritesFilterSelectValueRouteArgs {
 
   final List<FilterItemDataModel> selectFilter;
 
-  final dynamic Function(int) onDelete;
+  final dynamic Function(
+    FilterItemDataModel,
+    int,
+  ) onDelete;
 
   final dynamic Function(
     FilterItemDataModel,
@@ -1474,7 +1504,10 @@ class FavouritesFilterSelectValueSearchRoute
     required String title,
     required List<FilterItemDataModel> filterItems,
     required List<FilterItemDataModel> selectFilter,
-    required dynamic Function(int) onDelete,
+    required dynamic Function(
+      FilterItemDataModel,
+      int,
+    ) onDelete,
     required dynamic Function(
       FilterItemDataModel,
       int,
@@ -1521,7 +1554,10 @@ class FavouritesFilterSelectValueSearchRouteArgs {
 
   final List<FilterItemDataModel> selectFilter;
 
-  final dynamic Function(int) onDelete;
+  final dynamic Function(
+    FilterItemDataModel,
+    int,
+  ) onDelete;
 
   final dynamic Function(
     FilterItemDataModel,

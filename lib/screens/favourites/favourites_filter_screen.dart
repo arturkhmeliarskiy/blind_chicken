@@ -30,6 +30,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
               onClose: () {
                 context.popRoute();
               },
+              isRemoveAllFilters: false,
             ),
             Expanded(
               child: BlocBuilder<FavouritesBloc, FavouritesState>(
@@ -50,12 +51,12 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                                   title: iniState.filter[index].title,
                                   filterItems: iniState.filter[index].items,
                                   selectFilter: iniState.selectFilter[index] ?? [],
-                                  onDelete: (indexItem) {
+                                  onDelete: (item, indexItem) {
                                     context.read<FavouritesBloc>().add(
                                           FavouritesEvent.deleteFilter(
                                             index: index,
                                             indexItem: indexItem,
-                                            item: (iniState.selectFilter[index] ?? [])[indexItem],
+                                            item: item,
                                           ),
                                         );
                                   },
@@ -75,12 +76,12 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                                   title: iniState.filter[index].title,
                                   filterItems: iniState.filter[index].items,
                                   selectFilter: iniState.selectFilter[index] ?? [],
-                                  onDelete: (indexItem) {
+                                  onDelete: (item, indexItem) {
                                     context.read<FavouritesBloc>().add(
                                           FavouritesEvent.deleteFilter(
                                             index: index,
                                             indexItem: indexItem,
-                                            item: (iniState.selectFilter[index] ?? [])[indexItem],
+                                            item: item,
                                           ),
                                         );
                                   },

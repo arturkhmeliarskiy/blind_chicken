@@ -21,5 +21,6 @@ class CatalogState with _$CatalogState {
     required List<MainCategoryModel> category,
     required CatalogProductsRequest request,
     CatalogDataModel? catalogInfo,
+    String? title,
   }) = PreloadDataCompletedCatalogState;
 }

@@ -62,4 +62,8 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.sortProducts({
     required String value,
   }) = SortProductsCatalogEvent;
+  const factory CatalogEvent.removeSelectFilterCategory({
+    required int index,
+  }) = RemoveSelectFilterCategotyCatalogEvent;
+  const factory CatalogEvent.removeSelectAllFilters() = RemoveSelectAllFiltersCategotyCatalogEvent;
 }

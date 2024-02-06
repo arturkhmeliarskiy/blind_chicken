@@ -15,6 +15,7 @@ class BlindChickenColors {
   static const activeBorderTextField = Color(0xFF000000);
   static const activePageSelected = Color(0xFF4c4c4c);
   static const chatSubtitle = Color(0xFF222222);
+  static const removeFilter = Color(0xFF999999);
   static const lilac = Color(0xFFab98c6);
   static const green = Color(0xFFb1b94c);
   static const sun = Color(0xFFf2e04e);
