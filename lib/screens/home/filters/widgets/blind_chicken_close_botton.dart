@@ -41,7 +41,7 @@ class BlindChickenFilterButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Показать $countProducts тваров',
+                'Показать $countProducts товаров',
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
                       color: BlindChickenColors.backgroundColor,
                     ),
