@@ -879,6 +879,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         url: event.path,
         sort: 'n',
       );
+
       final catalogInfo = await _catalogRepository.getCatalogProducts(
         request: request,
       );
@@ -890,6 +891,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         products: catalogInfo.products,
         defaultProducts: catalogInfo.products,
         title: catalogInfo.h1,
+        selectFilter: {},
+        allSelectFilter: [],
       ));
     });
   }
