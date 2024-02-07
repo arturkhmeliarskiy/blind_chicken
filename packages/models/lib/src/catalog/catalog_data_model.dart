@@ -12,6 +12,8 @@ class CatalogDataModel with _$CatalogDataModel {
     required String h1,
     required String count,
     required SectionsDataModel sections,
+    required List<String> listNext,
+    required List<String> listPrev,
     required String countFilter,
     required List<FilterInfoDataModel> filter,
     required List<ProductDataModel> products,

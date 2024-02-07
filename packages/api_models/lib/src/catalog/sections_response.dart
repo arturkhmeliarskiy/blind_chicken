@@ -13,6 +13,8 @@ class SectionsResponse with _$SectionsResponse {
     PrevResponse? prev,
     @JsonKey(name: 'this') ThisResponse? thiss,
     NextResponse? next,
+    List<dynamic>? listPrev,
+    List<dynamic>? listNext,
   }) = _SectionsResponse;
   factory SectionsResponse.fromJson(Map<String, dynamic> json) => _$SectionsResponseFromJson(json);
 }

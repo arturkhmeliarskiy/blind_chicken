@@ -35,9 +35,9 @@ class FilterSelectValueScreen extends StatefulWidget {
 class _FilterSelectValueScreenState extends State<FilterSelectValueScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
             Container(
               height: 53.5,

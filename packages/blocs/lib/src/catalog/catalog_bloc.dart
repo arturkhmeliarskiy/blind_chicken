@@ -1072,6 +1072,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(initState.copyWith(
         selectFilter: selectFilter,
         allSelectFilter: allSelectFilter,
+        filter: catalogInfo.filter,
         catalogInfo: catalogInfo,
         products: listProducts,
       ));
@@ -1108,6 +1109,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(initState.copyWith(
         selectFilter: {},
         allSelectFilter: [],
+        filter: catalogInfo.filter,
         catalogInfo: catalogInfo,
         products: catalogInfo.products,
       ));

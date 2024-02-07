@@ -16,9 +16,7 @@ _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
               json['breadcrumbs'] as Map<String, dynamic>),
       h1: json['h1'] as String?,
       count: json['count'] as String?,
-      sections: json['sections'] == null
-          ? null
-          : SectionsResponse.fromJson(json['sections'] as Map<String, dynamic>),
+      sections: _convertSections(json['sections']),
       countFilter: json['countFilter'] as String?,
       filter: _convertFilter(json['filter']),
       products: (json['products'] as List<dynamic>?)

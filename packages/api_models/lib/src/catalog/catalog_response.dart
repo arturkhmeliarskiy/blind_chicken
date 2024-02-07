@@ -18,6 +18,10 @@ class CatalogResponse with _$CatalogResponse {
     BreadcrumbsResponse? breadcrumbs,
     String? h1,
     String? count,
+    @JsonKey(
+      name: 'sections',
+      fromJson: _convertSections,
+    )
     SectionsResponse? sections,
     String? countFilter,
     @JsonKey(
@@ -30,6 +34,15 @@ class CatalogResponse with _$CatalogResponse {
     String? e,
   }) = _CatalogResponse;
   factory CatalogResponse.fromJson(Map<String, dynamic> json) => _$CatalogResponseFromJson(json);
+}
+
+SectionsResponse _convertSections(dynamic json) {
+  Map value = Map.of(json);
+  SectionsResponse sections = SectionsResponse.fromJson(json).copyWith(
+    listNext: (value['next'] as Map).keys.toList(),
+    listPrev: (value['prev'] as Map).keys.toList(),
+  );
+  return sections;
 }
 
 List<FilterCatalogInfoResponse> _convertFilter(dynamic json) {

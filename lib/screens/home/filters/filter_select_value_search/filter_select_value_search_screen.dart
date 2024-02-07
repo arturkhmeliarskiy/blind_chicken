@@ -67,9 +67,9 @@ class _FilterSelectValueSearchScreenState extends State<FilterSelectValueSearchS
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
             Container(
               height: 53.5,

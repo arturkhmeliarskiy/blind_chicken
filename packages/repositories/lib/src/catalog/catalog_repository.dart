@@ -213,6 +213,8 @@ extension on CatalogResponse {
       ),
       h1: h1 ?? '',
       count: count ?? '',
+      listNext: sections?.listNext?.map((item) => item.toString()).toList() ?? [],
+      listPrev: sections?.listPrev?.map((item) => item.toString()).toList() ?? [],
       sections: SectionsDataModel(
         next: NextDataModel(
           frames: sections?.next?.frames ?? '',

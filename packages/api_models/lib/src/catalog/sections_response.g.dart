@@ -18,6 +18,8 @@ _$SectionsResponseImpl _$$SectionsResponseImplFromJson(
       next: json['next'] == null
           ? null
           : NextResponse.fromJson(json['next'] as Map<String, dynamic>),
+      listPrev: json['listPrev'] as List<dynamic>?,
+      listNext: json['listNext'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$$SectionsResponseImplToJson(
@@ -26,4 +28,6 @@ Map<String, dynamic> _$$SectionsResponseImplToJson(
       'prev': instance.prev,
       'this': instance.thiss,
       'next': instance.next,
+      'listPrev': instance.listPrev,
+      'listNext': instance.listNext,
     };

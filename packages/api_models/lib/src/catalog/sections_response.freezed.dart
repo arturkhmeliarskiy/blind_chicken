@@ -24,6 +24,8 @@ mixin _$SectionsResponse {
   @JsonKey(name: 'this')
   ThisResponse? get thiss => throw _privateConstructorUsedError;
   NextResponse? get next => throw _privateConstructorUsedError;
+  List<dynamic>? get listPrev => throw _privateConstructorUsedError;
+  List<dynamic>? get listNext => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,9 @@ abstract class $SectionsResponseCopyWith<$Res> {
   $Res call(
       {PrevResponse? prev,
       @JsonKey(name: 'this') ThisResponse? thiss,
-      NextResponse? next});
+      NextResponse? next,
+      List<dynamic>? listPrev,
+      List<dynamic>? listNext});
 
   $PrevResponseCopyWith<$Res>? get prev;
   $ThisResponseCopyWith<$Res>? get thiss;
@@ -63,6 +67,8 @@ class _$SectionsResponseCopyWithImpl<$Res, $Val extends SectionsResponse>
     Object? prev = freezed,
     Object? thiss = freezed,
     Object? next = freezed,
+    Object? listPrev = freezed,
+    Object? listNext = freezed,
   }) {
     return _then(_value.copyWith(
       prev: freezed == prev
@@ -77,6 +83,14 @@ class _$SectionsResponseCopyWithImpl<$Res, $Val extends SectionsResponse>
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
               as NextResponse?,
+      listPrev: freezed == listPrev
+          ? _value.listPrev
+          : listPrev // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      listNext: freezed == listNext
+          ? _value.listNext
+          : listNext // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
     ) as $Val);
   }
 
@@ -128,7 +142,9 @@ abstract class _$$SectionsResponseImplCopyWith<$Res>
   $Res call(
       {PrevResponse? prev,
       @JsonKey(name: 'this') ThisResponse? thiss,
-      NextResponse? next});
+      NextResponse? next,
+      List<dynamic>? listPrev,
+      List<dynamic>? listNext});
 
   @override
   $PrevResponseCopyWith<$Res>? get prev;
@@ -152,6 +168,8 @@ class __$$SectionsResponseImplCopyWithImpl<$Res>
     Object? prev = freezed,
     Object? thiss = freezed,
     Object? next = freezed,
+    Object? listPrev = freezed,
+    Object? listNext = freezed,
   }) {
     return _then(_$SectionsResponseImpl(
       prev: freezed == prev
@@ -166,6 +184,14 @@ class __$$SectionsResponseImplCopyWithImpl<$Res>
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
               as NextResponse?,
+      listPrev: freezed == listPrev
+          ? _value._listPrev
+          : listPrev // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
+      listNext: freezed == listNext
+          ? _value._listNext
+          : listNext // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>?,
     ));
   }
 }
@@ -174,8 +200,14 @@ class __$$SectionsResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SectionsResponseImpl extends _SectionsResponse {
   _$SectionsResponseImpl(
-      {this.prev, @JsonKey(name: 'this') this.thiss, this.next})
-      : super._();
+      {this.prev,
+      @JsonKey(name: 'this') this.thiss,
+      this.next,
+      final List<dynamic>? listPrev,
+      final List<dynamic>? listNext})
+      : _listPrev = listPrev,
+        _listNext = listNext,
+        super._();
 
   factory _$SectionsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$SectionsResponseImplFromJson(json);
@@ -187,10 +219,29 @@ class _$SectionsResponseImpl extends _SectionsResponse {
   final ThisResponse? thiss;
   @override
   final NextResponse? next;
+  final List<dynamic>? _listPrev;
+  @override
+  List<dynamic>? get listPrev {
+    final value = _listPrev;
+    if (value == null) return null;
+    if (_listPrev is EqualUnmodifiableListView) return _listPrev;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<dynamic>? _listNext;
+  @override
+  List<dynamic>? get listNext {
+    final value = _listNext;
+    if (value == null) return null;
+    if (_listNext is EqualUnmodifiableListView) return _listNext;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'SectionsResponse(prev: $prev, thiss: $thiss, next: $next)';
+    return 'SectionsResponse(prev: $prev, thiss: $thiss, next: $next, listPrev: $listPrev, listNext: $listNext)';
   }
 
   @override
@@ -200,12 +251,20 @@ class _$SectionsResponseImpl extends _SectionsResponse {
             other is _$SectionsResponseImpl &&
             (identical(other.prev, prev) || other.prev == prev) &&
             (identical(other.thiss, thiss) || other.thiss == thiss) &&
-            (identical(other.next, next) || other.next == next));
+            (identical(other.next, next) || other.next == next) &&
+            const DeepCollectionEquality().equals(other._listPrev, _listPrev) &&
+            const DeepCollectionEquality().equals(other._listNext, _listNext));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, prev, thiss, next);
+  int get hashCode => Object.hash(
+      runtimeType,
+      prev,
+      thiss,
+      next,
+      const DeepCollectionEquality().hash(_listPrev),
+      const DeepCollectionEquality().hash(_listNext));
 
   @JsonKey(ignore: true)
   @override
@@ -226,7 +285,9 @@ abstract class _SectionsResponse extends SectionsResponse {
   factory _SectionsResponse(
       {final PrevResponse? prev,
       @JsonKey(name: 'this') final ThisResponse? thiss,
-      final NextResponse? next}) = _$SectionsResponseImpl;
+      final NextResponse? next,
+      final List<dynamic>? listPrev,
+      final List<dynamic>? listNext}) = _$SectionsResponseImpl;
   _SectionsResponse._() : super._();
 
   factory _SectionsResponse.fromJson(Map<String, dynamic> json) =
@@ -239,6 +300,10 @@ abstract class _SectionsResponse extends SectionsResponse {
   ThisResponse? get thiss;
   @override
   NextResponse? get next;
+  @override
+  List<dynamic>? get listPrev;
+  @override
+  List<dynamic>? get listNext;
   @override
   @JsonKey(ignore: true)
   _$$SectionsResponseImplCopyWith<_$SectionsResponseImpl> get copyWith =>

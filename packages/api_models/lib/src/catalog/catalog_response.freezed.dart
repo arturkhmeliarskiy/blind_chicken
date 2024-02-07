@@ -24,6 +24,7 @@ mixin _$CatalogResponse {
   BreadcrumbsResponse? get breadcrumbs => throw _privateConstructorUsedError;
   String? get h1 => throw _privateConstructorUsedError;
   String? get count => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sections', fromJson: _convertSections)
   SectionsResponse? get sections => throw _privateConstructorUsedError;
   String? get countFilter => throw _privateConstructorUsedError;
   @JsonKey(name: 'filter', fromJson: _convertFilter)
@@ -51,6 +52,7 @@ abstract class $CatalogResponseCopyWith<$Res> {
       BreadcrumbsResponse? breadcrumbs,
       String? h1,
       String? count,
+      @JsonKey(name: 'sections', fromJson: _convertSections)
       SectionsResponse? sections,
       String? countFilter,
       @JsonKey(name: 'filter', fromJson: _convertFilter)
@@ -169,6 +171,7 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
       BreadcrumbsResponse? breadcrumbs,
       String? h1,
       String? count,
+      @JsonKey(name: 'sections', fromJson: _convertSections)
       SectionsResponse? sections,
       String? countFilter,
       @JsonKey(name: 'filter', fromJson: _convertFilter)
@@ -258,7 +261,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       this.breadcrumbs,
       this.h1,
       this.count,
-      this.sections,
+      @JsonKey(name: 'sections', fromJson: _convertSections) this.sections,
       this.countFilter,
       @JsonKey(name: 'filter', fromJson: _convertFilter)
       final List<FilterCatalogInfoResponse>? filter,
@@ -281,6 +284,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
   @override
   final String? count;
   @override
+  @JsonKey(name: 'sections', fromJson: _convertSections)
   final SectionsResponse? sections;
   @override
   final String? countFilter;
@@ -372,6 +376,7 @@ abstract class _CatalogResponse extends CatalogResponse {
       final BreadcrumbsResponse? breadcrumbs,
       final String? h1,
       final String? count,
+      @JsonKey(name: 'sections', fromJson: _convertSections)
       final SectionsResponse? sections,
       final String? countFilter,
       @JsonKey(name: 'filter', fromJson: _convertFilter)
@@ -393,6 +398,7 @@ abstract class _CatalogResponse extends CatalogResponse {
   @override
   String? get count;
   @override
+  @JsonKey(name: 'sections', fromJson: _convertSections)
   SectionsResponse? get sections;
   @override
   String? get countFilter;

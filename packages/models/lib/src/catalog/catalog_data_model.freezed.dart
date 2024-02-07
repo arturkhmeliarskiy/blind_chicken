@@ -21,6 +21,8 @@ mixin _$CatalogDataModel {
   String get h1 => throw _privateConstructorUsedError;
   String get count => throw _privateConstructorUsedError;
   SectionsDataModel get sections => throw _privateConstructorUsedError;
+  List<String> get listNext => throw _privateConstructorUsedError;
+  List<String> get listPrev => throw _privateConstructorUsedError;
   String get countFilter => throw _privateConstructorUsedError;
   List<FilterInfoDataModel> get filter => throw _privateConstructorUsedError;
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
@@ -44,6 +46,8 @@ abstract class $CatalogDataModelCopyWith<$Res> {
       String h1,
       String count,
       SectionsDataModel sections,
+      List<String> listNext,
+      List<String> listPrev,
       String countFilter,
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
@@ -72,6 +76,8 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
     Object? h1 = null,
     Object? count = null,
     Object? sections = null,
+    Object? listNext = null,
+    Object? listPrev = null,
     Object? countFilter = null,
     Object? filter = null,
     Object? products = null,
@@ -99,6 +105,14 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
               as SectionsDataModel,
+      listNext: null == listNext
+          ? _value.listNext
+          : listNext // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      listPrev: null == listPrev
+          ? _value.listPrev
+          : listPrev // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       countFilter: null == countFilter
           ? _value.countFilter
           : countFilter // ignore: cast_nullable_to_non_nullable
@@ -153,6 +167,8 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
       String h1,
       String count,
       SectionsDataModel sections,
+      List<String> listNext,
+      List<String> listPrev,
       String countFilter,
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
@@ -181,6 +197,8 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
     Object? h1 = null,
     Object? count = null,
     Object? sections = null,
+    Object? listNext = null,
+    Object? listPrev = null,
     Object? countFilter = null,
     Object? filter = null,
     Object? products = null,
@@ -208,6 +226,14 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
               as SectionsDataModel,
+      listNext: null == listNext
+          ? _value._listNext
+          : listNext // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      listPrev: null == listPrev
+          ? _value._listPrev
+          : listPrev // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       countFilter: null == countFilter
           ? _value.countFilter
           : countFilter // ignore: cast_nullable_to_non_nullable
@@ -241,12 +267,16 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       required this.h1,
       required this.count,
       required this.sections,
+      required final List<String> listNext,
+      required final List<String> listPrev,
       required this.countFilter,
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required this.r,
       required this.e})
-      : _filter = filter,
+      : _listNext = listNext,
+        _listPrev = listPrev,
+        _filter = filter,
         _products = products,
         super._();
 
@@ -260,6 +290,22 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
   final String count;
   @override
   final SectionsDataModel sections;
+  final List<String> _listNext;
+  @override
+  List<String> get listNext {
+    if (_listNext is EqualUnmodifiableListView) return _listNext;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listNext);
+  }
+
+  final List<String> _listPrev;
+  @override
+  List<String> get listPrev {
+    if (_listPrev is EqualUnmodifiableListView) return _listPrev;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listPrev);
+  }
+
   @override
   final String countFilter;
   final List<FilterInfoDataModel> _filter;
@@ -285,7 +331,7 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
 
   @override
   String toString() {
-    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
   }
 
   @override
@@ -301,6 +347,8 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
             (identical(other.count, count) || other.count == count) &&
             (identical(other.sections, sections) ||
                 other.sections == sections) &&
+            const DeepCollectionEquality().equals(other._listNext, _listNext) &&
+            const DeepCollectionEquality().equals(other._listPrev, _listPrev) &&
             (identical(other.countFilter, countFilter) ||
                 other.countFilter == countFilter) &&
             const DeepCollectionEquality().equals(other._filter, _filter) &&
@@ -317,6 +365,8 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       h1,
       count,
       sections,
+      const DeepCollectionEquality().hash(_listNext),
+      const DeepCollectionEquality().hash(_listPrev),
       countFilter,
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
@@ -338,6 +388,8 @@ abstract class _CatalogDataModel extends CatalogDataModel {
       required final String h1,
       required final String count,
       required final SectionsDataModel sections,
+      required final List<String> listNext,
+      required final List<String> listPrev,
       required final String countFilter,
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
@@ -355,6 +407,10 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   String get count;
   @override
   SectionsDataModel get sections;
+  @override
+  List<String> get listNext;
+  @override
+  List<String> get listPrev;
   @override
   String get countFilter;
   @override

@@ -86,13 +86,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       builder: (context, state) {
                         return state.maybeMap(
                           preloadDataCompleted: (initState) {
-                            List<String> listCategory =
-                                initState.catalogInfo?.filter.map((item) => item.title).toList() ??
-                                    [];
-                            List<String> listItems = [
-                              initState.catalogInfo?.h1 ?? '',
-                              ...listCategory
-                            ];
+                            List<String> listPrev = initState.catalogInfo?.listPrev ?? [];
+                            List<String> listNext = initState.catalogInfo?.listNext ?? [];
+                            List<String> listItems = [...listPrev, ...listNext];
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -156,12 +152,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         itemBuilder: (context, index) {
                                           return InkWell(
                                             onTap: () {
-                                              if (index == 0 && widget.isBack) {
+                                              if (listPrev.contains(listItems[index]) &&
+                                                  widget.isBack) {
                                                 context.back();
                                               }
                                             },
                                             child: Container(
-                                              padding: index == 0 && widget.isBack
+                                              padding: listPrev.contains(listItems[index]) &&
+                                                      widget.isBack
                                                   ? const EdgeInsets.only(
                                                       right: 14,
                                                       top: 7,
@@ -183,7 +181,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                               ),
                                               child: Row(
                                                 children: [
-                                                  if (index == 0 && widget.isBack)
+                                                  if (listPrev.contains(listItems[index]) &&
+                                                      widget.isBack)
                                                     SvgPicture.asset(
                                                       'assets/icons/chevron-left.svg',
                                                     ),
