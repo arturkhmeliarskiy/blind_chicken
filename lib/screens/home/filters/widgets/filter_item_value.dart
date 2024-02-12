@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class FilterItemValue extends StatefulWidget {
@@ -71,7 +72,7 @@ class _FilterItemValueState extends State<FilterItemValue> {
               maxLines: 1,
               text: TextSpan(
                 children: BlindChickenCheckWordStyle.textToWords(
-                  widget.item.value,
+                  Operators.operstors(widget.item.value),
                   context,
                 ),
               ),
