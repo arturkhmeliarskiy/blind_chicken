@@ -14,12 +14,14 @@ part 'catalog_state.dart';
 class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final CatalogRepository _catalogRepository;
   final ConstatntsInfo _constatntsInfo;
+  final UpdateDataService _updateDataService;
 
   StreamSubscription<dynamic>? otherBlocSubscription;
 
   CatalogBloc(
     this._catalogRepository,
     this._constatntsInfo,
+    this._updateDataService,
   ) : super(const CatalogState.init()) {
     on<CatalogEvent>((event, emit) => event.map<Future<void>>(
           preloadData: (event) => _init(event, emit),
@@ -38,6 +40,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           pathBrandMenu: (event) => _pathBrandMenu(event, emit),
           switchTypePeople: (event) => _switchTypePeople(event, emit),
           getInfoProducts: (event) => _getInfoProducts(event, emit),
+          getInfoProduct: (event) => _getInfoProduct(event, emit),
           sortProducts: (event) => _sortProducts(event, emit),
           removeSelectAllFilters: (event) => _removeSelectAllFilters(event, emit),
           removeSelectFilterCategory: (event) => _removeSelectFilterCategory(event, emit),
@@ -121,6 +124,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         category: _constatntsInfo.categoryWoman,
         allBrands: allBrands,
         request: CatalogProductsRequest(auth: 0, tel: '', url: ''),
+        listProdcutsAlso: [],
+        listProdcutsBrand: [],
+        listProdcutsStyle: [],
       ),
     );
   }
@@ -893,6 +899,56 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         title: catalogInfo.h1,
         selectFilter: {},
         allSelectFilter: [],
+      ));
+    });
+  }
+
+  Future<void> _getInfoProduct(
+    GetInfoProductCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(const CatalogState.load());
+
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        auth: 0,
+        tel: '79156706966',
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender,
+      );
+
+      final additionalProductsDescriptionStyle =
+          await _catalogRepository.getAdditionalProductsDescription(
+        auth: 0,
+        tel: '79156706966',
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender,
+        block: 'style',
+      );
+
+      final additionalProductsDescriptionAlso =
+          await _catalogRepository.getAdditionalProductsDescription(
+        auth: 0,
+        tel: '79156706966',
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender,
+        block: 'also',
+      );
+
+      final additionalProductsDescriptionBrand =
+          await _catalogRepository.getAdditionalProductsDescription(
+        auth: 0,
+        tel: '79156706966',
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender,
+        block: 'brand',
+      );
+
+      emit(initState.copyWith(
+        detailsProduct: detailsProduct,
+        listProdcutsStyle: additionalProductsDescriptionStyle.products,
+        listProdcutsAlso: additionalProductsDescriptionAlso.products,
+        listProdcutsBrand: additionalProductsDescriptionBrand.products,
       ));
     });
   }

@@ -134,4 +134,91 @@ class CatalogService {
     }
     return null;
   }
+
+  Future<DetailProductResponse?> getDetailsProduct({
+    required int auth,
+    required String token,
+    required String hashToken,
+    required String tel,
+    required String hashTokenTel,
+    required String code,
+  }) async {
+    DetailProductResponse? detailProductResponse;
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/cache/app/product.php',
+        data: {
+          "auth": auth,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "code": code,
+        },
+      );
+      log(response.data);
+
+      detailProductResponse = DetailProductResponse.fromJson(jsonDecode(response.data));
+
+      return detailProductResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+    }
+    return null;
+  }
+
+  Future<AdditionalProductsDescriptionResponse?> getAdditionalProductsDescription({
+    required int auth,
+    required String token,
+    required String hashToken,
+    required String tel,
+    required String hashTokenTel,
+    required String code,
+    required String block,
+  }) async {
+    AdditionalProductsDescriptionResponse? additionalProductsDescriptionResponse;
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/cache/app/product.php?block=$block',
+        data: {
+          "auth": auth,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "code": code,
+        },
+      );
+      log(response.data);
+
+      additionalProductsDescriptionResponse = AdditionalProductsDescriptionResponse.fromJson(
+        jsonDecode(
+          response.data,
+        ),
+      );
+
+      return additionalProductsDescriptionResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+    }
+    return null;
+  }
 }

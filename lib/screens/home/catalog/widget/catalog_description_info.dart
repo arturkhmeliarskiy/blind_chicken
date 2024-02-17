@@ -6,9 +6,11 @@ class CatalogDescriptionInfo extends StatefulWidget {
   const CatalogDescriptionInfo({
     super.key,
     required this.item,
+    required this.char,
   });
 
   final ProductDataModel item;
+  final List<CharProductDataModel> char;
 
   @override
   State<CatalogDescriptionInfo> createState() => _CatalogDescriptionInfoState();
@@ -22,68 +24,14 @@ class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(children: [
-          CatalogDescriptionInfoItem(
-            title: 'Бренд',
-            value: widget.item.brend,
-          ),
-          CatalogDescriptionInfoItem(
-            title: 'Диаметр линзы',
-            value: widget.item.lensDiameter.toString(),
-          ),
-          CatalogDescriptionInfoItem(
-            title: 'Длина заушника',
-            value: widget.item.templeLength.toString(),
-          ),
-          CatalogDescriptionInfoItem(
-            title: 'Материал оправы',
-            value: 'Титан',
-          ),
-          CatalogDescriptionInfoItem(
-            title: 'Наименование цвета',
-            value: 'Black Gold',
-          ),
-          if (_isWrap)
-            Column(
-              children: [
-                CatalogDescriptionInfoItem(
-                  title: 'Наименование цвета линз',
-                  value: 'Green Polarized',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Страна',
-                  value: widget.item.country.toString(),
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Тип тонировки линз',
-                  value: 'Однотонные; Поляризационные',
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Цвет',
-                  value: 'Золотой; Черный',
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Цвет линз',
-                  value: 'Зеленый',
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Ширина переносицы',
-                  value: '20',
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Код',
-                  value: '47692',
-                ),
-                CatalogDescriptionInfoItem(
-                  title: 'Артикул',
-                  value: 'Corsair',
-                ),
-              ],
-            ),
-        ]),
+        Column(
+            children:
+                List.generate(_isWrap ? widget.char.length : widget.char.length ~/ 2, (index) {
+          return CatalogDescriptionInfoItem(
+            title: widget.char[index].name,
+            value: widget.char[index].value,
+          );
+        })),
         const SizedBox(
           height: 10,
         ),

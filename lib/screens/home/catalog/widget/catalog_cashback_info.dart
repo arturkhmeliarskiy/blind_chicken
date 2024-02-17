@@ -4,7 +4,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogCashbackInfo extends StatefulWidget {
-  const CatalogCashbackInfo({super.key});
+  const CatalogCashbackInfo({
+    super.key,
+    required this.cashback,
+    required this.bonusYear,
+    required this.discountVal,
+    required this.bonusLoyal,
+    required this.bonusGift,
+  });
+
+  final String cashback;
+  final String bonusLoyal;
+  final String bonusGift;
+  final String bonusYear;
+  final String discountVal;
 
   @override
   State<CatalogCashbackInfo> createState() => _CatalogCashbackInfoState();
@@ -54,7 +67,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: '5 185',
+                        text: widget.cashback,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -95,7 +108,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                         style: Theme.of(context).textTheme.bodyMedium,
                         children: <TextSpan>[
                           TextSpan(
-                            text: '3 050 ₽',
+                            text: widget.bonusYear,
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -125,7 +138,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: '1 525',
+                        text: widget.discountVal,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -150,7 +163,12 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return const CatalogCashbackInfoModal();
+                  return CatalogCashbackInfoModal(
+                    bonusLoyal: widget.bonusLoyal,
+                    bonusYear: widget.bonusYear,
+                    discountVal: widget.discountVal,
+                    bonusGift: widget.bonusGift,
+                  );
                 },
               );
             },

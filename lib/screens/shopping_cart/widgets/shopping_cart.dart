@@ -53,7 +53,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CachedNetworkImage(
-                  imageUrl: widget.product.images[0],
+                  imageUrl: 'https://slepayakurica.ru/${widget.product.images[0]}',
                   height: 120,
                 ),
                 Padding(

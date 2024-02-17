@@ -12,6 +12,9 @@ class CatalogState with _$CatalogState {
     required List<MenuItemDataModel> menu,
     required List<ProductDataModel> defaultProducts,
     required List<ProductDataModel> products,
+    required List<ProductDataModel> listProdcutsStyle,
+    required List<ProductDataModel> listProdcutsAlso,
+    required List<ProductDataModel> listProdcutsBrand,
     required List<ProductDataModel> favouritesProducts,
     required List<int> favouritesProductsId,
     required List<FilterInfoDataModel> filter,
@@ -20,6 +23,7 @@ class CatalogState with _$CatalogState {
     required List<MenuItemDataModel> pathMenu,
     required List<MainCategoryModel> category,
     required CatalogProductsRequest request,
+    DetailProductDataModel? detailsProduct,
     CatalogDataModel? catalogInfo,
     String? title,
   }) = PreloadDataCompletedCatalogState;

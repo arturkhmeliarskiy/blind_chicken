@@ -5,6 +5,8 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -317,9 +319,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           (index) => ItemCatalogMenu(
                             item: initState.menu[index],
                             onTap: () {
+                              final data1 = GetIt.I.get<UpdateDataService>();
                               if (initState.menu[index].brand == 0 &&
                                   initState.menu[index].sub == 0 &&
                                   initState.menu[index].name != 'Подарочная карта') {
+                                data1.selectedIndexGender = (_selectIndexType + 1).toString();
                                 context.navigateTo(
                                   CatalogRoute(
                                     title: initState.menu[index].name,

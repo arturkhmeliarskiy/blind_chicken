@@ -22,9 +22,14 @@ Future<void> initShared(GetIt getIt) async {
       () => ConstatntsInfo(
         getIt.get<CatalogRepository>(),
       ),
+    )
+    ..registerSingleton(SharedPreferencesService())
+    ..registerSingleton(
+      UpdateDataService(),
     );
   // ..registerFactory(
   //   () => SberbankPaymentService(),
   // );
+  await getIt.get<SharedPreferencesService>().initialize();
   await getIt.get<ProductsFavouritesService>().initHave();
 }

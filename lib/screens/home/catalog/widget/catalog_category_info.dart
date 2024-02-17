@@ -1,16 +1,17 @@
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_category_info_title.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogCategoryInfo extends StatelessWidget {
-  const CatalogCategoryInfo({super.key, required this.categories});
+  const CatalogCategoryInfo({super.key, required this.sections});
 
-  final List<String> categories;
+  final List<SectionItemProductDataModel> sections;
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: List.generate(categories.length, (indexCategory) {
+      children: List.generate(sections.length, (indexCategory) {
         return Container(
             padding: const EdgeInsets.only(
               top: 7,
@@ -24,7 +25,7 @@ class CatalogCategoryInfo extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
             ),
             child: CatalogCategoryInfoTitle(
-              title: categories[indexCategory],
+              title: sections[indexCategory].n,
             ));
       }),
     );

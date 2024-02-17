@@ -2,3 +2,5 @@ export 'device_info_service.dart';
 export 'converter_service.dart';
 export 'products/index.dart';
 export 'sberbank_payment_service.dart';
+export 'update_data_service.dart';
+export 'shared_preferences_service.dart';

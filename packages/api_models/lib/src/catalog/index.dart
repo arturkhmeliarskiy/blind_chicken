@@ -8,3 +8,4 @@ export 'prev_response.dart';
 export 'sections_response.dart';
 export 'this_response.dart';
 export 'v_response.dart';
+export 'detail_product/index.dart';

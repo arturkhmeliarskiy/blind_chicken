@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:api_models/api_models.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:services/services.dart';
 import 'package:shared/shared.dart';
@@ -28,6 +29,7 @@ class CatalogRepository {
 
   Future<List<ProductDataModel>> getProducts() async {
     final listProducts = await _catalogService.getProducts();
+
     return listProducts.toProducts(listProducts);
   }
 
@@ -88,6 +90,60 @@ class CatalogRepository {
         ) ??
         CatalogResponse();
     return catalogProducts.toCatalogProducts();
+  }
+
+  Future<DetailProductDataModel> getDetailsProduct({
+    required int auth,
+    required String tel,
+    required String code,
+    required String genderIndex,
+  }) async {
+    final idDevice = await _deviceInfoService.getDeviceId();
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$idDevice");
+    final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+
+    log(idDevice);
+    log(hashToken);
+
+    final detailsProduct = await _catalogService.getDetailsProduct(
+          auth: auth,
+          token: idDevice,
+          hashToken: hashToken,
+          tel: tel,
+          hashTokenTel: hashTokenTel,
+          code: code,
+        ) ??
+        DetailProductResponse();
+
+    return detailsProduct.toDetailsProduct(genderIndex);
+  }
+
+  Future<AdditionalProductsDescriptionDataModel> getAdditionalProductsDescription({
+    required int auth,
+    required String tel,
+    required String code,
+    required String genderIndex,
+    required String block,
+  }) async {
+    final idDevice = await _deviceInfoService.getDeviceId();
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$idDevice");
+    final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+
+    log(idDevice);
+    log(hashToken);
+
+    final detailsProduct = await _catalogService.getAdditionalProductsDescription(
+          auth: auth,
+          token: idDevice,
+          hashToken: hashToken,
+          tel: tel,
+          hashTokenTel: hashTokenTel,
+          code: code,
+          block: block,
+        ) ??
+        AdditionalProductsDescriptionResponse();
+
+    return detailsProduct.toAdditionalProductsDescription();
   }
 }
 
@@ -267,6 +323,161 @@ extension on CatalogResponse {
           []),
       r: r ?? '',
       e: e ?? '',
+    );
+  }
+}
+
+extension on DetailProductResponse {
+  DetailProductDataModel toDetailsProduct(String genderIndex) {
+    return DetailProductDataModel(
+      code: code ?? 0,
+      photo: PhotoDataModel(
+        full: photo?.full ?? [],
+        mini: photo?.mini ?? [],
+        orig: photo?.orig ?? [],
+      ),
+      breadcrumb: List<BreacumbProductDataModel>.from(
+        breadcrumb?.map(
+              (item) => BreacumbProductDataModel(
+                name: item.name ?? '',
+                value: item.value ?? '',
+              ),
+            ) ??
+            [],
+      ),
+      brand: BrandProductDataModel(
+        id: brand?.id ?? '',
+        n: brand?.n ?? '',
+        u: brand?.u ?? '',
+      ),
+      category: CategoryProductDataModel(
+        id: category?.id ?? '',
+        n: category?.n ?? '',
+        u: category?.u ?? '',
+      ),
+      option: List<OptionProductDataModel>.from(
+        option?.map(
+              (item) => OptionProductDataModel(
+                c: item.c ?? '',
+                n: item.n ?? '',
+                f: item.f ?? '',
+                b: item.b ?? '',
+                ne: item.ne ?? '',
+                pr: item.pr ?? '',
+                u: item.u ?? '',
+                g: item.g ?? '',
+                ct: item.ct ?? '',
+              ),
+            ) ??
+            [],
+      ),
+      sku: List<SkuProductDataModel>.from(
+        sku?.map(
+              (item) => SkuProductDataModel(
+                id: item.id ?? '',
+                value: item.value ?? '',
+              ),
+            ) ??
+            [],
+      ),
+      stock: List<StockProductDataModel>.from(
+        stock?.map(
+              (item) => StockProductDataModel(
+                id: item.id ?? '',
+                list: item.list ?? [],
+              ),
+            ) ??
+            [],
+      ),
+      sections: _sections(sections ?? [], genderIndex),
+      place: PlaceProductDataModel(
+        b: place?.b ?? 0,
+        s: place?.s ?? 0,
+      ),
+      char: List<CharProductDataModel>.from(
+        char?.map(
+              (item) => CharProductDataModel(
+                name: item.name ?? '',
+                value: item.value ?? '',
+              ),
+            ) ??
+            [],
+      ),
+      text: text ?? '',
+      quantity: quantity ?? 0,
+      art: art ?? '',
+      userDiscount: userDiscount ?? 0,
+      price: PriceProductDataModel(
+        p: price?.p ?? '',
+        pb: price?.pb ?? '',
+        yourPrice: price?.pc ?? 0,
+        price: price?.pbc ?? 0,
+        bonusGift: price?.bonusGift ?? 0,
+        bonusYear: price?.bonusYear ?? 0,
+        discountVal: price?.discountVal ?? 0,
+        cashback: price?.cashback ?? 0,
+        bonusLoyal: price?.bonusLoyal ?? 0,
+      ),
+      r: r ?? '',
+      e: e ?? '',
+    );
+  }
+}
+
+List<SectionsProductDataModel> _sections(
+  List<SectionsProductResponse> sections,
+  String genderIndex,
+) {
+  List<SectionsProductDataModel> result = [];
+
+  for (int i = 0; i < sections.length; i++) {
+    if ((sections[i].name ?? '') == genderIndex) {
+      result.add(
+        SectionsProductDataModel(
+          name: sections[i].name ?? '',
+          list: List<SectionItemProductDataModel>.from(
+            sections[i].list?.map(
+                  (value) {
+                    return SectionItemProductDataModel(
+                      n: value.n ?? '',
+                      u: value.u ?? '',
+                    );
+                  },
+                ) ??
+                [],
+          ),
+        ),
+      );
+    }
+  }
+  return result;
+}
+
+extension on AdditionalProductsDescriptionResponse {
+  AdditionalProductsDescriptionDataModel toAdditionalProductsDescription() {
+    return AdditionalProductsDescriptionDataModel(
+      name: name ?? '',
+      products: List<ProductDataModel>.from(
+        products?.map((item) {
+              return ProductDataModel(
+                id: int.parse(item.c ?? '0'),
+                title: item.n ?? '',
+                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+                brend: item.b ?? '',
+                catrgory: item.n ?? '',
+                size: [],
+                lensDiameter: 0,
+                price: item.pbc ?? 0,
+                templeLength: 0,
+                country: '',
+                variants: [],
+                maximumCashback: item.ca ?? 0,
+                maximumPersonalDiscount: item.dv ?? 0,
+                yourPrice: item.pc ?? 0,
+              );
+            }) ??
+            [],
+      ),
     );
   }
 }

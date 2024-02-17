@@ -1,0 +1,14 @@
+export 'detail_product_data_model.dart';
+export 'photo_data_model.dart';
+export 'breacumb_product_data_model.dart';
+export 'category_product_data_model.dart';
+export 'option_product_data_model.dart';
+export 'sku_product_data_model.dart';
+export 'stock_product_data_model.dart';
+export 'place_product_data_model.dart';
+export 'char_product_data_model.dart';
+export 'price_product_data_model.dart';
+export 'brand_product_data_model.dart';
+export 'sections_product_data_model.dart';
+export 'section_item_product_data_model.dart';
+export 'additional_products_description_data_model.dart';

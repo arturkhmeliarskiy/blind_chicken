@@ -59,6 +59,9 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.getInfoProducts({
     required String path,
   }) = GetInfoProductsCatalogEvent;
+  const factory CatalogEvent.getInfoProduct({
+    required String code,
+  }) = GetInfoProductCatalogEvent;
   const factory CatalogEvent.sortProducts({
     required String value,
   }) = SortProductsCatalogEvent;

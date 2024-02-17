@@ -70,7 +70,7 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                     itemBuilder: (context, index) {
                       _position = _scrollController.position.pixels;
                       return CachedNetworkImage(
-                        imageUrl: widget.listImages[index],
+                        imageUrl: 'https://slepayakurica.ru/${widget.listImages[index]}',
                         width: MediaQuery.of(context).orientation == Orientation.portrait
                             ? width
                             : width / 2,

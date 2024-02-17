@@ -32,6 +32,7 @@ Future<void> initBloc(GetIt getIt) async {
       () => CatalogBloc(
         getIt.get<CatalogRepository>(),
         getIt.get<ConstatntsInfo>(),
+        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(

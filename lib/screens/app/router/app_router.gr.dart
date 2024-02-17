@@ -946,9 +946,9 @@ class CatalogSizeProductRoute
     extends PageRouteInfo<CatalogSizeProductRouteArgs> {
   CatalogSizeProductRoute({
     Key? key,
-    required void Function(String) onChange,
-    required List<String> listSizeProduct,
-    required String selectItem,
+    required void Function(SkuProductDataModel) onChange,
+    required List<SkuProductDataModel> listSizeProduct,
+    required SkuProductDataModel selectItem,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogSizeProductRoute.name,
@@ -977,11 +977,11 @@ class CatalogSizeProductRouteArgs {
 
   final Key? key;
 
-  final void Function(String) onChange;
+  final void Function(SkuProductDataModel) onChange;
 
-  final List<String> listSizeProduct;
+  final List<SkuProductDataModel> listSizeProduct;
 
-  final String selectItem;
+  final SkuProductDataModel selectItem;
 
   @override
   String toString() {

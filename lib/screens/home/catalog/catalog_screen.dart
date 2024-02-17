@@ -393,6 +393,11 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             );
                                       },
                                       onSelect: () {
+                                        context.read<CatalogBloc>().add(
+                                              const CatalogEvent.getInfoProduct(
+                                                code: '51643',
+                                              ),
+                                            );
                                         context.navigateTo(
                                           CatalogCardInfoRoute(
                                             item: initState.products[index],

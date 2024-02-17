@@ -7,7 +7,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogCashbackInfoModal extends StatefulWidget {
-  const CatalogCashbackInfoModal({super.key});
+  const CatalogCashbackInfoModal({
+    super.key,
+    required this.bonusYear,
+    required this.discountVal,
+    required this.bonusLoyal,
+    required this.bonusGift,
+  });
+
+  final String bonusLoyal;
+  final String bonusGift;
+  final String bonusYear;
+  final String discountVal;
 
   @override
   State<CatalogCashbackInfoModal> createState() => _CatalogCashbackInfoModalState();
@@ -123,7 +134,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                               ),
                             ),
                             Text(
-                              '366 ₽',
+                              '${widget.bonusLoyal} ₽',
                               style: Theme.of(context).textTheme.headline2?.copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -155,7 +166,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                   ),
                                 ),
                                 Text(
-                                  '523 ₽',
+                                  '${widget.bonusGift} ₽',
                                   style: Theme.of(context).textTheme.headline2?.copyWith(
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -198,7 +209,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                     style: Theme.of(context).textTheme.headline2,
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: '523 ₽',
+                                        text: '${widget.bonusYear} ₽',
                                         style: Theme.of(context).textTheme.headline2?.copyWith(
                                               fontWeight: FontWeight.w700,
                                             ),
@@ -245,7 +256,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                               ),
                             ),
                             Text(
-                              '275 ₽',
+                              '${widget.discountVal} ₽',
                               style: Theme.of(context).textTheme.headline2?.copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),

@@ -9,3 +9,4 @@ export 'sections_data_model.dart';
 export 'this_data_model.dart';
 export 'v_data_model.dart';
 export 'catalog_products_request.dart';
+export 'detail_product/index.dart';

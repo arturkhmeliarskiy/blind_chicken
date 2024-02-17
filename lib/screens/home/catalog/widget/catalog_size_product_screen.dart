@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/widgets/catalog_header_info.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -12,9 +13,9 @@ class CatalogSizeProductScreen extends StatefulWidget {
     required this.selectItem,
   });
 
-  final ValueChanged<String> onChange;
-  final List<String> listSizeProduct;
-  final String selectItem;
+  final ValueChanged<SkuProductDataModel> onChange;
+  final List<SkuProductDataModel> listSizeProduct;
+  final SkuProductDataModel selectItem;
 
   @override
   State<CatalogSizeProductScreen> createState() => _CatalogSizeProductScreenState();
@@ -22,7 +23,7 @@ class CatalogSizeProductScreen extends StatefulWidget {
 
 class _CatalogSizeProductScreenState extends State<CatalogSizeProductScreen> {
   int _selectIndex = 0;
-  List<String> _listSort = [];
+  List<SkuProductDataModel> _listSort = [];
 
   @override
   void initState() {
@@ -67,7 +68,7 @@ class _CatalogSizeProductScreenState extends State<CatalogSizeProductScreen> {
                           ? BlindChickenColors.backgroundColorItemFilter
                           : Colors.transparent,
                       child: Text(
-                        _listSort[index],
+                        _listSort[index].value,
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: _selectIndex == index ? FontWeight.w600 : FontWeight.w400,
                             ),
