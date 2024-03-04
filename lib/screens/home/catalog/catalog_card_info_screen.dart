@@ -600,9 +600,6 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                             return Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                const SizedBox(
-                                                  height: 40,
-                                                ),
                                                 Text(
                                                   'С этим товаром смотрят',
                                                   style: Theme.of(context)

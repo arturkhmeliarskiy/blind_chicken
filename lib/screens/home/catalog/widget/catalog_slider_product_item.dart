@@ -40,7 +40,6 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
     return InkWell(
       onTap: widget.onTap,
       child: Container(
-        height: 356,
         width: 140,
         margin: const EdgeInsets.only(right: 8),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

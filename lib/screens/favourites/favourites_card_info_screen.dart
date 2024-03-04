@@ -270,79 +270,88 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                   const SizedBox(
                                     height: 28,
                                   ),
-                                  Text(
-                                    'Размер',
-                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                          fontWeight: FontWeight.w700,
+                                  if (sky.isNotEmpty)
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Размер',
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
                                         ),
-                                  ),
-                                  const SizedBox(
-                                    height: 7,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      context.navigateTo(
-                                        CatalogSizeProductRoute(
-                                          onChange: (value) {
-                                            setState(() {
-                                              _size = value;
-                                            });
-                                            context.back();
+                                        const SizedBox(
+                                          height: 7,
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            context.navigateTo(
+                                              CatalogSizeProductRoute(
+                                                onChange: (value) {
+                                                  setState(() {
+                                                    _size = value;
+                                                  });
+                                                  context.back();
+                                                },
+                                                listSizeProduct: sky,
+                                                selectItem:
+                                                    _size.value.isNotEmpty ? _size : sky.first,
+                                              ),
+                                            );
                                           },
-                                          listSizeProduct: sky,
-                                          selectItem: _size.value.isNotEmpty ? _size : sky.first,
+                                          child: Container(
+                                            height: 37,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: BlindChickenColors.borderTextField,
+                                                ),
+                                                borderRadius: BorderRadius.circular(
+                                                  4,
+                                                )),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                    left: 10.5,
+                                                  ),
+                                                  child: Text(
+                                                    _size.value.isNotEmpty
+                                                        ? _size.value
+                                                        : (sky.isNotEmpty
+                                                                ? sky
+                                                                : [
+                                                                    SkuProductDataModel(
+                                                                      id: '',
+                                                                      value: '',
+                                                                    ),
+                                                                  ])
+                                                            .first
+                                                            .value,
+                                                    style:
+                                                        Theme.of(context).textTheme.displayMedium,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                    right: 8,
+                                                  ),
+                                                  child: SvgPicture.asset(
+                                                    'assets/icons/chevron-bottom.svg',
+                                                    height: 17.5,
+                                                    width: 17.5,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                      );
-                                    },
-                                    child: Container(
-                                      height: 37,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: BlindChickenColors.borderTextField,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            4,
-                                          )),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 10.5,
-                                            ),
-                                            child: Text(
-                                              _size.value.isNotEmpty
-                                                  ? _size.value
-                                                  : (sky.isNotEmpty
-                                                          ? sky
-                                                          : [
-                                                              SkuProductDataModel(
-                                                                id: '',
-                                                                value: '',
-                                                              ),
-                                                            ])
-                                                      .first
-                                                      .value,
-                                              style: Theme.of(context).textTheme.displayMedium,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              right: 8,
-                                            ),
-                                            child: SvgPicture.asset(
-                                              'assets/icons/chevron-bottom.svg',
-                                              height: 17.5,
-                                              width: 17.5,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
                                   BlindChickenButton(
                                     title:
                                         _isSoppingCart ? 'Перейти в корзину' : 'Добавить в карзину',
