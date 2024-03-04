@@ -20,45 +20,60 @@ mixin _$SearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,39 +81,63 @@ mixin _$SearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -162,17 +201,22 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return init();
   }
@@ -182,14 +226,19 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return init?.call();
   }
@@ -199,14 +248,19 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -220,14 +274,22 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return init(this);
   }
@@ -237,13 +299,21 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return init?.call(this);
   }
@@ -253,12 +323,20 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -339,17 +417,22 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return searchProfucts(query);
   }
@@ -359,14 +442,19 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return searchProfucts?.call(query);
   }
@@ -376,14 +464,19 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (searchProfucts != null) {
@@ -397,14 +490,22 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return searchProfucts(this);
   }
@@ -414,13 +515,21 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return searchProfucts?.call(this);
   }
@@ -430,12 +539,20 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (searchProfucts != null) {
@@ -453,6 +570,230 @@ abstract class ProfuctsSearchEvent implements SearchEvent {
   @JsonKey(ignore: true)
   _$$ProfuctsSearchEventImplCopyWith<_$ProfuctsSearchEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ProfuctsInfoSearchEventImplCopyWith<$Res> {
+  factory _$$ProfuctsInfoSearchEventImplCopyWith(
+          _$ProfuctsInfoSearchEventImpl value,
+          $Res Function(_$ProfuctsInfoSearchEventImpl) then) =
+      __$$ProfuctsInfoSearchEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$ProfuctsInfoSearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$ProfuctsInfoSearchEventImpl>
+    implements _$$ProfuctsInfoSearchEventImplCopyWith<$Res> {
+  __$$ProfuctsInfoSearchEventImplCopyWithImpl(
+      _$ProfuctsInfoSearchEventImpl _value,
+      $Res Function(_$ProfuctsInfoSearchEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$ProfuctsInfoSearchEventImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
+  const _$ProfuctsInfoSearchEventImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'SearchEvent.searchProfuctsInfo(query: $query)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ProfuctsInfoSearchEventImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProfuctsInfoSearchEventImplCopyWith<_$ProfuctsInfoSearchEventImpl>
+      get copyWith => __$$ProfuctsInfoSearchEventImplCopyWithImpl<
+          _$ProfuctsInfoSearchEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+  }) {
+    return searchProfuctsInfo(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+  }) {
+    return searchProfuctsInfo?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (searchProfuctsInfo != null) {
+      return searchProfuctsInfo(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+  }) {
+    return searchProfuctsInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+  }) {
+    return searchProfuctsInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (searchProfuctsInfo != null) {
+      return searchProfuctsInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProfuctsInfoSearchEvent implements SearchEvent {
+  const factory ProfuctsInfoSearchEvent(final String query) =
+      _$ProfuctsInfoSearchEventImpl;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$ProfuctsInfoSearchEventImplCopyWith<_$ProfuctsInfoSearchEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -552,17 +893,22 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -572,14 +918,19 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -589,14 +940,19 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -610,14 +966,22 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return selectFilter(this);
   }
@@ -627,13 +991,21 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return selectFilter?.call(this);
   }
@@ -643,12 +1015,20 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -769,17 +1149,22 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -789,14 +1174,19 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -806,14 +1196,19 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -827,14 +1222,22 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return deleteFilter(this);
   }
@@ -844,13 +1247,21 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return deleteFilter?.call(this);
   }
@@ -860,12 +1271,20 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -887,6 +1306,430 @@ abstract class DeleteFilterSearchEvent implements SearchEvent {
   @JsonKey(ignore: true)
   _$$DeleteFilterSearchEventImplCopyWith<_$DeleteFilterSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveSelectFilterCategotySearchEventImplCopyWith<$Res> {
+  factory _$$RemoveSelectFilterCategotySearchEventImplCopyWith(
+          _$RemoveSelectFilterCategotySearchEventImpl value,
+          $Res Function(_$RemoveSelectFilterCategotySearchEventImpl) then) =
+      __$$RemoveSelectFilterCategotySearchEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$RemoveSelectFilterCategotySearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res,
+        _$RemoveSelectFilterCategotySearchEventImpl>
+    implements _$$RemoveSelectFilterCategotySearchEventImplCopyWith<$Res> {
+  __$$RemoveSelectFilterCategotySearchEventImplCopyWithImpl(
+      _$RemoveSelectFilterCategotySearchEventImpl _value,
+      $Res Function(_$RemoveSelectFilterCategotySearchEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$RemoveSelectFilterCategotySearchEventImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveSelectFilterCategotySearchEventImpl
+    implements RemoveSelectFilterCategotySearchEvent {
+  const _$RemoveSelectFilterCategotySearchEventImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'SearchEvent.removeSelectFilterCategory(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveSelectFilterCategotySearchEventImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveSelectFilterCategotySearchEventImplCopyWith<
+          _$RemoveSelectFilterCategotySearchEventImpl>
+      get copyWith => __$$RemoveSelectFilterCategotySearchEventImplCopyWithImpl<
+          _$RemoveSelectFilterCategotySearchEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+  }) {
+    return removeSelectFilterCategory(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+  }) {
+    return removeSelectFilterCategory?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (removeSelectFilterCategory != null) {
+      return removeSelectFilterCategory(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+  }) {
+    return removeSelectFilterCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+  }) {
+    return removeSelectFilterCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (removeSelectFilterCategory != null) {
+      return removeSelectFilterCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveSelectFilterCategotySearchEvent implements SearchEvent {
+  const factory RemoveSelectFilterCategotySearchEvent(
+      {required final int index}) = _$RemoveSelectFilterCategotySearchEventImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$RemoveSelectFilterCategotySearchEventImplCopyWith<
+          _$RemoveSelectFilterCategotySearchEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveSelectAllFiltersCategotySearchEventImplCopyWith<$Res> {
+  factory _$$RemoveSelectAllFiltersCategotySearchEventImplCopyWith(
+          _$RemoveSelectAllFiltersCategotySearchEventImpl value,
+          $Res Function(_$RemoveSelectAllFiltersCategotySearchEventImpl) then) =
+      __$$RemoveSelectAllFiltersCategotySearchEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveSelectAllFiltersCategotySearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res,
+        _$RemoveSelectAllFiltersCategotySearchEventImpl>
+    implements _$$RemoveSelectAllFiltersCategotySearchEventImplCopyWith<$Res> {
+  __$$RemoveSelectAllFiltersCategotySearchEventImplCopyWithImpl(
+      _$RemoveSelectAllFiltersCategotySearchEventImpl _value,
+      $Res Function(_$RemoveSelectAllFiltersCategotySearchEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveSelectAllFiltersCategotySearchEventImpl
+    implements RemoveSelectAllFiltersCategotySearchEvent {
+  const _$RemoveSelectAllFiltersCategotySearchEventImpl();
+
+  @override
+  String toString() {
+    return 'SearchEvent.removeSelectAllFilters()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveSelectAllFiltersCategotySearchEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+  }) {
+    return removeSelectAllFilters();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+  }) {
+    return removeSelectAllFilters?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (removeSelectAllFilters != null) {
+      return removeSelectAllFilters();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+  }) {
+    return removeSelectAllFilters(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+  }) {
+    return removeSelectAllFilters?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (removeSelectAllFilters != null) {
+      return removeSelectAllFilters(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveSelectAllFiltersCategotySearchEvent
+    implements SearchEvent {
+  const factory RemoveSelectAllFiltersCategotySearchEvent() =
+      _$RemoveSelectAllFiltersCategotySearchEventImpl;
 }
 
 /// @nodoc
@@ -985,17 +1828,22 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -1005,14 +1853,19 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -1022,14 +1875,19 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -1043,14 +1901,22 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -1060,13 +1926,21 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -1076,12 +1950,20 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -1197,17 +2079,22 @@ class _$AddFavouriteProductSearchEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -1217,14 +2104,19 @@ class _$AddFavouriteProductSearchEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -1234,14 +2126,19 @@ class _$AddFavouriteProductSearchEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -1255,14 +2152,22 @@ class _$AddFavouriteProductSearchEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return addFavouriteProduct(this);
   }
@@ -1272,13 +2177,21 @@ class _$AddFavouriteProductSearchEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -1288,12 +2201,20 @@ class _$AddFavouriteProductSearchEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -1388,17 +2309,22 @@ class _$DeleteFavouriteProductSearchEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         selectFilter,
     required TResult Function(
             int index, int indexItem, FilterItemDataModel item)
         deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -1408,14 +2334,19 @@ class _$DeleteFavouriteProductSearchEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -1425,14 +2356,19 @@ class _$DeleteFavouriteProductSearchEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         selectFilter,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
         deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -1446,14 +2382,22 @@ class _$DeleteFavouriteProductSearchEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitSearchEvent value) init,
     required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
     required TResult Function(SelectFilterSearchEvent value) selectFilter,
     required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
     required TResult Function(DeleteCatalogSearchEvent value)
         deleteCatalogFilter,
     required TResult Function(AddFavouriteProductSearchEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -1463,13 +2407,21 @@ class _$DeleteFavouriteProductSearchEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitSearchEvent value)? init,
     TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult? Function(SelectFilterSearchEvent value)? selectFilter,
     TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult? Function(AddFavouriteProductSearchEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -1479,12 +2431,20 @@ class _$DeleteFavouriteProductSearchEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitSearchEvent value)? init,
     TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
     TResult Function(SelectFilterSearchEvent value)? selectFilter,
     TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
     TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
     TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -1506,6 +2466,425 @@ abstract class DeleteFavouriteProductSearchEvent implements SearchEvent {
 }
 
 /// @nodoc
+abstract class _$$GetInfoProductSearchEventImplCopyWith<$Res> {
+  factory _$$GetInfoProductSearchEventImplCopyWith(
+          _$GetInfoProductSearchEventImpl value,
+          $Res Function(_$GetInfoProductSearchEventImpl) then) =
+      __$$GetInfoProductSearchEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$GetInfoProductSearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$GetInfoProductSearchEventImpl>
+    implements _$$GetInfoProductSearchEventImplCopyWith<$Res> {
+  __$$GetInfoProductSearchEventImplCopyWithImpl(
+      _$GetInfoProductSearchEventImpl _value,
+      $Res Function(_$GetInfoProductSearchEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$GetInfoProductSearchEventImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
+  const _$GetInfoProductSearchEventImpl({required this.code});
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'SearchEvent.getInfoProduct(code: $code)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoProductSearchEventImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoProductSearchEventImplCopyWith<_$GetInfoProductSearchEventImpl>
+      get copyWith => __$$GetInfoProductSearchEventImplCopyWithImpl<
+          _$GetInfoProductSearchEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+  }) {
+    return getInfoProduct(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+  }) {
+    return getInfoProduct?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (getInfoProduct != null) {
+      return getInfoProduct(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+  }) {
+    return getInfoProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+  }) {
+    return getInfoProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (getInfoProduct != null) {
+      return getInfoProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoProductSearchEvent implements SearchEvent {
+  const factory GetInfoProductSearchEvent({required final String code}) =
+      _$GetInfoProductSearchEventImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$GetInfoProductSearchEventImplCopyWith<_$GetInfoProductSearchEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GoBackProductInfoCategotySearchEventImplCopyWith<$Res> {
+  factory _$$GoBackProductInfoCategotySearchEventImplCopyWith(
+          _$GoBackProductInfoCategotySearchEventImpl value,
+          $Res Function(_$GoBackProductInfoCategotySearchEventImpl) then) =
+      __$$GoBackProductInfoCategotySearchEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoBackProductInfoCategotySearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res,
+        _$GoBackProductInfoCategotySearchEventImpl>
+    implements _$$GoBackProductInfoCategotySearchEventImplCopyWith<$Res> {
+  __$$GoBackProductInfoCategotySearchEventImplCopyWithImpl(
+      _$GoBackProductInfoCategotySearchEventImpl _value,
+      $Res Function(_$GoBackProductInfoCategotySearchEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GoBackProductInfoCategotySearchEventImpl
+    implements GoBackProductInfoCategotySearchEvent {
+  const _$GoBackProductInfoCategotySearchEventImpl();
+
+  @override
+  String toString() {
+    return 'SearchEvent.goBackProductInfo()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GoBackProductInfoCategotySearchEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+  }) {
+    return goBackProductInfo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+  }) {
+    return goBackProductInfo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (goBackProductInfo != null) {
+      return goBackProductInfo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+  }) {
+    return goBackProductInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+  }) {
+    return goBackProductInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (goBackProductInfo != null) {
+      return goBackProductInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoBackProductInfoCategotySearchEvent implements SearchEvent {
+  const factory GoBackProductInfoCategotySearchEvent() =
+      _$GoBackProductInfoCategotySearchEventImpl;
+}
+
+/// @nodoc
 mixin _$SearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1514,13 +2893,22 @@ mixin _$SearchState {
     required TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)
         searchProductsResult,
   }) =>
       throw _privateConstructorUsedError;
@@ -1531,13 +2919,22 @@ mixin _$SearchState {
     TResult? Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
   }) =>
       throw _privateConstructorUsedError;
@@ -1548,13 +2945,22 @@ mixin _$SearchState {
     TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
     required TResult orElse(),
   }) =>
@@ -1647,13 +3053,22 @@ class _$InitSearchStateImpl implements InitSearchState {
     required TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)
         searchProductsResult,
   }) {
     return init();
@@ -1667,13 +3082,22 @@ class _$InitSearchStateImpl implements InitSearchState {
     TResult? Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
   }) {
     return init?.call();
@@ -1687,13 +3111,22 @@ class _$InitSearchStateImpl implements InitSearchState {
     TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -1788,13 +3221,22 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
     required TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)
         searchProductsResult,
   }) {
     return load();
@@ -1808,13 +3250,22 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
     TResult? Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
   }) {
     return load?.call();
@@ -1828,13 +3279,22 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
     TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -1896,13 +3356,26 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
   $Res call(
       {List<ProductDataModel> searchDefaultProducts,
       List<ProductDataModel> searchProducts,
-      List<ProductDataModel>? favouritesProducts,
-      List<Map<String, dynamic>> searchSections,
+      List<ProductDataModel> products,
+      List<CatalogSectionDataModel> searchSections,
       List<FilterInfoDataModel> filter,
       Map<int, List<FilterItemDataModel>> selectFilter,
       List<Map<int, FilterItemDataModel>> allSelectFilter,
+      List<ProductDataModel> listProdcutsStyle,
+      List<ProductDataModel> listProdcutsAlso,
+      List<ProductDataModel> listProdcutsBrand,
+      List<int> favouritesProductsId,
       String query,
-      bool isLoading});
+      bool isLoading,
+      CatalogSearchProductsRequest request,
+      List<String> listProductsCode,
+      DetailProductDataModel? detailsProduct,
+      List<ProductDataModel>? favouritesProducts,
+      CatalogSearchInfoDataModel? searchResultInfo});
+
+  $CatalogSearchProductsRequestCopyWith<$Res> get request;
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
+  $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo;
 }
 
 /// @nodoc
@@ -1920,13 +3393,22 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
   $Res call({
     Object? searchDefaultProducts = null,
     Object? searchProducts = null,
-    Object? favouritesProducts = freezed,
+    Object? products = null,
     Object? searchSections = null,
     Object? filter = null,
     Object? selectFilter = null,
     Object? allSelectFilter = null,
+    Object? listProdcutsStyle = null,
+    Object? listProdcutsAlso = null,
+    Object? listProdcutsBrand = null,
+    Object? favouritesProductsId = null,
     Object? query = null,
     Object? isLoading = null,
+    Object? request = null,
+    Object? listProductsCode = null,
+    Object? detailsProduct = freezed,
+    Object? favouritesProducts = freezed,
+    Object? searchResultInfo = freezed,
   }) {
     return _then(_$SearchProductsResultSearchStateImpl(
       searchDefaultProducts: null == searchDefaultProducts
@@ -1937,14 +3419,14 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value._searchProducts
           : searchProducts // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
-      favouritesProducts: freezed == favouritesProducts
-          ? _value._favouritesProducts
-          : favouritesProducts // ignore: cast_nullable_to_non_nullable
-              as List<ProductDataModel>?,
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
       searchSections: null == searchSections
           ? _value._searchSections
           : searchSections // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
+              as List<CatalogSectionDataModel>,
       filter: null == filter
           ? _value._filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -1957,6 +3439,22 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value._allSelectFilter
           : allSelectFilter // ignore: cast_nullable_to_non_nullable
               as List<Map<int, FilterItemDataModel>>,
+      listProdcutsStyle: null == listProdcutsStyle
+          ? _value._listProdcutsStyle
+          : listProdcutsStyle // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsAlso: null == listProdcutsAlso
+          ? _value._listProdcutsAlso
+          : listProdcutsAlso // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsBrand: null == listProdcutsBrand
+          ? _value._listProdcutsBrand
+          : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      favouritesProductsId: null == favouritesProductsId
+          ? _value._favouritesProductsId
+          : favouritesProductsId // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -1965,7 +3463,61 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      request: null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as CatalogSearchProductsRequest,
+      listProductsCode: null == listProductsCode
+          ? _value._listProductsCode
+          : listProductsCode // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      detailsProduct: freezed == detailsProduct
+          ? _value.detailsProduct
+          : detailsProduct // ignore: cast_nullable_to_non_nullable
+              as DetailProductDataModel?,
+      favouritesProducts: freezed == favouritesProducts
+          ? _value._favouritesProducts
+          : favouritesProducts // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>?,
+      searchResultInfo: freezed == searchResultInfo
+          ? _value.searchResultInfo
+          : searchResultInfo // ignore: cast_nullable_to_non_nullable
+              as CatalogSearchInfoDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CatalogSearchProductsRequestCopyWith<$Res> get request {
+    return $CatalogSearchProductsRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
+    if (_value.detailsProduct == null) {
+      return null;
+    }
+
+    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
+        (value) {
+      return _then(_value.copyWith(detailsProduct: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo {
+    if (_value.searchResultInfo == null) {
+      return null;
+    }
+
+    return $CatalogSearchInfoDataModelCopyWith<$Res>(_value.searchResultInfo!,
+        (value) {
+      return _then(_value.copyWith(searchResultInfo: value));
+    });
   }
 }
 
@@ -1976,20 +3528,35 @@ class _$SearchProductsResultSearchStateImpl
   const _$SearchProductsResultSearchStateImpl(
       {required final List<ProductDataModel> searchDefaultProducts,
       required final List<ProductDataModel> searchProducts,
-      final List<ProductDataModel>? favouritesProducts,
-      required final List<Map<String, dynamic>> searchSections,
+      required final List<ProductDataModel> products,
+      required final List<CatalogSectionDataModel> searchSections,
       required final List<FilterInfoDataModel> filter,
       required final Map<int, List<FilterItemDataModel>> selectFilter,
       required final List<Map<int, FilterItemDataModel>> allSelectFilter,
+      required final List<ProductDataModel> listProdcutsStyle,
+      required final List<ProductDataModel> listProdcutsAlso,
+      required final List<ProductDataModel> listProdcutsBrand,
+      required final List<int> favouritesProductsId,
       required this.query,
-      required this.isLoading})
+      required this.isLoading,
+      required this.request,
+      required final List<String> listProductsCode,
+      this.detailsProduct,
+      final List<ProductDataModel>? favouritesProducts,
+      this.searchResultInfo})
       : _searchDefaultProducts = searchDefaultProducts,
         _searchProducts = searchProducts,
-        _favouritesProducts = favouritesProducts,
+        _products = products,
         _searchSections = searchSections,
         _filter = filter,
         _selectFilter = selectFilter,
-        _allSelectFilter = allSelectFilter;
+        _allSelectFilter = allSelectFilter,
+        _listProdcutsStyle = listProdcutsStyle,
+        _listProdcutsAlso = listProdcutsAlso,
+        _listProdcutsBrand = listProdcutsBrand,
+        _favouritesProductsId = favouritesProductsId,
+        _listProductsCode = listProductsCode,
+        _favouritesProducts = favouritesProducts;
 
   final List<ProductDataModel> _searchDefaultProducts;
   @override
@@ -2008,20 +3575,17 @@ class _$SearchProductsResultSearchStateImpl
     return EqualUnmodifiableListView(_searchProducts);
   }
 
-  final List<ProductDataModel>? _favouritesProducts;
+  final List<ProductDataModel> _products;
   @override
-  List<ProductDataModel>? get favouritesProducts {
-    final value = _favouritesProducts;
-    if (value == null) return null;
-    if (_favouritesProducts is EqualUnmodifiableListView)
-      return _favouritesProducts;
+  List<ProductDataModel> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_products);
   }
 
-  final List<Map<String, dynamic>> _searchSections;
+  final List<CatalogSectionDataModel> _searchSections;
   @override
-  List<Map<String, dynamic>> get searchSections {
+  List<CatalogSectionDataModel> get searchSections {
     if (_searchSections is EqualUnmodifiableListView) return _searchSections;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchSections);
@@ -2051,14 +3615,76 @@ class _$SearchProductsResultSearchStateImpl
     return EqualUnmodifiableListView(_allSelectFilter);
   }
 
+  final List<ProductDataModel> _listProdcutsStyle;
+  @override
+  List<ProductDataModel> get listProdcutsStyle {
+    if (_listProdcutsStyle is EqualUnmodifiableListView)
+      return _listProdcutsStyle;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsStyle);
+  }
+
+  final List<ProductDataModel> _listProdcutsAlso;
+  @override
+  List<ProductDataModel> get listProdcutsAlso {
+    if (_listProdcutsAlso is EqualUnmodifiableListView)
+      return _listProdcutsAlso;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsAlso);
+  }
+
+  final List<ProductDataModel> _listProdcutsBrand;
+  @override
+  List<ProductDataModel> get listProdcutsBrand {
+    if (_listProdcutsBrand is EqualUnmodifiableListView)
+      return _listProdcutsBrand;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsBrand);
+  }
+
+  final List<int> _favouritesProductsId;
+  @override
+  List<int> get favouritesProductsId {
+    if (_favouritesProductsId is EqualUnmodifiableListView)
+      return _favouritesProductsId;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favouritesProductsId);
+  }
+
   @override
   final String query;
   @override
   final bool isLoading;
+  @override
+  final CatalogSearchProductsRequest request;
+  final List<String> _listProductsCode;
+  @override
+  List<String> get listProductsCode {
+    if (_listProductsCode is EqualUnmodifiableListView)
+      return _listProductsCode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProductsCode);
+  }
+
+  @override
+  final DetailProductDataModel? detailsProduct;
+  final List<ProductDataModel>? _favouritesProducts;
+  @override
+  List<ProductDataModel>? get favouritesProducts {
+    final value = _favouritesProducts;
+    if (value == null) return null;
+    if (_favouritesProducts is EqualUnmodifiableListView)
+      return _favouritesProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final CatalogSearchInfoDataModel? searchResultInfo;
 
   @override
   String toString() {
-    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, favouritesProducts: $favouritesProducts, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, query: $query, isLoading: $isLoading)';
+    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
   }
 
   @override
@@ -2070,8 +3696,7 @@ class _$SearchProductsResultSearchStateImpl
                 .equals(other._searchDefaultProducts, _searchDefaultProducts) &&
             const DeepCollectionEquality()
                 .equals(other._searchProducts, _searchProducts) &&
-            const DeepCollectionEquality()
-                .equals(other._favouritesProducts, _favouritesProducts) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._searchSections, _searchSections) &&
             const DeepCollectionEquality().equals(other._filter, _filter) &&
@@ -2079,9 +3704,26 @@ class _$SearchProductsResultSearchStateImpl
                 .equals(other._selectFilter, _selectFilter) &&
             const DeepCollectionEquality()
                 .equals(other._allSelectFilter, _allSelectFilter) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsStyle, _listProdcutsStyle) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsAlso, _listProdcutsAlso) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
+            const DeepCollectionEquality()
+                .equals(other._favouritesProductsId, _favouritesProductsId) &&
             (identical(other.query, query) || other.query == query) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.request, request) || other.request == request) &&
+            const DeepCollectionEquality()
+                .equals(other._listProductsCode, _listProductsCode) &&
+            (identical(other.detailsProduct, detailsProduct) ||
+                other.detailsProduct == detailsProduct) &&
+            const DeepCollectionEquality()
+                .equals(other._favouritesProducts, _favouritesProducts) &&
+            (identical(other.searchResultInfo, searchResultInfo) ||
+                other.searchResultInfo == searchResultInfo));
   }
 
   @override
@@ -2089,13 +3731,22 @@ class _$SearchProductsResultSearchStateImpl
       runtimeType,
       const DeepCollectionEquality().hash(_searchDefaultProducts),
       const DeepCollectionEquality().hash(_searchProducts),
-      const DeepCollectionEquality().hash(_favouritesProducts),
+      const DeepCollectionEquality().hash(_products),
       const DeepCollectionEquality().hash(_searchSections),
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_selectFilter),
       const DeepCollectionEquality().hash(_allSelectFilter),
+      const DeepCollectionEquality().hash(_listProdcutsStyle),
+      const DeepCollectionEquality().hash(_listProdcutsAlso),
+      const DeepCollectionEquality().hash(_listProdcutsBrand),
+      const DeepCollectionEquality().hash(_favouritesProductsId),
       query,
-      isLoading);
+      isLoading,
+      request,
+      const DeepCollectionEquality().hash(_listProductsCode),
+      detailsProduct,
+      const DeepCollectionEquality().hash(_favouritesProducts),
+      searchResultInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -2113,25 +3764,43 @@ class _$SearchProductsResultSearchStateImpl
     required TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)
         searchProductsResult,
   }) {
     return searchProductsResult(
         searchDefaultProducts,
         searchProducts,
-        favouritesProducts,
+        products,
         searchSections,
         filter,
         selectFilter,
         allSelectFilter,
+        listProdcutsStyle,
+        listProdcutsAlso,
+        listProdcutsBrand,
+        favouritesProductsId,
         query,
-        isLoading);
+        isLoading,
+        request,
+        listProductsCode,
+        detailsProduct,
+        favouritesProducts,
+        searchResultInfo);
   }
 
   @override
@@ -2142,25 +3811,43 @@ class _$SearchProductsResultSearchStateImpl
     TResult? Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
   }) {
     return searchProductsResult?.call(
         searchDefaultProducts,
         searchProducts,
-        favouritesProducts,
+        products,
         searchSections,
         filter,
         selectFilter,
         allSelectFilter,
+        listProdcutsStyle,
+        listProdcutsAlso,
+        listProdcutsBrand,
+        favouritesProductsId,
         query,
-        isLoading);
+        isLoading,
+        request,
+        listProductsCode,
+        detailsProduct,
+        favouritesProducts,
+        searchResultInfo);
   }
 
   @override
@@ -2171,13 +3858,22 @@ class _$SearchProductsResultSearchStateImpl
     TResult Function(
             List<ProductDataModel> searchDefaultProducts,
             List<ProductDataModel> searchProducts,
-            List<ProductDataModel>? favouritesProducts,
-            List<Map<String, dynamic>> searchSections,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
             List<FilterInfoDataModel> filter,
             Map<int, List<FilterItemDataModel>> selectFilter,
             List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
             String query,
-            bool isLoading)?
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            CatalogSearchInfoDataModel? searchResultInfo)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -2185,13 +3881,22 @@ class _$SearchProductsResultSearchStateImpl
       return searchProductsResult(
           searchDefaultProducts,
           searchProducts,
-          favouritesProducts,
+          products,
           searchSections,
           filter,
           selectFilter,
           allSelectFilter,
+          listProdcutsStyle,
+          listProdcutsAlso,
+          listProdcutsBrand,
+          favouritesProductsId,
           query,
-          isLoading);
+          isLoading,
+          request,
+          listProductsCode,
+          detailsProduct,
+          favouritesProducts,
+          searchResultInfo);
     }
     return orElse();
   }
@@ -2236,25 +3941,44 @@ class _$SearchProductsResultSearchStateImpl
 
 abstract class SearchProductsResultSearchState implements SearchState {
   const factory SearchProductsResultSearchState(
-      {required final List<ProductDataModel> searchDefaultProducts,
-      required final List<ProductDataModel> searchProducts,
-      final List<ProductDataModel>? favouritesProducts,
-      required final List<Map<String, dynamic>> searchSections,
-      required final List<FilterInfoDataModel> filter,
-      required final Map<int, List<FilterItemDataModel>> selectFilter,
-      required final List<Map<int, FilterItemDataModel>> allSelectFilter,
-      required final String query,
-      required final bool isLoading}) = _$SearchProductsResultSearchStateImpl;
+          {required final List<ProductDataModel> searchDefaultProducts,
+          required final List<ProductDataModel> searchProducts,
+          required final List<ProductDataModel> products,
+          required final List<CatalogSectionDataModel> searchSections,
+          required final List<FilterInfoDataModel> filter,
+          required final Map<int, List<FilterItemDataModel>> selectFilter,
+          required final List<Map<int, FilterItemDataModel>> allSelectFilter,
+          required final List<ProductDataModel> listProdcutsStyle,
+          required final List<ProductDataModel> listProdcutsAlso,
+          required final List<ProductDataModel> listProdcutsBrand,
+          required final List<int> favouritesProductsId,
+          required final String query,
+          required final bool isLoading,
+          required final CatalogSearchProductsRequest request,
+          required final List<String> listProductsCode,
+          final DetailProductDataModel? detailsProduct,
+          final List<ProductDataModel>? favouritesProducts,
+          final CatalogSearchInfoDataModel? searchResultInfo}) =
+      _$SearchProductsResultSearchStateImpl;
 
   List<ProductDataModel> get searchDefaultProducts;
   List<ProductDataModel> get searchProducts;
-  List<ProductDataModel>? get favouritesProducts;
-  List<Map<String, dynamic>> get searchSections;
+  List<ProductDataModel> get products;
+  List<CatalogSectionDataModel> get searchSections;
   List<FilterInfoDataModel> get filter;
   Map<int, List<FilterItemDataModel>> get selectFilter;
   List<Map<int, FilterItemDataModel>> get allSelectFilter;
+  List<ProductDataModel> get listProdcutsStyle;
+  List<ProductDataModel> get listProdcutsAlso;
+  List<ProductDataModel> get listProdcutsBrand;
+  List<int> get favouritesProductsId;
   String get query;
   bool get isLoading;
+  CatalogSearchProductsRequest get request;
+  List<String> get listProductsCode;
+  DetailProductDataModel? get detailsProduct;
+  List<ProductDataModel>? get favouritesProducts;
+  CatalogSearchInfoDataModel? get searchResultInfo;
   @JsonKey(ignore: true)
   _$$SearchProductsResultSearchStateImplCopyWith<
           _$SearchProductsResultSearchStateImpl>

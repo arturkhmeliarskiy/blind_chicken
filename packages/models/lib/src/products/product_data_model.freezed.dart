@@ -19,7 +19,7 @@ mixin _$ProductDataModel {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get catrgory => throw _privateConstructorUsedError;
-  List<int> get size => throw _privateConstructorUsedError;
+  List<String> get size => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   int get yourPrice => throw _privateConstructorUsedError;
   String get brend => throw _privateConstructorUsedError;
@@ -30,6 +30,8 @@ mixin _$ProductDataModel {
   List<String> get variants => throw _privateConstructorUsedError;
   int get maximumCashback => throw _privateConstructorUsedError;
   int get maximumPersonalDiscount => throw _privateConstructorUsedError;
+  bool get isYourPriceDisplayed => throw _privateConstructorUsedError;
+  String? get count => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -47,7 +49,7 @@ abstract class $ProductDataModelCopyWith<$Res> {
       {int id,
       String title,
       String catrgory,
-      List<int> size,
+      List<String> size,
       int price,
       int yourPrice,
       String brend,
@@ -58,6 +60,8 @@ abstract class $ProductDataModelCopyWith<$Res> {
       List<String> variants,
       int maximumCashback,
       int maximumPersonalDiscount,
+      bool isYourPriceDisplayed,
+      String? count,
       Color? color});
 }
 
@@ -88,6 +92,8 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? variants = null,
     Object? maximumCashback = null,
     Object? maximumPersonalDiscount = null,
+    Object? isYourPriceDisplayed = null,
+    Object? count = freezed,
     Object? color = freezed,
   }) {
     return _then(_value.copyWith(
@@ -106,7 +112,7 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
       size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<String>,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -147,6 +153,14 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.maximumPersonalDiscount
           : maximumPersonalDiscount // ignore: cast_nullable_to_non_nullable
               as int,
+      isYourPriceDisplayed: null == isYourPriceDisplayed
+          ? _value.isYourPriceDisplayed
+          : isYourPriceDisplayed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as String?,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -167,7 +181,7 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       {int id,
       String title,
       String catrgory,
-      List<int> size,
+      List<String> size,
       int price,
       int yourPrice,
       String brend,
@@ -178,6 +192,8 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       List<String> variants,
       int maximumCashback,
       int maximumPersonalDiscount,
+      bool isYourPriceDisplayed,
+      String? count,
       Color? color});
 }
 
@@ -206,6 +222,8 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? variants = null,
     Object? maximumCashback = null,
     Object? maximumPersonalDiscount = null,
+    Object? isYourPriceDisplayed = null,
+    Object? count = freezed,
     Object? color = freezed,
   }) {
     return _then(_$ProductDataModelImpl(
@@ -224,7 +242,7 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
       size: null == size
           ? _value._size
           : size // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<String>,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -265,6 +283,14 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.maximumPersonalDiscount
           : maximumPersonalDiscount // ignore: cast_nullable_to_non_nullable
               as int,
+      isYourPriceDisplayed: null == isYourPriceDisplayed
+          ? _value.isYourPriceDisplayed
+          : isYourPriceDisplayed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as String?,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -280,7 +306,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       {required this.id,
       required this.title,
       required this.catrgory,
-      required final List<int> size,
+      required final List<String> size,
       required this.price,
       required this.yourPrice,
       required this.brend,
@@ -291,6 +317,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required final List<String> variants,
       required this.maximumCashback,
       required this.maximumPersonalDiscount,
+      required this.isYourPriceDisplayed,
+      this.count,
       this.color})
       : _size = size,
         _images = images,
@@ -303,9 +331,9 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   final String title;
   @override
   final String catrgory;
-  final List<int> _size;
+  final List<String> _size;
   @override
-  List<int> get size {
+  List<String> get size {
     if (_size is EqualUnmodifiableListView) return _size;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_size);
@@ -344,11 +372,15 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   @override
   final int maximumPersonalDiscount;
   @override
+  final bool isYourPriceDisplayed;
+  @override
+  final String? count;
+  @override
   final Color? color;
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, catrgory: $catrgory, size: $size, price: $price, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, catrgory: $catrgory, size: $size, price: $price, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, count: $count, color: $color)';
   }
 
   @override
@@ -377,6 +409,9 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             (identical(
                     other.maximumPersonalDiscount, maximumPersonalDiscount) ||
                 other.maximumPersonalDiscount == maximumPersonalDiscount) &&
+            (identical(other.isYourPriceDisplayed, isYourPriceDisplayed) ||
+                other.isYourPriceDisplayed == isYourPriceDisplayed) &&
+            (identical(other.count, count) || other.count == count) &&
             (identical(other.color, color) || other.color == color));
   }
 
@@ -397,6 +432,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       const DeepCollectionEquality().hash(_variants),
       maximumCashback,
       maximumPersonalDiscount,
+      isYourPriceDisplayed,
+      count,
       color);
 
   @JsonKey(ignore: true)
@@ -412,7 +449,7 @@ abstract class _ProductDataModel extends ProductDataModel {
       {required final int id,
       required final String title,
       required final String catrgory,
-      required final List<int> size,
+      required final List<String> size,
       required final int price,
       required final int yourPrice,
       required final String brend,
@@ -423,6 +460,8 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final List<String> variants,
       required final int maximumCashback,
       required final int maximumPersonalDiscount,
+      required final bool isYourPriceDisplayed,
+      final String? count,
       final Color? color}) = _$ProductDataModelImpl;
   _ProductDataModel._() : super._();
 
@@ -433,7 +472,7 @@ abstract class _ProductDataModel extends ProductDataModel {
   @override
   String get catrgory;
   @override
-  List<int> get size;
+  List<String> get size;
   @override
   int get price;
   @override
@@ -454,6 +493,10 @@ abstract class _ProductDataModel extends ProductDataModel {
   int get maximumCashback;
   @override
   int get maximumPersonalDiscount;
+  @override
+  bool get isYourPriceDisplayed;
+  @override
+  String? get count;
   @override
   Color? get color;
   @override

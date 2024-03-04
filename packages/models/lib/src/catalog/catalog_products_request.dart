@@ -6,14 +6,9 @@ part 'catalog_products_request.freezed.dart';
 class CatalogProductsRequest with _$CatalogProductsRequest {
   const CatalogProductsRequest._();
   factory CatalogProductsRequest({
-    required int auth,
-    required String tel,
-    required String url,
+    String? url,
     String? nav,
     String? sort,
-    String? token,
-    String? hashToken,
-    String? hashTokenTel,
     String? ct,
     String? t26,
     String? f2,

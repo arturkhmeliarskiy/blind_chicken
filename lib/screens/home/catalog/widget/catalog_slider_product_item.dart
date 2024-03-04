@@ -1,9 +1,5 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
@@ -14,12 +10,16 @@ class CatalogSliderProductItem extends StatefulWidget {
     required this.product,
     required this.isLike,
     required this.listItems,
-    required this.favouritesProducts,
+    required this.onTap,
+    required this.addLike,
+    required this.deleteLike,
   });
 
   final ProductDataModel product;
   final List<ProductDataModel> listItems;
-  final List<ProductDataModel> favouritesProducts;
+  final VoidCallback onTap;
+  final VoidCallback addLike;
+  final VoidCallback deleteLike;
   final bool isLike;
 
   @override
@@ -38,32 +38,7 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.pushRoute(
-          CatalogCardInfoRoute(
-            isChildRoute: true,
-            item: widget.product,
-            isLike: _isLike,
-            addLike: () {
-              context.read<CatalogBloc>().add(
-                    CatalogEvent.addFavouriteProduct(
-                      product: widget.product,
-                      index: widget.product.id,
-                    ),
-                  );
-            },
-            deleteLike: () {
-              context.read<CatalogBloc>().add(
-                    CatalogEvent.deleteFavouriteProduct(
-                      index: widget.product.id,
-                    ),
-                  );
-            },
-            listItems: widget.listItems,
-            favouritesProducts: widget.favouritesProducts,
-          ),
-        );
-      },
+      onTap: widget.onTap,
       child: Container(
         height: 356,
         width: 140,
@@ -87,18 +62,9 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
                     setState(() {
                       _isLike = !_isLike;
                       if (_isLike) {
-                        context.read<CatalogBloc>().add(
-                              CatalogEvent.addFavouriteProduct(
-                                product: widget.product,
-                                index: widget.product.id,
-                              ),
-                            );
+                        widget.addLike();
                       } else {
-                        context.read<CatalogBloc>().add(
-                              CatalogEvent.deleteFavouriteProduct(
-                                index: widget.product.id,
-                              ),
-                            );
+                        widget.deleteLike();
                       }
                     });
                   },
@@ -122,6 +88,8 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: 4,
@@ -129,6 +97,8 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           Text(
             widget.product.catrgory,
             style: Theme.of(context).textTheme.displayMedium,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: 8,

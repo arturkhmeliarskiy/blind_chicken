@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
-import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class ShoppingMapBoutiquesInfo extends StatelessWidget {
@@ -10,9 +9,11 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
     super.key,
     required this.selectedPoint,
     required this.onSelectBoutique,
+    required this.boutiques,
   });
 
-  final MapPointDataModel selectedPoint;
+  final BoutiqueDataModel selectedPoint;
+  final BoutiquesDataModel boutiques;
   final Function(AppLatLongDataModel, int) onSelectBoutique;
 
   @override
@@ -55,14 +56,15 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 28, right: 28),
               child: ListView.builder(
-                itemCount: MapPointsInfo.getMapPointDataModels().length,
+                itemCount: boutiques.data.length,
                 itemBuilder: (context, index) {
-                  final point = MapPointsInfo.getMapPointDataModels()[index];
+                  final point = boutiques.data[index];
 
                   return InkWell(
                     onTap: () {
                       onSelectBoutique(
-                        AppLatLongDataModel(lat: point.latitude, long: point.longitude),
+                        AppLatLongDataModel(
+                            lat: point.coordinates.latitude, long: point.coordinates.longitude),
                         index,
                       );
                       context.popRoute();
@@ -75,7 +77,7 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
                           bottom: 10.5,
                         ),
                         decoration: BoxDecoration(
-                          color: selectedPoint == point
+                          color: selectedPoint.uidStore == point.uidStore
                               ? BlindChickenColors.backgroundColorItemFilter
                               : Colors.transparent,
                         ),

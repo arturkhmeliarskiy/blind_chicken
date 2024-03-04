@@ -69,10 +69,11 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-    <key>NSAllowsArbitraryLoadsInWebContent</key>
-    <true/>
-</dict>
+	<!--Include to allow all connections (DANGER)-->
+		<key>NSAllowsArbitraryLoads</key>
+			<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+    		<true/>
+	</dict>
 </dict>
 </plist>

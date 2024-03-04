@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:models/models.dart';
 
 part 'boutiques_data_model.freezed.dart';
 
@@ -6,51 +7,6 @@ part 'boutiques_data_model.freezed.dart';
 class BoutiquesDataModel with _$BoutiquesDataModel {
   const BoutiquesDataModel._();
   factory BoutiquesDataModel({
-    required int id,
-    required String title,
-    required String address,
-    @JsonKey(name: 'full_address') required String fullAddress,
-    @JsonKey(name: 'working_hours') required String workingHours,
-    required List<String> images,
-    @JsonKey(name: 'product_categories') required String productCategories,
-    @JsonKey(name: 'product_categories_brend') required String productCategoriesBrend,
-    required String butterflies,
-    required String balaclavas,
-    @JsonKey(name: 'ballet_flats') required String balletFlats,
-    required String balmsRestorersSkin,
-    @JsonKey(name: 'baseball_caps') required String baseballCaps,
-    required String bermuda,
-    required String bikinis,
-    required String blouses,
-    required String body,
-    @JsonKey(name: 'body_underwear') required String bodyUnderwear,
-    required String sandals,
-    @JsonKey(name: 'ankle_boots') required String ankleBoots,
-    required String boots,
-    required String bra,
-    required String bracelets,
-    @JsonKey(name: 'key_rings') required String keyRings,
-    required String briefcases,
-    required String brooches,
-    required String trousers,
-    required String bras,
-    @JsonKey(name: 'value_1') required String value1,
-    @JsonKey(name: 'value_2') required String value2,
-    @JsonKey(name: 'value_3') required String value3,
-    @JsonKey(name: 'value_4') required String value4,
-    @JsonKey(name: 'value_5') required String value5,
-    @JsonKey(name: 'value_6') required String value6,
-    @JsonKey(name: 'value_7') required String value7,
-    @JsonKey(name: 'value_8') required String value8,
-    @JsonKey(name: 'value_9') required String value9,
-    @JsonKey(name: 'value_10') required String value10,
-    @JsonKey(name: 'value_11') required String value11,
-    @JsonKey(name: 'value_12') required String value12,
-    @JsonKey(name: 'value_13') required String value13,
-    @JsonKey(name: 'value_14') required String value14,
-    @JsonKey(name: 'value_15') required String value15,
-    @JsonKey(name: 'value_16') required String value16,
-    @JsonKey(name: 'value_17') required String value17,
-    @JsonKey(name: 'value_18') required String value18,
+    required List<BoutiqueDataModel> data,
   }) = _BoutiquesDataModel;
 }

@@ -54,6 +54,14 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                               SearchEvent.searchProfucts(value),
                             );
                       },
+                      onSubmitted: (value) {
+                        context.read<SearchBloc>().add(
+                              SearchEvent.searchProfuctsInfo(
+                                _search.text,
+                              ),
+                            );
+                        context.navigateTo(const CatalogSearchResultRoute());
+                      },
                       autofocus: true,
                       controller: _search,
                       cursorColor: BlindChickenColors.activeBorderTextField,
@@ -195,12 +203,12 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      initState.searchSections[index]['section'],
+                                                      initState.searchSections[index].n,
                                                       style:
                                                           Theme.of(context).textTheme.displayMedium,
                                                     ),
                                                     Text(
-                                                      initState.searchSections[index]['gender'],
+                                                      initState.searchSections[index].g,
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .bodyMedium
@@ -249,6 +257,11 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                         ),
                                         InkWell(
                                           onTap: () {
+                                            context.read<SearchBloc>().add(
+                                                  SearchEvent.searchProfuctsInfo(
+                                                    _search.text,
+                                                  ),
+                                                );
                                             context.navigateTo(const CatalogSearchResultRoute());
                                           },
                                           child: Text(

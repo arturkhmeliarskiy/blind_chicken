@@ -10,10 +10,7 @@ _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CatalogResponseImpl(
       userDiscount: json['userDiscount'] as String?,
-      breadcrumbs: json['breadcrumbs'] == null
-          ? null
-          : BreadcrumbsResponse.fromJson(
-              json['breadcrumbs'] as Map<String, dynamic>),
+      breadcrumbs: _convertBreadcrumbs(json['breadcrumbs']),
       h1: json['h1'] as String?,
       count: json['count'] as String?,
       sections: _convertSections(json['sections']),

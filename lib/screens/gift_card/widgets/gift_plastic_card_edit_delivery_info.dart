@@ -10,7 +10,7 @@ class GiftPlasticCardEditDeliveryInfo extends StatefulWidget {
     required this.onEditAddress,
   });
 
-  final MapPointDataModel mapPoint;
+  final BoutiqueDataModel mapPoint;
   final VoidCallback onEditAddress;
 
   @override

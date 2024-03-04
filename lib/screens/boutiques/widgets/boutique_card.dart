@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class BoutiqueCard extends StatelessWidget {
   const BoutiqueCard({
     super.key,
-    required this.imageUrl,
+    required this.boutique,
     required this.onTap,
   });
 
-  final String imageUrl;
+  final BoutiqueDataModel boutique;
   final VoidCallback onTap;
 
   @override
@@ -27,7 +28,7 @@ class BoutiqueCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
                 child: CachedNetworkImage(
-                  imageUrl: imageUrl,
+                  imageUrl: 'https://slepayakurica.ru/${boutique.fotoMin}',
                   fit: BoxFit.cover,
                   placeholder: (context, url) => const SizedBox(
                     height: 230,
@@ -40,7 +41,7 @@ class BoutiqueCard extends StatelessWidget {
               height: 8,
             ),
             Text(
-              'Department Store',
+              boutique.caption,
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -49,14 +50,14 @@ class BoutiqueCard extends StatelessWidget {
               height: 8,
             ),
             Text(
-              'Москва, ТЦ Афимолл Сити, 2 этаж',
+              boutique.address,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(
               height: 8,
             ),
             Text(
-              'Пн-Чт 10:00-22:00, Пт-Сб 10:00-23:00, Вс 10:00-22:00',
+              boutique.schedule,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontFamily: 'Roboto-Light',
                   ),

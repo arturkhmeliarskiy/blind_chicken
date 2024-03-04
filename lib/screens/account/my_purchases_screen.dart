@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
+
+import '../app/router/app_router.dart';
 
 @RoutePage()
 class MyOrdersScreen extends StatefulWidget {
@@ -18,14 +19,14 @@ class MyOrdersScreen extends StatefulWidget {
 
 class _MyOrdersScreenState extends State<MyOrdersScreen> {
   final ScrollController _scrollController = ScrollController();
-  int offset = 0;
-  int perOffset = 10;
+  int offset = 1;
+  int perOffset = 1;
   bool isLoading = false;
 
   @override
   void initState() {
-    super.initState();
     _scrollController.addListener(_loadMoreData);
+    super.initState();
   }
 
   void _loadMoreData() async {
@@ -72,7 +73,9 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        context.popRoute();
+                        context.navigateTo(
+                          const AccountRoute(),
+                        );
                       },
                       child: Text(
                         'Личный кабинет',
@@ -105,14 +108,17 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                     preloadDataCompleted: (initState) {
                       return Column(
                         children: List.generate(
-                          initState.listOrders.length,
+                          initState.orders.length,
                           (index) {
                             return GestureDetector(
                               onTap: () {
+                                context.read<AccountBloc>().add(
+                                      AccountEvent.getInfoOrder(
+                                        id: initState.orders[index].id,
+                                      ),
+                                    );
                                 context.navigateTo(
-                                  OrderUserInfoRoute(
-                                    order: initState.listOrders[index],
-                                  ),
+                                  OrderUserInfoRoute(isPay: false),
                                 );
                               },
                               child: Container(
@@ -131,17 +137,17 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'Заказ ${initState.listOrders[index].orderNumber} от ${initState.listOrders[index].createAt}',
+                                        'Заказ ${initState.orders[index].id} от ${initState.orders[index].date}',
                                         style: Theme.of(context).textTheme.headline2,
                                       ),
                                       Text(
-                                        '${initState.listOrders[index].amountPaid.toString().spaceSeparateNumbers()} ₽',
+                                        '${initState.orders[index].sum.toString().spaceSeparateNumbers()} ₽',
                                         style: Theme.of(context).textTheme.headline2,
                                       ),
                                     ],
                                   ),
                                   Text(
-                                    initState.listOrders[index].status,
+                                    initState.orders[index].status,
                                     style: Theme.of(context).textTheme.displaySmall,
                                   )
                                 ]),
@@ -161,13 +167,21 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
             ),
           ),
         ),
-        if (isLoading)
-          Center(
-            child: CircularProgressIndicator(
-              color: Colors.black,
-              backgroundColor: Colors.grey.shade400,
-            ),
-          ),
+        BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
+          return state.maybeMap(
+            preloadDataCompleted: (value) {
+              return isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.black,
+                        backgroundColor: Colors.grey.shade400,
+                      ),
+                    )
+                  : const SizedBox();
+            },
+            orElse: () => const SizedBox(),
+          );
+        })
       ],
     );
   }

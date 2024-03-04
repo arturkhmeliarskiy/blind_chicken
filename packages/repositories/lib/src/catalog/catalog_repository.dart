@@ -1,25 +1,21 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:api_models/api_models.dart';
-import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:services/services.dart';
 import 'package:shared/shared.dart';
 
 class CatalogRepository {
   final CatalogService _catalogService;
-  final ConverterService _converterService;
-  final DeviceInfoService _deviceInfoService;
   final ProductsFavouritesService _productsHiveService;
+  final ProductsShoppingCartService _productsShoppingCartService;
 
   StreamController streamController = StreamController.broadcast();
 
   CatalogRepository(
     this._catalogService,
-    this._converterService,
-    this._deviceInfoService,
     this._productsHiveService,
+    this._productsShoppingCartService,
   );
 
   Future<List<FilterInfoDataModel>> getFilters() async {
@@ -32,6 +28,8 @@ class CatalogRepository {
 
     return listProducts.toProducts(listProducts);
   }
+
+  //favourites
 
   List<ProductDataModel> getFavouritesProducts() {
     final listProducts = _productsHiveService.listProduct();
@@ -50,20 +48,44 @@ class CatalogRepository {
     _productsHiveService.deleteProduct(index);
   }
 
+  void deleteAllFavouritesProducts() {
+    _productsHiveService.deleteAllFavouritesProducts();
+  }
+  //favourites end
+
+  //shopping cart
+
+  List<BasketInfoItemDataModel> getShoppingCartProducts() {
+    final listProducts = _productsShoppingCartService.listProduct();
+    return listProducts.toShoppingCartProducts(listProducts);
+  }
+
+  void addShoppingCartProduct(BasketInfoItemDataModel product) {
+    _productsShoppingCartService.addProduct(product.toShoppingProduct());
+  }
+
+  void putShoppingCartProduct(int index, BasketInfoItemDataModel product) {
+    _productsShoppingCartService.putProduct(index, product.toShoppingProduct());
+  }
+
+  void deleteShoppingCartProduct(int index) {
+    _productsShoppingCartService.deleteProduct(index);
+  }
+
+  void deleteAllShoppingProducts() {
+    _productsShoppingCartService.deleteAllShoppingProducts();
+  }
+
+  //end shopping cart
+
   Future<List<MenuItemDataModel>> postMenuItems({
-    required int auth,
     required String a,
     required int b,
     required int id,
     required String u,
     required int pid,
   }) async {
-    final idDevice = await _deviceInfoService.getDeviceId();
-    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$idDevice");
     final listMenuItems = await _catalogService.postMenuItems(
-      auth: auth,
-      token: idDevice,
-      hashToken: hashToken,
       a: a,
       b: b,
       id: id,
@@ -76,41 +98,18 @@ class CatalogRepository {
   Future<CatalogDataModel> getCatalogProducts({
     required CatalogProductsRequest request,
   }) async {
-    final idDevice = await _deviceInfoService.getDeviceId();
-    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$idDevice");
-    final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p${request.tel}");
-    log(idDevice);
-    log(hashToken);
     final catalogProducts = await _catalogService.getCatalogProducts(
-          request: request.copyWith(
-            token: idDevice,
-            hashToken: hashToken,
-            hashTokenTel: hashTokenTel,
-          ),
+          request: request,
         ) ??
         CatalogResponse();
     return catalogProducts.toCatalogProducts();
   }
 
   Future<DetailProductDataModel> getDetailsProduct({
-    required int auth,
-    required String tel,
     required String code,
     required String genderIndex,
   }) async {
-    final idDevice = await _deviceInfoService.getDeviceId();
-    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$idDevice");
-    final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
-
-    log(idDevice);
-    log(hashToken);
-
     final detailsProduct = await _catalogService.getDetailsProduct(
-          auth: auth,
-          token: idDevice,
-          hashToken: hashToken,
-          tel: tel,
-          hashTokenTel: hashTokenTel,
           code: code,
         ) ??
         DetailProductResponse();
@@ -119,31 +118,152 @@ class CatalogRepository {
   }
 
   Future<AdditionalProductsDescriptionDataModel> getAdditionalProductsDescription({
-    required int auth,
-    required String tel,
     required String code,
-    required String genderIndex,
     required String block,
   }) async {
-    final idDevice = await _deviceInfoService.getDeviceId();
-    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$idDevice");
-    final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
-
-    log(idDevice);
-    log(hashToken);
-
     final detailsProduct = await _catalogService.getAdditionalProductsDescription(
-          auth: auth,
-          token: idDevice,
-          hashToken: hashToken,
-          tel: tel,
-          hashTokenTel: hashTokenTel,
           code: code,
           block: block,
         ) ??
         AdditionalProductsDescriptionResponse();
 
     return detailsProduct.toAdditionalProductsDescription();
+  }
+
+  Future<PaymentOrderDataModel> payGiftCard({
+    required CatalogGiftCardRequest request,
+  }) async {
+    final paymentOrder = await _catalogService.payGiftCard(
+          request: request,
+        ) ??
+        PaymentOrderResponse();
+
+    return paymentOrder.toCreateOrder();
+  }
+
+  Future<CatalogSearchDataModel> searchProducts({
+    required String search,
+  }) async {
+    final paymentOrder = await _catalogService.searchProducts(
+          search: search,
+        ) ??
+        CatalogSearchResponse();
+
+    return paymentOrder.toSearchProducts();
+  }
+
+  Future<CatalogSearchInfoDataModel> searchProductsInfo({
+    required CatalogSearchProductsRequest request,
+  }) async {
+    final paymentOrder = await _catalogService.searchProductsInfo(
+          request: request,
+        ) ??
+        CatalogSearchInfoResponse();
+
+    return paymentOrder.toSearchProductsInfo();
+  }
+}
+
+extension on CatalogSearchInfoResponse {
+  CatalogSearchInfoDataModel toSearchProductsInfo() {
+    return CatalogSearchInfoDataModel(
+      products: List<ProductDataModel>.from(
+        products?.map(
+              (item) => ProductDataModel(
+                id: int.parse(item.c ?? '0'),
+                title: item.n ?? '',
+                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+                brend: item.b ?? '',
+                catrgory: item.n ?? '',
+                size: [],
+                lensDiameter: 0,
+                price: item.pbc ?? 0,
+                templeLength: 0,
+                country: '',
+                variants: [],
+                maximumCashback: item.ca ?? 0,
+                maximumPersonalDiscount: item.dv ?? 0,
+                yourPrice: item.pc ?? 0,
+                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+              ),
+            ) ??
+            [],
+      ),
+      filter: List<FilterInfoDataModel>.from(filter?.map((item) {
+            return FilterInfoDataModel(
+              id: item.n ?? '',
+              title: item.n ?? '',
+              typeFilter: item.n ?? '',
+              isSearch: (item.v?.length ?? 0) > 10,
+              items: item.v?.map((element) {
+                    return FilterItemDataModel(
+                      id: int.parse(element.id ?? '0'),
+                      value: element.n ?? '',
+                      typeFilter: item.typeFilter ?? '',
+                    );
+                  }).toList() ??
+                  [],
+            );
+          }) ??
+          []),
+      userDiscount: userDiscount ?? '',
+      h1: h1 ?? '',
+      count: count ?? '',
+      countFilter: countFilter ?? '',
+      r: r ?? '',
+      e: e ?? '',
+    );
+  }
+}
+
+extension on CatalogSearchResponse {
+  CatalogSearchDataModel toSearchProducts() {
+    return CatalogSearchDataModel(
+      productsCount: productsCount ?? 0,
+      sectionsCount: sectionsCount ?? 0,
+      products: List<ProductDataModel>.from(
+        products?.map(
+              (item) => ProductDataModel(
+                id: int.parse(item.c ?? '0'),
+                title: item.n ?? '',
+                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+                brend: item.b ?? '',
+                catrgory: item.n ?? '',
+                size: [],
+                lensDiameter: 0,
+                price: item.pbc ?? 0,
+                templeLength: 0,
+                country: '',
+                variants: [],
+                maximumCashback: item.ca ?? 0,
+                maximumPersonalDiscount: item.dv ?? 0,
+                yourPrice: item.pc ?? 0,
+                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+              ),
+            ) ??
+            [],
+      ),
+      sections: List<CatalogSectionDataModel>.from(
+        sections?.map(
+              (item) => CatalogSectionDataModel(
+                n: item.n ?? '',
+                u: item.u ?? '',
+                g: item.g ?? '',
+              ),
+            ) ??
+            [],
+      ),
+    );
+  }
+}
+
+extension on PaymentOrderResponse {
+  PaymentOrderDataModel toCreateOrder() {
+    return PaymentOrderDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      id: id ?? 0,
+    );
   }
 }
 
@@ -191,6 +311,7 @@ extension on List<ProductResponse> {
           maximumCashback: 0,
           maximumPersonalDiscount: 0,
           yourPrice: 0,
+          isYourPriceDisplayed: false,
         ),
       ),
     );
@@ -202,8 +323,8 @@ extension on List<MenuItemResponse>? {
     return List<MenuItemDataModel>.from(
       listMenuItems.map(
         (item) => MenuItemDataModel(
-          id: item.id ?? 0,
-          idParent: item.idParent ?? 0,
+          id: int.parse(item.id ?? '0'),
+          idParent: int.parse(item.idParent ?? '0'),
           url: item.url ?? '',
           name: item.name ?? '',
           sub: item.sub ?? 0,
@@ -233,9 +354,35 @@ extension on List<ProductFavouriteModel> {
           variants: item.variants,
           maximumCashback: 0,
           maximumPersonalDiscount: 0,
-          yourPrice: 0,
+          yourPrice: item.youPrice,
+          isYourPriceDisplayed: false,
         ),
       ),
+    );
+  }
+}
+
+extension on List<ProductShoppingCartDataModel> {
+  List<BasketInfoItemDataModel> toShoppingCartProducts(
+      List<ProductShoppingCartDataModel> listProducts) {
+    return List<BasketInfoItemDataModel>.from(
+      listProducts.map(
+        (item) => BasketInfoItemDataModel(
+          code: item.code,
+          sku: item.sku,
+          count: item.count,
+        ),
+      ),
+    );
+  }
+}
+
+extension on BasketInfoItemDataModel {
+  ProductShoppingCartDataModel toShoppingProduct() {
+    return ProductShoppingCartDataModel(
+      code: code,
+      sku: sku,
+      count: count,
     );
   }
 }
@@ -254,6 +401,7 @@ extension on ProductDataModel {
       country: country,
       images: images,
       variants: variants,
+      youPrice: yourPrice,
     );
   }
 }
@@ -262,15 +410,44 @@ extension on CatalogResponse {
   CatalogDataModel toCatalogProducts() {
     return CatalogDataModel(
       userDiscount: userDiscount ?? '',
-      breadcrumbs: BreadcrumbsDataModel(
-        women: breadcrumbs?.women ?? '',
-        glasses: breadcrumbs?.glasses ?? '',
-        optics: breadcrumbs?.optics ?? '',
+      breadcrumbs: List<CatalogBreadcrumbDataModel>.from(
+        breadcrumbs?.map(
+              (item) => CatalogBreadcrumbDataModel(
+                name: item.name ?? '',
+                value: item.value ?? '',
+              ),
+            ) ??
+            [],
       ),
       h1: h1 ?? '',
       count: count ?? '',
-      listNext: sections?.listNext?.map((item) => item.toString()).toList() ?? [],
-      listPrev: sections?.listPrev?.map((item) => item.toString()).toList() ?? [],
+      listNext: List<SectionItemDataModel>.from(
+        sections?.listNext?.map((item) {
+              return SectionItemDataModel(
+                name: item.name ?? '',
+                value: item.value ?? '',
+              );
+            }).toList() ??
+            [],
+      ),
+      listPrev: List<SectionItemDataModel>.from(
+        sections?.listPrev?.map((item) {
+              return SectionItemDataModel(
+                name: item.name ?? '',
+                value: item.value ?? '',
+              );
+            }).toList() ??
+            [],
+      ),
+      listThis: List<SectionItemDataModel>.from(
+        sections?.listThis?.map((item) {
+              return SectionItemDataModel(
+                name: item.name ?? '',
+                value: item.value ?? '',
+              );
+            }).toList() ??
+            [],
+      ),
       sections: SectionsDataModel(
         next: NextDataModel(
           frames: sections?.next?.frames ?? '',
@@ -318,6 +495,7 @@ extension on CatalogResponse {
               maximumCashback: item.ca ?? 0,
               maximumPersonalDiscount: item.dv ?? 0,
               yourPrice: item.pc ?? 0,
+              isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
             ),
           ) ??
           []),
@@ -405,8 +583,25 @@ extension on DetailProductResponse {
       ),
       text: text ?? '',
       quantity: quantity ?? 0,
-      art: art ?? '',
+      art: art ?? 0,
       userDiscount: userDiscount ?? 0,
+      product: ProductDataModel(
+        id: code ?? 0,
+        title: text ?? '',
+        catrgory: category?.n ?? '',
+        size: [],
+        price: int.parse(price?.p ?? '0'),
+        yourPrice: price?.pc ?? 0,
+        brend: brand?.n ?? '',
+        lensDiameter: 0,
+        templeLength: 0,
+        country: '',
+        images: photo?.mini ?? [],
+        variants: [],
+        maximumCashback: price?.cashback ?? 0,
+        maximumPersonalDiscount: price?.discountVal ?? 0,
+        isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
+      ),
       price: PriceProductDataModel(
         p: price?.p ?? '',
         pb: price?.pb ?? '',
@@ -474,6 +669,7 @@ extension on AdditionalProductsDescriptionResponse {
                 maximumCashback: item.ca ?? 0,
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
+                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
               );
             }) ??
             [],

@@ -5,6 +5,11 @@ class GiftCardState with _$GiftCardState {
   const factory GiftCardState.init() = InitGiftCardState;
   const factory GiftCardState.load() = LoadingGiftCardState;
   const factory GiftCardState.preloadDataCompleted({
-    required List<String> searchResult,
+    required List<PaymentItemDataModel> payments,
+    required bool isLoadCreateOrder,
+    String? creatOrderMessage,
   }) = PreloadDataGiftCardState;
+  const factory GiftCardState.createOrderSuccessfully({
+    required int orderId,
+  }) = CreateOrderSuccessfullyGiftCardState;
 }

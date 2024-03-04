@@ -202,6 +202,9 @@ class _FilterSelectValueSearchScreenState extends State<FilterSelectValueSearchS
                   preloadDataCompleted: (initState) {
                     return BlindChickenFilterButton(
                       onOpen: () {
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.getInfoProducts(path: initState.pathMenu.last.url),
+                            );
                         context.navigateTo(
                           CatalogRoute(
                             title: initState.title ?? '',

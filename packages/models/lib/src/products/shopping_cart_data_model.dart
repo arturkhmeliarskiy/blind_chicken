@@ -10,5 +10,6 @@ class ShoppingCartDataModel with _$ShoppingCartDataModel {
     required ProductDataModel product,
     required int count,
     required int price,
+    required int id,
   }) = _ShoppingCartDataModel;
 }

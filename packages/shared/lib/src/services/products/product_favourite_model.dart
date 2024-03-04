@@ -10,6 +10,7 @@ class ProductFavouriteModel {
     required this.catrgory,
     required this.size,
     required this.price,
+    required this.youPrice,
     required this.brend,
     required this.lensDiameter,
     required this.templeLength,
@@ -28,26 +29,29 @@ class ProductFavouriteModel {
   String catrgory;
 
   @HiveField(3)
-  List<int> size;
+  List<String> size;
 
   @HiveField(4)
   int price;
 
   @HiveField(5)
-  String brend;
+  int youPrice;
 
   @HiveField(6)
-  int lensDiameter;
+  String brend;
 
   @HiveField(7)
-  int templeLength;
+  int lensDiameter;
 
   @HiveField(8)
-  String country;
+  int templeLength;
 
   @HiveField(9)
-  List<String> images;
+  String country;
 
   @HiveField(10)
+  List<String> images;
+
+  @HiveField(11)
   List<String> variants;
 }

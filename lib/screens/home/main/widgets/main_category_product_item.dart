@@ -25,11 +25,14 @@ class MainCategoryProductItem extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.headline2?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.headline2?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+            ),
           )
         ],
       ),

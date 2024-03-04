@@ -6,6 +6,9 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.searchProfucts(
     String query,
   ) = ProfuctsSearchEvent;
+  const factory SearchEvent.searchProfuctsInfo(
+    String query,
+  ) = ProfuctsInfoSearchEvent;
   const factory SearchEvent.selectFilter({
     required int index,
     required int indexItem,
@@ -16,6 +19,10 @@ class SearchEvent with _$SearchEvent {
     required int indexItem,
     required FilterItemDataModel item,
   }) = DeleteFilterSearchEvent;
+  const factory SearchEvent.removeSelectFilterCategory({
+    required int index,
+  }) = RemoveSelectFilterCategotySearchEvent;
+  const factory SearchEvent.removeSelectAllFilters() = RemoveSelectAllFiltersCategotySearchEvent;
   const factory SearchEvent.deleteCatalogFilter({
     required int key,
     required int index,
@@ -28,4 +35,8 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.deleteFavouriteProduct({
     required int index,
   }) = DeleteFavouriteProductSearchEvent;
+  const factory SearchEvent.getInfoProduct({
+    required String code,
+  }) = GetInfoProductSearchEvent;
+  const factory SearchEvent.goBackProductInfo() = GoBackProductInfoCategotySearchEvent;
 }

@@ -8,7 +8,9 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -125,7 +127,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       onTap: () {
                         if (listItems[index].route == 'phone') {
                           _makePhoneCall(listItems[index].title);
-                          context.navigateNamedTo('/dashboard/home${listItems[index].route}');
+                          context.navigateNamedTo('/dashboard/home/${listItems[index].route}');
                         } else if (listItems[index].route == 'WhatsApp') {
                           _launchWhatsapp('8 (800) 500-53-29');
                         } else {
@@ -225,17 +227,48 @@ class _DashboardPageState extends State<DashboardPage> {
             selectedItemColor: Colors.green[500],
             onTap: (int index) {
               if (index == 0) {
-                if (_isMain) {
-                  context.navigateTo(const MainRoute());
-                } else {
-                  context.navigateTo(const CategoryRoute());
-                }
+                // if (_isMain) {
+                //   context.navigateTo(
+                //     const HomeAutoRouterRoute(
+                //       children: [
+                //         MainRoute(),
+                //       ],
+                //     ),
+                //   );
+                // } else {
+                //   context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                //   context.navigateTo(
+                //     const HomeAutoRouterRoute(
+                //       children: [
+                //         CategoryRoute(),
+                //       ],
+                //     ),
+                //   );
+                // }
+                context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                context.navigateTo(
+                  const HomeAutoRouterRoute(
+                    children: [
+                      CategoryRoute(),
+                    ],
+                  ),
+                );
               } else if (index == 1) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return const LoginPhoneScreen();
-                    });
+                final shared = GetIt.I.get<SharedPreferencesService>();
+                final userAuthorized = shared.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+                if (userAuthorized) {
+                  context.pushRoute(const AccountRoute());
+                } else {
+                  context.read<LoginBloc>().add(const LoginEvent.init());
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const LoginPhoneScreen();
+                      });
+                }
+              } else if (index == 2) {
+                context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                tabsRouter.setActiveIndex(index);
               } else if (index == 3) {
                 context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
                 tabsRouter.setActiveIndex(index);
@@ -247,7 +280,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   showOverlay(
                     context: context,
                     width: 220,
-                    height: 134,
+                    height: 94,
                     bottom: 56,
                     right: 0,
                     listItems: [
@@ -255,10 +288,10 @@ class _DashboardPageState extends State<DashboardPage> {
                         title: '8 (800) 500-53-29',
                         route: 'phone',
                       ),
-                      DropDownDataModel(
-                        title: 'Открыть чат',
-                        route: '/chat_messanger',
-                      ),
+                      // DropDownDataModel(
+                      //   title: 'Открыть чат',
+                      //   route: '/chat_messanger',
+                      // ),
                       DropDownDataModel(
                         title: 'WhatsApp',
                         route: 'WhatsApp',

@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/home/filters/widgets/blind_chicken_close_botton.dart';
 import 'package:blind_chicken/screens/home/filters/widgets/filter_item_catalog.dart';
 import 'package:blind_chicken/screens/home/widgets/catalog_header_info.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
 class CatalogSearchFiltersScreen extends StatefulWidget {
@@ -25,12 +25,22 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CatalogHeaderInfo(
-              title: 'Фильтры',
-              onClose: () {
-                context.popRoute();
-              },
-            ),
+            BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
+              return state.maybeMap(
+                  searchProductsResult: (initState) {
+                    return CatalogHeaderInfo(
+                      title: 'Фильтры',
+                      onClose: () {
+                        context.popRoute();
+                      },
+                      onRemoveAllFilters: () {
+                        context.read<SearchBloc>().add(const SearchEvent.removeSelectAllFilters());
+                      },
+                      isRemoveAllFilters: initState.allSelectFilter.isNotEmpty,
+                    );
+                  },
+                  orElse: () => const SizedBox());
+            }),
             Expanded(
               child: BlocBuilder<SearchBloc, SearchState>(
                 builder: (context, state) {
@@ -42,6 +52,12 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                         itemBuilder: (context, index) {
                           return FilterItemCatalog(
                             selectFilter: iniState.selectFilter[index] ?? [],
+                            isRemoveAllFilters: (iniState.selectFilter[index] ?? []).isNotEmpty,
+                            onRemoveAllFilters: () {
+                              context.read<SearchBloc>().add(
+                                    SearchEvent.removeSelectFilterCategory(index: index),
+                                  );
+                            },
                             item: iniState.filter[index].title,
                             onTap: () {
                               if (iniState.filter[index].isSearch) {
@@ -119,11 +135,18 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                 },
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
-                context.popRoute();
-              },
-            ),
+            BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
+              return state.maybeMap(
+                  searchProductsResult: (initState) {
+                    return BlindChickenFilterButton(
+                      onOpen: () {
+                        context.popRoute();
+                      },
+                      countProducts: initState.searchResultInfo?.count ?? '',
+                    );
+                  },
+                  orElse: () => const SizedBox());
+            }),
           ],
         ),
       ),

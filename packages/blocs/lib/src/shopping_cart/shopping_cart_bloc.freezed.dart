@@ -18,64 +18,164 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ShoppingCartEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
-    required TResult Function(ShoppingCartDataModel item)
+    required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(int index) deleteProductToSoppingCart,
-    required TResult Function(ShoppingCartDataModel item, int index)
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
         updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
-    TResult? Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult? Function(int index)? deleteProductToSoppingCart,
-    TResult? Function(ShoppingCartDataModel item, int index)?
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
-    TResult Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult Function(int index)? deleteProductToSoppingCart,
-    TResult Function(ShoppingCartDataModel item, int index)?
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitShoppingCartEvent value) preloadData,
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
         updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitShoppingCartEvent value)? preloadData,
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitShoppingCartEvent value)? preloadData,
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,7 +223,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.preloadData()';
+    return 'ShoppingCartEvent.init()';
   }
 
   @override
@@ -139,12 +239,260 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
-    required TResult Function(ShoppingCartDataModel item)
+    required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(int index) deleteProductToSoppingCart,
-    required TResult Function(ShoppingCartDataModel item, int index)
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
         updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitShoppingCartEvent implements ShoppingCartEvent {
+  const factory InitShoppingCartEvent() = _$InitShoppingCartEventImpl;
+}
+
+/// @nodoc
+abstract class _$$PreloadDataShoppingCartEventImplCopyWith<$Res> {
+  factory _$$PreloadDataShoppingCartEventImplCopyWith(
+          _$PreloadDataShoppingCartEventImpl value,
+          $Res Function(_$PreloadDataShoppingCartEventImpl) then) =
+      __$$PreloadDataShoppingCartEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PreloadDataShoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$PreloadDataShoppingCartEventImpl>
+    implements _$$PreloadDataShoppingCartEventImplCopyWith<$Res> {
+  __$$PreloadDataShoppingCartEventImplCopyWithImpl(
+      _$PreloadDataShoppingCartEventImpl _value,
+      $Res Function(_$PreloadDataShoppingCartEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PreloadDataShoppingCartEventImpl
+    implements PreloadDataShoppingCartEvent {
+  const _$PreloadDataShoppingCartEventImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.preloadData()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PreloadDataShoppingCartEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
   }) {
     return preloadData();
   }
@@ -152,11 +500,26 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
-    TResult? Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult? Function(int index)? deleteProductToSoppingCart,
-    TResult? Function(ShoppingCartDataModel item, int index)?
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
   }) {
     return preloadData?.call();
   }
@@ -164,11 +527,26 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
-    TResult Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult Function(int index)? deleteProductToSoppingCart,
-    TResult Function(ShoppingCartDataModel item, int index)?
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -180,13 +558,33 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitShoppingCartEvent value) preloadData,
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
         updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
   }) {
     return preloadData(this);
   }
@@ -194,13 +592,30 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitShoppingCartEvent value)? preloadData,
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
   }) {
     return preloadData?.call(this);
   }
@@ -208,13 +623,30 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitShoppingCartEvent value)? preloadData,
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -224,8 +656,9 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   }
 }
 
-abstract class InitShoppingCartEvent implements ShoppingCartEvent {
-  const factory InitShoppingCartEvent() = _$InitShoppingCartEventImpl;
+abstract class PreloadDataShoppingCartEvent implements ShoppingCartEvent {
+  const factory PreloadDataShoppingCartEvent() =
+      _$PreloadDataShoppingCartEventImpl;
 }
 
 /// @nodoc
@@ -235,9 +668,9 @@ abstract class _$$AddProductToSoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$AddProductToSoppingCartEventImpl) then) =
       __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ShoppingCartDataModel item});
+  $Res call({BasketInfoItemDataModel item});
 
-  $ShoppingCartDataModelCopyWith<$Res> get item;
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -259,14 +692,14 @@ class __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as ShoppingCartDataModel,
+              as BasketInfoItemDataModel,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ShoppingCartDataModelCopyWith<$Res> get item {
-    return $ShoppingCartDataModelCopyWith<$Res>(_value.item, (value) {
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value));
     });
   }
@@ -279,7 +712,7 @@ class _$AddProductToSoppingCartEventImpl
   const _$AddProductToSoppingCartEventImpl({required this.item});
 
   @override
-  final ShoppingCartDataModel item;
+  final BasketInfoItemDataModel item;
 
   @override
   String toString() {
@@ -308,12 +741,28 @@ class _$AddProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
-    required TResult Function(ShoppingCartDataModel item)
+    required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(int index) deleteProductToSoppingCart,
-    required TResult Function(ShoppingCartDataModel item, int index)
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
         updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
   }) {
     return addProductToSoppingCart(item);
   }
@@ -321,11 +770,26 @@ class _$AddProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
-    TResult? Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult? Function(int index)? deleteProductToSoppingCart,
-    TResult? Function(ShoppingCartDataModel item, int index)?
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
   }) {
     return addProductToSoppingCart?.call(item);
   }
@@ -333,11 +797,26 @@ class _$AddProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
-    TResult Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult Function(int index)? deleteProductToSoppingCart,
-    TResult Function(ShoppingCartDataModel item, int index)?
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -349,13 +828,33 @@ class _$AddProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitShoppingCartEvent value) preloadData,
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
         updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -363,13 +862,30 @@ class _$AddProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitShoppingCartEvent value)? preloadData,
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -377,13 +893,30 @@ class _$AddProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitShoppingCartEvent value)? preloadData,
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -395,10 +928,10 @@ class _$AddProductToSoppingCartEventImpl
 
 abstract class AddProductToSoppingCartEvent implements ShoppingCartEvent {
   const factory AddProductToSoppingCartEvent(
-          {required final ShoppingCartDataModel item}) =
+          {required final BasketInfoItemDataModel item}) =
       _$AddProductToSoppingCartEventImpl;
 
-  ShoppingCartDataModel get item;
+  BasketInfoItemDataModel get item;
   @JsonKey(ignore: true)
   _$$AddProductToSoppingCartEventImplCopyWith<
           _$AddProductToSoppingCartEventImpl>
@@ -412,7 +945,9 @@ abstract class _$$DeleteProductToSoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$DeleteProductToSoppingCartEventImpl) then) =
       __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index});
+  $Res call({BasketInfoItemDataModel item, int index});
+
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -428,14 +963,27 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? item = null,
     Object? index = null,
   }) {
     return _then(_$DeleteProductToSoppingCartEventImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as BasketInfoItemDataModel,
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -443,14 +991,17 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
 
 class _$DeleteProductToSoppingCartEventImpl
     implements DeleteProductToSoppingCartEvent {
-  const _$DeleteProductToSoppingCartEventImpl({required this.index});
+  const _$DeleteProductToSoppingCartEventImpl(
+      {required this.item, required this.index});
 
+  @override
+  final BasketInfoItemDataModel item;
   @override
   final int index;
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.deleteProductToSoppingCart(index: $index)';
+    return 'ShoppingCartEvent.deleteProductToSoppingCart(item: $item, index: $index)';
   }
 
   @override
@@ -458,11 +1009,12 @@ class _$DeleteProductToSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteProductToSoppingCartEventImpl &&
+            (identical(other.item, item) || other.item == item) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, item, index);
 
   @JsonKey(ignore: true)
   @override
@@ -475,40 +1027,86 @@ class _$DeleteProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
-    required TResult Function(ShoppingCartDataModel item)
+    required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(int index) deleteProductToSoppingCart,
-    required TResult Function(ShoppingCartDataModel item, int index)
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
         updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
   }) {
-    return deleteProductToSoppingCart(index);
+    return deleteProductToSoppingCart(item, index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
-    TResult? Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult? Function(int index)? deleteProductToSoppingCart,
-    TResult? Function(ShoppingCartDataModel item, int index)?
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
   }) {
-    return deleteProductToSoppingCart?.call(index);
+    return deleteProductToSoppingCart?.call(item, index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
-    TResult Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult Function(int index)? deleteProductToSoppingCart,
-    TResult Function(ShoppingCartDataModel item, int index)?
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (deleteProductToSoppingCart != null) {
-      return deleteProductToSoppingCart(index);
+      return deleteProductToSoppingCart(item, index);
     }
     return orElse();
   }
@@ -516,13 +1114,33 @@ class _$DeleteProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitShoppingCartEvent value) preloadData,
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
         updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
   }) {
     return deleteProductToSoppingCart(this);
   }
@@ -530,13 +1148,30 @@ class _$DeleteProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitShoppingCartEvent value)? preloadData,
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
   }) {
     return deleteProductToSoppingCart?.call(this);
   }
@@ -544,13 +1179,30 @@ class _$DeleteProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitShoppingCartEvent value)? preloadData,
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (deleteProductToSoppingCart != null) {
@@ -561,9 +1213,11 @@ class _$DeleteProductToSoppingCartEventImpl
 }
 
 abstract class DeleteProductToSoppingCartEvent implements ShoppingCartEvent {
-  const factory DeleteProductToSoppingCartEvent({required final int index}) =
-      _$DeleteProductToSoppingCartEventImpl;
+  const factory DeleteProductToSoppingCartEvent(
+      {required final BasketInfoItemDataModel item,
+      required final int index}) = _$DeleteProductToSoppingCartEventImpl;
 
+  BasketInfoItemDataModel get item;
   int get index;
   @JsonKey(ignore: true)
   _$$DeleteProductToSoppingCartEventImplCopyWith<
@@ -578,9 +1232,9 @@ abstract class _$$UpdateProductToSoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$UpdateProductToSoppingCartEventImpl) then) =
       __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ShoppingCartDataModel item, int index});
+  $Res call({BasketInfoItemDataModel item, int index});
 
-  $ShoppingCartDataModelCopyWith<$Res> get item;
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -603,7 +1257,7 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as ShoppingCartDataModel,
+              as BasketInfoItemDataModel,
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -613,8 +1267,8 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ShoppingCartDataModelCopyWith<$Res> get item {
-    return $ShoppingCartDataModelCopyWith<$Res>(_value.item, (value) {
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
       return _then(_value.copyWith(item: value));
     });
   }
@@ -628,7 +1282,7 @@ class _$UpdateProductToSoppingCartEventImpl
       {required this.item, required this.index});
 
   @override
-  final ShoppingCartDataModel item;
+  final BasketInfoItemDataModel item;
   @override
   final int index;
 
@@ -660,12 +1314,28 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
-    required TResult Function(ShoppingCartDataModel item)
+    required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(int index) deleteProductToSoppingCart,
-    required TResult Function(ShoppingCartDataModel item, int index)
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
         updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
   }) {
     return updateProductToSoppingCart(item, index);
   }
@@ -673,11 +1343,26 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
-    TResult? Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult? Function(int index)? deleteProductToSoppingCart,
-    TResult? Function(ShoppingCartDataModel item, int index)?
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
   }) {
     return updateProductToSoppingCart?.call(item, index);
   }
@@ -685,11 +1370,26 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
-    TResult Function(ShoppingCartDataModel item)? addProductToSoppingCart,
-    TResult Function(int index)? deleteProductToSoppingCart,
-    TResult Function(ShoppingCartDataModel item, int index)?
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
         updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (updateProductToSoppingCart != null) {
@@ -701,13 +1401,33 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitShoppingCartEvent value) preloadData,
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
         updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
   }) {
     return updateProductToSoppingCart(this);
   }
@@ -715,13 +1435,30 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitShoppingCartEvent value)? preloadData,
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
   }) {
     return updateProductToSoppingCart?.call(this);
   }
@@ -729,13 +1466,30 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitShoppingCartEvent value)? preloadData,
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
         updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
     required TResult orElse(),
   }) {
     if (updateProductToSoppingCart != null) {
@@ -747,14 +1501,3388 @@ class _$UpdateProductToSoppingCartEventImpl
 
 abstract class UpdateProductToSoppingCartEvent implements ShoppingCartEvent {
   const factory UpdateProductToSoppingCartEvent(
-      {required final ShoppingCartDataModel item,
+      {required final BasketInfoItemDataModel item,
       required final int index}) = _$UpdateProductToSoppingCartEventImpl;
 
-  ShoppingCartDataModel get item;
+  BasketInfoItemDataModel get item;
   int get index;
   @JsonKey(ignore: true)
   _$$UpdateProductToSoppingCartEventImplCopyWith<
           _$UpdateProductToSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentBonusSoppingCartEventImplCopyWith<$Res> {
+  factory _$$PaymentBonusSoppingCartEventImplCopyWith(
+          _$PaymentBonusSoppingCartEventImpl value,
+          $Res Function(_$PaymentBonusSoppingCartEventImpl) then) =
+      __$$PaymentBonusSoppingCartEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaymentBonusSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$PaymentBonusSoppingCartEventImpl>
+    implements _$$PaymentBonusSoppingCartEventImplCopyWith<$Res> {
+  __$$PaymentBonusSoppingCartEventImplCopyWithImpl(
+      _$PaymentBonusSoppingCartEventImpl _value,
+      $Res Function(_$PaymentBonusSoppingCartEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PaymentBonusSoppingCartEventImpl
+    implements PaymentBonusSoppingCartEvent {
+  const _$PaymentBonusSoppingCartEventImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.paymentBonus()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentBonusSoppingCartEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return paymentBonus();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return paymentBonus?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (paymentBonus != null) {
+      return paymentBonus();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return paymentBonus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return paymentBonus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (paymentBonus != null) {
+      return paymentBonus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaymentBonusSoppingCartEvent implements ShoppingCartEvent {
+  const factory PaymentBonusSoppingCartEvent() =
+      _$PaymentBonusSoppingCartEventImpl;
+}
+
+/// @nodoc
+abstract class _$$InitGiftCardSoppingCartEventImplCopyWith<$Res> {
+  factory _$$InitGiftCardSoppingCartEventImplCopyWith(
+          _$InitGiftCardSoppingCartEventImpl value,
+          $Res Function(_$InitGiftCardSoppingCartEventImpl) then) =
+      __$$InitGiftCardSoppingCartEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitGiftCardSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$InitGiftCardSoppingCartEventImpl>
+    implements _$$InitGiftCardSoppingCartEventImplCopyWith<$Res> {
+  __$$InitGiftCardSoppingCartEventImplCopyWithImpl(
+      _$InitGiftCardSoppingCartEventImpl _value,
+      $Res Function(_$InitGiftCardSoppingCartEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitGiftCardSoppingCartEventImpl
+    implements InitGiftCardSoppingCartEvent {
+  const _$InitGiftCardSoppingCartEventImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.initGiftCard()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitGiftCardSoppingCartEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return initGiftCard();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return initGiftCard?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (initGiftCard != null) {
+      return initGiftCard();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return initGiftCard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return initGiftCard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (initGiftCard != null) {
+      return initGiftCard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitGiftCardSoppingCartEvent implements ShoppingCartEvent {
+  const factory InitGiftCardSoppingCartEvent() =
+      _$InitGiftCardSoppingCartEventImpl;
+}
+
+/// @nodoc
+abstract class _$$GiftCardSoppingCartEventImplCopyWith<$Res> {
+  factory _$$GiftCardSoppingCartEventImplCopyWith(
+          _$GiftCardSoppingCartEventImpl value,
+          $Res Function(_$GiftCardSoppingCartEventImpl) then) =
+      __$$GiftCardSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String number, String pin});
+}
+
+/// @nodoc
+class __$$GiftCardSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$GiftCardSoppingCartEventImpl>
+    implements _$$GiftCardSoppingCartEventImplCopyWith<$Res> {
+  __$$GiftCardSoppingCartEventImplCopyWithImpl(
+      _$GiftCardSoppingCartEventImpl _value,
+      $Res Function(_$GiftCardSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? number = null,
+    Object? pin = null,
+  }) {
+    return _then(_$GiftCardSoppingCartEventImpl(
+      number: null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+      pin: null == pin
+          ? _value.pin
+          : pin // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
+  const _$GiftCardSoppingCartEventImpl(
+      {required this.number, required this.pin});
+
+  @override
+  final String number;
+  @override
+  final String pin;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.giftCard(number: $number, pin: $pin)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GiftCardSoppingCartEventImpl &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.pin, pin) || other.pin == pin));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, number, pin);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GiftCardSoppingCartEventImplCopyWith<_$GiftCardSoppingCartEventImpl>
+      get copyWith => __$$GiftCardSoppingCartEventImplCopyWithImpl<
+          _$GiftCardSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return giftCard(number, pin);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return giftCard?.call(number, pin);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (giftCard != null) {
+      return giftCard(number, pin);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return giftCard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return giftCard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (giftCard != null) {
+      return giftCard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GiftCardSoppingCartEvent implements ShoppingCartEvent {
+  const factory GiftCardSoppingCartEvent(
+      {required final String number,
+      required final String pin}) = _$GiftCardSoppingCartEventImpl;
+
+  String get number;
+  String get pin;
+  @JsonKey(ignore: true)
+  _$$GiftCardSoppingCartEventImplCopyWith<_$GiftCardSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddGiftCardSoppingCartEventImplCopyWith<$Res> {
+  factory _$$AddGiftCardSoppingCartEventImplCopyWith(
+          _$AddGiftCardSoppingCartEventImpl value,
+          $Res Function(_$AddGiftCardSoppingCartEventImpl) then) =
+      __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BasketSertDeliveryRequest giftCard});
+
+  $BasketSertDeliveryRequestCopyWith<$Res> get giftCard;
+}
+
+/// @nodoc
+class __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$AddGiftCardSoppingCartEventImpl>
+    implements _$$AddGiftCardSoppingCartEventImplCopyWith<$Res> {
+  __$$AddGiftCardSoppingCartEventImplCopyWithImpl(
+      _$AddGiftCardSoppingCartEventImpl _value,
+      $Res Function(_$AddGiftCardSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? giftCard = null,
+  }) {
+    return _then(_$AddGiftCardSoppingCartEventImpl(
+      giftCard: null == giftCard
+          ? _value.giftCard
+          : giftCard // ignore: cast_nullable_to_non_nullable
+              as BasketSertDeliveryRequest,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketSertDeliveryRequestCopyWith<$Res> get giftCard {
+    return $BasketSertDeliveryRequestCopyWith<$Res>(_value.giftCard, (value) {
+      return _then(_value.copyWith(giftCard: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
+  const _$AddGiftCardSoppingCartEventImpl({required this.giftCard});
+
+  @override
+  final BasketSertDeliveryRequest giftCard;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.addGiftCard(giftCard: $giftCard)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddGiftCardSoppingCartEventImpl &&
+            (identical(other.giftCard, giftCard) ||
+                other.giftCard == giftCard));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, giftCard);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddGiftCardSoppingCartEventImplCopyWith<_$AddGiftCardSoppingCartEventImpl>
+      get copyWith => __$$AddGiftCardSoppingCartEventImplCopyWithImpl<
+          _$AddGiftCardSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return addGiftCard(this.giftCard);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return addGiftCard?.call(this.giftCard);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (addGiftCard != null) {
+      return addGiftCard(this.giftCard);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return addGiftCard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return addGiftCard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (addGiftCard != null) {
+      return addGiftCard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddGiftCardSoppingCartEvent implements ShoppingCartEvent {
+  const factory AddGiftCardSoppingCartEvent(
+          {required final BasketSertDeliveryRequest giftCard}) =
+      _$AddGiftCardSoppingCartEventImpl;
+
+  BasketSertDeliveryRequest get giftCard;
+  @JsonKey(ignore: true)
+  _$$AddGiftCardSoppingCartEventImplCopyWith<_$AddGiftCardSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeliverySoppingCartEventImplCopyWith<$Res> {
+  factory _$$DeliverySoppingCartEventImplCopyWith(
+          _$DeliverySoppingCartEventImpl value,
+          $Res Function(_$DeliverySoppingCartEventImpl) then) =
+      __$$DeliverySoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int delivery});
+}
+
+/// @nodoc
+class __$$DeliverySoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$DeliverySoppingCartEventImpl>
+    implements _$$DeliverySoppingCartEventImplCopyWith<$Res> {
+  __$$DeliverySoppingCartEventImplCopyWithImpl(
+      _$DeliverySoppingCartEventImpl _value,
+      $Res Function(_$DeliverySoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? delivery = null,
+  }) {
+    return _then(_$DeliverySoppingCartEventImpl(
+      delivery: null == delivery
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
+  const _$DeliverySoppingCartEventImpl({required this.delivery});
+
+  @override
+  final int delivery;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.delivery(delivery: $delivery)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeliverySoppingCartEventImpl &&
+            (identical(other.delivery, delivery) ||
+                other.delivery == delivery));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, delivery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeliverySoppingCartEventImplCopyWith<_$DeliverySoppingCartEventImpl>
+      get copyWith => __$$DeliverySoppingCartEventImplCopyWithImpl<
+          _$DeliverySoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return delivery(this.delivery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return delivery?.call(this.delivery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (delivery != null) {
+      return delivery(this.delivery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return delivery(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return delivery?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (delivery != null) {
+      return delivery(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeliverySoppingCartEvent implements ShoppingCartEvent {
+  const factory DeliverySoppingCartEvent({required final int delivery}) =
+      _$DeliverySoppingCartEventImpl;
+
+  int get delivery;
+  @JsonKey(ignore: true)
+  _$$DeliverySoppingCartEventImplCopyWith<_$DeliverySoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PromoCodeSoppingCartEventImplCopyWith<$Res> {
+  factory _$$PromoCodeSoppingCartEventImplCopyWith(
+          _$PromoCodeSoppingCartEventImpl value,
+          $Res Function(_$PromoCodeSoppingCartEventImpl) then) =
+      __$$PromoCodeSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String promoCode});
+}
+
+/// @nodoc
+class __$$PromoCodeSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$PromoCodeSoppingCartEventImpl>
+    implements _$$PromoCodeSoppingCartEventImplCopyWith<$Res> {
+  __$$PromoCodeSoppingCartEventImplCopyWithImpl(
+      _$PromoCodeSoppingCartEventImpl _value,
+      $Res Function(_$PromoCodeSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? promoCode = null,
+  }) {
+    return _then(_$PromoCodeSoppingCartEventImpl(
+      promoCode: null == promoCode
+          ? _value.promoCode
+          : promoCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
+  const _$PromoCodeSoppingCartEventImpl({required this.promoCode});
+
+  @override
+  final String promoCode;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.promoCode(promoCode: $promoCode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PromoCodeSoppingCartEventImpl &&
+            (identical(other.promoCode, promoCode) ||
+                other.promoCode == promoCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, promoCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PromoCodeSoppingCartEventImplCopyWith<_$PromoCodeSoppingCartEventImpl>
+      get copyWith => __$$PromoCodeSoppingCartEventImplCopyWithImpl<
+          _$PromoCodeSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return promoCode(this.promoCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return promoCode?.call(this.promoCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (promoCode != null) {
+      return promoCode(this.promoCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return promoCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return promoCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (promoCode != null) {
+      return promoCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PromoCodeSoppingCartEvent implements ShoppingCartEvent {
+  const factory PromoCodeSoppingCartEvent({required final String promoCode}) =
+      _$PromoCodeSoppingCartEventImpl;
+
+  String get promoCode;
+  @JsonKey(ignore: true)
+  _$$PromoCodeSoppingCartEventImplCopyWith<_$PromoCodeSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemovePromoCodeSoppingCartEventImplCopyWith<$Res> {
+  factory _$$RemovePromoCodeSoppingCartEventImplCopyWith(
+          _$RemovePromoCodeSoppingCartEventImpl value,
+          $Res Function(_$RemovePromoCodeSoppingCartEventImpl) then) =
+      __$$RemovePromoCodeSoppingCartEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemovePromoCodeSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$RemovePromoCodeSoppingCartEventImpl>
+    implements _$$RemovePromoCodeSoppingCartEventImplCopyWith<$Res> {
+  __$$RemovePromoCodeSoppingCartEventImplCopyWithImpl(
+      _$RemovePromoCodeSoppingCartEventImpl _value,
+      $Res Function(_$RemovePromoCodeSoppingCartEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemovePromoCodeSoppingCartEventImpl
+    implements RemovePromoCodeSoppingCartEvent {
+  const _$RemovePromoCodeSoppingCartEventImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.removePromoCode()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemovePromoCodeSoppingCartEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return removePromoCode();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return removePromoCode?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (removePromoCode != null) {
+      return removePromoCode();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return removePromoCode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return removePromoCode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (removePromoCode != null) {
+      return removePromoCode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemovePromoCodeSoppingCartEvent implements ShoppingCartEvent {
+  const factory RemovePromoCodeSoppingCartEvent() =
+      _$RemovePromoCodeSoppingCartEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<$Res> {
+  factory _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith(
+          _$CreateOrderPromoCodeSoppingCartEventImpl value,
+          $Res Function(_$CreateOrderPromoCodeSoppingCartEventImpl) then) =
+      __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BasketOrderRequest request});
+
+  $BasketOrderRequestCopyWith<$Res> get request;
+}
+
+/// @nodoc
+class __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$CreateOrderPromoCodeSoppingCartEventImpl>
+    implements _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<$Res> {
+  __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl(
+      _$CreateOrderPromoCodeSoppingCartEventImpl _value,
+      $Res Function(_$CreateOrderPromoCodeSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? request = null,
+  }) {
+    return _then(_$CreateOrderPromoCodeSoppingCartEventImpl(
+      request: null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as BasketOrderRequest,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketOrderRequestCopyWith<$Res> get request {
+    return $BasketOrderRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CreateOrderPromoCodeSoppingCartEventImpl
+    implements CreateOrderPromoCodeSoppingCartEvent {
+  const _$CreateOrderPromoCodeSoppingCartEventImpl({required this.request});
+
+  @override
+  final BasketOrderRequest request;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.createOrder(request: $request)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateOrderPromoCodeSoppingCartEventImpl &&
+            (identical(other.request, request) || other.request == request));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, request);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<
+          _$CreateOrderPromoCodeSoppingCartEventImpl>
+      get copyWith => __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<
+          _$CreateOrderPromoCodeSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return createOrder(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return createOrder?.call(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (createOrder != null) {
+      return createOrder(request);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return createOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return createOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (createOrder != null) {
+      return createOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateOrderPromoCodeSoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory CreateOrderPromoCodeSoppingCartEvent(
+          {required final BasketOrderRequest request}) =
+      _$CreateOrderPromoCodeSoppingCartEventImpl;
+
+  BasketOrderRequest get request;
+  @JsonKey(ignore: true)
+  _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<
+          _$CreateOrderPromoCodeSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BonusesSoppingCartEventImplCopyWith<$Res> {
+  factory _$$BonusesSoppingCartEventImplCopyWith(
+          _$BonusesSoppingCartEventImpl value,
+          $Res Function(_$BonusesSoppingCartEventImpl) then) =
+      __$$BonusesSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int bonuses});
+}
+
+/// @nodoc
+class __$$BonusesSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res, _$BonusesSoppingCartEventImpl>
+    implements _$$BonusesSoppingCartEventImplCopyWith<$Res> {
+  __$$BonusesSoppingCartEventImplCopyWithImpl(
+      _$BonusesSoppingCartEventImpl _value,
+      $Res Function(_$BonusesSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bonuses = null,
+  }) {
+    return _then(_$BonusesSoppingCartEventImpl(
+      bonuses: null == bonuses
+          ? _value.bonuses
+          : bonuses // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
+  const _$BonusesSoppingCartEventImpl({required this.bonuses});
+
+  @override
+  final int bonuses;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.bonuses(bonuses: $bonuses)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BonusesSoppingCartEventImpl &&
+            (identical(other.bonuses, bonuses) || other.bonuses == bonuses));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, bonuses);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BonusesSoppingCartEventImplCopyWith<_$BonusesSoppingCartEventImpl>
+      get copyWith => __$$BonusesSoppingCartEventImplCopyWithImpl<
+          _$BonusesSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return bonuses(this.bonuses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return bonuses?.call(this.bonuses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (bonuses != null) {
+      return bonuses(this.bonuses);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return bonuses(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return bonuses?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (bonuses != null) {
+      return bonuses(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BonusesSoppingCartEvent implements ShoppingCartEvent {
+  const factory BonusesSoppingCartEvent({required final int bonuses}) =
+      _$BonusesSoppingCartEventImpl;
+
+  int get bonuses;
+  @JsonKey(ignore: true)
+  _$$BonusesSoppingCartEventImplCopyWith<_$BonusesSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetInfoProductShoppingCartEventImplCopyWith<$Res> {
+  factory _$$GetInfoProductShoppingCartEventImplCopyWith(
+          _$GetInfoProductShoppingCartEventImpl value,
+          $Res Function(_$GetInfoProductShoppingCartEventImpl) then) =
+      __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$GetInfoProductShoppingCartEventImpl>
+    implements _$$GetInfoProductShoppingCartEventImplCopyWith<$Res> {
+  __$$GetInfoProductShoppingCartEventImplCopyWithImpl(
+      _$GetInfoProductShoppingCartEventImpl _value,
+      $Res Function(_$GetInfoProductShoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$GetInfoProductShoppingCartEventImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoProductShoppingCartEventImpl
+    implements GetInfoProductShoppingCartEvent {
+  const _$GetInfoProductShoppingCartEventImpl({required this.code});
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.getInfoProduct(code: $code)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoProductShoppingCartEventImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoProductShoppingCartEventImplCopyWith<
+          _$GetInfoProductShoppingCartEventImpl>
+      get copyWith => __$$GetInfoProductShoppingCartEventImplCopyWithImpl<
+          _$GetInfoProductShoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return getInfoProduct(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return getInfoProduct?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (getInfoProduct != null) {
+      return getInfoProduct(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return getInfoProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return getInfoProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (getInfoProduct != null) {
+      return getInfoProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoProductShoppingCartEvent implements ShoppingCartEvent {
+  const factory GetInfoProductShoppingCartEvent({required final String code}) =
+      _$GetInfoProductShoppingCartEventImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$GetInfoProductShoppingCartEventImplCopyWith<
+          _$GetInfoProductShoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GoBackProductInfoCategotyShoppingCartEventImplCopyWith<$Res> {
+  factory _$$GoBackProductInfoCategotyShoppingCartEventImplCopyWith(
+          _$GoBackProductInfoCategotyShoppingCartEventImpl value,
+          $Res Function(_$GoBackProductInfoCategotyShoppingCartEventImpl)
+              then) =
+      __$$GoBackProductInfoCategotyShoppingCartEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoBackProductInfoCategotyShoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$GoBackProductInfoCategotyShoppingCartEventImpl>
+    implements _$$GoBackProductInfoCategotyShoppingCartEventImplCopyWith<$Res> {
+  __$$GoBackProductInfoCategotyShoppingCartEventImplCopyWithImpl(
+      _$GoBackProductInfoCategotyShoppingCartEventImpl _value,
+      $Res Function(_$GoBackProductInfoCategotyShoppingCartEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GoBackProductInfoCategotyShoppingCartEventImpl
+    implements GoBackProductInfoCategotyShoppingCartEvent {
+  const _$GoBackProductInfoCategotyShoppingCartEventImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.goBackProductInfo()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GoBackProductInfoCategotyShoppingCartEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return goBackProductInfo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return goBackProductInfo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (goBackProductInfo != null) {
+      return goBackProductInfo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return goBackProductInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return goBackProductInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (goBackProductInfo != null) {
+      return goBackProductInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoBackProductInfoCategotyShoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory GoBackProductInfoCategotyShoppingCartEvent() =
+      _$GoBackProductInfoCategotyShoppingCartEventImpl;
+}
+
+/// @nodoc
+abstract class _$$AddFavouriteProductShoppingCartEventImplCopyWith<$Res> {
+  factory _$$AddFavouriteProductShoppingCartEventImplCopyWith(
+          _$AddFavouriteProductShoppingCartEventImpl value,
+          $Res Function(_$AddFavouriteProductShoppingCartEventImpl) then) =
+      __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index, ProductDataModel product});
+
+  $ProductDataModelCopyWith<$Res> get product;
+}
+
+/// @nodoc
+class __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$AddFavouriteProductShoppingCartEventImpl>
+    implements _$$AddFavouriteProductShoppingCartEventImplCopyWith<$Res> {
+  __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl(
+      _$AddFavouriteProductShoppingCartEventImpl _value,
+      $Res Function(_$AddFavouriteProductShoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+    Object? product = null,
+  }) {
+    return _then(_$AddFavouriteProductShoppingCartEventImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res> get product {
+    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddFavouriteProductShoppingCartEventImpl
+    implements AddFavouriteProductShoppingCartEvent {
+  const _$AddFavouriteProductShoppingCartEventImpl(
+      {required this.index, required this.product});
+
+  @override
+  final int index;
+  @override
+  final ProductDataModel product;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.addFavouriteProduct(index: $index, product: $product)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddFavouriteProductShoppingCartEventImpl &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.product, product) || other.product == product));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index, product);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddFavouriteProductShoppingCartEventImplCopyWith<
+          _$AddFavouriteProductShoppingCartEventImpl>
+      get copyWith => __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<
+          _$AddFavouriteProductShoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return addFavouriteProduct(index, product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return addFavouriteProduct?.call(index, product);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (addFavouriteProduct != null) {
+      return addFavouriteProduct(index, product);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return addFavouriteProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return addFavouriteProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (addFavouriteProduct != null) {
+      return addFavouriteProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddFavouriteProductShoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory AddFavouriteProductShoppingCartEvent(
+          {required final int index, required final ProductDataModel product}) =
+      _$AddFavouriteProductShoppingCartEventImpl;
+
+  int get index;
+  ProductDataModel get product;
+  @JsonKey(ignore: true)
+  _$$AddFavouriteProductShoppingCartEventImplCopyWith<
+          _$AddFavouriteProductShoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteFavouriteProductShoppingCartEventImplCopyWith<$Res> {
+  factory _$$DeleteFavouriteProductShoppingCartEventImplCopyWith(
+          _$DeleteFavouriteProductShoppingCartEventImpl value,
+          $Res Function(_$DeleteFavouriteProductShoppingCartEventImpl) then) =
+      __$$DeleteFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$DeleteFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$DeleteFavouriteProductShoppingCartEventImpl>
+    implements _$$DeleteFavouriteProductShoppingCartEventImplCopyWith<$Res> {
+  __$$DeleteFavouriteProductShoppingCartEventImplCopyWithImpl(
+      _$DeleteFavouriteProductShoppingCartEventImpl _value,
+      $Res Function(_$DeleteFavouriteProductShoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$DeleteFavouriteProductShoppingCartEventImpl(
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteFavouriteProductShoppingCartEventImpl
+    implements DeleteFavouriteProductShoppingCartEvent {
+  const _$DeleteFavouriteProductShoppingCartEventImpl({required this.index});
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.deleteFavouriteProduct(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteFavouriteProductShoppingCartEventImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteFavouriteProductShoppingCartEventImplCopyWith<
+          _$DeleteFavouriteProductShoppingCartEventImpl>
+      get copyWith =>
+          __$$DeleteFavouriteProductShoppingCartEventImplCopyWithImpl<
+              _$DeleteFavouriteProductShoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+  }) {
+    return deleteFavouriteProduct(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+  }) {
+    return deleteFavouriteProduct?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (deleteFavouriteProduct != null) {
+      return deleteFavouriteProduct(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+  }) {
+    return deleteFavouriteProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+  }) {
+    return deleteFavouriteProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    required TResult orElse(),
+  }) {
+    if (deleteFavouriteProduct != null) {
+      return deleteFavouriteProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteFavouriteProductShoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory DeleteFavouriteProductShoppingCartEvent(
+          {required final int index}) =
+      _$DeleteFavouriteProductShoppingCartEventImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$DeleteFavouriteProductShoppingCartEventImplCopyWith<
+          _$DeleteFavouriteProductShoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -764,11 +4892,36 @@ mixin _$ShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
         productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -776,11 +4929,36 @@ mixin _$ShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -788,11 +4966,36 @@ mixin _$ShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) =>
@@ -801,6 +5004,8 @@ mixin _$ShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) =>
@@ -809,6 +5014,8 @@ mixin _$ShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -816,6 +5023,8 @@ mixin _$ShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) =>
@@ -882,11 +5091,36 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
         productsShoppingCart,
   }) {
     return init();
@@ -897,11 +5131,36 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
   }) {
     return init?.call();
@@ -912,11 +5171,36 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -931,6 +5215,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -942,6 +5228,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return init?.call(this);
@@ -952,6 +5240,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -1010,11 +5300,36 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
         productsShoppingCart,
   }) {
     return load();
@@ -1025,11 +5340,36 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
   }) {
     return load?.call();
@@ -1040,11 +5380,36 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -1059,6 +5424,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -1070,6 +5437,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return load?.call(this);
@@ -1080,6 +5449,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -1095,6 +5466,253 @@ abstract class LoadingShoppingCartState implements ShoppingCartState {
 }
 
 /// @nodoc
+abstract class _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<$Res> {
+  factory _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith(
+          _$CreateOrderSuccessfullyShoppingCartStateImpl value,
+          $Res Function(_$CreateOrderSuccessfullyShoppingCartStateImpl) then) =
+      __$$CreateOrderSuccessfullyShoppingCartStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int orderId});
+}
+
+/// @nodoc
+class __$$CreateOrderSuccessfullyShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res,
+        _$CreateOrderSuccessfullyShoppingCartStateImpl>
+    implements _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<$Res> {
+  __$$CreateOrderSuccessfullyShoppingCartStateImplCopyWithImpl(
+      _$CreateOrderSuccessfullyShoppingCartStateImpl _value,
+      $Res Function(_$CreateOrderSuccessfullyShoppingCartStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderId = null,
+  }) {
+    return _then(_$CreateOrderSuccessfullyShoppingCartStateImpl(
+      orderId: null == orderId
+          ? _value.orderId
+          : orderId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateOrderSuccessfullyShoppingCartStateImpl
+    implements CreateOrderSuccessfullyShoppingCartState {
+  const _$CreateOrderSuccessfullyShoppingCartStateImpl({required this.orderId});
+
+  @override
+  final int orderId;
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.createOrderSuccessfully(orderId: $orderId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateOrderSuccessfullyShoppingCartStateImpl &&
+            (identical(other.orderId, orderId) || other.orderId == orderId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<
+          _$CreateOrderSuccessfullyShoppingCartStateImpl>
+      get copyWith =>
+          __$$CreateOrderSuccessfullyShoppingCartStateImplCopyWithImpl<
+              _$CreateOrderSuccessfullyShoppingCartStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsShoppingCart,
+  }) {
+    return createOrderSuccessfully(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+  }) {
+    return createOrderSuccessfully?.call(orderId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (createOrderSuccessfully != null) {
+      return createOrderSuccessfully(orderId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return createOrderSuccessfully(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return createOrderSuccessfully?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (createOrderSuccessfully != null) {
+      return createOrderSuccessfully(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateOrderSuccessfullyShoppingCartState
+    implements ShoppingCartState {
+  const factory CreateOrderSuccessfullyShoppingCartState(
+          {required final int orderId}) =
+      _$CreateOrderSuccessfullyShoppingCartStateImpl;
+
+  int get orderId;
+  @JsonKey(ignore: true)
+  _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<
+          _$CreateOrderSuccessfullyShoppingCartStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
   factory _$$ProductsShoppingCartStateImplCopyWith(
           _$ProductsShoppingCartStateImpl value,
@@ -1102,10 +5720,41 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<ShoppingCartDataModel> products,
-      List<ProductDataModel> favouritesProducts,
+      {BasketFullInfoDataModel shoppingCart,
+      List<PaymentItemDataModel> payments,
+      String promoCodeMessage,
       int numberProducts,
-      int amountPaid});
+      int delivery,
+      int amountPaid,
+      int giftCards,
+      int bonuses,
+      bool isLoadPaymentBonus,
+      bool isLoadPaymentGift,
+      bool isLoadPaymentPromoCode,
+      bool isActivePromoCode,
+      bool isLoadCreateOrder,
+      String promoCode,
+      BoutiquesDataModel boutiques,
+      List<BasketSertDeliveryRequest> listGiftCard,
+      String? creatOrderMessage,
+      PaymentBonusDataModel? paymentBonus,
+      PaymentBonusDataModel? paymentGift,
+      bool? isRemovePromoCode,
+      List<ProductDataModel> favouritesProducts,
+      List<String> listProductsCode,
+      List<ProductDataModel> listProdcutsStyle,
+      List<ProductDataModel> listProdcutsAlso,
+      List<ProductDataModel> listProdcutsBrand,
+      List<int> favouritesProductsId,
+      FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+      DetailProductDataModel? detailsProduct});
+
+  $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart;
+  $BoutiquesDataModelCopyWith<$Res> get boutiques;
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus;
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentGift;
+  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
 }
 
 /// @nodoc
@@ -1121,29 +5770,215 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? products = null,
-    Object? favouritesProducts = null,
+    Object? shoppingCart = null,
+    Object? payments = null,
+    Object? promoCodeMessage = null,
     Object? numberProducts = null,
+    Object? delivery = null,
     Object? amountPaid = null,
+    Object? giftCards = null,
+    Object? bonuses = null,
+    Object? isLoadPaymentBonus = null,
+    Object? isLoadPaymentGift = null,
+    Object? isLoadPaymentPromoCode = null,
+    Object? isActivePromoCode = null,
+    Object? isLoadCreateOrder = null,
+    Object? promoCode = null,
+    Object? boutiques = null,
+    Object? listGiftCard = null,
+    Object? creatOrderMessage = freezed,
+    Object? paymentBonus = freezed,
+    Object? paymentGift = freezed,
+    Object? isRemovePromoCode = freezed,
+    Object? favouritesProducts = null,
+    Object? listProductsCode = null,
+    Object? listProdcutsStyle = null,
+    Object? listProdcutsAlso = null,
+    Object? listProdcutsBrand = null,
+    Object? favouritesProductsId = null,
+    Object? favouritesProductsInfo = freezed,
+    Object? detailsProduct = freezed,
   }) {
     return _then(_$ProductsShoppingCartStateImpl(
-      products: null == products
-          ? _value._products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ShoppingCartDataModel>,
-      favouritesProducts: null == favouritesProducts
-          ? _value._favouritesProducts
-          : favouritesProducts // ignore: cast_nullable_to_non_nullable
-              as List<ProductDataModel>,
+      shoppingCart: null == shoppingCart
+          ? _value.shoppingCart
+          : shoppingCart // ignore: cast_nullable_to_non_nullable
+              as BasketFullInfoDataModel,
+      payments: null == payments
+          ? _value._payments
+          : payments // ignore: cast_nullable_to_non_nullable
+              as List<PaymentItemDataModel>,
+      promoCodeMessage: null == promoCodeMessage
+          ? _value.promoCodeMessage
+          : promoCodeMessage // ignore: cast_nullable_to_non_nullable
+              as String,
       numberProducts: null == numberProducts
           ? _value.numberProducts
           : numberProducts // ignore: cast_nullable_to_non_nullable
+              as int,
+      delivery: null == delivery
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
               as int,
       amountPaid: null == amountPaid
           ? _value.amountPaid
           : amountPaid // ignore: cast_nullable_to_non_nullable
               as int,
+      giftCards: null == giftCards
+          ? _value.giftCards
+          : giftCards // ignore: cast_nullable_to_non_nullable
+              as int,
+      bonuses: null == bonuses
+          ? _value.bonuses
+          : bonuses // ignore: cast_nullable_to_non_nullable
+              as int,
+      isLoadPaymentBonus: null == isLoadPaymentBonus
+          ? _value.isLoadPaymentBonus
+          : isLoadPaymentBonus // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadPaymentGift: null == isLoadPaymentGift
+          ? _value.isLoadPaymentGift
+          : isLoadPaymentGift // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadPaymentPromoCode: null == isLoadPaymentPromoCode
+          ? _value.isLoadPaymentPromoCode
+          : isLoadPaymentPromoCode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActivePromoCode: null == isActivePromoCode
+          ? _value.isActivePromoCode
+          : isActivePromoCode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoadCreateOrder: null == isLoadCreateOrder
+          ? _value.isLoadCreateOrder
+          : isLoadCreateOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
+      promoCode: null == promoCode
+          ? _value.promoCode
+          : promoCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      boutiques: null == boutiques
+          ? _value.boutiques
+          : boutiques // ignore: cast_nullable_to_non_nullable
+              as BoutiquesDataModel,
+      listGiftCard: null == listGiftCard
+          ? _value._listGiftCard
+          : listGiftCard // ignore: cast_nullable_to_non_nullable
+              as List<BasketSertDeliveryRequest>,
+      creatOrderMessage: freezed == creatOrderMessage
+          ? _value.creatOrderMessage
+          : creatOrderMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      paymentBonus: freezed == paymentBonus
+          ? _value.paymentBonus
+          : paymentBonus // ignore: cast_nullable_to_non_nullable
+              as PaymentBonusDataModel?,
+      paymentGift: freezed == paymentGift
+          ? _value.paymentGift
+          : paymentGift // ignore: cast_nullable_to_non_nullable
+              as PaymentBonusDataModel?,
+      isRemovePromoCode: freezed == isRemovePromoCode
+          ? _value.isRemovePromoCode
+          : isRemovePromoCode // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      favouritesProducts: null == favouritesProducts
+          ? _value._favouritesProducts
+          : favouritesProducts // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProductsCode: null == listProductsCode
+          ? _value._listProductsCode
+          : listProductsCode // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      listProdcutsStyle: null == listProdcutsStyle
+          ? _value._listProdcutsStyle
+          : listProdcutsStyle // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsAlso: null == listProdcutsAlso
+          ? _value._listProdcutsAlso
+          : listProdcutsAlso // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsBrand: null == listProdcutsBrand
+          ? _value._listProdcutsBrand
+          : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      favouritesProductsId: null == favouritesProductsId
+          ? _value._favouritesProductsId
+          : favouritesProductsId // ignore: cast_nullable_to_non_nullable
+              as List<int>,
+      favouritesProductsInfo: freezed == favouritesProductsInfo
+          ? _value.favouritesProductsInfo
+          : favouritesProductsInfo // ignore: cast_nullable_to_non_nullable
+              as FavouritesCatalogInfoDataModel?,
+      detailsProduct: freezed == detailsProduct
+          ? _value.detailsProduct
+          : detailsProduct // ignore: cast_nullable_to_non_nullable
+              as DetailProductDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart {
+    return $BasketFullInfoDataModelCopyWith<$Res>(_value.shoppingCart, (value) {
+      return _then(_value.copyWith(shoppingCart: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BoutiquesDataModelCopyWith<$Res> get boutiques {
+    return $BoutiquesDataModelCopyWith<$Res>(_value.boutiques, (value) {
+      return _then(_value.copyWith(boutiques: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus {
+    if (_value.paymentBonus == null) {
+      return null;
+    }
+
+    return $PaymentBonusDataModelCopyWith<$Res>(_value.paymentBonus!, (value) {
+      return _then(_value.copyWith(paymentBonus: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentGift {
+    if (_value.paymentGift == null) {
+      return null;
+    }
+
+    return $PaymentBonusDataModelCopyWith<$Res>(_value.paymentGift!, (value) {
+      return _then(_value.copyWith(paymentGift: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
+    if (_value.favouritesProductsInfo == null) {
+      return null;
+    }
+
+    return $FavouritesCatalogInfoDataModelCopyWith<$Res>(
+        _value.favouritesProductsInfo!, (value) {
+      return _then(_value.copyWith(favouritesProductsInfo: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
+    if (_value.detailsProduct == null) {
+      return null;
+    }
+
+    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
+        (value) {
+      return _then(_value.copyWith(detailsProduct: value));
+    });
   }
 }
 
@@ -1151,21 +5986,95 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
 
 class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   const _$ProductsShoppingCartStateImpl(
-      {required final List<ShoppingCartDataModel> products,
-      required final List<ProductDataModel> favouritesProducts,
+      {required this.shoppingCart,
+      required final List<PaymentItemDataModel> payments,
+      required this.promoCodeMessage,
       required this.numberProducts,
-      required this.amountPaid})
-      : _products = products,
-        _favouritesProducts = favouritesProducts;
+      required this.delivery,
+      required this.amountPaid,
+      required this.giftCards,
+      required this.bonuses,
+      required this.isLoadPaymentBonus,
+      required this.isLoadPaymentGift,
+      required this.isLoadPaymentPromoCode,
+      required this.isActivePromoCode,
+      required this.isLoadCreateOrder,
+      required this.promoCode,
+      required this.boutiques,
+      required final List<BasketSertDeliveryRequest> listGiftCard,
+      this.creatOrderMessage,
+      this.paymentBonus,
+      this.paymentGift,
+      this.isRemovePromoCode,
+      required final List<ProductDataModel> favouritesProducts,
+      required final List<String> listProductsCode,
+      required final List<ProductDataModel> listProdcutsStyle,
+      required final List<ProductDataModel> listProdcutsAlso,
+      required final List<ProductDataModel> listProdcutsBrand,
+      required final List<int> favouritesProductsId,
+      this.favouritesProductsInfo,
+      this.detailsProduct})
+      : _payments = payments,
+        _listGiftCard = listGiftCard,
+        _favouritesProducts = favouritesProducts,
+        _listProductsCode = listProductsCode,
+        _listProdcutsStyle = listProdcutsStyle,
+        _listProdcutsAlso = listProdcutsAlso,
+        _listProdcutsBrand = listProdcutsBrand,
+        _favouritesProductsId = favouritesProductsId;
 
-  final List<ShoppingCartDataModel> _products;
   @override
-  List<ShoppingCartDataModel> get products {
-    if (_products is EqualUnmodifiableListView) return _products;
+  final BasketFullInfoDataModel shoppingCart;
+  final List<PaymentItemDataModel> _payments;
+  @override
+  List<PaymentItemDataModel> get payments {
+    if (_payments is EqualUnmodifiableListView) return _payments;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_products);
+    return EqualUnmodifiableListView(_payments);
   }
 
+  @override
+  final String promoCodeMessage;
+  @override
+  final int numberProducts;
+  @override
+  final int delivery;
+  @override
+  final int amountPaid;
+  @override
+  final int giftCards;
+  @override
+  final int bonuses;
+  @override
+  final bool isLoadPaymentBonus;
+  @override
+  final bool isLoadPaymentGift;
+  @override
+  final bool isLoadPaymentPromoCode;
+  @override
+  final bool isActivePromoCode;
+  @override
+  final bool isLoadCreateOrder;
+  @override
+  final String promoCode;
+  @override
+  final BoutiquesDataModel boutiques;
+  final List<BasketSertDeliveryRequest> _listGiftCard;
+  @override
+  List<BasketSertDeliveryRequest> get listGiftCard {
+    if (_listGiftCard is EqualUnmodifiableListView) return _listGiftCard;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listGiftCard);
+  }
+
+  @override
+  final String? creatOrderMessage;
+  @override
+  final PaymentBonusDataModel? paymentBonus;
+  @override
+  final PaymentBonusDataModel? paymentGift;
+  @override
+  final bool? isRemovePromoCode;
   final List<ProductDataModel> _favouritesProducts;
   @override
   List<ProductDataModel> get favouritesProducts {
@@ -1175,14 +6084,59 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     return EqualUnmodifiableListView(_favouritesProducts);
   }
 
+  final List<String> _listProductsCode;
   @override
-  final int numberProducts;
+  List<String> get listProductsCode {
+    if (_listProductsCode is EqualUnmodifiableListView)
+      return _listProductsCode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProductsCode);
+  }
+
+  final List<ProductDataModel> _listProdcutsStyle;
   @override
-  final int amountPaid;
+  List<ProductDataModel> get listProdcutsStyle {
+    if (_listProdcutsStyle is EqualUnmodifiableListView)
+      return _listProdcutsStyle;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsStyle);
+  }
+
+  final List<ProductDataModel> _listProdcutsAlso;
+  @override
+  List<ProductDataModel> get listProdcutsAlso {
+    if (_listProdcutsAlso is EqualUnmodifiableListView)
+      return _listProdcutsAlso;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsAlso);
+  }
+
+  final List<ProductDataModel> _listProdcutsBrand;
+  @override
+  List<ProductDataModel> get listProdcutsBrand {
+    if (_listProdcutsBrand is EqualUnmodifiableListView)
+      return _listProdcutsBrand;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsBrand);
+  }
+
+  final List<int> _favouritesProductsId;
+  @override
+  List<int> get favouritesProductsId {
+    if (_favouritesProductsId is EqualUnmodifiableListView)
+      return _favouritesProductsId;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favouritesProductsId);
+  }
+
+  @override
+  final FavouritesCatalogInfoDataModel? favouritesProductsInfo;
+  @override
+  final DetailProductDataModel? detailsProduct;
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(products: $products, favouritesProducts: $favouritesProducts, numberProducts: $numberProducts, amountPaid: $amountPaid)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, delivery: $delivery, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, boutiques: $boutiques, listGiftCard: $listGiftCard, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -1190,22 +6144,94 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsShoppingCartStateImpl &&
-            const DeepCollectionEquality().equals(other._products, _products) &&
-            const DeepCollectionEquality()
-                .equals(other._favouritesProducts, _favouritesProducts) &&
+            (identical(other.shoppingCart, shoppingCart) ||
+                other.shoppingCart == shoppingCart) &&
+            const DeepCollectionEquality().equals(other._payments, _payments) &&
+            (identical(other.promoCodeMessage, promoCodeMessage) ||
+                other.promoCodeMessage == promoCodeMessage) &&
             (identical(other.numberProducts, numberProducts) ||
                 other.numberProducts == numberProducts) &&
+            (identical(other.delivery, delivery) ||
+                other.delivery == delivery) &&
             (identical(other.amountPaid, amountPaid) ||
-                other.amountPaid == amountPaid));
+                other.amountPaid == amountPaid) &&
+            (identical(other.giftCards, giftCards) ||
+                other.giftCards == giftCards) &&
+            (identical(other.bonuses, bonuses) || other.bonuses == bonuses) &&
+            (identical(other.isLoadPaymentBonus, isLoadPaymentBonus) ||
+                other.isLoadPaymentBonus == isLoadPaymentBonus) &&
+            (identical(other.isLoadPaymentGift, isLoadPaymentGift) ||
+                other.isLoadPaymentGift == isLoadPaymentGift) &&
+            (identical(other.isLoadPaymentPromoCode, isLoadPaymentPromoCode) ||
+                other.isLoadPaymentPromoCode == isLoadPaymentPromoCode) &&
+            (identical(other.isActivePromoCode, isActivePromoCode) ||
+                other.isActivePromoCode == isActivePromoCode) &&
+            (identical(other.isLoadCreateOrder, isLoadCreateOrder) ||
+                other.isLoadCreateOrder == isLoadCreateOrder) &&
+            (identical(other.promoCode, promoCode) ||
+                other.promoCode == promoCode) &&
+            (identical(other.boutiques, boutiques) ||
+                other.boutiques == boutiques) &&
+            const DeepCollectionEquality()
+                .equals(other._listGiftCard, _listGiftCard) &&
+            (identical(other.creatOrderMessage, creatOrderMessage) ||
+                other.creatOrderMessage == creatOrderMessage) &&
+            (identical(other.paymentBonus, paymentBonus) ||
+                other.paymentBonus == paymentBonus) &&
+            (identical(other.paymentGift, paymentGift) ||
+                other.paymentGift == paymentGift) &&
+            (identical(other.isRemovePromoCode, isRemovePromoCode) ||
+                other.isRemovePromoCode == isRemovePromoCode) &&
+            const DeepCollectionEquality()
+                .equals(other._favouritesProducts, _favouritesProducts) &&
+            const DeepCollectionEquality()
+                .equals(other._listProductsCode, _listProductsCode) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsStyle, _listProdcutsStyle) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsAlso, _listProdcutsAlso) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
+            const DeepCollectionEquality()
+                .equals(other._favouritesProductsId, _favouritesProductsId) &&
+            (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
+                other.favouritesProductsInfo == favouritesProductsInfo) &&
+            (identical(other.detailsProduct, detailsProduct) ||
+                other.detailsProduct == detailsProduct));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_products),
-      const DeepCollectionEquality().hash(_favouritesProducts),
-      numberProducts,
-      amountPaid);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        shoppingCart,
+        const DeepCollectionEquality().hash(_payments),
+        promoCodeMessage,
+        numberProducts,
+        delivery,
+        amountPaid,
+        giftCards,
+        bonuses,
+        isLoadPaymentBonus,
+        isLoadPaymentGift,
+        isLoadPaymentPromoCode,
+        isActivePromoCode,
+        isLoadCreateOrder,
+        promoCode,
+        boutiques,
+        const DeepCollectionEquality().hash(_listGiftCard),
+        creatOrderMessage,
+        paymentBonus,
+        paymentGift,
+        isRemovePromoCode,
+        const DeepCollectionEquality().hash(_favouritesProducts),
+        const DeepCollectionEquality().hash(_listProductsCode),
+        const DeepCollectionEquality().hash(_listProdcutsStyle),
+        const DeepCollectionEquality().hash(_listProdcutsAlso),
+        const DeepCollectionEquality().hash(_listProdcutsBrand),
+        const DeepCollectionEquality().hash(_favouritesProductsId),
+        favouritesProductsInfo,
+        detailsProduct
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -1219,15 +6245,67 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
         productsShoppingCart,
   }) {
     return productsShoppingCart(
-        products, favouritesProducts, numberProducts, amountPaid);
+        shoppingCart,
+        payments,
+        promoCodeMessage,
+        numberProducts,
+        delivery,
+        amountPaid,
+        giftCards,
+        bonuses,
+        isLoadPaymentBonus,
+        isLoadPaymentGift,
+        isLoadPaymentPromoCode,
+        isActivePromoCode,
+        isLoadCreateOrder,
+        promoCode,
+        boutiques,
+        listGiftCard,
+        creatOrderMessage,
+        paymentBonus,
+        paymentGift,
+        isRemovePromoCode,
+        favouritesProducts,
+        listProductsCode,
+        listProdcutsStyle,
+        listProdcutsAlso,
+        listProdcutsBrand,
+        favouritesProductsId,
+        favouritesProductsInfo,
+        detailsProduct);
   }
 
   @override
@@ -1235,15 +6313,67 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
   }) {
     return productsShoppingCart?.call(
-        products, favouritesProducts, numberProducts, amountPaid);
+        shoppingCart,
+        payments,
+        promoCodeMessage,
+        numberProducts,
+        delivery,
+        amountPaid,
+        giftCards,
+        bonuses,
+        isLoadPaymentBonus,
+        isLoadPaymentGift,
+        isLoadPaymentPromoCode,
+        isActivePromoCode,
+        isLoadCreateOrder,
+        promoCode,
+        boutiques,
+        listGiftCard,
+        creatOrderMessage,
+        paymentBonus,
+        paymentGift,
+        isRemovePromoCode,
+        favouritesProducts,
+        listProductsCode,
+        listProdcutsStyle,
+        listProdcutsAlso,
+        listProdcutsBrand,
+        favouritesProductsId,
+        favouritesProductsInfo,
+        detailsProduct);
   }
 
   @override
@@ -1251,17 +6381,69 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function(
-            List<ShoppingCartDataModel> products,
-            List<ProductDataModel> favouritesProducts,
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
             int numberProducts,
-            int amountPaid)?
+            int delivery,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            BoutiquesDataModel boutiques,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<int> favouritesProductsId,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
     if (productsShoppingCart != null) {
       return productsShoppingCart(
-          products, favouritesProducts, numberProducts, amountPaid);
+          shoppingCart,
+          payments,
+          promoCodeMessage,
+          numberProducts,
+          delivery,
+          amountPaid,
+          giftCards,
+          bonuses,
+          isLoadPaymentBonus,
+          isLoadPaymentGift,
+          isLoadPaymentPromoCode,
+          isActivePromoCode,
+          isLoadCreateOrder,
+          promoCode,
+          boutiques,
+          listGiftCard,
+          creatOrderMessage,
+          paymentBonus,
+          paymentGift,
+          isRemovePromoCode,
+          favouritesProducts,
+          listProductsCode,
+          listProdcutsStyle,
+          listProdcutsAlso,
+          listProdcutsBrand,
+          favouritesProductsId,
+          favouritesProductsInfo,
+          detailsProduct);
     }
     return orElse();
   }
@@ -1271,6 +6453,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -1282,6 +6466,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return productsShoppingCart?.call(this);
@@ -1292,6 +6478,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -1304,15 +6492,64 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
 abstract class ProductsShoppingCartState implements ShoppingCartState {
   const factory ProductsShoppingCartState(
-      {required final List<ShoppingCartDataModel> products,
-      required final List<ProductDataModel> favouritesProducts,
-      required final int numberProducts,
-      required final int amountPaid}) = _$ProductsShoppingCartStateImpl;
+          {required final BasketFullInfoDataModel shoppingCart,
+          required final List<PaymentItemDataModel> payments,
+          required final String promoCodeMessage,
+          required final int numberProducts,
+          required final int delivery,
+          required final int amountPaid,
+          required final int giftCards,
+          required final int bonuses,
+          required final bool isLoadPaymentBonus,
+          required final bool isLoadPaymentGift,
+          required final bool isLoadPaymentPromoCode,
+          required final bool isActivePromoCode,
+          required final bool isLoadCreateOrder,
+          required final String promoCode,
+          required final BoutiquesDataModel boutiques,
+          required final List<BasketSertDeliveryRequest> listGiftCard,
+          final String? creatOrderMessage,
+          final PaymentBonusDataModel? paymentBonus,
+          final PaymentBonusDataModel? paymentGift,
+          final bool? isRemovePromoCode,
+          required final List<ProductDataModel> favouritesProducts,
+          required final List<String> listProductsCode,
+          required final List<ProductDataModel> listProdcutsStyle,
+          required final List<ProductDataModel> listProdcutsAlso,
+          required final List<ProductDataModel> listProdcutsBrand,
+          required final List<int> favouritesProductsId,
+          final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+          final DetailProductDataModel? detailsProduct}) =
+      _$ProductsShoppingCartStateImpl;
 
-  List<ShoppingCartDataModel> get products;
-  List<ProductDataModel> get favouritesProducts;
+  BasketFullInfoDataModel get shoppingCart;
+  List<PaymentItemDataModel> get payments;
+  String get promoCodeMessage;
   int get numberProducts;
+  int get delivery;
   int get amountPaid;
+  int get giftCards;
+  int get bonuses;
+  bool get isLoadPaymentBonus;
+  bool get isLoadPaymentGift;
+  bool get isLoadPaymentPromoCode;
+  bool get isActivePromoCode;
+  bool get isLoadCreateOrder;
+  String get promoCode;
+  BoutiquesDataModel get boutiques;
+  List<BasketSertDeliveryRequest> get listGiftCard;
+  String? get creatOrderMessage;
+  PaymentBonusDataModel? get paymentBonus;
+  PaymentBonusDataModel? get paymentGift;
+  bool? get isRemovePromoCode;
+  List<ProductDataModel> get favouritesProducts;
+  List<String> get listProductsCode;
+  List<ProductDataModel> get listProdcutsStyle;
+  List<ProductDataModel> get listProdcutsAlso;
+  List<ProductDataModel> get listProdcutsBrand;
+  List<int> get favouritesProductsId;
+  FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
+  DetailProductDataModel? get detailsProduct;
   @JsonKey(ignore: true)
   _$$ProductsShoppingCartStateImplCopyWith<_$ProductsShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;

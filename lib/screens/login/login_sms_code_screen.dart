@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,9 +6,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class LoginSmsCodeScreen extends StatefulWidget {
-  const LoginSmsCodeScreen({super.key, required this.phone});
+  const LoginSmsCodeScreen({
+    super.key,
+    required this.phone,
+    required this.message,
+  });
 
   final String phone;
+  final String message;
 
   @override
   State<LoginSmsCodeScreen> createState() => _LoginSmsCodeScreenState();
@@ -28,7 +32,7 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
-        height: 236,
+        height: widget.message.isNotEmpty ? 266 : 236,
         width: MediaQuery.of(context).size.width - 16,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -81,7 +85,7 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Код выслан на номер + 7 ${widget.phone}',
+                    'Код выслан на номер +${widget.phone}',
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
@@ -94,7 +98,16 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                         data: Theme.of(context).copyWith(splashColor: Colors.transparent),
                         child: TextField(
                           onTap: () {},
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            if (value.length == 4) {
+                              context.read<LoginBloc>().add(
+                                    LoginEvent.checkSms(
+                                      phone: widget.phone,
+                                      code: value,
+                                    ),
+                                  );
+                            }
+                          },
                           controller: _smsCode,
                           cursorColor: BlindChickenColors.activeBorderTextField,
                           style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1.4),
@@ -125,6 +138,30 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                       ),
                     ),
                   ),
+                  if (widget.message.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/warning.svg',
+                            height: 17.5,
+                            width: 17.5,
+                          ),
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          Expanded(
+                            child: Text(
+                              widget.message,
+                              style: Theme.of(context).textTheme.displayMedium,
+                              maxLines: 1,
+                              overflow: TextOverflow.clip,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -140,10 +177,10 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                 child: BlindChickenButton(
                   title: 'Запросить новый код',
                   onChenge: () {
-                    context.popRoute();
-                    context.navigateTo(const AccountRoute());
-                    context.read<AccountBloc>().add(
-                          AccountEvent.preloadData(phone: widget.phone),
+                    context.read<LoginBloc>().add(
+                          LoginEvent.phone(
+                            phone: widget.phone,
+                          ),
                         );
                   },
                 ),

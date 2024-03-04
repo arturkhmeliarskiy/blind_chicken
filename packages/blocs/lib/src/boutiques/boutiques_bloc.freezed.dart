@@ -19,32 +19,38 @@ mixin _$BoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
+    required TResult Function(String uid) getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
+    TResult? Function(String uid)? getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
+    TResult Function(String uid)? getInfoBoutique,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitBoutiquesEvent value) preloadData,
+    required TResult Function(GetInfoBoutiquesEvent value) getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBoutiquesEvent value)? preloadData,
+    TResult? Function(GetInfoBoutiquesEvent value)? getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBoutiquesEvent value)? preloadData,
+    TResult Function(GetInfoBoutiquesEvent value)? getInfoBoutique,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
+    required TResult Function(String uid) getInfoBoutique,
   }) {
     return preloadData();
   }
@@ -115,6 +122,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
+    TResult? Function(String uid)? getInfoBoutique,
   }) {
     return preloadData?.call();
   }
@@ -123,6 +131,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
+    TResult Function(String uid)? getInfoBoutique,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -135,6 +144,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitBoutiquesEvent value) preloadData,
+    required TResult Function(GetInfoBoutiquesEvent value) getInfoBoutique,
   }) {
     return preloadData(this);
   }
@@ -143,6 +153,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBoutiquesEvent value)? preloadData,
+    TResult? Function(GetInfoBoutiquesEvent value)? getInfoBoutique,
   }) {
     return preloadData?.call(this);
   }
@@ -151,6 +162,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBoutiquesEvent value)? preloadData,
+    TResult Function(GetInfoBoutiquesEvent value)? getInfoBoutique,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -165,12 +177,151 @@ abstract class InitBoutiquesEvent implements BoutiquesEvent {
 }
 
 /// @nodoc
+abstract class _$$GetInfoBoutiquesEventImplCopyWith<$Res> {
+  factory _$$GetInfoBoutiquesEventImplCopyWith(
+          _$GetInfoBoutiquesEventImpl value,
+          $Res Function(_$GetInfoBoutiquesEventImpl) then) =
+      __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String uid});
+}
+
+/// @nodoc
+class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
+    extends _$BoutiquesEventCopyWithImpl<$Res, _$GetInfoBoutiquesEventImpl>
+    implements _$$GetInfoBoutiquesEventImplCopyWith<$Res> {
+  __$$GetInfoBoutiquesEventImplCopyWithImpl(_$GetInfoBoutiquesEventImpl _value,
+      $Res Function(_$GetInfoBoutiquesEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uid = null,
+  }) {
+    return _then(_$GetInfoBoutiquesEventImpl(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
+  const _$GetInfoBoutiquesEventImpl({required this.uid});
+
+  @override
+  final String uid;
+
+  @override
+  String toString() {
+    return 'BoutiquesEvent.getInfoBoutique(uid: $uid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoBoutiquesEventImpl &&
+            (identical(other.uid, uid) || other.uid == uid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, uid);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoBoutiquesEventImplCopyWith<_$GetInfoBoutiquesEventImpl>
+      get copyWith => __$$GetInfoBoutiquesEventImplCopyWithImpl<
+          _$GetInfoBoutiquesEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() preloadData,
+    required TResult Function(String uid) getInfoBoutique,
+  }) {
+    return getInfoBoutique(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? preloadData,
+    TResult? Function(String uid)? getInfoBoutique,
+  }) {
+    return getInfoBoutique?.call(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? preloadData,
+    TResult Function(String uid)? getInfoBoutique,
+    required TResult orElse(),
+  }) {
+    if (getInfoBoutique != null) {
+      return getInfoBoutique(uid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitBoutiquesEvent value) preloadData,
+    required TResult Function(GetInfoBoutiquesEvent value) getInfoBoutique,
+  }) {
+    return getInfoBoutique(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitBoutiquesEvent value)? preloadData,
+    TResult? Function(GetInfoBoutiquesEvent value)? getInfoBoutique,
+  }) {
+    return getInfoBoutique?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitBoutiquesEvent value)? preloadData,
+    TResult Function(GetInfoBoutiquesEvent value)? getInfoBoutique,
+    required TResult orElse(),
+  }) {
+    if (getInfoBoutique != null) {
+      return getInfoBoutique(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoBoutiquesEvent implements BoutiquesEvent {
+  const factory GetInfoBoutiquesEvent({required final String uid}) =
+      _$GetInfoBoutiquesEventImpl;
+
+  String get uid;
+  @JsonKey(ignore: true)
+  _$$GetInfoBoutiquesEventImplCopyWith<_$GetInfoBoutiquesEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$BoutiquesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<BoutiquesDataModel> boutiques)
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -178,14 +329,22 @@ mixin _$BoutiquesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -274,7 +433,10 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<BoutiquesDataModel> boutiques)
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
   }) {
     return init();
@@ -285,7 +447,11 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
   }) {
     return init?.call();
   }
@@ -295,7 +461,11 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -388,7 +558,10 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<BoutiquesDataModel> boutiques)
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
   }) {
     return load();
@@ -399,7 +572,11 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
   }) {
     return load?.call();
   }
@@ -409,7 +586,11 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -467,7 +648,12 @@ abstract class _$$PreloadDataCompletedBoutiquesStateImplCopyWith<$Res> {
           $Res Function(_$PreloadDataCompletedBoutiquesStateImpl) then) =
       __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<BoutiquesDataModel> boutiques});
+  $Res call(
+      {List<BoutiqueDataModel> boutiques,
+      List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+      BoutiqueDataInfoDataModel? boutiqueDetails});
+
+  $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails;
 }
 
 /// @nodoc
@@ -484,13 +670,36 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? boutiques = null,
+    Object? boutiqueInfo = freezed,
+    Object? boutiqueDetails = freezed,
   }) {
     return _then(_$PreloadDataCompletedBoutiquesStateImpl(
       boutiques: null == boutiques
           ? _value._boutiques
           : boutiques // ignore: cast_nullable_to_non_nullable
-              as List<BoutiquesDataModel>,
+              as List<BoutiqueDataModel>,
+      boutiqueInfo: freezed == boutiqueInfo
+          ? _value._boutiqueInfo
+          : boutiqueInfo // ignore: cast_nullable_to_non_nullable
+              as List<BoutiqueCategoryItemDataModel>?,
+      boutiqueDetails: freezed == boutiqueDetails
+          ? _value.boutiqueDetails
+          : boutiqueDetails // ignore: cast_nullable_to_non_nullable
+              as BoutiqueDataInfoDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails {
+    if (_value.boutiqueDetails == null) {
+      return null;
+    }
+
+    return $BoutiqueDataInfoDataModelCopyWith<$Res>(_value.boutiqueDetails!,
+        (value) {
+      return _then(_value.copyWith(boutiqueDetails: value));
+    });
   }
 }
 
@@ -499,20 +708,36 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
 class _$PreloadDataCompletedBoutiquesStateImpl
     implements PreloadDataCompletedBoutiquesState {
   const _$PreloadDataCompletedBoutiquesStateImpl(
-      {required final List<BoutiquesDataModel> boutiques})
-      : _boutiques = boutiques;
+      {required final List<BoutiqueDataModel> boutiques,
+      final List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+      this.boutiqueDetails})
+      : _boutiques = boutiques,
+        _boutiqueInfo = boutiqueInfo;
 
-  final List<BoutiquesDataModel> _boutiques;
+  final List<BoutiqueDataModel> _boutiques;
   @override
-  List<BoutiquesDataModel> get boutiques {
+  List<BoutiqueDataModel> get boutiques {
     if (_boutiques is EqualUnmodifiableListView) return _boutiques;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_boutiques);
   }
 
+  final List<BoutiqueCategoryItemDataModel>? _boutiqueInfo;
+  @override
+  List<BoutiqueCategoryItemDataModel>? get boutiqueInfo {
+    final value = _boutiqueInfo;
+    if (value == null) return null;
+    if (_boutiqueInfo is EqualUnmodifiableListView) return _boutiqueInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final BoutiqueDataInfoDataModel? boutiqueDetails;
+
   @override
   String toString() {
-    return 'BoutiquesState.preloadDataCompleted(boutiques: $boutiques)';
+    return 'BoutiquesState.preloadDataCompleted(boutiques: $boutiques, boutiqueInfo: $boutiqueInfo, boutiqueDetails: $boutiqueDetails)';
   }
 
   @override
@@ -521,12 +746,19 @@ class _$PreloadDataCompletedBoutiquesStateImpl
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedBoutiquesStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._boutiques, _boutiques));
+                .equals(other._boutiques, _boutiques) &&
+            const DeepCollectionEquality()
+                .equals(other._boutiqueInfo, _boutiqueInfo) &&
+            (identical(other.boutiqueDetails, boutiqueDetails) ||
+                other.boutiqueDetails == boutiqueDetails));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_boutiques));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_boutiques),
+      const DeepCollectionEquality().hash(_boutiqueInfo),
+      boutiqueDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -541,10 +773,13 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<BoutiquesDataModel> boutiques)
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted(boutiques);
+    return preloadDataCompleted(boutiques, boutiqueInfo, boutiqueDetails);
   }
 
   @override
@@ -552,9 +787,13 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
   }) {
-    return preloadDataCompleted?.call(boutiques);
+    return preloadDataCompleted?.call(boutiques, boutiqueInfo, boutiqueDetails);
   }
 
   @override
@@ -562,11 +801,15 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<BoutiquesDataModel> boutiques)? preloadDataCompleted,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(boutiques);
+      return preloadDataCompleted(boutiques, boutiqueInfo, boutiqueDetails);
     }
     return orElse();
   }
@@ -611,10 +854,14 @@ class _$PreloadDataCompletedBoutiquesStateImpl
 
 abstract class PreloadDataCompletedBoutiquesState implements BoutiquesState {
   const factory PreloadDataCompletedBoutiquesState(
-          {required final List<BoutiquesDataModel> boutiques}) =
+          {required final List<BoutiqueDataModel> boutiques,
+          final List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+          final BoutiqueDataInfoDataModel? boutiqueDetails}) =
       _$PreloadDataCompletedBoutiquesStateImpl;
 
-  List<BoutiquesDataModel> get boutiques;
+  List<BoutiqueDataModel> get boutiques;
+  List<BoutiqueCategoryItemDataModel>? get boutiqueInfo;
+  BoutiqueDataInfoDataModel? get boutiqueDetails;
   @JsonKey(ignore: true)
   _$$PreloadDataCompletedBoutiquesStateImplCopyWith<
           _$PreloadDataCompletedBoutiquesStateImpl>

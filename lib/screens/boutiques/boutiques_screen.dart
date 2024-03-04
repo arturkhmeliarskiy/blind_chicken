@@ -53,6 +53,11 @@ class BoutiquesScreen extends StatelessWidget {
                       initState.boutiques.length,
                       (index) => BoutiqueCard(
                         onTap: () {
+                          context.read<BoutiquesBloc>().add(
+                                BoutiquesEvent.getInfoBoutique(
+                                  uid: initState.boutiques[index].uidStore,
+                                ),
+                              );
                           context.navigateTo(
                             HomeAutoRouterRoute(
                               children: [
@@ -63,7 +68,7 @@ class BoutiquesScreen extends StatelessWidget {
                             ),
                           );
                         },
-                        imageUrl: initState.boutiques[index].images[0],
+                        boutique: initState.boutiques[index],
                       ),
                     ),
                   );

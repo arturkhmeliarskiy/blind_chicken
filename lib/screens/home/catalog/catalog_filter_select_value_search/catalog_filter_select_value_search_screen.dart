@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/home/filters/widgets/blind_chicken_close_botton.dart';
 import 'package:blind_chicken/screens/home/filters/widgets/filter_item_value.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -65,9 +69,9 @@ class _CatalogFilterSelectValueSearchScreenState
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
             Container(
               height: 53.5,
@@ -194,7 +198,22 @@ class _CatalogFilterSelectValueSearchScreenState
                   );
                 },
               ),
-            )
+            ),
+            BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
+              return state.maybeMap(
+                searchProductsResult: (initState) {
+                  return BlindChickenFilterButton(
+                    onOpen: () {
+                      context.navigateTo(
+                        const CatalogSearchResultRoute(),
+                      );
+                    },
+                    countProducts: (initState.searchResultInfo?.count ?? 0).toString(),
+                  );
+                },
+                orElse: () => const SizedBox(),
+              );
+            }),
           ],
         ),
       ),

@@ -7,11 +7,17 @@ class CatalogSliderProducts extends StatefulWidget {
   const CatalogSliderProducts({
     super.key,
     required this.listProducts,
-    required this.favouritesProducts,
+    required this.favouritesProductsId,
+    required this.onSelectProduct,
+    required this.addLike,
+    required this.deleteLike,
   });
 
   final List<ProductDataModel> listProducts;
-  final List<ProductDataModel> favouritesProducts;
+  final List<int> favouritesProductsId;
+  final ValueChanged<ProductDataModel> onSelectProduct;
+  final ValueChanged<int> addLike;
+  final ValueChanged<int> deleteLike;
 
   @override
   State<CatalogSliderProducts> createState() => _CatalogSliderProductsState();
@@ -21,18 +27,26 @@ class _CatalogSliderProductsState extends State<CatalogSliderProducts> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 356,
+      height: 400,
       child: ListView.builder(
         itemCount: widget.listProducts.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return CatalogSliderProductItem(
+            onTap: () {
+              widget.onSelectProduct(widget.listProducts[index]);
+            },
             product: widget.listProducts[index],
-            isLike: widget.favouritesProducts.contains(
-              widget.listProducts[index],
+            isLike: widget.favouritesProductsId.contains(
+              widget.listProducts[index].id,
             ),
             listItems: widget.listProducts,
-            favouritesProducts: widget.favouritesProducts,
+            addLike: () {
+              widget.addLike(index);
+            },
+            deleteLike: () {
+              widget.deleteLike(index);
+            },
           );
         },
       ),

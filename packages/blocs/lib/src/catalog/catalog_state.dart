@@ -5,6 +5,7 @@ class CatalogState with _$CatalogState {
   const factory CatalogState.init() = InitCatalogState;
   const factory CatalogState.upload() = UploadCatalogState;
   const factory CatalogState.load() = LoadingCatalogState;
+  const factory CatalogState.notInternetConnection() = NotInternetConnectionCatalogState;
   const factory CatalogState.preloadDataCompleted({
     required List<String> allBrands,
     required List<String> defaultBrands,
@@ -18,6 +19,7 @@ class CatalogState with _$CatalogState {
     required List<ProductDataModel> favouritesProducts,
     required List<int> favouritesProductsId,
     required List<FilterInfoDataModel> filter,
+    required List<String> listProductsCode,
     required Map<int, List<FilterItemDataModel>> selectFilter,
     required List<Map<int, FilterItemDataModel>> allSelectFilter,
     required List<MenuItemDataModel> pathMenu,

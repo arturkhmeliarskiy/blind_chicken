@@ -37,7 +37,7 @@ _$DetailProductResponseImpl _$$DetailProductResponseImplFromJson(
       sections: _convertSections(json['sections']),
       text: json['text'] as String?,
       quantity: json['quantity'] as int?,
-      art: json['art'] as String?,
+      art: json['art'] as int?,
       userDiscount: json['userDiscount'] as int?,
       price: json['price'] == null
           ? null

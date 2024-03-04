@@ -4,15 +4,16 @@ import 'package:blind_chicken/screens/boutiques/widgets/boutiques_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
-import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class MapBoutiquesInfo extends StatelessWidget {
   const MapBoutiquesInfo({
     super.key,
     required this.onSelectBoutique,
+    required this.boutiques,
   });
 
+  final List<BoutiqueDataModel> boutiques;
   final Function(AppLatLongDataModel, int) onSelectBoutique;
 
   @override
@@ -69,14 +70,17 @@ class MapBoutiquesInfo extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 28, right: 28),
               child: ListView.builder(
-                itemCount: MapPointsInfo.getMapPointDataModels().length,
+                itemCount: boutiques.length,
                 itemBuilder: (context, index) {
-                  final point = MapPointsInfo.getMapPointDataModels()[index];
+                  final point = boutiques[index];
 
                   return InkWell(
                     onTap: () {
                       onSelectBoutique(
-                        AppLatLongDataModel(lat: point.latitude, long: point.longitude),
+                        AppLatLongDataModel(
+                          lat: point.coordinates.latitude,
+                          long: point.coordinates.longitude,
+                        ),
                         index,
                       );
                       context.popRoute();

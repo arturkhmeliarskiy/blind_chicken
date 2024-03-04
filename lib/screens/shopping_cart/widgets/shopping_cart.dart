@@ -8,18 +8,22 @@ import 'package:ui_kit/ui_kit.dart';
 class ShoppingCart extends StatefulWidget {
   const ShoppingCart({
     super.key,
-    required this.product,
+    required this.item,
     required this.removeProduct,
     required this.onSelectCard,
     required this.isBordrerBottom,
-    required this.updateUnitProduct,
+    required this.updateProduct,
+    required this.count,
+    required this.price,
   });
 
-  final ProductDataModel product;
+  final BasketFullInfoItemDataModel item;
   final bool isBordrerBottom;
-  final VoidCallback removeProduct;
+  final int count;
+  final int price;
+  final ValueChanged<BasketInfoItemDataModel> removeProduct;
   final VoidCallback onSelectCard;
-  final ValueChanged<ShoppingCartDataModel> updateUnitProduct;
+  final ValueChanged<BasketInfoItemDataModel> updateProduct;
 
   @override
   State<ShoppingCart> createState() => _ShoppingCartState();
@@ -33,8 +37,16 @@ class _ShoppingCartState extends State<ShoppingCart> {
 
   @override
   void initState() {
-    price = widget.product.price;
+    price = widget.price;
+    count = widget.count;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant ShoppingCart oldWidget) {
+    price = widget.price;
+    count = widget.count;
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -53,7 +65,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CachedNetworkImage(
-                  imageUrl: 'https://slepayakurica.ru/${widget.product.images[0]}',
+                  imageUrl: 'https://slepayakurica.ru/${widget.item.data.foto}',
                   height: 120,
                 ),
                 Padding(
@@ -90,7 +102,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         height: 8,
                       ),
                       Text(
-                        widget.product.brend,
+                        widget.item.data.brand.n,
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -99,7 +111,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         height: 3,
                       ),
                       Text(
-                        widget.product.catrgory,
+                        widget.item.data.category.n,
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],
@@ -118,14 +130,15 @@ class _ShoppingCartState extends State<ShoppingCart> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          if (count > 1) {
-                            count--;
-                            price = price - widget.product.price;
-                            widget.updateUnitProduct(
-                              ShoppingCartDataModel(
-                                  product: widget.product, count: count, price: price),
-                            );
-                          }
+                          count--;
+                          price = price - widget.item.data.price;
+                          widget.updateProduct(
+                            BasketInfoItemDataModel(
+                              sku: widget.item.sku,
+                              count: count,
+                              code: widget.item.code,
+                            ),
+                          );
                         });
                       },
                       child: Container(
@@ -161,10 +174,13 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       onTap: () {
                         setState(() {
                           count++;
-                          price = widget.product.price * count;
-                          widget.updateUnitProduct(
-                            ShoppingCartDataModel(
-                                product: widget.product, count: count, price: price),
+                          // price = widget.product.price * count;
+                          widget.updateProduct(
+                            BasketInfoItemDataModel(
+                              sku: widget.item.sku,
+                              count: count,
+                              code: widget.item.code,
+                            ),
                           );
                         });
                       },
@@ -188,10 +204,19 @@ class _ShoppingCartState extends State<ShoppingCart> {
                   ],
                 ),
                 GestureDetector(
-                  onTap: widget.removeProduct,
+                  onTap: () {
+                    widget.removeProduct(
+                      BasketInfoItemDataModel(
+                        sku: widget.item.sku,
+                        count: 0,
+                        code: widget.item.code,
+                      ),
+                    );
+                  },
                   child: Container(
                     height: 30,
                     width: 30,
+                    color: Colors.transparent,
                     padding: const EdgeInsets.all(5),
                     child: SvgPicture.asset(
                       'assets/icons/shopping_cart.svg',

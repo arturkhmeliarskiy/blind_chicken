@@ -21,8 +21,8 @@ MenuItemResponse _$MenuItemResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MenuItemResponse {
   @JsonKey(name: 'id_parent')
-  int? get idParent => throw _privateConstructorUsedError;
-  int? get id => throw _privateConstructorUsedError;
+  String? get idParent => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   int? get title => throw _privateConstructorUsedError;
@@ -42,8 +42,8 @@ abstract class $MenuItemResponseCopyWith<$Res> {
       _$MenuItemResponseCopyWithImpl<$Res, MenuItemResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id_parent') int? idParent,
-      int? id,
+      {@JsonKey(name: 'id_parent') String? idParent,
+      String? id,
       String? url,
       String? name,
       int? title,
@@ -76,11 +76,11 @@ class _$MenuItemResponseCopyWithImpl<$Res, $Val extends MenuItemResponse>
       idParent: freezed == idParent
           ? _value.idParent
           : idParent // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -114,8 +114,8 @@ abstract class _$$MenuItemResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id_parent') int? idParent,
-      int? id,
+      {@JsonKey(name: 'id_parent') String? idParent,
+      String? id,
       String? url,
       String? name,
       int? title,
@@ -146,11 +146,11 @@ class __$$MenuItemResponseImplCopyWithImpl<$Res>
       idParent: freezed == idParent
           ? _value.idParent
           : idParent // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -193,9 +193,9 @@ class _$MenuItemResponseImpl extends _MenuItemResponse {
 
   @override
   @JsonKey(name: 'id_parent')
-  final int? idParent;
+  final String? idParent;
   @override
-  final int? id;
+  final String? id;
   @override
   final String? url;
   @override
@@ -249,8 +249,8 @@ class _$MenuItemResponseImpl extends _MenuItemResponse {
 
 abstract class _MenuItemResponse extends MenuItemResponse {
   factory _MenuItemResponse(
-      {@JsonKey(name: 'id_parent') final int? idParent,
-      final int? id,
+      {@JsonKey(name: 'id_parent') final String? idParent,
+      final String? id,
       final String? url,
       final String? name,
       final int? title,
@@ -263,9 +263,9 @@ abstract class _MenuItemResponse extends MenuItemResponse {
 
   @override
   @JsonKey(name: 'id_parent')
-  int? get idParent;
+  String? get idParent;
   @override
-  int? get id;
+  String? get id;
   @override
   String? get url;
   @override

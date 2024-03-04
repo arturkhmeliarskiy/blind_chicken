@@ -19,6 +19,7 @@ mixin _$ShoppingCartDataModel {
   ProductDataModel get product => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShoppingCartDataModelCopyWith<ShoppingCartDataModel> get copyWith =>
@@ -31,7 +32,7 @@ abstract class $ShoppingCartDataModelCopyWith<$Res> {
           $Res Function(ShoppingCartDataModel) then) =
       _$ShoppingCartDataModelCopyWithImpl<$Res, ShoppingCartDataModel>;
   @useResult
-  $Res call({ProductDataModel product, int count, int price});
+  $Res call({ProductDataModel product, int count, int price, int id});
 
   $ProductDataModelCopyWith<$Res> get product;
 }
@@ -53,6 +54,7 @@ class _$ShoppingCartDataModelCopyWithImpl<$Res,
     Object? product = null,
     Object? count = null,
     Object? price = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       product: null == product
@@ -66,6 +68,10 @@ class _$ShoppingCartDataModelCopyWithImpl<$Res,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -88,7 +94,7 @@ abstract class _$$ShoppingCartDataModelImplCopyWith<$Res>
       __$$ShoppingCartDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ProductDataModel product, int count, int price});
+  $Res call({ProductDataModel product, int count, int price, int id});
 
   @override
   $ProductDataModelCopyWith<$Res> get product;
@@ -109,6 +115,7 @@ class __$$ShoppingCartDataModelImplCopyWithImpl<$Res>
     Object? product = null,
     Object? count = null,
     Object? price = null,
+    Object? id = null,
   }) {
     return _then(_$ShoppingCartDataModelImpl(
       product: null == product
@@ -123,6 +130,10 @@ class __$$ShoppingCartDataModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -131,7 +142,10 @@ class __$$ShoppingCartDataModelImplCopyWithImpl<$Res>
 
 class _$ShoppingCartDataModelImpl extends _ShoppingCartDataModel {
   _$ShoppingCartDataModelImpl(
-      {required this.product, required this.count, required this.price})
+      {required this.product,
+      required this.count,
+      required this.price,
+      required this.id})
       : super._();
 
   @override
@@ -140,10 +154,12 @@ class _$ShoppingCartDataModelImpl extends _ShoppingCartDataModel {
   final int count;
   @override
   final int price;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'ShoppingCartDataModel(product: $product, count: $count, price: $price)';
+    return 'ShoppingCartDataModel(product: $product, count: $count, price: $price, id: $id)';
   }
 
   @override
@@ -153,11 +169,12 @@ class _$ShoppingCartDataModelImpl extends _ShoppingCartDataModel {
             other is _$ShoppingCartDataModelImpl &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.count, count) || other.count == count) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, product, count, price);
+  int get hashCode => Object.hash(runtimeType, product, count, price, id);
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +188,8 @@ abstract class _ShoppingCartDataModel extends ShoppingCartDataModel {
   factory _ShoppingCartDataModel(
       {required final ProductDataModel product,
       required final int count,
-      required final int price}) = _$ShoppingCartDataModelImpl;
+      required final int price,
+      required final int id}) = _$ShoppingCartDataModelImpl;
   _ShoppingCartDataModel._() : super._();
 
   @override
@@ -180,6 +198,8 @@ abstract class _ShoppingCartDataModel extends ShoppingCartDataModel {
   int get count;
   @override
   int get price;
+  @override
+  int get id;
   @override
   @JsonKey(ignore: true)
   _$$ShoppingCartDataModelImplCopyWith<_$ShoppingCartDataModelImpl>

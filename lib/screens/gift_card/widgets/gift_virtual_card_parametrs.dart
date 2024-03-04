@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class GiftVirtualCardColors extends StatefulWidget {
@@ -11,18 +12,15 @@ class GiftVirtualCardColors extends StatefulWidget {
     required this.onSelectedColor,
   });
 
-  final Map<dynamic, dynamic> selectedColor;
-  final ValueChanged<Map<dynamic, dynamic>> onSelectedColor;
+  final GiftCardModel selectedColor;
+  final ValueChanged<GiftCardModel> onSelectedColor;
 
   @override
   State<GiftVirtualCardColors> createState() => _GiftVirtualCardColorsState();
 }
 
 class _GiftVirtualCardColorsState extends State<GiftVirtualCardColors> {
-  Map<dynamic, dynamic> _selectedColor = {
-    'title': 'Lilac',
-    'color': BlindChickenColors.lilac,
-  };
+  GiftCardModel _selectedColor = BlindChickenGiftCardColors.listColors.first;
 
   @override
   void initState() {
@@ -68,7 +66,7 @@ class _GiftVirtualCardColorsState extends State<GiftVirtualCardColors> {
                   height: 17.5,
                   width: 17.5,
                   decoration: BoxDecoration(
-                    color: _selectedColor['color'],
+                    color: _selectedColor.color,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -76,7 +74,7 @@ class _GiftVirtualCardColorsState extends State<GiftVirtualCardColors> {
                   width: 7,
                 ),
                 Text(
-                  _selectedColor['title'],
+                  _selectedColor.title,
                   style: Theme.of(context).textTheme.displayMedium,
                 )
               ],

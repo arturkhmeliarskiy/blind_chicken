@@ -15,19 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    OrderRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: OrderScreen(
-          key: args.key,
-          receivingType: args.receivingType,
-          typePay: args.typePay,
-          adress: args.adress,
-          workingHours: args.workingHours,
-        ),
-      );
-    },
     BoutiquesRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -130,6 +117,20 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    CatalogSearchCardInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<CatalogSearchCardInfoRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CatalogSearchCardInfoScreen(
+          key: args.key,
+          item: args.item,
+          isLike: args.isLike,
+          listItems: args.listItems,
+          favouritesProducts: args.favouritesProducts,
+          isChildRoute: args.isChildRoute,
+        ),
+      );
+    },
     CatalogSearchRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -156,10 +157,8 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           item: args.item,
           isLike: args.isLike,
-          addLike: args.addLike,
           listItems: args.listItems,
           favouritesProducts: args.favouritesProducts,
-          deleteLike: args.deleteLike,
           isChildRoute: args.isChildRoute,
         ),
       );
@@ -236,6 +235,23 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    MainCategoryRoute.name: (routeData) {
+      final args = routeData.argsAs<MainCategoryRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MainCategoryScreen(
+          key: args.key,
+          title: args.title,
+          selectIndexType: args.selectIndexType,
+        ),
+      );
+    },
+    MainRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainScreen(),
+      );
+    },
     DashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -260,6 +276,30 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BlindChickenCashbackAndDiscountsScreen(),
       );
     },
+    BrandsRoute.name: (routeData) {
+      final args = routeData.argsAs<BrandsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: BrandsScreen(
+          key: args.key,
+          typePeople: args.typePeople,
+        ),
+      );
+    },
+    SearchLocationRoute.name: (routeData) {
+      final args = routeData.argsAs<SearchLocationRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SearchLocationScreen(
+          key: args.key,
+          title: args.title,
+          contentType: args.contentType,
+          selectItem: args.selectItem,
+          cityId: args.cityId,
+          streetId: args.streetId,
+        ),
+      );
+    },
     ContactsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -279,6 +319,12 @@ abstract class _$AppRouter extends RootStackRouter {
           onDelete: args.onDelete,
           onSelect: args.onSelect,
         ),
+      );
+    },
+    FavouritesProductsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavouritesProductsScreen(),
       );
     },
     FavouritesFilterSelectValueSearchRoute.name: (routeData) {
@@ -309,10 +355,34 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const FavouritesScreen(),
       );
     },
+    FavouritesCardInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<FavouritesCardInfoRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: FavouritesCardInfoScreen(
+          key: args.key,
+          item: args.item,
+          isLike: args.isLike,
+          listItems: args.listItems,
+          favouritesProducts: args.favouritesProducts,
+          isChildRoute: args.isChildRoute,
+        ),
+      );
+    },
     InfoRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const InfoScreen(),
+      );
+    },
+    PaymentVerificationRoute.name: (routeData) {
+      final args = routeData.argsAs<PaymentVerificationRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: PaymentVerificationScreen(
+          key: args.key,
+          orderId: args.orderId,
+        ),
       );
     },
     YandexMapRoute.name: (routeData) {
@@ -321,10 +391,52 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const YandexMapScreen(),
       );
     },
+    NoInternetRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NoInternetScreen(),
+      );
+    },
     AccountRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const AccountScreen(),
+      );
+    },
+    OrderUserInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderUserInfoRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderUserInfoScreen(
+          key: args.key,
+          isPay: args.isPay,
+        ),
+      );
+    },
+    OrderCardInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderCardInfoRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderCardInfoScreen(
+          key: args.key,
+          item: args.item,
+          isLike: args.isLike,
+          listItems: args.listItems,
+          favouritesProducts: args.favouritesProducts,
+          isChildRoute: args.isChildRoute,
+        ),
+      );
+    },
+    OrdersHemmingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrdersHemmingScreen(),
+      );
+    },
+    ElectronicOrderFormsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ElectronicOrderFormsScreen(),
       );
     },
     MyOrdersRoute.name: (routeData) {
@@ -354,9 +466,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     SberbankPaymentWebViewRoute.name: (routeData) {
+      final args = routeData.argsAs<SberbankPaymentWebViewRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SberbankPaymentWebViewScreen(),
+        child: SberbankPaymentWebViewScreen(
+          key: args.key,
+          url: args.url,
+        ),
       );
     },
     GiftCardRoute.name: (routeData) {
@@ -410,6 +526,20 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ShoppingCartAutoRouterScreen(),
       );
     },
+    ShoppingCardInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<ShoppingCardInfoRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ShoppingCardInfoScreen(
+          key: args.key,
+          item: args.item,
+          isLike: args.isLike,
+          listItems: args.listItems,
+          favouritesProducts: args.favouritesProducts,
+          isChildRoute: args.isChildRoute,
+        ),
+      );
+    },
     ShoppingCartDeliveryInfoRoute.name: (routeData) {
       final args = routeData.argsAs<ShoppingCartDeliveryInfoRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -428,7 +558,8 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ShoppingYandexMapScreen(
           key: args.key,
           onMapPoint: args.onMapPoint,
-          point: args.point,
+          boutique: args.boutique,
+          boutiques: args.boutiques,
         ),
       );
     },
@@ -438,108 +569,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
-    OrderUserInfoRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderUserInfoRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: OrderUserInfoScreen(
-          key: args.key,
-          order: args.order,
-        ),
-      );
-    },
-    ElectronicOrderFormsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ElectronicOrderFormsScreen(),
-      );
-    },
-    OrdersHemmingRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OrdersHemmingScreen(),
-      );
-    },
-    MainRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const MainScreen(),
-      );
-    },
-    MainCategoryRoute.name: (routeData) {
-      final args = routeData.argsAs<MainCategoryRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: MainCategoryScreen(
-          key: args.key,
-          title: args.title,
-          selectIndexType: args.selectIndexType,
-        ),
-      );
-    },
-    BrandsRoute.name: (routeData) {
-      final args = routeData.argsAs<BrandsRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: BrandsScreen(
-          key: args.key,
-          typePeople: args.typePeople,
-        ),
-      );
-    },
   };
-}
-
-/// generated route for
-/// [OrderScreen]
-class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
-  OrderRoute({
-    Key? key,
-    required String receivingType,
-    required String typePay,
-    required String adress,
-    required String workingHours,
-    List<PageRouteInfo>? children,
-  }) : super(
-          OrderRoute.name,
-          args: OrderRouteArgs(
-            key: key,
-            receivingType: receivingType,
-            typePay: typePay,
-            adress: adress,
-            workingHours: workingHours,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderRoute';
-
-  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
-}
-
-class OrderRouteArgs {
-  const OrderRouteArgs({
-    this.key,
-    required this.receivingType,
-    required this.typePay,
-    required this.adress,
-    required this.workingHours,
-  });
-
-  final Key? key;
-
-  final String receivingType;
-
-  final String typePay;
-
-  final String adress;
-
-  final String workingHours;
-
-  @override
-  String toString() {
-    return 'OrderRouteArgs{key: $key, receivingType: $receivingType, typePay: $typePay, adress: $adress, workingHours: $workingHours}';
-  }
 }
 
 /// generated route for
@@ -562,7 +592,7 @@ class BoutiquesDescriptionRoute
     extends PageRouteInfo<BoutiquesDescriptionRouteArgs> {
   BoutiquesDescriptionRoute({
     Key? key,
-    required BoutiquesDataModel boutique,
+    required BoutiqueDataModel boutique,
     List<PageRouteInfo>? children,
   }) : super(
           BoutiquesDescriptionRoute.name,
@@ -587,7 +617,7 @@ class BoutiquesDescriptionRouteArgs {
 
   final Key? key;
 
-  final BoutiquesDataModel boutique;
+  final BoutiqueDataModel boutique;
 
   @override
   String toString() {
@@ -601,7 +631,7 @@ class BoutiquePreviewImagesRoute
     extends PageRouteInfo<BoutiquePreviewImagesRouteArgs> {
   BoutiquePreviewImagesRoute({
     Key? key,
-    required List<String> listImages,
+    required List<BoutiqueFotoDetailDataModel> listImages,
     required void Function() goBotton,
     List<PageRouteInfo>? children,
   }) : super(
@@ -629,7 +659,7 @@ class BoutiquePreviewImagesRouteArgs {
 
   final Key? key;
 
-  final List<String> listImages;
+  final List<BoutiqueFotoDetailDataModel> listImages;
 
   final void Function() goBotton;
 
@@ -644,7 +674,7 @@ class BoutiquePreviewImagesRouteArgs {
 class BoutiqueYandexMapRoute extends PageRouteInfo<BoutiqueYandexMapRouteArgs> {
   BoutiqueYandexMapRoute({
     Key? key,
-    required MapPointDataModel mapPoint,
+    required BoutiqueDataModel mapPoint,
     List<PageRouteInfo>? children,
   }) : super(
           BoutiqueYandexMapRoute.name,
@@ -669,7 +699,7 @@ class BoutiqueYandexMapRouteArgs {
 
   final Key? key;
 
-  final MapPointDataModel mapPoint;
+  final BoutiqueDataModel mapPoint;
 
   @override
   String toString() {
@@ -927,6 +957,65 @@ class SortRouteArgs {
 }
 
 /// generated route for
+/// [CatalogSearchCardInfoScreen]
+class CatalogSearchCardInfoRoute
+    extends PageRouteInfo<CatalogSearchCardInfoRouteArgs> {
+  CatalogSearchCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CatalogSearchCardInfoRoute.name,
+          args: CatalogSearchCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogSearchCardInfoRoute';
+
+  static const PageInfo<CatalogSearchCardInfoRouteArgs> page =
+      PageInfo<CatalogSearchCardInfoRouteArgs>(name);
+}
+
+class CatalogSearchCardInfoRouteArgs {
+  const CatalogSearchCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'CatalogSearchCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
+}
+
+/// generated route for
 /// [CatalogSearchScreen]
 class CatalogSearchRoute extends PageRouteInfo<void> {
   const CatalogSearchRoute({List<PageRouteInfo>? children})
@@ -996,10 +1085,8 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
     Key? key,
     required ProductDataModel item,
     required bool isLike,
-    required void Function() addLike,
     required List<ProductDataModel> listItems,
     required List<ProductDataModel> favouritesProducts,
-    required void Function() deleteLike,
     required bool isChildRoute,
     List<PageRouteInfo>? children,
   }) : super(
@@ -1008,10 +1095,8 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
             key: key,
             item: item,
             isLike: isLike,
-            addLike: addLike,
             listItems: listItems,
             favouritesProducts: favouritesProducts,
-            deleteLike: deleteLike,
             isChildRoute: isChildRoute,
           ),
           initialChildren: children,
@@ -1028,10 +1113,8 @@ class CatalogCardInfoRouteArgs {
     this.key,
     required this.item,
     required this.isLike,
-    required this.addLike,
     required this.listItems,
     required this.favouritesProducts,
-    required this.deleteLike,
     required this.isChildRoute,
   });
 
@@ -1041,19 +1124,15 @@ class CatalogCardInfoRouteArgs {
 
   final bool isLike;
 
-  final void Function() addLike;
-
   final List<ProductDataModel> listItems;
 
   final List<ProductDataModel> favouritesProducts;
-
-  final void Function() deleteLike;
 
   final bool isChildRoute;
 
   @override
   String toString() {
-    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, addLike: $addLike, listItems: $listItems, favouritesProducts: $favouritesProducts, deleteLike: $deleteLike, isChildRoute: $isChildRoute}';
+    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
   }
 }
 
@@ -1349,6 +1428,63 @@ class CatalogFilterSelectValueSearchRouteArgs {
 }
 
 /// generated route for
+/// [MainCategoryScreen]
+class MainCategoryRoute extends PageRouteInfo<MainCategoryRouteArgs> {
+  MainCategoryRoute({
+    Key? key,
+    required String title,
+    required int selectIndexType,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MainCategoryRoute.name,
+          args: MainCategoryRouteArgs(
+            key: key,
+            title: title,
+            selectIndexType: selectIndexType,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MainCategoryRoute';
+
+  static const PageInfo<MainCategoryRouteArgs> page =
+      PageInfo<MainCategoryRouteArgs>(name);
+}
+
+class MainCategoryRouteArgs {
+  const MainCategoryRouteArgs({
+    this.key,
+    required this.title,
+    required this.selectIndexType,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  final int selectIndexType;
+
+  @override
+  String toString() {
+    return 'MainCategoryRouteArgs{key: $key, title: $title, selectIndexType: $selectIndexType}';
+  }
+}
+
+/// generated route for
+/// [MainScreen]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [DashboardPage]
 class DashboardRoute extends PageRouteInfo<void> {
   const DashboardRoute({List<PageRouteInfo>? children})
@@ -1402,6 +1538,101 @@ class BlindChickenCashbackAndDiscountsRoute extends PageRouteInfo<void> {
   static const String name = 'BlindChickenCashbackAndDiscountsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [BrandsScreen]
+class BrandsRoute extends PageRouteInfo<BrandsRouteArgs> {
+  BrandsRoute({
+    Key? key,
+    required String typePeople,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BrandsRoute.name,
+          args: BrandsRouteArgs(
+            key: key,
+            typePeople: typePeople,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BrandsRoute';
+
+  static const PageInfo<BrandsRouteArgs> page = PageInfo<BrandsRouteArgs>(name);
+}
+
+class BrandsRouteArgs {
+  const BrandsRouteArgs({
+    this.key,
+    required this.typePeople,
+  });
+
+  final Key? key;
+
+  final String typePeople;
+
+  @override
+  String toString() {
+    return 'BrandsRouteArgs{key: $key, typePeople: $typePeople}';
+  }
+}
+
+/// generated route for
+/// [SearchLocationScreen]
+class SearchLocationRoute extends PageRouteInfo<SearchLocationRouteArgs> {
+  SearchLocationRoute({
+    Key? key,
+    required String title,
+    required String contentType,
+    required void Function(SearchLocationInfoDataModel) selectItem,
+    String? cityId,
+    String? streetId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SearchLocationRoute.name,
+          args: SearchLocationRouteArgs(
+            key: key,
+            title: title,
+            contentType: contentType,
+            selectItem: selectItem,
+            cityId: cityId,
+            streetId: streetId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchLocationRoute';
+
+  static const PageInfo<SearchLocationRouteArgs> page =
+      PageInfo<SearchLocationRouteArgs>(name);
+}
+
+class SearchLocationRouteArgs {
+  const SearchLocationRouteArgs({
+    this.key,
+    required this.title,
+    required this.contentType,
+    required this.selectItem,
+    this.cityId,
+    this.streetId,
+  });
+
+  final Key? key;
+
+  final String title;
+
+  final String contentType;
+
+  final void Function(SearchLocationInfoDataModel) selectItem;
+
+  final String? cityId;
+
+  final String? streetId;
+
+  @override
+  String toString() {
+    return 'SearchLocationRouteArgs{key: $key, title: $title, contentType: $contentType, selectItem: $selectItem, cityId: $cityId, streetId: $streetId}';
+  }
 }
 
 /// generated route for
@@ -1492,6 +1723,20 @@ class FavouritesFilterSelectValueRouteArgs {
   String toString() {
     return 'FavouritesFilterSelectValueRouteArgs{key: $key, index: $index, title: $title, filterItems: $filterItems, selectFilter: $selectFilter, onDelete: $onDelete, onSelect: $onSelect}';
   }
+}
+
+/// generated route for
+/// [FavouritesProductsScreen]
+class FavouritesProductsRoute extends PageRouteInfo<void> {
+  const FavouritesProductsRoute({List<PageRouteInfo>? children})
+      : super(
+          FavouritesProductsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavouritesProductsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -1599,6 +1844,65 @@ class FavouritesRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [FavouritesCardInfoScreen]
+class FavouritesCardInfoRoute
+    extends PageRouteInfo<FavouritesCardInfoRouteArgs> {
+  FavouritesCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FavouritesCardInfoRoute.name,
+          args: FavouritesCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FavouritesCardInfoRoute';
+
+  static const PageInfo<FavouritesCardInfoRouteArgs> page =
+      PageInfo<FavouritesCardInfoRouteArgs>(name);
+}
+
+class FavouritesCardInfoRouteArgs {
+  const FavouritesCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'FavouritesCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
+}
+
+/// generated route for
 /// [InfoScreen]
 class InfoRoute extends PageRouteInfo<void> {
   const InfoRoute({List<PageRouteInfo>? children})
@@ -1610,6 +1914,45 @@ class InfoRoute extends PageRouteInfo<void> {
   static const String name = 'InfoRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PaymentVerificationScreen]
+class PaymentVerificationRoute
+    extends PageRouteInfo<PaymentVerificationRouteArgs> {
+  PaymentVerificationRoute({
+    Key? key,
+    required String orderId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PaymentVerificationRoute.name,
+          args: PaymentVerificationRouteArgs(
+            key: key,
+            orderId: orderId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PaymentVerificationRoute';
+
+  static const PageInfo<PaymentVerificationRouteArgs> page =
+      PageInfo<PaymentVerificationRouteArgs>(name);
+}
+
+class PaymentVerificationRouteArgs {
+  const PaymentVerificationRouteArgs({
+    this.key,
+    required this.orderId,
+  });
+
+  final Key? key;
+
+  final String orderId;
+
+  @override
+  String toString() {
+    return 'PaymentVerificationRouteArgs{key: $key, orderId: $orderId}';
+  }
 }
 
 /// generated route for
@@ -1627,6 +1970,20 @@ class YandexMapRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NoInternetScreen]
+class NoInternetRoute extends PageRouteInfo<void> {
+  const NoInternetRoute({List<PageRouteInfo>? children})
+      : super(
+          NoInternetRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NoInternetRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [AccountScreen]
 class AccountRoute extends PageRouteInfo<void> {
   const AccountRoute({List<PageRouteInfo>? children})
@@ -1636,6 +1993,130 @@ class AccountRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AccountRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderUserInfoScreen]
+class OrderUserInfoRoute extends PageRouteInfo<OrderUserInfoRouteArgs> {
+  OrderUserInfoRoute({
+    Key? key,
+    required bool isPay,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderUserInfoRoute.name,
+          args: OrderUserInfoRouteArgs(
+            key: key,
+            isPay: isPay,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderUserInfoRoute';
+
+  static const PageInfo<OrderUserInfoRouteArgs> page =
+      PageInfo<OrderUserInfoRouteArgs>(name);
+}
+
+class OrderUserInfoRouteArgs {
+  const OrderUserInfoRouteArgs({
+    this.key,
+    required this.isPay,
+  });
+
+  final Key? key;
+
+  final bool isPay;
+
+  @override
+  String toString() {
+    return 'OrderUserInfoRouteArgs{key: $key, isPay: $isPay}';
+  }
+}
+
+/// generated route for
+/// [OrderCardInfoScreen]
+class OrderCardInfoRoute extends PageRouteInfo<OrderCardInfoRouteArgs> {
+  OrderCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderCardInfoRoute.name,
+          args: OrderCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderCardInfoRoute';
+
+  static const PageInfo<OrderCardInfoRouteArgs> page =
+      PageInfo<OrderCardInfoRouteArgs>(name);
+}
+
+class OrderCardInfoRouteArgs {
+  const OrderCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'OrderCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
+}
+
+/// generated route for
+/// [OrdersHemmingScreen]
+class OrdersHemmingRoute extends PageRouteInfo<void> {
+  const OrdersHemmingRoute({List<PageRouteInfo>? children})
+      : super(
+          OrdersHemmingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrdersHemmingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ElectronicOrderFormsScreen]
+class ElectronicOrderFormsRoute extends PageRouteInfo<void> {
+  const ElectronicOrderFormsRoute({List<PageRouteInfo>? children})
+      : super(
+          ElectronicOrderFormsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ElectronicOrderFormsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -1734,16 +2215,41 @@ class BlindChickenWebViewRouteArgs {
 
 /// generated route for
 /// [SberbankPaymentWebViewScreen]
-class SberbankPaymentWebViewRoute extends PageRouteInfo<void> {
-  const SberbankPaymentWebViewRoute({List<PageRouteInfo>? children})
-      : super(
+class SberbankPaymentWebViewRoute
+    extends PageRouteInfo<SberbankPaymentWebViewRouteArgs> {
+  SberbankPaymentWebViewRoute({
+    Key? key,
+    required String url,
+    List<PageRouteInfo>? children,
+  }) : super(
           SberbankPaymentWebViewRoute.name,
+          args: SberbankPaymentWebViewRouteArgs(
+            key: key,
+            url: url,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SberbankPaymentWebViewRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SberbankPaymentWebViewRouteArgs> page =
+      PageInfo<SberbankPaymentWebViewRouteArgs>(name);
+}
+
+class SberbankPaymentWebViewRouteArgs {
+  const SberbankPaymentWebViewRouteArgs({
+    this.key,
+    required this.url,
+  });
+
+  final Key? key;
+
+  final String url;
+
+  @override
+  String toString() {
+    return 'SberbankPaymentWebViewRouteArgs{key: $key, url: $url}';
+  }
 }
 
 /// generated route for
@@ -1810,8 +2316,8 @@ class GiftVirualCardColorsRoute
     extends PageRouteInfo<GiftVirualCardColorsRouteArgs> {
   GiftVirualCardColorsRoute({
     Key? key,
-    required Map<dynamic, dynamic> selectedColor,
-    required void Function(Map<dynamic, dynamic>) onChange,
+    required GiftCardModel selectedColor,
+    required void Function(GiftCardModel) onChange,
     List<PageRouteInfo>? children,
   }) : super(
           GiftVirualCardColorsRoute.name,
@@ -1838,9 +2344,9 @@ class GiftVirualCardColorsRouteArgs {
 
   final Key? key;
 
-  final Map<dynamic, dynamic> selectedColor;
+  final GiftCardModel selectedColor;
 
-  final void Function(Map<dynamic, dynamic>) onChange;
+  final void Function(GiftCardModel) onChange;
 
   @override
   String toString() {
@@ -1853,8 +2359,8 @@ class GiftVirualCardColorsRouteArgs {
 class GiftYandexMapRoute extends PageRouteInfo<GiftYandexMapRouteArgs> {
   GiftYandexMapRoute({
     Key? key,
-    required void Function(MapPointDataModel) onMapPoint,
-    required MapPointDataModel point,
+    required void Function(BoutiqueDataModel) onMapPoint,
+    required BoutiqueDataModel point,
     List<PageRouteInfo>? children,
   }) : super(
           GiftYandexMapRoute.name,
@@ -1881,9 +2387,9 @@ class GiftYandexMapRouteArgs {
 
   final Key? key;
 
-  final void Function(MapPointDataModel) onMapPoint;
+  final void Function(BoutiqueDataModel) onMapPoint;
 
-  final MapPointDataModel point;
+  final BoutiqueDataModel point;
 
   @override
   String toString() {
@@ -1917,6 +2423,64 @@ class ShoppingCartAutoRouterRoute extends PageRouteInfo<void> {
   static const String name = 'ShoppingCartAutoRouterRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShoppingCardInfoScreen]
+class ShoppingCardInfoRoute extends PageRouteInfo<ShoppingCardInfoRouteArgs> {
+  ShoppingCardInfoRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ShoppingCardInfoRoute.name,
+          args: ShoppingCardInfoRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ShoppingCardInfoRoute';
+
+  static const PageInfo<ShoppingCardInfoRouteArgs> page =
+      PageInfo<ShoppingCardInfoRouteArgs>(name);
+}
+
+class ShoppingCardInfoRouteArgs {
+  const ShoppingCardInfoRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'ShoppingCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
 }
 
 /// generated route for
@@ -1968,15 +2532,17 @@ class ShoppingCartDeliveryInfoRouteArgs {
 class ShoppingYandexMapRoute extends PageRouteInfo<ShoppingYandexMapRouteArgs> {
   ShoppingYandexMapRoute({
     Key? key,
-    required void Function(MapPointDataModel) onMapPoint,
-    required MapPointDataModel point,
+    required void Function(BoutiqueDataModel) onMapPoint,
+    required BoutiqueDataModel boutique,
+    required BoutiquesDataModel boutiques,
     List<PageRouteInfo>? children,
   }) : super(
           ShoppingYandexMapRoute.name,
           args: ShoppingYandexMapRouteArgs(
             key: key,
             onMapPoint: onMapPoint,
-            point: point,
+            boutique: boutique,
+            boutiques: boutiques,
           ),
           initialChildren: children,
         );
@@ -1991,18 +2557,21 @@ class ShoppingYandexMapRouteArgs {
   const ShoppingYandexMapRouteArgs({
     this.key,
     required this.onMapPoint,
-    required this.point,
+    required this.boutique,
+    required this.boutiques,
   });
 
   final Key? key;
 
-  final void Function(MapPointDataModel) onMapPoint;
+  final void Function(BoutiqueDataModel) onMapPoint;
 
-  final MapPointDataModel point;
+  final BoutiqueDataModel boutique;
+
+  final BoutiquesDataModel boutiques;
 
   @override
   String toString() {
-    return 'ShoppingYandexMapRouteArgs{key: $key, onMapPoint: $onMapPoint, point: $point}';
+    return 'ShoppingYandexMapRouteArgs{key: $key, onMapPoint: $onMapPoint, boutique: $boutique, boutiques: $boutiques}';
   }
 }
 
@@ -2018,164 +2587,4 @@ class LoginRoute extends PageRouteInfo<void> {
   static const String name = 'LoginRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [OrderUserInfoScreen]
-class OrderUserInfoRoute extends PageRouteInfo<OrderUserInfoRouteArgs> {
-  OrderUserInfoRoute({
-    Key? key,
-    required OrderDataModel order,
-    List<PageRouteInfo>? children,
-  }) : super(
-          OrderUserInfoRoute.name,
-          args: OrderUserInfoRouteArgs(
-            key: key,
-            order: order,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderUserInfoRoute';
-
-  static const PageInfo<OrderUserInfoRouteArgs> page =
-      PageInfo<OrderUserInfoRouteArgs>(name);
-}
-
-class OrderUserInfoRouteArgs {
-  const OrderUserInfoRouteArgs({
-    this.key,
-    required this.order,
-  });
-
-  final Key? key;
-
-  final OrderDataModel order;
-
-  @override
-  String toString() {
-    return 'OrderUserInfoRouteArgs{key: $key, order: $order}';
-  }
-}
-
-/// generated route for
-/// [ElectronicOrderFormsScreen]
-class ElectronicOrderFormsRoute extends PageRouteInfo<void> {
-  const ElectronicOrderFormsRoute({List<PageRouteInfo>? children})
-      : super(
-          ElectronicOrderFormsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ElectronicOrderFormsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [OrdersHemmingScreen]
-class OrdersHemmingRoute extends PageRouteInfo<void> {
-  const OrdersHemmingRoute({List<PageRouteInfo>? children})
-      : super(
-          OrdersHemmingRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'OrdersHemmingRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MainScreen]
-class MainRoute extends PageRouteInfo<void> {
-  const MainRoute({List<PageRouteInfo>? children})
-      : super(
-          MainRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MainRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MainCategoryScreen]
-class MainCategoryRoute extends PageRouteInfo<MainCategoryRouteArgs> {
-  MainCategoryRoute({
-    Key? key,
-    required String title,
-    required int selectIndexType,
-    List<PageRouteInfo>? children,
-  }) : super(
-          MainCategoryRoute.name,
-          args: MainCategoryRouteArgs(
-            key: key,
-            title: title,
-            selectIndexType: selectIndexType,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'MainCategoryRoute';
-
-  static const PageInfo<MainCategoryRouteArgs> page =
-      PageInfo<MainCategoryRouteArgs>(name);
-}
-
-class MainCategoryRouteArgs {
-  const MainCategoryRouteArgs({
-    this.key,
-    required this.title,
-    required this.selectIndexType,
-  });
-
-  final Key? key;
-
-  final String title;
-
-  final int selectIndexType;
-
-  @override
-  String toString() {
-    return 'MainCategoryRouteArgs{key: $key, title: $title, selectIndexType: $selectIndexType}';
-  }
-}
-
-/// generated route for
-/// [BrandsScreen]
-class BrandsRoute extends PageRouteInfo<BrandsRouteArgs> {
-  BrandsRoute({
-    Key? key,
-    required String typePeople,
-    List<PageRouteInfo>? children,
-  }) : super(
-          BrandsRoute.name,
-          args: BrandsRouteArgs(
-            key: key,
-            typePeople: typePeople,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'BrandsRoute';
-
-  static const PageInfo<BrandsRouteArgs> page = PageInfo<BrandsRouteArgs>(name);
-}
-
-class BrandsRouteArgs {
-  const BrandsRouteArgs({
-    this.key,
-    required this.typePeople,
-  });
-
-  final Key? key;
-
-  final String typePeople;
-
-  @override
-  String toString() {
-    return 'BrandsRouteArgs{key: $key, typePeople: $typePeople}';
-  }
 }

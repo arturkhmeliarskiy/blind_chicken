@@ -41,7 +41,7 @@ mixin _$DetailProductResponse {
       throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
-  String? get art => throw _privateConstructorUsedError;
+  int? get art => throw _privateConstructorUsedError;
   int? get userDiscount => throw _privateConstructorUsedError;
   PriceProductResponse? get price => throw _privateConstructorUsedError;
   String? get r => throw _privateConstructorUsedError;
@@ -78,7 +78,7 @@ abstract class $DetailProductResponseCopyWith<$Res> {
       List<SectionsProductResponse>? sections,
       String? text,
       int? quantity,
-      String? art,
+      int? art,
       int? userDiscount,
       PriceProductResponse? price,
       String? r,
@@ -180,7 +180,7 @@ class _$DetailProductResponseCopyWithImpl<$Res,
       art: freezed == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userDiscount: freezed == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -289,7 +289,7 @@ abstract class _$$DetailProductResponseImplCopyWith<$Res>
       List<SectionsProductResponse>? sections,
       String? text,
       int? quantity,
-      String? art,
+      int? art,
       int? userDiscount,
       PriceProductResponse? price,
       String? r,
@@ -394,7 +394,7 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
       art: freezed == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       userDiscount: freezed == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -533,7 +533,7 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
   @override
   final int? quantity;
   @override
-  final String? art;
+  final int? art;
   @override
   final int? userDiscount;
   @override
@@ -635,7 +635,7 @@ abstract class _DetailProductResponse extends DetailProductResponse {
       final List<SectionsProductResponse>? sections,
       final String? text,
       final int? quantity,
-      final String? art,
+      final int? art,
       final int? userDiscount,
       final PriceProductResponse? price,
       final String? r,
@@ -677,7 +677,7 @@ abstract class _DetailProductResponse extends DetailProductResponse {
   @override
   int? get quantity;
   @override
-  String? get art;
+  int? get art;
   @override
   int? get userDiscount;
   @override

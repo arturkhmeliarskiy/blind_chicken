@@ -12,7 +12,10 @@ part 'yandex_map_event.dart';
 part 'yandex_map_state.dart';
 
 class YandexMapBloc extends Bloc<YandexMapEvent, YandexMapState> {
-  YandexMapBloc() : super(const YandexMapState.init()) {
+  final UpdateDataService _updateDataService;
+  YandexMapBloc(
+    this._updateDataService,
+  ) : super(const YandexMapState.init()) {
     on<InitYandexMapEvent>(_init);
   }
 
@@ -20,64 +23,68 @@ class YandexMapBloc extends Bloc<YandexMapEvent, YandexMapState> {
     InitYandexMapEvent event,
     Emitter<YandexMapState> emit,
   ) async {
+    final placemarks = await getPlacemarkObjects();
     emit(
       YandexMapState.preloadDataCompleted(
         collection: getClusterizedCollection(
-          placemarks: getPlacemarkObjects(),
+          placemarks: placemarks,
         ),
-        listMapObject: getPlacemarkObjects(),
+        listMapObject: placemarks,
       ),
     );
   }
-}
 
-/// Метод для получения коллекции кластеризованных маркеров
-ClusterizedPlacemarkCollection getClusterizedCollection({
-  required List<PlacemarkMapObject> placemarks,
-}) {
-  return ClusterizedPlacemarkCollection(
-    mapId: const MapObjectId('clusterized-1'),
-    placemarks: placemarks,
-    radius: 45,
-    minZoom: 15,
-    onClusterAdded: (self, cluster) async {
-      return cluster.copyWith(
-        appearance: cluster.appearance.copyWith(
-          opacity: 1.0,
-          icon: PlacemarkIcon.single(
-            PlacemarkIconStyle(
-              image: BitmapDescriptor.fromBytes(
-                await ClusterIconPainter(cluster.size).getClusterIconBytes(),
+  /// Метод для получения коллекции кластеризованных маркеров
+  ClusterizedPlacemarkCollection getClusterizedCollection({
+    required List<PlacemarkMapObject> placemarks,
+  }) {
+    return ClusterizedPlacemarkCollection(
+      mapId: const MapObjectId('clusterized-1'),
+      placemarks: placemarks,
+      radius: 45,
+      minZoom: 15,
+      onClusterAdded: (self, cluster) async {
+        return cluster.copyWith(
+          appearance: cluster.appearance.copyWith(
+            opacity: 1.0,
+            icon: PlacemarkIcon.single(
+              PlacemarkIconStyle(
+                image: BitmapDescriptor.fromBytes(
+                  await ClusterIconPainter(cluster.size).getClusterIconBytes(),
+                ),
               ),
             ),
           ),
-        ),
-      );
-    },
-    onClusterTap: (self, cluster) async {},
-  );
-}
-
-/// Метод для генерации объектов маркеров для отображения на карте
-List<PlacemarkMapObject> getPlacemarkObjects() {
-  List<PlacemarkMapObject> listPlacemarkMapObject = [];
-  final listMapPoint = MapPointsInfo.getMapPointDataModels();
-  for (int i = 0; i < listMapPoint.length; i++) {
-    listPlacemarkMapObject.add(PlacemarkMapObject(
-      mapId: MapObjectId('MapObject $i'),
-      point: Point(latitude: listMapPoint[i].latitude, longitude: listMapPoint[i].longitude),
-      opacity: 1,
-      icon: PlacemarkIcon.single(
-        PlacemarkIconStyle(
-          image: BitmapDescriptor.fromAssetImage(
-            'assets/images/${listMapPoint[i].iconName}.png',
-          ),
-          scale: 2,
-          anchor: const Offset(0.5, 1.2),
-        ),
-      ),
-      onTap: (_, __) {},
-    ));
+        );
+      },
+      onClusterTap: (self, cluster) async {},
+    );
   }
-  return listPlacemarkMapObject;
+
+  /// Метод для генерации объектов маркеров для отображения на карте
+  Future<List<PlacemarkMapObject>> getPlacemarkObjects() async {
+    List<PlacemarkMapObject> listPlacemarkMapObject = [];
+    final boutiques = _updateDataService.boutiques;
+    for (int i = 0; i < boutiques.length; i++) {
+      listPlacemarkMapObject.add(PlacemarkMapObject(
+        mapId: MapObjectId('MapObject $i'),
+        point: Point(
+          latitude: boutiques[i].coordinates.latitude,
+          longitude: boutiques[i].coordinates.longitude,
+        ),
+        opacity: 1,
+        icon: PlacemarkIcon.single(
+          PlacemarkIconStyle(
+            image: BitmapDescriptor.fromAssetImage(
+              'assets/images/${boutiques[i].caption}.png',
+            ),
+            scale: 2,
+            anchor: const Offset(0.5, 1.2),
+          ),
+        ),
+        onTap: (_, __) {},
+      ));
+    }
+    return listPlacemarkMapObject;
+  }
 }

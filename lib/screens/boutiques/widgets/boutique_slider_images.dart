@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:models/models.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -19,7 +20,7 @@ class BoutiqueSliderImages extends StatefulWidget {
     this.borderRadius = 4,
   });
 
-  final List<String> listImages;
+  final List<BoutiqueFotoDetailDataModel> listImages;
   final VoidCallback goBotton;
   final VoidCallback addLike;
   final VoidCallback onTap;
@@ -71,7 +72,7 @@ class _BoutiqueSliderImagesState extends State<BoutiqueSliderImages> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(widget.borderRadius),
                           child: CachedNetworkImage(
-                            imageUrl: widget.listImages[index],
+                            imageUrl: 'https://slepayakurica.ru${widget.listImages[index].min}',
                             width: MediaQuery.of(context).orientation == Orientation.portrait
                                 ? width - widget.marginRight
                                 : width - widget.marginRight / 2,

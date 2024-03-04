@@ -3,3 +3,8 @@ export 'products/index.dart';
 export 'menu/index.dart';
 export 'boutiques/index.dart';
 export 'catalog/index.dart';
+export 'auth/index.dart';
+export 'basket/index.dart';
+export 'favourites/index.dart';
+export 'location/index.dart';
+export 'orders/index.dart';

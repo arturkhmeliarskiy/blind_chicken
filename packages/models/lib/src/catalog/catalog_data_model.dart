@@ -8,12 +8,13 @@ class CatalogDataModel with _$CatalogDataModel {
   const CatalogDataModel._();
   factory CatalogDataModel({
     required String userDiscount,
-    required BreadcrumbsDataModel breadcrumbs,
+    required List<CatalogBreadcrumbDataModel> breadcrumbs,
     required String h1,
     required String count,
     required SectionsDataModel sections,
-    required List<String> listNext,
-    required List<String> listPrev,
+    required List<SectionItemDataModel> listNext,
+    required List<SectionItemDataModel> listPrev,
+    required List<SectionItemDataModel> listThis,
     required String countFilter,
     required List<FilterInfoDataModel> filter,
     required List<ProductDataModel> products,

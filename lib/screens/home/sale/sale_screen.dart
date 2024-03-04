@@ -346,21 +346,6 @@ class _SaleScreenState extends State<SaleScreen> {
                                       item: initState.products[index],
                                       isLike: initState.favouritesProducts
                                           .contains(initState.products[index]),
-                                      addLike: () {
-                                        context.read<CatalogBloc>().add(
-                                              CatalogEvent.addFavouriteProduct(
-                                                product: initState.products[index],
-                                                index: initState.products[index].id,
-                                              ),
-                                            );
-                                      },
-                                      deleteLike: () {
-                                        context.read<CatalogBloc>().add(
-                                              CatalogEvent.deleteFavouriteProduct(
-                                                index: initState.products[index].id,
-                                              ),
-                                            );
-                                      },
                                       listItems: initState.products,
                                       favouritesProducts: initState.favouritesProducts,
                                     ),
@@ -369,6 +354,8 @@ class _SaleScreenState extends State<SaleScreen> {
                                 imageUrl: initState.products[index].images[0],
                                 brend: initState.products[index].brend,
                                 catrgory: initState.products[index].catrgory,
+                                isYourPriceDisplayed:
+                                    initState.products[index].isYourPriceDisplayed,
                                 yourPrice: initState.products[index].yourPrice.toString(),
                                 price: initState.products[index].price.toString(),
                                 maximumCashback:

@@ -41,6 +41,7 @@ class CatalogVariantSliderImages extends StatelessWidget {
                   variants: [],
                   maximumCashback: 0,
                   maximumPersonalDiscount: 0,
+                  isYourPriceDisplayed: false,
                 ),
               );
             },

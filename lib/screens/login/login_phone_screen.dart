@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/login/login_captcha_screen.dart';
 import 'package:blind_chicken/screens/login/login_sms_code_screen.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,7 @@ class LoginPhoneScreen extends StatefulWidget {
 
 class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
   final TextEditingController _phone = TextEditingController();
+  String _title = 'Телефон';
 
   var maskFormatter = MaskTextInputFormatter(
     mask: '### ### ## ##',
@@ -37,32 +40,27 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         state.maybeWhen(
-          sendMessage: (value) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  return LoginSmsCodeScreen(
-                    phone: value ?? '',
-                  );
-                });
+          successfully: () {
+            context.popRoute();
+            context.pushRoute(const AccountRoute());
           },
           orElse: () {},
         );
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: 300,
-            width: MediaQuery.of(context).size.width - 16,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
-              return state.maybeMap(
-                  sendMessage: (iniState) {
-                    return Column(
+      child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+        return state.maybeMap(
+            init: (iniState) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: iniState.message?.isNotEmpty ?? false ? 330 : 300,
+                    width: MediaQuery.of(context).size.width - 16,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -109,7 +107,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Телефон',
+                                _title,
                                 style: Theme.of(context).textTheme.displayMedium,
                               ),
                               const SizedBox(
@@ -179,6 +177,30 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                                   ),
                                 ),
                               ),
+                              if (iniState.message?.isNotEmpty ?? false)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/icons/warning.svg',
+                                        height: 17.5,
+                                        width: 17.5,
+                                      ),
+                                      const SizedBox(
+                                        width: 6,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          iniState.message ?? '',
+                                          style: Theme.of(context).textTheme.displayMedium,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
                             ],
                           ),
                         ),
@@ -194,8 +216,21 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                             child: BlindChickenButton(
                               title: 'Получить код',
                               onChenge: () {
-                                context.popRoute();
-                                context.read<LoginBloc>().add(LoginEvent.phone(_phone.text));
+                                String phone = _phone.text.replaceAll(' ', '');
+                                if (phone.length == 10) {
+                                  setState(() {
+                                    _title = 'Телефон';
+                                  });
+                                  context.read<LoginBloc>().add(
+                                        LoginEvent.phone(
+                                          phone: '7${_phone.text.replaceAll(' ', '')}',
+                                        ),
+                                      );
+                                } else {
+                                  setState(() {
+                                    _title = 'Введите номер телефона';
+                                  });
+                                }
                               },
                             ),
                           ),
@@ -224,19 +259,45 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                           ),
                         )
                       ],
-                    );
-                  },
-                  load: (value) => Center(
+                    ),
+                  ),
+                ],
+              );
+            },
+            smsCode: (value) {
+              return LoginSmsCodeScreen(
+                phone: value.phone ?? '',
+                message: value.message ?? '',
+              );
+            },
+            captcha: (value) {
+              return LoginCaptchaScreen(
+                code: value.code ?? '',
+                phone: value.phone ?? '',
+                message: value.message ?? '',
+              );
+            },
+            load: (value) => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 200,
+                      width: MediaQuery.of(context).size.width - 16,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Center(
                         child: CircularProgressIndicator(
                           color: Colors.black,
                           backgroundColor: Colors.grey.shade400,
                         ),
                       ),
-                  orElse: () => const SizedBox());
-            }),
-          ),
-        ],
-      ),
+                    ),
+                  ],
+                ),
+            orElse: () => const SizedBox());
+      }),
     );
   }
 }

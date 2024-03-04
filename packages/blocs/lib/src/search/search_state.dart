@@ -7,12 +7,21 @@ class SearchState with _$SearchState {
   const factory SearchState.searchProductsResult({
     required List<ProductDataModel> searchDefaultProducts,
     required List<ProductDataModel> searchProducts,
-    List<ProductDataModel>? favouritesProducts,
-    required List<Map<String, dynamic>> searchSections,
+    required List<ProductDataModel> products,
+    required List<CatalogSectionDataModel> searchSections,
     required List<FilterInfoDataModel> filter,
     required Map<int, List<FilterItemDataModel>> selectFilter,
     required List<Map<int, FilterItemDataModel>> allSelectFilter,
+    required List<ProductDataModel> listProdcutsStyle,
+    required List<ProductDataModel> listProdcutsAlso,
+    required List<ProductDataModel> listProdcutsBrand,
+    required List<int> favouritesProductsId,
     required String query,
     required bool isLoading,
+    required CatalogSearchProductsRequest request,
+    required List<String> listProductsCode,
+    DetailProductDataModel? detailsProduct,
+    List<ProductDataModel>? favouritesProducts,
+    CatalogSearchInfoDataModel? searchResultInfo,
   }) = SearchProductsResultSearchState;
 }

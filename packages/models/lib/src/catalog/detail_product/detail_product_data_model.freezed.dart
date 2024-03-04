@@ -31,9 +31,10 @@ mixin _$DetailProductDataModel {
       throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
-  String get art => throw _privateConstructorUsedError;
+  int get art => throw _privateConstructorUsedError;
   int get userDiscount => throw _privateConstructorUsedError;
   PriceProductDataModel get price => throw _privateConstructorUsedError;
+  ProductDataModel get product => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
 
@@ -62,9 +63,10 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
       List<SectionsProductDataModel> sections,
       String text,
       int quantity,
-      String art,
+      int art,
       int userDiscount,
       PriceProductDataModel price,
+      ProductDataModel product,
       String r,
       String e});
 
@@ -73,6 +75,7 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
   $CategoryProductDataModelCopyWith<$Res> get category;
   $PlaceProductDataModelCopyWith<$Res> get place;
   $PriceProductDataModelCopyWith<$Res> get price;
+  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -105,6 +108,7 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     Object? art = null,
     Object? userDiscount = null,
     Object? price = null,
+    Object? product = null,
     Object? r = null,
     Object? e = null,
   }) {
@@ -164,7 +168,7 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       art: null == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -173,6 +177,10 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as PriceProductDataModel,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel,
       r: null == r
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
@@ -223,6 +231,14 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       return _then(_value.copyWith(price: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res> get product {
+    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -248,9 +264,10 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
       List<SectionsProductDataModel> sections,
       String text,
       int quantity,
-      String art,
+      int art,
       int userDiscount,
       PriceProductDataModel price,
+      ProductDataModel product,
       String r,
       String e});
 
@@ -264,6 +281,8 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
   $PlaceProductDataModelCopyWith<$Res> get place;
   @override
   $PriceProductDataModelCopyWith<$Res> get price;
+  @override
+  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -295,6 +314,7 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
     Object? art = null,
     Object? userDiscount = null,
     Object? price = null,
+    Object? product = null,
     Object? r = null,
     Object? e = null,
   }) {
@@ -354,7 +374,7 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
       art: null == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -363,6 +383,10 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as PriceProductDataModel,
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel,
       r: null == r
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
@@ -395,6 +419,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
       required this.art,
       required this.userDiscount,
       required this.price,
+      required this.product,
       required this.r,
       required this.e})
       : _breadcrumb = breadcrumb,
@@ -468,11 +493,13 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
   @override
   final int quantity;
   @override
-  final String art;
+  final int art;
   @override
   final int userDiscount;
   @override
   final PriceProductDataModel price;
+  @override
+  final ProductDataModel product;
   @override
   final String r;
   @override
@@ -480,7 +507,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
 
   @override
   String toString() {
-    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, quantity: $quantity, art: $art, userDiscount: $userDiscount, price: $price, r: $r, e: $e)';
+    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, quantity: $quantity, art: $art, userDiscount: $userDiscount, price: $price, product: $product, r: $r, e: $e)';
   }
 
   @override
@@ -508,31 +535,34 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.product, product) || other.product == product) &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      code,
-      photo,
-      const DeepCollectionEquality().hash(_breadcrumb),
-      brand,
-      category,
-      const DeepCollectionEquality().hash(_option),
-      const DeepCollectionEquality().hash(_sku),
-      const DeepCollectionEquality().hash(_stock),
-      place,
-      const DeepCollectionEquality().hash(_char),
-      const DeepCollectionEquality().hash(_sections),
-      text,
-      quantity,
-      art,
-      userDiscount,
-      price,
-      r,
-      e);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        code,
+        photo,
+        const DeepCollectionEquality().hash(_breadcrumb),
+        brand,
+        category,
+        const DeepCollectionEquality().hash(_option),
+        const DeepCollectionEquality().hash(_sku),
+        const DeepCollectionEquality().hash(_stock),
+        place,
+        const DeepCollectionEquality().hash(_char),
+        const DeepCollectionEquality().hash(_sections),
+        text,
+        quantity,
+        art,
+        userDiscount,
+        price,
+        product,
+        r,
+        e
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -557,9 +587,10 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
       required final List<SectionsProductDataModel> sections,
       required final String text,
       required final int quantity,
-      required final String art,
+      required final int art,
       required final int userDiscount,
       required final PriceProductDataModel price,
+      required final ProductDataModel product,
       required final String r,
       required final String e}) = _$DetailProductDataModelImpl;
   _DetailProductDataModel._() : super._();
@@ -591,11 +622,13 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   @override
   int get quantity;
   @override
-  String get art;
+  int get art;
   @override
   int get userDiscount;
   @override
   PriceProductDataModel get price;
+  @override
+  ProductDataModel get product;
   @override
   String get r;
   @override

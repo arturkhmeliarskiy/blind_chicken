@@ -1,5 +1,7 @@
 import 'package:blind_chicken/screens/gift_card/widgets/gift_virtual_card_parametrs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class GiftVirtualCardInfo extends StatefulWidget {
@@ -7,10 +9,12 @@ class GiftVirtualCardInfo extends StatefulWidget {
     super.key,
     required this.selectedColor,
     required this.onSelectedColor,
+    required this.onSum,
   });
 
-  final Map<dynamic, dynamic> selectedColor;
-  final ValueChanged<Map<dynamic, dynamic>> onSelectedColor;
+  final GiftCardModel selectedColor;
+  final ValueChanged<GiftCardModel> onSelectedColor;
+  final ValueChanged<String> onSum;
 
   @override
   State<GiftVirtualCardInfo> createState() => _GiftVirtualCardInfoState();
@@ -73,9 +77,12 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
           child: TextField(
             onTap: () {},
             onChanged: (value) {
-              setState(() {});
+              widget.onSum(value);
             },
             controller: _sum,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+            ],
             cursorColor: BlindChickenColors.activeBorderTextField,
             style: Theme.of(context).textTheme.displayMedium,
             decoration: InputDecoration(

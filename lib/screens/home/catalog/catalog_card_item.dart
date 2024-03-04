@@ -17,6 +17,7 @@ class CatalogCardItem extends StatefulWidget {
     required this.onAddFavouriteProduct,
     required this.onDeleteFavouriteProduct,
     required this.isLike,
+    required this.isYourPriceDisplayed,
   });
 
   final String imageUrl;
@@ -26,6 +27,7 @@ class CatalogCardItem extends StatefulWidget {
   final String price;
   final String maximumCashback;
   final bool isLike;
+  final bool isYourPriceDisplayed;
   final VoidCallback onSelect;
   final VoidCallback onAddFavouriteProduct;
   final VoidCallback onDeleteFavouriteProduct;
@@ -55,122 +57,131 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
       onTap: () {
         widget.onSelect();
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            alignment: Alignment.topRight,
-            children: [
-              CachedNetworkImage(
-                imageUrl: widget.imageUrl,
-                fit: BoxFit.fill,
-                placeholder: (context, url) => const SizedBox(
-                  height: 230,
-                  child: LoadingImage(),
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    _isLike = !_isLike;
-                  });
-                  if (_isLike) {
-                    widget.onAddFavouriteProduct();
-                  } else {
-                    widget.onDeleteFavouriteProduct();
-                  }
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(7),
-                  child: SvgPicture.asset(
-                    _isLike ? 'assets/icons/like_active.svg' : 'assets/icons/like.svg',
-                    height: 17.5,
-                    width: 17.5,
+      child: Container(
+        width: MediaQuery.of(context).size.width / 2 - 21,
+        margin: const EdgeInsets.all(10.5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              alignment: Alignment.topRight,
+              children: [
+                CachedNetworkImage(
+                  imageUrl: widget.imageUrl,
+                  fit: BoxFit.fill,
+                  placeholder: (context, url) => const SizedBox(
+                    height: 230,
+                    child: LoadingImage(),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Text(
-            widget.brend,
-            style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          Text(
-            widget.catrgory,
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          RichText(
-            text: TextSpan(
-              text: widget.price.spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.displayMedium,
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' ₽',
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      _isLike = !_isLike;
+                    });
+                    if (_isLike) {
+                      widget.onAddFavouriteProduct();
+                    } else {
+                      widget.onDeleteFavouriteProduct();
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(7),
+                    child: SvgPicture.asset(
+                      _isLike ? 'assets/icons/like_active.svg' : 'assets/icons/like.svg',
+                      height: 17.5,
+                      width: 17.5,
+                    ),
+                  ),
+                )
               ],
             ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          RichText(
-            text: TextSpan(
-              text: widget.yourPrice.spaceSeparateNumbers(),
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              widget.brend,
               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' ₽',
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        fontWeight: FontWeight.w700,
-                      ),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(
+              widget.catrgory,
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            RichText(
+              text: TextSpan(
+                text: widget.price.spaceSeparateNumbers(),
+                style: Theme.of(context).textTheme.displayMedium,
+                children: <TextSpan>[
+                  TextSpan(
+                    text: ' ₽',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            if (widget.isYourPriceDisplayed)
+              Column(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: widget.yourPrice.spaceSeparateNumbers(),
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: ' ₽',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
+                        ),
+                        TextSpan(
+                          text: ' Ваша цена',
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                ],
+              ),
+            Row(
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/lightning.svg',
+                  height: 14,
+                  width: 14,
                 ),
-                TextSpan(
-                  text: ' Ваша цена',
-                  style: Theme.of(context).textTheme.displayMedium,
+                RichText(
+                  text: TextSpan(
+                    text: ' Выгода до ',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: '${widget.maximumCashback.spaceSeparateNumbers()} ₽',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
+                  ),
                 ),
               ],
-            ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          Row(
-            children: [
-              SvgPicture.asset(
-                'assets/icons/lightning.svg',
-                height: 14,
-                width: 14,
-              ),
-              RichText(
-                text: TextSpan(
-                  text: ' Выгода до ',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: '${widget.maximumCashback.spaceSeparateNumbers()} ₽',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

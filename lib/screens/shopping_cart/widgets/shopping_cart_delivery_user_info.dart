@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_switch_delivery_type.dart';
-import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_delivery_info.dart';
+import 'package:blind_chicken/screens/location/location_delivery_info.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_edit_delivery_info.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
-import 'package:shared/shared.dart';
 
 class ShoppingCartDeliveryUserInfo extends StatefulWidget {
   const ShoppingCartDeliveryUserInfo({
@@ -16,7 +17,10 @@ class ShoppingCartDeliveryUserInfo extends StatefulWidget {
     required this.subTitle3,
     required this.isAuth,
     required this.onReceivingType,
-    required this.onAddress,
+    required this.onAddressPickup,
+    required this.sum,
+    required this.boutiques,
+    required this.onAddressDelivery,
   });
 
   final String title;
@@ -25,54 +29,27 @@ class ShoppingCartDeliveryUserInfo extends StatefulWidget {
   final String subTitle3;
   final bool isAuth;
   final ValueChanged<String> onReceivingType;
-  final Function(String, String) onAddress;
+  final Function(BoutiqueDataModel) onAddressPickup;
+  final ValueChanged<BasketAddress> onAddressDelivery;
+  final BoutiquesDataModel boutiques;
+  final int sum;
 
   @override
   State<ShoppingCartDeliveryUserInfo> createState() => _ShoppingCartDeliveryUserInfoState();
 }
 
 class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserInfo> {
-  late MapPointDataModel _mapPoint;
-  final listMapPoints = MapPointsInfo.getMapPointDataModels();
   String _receivingType = 'Самовывоз';
-  String _city = '';
-  String _street = '';
-  String _house = '';
-  String _flat = '';
+  BoutiqueDataModel? boutique;
+  BasketAddress city = BasketAddress(address: '', zip: '');
+  BasketAddress street = BasketAddress(address: '', zip: '');
+  BasketAddress house = BasketAddress(address: '', zip: '');
+  String flat = '';
 
   @override
   void initState() {
-    _mapPoint = listMapPoints[0];
+    boutique = widget.boutiques.data.first;
     super.initState();
-  }
-
-  String _address(
-    String city,
-    String street,
-    String house,
-    String flat,
-  ) {
-    String result = '';
-    if (city.isNotEmpty && street.isNotEmpty) {
-      city = '$city, ';
-    } else {
-      city = '$city ';
-    }
-    if (street.isNotEmpty && house.isNotEmpty) {
-      street = '$street, ';
-    } else {
-      street = '$street ';
-    }
-    if (house.isNotEmpty && flat.isNotEmpty) {
-      house = '$house, ';
-    } else {
-      house = '$house ';
-    }
-    if (flat.isNotEmpty) {
-      flat = flat;
-    }
-    result = city + street + house + flat;
-    return result;
   }
 
   @override
@@ -102,14 +79,12 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                       setState(() {
                         _receivingType = 'Доставка';
                         widget.onReceivingType(_receivingType);
-                        widget.onAddress('', '');
                       });
                     },
                     navigateToBoutiques: () {
                       setState(() {
                         _receivingType = 'Самовывоз';
                         widget.onReceivingType(_receivingType);
-                        widget.onAddress('', '');
                       });
                     },
                   ),
@@ -119,50 +94,59 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                 ),
                 if (_receivingType != 'Доставка')
                   ShoppingCartEditDeliveryInfo(
-                    mapPoint: _mapPoint,
+                    boutique: boutique ?? widget.boutiques.data.first,
                     onEditAddress: () {
                       context.navigateTo(
                         ShoppingYandexMapRoute(
                           onMapPoint: (value) {
                             setState(() {
-                              _mapPoint = value;
-                              widget.onAddress(_mapPoint.name, _mapPoint.schedule);
+                              boutique = value;
+                              widget.onAddressPickup(value);
                             });
                           },
-                          point: _mapPoint,
+                          boutique: boutique ?? widget.boutiques.data.first,
+                          boutiques: widget.boutiques,
                         ),
                       );
                     },
                   )
                 else
-                  ShoppingCartDeliveryInfo(
+                  LocationDeliveryInfo(
+                    sum: widget.sum,
+                    city: city.address,
+                    street: street.address,
+                    house: house.address,
+                    flat: flat,
+                    onPrice: (value) {
+                      context.read<ShoppingCartBloc>().add(
+                            ShoppingCartEvent.delivery(delivery: value),
+                          );
+                    },
                     onCity: (value) {
-                      _city = value;
-                      widget.onAddress(
-                        _address(_city, _street, _house, _flat),
-                        'Пн-Чт 10:00-22:00, Пт-Сб 10:00-23:00, Вс 10:00-22:00',
+                      city = BasketAddress(
+                        address: value.name,
+                        zip: value.zip.toString(),
+                        cityId: value.id,
                       );
+                      widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onStreet: (value) {
-                      _street = value;
-                      widget.onAddress(
-                        _address(_city, _street, _house, _flat),
-                        'Пн-Чт 10:00-22:00, Пт-Сб 10:00-23:00, Вс 10:00-22:00',
+                      street = BasketAddress(
+                        address: '${value.typeShort}. ${value.name}',
+                        zip: value.zip.toString(),
                       );
+                      widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onHouse: (value) {
-                      _house = value;
-                      widget.onAddress(
-                        _address(_city, _street, _house, _flat),
-                        'Пн-Чт 10:00-22:00, Пт-Сб 10:00-23:00, Вс 10:00-22:00',
+                      house = BasketAddress(
+                        address: value.name,
+                        zip: value.zip.toString(),
                       );
+                      widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onFlat: (value) {
-                      _flat = value;
-                      widget.onAddress(
-                        _address(_city, _street, _house, _flat),
-                        'Пн-Чт 10:00-22:00, Пт-Сб 10:00-23:00, Вс 10:00-22:00',
-                      );
+                      flat = value;
+                      widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                   )
               ],
@@ -203,4 +187,56 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
       ),
     );
   }
+}
+
+BasketAddress _address(
+  BasketAddress city,
+  BasketAddress street,
+  BasketAddress house,
+  String flat,
+) {
+  String _address = '';
+  String _city = '';
+  String _street = '';
+  String _house = '';
+  String _flat = '';
+  String zip = '';
+
+  if (city.address.isNotEmpty && street.address.isNotEmpty) {
+    _city = '${city.address}, ';
+  } else {
+    _city = '${city.address} ';
+  }
+  if (street.address.isNotEmpty && house.address.isNotEmpty) {
+    _street = '${street.address}, ';
+  } else {
+    _street = '${street.address} ';
+  }
+  if (house.address.isNotEmpty && flat.isNotEmpty) {
+    _house = '${house.address}, ';
+  } else {
+    _house = '${house.address} ';
+  }
+  if (flat.isNotEmpty) {
+    _flat = flat;
+  }
+
+  if (city.address.isNotEmpty) {
+    zip = city.zip.toString();
+  }
+
+  if (street.address.isNotEmpty) {
+    zip = street.zip.toString();
+  }
+
+  if (house.address.isNotEmpty) {
+    zip = house.zip.toString();
+  }
+
+  _address = _city + _street + _house + _flat;
+  return BasketAddress(
+    address: _address,
+    zip: zip,
+    cityId: city.cityId,
+  );
 }

@@ -11,7 +11,7 @@ class GiftMapPointInfo extends StatelessWidget {
     required this.onMoreDetailed,
   });
 
-  final MapPointDataModel point;
+  final BoutiqueDataModel point;
   final VoidCallback onMoreDetailed;
 
   @override
@@ -24,7 +24,7 @@ class GiftMapPointInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 180,
+                height: 220,
                 width: 300,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -55,36 +55,43 @@ class GiftMapPointInfo extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5, left: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          point.label,
-                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                fontWeight: FontWeight.w700,
+                    SizedBox(
+                      height: 110,
+                      child: ListView(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, left: 16),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                point.name,
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                    ),
                               ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0, left: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          point.location,
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0, left: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          point.schedule,
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0, left: 16),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                point.address,
+                                style: Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0, left: 16),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                point.schedule,
+                                style: Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     GestureDetector(

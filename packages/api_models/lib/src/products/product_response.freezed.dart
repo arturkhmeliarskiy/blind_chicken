@@ -23,7 +23,7 @@ mixin _$ProductResponse {
   int? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get catrgory => throw _privateConstructorUsedError;
-  List<int>? get size => throw _privateConstructorUsedError;
+  List<String>? get size => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get brend => throw _privateConstructorUsedError;
   @JsonKey(name: 'lens_diameter')
@@ -50,7 +50,7 @@ abstract class $ProductResponseCopyWith<$Res> {
       {int? id,
       String? title,
       String? catrgory,
-      List<int>? size,
+      List<String>? size,
       int? price,
       String? brend,
       @JsonKey(name: 'lens_diameter') int? lensDiameter,
@@ -101,7 +101,7 @@ class _$ProductResponseCopyWithImpl<$Res, $Val extends ProductResponse>
       size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<String>?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -146,7 +146,7 @@ abstract class _$$ProductResponseImplCopyWith<$Res>
       {int? id,
       String? title,
       String? catrgory,
-      List<int>? size,
+      List<String>? size,
       int? price,
       String? brend,
       @JsonKey(name: 'lens_diameter') int? lensDiameter,
@@ -195,7 +195,7 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
       size: freezed == size
           ? _value._size
           : size // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<String>?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -235,7 +235,7 @@ class _$ProductResponseImpl extends _ProductResponse {
       {this.id,
       this.title,
       this.catrgory,
-      final List<int>? size,
+      final List<String>? size,
       this.price,
       this.brend,
       @JsonKey(name: 'lens_diameter') this.lensDiameter,
@@ -257,9 +257,9 @@ class _$ProductResponseImpl extends _ProductResponse {
   final String? title;
   @override
   final String? catrgory;
-  final List<int>? _size;
+  final List<String>? _size;
   @override
-  List<int>? get size {
+  List<String>? get size {
     final value = _size;
     if (value == null) return null;
     if (_size is EqualUnmodifiableListView) return _size;
@@ -361,7 +361,7 @@ abstract class _ProductResponse extends ProductResponse {
       {final int? id,
       final String? title,
       final String? catrgory,
-      final List<int>? size,
+      final List<String>? size,
       final int? price,
       final String? brend,
       @JsonKey(name: 'lens_diameter') final int? lensDiameter,
@@ -381,7 +381,7 @@ abstract class _ProductResponse extends ProductResponse {
   @override
   String? get catrgory;
   @override
-  List<int>? get size;
+  List<String>? get size;
   @override
   int? get price;
   @override

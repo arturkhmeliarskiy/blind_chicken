@@ -10,7 +10,7 @@ class ProductResponse with _$ProductResponse {
     int? id,
     String? title,
     String? catrgory,
-    List<int>? size,
+    List<String>? size,
     int? price,
     String? brend,
     @JsonKey(name: 'lens_diameter') int? lensDiameter,

@@ -10,7 +10,7 @@ class ProductDataModel with _$ProductDataModel {
     required int id,
     required String title,
     required String catrgory,
-    required List<int> size,
+    required List<String> size,
     required int price,
     required int yourPrice,
     required String brend,
@@ -21,6 +21,8 @@ class ProductDataModel with _$ProductDataModel {
     required List<String> variants,
     required int maximumCashback,
     required int maximumPersonalDiscount,
+    required bool isYourPriceDisplayed,
+    String? count,
     Color? color,
   }) = _ProductDataModel;
 }

@@ -2,7 +2,8 @@ part of 'catalog_bloc.dart';
 
 @freezed
 class CatalogEvent with _$CatalogEvent {
-  const factory CatalogEvent.preloadData() = InitCatalogEvent;
+  const factory CatalogEvent.init() = InitCatalogEvent;
+  const factory CatalogEvent.preloadData() = PreloadDataCatalogEvent;
   const factory CatalogEvent.updateFavouritesProducts() = UpdateFavouritesProductsCatalogEvent;
   const factory CatalogEvent.subCategory({
     required String a,
@@ -65,6 +66,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.sortProducts({
     required String value,
   }) = SortProductsCatalogEvent;
+  const factory CatalogEvent.goBackProductInfo() = GoBackProductInfoCategotyCatalogEvent;
   const factory CatalogEvent.removeSelectFilterCategory({
     required int index,
   }) = RemoveSelectFilterCategotyCatalogEvent;

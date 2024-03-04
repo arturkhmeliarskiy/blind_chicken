@@ -7,6 +7,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -37,9 +38,6 @@ class _CatalogScreenState extends State<CatalogScreen> {
   void initState() {
     super.initState();
     _scrollController.addListener(_loadMoreData);
-    context.read<CatalogBloc>().add(
-          const CatalogEvent.getInfoProducts(path: '/test/'),
-        );
   }
 
   void _loadMoreData() async {
@@ -86,218 +84,235 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       builder: (context, state) {
                         return state.maybeMap(
                           preloadDataCompleted: (initState) {
-                            List<String> listPrev = initState.catalogInfo?.listPrev ?? [];
-                            List<String> listNext = initState.catalogInfo?.listNext ?? [];
-                            List<String> listItems = [...listPrev, ...listNext];
+                            List<SectionItemDataModel> listPrev =
+                                initState.catalogInfo?.listPrev ?? [];
+                            List<SectionItemDataModel> listNext =
+                                initState.catalogInfo?.listNext ?? [];
+                            List<SectionItemDataModel> listThis =
+                                initState.catalogInfo?.listThis ?? [];
+                            List<SectionItemDataModel> listItems = [
+                              ...listPrev,
+                              ...listNext,
+                              ...listThis
+                            ];
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: 50,
-                                  padding: const EdgeInsets.only(
-                                    left: 10.5,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    children: initState.pathMenu.map(
-                                      (item) {
-                                        return Text(
-                                          '${item.name}  ',
-                                          style: Theme.of(context).textTheme.displaySmall,
-                                        );
-                                      },
-                                    ).toList(),
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width - 60,
-                                  margin: const EdgeInsets.only(
-                                    left: 10.5,
-                                    bottom: 10,
-                                  ),
-                                  alignment: Alignment.topLeft,
-                                  child: RichText(
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: initState.catalogInfo?.h1 ?? '',
-                                          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                                height: 1.4,
-                                              ),
-                                        ),
-                                        TextSpan(
-                                          text: '   ${initState.catalogInfo?.count ?? ''}',
-                                          style: Theme.of(context).textTheme.displaySmall,
-                                        ),
-                                        TextSpan(
-                                          text: ' товаров',
-                                          style: Theme.of(context).textTheme.displaySmall,
-                                        ),
-                                      ],
+                                if (initState.products.isNotEmpty)
+                                  Container(
+                                    height: 50,
+                                    padding: const EdgeInsets.only(
+                                      left: 10.5,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      children: initState.catalogInfo?.breadcrumbs.map(
+                                            (item) {
+                                              return Text(
+                                                '${item.name}  ',
+                                                style: Theme.of(context).textTheme.displaySmall,
+                                              );
+                                            },
+                                          ).toList() ??
+                                          [],
                                     ),
                                   ),
-                                ),
-                                if (initState.catalogInfo?.h1.isNotEmpty ?? false)
+                                if (initState.products.isNotEmpty)
                                   Container(
+                                    width: MediaQuery.of(context).size.width - 60,
                                     margin: const EdgeInsets.only(
                                       left: 10.5,
-                                      right: 10.5,
+                                      bottom: 10,
                                     ),
-                                    height: 35,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        shrinkWrap: true,
-                                        itemCount: listItems.length,
-                                        itemBuilder: (context, index) {
-                                          return InkWell(
-                                            onTap: () {
-                                              if (listPrev.contains(listItems[index]) &&
-                                                  widget.isBack) {
-                                                context.back();
-                                              }
-                                            },
-                                            child: Container(
-                                              padding: listPrev.contains(listItems[index]) &&
-                                                      widget.isBack
-                                                  ? const EdgeInsets.only(
-                                                      right: 14,
-                                                      top: 7,
-                                                      bottom: 7,
-                                                    )
-                                                  : const EdgeInsets.symmetric(
-                                                      horizontal: 14,
-                                                      vertical: 7,
+                                    alignment: Alignment.topLeft,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            children: List.generate(listThis.length, (index) {
+                                              return TextSpan(
+                                                text: '${listThis[index].name} ',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                      height: 1.4,
                                                     ),
-                                              margin: const EdgeInsets.only(
-                                                right: 10.5,
-                                              ),
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                color: BlindChickenColors.backgroundColorItemFilter,
-                                                borderRadius: BorderRadius.circular(
-                                                  4,
-                                                ),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  if (listPrev.contains(listItems[index]) &&
-                                                      widget.isBack)
-                                                    SvgPicture.asset(
-                                                      'assets/icons/chevron-left.svg',
-                                                    ),
-                                                  Text(
-                                                    listItems[index],
-                                                    style:
-                                                        Theme.of(context).textTheme.displayMedium,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        }),
+                                              );
+                                            }),
+                                          ),
+                                          TextSpan(
+                                            text: '   ${initState.catalogInfo?.count ?? ''}',
+                                            style: Theme.of(context).textTheme.displaySmall,
+                                          ),
+                                          TextSpan(
+                                            text: ' товаров',
+                                            style: Theme.of(context).textTheme.displaySmall,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 Container(
                                   margin: const EdgeInsets.only(
                                     left: 10.5,
                                     right: 10.5,
                                   ),
-                                  height: 60,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          context.navigateTo(
-                                            SortRoute(
-                                              onChange: (value) {
-                                                context.popRoute();
-                                                setState(() {
-                                                  _selectSortItem = value;
-                                                });
-                                                context.read<CatalogBloc>().add(
-                                                      CatalogEvent.sortProducts(value: value),
-                                                    );
-                                              },
-                                              selectItem: _selectSortItem,
-                                            ),
-                                          );
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              _selectSortItem,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                            ),
-                                            const SizedBox(
-                                              width: 7,
-                                            ),
-                                            SvgPicture.asset(
-                                              'assets/icons/sort.svg',
-                                              height: 14,
-                                              width: 14,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          context.navigateTo(const FiltersRoute());
-                                        },
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                              'assets/icons/filter.svg',
-                                              height: 17.5,
-                                              width: 17.5,
-                                            ),
-                                            const SizedBox(
-                                              width: 3.5,
-                                            ),
-                                            Text(
-                                              'Фильтры',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                            ),
-                                            if (initState.allSelectFilter.isNotEmpty)
-                                              Container(
-                                                height: 14,
-                                                padding: const EdgeInsets.only(
-                                                  right: 4,
-                                                  left: 4,
-                                                ),
-                                                margin: const EdgeInsets.only(left: 6),
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(
-                                                  color: BlindChickenColors.activeBorderTextField,
-                                                  borderRadius: BorderRadius.circular(8),
-                                                ),
-                                                child: Text(
-                                                  initState.allSelectFilter.length.toString(),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyLarge
-                                                      ?.copyWith(
-                                                        color: BlindChickenColors.backgroundColor,
-                                                        height: 1,
+                                  height: 35,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      itemCount: listItems.length,
+                                      itemBuilder: (context, index) {
+                                        return InkWell(
+                                          onTap: () {
+                                            context.read<CatalogBloc>().add(
+                                                  CatalogEvent.getInfoProducts(
+                                                      path: listItems[index].value),
+                                                );
+                                          },
+                                          child: Container(
+                                            padding:
+                                                listPrev.contains(listItems[index]) && widget.isBack
+                                                    ? const EdgeInsets.only(
+                                                        right: 14,
+                                                        top: 7,
+                                                        bottom: 7,
+                                                      )
+                                                    : const EdgeInsets.symmetric(
+                                                        horizontal: 14,
+                                                        vertical: 7,
                                                       ),
-                                                ),
+                                            margin: const EdgeInsets.only(
+                                              right: 10.5,
+                                            ),
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              color: BlindChickenColors.backgroundColorItemFilter,
+                                              borderRadius: BorderRadius.circular(
+                                                4,
                                               ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                if (listPrev.contains(listItems[index]) &&
+                                                    widget.isBack)
+                                                  SvgPicture.asset(
+                                                    'assets/icons/chevron-left.svg',
+                                                  ),
+                                                Text(
+                                                  listItems[index].name,
+                                                  style: Theme.of(context).textTheme.displayMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      }),
                                 ),
+                                if (initState.products.isNotEmpty)
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 10.5,
+                                      right: 10.5,
+                                    ),
+                                    height: 60,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            context.navigateTo(
+                                              SortRoute(
+                                                onChange: (value) {
+                                                  context.popRoute();
+                                                  setState(() {
+                                                    _selectSortItem = value;
+                                                  });
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.sortProducts(value: value),
+                                                      );
+                                                },
+                                                selectItem: _selectSortItem,
+                                              ),
+                                            );
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                _selectSortItem,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
+                                              ),
+                                              const SizedBox(
+                                                width: 7,
+                                              ),
+                                              SvgPicture.asset(
+                                                'assets/icons/sort.svg',
+                                                height: 14,
+                                                width: 14,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            context.navigateTo(const FiltersRoute());
+                                          },
+                                          child: Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/icons/filter.svg',
+                                                height: 17.5,
+                                                width: 17.5,
+                                              ),
+                                              const SizedBox(
+                                                width: 3.5,
+                                              ),
+                                              Text(
+                                                'Фильтры',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
+                                              ),
+                                              if (initState.allSelectFilter.isNotEmpty)
+                                                Container(
+                                                  height: 14,
+                                                  padding: const EdgeInsets.only(
+                                                    right: 4,
+                                                    left: 4,
+                                                  ),
+                                                  margin: const EdgeInsets.only(left: 6),
+                                                  alignment: Alignment.center,
+                                                  decoration: BoxDecoration(
+                                                    color: BlindChickenColors.activeBorderTextField,
+                                                    borderRadius: BorderRadius.circular(8),
+                                                  ),
+                                                  child: Text(
+                                                    initState.allSelectFilter.length.toString(),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyLarge
+                                                        ?.copyWith(
+                                                          color: BlindChickenColors.backgroundColor,
+                                                          height: 1,
+                                                        ),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 if (initState.allSelectFilter.isNotEmpty)
                                   Container(
                                     margin: const EdgeInsets.only(
@@ -358,22 +373,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                       ),
                                     ]),
                                   ),
-                                GridView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2, // number of items in each row
-                                      mainAxisSpacing: 18.0, // spacing between rows
-                                      crossAxisSpacing: 18.0, // spacing between columns
-                                      childAspectRatio: 0.46),
-                                  padding: const EdgeInsets.only(
-                                    top: 8.0,
-                                    bottom: 8.0,
-                                    left: 10.5,
-                                    right: 10.5,
-                                  ), // padding around the grid
-                                  itemCount: initState.products.length, // total number of items
-                                  itemBuilder: (context, index) {
+                                Wrap(
+                                  children: List.generate(initState.products.length, (index) {
                                     return CatalogCardItem(
                                       isLike: initState.favouritesProductsId
                                           .contains(initState.products[index].id),
@@ -393,9 +394,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             );
                                       },
                                       onSelect: () {
+                                        context.read<ShoppingCartBloc>().add(
+                                              const ShoppingCartEvent.preloadData(),
+                                            );
                                         context.read<CatalogBloc>().add(
-                                              const CatalogEvent.getInfoProduct(
-                                                code: '51643',
+                                              CatalogEvent.getInfoProduct(
+                                                code: initState.products[index].id.toString(),
                                               ),
                                             );
                                         context.navigateTo(
@@ -403,21 +407,6 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             item: initState.products[index],
                                             isLike: initState.favouritesProductsId
                                                 .contains(initState.products[index].id),
-                                            addLike: () {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.addFavouriteProduct(
-                                                      product: initState.products[index],
-                                                      index: initState.products[index].id,
-                                                    ),
-                                                  );
-                                            },
-                                            deleteLike: () {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.deleteFavouriteProduct(
-                                                      index: initState.products[index].id,
-                                                    ),
-                                                  );
-                                            },
                                             listItems: initState.products,
                                             favouritesProducts: initState.favouritesProducts,
                                             isChildRoute: false,
@@ -429,10 +418,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                       brend: initState.products[index].brend,
                                       catrgory: initState.products[index].catrgory,
                                       price: initState.products[index].price.toString(),
+                                      isYourPriceDisplayed:
+                                          initState.products[index].isYourPriceDisplayed,
                                       maximumCashback:
                                           initState.products[index].maximumCashback.toString(),
                                     );
-                                  },
+                                  }),
                                 ),
                               ],
                             );

@@ -9,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
-import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
@@ -19,11 +18,13 @@ class ShoppingYandexMapScreen extends StatefulWidget {
   const ShoppingYandexMapScreen({
     super.key,
     required this.onMapPoint,
-    required this.point,
+    required this.boutique,
+    required this.boutiques,
   });
 
-  final ValueChanged<MapPointDataModel> onMapPoint;
-  final MapPointDataModel point;
+  final ValueChanged<BoutiqueDataModel> onMapPoint;
+  final BoutiqueDataModel boutique;
+  final BoutiquesDataModel boutiques;
 
   @override
   State<ShoppingYandexMapScreen> createState() => _ShoppingYandexMapScreenState();
@@ -39,9 +40,9 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
   /// Данные о местоположении пользователя
   CameraPosition? _userLocation;
   CameraPosition? _cameraPosition;
-  late MapPointDataModel _point;
+  late BoutiqueDataModel _point;
 
-  List<BoutiquesDataModel> boutiques = [];
+  List<BoutiqueDataModel> boutiques = [];
 
   Future<void> _initPermission() async {
     if (!await LocationService().checkPermission()) {
@@ -76,9 +77,10 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
       ),
     );
     if (isOpenModal) {
-      final listMapPoints = MapPointsInfo.getMapPointDataModels();
+      final updateDataService = GetIt.I.get<UpdateDataService>();
+      final boutiques = updateDataService.boutiques;
       setState(() {
-        _point = listMapPoints[index];
+        _point = boutiques[index];
       });
       await Future.delayed(
           const Duration(
@@ -90,18 +92,20 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
           context: context,
           builder: (BuildContext context) {
             return ShoppingMapPointInfo(
-              point: MapPointDataModel(
-                iconName: listMapPoints[index].iconName,
-                name: listMapPoints[index].name,
-                latitude: listMapPoints[index].latitude,
-                longitude: listMapPoints[index].longitude,
-                label: listMapPoints[index].label,
-                location: listMapPoints[index].location,
-                schedule: listMapPoints[index].schedule,
-                image: listMapPoints[index].image,
+              boutique: BoutiqueDataModel(
+                name: boutiques[index].name,
+                schedule: boutiques[index].schedule,
+                url: boutiques[index].url,
+                fotoMin: boutiques[index].fotoMin,
+                caption: boutiques[index].caption,
+                nameShort: boutiques[index].nameShort,
+                address: boutiques[index].address,
+                uidStore: boutiques[index].uidStore,
+                coordinates: boutiques[index].coordinates,
+                iconPath: boutiques[index].iconPath,
               ),
               onMoreDetailed: () {
-                widget.onMapPoint(listMapPoints[index]);
+                widget.onMapPoint(boutiques[index]);
                 context.navigateTo(const ShoppingCartRoute());
               },
             );
@@ -114,14 +118,14 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
   @override
   void initState() {
     super.initState();
-    _point = widget.point;
+    _point = widget.boutique;
     initBoutiques();
     _initPermission().ignore();
   }
 
   initBoutiques() async {
-    final boutiquesRepository = GetIt.I.get<BoutiquesRepository>();
-    boutiques = await boutiquesRepository.getBoutiques();
+    final updateDataService = GetIt.I.get<UpdateDataService>();
+    boutiques = updateDataService.boutiques;
   }
 
   @override
@@ -335,6 +339,7 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
                               );
                             },
                             selectedPoint: _point,
+                            boutiques: widget.boutiques,
                           ),
                         );
                       },
@@ -425,16 +430,19 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
   /// Метод для генерации объектов маркеров для отображения на карте
   List<PlacemarkMapObject> _getPlacemarkObjects(BuildContext context) {
     List<PlacemarkMapObject> listPlacemarkMapObject = [];
-    final listMapPoint = MapPointsInfo.getMapPointDataModels();
-    for (int i = 0; i < listMapPoint.length; i++) {
+
+    for (int i = 0; i < widget.boutiques.data.length; i++) {
       listPlacemarkMapObject.add(PlacemarkMapObject(
         mapId: MapObjectId('MapObject $i'),
-        point: Point(latitude: listMapPoint[i].latitude, longitude: listMapPoint[i].longitude),
+        point: Point(
+          latitude: widget.boutiques.data[i].coordinates.latitude,
+          longitude: widget.boutiques.data[i].coordinates.longitude,
+        ),
         opacity: 1,
         icon: PlacemarkIcon.single(
           PlacemarkIconStyle(
             image: BitmapDescriptor.fromAssetImage(
-              'assets/images/${listMapPoint[i].iconName}.png',
+              'assets/images/${widget.boutiques.data[i].iconPath}.png',
             ),
             scale: 2,
             anchor: const Offset(0.5, 1.2),
@@ -445,9 +453,9 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
           context: context,
           builder: (BuildContext context) {
             return ShoppingMapPointInfo(
-              point: listMapPoint[i],
+              boutique: widget.boutiques.data[i],
               onMoreDetailed: () {
-                widget.onMapPoint(listMapPoint[i]);
+                widget.onMapPoint(widget.boutiques.data[i]);
                 context.navigateTo(const ShoppingCartRoute());
               },
             );

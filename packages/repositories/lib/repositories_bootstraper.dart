@@ -8,14 +8,36 @@ Future<void> initRepositories(GetIt getIt) async {
     ..registerFactory(
       () => CatalogRepository(
         getIt.get<CatalogService>(),
-        getIt.get<ConverterService>(),
-        getIt.get<DeviceInfoService>(),
         getIt.get<ProductsFavouritesService>(),
+        getIt.get<ProductsShoppingCartService>(),
       ),
     )
     ..registerFactory(
       () => BoutiquesRepository(
         getIt.get<BoutiquesService>(),
+      ),
+    )
+    ..registerFactory(
+      () => AuthRepository(
+        getIt.get<AuthService>(),
+      ),
+    )
+    ..registerFactory(
+      () => FavouritesRepository(
+        getIt.get<FavouritesService>(),
+      ),
+    )
+    ..registerFactory(
+      () => BasketRepository(
+        getIt.get<BasketService>(),
+      ),
+    )
+    ..registerFactory(() => LocationRepository(
+          getIt.get<LocationService>(),
+        ))
+    ..registerFactory(
+      () => OrdersRepository(
+        getIt.get<OrdersService>(),
       ),
     );
 }

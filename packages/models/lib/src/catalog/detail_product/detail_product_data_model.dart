@@ -21,9 +21,10 @@ class DetailProductDataModel with _$DetailProductDataModel {
     required List<SectionsProductDataModel> sections,
     required String text,
     required int quantity,
-    required String art,
+    required int art,
     required int userDiscount,
     required PriceProductDataModel price,
+    required ProductDataModel product,
     required String r,
     required String e,
   }) = _DetailProductDataModel;

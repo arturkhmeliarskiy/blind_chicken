@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:models/models.dart';
 
 @RoutePage()
 class BoutiquePreviewImagesScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class BoutiquePreviewImagesScreen extends StatelessWidget {
     required this.goBotton,
   });
 
-  final List<String> listImages;
+  final List<BoutiqueFotoDetailDataModel> listImages;
   final VoidCallback goBotton;
 
   @override

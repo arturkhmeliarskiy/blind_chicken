@@ -12,7 +12,7 @@ _$ProductResponseImpl _$$ProductResponseImplFromJson(
       id: json['id'] as int?,
       title: json['title'] as String?,
       catrgory: json['catrgory'] as String?,
-      size: (json['size'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      size: (json['size'] as List<dynamic>?)?.map((e) => e as String).toList(),
       price: json['price'] as int?,
       brend: json['brend'] as String?,
       lensDiameter: json['lens_diameter'] as int?,

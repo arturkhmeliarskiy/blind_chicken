@@ -9,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
-import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
@@ -22,8 +21,8 @@ class GiftYandexMapScreen extends StatefulWidget {
     required this.point,
   });
 
-  final ValueChanged<MapPointDataModel> onMapPoint;
-  final MapPointDataModel point;
+  final ValueChanged<BoutiqueDataModel> onMapPoint;
+  final BoutiqueDataModel point;
 
   @override
   State<GiftYandexMapScreen> createState() => _GiftYandexMapScreenState();
@@ -39,9 +38,9 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
   /// Данные о местоположении пользователя
   CameraPosition? _userLocation;
   CameraPosition? _cameraPosition;
-  late MapPointDataModel _point;
+  late BoutiqueDataModel _point;
 
-  List<BoutiquesDataModel> boutiques = [];
+  List<BoutiqueDataModel> boutiques = [];
 
   Future<void> _initPermission() async {
     if (!await LocationService().checkPermission()) {
@@ -76,9 +75,10 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
       ),
     );
     if (isOpenModal) {
-      final listMapPoints = MapPointsInfo.getMapPointDataModels();
+      final updateDataService = GetIt.I.get<UpdateDataService>();
+      final boutiques = updateDataService.boutiques;
       setState(() {
-        _point = listMapPoints[index];
+        _point = boutiques[index];
       });
       await Future.delayed(
           const Duration(
@@ -90,18 +90,20 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
           context: context,
           builder: (BuildContext context) {
             return GiftMapPointInfo(
-              point: MapPointDataModel(
-                iconName: listMapPoints[index].iconName,
-                name: listMapPoints[index].name,
-                latitude: listMapPoints[index].latitude,
-                longitude: listMapPoints[index].longitude,
-                label: listMapPoints[index].label,
-                location: listMapPoints[index].location,
-                schedule: listMapPoints[index].schedule,
-                image: listMapPoints[index].image,
+              point: BoutiqueDataModel(
+                name: boutiques[index].name,
+                schedule: boutiques[index].schedule,
+                url: boutiques[index].url,
+                fotoMin: boutiques[index].fotoMin,
+                caption: boutiques[index].caption,
+                nameShort: boutiques[index].nameShort,
+                address: boutiques[index].address,
+                uidStore: boutiques[index].uidStore,
+                coordinates: boutiques[index].coordinates,
+                iconPath: boutiques[index].iconPath,
               ),
               onMoreDetailed: () {
-                widget.onMapPoint(listMapPoints[index]);
+                widget.onMapPoint(boutiques[index]);
                 context.navigateTo(const GiftCardRoute());
               },
             );
@@ -120,8 +122,8 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
   }
 
   initBoutiques() async {
-    final boutiquesRepository = GetIt.I.get<BoutiquesRepository>();
-    boutiques = await boutiquesRepository.getBoutiques();
+    final updateDataService = GetIt.I.get<UpdateDataService>();
+    boutiques = updateDataService.boutiques;
   }
 
   @override
@@ -135,7 +137,7 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
             },
             mapObjects: [
               _getClusterizedCollection(
-                placemarks: _getPlacemarkObjects(context),
+                placemarks: _getPlacemarkObjects(context, boutiques),
               ),
             ],
             onCameraPositionChanged: (cameraPosition, _, __) {
@@ -335,6 +337,7 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
                               );
                             },
                             selectedPoint: _point,
+                            boutiques: boutiques,
                           ),
                         );
                       },
@@ -423,18 +426,24 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
   }
 
   /// Метод для генерации объектов маркеров для отображения на карте
-  List<PlacemarkMapObject> _getPlacemarkObjects(BuildContext context) {
+  List<PlacemarkMapObject> _getPlacemarkObjects(
+    BuildContext context,
+    List<BoutiqueDataModel> boutiques,
+  ) {
     List<PlacemarkMapObject> listPlacemarkMapObject = [];
-    final listMapPoint = MapPointsInfo.getMapPointDataModels();
-    for (int i = 0; i < listMapPoint.length; i++) {
+
+    for (int i = 0; i < boutiques.length; i++) {
       listPlacemarkMapObject.add(PlacemarkMapObject(
         mapId: MapObjectId('MapObject $i'),
-        point: Point(latitude: listMapPoint[i].latitude, longitude: listMapPoint[i].longitude),
+        point: Point(
+          latitude: boutiques[i].coordinates.latitude,
+          longitude: boutiques[i].coordinates.longitude,
+        ),
         opacity: 1,
         icon: PlacemarkIcon.single(
           PlacemarkIconStyle(
             image: BitmapDescriptor.fromAssetImage(
-              'assets/images/${listMapPoint[i].iconName}.png',
+              'assets/images/${boutiques[i].iconPath}.png',
             ),
             scale: 2,
             anchor: const Offset(0.5, 1.2),
@@ -445,9 +454,9 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
           context: context,
           builder: (BuildContext context) {
             return GiftMapPointInfo(
-              point: listMapPoint[i],
+              point: boutiques[i],
               onMoreDetailed: () {
-                widget.onMapPoint(listMapPoint[i]);
+                widget.onMapPoint(boutiques[i]);
                 context.navigateTo(const GiftCardRoute());
               },
             );

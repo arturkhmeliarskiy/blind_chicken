@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/home/filters/widgets/blind_chicken_close_botton.dart';
 import 'package:blind_chicken/screens/home/filters/widgets/filter_item_catalog.dart';
 import 'package:blind_chicken/screens/home/widgets/catalog_header_info.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
-import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
 class FavouritesFiltersScreen extends StatefulWidget {
@@ -25,32 +25,49 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CatalogHeaderInfo(
-              title: 'Фильтры',
-              onClose: () {
-                context.popRoute();
-              },
-              isRemoveAllFilters: false,
-            ),
+            BlocBuilder<FavouritesBloc, FavouritesState>(builder: (context, state) {
+              return state.maybeMap(
+                  productsFavourites: (initState) {
+                    return CatalogHeaderInfo(
+                      title: 'Фильтры',
+                      onClose: () {
+                        context.popRoute();
+                      },
+                      onRemoveAllFilters: () {
+                        context.read<FavouritesBloc>().add(
+                              const FavouritesEvent.removeSelectAllFilters(),
+                            );
+                      },
+                      isRemoveAllFilters: initState.allSelectFilter.isNotEmpty,
+                    );
+                  },
+                  orElse: () => const SizedBox());
+            }),
             Expanded(
               child: BlocBuilder<FavouritesBloc, FavouritesState>(
                 builder: (context, state) {
                   return state.maybeMap(
-                    productsFavourites: (iniState) {
+                    productsFavourites: (initState) {
                       return ListView.builder(
                         shrinkWrap: true,
-                        itemCount: iniState.filter.length,
+                        itemCount: initState.filter.length,
                         itemBuilder: (context, index) {
                           return FilterItemCatalog(
-                            selectFilter: iniState.selectFilter[index] ?? [],
-                            item: iniState.filter[index].title,
+                            selectFilter: initState.selectFilter[index] ?? [],
+                            isRemoveAllFilters: (initState.selectFilter[index] ?? []).isNotEmpty,
+                            onRemoveAllFilters: () {
+                              context.read<FavouritesBloc>().add(
+                                    FavouritesEvent.removeSelectFilterCategory(index: index),
+                                  );
+                            },
+                            item: initState.filter[index].title,
                             onTap: () {
-                              if (iniState.filter[index].isSearch) {
+                              if (initState.filter[index].isSearch) {
                                 context.navigateTo(FavouritesFilterSelectValueSearchRoute(
                                   index: index,
-                                  title: iniState.filter[index].title,
-                                  filterItems: iniState.filter[index].items,
-                                  selectFilter: iniState.selectFilter[index] ?? [],
+                                  title: initState.filter[index].title,
+                                  filterItems: initState.filter[index].items,
+                                  selectFilter: initState.selectFilter[index] ?? [],
                                   onDelete: (item, indexItem) {
                                     context.read<FavouritesBloc>().add(
                                           FavouritesEvent.deleteFilter(
@@ -73,9 +90,9 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                               } else {
                                 context.navigateTo(FavouritesFilterSelectValueRoute(
                                   index: index,
-                                  title: iniState.filter[index].title,
-                                  filterItems: iniState.filter[index].items,
-                                  selectFilter: iniState.selectFilter[index] ?? [],
+                                  title: initState.filter[index].title,
+                                  filterItems: initState.filter[index].items,
+                                  selectFilter: initState.selectFilter[index] ?? [],
                                   onDelete: (item, indexItem) {
                                     context.read<FavouritesBloc>().add(
                                           FavouritesEvent.deleteFilter(
@@ -102,7 +119,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                                     FavouritesEvent.deleteFilter(
                                       index: index,
                                       indexItem: indexItem,
-                                      item: iniState.selectFilter[index]?[indexItem] ??
+                                      item: initState.selectFilter[index]?[indexItem] ??
                                           FilterItemDataModel(
                                             id: 0,
                                             value: '',
@@ -120,11 +137,18 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                 },
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
-                context.popRoute();
-              },
-            ),
+            BlocBuilder<FavouritesBloc, FavouritesState>(builder: (context, state) {
+              return state.maybeMap(
+                  productsFavourites: (initState) {
+                    return BlindChickenFilterButton(
+                      onOpen: () {
+                        context.popRoute();
+                      },
+                      countProducts: initState.favouritesProductsInfo?.count ?? '',
+                    );
+                  },
+                  orElse: () => const SizedBox());
+            }),
           ],
         ),
       ),

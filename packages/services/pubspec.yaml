@@ -16,6 +16,8 @@ dependencies:
     path: ../models
   api_models:
     path: ../api_models
+  shared:
+    path: ../shared
 
 
 dev_dependencies:

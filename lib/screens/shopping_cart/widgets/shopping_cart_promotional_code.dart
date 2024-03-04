@@ -6,9 +6,15 @@ class ShoppingCartPromotionalCode extends StatefulWidget {
   const ShoppingCartPromotionalCode({
     super.key,
     required this.onSendPromotional,
+    required this.onRemovePromotional,
+    this.isActivePromoCode = false,
+    required this.promoCode,
   });
 
   final ValueChanged<String> onSendPromotional;
+  final VoidCallback onRemovePromotional;
+  final bool isActivePromoCode;
+  final String promoCode;
 
   @override
   State<ShoppingCartPromotionalCode> createState() => _ShoppingCartPromotionalCodeState();
@@ -16,6 +22,12 @@ class ShoppingCartPromotionalCode extends StatefulWidget {
 
 class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCode> {
   final TextEditingController _promotional = TextEditingController();
+
+  @override
+  void didUpdateWidget(covariant ShoppingCartPromotionalCode oldWidget) {
+    _promotional.text = widget.promoCode;
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void dispose() {
@@ -49,10 +61,20 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
                   onChanged: (value) {
                     setState(() {});
                   },
+                  enabled: !widget.isActivePromoCode,
                   textCapitalization: TextCapitalization.sentences,
                   decoration: InputDecoration(
                     isDense: true,
-                    filled: false,
+                    filled: true,
+                    fillColor: widget.isActivePromoCode
+                        ? BlindChickenColors.backgroundColorItemFilter
+                        : BlindChickenColors.backgroundColor,
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: BlindChickenColors.backgroundColorItemFilter,
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                         color: BlindChickenColors.borderTextField,
@@ -67,7 +89,7 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: BlindChickenColors.activeBorderTextField,
+                        color: BlindChickenColors.borderTextField,
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -84,7 +106,11 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
             ),
             GestureDetector(
               onTap: () {
-                widget.onSendPromotional(_promotional.text);
+                if (widget.isActivePromoCode) {
+                  widget.onRemovePromotional();
+                } else {
+                  widget.onSendPromotional(_promotional.text);
+                }
               },
               child: Container(
                 width: 44,
@@ -99,15 +125,17 @@ class _ShoppingCartPromotionalCodeState extends State<ShoppingCartPromotionalCod
                   top: 10,
                   bottom: 10,
                 ),
-                child: SvgPicture.asset(
-                  'assets/icons/check.svg',
-                ),
+                child: widget.isActivePromoCode
+                    ? SvgPicture.asset(
+                        'assets/icons/x.svg',
+                        color: BlindChickenColors.backgroundColor,
+                      )
+                    : SvgPicture.asset(
+                        'assets/icons/check.svg',
+                      ),
               ),
             )
           ],
-        ),
-        const SizedBox(
-          height: 16,
         ),
       ],
     );

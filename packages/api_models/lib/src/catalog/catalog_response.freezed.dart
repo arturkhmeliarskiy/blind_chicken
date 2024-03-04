@@ -21,7 +21,9 @@ CatalogResponse _$CatalogResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CatalogResponse {
   String? get userDiscount => throw _privateConstructorUsedError;
-  BreadcrumbsResponse? get breadcrumbs => throw _privateConstructorUsedError;
+  @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+  List<CatalogBreadcrumbResponse>? get breadcrumbs =>
+      throw _privateConstructorUsedError;
   String? get h1 => throw _privateConstructorUsedError;
   String? get count => throw _privateConstructorUsedError;
   @JsonKey(name: 'sections', fromJson: _convertSections)
@@ -49,7 +51,8 @@ abstract class $CatalogResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? userDiscount,
-      BreadcrumbsResponse? breadcrumbs,
+      @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+      List<CatalogBreadcrumbResponse>? breadcrumbs,
       String? h1,
       String? count,
       @JsonKey(name: 'sections', fromJson: _convertSections)
@@ -61,7 +64,6 @@ abstract class $CatalogResponseCopyWith<$Res> {
       String? r,
       String? e});
 
-  $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs;
   $SectionsResponseCopyWith<$Res>? get sections;
 }
 
@@ -97,7 +99,7 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
       breadcrumbs: freezed == breadcrumbs
           ? _value.breadcrumbs
           : breadcrumbs // ignore: cast_nullable_to_non_nullable
-              as BreadcrumbsResponse?,
+              as List<CatalogBreadcrumbResponse>?,
       h1: freezed == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -135,18 +137,6 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
 
   @override
   @pragma('vm:prefer-inline')
-  $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs {
-    if (_value.breadcrumbs == null) {
-      return null;
-    }
-
-    return $BreadcrumbsResponseCopyWith<$Res>(_value.breadcrumbs!, (value) {
-      return _then(_value.copyWith(breadcrumbs: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
   $SectionsResponseCopyWith<$Res>? get sections {
     if (_value.sections == null) {
       return null;
@@ -168,7 +158,8 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? userDiscount,
-      BreadcrumbsResponse? breadcrumbs,
+      @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+      List<CatalogBreadcrumbResponse>? breadcrumbs,
       String? h1,
       String? count,
       @JsonKey(name: 'sections', fromJson: _convertSections)
@@ -180,8 +171,6 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
       String? r,
       String? e});
 
-  @override
-  $BreadcrumbsResponseCopyWith<$Res>? get breadcrumbs;
   @override
   $SectionsResponseCopyWith<$Res>? get sections;
 }
@@ -214,9 +203,9 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
           : userDiscount // ignore: cast_nullable_to_non_nullable
               as String?,
       breadcrumbs: freezed == breadcrumbs
-          ? _value.breadcrumbs
+          ? _value._breadcrumbs
           : breadcrumbs // ignore: cast_nullable_to_non_nullable
-              as BreadcrumbsResponse?,
+              as List<CatalogBreadcrumbResponse>?,
       h1: freezed == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -258,7 +247,8 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
 class _$CatalogResponseImpl extends _CatalogResponse {
   _$CatalogResponseImpl(
       {this.userDiscount,
-      this.breadcrumbs,
+      @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+      final List<CatalogBreadcrumbResponse>? breadcrumbs,
       this.h1,
       this.count,
       @JsonKey(name: 'sections', fromJson: _convertSections) this.sections,
@@ -268,7 +258,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       final List<CatalogProductResponse>? products,
       this.r,
       this.e})
-      : _filter = filter,
+      : _breadcrumbs = breadcrumbs,
+        _filter = filter,
         _products = products,
         super._();
 
@@ -277,8 +268,17 @@ class _$CatalogResponseImpl extends _CatalogResponse {
 
   @override
   final String? userDiscount;
+  final List<CatalogBreadcrumbResponse>? _breadcrumbs;
   @override
-  final BreadcrumbsResponse? breadcrumbs;
+  @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+  List<CatalogBreadcrumbResponse>? get breadcrumbs {
+    final value = _breadcrumbs;
+    if (value == null) return null;
+    if (_breadcrumbs is EqualUnmodifiableListView) return _breadcrumbs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? h1;
   @override
@@ -326,8 +326,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
             other is _$CatalogResponseImpl &&
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
-            (identical(other.breadcrumbs, breadcrumbs) ||
-                other.breadcrumbs == breadcrumbs) &&
+            const DeepCollectionEquality()
+                .equals(other._breadcrumbs, _breadcrumbs) &&
             (identical(other.h1, h1) || other.h1 == h1) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.sections, sections) ||
@@ -345,7 +345,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
   int get hashCode => Object.hash(
       runtimeType,
       userDiscount,
-      breadcrumbs,
+      const DeepCollectionEquality().hash(_breadcrumbs),
       h1,
       count,
       sections,
@@ -373,7 +373,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
 abstract class _CatalogResponse extends CatalogResponse {
   factory _CatalogResponse(
       {final String? userDiscount,
-      final BreadcrumbsResponse? breadcrumbs,
+      @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+      final List<CatalogBreadcrumbResponse>? breadcrumbs,
       final String? h1,
       final String? count,
       @JsonKey(name: 'sections', fromJson: _convertSections)
@@ -392,7 +393,8 @@ abstract class _CatalogResponse extends CatalogResponse {
   @override
   String? get userDiscount;
   @override
-  BreadcrumbsResponse? get breadcrumbs;
+  @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
+  List<CatalogBreadcrumbResponse>? get breadcrumbs;
   @override
   String? get h1;
   @override

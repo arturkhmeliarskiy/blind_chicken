@@ -4,12 +4,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/yandex_map/widgets/map_boutiques_info.dart';
 import 'package:blind_chicken/screens/yandex_map/widgets/map_point_info.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
-import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
@@ -24,7 +25,7 @@ class YandexMapScreen extends StatefulWidget {
 
 class _YandexMapScreenState extends State<YandexMapScreen> {
   final mapControllerCompleter = Completer<YandexMapController>();
-  late final YandexMapController _mapController;
+  YandexMapController? _mapController;
 
   /// Значение текущего масштаба карты
   var _mapZoom = 0.0;
@@ -33,7 +34,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
   CameraPosition? _userLocation;
   CameraPosition? _cameraPosition;
 
-  List<BoutiquesDataModel> boutiques = [];
+  List<BoutiqueDataModel> boutiques = [];
 
   Future<void> _initPermission() async {
     if (!await LocationService().checkPermission()) {
@@ -68,7 +69,8 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
       ),
     );
     if (isOpenModal) {
-      final listMapPoints = MapPointsInfo.getMapPointDataModels();
+      final updateDataService = GetIt.I.get<UpdateDataService>();
+      final boutiques = updateDataService.boutiques;
       await Future.delayed(
           const Duration(
             seconds: 1,
@@ -79,20 +81,27 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
           context: context,
           builder: (BuildContext context) {
             return MapPointInfo(
-              point: MapPointDataModel(
-                iconName: listMapPoints[index].iconName,
-                name: listMapPoints[index].name,
-                latitude: listMapPoints[index].latitude,
-                longitude: listMapPoints[index].longitude,
-                label: listMapPoints[index].label,
-                location: listMapPoints[index].location,
-                schedule: listMapPoints[index].schedule,
-                image: listMapPoints[index].image,
+              boutique: BoutiqueDataModel(
+                name: boutiques[index].name,
+                schedule: boutiques[index].schedule,
+                url: boutiques[index].url,
+                fotoMin: boutiques[index].fotoMin,
+                caption: boutiques[index].caption,
+                nameShort: boutiques[index].nameShort,
+                address: boutiques[index].address,
+                uidStore: boutiques[index].uidStore,
+                coordinates: boutiques[index].coordinates,
+                iconPath: boutiques[index].iconPath,
               ),
               onMoreDetailed: () {
+                context.read<BoutiquesBloc>().add(
+                      BoutiquesEvent.getInfoBoutique(
+                        uid: boutiques.first.uidStore,
+                      ),
+                    );
                 context.navigateTo(
                   BoutiquesDescriptionRoute(
-                    boutique: boutiques.first,
+                    boutique: boutiques[index],
                   ),
                 );
               },
@@ -111,13 +120,13 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
   }
 
   initBoutiques() async {
-    final boutiquesRepository = GetIt.I.get<BoutiquesRepository>();
-    boutiques = await boutiquesRepository.getBoutiques();
+    final updateDataService = GetIt.I.get<UpdateDataService>();
+    boutiques = updateDataService.boutiques;
   }
 
   @override
   void dispose() {
-    _mapController.dispose();
+    _mapController?.dispose();
     super.dispose();
   }
 
@@ -132,7 +141,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
             },
             mapObjects: [
               _getClusterizedCollection(
-                placemarks: _getPlacemarkObjects(context),
+                placemarks: _getPlacemarkObjects(context, boutiques),
               ),
             ],
             onCameraPositionChanged: (cameraPosition, _, __) {
@@ -143,10 +152,10 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
             },
             onUserLocationAdded: (view) async {
               // получаем местоположение пользователя
-              _userLocation = await _mapController.getUserCameraPosition();
+              _userLocation = await _mapController?.getUserCameraPosition();
               // если местоположение найдено, центрируем карту относительно этой точки
               if (_userLocation != null) {
-                await _mapController.moveCamera(
+                await _mapController?.moveCamera(
                   CameraUpdate.newCameraPosition(
                     _userLocation!.copyWith(zoom: 10),
                   ),
@@ -331,6 +340,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
                                 index: index,
                               );
                             },
+                            boutiques: boutiques,
                           ),
                         );
                       },
@@ -402,7 +412,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
         );
       },
       onClusterTap: (self, cluster) async {
-        await _mapController.moveCamera(
+        await _mapController?.moveCamera(
           animation: const MapAnimation(type: MapAnimationType.linear, duration: 0.3),
           CameraUpdate.newCameraPosition(
             CameraPosition(
@@ -416,18 +426,24 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
   }
 
   /// Метод для генерации объектов маркеров для отображения на карте
-  List<PlacemarkMapObject> _getPlacemarkObjects(BuildContext context) {
+  List<PlacemarkMapObject> _getPlacemarkObjects(
+    BuildContext context,
+    List<BoutiqueDataModel> boutiques,
+  ) {
     List<PlacemarkMapObject> listPlacemarkMapObject = [];
-    final listMapPoint = MapPointsInfo.getMapPointDataModels();
-    for (int i = 0; i < listMapPoint.length; i++) {
+
+    for (int i = 0; i < boutiques.length; i++) {
       listPlacemarkMapObject.add(PlacemarkMapObject(
         mapId: MapObjectId('MapObject $i'),
-        point: Point(latitude: listMapPoint[i].latitude, longitude: listMapPoint[i].longitude),
+        point: Point(
+          latitude: boutiques[i].coordinates.latitude,
+          longitude: boutiques[i].coordinates.longitude,
+        ),
         opacity: 1,
         icon: PlacemarkIcon.single(
           PlacemarkIconStyle(
             image: BitmapDescriptor.fromAssetImage(
-              'assets/images/${listMapPoint[i].iconName}.png',
+              'assets/images/${boutiques[i].iconPath}.png',
             ),
             scale: 2,
             anchor: const Offset(0.5, 1.2),
@@ -438,11 +454,14 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
           context: context,
           builder: (BuildContext context) {
             return MapPointInfo(
-              point: listMapPoint[i],
+              boutique: boutiques[i],
               onMoreDetailed: () {
+                context.read<BoutiquesBloc>().add(
+                      BoutiquesEvent.getInfoBoutique(uid: boutiques.first.uidStore),
+                    );
                 context.navigateTo(
                   BoutiquesDescriptionRoute(
-                    boutique: boutiques.first,
+                    boutique: boutiques[i],
                   ),
                 );
               },

@@ -80,7 +80,7 @@ class _CatalogSizeProductScreenState extends State<CatalogSizeProductScreen> {
             ),
             BlindChickenCloseButton(
               onClose: () {
-                context.popRoute();
+                context.back();
               },
             ),
           ],

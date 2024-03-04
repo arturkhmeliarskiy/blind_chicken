@@ -16,4 +16,26 @@ class AccountEvent with _$AccountEvent {
     required int offset,
     required int limit,
   }) = PaginationOrdersAccountEvent;
+  const factory AccountEvent.getOrders() = GetOrdersAccountEvent;
+  const factory AccountEvent.getInfoOrder({
+    required String id,
+  }) = GetInfoOrderAccountEvent;
+  const factory AccountEvent.getInfoPayOrder({
+    required String id,
+  }) = GetInfoPayOrderAccountEvent;
+  const factory AccountEvent.payOrder({
+    required String idForPay,
+  }) = PayOrderAccountEvent;
+  const factory AccountEvent.logOut() = LogOutAccountEvent;
+  const factory AccountEvent.addFavouriteProduct({
+    required int index,
+    required ProductDataModel product,
+  }) = AddFavouriteProductAccountEvent;
+  const factory AccountEvent.deleteFavouriteProduct({
+    required int index,
+  }) = DeleteFavouriteProductAccountEvent;
+  const factory AccountEvent.getInfoProduct({
+    required String code,
+  }) = GetInfoProductAccountEvent;
+  const factory AccountEvent.goBackProductInfo() = GoBackProductInfoCategotyAccountEvent;
 }

@@ -17,12 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CatalogDataModel {
   String get userDiscount => throw _privateConstructorUsedError;
-  BreadcrumbsDataModel get breadcrumbs => throw _privateConstructorUsedError;
+  List<CatalogBreadcrumbDataModel> get breadcrumbs =>
+      throw _privateConstructorUsedError;
   String get h1 => throw _privateConstructorUsedError;
   String get count => throw _privateConstructorUsedError;
   SectionsDataModel get sections => throw _privateConstructorUsedError;
-  List<String> get listNext => throw _privateConstructorUsedError;
-  List<String> get listPrev => throw _privateConstructorUsedError;
+  List<SectionItemDataModel> get listNext => throw _privateConstructorUsedError;
+  List<SectionItemDataModel> get listPrev => throw _privateConstructorUsedError;
+  List<SectionItemDataModel> get listThis => throw _privateConstructorUsedError;
   String get countFilter => throw _privateConstructorUsedError;
   List<FilterInfoDataModel> get filter => throw _privateConstructorUsedError;
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
@@ -42,19 +44,19 @@ abstract class $CatalogDataModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String userDiscount,
-      BreadcrumbsDataModel breadcrumbs,
+      List<CatalogBreadcrumbDataModel> breadcrumbs,
       String h1,
       String count,
       SectionsDataModel sections,
-      List<String> listNext,
-      List<String> listPrev,
+      List<SectionItemDataModel> listNext,
+      List<SectionItemDataModel> listPrev,
+      List<SectionItemDataModel> listThis,
       String countFilter,
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
       String e});
 
-  $BreadcrumbsDataModelCopyWith<$Res> get breadcrumbs;
   $SectionsDataModelCopyWith<$Res> get sections;
 }
 
@@ -78,6 +80,7 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
     Object? sections = null,
     Object? listNext = null,
     Object? listPrev = null,
+    Object? listThis = null,
     Object? countFilter = null,
     Object? filter = null,
     Object? products = null,
@@ -92,7 +95,7 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
       breadcrumbs: null == breadcrumbs
           ? _value.breadcrumbs
           : breadcrumbs // ignore: cast_nullable_to_non_nullable
-              as BreadcrumbsDataModel,
+              as List<CatalogBreadcrumbDataModel>,
       h1: null == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -108,11 +111,15 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
       listNext: null == listNext
           ? _value.listNext
           : listNext // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<SectionItemDataModel>,
       listPrev: null == listPrev
           ? _value.listPrev
           : listPrev // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<SectionItemDataModel>,
+      listThis: null == listThis
+          ? _value.listThis
+          : listThis // ignore: cast_nullable_to_non_nullable
+              as List<SectionItemDataModel>,
       countFilter: null == countFilter
           ? _value.countFilter
           : countFilter // ignore: cast_nullable_to_non_nullable
@@ -138,14 +145,6 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $BreadcrumbsDataModelCopyWith<$Res> get breadcrumbs {
-    return $BreadcrumbsDataModelCopyWith<$Res>(_value.breadcrumbs, (value) {
-      return _then(_value.copyWith(breadcrumbs: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
   $SectionsDataModelCopyWith<$Res> get sections {
     return $SectionsDataModelCopyWith<$Res>(_value.sections, (value) {
       return _then(_value.copyWith(sections: value) as $Val);
@@ -163,20 +162,19 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String userDiscount,
-      BreadcrumbsDataModel breadcrumbs,
+      List<CatalogBreadcrumbDataModel> breadcrumbs,
       String h1,
       String count,
       SectionsDataModel sections,
-      List<String> listNext,
-      List<String> listPrev,
+      List<SectionItemDataModel> listNext,
+      List<SectionItemDataModel> listPrev,
+      List<SectionItemDataModel> listThis,
       String countFilter,
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
       String e});
 
-  @override
-  $BreadcrumbsDataModelCopyWith<$Res> get breadcrumbs;
   @override
   $SectionsDataModelCopyWith<$Res> get sections;
 }
@@ -199,6 +197,7 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
     Object? sections = null,
     Object? listNext = null,
     Object? listPrev = null,
+    Object? listThis = null,
     Object? countFilter = null,
     Object? filter = null,
     Object? products = null,
@@ -211,9 +210,9 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
           : userDiscount // ignore: cast_nullable_to_non_nullable
               as String,
       breadcrumbs: null == breadcrumbs
-          ? _value.breadcrumbs
+          ? _value._breadcrumbs
           : breadcrumbs // ignore: cast_nullable_to_non_nullable
-              as BreadcrumbsDataModel,
+              as List<CatalogBreadcrumbDataModel>,
       h1: null == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -229,11 +228,15 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
       listNext: null == listNext
           ? _value._listNext
           : listNext // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<SectionItemDataModel>,
       listPrev: null == listPrev
           ? _value._listPrev
           : listPrev // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<SectionItemDataModel>,
+      listThis: null == listThis
+          ? _value._listThis
+          : listThis // ignore: cast_nullable_to_non_nullable
+              as List<SectionItemDataModel>,
       countFilter: null == countFilter
           ? _value.countFilter
           : countFilter // ignore: cast_nullable_to_non_nullable
@@ -263,47 +266,64 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
 class _$CatalogDataModelImpl extends _CatalogDataModel {
   _$CatalogDataModelImpl(
       {required this.userDiscount,
-      required this.breadcrumbs,
+      required final List<CatalogBreadcrumbDataModel> breadcrumbs,
       required this.h1,
       required this.count,
       required this.sections,
-      required final List<String> listNext,
-      required final List<String> listPrev,
+      required final List<SectionItemDataModel> listNext,
+      required final List<SectionItemDataModel> listPrev,
+      required final List<SectionItemDataModel> listThis,
       required this.countFilter,
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required this.r,
       required this.e})
-      : _listNext = listNext,
+      : _breadcrumbs = breadcrumbs,
+        _listNext = listNext,
         _listPrev = listPrev,
+        _listThis = listThis,
         _filter = filter,
         _products = products,
         super._();
 
   @override
   final String userDiscount;
+  final List<CatalogBreadcrumbDataModel> _breadcrumbs;
   @override
-  final BreadcrumbsDataModel breadcrumbs;
+  List<CatalogBreadcrumbDataModel> get breadcrumbs {
+    if (_breadcrumbs is EqualUnmodifiableListView) return _breadcrumbs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_breadcrumbs);
+  }
+
   @override
   final String h1;
   @override
   final String count;
   @override
   final SectionsDataModel sections;
-  final List<String> _listNext;
+  final List<SectionItemDataModel> _listNext;
   @override
-  List<String> get listNext {
+  List<SectionItemDataModel> get listNext {
     if (_listNext is EqualUnmodifiableListView) return _listNext;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listNext);
   }
 
-  final List<String> _listPrev;
+  final List<SectionItemDataModel> _listPrev;
   @override
-  List<String> get listPrev {
+  List<SectionItemDataModel> get listPrev {
     if (_listPrev is EqualUnmodifiableListView) return _listPrev;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listPrev);
+  }
+
+  final List<SectionItemDataModel> _listThis;
+  @override
+  List<SectionItemDataModel> get listThis {
+    if (_listThis is EqualUnmodifiableListView) return _listThis;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listThis);
   }
 
   @override
@@ -331,7 +351,7 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
 
   @override
   String toString() {
-    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, listThis: $listThis, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
   }
 
   @override
@@ -341,14 +361,15 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
             other is _$CatalogDataModelImpl &&
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
-            (identical(other.breadcrumbs, breadcrumbs) ||
-                other.breadcrumbs == breadcrumbs) &&
+            const DeepCollectionEquality()
+                .equals(other._breadcrumbs, _breadcrumbs) &&
             (identical(other.h1, h1) || other.h1 == h1) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.sections, sections) ||
                 other.sections == sections) &&
             const DeepCollectionEquality().equals(other._listNext, _listNext) &&
             const DeepCollectionEquality().equals(other._listPrev, _listPrev) &&
+            const DeepCollectionEquality().equals(other._listThis, _listThis) &&
             (identical(other.countFilter, countFilter) ||
                 other.countFilter == countFilter) &&
             const DeepCollectionEquality().equals(other._filter, _filter) &&
@@ -361,12 +382,13 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       userDiscount,
-      breadcrumbs,
+      const DeepCollectionEquality().hash(_breadcrumbs),
       h1,
       count,
       sections,
       const DeepCollectionEquality().hash(_listNext),
       const DeepCollectionEquality().hash(_listPrev),
+      const DeepCollectionEquality().hash(_listThis),
       countFilter,
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
@@ -384,12 +406,13 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
 abstract class _CatalogDataModel extends CatalogDataModel {
   factory _CatalogDataModel(
       {required final String userDiscount,
-      required final BreadcrumbsDataModel breadcrumbs,
+      required final List<CatalogBreadcrumbDataModel> breadcrumbs,
       required final String h1,
       required final String count,
       required final SectionsDataModel sections,
-      required final List<String> listNext,
-      required final List<String> listPrev,
+      required final List<SectionItemDataModel> listNext,
+      required final List<SectionItemDataModel> listPrev,
+      required final List<SectionItemDataModel> listThis,
       required final String countFilter,
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
@@ -400,7 +423,7 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   @override
   String get userDiscount;
   @override
-  BreadcrumbsDataModel get breadcrumbs;
+  List<CatalogBreadcrumbDataModel> get breadcrumbs;
   @override
   String get h1;
   @override
@@ -408,9 +431,11 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   @override
   SectionsDataModel get sections;
   @override
-  List<String> get listNext;
+  List<SectionItemDataModel> get listNext;
   @override
-  List<String> get listPrev;
+  List<SectionItemDataModel> get listPrev;
+  @override
+  List<SectionItemDataModel> get listThis;
   @override
   String get countFilter;
   @override

@@ -8,11 +8,11 @@ import 'package:ui_kit/ui_kit.dart';
 class MapPointInfo extends StatelessWidget {
   const MapPointInfo({
     super.key,
-    required this.point,
+    required this.boutique,
     required this.onMoreDetailed,
   });
 
-  final MapPointDataModel point;
+  final BoutiqueDataModel boutique;
   final VoidCallback onMoreDetailed;
 
   @override
@@ -56,50 +56,61 @@ class MapPointInfo extends StatelessWidget {
                         ),
                       ),
                     ),
-                    CachedNetworkImage(
-                      imageUrl: point.image,
-                      height: 180,
-                      width: 268,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => const SizedBox(
-                        height: 230,
-                        child: LoadingImage(),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5, left: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          point.label,
-                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                fontWeight: FontWeight.w600,
+                    SizedBox(
+                      height: 250,
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16, right: 16),
+                            child: CachedNetworkImage(
+                              imageUrl: 'https://slepayakurica.ru/${boutique.fotoMin}',
+                              height: 180,
+                              width: 268,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => const SizedBox(
+                                height: 230,
+                                child: LoadingImage(),
                               ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0, left: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          point.location,
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0, left: 16),
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: RichText(
-                          text: TextSpan(
-                            children: BlindChickenCheckWordStyle.textToWords(
-                              point.schedule,
-                              context,
                             ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, left: 16),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                boutique.name,
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0, left: 16),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                boutique.address,
+                                style: Theme.of(context).textTheme.displayMedium,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0, left: 16),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: RichText(
+                                text: TextSpan(
+                                  children: BlindChickenCheckWordStyle.textToWords(
+                                    boutique.schedule,
+                                    context,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     GestureDetector(
@@ -107,7 +118,7 @@ class MapPointInfo extends StatelessWidget {
                       child: Container(
                         height: 50,
                         margin: const EdgeInsets.only(
-                          top: 14,
+                          top: 10,
                           left: 16,
                           right: 16,
                         ),

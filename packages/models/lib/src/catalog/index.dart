@@ -1,4 +1,4 @@
-export 'breadcrumbs_data_model.dart';
+export 'catalog_breadcrumb_data_model.dart';
 export 'catalog_product_data_model.dart';
 export 'catalog_data_model.dart';
 export 'filter_catalog_info_data_model.dart';
@@ -10,3 +10,6 @@ export 'this_data_model.dart';
 export 'v_data_model.dart';
 export 'catalog_products_request.dart';
 export 'detail_product/index.dart';
+export 'catalog_gift_card_request.dart';
+export 'section_item_data_model.dart';
+export 'catalog_search_products_request.dart';

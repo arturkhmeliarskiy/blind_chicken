@@ -3,6 +3,7 @@ import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_
 import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
 import 'package:blind_chicken/screens/account/my_purchases_screen.dart';
+import 'package:blind_chicken/screens/account/order_card_info_screen.dart';
 import 'package:blind_chicken/screens/account/orders_hemming_screen.dart';
 import 'package:blind_chicken/screens/app/app_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_description_screen.dart';
@@ -10,9 +11,11 @@ import 'package:blind_chicken/screens/boutiques/boutiques_screen.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/map/boutique_yandex_map.dart';
 import 'package:blind_chicken/screens/brands/brands_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_messanger_screen.dart';
+import 'package:blind_chicken/screens/favourites/favourites_card_info_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value/favourites_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/favourites/favourites_filter_select_value_search/favourites_filter_select_value_search_screen.dart';
+import 'package:blind_chicken/screens/favourites/favourites_products_screen.dart';
 import 'package:blind_chicken/screens/gift_card/gift_card_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_card_delivery_info_screen.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_virtual_card_colors_screen.dart';
@@ -20,16 +23,20 @@ import 'package:blind_chicken/screens/gift_card/widgets/map/gift_yandex_map_scre
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value/catalog_filter_select_value_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value_search/catalog_filter_select_value_search_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_screen.dart';
+import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_filter_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_screen.dart';
 import 'package:blind_chicken/screens/home/main/main_category_screen.dart';
 import 'package:blind_chicken/screens/home/main/main_screen.dart';
-import 'package:blind_chicken/screens/home/order_user_info/order_user_info_screen.dart';
+import 'package:blind_chicken/screens/account/order_user_info_screen.dart';
 import 'package:blind_chicken/screens/home/sale/sale_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
-import 'package:blind_chicken/screens/order/order_screen.dart';
+import 'package:blind_chicken/screens/location/search_location_screen.dart';
+import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
+import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
 import 'package:blind_chicken/screens/pdf_view/blind_chicken_pdf_view.dart';
+import 'package:blind_chicken/screens/shopping_cart/shopping_card_info_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_auto_route_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_screen.dart';
@@ -78,14 +85,15 @@ class AppRouter extends _$AppRouter {
               page: SaleRoute.page,
             ),
             AutoRoute(
+              keepHistory: false,
               page: CatalogCardInfoRoute.page,
               path: 'catalog_card_info',
             ),
             AutoRoute(
-              page: SortRoute.page,
+              page: CatalogSearchCardInfoRoute.page,
             ),
             AutoRoute(
-              page: CatalogSizeProductRoute.page,
+              page: SortRoute.page,
             ),
             AutoRoute(
               page: BoutiquesRoute.page,
@@ -124,6 +132,22 @@ class AppRouter extends _$AppRouter {
               path: "gift_card_delivery_info",
             ),
             AutoRoute(
+              page: CatalogSearchResultRoute.page,
+              path: 'catalog_search_result',
+            ),
+            AutoRoute(
+              page: MainCategoryRoute.page,
+              path: 'main_category',
+            ),
+            AutoRoute(
+              page: BrandsRoute.page,
+              path: 'brands',
+            ),
+          ]),
+          AutoRoute(page: LoginRoute.page, path: 'login', children: [
+            AutoRoute(
+              initial: true,
+              keepHistory: false,
               page: AccountRoute.page,
               path: "account",
             ),
@@ -144,42 +168,38 @@ class AppRouter extends _$AppRouter {
               path: "order_user_info",
             ),
             AutoRoute(
-              page: CatalogSearchResultRoute.page,
-              path: 'catalog_search_result',
+              page: PaymentVerificationRoute.page,
+              path: "payment_verification_screen",
             ),
             AutoRoute(
-              page: MainCategoryRoute.page,
-              path: 'main_category',
+              page: SberbankPaymentWebViewRoute.page,
+              path: "sberbank_payment_webview_screen",
             ),
             AutoRoute(
-              page: BrandsRoute.page,
-              path: 'brands',
+              page: OrderCardInfoRoute.page,
             ),
           ]),
-          AutoRoute(
-            page: LoginRoute.page,
-            path: 'login',
-          ),
-          AutoRoute(
-            page: FavouritesRoute.page,
-            path: 'favourites',
-          ),
+          AutoRoute(page: FavouritesRoute.page, path: 'favourites', children: [
+            AutoRoute(
+              initial: true,
+              page: FavouritesProductsRoute.page,
+            ),
+            AutoRoute(
+              keepHistory: false,
+              page: FavouritesCardInfoRoute.page,
+            ),
+          ]),
           AutoRoute(page: ShoppingCartAutoRouterRoute.page, path: 'shopping_cart', children: [
             AutoRoute(
               initial: true,
               page: ShoppingCartRoute.page,
             ),
             AutoRoute(
-              page: OrderRoute.page,
-              path: "order",
-            ),
-            AutoRoute(
               page: ShoppingCartDeliveryInfoRoute.page,
               path: "shopping_cart_delivery_info",
             ),
             AutoRoute(
-              page: SberbankPaymentWebViewRoute.page,
-              path: "sberbank_payment_webview_screen",
+              page: ShoppingCardInfoRoute.page,
             ),
           ]),
           AutoRoute(
@@ -201,6 +221,9 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: FiltersRoute.page,
+        ),
+        AutoRoute(
+          page: SearchLocationRoute.page,
         ),
         AutoRoute(
           page: FilterSelectValueSearchRoute.page,
@@ -243,6 +266,12 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: ShoppingYandexMapRoute.page,
+        ),
+        AutoRoute(
+          page: NoInternetRoute.page,
+        ),
+        AutoRoute(
+          page: CatalogSizeProductRoute.page,
         ),
       ];
 }

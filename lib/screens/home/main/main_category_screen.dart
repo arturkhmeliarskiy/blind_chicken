@@ -4,7 +4,6 @@ import 'package:blind_chicken/screens/home/main/widgets/main_category_product_it
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -206,34 +205,16 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
-                              final path = MenuItemDataModel(
-                                idParent: 0,
-                                id: 0,
-                                url: '',
-                                name: initState.category[index].title,
-                                sub: 0,
-                                title: 0,
-                                brand: 0,
-                              );
-
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.getInfoProducts(
+                                      path: initState.category[index].pathMenu,
+                                    ),
+                                  );
                               context.navigateTo(
                                 CatalogRoute(
-                                  isBack: false,
-                                  onBack: () {
-                                    context.read<CatalogBloc>().add(
-                                          CatalogEvent.removePathMenu(
-                                            items: [path],
-                                          ),
-                                        );
-                                  },
                                   title: initState.category[index].title,
                                 ),
                               );
-                              context.read<CatalogBloc>().add(
-                                    CatalogEvent.pathMenu(
-                                      item: path,
-                                    ),
-                                  );
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(right: 14),
@@ -276,205 +257,206 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
             const SizedBox(
               height: 16,
             ),
-            GestureDetector(
-              onTap: () {
-                context.navigateTo(const SaleRoute());
-              },
-              child: SizedBox(
-                child: Image.asset(
-                  'assets/images/sale.jpg',
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Center(
-              child: Text(
-                'Распродажа',
-                style: Theme.of(context).textTheme.headline2?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-            ),
-            const SizedBox(
-              height: 28,
-            ),
-            Text(
-              'Бренды',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            SizedBox(
-              height: 37,
-              child: Theme(
-                data: Theme.of(context).copyWith(splashColor: Colors.transparent),
-                child: TextField(
-                  onTap: () {},
-                  onChanged: (value) {
-                    setState(() {});
-                    context.read<CatalogBloc>().add(CatalogEvent.searchBrand(query: value));
-                  },
-                  controller: _search,
-                  cursorColor: BlindChickenColors.activeBorderTextField,
-                  textCapitalization: TextCapitalization.sentences,
-                  style: Theme.of(context).textTheme.displayMedium,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: BlindChickenColors.borderTextField,
-                      ),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: BlindChickenColors.borderTextField,
-                      ),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: BlindChickenColors.activeBorderTextField,
-                      ),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    suffixIcon: _search.text.isNotEmpty
-                        ? InkWell(
-                            onTap: () {
-                              _search.clear();
-                              context.read<CatalogBloc>().add(
-                                    const CatalogEvent.searchBrand(query: ''),
-                                  );
-                            },
-                            child: Transform.scale(
-                              scale: 0.5,
-                              child: SvgPicture.asset('assets/icons/x.svg'),
-                            ),
-                          )
-                        : const SizedBox(),
-                    hintText: 'Поиск',
-                    hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          color: BlindChickenColors.textInput,
-                        ),
-                    prefixIconConstraints: const BoxConstraints(
-                      minWidth: 0,
-                      minHeight: 0,
-                    ),
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 4,
-                        right: 4,
-                      ),
-                      child: Transform.scale(
-                        scale: 0.55,
-                        child: SvgPicture.asset(
-                          'assets/icons/search.svg',
-                          color: BlindChickenColors.textInput,
-                        ),
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-              return state.maybeMap(
-                preloadDataCompleted: (initState) {
-                  return MediaQuery.removePadding(
-                    context: context,
-                    removeTop: true,
-                    child: GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: initState.brands.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2, // number of items in each row
-                          mainAxisSpacing: 11.0, // spacing between rows
-                          crossAxisSpacing: 11.0, // spacing between columns
-                          childAspectRatio: 10.5,
-                        ),
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              context.read<CatalogBloc>().add(
-                                    CatalogEvent.pathBrandMenu(items: [
-                                      MenuItemDataModel(
-                                        idParent: 0,
-                                        id: 0,
-                                        url: '',
-                                        name: 'Бренды',
-                                        sub: 0,
-                                        title: 0,
-                                        brand: 0,
-                                      ),
-                                      MenuItemDataModel(
-                                        idParent: 0,
-                                        id: index,
-                                        url: '',
-                                        name: initState.brands[index],
-                                        sub: 0,
-                                        title: 0,
-                                        brand: 0,
-                                      ),
-                                    ]),
-                                  );
-                              context.navigateTo(
-                                CatalogRoute(
-                                  isBack: false,
-                                  onBack: () {
-                                    context.read<CatalogBloc>().add(
-                                          CatalogEvent.removePathMenu(
-                                            items: [
-                                              MenuItemDataModel(
-                                                idParent: 0,
-                                                id: 0,
-                                                url: '',
-                                                name: 'Бренды',
-                                                sub: 0,
-                                                title: 0,
-                                                brand: 0,
-                                              ),
-                                              MenuItemDataModel(
-                                                idParent: 0,
-                                                id: index,
-                                                url: '',
-                                                name: initState.brands[index],
-                                                sub: 0,
-                                                title: 0,
-                                                brand: 0,
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                  },
-                                  title:
-                                      '${checkGender(_selectIndexType)} ${initState.brands[index]}',
-                                ),
-                              );
-                            },
-                            child: Text(
-                              initState.brands[index],
-                              style: Theme.of(context).textTheme.headline2,
-                            ),
-                          );
-                        }),
-                  );
-                },
-                orElse: () => const SizedBox(),
-              );
-            }),
-            const SizedBox(
-              height: 96,
-            ),
+            // GestureDetector(
+            //   onTap: () {
+            //     context.navigateTo(const SaleRoute());
+            //   },
+            //   child: SizedBox(
+            //     child: Image.asset(
+            //       'assets/images/sale.jpg',
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 8,
+            // ),
+            // Center(
+            //   child: Text(
+            //     'Распродажа',
+            //     style: Theme.of(context).textTheme.headline2?.copyWith(
+            //           fontWeight: FontWeight.w700,
+            //         ),
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 28,
+            // ),
+            // Text(
+            //   'Бренды',
+            //   style: Theme.of(context).textTheme.headline2?.copyWith(
+            //         fontWeight: FontWeight.w700,
+            //       ),
+            // ),
+            // const SizedBox(
+            //   height: 14,
+            // ),
+            // SizedBox(
+            //   height: 37,
+            //   child: Theme(
+            //     data: Theme.of(context).copyWith(splashColor: Colors.transparent),
+            //     child: TextField(
+            //       onTap: () {},
+            //       onChanged: (value) {
+            //         setState(() {});
+            //         context.read<CatalogBloc>().add(CatalogEvent.searchBrand(query: value));
+            //       },
+            //       controller: _search,
+            //       cursorColor: BlindChickenColors.activeBorderTextField,
+            //       textCapitalization: TextCapitalization.sentences,
+            //       style: Theme.of(context).textTheme.displayMedium,
+            //       decoration: InputDecoration(
+            //         isDense: true,
+            //         enabledBorder: OutlineInputBorder(
+            //           borderSide: const BorderSide(
+            //             color: BlindChickenColors.borderTextField,
+            //           ),
+            //           borderRadius: BorderRadius.circular(4),
+            //         ),
+            //         border: OutlineInputBorder(
+            //           borderSide: const BorderSide(
+            //             color: BlindChickenColors.borderTextField,
+            //           ),
+            //           borderRadius: BorderRadius.circular(4),
+            //         ),
+            //         focusedBorder: OutlineInputBorder(
+            //           borderSide: const BorderSide(
+            //             color: BlindChickenColors.activeBorderTextField,
+            //           ),
+            //           borderRadius: BorderRadius.circular(5),
+            //         ),
+            //         suffixIcon: _search.text.isNotEmpty
+            //             ? InkWell(
+            //                 onTap: () {
+            //                   _search.clear();
+            //                   context.read<CatalogBloc>().add(
+            //                         const CatalogEvent.searchBrand(query: ''),
+            //                       );
+            //                 },
+            //                 child: Transform.scale(
+            //                   scale: 0.5,
+            //                   child: SvgPicture.asset('assets/icons/x.svg'),
+            //                 ),
+            //               )
+            //             : const SizedBox(),
+            //         hintText: 'Поиск',
+            //         hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
+            //               color: BlindChickenColors.textInput,
+            //             ),
+            //         prefixIconConstraints: const BoxConstraints(
+            //           minWidth: 0,
+            //           minHeight: 0,
+            //         ),
+            //         prefixIcon: Padding(
+            //           padding: const EdgeInsets.only(
+            //             left: 4,
+            //             right: 4,
+            //           ),
+            //           child: Transform.scale(
+            //             scale: 0.55,
+            //             child: SvgPicture.asset(
+            //               'assets/icons/search.svg',
+            //               color: BlindChickenColors.textInput,
+            //             ),
+            //           ),
+            //         ),
+            //         contentPadding: EdgeInsets.zero,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 14,
+            // ),
+            // BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+            //   return state.maybeMap(
+            //     preloadDataCompleted: (initState) {
+            //       return MediaQuery.removePadding(
+            //         context: context,
+            //         removeTop: true,
+            //         child: GridView.builder(
+            //             shrinkWrap: true,
+            //             itemCount: initState.brands.length,
+            //             physics: const NeverScrollableScrollPhysics(),
+            //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //               crossAxisCount: 2, // number of items in each row
+            //               mainAxisSpacing: 11.0, // spacing between rows
+            //               crossAxisSpacing: 11.0, // spacing between columns
+            //               childAspectRatio: 10.5,
+            //             ),
+            //             itemBuilder: (context, index) {
+            //               return InkWell(
+            //                 onTap: () {
+            //                   context.read<CatalogBloc>().add(
+            //                         CatalogEvent.pathBrandMenu(items: [
+            //                           MenuItemDataModel(
+            //                             idParent: 0,
+            //                             id: 0,
+            //                             url: '',
+            //                             name: 'Бренды',
+            //                             sub: 0,
+            //                             title: 0,
+            //                             brand: 0,
+            //                           ),
+            //                           MenuItemDataModel(
+            //                             idParent: 0,
+            //                             id: index,
+            //                             url: '',
+            //                             name: initState.brands[index],
+            //                             sub: 0,
+            //                             title: 0,
+            //                             brand: 0,
+            //                           ),
+            //                         ]),
+            //                       );
+            //                   context.navigateTo(
+            //                     CatalogRoute(
+            //                       isBack: false,
+            //                       onBack: () {
+            //                         context.read<CatalogBloc>().add(
+            //                               CatalogEvent.removePathMenu(
+            //                                 items: [
+            //                                   MenuItemDataModel(
+            //                                     idParent: 0,
+            //                                     id: 0,
+            //                                     url: '',
+            //                                     name: 'Бренды',
+            //                                     sub: 0,
+            //                                     title: 0,
+            //                                     brand: 0,
+            //                                   ),
+            //                                   MenuItemDataModel(
+            //                                     idParent: 0,
+            //                                     id: index,
+            //                                     url: '',
+            //                                     name: initState.brands[index],
+            //                                     sub: 0,
+            //                                     title: 0,
+            //                                     brand: 0,
+            //                                   ),
+            //                                 ],
+            //                               ),
+            //                             );
+            //                       },
+            //                       path: '',
+            //                       title:
+            //                           '${checkGender(_selectIndexType)} ${initState.brands[index]}',
+            //                     ),
+            //                   );
+            //                 },
+            //                 child: Text(
+            //                   initState.brands[index],
+            //                   style: Theme.of(context).textTheme.headline2,
+            //                 ),
+            //               );
+            //             }),
+            //       );
+            //     },
+            //     orElse: () => const SizedBox(),
+            //   );
+            // }),
+            // const SizedBox(
+            //   height: 96,
+            // ),
           ],
         ),
       ),

@@ -24,7 +24,7 @@ class MainCategoryItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           Image.asset(
-            'assets/images/$image.jpeg',
+            'assets/images/$image.jpg',
           ),
           Container(
             height: 35,

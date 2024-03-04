@@ -20,21 +20,22 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       id: fields[0] as int,
       title: fields[1] as String,
       catrgory: fields[2] as String,
-      size: (fields[3] as List).cast<int>(),
+      size: (fields[3] as List).cast<String>(),
       price: fields[4] as int,
-      brend: fields[5] as String,
-      lensDiameter: fields[6] as int,
-      templeLength: fields[7] as int,
-      country: fields[8] as String,
-      images: (fields[9] as List).cast<String>(),
-      variants: (fields[10] as List).cast<String>(),
+      youPrice: fields[5] as int,
+      brend: fields[6] as String,
+      lensDiameter: fields[7] as int,
+      templeLength: fields[8] as int,
+      country: fields[9] as String,
+      images: (fields[10] as List).cast<String>(),
+      variants: (fields[11] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductFavouriteModel obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -46,16 +47,18 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       ..writeByte(4)
       ..write(obj.price)
       ..writeByte(5)
-      ..write(obj.brend)
+      ..write(obj.youPrice)
       ..writeByte(6)
-      ..write(obj.lensDiameter)
+      ..write(obj.brend)
       ..writeByte(7)
-      ..write(obj.templeLength)
+      ..write(obj.lensDiameter)
       ..writeByte(8)
-      ..write(obj.country)
+      ..write(obj.templeLength)
       ..writeByte(9)
-      ..write(obj.images)
+      ..write(obj.country)
       ..writeByte(10)
+      ..write(obj.images)
+      ..writeByte(11)
       ..write(obj.variants);
   }
 

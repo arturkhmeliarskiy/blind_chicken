@@ -19,6 +19,9 @@ Future<void> initShared(GetIt getIt) async {
       () => ProductsFavouritesService(),
     )
     ..registerFactory(
+      () => ProductsShoppingCartService(),
+    )
+    ..registerFactory(
       () => ConstatntsInfo(
         getIt.get<CatalogRepository>(),
       ),
@@ -31,5 +34,6 @@ Future<void> initShared(GetIt getIt) async {
   //   () => SberbankPaymentService(),
   // );
   await getIt.get<SharedPreferencesService>().initialize();
-  await getIt.get<ProductsFavouritesService>().initHave();
+  await getIt.get<ProductsFavouritesService>().initFavouritesProductsHave();
+  await getIt.get<ProductsShoppingCartService>().initProductsShoppingCartHave();
 }

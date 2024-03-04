@@ -16,14 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CatalogProductsRequest {
-  int get auth => throw _privateConstructorUsedError;
-  String get tel => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   String? get nav => throw _privateConstructorUsedError;
   String? get sort => throw _privateConstructorUsedError;
-  String? get token => throw _privateConstructorUsedError;
-  String? get hashToken => throw _privateConstructorUsedError;
-  String? get hashTokenTel => throw _privateConstructorUsedError;
   String? get ct => throw _privateConstructorUsedError;
   String? get t26 => throw _privateConstructorUsedError;
   String? get f2 => throw _privateConstructorUsedError;
@@ -49,14 +44,9 @@ abstract class $CatalogProductsRequestCopyWith<$Res> {
       _$CatalogProductsRequestCopyWithImpl<$Res, CatalogProductsRequest>;
   @useResult
   $Res call(
-      {int auth,
-      String tel,
-      String url,
+      {String? url,
       String? nav,
       String? sort,
-      String? token,
-      String? hashToken,
-      String? hashTokenTel,
       String? ct,
       String? t26,
       String? f2,
@@ -85,14 +75,9 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? auth = null,
-    Object? tel = null,
-    Object? url = null,
+    Object? url = freezed,
     Object? nav = freezed,
     Object? sort = freezed,
-    Object? token = freezed,
-    Object? hashToken = freezed,
-    Object? hashTokenTel = freezed,
     Object? ct = freezed,
     Object? t26 = freezed,
     Object? f2 = freezed,
@@ -107,18 +92,10 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
     Object? t21 = freezed,
   }) {
     return _then(_value.copyWith(
-      auth: null == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as int,
-      tel: null == tel
-          ? _value.tel
-          : tel // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nav: freezed == nav
           ? _value.nav
           : nav // ignore: cast_nullable_to_non_nullable
@@ -126,18 +103,6 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
       sort: freezed == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
-              as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hashToken: freezed == hashToken
-          ? _value.hashToken
-          : hashToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hashTokenTel: freezed == hashTokenTel
-          ? _value.hashTokenTel
-          : hashTokenTel // ignore: cast_nullable_to_non_nullable
               as String?,
       ct: freezed == ct
           ? _value.ct
@@ -201,14 +166,9 @@ abstract class _$$CatalogProductsRequestImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int auth,
-      String tel,
-      String url,
+      {String? url,
       String? nav,
       String? sort,
-      String? token,
-      String? hashToken,
-      String? hashTokenTel,
       String? ct,
       String? t26,
       String? f2,
@@ -236,14 +196,9 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? auth = null,
-    Object? tel = null,
-    Object? url = null,
+    Object? url = freezed,
     Object? nav = freezed,
     Object? sort = freezed,
-    Object? token = freezed,
-    Object? hashToken = freezed,
-    Object? hashTokenTel = freezed,
     Object? ct = freezed,
     Object? t26 = freezed,
     Object? f2 = freezed,
@@ -258,18 +213,10 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
     Object? t21 = freezed,
   }) {
     return _then(_$CatalogProductsRequestImpl(
-      auth: null == auth
-          ? _value.auth
-          : auth // ignore: cast_nullable_to_non_nullable
-              as int,
-      tel: null == tel
-          ? _value.tel
-          : tel // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nav: freezed == nav
           ? _value.nav
           : nav // ignore: cast_nullable_to_non_nullable
@@ -277,18 +224,6 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
       sort: freezed == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
-              as String?,
-      token: freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hashToken: freezed == hashToken
-          ? _value.hashToken
-          : hashToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hashTokenTel: freezed == hashTokenTel
-          ? _value.hashTokenTel
-          : hashTokenTel // ignore: cast_nullable_to_non_nullable
               as String?,
       ct: freezed == ct
           ? _value.ct
@@ -346,14 +281,9 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
 
 class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
   _$CatalogProductsRequestImpl(
-      {required this.auth,
-      required this.tel,
-      required this.url,
+      {this.url,
       this.nav,
       this.sort,
-      this.token,
-      this.hashToken,
-      this.hashTokenTel,
       this.ct,
       this.t26,
       this.f2,
@@ -369,21 +299,11 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
       : super._();
 
   @override
-  final int auth;
-  @override
-  final String tel;
-  @override
-  final String url;
+  final String? url;
   @override
   final String? nav;
   @override
   final String? sort;
-  @override
-  final String? token;
-  @override
-  final String? hashToken;
-  @override
-  final String? hashTokenTel;
   @override
   final String? ct;
   @override
@@ -411,7 +331,7 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
 
   @override
   String toString() {
-    return 'CatalogProductsRequest(auth: $auth, tel: $tel, url: $url, nav: $nav, sort: $sort, token: $token, hashToken: $hashToken, hashTokenTel: $hashTokenTel, ct: $ct, t26: $t26, f2: $f2, s61: $s61, t1: $t1, f3: $f3, f10: $f10, f12: $f12, f13: $f13, t4: $t4, t9: $t9, t21: $t21)';
+    return 'CatalogProductsRequest(url: $url, nav: $nav, sort: $sort, ct: $ct, t26: $t26, f2: $f2, s61: $s61, t1: $t1, f3: $f3, f10: $f10, f12: $f12, f13: $f13, t4: $t4, t9: $t9, t21: $t21)';
   }
 
   @override
@@ -419,16 +339,9 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CatalogProductsRequestImpl &&
-            (identical(other.auth, auth) || other.auth == auth) &&
-            (identical(other.tel, tel) || other.tel == tel) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.nav, nav) || other.nav == nav) &&
             (identical(other.sort, sort) || other.sort == sort) &&
-            (identical(other.token, token) || other.token == token) &&
-            (identical(other.hashToken, hashToken) ||
-                other.hashToken == hashToken) &&
-            (identical(other.hashTokenTel, hashTokenTel) ||
-                other.hashTokenTel == hashTokenTel) &&
             (identical(other.ct, ct) || other.ct == ct) &&
             (identical(other.t26, t26) || other.t26 == t26) &&
             (identical(other.f2, f2) || other.f2 == f2) &&
@@ -444,29 +357,8 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
   }
 
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        auth,
-        tel,
-        url,
-        nav,
-        sort,
-        token,
-        hashToken,
-        hashTokenTel,
-        ct,
-        t26,
-        f2,
-        s61,
-        t1,
-        f3,
-        f10,
-        f12,
-        f13,
-        t4,
-        t9,
-        t21
-      ]);
+  int get hashCode => Object.hash(runtimeType, url, nav, sort, ct, t26, f2, s61,
+      t1, f3, f10, f12, f13, t4, t9, t21);
 
   @JsonKey(ignore: true)
   @override
@@ -478,14 +370,9 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
 
 abstract class _CatalogProductsRequest extends CatalogProductsRequest {
   factory _CatalogProductsRequest(
-      {required final int auth,
-      required final String tel,
-      required final String url,
+      {final String? url,
       final String? nav,
       final String? sort,
-      final String? token,
-      final String? hashToken,
-      final String? hashTokenTel,
       final String? ct,
       final String? t26,
       final String? f2,
@@ -501,21 +388,11 @@ abstract class _CatalogProductsRequest extends CatalogProductsRequest {
   _CatalogProductsRequest._() : super._();
 
   @override
-  int get auth;
-  @override
-  String get tel;
-  @override
-  String get url;
+  String? get url;
   @override
   String? get nav;
   @override
   String? get sort;
-  @override
-  String? get token;
-  @override
-  String? get hashToken;
-  @override
-  String? get hashTokenTel;
   @override
   String? get ct;
   @override

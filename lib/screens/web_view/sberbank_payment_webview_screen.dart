@@ -1,11 +1,19 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 @RoutePage()
 class SberbankPaymentWebViewScreen extends StatefulWidget {
-  const SberbankPaymentWebViewScreen({super.key});
+  const SberbankPaymentWebViewScreen({
+    super.key,
+    required this.url,
+  });
+
+  final String url;
 
   @override
   State<SberbankPaymentWebViewScreen> createState() => _SberbankPaymentWebViewScreenState();
@@ -24,20 +32,28 @@ class _SberbankPaymentWebViewScreenState extends State<SberbankPaymentWebViewScr
           onProgress: (int progress) {
             // Update loading bar.
           },
-          onPageStarted: (String url) {},
-          onPageFinished: (String url) {},
+          onPageStarted: (String url) {
+            if (url.contains('orders')) {
+              var uri = Uri.dataFromString(url);
+              final orderId = uri.queryParameters['id'] ?? '';
+              context.navigateTo(
+                PaymentVerificationRoute(orderId: orderId),
+              );
+            }
+            log(url);
+          },
+          onPageFinished: (String url) {
+            log(url);
+          },
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith('https://securecardpayment.ru/')) {
-              return NavigationDecision.prevent;
-            }
             return NavigationDecision.navigate;
           },
         ),
       )
       ..loadRequest(
         Uri.parse(
-          'https://securecardpayment.ru/sc/',
+          widget.url,
         ),
       );
     super.initState();
@@ -50,8 +66,12 @@ class _SberbankPaymentWebViewScreenState extends State<SberbankPaymentWebViewScr
         preferredSize: Size.fromHeight(55),
         child: AppBarBlindChicken(),
       ),
-      body: WebViewWidget(
-        controller: controller,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: WebViewWidget(
+          controller: controller,
+        ),
       ),
     );
   }

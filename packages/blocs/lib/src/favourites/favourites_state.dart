@@ -10,5 +10,13 @@ class FavouritesState with _$FavouritesState {
     required List<FilterInfoDataModel> filter,
     required Map<int, List<FilterItemDataModel>> selectFilter,
     required List<Map<int, FilterItemDataModel>> allSelectFilter,
+    required FavouritesCatalogProductsRequest request,
+    required List<String> listProductsCode,
+    required List<int> favouritesProductsId,
+    required List<ProductDataModel> listProdcutsStyle,
+    required List<ProductDataModel> listProdcutsAlso,
+    required List<ProductDataModel> listProdcutsBrand,
+    FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+    DetailProductDataModel? detailsProduct,
   }) = ProductsFavouritesState;
 }

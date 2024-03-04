@@ -9,8 +9,8 @@ part of 'menu_item_response.dart';
 _$MenuItemResponseImpl _$$MenuItemResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$MenuItemResponseImpl(
-      idParent: json['id_parent'] as int?,
-      id: json['id'] as int?,
+      idParent: json['id_parent'] as String?,
+      id: json['id'] as String?,
       url: json['url'] as String?,
       name: json['name'] as String?,
       title: json['title'] as int?,

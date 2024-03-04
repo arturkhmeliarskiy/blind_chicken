@@ -33,7 +33,7 @@ class DetailProductResponse with _$DetailProductResponse {
     @JsonKey(name: 'sections', fromJson: _convertSections) List<SectionsProductResponse>? sections,
     String? text,
     int? quantity,
-    String? art,
+    int? art,
     int? userDiscount,
     PriceProductResponse? price,
     String? r,

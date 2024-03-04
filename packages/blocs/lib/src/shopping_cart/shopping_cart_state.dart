@@ -4,10 +4,37 @@ part of 'shopping_cart_bloc.dart';
 class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState.init() = InitShoppingCartState;
   const factory ShoppingCartState.load() = LoadingShoppingCartState;
+  const factory ShoppingCartState.createOrderSuccessfully({
+    required int orderId,
+  }) = CreateOrderSuccessfullyShoppingCartState;
   const factory ShoppingCartState.productsShoppingCart({
-    required List<ShoppingCartDataModel> products,
-    required List<ProductDataModel> favouritesProducts,
+    required BasketFullInfoDataModel shoppingCart,
+    required List<PaymentItemDataModel> payments,
+    required String promoCodeMessage,
     required int numberProducts,
+    required int delivery,
     required int amountPaid,
+    required int giftCards,
+    required int bonuses,
+    required bool isLoadPaymentBonus,
+    required bool isLoadPaymentGift,
+    required bool isLoadPaymentPromoCode,
+    required bool isActivePromoCode,
+    required bool isLoadCreateOrder,
+    required String promoCode,
+    required BoutiquesDataModel boutiques,
+    required List<BasketSertDeliveryRequest> listGiftCard,
+    String? creatOrderMessage,
+    PaymentBonusDataModel? paymentBonus,
+    PaymentBonusDataModel? paymentGift,
+    bool? isRemovePromoCode,
+    required List<ProductDataModel> favouritesProducts,
+    required List<String> listProductsCode,
+    required List<ProductDataModel> listProdcutsStyle,
+    required List<ProductDataModel> listProdcutsAlso,
+    required List<ProductDataModel> listProdcutsBrand,
+    required List<int> favouritesProductsId,
+    FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+    DetailProductDataModel? detailsProduct,
   }) = ProductsShoppingCartState;
 }

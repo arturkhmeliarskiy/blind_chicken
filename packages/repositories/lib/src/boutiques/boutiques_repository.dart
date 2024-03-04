@@ -9,64 +9,96 @@ class BoutiquesRepository {
     this._boutiquesService,
   );
 
-  Future<List<BoutiquesDataModel>> getBoutiques() async {
-    final listBoutiques = await _boutiquesService.getBoutiques();
-    return listBoutiques.toBoutiques(listBoutiques);
+  Future<BoutiquesDataModel> getBoutiques() async {
+    final boutiques = await _boutiquesService.getBoutiques() ?? BoutiquesResponse();
+    return boutiques.toBoutiques();
+  }
+
+  Future<BoutiqueInfoDataModel> getInfoBoutique({required String uid}) async {
+    final boutiques = await _boutiquesService.getInfoBoutique(
+          uid: uid,
+        ) ??
+        BoutiqueInfoResponse();
+    return boutiques.toInfoBoutique();
+  }
+
+  Future<BoutiqueInfoDetailDataModel> getInfoBoutiqueDetail({required String uid}) async {
+    final boutiques = await _boutiquesService.getInfoBoutiqueDetail(
+          uid: uid,
+        ) ??
+        BoutiqueInfoDetailResponse();
+    return boutiques.toInfoBoutiqueDetail();
   }
 }
 
-extension on List<BoutiquesResponse> {
-  List<BoutiquesDataModel> toBoutiques(List<BoutiquesResponse> listBoutiques) {
-    return List<BoutiquesDataModel>.from(
-      listBoutiques.map(
-        (item) => BoutiquesDataModel(
-          id: item.id ?? 0,
-          title: item.title ?? '',
-          address: item.address ?? '',
-          fullAddress: item.fullAddress ?? '',
-          workingHours: item.workingHours ?? '',
-          images: item.images ?? [],
-          productCategories: item.productCategories ?? '',
-          productCategoriesBrend: item.productCategoriesBrend ?? '',
-          butterflies: item.butterflies ?? '',
-          balaclavas: item.balaclavas ?? '',
-          balletFlats: item.balletFlats ?? '',
-          balmsRestorersSkin: item.balmsRestorersSkin ?? '',
-          baseballCaps: item.baseballCaps ?? '',
-          bermuda: item.bermuda ?? '',
-          bikinis: item.bikinis ?? '',
-          blouses: item.blouses ?? '',
-          body: item.body ?? '',
-          bodyUnderwear: item.bodyUnderwear ?? '',
-          sandals: item.sandals ?? '',
-          ankleBoots: item.ankleBoots ?? '',
-          boots: item.boots ?? '',
-          bracelets: item.bracelets ?? '',
-          bra: item.bra ?? '',
-          keyRings: item.keyRings ?? '',
-          briefcases: item.briefcases ?? '',
-          brooches: item.brooches ?? '',
-          trousers: item.trousers ?? '',
-          bras: item.bras ?? '',
-          value1: item.value1 ?? '',
-          value2: item.value2 ?? '',
-          value3: item.value3 ?? '',
-          value4: item.value4 ?? '',
-          value5: item.value5 ?? '',
-          value6: item.value6 ?? '',
-          value7: item.value7 ?? '',
-          value8: item.value8 ?? '',
-          value9: item.value9 ?? '',
-          value10: item.value10 ?? '',
-          value11: item.value11 ?? '',
-          value12: item.value12 ?? '',
-          value13: item.value13 ?? '',
-          value14: item.value14 ?? '',
-          value15: item.value15 ?? '',
-          value16: item.value16 ?? '',
-          value17: item.value17 ?? '',
-          value18: item.value18 ?? '',
+extension on BoutiqueInfoDetailResponse {
+  BoutiqueInfoDetailDataModel toInfoBoutiqueDetail() {
+    return BoutiqueInfoDetailDataModel(
+        category: List<BoutiqueCategoryItemDataModel>.from(
+          category?.map(
+                (item) => BoutiqueCategoryItemDataModel(
+                  title: item.title ?? '',
+                  listInfo: item.listInfo ?? [],
+                ),
+              ) ??
+              [],
         ),
+        r: r ?? '',
+        e: e ?? '');
+  }
+}
+
+extension on BoutiquesResponse {
+  BoutiquesDataModel toBoutiques() {
+    return BoutiquesDataModel(
+        data: List<BoutiqueDataModel>.from(
+      data?.map(
+            (item) => BoutiqueDataModel(
+              address: item.address ?? '',
+              fotoMin: item.fotoMin ?? '',
+              url: item.url ?? '',
+              caption: item.caption ?? '',
+              name: item.name ?? '',
+              nameShort: item.nameShort ?? '',
+              schedule: item.schedule ?? '',
+              coordinates: BoutiqueCoordinatesDataModel(
+                latitude: item.coordinates?.latitude ?? 0.0,
+                longitude: item.coordinates?.longitude ?? 0.0,
+              ),
+              uidStore: item.uidStore ?? '',
+              iconPath: (item.caption ?? '').replaceAll(' ', '_').toLowerCase(),
+            ),
+          ) ??
+          [],
+    ));
+  }
+}
+
+extension on BoutiqueInfoResponse {
+  BoutiqueInfoDataModel toInfoBoutique() {
+    return BoutiqueInfoDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      data: BoutiqueDataInfoDataModel(
+        fotoDetail: List<BoutiqueFotoDetailDataModel>.from(
+          data?.fotoDetail?.map(
+                (item) => BoutiqueFotoDetailDataModel(
+                  orig: item.orig ?? '',
+                  min: item.min ?? '',
+                ),
+              ) ??
+              [],
+        ),
+        fotoMinList: data?.fotoMinList ?? '',
+        url: data?.url ?? '',
+        caption: data?.caption ?? '',
+        address: data?.address ?? '',
+        schedule: data?.schedule ?? '',
+        uidStore: data?.uidStore ?? '',
+        coordinates: data?.coordinates ?? '',
+        addressFull: data?.addressFull ?? '',
+        nameShort: data?.nameShort ?? '',
+        name: data?.name ?? '',
       ),
     );
   }

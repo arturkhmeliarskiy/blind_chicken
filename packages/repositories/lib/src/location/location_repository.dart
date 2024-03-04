@@ -1,0 +1,84 @@
+import 'package:api_models/api_models.dart';
+import 'package:models/models.dart';
+import 'package:services/services.dart';
+
+class LocationRepository {
+  final LocationService _locationService;
+
+  LocationRepository(this._locationService);
+
+  Future<SearchLocationDataModel> searchLocation({
+    required String contentType,
+    String? query,
+    String? cityId,
+    String? streetId,
+    int? limit,
+    int? offset,
+  }) async {
+    final location = await _locationService.searchLocation(
+          contentType: contentType,
+          query: query,
+          cityId: cityId,
+          streetId: streetId,
+          limit: limit,
+          offset: offset,
+        ) ??
+        SearchLocationResponse();
+    return location.toSearchLocation();
+  }
+
+  Future<CalculationCostDeliveryDataModel> calculationCostDelivery({
+    required String zipcode,
+    required int sum,
+    required String cityId,
+  }) async {
+    final location = await _locationService.calculationCostDelivery(
+          zipcode: zipcode,
+          cityId: cityId,
+          sum: sum,
+        ) ??
+        CalculationCostDeliveryRsponse();
+    return location.toCalculationCostDelivery();
+  }
+}
+
+extension on SearchLocationResponse {
+  SearchLocationDataModel toSearchLocation() {
+    return SearchLocationDataModel(
+      searchContext: SearchContextDataModel(
+        cityId: searchContext?.cityId ?? '',
+        contentType: searchContext?.contentType ?? '',
+        streetId: searchContext?.streetId ?? '',
+        query: searchContext?.query ?? '',
+      ),
+      result: List<SearchLocationInfoDataModel>.from(result?.map(
+            (item) => SearchLocationInfoDataModel(
+              id: item.id ?? '',
+              name: item.name ?? '',
+              zip: item.zip ?? 0,
+              type: item.type ?? '',
+              typeShort: item.typeShort ?? '',
+              okato: item.okato ?? '',
+              contentType: item.contentType ?? '',
+              guid: item.guid ?? '',
+              ifnsfl: item.ifnsfl ?? '',
+              ifnsul: item.ifnsul ?? '',
+              oktmo: item.oktmo ?? '',
+              parentGuid: item.parentGuid ?? '',
+              cadnum: item.cadnum ?? '',
+            ),
+          ) ??
+          []),
+    );
+  }
+}
+
+extension on CalculationCostDeliveryRsponse {
+  CalculationCostDeliveryDataModel toCalculationCostDelivery() {
+    return CalculationCostDeliveryDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      price: price ?? 0,
+    );
+  }
+}

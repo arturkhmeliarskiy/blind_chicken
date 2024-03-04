@@ -13,48 +13,86 @@ Future<void> initBloc(GetIt getIt) async {
     ..registerFactory(
       () => ShoppingCartBloc(
         getIt.get<CatalogRepository>(),
+        getIt.get<BasketRepository>(),
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<FavouritesRepository>(),
+        getIt.get<UpdateDataService>(),
+        getIt.get<BoutiquesRepository>(),
       ),
     )
     ..registerFactory(
       () => BoutiquesBloc(
         getIt.get<BoutiquesRepository>(),
+        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
-      () => LoginBloc(),
+      () => LoginBloc(
+        getIt.get<AuthRepository>(),
+        getIt.get<CatalogRepository>(),
+        getIt.get<SharedPreferencesService>(),
+      ),
     )
     ..registerFactory(
       () => FavouritesBloc(
         getIt.get<CatalogRepository>(),
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<FavouritesRepository>(),
+        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
       () => CatalogBloc(
         getIt.get<CatalogRepository>(),
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<FavouritesRepository>(),
         getIt.get<ConstatntsInfo>(),
+        getIt.get<UpdateDataService>(),
+        getIt.get<BoutiquesRepository>(),
+        getIt.get<BasketRepository>(),
+      ),
+    )
+    ..registerFactory(
+      () => YandexMapBloc(
         getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
-      () => OrderBloc(),
-    )
-    ..registerFactory(
-      () => YandexMapBloc(),
-    )
-    ..registerFactory(
       () => AccountBloc(
         getIt.get<CatalogRepository>(),
-        getIt.get<ConstatntsInfo>(),
+        getIt.get<AuthRepository>(),
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<OrdersRepository>(),
+        getIt.get<BasketRepository>(),
+        getIt.get<FavouritesRepository>(),
+        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
       () => SearchBloc(
         getIt.get<CatalogRepository>(),
+        getIt.get<SharedPreferencesService>(),
+        getIt.get<FavouritesRepository>(),
+        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
       () => BrandBloc(
         getIt.get<ConstatntsInfo>(),
       ),
+    )
+    ..registerFactory(
+      () => SearchLocationBloc(
+        getIt.get<LocationRepository>(),
+      ),
+    )
+    ..registerFactory(
+      () => GiftCardBloc(
+        getIt.get<CatalogRepository>(),
+        getIt.get<UpdateDataService>(),
+      ),
+    )
+    ..registerFactory(
+      () => InternetConnectionBloc(),
     );
 }

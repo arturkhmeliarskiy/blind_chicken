@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
-import 'package:repositories/repositories.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
@@ -17,7 +17,7 @@ class BoutiqueYandexMapScreen extends StatefulWidget {
     required this.mapPoint,
   });
 
-  final MapPointDataModel mapPoint;
+  final BoutiqueDataModel mapPoint;
 
   @override
   State<BoutiqueYandexMapScreen> createState() => _BoutiqueYandexMapScreenState();
@@ -25,7 +25,7 @@ class BoutiqueYandexMapScreen extends StatefulWidget {
 
 class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
   final mapControllerCompleter = Completer<YandexMapController>();
-  late final YandexMapController _mapController;
+  YandexMapController? _mapController;
 
   /// Значение текущего масштаба карты
   var _mapZoom = 0.0;
@@ -34,7 +34,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
   CameraPosition? _userLocation;
   CameraPosition? _cameraPosition;
 
-  List<BoutiquesDataModel> boutiques = [];
+  List<BoutiqueDataModel> boutiques = [];
 
   Future<void> _initPermission() async {
     if (!await LocationService().checkPermission()) {
@@ -47,8 +47,8 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
     AppLatLongDataModel location;
 
     location = AppLatLongDataModel(
-      lat: widget.mapPoint.latitude,
-      long: widget.mapPoint.longitude,
+      lat: widget.mapPoint.coordinates.latitude,
+      long: widget.mapPoint.coordinates.longitude,
     );
     _moveToCurrentLocation(location);
   }
@@ -80,13 +80,13 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
   }
 
   initBoutiques() async {
-    final boutiquesRepository = GetIt.I.get<BoutiquesRepository>();
-    boutiques = await boutiquesRepository.getBoutiques();
+    final updateDataService = GetIt.I.get<UpdateDataService>();
+    boutiques = updateDataService.boutiques;
   }
 
   @override
   void dispose() {
-    _mapController.dispose();
+    _mapController?.dispose();
     super.dispose();
   }
 
@@ -112,10 +112,10 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
             },
             onUserLocationAdded: (view) async {
               // получаем местоположение пользователя
-              _userLocation = await _mapController.getUserCameraPosition();
+              _userLocation = await _mapController?.getUserCameraPosition();
               // если местоположение найдено, центрируем карту относительно этой точки
               if (_userLocation != null) {
-                await _mapController.moveCamera(
+                await _mapController?.moveCamera(
                   CameraUpdate.newCameraPosition(
                     _userLocation!.copyWith(zoom: 10),
                   ),
@@ -319,7 +319,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
         );
       },
       onClusterTap: (self, cluster) async {
-        await _mapController.moveCamera(
+        await _mapController?.moveCamera(
           animation: const MapAnimation(type: MapAnimationType.linear, duration: 0.3),
           CameraUpdate.newCameraPosition(
             CameraPosition(
@@ -339,12 +339,14 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
     for (int i = 0; i < listMapPoint.length; i++) {
       listPlacemarkMapObject.add(PlacemarkMapObject(
         mapId: MapObjectId('MapObject $i'),
-        point: Point(latitude: listMapPoint[i].latitude, longitude: listMapPoint[i].longitude),
+        point: Point(
+            latitude: listMapPoint[i].coordinates.latitude,
+            longitude: listMapPoint[i].coordinates.longitude),
         opacity: 1,
         icon: PlacemarkIcon.single(
           PlacemarkIconStyle(
             image: BitmapDescriptor.fromAssetImage(
-              'assets/images/${listMapPoint[i].iconName}.png',
+              'assets/images/${listMapPoint[i].iconPath}.png',
             ),
             scale: 2,
             anchor: const Offset(0.5, 1.2),
@@ -390,9 +392,10 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                                       children: [
                                         Text(
                                           widget.mapPoint.name,
-                                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                          style:
+                                              Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                         ),

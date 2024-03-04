@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 
 class CatalogBoutiquesInfo extends StatefulWidget {
   const CatalogBoutiquesInfo({
@@ -6,7 +7,7 @@ class CatalogBoutiquesInfo extends StatefulWidget {
     required this.listBoutiques,
   });
 
-  final List<Map> listBoutiques;
+  final List<StockProductDataModel> listBoutiques;
 
   @override
   State<CatalogBoutiquesInfo> createState() => _CatalogBoutiquesInfoState();
@@ -35,7 +36,7 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
               child: Stack(
                 children: [
                   Text(
-                    '2 бутиках',
+                    '${widget.listBoutiques.length} бутиках',
                     style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           decoration: TextDecoration.underline,
                           height: 1,
@@ -59,8 +60,7 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(widget.listBoutiques.length, (index) {
               return Container(
-                height: 40,
-                margin: const EdgeInsets.only(top: 7),
+                margin: const EdgeInsets.only(top: 5),
                 child: Column(
                   children: [
                     Row(
@@ -76,7 +76,7 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
                           width: 5,
                         ),
                         Text(
-                          widget.listBoutiques[index]['address'],
+                          widget.listBoutiques[index].id,
                           style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ],
@@ -86,10 +86,20 @@ class _CatalogBoutiquesInfoState extends State<CatalogBoutiquesInfo> {
                         const SizedBox(
                           width: 20,
                         ),
-                        Text(
-                          widget.listBoutiques[index]['size'],
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
+                        Column(
+                          children: List.generate(
+                            widget.listBoutiques[index].list.length,
+                            (indexItem) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 5),
+                                child: Text(
+                                  widget.listBoutiques[index].list[indexItem],
+                                  style: Theme.of(context).textTheme.displaySmall,
+                                ),
+                              );
+                            },
+                          ),
+                        )
                       ],
                     )
                   ],

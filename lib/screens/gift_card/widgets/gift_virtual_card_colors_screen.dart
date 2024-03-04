@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/widgets/catalog_header_info.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -11,53 +12,15 @@ class GiftVirualCardColorsScreen extends StatefulWidget {
     required this.onChange,
   });
 
-  final Map<dynamic, dynamic> selectedColor;
-  final ValueChanged<Map<dynamic, dynamic>> onChange;
+  final GiftCardModel selectedColor;
+  final ValueChanged<GiftCardModel> onChange;
 
   @override
   State<GiftVirualCardColorsScreen> createState() => _GiftVirualCardColorsScreenState();
 }
 
 class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen> {
-  Map<dynamic, dynamic> _selectedColor = {
-    'title': 'Lilac',
-    'color': BlindChickenColors.lilac,
-  };
-
-  final List<Map<dynamic, dynamic>> _listColors = [
-    {
-      'title': 'Lilac',
-      'color': BlindChickenColors.lilac,
-    },
-    {
-      'title': 'Green',
-      'color': BlindChickenColors.green,
-    },
-    {
-      'title': 'Sun',
-      'color': BlindChickenColors.sun,
-    },
-    {
-      'title': 'Aqua',
-      'color': BlindChickenColors.aqua,
-    },
-    {
-      'title': 'Rose',
-      'color': BlindChickenColors.rose,
-    },
-    {
-      'title': 'Pink',
-      'color': BlindChickenColors.pink,
-    },
-    {
-      'title': 'Flame',
-      'color': BlindChickenColors.flame,
-    },
-    {
-      'title': 'Red',
-      'color': BlindChickenColors.red,
-    },
-  ];
+  GiftCardModel _selectedColor = BlindChickenGiftCardColors.listColors.first;
 
   @override
   void initState() {
@@ -87,14 +50,14 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _listColors.length,
+                itemCount: BlindChickenGiftCardColors.listColors.length,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
                       setState(() {
-                        _selectedColor = _listColors[index];
+                        _selectedColor = BlindChickenGiftCardColors.listColors[index];
                       });
-                      widget.onChange(_listColors[index]);
+                      widget.onChange(BlindChickenGiftCardColors.listColors[index]);
                       context.popRoute();
                     },
                     child: Container(
@@ -104,16 +67,17 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
                         right: 21,
                         left: 11.2,
                       ),
-                      color: _selectedColor['title'] == _listColors[index]['title']
-                          ? BlindChickenColors.backgroundColorItemFilter
-                          : Colors.transparent,
+                      color:
+                          _selectedColor.title == BlindChickenGiftCardColors.listColors[index].title
+                              ? BlindChickenColors.backgroundColorItemFilter
+                              : Colors.transparent,
                       child: Row(
                         children: [
                           Container(
                             height: 17.5,
                             width: 17.5,
                             decoration: BoxDecoration(
-                              color: _listColors[index]['color'],
+                              color: BlindChickenGiftCardColors.listColors[index].color,
                               borderRadius: BorderRadius.circular(4),
                             ),
                           ),
@@ -121,7 +85,7 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
                             width: 7,
                           ),
                           Text(
-                            _listColors[index]['title'],
+                            BlindChickenGiftCardColors.listColors[index].title,
                             style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],

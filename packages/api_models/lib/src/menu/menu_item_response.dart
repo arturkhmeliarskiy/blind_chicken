@@ -7,8 +7,8 @@ part 'menu_item_response.g.dart';
 class MenuItemResponse with _$MenuItemResponse {
   const MenuItemResponse._();
   factory MenuItemResponse({
-    @JsonKey(name: 'id_parent') int? idParent,
-    int? id,
+    @JsonKey(name: 'id_parent') String? idParent,
+    String? id,
     String? url,
     String? name,
     int? title,

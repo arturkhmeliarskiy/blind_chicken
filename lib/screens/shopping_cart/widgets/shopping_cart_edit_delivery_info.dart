@@ -6,11 +6,11 @@ import 'package:ui_kit/ui_kit.dart';
 class ShoppingCartEditDeliveryInfo extends StatefulWidget {
   const ShoppingCartEditDeliveryInfo({
     super.key,
-    required this.mapPoint,
+    required this.boutique,
     required this.onEditAddress,
   });
 
-  final MapPointDataModel mapPoint;
+  final BoutiqueDataModel boutique;
   final VoidCallback onEditAddress;
 
   @override
@@ -41,14 +41,14 @@ class _ShoppingCartEditDeliveryInfoState extends State<ShoppingCartEditDeliveryI
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.mapPoint.name,
+                    widget.boutique.name,
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
                     height: 7,
                   ),
                   Text(
-                    widget.mapPoint.schedule,
+                    widget.boutique.schedule,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
