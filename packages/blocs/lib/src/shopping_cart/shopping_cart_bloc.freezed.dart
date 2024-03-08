@@ -31,7 +31,7 @@ mixin _$ShoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -56,7 +56,7 @@ mixin _$ShoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -80,7 +80,7 @@ mixin _$ShoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -252,7 +252,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -280,7 +280,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -307,7 +307,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -484,7 +484,7 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -512,7 +512,7 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -539,7 +539,7 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -754,7 +754,7 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -782,7 +782,7 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -809,7 +809,7 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -1040,7 +1040,7 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -1068,7 +1068,7 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -1095,7 +1095,7 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -1327,7 +1327,7 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -1355,7 +1355,7 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -1382,7 +1382,7 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -1568,7 +1568,7 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -1596,7 +1596,7 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -1623,7 +1623,7 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -1801,7 +1801,7 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -1829,7 +1829,7 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -1856,7 +1856,7 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -2068,7 +2068,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -2096,7 +2096,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -2123,7 +2123,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -2344,7 +2344,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -2372,7 +2372,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -2399,7 +2399,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -2609,7 +2609,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -2637,7 +2637,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -2664,7 +2664,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -2798,7 +2798,7 @@ abstract class _$$PromoCodeSoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$PromoCodeSoppingCartEventImpl) then) =
       __$$PromoCodeSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String promoCode});
+  $Res call({String promoCode, String uid});
 }
 
 /// @nodoc
@@ -2815,11 +2815,16 @@ class __$$PromoCodeSoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? promoCode = null,
+    Object? uid = null,
   }) {
     return _then(_$PromoCodeSoppingCartEventImpl(
       promoCode: null == promoCode
           ? _value.promoCode
           : promoCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -2828,14 +2833,17 @@ class __$$PromoCodeSoppingCartEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
-  const _$PromoCodeSoppingCartEventImpl({required this.promoCode});
+  const _$PromoCodeSoppingCartEventImpl(
+      {required this.promoCode, required this.uid});
 
   @override
   final String promoCode;
+  @override
+  final String uid;
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.promoCode(promoCode: $promoCode)';
+    return 'ShoppingCartEvent.promoCode(promoCode: $promoCode, uid: $uid)';
   }
 
   @override
@@ -2844,11 +2852,12 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         (other.runtimeType == runtimeType &&
             other is _$PromoCodeSoppingCartEventImpl &&
             (identical(other.promoCode, promoCode) ||
-                other.promoCode == promoCode));
+                other.promoCode == promoCode) &&
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, promoCode);
+  int get hashCode => Object.hash(runtimeType, promoCode, uid);
 
   @JsonKey(ignore: true)
   @override
@@ -2873,7 +2882,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -2883,7 +2892,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
   }) {
-    return promoCode(this.promoCode);
+    return promoCode(this.promoCode, uid);
   }
 
   @override
@@ -2901,7 +2910,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -2910,7 +2919,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
   }) {
-    return promoCode?.call(this.promoCode);
+    return promoCode?.call(this.promoCode, uid);
   }
 
   @override
@@ -2928,7 +2937,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -2939,7 +2948,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult orElse(),
   }) {
     if (promoCode != null) {
-      return promoCode(this.promoCode);
+      return promoCode(this.promoCode, uid);
     }
     return orElse();
   }
@@ -3046,10 +3055,12 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
 }
 
 abstract class PromoCodeSoppingCartEvent implements ShoppingCartEvent {
-  const factory PromoCodeSoppingCartEvent({required final String promoCode}) =
-      _$PromoCodeSoppingCartEventImpl;
+  const factory PromoCodeSoppingCartEvent(
+      {required final String promoCode,
+      required final String uid}) = _$PromoCodeSoppingCartEventImpl;
 
   String get promoCode;
+  String get uid;
   @JsonKey(ignore: true)
   _$$PromoCodeSoppingCartEventImplCopyWith<_$PromoCodeSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3111,7 +3122,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -3139,7 +3150,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -3166,7 +3177,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -3381,7 +3392,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -3409,7 +3420,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -3436,7 +3447,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -3646,7 +3657,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -3674,7 +3685,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -3701,7 +3712,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -3911,7 +3922,7 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -3939,7 +3950,7 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -3966,7 +3977,7 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -4151,7 +4162,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -4179,7 +4190,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -4206,7 +4217,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -4431,7 +4442,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -4459,7 +4470,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -4486,7 +4497,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -4701,7 +4712,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
     required TResult Function(int delivery) delivery,
-    required TResult Function(String promoCode) promoCode,
+    required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
@@ -4729,7 +4740,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult? Function(int delivery)? delivery,
-    TResult? Function(String promoCode)? promoCode,
+    TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
@@ -4756,7 +4767,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
     TResult Function(int delivery)? delivery,
-    TResult Function(String promoCode)? promoCode,
+    TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
@@ -4908,6 +4919,7 @@ mixin _$ShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -4920,6 +4932,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
         productsShoppingCart,
@@ -4945,6 +4958,7 @@ mixin _$ShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -4957,6 +4971,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -4982,6 +4997,7 @@ mixin _$ShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -4994,6 +5010,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5107,6 +5124,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5119,6 +5137,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
         productsShoppingCart,
@@ -5147,6 +5166,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5159,6 +5179,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5187,6 +5208,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5199,6 +5221,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5316,6 +5339,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5328,6 +5352,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
         productsShoppingCart,
@@ -5356,6 +5381,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5368,6 +5394,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5396,6 +5423,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5408,6 +5436,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5554,6 +5583,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5566,6 +5596,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
         productsShoppingCart,
@@ -5594,6 +5625,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5606,6 +5638,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5634,6 +5667,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -5646,6 +5680,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -5734,6 +5769,7 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       bool isActivePromoCode,
       bool isLoadCreateOrder,
       String promoCode,
+      String pickup,
       BoutiquesDataModel boutiques,
       List<BasketSertDeliveryRequest> listGiftCard,
       String? creatOrderMessage,
@@ -5746,6 +5782,7 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
       List<int> favouritesProductsId,
+      bool isAuth,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct});
 
@@ -5784,6 +5821,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? isActivePromoCode = null,
     Object? isLoadCreateOrder = null,
     Object? promoCode = null,
+    Object? pickup = null,
     Object? boutiques = null,
     Object? listGiftCard = null,
     Object? creatOrderMessage = freezed,
@@ -5796,6 +5834,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
     Object? favouritesProductsId = null,
+    Object? isAuth = null,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
   }) {
@@ -5856,6 +5895,10 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.promoCode
           : promoCode // ignore: cast_nullable_to_non_nullable
               as String,
+      pickup: null == pickup
+          ? _value.pickup
+          : pickup // ignore: cast_nullable_to_non_nullable
+              as String,
       boutiques: null == boutiques
           ? _value.boutiques
           : boutiques // ignore: cast_nullable_to_non_nullable
@@ -5904,6 +5947,10 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value._favouritesProductsId
           : favouritesProductsId // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      isAuth: null == isAuth
+          ? _value.isAuth
+          : isAuth // ignore: cast_nullable_to_non_nullable
+              as bool,
       favouritesProductsInfo: freezed == favouritesProductsInfo
           ? _value.favouritesProductsInfo
           : favouritesProductsInfo // ignore: cast_nullable_to_non_nullable
@@ -6000,6 +6047,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required this.isActivePromoCode,
       required this.isLoadCreateOrder,
       required this.promoCode,
+      required this.pickup,
       required this.boutiques,
       required final List<BasketSertDeliveryRequest> listGiftCard,
       this.creatOrderMessage,
@@ -6012,6 +6060,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
       required final List<int> favouritesProductsId,
+      required this.isAuth,
       this.favouritesProductsInfo,
       this.detailsProduct})
       : _payments = payments,
@@ -6057,6 +6106,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   final bool isLoadCreateOrder;
   @override
   final String promoCode;
+  @override
+  final String pickup;
   @override
   final BoutiquesDataModel boutiques;
   final List<BasketSertDeliveryRequest> _listGiftCard;
@@ -6130,13 +6181,15 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   }
 
   @override
+  final bool isAuth;
+  @override
   final FavouritesCatalogInfoDataModel? favouritesProductsInfo;
   @override
   final DetailProductDataModel? detailsProduct;
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, delivery: $delivery, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, boutiques: $boutiques, listGiftCard: $listGiftCard, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, delivery: $delivery, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, boutiques: $boutiques, listGiftCard: $listGiftCard, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -6170,6 +6223,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 other.isLoadCreateOrder == isLoadCreateOrder) &&
             (identical(other.promoCode, promoCode) ||
                 other.promoCode == promoCode) &&
+            (identical(other.pickup, pickup) || other.pickup == pickup) &&
             (identical(other.boutiques, boutiques) ||
                 other.boutiques == boutiques) &&
             const DeepCollectionEquality()
@@ -6194,6 +6248,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProductsId, _favouritesProductsId) &&
+            (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
                 other.favouritesProductsInfo == favouritesProductsInfo) &&
             (identical(other.detailsProduct, detailsProduct) ||
@@ -6217,6 +6272,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isActivePromoCode,
         isLoadCreateOrder,
         promoCode,
+        pickup,
         boutiques,
         const DeepCollectionEquality().hash(_listGiftCard),
         creatOrderMessage,
@@ -6229,6 +6285,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
         const DeepCollectionEquality().hash(_favouritesProductsId),
+        isAuth,
         favouritesProductsInfo,
         detailsProduct
       ]);
@@ -6261,6 +6318,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -6273,6 +6331,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
         productsShoppingCart,
@@ -6292,6 +6351,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isActivePromoCode,
         isLoadCreateOrder,
         promoCode,
+        pickup,
         boutiques,
         listGiftCard,
         creatOrderMessage,
@@ -6304,6 +6364,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsAlso,
         listProdcutsBrand,
         favouritesProductsId,
+        isAuth,
         favouritesProductsInfo,
         detailsProduct);
   }
@@ -6329,6 +6390,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -6341,6 +6403,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -6360,6 +6423,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isActivePromoCode,
         isLoadCreateOrder,
         promoCode,
+        pickup,
         boutiques,
         listGiftCard,
         creatOrderMessage,
@@ -6372,6 +6436,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsAlso,
         listProdcutsBrand,
         favouritesProductsId,
+        isAuth,
         favouritesProductsInfo,
         detailsProduct);
   }
@@ -6397,6 +6462,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool isActivePromoCode,
             bool isLoadCreateOrder,
             String promoCode,
+            String pickup,
             BoutiquesDataModel boutiques,
             List<BasketSertDeliveryRequest> listGiftCard,
             String? creatOrderMessage,
@@ -6409,6 +6475,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
         productsShoppingCart,
@@ -6430,6 +6497,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           isActivePromoCode,
           isLoadCreateOrder,
           promoCode,
+          pickup,
           boutiques,
           listGiftCard,
           creatOrderMessage,
@@ -6442,6 +6510,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           listProdcutsAlso,
           listProdcutsBrand,
           favouritesProductsId,
+          isAuth,
           favouritesProductsInfo,
           detailsProduct);
     }
@@ -6506,6 +6575,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final bool isActivePromoCode,
           required final bool isLoadCreateOrder,
           required final String promoCode,
+          required final String pickup,
           required final BoutiquesDataModel boutiques,
           required final List<BasketSertDeliveryRequest> listGiftCard,
           final String? creatOrderMessage,
@@ -6518,6 +6588,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
           required final List<int> favouritesProductsId,
+          required final bool isAuth,
           final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
           final DetailProductDataModel? detailsProduct}) =
       _$ProductsShoppingCartStateImpl;
@@ -6536,6 +6607,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   bool get isActivePromoCode;
   bool get isLoadCreateOrder;
   String get promoCode;
+  String get pickup;
   BoutiquesDataModel get boutiques;
   List<BasketSertDeliveryRequest> get listGiftCard;
   String? get creatOrderMessage;
@@ -6548,6 +6620,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
   List<int> get favouritesProductsId;
+  bool get isAuth;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;
   @JsonKey(ignore: true)

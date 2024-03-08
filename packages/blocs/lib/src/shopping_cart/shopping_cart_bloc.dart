@@ -55,6 +55,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     InitShoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
     emit(
       ShoppingCartState.productsShoppingCart(
         shoppingCart: BasketFullInfoDataModel(
@@ -76,6 +80,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isLoadCreateOrder: false,
         isActivePromoCode: false,
         promoCode: '',
+        pickup: '',
         listGiftCard: [],
         giftCards: 0,
         bonuses: 0,
@@ -84,6 +89,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         favouritesProductsId: [],
+        isAuth: isAuth,
       ),
     );
   }
@@ -107,7 +113,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       log(basketInfo.toString());
       log(favouritesProdcuts.toString());
     } else {
-      basketInfo = await updateBasket();
+      basketInfo = await updateBasket(promo: '', pickup: '');
       favouritesProducts = _catalogRepository.getFavouritesProducts();
       favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
     }
@@ -136,6 +142,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         promoCodeMessage: '',
         isActivePromoCode: false,
         promoCode: '',
+        pickup: '',
         listGiftCard: [],
         giftCards: 0,
         bonuses: 0,
@@ -145,6 +152,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         favouritesProductsId: favouritesProductsId,
+        isAuth: isAuth,
       ),
     );
   }
@@ -167,11 +175,18 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: event.item.count,
           );
-          basketInfo = await updateBasket(isLocal: false);
+          basketInfo = await updateBasket(
+            isLocal: false,
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
           log(basketInfo.toString());
         } else {
           _catalogRepository.addShoppingCartProduct(event.item);
-          basketInfo = await updateBasket();
+          basketInfo = await updateBasket(
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
         }
 
         int numberProducts = 0;
@@ -209,10 +224,17 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: 0,
           );
-          basketInfo = await updateBasket(isLocal: false);
+          basketInfo = await updateBasket(
+            isLocal: false,
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
         } else {
           _catalogRepository.deleteShoppingCartProduct(event.index);
-          basketInfo = await updateBasket();
+          basketInfo = await updateBasket(
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
         }
 
         int numberProducts = 0;
@@ -266,9 +288,16 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         }
 
         if (isAuth) {
-          basketInfo = await updateBasket(isLocal: false);
+          basketInfo = await updateBasket(
+            isLocal: false,
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
         } else {
-          basketInfo = await updateBasket();
+          basketInfo = await updateBasket(
+            promo: initState.promoCode,
+            pickup: initState.pickup,
+          );
         }
 
         int numberProducts = 0;
@@ -291,6 +320,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
 
   Future<BasketFullInfoDataModel> updateBasket({
     bool isLocal = true,
+    required String promo,
+    required String pickup,
   }) async {
     List<BasketInfoItemDataModel> basket = [];
     if (isLocal) {
@@ -305,6 +336,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     }
 
     final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      promo: promo,
+      pickup: pickup,
       basket: isLocal ? basket : null,
     );
 
@@ -458,6 +491,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               isRemovePromoCode: false,
               promoCodeMessage: '',
               promoCode: event.promoCode,
+              pickup: event.uid,
             ),
           );
         } else {
@@ -572,7 +606,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: _updateDataService.selectedIndexGender,
+        genderIndex: '1',
       );
 
       final additionalProductsDescriptionStyle =
@@ -620,7 +654,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         emit(const ShoppingCartState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: _updateDataService.selectedIndexGender,
+          genderIndex: '1',
         );
 
         final additionalProductsDescriptionStyle =

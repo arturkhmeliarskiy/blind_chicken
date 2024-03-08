@@ -23,9 +23,9 @@ class LocationDeliveryInfo extends StatefulWidget {
     required this.onPrice,
   });
 
-  final ValueChanged<SearchLocationInfoDataModel> onCity;
-  final ValueChanged<SearchLocationInfoDataModel> onStreet;
-  final ValueChanged<SearchLocationInfoDataModel> onHouse;
+  final ValueChanged<SearchLocationInfoDataModel?> onCity;
+  final ValueChanged<SearchLocationInfoDataModel?> onStreet;
+  final ValueChanged<SearchLocationInfoDataModel?> onHouse;
   final ValueChanged<int> onPrice;
   final String city;
   final String street;
@@ -108,19 +108,29 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                     SearchLocationRoute(
                       title: 'Выберите город',
                       contentType: 'city',
+                      value: _city.text,
                       selectItem: (value) {
-                        setState(() {
-                          _selectedCity = value;
-                          _city.text = value.name;
-                          widget.onCity(value);
-                        });
-                        context.read<SearchLocationBloc>().add(
-                              SearchLocationEvent.selectedAddress(
-                                zipcode: value.zip.toString(),
-                                sum: widget.sum,
-                                cityId: _selectedCity?.id ?? '',
-                              ),
-                            );
+                        final item = value;
+                        if (item != null) {
+                          setState(() {
+                            _selectedCity = item;
+                            _city.text = item.name;
+                            widget.onCity(item);
+                          });
+                          context.read<SearchLocationBloc>().add(
+                                SearchLocationEvent.selectedAddress(
+                                  zipcode: item.zip.toString(),
+                                  sum: widget.sum,
+                                  cityId: _selectedCity?.id ?? '',
+                                ),
+                              );
+                        } else {
+                          setState(() {
+                            _selectedCity = null;
+                            _city.clear();
+                            widget.onCity;
+                          });
+                        }
                       },
                     ),
                   );
@@ -192,19 +202,29 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                       title: 'Выберите улицу',
                       contentType: 'street',
                       cityId: _selectedCity?.id ?? '',
+                      value: _street.text,
                       selectItem: (value) {
-                        setState(() {
-                          _selectedStreet = value;
-                          _street.text = '${value.typeShort}. ${value.name}';
-                          widget.onStreet(value);
-                        });
-                        context.read<SearchLocationBloc>().add(
-                              SearchLocationEvent.selectedAddress(
-                                zipcode: value.zip.toString(),
-                                sum: widget.sum,
-                                cityId: _selectedCity?.id ?? '',
-                              ),
-                            );
+                        final item = value;
+                        if (item != null) {
+                          setState(() {
+                            _selectedStreet = item;
+                            _street.text = '${item.typeShort}. ${item.name}';
+                            widget.onStreet(value);
+                          });
+                          context.read<SearchLocationBloc>().add(
+                                SearchLocationEvent.selectedAddress(
+                                  zipcode: item.zip.toString(),
+                                  sum: widget.sum,
+                                  cityId: _selectedCity?.id ?? '',
+                                ),
+                              );
+                        } else {
+                          setState(() {
+                            _selectedStreet = null;
+                            _street.clear();
+                            widget.onStreet;
+                          });
+                        }
                       },
                     ),
                   );
@@ -285,18 +305,27 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                                   contentType: 'building',
                                   cityId: _selectedCity?.id ?? '',
                                   streetId: _selectedStreet?.id ?? '',
+                                  value: _house.text,
                                   selectItem: (value) {
-                                    setState(() {
-                                      _house.text = value.name;
-                                      widget.onHouse(value);
-                                    });
-                                    context.read<SearchLocationBloc>().add(
-                                          SearchLocationEvent.selectedAddress(
-                                            zipcode: value.zip.toString(),
-                                            sum: widget.sum,
-                                            cityId: _selectedCity?.id ?? '',
-                                          ),
-                                        );
+                                    final item = value;
+                                    if (item != null) {
+                                      setState(() {
+                                        _house.text = item.name;
+                                        widget.onHouse(item);
+                                      });
+                                      context.read<SearchLocationBloc>().add(
+                                            SearchLocationEvent.selectedAddress(
+                                              zipcode: item.zip.toString(),
+                                              sum: widget.sum,
+                                              cityId: _selectedCity?.id ?? '',
+                                            ),
+                                          );
+                                    } else {
+                                      setState(() {
+                                        _house.clear();
+                                        widget.onHouse;
+                                      });
+                                    }
                                   },
                                 ),
                               );

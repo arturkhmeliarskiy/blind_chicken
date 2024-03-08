@@ -29,6 +29,7 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = DeliverySoppingCartEvent;
   const factory ShoppingCartEvent.promoCode({
     required String promoCode,
+    required String uid,
   }) = PromoCodeSoppingCartEvent;
   const factory ShoppingCartEvent.removePromoCode() = RemovePromoCodeSoppingCartEvent;
   const factory ShoppingCartEvent.createOrder({

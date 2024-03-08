@@ -99,6 +99,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                         initState.shoppingCart.basket.length,
                                         (index) {
                                           return ShoppingCart(
+                                            isAuth: initState.isAuth,
                                             isBordrerBottom:
                                                 initState.shoppingCart.basket.length - 1 != index,
                                             count: initState.shoppingCart.basket[index].count,
@@ -351,7 +352,10 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           _titlePromocode = 'Активация промокода';
                                         });
                                         context.read<ShoppingCartBloc>().add(
-                                              ShoppingCartEvent.promoCode(promoCode: value),
+                                              ShoppingCartEvent.promoCode(
+                                                promoCode: value,
+                                                uid: _uidPickUpPoint,
+                                              ),
                                             );
                                         showDialog(
                                           context: context,

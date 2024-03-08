@@ -9,7 +9,7 @@ class ProductResponse with _$ProductResponse {
   factory ProductResponse({
     int? id,
     String? title,
-    String? catrgory,
+    String? category,
     List<String>? size,
     int? price,
     String? brend,

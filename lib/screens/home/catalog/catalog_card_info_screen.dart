@@ -179,7 +179,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     height: 9,
                                   ),
                                   Text(
-                                    initState.detailsProduct?.category.n ?? '',
+                                    initState.detailsProduct?.name ?? '',
                                     style: Theme.of(context).textTheme.displayMedium,
                                   ),
                                   const SizedBox(
@@ -187,14 +187,33 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                   ),
                                   Row(
                                     children: [
+                                      if (!(initState
+                                              .detailsProduct?.product.isYourPriceDisplayed ??
+                                          false))
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              'assets/icons/lightning.svg',
+                                              height: 14,
+                                              width: 14,
+                                            ),
+                                            const SizedBox(
+                                              width: 7,
+                                            ),
+                                          ],
+                                        ),
                                       RichText(
                                         text: TextSpan(
-                                          text: (initState.detailsProduct?.price.price ?? 0)
+                                          text: (initState.detailsProduct?.price.p ?? 0)
                                               .toString()
                                               .spaceSeparateNumbers(),
                                           style:
                                               Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                    fontWeight: FontWeight.w400,
+                                                    fontWeight: initState.detailsProduct?.product
+                                                                .isYourPriceDisplayed ??
+                                                            false
+                                                        ? FontWeight.w400
+                                                        : FontWeight.w700,
                                                   ),
                                           children: const <TextSpan>[
                                             TextSpan(
@@ -207,64 +226,105 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                           ],
                                         ),
                                       ),
-                                      const SizedBox(
-                                        width: 7,
-                                      ),
-                                      SvgPicture.asset(
-                                        'assets/icons/lightning.svg',
-                                        height: 14,
-                                        width: 14,
-                                      ),
-                                      const SizedBox(
-                                        width: 7,
-                                      ),
-                                      RichText(
-                                        text: TextSpan(
-                                          text: 'Ваша цена за ',
-                                          style:
-                                              Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: (initState.detailsProduct?.price.yourPrice ?? 0)
-                                                  .toString()
-                                                  .spaceSeparateNumbers(),
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
+                                      if (int.parse(initState.detailsProduct?.price.pb ?? '0') >
+                                          int.parse(initState.detailsProduct?.price.p ?? '0'))
+                                        Row(
+                                          children: [
+                                            const SizedBox(
+                                              width: 7,
                                             ),
-                                            TextSpan(
-                                              text: ' ₽',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.w700,
+                                            Text(
+                                              (initState.detailsProduct?.price.pb ?? '0')
+                                                  .spaceSeparateNumbers(),
+                                              style:
+                                                  Theme.of(context).textTheme.headline2?.copyWith(
+                                                        decoration: TextDecoration.lineThrough,
+                                                      ),
+                                            ),
+                                            const Text(
+                                              ' ₽',
+                                              style: TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 13,
+                                                decoration: TextDecoration.lineThrough,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      const SizedBox(
+                                        width: 7,
+                                      ),
+                                      if (initState.detailsProduct?.product.isYourPriceDisplayed ??
+                                          false)
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              'assets/icons/lightning.svg',
+                                              height: 14,
+                                              width: 14,
+                                            ),
+                                            const SizedBox(
+                                              width: 7,
+                                            ),
+                                            RichText(
+                                              text: TextSpan(
+                                                text: 'Ваша цена ',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                children: <TextSpan>[
+                                                  TextSpan(
+                                                    text: (initState
+                                                                .detailsProduct?.price.yourPrice ??
+                                                            0)
+                                                        .toString()
+                                                        .spaceSeparateNumbers(),
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium
+                                                        ?.copyWith(
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
                                                   ),
+                                                  TextSpan(
+                                                    text: ' ₽',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium
+                                                        ?.copyWith(
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
-                                      ),
                                     ],
                                   ),
                                   const SizedBox(
                                     height: 7,
                                   ),
                                   CatalogCashbackInfo(
-                                    cashback:
-                                        (initState.detailsProduct?.price.cashback ?? 0).toString(),
-                                    bonusYear:
-                                        (initState.detailsProduct?.price.bonusYear ?? 0).toString(),
-                                    discountVal: (initState.detailsProduct?.price.discountVal ?? 0)
-                                        .toString(),
-                                    bonusLoyal: (initState.detailsProduct?.price.bonusLoyal ?? 0)
-                                        .toString(),
-                                    bonusGift:
-                                        (initState.detailsProduct?.price.bonusGift ?? 0).toString(),
+                                    userBuyForNextDiscount:
+                                        initState.detailsProduct?.userBuyForNextDiscount ?? 0,
+                                    userNextDiscount:
+                                        initState.detailsProduct?.userNextDiscount ?? 0,
+                                    cashback: initState.detailsProduct?.price.cashback ?? 0,
+                                    bonusYear: initState.detailsProduct?.price.bonusYear ?? 0,
+                                    discountVal: initState.detailsProduct?.price.discountVal ?? 0,
+                                    bonusLoyal: initState.detailsProduct?.price.bonusLoyal ?? 0,
+                                    bonusGift: initState.detailsProduct?.price.bonusGift ?? 0,
+                                    userDiscount: initState.detailsProduct?.userDiscount ?? 0,
+                                    p: int.parse(initState.detailsProduct?.price.p ?? '0'),
+                                    pc: int.parse(initState.detailsProduct?.price.pc ?? '0'),
+                                    isAuth: initState.isAuth,
+                                    userBuyForNextDiscountVal:
+                                        initState.detailsProduct?.userBuyForNextDiscountVal ?? 0,
+                                    pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
                                   ),
                                   const SizedBox(
                                     height: 28,
@@ -585,7 +645,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                 ],
                                               );
                                             } else {
-                                              return const SizedBox();
+                                              return const SizedBox(
+                                                height: 20,
+                                              );
                                             }
                                           },
                                           orElse: () => const SizedBox());
@@ -616,6 +678,16 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                   sections: initState
                                                           .detailsProduct?.sections.first.list ??
                                                       [],
+                                                  onTap: (path) {
+                                                    context.read<CatalogBloc>().add(
+                                                          CatalogEvent.getInfoProducts(
+                                                            path: path,
+                                                          ),
+                                                        );
+                                                    context.navigateTo(
+                                                      CatalogRoute(title: ''),
+                                                    );
+                                                  },
                                                 ),
                                                 const SizedBox(
                                                   height: 40,

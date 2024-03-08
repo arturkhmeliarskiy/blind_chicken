@@ -15,14 +15,12 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   final CatalogRepository _catalogRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final FavouritesRepository _favouritesRepository;
-  final UpdateDataService _updateDataService;
   StreamSubscription<dynamic>? otherBlocSubscription;
 
   FavouritesBloc(
     this._catalogRepository,
     this._sharedPreferencesService,
     this._favouritesRepository,
-    this._updateDataService,
   ) : super(const FavouritesState.init()) {
     on<FavouritesEvent>(
       (event, emit) => event.map(
@@ -36,6 +34,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         removeSelectFilterCategory: (event) => _removeSelectFilterCategory(event, emit),
         getInfoProduct: (event) => _getInfoProduct(event, emit),
         goBackProductInfo: (event) => _goBackProductInfo(event, emit),
+        paginationProduct: (event) => _paginationProduct(event, emit),
       ),
     );
   }
@@ -79,7 +78,9 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        offset: 1,
         favouritesProductsId: favouritesProductsId,
+        isAuth: isAuth,
       ),
     );
   }
@@ -497,6 +498,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           selectFilter: selectFilter,
           favouritesProductsInfo: favouritesInfo,
           allSelectFilter: allSelectFilter,
+          offset: 1,
         ),
       );
     });
@@ -668,6 +670,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           selectFilter: selectFilter,
           favouritesProductsInfo: favouritesInfo,
           allSelectFilter: allSelectFilter,
+          offset: 1,
         ),
       );
     });
@@ -897,7 +900,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: _updateDataService.selectedIndexGender,
+        genderIndex: '1',
       );
 
       final additionalProductsDescriptionStyle =
@@ -945,7 +948,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         emit(const FavouritesState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: _updateDataService.selectedIndexGender,
+          genderIndex: '1',
         );
 
         final additionalProductsDescriptionStyle =
@@ -974,6 +977,46 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           listProductsCode: listProductsCode,
         ));
       }
+    });
+  }
+
+  Future<void> _paginationProduct(
+    PaginationProductFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    await state.mapOrNull(productsFavourites: (initState) async {
+      FavouritesCatalogProductsRequest request = initState.request;
+      List<ProductDataModel> products = initState.favouritesProducts.toList();
+      FavouritesCatalogInfoDataModel? favouritesInfo;
+      List<int> favouritesProductsId = [];
+      request = request.copyWith(nav: 'page-${initState.offset + 1}');
+
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+
+      if (isAuth) {
+        favouritesInfo = await updateFavouritesProducts(
+          isLocal: false,
+          request: request,
+        );
+        favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
+      } else {
+        favouritesInfo = await updateFavouritesProducts(
+          request: request,
+        );
+        favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
+      }
+
+      products = [...products, ...favouritesInfo.products];
+
+      emit(initState.copyWith(
+        favouritesProducts: products,
+        favouritesDefaultProducts: products,
+        favouritesProductsId: favouritesProductsId,
+        offset: initState.offset + 1,
+      ));
     });
   }
 

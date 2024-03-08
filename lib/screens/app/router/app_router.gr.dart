@@ -293,6 +293,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: SearchLocationScreen(
           key: args.key,
           title: args.title,
+          value: args.value,
           contentType: args.contentType,
           selectItem: args.selectItem,
           cityId: args.cityId,
@@ -1583,8 +1584,9 @@ class SearchLocationRoute extends PageRouteInfo<SearchLocationRouteArgs> {
   SearchLocationRoute({
     Key? key,
     required String title,
+    required String value,
     required String contentType,
-    required void Function(SearchLocationInfoDataModel) selectItem,
+    required void Function(SearchLocationInfoDataModel?) selectItem,
     String? cityId,
     String? streetId,
     List<PageRouteInfo>? children,
@@ -1593,6 +1595,7 @@ class SearchLocationRoute extends PageRouteInfo<SearchLocationRouteArgs> {
           args: SearchLocationRouteArgs(
             key: key,
             title: title,
+            value: value,
             contentType: contentType,
             selectItem: selectItem,
             cityId: cityId,
@@ -1611,6 +1614,7 @@ class SearchLocationRouteArgs {
   const SearchLocationRouteArgs({
     this.key,
     required this.title,
+    required this.value,
     required this.contentType,
     required this.selectItem,
     this.cityId,
@@ -1621,9 +1625,11 @@ class SearchLocationRouteArgs {
 
   final String title;
 
+  final String value;
+
   final String contentType;
 
-  final void Function(SearchLocationInfoDataModel) selectItem;
+  final void Function(SearchLocationInfoDataModel?) selectItem;
 
   final String? cityId;
 
@@ -1631,7 +1637,7 @@ class SearchLocationRouteArgs {
 
   @override
   String toString() {
-    return 'SearchLocationRouteArgs{key: $key, title: $title, contentType: $contentType, selectItem: $selectItem, cityId: $cityId, streetId: $streetId}';
+    return 'SearchLocationRouteArgs{key: $key, title: $title, value: $value, contentType: $contentType, selectItem: $selectItem, cityId: $cityId, streetId: $streetId}';
   }
 }
 

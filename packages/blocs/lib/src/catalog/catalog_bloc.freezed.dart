@@ -21,8 +21,8 @@ mixin _$CatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -36,7 +36,7 @@ mixin _$CatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -56,7 +56,7 @@ mixin _$CatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -67,7 +67,7 @@ mixin _$CatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -87,7 +87,7 @@ mixin _$CatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -98,7 +98,7 @@ mixin _$CatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -275,8 +275,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -290,7 +290,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -313,7 +313,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -324,7 +324,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -347,7 +347,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -358,7 +358,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -540,8 +540,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -555,7 +555,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -578,7 +578,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -589,7 +589,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -612,7 +612,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -623,7 +623,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -807,8 +807,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -822,7 +822,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -845,7 +845,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -856,7 +856,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -879,7 +879,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -890,7 +890,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -1037,7 +1037,13 @@ abstract class _$$SubCategoryatalogEventImplCopyWith<$Res> {
       __$$SubCategoryatalogEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String a, int b, int id, String u, int pid, MenuItemDataModel? item});
+      {String a,
+      int b,
+      int id,
+      String u,
+      int pid,
+      MenuItemDataModel? item,
+      int? selectedGenderIndex});
 
   $MenuItemDataModelCopyWith<$Res>? get item;
 }
@@ -1060,6 +1066,7 @@ class __$$SubCategoryatalogEventImplCopyWithImpl<$Res>
     Object? u = null,
     Object? pid = null,
     Object? item = freezed,
+    Object? selectedGenderIndex = freezed,
   }) {
     return _then(_$SubCategoryatalogEventImpl(
       a: null == a
@@ -1086,6 +1093,10 @@ class __$$SubCategoryatalogEventImplCopyWithImpl<$Res>
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as MenuItemDataModel?,
+      selectedGenderIndex: freezed == selectedGenderIndex
+          ? _value.selectedGenderIndex
+          : selectedGenderIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 
@@ -1111,7 +1122,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
       required this.id,
       required this.u,
       required this.pid,
-      this.item});
+      this.item,
+      this.selectedGenderIndex});
 
   @override
   final String a;
@@ -1125,10 +1137,12 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
   final int pid;
   @override
   final MenuItemDataModel? item;
+  @override
+  final int? selectedGenderIndex;
 
   @override
   String toString() {
-    return 'CatalogEvent.subCategory(a: $a, b: $b, id: $id, u: $u, pid: $pid, item: $item)';
+    return 'CatalogEvent.subCategory(a: $a, b: $b, id: $id, u: $u, pid: $pid, item: $item, selectedGenderIndex: $selectedGenderIndex)';
   }
 
   @override
@@ -1141,11 +1155,14 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.u, u) || other.u == u) &&
             (identical(other.pid, pid) || other.pid == pid) &&
-            (identical(other.item, item) || other.item == item));
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.selectedGenderIndex, selectedGenderIndex) ||
+                other.selectedGenderIndex == selectedGenderIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, a, b, id, u, pid, item);
+  int get hashCode =>
+      Object.hash(runtimeType, a, b, id, u, pid, item, selectedGenderIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -1160,8 +1177,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -1175,7 +1192,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -1188,7 +1205,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
   }) {
-    return subCategory(a, b, id, u, pid, item);
+    return subCategory(a, b, id, u, pid, item, selectedGenderIndex);
   }
 
   @override
@@ -1198,7 +1215,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -1209,7 +1226,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -1222,7 +1239,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
   }) {
-    return subCategory?.call(a, b, id, u, pid, item);
+    return subCategory?.call(a, b, id, u, pid, item, selectedGenderIndex);
   }
 
   @override
@@ -1232,7 +1249,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -1243,7 +1260,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -1258,7 +1275,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult orElse(),
   }) {
     if (subCategory != null) {
-      return subCategory(a, b, id, u, pid, item);
+      return subCategory(a, b, id, u, pid, item, selectedGenderIndex);
     }
     return orElse();
   }
@@ -1384,7 +1401,8 @@ abstract class SubCategoryatalogEvent implements CatalogEvent {
       required final int id,
       required final String u,
       required final int pid,
-      final MenuItemDataModel? item}) = _$SubCategoryatalogEventImpl;
+      final MenuItemDataModel? item,
+      final int? selectedGenderIndex}) = _$SubCategoryatalogEventImpl;
 
   String get a;
   int get b;
@@ -1392,6 +1410,7 @@ abstract class SubCategoryatalogEvent implements CatalogEvent {
   String get u;
   int get pid;
   MenuItemDataModel? get item;
+  int? get selectedGenderIndex;
   @JsonKey(ignore: true)
   _$$SubCategoryatalogEventImplCopyWith<_$SubCategoryatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1468,8 +1487,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -1483,7 +1502,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -1506,7 +1525,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -1517,7 +1536,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -1540,7 +1559,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -1551,7 +1570,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -1793,8 +1812,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -1808,7 +1827,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -1831,7 +1850,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -1842,7 +1861,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -1865,7 +1884,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -1876,7 +1895,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -2123,8 +2142,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -2138,7 +2157,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -2161,7 +2180,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -2172,7 +2191,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -2195,7 +2214,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -2206,7 +2225,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -2452,8 +2471,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -2467,7 +2486,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -2490,7 +2509,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -2501,7 +2520,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -2524,7 +2543,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -2535,7 +2554,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -2776,8 +2795,8 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -2791,7 +2810,7 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -2814,7 +2833,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -2825,7 +2844,7 @@ class _$AddFavouriteProductCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -2848,7 +2867,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -2859,7 +2878,7 @@ class _$AddFavouriteProductCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3079,8 +3098,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -3094,7 +3113,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -3117,7 +3136,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -3128,7 +3147,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3151,7 +3170,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -3162,7 +3181,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3313,8 +3332,6 @@ abstract class _$$PaginationProductCatalogEventImplCopyWith<$Res> {
           _$PaginationProductCatalogEventImpl value,
           $Res Function(_$PaginationProductCatalogEventImpl) then) =
       __$$PaginationProductCatalogEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int offset, int limit});
 }
 
 /// @nodoc
@@ -3326,62 +3343,28 @@ class __$$PaginationProductCatalogEventImplCopyWithImpl<$Res>
       _$PaginationProductCatalogEventImpl _value,
       $Res Function(_$PaginationProductCatalogEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? offset = null,
-    Object? limit = null,
-  }) {
-    return _then(_$PaginationProductCatalogEventImpl(
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$PaginationProductCatalogEventImpl
     implements PaginationProductCatalogEvent {
-  const _$PaginationProductCatalogEventImpl(
-      {required this.offset, required this.limit});
-
-  @override
-  final int offset;
-  @override
-  final int limit;
+  const _$PaginationProductCatalogEventImpl();
 
   @override
   String toString() {
-    return 'CatalogEvent.paginationProduct(offset: $offset, limit: $limit)';
+    return 'CatalogEvent.paginationProduct()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaginationProductCatalogEventImpl &&
-            (identical(other.offset, offset) || other.offset == offset) &&
-            (identical(other.limit, limit) || other.limit == limit));
+            other is _$PaginationProductCatalogEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaginationProductCatalogEventImplCopyWith<
-          _$PaginationProductCatalogEventImpl>
-      get copyWith => __$$PaginationProductCatalogEventImplCopyWithImpl<
-          _$PaginationProductCatalogEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -3389,8 +3372,8 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -3404,7 +3387,7 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -3417,7 +3400,7 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
   }) {
-    return paginationProduct(offset, limit);
+    return paginationProduct();
   }
 
   @override
@@ -3427,7 +3410,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -3438,7 +3421,7 @@ class _$PaginationProductCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3451,7 +3434,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
   }) {
-    return paginationProduct?.call(offset, limit);
+    return paginationProduct?.call();
   }
 
   @override
@@ -3461,7 +3444,7 @@ class _$PaginationProductCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -3472,7 +3455,7 @@ class _$PaginationProductCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3487,7 +3470,7 @@ class _$PaginationProductCatalogEventImpl
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
-      return paginationProduct(offset, limit);
+      return paginationProduct();
     }
     return orElse();
   }
@@ -3607,16 +3590,8 @@ class _$PaginationProductCatalogEventImpl
 }
 
 abstract class PaginationProductCatalogEvent implements CatalogEvent {
-  const factory PaginationProductCatalogEvent(
-      {required final int offset,
-      required final int limit}) = _$PaginationProductCatalogEventImpl;
-
-  int get offset;
-  int get limit;
-  @JsonKey(ignore: true)
-  _$$PaginationProductCatalogEventImplCopyWith<
-          _$PaginationProductCatalogEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  const factory PaginationProductCatalogEvent() =
+      _$PaginationProductCatalogEventImpl;
 }
 
 /// @nodoc
@@ -3689,8 +3664,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -3704,7 +3679,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -3727,7 +3702,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -3738,7 +3713,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3761,7 +3736,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -3772,7 +3747,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -3999,8 +3974,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -4014,7 +3989,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -4037,7 +4012,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4048,7 +4023,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4071,7 +4046,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4082,7 +4057,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4304,8 +4279,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -4319,7 +4294,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -4342,7 +4317,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4353,7 +4328,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4376,7 +4351,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4387,7 +4362,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4610,8 +4585,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -4625,7 +4600,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -4648,7 +4623,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4659,7 +4634,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4682,7 +4657,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4693,7 +4668,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4911,8 +4886,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -4926,7 +4901,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -4949,7 +4924,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4960,7 +4935,7 @@ class _$SwitchTypePeopleCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -4983,7 +4958,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -4994,7 +4969,7 @@ class _$SwitchTypePeopleCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -5210,8 +5185,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -5225,7 +5200,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -5248,7 +5223,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -5259,7 +5234,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -5282,7 +5257,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -5293,7 +5268,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -5507,8 +5482,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -5522,7 +5497,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -5545,7 +5520,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -5556,7 +5531,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -5579,7 +5554,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -5590,7 +5565,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -5804,8 +5779,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -5819,7 +5794,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -5842,7 +5817,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -5853,7 +5828,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -5876,7 +5851,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -5887,7 +5862,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6077,8 +6052,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -6092,7 +6067,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -6115,7 +6090,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -6126,7 +6101,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6149,7 +6124,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -6160,7 +6135,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6373,8 +6348,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -6388,7 +6363,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -6411,7 +6386,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -6422,7 +6397,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6445,7 +6420,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -6456,7 +6431,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6649,8 +6624,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function() init,
     required TResult Function() preloadData,
     required TResult Function() updateFavouritesProducts,
-    required TResult Function(
-            String a, int b, int id, String u, int pid, MenuItemDataModel? item)
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
         subCategory,
     required TResult Function(int idParent) backPathMenu,
     required TResult Function(
@@ -6664,7 +6639,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function(String query) searchBrand,
     required TResult Function(MenuItemDataModel? item) pathMenu,
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
@@ -6687,7 +6662,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function()? preloadData,
     TResult? Function()? updateFavouritesProducts,
     TResult? Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult? Function(int idParent)? backPathMenu,
     TResult? Function(int index, int indexItem, FilterItemDataModel item)?
@@ -6698,7 +6673,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function(String query)? searchBrand,
     TResult? Function(MenuItemDataModel? item)? pathMenu,
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6721,7 +6696,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function()? preloadData,
     TResult Function()? updateFavouritesProducts,
     TResult Function(String a, int b, int id, String u, int pid,
-            MenuItemDataModel? item)?
+            MenuItemDataModel? item, int? selectedGenderIndex)?
         subCategory,
     TResult Function(int idParent)? backPathMenu,
     TResult Function(int index, int indexItem, FilterItemDataModel item)?
@@ -6732,7 +6707,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function(String query)? searchBrand,
     TResult Function(MenuItemDataModel? item)? pathMenu,
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
@@ -6879,7 +6854,6 @@ mixin _$CatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
-    required TResult Function() notInternetConnection,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -6899,6 +6873,9 @@ mixin _$CatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -6910,7 +6887,6 @@ mixin _$CatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
-    TResult? Function()? notInternetConnection,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -6930,6 +6906,9 @@ mixin _$CatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -6941,7 +6920,6 @@ mixin _$CatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
-    TResult Function()? notInternetConnection,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -6961,6 +6939,9 @@ mixin _$CatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -6973,8 +6954,6 @@ mixin _$CatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
-    required TResult Function(NotInternetConnectionCatalogState value)
-        notInternetConnection,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) =>
@@ -6984,8 +6963,6 @@ mixin _$CatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
-    TResult? Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) =>
@@ -6995,8 +6972,6 @@ mixin _$CatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
-    TResult Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7063,7 +7038,6 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
-    required TResult Function() notInternetConnection,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7083,6 +7057,9 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -7097,7 +7074,6 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
-    TResult? Function()? notInternetConnection,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7117,6 +7093,9 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7131,7 +7110,6 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
-    TResult Function()? notInternetConnection,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7151,6 +7129,9 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7169,8 +7150,6 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
-    required TResult Function(NotInternetConnectionCatalogState value)
-        notInternetConnection,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -7183,8 +7162,6 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
-    TResult? Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -7197,8 +7174,6 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
-    TResult Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7255,7 +7230,6 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
-    required TResult Function() notInternetConnection,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7275,6 +7249,9 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -7289,7 +7266,6 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
-    TResult? Function()? notInternetConnection,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7309,6 +7285,9 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7323,7 +7302,6 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
-    TResult Function()? notInternetConnection,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7343,6 +7321,9 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7361,8 +7342,6 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
-    required TResult Function(NotInternetConnectionCatalogState value)
-        notInternetConnection,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -7375,8 +7354,6 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
-    TResult? Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -7389,8 +7366,6 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
-    TResult Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7448,7 +7423,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
-    required TResult Function() notInternetConnection,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7468,6 +7442,9 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -7482,7 +7459,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
-    TResult? Function()? notInternetConnection,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7502,6 +7478,9 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7516,7 +7495,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
-    TResult Function()? notInternetConnection,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7536,6 +7514,9 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7554,8 +7535,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
-    required TResult Function(NotInternetConnectionCatalogState value)
-        notInternetConnection,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -7568,8 +7547,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
-    TResult? Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -7582,8 +7559,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
-    TResult Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7597,204 +7572,6 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
 
 abstract class LoadingCatalogState implements CatalogState {
   const factory LoadingCatalogState() = _$LoadingCatalogStateImpl;
-}
-
-/// @nodoc
-abstract class _$$NotInternetConnectionCatalogStateImplCopyWith<$Res> {
-  factory _$$NotInternetConnectionCatalogStateImplCopyWith(
-          _$NotInternetConnectionCatalogStateImpl value,
-          $Res Function(_$NotInternetConnectionCatalogStateImpl) then) =
-      __$$NotInternetConnectionCatalogStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$NotInternetConnectionCatalogStateImplCopyWithImpl<$Res>
-    extends _$CatalogStateCopyWithImpl<$Res,
-        _$NotInternetConnectionCatalogStateImpl>
-    implements _$$NotInternetConnectionCatalogStateImplCopyWith<$Res> {
-  __$$NotInternetConnectionCatalogStateImplCopyWithImpl(
-      _$NotInternetConnectionCatalogStateImpl _value,
-      $Res Function(_$NotInternetConnectionCatalogStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$NotInternetConnectionCatalogStateImpl
-    implements NotInternetConnectionCatalogState {
-  const _$NotInternetConnectionCatalogStateImpl();
-
-  @override
-  String toString() {
-    return 'CatalogState.notInternetConnection()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotInternetConnectionCatalogStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() init,
-    required TResult Function() upload,
-    required TResult Function() load,
-    required TResult Function() notInternetConnection,
-    required TResult Function(
-            List<String> allBrands,
-            List<String> defaultBrands,
-            List<String> brands,
-            List<MenuItemDataModel> menu,
-            List<ProductDataModel> defaultProducts,
-            List<ProductDataModel> products,
-            List<ProductDataModel> listProdcutsStyle,
-            List<ProductDataModel> listProdcutsAlso,
-            List<ProductDataModel> listProdcutsBrand,
-            List<ProductDataModel> favouritesProducts,
-            List<int> favouritesProductsId,
-            List<FilterInfoDataModel> filter,
-            List<String> listProductsCode,
-            Map<int, List<FilterItemDataModel>> selectFilter,
-            List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
-            CatalogProductsRequest request,
-            DetailProductDataModel? detailsProduct,
-            CatalogDataModel? catalogInfo,
-            String? title)
-        preloadDataCompleted,
-  }) {
-    return notInternetConnection();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? init,
-    TResult? Function()? upload,
-    TResult? Function()? load,
-    TResult? Function()? notInternetConnection,
-    TResult? Function(
-            List<String> allBrands,
-            List<String> defaultBrands,
-            List<String> brands,
-            List<MenuItemDataModel> menu,
-            List<ProductDataModel> defaultProducts,
-            List<ProductDataModel> products,
-            List<ProductDataModel> listProdcutsStyle,
-            List<ProductDataModel> listProdcutsAlso,
-            List<ProductDataModel> listProdcutsBrand,
-            List<ProductDataModel> favouritesProducts,
-            List<int> favouritesProductsId,
-            List<FilterInfoDataModel> filter,
-            List<String> listProductsCode,
-            Map<int, List<FilterItemDataModel>> selectFilter,
-            List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
-            CatalogProductsRequest request,
-            DetailProductDataModel? detailsProduct,
-            CatalogDataModel? catalogInfo,
-            String? title)?
-        preloadDataCompleted,
-  }) {
-    return notInternetConnection?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? init,
-    TResult Function()? upload,
-    TResult Function()? load,
-    TResult Function()? notInternetConnection,
-    TResult Function(
-            List<String> allBrands,
-            List<String> defaultBrands,
-            List<String> brands,
-            List<MenuItemDataModel> menu,
-            List<ProductDataModel> defaultProducts,
-            List<ProductDataModel> products,
-            List<ProductDataModel> listProdcutsStyle,
-            List<ProductDataModel> listProdcutsAlso,
-            List<ProductDataModel> listProdcutsBrand,
-            List<ProductDataModel> favouritesProducts,
-            List<int> favouritesProductsId,
-            List<FilterInfoDataModel> filter,
-            List<String> listProductsCode,
-            Map<int, List<FilterItemDataModel>> selectFilter,
-            List<Map<int, FilterItemDataModel>> allSelectFilter,
-            List<MenuItemDataModel> pathMenu,
-            List<MainCategoryModel> category,
-            CatalogProductsRequest request,
-            DetailProductDataModel? detailsProduct,
-            CatalogDataModel? catalogInfo,
-            String? title)?
-        preloadDataCompleted,
-    required TResult orElse(),
-  }) {
-    if (notInternetConnection != null) {
-      return notInternetConnection();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InitCatalogState value) init,
-    required TResult Function(UploadCatalogState value) upload,
-    required TResult Function(LoadingCatalogState value) load,
-    required TResult Function(NotInternetConnectionCatalogState value)
-        notInternetConnection,
-    required TResult Function(PreloadDataCompletedCatalogState value)
-        preloadDataCompleted,
-  }) {
-    return notInternetConnection(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitCatalogState value)? init,
-    TResult? Function(UploadCatalogState value)? upload,
-    TResult? Function(LoadingCatalogState value)? load,
-    TResult? Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
-    TResult? Function(PreloadDataCompletedCatalogState value)?
-        preloadDataCompleted,
-  }) {
-    return notInternetConnection?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitCatalogState value)? init,
-    TResult Function(UploadCatalogState value)? upload,
-    TResult Function(LoadingCatalogState value)? load,
-    TResult Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
-    TResult Function(PreloadDataCompletedCatalogState value)?
-        preloadDataCompleted,
-    required TResult orElse(),
-  }) {
-    if (notInternetConnection != null) {
-      return notInternetConnection(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NotInternetConnectionCatalogState implements CatalogState {
-  const factory NotInternetConnectionCatalogState() =
-      _$NotInternetConnectionCatalogStateImpl;
 }
 
 /// @nodoc
@@ -7823,6 +7600,9 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       List<MenuItemDataModel> pathMenu,
       List<MainCategoryModel> category,
       CatalogProductsRequest request,
+      int selectedGenderIndex,
+      bool isAuth,
+      int offset,
       DetailProductDataModel? detailsProduct,
       CatalogDataModel? catalogInfo,
       String? title});
@@ -7863,6 +7643,9 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? pathMenu = null,
     Object? category = null,
     Object? request = null,
+    Object? selectedGenderIndex = null,
+    Object? isAuth = null,
+    Object? offset = null,
     Object? detailsProduct = freezed,
     Object? catalogInfo = freezed,
     Object? title = freezed,
@@ -7940,6 +7723,18 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as CatalogProductsRequest,
+      selectedGenderIndex: null == selectedGenderIndex
+          ? _value.selectedGenderIndex
+          : selectedGenderIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      isAuth: null == isAuth
+          ? _value.isAuth
+          : isAuth // ignore: cast_nullable_to_non_nullable
+              as bool,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
       detailsProduct: freezed == detailsProduct
           ? _value.detailsProduct
           : detailsProduct // ignore: cast_nullable_to_non_nullable
@@ -8012,6 +7807,9 @@ class _$PreloadDataCompletedCatalogStateImpl
       required final List<MenuItemDataModel> pathMenu,
       required final List<MainCategoryModel> category,
       required this.request,
+      required this.selectedGenderIndex,
+      required this.isAuth,
+      required this.offset,
       this.detailsProduct,
       this.catalogInfo,
       this.title})
@@ -8178,6 +7976,12 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final CatalogProductsRequest request;
   @override
+  final int selectedGenderIndex;
+  @override
+  final bool isAuth;
+  @override
+  final int offset;
+  @override
   final DetailProductDataModel? detailsProduct;
   @override
   final CatalogDataModel? catalogInfo;
@@ -8186,7 +7990,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -8223,6 +8027,10 @@ class _$PreloadDataCompletedCatalogStateImpl
             const DeepCollectionEquality().equals(other._pathMenu, _pathMenu) &&
             const DeepCollectionEquality().equals(other._category, _category) &&
             (identical(other.request, request) || other.request == request) &&
+            (identical(other.selectedGenderIndex, selectedGenderIndex) ||
+                other.selectedGenderIndex == selectedGenderIndex) &&
+            (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
+            (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
             (identical(other.catalogInfo, catalogInfo) ||
@@ -8251,6 +8059,9 @@ class _$PreloadDataCompletedCatalogStateImpl
         const DeepCollectionEquality().hash(_pathMenu),
         const DeepCollectionEquality().hash(_category),
         request,
+        selectedGenderIndex,
+        isAuth,
+        offset,
         detailsProduct,
         catalogInfo,
         title
@@ -8270,7 +8081,6 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
-    required TResult Function() notInternetConnection,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -8290,6 +8100,9 @@ class _$PreloadDataCompletedCatalogStateImpl
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -8314,6 +8127,9 @@ class _$PreloadDataCompletedCatalogStateImpl
         pathMenu,
         category,
         request,
+        selectedGenderIndex,
+        isAuth,
+        offset,
         detailsProduct,
         catalogInfo,
         title);
@@ -8325,7 +8141,6 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
-    TResult? Function()? notInternetConnection,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -8345,6 +8160,9 @@ class _$PreloadDataCompletedCatalogStateImpl
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -8369,6 +8187,9 @@ class _$PreloadDataCompletedCatalogStateImpl
         pathMenu,
         category,
         request,
+        selectedGenderIndex,
+        isAuth,
+        offset,
         detailsProduct,
         catalogInfo,
         title);
@@ -8380,7 +8201,6 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
-    TResult Function()? notInternetConnection,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -8400,6 +8220,9 @@ class _$PreloadDataCompletedCatalogStateImpl
             List<MenuItemDataModel> pathMenu,
             List<MainCategoryModel> category,
             CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -8426,6 +8249,9 @@ class _$PreloadDataCompletedCatalogStateImpl
           pathMenu,
           category,
           request,
+          selectedGenderIndex,
+          isAuth,
+          offset,
           detailsProduct,
           catalogInfo,
           title);
@@ -8439,8 +8265,6 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
-    required TResult Function(NotInternetConnectionCatalogState value)
-        notInternetConnection,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -8453,8 +8277,6 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
-    TResult? Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -8467,8 +8289,6 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
-    TResult Function(NotInternetConnectionCatalogState value)?
-        notInternetConnection,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -8500,6 +8320,9 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final List<MenuItemDataModel> pathMenu,
       required final List<MainCategoryModel> category,
       required final CatalogProductsRequest request,
+      required final int selectedGenderIndex,
+      required final bool isAuth,
+      required final int offset,
       final DetailProductDataModel? detailsProduct,
       final CatalogDataModel? catalogInfo,
       final String? title}) = _$PreloadDataCompletedCatalogStateImpl;
@@ -8522,6 +8345,9 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   List<MenuItemDataModel> get pathMenu;
   List<MainCategoryModel> get category;
   CatalogProductsRequest get request;
+  int get selectedGenderIndex;
+  bool get isAuth;
+  int get offset;
   DetailProductDataModel? get detailsProduct;
   CatalogDataModel? get catalogInfo;
   String? get title;

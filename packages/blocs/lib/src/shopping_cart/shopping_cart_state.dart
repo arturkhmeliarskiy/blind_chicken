@@ -22,6 +22,7 @@ class ShoppingCartState with _$ShoppingCartState {
     required bool isActivePromoCode,
     required bool isLoadCreateOrder,
     required String promoCode,
+    required String pickup,
     required BoutiquesDataModel boutiques,
     required List<BasketSertDeliveryRequest> listGiftCard,
     String? creatOrderMessage,
@@ -34,6 +35,7 @@ class ShoppingCartState with _$ShoppingCartState {
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
     required List<int> favouritesProductsId,
+    required bool isAuth,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,
   }) = ProductsShoppingCartState;

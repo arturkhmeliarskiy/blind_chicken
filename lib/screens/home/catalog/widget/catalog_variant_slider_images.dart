@@ -27,7 +27,7 @@ class CatalogVariantSliderImages extends StatelessWidget {
                 ProductDataModel(
                   id: int.parse(listOptionProduct[index].c),
                   title: listOptionProduct[index].ne,
-                  catrgory: listOptionProduct[index].ct,
+                  category: listOptionProduct[index].ct,
                   size: [],
                   price: double.parse(listOptionProduct[index].pr).toInt(),
                   yourPrice: 0,
@@ -42,6 +42,7 @@ class CatalogVariantSliderImages extends StatelessWidget {
                   maximumCashback: 0,
                   maximumPersonalDiscount: 0,
                   isYourPriceDisplayed: false,
+                  pb: double.parse(listOptionProduct[index].pr).toInt(),
                 ),
               );
             },

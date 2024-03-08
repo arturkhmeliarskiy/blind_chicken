@@ -18,9 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProductDataModel {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get catrgory => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   List<String> get size => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  int get pb => throw _privateConstructorUsedError;
   int get yourPrice => throw _privateConstructorUsedError;
   String get brend => throw _privateConstructorUsedError;
   int get lensDiameter => throw _privateConstructorUsedError;
@@ -48,9 +49,10 @@ abstract class $ProductDataModelCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      String catrgory,
+      String category,
       List<String> size,
       int price,
+      int pb,
       int yourPrice,
       String brend,
       int lensDiameter,
@@ -80,9 +82,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? catrgory = null,
+    Object? category = null,
     Object? size = null,
     Object? price = null,
+    Object? pb = null,
     Object? yourPrice = null,
     Object? brend = null,
     Object? lensDiameter = null,
@@ -105,9 +108,9 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      catrgory: null == catrgory
-          ? _value.catrgory
-          : catrgory // ignore: cast_nullable_to_non_nullable
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String,
       size: null == size
           ? _value.size
@@ -116,6 +119,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      pb: null == pb
+          ? _value.pb
+          : pb // ignore: cast_nullable_to_non_nullable
               as int,
       yourPrice: null == yourPrice
           ? _value.yourPrice
@@ -180,9 +187,10 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
   $Res call(
       {int id,
       String title,
-      String catrgory,
+      String category,
       List<String> size,
       int price,
+      int pb,
       int yourPrice,
       String brend,
       int lensDiameter,
@@ -210,9 +218,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? catrgory = null,
+    Object? category = null,
     Object? size = null,
     Object? price = null,
+    Object? pb = null,
     Object? yourPrice = null,
     Object? brend = null,
     Object? lensDiameter = null,
@@ -235,9 +244,9 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      catrgory: null == catrgory
-          ? _value.catrgory
-          : catrgory // ignore: cast_nullable_to_non_nullable
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String,
       size: null == size
           ? _value._size
@@ -246,6 +255,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      pb: null == pb
+          ? _value.pb
+          : pb // ignore: cast_nullable_to_non_nullable
               as int,
       yourPrice: null == yourPrice
           ? _value.yourPrice
@@ -305,9 +318,10 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   _$ProductDataModelImpl(
       {required this.id,
       required this.title,
-      required this.catrgory,
+      required this.category,
       required final List<String> size,
       required this.price,
+      required this.pb,
       required this.yourPrice,
       required this.brend,
       required this.lensDiameter,
@@ -330,7 +344,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   @override
   final String title;
   @override
-  final String catrgory;
+  final String category;
   final List<String> _size;
   @override
   List<String> get size {
@@ -341,6 +355,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
 
   @override
   final int price;
+  @override
+  final int pb;
   @override
   final int yourPrice;
   @override
@@ -380,7 +396,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, catrgory: $catrgory, size: $size, price: $price, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, count: $count, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, count: $count, color: $color)';
   }
 
   @override
@@ -390,10 +406,11 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             other is _$ProductDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.catrgory, catrgory) ||
-                other.catrgory == catrgory) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             const DeepCollectionEquality().equals(other._size, _size) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.pb, pb) || other.pb == pb) &&
             (identical(other.yourPrice, yourPrice) ||
                 other.yourPrice == yourPrice) &&
             (identical(other.brend, brend) || other.brend == brend) &&
@@ -420,9 +437,10 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       runtimeType,
       id,
       title,
-      catrgory,
+      category,
       const DeepCollectionEquality().hash(_size),
       price,
+      pb,
       yourPrice,
       brend,
       lensDiameter,
@@ -448,9 +466,10 @@ abstract class _ProductDataModel extends ProductDataModel {
   factory _ProductDataModel(
       {required final int id,
       required final String title,
-      required final String catrgory,
+      required final String category,
       required final List<String> size,
       required final int price,
+      required final int pb,
       required final int yourPrice,
       required final String brend,
       required final int lensDiameter,
@@ -470,11 +489,13 @@ abstract class _ProductDataModel extends ProductDataModel {
   @override
   String get title;
   @override
-  String get catrgory;
+  String get category;
   @override
   List<String> get size;
   @override
   int get price;
+  @override
+  int get pb;
   @override
   int get yourPrice;
   @override

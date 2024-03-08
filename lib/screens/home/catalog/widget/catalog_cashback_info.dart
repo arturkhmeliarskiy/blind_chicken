@@ -1,6 +1,10 @@
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info_modal.dart';
+import 'package:blind_chicken/screens/login/login_phone_screen.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogCashbackInfo extends StatefulWidget {
@@ -11,13 +15,29 @@ class CatalogCashbackInfo extends StatefulWidget {
     required this.discountVal,
     required this.bonusLoyal,
     required this.bonusGift,
+    required this.userDiscount,
+    required this.isAuth,
+    required this.p,
+    required this.pc,
+    required this.userNextDiscount,
+    required this.userBuyForNextDiscount,
+    required this.userBuyForNextDiscountVal,
+    required this.pb,
   });
 
-  final String cashback;
-  final String bonusLoyal;
-  final String bonusGift;
-  final String bonusYear;
-  final String discountVal;
+  final int cashback;
+  final int bonusLoyal;
+  final int bonusGift;
+  final int bonusYear;
+  final int discountVal;
+  final int userDiscount;
+  final int userNextDiscount;
+  final int userBuyForNextDiscount;
+  final int userBuyForNextDiscountVal;
+  final int p;
+  final int pc;
+  final int pb;
+  final bool isAuth;
 
   @override
   State<CatalogCashbackInfo> createState() => _CatalogCashbackInfoState();
@@ -67,7 +87,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: widget.cashback,
+                        text: widget.cashback.toString(),
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -85,6 +105,48 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                   ],
                 ),
               ),
+              if (widget.pc < 10000)
+                SizedBox(
+                  height: 18,
+                  child: Row(
+                    children: [
+                      Text(
+                        'Бонусы ',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Text(
+                        'при заказе от 10 000 ₽',
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                      Expanded(
+                        child: Text(
+                          ellipsis(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                height: 1.8,
+                                color: BlindChickenColors.dotItem,
+                              ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: widget.bonusGift.toString(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
+                          children: const <TextSpan>[
+                            TextSpan(
+                              text: ' ₽',
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               SizedBox(
                 height: 18,
                 child: Row(
@@ -108,45 +170,16 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                         style: Theme.of(context).textTheme.bodyMedium,
                         children: <TextSpan>[
                           TextSpan(
-                            text: widget.bonusYear,
+                            text: widget.bonusYear.toString(),
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 18,
-                child: Row(
-                  children: [
-                    Text(
-                      'Ваша скидка',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    Expanded(
-                      child: Text(
-                        ellipsis(),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              height: 1.8,
-                              color: BlindChickenColors.dotItem,
-                            ),
-                      ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: widget.discountVal,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                        children: const <TextSpan>[
-                          TextSpan(
+                          const TextSpan(
                             text: ' ₽',
                             style: TextStyle(
                               fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w700,
                               fontSize: 13,
                             ),
                           ),
@@ -156,6 +189,123 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                   ],
                 ),
               ),
+              if (widget.discountVal > 0 && widget.isAuth)
+                SizedBox(
+                  height: 18,
+                  child: Row(
+                    children: [
+                      Text(
+                        'Ваша скидка',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Expanded(
+                        child: Text(
+                          ellipsis(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                height: 1.8,
+                                color: BlindChickenColors.dotItem,
+                              ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: widget.discountVal.toString(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
+                          children: const <TextSpan>[
+                            TextSpan(
+                              text: ' ₽',
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              if (!widget.isAuth && widget.pb == widget.p)
+                SizedBox(
+                  height: 18,
+                  child: Row(
+                    children: [
+                      Text(
+                        'Ваша скидка',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Expanded(
+                        child: Text(
+                          ellipsis(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                height: 1.8,
+                                color: BlindChickenColors.dotItem,
+                              ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.read<LoginBloc>().add(const LoginEvent.init());
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const LoginPhoneScreen();
+                              });
+                        },
+                        child: Text(
+                          'авторизоваться',
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                decoration: TextDecoration.underline,
+                              ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              if (widget.discountVal == 0 && widget.isAuth)
+                SizedBox(
+                  height: 18,
+                  child: Row(
+                    children: [
+                      Text(
+                        'Скидка ',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Text(
+                        'после покупки от ${widget.userBuyForNextDiscount.toString().spaceSeparateNumbers()} ₽',
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                      Expanded(
+                        child: Text(
+                          ellipsis(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                height: 1.8,
+                                color: BlindChickenColors.dotItem,
+                              ),
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: widget.userNextDiscount.toString(),
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
+                          children: const <TextSpan>[
+                            TextSpan(
+                              text: ' ₽',
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ]),
           ),
           GestureDetector(
@@ -164,10 +314,17 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                 context: context,
                 builder: (context) {
                   return CatalogCashbackInfoModal(
-                    bonusLoyal: widget.bonusLoyal,
-                    bonusYear: widget.bonusYear,
+                    bonusLoyal: widget.bonusLoyal.toString(),
+                    bonusYear: widget.bonusYear.toString(),
                     discountVal: widget.discountVal,
-                    bonusGift: widget.bonusGift,
+                    bonusGift: widget.bonusGift.toString(),
+                    isAuth: widget.isAuth,
+                    userNextDiscount: widget.userNextDiscount,
+                    userBuyForNextDiscount: widget.userBuyForNextDiscount,
+                    userBuyForNextDiscountVal: widget.userBuyForNextDiscountVal,
+                    userDiscount: widget.userDiscount,
+                    p: widget.p,
+                    pb: widget.pb,
                   );
                 },
               );

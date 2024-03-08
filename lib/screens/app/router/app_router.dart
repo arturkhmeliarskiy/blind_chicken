@@ -269,6 +269,7 @@ class AppRouter extends _$AppRouter {
         ),
         AutoRoute(
           page: NoInternetRoute.page,
+          path: '/no_internet',
         ),
         AutoRoute(
           page: CatalogSizeProductRoute.page,

@@ -41,8 +41,15 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
       listener: (context, state) {
         state.maybeWhen(
           successfully: () {
-            context.popRoute();
-            context.pushRoute(const AccountRoute());
+            Navigator.of(context, rootNavigator: true).pop();
+            context.read<AccountBloc>().add(const AccountEvent.preloadData());
+            context.navigateTo(
+              const LoginRoute(
+                children: [
+                  AccountRoute(),
+                ],
+              ),
+            );
           },
           orElse: () {},
         );

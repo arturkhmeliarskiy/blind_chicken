@@ -79,7 +79,7 @@ class MapPointInfo extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                boutique.name,
+                                boutique.caption,
                                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                       fontWeight: FontWeight.w600,
                                     ),

@@ -73,6 +73,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                   children: [
                     InkWell(
                       onTap: () {
+                        context.read<AccountBloc>().add(const AccountEvent.preloadData());
                         context.navigateTo(
                           const AccountRoute(),
                         );

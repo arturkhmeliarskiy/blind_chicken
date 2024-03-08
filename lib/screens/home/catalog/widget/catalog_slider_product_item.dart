@@ -37,22 +37,24 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: widget.onTap,
       child: Container(
         width: 140,
+        height: 400,
         margin: const EdgeInsets.only(right: 8),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SizedBox(
             width: 140,
-            height: 186,
+            height: 140 * 4 / 3,
             child: Stack(
               alignment: Alignment.topRight,
               children: [
                 CachedNetworkImage(
                   imageUrl: widget.product.images[0],
                   width: 140,
-                  height: 186,
+                  height: 140 * 4 / 3,
                   fit: BoxFit.cover,
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
@@ -94,7 +96,7 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
             height: 4,
           ),
           Text(
-            widget.product.catrgory,
+            widget.product.category,
             style: Theme.of(context).textTheme.displayMedium,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
@@ -117,30 +119,35 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           const SizedBox(
             height: 4,
           ),
-          RichText(
-            maxLines: 2,
-            text: TextSpan(
-              text: (widget.product.price).toString().spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' ₽',
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        fontWeight: FontWeight.w700,
+          if (widget.product.isYourPriceDisplayed)
+            Column(
+              children: [
+                RichText(
+                  maxLines: 2,
+                  text: TextSpan(
+                    text: (widget.product.yourPrice).toString().spaceSeparateNumbers(),
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' ₽',
+                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
                       ),
+                      TextSpan(
+                        text: ' Ваша цена',
+                        style: Theme.of(context).textTheme.displaySmall,
+                      ),
+                    ],
+                  ),
                 ),
-                TextSpan(
-                  text: ' Ваша цена',
-                  style: Theme.of(context).textTheme.displaySmall,
+                const SizedBox(
+                  height: 4,
                 ),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
           Row(
             children: [
               SvgPicture.asset(

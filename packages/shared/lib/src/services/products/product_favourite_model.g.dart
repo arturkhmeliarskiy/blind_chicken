@@ -19,7 +19,7 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
     return ProductFavouriteModel(
       id: fields[0] as int,
       title: fields[1] as String,
-      catrgory: fields[2] as String,
+      category: fields[2] as String,
       size: (fields[3] as List).cast<String>(),
       price: fields[4] as int,
       youPrice: fields[5] as int,
@@ -41,7 +41,7 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.catrgory)
+      ..write(obj.category)
       ..writeByte(3)
       ..write(obj.size)
       ..writeByte(4)

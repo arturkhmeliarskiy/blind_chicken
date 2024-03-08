@@ -5,7 +5,6 @@ class CatalogState with _$CatalogState {
   const factory CatalogState.init() = InitCatalogState;
   const factory CatalogState.upload() = UploadCatalogState;
   const factory CatalogState.load() = LoadingCatalogState;
-  const factory CatalogState.notInternetConnection() = NotInternetConnectionCatalogState;
   const factory CatalogState.preloadDataCompleted({
     required List<String> allBrands,
     required List<String> defaultBrands,
@@ -25,6 +24,9 @@ class CatalogState with _$CatalogState {
     required List<MenuItemDataModel> pathMenu,
     required List<MainCategoryModel> category,
     required CatalogProductsRequest request,
+    required int selectedGenderIndex,
+    required bool isAuth,
+    required int offset,
     DetailProductDataModel? detailsProduct,
     CatalogDataModel? catalogInfo,
     String? title,

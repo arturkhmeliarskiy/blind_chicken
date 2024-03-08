@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
@@ -9,8 +11,45 @@ import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
-class CatalogSearchResultScreen extends StatelessWidget {
+class CatalogSearchResultScreen extends StatefulWidget {
   const CatalogSearchResultScreen({super.key});
+
+  @override
+  State<CatalogSearchResultScreen> createState() => _CatalogSearchResultScreenState();
+}
+
+class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
+  final ScrollController _scrollController = ScrollController();
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_loadMoreData);
+  }
+
+  void _loadMoreData() async {
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      setState(() {
+        isLoading = true;
+      });
+      await Future<void>.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          isLoading = false;
+
+          context.read<SearchBloc>().add(
+                const SearchEvent.paginationProduct(),
+              );
+        });
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +59,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
         child: Stack(
           children: [
             SingleChildScrollView(
+              controller: _scrollController,
               child: Column(
                 children: [
                   const AppBarBlindChicken(),
@@ -219,7 +259,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                                             },
                                             imageUrl: initState.products[index].images[0],
                                             brend: initState.products[index].brend,
-                                            catrgory: initState.products[index].catrgory,
+                                            category: initState.products[index].category,
                                             yourPrice:
                                                 initState.products[index].yourPrice.toString(),
                                             price: initState.products[index].price.toString(),
@@ -236,6 +276,7 @@ class CatalogSearchResultScreen extends StatelessWidget {
                                                     ),
                                                   );
                                             },
+                                            pb: initState.products[index].pb,
                                             onDeleteFavouriteProduct: () {
                                               context.read<SearchBloc>().add(
                                                     SearchEvent.deleteFavouriteProduct(
@@ -261,12 +302,24 @@ class CatalogSearchResultScreen extends StatelessWidget {
             BlocBuilder<SearchBloc, SearchState>(
               builder: (context, state) {
                 return state.maybeMap(
-                  load: (value) => const Center(
-                    child: CircularProgressIndicator(
-                      color: BlindChickenColors.activeBorderTextField,
-                      backgroundColor: BlindChickenColors.borderTextField,
-                    ),
-                  ),
+                  load: (value) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.black,
+                        backgroundColor: Colors.grey.shade400,
+                      ),
+                    );
+                  },
+                  searchProductsResult: (initState) {
+                    return isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                              backgroundColor: Colors.grey.shade400,
+                            ),
+                          )
+                        : const SizedBox();
+                  },
                   orElse: () => const SizedBox(),
                 );
               },

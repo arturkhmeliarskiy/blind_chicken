@@ -76,16 +76,6 @@ class ShoppingMapPointInfo extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.topLeft,
                               child: Text(
-                                boutique.address,
-                                style: Theme.of(context).textTheme.displayMedium,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 0, left: 16),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
                                 boutique.schedule,
                                 style: Theme.of(context).textTheme.displayMedium,
                               ),

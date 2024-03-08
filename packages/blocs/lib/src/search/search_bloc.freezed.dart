@@ -36,6 +36,7 @@ mixin _$SearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +56,7 @@ mixin _$SearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +76,7 @@ mixin _$SearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -97,6 +100,8 @@ mixin _$SearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -118,6 +123,7 @@ mixin _$SearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -138,6 +144,7 @@ mixin _$SearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -217,6 +224,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return init();
   }
@@ -239,6 +247,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return init?.call();
   }
@@ -261,6 +270,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -290,6 +300,8 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return init(this);
   }
@@ -314,6 +326,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return init?.call(this);
   }
@@ -337,6 +350,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -433,6 +447,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return searchProfucts(query);
   }
@@ -455,6 +470,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return searchProfucts?.call(query);
   }
@@ -477,6 +493,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (searchProfucts != null) {
@@ -506,6 +523,8 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return searchProfucts(this);
   }
@@ -530,6 +549,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return searchProfucts?.call(this);
   }
@@ -553,6 +573,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (searchProfucts != null) {
@@ -657,6 +678,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return searchProfuctsInfo(query);
   }
@@ -679,6 +701,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return searchProfuctsInfo?.call(query);
   }
@@ -701,6 +724,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (searchProfuctsInfo != null) {
@@ -730,6 +754,8 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return searchProfuctsInfo(this);
   }
@@ -754,6 +780,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return searchProfuctsInfo?.call(this);
   }
@@ -777,6 +804,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (searchProfuctsInfo != null) {
@@ -909,6 +937,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -931,6 +960,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -953,6 +983,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -982,6 +1013,8 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return selectFilter(this);
   }
@@ -1006,6 +1039,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return selectFilter?.call(this);
   }
@@ -1029,6 +1063,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -1165,6 +1200,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -1187,6 +1223,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -1209,6 +1246,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -1238,6 +1276,8 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return deleteFilter(this);
   }
@@ -1262,6 +1302,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return deleteFilter?.call(this);
   }
@@ -1285,6 +1326,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -1396,6 +1438,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return removeSelectFilterCategory(index);
   }
@@ -1418,6 +1461,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return removeSelectFilterCategory?.call(index);
   }
@@ -1440,6 +1484,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -1469,6 +1514,8 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return removeSelectFilterCategory(this);
   }
@@ -1493,6 +1540,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return removeSelectFilterCategory?.call(this);
   }
@@ -1516,6 +1564,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -1597,6 +1646,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return removeSelectAllFilters();
   }
@@ -1619,6 +1669,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return removeSelectAllFilters?.call();
   }
@@ -1641,6 +1692,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -1670,6 +1722,8 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return removeSelectAllFilters(this);
   }
@@ -1694,6 +1748,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return removeSelectAllFilters?.call(this);
   }
@@ -1717,6 +1772,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -1844,6 +1900,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -1866,6 +1923,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -1888,6 +1946,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -1917,6 +1976,8 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -1941,6 +2002,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -1964,6 +2026,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -2095,6 +2158,7 @@ class _$AddFavouriteProductSearchEventImpl
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -2117,6 +2181,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -2139,6 +2204,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2168,6 +2234,8 @@ class _$AddFavouriteProductSearchEventImpl
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return addFavouriteProduct(this);
   }
@@ -2192,6 +2260,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -2215,6 +2284,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2325,6 +2395,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -2347,6 +2418,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -2369,6 +2441,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2398,6 +2471,8 @@ class _$DeleteFavouriteProductSearchEventImpl
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -2422,6 +2497,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -2445,6 +2521,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2550,6 +2627,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return getInfoProduct(code);
   }
@@ -2572,6 +2650,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return getInfoProduct?.call(code);
   }
@@ -2594,6 +2673,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -2623,6 +2703,8 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return getInfoProduct(this);
   }
@@ -2647,6 +2729,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -2670,6 +2753,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -2750,6 +2834,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
   }) {
     return goBackProductInfo();
   }
@@ -2772,6 +2857,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
   }) {
     return goBackProductInfo?.call();
   }
@@ -2794,6 +2880,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -2823,6 +2910,8 @@ class _$GoBackProductInfoCategotySearchEventImpl
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
   }) {
     return goBackProductInfo(this);
   }
@@ -2847,6 +2936,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -2870,6 +2960,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -2882,6 +2973,207 @@ class _$GoBackProductInfoCategotySearchEventImpl
 abstract class GoBackProductInfoCategotySearchEvent implements SearchEvent {
   const factory GoBackProductInfoCategotySearchEvent() =
       _$GoBackProductInfoCategotySearchEventImpl;
+}
+
+/// @nodoc
+abstract class _$$PaginationProductSearchEventImplCopyWith<$Res> {
+  factory _$$PaginationProductSearchEventImplCopyWith(
+          _$PaginationProductSearchEventImpl value,
+          $Res Function(_$PaginationProductSearchEventImpl) then) =
+      __$$PaginationProductSearchEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaginationProductSearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$PaginationProductSearchEventImpl>
+    implements _$$PaginationProductSearchEventImplCopyWith<$Res> {
+  __$$PaginationProductSearchEventImplCopyWithImpl(
+      _$PaginationProductSearchEventImpl _value,
+      $Res Function(_$PaginationProductSearchEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PaginationProductSearchEventImpl
+    implements PaginationProductSearchEvent {
+  const _$PaginationProductSearchEventImpl();
+
+  @override
+  String toString() {
+    return 'SearchEvent.paginationProduct()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaginationProductSearchEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
+  }) {
+    return paginationProduct();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
+  }) {
+    return paginationProduct?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
+    required TResult orElse(),
+  }) {
+    if (paginationProduct != null) {
+      return paginationProduct();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
+  }) {
+    return paginationProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
+  }) {
+    return paginationProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
+    required TResult orElse(),
+  }) {
+    if (paginationProduct != null) {
+      return paginationProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaginationProductSearchEvent implements SearchEvent {
+  const factory PaginationProductSearchEvent() =
+      _$PaginationProductSearchEventImpl;
 }
 
 /// @nodoc
@@ -2906,6 +3198,8 @@ mixin _$SearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)
@@ -2932,6 +3226,8 @@ mixin _$SearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -2958,6 +3254,8 @@ mixin _$SearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3066,6 +3364,8 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)
@@ -3095,6 +3395,8 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3124,6 +3426,8 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3234,6 +3538,8 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)
@@ -3263,6 +3569,8 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3292,6 +3600,8 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3369,6 +3679,8 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       bool isLoading,
       CatalogSearchProductsRequest request,
       List<String> listProductsCode,
+      bool isAuth,
+      int offset,
       DetailProductDataModel? detailsProduct,
       List<ProductDataModel>? favouritesProducts,
       CatalogSearchInfoDataModel? searchResultInfo});
@@ -3406,6 +3718,8 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? request = null,
     Object? listProductsCode = null,
+    Object? isAuth = null,
+    Object? offset = null,
     Object? detailsProduct = freezed,
     Object? favouritesProducts = freezed,
     Object? searchResultInfo = freezed,
@@ -3471,6 +3785,14 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value._listProductsCode
           : listProductsCode // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isAuth: null == isAuth
+          ? _value.isAuth
+          : isAuth // ignore: cast_nullable_to_non_nullable
+              as bool,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
       detailsProduct: freezed == detailsProduct
           ? _value.detailsProduct
           : detailsProduct // ignore: cast_nullable_to_non_nullable
@@ -3541,6 +3863,8 @@ class _$SearchProductsResultSearchStateImpl
       required this.isLoading,
       required this.request,
       required final List<String> listProductsCode,
+      required this.isAuth,
+      required this.offset,
       this.detailsProduct,
       final List<ProductDataModel>? favouritesProducts,
       this.searchResultInfo})
@@ -3667,6 +3991,10 @@ class _$SearchProductsResultSearchStateImpl
   }
 
   @override
+  final bool isAuth;
+  @override
+  final int offset;
+  @override
   final DetailProductDataModel? detailsProduct;
   final List<ProductDataModel>? _favouritesProducts;
   @override
@@ -3684,7 +4012,7 @@ class _$SearchProductsResultSearchStateImpl
 
   @override
   String toString() {
-    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
+    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
   }
 
   @override
@@ -3718,6 +4046,8 @@ class _$SearchProductsResultSearchStateImpl
             (identical(other.request, request) || other.request == request) &&
             const DeepCollectionEquality()
                 .equals(other._listProductsCode, _listProductsCode) &&
+            (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
+            (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
             const DeepCollectionEquality()
@@ -3727,26 +4057,29 @@ class _$SearchProductsResultSearchStateImpl
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_searchDefaultProducts),
-      const DeepCollectionEquality().hash(_searchProducts),
-      const DeepCollectionEquality().hash(_products),
-      const DeepCollectionEquality().hash(_searchSections),
-      const DeepCollectionEquality().hash(_filter),
-      const DeepCollectionEquality().hash(_selectFilter),
-      const DeepCollectionEquality().hash(_allSelectFilter),
-      const DeepCollectionEquality().hash(_listProdcutsStyle),
-      const DeepCollectionEquality().hash(_listProdcutsAlso),
-      const DeepCollectionEquality().hash(_listProdcutsBrand),
-      const DeepCollectionEquality().hash(_favouritesProductsId),
-      query,
-      isLoading,
-      request,
-      const DeepCollectionEquality().hash(_listProductsCode),
-      detailsProduct,
-      const DeepCollectionEquality().hash(_favouritesProducts),
-      searchResultInfo);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(_searchDefaultProducts),
+        const DeepCollectionEquality().hash(_searchProducts),
+        const DeepCollectionEquality().hash(_products),
+        const DeepCollectionEquality().hash(_searchSections),
+        const DeepCollectionEquality().hash(_filter),
+        const DeepCollectionEquality().hash(_selectFilter),
+        const DeepCollectionEquality().hash(_allSelectFilter),
+        const DeepCollectionEquality().hash(_listProdcutsStyle),
+        const DeepCollectionEquality().hash(_listProdcutsAlso),
+        const DeepCollectionEquality().hash(_listProdcutsBrand),
+        const DeepCollectionEquality().hash(_favouritesProductsId),
+        query,
+        isLoading,
+        request,
+        const DeepCollectionEquality().hash(_listProductsCode),
+        isAuth,
+        offset,
+        detailsProduct,
+        const DeepCollectionEquality().hash(_favouritesProducts),
+        searchResultInfo
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -3777,6 +4110,8 @@ class _$SearchProductsResultSearchStateImpl
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)
@@ -3798,6 +4133,8 @@ class _$SearchProductsResultSearchStateImpl
         isLoading,
         request,
         listProductsCode,
+        isAuth,
+        offset,
         detailsProduct,
         favouritesProducts,
         searchResultInfo);
@@ -3824,6 +4161,8 @@ class _$SearchProductsResultSearchStateImpl
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3845,6 +4184,8 @@ class _$SearchProductsResultSearchStateImpl
         isLoading,
         request,
         listProductsCode,
+        isAuth,
+        offset,
         detailsProduct,
         favouritesProducts,
         searchResultInfo);
@@ -3871,6 +4212,8 @@ class _$SearchProductsResultSearchStateImpl
             bool isLoading,
             CatalogSearchProductsRequest request,
             List<String> listProductsCode,
+            bool isAuth,
+            int offset,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
             CatalogSearchInfoDataModel? searchResultInfo)?
@@ -3894,6 +4237,8 @@ class _$SearchProductsResultSearchStateImpl
           isLoading,
           request,
           listProductsCode,
+          isAuth,
+          offset,
           detailsProduct,
           favouritesProducts,
           searchResultInfo);
@@ -3956,6 +4301,8 @@ abstract class SearchProductsResultSearchState implements SearchState {
           required final bool isLoading,
           required final CatalogSearchProductsRequest request,
           required final List<String> listProductsCode,
+          required final bool isAuth,
+          required final int offset,
           final DetailProductDataModel? detailsProduct,
           final List<ProductDataModel>? favouritesProducts,
           final CatalogSearchInfoDataModel? searchResultInfo}) =
@@ -3976,6 +4323,8 @@ abstract class SearchProductsResultSearchState implements SearchState {
   bool get isLoading;
   CatalogSearchProductsRequest get request;
   List<String> get listProductsCode;
+  bool get isAuth;
+  int get offset;
   DetailProductDataModel? get detailsProduct;
   List<ProductDataModel>? get favouritesProducts;
   CatalogSearchInfoDataModel? get searchResultInfo;

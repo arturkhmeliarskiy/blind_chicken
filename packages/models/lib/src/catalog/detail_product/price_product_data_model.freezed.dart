@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PriceProductDataModel {
   String get p => throw _privateConstructorUsedError;
+  String get pc => throw _privateConstructorUsedError;
   String get pb => throw _privateConstructorUsedError;
   int get yourPrice => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ abstract class $PriceProductDataModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String p,
+      String pc,
       String pb,
       int yourPrice,
       int price,
@@ -64,6 +66,7 @@ class _$PriceProductDataModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? p = null,
+    Object? pc = null,
     Object? pb = null,
     Object? yourPrice = null,
     Object? price = null,
@@ -77,6 +80,10 @@ class _$PriceProductDataModelCopyWithImpl<$Res,
       p: null == p
           ? _value.p
           : p // ignore: cast_nullable_to_non_nullable
+              as String,
+      pc: null == pc
+          ? _value.pc
+          : pc // ignore: cast_nullable_to_non_nullable
               as String,
       pb: null == pb
           ? _value.pb
@@ -125,6 +132,7 @@ abstract class _$$PriceProductDataModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String p,
+      String pc,
       String pb,
       int yourPrice,
       int price,
@@ -148,6 +156,7 @@ class __$$PriceProductDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? p = null,
+    Object? pc = null,
     Object? pb = null,
     Object? yourPrice = null,
     Object? price = null,
@@ -161,6 +170,10 @@ class __$$PriceProductDataModelImplCopyWithImpl<$Res>
       p: null == p
           ? _value.p
           : p // ignore: cast_nullable_to_non_nullable
+              as String,
+      pc: null == pc
+          ? _value.pc
+          : pc // ignore: cast_nullable_to_non_nullable
               as String,
       pb: null == pb
           ? _value.pb
@@ -203,6 +216,7 @@ class __$$PriceProductDataModelImplCopyWithImpl<$Res>
 class _$PriceProductDataModelImpl extends _PriceProductDataModel {
   _$PriceProductDataModelImpl(
       {required this.p,
+      required this.pc,
       required this.pb,
       required this.yourPrice,
       required this.price,
@@ -215,6 +229,8 @@ class _$PriceProductDataModelImpl extends _PriceProductDataModel {
 
   @override
   final String p;
+  @override
+  final String pc;
   @override
   final String pb;
   @override
@@ -234,7 +250,7 @@ class _$PriceProductDataModelImpl extends _PriceProductDataModel {
 
   @override
   String toString() {
-    return 'PriceProductDataModel(p: $p, pb: $pb, yourPrice: $yourPrice, price: $price, cashback: $cashback, bonusLoyal: $bonusLoyal, bonusGift: $bonusGift, bonusYear: $bonusYear, discountVal: $discountVal)';
+    return 'PriceProductDataModel(p: $p, pc: $pc, pb: $pb, yourPrice: $yourPrice, price: $price, cashback: $cashback, bonusLoyal: $bonusLoyal, bonusGift: $bonusGift, bonusYear: $bonusYear, discountVal: $discountVal)';
   }
 
   @override
@@ -243,6 +259,7 @@ class _$PriceProductDataModelImpl extends _PriceProductDataModel {
         (other.runtimeType == runtimeType &&
             other is _$PriceProductDataModelImpl &&
             (identical(other.p, p) || other.p == p) &&
+            (identical(other.pc, pc) || other.pc == pc) &&
             (identical(other.pb, pb) || other.pb == pb) &&
             (identical(other.yourPrice, yourPrice) ||
                 other.yourPrice == yourPrice) &&
@@ -260,7 +277,7 @@ class _$PriceProductDataModelImpl extends _PriceProductDataModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, p, pb, yourPrice, price,
+  int get hashCode => Object.hash(runtimeType, p, pc, pb, yourPrice, price,
       cashback, bonusLoyal, bonusGift, bonusYear, discountVal);
 
   @JsonKey(ignore: true)
@@ -274,6 +291,7 @@ class _$PriceProductDataModelImpl extends _PriceProductDataModel {
 abstract class _PriceProductDataModel extends PriceProductDataModel {
   factory _PriceProductDataModel(
       {required final String p,
+      required final String pc,
       required final String pb,
       required final int yourPrice,
       required final int price,
@@ -286,6 +304,8 @@ abstract class _PriceProductDataModel extends PriceProductDataModel {
 
   @override
   String get p;
+  @override
+  String get pc;
   @override
   String get pb;
   @override

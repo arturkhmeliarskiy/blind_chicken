@@ -39,4 +39,5 @@ class SearchEvent with _$SearchEvent {
     required String code,
   }) = GetInfoProductSearchEvent;
   const factory SearchEvent.goBackProductInfo() = GoBackProductInfoCategotySearchEvent;
+  const factory SearchEvent.paginationProduct() = PaginationProductSearchEvent;
 }

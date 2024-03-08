@@ -9,9 +9,10 @@ class ProductDataModel with _$ProductDataModel {
   factory ProductDataModel({
     required int id,
     required String title,
-    required String catrgory,
+    required String category,
     required List<String> size,
     required int price,
+    required int pb,
     required int yourPrice,
     required String brend,
     required int lensDiameter,

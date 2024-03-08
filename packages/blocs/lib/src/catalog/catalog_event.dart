@@ -12,6 +12,7 @@ class CatalogEvent with _$CatalogEvent {
     required String u,
     required int pid,
     MenuItemDataModel? item,
+    int? selectedGenderIndex,
   }) = SubCategoryatalogEvent;
   const factory CatalogEvent.backPathMenu({
     required int idParent,
@@ -38,10 +39,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.deleteFavouriteProduct({
     required int index,
   }) = DeleteFavouriteProductCatalogEvent;
-  const factory CatalogEvent.paginationProduct({
-    required int offset,
-    required int limit,
-  }) = PaginationProductCatalogEvent;
+  const factory CatalogEvent.paginationProduct() = PaginationProductCatalogEvent;
   const factory CatalogEvent.searchBrand({
     required String query,
   }) = SearchBrandCatalogEvent;

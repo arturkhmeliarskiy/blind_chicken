@@ -38,7 +38,6 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<SharedPreferencesService>(),
         getIt.get<FavouritesRepository>(),
-        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
@@ -65,7 +64,6 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<OrdersRepository>(),
         getIt.get<BasketRepository>(),
         getIt.get<FavouritesRepository>(),
-        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(
@@ -73,7 +71,6 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<SharedPreferencesService>(),
         getIt.get<FavouritesRepository>(),
-        getIt.get<UpdateDataService>(),
       ),
     )
     ..registerFactory(

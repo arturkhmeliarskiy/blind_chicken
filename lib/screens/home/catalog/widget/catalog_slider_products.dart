@@ -26,8 +26,8 @@ class CatalogSliderProducts extends StatefulWidget {
 class _CatalogSliderProductsState extends State<CatalogSliderProducts> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 400,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 390, minHeight: 250),
       child: ListView.builder(
         itemCount: widget.listProducts.length,
         scrollDirection: Axis.horizontal,

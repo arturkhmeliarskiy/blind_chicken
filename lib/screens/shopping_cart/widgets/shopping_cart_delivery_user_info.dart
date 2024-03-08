@@ -123,25 +123,51 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                           );
                     },
                     onCity: (value) {
-                      city = BasketAddress(
-                        address: value.name,
-                        zip: value.zip.toString(),
-                        cityId: value.id,
-                      );
+                      final item = value;
+                      if (item != null) {
+                        city = BasketAddress(
+                          address: item.name,
+                          zip: item.zip.toString(),
+                          cityId: item.id,
+                        );
+                      } else {
+                        city = BasketAddress(
+                          address: '',
+                          zip: '',
+                          cityId: '',
+                        );
+                      }
                       widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onStreet: (value) {
-                      street = BasketAddress(
-                        address: '${value.typeShort}. ${value.name}',
-                        zip: value.zip.toString(),
-                      );
+                      final item = value;
+                      if (item != null) {
+                        street = BasketAddress(
+                          address: '${item.typeShort}. ${item.name}',
+                          zip: item.zip.toString(),
+                        );
+                        widget.onAddressDelivery(_address(city, street, house, flat));
+                      } else {
+                        street = BasketAddress(
+                          address: '',
+                          zip: '',
+                        );
+                      }
                       widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onHouse: (value) {
-                      house = BasketAddress(
-                        address: value.name,
-                        zip: value.zip.toString(),
-                      );
+                      final item = value;
+                      if (item != null) {
+                        house = BasketAddress(
+                          address: item.name,
+                          zip: item.zip.toString(),
+                        );
+                      } else {
+                        house = BasketAddress(
+                          address: '',
+                          zip: '',
+                        );
+                      }
                       widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onFlat: (value) {

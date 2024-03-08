@@ -7,6 +7,7 @@ class PriceProductDataModel with _$PriceProductDataModel {
   const PriceProductDataModel._();
   factory PriceProductDataModel({
     required String p,
+    required String pc,
     required String pb,
     required int yourPrice,
     required int price,

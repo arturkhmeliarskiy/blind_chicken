@@ -57,7 +57,7 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
     return InkWell(
       onTap: widget.onTap,
       child: SizedBox(
-        height: 520,
+        height: width * 4 / 3,
         width: width,
         child: Stack(
           children: [
@@ -74,8 +74,9 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                         imageUrl: 'https://slepayakurica.ru/${widget.listImages[index]}',
                         width: MediaQuery.of(context).orientation == Orientation.portrait
                             ? width
-                            : width / 2,
-                        fit: BoxFit.fill,
+                            : width,
+                        height: width * 4 / 3,
+                        fit: BoxFit.cover,
                         imageBuilder: (context, imageProvider) => PhotoView(
                           tightMode: true,
                           imageProvider: imageProvider,

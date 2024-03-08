@@ -20,6 +20,8 @@ class SearchState with _$SearchState {
     required bool isLoading,
     required CatalogSearchProductsRequest request,
     required List<String> listProductsCode,
+    required bool isAuth,
+    required int offset,
     DetailProductDataModel? detailsProduct,
     List<ProductDataModel>? favouritesProducts,
     CatalogSearchInfoDataModel? searchResultInfo,

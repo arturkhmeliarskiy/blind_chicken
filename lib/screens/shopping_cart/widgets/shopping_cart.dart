@@ -15,12 +15,14 @@ class ShoppingCart extends StatefulWidget {
     required this.updateProduct,
     required this.count,
     required this.price,
+    required this.isAuth,
   });
 
   final BasketFullInfoItemDataModel item;
   final bool isBordrerBottom;
   final int count;
   final int price;
+  final bool isAuth;
   final ValueChanged<BasketInfoItemDataModel> removeProduct;
   final VoidCallback onSelectCard;
   final ValueChanged<BasketInfoItemDataModel> updateProduct;
@@ -32,8 +34,6 @@ class ShoppingCart extends StatefulWidget {
 class _ShoppingCartState extends State<ShoppingCart> {
   int count = 1;
   int price = 0;
-  final int _discount = 2000;
-  final bool _isAuth = false;
 
   @override
   void initState() {
@@ -84,18 +84,26 @@ class _ShoppingCartState extends State<ShoppingCart> {
                           const SizedBox(
                             width: 5,
                           ),
-                          if (!_isAuth)
+                          if (widget.item.data.basePrice > price)
                             Text(
-                              '${'${price - _discount}'.spaceSeparateNumbers()} ₽',
+                              '${widget.item.data.basePrice.toString().spaceSeparateNumbers()} ₽',
                               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     decoration: TextDecoration.lineThrough,
                                   ),
                             ),
                         ],
                       ),
-                      if (!_isAuth)
+                      if (widget.item.data.loyaltyDiscount1 > 0)
                         Text(
-                          'Ваша скидка $_discount ₽',
+                          'Ваша скидка ${(widget.item.data.loyaltyDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
+                          style: Theme.of(context).textTheme.displaySmall,
+                        ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      if (widget.item.data.promoDiscount1 > 0)
+                        Text(
+                          'Промоскидка ${(widget.item.data.promoDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       const SizedBox(
@@ -107,12 +115,16 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               fontWeight: FontWeight.w700,
                             ),
                       ),
-                      const SizedBox(
-                        height: 3,
-                      ),
                       Text(
                         widget.item.data.category.n,
                         style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      const SizedBox(
+                        height: 7,
+                      ),
+                      Text(
+                        widget.item.skuName,
+                        style: Theme.of(context).textTheme.headline2,
                       ),
                     ],
                   ),

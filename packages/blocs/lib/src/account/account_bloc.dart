@@ -18,7 +18,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final OrdersRepository _ordersRepository;
   final BasketRepository _basketRepository;
   final FavouritesRepository _favouritesRepository;
-  final UpdateDataService _updateDataService;
 
   AccountBloc(
     this._catalogRepository,
@@ -27,7 +26,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._ordersRepository,
     this._basketRepository,
     this._favouritesRepository,
-    this._updateDataService,
   ) : super(const AccountState.init()) {
     on<AccountEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -81,6 +79,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       listProdcutsAlso: [],
       listProdcutsBrand: [],
       favouritesProductsId: favouritesProductsId,
+      isAuth: isAuth,
     ));
   }
 
@@ -152,6 +151,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     emit(const AccountState.load());
 
     final orderInfo = await _ordersRepository.getOrderInfo(id: event.id);
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
 
     emit(AccountState.preloadDataCompleted(
       phone: '',
@@ -166,6 +169,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       listProdcutsAlso: [],
       listProdcutsBrand: [],
       favouritesProductsId: [],
+      isAuth: isAuth,
     ));
   }
 
@@ -206,7 +210,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: _updateDataService.selectedIndexGender,
+        genderIndex: '',
       );
 
       final additionalProductsDescriptionStyle =
@@ -254,7 +258,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         emit(const AccountState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: _updateDataService.selectedIndexGender,
+          genderIndex: '',
         );
 
         final additionalProductsDescriptionStyle =

@@ -21,8 +21,7 @@ class SaleScreen extends StatefulWidget {
 class _SaleScreenState extends State<SaleScreen> {
   String _selectSortItem = 'Сначала новинки';
   final ScrollController _scrollController = ScrollController();
-  int offset = 0;
-  int perOffset = 10;
+
   bool isLoading = false;
   List<String> listItems = [
     'Очки',
@@ -45,9 +44,8 @@ class _SaleScreenState extends State<SaleScreen> {
       await Future<void>.delayed(const Duration(seconds: 2), () {
         setState(() {
           isLoading = false;
-          offset = offset + perOffset;
-          context.read<CatalogBloc>().add(CatalogEvent.paginationProduct(offset: offset, limit: 0));
-          log(offset.toString());
+
+          context.read<CatalogBloc>().add(const CatalogEvent.paginationProduct());
         });
       });
     }
@@ -332,6 +330,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                         ),
                                       );
                                 },
+                                pb: initState.favouritesProducts[index].pb,
                                 onDeleteFavouriteProduct: () {
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.deleteFavouriteProduct(
@@ -353,7 +352,7 @@ class _SaleScreenState extends State<SaleScreen> {
                                 },
                                 imageUrl: initState.products[index].images[0],
                                 brend: initState.products[index].brend,
-                                catrgory: initState.products[index].catrgory,
+                                category: initState.products[index].category,
                                 isYourPriceDisplayed:
                                     initState.products[index].isYourPriceDisplayed,
                                 yourPrice: initState.products[index].yourPrice.toString(),

@@ -13,10 +13,10 @@ class MainCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      height: 280.5,
+      height: width * 3 / 4,
       margin: const EdgeInsets.only(
-        top: 14,
         left: 14,
         right: 14,
       ),

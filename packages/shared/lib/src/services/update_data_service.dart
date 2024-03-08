@@ -1,15 +1,15 @@
 import 'package:models/models.dart';
 
 class UpdateDataService {
-  String? _selectedIndexGender;
+  int? _selectedIndexGender;
   List<PaymentItemDataModel>? _payments;
   List<BoutiqueDataModel>? _boutiques;
 
-  String get selectedIndexGender {
-    return _selectedIndexGender ?? '';
+  int get selectedIndexGender {
+    return _selectedIndexGender ?? 1;
   }
 
-  set selectedIndexGender(String value) {
+  set selectedIndexGender(int value) {
     _selectedIndexGender = value;
   }
 

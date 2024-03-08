@@ -96,7 +96,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
               onMoreDetailed: () {
                 context.read<BoutiquesBloc>().add(
                       BoutiquesEvent.getInfoBoutique(
-                        uid: boutiques.first.uidStore,
+                        uid: boutiques[index].uidStore,
                       ),
                     );
                 context.navigateTo(
@@ -457,7 +457,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
               boutique: boutiques[i],
               onMoreDetailed: () {
                 context.read<BoutiquesBloc>().add(
-                      BoutiquesEvent.getInfoBoutique(uid: boutiques.first.uidStore),
+                      BoutiquesEvent.getInfoBoutique(uid: boutiques[i].uidStore),
                     );
                 context.navigateTo(
                   BoutiquesDescriptionRoute(

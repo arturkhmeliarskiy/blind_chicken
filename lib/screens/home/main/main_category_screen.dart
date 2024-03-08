@@ -36,6 +36,16 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
     super.initState();
   }
 
+  @override
+  void didUpdateWidget(covariant MainCategoryScreen oldWidget) {
+    _selectIndexType = widget.selectIndexType;
+
+    context.read<CatalogBloc>().add(
+          CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
+        );
+    super.didUpdateWidget(oldWidget);
+  }
+
   String checkGender(int indexType) {
     String result = '';
     switch (indexType) {
@@ -189,42 +199,30 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
             BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
               return state.maybeMap(
                 preloadDataCompleted: (initState) {
-                  return MediaQuery.removePadding(
-                    context: context,
-                    removeTop: true,
-                    child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3, // number of items in each row
-                          mainAxisSpacing: 1.0, // spacing between rows
-                          crossAxisSpacing: 1.0, // spacing between columns
-                          childAspectRatio: 0.65,
-                        ),
-                        itemCount: initState.category.length, // total number of items
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              context.read<CatalogBloc>().add(
-                                    CatalogEvent.getInfoProducts(
-                                      path: initState.category[index].pathMenu,
-                                    ),
-                                  );
-                              context.navigateTo(
-                                CatalogRoute(
-                                  title: initState.category[index].title,
+                  return Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 14,
+                    runSpacing: 14,
+                    children: List.generate(initState.category.length, (index) {
+                      return GestureDetector(
+                        onTap: () {
+                          context.read<CatalogBloc>().add(
+                                CatalogEvent.getInfoProducts(
+                                  path: initState.category[index].pathMenu,
                                 ),
                               );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 14),
-                              child: MainCategoryProductItem(
-                                image: initState.category[index].imagePath,
-                                title: initState.category[index].title,
-                              ),
+                          context.navigateTo(
+                            CatalogRoute(
+                              title: initState.category[index].title,
                             ),
                           );
-                        }),
+                        },
+                        child: MainCategoryProductItem(
+                          image: initState.category[index].imagePath,
+                          title: initState.category[index].title,
+                        ),
+                      );
+                    }),
                   );
                 },
                 orElse: () => const SizedBox(),

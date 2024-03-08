@@ -11,6 +11,7 @@ class SearchLocationScreen extends StatefulWidget {
   const SearchLocationScreen({
     super.key,
     required this.title,
+    required this.value,
     required this.contentType,
     required this.selectItem,
     this.cityId,
@@ -18,10 +19,11 @@ class SearchLocationScreen extends StatefulWidget {
   });
 
   final String title;
+  final String value;
   final String contentType;
   final String? cityId;
   final String? streetId;
-  final ValueChanged<SearchLocationInfoDataModel> selectItem;
+  final ValueChanged<SearchLocationInfoDataModel?> selectItem;
 
   @override
   State<SearchLocationScreen> createState() => _SearchLocationScreenState();
@@ -31,6 +33,12 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
   final TextEditingController _title = TextEditingController();
   bool _isLoading = false;
   final List<String> _searchResultCities = [];
+
+  @override
+  void initState() {
+    _title.text = widget.value;
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -108,6 +116,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                 });
                               });
                             },
+                            autofocus: true,
                             controller: _title,
                             cursorColor: BlindChickenColors.activeBorderTextField,
                             style: Theme.of(context).textTheme.displayMedium?.copyWith(
@@ -160,6 +169,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                           onTap: () {
                                             setState(() {
                                               _title.clear();
+                                              widget.selectItem(null);
                                             });
                                           },
                                           child: Padding(
@@ -244,7 +254,6 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
             ),
             BlindChickenCloseButton(
               onClose: () {
-                // widget.selectItem(_title.text);
                 context.popRoute();
               },
             ),

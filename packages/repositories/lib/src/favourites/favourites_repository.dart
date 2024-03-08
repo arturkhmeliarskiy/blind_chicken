@@ -98,7 +98,7 @@ extension on FavouritesCatalogInfoResponse {
                 title: item.n ?? '',
                 images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
                 brend: item.b ?? '',
-                catrgory: item.n ?? '',
+                category: item.n ?? '',
                 size: [],
                 lensDiameter: 0,
                 price: item.pbc ?? 0,
@@ -109,6 +109,7 @@ extension on FavouritesCatalogInfoResponse {
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                pb: int.parse(item.pb ?? '0'),
               ),
             ) ??
             [],

@@ -2683,6 +2683,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2708,6 +2709,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2733,6 +2735,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2846,6 +2849,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2874,6 +2878,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2902,6 +2907,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3018,6 +3024,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3046,6 +3053,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3074,6 +3082,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3217,6 +3226,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3245,6 +3255,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3273,6 +3284,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3360,6 +3372,7 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsStyle,
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
+      bool isAuth,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct,
       UserDataModel? user,
@@ -3395,6 +3408,7 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     Object? listProdcutsStyle = null,
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
+    Object? isAuth = null,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
     Object? user = freezed,
@@ -3445,6 +3459,10 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
           ? _value._listProdcutsBrand
           : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
+      isAuth: null == isAuth
+          ? _value.isAuth
+          : isAuth // ignore: cast_nullable_to_non_nullable
+              as bool,
       favouritesProductsInfo: freezed == favouritesProductsInfo
           ? _value.favouritesProductsInfo
           : favouritesProductsInfo // ignore: cast_nullable_to_non_nullable
@@ -3531,6 +3549,7 @@ class _$PreloadDataCompletedAccountStateImpl
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
+      required this.isAuth,
       this.favouritesProductsInfo,
       this.detailsProduct,
       this.user,
@@ -3614,6 +3633,8 @@ class _$PreloadDataCompletedAccountStateImpl
   }
 
   @override
+  final bool isAuth;
+  @override
   final FavouritesCatalogInfoDataModel? favouritesProductsInfo;
   @override
   final DetailProductDataModel? detailsProduct;
@@ -3624,7 +3645,7 @@ class _$PreloadDataCompletedAccountStateImpl
 
   @override
   String toString() {
-    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
+    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
   }
 
   @override
@@ -3650,6 +3671,7 @@ class _$PreloadDataCompletedAccountStateImpl
                 .equals(other._listProdcutsAlso, _listProdcutsAlso) &&
             const DeepCollectionEquality()
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
+            (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
                 other.favouritesProductsInfo == favouritesProductsInfo) &&
             (identical(other.detailsProduct, detailsProduct) ||
@@ -3673,6 +3695,7 @@ class _$PreloadDataCompletedAccountStateImpl
       const DeepCollectionEquality().hash(_listProdcutsStyle),
       const DeepCollectionEquality().hash(_listProdcutsAlso),
       const DeepCollectionEquality().hash(_listProdcutsBrand),
+      isAuth,
       favouritesProductsInfo,
       detailsProduct,
       user,
@@ -3704,6 +3727,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3723,6 +3747,7 @@ class _$PreloadDataCompletedAccountStateImpl
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        isAuth,
         favouritesProductsInfo,
         detailsProduct,
         user,
@@ -3747,6 +3772,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3766,6 +3792,7 @@ class _$PreloadDataCompletedAccountStateImpl
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        isAuth,
         favouritesProductsInfo,
         detailsProduct,
         user,
@@ -3790,6 +3817,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3811,6 +3839,7 @@ class _$PreloadDataCompletedAccountStateImpl
           listProdcutsStyle,
           listProdcutsAlso,
           listProdcutsBrand,
+          isAuth,
           favouritesProductsInfo,
           detailsProduct,
           user,
@@ -3876,6 +3905,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
           required final List<ProductDataModel> listProdcutsStyle,
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
+          required final bool isAuth,
           final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
           final DetailProductDataModel? detailsProduct,
           final UserDataModel? user,
@@ -3893,6 +3923,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   List<ProductDataModel> get listProdcutsStyle;
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
+  bool get isAuth;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;
   UserDataModel? get user;
@@ -3956,6 +3987,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3984,6 +4016,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4012,6 +4045,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,

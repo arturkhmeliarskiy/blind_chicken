@@ -35,4 +35,5 @@ class FavouritesEvent with _$FavouritesEvent {
     required String code,
   }) = GetInfoProductFavouritesEvent;
   const factory FavouritesEvent.goBackProductInfo() = GoBackProductInfoCategotyFavouritesEvent;
+  const factory FavouritesEvent.paginationProduct() = PaginationProductFavouritesEvent;
 }

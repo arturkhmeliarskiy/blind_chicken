@@ -18,18 +18,16 @@ class AccountScreen extends StatefulWidget {
 
 class _AccountScreenState extends State<AccountScreen> {
   @override
-  void initState() {
-    context.read<AccountBloc>().add(const AccountEvent.preloadData());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocListener<AccountBloc, AccountState>(
       listener: (context, state) {
         state.maybeMap(
           logOut: (value) {
-            context.navigateTo(const HomeAutoRouterRoute());
+            context.navigateTo(
+              const DashboardRoute(children: [
+                HomeAutoRouterRoute(),
+              ]),
+            );
           },
           orElse: () {},
         );
@@ -273,19 +271,20 @@ class _AccountScreenState extends State<AccountScreen> {
                                   ],
                                   typeValue: '%',
                                   firstSymbol: '',
+                                  userDiscount: initState.user?.discount ?? 0,
                                 );
                               })
                             else
-                              const BlindChickenDiscountScale(
+                              BlindChickenDiscountScale(
                                 isFirstFontWeight: true,
                                 indexCurrency: 0,
-                                listDiscount: [
+                                listDiscount: const [
                                   '0',
                                   '5',
                                   '10',
                                   '15',
                                 ],
-                                listPrice: [
+                                listPrice: const [
                                   'Покупки от',
                                   '10 000',
                                   '100 000',
@@ -293,6 +292,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 ],
                                 typeValue: '%',
                                 firstSymbol: '',
+                                userDiscount: initState.user?.discount ?? 0,
                               ),
                             const SizedBox(
                               height: 5,

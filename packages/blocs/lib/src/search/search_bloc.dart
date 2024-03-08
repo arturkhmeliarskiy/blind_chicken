@@ -14,13 +14,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final CatalogRepository _catalogRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final FavouritesRepository _favouritesRepository;
-  final UpdateDataService _updateDataService;
 
   SearchBloc(
     this._catalogRepository,
     this._sharedPreferencesService,
     this._favouritesRepository,
-    this._updateDataService,
   ) : super(const SearchState.init()) {
     on<SearchEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -36,6 +34,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         removeSelectAllFilters: (event) => _removeSelectAllFilters(event, emit),
         goBackProductInfo: (event) => _goBackProductInfo(event, emit),
         getInfoProduct: (event) => _getInfoProduct(event, emit),
+        paginationProduct: (event) => _paginationProduct(event, emit),
       ),
     );
   }
@@ -44,11 +43,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     InitSearchEvent event,
     Emitter<SearchState> emit,
   ) async {
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
     emit(
       SearchState.searchProductsResult(
         searchProducts: [],
         searchSections: [],
         products: [],
+        offset: 1,
         isLoading: false,
         searchDefaultProducts: [],
         filter: [],
@@ -62,6 +66,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         listProductsCode: [],
+        isAuth: isAuth,
       ),
     );
   }
@@ -432,6 +437,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           selectFilter: selectFilter,
           searchResultInfo: searchResultInfo,
           allSelectFilter: allSelectFilter,
+          offset: 1,
         ),
       );
     });
@@ -788,6 +794,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           products: listProducts,
           searchResultInfo: searchResultInfo,
           request: request,
+          offset: 1,
         ),
       );
     });
@@ -863,7 +870,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: _updateDataService.selectedIndexGender,
+        genderIndex: '1',
       );
 
       final additionalProductsDescriptionStyle =
@@ -912,7 +919,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(const SearchState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: _updateDataService.selectedIndexGender,
+          genderIndex: '1',
         );
 
         final additionalProductsDescriptionStyle =
@@ -941,6 +948,46 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           listProductsCode: listProductsCode,
         ));
       }
+    });
+  }
+
+  Future<void> _paginationProduct(
+    PaginationProductSearchEvent event,
+    Emitter<SearchState> emit,
+  ) async {
+    await state.mapOrNull(searchProductsResult: (initState) async {
+      CatalogSearchProductsRequest request = initState.request;
+      List<ProductDataModel> products = initState.products.toList();
+      List<int> favouritesProductsId = [];
+      request = request.copyWith(nav: 'page-${initState.offset + 1}');
+
+      final searchResultInfo = await _catalogRepository.searchProductsInfo(
+        request: request.copyWith(query: initState.query),
+      );
+
+      List<ProductDataModel> favouritesProducts = [];
+
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      if (isAuth) {
+        final result = await _favouritesRepository.getFavouritesProdcuts();
+        favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
+        log(result.toString());
+      } else {
+        favouritesProducts = _catalogRepository.getFavouritesProducts();
+        favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+      }
+
+      products = [...products, ...searchResultInfo.products];
+
+      emit(initState.copyWith(
+        favouritesProducts: favouritesProducts,
+        products: products,
+        favouritesProductsId: favouritesProductsId,
+        offset: initState.offset + 1,
+      ));
     });
   }
 }

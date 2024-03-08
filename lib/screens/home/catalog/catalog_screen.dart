@@ -30,8 +30,6 @@ class CatalogScreen extends StatefulWidget {
 class _CatalogScreenState extends State<CatalogScreen> {
   String _selectSortItem = 'Сначала новинки';
   final ScrollController _scrollController = ScrollController();
-  int offset = 1;
-  int perOffset = 1;
   bool isLoading = false;
 
   @override
@@ -48,9 +46,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
       await Future<void>.delayed(const Duration(seconds: 2), () {
         setState(() {
           isLoading = false;
-          offset = offset + perOffset;
-          context.read<CatalogBloc>().add(CatalogEvent.paginationProduct(offset: offset, limit: 0));
-          log(offset.toString());
+
+          context.read<CatalogBloc>().add(const CatalogEvent.paginationProduct());
         });
       });
     }
@@ -93,7 +90,6 @@ class _CatalogScreenState extends State<CatalogScreen> {
                             List<SectionItemDataModel> listItems = [
                               ...listPrev,
                               ...listNext,
-                              ...listThis
                             ];
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,13 +100,49 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                     padding: const EdgeInsets.only(
                                       left: 10.5,
                                     ),
+                                    width: MediaQuery.of(context).size.width,
                                     alignment: Alignment.center,
                                     child: Row(
                                       children: initState.catalogInfo?.breadcrumbs.map(
                                             (item) {
-                                              return Text(
-                                                '${item.name}  ',
-                                                style: Theme.of(context).textTheme.displaySmall,
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  if (item.name == 'Женщинам') {
+                                                    context.navigateTo(
+                                                      MainCategoryRoute(
+                                                        title: 'Женщинам',
+                                                        selectIndexType: 0,
+                                                      ),
+                                                    );
+                                                  } else if (item.name == 'Мужчинам') {
+                                                    context.navigateTo(
+                                                      MainCategoryRoute(
+                                                        title: 'Мужчинам',
+                                                        selectIndexType: 1,
+                                                      ),
+                                                    );
+                                                  } else if (item.name == 'Детям') {
+                                                    context.navigateTo(
+                                                      MainCategoryRoute(
+                                                        title: 'Детям',
+                                                        selectIndexType: 2,
+                                                      ),
+                                                    );
+                                                  } else {
+                                                    context.read<CatalogBloc>().add(
+                                                          CatalogEvent.getInfoProducts(
+                                                            path: item.value,
+                                                          ),
+                                                        );
+                                                    context.navigateTo(
+                                                      CatalogRoute(title: ''),
+                                                    );
+                                                  }
+                                                },
+                                                child: Text(
+                                                  '${item.name}  ',
+                                                  style: Theme.of(context).textTheme.displaySmall,
+                                                ),
                                               );
                                             },
                                           ).toList() ??
@@ -416,12 +448,13 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                       yourPrice: initState.products[index].yourPrice.toString(),
                                       imageUrl: initState.products[index].images[0],
                                       brend: initState.products[index].brend,
-                                      catrgory: initState.products[index].catrgory,
+                                      category: initState.products[index].category,
                                       price: initState.products[index].price.toString(),
                                       isYourPriceDisplayed:
                                           initState.products[index].isYourPriceDisplayed,
                                       maximumCashback:
                                           initState.products[index].maximumCashback.toString(),
+                                      pb: initState.products[index].pb,
                                     );
                                   }),
                                 ),

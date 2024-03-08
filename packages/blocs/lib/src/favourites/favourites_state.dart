@@ -16,6 +16,8 @@ class FavouritesState with _$FavouritesState {
     required List<ProductDataModel> listProdcutsStyle,
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
+    required bool isAuth,
+    required int offset,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,
   }) = ProductsFavouritesState;

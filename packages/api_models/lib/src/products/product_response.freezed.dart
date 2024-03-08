@@ -22,7 +22,7 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) {
 mixin _$ProductResponse {
   int? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
-  String? get catrgory => throw _privateConstructorUsedError;
+  String? get category => throw _privateConstructorUsedError;
   List<String>? get size => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get brend => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $ProductResponseCopyWith<$Res> {
   $Res call(
       {int? id,
       String? title,
-      String? catrgory,
+      String? category,
       List<String>? size,
       int? price,
       String? brend,
@@ -75,7 +75,7 @@ class _$ProductResponseCopyWithImpl<$Res, $Val extends ProductResponse>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
-    Object? catrgory = freezed,
+    Object? category = freezed,
     Object? size = freezed,
     Object? price = freezed,
     Object? brend = freezed,
@@ -94,9 +94,9 @@ class _$ProductResponseCopyWithImpl<$Res, $Val extends ProductResponse>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      catrgory: freezed == catrgory
-          ? _value.catrgory
-          : catrgory // ignore: cast_nullable_to_non_nullable
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String?,
       size: freezed == size
           ? _value.size
@@ -145,7 +145,7 @@ abstract class _$$ProductResponseImplCopyWith<$Res>
   $Res call(
       {int? id,
       String? title,
-      String? catrgory,
+      String? category,
       List<String>? size,
       int? price,
       String? brend,
@@ -169,7 +169,7 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
-    Object? catrgory = freezed,
+    Object? category = freezed,
     Object? size = freezed,
     Object? price = freezed,
     Object? brend = freezed,
@@ -188,9 +188,9 @@ class __$$ProductResponseImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      catrgory: freezed == catrgory
-          ? _value.catrgory
-          : catrgory // ignore: cast_nullable_to_non_nullable
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
               as String?,
       size: freezed == size
           ? _value._size
@@ -234,7 +234,7 @@ class _$ProductResponseImpl extends _ProductResponse {
   _$ProductResponseImpl(
       {this.id,
       this.title,
-      this.catrgory,
+      this.category,
       final List<String>? size,
       this.price,
       this.brend,
@@ -256,7 +256,7 @@ class _$ProductResponseImpl extends _ProductResponse {
   @override
   final String? title;
   @override
-  final String? catrgory;
+  final String? category;
   final List<String>? _size;
   @override
   List<String>? get size {
@@ -301,7 +301,7 @@ class _$ProductResponseImpl extends _ProductResponse {
 
   @override
   String toString() {
-    return 'ProductResponse(id: $id, title: $title, catrgory: $catrgory, size: $size, price: $price, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants)';
+    return 'ProductResponse(id: $id, title: $title, category: $category, size: $size, price: $price, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants)';
   }
 
   @override
@@ -311,8 +311,8 @@ class _$ProductResponseImpl extends _ProductResponse {
             other is _$ProductResponseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.catrgory, catrgory) ||
-                other.catrgory == catrgory) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             const DeepCollectionEquality().equals(other._size, _size) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.brend, brend) || other.brend == brend) &&
@@ -331,7 +331,7 @@ class _$ProductResponseImpl extends _ProductResponse {
       runtimeType,
       id,
       title,
-      catrgory,
+      category,
       const DeepCollectionEquality().hash(_size),
       price,
       brend,
@@ -360,7 +360,7 @@ abstract class _ProductResponse extends ProductResponse {
   factory _ProductResponse(
       {final int? id,
       final String? title,
-      final String? catrgory,
+      final String? category,
       final List<String>? size,
       final int? price,
       final String? brend,
@@ -379,7 +379,7 @@ abstract class _ProductResponse extends ProductResponse {
   @override
   String? get title;
   @override
-  String? get catrgory;
+  String? get category;
   @override
   List<String>? get size;
   @override

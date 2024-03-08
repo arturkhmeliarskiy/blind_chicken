@@ -30,9 +30,13 @@ mixin _$DetailProductDataModel {
   List<SectionsProductDataModel> get sections =>
       throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   int get art => throw _privateConstructorUsedError;
   int get userDiscount => throw _privateConstructorUsedError;
+  int get userBuyForNextDiscount => throw _privateConstructorUsedError;
+  int get userBuyForNextDiscountVal => throw _privateConstructorUsedError;
+  int get userNextDiscount => throw _privateConstructorUsedError;
   PriceProductDataModel get price => throw _privateConstructorUsedError;
   ProductDataModel get product => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
@@ -62,9 +66,13 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
       List<CharProductDataModel> char,
       List<SectionsProductDataModel> sections,
       String text,
+      String name,
       int quantity,
       int art,
       int userDiscount,
+      int userBuyForNextDiscount,
+      int userBuyForNextDiscountVal,
+      int userNextDiscount,
       PriceProductDataModel price,
       ProductDataModel product,
       String r,
@@ -104,9 +112,13 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     Object? char = null,
     Object? sections = null,
     Object? text = null,
+    Object? name = null,
     Object? quantity = null,
     Object? art = null,
     Object? userDiscount = null,
+    Object? userBuyForNextDiscount = null,
+    Object? userBuyForNextDiscountVal = null,
+    Object? userNextDiscount = null,
     Object? price = null,
     Object? product = null,
     Object? r = null,
@@ -161,6 +173,10 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -172,6 +188,18 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
+      userBuyForNextDiscount: null == userBuyForNextDiscount
+          ? _value.userBuyForNextDiscount
+          : userBuyForNextDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
+      userBuyForNextDiscountVal: null == userBuyForNextDiscountVal
+          ? _value.userBuyForNextDiscountVal
+          : userBuyForNextDiscountVal // ignore: cast_nullable_to_non_nullable
+              as int,
+      userNextDiscount: null == userNextDiscount
+          ? _value.userNextDiscount
+          : userNextDiscount // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
           ? _value.price
@@ -263,9 +291,13 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
       List<CharProductDataModel> char,
       List<SectionsProductDataModel> sections,
       String text,
+      String name,
       int quantity,
       int art,
       int userDiscount,
+      int userBuyForNextDiscount,
+      int userBuyForNextDiscountVal,
+      int userNextDiscount,
       PriceProductDataModel price,
       ProductDataModel product,
       String r,
@@ -310,9 +342,13 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
     Object? char = null,
     Object? sections = null,
     Object? text = null,
+    Object? name = null,
     Object? quantity = null,
     Object? art = null,
     Object? userDiscount = null,
+    Object? userBuyForNextDiscount = null,
+    Object? userBuyForNextDiscountVal = null,
+    Object? userNextDiscount = null,
     Object? price = null,
     Object? product = null,
     Object? r = null,
@@ -367,6 +403,10 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -378,6 +418,18 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
+      userBuyForNextDiscount: null == userBuyForNextDiscount
+          ? _value.userBuyForNextDiscount
+          : userBuyForNextDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
+      userBuyForNextDiscountVal: null == userBuyForNextDiscountVal
+          ? _value.userBuyForNextDiscountVal
+          : userBuyForNextDiscountVal // ignore: cast_nullable_to_non_nullable
+              as int,
+      userNextDiscount: null == userNextDiscount
+          ? _value.userNextDiscount
+          : userNextDiscount // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
           ? _value.price
@@ -415,9 +467,13 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
       required final List<CharProductDataModel> char,
       required final List<SectionsProductDataModel> sections,
       required this.text,
+      required this.name,
       required this.quantity,
       required this.art,
       required this.userDiscount,
+      required this.userBuyForNextDiscount,
+      required this.userBuyForNextDiscountVal,
+      required this.userNextDiscount,
       required this.price,
       required this.product,
       required this.r,
@@ -491,11 +547,19 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
   @override
   final String text;
   @override
+  final String name;
+  @override
   final int quantity;
   @override
   final int art;
   @override
   final int userDiscount;
+  @override
+  final int userBuyForNextDiscount;
+  @override
+  final int userBuyForNextDiscountVal;
+  @override
+  final int userNextDiscount;
   @override
   final PriceProductDataModel price;
   @override
@@ -507,7 +571,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
 
   @override
   String toString() {
-    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, quantity: $quantity, art: $art, userDiscount: $userDiscount, price: $price, product: $product, r: $r, e: $e)';
+    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e)';
   }
 
   @override
@@ -529,11 +593,19 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
             const DeepCollectionEquality().equals(other._char, _char) &&
             const DeepCollectionEquality().equals(other._sections, _sections) &&
             (identical(other.text, text) || other.text == text) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.art, art) || other.art == art) &&
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
+            (identical(other.userBuyForNextDiscount, userBuyForNextDiscount) ||
+                other.userBuyForNextDiscount == userBuyForNextDiscount) &&
+            (identical(other.userBuyForNextDiscountVal,
+                    userBuyForNextDiscountVal) ||
+                other.userBuyForNextDiscountVal == userBuyForNextDiscountVal) &&
+            (identical(other.userNextDiscount, userNextDiscount) ||
+                other.userNextDiscount == userNextDiscount) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.r, r) || other.r == r) &&
@@ -555,9 +627,13 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
         const DeepCollectionEquality().hash(_char),
         const DeepCollectionEquality().hash(_sections),
         text,
+        name,
         quantity,
         art,
         userDiscount,
+        userBuyForNextDiscount,
+        userBuyForNextDiscountVal,
+        userNextDiscount,
         price,
         product,
         r,
@@ -586,9 +662,13 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
       required final List<CharProductDataModel> char,
       required final List<SectionsProductDataModel> sections,
       required final String text,
+      required final String name,
       required final int quantity,
       required final int art,
       required final int userDiscount,
+      required final int userBuyForNextDiscount,
+      required final int userBuyForNextDiscountVal,
+      required final int userNextDiscount,
       required final PriceProductDataModel price,
       required final ProductDataModel product,
       required final String r,
@@ -620,11 +700,19 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   @override
   String get text;
   @override
+  String get name;
+  @override
   int get quantity;
   @override
   int get art;
   @override
   int get userDiscount;
+  @override
+  int get userBuyForNextDiscount;
+  @override
+  int get userBuyForNextDiscountVal;
+  @override
+  int get userNextDiscount;
   @override
   PriceProductDataModel get price;
   @override

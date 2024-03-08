@@ -5,10 +5,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
 import 'package:blocs/blocs.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -29,6 +31,16 @@ class _DashboardPageState extends State<DashboardPage> {
   Timer? _timer;
 
   @override
+  void initState() {
+    InternetConnection().onStatusChange.listen((value) {
+      if (value != InternetStatus.connected) {
+        context.navigateTo(const NoInternetRoute());
+      }
+    });
+    super.initState();
+  }
+
+  @override
   void dispose() {
     _timer?.cancel(); //cancel the timer here
     super.dispose();
@@ -44,9 +56,14 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Future<void> _launchWhatsapp(String phoneNumber) async {
     var whatsapp = "+$phoneNumber";
-    var whatsappAndroid = Uri.parse("whatsapp://send?phone=$whatsapp&text=hello");
-    if (await canLaunchUrl(whatsappAndroid)) {
-      await launchUrl(whatsappAndroid);
+    var whatsappAndroid = Uri.parse("whatsapp://send?phone=$whatsapp&text=Здравствуйте");
+    var iosUrl = Uri.parse("https://wa.me/$whatsapp?text=Здравствуйте");
+    if (await canLaunchUrl(whatsappAndroid) || await canLaunchUrl(iosUrl)) {
+      if (Platform.isIOS) {
+        await launchUrl(iosUrl);
+      } else {
+        await launchUrl(whatsappAndroid);
+      }
     } else {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
@@ -129,7 +146,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           _makePhoneCall(listItems[index].title);
                           context.navigateNamedTo('/dashboard/home/${listItems[index].route}');
                         } else if (listItems[index].route == 'WhatsApp') {
-                          _launchWhatsapp('8 (800) 500-53-29');
+                          _launchWhatsapp('88005005329');
                         } else {
                           context.navigateNamedTo(listItems[index].route);
                         }
@@ -169,7 +186,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
-        MainRoute(),
+        HomeAutoRouterRoute(),
         LoginRoute(),
         ShoppingCartAutoRouterRoute(),
         FavouritesRoute(),
@@ -245,19 +262,26 @@ class _DashboardPageState extends State<DashboardPage> {
                 //     ),
                 //   );
                 // }
-                context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
-                context.navigateTo(
-                  const HomeAutoRouterRoute(
-                    children: [
-                      CategoryRoute(),
-                    ],
-                  ),
-                );
+                if (mounted) {
+                  context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                  context.navigateTo(
+                    const HomeAutoRouterRoute(
+                      children: [
+                        CategoryRoute(),
+                      ],
+                    ),
+                  );
+                }
               } else if (index == 1) {
                 final shared = GetIt.I.get<SharedPreferencesService>();
                 final userAuthorized = shared.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
                 if (userAuthorized) {
-                  context.pushRoute(const AccountRoute());
+                  context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                  context.navigateTo(const LoginRoute(
+                    children: [
+                      AccountRoute(),
+                    ],
+                  ));
                 } else {
                   context.read<LoginBloc>().add(const LoginEvent.init());
                   showDialog(

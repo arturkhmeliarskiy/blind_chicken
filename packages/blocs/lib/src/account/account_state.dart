@@ -19,6 +19,7 @@ class AccountState with _$AccountState {
     required List<ProductDataModel> listProdcutsStyle,
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
+    required bool isAuth,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,
     UserDataModel? user,

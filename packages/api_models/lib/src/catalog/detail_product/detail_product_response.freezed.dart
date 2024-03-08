@@ -40,9 +40,17 @@ mixin _$DetailProductResponse {
   List<SectionsProductResponse>? get sections =>
       throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
   int? get art => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_discount')
   int? get userDiscount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_buy_for_next_discount')
+  int? get userBuyForNextDiscount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_buy_for_next_discount_val')
+  int? get userBuyForNextDiscountVal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_next_discount')
+  int? get userNextDiscount => throw _privateConstructorUsedError;
   PriceProductResponse? get price => throw _privateConstructorUsedError;
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
@@ -77,9 +85,14 @@ abstract class $DetailProductResponseCopyWith<$Res> {
       @JsonKey(name: 'sections', fromJson: _convertSections)
       List<SectionsProductResponse>? sections,
       String? text,
+      String? name,
       int? quantity,
       int? art,
-      int? userDiscount,
+      @JsonKey(name: 'user_discount') int? userDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount') int? userBuyForNextDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount_val')
+      int? userBuyForNextDiscountVal,
+      @JsonKey(name: 'user_next_discount') int? userNextDiscount,
       PriceProductResponse? price,
       String? r,
       String? e});
@@ -117,9 +130,13 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     Object? char = freezed,
     Object? sections = freezed,
     Object? text = freezed,
+    Object? name = freezed,
     Object? quantity = freezed,
     Object? art = freezed,
     Object? userDiscount = freezed,
+    Object? userBuyForNextDiscount = freezed,
+    Object? userBuyForNextDiscountVal = freezed,
+    Object? userNextDiscount = freezed,
     Object? price = freezed,
     Object? r = freezed,
     Object? e = freezed,
@@ -173,6 +190,10 @@ class _$DetailProductResponseCopyWithImpl<$Res,
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -184,6 +205,18 @@ class _$DetailProductResponseCopyWithImpl<$Res,
       userDiscount: freezed == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userBuyForNextDiscount: freezed == userBuyForNextDiscount
+          ? _value.userBuyForNextDiscount
+          : userBuyForNextDiscount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userBuyForNextDiscountVal: freezed == userBuyForNextDiscountVal
+          ? _value.userBuyForNextDiscountVal
+          : userBuyForNextDiscountVal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userNextDiscount: freezed == userNextDiscount
+          ? _value.userNextDiscount
+          : userNextDiscount // ignore: cast_nullable_to_non_nullable
               as int?,
       price: freezed == price
           ? _value.price
@@ -288,9 +321,14 @@ abstract class _$$DetailProductResponseImplCopyWith<$Res>
       @JsonKey(name: 'sections', fromJson: _convertSections)
       List<SectionsProductResponse>? sections,
       String? text,
+      String? name,
       int? quantity,
       int? art,
-      int? userDiscount,
+      @JsonKey(name: 'user_discount') int? userDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount') int? userBuyForNextDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount_val')
+      int? userBuyForNextDiscountVal,
+      @JsonKey(name: 'user_next_discount') int? userNextDiscount,
       PriceProductResponse? price,
       String? r,
       String? e});
@@ -331,9 +369,13 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
     Object? char = freezed,
     Object? sections = freezed,
     Object? text = freezed,
+    Object? name = freezed,
     Object? quantity = freezed,
     Object? art = freezed,
     Object? userDiscount = freezed,
+    Object? userBuyForNextDiscount = freezed,
+    Object? userBuyForNextDiscountVal = freezed,
+    Object? userNextDiscount = freezed,
     Object? price = freezed,
     Object? r = freezed,
     Object? e = freezed,
@@ -387,6 +429,10 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -398,6 +444,18 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
       userDiscount: freezed == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userBuyForNextDiscount: freezed == userBuyForNextDiscount
+          ? _value.userBuyForNextDiscount
+          : userBuyForNextDiscount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userBuyForNextDiscountVal: freezed == userBuyForNextDiscountVal
+          ? _value.userBuyForNextDiscountVal
+          : userBuyForNextDiscountVal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userNextDiscount: freezed == userNextDiscount
+          ? _value.userNextDiscount
+          : userNextDiscount // ignore: cast_nullable_to_non_nullable
               as int?,
       price: freezed == price
           ? _value.price
@@ -436,9 +494,14 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
       @JsonKey(name: 'sections', fromJson: _convertSections)
       final List<SectionsProductResponse>? sections,
       this.text,
+      this.name,
       this.quantity,
       this.art,
-      this.userDiscount,
+      @JsonKey(name: 'user_discount') this.userDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount') this.userBuyForNextDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount_val')
+      this.userBuyForNextDiscountVal,
+      @JsonKey(name: 'user_next_discount') this.userNextDiscount,
       this.price,
       this.r,
       this.e})
@@ -531,11 +594,23 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
   @override
   final String? text;
   @override
+  final String? name;
+  @override
   final int? quantity;
   @override
   final int? art;
   @override
+  @JsonKey(name: 'user_discount')
   final int? userDiscount;
+  @override
+  @JsonKey(name: 'user_buy_for_next_discount')
+  final int? userBuyForNextDiscount;
+  @override
+  @JsonKey(name: 'user_buy_for_next_discount_val')
+  final int? userBuyForNextDiscountVal;
+  @override
+  @JsonKey(name: 'user_next_discount')
+  final int? userNextDiscount;
   @override
   final PriceProductResponse? price;
   @override
@@ -545,7 +620,7 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
 
   @override
   String toString() {
-    return 'DetailProductResponse(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, quantity: $quantity, art: $art, userDiscount: $userDiscount, price: $price, r: $r, e: $e)';
+    return 'DetailProductResponse(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, r: $r, e: $e)';
   }
 
   @override
@@ -567,11 +642,19 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
             const DeepCollectionEquality().equals(other._char, _char) &&
             const DeepCollectionEquality().equals(other._sections, _sections) &&
             (identical(other.text, text) || other.text == text) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.art, art) || other.art == art) &&
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
+            (identical(other.userBuyForNextDiscount, userBuyForNextDiscount) ||
+                other.userBuyForNextDiscount == userBuyForNextDiscount) &&
+            (identical(other.userBuyForNextDiscountVal,
+                    userBuyForNextDiscountVal) ||
+                other.userBuyForNextDiscountVal == userBuyForNextDiscountVal) &&
+            (identical(other.userNextDiscount, userNextDiscount) ||
+                other.userNextDiscount == userNextDiscount) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e));
@@ -579,26 +662,31 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      code,
-      photo,
-      const DeepCollectionEquality().hash(_breadcrumb),
-      brand,
-      category,
-      const DeepCollectionEquality().hash(_option),
-      const DeepCollectionEquality().hash(_sku),
-      const DeepCollectionEquality().hash(_stock),
-      place,
-      const DeepCollectionEquality().hash(_char),
-      const DeepCollectionEquality().hash(_sections),
-      text,
-      quantity,
-      art,
-      userDiscount,
-      price,
-      r,
-      e);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        code,
+        photo,
+        const DeepCollectionEquality().hash(_breadcrumb),
+        brand,
+        category,
+        const DeepCollectionEquality().hash(_option),
+        const DeepCollectionEquality().hash(_sku),
+        const DeepCollectionEquality().hash(_stock),
+        place,
+        const DeepCollectionEquality().hash(_char),
+        const DeepCollectionEquality().hash(_sections),
+        text,
+        name,
+        quantity,
+        art,
+        userDiscount,
+        userBuyForNextDiscount,
+        userBuyForNextDiscountVal,
+        userNextDiscount,
+        price,
+        r,
+        e
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -634,9 +722,15 @@ abstract class _DetailProductResponse extends DetailProductResponse {
       @JsonKey(name: 'sections', fromJson: _convertSections)
       final List<SectionsProductResponse>? sections,
       final String? text,
+      final String? name,
       final int? quantity,
       final int? art,
-      final int? userDiscount,
+      @JsonKey(name: 'user_discount') final int? userDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount')
+      final int? userBuyForNextDiscount,
+      @JsonKey(name: 'user_buy_for_next_discount_val')
+      final int? userBuyForNextDiscountVal,
+      @JsonKey(name: 'user_next_discount') final int? userNextDiscount,
       final PriceProductResponse? price,
       final String? r,
       final String? e}) = _$DetailProductResponseImpl;
@@ -675,11 +769,23 @@ abstract class _DetailProductResponse extends DetailProductResponse {
   @override
   String? get text;
   @override
+  String? get name;
+  @override
   int? get quantity;
   @override
   int? get art;
   @override
+  @JsonKey(name: 'user_discount')
   int? get userDiscount;
+  @override
+  @JsonKey(name: 'user_buy_for_next_discount')
+  int? get userBuyForNextDiscount;
+  @override
+  @JsonKey(name: 'user_buy_for_next_discount_val')
+  int? get userBuyForNextDiscountVal;
+  @override
+  @JsonKey(name: 'user_next_discount')
+  int? get userNextDiscount;
   @override
   PriceProductResponse? get price;
   @override

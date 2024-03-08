@@ -10,6 +10,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
     required this.listPrice,
     this.indexCurrency = -1,
     this.isFirstFontWeight = false,
+    required this.userDiscount,
   });
 
   final List<String> listDiscount;
@@ -17,6 +18,7 @@ class BlindChickenDiscountScale extends StatelessWidget {
   final String typeValue;
   final String firstSymbol;
   final int indexCurrency;
+  final int userDiscount;
   final bool isFirstFontWeight;
 
   @override
@@ -73,18 +75,24 @@ class BlindChickenDiscountScale extends StatelessWidget {
                   Container(
                     width: 5,
                     height: 4,
-                    color: Colors.black,
+                    color: userDiscount >= int.parse(listDiscount[index].replaceAll(' ', ''))
+                        ? BlindChickenColors.activeBorderTextField
+                        : BlindChickenColors.borderInput,
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.20 - 5,
                     height: 4,
-                    color: BlindChickenColors.backgroundColorItemFilter,
+                    color: userDiscount >= int.parse(listDiscount[index + 1])
+                        ? BlindChickenColors.activeBorderTextField
+                        : BlindChickenColors.backgroundColorItemFilter,
                   ),
                   if (index == listDiscount.length - 2)
                     Container(
                       width: 5,
                       height: 4,
-                      color: Colors.black,
+                      color: userDiscount >= int.parse(listDiscount[index + 1])
+                          ? BlindChickenColors.activeBorderTextField
+                          : BlindChickenColors.borderInput,
                     ),
                 ],
               );

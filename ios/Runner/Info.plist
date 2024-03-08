@@ -38,10 +38,12 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>It is necessary to obtain a location to measure the distance to the boutique</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Access to the user&apos;s geolocation is required to display the current location</string>
+	<string>To display the current location, access to the user's geolocation is required to get the distance to the boutique</string>
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>Your location is required for xyz benefits for you</string>
+    <string>It is necessary to determine the distance to the nearest store</string>
 	<key>NSMotionUsageDescription</key>
     <string>motion</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

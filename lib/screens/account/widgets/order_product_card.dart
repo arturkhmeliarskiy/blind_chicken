@@ -98,7 +98,7 @@ class _OrderProductCardState extends State<OrderProductCard> {
                         height: 3,
                       ),
                       Text(
-                        widget.product.catrgory,
+                        widget.product.category,
                         style: Theme.of(context).textTheme.displayMedium,
                       ),
                     ],

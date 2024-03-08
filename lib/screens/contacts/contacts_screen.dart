@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,9 +16,14 @@ class ContactsScreen extends StatefulWidget {
 class _ContactsScreenState extends State<ContactsScreen> {
   Future<void> _launchWhatsapp(String phoneNumber) async {
     var whatsapp = "+$phoneNumber";
-    var whatsappAndroid = Uri.parse("whatsapp://send?phone=$whatsapp&text=hello");
-    if (await canLaunchUrl(whatsappAndroid)) {
-      await launchUrl(whatsappAndroid);
+    var whatsappAndroid = Uri.parse("whatsapp://send?phone=$whatsapp&text=Здравствуйте");
+    var iosUrl = Uri.parse("https://wa.me/$whatsapp?text=Здравствуйте");
+    if (await canLaunchUrl(whatsappAndroid) || await canLaunchUrl(iosUrl)) {
+      if (Platform.isIOS) {
+        await launchUrl(iosUrl);
+      } else {
+        await launchUrl(whatsappAndroid);
+      }
     } else {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
@@ -85,18 +91,18 @@ class _ContactsScreenState extends State<ContactsScreen> {
             ),
             child: Row(
               children: [
+                // BlindChickenBorderButton(
+                //   onTap: () {
+                //     context.navigateTo(const ChatMessangerRoute());
+                //   },
+                //   title: 'Открыть чат',
+                // ),
+                // const SizedBox(
+                //   width: 14,
+                // ),
                 BlindChickenBorderButton(
                   onTap: () {
-                    context.navigateTo(const ChatMessangerRoute());
-                  },
-                  title: 'Открыть чат',
-                ),
-                const SizedBox(
-                  width: 14,
-                ),
-                BlindChickenBorderButton(
-                  onTap: () {
-                    _launchWhatsapp('8 (800) 500-53-29');
+                    _launchWhatsapp('88005005329');
                   },
                   title: 'Написать в WhatsApp',
                 ),

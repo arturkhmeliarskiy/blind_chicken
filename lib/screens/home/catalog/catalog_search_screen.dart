@@ -183,40 +183,53 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                           children: List.generate(
                                             initState.searchSections.length,
                                             (index) {
-                                              return Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                  right: 10,
-                                                ),
-                                                padding: const EdgeInsets.only(
-                                                  top: 7,
-                                                  bottom: 7,
-                                                  left: 14,
-                                                  right: 14,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color:
-                                                      BlindChickenColors.backgroundColorItemFilter,
-                                                  borderRadius: BorderRadius.circular(16),
-                                                ),
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      initState.searchSections[index].n,
-                                                      style:
-                                                          Theme.of(context).textTheme.displayMedium,
-                                                    ),
-                                                    Text(
-                                                      initState.searchSections[index].g,
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .bodyMedium
-                                                          ?.copyWith(
-                                                            fontFamily: 'Roboto-Light',
-                                                          ),
-                                                    ),
-                                                  ],
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.getInfoProducts(
+                                                          path: initState.searchSections[index].u,
+                                                        ),
+                                                      );
+                                                  context.navigateTo(
+                                                    CatalogRoute(title: ''),
+                                                  );
+                                                },
+                                                child: Container(
+                                                  margin: const EdgeInsets.only(
+                                                    bottom: 10,
+                                                    right: 10,
+                                                  ),
+                                                  padding: const EdgeInsets.only(
+                                                    top: 7,
+                                                    bottom: 7,
+                                                    left: 14,
+                                                    right: 14,
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    color: BlindChickenColors
+                                                        .backgroundColorItemFilter,
+                                                    borderRadius: BorderRadius.circular(16),
+                                                  ),
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        initState.searchSections[index].n,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .displayMedium,
+                                                      ),
+                                                      Text(
+                                                        initState.searchSections[index].g,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyMedium
+                                                            ?.copyWith(
+                                                              fontFamily: 'Roboto-Light',
+                                                            ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               );
                                             },
@@ -290,6 +303,38 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                   product: initState.searchProducts[index],
                                                   isButton:
                                                       initState.searchProducts.length - 1 == index,
+                                                  onTap: () {
+                                                    context.read<ShoppingCartBloc>().add(
+                                                          const ShoppingCartEvent.preloadData(),
+                                                        );
+                                                    context.read<SearchBloc>().add(
+                                                          SearchEvent.getInfoProduct(
+                                                            code: initState.searchProducts[index].id
+                                                                .toString(),
+                                                          ),
+                                                        );
+                                                    context.navigateTo(
+                                                      CatalogSearchCardInfoRoute(
+                                                        isChildRoute: false,
+                                                        item: initState.searchProducts[index],
+                                                        isLike: initState.favouritesProductsId
+                                                            .contains(
+                                                                initState.searchProducts[index].id),
+                                                        listItems: initState.searchProducts,
+                                                        favouritesProducts:
+                                                            initState.favouritesProducts ?? [],
+                                                      ),
+                                                    );
+                                                  },
+                                                  onMoreInfo: () {
+                                                    context.read<SearchBloc>().add(
+                                                          SearchEvent.searchProfuctsInfo(
+                                                            _search.text,
+                                                          ),
+                                                        );
+                                                    context.navigateTo(
+                                                        const CatalogSearchResultRoute());
+                                                  },
                                                 ),
                                               ],
                                             );

@@ -7,7 +7,7 @@ class ProductFavouriteModel {
   ProductFavouriteModel({
     required this.id,
     required this.title,
-    required this.catrgory,
+    required this.category,
     required this.size,
     required this.price,
     required this.youPrice,
@@ -26,7 +26,7 @@ class ProductFavouriteModel {
   String title;
 
   @HiveField(2)
-  String catrgory;
+  String category;
 
   @HiveField(3)
   List<String> size;

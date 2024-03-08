@@ -12,30 +12,29 @@ class MainCategoryProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 183,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 153.84,
-            child: Image.asset(
-              'assets/images/$image.jpg',
-            ),
+    final width = MediaQuery.of(context).size.width;
+    return Column(
+      children: [
+        SizedBox(
+          width: width / 3 - 21,
+          height: (width / 3 - 21) * 4 / 3,
+          child: Image.asset(
+            'assets/images/$image.jpg',
           ),
-          const SizedBox(
-            height: 8,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.headline2?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
           ),
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.headline2?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }

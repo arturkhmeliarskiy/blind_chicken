@@ -221,7 +221,7 @@ extension on BasketFullInfoResponse {
                   product: ProductDataModel(
                     id: int.parse(item.code ?? '0'),
                     title: item.data?.nameView ?? '',
-                    catrgory: item.data?.category?.n ?? '',
+                    category: item.data?.category?.n ?? '',
                     size: [],
                     price: item.data?.price ?? 0,
                     yourPrice: item.data?.price ?? 0,
@@ -234,6 +234,7 @@ extension on BasketFullInfoResponse {
                     maximumCashback: 0,
                     maximumPersonalDiscount: 0,
                     isYourPriceDisplayed: false,
+                    pb: item.data?.price1 ?? 0,
                   ),
                 );
               },

@@ -9,7 +9,7 @@ class CatalogCardItem extends StatefulWidget {
     super.key,
     required this.imageUrl,
     required this.brend,
-    required this.catrgory,
+    required this.category,
     required this.yourPrice,
     required this.price,
     required this.maximumCashback,
@@ -18,13 +18,15 @@ class CatalogCardItem extends StatefulWidget {
     required this.onDeleteFavouriteProduct,
     required this.isLike,
     required this.isYourPriceDisplayed,
+    required this.pb,
   });
 
   final String imageUrl;
   final String brend;
-  final String catrgory;
+  final String category;
   final String yourPrice;
   final String price;
+  final int pb;
   final String maximumCashback;
   final bool isLike;
   final bool isYourPriceDisplayed;
@@ -69,9 +71,12 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                 CachedNetworkImage(
                   imageUrl: widget.imageUrl,
                   fit: BoxFit.fill,
-                  placeholder: (context, url) => const SizedBox(
-                    height: 230,
-                    child: LoadingImage(),
+                  width: MediaQuery.of(context).size.width / 2 - 21,
+                  height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                  placeholder: (context, url) => SizedBox(
+                    width: MediaQuery.of(context).size.width / 2 - 21,
+                    height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                    child: const LoadingImage(),
                   ),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
@@ -110,23 +115,49 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
               height: 4,
             ),
             Text(
-              widget.catrgory,
+              widget.category,
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const SizedBox(
               height: 8,
             ),
-            RichText(
-              text: TextSpan(
-                text: widget.price.spaceSeparateNumbers(),
-                style: Theme.of(context).textTheme.displayMedium,
-                children: <TextSpan>[
-                  TextSpan(
-                    text: ' ₽',
+            Row(
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: widget.price.spaceSeparateNumbers(),
                     style: Theme.of(context).textTheme.displayMedium,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' ₽',
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                if (widget.pb > int.parse(widget.price))
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        widget.pb.toString().spaceSeparateNumbers(),
+                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                      ),
+                      const Text(
+                        ' ₽',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 13,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      )
+                    ],
+                  ),
+              ],
             ),
             const SizedBox(
               height: 4,

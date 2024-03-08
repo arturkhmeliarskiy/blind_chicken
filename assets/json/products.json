@@ -3,7 +3,7 @@
         {
             "id": 0,
             "title": "Leisure Society",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["49"," 22", "145"],
             "price": 100950,
             "brend": "Leisure Society",
@@ -26,7 +26,7 @@
         {
             "id": 1,
             "title": "Charriol",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["58", "18", "145"],
             "price": 46000,
             "brend": "Charriol",
@@ -50,7 +50,7 @@
         {
             "id": 2,
             "title": "Charriol",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["57", "18", "145"],
             "price": 46000,
             "brend": "Charriol",
@@ -73,7 +73,7 @@
         {
             "id": 3,
             "title": "Linda Farrow",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["63", "17", "145"],
             "price": 155000,
             "brend": "Linda Farrow",
@@ -96,7 +96,7 @@
         {
             "id": 4,
             "title": "Linda Farrow",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["58", "19", "145"],
             "price": 99700,
             "brend": "Linda Farrow",
@@ -119,7 +119,7 @@
         {
             "id": 5,
             "title": "Saint Laurent",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["58", "19", "145"],
             "price": 86800,
             "brend": "Saint Laurent",
@@ -139,7 +139,7 @@
         {
             "id": 6,
             "title": "Saint Laurent",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["58", "19", "145"],
             "price": 46750,
             "brend": "Saint Laurent",
@@ -159,7 +159,7 @@
         {
             "id": 7,
             "title": "Seventh Street",
-            "catrgory": "Оправы",
+            "category": "Оправы",
             "size": ["58", "19", "145"],
             "price": 7050,
             "brend": "Seventh Street",
@@ -178,7 +178,7 @@
         {
             "id": 8,
             "title": "Isabel Marant",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["58", "19", "145"],
             "price": 27500,
             "brend": "Isabel Marant",
@@ -197,7 +197,7 @@
         {
             "id": 9,
             "title": "Gucci",
-            "catrgory": "Оправы",
+            "category": "Оправы",
             "size": ["58", "19", "140"],
             "price": 34450,
             "brend": "Gucci",
@@ -214,7 +214,7 @@
         {
             "id": 10,
             "title": "Dsquared2",
-            "catrgory": "Солнцезащитные очки",
+            "category": "Солнцезащитные очки",
             "size": ["58", "19", "140"],
             "price": 30150,
             "brend": "Dsquared2",

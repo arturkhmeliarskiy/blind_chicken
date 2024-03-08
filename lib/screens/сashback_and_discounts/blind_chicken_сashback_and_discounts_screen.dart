@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/widgets/blind_chicken_cashback_and_discounts_title.dart';
+import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/widgets/blind_chicken_discount_scale_static.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
-
-import 'widgets/blind_chicken_discount_scale.dart';
 
 @RoutePage()
 class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
@@ -153,11 +152,11 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const BlindChickenDiscountScale(
+          const BlindChickenDiscountScaleStatic(
             listDiscount: [
               '15 000',
-              '35 000',
-              '100 000',
+              '35000',
+              '100000',
             ],
             listPrice: [
               '300 000',
@@ -199,7 +198,7 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const BlindChickenDiscountScale(
+          const BlindChickenDiscountScaleStatic(
             indexCurrency: 0,
             listDiscount: [
               '0',

@@ -11,7 +11,7 @@ _$ProductResponseImpl _$$ProductResponseImplFromJson(
     _$ProductResponseImpl(
       id: json['id'] as int?,
       title: json['title'] as String?,
-      catrgory: json['catrgory'] as String?,
+      category: json['category'] as String?,
       size: (json['size'] as List<dynamic>?)?.map((e) => e as String).toList(),
       price: json['price'] as int?,
       brend: json['brend'] as String?,
@@ -30,7 +30,7 @@ Map<String, dynamic> _$$ProductResponseImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'catrgory': instance.catrgory,
+      'category': instance.category,
       'size': instance.size,
       'price': instance.price,
       'brend': instance.brend,

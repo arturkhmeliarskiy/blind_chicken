@@ -16,6 +16,36 @@ class FavouritesProductsScreen extends StatefulWidget {
 }
 
 class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
+  bool isLoading = false;
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_loadMoreData);
+  }
+
+  void _loadMoreData() async {
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      setState(() {
+        isLoading = true;
+      });
+      await Future<void>.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          isLoading = false;
+
+          context.read<FavouritesBloc>().add(const FavouritesEvent.paginationProduct());
+        });
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -26,6 +56,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
             child: AppBarBlindChicken(),
           ),
           body: SingleChildScrollView(
+            controller: _scrollController,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -193,6 +224,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                           (index) {
                                         return CatalogCardItem(
                                           isLike: true,
+                                          pb: initState.favouritesProducts[index].pb,
                                           onSelect: () {
                                             context.read<ShoppingCartBloc>().add(
                                                   const ShoppingCartEvent.preloadData(),
@@ -217,7 +249,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                               .favouritesProducts[index].isYourPriceDisplayed,
                                           imageUrl: initState.favouritesProducts[index].images[0],
                                           brend: initState.favouritesProducts[index].brend,
-                                          catrgory: initState.favouritesProducts[index].catrgory,
+                                          category: initState.favouritesProducts[index].category,
                                           yourPrice: initState.favouritesProducts[index].yourPrice
                                               .toString(),
                                           maximumCashback: initState
@@ -266,6 +298,16 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                     backgroundColor: Colors.grey.shade400,
                   ),
                 );
+              },
+              productsFavourites: (initState) {
+                return isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                          backgroundColor: Colors.grey.shade400,
+                        ),
+                      )
+                    : const SizedBox();
               },
               orElse: () => const SizedBox(),
             );
