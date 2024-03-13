@@ -26,4 +26,5 @@ class AccountState with _$AccountState {
     OrderInfoDataModel? orderInfo,
   }) = PreloadDataCompletedAccountState;
   const factory AccountState.logOut() = LogOutAccountState;
+  const factory AccountState.removeAccount() = RemoveAccountState;
 }

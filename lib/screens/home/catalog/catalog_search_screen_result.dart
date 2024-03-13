@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
@@ -21,6 +19,7 @@ class CatalogSearchResultScreen extends StatefulWidget {
 class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   final ScrollController _scrollController = ScrollController();
   bool isLoading = false;
+  double _historyPosition = 0.0;
 
   @override
   void initState() {
@@ -28,7 +27,14 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
     _scrollController.addListener(_loadMoreData);
   }
 
+  @override
+  void didUpdateWidget(covariant CatalogSearchResultScreen oldWidget) {
+    _scrollController.jumpTo(_historyPosition);
+    super.didUpdateWidget(oldWidget);
+  }
+
   void _loadMoreData() async {
+    _historyPosition = _scrollController.position.pixels;
     if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
       setState(() {
         isLoading = true;
@@ -53,14 +59,18 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: BlindChickenColors.backgroundColor,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
+    return WillPopScope(
+      onWillPop: () async {
+        return true;
+      },
+      child: Stack(
+        children: [
+          Scaffold(
+            backgroundColor: BlindChickenColors.backgroundColor,
+            body: SafeArea(
+              child: ListView(
+                controller: _scrollController,
+                cacheExtent: _historyPosition,
                 children: [
                   const AppBarBlindChicken(),
                   BlocBuilder<SearchBloc, SearchState>(
@@ -299,33 +309,33 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                 ],
               ),
             ),
-            BlocBuilder<SearchBloc, SearchState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  load: (value) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        backgroundColor: Colors.grey.shade400,
-                      ),
-                    );
-                  },
-                  searchProductsResult: (initState) {
-                    return isLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                              backgroundColor: Colors.grey.shade400,
-                            ),
-                          )
-                        : const SizedBox();
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
-            ),
-          ],
-        ),
+          ),
+          BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                load: (value) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      backgroundColor: Colors.grey.shade400,
+                    ),
+                  );
+                },
+                searchProductsResult: (initState) {
+                  return isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
+                            backgroundColor: Colors.grey.shade400,
+                          ),
+                        )
+                      : const SizedBox();
+                },
+                orElse: () => const SizedBox(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

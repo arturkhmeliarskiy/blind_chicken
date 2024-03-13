@@ -41,6 +41,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         goBackProductInfo: (event) => _goBackProductInfo(event, emit),
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
+        removeAccount: (event) => _removeAccount(event, emit),
       ),
     );
   }
@@ -198,6 +199,16 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     _catalogRepository.deleteAllShoppingProducts();
     _catalogRepository.deleteAllFavouritesProducts();
     emit(const AccountState.logOut());
+  }
+
+  Future<void> _removeAccount(
+    RemoveAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    _sharedPreferencesService.clear();
+    _catalogRepository.deleteAllShoppingProducts();
+    _catalogRepository.deleteAllFavouritesProducts();
+    emit(const AccountState.removeAccount());
   }
 
   Future<void> _getInfoProduct(

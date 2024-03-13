@@ -28,6 +28,7 @@ mixin _$AccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -45,6 +46,7 @@ mixin _$AccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -61,6 +63,7 @@ mixin _$AccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -80,6 +83,7 @@ mixin _$AccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -99,6 +103,7 @@ mixin _$AccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -118,6 +123,7 @@ mixin _$AccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -239,6 +245,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -259,6 +266,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -278,6 +286,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -303,6 +312,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -325,6 +335,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -347,6 +358,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -470,6 +482,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -490,6 +503,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -509,6 +523,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -534,6 +549,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -556,6 +572,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -578,6 +595,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -696,6 +714,7 @@ class _$PaginationOrdersAccountEventImpl
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -716,6 +735,7 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -735,6 +755,7 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -760,6 +781,7 @@ class _$PaginationOrdersAccountEventImpl
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -782,6 +804,7 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -804,6 +827,7 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -883,6 +907,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -903,6 +928,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -922,6 +948,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -947,6 +974,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -969,6 +997,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -991,6 +1020,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -1088,6 +1118,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -1108,6 +1139,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -1127,6 +1159,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -1152,6 +1185,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -1174,6 +1208,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -1196,6 +1231,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -1299,6 +1335,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -1319,6 +1356,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -1338,6 +1376,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -1363,6 +1402,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -1385,6 +1425,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -1407,6 +1448,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -1510,6 +1552,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -1530,6 +1573,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -1549,6 +1593,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -1574,6 +1619,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -1596,6 +1642,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -1618,6 +1665,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -1692,6 +1740,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -1712,6 +1761,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -1731,6 +1781,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -1756,6 +1807,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -1778,6 +1830,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -1800,6 +1853,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -1818,6 +1872,188 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
 
 abstract class LogOutAccountEvent implements AccountEvent {
   const factory LogOutAccountEvent() = _$LogOutAccountEventImpl;
+}
+
+/// @nodoc
+abstract class _$$RemoveAccountEventImplCopyWith<$Res> {
+  factory _$$RemoveAccountEventImplCopyWith(_$RemoveAccountEventImpl value,
+          $Res Function(_$RemoveAccountEventImpl) then) =
+      __$$RemoveAccountEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveAccountEventImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$RemoveAccountEventImpl>
+    implements _$$RemoveAccountEventImplCopyWith<$Res> {
+  __$$RemoveAccountEventImplCopyWithImpl(_$RemoveAccountEventImpl _value,
+      $Res Function(_$RemoveAccountEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveAccountEventImpl implements RemoveAccountEvent {
+  const _$RemoveAccountEventImpl();
+
+  @override
+  String toString() {
+    return 'AccountEvent.removeAccount()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoveAccountEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? phone, String? name, String? email)
+        preloadData,
+    required TResult Function(String? phone, String? name, String? email)
+        updateInfo,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() getOrders,
+    required TResult Function(String id) getInfoOrder,
+    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String idForPay) payOrder,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+  }) {
+    return removeAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? phone, String? name, String? email)? preloadData,
+    TResult? Function(String? phone, String? name, String? email)? updateInfo,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? getOrders,
+    TResult? Function(String id)? getInfoOrder,
+    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String idForPay)? payOrder,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+  }) {
+    return removeAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? phone, String? name, String? email)? preloadData,
+    TResult Function(String? phone, String? name, String? email)? updateInfo,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? getOrders,
+    TResult Function(String id)? getInfoOrder,
+    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String idForPay)? payOrder,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (removeAccount != null) {
+      return removeAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountEvent value) preloadData,
+    required TResult Function(UpdateInfoAccountEvent value) updateInfo,
+    required TResult Function(PaginationOrdersAccountEvent value)
+        paginationProduct,
+    required TResult Function(GetOrdersAccountEvent value) getOrders,
+    required TResult Function(GetInfoOrderAccountEvent value) getInfoOrder,
+    required TResult Function(GetInfoPayOrderAccountEvent value)
+        getInfoPayOrder,
+    required TResult Function(PayOrderAccountEvent value) payOrder,
+    required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
+    required TResult Function(AddFavouriteProductAccountEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductAccountEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyAccountEvent value)
+        goBackProductInfo,
+  }) {
+    return removeAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountEvent value)? preloadData,
+    TResult? Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult? Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult? Function(GetOrdersAccountEvent value)? getOrders,
+    TResult? Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult? Function(PayOrderAccountEvent value)? payOrder,
+    TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
+    TResult? Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+  }) {
+    return removeAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountEvent value)? preloadData,
+    TResult Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult Function(GetOrdersAccountEvent value)? getOrders,
+    TResult Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult Function(PayOrderAccountEvent value)? payOrder,
+    TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
+    TResult Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    required TResult orElse(),
+  }) {
+    if (removeAccount != null) {
+      return removeAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveAccountEvent implements AccountEvent {
+  const factory RemoveAccountEvent() = _$RemoveAccountEventImpl;
 }
 
 /// @nodoc
@@ -1919,6 +2155,7 @@ class _$AddFavouriteProductAccountEventImpl
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -1939,6 +2176,7 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -1958,6 +2196,7 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -1983,6 +2222,7 @@ class _$AddFavouriteProductAccountEventImpl
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -2005,6 +2245,7 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -2027,6 +2268,7 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -2136,6 +2378,7 @@ class _$DeleteFavouriteProductAccountEventImpl
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -2156,6 +2399,7 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -2175,6 +2419,7 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -2200,6 +2445,7 @@ class _$DeleteFavouriteProductAccountEventImpl
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -2222,6 +2468,7 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -2244,6 +2491,7 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -2348,6 +2596,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -2368,6 +2617,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -2387,6 +2637,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -2412,6 +2663,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -2434,6 +2686,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -2456,6 +2709,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -2535,6 +2789,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     required TResult Function(String id) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
@@ -2555,6 +2810,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function(String id)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code)? getInfoProduct,
@@ -2574,6 +2830,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function(String id)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code)? getInfoProduct,
@@ -2599,6 +2856,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         getInfoPayOrder,
     required TResult Function(PayOrderAccountEvent value) payOrder,
     required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
     required TResult Function(AddFavouriteProductAccountEvent value)
         addFavouriteProduct,
     required TResult Function(DeleteFavouriteProductAccountEvent value)
@@ -2621,6 +2879,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult? Function(PayOrderAccountEvent value)? payOrder,
     TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
     TResult? Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult? Function(DeleteFavouriteProductAccountEvent value)?
@@ -2643,6 +2902,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
     TResult Function(PayOrderAccountEvent value)? payOrder,
     TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
     TResult Function(AddFavouriteProductAccountEvent value)?
         addFavouriteProduct,
     TResult Function(DeleteFavouriteProductAccountEvent value)?
@@ -2690,6 +2950,7 @@ mixin _$AccountState {
             OrderInfoDataModel? orderInfo)
         preloadDataCompleted,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2716,6 +2977,7 @@ mixin _$AccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2742,6 +3004,7 @@ mixin _$AccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2753,6 +3016,7 @@ mixin _$AccountState {
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2763,6 +3027,7 @@ mixin _$AccountState {
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2773,6 +3038,7 @@ mixin _$AccountState {
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2856,6 +3122,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             OrderInfoDataModel? orderInfo)
         preloadDataCompleted,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
   }) {
     return init();
   }
@@ -2885,6 +3152,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
   }) {
     return init?.call();
   }
@@ -2914,6 +3182,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -2931,6 +3200,7 @@ class _$InitAccountStateImpl implements InitAccountState {
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
   }) {
     return init(this);
   }
@@ -2944,6 +3214,7 @@ class _$InitAccountStateImpl implements InitAccountState {
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
   }) {
     return init?.call(this);
   }
@@ -2957,6 +3228,7 @@ class _$InitAccountStateImpl implements InitAccountState {
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -3031,6 +3303,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             OrderInfoDataModel? orderInfo)
         preloadDataCompleted,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
   }) {
     return load();
   }
@@ -3060,6 +3333,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
   }) {
     return load?.call();
   }
@@ -3089,6 +3363,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -3106,6 +3381,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
   }) {
     return load(this);
   }
@@ -3119,6 +3395,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
   }) {
     return load?.call(this);
   }
@@ -3132,6 +3409,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -3233,6 +3511,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             OrderInfoDataModel? orderInfo)
         preloadDataCompleted,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
   }) {
     return payOrder(url);
   }
@@ -3262,6 +3541,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
   }) {
     return payOrder?.call(url);
   }
@@ -3291,6 +3571,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     required TResult orElse(),
   }) {
     if (payOrder != null) {
@@ -3308,6 +3589,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
   }) {
     return payOrder(this);
   }
@@ -3321,6 +3603,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
   }) {
     return payOrder?.call(this);
   }
@@ -3334,6 +3617,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
     required TResult orElse(),
   }) {
     if (payOrder != null) {
@@ -3734,6 +4018,7 @@ class _$PreloadDataCompletedAccountStateImpl
             OrderInfoDataModel? orderInfo)
         preloadDataCompleted,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
   }) {
     return preloadDataCompleted(
         phone,
@@ -3779,6 +4064,7 @@ class _$PreloadDataCompletedAccountStateImpl
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
   }) {
     return preloadDataCompleted?.call(
         phone,
@@ -3824,6 +4110,7 @@ class _$PreloadDataCompletedAccountStateImpl
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
@@ -3857,6 +4144,7 @@ class _$PreloadDataCompletedAccountStateImpl
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
   }) {
     return preloadDataCompleted(this);
   }
@@ -3870,6 +4158,7 @@ class _$PreloadDataCompletedAccountStateImpl
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
   }) {
     return preloadDataCompleted?.call(this);
   }
@@ -3883,6 +4172,7 @@ class _$PreloadDataCompletedAccountStateImpl
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
@@ -3994,6 +4284,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             OrderInfoDataModel? orderInfo)
         preloadDataCompleted,
     required TResult Function() logOut,
+    required TResult Function() removeAccount,
   }) {
     return logOut();
   }
@@ -4023,6 +4314,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
   }) {
     return logOut?.call();
   }
@@ -4052,6 +4344,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             OrderInfoDataModel? orderInfo)?
         preloadDataCompleted,
     TResult Function()? logOut,
+    TResult Function()? removeAccount,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -4069,6 +4362,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
   }) {
     return logOut(this);
   }
@@ -4082,6 +4376,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
   }) {
     return logOut?.call(this);
   }
@@ -4095,6 +4390,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -4106,4 +4402,184 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
 
 abstract class LogOutAccountState implements AccountState {
   const factory LogOutAccountState() = _$LogOutAccountStateImpl;
+}
+
+/// @nodoc
+abstract class _$$RemoveAccountStateImplCopyWith<$Res> {
+  factory _$$RemoveAccountStateImplCopyWith(_$RemoveAccountStateImpl value,
+          $Res Function(_$RemoveAccountStateImpl) then) =
+      __$$RemoveAccountStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RemoveAccountStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$RemoveAccountStateImpl>
+    implements _$$RemoveAccountStateImplCopyWith<$Res> {
+  __$$RemoveAccountStateImplCopyWithImpl(_$RemoveAccountStateImpl _value,
+      $Res Function(_$RemoveAccountStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RemoveAccountStateImpl implements RemoveAccountState {
+  const _$RemoveAccountStateImpl();
+
+  @override
+  String toString() {
+    return 'AccountState.removeAccount()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RemoveAccountStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String url) payOrder,
+    required TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)
+        preloadDataCompleted,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+  }) {
+    return removeAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String url)? payOrder,
+    TResult? Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+  }) {
+    return removeAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String url)? payOrder,
+    TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (removeAccount != null) {
+      return removeAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountState value) init,
+    required TResult Function(LoadingAccountState value) load,
+    required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(PreloadDataCompletedAccountState value)
+        preloadDataCompleted,
+    required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
+  }) {
+    return removeAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountState value)? init,
+    TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
+  }) {
+    return removeAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountState value)? init,
+    TResult Function(LoadingAccountState value)? load,
+    TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (removeAccount != null) {
+      return removeAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RemoveAccountState implements AccountState {
+  const factory RemoveAccountState() = _$RemoveAccountStateImpl;
 }

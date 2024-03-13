@@ -99,6 +99,8 @@ extension on UserInfoResponse {
               );
             }) ??
             []),
+        activeBonus: user?.activeBonus ?? 0,
+        allBonus: user?.allBonus ?? 0,
       ),
     );
   }

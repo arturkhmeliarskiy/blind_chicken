@@ -16,6 +16,8 @@ class UserResponse with _$UserResponse {
     @JsonKey(name: 'sum_buy') int? sumBuy,
     @JsonKey(name: 'next_discount') int? nextDiscount,
     @JsonKey(name: 'buy_for_next_discount') int? buyForNext,
+    @JsonKey(name: 'active_bonus') int? activeBonus,
+    @JsonKey(name: 'all_bonus') int? allBonus,
     @JsonKey(name: 'schem_loyalty') List<SchemLoyaltyResponse>? schemLoyalty,
   }) = _UserResponse;
   factory UserResponse.fromJson(Map<String, dynamic> json) => _$UserResponseFromJson(json);

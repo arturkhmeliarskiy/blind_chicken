@@ -389,7 +389,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                     ),
                                   BlindChickenButton(
                                     title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в карзину',
+                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
                                     onChenge: () {
                                       if (_isSoppingCart) {
                                         context.navigateTo(

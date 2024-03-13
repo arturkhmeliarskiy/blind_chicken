@@ -55,7 +55,6 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
 
   @override
   void didUpdateWidget(covariant FavouritesCardInfoScreen oldWidget) {
-    _controller = ScrollController(initialScrollOffset: 0);
     item = widget.item;
     super.didUpdateWidget(oldWidget);
   }
@@ -73,7 +72,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
         state.maybeMap(
           productsFavourites: (value) {
             if (value.listProductsCode.isEmpty) {
-              context.popRoute();
+              context.back();
             }
           },
           orElse: () => const SizedBox(),
@@ -389,7 +388,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                     ),
                                   BlindChickenButton(
                                     title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в карзину',
+                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
                                     onChenge: () {
                                       if (_isSoppingCart) {
                                         context.navigateTo(

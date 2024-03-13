@@ -24,6 +24,8 @@ mixin _$UserDataModel {
   int get sumBuy => throw _privateConstructorUsedError;
   int get nextDiscount => throw _privateConstructorUsedError;
   int get buyForNext => throw _privateConstructorUsedError;
+  int get activeBonus => throw _privateConstructorUsedError;
+  int get allBonus => throw _privateConstructorUsedError;
   List<SchemLoyaltyDataModel> get schemLoyalty =>
       throw _privateConstructorUsedError;
 
@@ -47,6 +49,8 @@ abstract class $UserDataModelCopyWith<$Res> {
       int sumBuy,
       int nextDiscount,
       int buyForNext,
+      int activeBonus,
+      int allBonus,
       List<SchemLoyaltyDataModel> schemLoyalty});
 }
 
@@ -71,6 +75,8 @@ class _$UserDataModelCopyWithImpl<$Res, $Val extends UserDataModel>
     Object? sumBuy = null,
     Object? nextDiscount = null,
     Object? buyForNext = null,
+    Object? activeBonus = null,
+    Object? allBonus = null,
     Object? schemLoyalty = null,
   }) {
     return _then(_value.copyWith(
@@ -106,6 +112,14 @@ class _$UserDataModelCopyWithImpl<$Res, $Val extends UserDataModel>
           ? _value.buyForNext
           : buyForNext // ignore: cast_nullable_to_non_nullable
               as int,
+      activeBonus: null == activeBonus
+          ? _value.activeBonus
+          : activeBonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      allBonus: null == allBonus
+          ? _value.allBonus
+          : allBonus // ignore: cast_nullable_to_non_nullable
+              as int,
       schemLoyalty: null == schemLoyalty
           ? _value.schemLoyalty
           : schemLoyalty // ignore: cast_nullable_to_non_nullable
@@ -131,6 +145,8 @@ abstract class _$$UserDataModelImplCopyWith<$Res>
       int sumBuy,
       int nextDiscount,
       int buyForNext,
+      int activeBonus,
+      int allBonus,
       List<SchemLoyaltyDataModel> schemLoyalty});
 }
 
@@ -153,6 +169,8 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
     Object? sumBuy = null,
     Object? nextDiscount = null,
     Object? buyForNext = null,
+    Object? activeBonus = null,
+    Object? allBonus = null,
     Object? schemLoyalty = null,
   }) {
     return _then(_$UserDataModelImpl(
@@ -188,6 +206,14 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
           ? _value.buyForNext
           : buyForNext // ignore: cast_nullable_to_non_nullable
               as int,
+      activeBonus: null == activeBonus
+          ? _value.activeBonus
+          : activeBonus // ignore: cast_nullable_to_non_nullable
+              as int,
+      allBonus: null == allBonus
+          ? _value.allBonus
+          : allBonus // ignore: cast_nullable_to_non_nullable
+              as int,
       schemLoyalty: null == schemLoyalty
           ? _value._schemLoyalty
           : schemLoyalty // ignore: cast_nullable_to_non_nullable
@@ -208,6 +234,8 @@ class _$UserDataModelImpl extends _UserDataModel {
       required this.sumBuy,
       required this.nextDiscount,
       required this.buyForNext,
+      required this.activeBonus,
+      required this.allBonus,
       required final List<SchemLoyaltyDataModel> schemLoyalty})
       : _schemLoyalty = schemLoyalty,
         super._();
@@ -228,6 +256,10 @@ class _$UserDataModelImpl extends _UserDataModel {
   final int nextDiscount;
   @override
   final int buyForNext;
+  @override
+  final int activeBonus;
+  @override
+  final int allBonus;
   final List<SchemLoyaltyDataModel> _schemLoyalty;
   @override
   List<SchemLoyaltyDataModel> get schemLoyalty {
@@ -238,7 +270,7 @@ class _$UserDataModelImpl extends _UserDataModel {
 
   @override
   String toString() {
-    return 'UserDataModel(phone: $phone, discount: $discount, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, schemLoyalty: $schemLoyalty)';
+    return 'UserDataModel(phone: $phone, discount: $discount, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -257,6 +289,10 @@ class _$UserDataModelImpl extends _UserDataModel {
                 other.nextDiscount == nextDiscount) &&
             (identical(other.buyForNext, buyForNext) ||
                 other.buyForNext == buyForNext) &&
+            (identical(other.activeBonus, activeBonus) ||
+                other.activeBonus == activeBonus) &&
+            (identical(other.allBonus, allBonus) ||
+                other.allBonus == allBonus) &&
             const DeepCollectionEquality()
                 .equals(other._schemLoyalty, _schemLoyalty));
   }
@@ -272,6 +308,8 @@ class _$UserDataModelImpl extends _UserDataModel {
       sumBuy,
       nextDiscount,
       buyForNext,
+      activeBonus,
+      allBonus,
       const DeepCollectionEquality().hash(_schemLoyalty));
 
   @JsonKey(ignore: true)
@@ -291,6 +329,8 @@ abstract class _UserDataModel extends UserDataModel {
           required final int sumBuy,
           required final int nextDiscount,
           required final int buyForNext,
+          required final int activeBonus,
+          required final int allBonus,
           required final List<SchemLoyaltyDataModel> schemLoyalty}) =
       _$UserDataModelImpl;
   _UserDataModel._() : super._();
@@ -311,6 +351,10 @@ abstract class _UserDataModel extends UserDataModel {
   int get nextDiscount;
   @override
   int get buyForNext;
+  @override
+  int get activeBonus;
+  @override
+  int get allBonus;
   @override
   List<SchemLoyaltyDataModel> get schemLoyalty;
   @override

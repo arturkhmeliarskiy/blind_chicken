@@ -32,6 +32,10 @@ mixin _$UserResponse {
   int? get nextDiscount => throw _privateConstructorUsedError;
   @JsonKey(name: 'buy_for_next_discount')
   int? get buyForNext => throw _privateConstructorUsedError;
+  @JsonKey(name: 'active_bonus')
+  int? get activeBonus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'all_bonus')
+  int? get allBonus => throw _privateConstructorUsedError;
   @JsonKey(name: 'schem_loyalty')
   List<SchemLoyaltyResponse>? get schemLoyalty =>
       throw _privateConstructorUsedError;
@@ -57,6 +61,8 @@ abstract class $UserResponseCopyWith<$Res> {
       @JsonKey(name: 'sum_buy') int? sumBuy,
       @JsonKey(name: 'next_discount') int? nextDiscount,
       @JsonKey(name: 'buy_for_next_discount') int? buyForNext,
+      @JsonKey(name: 'active_bonus') int? activeBonus,
+      @JsonKey(name: 'all_bonus') int? allBonus,
       @JsonKey(name: 'schem_loyalty')
       List<SchemLoyaltyResponse>? schemLoyalty});
 }
@@ -82,6 +88,8 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
     Object? sumBuy = freezed,
     Object? nextDiscount = freezed,
     Object? buyForNext = freezed,
+    Object? activeBonus = freezed,
+    Object? allBonus = freezed,
     Object? schemLoyalty = freezed,
   }) {
     return _then(_value.copyWith(
@@ -117,6 +125,14 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
           ? _value.buyForNext
           : buyForNext // ignore: cast_nullable_to_non_nullable
               as int?,
+      activeBonus: freezed == activeBonus
+          ? _value.activeBonus
+          : activeBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
+      allBonus: freezed == allBonus
+          ? _value.allBonus
+          : allBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
       schemLoyalty: freezed == schemLoyalty
           ? _value.schemLoyalty
           : schemLoyalty // ignore: cast_nullable_to_non_nullable
@@ -142,6 +158,8 @@ abstract class _$$UserResponseImplCopyWith<$Res>
       @JsonKey(name: 'sum_buy') int? sumBuy,
       @JsonKey(name: 'next_discount') int? nextDiscount,
       @JsonKey(name: 'buy_for_next_discount') int? buyForNext,
+      @JsonKey(name: 'active_bonus') int? activeBonus,
+      @JsonKey(name: 'all_bonus') int? allBonus,
       @JsonKey(name: 'schem_loyalty')
       List<SchemLoyaltyResponse>? schemLoyalty});
 }
@@ -165,6 +183,8 @@ class __$$UserResponseImplCopyWithImpl<$Res>
     Object? sumBuy = freezed,
     Object? nextDiscount = freezed,
     Object? buyForNext = freezed,
+    Object? activeBonus = freezed,
+    Object? allBonus = freezed,
     Object? schemLoyalty = freezed,
   }) {
     return _then(_$UserResponseImpl(
@@ -200,6 +220,14 @@ class __$$UserResponseImplCopyWithImpl<$Res>
           ? _value.buyForNext
           : buyForNext // ignore: cast_nullable_to_non_nullable
               as int?,
+      activeBonus: freezed == activeBonus
+          ? _value.activeBonus
+          : activeBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
+      allBonus: freezed == allBonus
+          ? _value.allBonus
+          : allBonus // ignore: cast_nullable_to_non_nullable
+              as int?,
       schemLoyalty: freezed == schemLoyalty
           ? _value._schemLoyalty
           : schemLoyalty // ignore: cast_nullable_to_non_nullable
@@ -220,6 +248,8 @@ class _$UserResponseImpl extends _UserResponse {
       @JsonKey(name: 'sum_buy') this.sumBuy,
       @JsonKey(name: 'next_discount') this.nextDiscount,
       @JsonKey(name: 'buy_for_next_discount') this.buyForNext,
+      @JsonKey(name: 'active_bonus') this.activeBonus,
+      @JsonKey(name: 'all_bonus') this.allBonus,
       @JsonKey(name: 'schem_loyalty')
       final List<SchemLoyaltyResponse>? schemLoyalty})
       : _schemLoyalty = schemLoyalty,
@@ -248,6 +278,12 @@ class _$UserResponseImpl extends _UserResponse {
   @override
   @JsonKey(name: 'buy_for_next_discount')
   final int? buyForNext;
+  @override
+  @JsonKey(name: 'active_bonus')
+  final int? activeBonus;
+  @override
+  @JsonKey(name: 'all_bonus')
+  final int? allBonus;
   final List<SchemLoyaltyResponse>? _schemLoyalty;
   @override
   @JsonKey(name: 'schem_loyalty')
@@ -261,7 +297,7 @@ class _$UserResponseImpl extends _UserResponse {
 
   @override
   String toString() {
-    return 'UserResponse(phone: $phone, discount: $discount, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, schemLoyalty: $schemLoyalty)';
+    return 'UserResponse(phone: $phone, discount: $discount, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -280,6 +316,10 @@ class _$UserResponseImpl extends _UserResponse {
                 other.nextDiscount == nextDiscount) &&
             (identical(other.buyForNext, buyForNext) ||
                 other.buyForNext == buyForNext) &&
+            (identical(other.activeBonus, activeBonus) ||
+                other.activeBonus == activeBonus) &&
+            (identical(other.allBonus, allBonus) ||
+                other.allBonus == allBonus) &&
             const DeepCollectionEquality()
                 .equals(other._schemLoyalty, _schemLoyalty));
   }
@@ -296,6 +336,8 @@ class _$UserResponseImpl extends _UserResponse {
       sumBuy,
       nextDiscount,
       buyForNext,
+      activeBonus,
+      allBonus,
       const DeepCollectionEquality().hash(_schemLoyalty));
 
   @JsonKey(ignore: true)
@@ -322,6 +364,8 @@ abstract class _UserResponse extends UserResponse {
       @JsonKey(name: 'sum_buy') final int? sumBuy,
       @JsonKey(name: 'next_discount') final int? nextDiscount,
       @JsonKey(name: 'buy_for_next_discount') final int? buyForNext,
+      @JsonKey(name: 'active_bonus') final int? activeBonus,
+      @JsonKey(name: 'all_bonus') final int? allBonus,
       @JsonKey(name: 'schem_loyalty')
       final List<SchemLoyaltyResponse>? schemLoyalty}) = _$UserResponseImpl;
   _UserResponse._() : super._();
@@ -349,6 +393,12 @@ abstract class _UserResponse extends UserResponse {
   @override
   @JsonKey(name: 'buy_for_next_discount')
   int? get buyForNext;
+  @override
+  @JsonKey(name: 'active_bonus')
+  int? get activeBonus;
+  @override
+  @JsonKey(name: 'all_bonus')
+  int? get allBonus;
   @override
   @JsonKey(name: 'schem_loyalty')
   List<SchemLoyaltyResponse>? get schemLoyalty;

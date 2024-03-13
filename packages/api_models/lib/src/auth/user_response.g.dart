@@ -16,6 +16,8 @@ _$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
       sumBuy: json['sum_buy'] as int?,
       nextDiscount: json['next_discount'] as int?,
       buyForNext: json['buy_for_next_discount'] as int?,
+      activeBonus: json['active_bonus'] as int?,
+      allBonus: json['all_bonus'] as int?,
       schemLoyalty: (json['schem_loyalty'] as List<dynamic>?)
           ?.map((e) => SchemLoyaltyResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -31,5 +33,7 @@ Map<String, dynamic> _$$UserResponseImplToJson(_$UserResponseImpl instance) =>
       'sum_buy': instance.sumBuy,
       'next_discount': instance.nextDiscount,
       'buy_for_next_discount': instance.buyForNext,
+      'active_bonus': instance.activeBonus,
+      'all_bonus': instance.allBonus,
       'schem_loyalty': instance.schemLoyalty,
     };

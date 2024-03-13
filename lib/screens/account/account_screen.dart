@@ -6,6 +6,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -23,6 +24,13 @@ class _AccountScreenState extends State<AccountScreen> {
       listener: (context, state) {
         state.maybeMap(
           logOut: (value) {
+            context.navigateTo(
+              const DashboardRoute(children: [
+                HomeAutoRouterRoute(),
+              ]),
+            );
+          },
+          removeAccount: (value) {
             context.navigateTo(
               const DashboardRoute(children: [
                 HomeAutoRouterRoute(),
@@ -302,7 +310,9 @@ class _AccountScreenState extends State<AccountScreen> {
                               padding: const EdgeInsets.all(2),
                               child: RichText(
                                 text: TextSpan(
-                                  text: initState.user?.buyForNext.toString(),
+                                  text: initState.user?.buyForNext != 0
+                                      ? initState.user?.buyForNext.toString()
+                                      : '10 000',
                                   style: Theme.of(context).textTheme.displaySmall,
                                   children: <TextSpan>[
                                     TextSpan(
@@ -310,7 +320,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                       style: Theme.of(context).textTheme.displaySmall,
                                     ),
                                     TextSpan(
-                                      text: 'до скидки 5 %',
+                                      text:
+                                          'до скидки ${initState.user?.nextDiscount != 0 ? initState.user?.nextDiscount : 5} %',
                                       style: Theme.of(context).textTheme.displaySmall,
                                     ),
                                   ],
@@ -340,21 +351,26 @@ class _AccountScreenState extends State<AccountScreen> {
                               height: 8,
                             ),
                             Text(
-                              '0 ₽ / 0 ₽',
+                              '${(initState.user?.activeBonus ?? 0).toString().spaceSeparateNumbers()} ₽ '
+                              '/ ${(initState.user?.allBonus ?? 0).toString().spaceSeparateNumbers()} ₽',
                               style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),
                             ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Container(
-                              color: BlindChickenColors.borderBottomColor,
-                              padding: const EdgeInsets.all(2),
-                              child: Text(
-                                'Кэшбэк до 27 % от суммы покупки',
-                                style: Theme.of(context).textTheme.displaySmall,
-                              ),
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Container(
+                                  color: BlindChickenColors.borderBottomColor,
+                                  padding: const EdgeInsets.all(2),
+                                  child: Text(
+                                    'Кэшбэк до 27 % от суммы покупки',
+                                    style: Theme.of(context).textTheme.displaySmall,
+                                  ),
+                                ),
+                              ],
                             ),
                           ]),
                         ),
@@ -385,6 +401,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                   style: Theme.of(context).textTheme.displayMedium,
                                 ),
                               ),
+
                               // InkWell(
                               //   onTap: () {
                               //     context.navigateTo(const ElectronicOrderFormsRoute());
@@ -405,7 +422,113 @@ class _AccountScreenState extends State<AccountScreen> {
                               // ),
                             ],
                           ),
-                        )
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(4),
+                                            ),
+                                            height: 100,
+                                            width: MediaQuery.of(context).size.width - 80,
+                                            child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Удалить аккаунт?',
+                                                    style: Theme.of(context).textTheme.headline2,
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 20,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          context.popRoute();
+                                                        },
+                                                        child: Container(
+                                                          height: 34,
+                                                          width: 80,
+                                                          margin: const EdgeInsets.only(left: 16),
+                                                          decoration: BoxDecoration(
+                                                            color: BlindChickenColors
+                                                                .activeBorderTextField,
+                                                            borderRadius: BorderRadius.circular(4),
+                                                          ),
+                                                          alignment: Alignment.center,
+                                                          child: Text(
+                                                            'Отмена',
+                                                            style: Theme.of(context)
+                                                                .textTheme
+                                                                .displayMedium
+                                                                ?.copyWith(
+                                                                  color: BlindChickenColors
+                                                                      .backgroundColor,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          context.popRoute();
+                                                          context.read<AccountBloc>().add(
+                                                              const AccountEvent.removeAccount());
+                                                        },
+                                                        child: Container(
+                                                          height: 34,
+                                                          width: 80,
+                                                          margin: const EdgeInsets.only(right: 16),
+                                                          decoration: BoxDecoration(
+                                                            color: BlindChickenColors
+                                                                .activeBorderTextField,
+                                                            borderRadius: BorderRadius.circular(4),
+                                                          ),
+                                                          alignment: Alignment.center,
+                                                          child: Text(
+                                                            'Удалить',
+                                                            style: Theme.of(context)
+                                                                .textTheme
+                                                                .displayMedium
+                                                                ?.copyWith(
+                                                                  color: BlindChickenColors
+                                                                      .backgroundColor,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ]),
+                                          ),
+                                        ],
+                                      );
+                                    });
+                              },
+                              child: Text(
+                                'Удалить аккаунт',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ]);
                 },
                 orElse: () => const SizedBox(),

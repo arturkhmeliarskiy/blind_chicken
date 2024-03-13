@@ -43,7 +43,6 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   );
   bool _isSoppingCart = false;
   bool _isChildRoute = false;
-  ScrollController? _controller;
   late ProductDataModel item;
   @override
   void initState() {
@@ -54,15 +53,8 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
 
   @override
   void didUpdateWidget(covariant CatalogCardInfoScreen oldWidget) {
-    _controller = ScrollController(initialScrollOffset: 0);
     item = widget.item;
     super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    _controller?.dispose();
-    super.dispose();
   }
 
   @override
@@ -87,7 +79,6 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
             Scaffold(
               body: SafeArea(
                   child: ListView(
-                controller: _controller,
                 children: [
                   const AppBarBlindChicken(),
                   BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
@@ -413,24 +404,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     ),
                                   BlindChickenButton(
                                     title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в карзину',
+                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
                                     onChenge: () {
                                       if (_isSoppingCart) {
-                                        context.read<ShoppingCartBloc>().add(
-                                              ShoppingCartEvent.addProductToSoppingCart(
-                                                item: BasketInfoItemDataModel(
-                                                  code: (initState.detailsProduct?.code ?? 0)
-                                                      .toString(),
-                                                  sku: _size.value.isNotEmpty
-                                                      ? _size.id
-                                                      : sky.isNotEmpty
-                                                          ? sky.first.id
-                                                          : '',
-                                                  count: 1,
-                                                ),
-                                              ),
-                                            );
-
                                         context.navigateTo(
                                           const ShoppingCartAutoRouterRoute(
                                             children: [
@@ -445,6 +421,20 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                         setState(() {
                                           _isSoppingCart = true;
                                         });
+                                        context.read<ShoppingCartBloc>().add(
+                                              ShoppingCartEvent.addProductToSoppingCart(
+                                                item: BasketInfoItemDataModel(
+                                                  code: (initState.detailsProduct?.code ?? 0)
+                                                      .toString(),
+                                                  sku: _size.value.isNotEmpty
+                                                      ? _size.id
+                                                      : sky.isNotEmpty
+                                                          ? sky.first.id
+                                                          : '',
+                                                  count: 1,
+                                                ),
+                                              ),
+                                            );
                                       }
                                     },
                                   ),

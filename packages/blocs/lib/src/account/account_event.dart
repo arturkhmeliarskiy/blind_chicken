@@ -27,6 +27,7 @@ class AccountEvent with _$AccountEvent {
     required String idForPay,
   }) = PayOrderAccountEvent;
   const factory AccountEvent.logOut() = LogOutAccountEvent;
+  const factory AccountEvent.removeAccount() = RemoveAccountEvent;
   const factory AccountEvent.addFavouriteProduct({
     required int index,
     required ProductDataModel product,

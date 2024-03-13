@@ -102,7 +102,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
                 // ),
                 BlindChickenBorderButton(
                   onTap: () {
-                    _launchWhatsapp('88005005329');
+                    _launchWhatsapp('79093335046');
                   },
                   title: 'Написать в WhatsApp',
                 ),

@@ -43,7 +43,6 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
   );
   bool _isSoppingCart = false;
   bool _isChildRoute = false;
-  ScrollController? _controller;
   late ProductDataModel item;
   @override
   void initState() {
@@ -54,15 +53,8 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
 
   @override
   void didUpdateWidget(covariant CatalogSearchCardInfoScreen oldWidget) {
-    _controller = ScrollController(initialScrollOffset: 0);
     item = widget.item;
     super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    _controller?.dispose();
-    super.dispose();
   }
 
   @override
@@ -87,7 +79,6 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
             Scaffold(
               body: SafeArea(
                   child: ListView(
-                controller: _controller,
                 children: [
                   const AppBarBlindChicken(),
                   BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
@@ -388,7 +379,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                     ),
                                   BlindChickenButton(
                                     title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в карзину',
+                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
                                     onChenge: () {
                                       if (_isSoppingCart) {
                                         context.navigateTo(
