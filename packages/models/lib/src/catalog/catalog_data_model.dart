@@ -20,5 +20,6 @@ class CatalogDataModel with _$CatalogDataModel {
     required List<ProductDataModel> products,
     required String r,
     required String e,
+    required String errorMessage,
   }) = _CatalogDataModel;
 }

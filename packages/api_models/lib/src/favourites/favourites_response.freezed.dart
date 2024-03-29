@@ -23,6 +23,7 @@ mixin _$FavouritesResponse {
   String? get code => throw _privateConstructorUsedError;
   String? get sku => throw _privateConstructorUsedError;
   List<String>? get favorites => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,11 @@ abstract class $FavouritesResponseCopyWith<$Res> {
           FavouritesResponse value, $Res Function(FavouritesResponse) then) =
       _$FavouritesResponseCopyWithImpl<$Res, FavouritesResponse>;
   @useResult
-  $Res call({String? code, String? sku, List<String>? favorites});
+  $Res call(
+      {String? code,
+      String? sku,
+      List<String>? favorites,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -55,6 +60,7 @@ class _$FavouritesResponseCopyWithImpl<$Res, $Val extends FavouritesResponse>
     Object? code = freezed,
     Object? sku = freezed,
     Object? favorites = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -69,6 +75,10 @@ class _$FavouritesResponseCopyWithImpl<$Res, $Val extends FavouritesResponse>
           ? _value.favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +91,11 @@ abstract class _$$FavouritesResponseImplCopyWith<$Res>
       __$$FavouritesResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? code, String? sku, List<String>? favorites});
+  $Res call(
+      {String? code,
+      String? sku,
+      List<String>? favorites,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -98,6 +112,7 @@ class __$$FavouritesResponseImplCopyWithImpl<$Res>
     Object? code = freezed,
     Object? sku = freezed,
     Object? favorites = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$FavouritesResponseImpl(
       code: freezed == code
@@ -112,6 +127,10 @@ class __$$FavouritesResponseImplCopyWithImpl<$Res>
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +138,8 @@ class __$$FavouritesResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FavouritesResponseImpl extends _FavouritesResponse {
-  _$FavouritesResponseImpl({this.code, this.sku, final List<String>? favorites})
+  _$FavouritesResponseImpl(
+      {this.code, this.sku, final List<String>? favorites, this.errorMessage})
       : _favorites = favorites,
         super._();
 
@@ -141,8 +161,11 @@ class _$FavouritesResponseImpl extends _FavouritesResponse {
   }
 
   @override
+  final String? errorMessage;
+
+  @override
   String toString() {
-    return 'FavouritesResponse(code: $code, sku: $sku, favorites: $favorites)';
+    return 'FavouritesResponse(code: $code, sku: $sku, favorites: $favorites, errorMessage: $errorMessage)';
   }
 
   @override
@@ -153,13 +176,15 @@ class _$FavouritesResponseImpl extends _FavouritesResponse {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             const DeepCollectionEquality()
-                .equals(other._favorites, _favorites));
+                .equals(other._favorites, _favorites) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, code, sku, const DeepCollectionEquality().hash(_favorites));
+  int get hashCode => Object.hash(runtimeType, code, sku,
+      const DeepCollectionEquality().hash(_favorites), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +205,8 @@ abstract class _FavouritesResponse extends FavouritesResponse {
   factory _FavouritesResponse(
       {final String? code,
       final String? sku,
-      final List<String>? favorites}) = _$FavouritesResponseImpl;
+      final List<String>? favorites,
+      final String? errorMessage}) = _$FavouritesResponseImpl;
   _FavouritesResponse._() : super._();
 
   factory _FavouritesResponse.fromJson(Map<String, dynamic> json) =
@@ -192,6 +218,8 @@ abstract class _FavouritesResponse extends FavouritesResponse {
   String? get sku;
   @override
   List<String>? get favorites;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$FavouritesResponseImplCopyWith<_$FavouritesResponseImpl> get copyWith =>

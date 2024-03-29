@@ -9,6 +9,7 @@ class BoutiquesResponse with _$BoutiquesResponse {
   const BoutiquesResponse._();
   factory BoutiquesResponse({
     List<BoutiquesDataResponse>? data,
+    String? errorMessage,
   }) = _BoutiquesResponse;
   factory BoutiquesResponse.fromJson(Map<String, dynamic> json) =>
       _$BoutiquesResponseFromJson(json);

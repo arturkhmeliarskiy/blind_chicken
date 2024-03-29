@@ -146,13 +146,18 @@ class BasketService {
           "basket": basket?.isNotEmpty ?? false ? jsonEncode(basket) : '',
         },
       );
-      log(response.data);
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
 
-      basketFullInfoResponse = BasketFullInfoResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+        basketFullInfoResponse = BasketFullInfoResponse.fromJson(
+          result,
+        );
+      } catch (e) {
+        basketFullInfoResponse = BasketFullInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return basketFullInfoResponse;
     } on DioError catch (e) {
@@ -165,8 +170,10 @@ class BasketService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return BasketFullInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<PaymentsResponse?> getPaymentMethods() async {
@@ -184,11 +191,17 @@ class BasketService {
       );
       log(response.data);
 
-      paymentsResponse = PaymentsResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        paymentsResponse = PaymentsResponse.fromJson(
+          jsonDecode(
+            response.data,
+          ),
+        );
+      } catch (e) {
+        paymentsResponse = PaymentsResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return paymentsResponse;
     } on DioError catch (e) {
@@ -201,8 +214,10 @@ class BasketService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return PaymentsResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<PaymentBonusResponse?> getPaymentBonus() async {

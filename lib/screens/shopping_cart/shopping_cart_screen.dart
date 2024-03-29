@@ -156,8 +156,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                     title: 'Получение',
                                     subTitle: 'Войти или зарегистрироваться',
                                     subTitle2: ', чтобы выбрать',
-                                    subTitle3: 'способ оплаты.',
-                                    isAuth: _isAuth,
+                                    subTitle3: 'способ получения.',
+                                    isAuth: initState.isAuth,
                                     onReceivingType: (value) {
                                       setState(() {
                                         _receivingType = value;
@@ -188,7 +188,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                     subTitle: 'Войти или зарегистрироваться',
                                     subTitle2: ', чтобы выбрать',
                                     subTitle3: 'способ оплаты.',
-                                    isAuth: _isAuth,
+                                    isAuth: initState.isAuth,
                                     payments: initState.payments,
                                     onAddPayment: (value) {
                                       context.read<ShoppingCartBloc>().add(

@@ -22,6 +22,7 @@ AdditionalProductsDescriptionResponse
 /// @nodoc
 mixin _$AdditionalProductsDescriptionResponse {
   String? get name => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   List<CatalogProductResponse>? get products =>
       throw _privateConstructorUsedError;
 
@@ -40,7 +41,10 @@ abstract class $AdditionalProductsDescriptionResponseCopyWith<$Res> {
       _$AdditionalProductsDescriptionResponseCopyWithImpl<$Res,
           AdditionalProductsDescriptionResponse>;
   @useResult
-  $Res call({String? name, List<CatalogProductResponse>? products});
+  $Res call(
+      {String? name,
+      String? errorMessage,
+      List<CatalogProductResponse>? products});
 }
 
 /// @nodoc
@@ -58,12 +62,17 @@ class _$AdditionalProductsDescriptionResponseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = freezed,
+    Object? errorMessage = freezed,
     Object? products = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       products: freezed == products
           ? _value.products
@@ -82,7 +91,10 @@ abstract class _$$AdditionalProductsDescriptionResponseImplCopyWith<$Res>
       __$$AdditionalProductsDescriptionResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, List<CatalogProductResponse>? products});
+  $Res call(
+      {String? name,
+      String? errorMessage,
+      List<CatalogProductResponse>? products});
 }
 
 /// @nodoc
@@ -99,12 +111,17 @@ class __$$AdditionalProductsDescriptionResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? errorMessage = freezed,
     Object? products = freezed,
   }) {
     return _then(_$AdditionalProductsDescriptionResponseImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       products: freezed == products
           ? _value._products
@@ -119,7 +136,9 @@ class __$$AdditionalProductsDescriptionResponseImplCopyWithImpl<$Res>
 class _$AdditionalProductsDescriptionResponseImpl
     extends _AdditionalProductsDescriptionResponse {
   _$AdditionalProductsDescriptionResponseImpl(
-      {this.name, final List<CatalogProductResponse>? products})
+      {this.name,
+      this.errorMessage,
+      final List<CatalogProductResponse>? products})
       : _products = products,
         super._();
 
@@ -129,6 +148,8 @@ class _$AdditionalProductsDescriptionResponseImpl
 
   @override
   final String? name;
+  @override
+  final String? errorMessage;
   final List<CatalogProductResponse>? _products;
   @override
   List<CatalogProductResponse>? get products {
@@ -141,7 +162,7 @@ class _$AdditionalProductsDescriptionResponseImpl
 
   @override
   String toString() {
-    return 'AdditionalProductsDescriptionResponse(name: $name, products: $products)';
+    return 'AdditionalProductsDescriptionResponse(name: $name, errorMessage: $errorMessage, products: $products)';
   }
 
   @override
@@ -150,13 +171,15 @@ class _$AdditionalProductsDescriptionResponseImpl
         (other.runtimeType == runtimeType &&
             other is _$AdditionalProductsDescriptionResponseImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, name, errorMessage,
+      const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -177,7 +200,9 @@ class _$AdditionalProductsDescriptionResponseImpl
 abstract class _AdditionalProductsDescriptionResponse
     extends AdditionalProductsDescriptionResponse {
   factory _AdditionalProductsDescriptionResponse(
-          {final String? name, final List<CatalogProductResponse>? products}) =
+          {final String? name,
+          final String? errorMessage,
+          final List<CatalogProductResponse>? products}) =
       _$AdditionalProductsDescriptionResponseImpl;
   _AdditionalProductsDescriptionResponse._() : super._();
 
@@ -187,6 +212,8 @@ abstract class _AdditionalProductsDescriptionResponse
 
   @override
   String? get name;
+  @override
+  String? get errorMessage;
   @override
   List<CatalogProductResponse>? get products;
   @override

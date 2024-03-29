@@ -41,7 +41,6 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
     id: '',
     value: '',
   );
-  bool _isSoppingCart = false;
   bool _isChildRoute = false;
   ScrollController? _controller;
   late ProductDataModel item;
@@ -55,7 +54,6 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
 
   @override
   void didUpdateWidget(covariant OrderCardInfoScreen oldWidget) {
-    _controller = ScrollController(initialScrollOffset: 0);
     item = widget.item;
     super.didUpdateWidget(oldWidget);
   }
@@ -301,6 +299,16 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                     userBuyForNextDiscountVal:
                                         initState.detailsProduct?.userBuyForNextDiscountVal ?? 0,
                                     pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+                                    successfullyLogin: () {
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                      context.read<AccountBloc>().add(
+                                            AccountEvent.getInfoProduct(
+                                              code:
+                                                  (initState.detailsProduct?.code ?? 0).toString(),
+                                              isUpdate: true,
+                                            ),
+                                          );
+                                    },
                                   ),
                                   const SizedBox(
                                     height: 28,
@@ -327,6 +335,10 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                   setState(() {
                                                     _size = value;
                                                   });
+                                                  context.read<AccountBloc>().add(
+                                                        AccountEvent.checkProductToSoppingCart(
+                                                            size: _size),
+                                                      );
                                                   context.back();
                                                 },
                                                 listSizeProduct: sky,
@@ -388,10 +400,11 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                       ],
                                     ),
                                   BlindChickenButton(
-                                    title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
+                                    title: initState.isSoppingCart ?? false
+                                        ? 'Перейти в корзину'
+                                        : 'Добавить в корзину',
                                     onChenge: () {
-                                      if (_isSoppingCart) {
+                                      if (initState.isSoppingCart ?? false) {
                                         context.navigateTo(
                                           const ShoppingCartAutoRouterRoute(
                                             children: [
@@ -399,14 +412,10 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                             ],
                                           ),
                                         );
-                                        setState(() {
-                                          _isSoppingCart = false;
-                                        });
                                       } else {
-                                        setState(() {
-                                          _isSoppingCart = true;
-                                        });
-
+                                        context.read<AccountBloc>().add(
+                                              const AccountEvent.addProductToSoppingCart(),
+                                            );
                                         context.read<ShoppingCartBloc>().add(
                                               ShoppingCartEvent.addProductToSoppingCart(
                                                 item: BasketInfoItemDataModel(
@@ -668,7 +677,10 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                     context.pushRoute(
                                                       HomeAutoRouterRoute(
                                                         children: [
-                                                          CatalogRoute(title: ''),
+                                                          CatalogRoute(
+                                                            title: '',
+                                                            url: path,
+                                                          ),
                                                         ],
                                                       ),
                                                     );

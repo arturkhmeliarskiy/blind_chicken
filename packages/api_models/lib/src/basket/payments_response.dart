@@ -9,6 +9,7 @@ class PaymentsResponse with _$PaymentsResponse {
   const PaymentsResponse._();
   factory PaymentsResponse({
     List<PaymentItemResponse>? payments,
+    String? errorMessage,
   }) = _PaymentsResponse;
   factory PaymentsResponse.fromJson(Map<String, dynamic> json) => _$PaymentsResponseFromJson(json);
 }

@@ -30,6 +30,7 @@ mixin _$CatalogDataModel {
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogDataModelCopyWith<CatalogDataModel> get copyWith =>
@@ -55,7 +56,8 @@ abstract class $CatalogDataModelCopyWith<$Res> {
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 
   $SectionsDataModelCopyWith<$Res> get sections;
 }
@@ -86,6 +88,7 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
     Object? products = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       userDiscount: null == userDiscount
@@ -140,6 +143,10 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -173,7 +180,8 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 
   @override
   $SectionsDataModelCopyWith<$Res> get sections;
@@ -203,6 +211,7 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
     Object? products = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$CatalogDataModelImpl(
       userDiscount: null == userDiscount
@@ -257,6 +266,10 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -277,7 +290,8 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required this.r,
-      required this.e})
+      required this.e,
+      required this.errorMessage})
       : _breadcrumbs = breadcrumbs,
         _listNext = listNext,
         _listPrev = listPrev,
@@ -348,10 +362,12 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, listThis: $listThis, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, listThis: $listThis, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -375,7 +391,9 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
             const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -393,7 +411,8 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
-      e);
+      e,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -417,7 +436,8 @@ abstract class _CatalogDataModel extends CatalogDataModel {
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required final String r,
-      required final String e}) = _$CatalogDataModelImpl;
+      required final String e,
+      required final String errorMessage}) = _$CatalogDataModelImpl;
   _CatalogDataModel._() : super._();
 
   @override
@@ -446,6 +466,8 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$CatalogDataModelImplCopyWith<_$CatalogDataModelImpl> get copyWith =>

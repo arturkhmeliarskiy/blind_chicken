@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/widgets/catalog_header_info.dart';
 import 'package:flutter/material.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -19,17 +20,12 @@ class SortScreen extends StatefulWidget {
 }
 
 class _SortScreenState extends State<SortScreen> {
-  int _selectIndex = 0;
-
-  final List<String> _listSort = [
-    'Сначала новинки',
-    'По убыванию цены',
-    'По возрастанию цены',
-  ];
+  String _selectItem = '';
+  final constants = ConstatntsInfo();
 
   @override
   void initState() {
-    _selectIndex = _listSort.indexOf(widget.selectItem);
+    _selectItem = constants.listSort[widget.selectItem] ?? '';
     super.initState();
   }
 
@@ -49,14 +45,14 @@ class _SortScreenState extends State<SortScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _listSort.length,
+                itemCount: constants.listSort.values.length,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
                       setState(() {
-                        _selectIndex = index;
+                        _selectItem = constants.listSort.values.toList()[index];
                       });
-                      widget.onChange(_listSort[index]);
+                      widget.onChange(_selectItem);
                     },
                     child: Container(
                       padding: const EdgeInsets.only(
@@ -65,13 +61,15 @@ class _SortScreenState extends State<SortScreen> {
                         right: 21,
                         left: 11.2,
                       ),
-                      color: _selectIndex == index
+                      color: _selectItem == constants.listSort.values.toList()[index]
                           ? BlindChickenColors.backgroundColorItemFilter
                           : Colors.transparent,
                       child: Text(
-                        _listSort[index],
+                        constants.listSort.values.toList()[index],
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              fontWeight: _selectIndex == index ? FontWeight.w600 : FontWeight.w400,
+                              fontWeight: _selectItem == constants.listSort.values.toList()[index]
+                                  ? FontWeight.w600
+                                  : FontWeight.w400,
                             ),
                       ),
                     ),

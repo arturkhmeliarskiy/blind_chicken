@@ -32,8 +32,11 @@ mixin _$AccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,8 +52,10 @@ mixin _$AccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,8 +71,10 @@ mixin _$AccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +98,10 @@ mixin _$AccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +122,10 @@ mixin _$AccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +146,10 @@ mixin _$AccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -249,8 +268,11 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return preloadData(phone, name, email);
   }
@@ -269,8 +291,10 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return preloadData?.call(phone, name, email);
   }
@@ -289,8 +313,10 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -320,6 +346,10 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return preloadData(this);
   }
@@ -343,6 +373,10 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return preloadData?.call(this);
   }
@@ -366,6 +400,10 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -486,8 +524,11 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return updateInfo(phone, name, email);
   }
@@ -506,8 +547,10 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return updateInfo?.call(phone, name, email);
   }
@@ -526,8 +569,10 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (updateInfo != null) {
@@ -557,6 +602,10 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return updateInfo(this);
   }
@@ -580,6 +629,10 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return updateInfo?.call(this);
   }
@@ -603,6 +656,10 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (updateInfo != null) {
@@ -718,8 +775,11 @@ class _$PaginationOrdersAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return paginationProduct(offset, limit);
   }
@@ -738,8 +798,10 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return paginationProduct?.call(offset, limit);
   }
@@ -758,8 +820,10 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -789,6 +853,10 @@ class _$PaginationOrdersAccountEventImpl
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return paginationProduct(this);
   }
@@ -812,6 +880,10 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return paginationProduct?.call(this);
   }
@@ -835,6 +907,10 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -911,8 +987,11 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return getOrders();
   }
@@ -931,8 +1010,10 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return getOrders?.call();
   }
@@ -951,8 +1032,10 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -982,6 +1065,10 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return getOrders(this);
   }
@@ -1005,6 +1092,10 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return getOrders?.call(this);
   }
@@ -1028,6 +1119,10 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1122,8 +1217,11 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return getInfoOrder(id);
   }
@@ -1142,8 +1240,10 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return getInfoOrder?.call(id);
   }
@@ -1162,8 +1262,10 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoOrder != null) {
@@ -1193,6 +1295,10 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return getInfoOrder(this);
   }
@@ -1216,6 +1322,10 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return getInfoOrder?.call(this);
   }
@@ -1239,6 +1349,10 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoOrder != null) {
@@ -1339,8 +1453,11 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return getInfoPayOrder(id);
   }
@@ -1359,8 +1476,10 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return getInfoPayOrder?.call(id);
   }
@@ -1379,8 +1498,10 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoPayOrder != null) {
@@ -1410,6 +1531,10 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return getInfoPayOrder(this);
   }
@@ -1433,6 +1558,10 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return getInfoPayOrder?.call(this);
   }
@@ -1456,6 +1585,10 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoPayOrder != null) {
@@ -1556,8 +1689,11 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return payOrder(idForPay);
   }
@@ -1576,8 +1712,10 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return payOrder?.call(idForPay);
   }
@@ -1596,8 +1734,10 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (payOrder != null) {
@@ -1627,6 +1767,10 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return payOrder(this);
   }
@@ -1650,6 +1794,10 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return payOrder?.call(this);
   }
@@ -1673,6 +1821,10 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (payOrder != null) {
@@ -1744,8 +1896,11 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return logOut();
   }
@@ -1764,8 +1919,10 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return logOut?.call();
   }
@@ -1784,8 +1941,10 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -1815,6 +1974,10 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return logOut(this);
   }
@@ -1838,6 +2001,10 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return logOut?.call(this);
   }
@@ -1861,6 +2028,10 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -1926,8 +2097,11 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return removeAccount();
   }
@@ -1946,8 +2120,10 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return removeAccount?.call();
   }
@@ -1966,8 +2142,10 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removeAccount != null) {
@@ -1997,6 +2175,10 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return removeAccount(this);
   }
@@ -2020,6 +2202,10 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return removeAccount?.call(this);
   }
@@ -2043,6 +2229,10 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removeAccount != null) {
@@ -2159,8 +2349,11 @@ class _$AddFavouriteProductAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -2179,8 +2372,10 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -2199,8 +2394,10 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2230,6 +2427,10 @@ class _$AddFavouriteProductAccountEventImpl
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return addFavouriteProduct(this);
   }
@@ -2253,6 +2454,10 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -2276,6 +2481,10 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2382,8 +2591,11 @@ class _$DeleteFavouriteProductAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -2402,8 +2614,10 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -2422,8 +2636,10 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2453,6 +2669,10 @@ class _$DeleteFavouriteProductAccountEventImpl
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -2476,6 +2696,10 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -2499,6 +2723,10 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2526,7 +2754,7 @@ abstract class _$$GetInfoProductAccountEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductAccountEventImpl) then) =
       __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code});
+  $Res call({String code, bool? isUpdate});
 }
 
 /// @nodoc
@@ -2542,12 +2770,17 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? isUpdate = freezed,
   }) {
     return _then(_$GetInfoProductAccountEventImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      isUpdate: freezed == isUpdate
+          ? _value.isUpdate
+          : isUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -2555,14 +2788,16 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
-  const _$GetInfoProductAccountEventImpl({required this.code});
+  const _$GetInfoProductAccountEventImpl({required this.code, this.isUpdate});
 
   @override
   final String code;
+  @override
+  final bool? isUpdate;
 
   @override
   String toString() {
-    return 'AccountEvent.getInfoProduct(code: $code)';
+    return 'AccountEvent.getInfoProduct(code: $code, isUpdate: $isUpdate)';
   }
 
   @override
@@ -2570,11 +2805,13 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductAccountEventImpl &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.isUpdate, isUpdate) ||
+                other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => Object.hash(runtimeType, code, isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -2600,10 +2837,13 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
-    return getInfoProduct(code);
+    return getInfoProduct(code, isUpdate);
   }
 
   @override
@@ -2620,10 +2860,12 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
-    return getInfoProduct?.call(code);
+    return getInfoProduct?.call(code, isUpdate);
   }
 
   @override
@@ -2640,12 +2882,14 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code);
+      return getInfoProduct(code, isUpdate);
     }
     return orElse();
   }
@@ -2671,6 +2915,10 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return getInfoProduct(this);
   }
@@ -2694,6 +2942,10 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -2717,6 +2969,10 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -2727,10 +2983,12 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
 }
 
 abstract class GetInfoProductAccountEvent implements AccountEvent {
-  const factory GetInfoProductAccountEvent({required final String code}) =
-      _$GetInfoProductAccountEventImpl;
+  const factory GetInfoProductAccountEvent(
+      {required final String code,
+      final bool? isUpdate}) = _$GetInfoProductAccountEventImpl;
 
   String get code;
+  bool? get isUpdate;
   @JsonKey(ignore: true)
   _$$GetInfoProductAccountEventImplCopyWith<_$GetInfoProductAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2793,8 +3051,11 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return goBackProductInfo();
   }
@@ -2813,8 +3074,10 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function()? removeAccount,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return goBackProductInfo?.call();
   }
@@ -2833,8 +3096,10 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function()? removeAccount,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -2864,6 +3129,10 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
     required TResult Function(GoBackProductInfoCategotyAccountEvent value)
         goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
   }) {
     return goBackProductInfo(this);
   }
@@ -2887,6 +3156,10 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -2910,6 +3183,10 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
     TResult Function(GoBackProductInfoCategotyAccountEvent value)?
         goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -2922,6 +3199,464 @@ class _$GoBackProductInfoCategotyAccountEventImpl
 abstract class GoBackProductInfoCategotyAccountEvent implements AccountEvent {
   const factory GoBackProductInfoCategotyAccountEvent() =
       _$GoBackProductInfoCategotyAccountEventImpl;
+}
+
+/// @nodoc
+abstract class _$$AddProductToSoppingCartCAccountEventImplCopyWith<$Res> {
+  factory _$$AddProductToSoppingCartCAccountEventImplCopyWith(
+          _$AddProductToSoppingCartCAccountEventImpl value,
+          $Res Function(_$AddProductToSoppingCartCAccountEventImpl) then) =
+      __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res,
+        _$AddProductToSoppingCartCAccountEventImpl>
+    implements _$$AddProductToSoppingCartCAccountEventImplCopyWith<$Res> {
+  __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl(
+      _$AddProductToSoppingCartCAccountEventImpl _value,
+      $Res Function(_$AddProductToSoppingCartCAccountEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddProductToSoppingCartCAccountEventImpl
+    implements AddProductToSoppingCartCAccountEvent {
+  const _$AddProductToSoppingCartCAccountEventImpl();
+
+  @override
+  String toString() {
+    return 'AccountEvent.addProductToSoppingCart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductToSoppingCartCAccountEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? phone, String? name, String? email)
+        preloadData,
+    required TResult Function(String? phone, String? name, String? email)
+        updateInfo,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() getOrders,
+    required TResult Function(String id) getInfoOrder,
+    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String idForPay) payOrder,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? phone, String? name, String? email)? preloadData,
+    TResult? Function(String? phone, String? name, String? email)? updateInfo,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? getOrders,
+    TResult? Function(String id)? getInfoOrder,
+    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String idForPay)? payOrder,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? phone, String? name, String? email)? preloadData,
+    TResult Function(String? phone, String? name, String? email)? updateInfo,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? getOrders,
+    TResult Function(String id)? getInfoOrder,
+    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String idForPay)? payOrder,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountEvent value) preloadData,
+    required TResult Function(UpdateInfoAccountEvent value) updateInfo,
+    required TResult Function(PaginationOrdersAccountEvent value)
+        paginationProduct,
+    required TResult Function(GetOrdersAccountEvent value) getOrders,
+    required TResult Function(GetInfoOrderAccountEvent value) getInfoOrder,
+    required TResult Function(GetInfoPayOrderAccountEvent value)
+        getInfoPayOrder,
+    required TResult Function(PayOrderAccountEvent value) payOrder,
+    required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
+    required TResult Function(AddFavouriteProductAccountEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductAccountEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyAccountEvent value)
+        goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountEvent value)? preloadData,
+    TResult? Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult? Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult? Function(GetOrdersAccountEvent value)? getOrders,
+    TResult? Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult? Function(PayOrderAccountEvent value)? payOrder,
+    TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
+    TResult? Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountEvent value)? preloadData,
+    TResult Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult Function(GetOrdersAccountEvent value)? getOrders,
+    TResult Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult Function(PayOrderAccountEvent value)? payOrder,
+    TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
+    TResult Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddProductToSoppingCartCAccountEvent implements AccountEvent {
+  const factory AddProductToSoppingCartCAccountEvent() =
+      _$AddProductToSoppingCartCAccountEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckProductToSoppingCartAccountEventImplCopyWith<$Res> {
+  factory _$$CheckProductToSoppingCartAccountEventImplCopyWith(
+          _$CheckProductToSoppingCartAccountEventImpl value,
+          $Res Function(_$CheckProductToSoppingCartAccountEventImpl) then) =
+      __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
+}
+
+/// @nodoc
+class __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res,
+        _$CheckProductToSoppingCartAccountEventImpl>
+    implements _$$CheckProductToSoppingCartAccountEventImplCopyWith<$Res> {
+  __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl(
+      _$CheckProductToSoppingCartAccountEventImpl _value,
+      $Res Function(_$CheckProductToSoppingCartAccountEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$CheckProductToSoppingCartAccountEventImpl(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CheckProductToSoppingCartAccountEventImpl
+    implements CheckProductToSoppingCartAccountEvent {
+  const _$CheckProductToSoppingCartAccountEventImpl({required this.size});
+
+  @override
+  final SkuProductDataModel size;
+
+  @override
+  String toString() {
+    return 'AccountEvent.checkProductToSoppingCart(size: $size)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckProductToSoppingCartAccountEventImpl &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, size);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckProductToSoppingCartAccountEventImplCopyWith<
+          _$CheckProductToSoppingCartAccountEventImpl>
+      get copyWith => __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<
+          _$CheckProductToSoppingCartAccountEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? phone, String? name, String? email)
+        preloadData,
+    required TResult Function(String? phone, String? name, String? email)
+        updateInfo,
+    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() getOrders,
+    required TResult Function(String id) getInfoOrder,
+    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String idForPay) payOrder,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? phone, String? name, String? email)? preloadData,
+    TResult? Function(String? phone, String? name, String? email)? updateInfo,
+    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? getOrders,
+    TResult? Function(String id)? getInfoOrder,
+    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String idForPay)? payOrder,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart?.call(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? phone, String? name, String? email)? preloadData,
+    TResult Function(String? phone, String? name, String? email)? updateInfo,
+    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? getOrders,
+    TResult Function(String id)? getInfoOrder,
+    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String idForPay)? payOrder,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (checkProductToSoppingCart != null) {
+      return checkProductToSoppingCart(size);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountEvent value) preloadData,
+    required TResult Function(UpdateInfoAccountEvent value) updateInfo,
+    required TResult Function(PaginationOrdersAccountEvent value)
+        paginationProduct,
+    required TResult Function(GetOrdersAccountEvent value) getOrders,
+    required TResult Function(GetInfoOrderAccountEvent value) getInfoOrder,
+    required TResult Function(GetInfoPayOrderAccountEvent value)
+        getInfoPayOrder,
+    required TResult Function(PayOrderAccountEvent value) payOrder,
+    required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
+    required TResult Function(AddFavouriteProductAccountEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductAccountEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyAccountEvent value)
+        goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountEvent value)? preloadData,
+    TResult? Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult? Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult? Function(GetOrdersAccountEvent value)? getOrders,
+    TResult? Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult? Function(PayOrderAccountEvent value)? payOrder,
+    TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
+    TResult? Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountEvent value)? preloadData,
+    TResult Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult Function(GetOrdersAccountEvent value)? getOrders,
+    TResult Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult Function(PayOrderAccountEvent value)? payOrder,
+    TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
+    TResult Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (checkProductToSoppingCart != null) {
+      return checkProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckProductToSoppingCartAccountEvent implements AccountEvent {
+  const factory CheckProductToSoppingCartAccountEvent(
+          {required final SkuProductDataModel size}) =
+      _$CheckProductToSoppingCartAccountEventImpl;
+
+  SkuProductDataModel get size;
+  @JsonKey(ignore: true)
+  _$$CheckProductToSoppingCartAccountEventImplCopyWith<
+          _$CheckProductToSoppingCartAccountEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2944,6 +3679,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2971,6 +3707,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -2998,6 +3735,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3116,6 +3854,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3146,6 +3885,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3176,6 +3916,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3297,6 +4038,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3327,6 +4069,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3357,6 +4100,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3505,6 +4249,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3535,6 +4280,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3565,6 +4311,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -3657,6 +4404,7 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
       bool isAuth,
+      bool? isSoppingCart,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct,
       UserDataModel? user,
@@ -3693,6 +4441,7 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
     Object? isAuth = null,
+    Object? isSoppingCart = freezed,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
     Object? user = freezed,
@@ -3747,6 +4496,10 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
           ? _value.isAuth
           : isAuth // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSoppingCart: freezed == isSoppingCart
+          ? _value.isSoppingCart
+          : isSoppingCart // ignore: cast_nullable_to_non_nullable
+              as bool?,
       favouritesProductsInfo: freezed == favouritesProductsInfo
           ? _value.favouritesProductsInfo
           : favouritesProductsInfo // ignore: cast_nullable_to_non_nullable
@@ -3834,6 +4587,7 @@ class _$PreloadDataCompletedAccountStateImpl
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
       required this.isAuth,
+      this.isSoppingCart,
       this.favouritesProductsInfo,
       this.detailsProduct,
       this.user,
@@ -3919,6 +4673,8 @@ class _$PreloadDataCompletedAccountStateImpl
   @override
   final bool isAuth;
   @override
+  final bool? isSoppingCart;
+  @override
   final FavouritesCatalogInfoDataModel? favouritesProductsInfo;
   @override
   final DetailProductDataModel? detailsProduct;
@@ -3929,7 +4685,7 @@ class _$PreloadDataCompletedAccountStateImpl
 
   @override
   String toString() {
-    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
+    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, isSoppingCart: $isSoppingCart, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
   }
 
   @override
@@ -3956,6 +4712,8 @@ class _$PreloadDataCompletedAccountStateImpl
             const DeepCollectionEquality()
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
+            (identical(other.isSoppingCart, isSoppingCart) ||
+                other.isSoppingCart == isSoppingCart) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
                 other.favouritesProductsInfo == favouritesProductsInfo) &&
             (identical(other.detailsProduct, detailsProduct) ||
@@ -3980,6 +4738,7 @@ class _$PreloadDataCompletedAccountStateImpl
       const DeepCollectionEquality().hash(_listProdcutsAlso),
       const DeepCollectionEquality().hash(_listProdcutsBrand),
       isAuth,
+      isSoppingCart,
       favouritesProductsInfo,
       detailsProduct,
       user,
@@ -4012,6 +4771,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4033,6 +4793,7 @@ class _$PreloadDataCompletedAccountStateImpl
         listProdcutsAlso,
         listProdcutsBrand,
         isAuth,
+        isSoppingCart,
         favouritesProductsInfo,
         detailsProduct,
         user,
@@ -4058,6 +4819,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4079,6 +4841,7 @@ class _$PreloadDataCompletedAccountStateImpl
         listProdcutsAlso,
         listProdcutsBrand,
         isAuth,
+        isSoppingCart,
         favouritesProductsInfo,
         detailsProduct,
         user,
@@ -4104,6 +4867,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4127,6 +4891,7 @@ class _$PreloadDataCompletedAccountStateImpl
           listProdcutsAlso,
           listProdcutsBrand,
           isAuth,
+          isSoppingCart,
           favouritesProductsInfo,
           detailsProduct,
           user,
@@ -4196,6 +4961,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
           required final bool isAuth,
+          final bool? isSoppingCart,
           final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
           final DetailProductDataModel? detailsProduct,
           final UserDataModel? user,
@@ -4214,6 +4980,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
   bool get isAuth;
+  bool? get isSoppingCart;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;
   UserDataModel? get user;
@@ -4278,6 +5045,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4308,6 +5076,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4338,6 +5107,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4458,6 +5228,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4488,6 +5259,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,
@@ -4518,6 +5290,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             bool isAuth,
+            bool? isSoppingCart,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct,
             UserDataModel? user,

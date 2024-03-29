@@ -41,7 +41,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
     id: '',
     value: '',
   );
-  bool _isSoppingCart = false;
+
   bool _isChildRoute = false;
   late ProductDataModel item;
   @override
@@ -291,6 +291,16 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                     userBuyForNextDiscountVal:
                                         initState.detailsProduct?.userBuyForNextDiscountVal ?? 0,
                                     pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+                                    successfullyLogin: () {
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                      context.read<SearchBloc>().add(
+                                            SearchEvent.getInfoProduct(
+                                              code:
+                                                  (initState.detailsProduct?.code ?? 0).toString(),
+                                              isUpdate: true,
+                                            ),
+                                          );
+                                    },
                                   ),
                                   const SizedBox(
                                     height: 28,
@@ -317,6 +327,11 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                   setState(() {
                                                     _size = value;
                                                   });
+                                                  context.read<SearchBloc>().add(
+                                                        SearchEvent.checkProductToSoppingCart(
+                                                          size: _size,
+                                                        ),
+                                                      );
                                                   context.back();
                                                 },
                                                 listSizeProduct: sky,
@@ -378,10 +393,11 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                       ],
                                     ),
                                   BlindChickenButton(
-                                    title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
+                                    title: initState.isSoppingCart ?? false
+                                        ? 'Перейти в корзину'
+                                        : 'Добавить в корзину',
                                     onChenge: () {
-                                      if (_isSoppingCart) {
+                                      if (initState.isSoppingCart ?? false) {
                                         context.navigateTo(
                                           const ShoppingCartAutoRouterRoute(
                                             children: [
@@ -389,13 +405,10 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                             ],
                                           ),
                                         );
-                                        setState(() {
-                                          _isSoppingCart = false;
-                                        });
                                       } else {
-                                        setState(() {
-                                          _isSoppingCart = true;
-                                        });
+                                        context.read<SearchBloc>().add(
+                                              const SearchEvent.addProductToSoppingCart(),
+                                            );
 
                                         context.read<ShoppingCartBloc>().add(
                                               ShoppingCartEvent.addProductToSoppingCart(
@@ -652,7 +665,10 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                           ),
                                                         );
                                                     context.navigateTo(
-                                                      CatalogRoute(title: ''),
+                                                      CatalogRoute(
+                                                        title: '',
+                                                        url: path,
+                                                      ),
                                                     );
                                                   },
                                                 ),

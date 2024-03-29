@@ -42,7 +42,7 @@ mixin _$DetailProductResponse {
   String? get text => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
-  int? get art => throw _privateConstructorUsedError;
+  String? get art => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_discount')
   int? get userDiscount => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_buy_for_next_discount')
@@ -54,6 +54,7 @@ mixin _$DetailProductResponse {
   PriceProductResponse? get price => throw _privateConstructorUsedError;
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -87,7 +88,7 @@ abstract class $DetailProductResponseCopyWith<$Res> {
       String? text,
       String? name,
       int? quantity,
-      int? art,
+      String? art,
       @JsonKey(name: 'user_discount') int? userDiscount,
       @JsonKey(name: 'user_buy_for_next_discount') int? userBuyForNextDiscount,
       @JsonKey(name: 'user_buy_for_next_discount_val')
@@ -95,7 +96,8 @@ abstract class $DetailProductResponseCopyWith<$Res> {
       @JsonKey(name: 'user_next_discount') int? userNextDiscount,
       PriceProductResponse? price,
       String? r,
-      String? e});
+      String? e,
+      String? errorMessage});
 
   $PhotoProductResponseCopyWith<$Res>? get photo;
   $BrandProductResponseCopyWith<$Res>? get brand;
@@ -140,6 +142,7 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     Object? price = freezed,
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -201,7 +204,7 @@ class _$DetailProductResponseCopyWithImpl<$Res,
       art: freezed == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       userDiscount: freezed == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -229,6 +232,10 @@ class _$DetailProductResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -323,7 +330,7 @@ abstract class _$$DetailProductResponseImplCopyWith<$Res>
       String? text,
       String? name,
       int? quantity,
-      int? art,
+      String? art,
       @JsonKey(name: 'user_discount') int? userDiscount,
       @JsonKey(name: 'user_buy_for_next_discount') int? userBuyForNextDiscount,
       @JsonKey(name: 'user_buy_for_next_discount_val')
@@ -331,7 +338,8 @@ abstract class _$$DetailProductResponseImplCopyWith<$Res>
       @JsonKey(name: 'user_next_discount') int? userNextDiscount,
       PriceProductResponse? price,
       String? r,
-      String? e});
+      String? e,
+      String? errorMessage});
 
   @override
   $PhotoProductResponseCopyWith<$Res>? get photo;
@@ -379,6 +387,7 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
     Object? price = freezed,
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$DetailProductResponseImpl(
       code: freezed == code
@@ -440,7 +449,7 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
       art: freezed == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       userDiscount: freezed == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -468,6 +477,10 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -504,7 +517,8 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
       @JsonKey(name: 'user_next_discount') this.userNextDiscount,
       this.price,
       this.r,
-      this.e})
+      this.e,
+      this.errorMessage})
       : _breadcrumb = breadcrumb,
         _option = option,
         _sku = sku,
@@ -598,7 +612,7 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
   @override
   final int? quantity;
   @override
-  final int? art;
+  final String? art;
   @override
   @JsonKey(name: 'user_discount')
   final int? userDiscount;
@@ -617,10 +631,12 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
   final String? r;
   @override
   final String? e;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'DetailProductResponse(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, r: $r, e: $e)';
+    return 'DetailProductResponse(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -657,7 +673,9 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
                 other.userNextDiscount == userNextDiscount) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
@@ -685,7 +703,8 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
         userNextDiscount,
         price,
         r,
-        e
+        e,
+        errorMessage
       ]);
 
   @JsonKey(ignore: true)
@@ -724,7 +743,7 @@ abstract class _DetailProductResponse extends DetailProductResponse {
       final String? text,
       final String? name,
       final int? quantity,
-      final int? art,
+      final String? art,
       @JsonKey(name: 'user_discount') final int? userDiscount,
       @JsonKey(name: 'user_buy_for_next_discount')
       final int? userBuyForNextDiscount,
@@ -733,7 +752,8 @@ abstract class _DetailProductResponse extends DetailProductResponse {
       @JsonKey(name: 'user_next_discount') final int? userNextDiscount,
       final PriceProductResponse? price,
       final String? r,
-      final String? e}) = _$DetailProductResponseImpl;
+      final String? e,
+      final String? errorMessage}) = _$DetailProductResponseImpl;
   _DetailProductResponse._() : super._();
 
   factory _DetailProductResponse.fromJson(Map<String, dynamic> json) =
@@ -773,7 +793,7 @@ abstract class _DetailProductResponse extends DetailProductResponse {
   @override
   int? get quantity;
   @override
-  int? get art;
+  String? get art;
   @override
   @JsonKey(name: 'user_discount')
   int? get userDiscount;
@@ -792,6 +812,8 @@ abstract class _DetailProductResponse extends DetailProductResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$DetailProductResponseImplCopyWith<_$DetailProductResponseImpl>

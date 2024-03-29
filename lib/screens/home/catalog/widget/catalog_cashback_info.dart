@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info_modal.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
 import 'package:blocs/blocs.dart';
@@ -23,6 +24,7 @@ class CatalogCashbackInfo extends StatefulWidget {
     required this.userBuyForNextDiscount,
     required this.userBuyForNextDiscountVal,
     required this.pb,
+    required this.successfullyLogin,
   });
 
   final int cashback;
@@ -38,6 +40,7 @@ class CatalogCashbackInfo extends StatefulWidget {
   final int pc;
   final int pb;
   final bool isAuth;
+  final VoidCallback successfullyLogin;
 
   @override
   State<CatalogCashbackInfo> createState() => _CatalogCashbackInfoState();
@@ -251,7 +254,12 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                           showDialog(
                               context: context,
                               builder: (context) {
-                                return const LoginPhoneScreen();
+                                return LoginPhoneScreen(
+                                  successfully: widget.successfullyLogin,
+                                  onBack: () {
+                                    context.popRoute();
+                                  },
+                                );
                               });
                         },
                         child: Text(

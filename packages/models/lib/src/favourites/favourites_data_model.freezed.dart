@@ -19,6 +19,7 @@ mixin _$FavouritesDataModel {
   String get code => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   List<String> get favorites => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FavouritesDataModelCopyWith<FavouritesDataModel> get copyWith =>
@@ -31,7 +32,8 @@ abstract class $FavouritesDataModelCopyWith<$Res> {
           FavouritesDataModel value, $Res Function(FavouritesDataModel) then) =
       _$FavouritesDataModelCopyWithImpl<$Res, FavouritesDataModel>;
   @useResult
-  $Res call({String code, String sku, List<String> favorites});
+  $Res call(
+      {String code, String sku, List<String> favorites, String errorMessage});
 }
 
 /// @nodoc
@@ -50,6 +52,7 @@ class _$FavouritesDataModelCopyWithImpl<$Res, $Val extends FavouritesDataModel>
     Object? code = null,
     Object? sku = null,
     Object? favorites = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -64,6 +67,10 @@ class _$FavouritesDataModelCopyWithImpl<$Res, $Val extends FavouritesDataModel>
           ? _value.favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -76,7 +83,8 @@ abstract class _$$FavouritesDataModelImplCopyWith<$Res>
       __$$FavouritesDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String code, String sku, List<String> favorites});
+  $Res call(
+      {String code, String sku, List<String> favorites, String errorMessage});
 }
 
 /// @nodoc
@@ -93,6 +101,7 @@ class __$$FavouritesDataModelImplCopyWithImpl<$Res>
     Object? code = null,
     Object? sku = null,
     Object? favorites = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$FavouritesDataModelImpl(
       code: null == code
@@ -107,6 +116,10 @@ class __$$FavouritesDataModelImplCopyWithImpl<$Res>
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -117,7 +130,8 @@ class _$FavouritesDataModelImpl extends _FavouritesDataModel {
   _$FavouritesDataModelImpl(
       {required this.code,
       required this.sku,
-      required final List<String> favorites})
+      required final List<String> favorites,
+      required this.errorMessage})
       : _favorites = favorites,
         super._();
 
@@ -134,8 +148,11 @@ class _$FavouritesDataModelImpl extends _FavouritesDataModel {
   }
 
   @override
+  final String errorMessage;
+
+  @override
   String toString() {
-    return 'FavouritesDataModel(code: $code, sku: $sku, favorites: $favorites)';
+    return 'FavouritesDataModel(code: $code, sku: $sku, favorites: $favorites, errorMessage: $errorMessage)';
   }
 
   @override
@@ -146,12 +163,14 @@ class _$FavouritesDataModelImpl extends _FavouritesDataModel {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             const DeepCollectionEquality()
-                .equals(other._favorites, _favorites));
+                .equals(other._favorites, _favorites) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, code, sku, const DeepCollectionEquality().hash(_favorites));
+  int get hashCode => Object.hash(runtimeType, code, sku,
+      const DeepCollectionEquality().hash(_favorites), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -165,7 +184,8 @@ abstract class _FavouritesDataModel extends FavouritesDataModel {
   factory _FavouritesDataModel(
       {required final String code,
       required final String sku,
-      required final List<String> favorites}) = _$FavouritesDataModelImpl;
+      required final List<String> favorites,
+      required final String errorMessage}) = _$FavouritesDataModelImpl;
   _FavouritesDataModel._() : super._();
 
   @override
@@ -174,6 +194,8 @@ abstract class _FavouritesDataModel extends FavouritesDataModel {
   String get sku;
   @override
   List<String> get favorites;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$FavouritesDataModelImplCopyWith<_$FavouritesDataModelImpl> get copyWith =>

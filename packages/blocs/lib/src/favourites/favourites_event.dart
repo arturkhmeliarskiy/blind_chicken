@@ -2,8 +2,8 @@ part of 'favourites_bloc.dart';
 
 @freezed
 class FavouritesEvent with _$FavouritesEvent {
-  const factory FavouritesEvent.preloadData() = InitFavouritesEvent;
-
+  const factory FavouritesEvent.init() = InitFavouritesEvent;
+  const factory FavouritesEvent.preloadData() = PreloadDataFavouritesEvent;
   const factory FavouritesEvent.selectFilter({
     required int index,
     required int indexItem,
@@ -33,7 +33,12 @@ class FavouritesEvent with _$FavouritesEvent {
   }) = DeleteFavouriteProductFavouritesEvent;
   const factory FavouritesEvent.getInfoProduct({
     required String code,
+    bool? isUpdate,
   }) = GetInfoProductFavouritesEvent;
   const factory FavouritesEvent.goBackProductInfo() = GoBackProductInfoCategotyFavouritesEvent;
   const factory FavouritesEvent.paginationProduct() = PaginationProductFavouritesEvent;
+  const factory FavouritesEvent.addProductToSoppingCart() = AddProductToSoppingCartFavouritesEvent;
+  const factory FavouritesEvent.checkProductToSoppingCart({
+    required SkuProductDataModel size,
+  }) = CheckProductToSoppingCartFavouritesEvent;
 }

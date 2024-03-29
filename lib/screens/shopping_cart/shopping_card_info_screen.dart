@@ -41,9 +41,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
     id: '',
     value: '',
   );
-  bool _isSoppingCart = false;
   bool _isChildRoute = false;
-  ScrollController? _controller;
   late ProductDataModel item;
 
   @override
@@ -55,15 +53,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
 
   @override
   void didUpdateWidget(covariant ShoppingCardInfoScreen oldWidget) {
-    _controller = ScrollController(initialScrollOffset: 0);
     item = widget.item;
     super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    _controller?.dispose();
-    super.dispose();
   }
 
   @override
@@ -88,7 +79,6 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
             Scaffold(
               body: SafeArea(
                   child: ListView(
-                controller: _controller,
                 children: [
                   const AppBarBlindChicken(),
                   BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, state) {
@@ -301,6 +291,16 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                     userBuyForNextDiscountVal:
                                         initState.detailsProduct?.userBuyForNextDiscountVal ?? 0,
                                     pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+                                    successfullyLogin: () {
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                      context.read<ShoppingCartBloc>().add(
+                                            ShoppingCartEvent.getInfoProduct(
+                                              code:
+                                                  (initState.detailsProduct?.code ?? 0).toString(),
+                                              isUpdate: true,
+                                            ),
+                                          );
+                                    },
                                   ),
                                   const SizedBox(
                                     height: 28,
@@ -327,6 +327,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                   setState(() {
                                                     _size = value;
                                                   });
+                                                  context.read<ShoppingCartBloc>().add(
+                                                        ShoppingCartEvent.checkProductToSoppingCart(
+                                                          size: _size,
+                                                        ),
+                                                      );
                                                   context.back();
                                                 },
                                                 listSizeProduct: sky,
@@ -388,10 +393,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                       ],
                                     ),
                                   BlindChickenButton(
-                                    title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
+                                    title: initState.isSoppingCart ?? false
+                                        ? 'Перейти в корзину'
+                                        : 'Добавить в корзину',
                                     onChenge: () {
-                                      if (_isSoppingCart) {
+                                      if (initState.isSoppingCart ?? false) {
                                         context.navigateTo(
                                           const ShoppingCartAutoRouterRoute(
                                             children: [
@@ -399,14 +405,10 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                             ],
                                           ),
                                         );
-                                        setState(() {
-                                          _isSoppingCart = false;
-                                        });
                                       } else {
-                                        setState(() {
-                                          _isSoppingCart = true;
-                                        });
-
+                                        context.read<ShoppingCartBloc>().add(
+                                              const ShoppingCartEvent.addProductToSoppingCartInfo(),
+                                            );
                                         context.read<ShoppingCartBloc>().add(
                                               ShoppingCartEvent.addProductToSoppingCart(
                                                 item: BasketInfoItemDataModel(
@@ -670,7 +672,10 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                     context.pushRoute(
                                                       HomeAutoRouterRoute(
                                                         children: [
-                                                          CatalogRoute(title: ''),
+                                                          CatalogRoute(
+                                                            title: '',
+                                                            url: path,
+                                                          ),
                                                         ],
                                                       ),
                                                     );

@@ -1,5 +1,4 @@
 export 'catalog/catalog_bloc.dart';
-export 'filter/filter_bloc.dart';
 export 'shopping_cart/shopping_cart_bloc.dart';
 export 'boutiques/boutiques_bloc.dart';
 export 'favourites/favourites_bloc.dart';

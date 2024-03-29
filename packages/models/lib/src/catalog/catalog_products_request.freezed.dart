@@ -16,21 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CatalogProductsRequest {
+  List<FilterCatalogDataModel>? get filters =>
+      throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
-  String? get nav => throw _privateConstructorUsedError;
   String? get sort => throw _privateConstructorUsedError;
-  String? get ct => throw _privateConstructorUsedError;
-  String? get t26 => throw _privateConstructorUsedError;
-  String? get f2 => throw _privateConstructorUsedError;
-  String? get s61 => throw _privateConstructorUsedError;
-  String? get t1 => throw _privateConstructorUsedError;
-  String? get f3 => throw _privateConstructorUsedError;
-  String? get f10 => throw _privateConstructorUsedError;
-  String? get f12 => throw _privateConstructorUsedError;
-  String? get f13 => throw _privateConstructorUsedError;
-  String? get t4 => throw _privateConstructorUsedError;
-  String? get t9 => throw _privateConstructorUsedError;
-  String? get t21 => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogProductsRequestCopyWith<CatalogProductsRequest> get copyWith =>
@@ -43,22 +32,7 @@ abstract class $CatalogProductsRequestCopyWith<$Res> {
           $Res Function(CatalogProductsRequest) then) =
       _$CatalogProductsRequestCopyWithImpl<$Res, CatalogProductsRequest>;
   @useResult
-  $Res call(
-      {String? url,
-      String? nav,
-      String? sort,
-      String? ct,
-      String? t26,
-      String? f2,
-      String? s61,
-      String? t1,
-      String? f3,
-      String? f10,
-      String? f12,
-      String? f13,
-      String? t4,
-      String? t9,
-      String? t21});
+  $Res call({List<FilterCatalogDataModel>? filters, String? url, String? sort});
 }
 
 /// @nodoc
@@ -75,82 +49,22 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filters = freezed,
     Object? url = freezed,
-    Object? nav = freezed,
     Object? sort = freezed,
-    Object? ct = freezed,
-    Object? t26 = freezed,
-    Object? f2 = freezed,
-    Object? s61 = freezed,
-    Object? t1 = freezed,
-    Object? f3 = freezed,
-    Object? f10 = freezed,
-    Object? f12 = freezed,
-    Object? f13 = freezed,
-    Object? t4 = freezed,
-    Object? t9 = freezed,
-    Object? t21 = freezed,
   }) {
     return _then(_value.copyWith(
+      filters: freezed == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as List<FilterCatalogDataModel>?,
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      nav: freezed == nav
-          ? _value.nav
-          : nav // ignore: cast_nullable_to_non_nullable
-              as String?,
       sort: freezed == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ct: freezed == ct
-          ? _value.ct
-          : ct // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t26: freezed == t26
-          ? _value.t26
-          : t26 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f2: freezed == f2
-          ? _value.f2
-          : f2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      s61: freezed == s61
-          ? _value.s61
-          : s61 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t1: freezed == t1
-          ? _value.t1
-          : t1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f3: freezed == f3
-          ? _value.f3
-          : f3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f10: freezed == f10
-          ? _value.f10
-          : f10 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f12: freezed == f12
-          ? _value.f12
-          : f12 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f13: freezed == f13
-          ? _value.f13
-          : f13 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t4: freezed == t4
-          ? _value.t4
-          : t4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t9: freezed == t9
-          ? _value.t9
-          : t9 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t21: freezed == t21
-          ? _value.t21
-          : t21 // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -165,22 +79,7 @@ abstract class _$$CatalogProductsRequestImplCopyWith<$Res>
       __$$CatalogProductsRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? url,
-      String? nav,
-      String? sort,
-      String? ct,
-      String? t26,
-      String? f2,
-      String? s61,
-      String? t1,
-      String? f3,
-      String? f10,
-      String? f12,
-      String? f13,
-      String? t4,
-      String? t9,
-      String? t21});
+  $Res call({List<FilterCatalogDataModel>? filters, String? url, String? sort});
 }
 
 /// @nodoc
@@ -196,82 +95,22 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? filters = freezed,
     Object? url = freezed,
-    Object? nav = freezed,
     Object? sort = freezed,
-    Object? ct = freezed,
-    Object? t26 = freezed,
-    Object? f2 = freezed,
-    Object? s61 = freezed,
-    Object? t1 = freezed,
-    Object? f3 = freezed,
-    Object? f10 = freezed,
-    Object? f12 = freezed,
-    Object? f13 = freezed,
-    Object? t4 = freezed,
-    Object? t9 = freezed,
-    Object? t21 = freezed,
   }) {
     return _then(_$CatalogProductsRequestImpl(
+      filters: freezed == filters
+          ? _value._filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as List<FilterCatalogDataModel>?,
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-      nav: freezed == nav
-          ? _value.nav
-          : nav // ignore: cast_nullable_to_non_nullable
-              as String?,
       sort: freezed == sort
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ct: freezed == ct
-          ? _value.ct
-          : ct // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t26: freezed == t26
-          ? _value.t26
-          : t26 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f2: freezed == f2
-          ? _value.f2
-          : f2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      s61: freezed == s61
-          ? _value.s61
-          : s61 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t1: freezed == t1
-          ? _value.t1
-          : t1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f3: freezed == f3
-          ? _value.f3
-          : f3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f10: freezed == f10
-          ? _value.f10
-          : f10 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f12: freezed == f12
-          ? _value.f12
-          : f12 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      f13: freezed == f13
-          ? _value.f13
-          : f13 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t4: freezed == t4
-          ? _value.t4
-          : t4 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t9: freezed == t9
-          ? _value.t9
-          : t9 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      t21: freezed == t21
-          ? _value.t21
-          : t21 // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -281,57 +120,28 @@ class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
 
 class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
   _$CatalogProductsRequestImpl(
-      {this.url,
-      this.nav,
-      this.sort,
-      this.ct,
-      this.t26,
-      this.f2,
-      this.s61,
-      this.t1,
-      this.f3,
-      this.f10,
-      this.f12,
-      this.f13,
-      this.t4,
-      this.t9,
-      this.t21})
-      : super._();
+      {final List<FilterCatalogDataModel>? filters, this.url, this.sort})
+      : _filters = filters,
+        super._();
+
+  final List<FilterCatalogDataModel>? _filters;
+  @override
+  List<FilterCatalogDataModel>? get filters {
+    final value = _filters;
+    if (value == null) return null;
+    if (_filters is EqualUnmodifiableListView) return _filters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   final String? url;
   @override
-  final String? nav;
-  @override
   final String? sort;
-  @override
-  final String? ct;
-  @override
-  final String? t26;
-  @override
-  final String? f2;
-  @override
-  final String? s61;
-  @override
-  final String? t1;
-  @override
-  final String? f3;
-  @override
-  final String? f10;
-  @override
-  final String? f12;
-  @override
-  final String? f13;
-  @override
-  final String? t4;
-  @override
-  final String? t9;
-  @override
-  final String? t21;
 
   @override
   String toString() {
-    return 'CatalogProductsRequest(url: $url, nav: $nav, sort: $sort, ct: $ct, t26: $t26, f2: $f2, s61: $s61, t1: $t1, f3: $f3, f10: $f10, f12: $f12, f13: $f13, t4: $t4, t9: $t9, t21: $t21)';
+    return 'CatalogProductsRequest(filters: $filters, url: $url, sort: $sort)';
   }
 
   @override
@@ -339,26 +149,14 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CatalogProductsRequestImpl &&
+            const DeepCollectionEquality().equals(other._filters, _filters) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.nav, nav) || other.nav == nav) &&
-            (identical(other.sort, sort) || other.sort == sort) &&
-            (identical(other.ct, ct) || other.ct == ct) &&
-            (identical(other.t26, t26) || other.t26 == t26) &&
-            (identical(other.f2, f2) || other.f2 == f2) &&
-            (identical(other.s61, s61) || other.s61 == s61) &&
-            (identical(other.t1, t1) || other.t1 == t1) &&
-            (identical(other.f3, f3) || other.f3 == f3) &&
-            (identical(other.f10, f10) || other.f10 == f10) &&
-            (identical(other.f12, f12) || other.f12 == f12) &&
-            (identical(other.f13, f13) || other.f13 == f13) &&
-            (identical(other.t4, t4) || other.t4 == t4) &&
-            (identical(other.t9, t9) || other.t9 == t9) &&
-            (identical(other.t21, t21) || other.t21 == t21));
+            (identical(other.sort, sort) || other.sort == sort));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, url, nav, sort, ct, t26, f2, s61,
-      t1, f3, f10, f12, f13, t4, t9, t21);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_filters), url, sort);
 
   @JsonKey(ignore: true)
   @override
@@ -370,53 +168,17 @@ class _$CatalogProductsRequestImpl extends _CatalogProductsRequest {
 
 abstract class _CatalogProductsRequest extends CatalogProductsRequest {
   factory _CatalogProductsRequest(
-      {final String? url,
-      final String? nav,
-      final String? sort,
-      final String? ct,
-      final String? t26,
-      final String? f2,
-      final String? s61,
-      final String? t1,
-      final String? f3,
-      final String? f10,
-      final String? f12,
-      final String? f13,
-      final String? t4,
-      final String? t9,
-      final String? t21}) = _$CatalogProductsRequestImpl;
+      {final List<FilterCatalogDataModel>? filters,
+      final String? url,
+      final String? sort}) = _$CatalogProductsRequestImpl;
   _CatalogProductsRequest._() : super._();
 
   @override
+  List<FilterCatalogDataModel>? get filters;
+  @override
   String? get url;
   @override
-  String? get nav;
-  @override
   String? get sort;
-  @override
-  String? get ct;
-  @override
-  String? get t26;
-  @override
-  String? get f2;
-  @override
-  String? get s61;
-  @override
-  String? get t1;
-  @override
-  String? get f3;
-  @override
-  String? get f10;
-  @override
-  String? get f12;
-  @override
-  String? get f13;
-  @override
-  String? get t4;
-  @override
-  String? get t9;
-  @override
-  String? get t21;
   @override
   @JsonKey(ignore: true)
   _$$CatalogProductsRequestImplCopyWith<_$CatalogProductsRequestImpl>

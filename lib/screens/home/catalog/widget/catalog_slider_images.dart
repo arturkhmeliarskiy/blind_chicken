@@ -34,7 +34,6 @@ class CatalogSliderImages extends StatefulWidget {
 
 class _CatalogSliderImagesState extends State<CatalogSliderImages> {
   final ScrollController _scrollController = ScrollController();
-  GlobalKey _key = GlobalKey();
   double _position = 0.0;
   bool _isLike = false;
 

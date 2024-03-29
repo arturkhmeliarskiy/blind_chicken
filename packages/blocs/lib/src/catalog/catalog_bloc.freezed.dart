@@ -43,11 +43,16 @@ mixin _$CatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,11 +79,15 @@ mixin _$CatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,11 +114,14 @@ mixin _$CatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,6 +151,8 @@ mixin _$CatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -147,6 +161,10 @@ mixin _$CatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -171,6 +189,8 @@ mixin _$CatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -179,6 +199,10 @@ mixin _$CatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -203,6 +227,8 @@ mixin _$CatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -211,6 +237,10 @@ mixin _$CatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -297,11 +327,16 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return init();
   }
@@ -331,11 +366,15 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return init?.call();
   }
@@ -365,11 +404,14 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -405,6 +447,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -413,6 +457,10 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return init(this);
   }
@@ -440,6 +488,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -448,6 +498,10 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return init?.call(this);
   }
@@ -475,6 +529,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -483,6 +539,10 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -562,11 +622,16 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return preloadData();
   }
@@ -596,11 +661,15 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return preloadData?.call();
   }
@@ -630,11 +699,14 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -670,6 +742,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -678,6 +752,10 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return preloadData(this);
   }
@@ -705,6 +783,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -713,6 +793,10 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return preloadData?.call(this);
   }
@@ -740,6 +824,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -748,6 +834,10 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -829,11 +919,16 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return updateFavouritesProducts();
   }
@@ -863,11 +958,15 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return updateFavouritesProducts?.call();
   }
@@ -897,11 +996,14 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -937,6 +1039,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -945,6 +1049,10 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return updateFavouritesProducts(this);
   }
@@ -972,6 +1080,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -980,6 +1090,10 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return updateFavouritesProducts?.call(this);
   }
@@ -1007,6 +1121,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -1015,6 +1131,10 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -1199,11 +1319,16 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return subCategory(a, b, id, u, pid, item, selectedGenderIndex);
   }
@@ -1233,11 +1358,15 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return subCategory?.call(a, b, id, u, pid, item, selectedGenderIndex);
   }
@@ -1267,11 +1396,14 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -1307,6 +1439,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -1315,6 +1449,10 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return subCategory(this);
   }
@@ -1342,6 +1480,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -1350,6 +1490,10 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return subCategory?.call(this);
   }
@@ -1377,6 +1521,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -1385,6 +1531,10 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -1509,11 +1659,16 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return backPathMenu(idParent);
   }
@@ -1543,11 +1698,15 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return backPathMenu?.call(idParent);
   }
@@ -1577,11 +1736,14 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -1617,6 +1779,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -1625,6 +1789,10 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return backPathMenu(this);
   }
@@ -1652,6 +1820,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -1660,6 +1830,10 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return backPathMenu?.call(this);
   }
@@ -1687,6 +1861,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -1695,6 +1871,10 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -1834,11 +2014,16 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -1868,11 +2053,15 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -1902,11 +2091,14 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -1942,6 +2134,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -1950,6 +2144,10 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return selectFilter(this);
   }
@@ -1977,6 +2175,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -1985,6 +2185,10 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return selectFilter?.call(this);
   }
@@ -2012,6 +2216,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -2020,6 +2226,10 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -2164,11 +2374,16 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -2198,11 +2413,15 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -2232,11 +2451,14 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -2272,6 +2494,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -2280,6 +2504,10 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return deleteFilter(this);
   }
@@ -2307,6 +2535,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -2315,6 +2545,10 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return deleteFilter?.call(this);
   }
@@ -2342,6 +2576,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -2350,6 +2586,10 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -2493,11 +2733,16 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -2527,11 +2772,15 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -2561,11 +2810,14 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -2601,6 +2853,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -2609,6 +2863,10 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -2636,6 +2894,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -2644,6 +2904,10 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -2671,6 +2935,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -2679,6 +2945,10 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -2817,11 +3087,16 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -2851,11 +3126,15 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -2885,11 +3164,14 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2925,6 +3207,8 @@ class _$AddFavouriteProductCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -2933,6 +3217,10 @@ class _$AddFavouriteProductCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return addFavouriteProduct(this);
   }
@@ -2960,6 +3248,8 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -2968,6 +3258,10 @@ class _$AddFavouriteProductCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -2995,6 +3289,8 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3003,6 +3299,10 @@ class _$AddFavouriteProductCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -3120,11 +3420,16 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -3154,11 +3459,15 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -3188,11 +3497,14 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -3228,6 +3540,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -3236,6 +3550,10 @@ class _$DeleteFavouriteProductCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -3263,6 +3581,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3271,6 +3591,10 @@ class _$DeleteFavouriteProductCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -3298,6 +3622,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3306,6 +3632,10 @@ class _$DeleteFavouriteProductCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -3394,11 +3724,16 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return paginationProduct();
   }
@@ -3428,11 +3763,15 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return paginationProduct?.call();
   }
@@ -3462,11 +3801,14 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -3502,6 +3844,8 @@ class _$PaginationProductCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -3510,6 +3854,10 @@ class _$PaginationProductCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return paginationProduct(this);
   }
@@ -3537,6 +3885,8 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3545,6 +3895,10 @@ class _$PaginationProductCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return paginationProduct?.call(this);
   }
@@ -3572,6 +3926,8 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3580,6 +3936,10 @@ class _$PaginationProductCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -3686,11 +4046,16 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return searchBrand(query);
   }
@@ -3720,11 +4085,15 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return searchBrand?.call(query);
   }
@@ -3754,11 +4123,14 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (searchBrand != null) {
@@ -3794,6 +4166,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -3802,6 +4176,10 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return searchBrand(this);
   }
@@ -3829,6 +4207,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3837,6 +4217,10 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return searchBrand?.call(this);
   }
@@ -3864,6 +4248,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -3872,6 +4258,10 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (searchBrand != null) {
@@ -3996,11 +4386,16 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return pathMenu(item);
   }
@@ -4030,11 +4425,15 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return pathMenu?.call(item);
   }
@@ -4064,11 +4463,14 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (pathMenu != null) {
@@ -4104,6 +4506,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -4112,6 +4516,10 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return pathMenu(this);
   }
@@ -4139,6 +4547,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -4147,6 +4557,10 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return pathMenu?.call(this);
   }
@@ -4174,6 +4588,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -4182,6 +4598,10 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (pathMenu != null) {
@@ -4301,11 +4721,16 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return removePathMenu(items);
   }
@@ -4335,11 +4760,15 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return removePathMenu?.call(items);
   }
@@ -4369,11 +4798,14 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removePathMenu != null) {
@@ -4409,6 +4841,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -4417,6 +4851,10 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return removePathMenu(this);
   }
@@ -4444,6 +4882,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -4452,6 +4892,10 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return removePathMenu?.call(this);
   }
@@ -4479,6 +4923,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -4487,6 +4933,10 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removePathMenu != null) {
@@ -4607,11 +5057,16 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return pathBrandMenu(items);
   }
@@ -4641,11 +5096,15 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return pathBrandMenu?.call(items);
   }
@@ -4675,11 +5134,14 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (pathBrandMenu != null) {
@@ -4715,6 +5177,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -4723,6 +5187,10 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return pathBrandMenu(this);
   }
@@ -4750,6 +5218,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -4758,6 +5228,10 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return pathBrandMenu?.call(this);
   }
@@ -4785,6 +5259,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -4793,6 +5269,10 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (pathBrandMenu != null) {
@@ -4908,11 +5388,16 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return switchTypePeople(selectIndexType);
   }
@@ -4942,11 +5427,15 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return switchTypePeople?.call(selectIndexType);
   }
@@ -4976,11 +5465,14 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (switchTypePeople != null) {
@@ -5016,6 +5508,8 @@ class _$SwitchTypePeopleCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -5024,6 +5518,10 @@ class _$SwitchTypePeopleCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return switchTypePeople(this);
   }
@@ -5051,6 +5549,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5059,6 +5559,10 @@ class _$SwitchTypePeopleCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return switchTypePeople?.call(this);
   }
@@ -5086,6 +5590,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5094,6 +5600,10 @@ class _$SwitchTypePeopleCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (switchTypePeople != null) {
@@ -5207,11 +5717,16 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return getInfoProducts(path);
   }
@@ -5241,11 +5756,15 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return getInfoProducts?.call(path);
   }
@@ -5275,11 +5794,14 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
@@ -5315,6 +5837,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -5323,6 +5847,10 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return getInfoProducts(this);
   }
@@ -5350,6 +5878,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5358,6 +5888,10 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return getInfoProducts?.call(this);
   }
@@ -5385,6 +5919,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5393,6 +5929,10 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
@@ -5413,13 +5953,361 @@ abstract class GetInfoProductsCatalogEvent implements CatalogEvent {
 }
 
 /// @nodoc
+abstract class _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
+    $Res> {
+  factory _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith(
+          _$GetInfoProductsPushNotificationCatalogEventImpl value,
+          $Res Function(_$GetInfoProductsPushNotificationCatalogEventImpl)
+              then) =
+      __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String path, String sort});
+}
+
+/// @nodoc
+class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res,
+        _$GetInfoProductsPushNotificationCatalogEventImpl>
+    implements
+        _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<$Res> {
+  __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl(
+      _$GetInfoProductsPushNotificationCatalogEventImpl _value,
+      $Res Function(_$GetInfoProductsPushNotificationCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? path = null,
+    Object? sort = null,
+  }) {
+    return _then(_$GetInfoProductsPushNotificationCatalogEventImpl(
+      path: null == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      sort: null == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoProductsPushNotificationCatalogEventImpl
+    implements GetInfoProductsPushNotificationCatalogEvent {
+  const _$GetInfoProductsPushNotificationCatalogEventImpl(
+      {required this.path, required this.sort});
+
+  @override
+  final String path;
+  @override
+  final String sort;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.getInfoProductsPushNotification(path: $path, sort: $sort)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoProductsPushNotificationCatalogEventImpl &&
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.sort, sort) || other.sort == sort));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, path, sort);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
+          _$GetInfoProductsPushNotificationCatalogEventImpl>
+      get copyWith =>
+          __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<
+                  _$GetInfoProductsPushNotificationCatalogEventImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(String value) sortProducts,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+  }) {
+    return getInfoProductsPushNotification(path, sort);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String value)? sortProducts,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+  }) {
+    return getInfoProductsPushNotification?.call(path, sort);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String value)? sortProducts,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductsPushNotification != null) {
+      return getInfoProductsPushNotification(path, sort);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) init,
+    required TResult Function(PreloadDataCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+    required TResult Function(GetInfoProductsCatalogEvent value)
+        getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
+    required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
+    required TResult Function(SortProductsCatalogEvent value) sortProducts,
+    required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
+        goBackProductInfo,
+    required TResult Function(RemoveSelectFilterCategotyCatalogEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
+        removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
+  }) {
+    return getInfoProductsPushNotification(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? init,
+    TResult? Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult? Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult? Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+  }) {
+    return getInfoProductsPushNotification?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? init,
+    TResult Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductsPushNotification != null) {
+      return getInfoProductsPushNotification(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoProductsPushNotificationCatalogEvent
+    implements CatalogEvent {
+  const factory GetInfoProductsPushNotificationCatalogEvent(
+          {required final String path, required final String sort}) =
+      _$GetInfoProductsPushNotificationCatalogEventImpl;
+
+  String get path;
+  String get sort;
+  @JsonKey(ignore: true)
+  _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
+          _$GetInfoProductsPushNotificationCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$GetInfoProductCatalogEventImplCopyWith<$Res> {
   factory _$$GetInfoProductCatalogEventImplCopyWith(
           _$GetInfoProductCatalogEventImpl value,
           $Res Function(_$GetInfoProductCatalogEventImpl) then) =
       __$$GetInfoProductCatalogEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code});
+  $Res call({String code, bool? isUpdate});
 }
 
 /// @nodoc
@@ -5435,12 +6323,17 @@ class __$$GetInfoProductCatalogEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? isUpdate = freezed,
   }) {
     return _then(_$GetInfoProductCatalogEventImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      isUpdate: freezed == isUpdate
+          ? _value.isUpdate
+          : isUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -5448,14 +6341,16 @@ class __$$GetInfoProductCatalogEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
-  const _$GetInfoProductCatalogEventImpl({required this.code});
+  const _$GetInfoProductCatalogEventImpl({required this.code, this.isUpdate});
 
   @override
   final String code;
+  @override
+  final bool? isUpdate;
 
   @override
   String toString() {
-    return 'CatalogEvent.getInfoProduct(code: $code)';
+    return 'CatalogEvent.getInfoProduct(code: $code, isUpdate: $isUpdate)';
   }
 
   @override
@@ -5463,11 +6358,13 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductCatalogEventImpl &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.isUpdate, isUpdate) ||
+                other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => Object.hash(runtimeType, code, isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -5504,13 +6401,18 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
-    return getInfoProduct(code);
+    return getInfoProduct(code, isUpdate);
   }
 
   @override
@@ -5538,13 +6440,17 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
-    return getInfoProduct?.call(code);
+    return getInfoProduct?.call(code, isUpdate);
   }
 
   @override
@@ -5572,15 +6478,18 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code);
+      return getInfoProduct(code, isUpdate);
     }
     return orElse();
   }
@@ -5612,6 +6521,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -5620,6 +6531,10 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return getInfoProduct(this);
   }
@@ -5647,6 +6562,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5655,6 +6572,10 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -5682,6 +6603,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5690,6 +6613,10 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -5700,10 +6627,12 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
 }
 
 abstract class GetInfoProductCatalogEvent implements CatalogEvent {
-  const factory GetInfoProductCatalogEvent({required final String code}) =
-      _$GetInfoProductCatalogEventImpl;
+  const factory GetInfoProductCatalogEvent(
+      {required final String code,
+      final bool? isUpdate}) = _$GetInfoProductCatalogEventImpl;
 
   String get code;
+  bool? get isUpdate;
   @JsonKey(ignore: true)
   _$$GetInfoProductCatalogEventImplCopyWith<_$GetInfoProductCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5801,11 +6730,16 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return sortProducts(value);
   }
@@ -5835,11 +6769,15 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return sortProducts?.call(value);
   }
@@ -5869,11 +6807,14 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (sortProducts != null) {
@@ -5909,6 +6850,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -5917,6 +6860,10 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return sortProducts(this);
   }
@@ -5944,6 +6891,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5952,6 +6901,10 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return sortProducts?.call(this);
   }
@@ -5979,6 +6932,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -5987,6 +6942,10 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (sortProducts != null) {
@@ -6074,11 +7033,16 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return goBackProductInfo();
   }
@@ -6108,11 +7072,15 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return goBackProductInfo?.call();
   }
@@ -6142,11 +7110,14 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -6182,6 +7153,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -6190,6 +7163,10 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return goBackProductInfo(this);
   }
@@ -6217,6 +7194,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -6225,6 +7204,10 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -6252,6 +7235,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -6260,6 +7245,10 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -6370,11 +7359,16 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return removeSelectFilterCategory(index);
   }
@@ -6404,11 +7398,15 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return removeSelectFilterCategory?.call(index);
   }
@@ -6438,11 +7436,14 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -6478,6 +7479,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -6486,6 +7489,10 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return removeSelectFilterCategory(this);
   }
@@ -6513,6 +7520,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -6521,6 +7530,10 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return removeSelectFilterCategory?.call(this);
   }
@@ -6548,6 +7561,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -6556,6 +7571,10 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -6646,11 +7665,16 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String code) getInfoProduct,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
   }) {
     return removeSelectAllFilters();
   }
@@ -6680,11 +7704,15 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String code)? getInfoProduct,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
     return removeSelectAllFilters?.call();
   }
@@ -6714,11 +7742,14 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String code)? getInfoProduct,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -6754,6 +7785,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         switchTypePeople,
     required TResult Function(GetInfoProductsCatalogEvent value)
         getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
     required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
     required TResult Function(SortProductsCatalogEvent value) sortProducts,
     required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
@@ -6762,6 +7795,10 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         removeSelectFilterCategory,
     required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
         removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
   }) {
     return removeSelectAllFilters(this);
   }
@@ -6789,6 +7826,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult? Function(SortProductsCatalogEvent value)? sortProducts,
     TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -6797,6 +7836,10 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         removeSelectFilterCategory,
     TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
   }) {
     return removeSelectAllFilters?.call(this);
   }
@@ -6824,6 +7867,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
     TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
     TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
     TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
     TResult Function(SortProductsCatalogEvent value)? sortProducts,
     TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
@@ -6832,6 +7877,10 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         removeSelectFilterCategory,
     TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
         removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -6848,12 +7897,653 @@ abstract class RemoveSelectAllFiltersCategotyCatalogEvent
 }
 
 /// @nodoc
+abstract class _$$AddProductToSoppingCartCatalogEventImplCopyWith<$Res> {
+  factory _$$AddProductToSoppingCartCatalogEventImplCopyWith(
+          _$AddProductToSoppingCartCatalogEventImpl value,
+          $Res Function(_$AddProductToSoppingCartCatalogEventImpl) then) =
+      __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res,
+        _$AddProductToSoppingCartCatalogEventImpl>
+    implements _$$AddProductToSoppingCartCatalogEventImplCopyWith<$Res> {
+  __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl(
+      _$AddProductToSoppingCartCatalogEventImpl _value,
+      $Res Function(_$AddProductToSoppingCartCatalogEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddProductToSoppingCartCatalogEventImpl
+    implements AddProductToSoppingCartCatalogEvent {
+  const _$AddProductToSoppingCartCatalogEventImpl();
+
+  @override
+  String toString() {
+    return 'CatalogEvent.addProductToSoppingCart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductToSoppingCartCatalogEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(String value) sortProducts,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String value)? sortProducts,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String value)? sortProducts,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) init,
+    required TResult Function(PreloadDataCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+    required TResult Function(GetInfoProductsCatalogEvent value)
+        getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
+    required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
+    required TResult Function(SortProductsCatalogEvent value) sortProducts,
+    required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
+        goBackProductInfo,
+    required TResult Function(RemoveSelectFilterCategotyCatalogEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
+        removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? init,
+    TResult? Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult? Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult? Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+  }) {
+    return addProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? init,
+    TResult Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddProductToSoppingCartCatalogEvent implements CatalogEvent {
+  const factory AddProductToSoppingCartCatalogEvent() =
+      _$AddProductToSoppingCartCatalogEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckProductToSoppingCartCatalogEventImplCopyWith<$Res> {
+  factory _$$CheckProductToSoppingCartCatalogEventImplCopyWith(
+          _$CheckProductToSoppingCartCatalogEventImpl value,
+          $Res Function(_$CheckProductToSoppingCartCatalogEventImpl) then) =
+      __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
+}
+
+/// @nodoc
+class __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res,
+        _$CheckProductToSoppingCartCatalogEventImpl>
+    implements _$$CheckProductToSoppingCartCatalogEventImplCopyWith<$Res> {
+  __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl(
+      _$CheckProductToSoppingCartCatalogEventImpl _value,
+      $Res Function(_$CheckProductToSoppingCartCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$CheckProductToSoppingCartCatalogEventImpl(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$CheckProductToSoppingCartCatalogEventImpl
+    implements CheckProductToSoppingCartCatalogEvent {
+  const _$CheckProductToSoppingCartCatalogEventImpl({required this.size});
+
+  @override
+  final SkuProductDataModel size;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.checkProductToSoppingCart(size: $size)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckProductToSoppingCartCatalogEventImpl &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, size);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckProductToSoppingCartCatalogEventImplCopyWith<
+          _$CheckProductToSoppingCartCatalogEventImpl>
+      get copyWith => __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<
+          _$CheckProductToSoppingCartCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, String sort)
+        getInfoProductsPushNotification,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(String value) sortProducts,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, String sort)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String value)? sortProducts,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart?.call(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String value)? sortProducts,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (checkProductToSoppingCart != null) {
+      return checkProductToSoppingCart(size);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) init,
+    required TResult Function(PreloadDataCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+    required TResult Function(GetInfoProductsCatalogEvent value)
+        getInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
+    required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
+    required TResult Function(SortProductsCatalogEvent value) sortProducts,
+    required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
+        goBackProductInfo,
+    required TResult Function(RemoveSelectFilterCategotyCatalogEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
+        removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? init,
+    TResult? Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult? Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult? Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+  }) {
+    return checkProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? init,
+    TResult Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (checkProductToSoppingCart != null) {
+      return checkProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckProductToSoppingCartCatalogEvent implements CatalogEvent {
+  const factory CheckProductToSoppingCartCatalogEvent(
+          {required final SkuProductDataModel size}) =
+      _$CheckProductToSoppingCartCatalogEventImpl;
+
+  SkuProductDataModel get size;
+  @JsonKey(ignore: true)
+  _$$CheckProductToSoppingCartCatalogEventImplCopyWith<
+          _$CheckProductToSoppingCartCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CatalogState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -6876,6 +8566,12 @@ mixin _$CatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -6887,6 +8583,7 @@ mixin _$CatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -6909,6 +8606,12 @@ mixin _$CatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -6920,6 +8623,7 @@ mixin _$CatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -6942,6 +8646,12 @@ mixin _$CatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -6954,6 +8664,7 @@ mixin _$CatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(ErrorCatalogState value) error,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) =>
@@ -6963,6 +8674,7 @@ mixin _$CatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(ErrorCatalogState value)? error,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) =>
@@ -6972,6 +8684,7 @@ mixin _$CatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(ErrorCatalogState value)? error,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7038,6 +8751,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7060,6 +8774,12 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -7074,6 +8794,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7096,6 +8817,12 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7110,6 +8837,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7132,6 +8860,12 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7150,6 +8884,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(ErrorCatalogState value) error,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -7162,6 +8897,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(ErrorCatalogState value)? error,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -7174,6 +8910,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(ErrorCatalogState value)? error,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7230,6 +8967,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7252,6 +8990,12 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -7266,6 +9010,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7288,6 +9033,12 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7302,6 +9053,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7324,6 +9076,12 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7342,6 +9100,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(ErrorCatalogState value) error,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -7354,6 +9113,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(ErrorCatalogState value)? error,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -7366,6 +9126,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(ErrorCatalogState value)? error,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7423,6 +9184,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7445,6 +9207,12 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -7459,6 +9227,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7481,6 +9250,12 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7495,6 +9270,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -7517,6 +9293,12 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -7535,6 +9317,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(ErrorCatalogState value) error,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -7547,6 +9330,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(ErrorCatalogState value)? error,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -7559,6 +9343,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(ErrorCatalogState value)? error,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -7572,6 +9357,256 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
 
 abstract class LoadingCatalogState implements CatalogState {
   const factory LoadingCatalogState() = _$LoadingCatalogStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorCatalogStateImplCopyWith<$Res> {
+  factory _$$ErrorCatalogStateImplCopyWith(_$ErrorCatalogStateImpl value,
+          $Res Function(_$ErrorCatalogStateImpl) then) =
+      __$$ErrorCatalogStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorCatalogStateImplCopyWithImpl<$Res>
+    extends _$CatalogStateCopyWithImpl<$Res, _$ErrorCatalogStateImpl>
+    implements _$$ErrorCatalogStateImplCopyWith<$Res> {
+  __$$ErrorCatalogStateImplCopyWithImpl(_$ErrorCatalogStateImpl _value,
+      $Res Function(_$ErrorCatalogStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorCatalogStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorCatalogStateImpl implements ErrorCatalogState {
+  const _$ErrorCatalogStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'CatalogState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorCatalogStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorCatalogStateImplCopyWith<_$ErrorCatalogStateImpl> get copyWith =>
+      __$$ErrorCatalogStateImplCopyWithImpl<_$ErrorCatalogStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() upload,
+    required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
+            List<MenuItemDataModel> menu,
+            List<ProductDataModel> defaultProducts,
+            List<ProductDataModel> products,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<FilterInfoDataModel> filter,
+            List<String> listProductsCode,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category,
+            CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
+            DetailProductDataModel? detailsProduct,
+            CatalogDataModel? catalogInfo,
+            String? title)
+        preloadDataCompleted,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? upload,
+    TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
+            List<MenuItemDataModel> menu,
+            List<ProductDataModel> defaultProducts,
+            List<ProductDataModel> products,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<FilterInfoDataModel> filter,
+            List<String> listProductsCode,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category,
+            CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
+            DetailProductDataModel? detailsProduct,
+            CatalogDataModel? catalogInfo,
+            String? title)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? upload,
+    TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
+            List<MenuItemDataModel> menu,
+            List<ProductDataModel> defaultProducts,
+            List<ProductDataModel> products,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<FilterInfoDataModel> filter,
+            List<String> listProductsCode,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category,
+            CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
+            DetailProductDataModel? detailsProduct,
+            CatalogDataModel? catalogInfo,
+            String? title)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogState value) init,
+    required TResult Function(UploadCatalogState value) upload,
+    required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(ErrorCatalogState value) error,
+    required TResult Function(PreloadDataCompletedCatalogState value)
+        preloadDataCompleted,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogState value)? init,
+    TResult? Function(UploadCatalogState value)? upload,
+    TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(ErrorCatalogState value)? error,
+    TResult? Function(PreloadDataCompletedCatalogState value)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogState value)? init,
+    TResult Function(UploadCatalogState value)? upload,
+    TResult Function(LoadingCatalogState value)? load,
+    TResult Function(ErrorCatalogState value)? error,
+    TResult Function(PreloadDataCompletedCatalogState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorCatalogState implements CatalogState {
+  const factory ErrorCatalogState({required final String errorMessage}) =
+      _$ErrorCatalogStateImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$ErrorCatalogStateImplCopyWith<_$ErrorCatalogStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -7603,6 +9638,12 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       int selectedGenderIndex,
       bool isAuth,
       int offset,
+      String nowVersionApp,
+      String updateVersionApp,
+      bool isUpdateVersionApp,
+      String? errorMessage,
+      bool? isSoppingCart,
+      bool? isError,
       DetailProductDataModel? detailsProduct,
       CatalogDataModel? catalogInfo,
       String? title});
@@ -7646,6 +9687,12 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? selectedGenderIndex = null,
     Object? isAuth = null,
     Object? offset = null,
+    Object? nowVersionApp = null,
+    Object? updateVersionApp = null,
+    Object? isUpdateVersionApp = null,
+    Object? errorMessage = freezed,
+    Object? isSoppingCart = freezed,
+    Object? isError = freezed,
     Object? detailsProduct = freezed,
     Object? catalogInfo = freezed,
     Object? title = freezed,
@@ -7735,6 +9782,30 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
               as int,
+      nowVersionApp: null == nowVersionApp
+          ? _value.nowVersionApp
+          : nowVersionApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      updateVersionApp: null == updateVersionApp
+          ? _value.updateVersionApp
+          : updateVersionApp // ignore: cast_nullable_to_non_nullable
+              as String,
+      isUpdateVersionApp: null == isUpdateVersionApp
+          ? _value.isUpdateVersionApp
+          : isUpdateVersionApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isSoppingCart: freezed == isSoppingCart
+          ? _value.isSoppingCart
+          : isSoppingCart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
       detailsProduct: freezed == detailsProduct
           ? _value.detailsProduct
           : detailsProduct // ignore: cast_nullable_to_non_nullable
@@ -7810,6 +9881,12 @@ class _$PreloadDataCompletedCatalogStateImpl
       required this.selectedGenderIndex,
       required this.isAuth,
       required this.offset,
+      required this.nowVersionApp,
+      required this.updateVersionApp,
+      required this.isUpdateVersionApp,
+      this.errorMessage,
+      this.isSoppingCart,
+      this.isError,
       this.detailsProduct,
       this.catalogInfo,
       this.title})
@@ -7982,6 +10059,18 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final int offset;
   @override
+  final String nowVersionApp;
+  @override
+  final String updateVersionApp;
+  @override
+  final bool isUpdateVersionApp;
+  @override
+  final String? errorMessage;
+  @override
+  final bool? isSoppingCart;
+  @override
+  final bool? isError;
+  @override
   final DetailProductDataModel? detailsProduct;
   @override
   final CatalogDataModel? catalogInfo;
@@ -7990,7 +10079,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, errorMessage: $errorMessage, isSoppingCart: $isSoppingCart, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -8031,6 +10120,17 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.selectedGenderIndex == selectedGenderIndex) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.nowVersionApp, nowVersionApp) ||
+                other.nowVersionApp == nowVersionApp) &&
+            (identical(other.updateVersionApp, updateVersionApp) ||
+                other.updateVersionApp == updateVersionApp) &&
+            (identical(other.isUpdateVersionApp, isUpdateVersionApp) ||
+                other.isUpdateVersionApp == isUpdateVersionApp) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.isSoppingCart, isSoppingCart) ||
+                other.isSoppingCart == isSoppingCart) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
             (identical(other.catalogInfo, catalogInfo) ||
@@ -8062,6 +10162,12 @@ class _$PreloadDataCompletedCatalogStateImpl
         selectedGenderIndex,
         isAuth,
         offset,
+        nowVersionApp,
+        updateVersionApp,
+        isUpdateVersionApp,
+        errorMessage,
+        isSoppingCart,
+        isError,
         detailsProduct,
         catalogInfo,
         title
@@ -8081,6 +10187,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -8103,6 +10210,12 @@ class _$PreloadDataCompletedCatalogStateImpl
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -8130,6 +10243,12 @@ class _$PreloadDataCompletedCatalogStateImpl
         selectedGenderIndex,
         isAuth,
         offset,
+        nowVersionApp,
+        updateVersionApp,
+        isUpdateVersionApp,
+        errorMessage,
+        isSoppingCart,
+        isError,
         detailsProduct,
         catalogInfo,
         title);
@@ -8141,6 +10260,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -8163,6 +10283,12 @@ class _$PreloadDataCompletedCatalogStateImpl
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -8190,6 +10316,12 @@ class _$PreloadDataCompletedCatalogStateImpl
         selectedGenderIndex,
         isAuth,
         offset,
+        nowVersionApp,
+        updateVersionApp,
+        isUpdateVersionApp,
+        errorMessage,
+        isSoppingCart,
+        isError,
         detailsProduct,
         catalogInfo,
         title);
@@ -8201,6 +10333,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<String> allBrands,
             List<String> defaultBrands,
@@ -8223,6 +10356,12 @@ class _$PreloadDataCompletedCatalogStateImpl
             int selectedGenderIndex,
             bool isAuth,
             int offset,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            String? errorMessage,
+            bool? isSoppingCart,
+            bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -8252,6 +10391,12 @@ class _$PreloadDataCompletedCatalogStateImpl
           selectedGenderIndex,
           isAuth,
           offset,
+          nowVersionApp,
+          updateVersionApp,
+          isUpdateVersionApp,
+          errorMessage,
+          isSoppingCart,
+          isError,
           detailsProduct,
           catalogInfo,
           title);
@@ -8265,6 +10410,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(ErrorCatalogState value) error,
     required TResult Function(PreloadDataCompletedCatalogState value)
         preloadDataCompleted,
   }) {
@@ -8277,6 +10423,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(ErrorCatalogState value)? error,
     TResult? Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
   }) {
@@ -8289,6 +10436,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(ErrorCatalogState value)? error,
     TResult Function(PreloadDataCompletedCatalogState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -8323,6 +10471,12 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final int selectedGenderIndex,
       required final bool isAuth,
       required final int offset,
+      required final String nowVersionApp,
+      required final String updateVersionApp,
+      required final bool isUpdateVersionApp,
+      final String? errorMessage,
+      final bool? isSoppingCart,
+      final bool? isError,
       final DetailProductDataModel? detailsProduct,
       final CatalogDataModel? catalogInfo,
       final String? title}) = _$PreloadDataCompletedCatalogStateImpl;
@@ -8348,6 +10502,12 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   int get selectedGenderIndex;
   bool get isAuth;
   int get offset;
+  String get nowVersionApp;
+  String get updateVersionApp;
+  bool get isUpdateVersionApp;
+  String? get errorMessage;
+  bool? get isSoppingCart;
+  bool? get isError;
   DetailProductDataModel? get detailsProduct;
   CatalogDataModel? get catalogInfo;
   String? get title;

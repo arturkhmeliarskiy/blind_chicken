@@ -41,7 +41,6 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
     id: '',
     value: '',
   );
-  bool _isSoppingCart = false;
   bool _isChildRoute = false;
   ScrollController? _controller;
   late ProductDataModel item;
@@ -73,6 +72,9 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
           productsFavourites: (value) {
             if (value.listProductsCode.isEmpty) {
               context.back();
+              if (value.isUpdate ?? false) {
+                context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
+              }
             }
           },
           orElse: () => const SizedBox(),
@@ -300,6 +302,16 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                     userBuyForNextDiscountVal:
                                         initState.detailsProduct?.userBuyForNextDiscountVal ?? 0,
                                     pb: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+                                    successfullyLogin: () {
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                      context.read<FavouritesBloc>().add(
+                                            FavouritesEvent.getInfoProduct(
+                                              code:
+                                                  (initState.detailsProduct?.code ?? 0).toString(),
+                                              isUpdate: true,
+                                            ),
+                                          );
+                                    },
                                   ),
                                   const SizedBox(
                                     height: 28,
@@ -326,6 +338,11 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                   setState(() {
                                                     _size = value;
                                                   });
+                                                  context.read<FavouritesBloc>().add(
+                                                        FavouritesEvent.checkProductToSoppingCart(
+                                                          size: _size,
+                                                        ),
+                                                      );
                                                   context.back();
                                                 },
                                                 listSizeProduct: sky,
@@ -387,10 +404,11 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                       ],
                                     ),
                                   BlindChickenButton(
-                                    title:
-                                        _isSoppingCart ? 'Перейти в корзину' : 'Добавить в корзину',
+                                    title: initState.isSoppingCart ?? false
+                                        ? 'Перейти в корзину'
+                                        : 'Добавить в корзину',
                                     onChenge: () {
-                                      if (_isSoppingCart) {
+                                      if (initState.isSoppingCart ?? false) {
                                         context.navigateTo(
                                           const ShoppingCartAutoRouterRoute(
                                             children: [
@@ -398,13 +416,10 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                             ],
                                           ),
                                         );
-                                        setState(() {
-                                          _isSoppingCart = false;
-                                        });
                                       } else {
-                                        setState(() {
-                                          _isSoppingCart = true;
-                                        });
+                                        context.read<FavouritesBloc>().add(
+                                              const FavouritesEvent.addProductToSoppingCart(),
+                                            );
 
                                         context.read<ShoppingCartBloc>().add(
                                               ShoppingCartEvent.addProductToSoppingCart(
@@ -668,7 +683,10 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                       children: [
                                                         HomeAutoRouterRoute(
                                                           children: [
-                                                            CatalogRoute(title: ''),
+                                                            CatalogRoute(
+                                                              title: '',
+                                                              url: path,
+                                                            ),
                                                           ],
                                                         ),
                                                       ],

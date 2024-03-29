@@ -21,6 +21,7 @@ PaymentsResponse _$PaymentsResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PaymentsResponse {
   List<PaymentItemResponse>? get payments => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $PaymentsResponseCopyWith<$Res> {
           PaymentsResponse value, $Res Function(PaymentsResponse) then) =
       _$PaymentsResponseCopyWithImpl<$Res, PaymentsResponse>;
   @useResult
-  $Res call({List<PaymentItemResponse>? payments});
+  $Res call({List<PaymentItemResponse>? payments, String? errorMessage});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$PaymentsResponseCopyWithImpl<$Res, $Val extends PaymentsResponse>
   @override
   $Res call({
     Object? payments = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       payments: freezed == payments
           ? _value.payments
           : payments // ignore: cast_nullable_to_non_nullable
               as List<PaymentItemResponse>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$PaymentsResponseImplCopyWith<$Res>
       __$$PaymentsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PaymentItemResponse>? payments});
+  $Res call({List<PaymentItemResponse>? payments, String? errorMessage});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$PaymentsResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? payments = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$PaymentsResponseImpl(
       payments: freezed == payments
           ? _value._payments
           : payments // ignore: cast_nullable_to_non_nullable
               as List<PaymentItemResponse>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -97,7 +108,8 @@ class __$$PaymentsResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PaymentsResponseImpl extends _PaymentsResponse {
-  _$PaymentsResponseImpl({final List<PaymentItemResponse>? payments})
+  _$PaymentsResponseImpl(
+      {final List<PaymentItemResponse>? payments, this.errorMessage})
       : _payments = payments,
         super._();
 
@@ -115,8 +127,11 @@ class _$PaymentsResponseImpl extends _PaymentsResponse {
   }
 
   @override
+  final String? errorMessage;
+
+  @override
   String toString() {
-    return 'PaymentsResponse(payments: $payments)';
+    return 'PaymentsResponse(payments: $payments, errorMessage: $errorMessage)';
   }
 
   @override
@@ -124,13 +139,15 @@ class _$PaymentsResponseImpl extends _PaymentsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentsResponseImpl &&
-            const DeepCollectionEquality().equals(other._payments, _payments));
+            const DeepCollectionEquality().equals(other._payments, _payments) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_payments));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_payments), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -148,8 +165,9 @@ class _$PaymentsResponseImpl extends _PaymentsResponse {
 }
 
 abstract class _PaymentsResponse extends PaymentsResponse {
-  factory _PaymentsResponse({final List<PaymentItemResponse>? payments}) =
-      _$PaymentsResponseImpl;
+  factory _PaymentsResponse(
+      {final List<PaymentItemResponse>? payments,
+      final String? errorMessage}) = _$PaymentsResponseImpl;
   _PaymentsResponse._() : super._();
 
   factory _PaymentsResponse.fromJson(Map<String, dynamic> json) =
@@ -157,6 +175,8 @@ abstract class _PaymentsResponse extends PaymentsResponse {
 
   @override
   List<PaymentItemResponse>? get payments;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$PaymentsResponseImplCopyWith<_$PaymentsResponseImpl> get copyWith =>

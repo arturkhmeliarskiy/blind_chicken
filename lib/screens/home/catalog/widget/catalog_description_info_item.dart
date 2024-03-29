@@ -26,29 +26,22 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 10,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: SizedBox(
-              height: 22,
+    final width = MediaQuery.of(context).size.width;
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: width / 2 - 14,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Container(
-                    constraints: BoxConstraints(
-                      minHeight: 0,
-                      maxWidth: (MediaQuery.of(context).size.width / 2) - 40,
-                    ),
-                    child: Text(
-                      title,
-                      style: styleTitle ?? Theme.of(context).textTheme.displayMedium,
-                      overflow: TextOverflow.visible,
-                      maxLines: 2,
-                    ),
+                  Text(
+                    title,
+                    style: styleTitle ?? Theme.of(context).textTheme.displayMedium,
+                    overflow: TextOverflow.visible,
+                    maxLines: 2,
                   ),
                   const SizedBox(
                     width: 14,
@@ -57,33 +50,35 @@ class CatalogDescriptionInfoItem extends StatelessWidget {
                     child: Text(
                       ellipsis(),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            height: 2.0,
+                            height: 1.5,
                             color: BlindChickenColors.dotItem,
                           ),
+                      maxLines: 1,
                     ),
                   )
                 ],
               ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              alignment: Alignment.bottomLeft,
-              margin: const EdgeInsets.only(left: 17.5),
-              height: 22,
-              child: Text(
-                value,
-                style: styleValue ??
-                    Theme.of(context).textTheme.displayMedium?.copyWith(
-                          fontWeight: FontWeight.w400,
-                        ),
-                overflow: TextOverflow.visible,
-                maxLines: 1,
+            Expanded(
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                padding: const EdgeInsets.only(left: 17.5),
+                child: Text(
+                  value,
+                  style: styleValue ??
+                      Theme.of(context).textTheme.displayMedium?.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
+                  overflow: TextOverflow.visible,
+                ),
               ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+        const SizedBox(
+          height: 10,
+        )
+      ],
     );
   }
 }

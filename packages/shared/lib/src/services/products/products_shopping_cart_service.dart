@@ -12,7 +12,11 @@ class ProductsShoppingCartService {
   }
 
   void addProduct(ProductShoppingCartDataModel product) {
-    Hive.box<ProductShoppingCartDataModel>('products_shopping_cart').put(product.code, product);
+    Hive.box<ProductShoppingCartDataModel>('products_shopping_cart').add(product);
+  }
+
+  void addAllProducts(List<ProductShoppingCartDataModel> products) {
+    Hive.box<ProductShoppingCartDataModel>('products_shopping_cart').addAll(products);
   }
 
   List<ProductShoppingCartDataModel> listProduct() {

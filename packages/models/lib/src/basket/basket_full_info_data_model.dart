@@ -9,6 +9,7 @@ class BasketFullInfoDataModel with _$BasketFullInfoDataModel {
   factory BasketFullInfoDataModel({
     required String r,
     required String e,
+    required String errorMessage,
     required String promoDescription,
     required List<BasketFullInfoItemDataModel> basket,
   }) = _BasketFullInfoDataModel;

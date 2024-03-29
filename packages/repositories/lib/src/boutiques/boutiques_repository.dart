@@ -52,25 +52,26 @@ extension on BoutiquesResponse {
   BoutiquesDataModel toBoutiques() {
     return BoutiquesDataModel(
         data: List<BoutiqueDataModel>.from(
-      data?.map(
-            (item) => BoutiqueDataModel(
-              address: item.address ?? '',
-              fotoMin: item.fotoMin ?? '',
-              url: item.url ?? '',
-              caption: item.caption ?? '',
-              name: item.name ?? '',
-              nameShort: item.nameShort ?? '',
-              schedule: item.schedule ?? '',
-              coordinates: BoutiqueCoordinatesDataModel(
-                latitude: item.coordinates?.latitude ?? 0.0,
-                longitude: item.coordinates?.longitude ?? 0.0,
-              ),
-              uidStore: item.uidStore ?? '',
-              iconPath: (item.caption ?? '').replaceAll(' ', '_').toLowerCase(),
-            ),
-          ) ??
-          [],
-    ));
+          data?.map(
+                (item) => BoutiqueDataModel(
+                  address: item.address ?? '',
+                  fotoMin: item.fotoMin ?? '',
+                  url: item.url ?? '',
+                  caption: item.caption ?? '',
+                  name: item.name ?? '',
+                  nameShort: item.nameShort ?? '',
+                  schedule: item.schedule ?? '',
+                  coordinates: BoutiqueCoordinatesDataModel(
+                    latitude: item.coordinates?.latitude ?? 0.0,
+                    longitude: item.coordinates?.longitude ?? 0.0,
+                  ),
+                  uidStore: item.uidStore ?? '',
+                  iconPath: (item.caption ?? '').replaceAll(' ', '_').toLowerCase(),
+                ),
+              ) ??
+              [],
+        ),
+        errorMessage: errorMessage ?? '');
   }
 }
 

@@ -25,6 +25,7 @@ dependencies:
     path: ../models
   ui_kit:
     path: ../ui_kit
+  package_info_plus: ^5.0.1
 
 dev_dependencies:
   flutter_test:

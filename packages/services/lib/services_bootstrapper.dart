@@ -59,5 +59,17 @@ Future<void> initServices(GetIt getIt) async {
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
+    )
+    ..registerFactory(
+      () => AppStoreInfoService(
+        dio,
+      ),
+    )
+    ..registerFactory(
+      () => PushNotificationService(
+        dio,
+        getIt.get<ConverterService>(),
+        getIt.get<SharedPreferencesService>(),
+      ),
     );
 }

@@ -393,6 +393,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                           },
                                           title:
                                               '${initState.selectedTypePeople} ${listBrand[indexBrand]}',
+                                          url: '',
                                         ),
                                       );
                                     },

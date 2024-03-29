@@ -211,6 +211,9 @@ abstract class _$AppRouter extends RootStackRouter {
           isBack: args.isBack,
           onBack: args.onBack,
           title: args.title,
+          url: args.url,
+          isNotification: args.isNotification,
+          sort: args.sort,
         ),
       );
     },
@@ -1298,6 +1301,9 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
     bool isBack = true,
     void Function()? onBack,
     required String title,
+    required String url,
+    bool isNotification = false,
+    String sort = '',
     List<PageRouteInfo>? children,
   }) : super(
           CatalogRoute.name,
@@ -1306,6 +1312,9 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
             isBack: isBack,
             onBack: onBack,
             title: title,
+            url: url,
+            isNotification: isNotification,
+            sort: sort,
           ),
           initialChildren: children,
         );
@@ -1322,6 +1331,9 @@ class CatalogRouteArgs {
     this.isBack = true,
     this.onBack,
     required this.title,
+    required this.url,
+    this.isNotification = false,
+    this.sort = '',
   });
 
   final Key? key;
@@ -1332,9 +1344,15 @@ class CatalogRouteArgs {
 
   final String title;
 
+  final String url;
+
+  final bool isNotification;
+
+  final String sort;
+
   @override
   String toString() {
-    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title}';
+    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort}';
   }
 }
 

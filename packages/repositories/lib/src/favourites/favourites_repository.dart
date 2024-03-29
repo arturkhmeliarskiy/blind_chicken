@@ -44,19 +44,7 @@ class FavouritesRepository {
     final productToBasket = await _favouritesService.getFavouritesProdcutsInfo(
           request: FavouritesCatalogProductsRequest(
             favourites: request?.favourites ?? [],
-            nav: request?.nav,
-            ct: request?.ct,
-            t26: request?.t26,
-            f2: request?.f2,
-            s61: request?.s61,
-            t1: request?.t1,
-            f3: request?.f3,
-            f10: request?.f10,
-            f12: request?.f12,
-            f13: request?.f13,
-            t4: request?.t4,
-            t9: request?.t9,
-            t21: request?.t21,
+            filters: request?.filters ?? [],
           ),
         ) ??
         FavouritesCatalogInfoResponse();
@@ -133,6 +121,7 @@ extension on FavouritesResponse {
       code: code ?? '',
       sku: sku ?? '',
       favorites: favorites ?? [],
+      errorMessage: errorMessage ?? '',
     );
   }
 }

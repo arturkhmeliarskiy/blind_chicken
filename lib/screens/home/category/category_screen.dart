@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/widgets/item_catalog_menu.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -305,6 +308,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                         context.navigateTo(
                                           CatalogRoute(
                                             title: 'Все товары',
+                                            url: initState.pathMenu.last.url,
                                           ),
                                         );
                                       },
@@ -332,6 +336,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   },
                   orElse: () => const SizedBox());
             }),
+            // StreamBuilder<String>(
+            //   stream: streamTimeFromNative(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return Text(
+            //         '${snapshot.data}',
+            //         style: Theme.of(context).textTheme.headline4,
+            //       );
+            //     } else {
+            //       return const CircularProgressIndicator();
+            //     }
+            //   },
+            // ),
             Expanded(child: BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
               return state.maybeMap(
                 preloadDataCompleted: (initState) {
@@ -352,6 +369,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 context.navigateTo(
                                   CatalogRoute(
                                     title: initState.menu[index].name,
+                                    url: initState.menu[index].url,
                                   ),
                                 );
                               } else if (initState.menu[index].name == 'Подарочная карта') {
@@ -391,6 +409,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     backgroundColor: Colors.grey.shade400,
                   ),
                 ),
+                error: (value) {
+                  return BlindChickenErrorInfo(
+                    errorMessage: value.errorMessage,
+                    onRepeatRequest: () {
+                      context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                    },
+                  );
+                },
                 orElse: () => const SizedBox(),
               );
             })),

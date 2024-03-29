@@ -36,6 +36,7 @@ mixin _$CatalogResponse {
       throw _privateConstructorUsedError;
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,7 +63,8 @@ abstract class $CatalogResponseCopyWith<$Res> {
       List<FilterCatalogInfoResponse>? filter,
       List<CatalogProductResponse>? products,
       String? r,
-      String? e});
+      String? e,
+      String? errorMessage});
 
   $SectionsResponseCopyWith<$Res>? get sections;
 }
@@ -90,6 +92,7 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
     Object? products = freezed,
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       userDiscount: freezed == userDiscount
@@ -132,6 +135,10 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -169,7 +176,8 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
       List<FilterCatalogInfoResponse>? filter,
       List<CatalogProductResponse>? products,
       String? r,
-      String? e});
+      String? e,
+      String? errorMessage});
 
   @override
   $SectionsResponseCopyWith<$Res>? get sections;
@@ -196,6 +204,7 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
     Object? products = freezed,
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$CatalogResponseImpl(
       userDiscount: freezed == userDiscount
@@ -238,6 +247,10 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -257,7 +270,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       final List<FilterCatalogInfoResponse>? filter,
       final List<CatalogProductResponse>? products,
       this.r,
-      this.e})
+      this.e,
+      this.errorMessage})
       : _breadcrumbs = breadcrumbs,
         _filter = filter,
         _products = products,
@@ -313,10 +327,12 @@ class _$CatalogResponseImpl extends _CatalogResponse {
   final String? r;
   @override
   final String? e;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'CatalogResponse(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'CatalogResponse(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -337,7 +353,9 @@ class _$CatalogResponseImpl extends _CatalogResponse {
             const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
@@ -353,7 +371,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
-      e);
+      e,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -384,7 +403,8 @@ abstract class _CatalogResponse extends CatalogResponse {
       final List<FilterCatalogInfoResponse>? filter,
       final List<CatalogProductResponse>? products,
       final String? r,
-      final String? e}) = _$CatalogResponseImpl;
+      final String? e,
+      final String? errorMessage}) = _$CatalogResponseImpl;
   _CatalogResponse._() : super._();
 
   factory _CatalogResponse.fromJson(Map<String, dynamic> json) =
@@ -413,6 +433,8 @@ abstract class _CatalogResponse extends CatalogResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$CatalogResponseImplCopyWith<_$CatalogResponseImpl> get copyWith =>

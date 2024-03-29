@@ -80,6 +80,7 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               page: CatalogRoute.page,
+              path: 'catalog',
             ),
             AutoRoute(
               page: SaleRoute.page,
@@ -90,6 +91,7 @@ class AppRouter extends _$AppRouter {
               path: 'catalog_card_info',
             ),
             AutoRoute(
+              keepHistory: false,
               page: CatalogSearchCardInfoRoute.page,
             ),
             AutoRoute(
@@ -176,6 +178,7 @@ class AppRouter extends _$AppRouter {
               path: "sberbank_payment_webview_screen",
             ),
             AutoRoute(
+              keepHistory: false,
               page: OrderCardInfoRoute.page,
             ),
           ]),
@@ -199,6 +202,7 @@ class AppRouter extends _$AppRouter {
               path: "shopping_cart_delivery_info",
             ),
             AutoRoute(
+              keepHistory: false,
               page: ShoppingCardInfoRoute.page,
             ),
           ]),
@@ -272,6 +276,7 @@ class AppRouter extends _$AppRouter {
           path: '/no_internet',
         ),
         AutoRoute(
+          keepHistory: false,
           page: CatalogSizeProductRoute.page,
         ),
       ];

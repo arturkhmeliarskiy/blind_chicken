@@ -43,7 +43,7 @@ class _CatalogSizeProductScreenState extends State<CatalogSizeProductScreen> {
             CatalogHeaderInfo(
               title: 'Выберите размер',
               onClose: () {
-                context.popRoute();
+                context.back();
               },
             ),
             Expanded(

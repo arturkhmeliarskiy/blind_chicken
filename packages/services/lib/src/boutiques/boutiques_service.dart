@@ -34,11 +34,17 @@ class BoutiquesService {
       );
       log(response.data);
 
-      boutiquesResponse = BoutiquesResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        boutiquesResponse = BoutiquesResponse.fromJson(
+          jsonDecode(
+            response.data,
+          ),
+        );
+      } catch (e) {
+        boutiquesResponse = BoutiquesResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return boutiquesResponse;
     } on DioError catch (e) {
@@ -51,8 +57,10 @@ class BoutiquesService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return BoutiquesResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<BoutiqueInfoResponse?> getInfoBoutique({

@@ -6,11 +6,6 @@ import 'package:shared/shared.dart';
 Future<void> initBloc(GetIt getIt) async {
   getIt
     ..registerFactory(
-      () => FilterBloc(
-        getIt.get<CatalogRepository>(),
-      ),
-    )
-    ..registerFactory(
       () => ShoppingCartBloc(
         getIt.get<CatalogRepository>(),
         getIt.get<BasketRepository>(),
@@ -31,6 +26,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<AuthRepository>(),
         getIt.get<CatalogRepository>(),
         getIt.get<SharedPreferencesService>(),
+        getIt.get<PushNotificationRepository>(),
       ),
     )
     ..registerFactory(
@@ -38,6 +34,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<SharedPreferencesService>(),
         getIt.get<FavouritesRepository>(),
+        getIt.get<BasketRepository>(),
       ),
     )
     ..registerFactory(
@@ -49,6 +46,9 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<UpdateDataService>(),
         getIt.get<BoutiquesRepository>(),
         getIt.get<BasketRepository>(),
+        getIt.get<AppStoreInfoRepository>(),
+        getIt.get<DeviceInfoService>(),
+        getIt.get<PushNotificationRepository>(),
       ),
     )
     ..registerFactory(
@@ -64,6 +64,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<OrdersRepository>(),
         getIt.get<BasketRepository>(),
         getIt.get<FavouritesRepository>(),
+        getIt.get<PushNotificationRepository>(),
       ),
     )
     ..registerFactory(
@@ -71,6 +72,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<SharedPreferencesService>(),
         getIt.get<FavouritesRepository>(),
+        getIt.get<BasketRepository>(),
       ),
     )
     ..registerFactory(

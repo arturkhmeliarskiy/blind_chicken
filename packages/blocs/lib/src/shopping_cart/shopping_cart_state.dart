@@ -36,6 +36,8 @@ class ShoppingCartState with _$ShoppingCartState {
     required List<ProductDataModel> listProdcutsBrand,
     required List<int> favouritesProductsId,
     required bool isAuth,
+    bool? isSoppingCart,
+    bool? isAuthModel,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,
   }) = ProductsShoppingCartState;

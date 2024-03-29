@@ -13,10 +13,12 @@ _$BoutiquesResponseImpl _$$BoutiquesResponseImplFromJson(
           ?.map(
               (e) => BoutiquesDataResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$BoutiquesResponseImplToJson(
         _$BoutiquesResponseImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
+      'errorMessage': instance.errorMessage,
     };

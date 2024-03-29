@@ -32,7 +32,7 @@ mixin _$DetailProductDataModel {
   String get text => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
-  int get art => throw _privateConstructorUsedError;
+  String get art => throw _privateConstructorUsedError;
   int get userDiscount => throw _privateConstructorUsedError;
   int get userBuyForNextDiscount => throw _privateConstructorUsedError;
   int get userBuyForNextDiscountVal => throw _privateConstructorUsedError;
@@ -41,6 +41,7 @@ mixin _$DetailProductDataModel {
   ProductDataModel get product => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DetailProductDataModelCopyWith<DetailProductDataModel> get copyWith =>
@@ -68,7 +69,7 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
       String text,
       String name,
       int quantity,
-      int art,
+      String art,
       int userDiscount,
       int userBuyForNextDiscount,
       int userBuyForNextDiscountVal,
@@ -76,7 +77,8 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
       PriceProductDataModel price,
       ProductDataModel product,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 
   $PhotoDataModelCopyWith<$Res> get photo;
   $BrandProductDataModelCopyWith<$Res> get brand;
@@ -123,6 +125,7 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     Object? product = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -184,7 +187,7 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       art: null == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -216,6 +219,10 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -293,7 +300,7 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
       String text,
       String name,
       int quantity,
-      int art,
+      String art,
       int userDiscount,
       int userBuyForNextDiscount,
       int userBuyForNextDiscountVal,
@@ -301,7 +308,8 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
       PriceProductDataModel price,
       ProductDataModel product,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 
   @override
   $PhotoDataModelCopyWith<$Res> get photo;
@@ -353,6 +361,7 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
     Object? product = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$DetailProductDataModelImpl(
       code: null == code
@@ -414,7 +423,7 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
       art: null == art
           ? _value.art
           : art // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
@@ -447,6 +456,10 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -477,7 +490,8 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
       required this.price,
       required this.product,
       required this.r,
-      required this.e})
+      required this.e,
+      required this.errorMessage})
       : _breadcrumb = breadcrumb,
         _option = option,
         _sku = sku,
@@ -551,7 +565,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
   @override
   final int quantity;
   @override
-  final int art;
+  final String art;
   @override
   final int userDiscount;
   @override
@@ -568,10 +582,12 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e)';
+    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -609,7 +625,9 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -637,7 +655,8 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
         price,
         product,
         r,
-        e
+        e,
+        errorMessage
       ]);
 
   @JsonKey(ignore: true)
@@ -664,7 +683,7 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
       required final String text,
       required final String name,
       required final int quantity,
-      required final int art,
+      required final String art,
       required final int userDiscount,
       required final int userBuyForNextDiscount,
       required final int userBuyForNextDiscountVal,
@@ -672,7 +691,8 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
       required final PriceProductDataModel price,
       required final ProductDataModel product,
       required final String r,
-      required final String e}) = _$DetailProductDataModelImpl;
+      required final String e,
+      required final String errorMessage}) = _$DetailProductDataModelImpl;
   _DetailProductDataModel._() : super._();
 
   @override
@@ -704,7 +724,7 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   @override
   int get quantity;
   @override
-  int get art;
+  String get art;
   @override
   int get userDiscount;
   @override
@@ -721,6 +741,8 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$DetailProductDataModelImplCopyWith<_$DetailProductDataModelImpl>

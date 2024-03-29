@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_switch_delivery_type.dart';
 import 'package:blind_chicken/screens/location/location_delivery_info.dart';
+import 'package:blind_chicken/screens/login/login_phone_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_edit_delivery_info.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
           const SizedBox(
             height: 14,
           ),
-          if (!widget.isAuth)
+          if (widget.isAuth)
             Column(
               children: [
                 Padding(
@@ -183,12 +184,32 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
               children: [
                 Row(
                   children: [
-                    Text(
-                      widget.subTitle,
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            decoration: TextDecoration.underline,
-                          ),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<LoginBloc>().add(const LoginEvent.init());
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return LoginPhoneScreen(
+                                successfully: () {
+                                  Navigator.of(context, rootNavigator: true).pop();
+                                  context.read<ShoppingCartBloc>().add(
+                                        const ShoppingCartEvent.preloadData(),
+                                      );
+                                },
+                                onBack: () {
+                                  context.popRoute();
+                                },
+                              );
+                            });
+                      },
+                      child: Text(
+                        widget.subTitle,
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                              decoration: TextDecoration.underline,
+                            ),
+                      ),
                     ),
                     Expanded(
                       child: Text(

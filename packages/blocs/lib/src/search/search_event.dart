@@ -37,7 +37,12 @@ class SearchEvent with _$SearchEvent {
   }) = DeleteFavouriteProductSearchEvent;
   const factory SearchEvent.getInfoProduct({
     required String code,
+    bool? isUpdate,
   }) = GetInfoProductSearchEvent;
   const factory SearchEvent.goBackProductInfo() = GoBackProductInfoCategotySearchEvent;
   const factory SearchEvent.paginationProduct() = PaginationProductSearchEvent;
+  const factory SearchEvent.addProductToSoppingCart() = AddProductToSoppingCartSearchEvent;
+  const factory SearchEvent.checkProductToSoppingCart({
+    required SkuProductDataModel size,
+  }) = CheckProductToSoppingCartSearchEvent;
 }

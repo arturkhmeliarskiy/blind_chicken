@@ -10,6 +10,7 @@ class BasketFullInfoResponse with _$BasketFullInfoResponse {
   factory BasketFullInfoResponse({
     String? r,
     String? e,
+    String? errorMessage,
     @JsonKey(name: 'promo_description') String? promoDescription,
     List<BasketFullInfoItemResponse>? basket,
   }) = _BasketFullInfoResponse;

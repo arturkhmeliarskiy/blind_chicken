@@ -9,5 +9,6 @@ class FavouritesDataModel with _$FavouritesDataModel {
     required String code,
     required String sku,
     required List<String> favorites,
+    required String errorMessage,
   }) = _FavouritesDataModel;
 }

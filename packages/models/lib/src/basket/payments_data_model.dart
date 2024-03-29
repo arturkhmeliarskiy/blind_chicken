@@ -7,6 +7,7 @@ part 'payments_data_model.freezed.dart';
 class PaymentsDataModel with _$PaymentsDataModel {
   const PaymentsDataModel._();
   factory PaymentsDataModel({
-    List<PaymentItemDataModel>? payments,
+    required List<PaymentItemDataModel> payments,
+    String? errorMessage,
   }) = _PaymentsDataModel;
 }

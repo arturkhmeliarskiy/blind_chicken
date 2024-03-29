@@ -8,3 +8,5 @@ export 'clusterized_icon_painter.dart';
 export 'map_icon_painter.dart';
 export 'blind_chicken_border_button.dart';
 export 'blind_chicken_check_word_style.dart';
+export 'blind_chicken_update_app_info.dart';
+export 'blind_chicken_error_info.dart';

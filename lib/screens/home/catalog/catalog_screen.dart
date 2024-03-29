@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -15,24 +16,38 @@ class CatalogScreen extends StatefulWidget {
     this.isBack = true,
     this.onBack,
     required this.title,
+    required this.url,
+    this.isNotification = false,
+    this.sort = '',
   });
 
   final bool isBack;
+  final bool isNotification;
   final VoidCallback? onBack;
   final String title;
+  final String url;
+  final String sort;
 
   @override
   State<CatalogScreen> createState() => _CatalogScreenState();
 }
 
 class _CatalogScreenState extends State<CatalogScreen> {
-  String _selectSortItem = 'Сначала новинки';
+  final constants = ConstatntsInfo();
   final ScrollController _scrollController = ScrollController();
   bool isLoading = false;
   double _historyPosition = 0.0;
 
   @override
   void initState() {
+    if (widget.isNotification) {
+      context.read<CatalogBloc>().add(
+            CatalogEvent.getInfoProductsPushNotification(
+              path: widget.url,
+              sort: widget.sort,
+            ),
+          );
+    }
     super.initState();
     _scrollController.addListener(_loadMoreData);
   }
@@ -103,7 +118,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                   padding: const EdgeInsets.only(
                                     left: 10.5,
                                   ),
-                                  width: MediaQuery.of(context).size.width,
+                                  width: MediaQuery.of(context).size.width - 10.5,
                                   alignment: Alignment.center,
                                   child: Row(
                                     children: initState.catalogInfo?.breadcrumbs.map(
@@ -138,13 +153,17 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                         ),
                                                       );
                                                   context.navigateTo(
-                                                    CatalogRoute(title: ''),
+                                                    CatalogRoute(
+                                                      title: '',
+                                                      url: item.value,
+                                                    ),
                                                   );
                                                 }
                                               },
                                               child: Text(
                                                 '${item.name}  ',
                                                 style: Theme.of(context).textTheme.displaySmall,
+                                                overflow: TextOverflow.ellipsis,
                                               ),
                                             );
                                           },
@@ -260,21 +279,19 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             SortRoute(
                                               onChange: (value) {
                                                 context.popRoute();
-                                                setState(() {
-                                                  _selectSortItem = value;
-                                                });
+
                                                 context.read<CatalogBloc>().add(
                                                       CatalogEvent.sortProducts(value: value),
                                                     );
                                               },
-                                              selectItem: _selectSortItem,
+                                              selectItem: initState.request.sort ?? '',
                                             ),
                                           );
                                         },
                                         child: Row(
                                           children: [
                                             Text(
-                                              _selectSortItem,
+                                              constants.listSort[initState.request.sort] ?? '',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .displayMedium
@@ -488,7 +505,18 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           backgroundColor: Colors.grey.shade400,
                         ),
                       )
-                    : const SizedBox();
+                    : initState.isError ?? false
+                        ? BlindChickenErrorInfo(
+                            errorMessage: initState.errorMessage ?? '',
+                            onRepeatRequest: () {
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.getInfoProducts(
+                                      path: widget.url,
+                                    ),
+                                  );
+                            },
+                          )
+                        : const SizedBox();
               },
               orElse: () => const SizedBox(),
             );

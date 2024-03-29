@@ -47,6 +47,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         goBackProductInfo: (event) => _goBackProductInfo(event, emit),
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
+        addProductToSoppingCartInfo: (event) => _addProductToSoppingCartInfo(event, emit),
+        checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+        openAuthModel: (event) => _openAuthModel(event, emit),
+        closeAuthModel: (event) => _closeAuthModel(event, emit),
       ),
     );
   }
@@ -66,6 +70,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           r: '',
           e: '',
           promoDescription: '',
+          errorMessage: '',
         ),
         numberProducts: 0,
         amountPaid: 0,
@@ -75,7 +80,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isLoadPaymentGift: false,
         isLoadPaymentPromoCode: false,
         delivery: 0,
-        boutiques: BoutiquesDataModel(data: []),
+        boutiques: BoutiquesDataModel(
+          data: [],
+          errorMessage: '',
+        ),
         promoCodeMessage: '',
         isLoadCreateOrder: false,
         isActivePromoCode: false,
@@ -138,7 +146,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isLoadPaymentGift: false,
         isLoadPaymentPromoCode: false,
         delivery: 0,
-        boutiques: BoutiquesDataModel(data: boutiques.data),
+        boutiques: BoutiquesDataModel(
+          data: boutiques.data,
+          errorMessage: '',
+        ),
         promoCodeMessage: '',
         isActivePromoCode: false,
         promoCode: '',
@@ -182,7 +193,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           );
           log(basketInfo.toString());
         } else {
-          _catalogRepository.addShoppingCartProduct(event.item);
+          _catalogRepository.addShoppingCartProduct(
+            event.item,
+          );
           basketInfo = await updateBasket(
             promo: initState.promoCode,
             pickup: initState.pickup,
@@ -273,9 +286,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               sku: event.item.sku,
               count: 0,
             );
+          } else {
+            _catalogRepository.deleteShoppingCartProduct(event.index);
           }
-
-          _catalogRepository.deleteShoppingCartProduct(event.index);
         } else {
           if (isAuth) {
             await _basketRepository.addProductToBasket(
@@ -283,8 +296,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               sku: event.item.sku,
               count: event.item.count,
             );
+          } else {
+            _catalogRepository.putShoppingCartProduct(event.index, event.item);
           }
-          _catalogRepository.putShoppingCartProduct(event.index, event.item);
         }
 
         if (isAuth) {
@@ -307,6 +321,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           amountPaid = amountPaid + basketInfo.basket[i].data.price;
         }
         emit(const ShoppingCartState.load());
+        final result = _catalogRepository.getShoppingCartProducts();
+        log(result.toString());
         emit(
           initState.copyWith(
             shoppingCart: basketInfo,
@@ -341,14 +357,17 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       basket: isLocal ? basket : null,
     );
 
-    for (int i = 0; i < basketInfo.basket.length; i++) {
-      _catalogRepository.addShoppingCartProduct(
-        BasketInfoItemDataModel(
-          code: basketInfo.basket[i].code,
-          sku: basketInfo.basket[i].sku,
-          count: basketInfo.basket[i].count,
-        ),
-      );
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        _catalogRepository.putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+          ),
+        );
+      }
     }
 
     return basketInfo;
@@ -602,7 +621,13 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(productsShoppingCart: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
       emit(const ShoppingCartState.load());
+
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
@@ -627,12 +652,36 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         block: 'brand',
       );
 
+      if (!(event.isUpdate ?? false)) {
+        listProductsCode.add(event.code);
+      }
+
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+
+      if (detailsProduct.sku.isNotEmpty) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == detailsProduct.code &&
+                  (element.sku.isNotEmpty ? element.sku == detailsProduct.sku.first.id : true),
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == detailsProduct.code,
+            )
+            .toList();
+      }
+
       emit(initState.copyWith(
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
-        listProductsCode: listProductsCode..add(event.code),
+        listProductsCode: listProductsCode,
+        isAuth: isAuth,
+        isSoppingCart: soppingCart.isNotEmpty,
       ));
     });
   }
@@ -751,6 +800,61 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     });
   }
 
+  Future<void> _addProductToSoppingCartInfo(
+    AddProductToSoppingCartInfoEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      emit(initState.copyWith(
+        isSoppingCart: true,
+      ));
+    });
+  }
+
+  Future<void> _openAuthModel(
+    OpenAuthModelSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        isAuthModel: true,
+      ));
+    });
+  }
+
+  Future<void> _closeAuthModel(
+    CloseAuthModelSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        isAuthModel: false,
+        isLoadCreateOrder: true,
+      ));
+    });
+  }
+
+  Future<void> _checkProductToSoppingCart(
+    CheckProductToSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
+      final soppingCart = basketInfo.basket.where(
+        (element) =>
+            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+            element.sku == event.size.id,
+      );
+      emit(initState.copyWith(
+        isSoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
+  }
+
   Future<FavouritesCatalogInfoDataModel> updateFavouritesProducts({
     bool isLocal = true,
   }) async {
@@ -768,5 +872,40 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     );
 
     return favouritesInfo;
+  }
+
+  Future<BasketFullInfoDataModel> getBasketInfo({
+    bool isLocal = true,
+  }) async {
+    List<BasketInfoItemDataModel> basket = [];
+    if (isLocal) {
+      final shopping = _catalogRepository.getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+        ));
+      }
+    }
+
+    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      basket: isLocal ? basket : null,
+    );
+
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        _catalogRepository.putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+          ),
+        );
+      }
+    }
+
+    return basketInfo;
   }
 }

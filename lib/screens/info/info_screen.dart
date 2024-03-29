@@ -381,6 +381,67 @@ class _InfoScreenState extends State<InfoScreen> {
             height: 28.0,
           ),
           Text(
+            'Правила по эксплуатации очков (ГОСТ Р 51193-2009)',
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+          ),
+          const SizedBox(
+            height: 7.0,
+          ),
+          Text(
+            '  •  Снимать и надевать очки необходимо только двумя '
+            'руками во избежание деформации оправы;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Очки следует хранить в жестком футляре;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Очковые линзы следует протирать замшевой '
+            'или специальной салфеткой из микрофибры, при '
+            'сильном загрязнении промывать раствором мыла или '
+            'неагрессивного моющего средства в воде при '
+            'температуре не выше плюс 40 °С;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Не допускается применение органических '
+            'растворителей (ацетон, толуол и т.п.) для '
+            'протирки очков;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Не допускается класть очки линзами на '
+            'твердую поверхность;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Не допускается прикладывать к очкам значительные '
+            'механические усилия;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Не допускается пользоваться очками в помещениях с '
+            'температурой выше плюс 60 °С. в том числе в бане, сауне;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Необходимо регулярно проверять затяжку '
+            'винтов, крепящих заушник к оправе и линзы в '
+            'металлической и безободковой оправах;',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            '  •  Не допускать падения очков с высоты более '
+            '0.5 м на твердую поверхность.',
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          const SizedBox(
+            height: 28.0,
+          ),
+          Text(
             'Документы',
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.w700,

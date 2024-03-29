@@ -23,6 +23,7 @@ BasketFullInfoResponse _$BasketFullInfoResponseFromJson(
 mixin _$BasketFullInfoResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   @JsonKey(name: 'promo_description')
   String? get promoDescription => throw _privateConstructorUsedError;
   List<BasketFullInfoItemResponse>? get basket =>
@@ -43,6 +44,7 @@ abstract class $BasketFullInfoResponseCopyWith<$Res> {
   $Res call(
       {String? r,
       String? e,
+      String? errorMessage,
       @JsonKey(name: 'promo_description') String? promoDescription,
       List<BasketFullInfoItemResponse>? basket});
 }
@@ -63,6 +65,7 @@ class _$BasketFullInfoResponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? promoDescription = freezed,
     Object? basket = freezed,
   }) {
@@ -74,6 +77,10 @@ class _$BasketFullInfoResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       promoDescription: freezed == promoDescription
           ? _value.promoDescription
@@ -99,6 +106,7 @@ abstract class _$$BasketFullInfoResponseImplCopyWith<$Res>
   $Res call(
       {String? r,
       String? e,
+      String? errorMessage,
       @JsonKey(name: 'promo_description') String? promoDescription,
       List<BasketFullInfoItemResponse>? basket});
 }
@@ -118,6 +126,7 @@ class __$$BasketFullInfoResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? promoDescription = freezed,
     Object? basket = freezed,
   }) {
@@ -129,6 +138,10 @@ class __$$BasketFullInfoResponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       promoDescription: freezed == promoDescription
           ? _value.promoDescription
@@ -148,6 +161,7 @@ class _$BasketFullInfoResponseImpl extends _BasketFullInfoResponse {
   _$BasketFullInfoResponseImpl(
       {this.r,
       this.e,
+      this.errorMessage,
       @JsonKey(name: 'promo_description') this.promoDescription,
       final List<BasketFullInfoItemResponse>? basket})
       : _basket = basket,
@@ -160,6 +174,8 @@ class _$BasketFullInfoResponseImpl extends _BasketFullInfoResponse {
   final String? r;
   @override
   final String? e;
+  @override
+  final String? errorMessage;
   @override
   @JsonKey(name: 'promo_description')
   final String? promoDescription;
@@ -175,7 +191,7 @@ class _$BasketFullInfoResponseImpl extends _BasketFullInfoResponse {
 
   @override
   String toString() {
-    return 'BasketFullInfoResponse(r: $r, e: $e, promoDescription: $promoDescription, basket: $basket)';
+    return 'BasketFullInfoResponse(r: $r, e: $e, errorMessage: $errorMessage, promoDescription: $promoDescription, basket: $basket)';
   }
 
   @override
@@ -185,6 +201,8 @@ class _$BasketFullInfoResponseImpl extends _BasketFullInfoResponse {
             other is _$BasketFullInfoResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.promoDescription, promoDescription) ||
                 other.promoDescription == promoDescription) &&
             const DeepCollectionEquality().equals(other._basket, _basket));
@@ -192,8 +210,8 @@ class _$BasketFullInfoResponseImpl extends _BasketFullInfoResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, promoDescription,
-      const DeepCollectionEquality().hash(_basket));
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
+      promoDescription, const DeepCollectionEquality().hash(_basket));
 
   @JsonKey(ignore: true)
   @override
@@ -214,6 +232,7 @@ abstract class _BasketFullInfoResponse extends BasketFullInfoResponse {
   factory _BasketFullInfoResponse(
           {final String? r,
           final String? e,
+          final String? errorMessage,
           @JsonKey(name: 'promo_description') final String? promoDescription,
           final List<BasketFullInfoItemResponse>? basket}) =
       _$BasketFullInfoResponseImpl;
@@ -226,6 +245,8 @@ abstract class _BasketFullInfoResponse extends BasketFullInfoResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(name: 'promo_description')
   String? get promoDescription;

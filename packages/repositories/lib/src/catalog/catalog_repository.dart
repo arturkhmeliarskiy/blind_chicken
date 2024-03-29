@@ -18,17 +18,6 @@ class CatalogRepository {
     this._productsShoppingCartService,
   );
 
-  Future<List<FilterInfoDataModel>> getFilters() async {
-    final listFilter = await _catalogService.getFilters();
-    return listFilter.toFilters(listFilter);
-  }
-
-  Future<List<ProductDataModel>> getProducts() async {
-    final listProducts = await _catalogService.getProducts();
-
-    return listProducts.toProducts(listProducts);
-  }
-
   //favourites
 
   List<ProductDataModel> getFavouritesProducts() {
@@ -64,6 +53,10 @@ class CatalogRepository {
     _productsShoppingCartService.addProduct(product.toShoppingProduct());
   }
 
+  void addAllShoppingCartProducts(List<BasketInfoItemDataModel> products) {
+    _productsShoppingCartService.addAllProducts(products.toShoppingProducts(products));
+  }
+
   void putShoppingCartProduct(int index, BasketInfoItemDataModel product) {
     _productsShoppingCartService.putProduct(index, product.toShoppingProduct());
   }
@@ -78,7 +71,7 @@ class CatalogRepository {
 
   //end shopping cart
 
-  Future<List<MenuItemDataModel>> postMenuItems({
+  Future<MenuDataModel> postMenuItems({
     required String a,
     required int b,
     required int id,
@@ -92,7 +85,7 @@ class CatalogRepository {
       u: '',
       pid: 0,
     );
-    return listMenuItems.toMenuItems(listMenuItems ?? []);
+    return listMenuItems.toMenuItems();
   }
 
   Future<CatalogDataModel> getCatalogProducts({
@@ -321,21 +314,24 @@ extension on List<ProductResponse> {
   }
 }
 
-extension on List<MenuItemResponse>? {
-  List<MenuItemDataModel> toMenuItems(List<MenuItemResponse> listMenuItems) {
-    return List<MenuItemDataModel>.from(
-      listMenuItems.map(
-        (item) => MenuItemDataModel(
-          id: int.parse(item.id ?? '0'),
-          idParent: int.parse(item.idParent ?? '0'),
-          url: item.url ?? '',
-          name: item.name ?? '',
-          sub: item.sub ?? 0,
-          title: item.title ?? 0,
-          brand: item.brand ?? 0,
+extension on MenuResponse {
+  MenuDataModel toMenuItems() {
+    return MenuDataModel(
+        items: List<MenuItemDataModel>.from(
+          items?.map(
+                (item) => MenuItemDataModel(
+                  id: int.parse(item.id ?? '0'),
+                  idParent: int.parse(item.idParent ?? '0'),
+                  url: item.url ?? '',
+                  name: item.name ?? '',
+                  sub: item.sub ?? 0,
+                  title: item.title ?? 0,
+                  brand: item.brand ?? 0,
+                ),
+              ) ??
+              [],
         ),
-      ),
-    );
+        errorMessage: errorMessage ?? '');
   }
 }
 
@@ -387,6 +383,24 @@ extension on BasketInfoItemDataModel {
       code: code,
       sku: sku,
       count: count,
+    );
+  }
+}
+
+extension on List<BasketInfoItemDataModel> {
+  List<ProductShoppingCartDataModel> toShoppingProducts(
+    List<BasketInfoItemDataModel> items,
+  ) {
+    return List<ProductShoppingCartDataModel>.from(
+      items.map(
+        (item) {
+          return ProductShoppingCartDataModel(
+            code: item.code,
+            sku: item.sku,
+            count: item.count,
+          );
+        },
+      ),
     );
   }
 }
@@ -506,6 +520,7 @@ extension on CatalogResponse {
           []),
       r: r ?? '',
       e: e ?? '',
+      errorMessage: errorMessage ?? '',
     );
   }
 }
@@ -579,17 +594,17 @@ extension on DetailProductResponse {
         s: place?.s ?? 0,
       ),
       char: List<CharProductDataModel>.from(
-        char?.map(
-              (item) => CharProductDataModel(
+        char?.map((item) {
+              return CharProductDataModel(
                 name: item.name ?? '',
                 value: item.value ?? '',
-              ),
-            ) ??
+              );
+            }) ??
             [],
       ),
       text: text ?? '',
       quantity: quantity ?? 0,
-      art: art ?? 0,
+      art: art ?? '',
       userDiscount: userDiscount ?? 0,
       product: ProductDataModel(
         id: code ?? 0,
@@ -626,6 +641,7 @@ extension on DetailProductResponse {
       userBuyForNextDiscount: userBuyForNextDiscount ?? 0,
       userNextDiscount: userNextDiscount ?? 0,
       userBuyForNextDiscountVal: userBuyForNextDiscountVal ?? 0,
+      errorMessage: errorMessage ?? '',
     );
   }
 }
@@ -686,6 +702,7 @@ extension on AdditionalProductsDescriptionResponse {
             }) ??
             [],
       ),
+      errorMessage: errorMessage ?? '',
     );
   }
 }

@@ -214,6 +214,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                           context.navigateTo(
                             CatalogRoute(
                               title: initState.category[index].title,
+                              url: initState.category[index].pathMenu,
                             ),
                           );
                         },

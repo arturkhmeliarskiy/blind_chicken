@@ -38,7 +38,7 @@ _$DetailProductResponseImpl _$$DetailProductResponseImplFromJson(
       text: json['text'] as String?,
       name: json['name'] as String?,
       quantity: json['quantity'] as int?,
-      art: json['art'] as int?,
+      art: json['art'] as String?,
       userDiscount: json['user_discount'] as int?,
       userBuyForNextDiscount: json['user_buy_for_next_discount'] as int?,
       userBuyForNextDiscountVal: json['user_buy_for_next_discount_val'] as int?,
@@ -49,6 +49,7 @@ _$DetailProductResponseImpl _$$DetailProductResponseImplFromJson(
               json['price'] as Map<String, dynamic>),
       r: json['r'] as String?,
       e: json['e'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$DetailProductResponseImplToJson(
@@ -76,4 +77,5 @@ Map<String, dynamic> _$$DetailProductResponseImplToJson(
       'price': instance.price,
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
     };

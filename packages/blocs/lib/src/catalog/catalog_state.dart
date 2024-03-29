@@ -5,6 +5,9 @@ class CatalogState with _$CatalogState {
   const factory CatalogState.init() = InitCatalogState;
   const factory CatalogState.upload() = UploadCatalogState;
   const factory CatalogState.load() = LoadingCatalogState;
+  const factory CatalogState.error({
+    required String errorMessage,
+  }) = ErrorCatalogState;
   const factory CatalogState.preloadDataCompleted({
     required List<String> allBrands,
     required List<String> defaultBrands,
@@ -27,6 +30,12 @@ class CatalogState with _$CatalogState {
     required int selectedGenderIndex,
     required bool isAuth,
     required int offset,
+    required String nowVersionApp,
+    required String updateVersionApp,
+    required bool isUpdateVersionApp,
+    String? errorMessage,
+    bool? isSoppingCart,
+    bool? isError,
     DetailProductDataModel? detailsProduct,
     CatalogDataModel? catalogInfo,
     String? title,

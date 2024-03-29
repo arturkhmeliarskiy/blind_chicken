@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,11 +15,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepository _authRepository;
   final CatalogRepository _catalogRepository;
   final SharedPreferencesService _sharedPreferencesService;
+  final PushNotificationRepository _pushNotificationRepository;
 
   LoginBloc(
     this._authRepository,
     this._catalogRepository,
     this._sharedPreferencesService,
+    this._pushNotificationRepository,
   ) : super(const LoginState.init()) {
     on<LoginEvent>((event, emit) => event.map<Future<void>>(
           init: (event) => _init(event, emit),
@@ -117,6 +120,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         key: SharedPrefKeys.userPhoneNumber,
         value: event.phone,
       );
+      await _pushNotificationRepository.postNotificationInfo(event: '3');
+      log('Пользватель вошел');
       _catalogRepository.deleteAllFavouritesProducts();
       _catalogRepository.deleteAllShoppingProducts();
     } else {

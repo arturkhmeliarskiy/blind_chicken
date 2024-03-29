@@ -205,6 +205,7 @@ class _FilterSelectValueSearchScreenState extends State<FilterSelectValueSearchS
                         context.navigateTo(
                           CatalogRoute(
                             title: initState.title ?? '',
+                            url: initState.pathMenu.last.url,
                           ),
                         );
                       },

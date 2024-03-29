@@ -34,7 +34,7 @@ class DetailProductResponse with _$DetailProductResponse {
     String? text,
     String? name,
     int? quantity,
-    int? art,
+    String? art,
     @JsonKey(name: 'user_discount') int? userDiscount,
     @JsonKey(name: 'user_buy_for_next_discount') int? userBuyForNextDiscount,
     @JsonKey(name: 'user_buy_for_next_discount_val') int? userBuyForNextDiscountVal,
@@ -42,6 +42,7 @@ class DetailProductResponse with _$DetailProductResponse {
     PriceProductResponse? price,
     String? r,
     String? e,
+    String? errorMessage,
   }) = _DetailProductResponse;
   factory DetailProductResponse.fromJson(Map<String, dynamic> json) =>
       _$DetailProductResponseFromJson(json);

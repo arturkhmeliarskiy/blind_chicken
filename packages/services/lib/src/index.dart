@@ -5,3 +5,5 @@ export 'basket/basket_service.dart';
 export 'favourites/favourites_service.dart';
 export 'location/location_service.dart';
 export 'orders/orders_service.dart';
+export 'app_store_info/app_store_info_service.dart';
+export 'push_notification/push_notification_service.dart';

@@ -36,6 +36,7 @@ class CatalogResponse with _$CatalogResponse {
     List<CatalogProductResponse>? products,
     String? r,
     String? e,
+    String? errorMessage,
   }) = _CatalogResponse;
   factory CatalogResponse.fromJson(Map<String, dynamic> json) => _$CatalogResponseFromJson(json);
 }

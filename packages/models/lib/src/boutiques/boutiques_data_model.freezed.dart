@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BoutiquesDataModel {
   List<BoutiqueDataModel> get data => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BoutiquesDataModelCopyWith<BoutiquesDataModel> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $BoutiquesDataModelCopyWith<$Res> {
           BoutiquesDataModel value, $Res Function(BoutiquesDataModel) then) =
       _$BoutiquesDataModelCopyWithImpl<$Res, BoutiquesDataModel>;
   @useResult
-  $Res call({List<BoutiqueDataModel> data});
+  $Res call({List<BoutiqueDataModel> data, String? errorMessage});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$BoutiquesDataModelCopyWithImpl<$Res, $Val extends BoutiquesDataModel>
   @override
   $Res call({
     Object? data = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueDataModel>,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$BoutiquesDataModelImplCopyWith<$Res>
       __$$BoutiquesDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<BoutiqueDataModel> data});
+  $Res call({List<BoutiqueDataModel> data, String? errorMessage});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$BoutiquesDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$BoutiquesDataModelImpl(
       data: null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueDataModel>,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -92,7 +103,8 @@ class __$$BoutiquesDataModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BoutiquesDataModelImpl extends _BoutiquesDataModel {
-  _$BoutiquesDataModelImpl({required final List<BoutiqueDataModel> data})
+  _$BoutiquesDataModelImpl(
+      {required final List<BoutiqueDataModel> data, this.errorMessage})
       : _data = data,
         super._();
 
@@ -105,8 +117,11 @@ class _$BoutiquesDataModelImpl extends _BoutiquesDataModel {
   }
 
   @override
+  final String? errorMessage;
+
+  @override
   String toString() {
-    return 'BoutiquesDataModel(data: $data)';
+    return 'BoutiquesDataModel(data: $data, errorMessage: $errorMessage)';
   }
 
   @override
@@ -114,12 +129,14 @@ class _$BoutiquesDataModelImpl extends _BoutiquesDataModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BoutiquesDataModelImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -130,12 +147,15 @@ class _$BoutiquesDataModelImpl extends _BoutiquesDataModel {
 }
 
 abstract class _BoutiquesDataModel extends BoutiquesDataModel {
-  factory _BoutiquesDataModel({required final List<BoutiqueDataModel> data}) =
-      _$BoutiquesDataModelImpl;
+  factory _BoutiquesDataModel(
+      {required final List<BoutiqueDataModel> data,
+      final String? errorMessage}) = _$BoutiquesDataModelImpl;
   _BoutiquesDataModel._() : super._();
 
   @override
   List<BoutiqueDataModel> get data;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$BoutiquesDataModelImplCopyWith<_$BoutiquesDataModelImpl> get copyWith =>

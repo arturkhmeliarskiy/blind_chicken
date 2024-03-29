@@ -21,6 +21,7 @@ BoutiquesResponse _$BoutiquesResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BoutiquesResponse {
   List<BoutiquesDataResponse>? get data => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $BoutiquesResponseCopyWith<$Res> {
           BoutiquesResponse value, $Res Function(BoutiquesResponse) then) =
       _$BoutiquesResponseCopyWithImpl<$Res, BoutiquesResponse>;
   @useResult
-  $Res call({List<BoutiquesDataResponse>? data});
+  $Res call({List<BoutiquesDataResponse>? data, String? errorMessage});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$BoutiquesResponseCopyWithImpl<$Res, $Val extends BoutiquesResponse>
   @override
   $Res call({
     Object? data = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BoutiquesDataResponse>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$BoutiquesResponseImplCopyWith<$Res>
       __$$BoutiquesResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<BoutiquesDataResponse>? data});
+  $Res call({List<BoutiquesDataResponse>? data, String? errorMessage});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$BoutiquesResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$BoutiquesResponseImpl(
       data: freezed == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BoutiquesDataResponse>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -97,7 +108,8 @@ class __$$BoutiquesResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BoutiquesResponseImpl extends _BoutiquesResponse {
-  _$BoutiquesResponseImpl({final List<BoutiquesDataResponse>? data})
+  _$BoutiquesResponseImpl(
+      {final List<BoutiquesDataResponse>? data, this.errorMessage})
       : _data = data,
         super._();
 
@@ -115,8 +127,11 @@ class _$BoutiquesResponseImpl extends _BoutiquesResponse {
   }
 
   @override
+  final String? errorMessage;
+
+  @override
   String toString() {
-    return 'BoutiquesResponse(data: $data)';
+    return 'BoutiquesResponse(data: $data, errorMessage: $errorMessage)';
   }
 
   @override
@@ -124,13 +139,15 @@ class _$BoutiquesResponseImpl extends _BoutiquesResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BoutiquesResponseImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -148,8 +165,9 @@ class _$BoutiquesResponseImpl extends _BoutiquesResponse {
 }
 
 abstract class _BoutiquesResponse extends BoutiquesResponse {
-  factory _BoutiquesResponse({final List<BoutiquesDataResponse>? data}) =
-      _$BoutiquesResponseImpl;
+  factory _BoutiquesResponse(
+      {final List<BoutiquesDataResponse>? data,
+      final String? errorMessage}) = _$BoutiquesResponseImpl;
   _BoutiquesResponse._() : super._();
 
   factory _BoutiquesResponse.fromJson(Map<String, dynamic> json) =
@@ -157,6 +175,8 @@ abstract class _BoutiquesResponse extends BoutiquesResponse {
 
   @override
   List<BoutiquesDataResponse>? get data;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$BoutiquesResponseImplCopyWith<_$BoutiquesResponseImpl> get copyWith =>

@@ -9,6 +9,7 @@ class AdditionalProductsDescriptionResponse with _$AdditionalProductsDescription
   const AdditionalProductsDescriptionResponse._();
   factory AdditionalProductsDescriptionResponse({
     String? name,
+    String? errorMessage,
     List<CatalogProductResponse>? products,
   }) = _AdditionalProductsDescriptionResponse;
   factory AdditionalProductsDescriptionResponse.fromJson(Map<String, dynamic> json) =>

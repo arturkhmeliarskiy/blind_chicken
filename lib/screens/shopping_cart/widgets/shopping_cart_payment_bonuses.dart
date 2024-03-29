@@ -75,7 +75,8 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                           ),
                         ),
                       ),
-                    if (initState.paymentBonus?.e.isNotEmpty ?? false)
+                    if ((initState.paymentBonus?.e.isNotEmpty ?? false) &&
+                        !initState.isLoadPaymentBonus)
                       Padding(
                         padding: const EdgeInsets.all(28),
                         child: Text(

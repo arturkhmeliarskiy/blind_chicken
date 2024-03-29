@@ -40,6 +40,7 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = BonusesSoppingCartEvent;
   const factory ShoppingCartEvent.getInfoProduct({
     required String code,
+    bool? isUpdate,
   }) = GetInfoProductShoppingCartEvent;
   const factory ShoppingCartEvent.goBackProductInfo() = GoBackProductInfoCategotyShoppingCartEvent;
   const factory ShoppingCartEvent.addFavouriteProduct({
@@ -49,4 +50,10 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.deleteFavouriteProduct({
     required int index,
   }) = DeleteFavouriteProductShoppingCartEvent;
+  const factory ShoppingCartEvent.addProductToSoppingCartInfo() = AddProductToSoppingCartInfoEvent;
+  const factory ShoppingCartEvent.checkProductToSoppingCart({
+    required SkuProductDataModel size,
+  }) = CheckProductToSoppingCartEvent;
+  const factory ShoppingCartEvent.openAuthModel() = OpenAuthModelSoppingCartEvent;
+  const factory ShoppingCartEvent.closeAuthModel() = CloseAuthModelSoppingCartEvent;
 }

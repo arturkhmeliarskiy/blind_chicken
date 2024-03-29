@@ -22,6 +22,7 @@ class SearchState with _$SearchState {
     required List<String> listProductsCode,
     required bool isAuth,
     required int offset,
+    bool? isSoppingCart,
     DetailProductDataModel? detailsProduct,
     List<ProductDataModel>? favouritesProducts,
     CatalogSearchInfoDataModel? searchResultInfo,

@@ -22,7 +22,7 @@ class DetailProductDataModel with _$DetailProductDataModel {
     required String text,
     required String name,
     required int quantity,
-    required int art,
+    required String art,
     required int userDiscount,
     required int userBuyForNextDiscount,
     required int userBuyForNextDiscountVal,
@@ -31,5 +31,6 @@ class DetailProductDataModel with _$DetailProductDataModel {
     required ProductDataModel product,
     required String r,
     required String e,
+    required String errorMessage,
   }) = _DetailProductDataModel;
 }

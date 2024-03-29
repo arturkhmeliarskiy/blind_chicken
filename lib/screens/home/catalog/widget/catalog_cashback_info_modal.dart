@@ -288,7 +288,24 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                 showDialog(
                                     context: context,
                                     builder: (context) {
-                                      return const LoginPhoneScreen();
+                                      return LoginPhoneScreen(
+                                        successfully: () {
+                                          Navigator.of(context, rootNavigator: true).pop();
+                                          context
+                                              .read<AccountBloc>()
+                                              .add(const AccountEvent.preloadData());
+                                          context.navigateTo(
+                                            const LoginRoute(
+                                              children: [
+                                                AccountRoute(),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                        onBack: () {
+                                          context.popRoute();
+                                        },
+                                      );
                                     });
                               },
                               child: Text(

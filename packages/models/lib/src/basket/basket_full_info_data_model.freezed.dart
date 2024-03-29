@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BasketFullInfoDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   String get promoDescription => throw _privateConstructorUsedError;
   List<BasketFullInfoItemDataModel> get basket =>
       throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $BasketFullInfoDataModelCopyWith<$Res> {
   $Res call(
       {String r,
       String e,
+      String errorMessage,
       String promoDescription,
       List<BasketFullInfoItemDataModel> basket});
 }
@@ -56,6 +58,7 @@ class _$BasketFullInfoDataModelCopyWithImpl<$Res,
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? promoDescription = null,
     Object? basket = null,
   }) {
@@ -67,6 +70,10 @@ class _$BasketFullInfoDataModelCopyWithImpl<$Res,
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       promoDescription: null == promoDescription
           ? _value.promoDescription
@@ -92,6 +99,7 @@ abstract class _$$BasketFullInfoDataModelImplCopyWith<$Res>
   $Res call(
       {String r,
       String e,
+      String errorMessage,
       String promoDescription,
       List<BasketFullInfoItemDataModel> basket});
 }
@@ -111,6 +119,7 @@ class __$$BasketFullInfoDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? promoDescription = null,
     Object? basket = null,
   }) {
@@ -122,6 +131,10 @@ class __$$BasketFullInfoDataModelImplCopyWithImpl<$Res>
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       promoDescription: null == promoDescription
           ? _value.promoDescription
@@ -141,6 +154,7 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
   _$BasketFullInfoDataModelImpl(
       {required this.r,
       required this.e,
+      required this.errorMessage,
       required this.promoDescription,
       required final List<BasketFullInfoItemDataModel> basket})
       : _basket = basket,
@@ -150,6 +164,8 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
   @override
   final String promoDescription;
   final List<BasketFullInfoItemDataModel> _basket;
@@ -162,7 +178,7 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
 
   @override
   String toString() {
-    return 'BasketFullInfoDataModel(r: $r, e: $e, promoDescription: $promoDescription, basket: $basket)';
+    return 'BasketFullInfoDataModel(r: $r, e: $e, errorMessage: $errorMessage, promoDescription: $promoDescription, basket: $basket)';
   }
 
   @override
@@ -172,14 +188,16 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
             other is _$BasketFullInfoDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.promoDescription, promoDescription) ||
                 other.promoDescription == promoDescription) &&
             const DeepCollectionEquality().equals(other._basket, _basket));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, promoDescription,
-      const DeepCollectionEquality().hash(_basket));
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
+      promoDescription, const DeepCollectionEquality().hash(_basket));
 
   @JsonKey(ignore: true)
   @override
@@ -193,6 +211,7 @@ abstract class _BasketFullInfoDataModel extends BasketFullInfoDataModel {
   factory _BasketFullInfoDataModel(
           {required final String r,
           required final String e,
+          required final String errorMessage,
           required final String promoDescription,
           required final List<BasketFullInfoItemDataModel> basket}) =
       _$BasketFullInfoDataModelImpl;
@@ -202,6 +221,8 @@ abstract class _BasketFullInfoDataModel extends BasketFullInfoDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   String get promoDescription;
   @override

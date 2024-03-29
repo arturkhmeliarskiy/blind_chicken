@@ -191,7 +191,10 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                         ),
                                                       );
                                                   context.navigateTo(
-                                                    CatalogRoute(title: ''),
+                                                    CatalogRoute(
+                                                      title: '',
+                                                      url: initState.searchSections[index].u,
+                                                    ),
                                                   );
                                                 },
                                                 child: Container(

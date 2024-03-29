@@ -12,92 +12,20 @@ class AppBarBlindChicken extends StatefulWidget {
 }
 
 class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
-  bool isOpen = false;
-  OverlayEntry? overlayEntry;
-
-  void showOverlay({
-    required BuildContext context,
-    required List<DropDownDataModel> listItems,
-    double height = 0.0,
-    double width = 0.0,
-    double? right,
-    double? left,
-    double? top,
-    double? bottom,
-  }) async {
-    OverlayState overlayState = Overlay.of(context);
-
-    overlayEntry = OverlayEntry(builder: (context) {
-      return Positioned(
-        right: right,
-        left: left,
-        top: top,
-        bottom: bottom,
-        child: SafeArea(
-          top: true,
-          bottom: true,
-          child: GestureDetector(
-            onTap: () {
-              overlayEntry?.remove();
-            },
-            child: Container(
-              height: height,
-              width: width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(
-                  5,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
-                    blurRadius: 3,
-                    offset: const Offset(0, 3), // Shadow position
-                  ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 10.5,
-                  bottom: 10.5,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(listItems.length, (index) {
-                    return GestureDetector(
-                      onTap: () {
-                        context.navigateNamedTo('/dashboard/home${listItems[index].route}');
-                        overlayEntry?.remove();
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                          top: 7,
-                          bottom: 7,
-                          left: 24.5,
-                          right: 24.5,
-                        ),
-                        color: Colors.transparent,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          listItems[index].title,
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-    });
-
-    // Inserting the OverlayEntry into the Overlay
-
-    overlayState.insert(overlayEntry!);
-  }
+  final listItems = [
+    DropDownDataModel(
+      title: 'Контакты',
+      route: '/contacts',
+    ),
+    DropDownDataModel(
+      title: 'Информация',
+      route: '/info',
+    ),
+    DropDownDataModel(
+      title: 'Кэшбэк и скидки',
+      route: '/cashback_and_discounts',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -154,34 +82,80 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
         ),
         GestureDetector(
           onTap: () {
-            setState(() {
-              isOpen = !isOpen;
-            });
-            if (isOpen) {
-              showOverlay(
-                context: context,
-                height: 134,
-                width: 176,
-                top: 55,
-                right: 0,
-                listItems: [
-                  DropDownDataModel(
-                    title: 'Контакты',
-                    route: '/contacts',
+            showDialog<void>(
+              context: context,
+              barrierColor: Colors.transparent,
+              builder: (context) {
+                return Container(
+                  margin: const EdgeInsets.only(top: 56),
+                  alignment: Alignment.topRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context, rootNavigator: true).pop();
+                    },
+                    child: SafeArea(
+                      top: true,
+                      bottom: true,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            height: 134,
+                            width: 176,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(
+                                5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
+                                  blurRadius: 3,
+                                  offset: const Offset(0, 3), // Shadow position
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 10.5,
+                                bottom: 10.5,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: List.generate(listItems.length, (index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context, rootNavigator: true).pop();
+                                      context.navigateNamedTo(
+                                          '/dashboard/home${listItems[index].route}');
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.only(
+                                        top: 7,
+                                        bottom: 7,
+                                        left: 24.5,
+                                        right: 24.5,
+                                      ),
+                                      color: Colors.transparent,
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        listItems[index].title,
+                                        style: Theme.of(context).textTheme.displayMedium,
+                                      ),
+                                    ),
+                                  );
+                                }),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  DropDownDataModel(
-                    title: 'Информация',
-                    route: '/info',
-                  ),
-                  DropDownDataModel(
-                    title: 'Кэшбэк и скидки',
-                    route: '/cashback_and_discounts',
-                  ),
-                ],
-              );
-            } else {
-              overlayEntry?.remove();
-            }
+                );
+              },
+            );
           },
           child: Container(
             width: 30,

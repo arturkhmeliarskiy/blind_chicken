@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PaymentsDataModel {
-  List<PaymentItemDataModel>? get payments =>
-      throw _privateConstructorUsedError;
+  List<PaymentItemDataModel> get payments => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentsDataModelCopyWith<PaymentsDataModel> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $PaymentsDataModelCopyWith<$Res> {
           PaymentsDataModel value, $Res Function(PaymentsDataModel) then) =
       _$PaymentsDataModelCopyWithImpl<$Res, PaymentsDataModel>;
   @useResult
-  $Res call({List<PaymentItemDataModel>? payments});
+  $Res call({List<PaymentItemDataModel> payments, String? errorMessage});
 }
 
 /// @nodoc
@@ -46,13 +46,18 @@ class _$PaymentsDataModelCopyWithImpl<$Res, $Val extends PaymentsDataModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? payments = freezed,
+    Object? payments = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      payments: freezed == payments
+      payments: null == payments
           ? _value.payments
           : payments // ignore: cast_nullable_to_non_nullable
-              as List<PaymentItemDataModel>?,
+              as List<PaymentItemDataModel>,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -65,7 +70,7 @@ abstract class _$$PaymentsDataModelImplCopyWith<$Res>
       __$$PaymentsDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PaymentItemDataModel>? payments});
+  $Res call({List<PaymentItemDataModel> payments, String? errorMessage});
 }
 
 /// @nodoc
@@ -79,13 +84,18 @@ class __$$PaymentsDataModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? payments = freezed,
+    Object? payments = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$PaymentsDataModelImpl(
-      payments: freezed == payments
+      payments: null == payments
           ? _value._payments
           : payments // ignore: cast_nullable_to_non_nullable
-              as List<PaymentItemDataModel>?,
+              as List<PaymentItemDataModel>,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -93,23 +103,25 @@ class __$$PaymentsDataModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PaymentsDataModelImpl extends _PaymentsDataModel {
-  _$PaymentsDataModelImpl({final List<PaymentItemDataModel>? payments})
+  _$PaymentsDataModelImpl(
+      {required final List<PaymentItemDataModel> payments, this.errorMessage})
       : _payments = payments,
         super._();
 
-  final List<PaymentItemDataModel>? _payments;
+  final List<PaymentItemDataModel> _payments;
   @override
-  List<PaymentItemDataModel>? get payments {
-    final value = _payments;
-    if (value == null) return null;
+  List<PaymentItemDataModel> get payments {
     if (_payments is EqualUnmodifiableListView) return _payments;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_payments);
   }
 
   @override
+  final String? errorMessage;
+
+  @override
   String toString() {
-    return 'PaymentsDataModel(payments: $payments)';
+    return 'PaymentsDataModel(payments: $payments, errorMessage: $errorMessage)';
   }
 
   @override
@@ -117,12 +129,14 @@ class _$PaymentsDataModelImpl extends _PaymentsDataModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentsDataModelImpl &&
-            const DeepCollectionEquality().equals(other._payments, _payments));
+            const DeepCollectionEquality().equals(other._payments, _payments) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_payments));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_payments), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -133,12 +147,15 @@ class _$PaymentsDataModelImpl extends _PaymentsDataModel {
 }
 
 abstract class _PaymentsDataModel extends PaymentsDataModel {
-  factory _PaymentsDataModel({final List<PaymentItemDataModel>? payments}) =
-      _$PaymentsDataModelImpl;
+  factory _PaymentsDataModel(
+      {required final List<PaymentItemDataModel> payments,
+      final String? errorMessage}) = _$PaymentsDataModelImpl;
   _PaymentsDataModel._() : super._();
 
   @override
-  List<PaymentItemDataModel>? get payments;
+  List<PaymentItemDataModel> get payments;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$PaymentsDataModelImplCopyWith<_$PaymentsDataModelImpl> get copyWith =>

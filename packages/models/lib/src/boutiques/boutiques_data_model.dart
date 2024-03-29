@@ -8,5 +8,6 @@ class BoutiquesDataModel with _$BoutiquesDataModel {
   const BoutiquesDataModel._();
   factory BoutiquesDataModel({
     required List<BoutiqueDataModel> data,
+    String? errorMessage,
   }) = _BoutiquesDataModel;
 }

@@ -37,7 +37,6 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: widget.onTap,
       child: Container(

@@ -1,12 +1,13 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
 import 'package:blocs/blocs.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
@@ -29,6 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
   bool _isMain = false;
   OverlayEntry? overlayEntry;
   Timer? _timer;
+  String? deviceToken;
 
   @override
   void initState() {
@@ -37,7 +39,16 @@ class _DashboardPageState extends State<DashboardPage> {
         context.navigateTo(const NoInternetRoute());
       }
     });
+
+    init();
     super.initState();
+  }
+
+  init() async {
+    const mc = MethodChannel('blind_chicken/getToken');
+    deviceToken = await mc.invokeMethod('getDeviceToken');
+
+    log("push token: ${deviceToken ?? ''}");
   }
 
   @override
@@ -182,6 +193,21 @@ class _DashboardPageState extends State<DashboardPage> {
     overlayState.insert(overlayEntry!);
   }
 
+  final listItems = [
+    DropDownDataModel(
+      title: '8 (800) 500-53-29',
+      route: 'phone',
+    ),
+    // DropDownDataModel(
+    //   title: 'Открыть чат',
+    //   route: '/chat_messanger',
+    // ),
+    DropDownDataModel(
+      title: 'WhatsApp',
+      route: 'WhatsApp',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
@@ -263,7 +289,9 @@ class _DashboardPageState extends State<DashboardPage> {
                 //   );
                 // }
                 if (mounted) {
-                  context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                  Timer(const Duration(milliseconds: 150), () {
+                    context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                  });
                   context.navigateTo(
                     const HomeAutoRouterRoute(
                       children: [
@@ -287,52 +315,139 @@ class _DashboardPageState extends State<DashboardPage> {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        return const LoginPhoneScreen();
+                        return LoginPhoneScreen(
+                          successfully: () {
+                            Navigator.of(context, rootNavigator: true).pop();
+                            context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                            context.navigateTo(
+                              const LoginRoute(
+                                children: [
+                                  AccountRoute(),
+                                ],
+                              ),
+                            );
+                          },
+                          onBack: () {
+                            context.popRoute();
+                          },
+                        );
                       });
                 }
               } else if (index == 2) {
                 context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
-                tabsRouter.setActiveIndex(index);
+                context.navigateTo(
+                  const ShoppingCartAutoRouterRoute(children: [
+                    ShoppingCartRoute(),
+                  ]),
+                );
               } else if (index == 3) {
-                context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
-                tabsRouter.setActiveIndex(index);
-              } else if (index == 4) {
-                setState(() {
-                  isOpen = !isOpen;
+                Timer(const Duration(milliseconds: 150), () {
+                  context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
                 });
-                if (isOpen) {
-                  showOverlay(
+                context.navigateTo(
+                  const FavouritesRoute(children: [
+                    FavouritesProductsRoute(),
+                  ]),
+                );
+              } else if (index == 4) {
+                // setState(() {
+                //   isOpen = !isOpen;
+                // });
+                // if (isOpen) {
+                //   showOverlay(
+                //     context: context,
+                //     width: 220,
+                //     height: 94,
+                //     bottom: 56,
+                //     right: 0,
+                //   );
+                // } else {
+                //   overlayEntry?.remove();
+                // }
+                showDialog(
+                    barrierColor: Colors.transparent,
                     context: context,
-                    width: 220,
-                    height: 94,
-                    bottom: 56,
-                    right: 0,
-                    listItems: [
-                      DropDownDataModel(
-                        title: '8 (800) 500-53-29',
-                        route: 'phone',
-                      ),
-                      // DropDownDataModel(
-                      //   title: 'Открыть чат',
-                      //   route: '/chat_messanger',
-                      // ),
-                      DropDownDataModel(
-                        title: 'WhatsApp',
-                        route: 'WhatsApp',
-                      ),
-                    ],
-                  );
-                } else {
-                  overlayEntry?.remove();
-                }
+                    builder: (context) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 56),
+                        alignment: Alignment.bottomRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context, rootNavigator: true).pop();
+                          },
+                          child: SafeArea(
+                            top: true,
+                            bottom: true,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  height: 94,
+                                  width: 220,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                      5,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: BlindChickenColors.activeBorderTextField
+                                            .withOpacity(0.1),
+                                        blurRadius: 3,
+                                        offset: const Offset(0, 3), // Shadow position
+                                      ),
+                                    ],
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 10.5,
+                                      bottom: 10.5,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: List.generate(listItems.length, (index) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context, rootNavigator: true).pop();
+                                            if (listItems[index].route == 'phone') {
+                                              _makePhoneCall(listItems[index].title);
+                                            } else if (listItems[index].route == 'WhatsApp') {
+                                              _launchWhatsapp('79093335046');
+                                            } else {
+                                              context.navigateNamedTo(listItems[index].route);
+                                            }
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.only(
+                                              top: 7,
+                                              bottom: 7,
+                                              left: 24.5,
+                                              right: 24.5,
+                                            ),
+                                            color: Colors.transparent,
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              listItems[index].title,
+                                              style: Theme.of(context).textTheme.displayMedium,
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    });
               } else if (tabsRouter.activeIndex != index) {
                 tabsRouter.setActiveIndex(index);
               } else {
                 tabsRouter.innerRouterOf<StackRouter>(tabsRouter.current.name)?.popUntilRoot();
               }
-              setState(() {
-                _isMain = !_isMain;
-              });
             });
         return Platform.isAndroid
             ? SizedBox(

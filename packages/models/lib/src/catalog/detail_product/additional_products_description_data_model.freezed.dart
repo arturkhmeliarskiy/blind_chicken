@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AdditionalProductsDescriptionDataModel {
   String get name => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,7 +34,8 @@ abstract class $AdditionalProductsDescriptionDataModelCopyWith<$Res> {
       _$AdditionalProductsDescriptionDataModelCopyWithImpl<$Res,
           AdditionalProductsDescriptionDataModel>;
   @useResult
-  $Res call({String name, List<ProductDataModel> products});
+  $Res call(
+      {String name, String errorMessage, List<ProductDataModel> products});
 }
 
 /// @nodoc
@@ -51,12 +53,17 @@ class _$AdditionalProductsDescriptionDataModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = null,
+    Object? errorMessage = null,
     Object? products = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       products: null == products
           ? _value.products
@@ -75,7 +82,8 @@ abstract class _$$AdditionalProductsDescriptionDataModelImplCopyWith<$Res>
       __$$AdditionalProductsDescriptionDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<ProductDataModel> products});
+  $Res call(
+      {String name, String errorMessage, List<ProductDataModel> products});
 }
 
 /// @nodoc
@@ -92,12 +100,17 @@ class __$$AdditionalProductsDescriptionDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? errorMessage = null,
     Object? products = null,
   }) {
     return _then(_$AdditionalProductsDescriptionDataModelImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       products: null == products
           ? _value._products
@@ -112,12 +125,16 @@ class __$$AdditionalProductsDescriptionDataModelImplCopyWithImpl<$Res>
 class _$AdditionalProductsDescriptionDataModelImpl
     extends _AdditionalProductsDescriptionDataModel {
   _$AdditionalProductsDescriptionDataModelImpl(
-      {required this.name, required final List<ProductDataModel> products})
+      {required this.name,
+      required this.errorMessage,
+      required final List<ProductDataModel> products})
       : _products = products,
         super._();
 
   @override
   final String name;
+  @override
+  final String errorMessage;
   final List<ProductDataModel> _products;
   @override
   List<ProductDataModel> get products {
@@ -128,7 +145,7 @@ class _$AdditionalProductsDescriptionDataModelImpl
 
   @override
   String toString() {
-    return 'AdditionalProductsDescriptionDataModel(name: $name, products: $products)';
+    return 'AdditionalProductsDescriptionDataModel(name: $name, errorMessage: $errorMessage, products: $products)';
   }
 
   @override
@@ -137,12 +154,14 @@ class _$AdditionalProductsDescriptionDataModelImpl
         (other.runtimeType == runtimeType &&
             other is _$AdditionalProductsDescriptionDataModelImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_products));
+  int get hashCode => Object.hash(runtimeType, name, errorMessage,
+      const DeepCollectionEquality().hash(_products));
 
   @JsonKey(ignore: true)
   @override
@@ -158,12 +177,15 @@ abstract class _AdditionalProductsDescriptionDataModel
     extends AdditionalProductsDescriptionDataModel {
   factory _AdditionalProductsDescriptionDataModel(
           {required final String name,
+          required final String errorMessage,
           required final List<ProductDataModel> products}) =
       _$AdditionalProductsDescriptionDataModelImpl;
   _AdditionalProductsDescriptionDataModel._() : super._();
 
   @override
   String get name;
+  @override
+  String get errorMessage;
   @override
   List<ProductDataModel> get products;
   @override

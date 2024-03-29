@@ -39,5 +39,15 @@ Future<void> initRepositories(GetIt getIt) async {
       () => OrdersRepository(
         getIt.get<OrdersService>(),
       ),
+    )
+    ..registerFactory(
+      () => AppStoreInfoRepository(
+        getIt.get<AppStoreInfoService>(),
+      ),
+    )
+    ..registerFactory(
+      () => PushNotificationRepository(
+        getIt.get<PushNotificationService>(),
+      ),
     );
 }

@@ -27,12 +27,6 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
     _scrollController.addListener(_loadMoreData);
   }
 
-  @override
-  void didUpdateWidget(covariant CatalogSearchResultScreen oldWidget) {
-    _scrollController.jumpTo(_historyPosition);
-    super.didUpdateWidget(oldWidget);
-  }
-
   void _loadMoreData() async {
     _historyPosition = _scrollController.position.pixels;
     if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
@@ -77,6 +71,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                     builder: (context, state) {
                       return state.maybeMap(
                           searchProductsResult: (initState) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              _scrollController.jumpTo(_historyPosition);
+                            });
                             return Column(
                               children: [
                                 Padding(

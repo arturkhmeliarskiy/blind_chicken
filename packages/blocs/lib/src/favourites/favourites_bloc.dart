@@ -15,16 +15,19 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   final CatalogRepository _catalogRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final FavouritesRepository _favouritesRepository;
+  final BasketRepository _basketRepository;
   StreamSubscription<dynamic>? otherBlocSubscription;
 
   FavouritesBloc(
     this._catalogRepository,
     this._sharedPreferencesService,
     this._favouritesRepository,
+    this._basketRepository,
   ) : super(const FavouritesState.init()) {
     on<FavouritesEvent>(
-      (event, emit) => event.map(
-        preloadData: (event) => _init(event, emit),
+      (event, emit) => event.map<Future<void>>(
+        init: (event) => _init(event, emit),
+        preloadData: (event) => _preloadData(event, emit),
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
         selectFilter: (event) => _selectFilter(event, emit),
@@ -35,6 +38,8 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         getInfoProduct: (event) => _getInfoProduct(event, emit),
         goBackProductInfo: (event) => _goBackProductInfo(event, emit),
         paginationProduct: (event) => _paginationProduct(event, emit),
+        addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
+        checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
       ),
     );
   }
@@ -43,8 +48,35 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     InitFavouritesEvent event,
     Emitter<FavouritesState> emit,
   ) async {
-    emit(const FavouritesState.load());
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
 
+    emit(
+      FavouritesState.productsFavourites(
+        favouritesProducts: [],
+        favouritesDefaultProducts: [],
+        filter: [],
+        selectFilter: {},
+        allSelectFilter: [],
+        request: FavouritesCatalogProductsRequest(),
+        listProductsCode: [],
+        listProdcutsStyle: [],
+        listProdcutsAlso: [],
+        listProdcutsBrand: [],
+        offset: 1,
+        favouritesProductsId: [],
+        isAuth: isAuth,
+      ),
+    );
+  }
+
+  Future<void> _preloadData(
+    PreloadDataFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    emit(const FavouritesState.load());
     FavouritesCatalogInfoDataModel? favouritesInfo;
     FavouritesCatalogProductsRequest request = FavouritesCatalogProductsRequest();
     List<int> favouritesProductsId = [];
@@ -173,21 +205,10 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
-      String? ct;
-      String? t26;
-      String? f2;
-      String? f3;
-      String? f10;
-      String? f12;
-      String? f13;
-      String? s61;
-      String? t1;
-      String? t4;
-      String? t9;
-      String? t21;
       FavouritesCatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
+      Map<String, FilterCatalogDataModel> filtersInfo = {};
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
       if (selectItem.contains(event.item)) {
         selectItem.insert(event.indexItem, event.item);
@@ -204,107 +225,30 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         List<FilterItemDataModel> filters = selectFilter[key] ?? [];
         for (int j = 0; j < filters.length; j++) {
           allSelectFilter.add({key: filters[j]});
-          if (filters[j].typeFilter == 'ct') {
-            if (ct != null) {
-              ct = '$ct;${filters[j].id}';
-            } else {
-              ct = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't26') {
-            if (t26 != null) {
-              t26 = '$t26;${filters[j].id}';
-            } else {
-              t26 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f2') {
-            if (f2 != null) {
-              f2 = '$f2;${filters[j].id}';
-            } else {
-              f2 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f3') {
-            if (f3 != null) {
-              f3 = '$f3;${filters[j].id}';
-            } else {
-              f3 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f10') {
-            if (f10 != null) {
-              f10 = '$f10;${filters[j].id}';
-            } else {
-              f10 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f12') {
-            if (f12 != null) {
-              f12 = '$f12;${filters[j].id}';
-            } else {
-              f12 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f13') {
-            if (f13 != null) {
-              f13 = '$f13;${filters[j].id}';
-            } else {
-              f13 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 's61') {
-            if (s61 != null) {
-              s61 = '$s61;${filters[j].id}';
-            } else {
-              s61 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't1') {
-            if (t1 != null) {
-              t1 = '$t1;${filters[j].id}';
-            } else {
-              t1 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't4') {
-            if (t4 != null) {
-              t4 = '$t4;${filters[j].id}';
-            } else {
-              t4 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't9') {
-            if (t9 != null) {
-              t9 = '$t9;${filters[j].id}';
-            } else {
-              t9 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't21') {
-            if (t21 != null) {
-              t21 = '$t21;${filters[j].id}';
-            } else {
-              t21 = '${filters[j].id}';
-            }
+          if (filtersInfo.containsKey(filters[j].typeFilter)) {
+            filtersInfo.update(
+              filters[j].typeFilter,
+              (item) => FilterCatalogDataModel(
+                key: filters[j].typeFilter,
+                value: '${item.value};${filters[j].id}',
+              ),
+            );
+          } else {
+            filtersInfo[filters[j].typeFilter] = FilterCatalogDataModel(
+              key: filters[j].typeFilter,
+              value: '${filters[j].id}',
+            );
           }
         }
       }
 
+      filtersInfo['nav'] = FilterCatalogDataModel(
+        key: 'nav',
+        value: 'page-1',
+      );
+
       request = request.copyWith(
-        ct: ct,
-        t26: t26,
-        f2: f2,
-        f3: f3,
-        f10: f10,
-        f12: f12,
-        f13: f13,
-        s61: s61,
-        t1: t1,
-        t4: t4,
-        t9: t9,
-        t21: t21,
-        nav: 'page-1',
+        filters: filtersInfo.values.toList(),
       );
 
       bool isAuth = _sharedPreferencesService.getBool(
@@ -341,18 +285,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
-      String? ct;
-      String? t26;
-      String? f2;
-      String? f3;
-      String? f10;
-      String? f12;
-      String? f13;
-      String? s61;
-      String? t1;
-      String? t4;
-      String? t9;
-      String? t21;
+      Map<String, FilterCatalogDataModel> filtersInfo = {};
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
       FavouritesCatalogProductsRequest request = initState.request;
@@ -368,107 +301,30 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         List<FilterItemDataModel> filters = selectFilter[key] ?? [];
         for (int j = 0; j < filters.length; j++) {
           allSelectFilter.add({key: filters[j]});
-          if (filters[j].typeFilter == 'ct') {
-            if (ct != null) {
-              ct = '$ct;${filters[j].id}';
-            } else {
-              ct = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't26') {
-            if (t26 != null) {
-              t26 = '$t26;${filters[j].id}';
-            } else {
-              t26 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f2') {
-            if (f2 != null) {
-              f2 = '$f2;${filters[j].id}';
-            } else {
-              f2 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f3') {
-            if (f3 != null) {
-              f3 = '$f3;${filters[j].id}';
-            } else {
-              f3 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f10') {
-            if (f10 != null) {
-              f10 = '$f10;${filters[j].id}';
-            } else {
-              f10 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f12') {
-            if (f12 != null) {
-              f12 = '$f12;${filters[j].id}';
-            } else {
-              f12 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 'f13') {
-            if (f13 != null) {
-              f13 = '$f13;${filters[j].id}';
-            } else {
-              f13 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 's61') {
-            if (s61 != null) {
-              s61 = '$s61;${filters[j].id}';
-            } else {
-              s61 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't1') {
-            if (t1 != null) {
-              t1 = '$t1;${filters[j].id}';
-            } else {
-              t1 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't4') {
-            if (t4 != null) {
-              t4 = '$t4;${filters[j].id}';
-            } else {
-              t4 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't9') {
-            if (t9 != null) {
-              t9 = '$t9;${filters[j].id}';
-            } else {
-              t9 = '${filters[j].id}';
-            }
-          }
-          if (filters[j].typeFilter == 't21') {
-            if (t21 != null) {
-              t21 = '$t21;${filters[j].id}';
-            } else {
-              t21 = '${filters[j].id}';
-            }
+          if (filtersInfo.containsKey(filters[j].typeFilter)) {
+            filtersInfo.update(
+              filters[j].typeFilter,
+              (item) => FilterCatalogDataModel(
+                key: filters[j].typeFilter,
+                value: '${item.value};${filters[j].id}',
+              ),
+            );
+          } else {
+            filtersInfo[filters[j].typeFilter] = FilterCatalogDataModel(
+              key: filters[j].typeFilter,
+              value: '${filters[j].id}',
+            );
           }
         }
       }
 
+      filtersInfo['nav'] = FilterCatalogDataModel(
+        key: 'nav',
+        value: 'page-1',
+      );
+
       request = request.copyWith(
-        ct: ct,
-        t26: t26,
-        f2: f2,
-        f3: f3,
-        f10: f10,
-        f12: f12,
-        f13: f13,
-        s61: s61,
-        t1: t1,
-        t4: t4,
-        t9: t9,
-        t21: t21,
-        nav: 'page-1',
+        filters: filtersInfo.values.toList(),
       );
 
       bool isAuth = _sharedPreferencesService.getBool(
@@ -509,22 +365,10 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
-      String? ct;
-      String? t26;
-      String? f2;
-      String? f3;
-      String? f10;
-      String? f12;
-      String? f13;
-      String? s61;
-      String? t1;
-      String? t4;
-      String? t9;
-      String? t21;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
       FavouritesCatalogProductsRequest request = initState.request;
-
+      Map<String, FilterCatalogDataModel> filtersInfo = {};
       for (int i = 0; i < (selectFilter[event.key]?.length ?? 0); i++) {
         (selectFilter[event.key] ?? []).removeWhere(
           (element) => element.value == event.item.value,
@@ -540,107 +384,30 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       if (allSelectFilter.isNotEmpty) {
         for (int i = 0; i < allSelectFilter.length; i++) {
-          if (allSelectFilter[i].values.first.typeFilter == 'ct') {
-            if (ct != null) {
-              ct = '$ct;${allSelectFilter[i].values.first.id}';
-            } else {
-              ct = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't26') {
-            if (t26 != null) {
-              t26 = '$t26;${allSelectFilter[i].values.first.id}';
-            } else {
-              t26 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f2') {
-            if (f2 != null) {
-              f2 = '$f2;${allSelectFilter[i].values.first.id}';
-            } else {
-              f2 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f3') {
-            if (f3 != null) {
-              f3 = '$f3;${allSelectFilter[i].values.first.id}';
-            } else {
-              f3 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f10') {
-            if (f10 != null) {
-              f10 = '$f10;${allSelectFilter[i].values.first.id}';
-            } else {
-              f10 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f12') {
-            if (f12 != null) {
-              f12 = '$f12;${allSelectFilter[i].values.first.id}';
-            } else {
-              f12 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f13') {
-            if (f13 != null) {
-              f13 = '$f13;${allSelectFilter[i].values.first.id}';
-            } else {
-              f13 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 's61') {
-            if (s61 != null) {
-              s61 = '$s61;${allSelectFilter[i].values.first.id}';
-            } else {
-              s61 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't1') {
-            if (t1 != null) {
-              t1 = '$t1;${allSelectFilter[i].values.first.id}';
-            } else {
-              t1 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't4') {
-            if (t4 != null) {
-              t4 = '$t4;${allSelectFilter[i].values.first.id}';
-            } else {
-              t4 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't9') {
-            if (t9 != null) {
-              t9 = '$t9;${allSelectFilter[i].values.first.id}';
-            } else {
-              t9 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't21') {
-            if (t21 != null) {
-              t21 = '$t21;${allSelectFilter[i].values.first.id}';
-            } else {
-              t21 = '${allSelectFilter[i].values.first.id}';
-            }
+          if (filtersInfo.containsKey(allSelectFilter[i].values.first.typeFilter)) {
+            filtersInfo.update(
+              allSelectFilter[i].values.first.typeFilter,
+              (item) => FilterCatalogDataModel(
+                key: allSelectFilter[i].values.first.typeFilter,
+                value: '${item.value};${allSelectFilter[i].values.first.id}',
+              ),
+            );
+          } else {
+            filtersInfo[allSelectFilter[i].values.first.typeFilter] = FilterCatalogDataModel(
+              key: allSelectFilter[i].values.first.typeFilter,
+              value: '${allSelectFilter[i].values.first.id}',
+            );
           }
         }
       }
 
+      filtersInfo['nav'] = FilterCatalogDataModel(
+        key: 'nav',
+        value: 'page-1',
+      );
+
       request = request.copyWith(
-        ct: ct,
-        t26: t26,
-        f2: f2,
-        f3: f3,
-        f10: f10,
-        f12: f12,
-        f13: f13,
-        s61: s61,
-        t1: t1,
-        t4: t4,
-        t9: t9,
-        t21: t21,
-        nav: 'page-1',
+        filters: filtersInfo.values.toList(),
       );
 
       bool isAuth = _sharedPreferencesService.getBool(
@@ -681,22 +448,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
-      String? ct;
-      String? t26;
-      String? f2;
-      String? f3;
-      String? f10;
-      String? f12;
-      String? f13;
-      String? s61;
-      String? t1;
-      String? t4;
-      String? t9;
-      String? t21;
       FavouritesCatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
       List<FilterItemDataModel> filters = selectFilter[event.index]?.toList() ?? [];
+      Map<String, FilterCatalogDataModel> filtersInfo = {};
 
       for (int i = 0; i < filters.length; i++) {
         for (int j = 0; j < allSelectFilter.length; j++) {
@@ -708,107 +464,30 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       if (allSelectFilter.isNotEmpty) {
         for (int i = 0; i < allSelectFilter.length; i++) {
-          if (allSelectFilter[i].values.first.typeFilter == 'ct') {
-            if (ct != null) {
-              ct = '$ct;${allSelectFilter[i].values.first.id}';
-            } else {
-              ct = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't26') {
-            if (t26 != null) {
-              t26 = '$t26;${allSelectFilter[i].values.first.id}';
-            } else {
-              t26 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f2') {
-            if (f2 != null) {
-              f2 = '$f2;${allSelectFilter[i].values.first.id}';
-            } else {
-              f2 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f3') {
-            if (f3 != null) {
-              f3 = '$f3;${allSelectFilter[i].values.first.id}';
-            } else {
-              f3 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f10') {
-            if (f10 != null) {
-              f10 = '$f10;${allSelectFilter[i].values.first.id}';
-            } else {
-              f10 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f12') {
-            if (f12 != null) {
-              f12 = '$f12;${allSelectFilter[i].values.first.id}';
-            } else {
-              f12 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 'f13') {
-            if (f13 != null) {
-              f13 = '$f13;${allSelectFilter[i].values.first.id}';
-            } else {
-              f13 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 's61') {
-            if (s61 != null) {
-              s61 = '$s61;${allSelectFilter[i].values.first.id}';
-            } else {
-              s61 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't1') {
-            if (t1 != null) {
-              t1 = '$t1;${allSelectFilter[i].values.first.id}';
-            } else {
-              t1 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't4') {
-            if (t4 != null) {
-              t4 = '$t4;${allSelectFilter[i].values.first.id}';
-            } else {
-              t4 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't9') {
-            if (t9 != null) {
-              t9 = '$t9;${allSelectFilter[i].values.first.id}';
-            } else {
-              t9 = '${allSelectFilter[i].values.first.id}';
-            }
-          }
-          if (allSelectFilter[i].values.first.typeFilter == 't21') {
-            if (t21 != null) {
-              t21 = '$t21;${allSelectFilter[i].values.first.id}';
-            } else {
-              t21 = '${allSelectFilter[i].values.first.id}';
-            }
+          if (filtersInfo.containsKey(allSelectFilter[i].values.first.typeFilter)) {
+            filtersInfo.update(
+              allSelectFilter[i].values.first.typeFilter,
+              (item) => FilterCatalogDataModel(
+                key: allSelectFilter[i].values.first.typeFilter,
+                value: '${item.value};${allSelectFilter[i].values.first.id}',
+              ),
+            );
+          } else {
+            filtersInfo[allSelectFilter[i].values.first.typeFilter] = FilterCatalogDataModel(
+              key: allSelectFilter[i].values.first.typeFilter,
+              value: '${allSelectFilter[i].values.first.id}',
+            );
           }
         }
       }
 
+      filtersInfo['nav'] = FilterCatalogDataModel(
+        key: 'nav',
+        value: 'page-1',
+      );
+
       request = request.copyWith(
-        ct: ct,
-        t26: t26,
-        f2: f2,
-        f3: f3,
-        f10: f10,
-        f12: f12,
-        f13: f13,
-        s61: s61,
-        t1: t1,
-        t4: t4,
-        t9: t9,
-        t21: t21,
-        nav: 'page-1',
+        filters: filtersInfo.values.toList(),
       );
 
       bool isAuth = _sharedPreferencesService.getBool(
@@ -847,21 +526,12 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     await state.mapOrNull(productsFavourites: (initState) async {
       FavouritesCatalogProductsRequest request = initState.request;
 
-      request = request.copyWith(
-        ct: null,
-        t26: null,
-        f2: null,
-        f3: null,
-        f10: null,
-        f12: null,
-        f13: null,
-        s61: null,
-        t1: null,
-        t4: null,
-        t9: null,
-        t21: null,
-        nav: 'page-1',
-      );
+      request = request.copyWith(filters: [
+        FilterCatalogDataModel(
+          key: 'nav',
+          value: 'page-1',
+        )
+      ]);
 
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -896,7 +566,13 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
       emit(const FavouritesState.load());
+
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
@@ -921,12 +597,37 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         block: 'brand',
       );
 
+      if (!(event.isUpdate ?? false)) {
+        listProductsCode.add(event.code);
+      }
+
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+
+      if (detailsProduct.sku.isNotEmpty) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == detailsProduct.code &&
+                  (element.sku.isNotEmpty ? element.sku == detailsProduct.sku.first.id : true),
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == detailsProduct.code,
+            )
+            .toList();
+      }
+
       emit(initState.copyWith(
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
-        listProductsCode: listProductsCode..add(event.code),
+        listProductsCode: listProductsCode,
+        isAuth: isAuth,
+        isUpdate: event.isUpdate,
+        isSoppingCart: soppingCart.isNotEmpty,
       ));
     });
   }
@@ -942,6 +643,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,
+        isUpdate: initState.isUpdate,
       ));
 
       if (listProductsCode.isNotEmpty) {
@@ -975,6 +677,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
+          isUpdate: initState.isUpdate,
         ));
       }
     });
@@ -987,9 +690,16 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     await state.mapOrNull(productsFavourites: (initState) async {
       FavouritesCatalogProductsRequest request = initState.request;
       List<ProductDataModel> products = initState.favouritesProducts.toList();
+      List<FilterCatalogDataModel> filters = initState.request.filters?.toList() ?? [];
       FavouritesCatalogInfoDataModel? favouritesInfo;
       List<int> favouritesProductsId = [];
-      request = request.copyWith(nav: 'page-${initState.offset + 1}');
+
+      filters.add(FilterCatalogDataModel(
+        key: 'nav',
+        value: 'page-${initState.offset + 1}',
+      ));
+
+      request = request.copyWith(filters: filters);
 
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -1037,5 +747,72 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     );
 
     return favouritesInfo;
+  }
+
+  Future<BasketFullInfoDataModel> getBasketInfo({
+    bool isLocal = true,
+  }) async {
+    List<BasketInfoItemDataModel> basket = [];
+    if (isLocal) {
+      final shopping = _catalogRepository.getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+        ));
+      }
+    }
+
+    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      basket: isLocal ? basket : null,
+    );
+
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        _catalogRepository.putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+          ),
+        );
+      }
+    }
+
+    return basketInfo;
+  }
+
+  Future<void> _addProductToSoppingCart(
+    AddProductToSoppingCartFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    await state.mapOrNull(productsFavourites: (initState) async {
+      emit(initState.copyWith(
+        isSoppingCart: true,
+      ));
+    });
+  }
+
+  Future<void> _checkProductToSoppingCart(
+    CheckProductToSoppingCartFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    await state.mapOrNull(productsFavourites: (initState) async {
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
+      final soppingCart = basketInfo.basket.where(
+        (element) =>
+            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+            element.sku == event.size.id,
+      );
+      emit(initState.copyWith(
+        isSoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
   }
 }

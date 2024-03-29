@@ -145,13 +145,18 @@ extension on PaymentBonusResponse {
 extension on PaymentsResponse {
   PaymentsDataModel toPaymentMethods() {
     return PaymentsDataModel(
-      payments: List<PaymentItemDataModel>.from(payments?.map((item) {
-            return PaymentItemDataModel(
-              id: item.id ?? '',
-              name: item.name ?? '',
-            );
-          }) ??
-          []),
+      payments: List<PaymentItemDataModel>.from(
+        payments?.map(
+              (item) {
+                return PaymentItemDataModel(
+                  id: item.id ?? '',
+                  name: item.name ?? '',
+                );
+              },
+            ) ??
+            [],
+      ),
+      errorMessage: errorMessage ?? '',
     );
   }
 }
@@ -190,6 +195,7 @@ extension on BasketFullInfoResponse {
     return BasketFullInfoDataModel(
       r: r ?? '',
       e: e ?? '',
+      errorMessage: errorMessage ?? '',
       basket: List<BasketFullInfoItemDataModel>.from(
         basket?.map(
               (item) {

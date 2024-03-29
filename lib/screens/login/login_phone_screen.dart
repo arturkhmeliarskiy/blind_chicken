@@ -1,5 +1,3 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_captcha_screen.dart';
 import 'package:blind_chicken/screens/login/login_sms_code_screen.dart';
 import 'package:blocs/blocs.dart';
@@ -12,7 +10,12 @@ import 'package:ui_kit/ui_kit.dart';
 class LoginPhoneScreen extends StatefulWidget {
   const LoginPhoneScreen({
     super.key,
+    required this.successfully,
+    required this.onBack,
   });
+
+  final VoidCallback successfully;
+  final VoidCallback onBack;
 
   @override
   State<LoginPhoneScreen> createState() => _LoginPhoneScreenState();
@@ -40,17 +43,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         state.maybeWhen(
-          successfully: () {
-            Navigator.of(context, rootNavigator: true).pop();
-            context.read<AccountBloc>().add(const AccountEvent.preloadData());
-            context.navigateTo(
-              const LoginRoute(
-                children: [
-                  AccountRoute(),
-                ],
-              ),
-            );
-          },
+          successfully: widget.successfully,
           orElse: () {},
         );
       },
@@ -85,9 +78,7 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {
-                                  context.popRoute();
-                                },
+                                onTap: widget.onBack,
                                 child: SizedBox(
                                   height: 50,
                                   width: 50,
@@ -137,7 +128,8 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                                       style: Theme.of(context)
                                           .textTheme
                                           .displayMedium
-                                          ?.copyWith(height: 1.4),
+                                          ?.copyWith(height: 1.35),
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
@@ -167,15 +159,16 @@ class _LoginPhoneScreenState extends State<LoginPhoneScreen> {
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .displayMedium
-                                                ?.copyWith(height: 1),
+                                                ?.copyWith(height: 1.5),
                                           ),
                                         ),
                                         focusColor: BlindChickenColors.backgroundColor,
                                         fillColor: BlindChickenColors.backgroundColor,
-                                        hintStyle: Theme.of(context)
-                                            .textTheme
-                                            .displayMedium
-                                            ?.copyWith(height: 1),
+                                        hintStyle:
+                                            Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                  height: 1,
+                                                  color: BlindChickenColors.textInput,
+                                                ),
                                         hintText: '000 000 00 00',
                                         prefixIconConstraints: const BoxConstraints(maxWidth: 40),
                                         contentPadding: EdgeInsets.zero,

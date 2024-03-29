@@ -58,8 +58,13 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.getInfoProducts({
     required String path,
   }) = GetInfoProductsCatalogEvent;
+  const factory CatalogEvent.getInfoProductsPushNotification({
+    required String path,
+    required String sort,
+  }) = GetInfoProductsPushNotificationCatalogEvent;
   const factory CatalogEvent.getInfoProduct({
     required String code,
+    bool? isUpdate,
   }) = GetInfoProductCatalogEvent;
   const factory CatalogEvent.sortProducts({
     required String value,
@@ -69,4 +74,8 @@ class CatalogEvent with _$CatalogEvent {
     required int index,
   }) = RemoveSelectFilterCategotyCatalogEvent;
   const factory CatalogEvent.removeSelectAllFilters() = RemoveSelectAllFiltersCategotyCatalogEvent;
+  const factory CatalogEvent.addProductToSoppingCart() = AddProductToSoppingCartCatalogEvent;
+  const factory CatalogEvent.checkProductToSoppingCart({
+    required SkuProductDataModel size,
+  }) = CheckProductToSoppingCartCatalogEvent;
 }

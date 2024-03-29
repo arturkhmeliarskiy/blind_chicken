@@ -18,6 +18,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final OrdersRepository _ordersRepository;
   final BasketRepository _basketRepository;
   final FavouritesRepository _favouritesRepository;
+  final PushNotificationRepository _pushNotificationRepository;
 
   AccountBloc(
     this._catalogRepository,
@@ -26,6 +27,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._ordersRepository,
     this._basketRepository,
     this._favouritesRepository,
+    this._pushNotificationRepository,
   ) : super(const AccountState.init()) {
     on<AccountEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -42,6 +44,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         addFavouriteProduct: (event) => _addFavouriteProduct(event, emit),
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
         removeAccount: (event) => _removeAccount(event, emit),
+        addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
+        checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
       ),
     );
   }
@@ -195,10 +199,18 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     LogOutAccountEvent event,
     Emitter<AccountState> emit,
   ) async {
-    _sharedPreferencesService.clear();
-    _catalogRepository.deleteAllShoppingProducts();
-    _catalogRepository.deleteAllFavouritesProducts();
-    emit(const AccountState.logOut());
+    final result = await _pushNotificationRepository.postNotificationInfo(event: '4');
+    if (result.r == '1') {
+      _sharedPreferencesService.clear();
+      _sharedPreferencesService.setBool(
+        key: SharedPrefKeys.appInstalled,
+        value: true,
+      );
+      _catalogRepository.deleteAllShoppingProducts();
+      _catalogRepository.deleteAllFavouritesProducts();
+      emit(const AccountState.logOut());
+      log('Пользватель вышел');
+    }
   }
 
   Future<void> _removeAccount(
@@ -206,6 +218,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     _sharedPreferencesService.clear();
+    _sharedPreferencesService.setBool(
+      key: SharedPrefKeys.appInstalled,
+      value: true,
+    );
     _catalogRepository.deleteAllShoppingProducts();
     _catalogRepository.deleteAllFavouritesProducts();
     emit(const AccountState.removeAccount());
@@ -217,12 +233,18 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
       emit(const AccountState.load());
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: '',
       );
+
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
       final additionalProductsDescriptionStyle =
           await _catalogRepository.getAdditionalProductsDescription(
@@ -242,12 +264,36 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         block: 'brand',
       );
 
+      if (!(event.isUpdate ?? false)) {
+        listProductsCode.add(event.code);
+      }
+
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+
+      if (detailsProduct.sku.isNotEmpty) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == detailsProduct.code &&
+                  element.sku == detailsProduct.sku.first.id,
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == detailsProduct.code,
+            )
+            .toList();
+      }
+
       emit(initState.copyWith(
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
-        listProductsCode: listProductsCode..add(event.code),
+        listProductsCode: listProductsCode,
+        isAuth: isAuth,
+        isSoppingCart: soppingCart.isNotEmpty,
       ));
     });
   }
@@ -373,6 +419,38 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
+  Future<void> _addProductToSoppingCart(
+    AddProductToSoppingCartCAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isSoppingCart: true,
+      ));
+    });
+  }
+
+  Future<void> _checkProductToSoppingCart(
+    CheckProductToSoppingCartAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
+      final soppingCart = basketInfo.basket.where(
+        (element) =>
+            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+            element.sku == event.size.id,
+      );
+      emit(initState.copyWith(
+        isSoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
+  }
+
   Future<FavouritesCatalogInfoDataModel> updateFavouritesProducts({
     bool isLocal = true,
   }) async {
@@ -390,5 +468,40 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     );
 
     return favouritesInfo;
+  }
+
+  Future<BasketFullInfoDataModel> getBasketInfo({
+    bool isLocal = true,
+  }) async {
+    List<BasketInfoItemDataModel> basket = [];
+    if (isLocal) {
+      final shopping = _catalogRepository.getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+        ));
+      }
+    }
+
+    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      basket: isLocal ? basket : null,
+    );
+
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        _catalogRepository.putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+          ),
+        );
+      }
+    }
+
+    return basketInfo;
   }
 }

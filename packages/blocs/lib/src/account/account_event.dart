@@ -37,6 +37,11 @@ class AccountEvent with _$AccountEvent {
   }) = DeleteFavouriteProductAccountEvent;
   const factory AccountEvent.getInfoProduct({
     required String code,
+    bool? isUpdate,
   }) = GetInfoProductAccountEvent;
   const factory AccountEvent.goBackProductInfo() = GoBackProductInfoCategotyAccountEvent;
+  const factory AccountEvent.addProductToSoppingCart() = AddProductToSoppingCartCAccountEvent;
+  const factory AccountEvent.checkProductToSoppingCart({
+    required SkuProductDataModel size,
+  }) = CheckProductToSoppingCartAccountEvent;
 }

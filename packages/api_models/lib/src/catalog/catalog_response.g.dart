@@ -22,6 +22,7 @@ _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
           .toList(),
       r: json['r'] as String?,
       e: json['e'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$CatalogResponseImplToJson(
@@ -37,4 +38,5 @@ Map<String, dynamic> _$$CatalogResponseImplToJson(
       'products': instance.products,
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
     };

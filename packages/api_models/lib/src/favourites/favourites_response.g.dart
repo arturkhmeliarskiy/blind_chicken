@@ -14,6 +14,7 @@ _$FavouritesResponseImpl _$$FavouritesResponseImplFromJson(
       favorites: (json['favorites'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$FavouritesResponseImplToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$FavouritesResponseImplToJson(
       'code': instance.code,
       'sku': instance.sku,
       'favorites': instance.favorites,
+      'errorMessage': instance.errorMessage,
     };
