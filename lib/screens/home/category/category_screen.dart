@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -22,6 +24,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
   bool isLoading = false;
   List<Map<String, String>> selectItems = [];
   int _selectedIndexGender = 1;
+
+  @override
+  void initState() {
+    final updateData = GetIt.I.get<UpdateDataService>();
+    _selectedIndexGender = updateData.selectedIndexGender;
+    super.initState();
+  }
 
   String checkTypePeople(int value) {
     String result = '';
@@ -352,55 +361,68 @@ class _CategoryScreenState extends State<CategoryScreen> {
             Expanded(child: BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
               return state.maybeMap(
                 preloadDataCompleted: (initState) {
-                  return ListView(
-                    children: [
-                      Column(
-                        children: List.generate(
-                          initState.menu.length,
-                          (index) => ItemCatalogMenu(
-                            item: initState.menu[index],
-                            onTap: () {
-                              if (initState.menu[index].brand == 0 &&
-                                  initState.menu[index].sub == 0 &&
-                                  initState.menu[index].name != 'Подарочная карта') {
-                                context.read<CatalogBloc>().add(
-                                      CatalogEvent.getInfoProducts(path: initState.menu[index].url),
-                                    );
-                                context.navigateTo(
-                                  CatalogRoute(
-                                    title: initState.menu[index].name,
-                                    url: initState.menu[index].url,
-                                  ),
-                                );
-                              } else if (initState.menu[index].name == 'Подарочная карта') {
-                                context.navigateTo(const GiftCardRoute());
-                              } else if (initState.menu[index].name == 'Бренды') {
-                                context.navigateTo(
-                                  BrandsRoute(
-                                    typePeople: checkTypePeople(initState.selectedGenderIndex),
-                                  ),
-                                );
-                              } else if (initState.menu[index].name == 'Sale') {
-                                context.navigateTo(const SaleRoute());
-                              } else {
-                                context.read<CatalogBloc>().add(
-                                      CatalogEvent.subCategory(
-                                        a: 'get-child-menu',
-                                        id: initState.menu[index].id,
-                                        b: initState.menu[index].brand,
-                                        u: initState.menu[index].url,
-                                        pid: initState.menu[index].idParent,
-                                        item: initState.menu[index],
-                                      ),
-                                    );
-                              }
-                            },
-                            selectValue: const [],
-                            onRemove: (value) {},
+                  return PopScope(
+                    canPop: false,
+                    onPopInvoked: (value) {
+                      if (initState.pathMenu.isNotEmpty) {
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.backPathMenu(
+                                idParent: initState.selectedGenderIndex + 1,
+                              ),
+                            );
+                      }
+                    },
+                    child: ListView(
+                      children: [
+                        Column(
+                          children: List.generate(
+                            initState.menu.length,
+                            (index) => ItemCatalogMenu(
+                              item: initState.menu[index],
+                              onTap: () {
+                                if (initState.menu[index].brand == 0 &&
+                                    initState.menu[index].sub == 0 &&
+                                    initState.menu[index].name != 'Подарочная карта') {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProducts(
+                                            path: initState.menu[index].url),
+                                      );
+                                  context.navigateTo(
+                                    CatalogRoute(
+                                      title: initState.menu[index].name,
+                                      url: initState.menu[index].url,
+                                    ),
+                                  );
+                                } else if (initState.menu[index].name == 'Подарочная карта') {
+                                  context.navigateTo(GiftCardRoute());
+                                } else if (initState.menu[index].name == 'Бренды') {
+                                  context.navigateTo(
+                                    BrandsRoute(
+                                      typePeople: checkTypePeople(initState.selectedGenderIndex),
+                                    ),
+                                  );
+                                } else if (initState.menu[index].name == 'Sale') {
+                                  context.navigateTo(const SaleRoute());
+                                } else {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.subCategory(
+                                          a: 'get-child-menu',
+                                          id: initState.menu[index].id,
+                                          b: initState.menu[index].brand,
+                                          u: initState.menu[index].url,
+                                          pid: initState.menu[index].idParent,
+                                          item: initState.menu[index],
+                                        ),
+                                      );
+                                }
+                              },
+                              selectValue: const [],
+                              onRemove: (value) {},
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
                 load: (value) => Center(

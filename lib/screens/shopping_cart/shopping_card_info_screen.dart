@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
@@ -96,6 +98,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                     .read<ShoppingCartBloc>()
                                     .add(const ShoppingCartEvent.goBackProductInfo());
                               },
+                              isZoom: false,
                               addLike: () {
                                 DetailProductDataModel? detailsProduct = initState.detailsProduct;
                                 if (detailsProduct != null) {
@@ -664,12 +667,17 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           .detailsProduct?.sections.first.list ??
                                                       [],
                                                   onTap: (path) {
-                                                    context.read<CatalogBloc>().add(
-                                                          CatalogEvent.getInfoProducts(
-                                                            path: path,
-                                                          ),
-                                                        );
-                                                    context.pushRoute(
+                                                    Timer(
+                                                      const Duration(milliseconds: 30),
+                                                      () {
+                                                        context.read<CatalogBloc>().add(
+                                                              CatalogEvent.getInfoProducts(
+                                                                path: path,
+                                                              ),
+                                                            );
+                                                      },
+                                                    );
+                                                    context.navigateTo(
                                                       HomeAutoRouterRoute(
                                                         children: [
                                                           CatalogRoute(

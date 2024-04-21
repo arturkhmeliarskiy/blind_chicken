@@ -17,6 +17,7 @@ class CatalogSliderImages extends StatefulWidget {
     this.isAddLike = true,
     required this.isLike,
     required this.deleteLike,
+    required this.isZoom,
   });
 
   final List<String> listImages;
@@ -27,6 +28,7 @@ class CatalogSliderImages extends StatefulWidget {
   final bool isGoBotton;
   final bool isAddLike;
   final bool isLike;
+  final bool isZoom;
 
   @override
   State<CatalogSliderImages> createState() => _CatalogSliderImagesState();
@@ -76,14 +78,20 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                             : width,
                         height: width * 4 / 3,
                         fit: BoxFit.cover,
-                        imageBuilder: (context, imageProvider) => PhotoView(
-                          tightMode: true,
-                          imageProvider: imageProvider,
-                          filterQuality: FilterQuality.high,
-                          backgroundDecoration: const BoxDecoration(
-                            color: BlindChickenColors.backgroundColorItemFilter,
-                          ),
-                        ),
+                        imageBuilder: widget.isZoom
+                            ? (context, imageProvider) => PhotoView(
+                                  tightMode: true,
+                                  imageProvider: imageProvider,
+                                  filterQuality: FilterQuality.high,
+                                  gaplessPlayback: false,
+                                  basePosition: Alignment.center,
+                                  minScale: PhotoViewComputedScale.contained,
+                                  customSize: MediaQuery.of(context).size * 0.99,
+                                  backgroundDecoration: const BoxDecoration(
+                                    color: BlindChickenColors.backgroundColorItemFilter,
+                                  ),
+                                )
+                            : null,
                         errorWidget: (context, url, error) => const Icon(Icons.error),
                       );
                     },

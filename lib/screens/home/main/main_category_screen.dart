@@ -24,7 +24,7 @@ class MainCategoryScreen extends StatefulWidget {
 
 class _MainCategoryScreenState extends State<MainCategoryScreen> {
   final TextEditingController _search = TextEditingController();
-  int _selectIndexType = 0;
+  int _selectIndexType = 1;
 
   @override
   void initState() {
@@ -49,11 +49,11 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
   String checkGender(int indexType) {
     String result = '';
     switch (indexType) {
-      case 0:
-        result = 'Женская коллекция';
       case 1:
-        result = 'Мужская коллекция';
+        result = 'Женская коллекция';
       case 2:
+        result = 'Мужская коллекция';
+      case 3:
         result = 'Детская коллекция';
     }
     return result;
@@ -82,51 +82,17 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
       },
       child: Scaffold(
         body: ListView(
-          padding: const EdgeInsets.only(
-            left: 10.5,
-            right: 10.5,
-          ),
           children: [
             const AppBarBlindChicken(),
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.only(left: 12.6, right: 12.6),
+              margin: const EdgeInsets.only(left: 10.6, right: 10.6),
               height: 55,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectIndexType = 0;
-                          });
-                          context.read<CatalogBloc>().add(
-                                CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
-                              );
-                        },
-                        child: Text(
-                          'Женщинам',
-                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            fontWeight: _selectIndexType == 0 ? FontWeight.w600 : FontWeight.w400,
-                            shadows: [
-                              _selectIndexType == 0
-                                  ? Shadow(
-                                      color: BlindChickenColors.activeBorderTextField.withOpacity(
-                                        0.2,
-                                      ),
-                                      offset: const Offset(0, 1),
-                                      blurRadius: 1,
-                                    )
-                                  : const Shadow(),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 17.5,
-                      ),
                       InkWell(
                         onTap: () {
                           setState(() {
@@ -137,7 +103,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                               );
                         },
                         child: Text(
-                          'Мужчинам',
+                          'Женщинам',
                           style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontWeight: _selectIndexType == 1 ? FontWeight.w600 : FontWeight.w400,
                             shadows: [
@@ -167,11 +133,41 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                               );
                         },
                         child: Text(
-                          'Детям',
+                          'Мужчинам',
                           style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontWeight: _selectIndexType == 2 ? FontWeight.w600 : FontWeight.w400,
                             shadows: [
                               _selectIndexType == 2
+                                  ? Shadow(
+                                      color: BlindChickenColors.activeBorderTextField.withOpacity(
+                                        0.2,
+                                      ),
+                                      offset: const Offset(0, 1),
+                                      blurRadius: 1,
+                                    )
+                                  : const Shadow(),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 17.5,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            _selectIndexType = 3;
+                          });
+                          context.read<CatalogBloc>().add(
+                                CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
+                              );
+                        },
+                        child: Text(
+                          'Детям',
+                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                            fontWeight: _selectIndexType == 3 ? FontWeight.w600 : FontWeight.w400,
+                            shadows: [
+                              _selectIndexType == 3
                                   ? Shadow(
                                       color: BlindChickenColors.activeBorderTextField.withOpacity(
                                         0.2,
@@ -232,13 +228,19 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
             const SizedBox(
               height: 16,
             ),
-            GestureDetector(
-              onTap: () {
-                context.navigateTo(const GiftCardRoute());
-              },
-              child: SizedBox(
-                child: Image.asset(
-                  'assets/images/giftcard.jpg',
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 10.5,
+                right: 10.5,
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  context.navigateTo(GiftCardRoute());
+                },
+                child: SizedBox(
+                  child: Image.asset(
+                    'assets/images/giftcard.jpg',
+                  ),
                 ),
               ),
             ),

@@ -22,6 +22,7 @@ PaymentBonusResponse _$PaymentBonusResponseFromJson(Map<String, dynamic> json) {
 mixin _$PaymentBonusResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get info => throw _privateConstructorUsedError;
   int? get balance => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $PaymentBonusResponseCopyWith<$Res> {
           $Res Function(PaymentBonusResponse) then) =
       _$PaymentBonusResponseCopyWithImpl<$Res, PaymentBonusResponse>;
   @useResult
-  $Res call({String? r, String? e, int? balance});
+  $Res call({String? r, String? e, String? info, int? balance});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$PaymentBonusResponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? info = freezed,
     Object? balance = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +67,10 @@ class _$PaymentBonusResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      info: freezed == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
               as String?,
       balance: freezed == balance
           ? _value.balance
@@ -82,7 +88,7 @@ abstract class _$$PaymentBonusResponseImplCopyWith<$Res>
       __$$PaymentBonusResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? r, String? e, int? balance});
+  $Res call({String? r, String? e, String? info, int? balance});
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class __$$PaymentBonusResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? info = freezed,
     Object? balance = freezed,
   }) {
     return _then(_$PaymentBonusResponseImpl(
@@ -108,6 +115,10 @@ class __$$PaymentBonusResponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      info: freezed == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
               as String?,
       balance: freezed == balance
           ? _value.balance
@@ -120,7 +131,8 @@ class __$$PaymentBonusResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PaymentBonusResponseImpl extends _PaymentBonusResponse {
-  _$PaymentBonusResponseImpl({this.r, this.e, this.balance}) : super._();
+  _$PaymentBonusResponseImpl({this.r, this.e, this.info, this.balance})
+      : super._();
 
   factory _$PaymentBonusResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentBonusResponseImplFromJson(json);
@@ -130,11 +142,13 @@ class _$PaymentBonusResponseImpl extends _PaymentBonusResponse {
   @override
   final String? e;
   @override
+  final String? info;
+  @override
   final int? balance;
 
   @override
   String toString() {
-    return 'PaymentBonusResponse(r: $r, e: $e, balance: $balance)';
+    return 'PaymentBonusResponse(r: $r, e: $e, info: $info, balance: $balance)';
   }
 
   @override
@@ -144,12 +158,13 @@ class _$PaymentBonusResponseImpl extends _PaymentBonusResponse {
             other is _$PaymentBonusResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.info, info) || other.info == info) &&
             (identical(other.balance, balance) || other.balance == balance));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, balance);
+  int get hashCode => Object.hash(runtimeType, r, e, info, balance);
 
   @JsonKey(ignore: true)
   @override
@@ -171,6 +186,7 @@ abstract class _PaymentBonusResponse extends PaymentBonusResponse {
   factory _PaymentBonusResponse(
       {final String? r,
       final String? e,
+      final String? info,
       final int? balance}) = _$PaymentBonusResponseImpl;
   _PaymentBonusResponse._() : super._();
 
@@ -181,6 +197,8 @@ abstract class _PaymentBonusResponse extends PaymentBonusResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get info;
   @override
   int? get balance;
   @override

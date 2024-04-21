@@ -6,6 +6,8 @@ class BoutiquesState with _$BoutiquesState {
   const factory BoutiquesState.load() = LoadingBoutiquesState;
   const factory BoutiquesState.preloadDataCompleted({
     required List<BoutiqueDataModel> boutiques,
+    required bool isUpdateVersionApp,
+    required bool isNotification,
     List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
     BoutiqueDataInfoDataModel? boutiqueDetails,
   }) = PreloadDataCompletedBoutiquesState;

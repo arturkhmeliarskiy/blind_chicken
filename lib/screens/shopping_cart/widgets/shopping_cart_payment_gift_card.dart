@@ -24,6 +24,9 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
   final TextEditingController _numberCard = TextEditingController();
   final TextEditingController _pinCode = TextEditingController();
   final TextEditingController _pay = TextEditingController();
+  bool _isError = false;
+  String _error = '';
+  double _height = 0.0;
 
   @override
   void initState() {
@@ -38,6 +41,25 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
     super.dispose();
   }
 
+  void validator(String numberCard, String pinCode) {
+    if (numberCard.isEmpty && pinCode.isEmpty) {
+      _height = 382;
+      _error = '⚠ Необходимо заполнить: номер карты, пин-код';
+      _isError = true;
+    } else if (numberCard.isEmpty) {
+      _height = 361;
+      _error = '⚠ Необходимо заполнить: номер карты.';
+      _isError = true;
+    } else if (pinCode.isEmpty) {
+      _height = 361;
+      _error = '⚠ Необходимо заполнить: пин-код.';
+      _isError = true;
+    } else {
+      _isError = false;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -47,8 +69,9 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
             productsShoppingCart: (initState) {
               int balance = initState.paymentGift?.balance ?? 0;
               return Container(
-                height:
-                    initState.isLoadPaymentGift || (initState.paymentGift?.e.isNotEmpty ?? false)
+                height: _isError
+                    ? _height
+                    : initState.isLoadPaymentGift || (initState.paymentGift?.e.isNotEmpty ?? false)
                         ? 196
                         : 326,
                 width: MediaQuery.of(context).size.width - 16,
@@ -224,17 +247,29 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 48,
-                              ),
+                              if (_isError)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 42, bottom: 14),
+                                  child: Text(
+                                    _error,
+                                    style: Theme.of(context).textTheme.displayMedium,
+                                  ),
+                                )
+                              else
+                                const SizedBox(
+                                  height: 48,
+                                ),
                               GestureDetector(
                                 onTap: () {
-                                  context.read<ShoppingCartBloc>().add(
-                                        ShoppingCartEvent.giftCard(
-                                          number: _numberCard.text,
-                                          pin: _pinCode.text,
-                                        ),
-                                      );
+                                  validator(_numberCard.text, _pinCode.text);
+                                  if (!_isError) {
+                                    context.read<ShoppingCartBloc>().add(
+                                          ShoppingCartEvent.giftCard(
+                                            number: _numberCard.text,
+                                            pin: _pinCode.text,
+                                          ),
+                                        );
+                                  }
                                 },
                                 child: Container(
                                   height: 44,
@@ -270,7 +305,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                                 height: 28,
                               ),
                               Text(
-                                'Подарочная карта 7005000054070 действует до 25.02.2025',
+                                initState.paymentGift?.info ?? '',
                                 style: Theme.of(context).textTheme.displayMedium,
                               ),
                               const SizedBox(
@@ -393,4 +428,15 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
       )
     ]);
   }
+}
+
+class PaymentGiftCardDataModel {
+  final double? height;
+  final bool? isError;
+  final String? error;
+  PaymentGiftCardDataModel({
+    this.height,
+    this.isError,
+    this.error,
+  });
 }

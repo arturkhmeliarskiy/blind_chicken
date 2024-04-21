@@ -8,6 +8,7 @@ class PaymentBonusDataModel with _$PaymentBonusDataModel {
   factory PaymentBonusDataModel({
     required String r,
     required String e,
+    required String info,
     required int balance,
   }) = _PaymentBonusDataModel;
 }

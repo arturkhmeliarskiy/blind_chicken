@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
@@ -93,10 +94,27 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         false;
 
     String platformDevice = '';
+    String pushToken = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.pushToken,
+        ) ??
+        '';
 
     final deviceId = await _deviceInfoService.getDeviceId();
-    const mc = MethodChannel('blind_chicken/getToken');
-    final pushToken = await mc.invokeMethod('getDeviceToken');
+    if (Platform.isIOS && pushToken.isEmpty) {
+      await Future<void>.delayed(
+        const Duration(
+          seconds: 3,
+        ),
+      );
+      const mc = MethodChannel('blind_chicken/getToken');
+      pushToken = await mc.invokeMethod('getDeviceToken');
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.pushToken,
+        value: pushToken,
+      );
+      log('push token app bloc: $pushToken');
+    }
+
     final savePackageInfoVersion = _sharedPreferencesService.getString(
           key: SharedPrefKeys.appVersion,
         ) ??
@@ -109,6 +127,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       final savePackageInfoIOsVersion = int.parse(savePackageInfoVersion.replaceAll('.', ''));
 
       if (packageInfoIOsVersion > savePackageInfoIOsVersion) {
+        _sharedPreferencesService.setString(
+          key: SharedPrefKeys.appVersion,
+          value: packageInfo.version,
+        );
         await _pushNotificationRepository.postNotificationInfo(event: '5');
         log('Приложение обновлено');
       }
@@ -123,11 +145,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     _sharedPreferencesService.setString(
       key: SharedPrefKeys.deviceId,
       value: deviceId,
-    );
-
-    _sharedPreferencesService.setString(
-      key: SharedPrefKeys.pushToken,
-      value: pushToken,
     );
 
     _sharedPreferencesService.setString(
@@ -148,39 +165,40 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         key: SharedPrefKeys.appInstalled,
         value: true,
       );
-
       await _pushNotificationRepository.postNotificationInfo(event: '1');
+
       log('Приложение установленно');
     }
 
-    emit(
-      CatalogState.preloadDataCompleted(
-        filter: [],
-        selectFilter: {},
-        allSelectFilter: [],
-        products: [],
-        defaultProducts: [],
-        favouritesProducts: [],
-        menu: [],
-        pathMenu: [],
-        favouritesProductsId: [],
-        brands: [],
-        defaultBrands: [],
-        category: [],
-        allBrands: [],
-        request: CatalogProductsRequest(),
-        listProdcutsAlso: [],
-        listProdcutsBrand: [],
-        listProdcutsStyle: [],
-        listProductsCode: [],
-        offset: 1,
-        selectedGenderIndex: _updateDataService.selectedIndexGender,
-        isAuth: isAuth,
-        nowVersionApp: '',
-        updateVersionApp: '',
-        isUpdateVersionApp: false,
-      ),
-    );
+    // emit(
+    //   CatalogState.preloadDataCompleted(
+    //     filter: [],
+    //     selectFilter: {},
+    //     allSelectFilter: [],
+    //     products: [],
+    //     defaultProducts: [],
+    //     favouritesProducts: [],
+    //     menu: [],
+    //     pathMenu: [],
+    //     favouritesProductsId: [],
+    //     brands: [],
+    //     defaultBrands: [],
+    //     category: [],
+    //     allBrands: [],
+    //     request: CatalogProductsRequest(),
+    //     listProdcutsAlso: [],
+    //     listProdcutsBrand: [],
+    //     listProdcutsStyle: [],
+    //     listProductsCode: [],
+    //     offset: 1,
+    //     selectedGenderIndex: _updateDataService.selectedIndexGender,
+    //     isAuth: isAuth,
+    //     nowVersionApp: '',
+    //     updateVersionApp: '',
+    //     isUpdateVersionApp: false,
+    //     isNotification: false,
+    //   ),
+    // );
   }
 
   Future<void> _preloadData(
@@ -221,20 +239,16 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       pid: 0,
     );
     final appStoreInfoIOs = await _appStoreInfoRepository.checkiOSVersion();
-    final appStoreInfoAndroid = await _appStoreInfoRepository.checkAndroidVersion();
-    log(appStoreInfoAndroid.appStroreVersion);
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    if (appStoreInfoIOs.appStroreVersion.isNotEmpty) {
+    if (appStoreInfoIOs.appStroreVersion.isNotEmpty && Platform.isIOS) {
       final appStoreIOsVersion = int.parse(appStoreInfoIOs.appStroreVersion.replaceAll('.', ''));
       final packageInfoIOsVersion = int.parse(packageInfo.version.replaceAll('.', ''));
-      if (appStoreIOsVersion > packageInfoIOsVersion &&
-          _updateDataService.isOpenUpdateModalWindow) {
+      if (appStoreIOsVersion > packageInfoIOsVersion) {
         nowVersionApp = packageInfo.version;
         updateVersionApp = appStoreInfoIOs.appStroreVersion;
         isUpdateVersionApp = true;
-        _updateDataService.isOpenUpdateModalWindow = false;
       }
     }
 
@@ -284,6 +298,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           nowVersionApp: nowVersionApp,
           updateVersionApp: updateVersionApp,
           isUpdateVersionApp: isUpdateVersionApp,
+          isNotification: false,
         ),
       );
     }
@@ -328,6 +343,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           menu: menu.items,
           pathMenu: pathMenu,
           selectedGenderIndex: event.selectedGenderIndex ?? initState.selectedGenderIndex,
+          isNotification: false,
+          isUpdateVersionApp: false,
         ));
       }
     });
@@ -398,6 +415,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         products: catalogInfo.products,
         catalogInfo: catalogInfo,
         request: request,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -420,7 +439,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         pid: pathMenu.isNotEmpty ? pathMenu.last.idParent : 0,
       );
 
-      emit(initState.copyWith(pathMenu: pathMenu, menu: menu.items));
+      emit(initState.copyWith(
+        pathMenu: pathMenu,
+        menu: menu.items,
+        isNotification: false,
+        isUpdateVersionApp: false,
+      ));
     });
   }
 
@@ -486,6 +510,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           catalogInfo: catalogInfo,
           allSelectFilter: allSelectFilter,
           offset: 1,
+          isNotification: false,
+          isUpdateVersionApp: false,
         ),
       );
     });
@@ -561,6 +587,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           catalogInfo: catalogInfo,
           request: request,
           offset: 1,
+          isNotification: false,
+          isUpdateVersionApp: false,
         ),
       );
     });
@@ -592,6 +620,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -622,6 +652,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -652,6 +684,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         products: products,
         request: request,
         offset: initState.offset + 1,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -673,7 +707,11 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         brands = initState.defaultBrands;
       }
 
-      emit(initState.copyWith(brands: brands));
+      emit(initState.copyWith(
+        brands: brands,
+        isNotification: false,
+        isUpdateVersionApp: false,
+      ));
     });
   }
 
@@ -691,6 +729,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       }
       emit(initState.copyWith(
         pathMenu: pathMenu,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -708,6 +748,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       emit(initState.copyWith(
         pathMenu: pathMenu,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -723,6 +765,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       emit(initState.copyWith(
         pathMenu: items,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -737,17 +781,20 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       String name = '';
 
       switch (event.selectIndexType) {
-        case 0:
+        case 1:
           category = _constatntsInfo.categoryWoman;
           brands = _constatntsInfo.brandsWoman;
+          _updateDataService.selectedIndexGender = 1;
           name = 'Женщинам';
-        case 1:
+        case 2:
           category = _constatntsInfo.categoryMan;
           brands = _constatntsInfo.brandsMan;
+          _updateDataService.selectedIndexGender = 2;
           name = 'Мужчинам';
-        case 2:
+        case 3:
           category = _constatntsInfo.categoryChild;
           brands = _constatntsInfo.brandsChilren;
+          _updateDataService.selectedIndexGender = 3;
           name = 'Детям';
       }
 
@@ -769,6 +816,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           pathMenu: pathMenu,
           defaultBrands: brands,
           brands: brands,
+          isNotification: false,
           isUpdateVersionApp: false,
         ),
       );
@@ -817,6 +865,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         selectFilter: {},
         allSelectFilter: [],
         listProductsCode: [],
+        isNotification: false,
         isUpdateVersionApp: false,
         isError:
             (favourites?.errorMessage.isNotEmpty ?? false) || catalogInfo.errorMessage.isNotEmpty,
@@ -831,14 +880,62 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     emit(const CatalogState.load());
 
+    List<FilterItemDataModel> selectItems = [];
+    Map<int, List<FilterItemDataModel>> selectFilter = {};
+    List<Map<int, FilterItemDataModel>> allSelectFilter = [];
+    Map<String, FilterCatalogDataModel> filtersInfo = {};
+
+    if (event.filterSelect.isNotEmpty) {
+      List<dynamic> list = json.decode(event.filterSelect).cast<dynamic>();
+
+      for (int i = 0; i < list.length; i++) {
+        selectItems.add(
+          FilterItemDataModel(
+            id: int.parse(list[i]['id']),
+            value: list[i]['value'],
+            typeFilter: list[i]['typeFilter'],
+          ),
+        );
+      }
+
+      for (int j = 0; j < selectItems.length; j++) {
+        if (filtersInfo.containsKey(selectItems[j].typeFilter)) {
+          filtersInfo.update(
+            selectItems[j].typeFilter,
+            (item) => FilterCatalogDataModel(
+              key: selectItems[j].typeFilter,
+              value: '${item.value};${selectItems[j].id}',
+            ),
+          );
+        } else {
+          filtersInfo[selectItems[j].typeFilter] = FilterCatalogDataModel(
+            key: selectItems[j].typeFilter,
+            value: '${selectItems[j].id}',
+          );
+        }
+      }
+
+      filtersInfo['nav'] = FilterCatalogDataModel(
+        key: 'nav',
+        value: 'page-1',
+      );
+    }
+
     CatalogProductsRequest request = CatalogProductsRequest(
       url: event.path,
       sort: event.sort,
+      filters: filtersInfo.values.toList(),
     );
+
+    log(event.filterSelect);
 
     FavouritesDataModel? favourites;
     List<int> favouritesProductsId = [];
     List<ProductDataModel> favouritesProducts = [];
+    String nowVersionApp = '';
+    String updateVersionApp = '';
+    bool isUpdateVersionApp = false;
+
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
         ) ??
@@ -855,6 +952,50 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       request: request,
     );
 
+    final appStoreInfoIOs = await _appStoreInfoRepository.checkiOSVersion();
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    if (appStoreInfoIOs.appStroreVersion.isNotEmpty && Platform.isIOS) {
+      final appStoreIOsVersion = int.parse(appStoreInfoIOs.appStroreVersion.replaceAll('.', ''));
+      final packageInfoIOsVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreIOsVersion > packageInfoIOsVersion) {
+        nowVersionApp = packageInfo.version;
+        updateVersionApp = appStoreInfoIOs.appStroreVersion;
+        isUpdateVersionApp = true;
+      }
+    }
+
+    if (event.filterSelect.isNotEmpty) {
+      for (int j = 0; j < selectItems.length; j++) {
+        final index = catalogInfo.filter.indexWhere(
+          (element) => element.typeFilter == selectItems[j].typeFilter,
+        );
+        allSelectFilter.add({index: selectItems[j]});
+        if (selectFilter.containsKey(index)) {
+          List<FilterItemDataModel> listItems = selectFilter[index]?.toList() ?? [];
+
+          listItems.add(selectItems[j]);
+
+          selectFilter[index] = listItems;
+        } else {
+          selectFilter[index] = [selectItems[j]];
+        }
+      }
+    }
+
+    List<MenuItemDataModel> pathMenu = [
+      MenuItemDataModel(
+        idParent: 0,
+        id: 0,
+        url: '',
+        name: catalogInfo.breadcrumbs.first.name,
+        sub: 0,
+        title: 0,
+        brand: 0,
+      )
+    ];
+
     emit(
       CatalogState.preloadDataCompleted(
         filter: catalogInfo.filter,
@@ -864,10 +1005,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         defaultProducts: catalogInfo.products,
         title: catalogInfo.h1,
         favouritesProductsId: favouritesProductsId,
-        selectFilter: {},
-        allSelectFilter: [],
+        selectFilter: selectFilter,
+        allSelectFilter: allSelectFilter,
         listProductsCode: [],
-        isUpdateVersionApp: false,
+        isUpdateVersionApp: isUpdateVersionApp,
         isError:
             (favourites?.errorMessage.isNotEmpty ?? false) || catalogInfo.errorMessage.isNotEmpty,
         errorMessage: MessageInfo.errorMessage,
@@ -879,13 +1020,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         favouritesProducts: [],
-        pathMenu: [],
+        pathMenu: pathMenu,
         category: [],
         selectedGenderIndex: _updateDataService.selectedIndexGender,
         isAuth: isAuth,
         offset: 0,
-        nowVersionApp: '',
-        updateVersionApp: '',
+        nowVersionApp: nowVersionApp,
+        updateVersionApp: updateVersionApp,
+        isNotification: true,
       ),
     );
   }
@@ -965,6 +1107,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isSoppingCart: soppingCart.isNotEmpty,
         isError: isError,
         errorMessage: errorMessage,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -997,6 +1141,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         request: request,
         products: catalogInfo.products,
         catalogInfo: catalogInfo,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -1065,6 +1211,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         filter: catalogInfo.filter,
         catalogInfo: catalogInfo,
         products: listProducts,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -1097,6 +1245,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         filter: catalogInfo.filter,
         catalogInfo: catalogInfo,
         products: catalogInfo.products,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -1108,7 +1258,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
 
-      listProductsCode.removeLast();
+      if (listProductsCode.isNotEmpty) {
+        listProductsCode.removeLast();
+      }
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,
@@ -1145,6 +1297,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
+          isNotification: false,
+          isUpdateVersionApp: false,
         ));
       }
     });
@@ -1192,6 +1346,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(initState.copyWith(
         isSoppingCart: true,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -1213,6 +1369,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }

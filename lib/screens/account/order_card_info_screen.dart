@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
@@ -104,6 +106,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                     .read<AccountBloc>()
                                     .add(const AccountEvent.goBackProductInfo());
                               },
+                              isZoom: false,
                               addLike: () {
                                 DetailProductDataModel? detailsProduct = initState.detailsProduct;
                                 if (detailsProduct != null) {
@@ -674,12 +677,17 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                             path: path,
                                                           ),
                                                         );
-                                                    context.pushRoute(
-                                                      HomeAutoRouterRoute(
+
+                                                    context.navigateTo(
+                                                      DashboardRoute(
                                                         children: [
-                                                          CatalogRoute(
-                                                            title: '',
-                                                            url: path,
+                                                          HomeAutoRouterRoute(
+                                                            children: [
+                                                              CatalogRoute(
+                                                                title: '',
+                                                                url: path,
+                                                              ),
+                                                            ],
                                                           ),
                                                         ],
                                                       ),

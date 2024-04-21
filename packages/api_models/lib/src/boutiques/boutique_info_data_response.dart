@@ -1,3 +1,4 @@
+import 'package:api_models/src/boutiques/boutique_coordinates_response.dart';
 import 'package:api_models/src/boutiques/boutique_foto_detail_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,11 +16,32 @@ class BoutiqueInfoDataResponse with _$BoutiqueInfoDataResponse {
     String? address,
     String? schedule,
     @JsonKey(name: 'uid_store') String? uidStore,
-    String? coordinates,
+    @JsonKey(
+      name: 'coordinates',
+      fromJson: _convertCoordinates,
+    )
+    BoutiqueCoordinatesResponse? coordinates,
     @JsonKey(name: 'address_full') String? addressFull,
     @JsonKey(name: 'name_short') String? nameShort,
     String? name,
   }) = _BoutiqueInfoDataResponse;
   factory BoutiqueInfoDataResponse.fromJson(Map<String, dynamic> json) =>
       _$BoutiqueInfoDataResponseFromJson(json);
+}
+
+BoutiqueCoordinatesResponse? _convertCoordinates(dynamic json) {
+  BoutiqueCoordinatesResponse coordinates = BoutiqueCoordinatesResponse(
+    latitude: 0,
+    longitude: 0,
+  );
+
+  if (json != null) {
+    String value = json as String;
+    coordinates = BoutiqueCoordinatesResponse(
+      latitude: double.parse(value.split(',')[0]),
+      longitude: double.parse(value.split(',')[1]),
+    );
+  }
+
+  return coordinates;
 }

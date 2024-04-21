@@ -92,6 +92,7 @@ extension on UserInfoResponse {
         message: user?.message ?? '',
         nextDiscount: user?.nextDiscount ?? 0,
         buyForNext: user?.buyForNext ?? 0,
+        virtualcardscod: user?.virtualcardscod ?? '',
         schemLoyalty: List<SchemLoyaltyDataModel>.from(user?.schemLoyalty?.map((item) {
               return SchemLoyaltyDataModel(
                 discount: item.discount ?? 0,

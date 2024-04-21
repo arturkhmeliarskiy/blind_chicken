@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PaymentBonusDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get info => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,7 @@ abstract class $PaymentBonusDataModelCopyWith<$Res> {
           $Res Function(PaymentBonusDataModel) then) =
       _$PaymentBonusDataModelCopyWithImpl<$Res, PaymentBonusDataModel>;
   @useResult
-  $Res call({String r, String e, int balance});
+  $Res call({String r, String e, String info, int balance});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$PaymentBonusDataModelCopyWithImpl<$Res,
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? info = null,
     Object? balance = null,
   }) {
     return _then(_value.copyWith(
@@ -60,6 +62,10 @@ class _$PaymentBonusDataModelCopyWithImpl<$Res,
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
               as String,
       balance: null == balance
           ? _value.balance
@@ -78,7 +84,7 @@ abstract class _$$PaymentBonusDataModelImplCopyWith<$Res>
       __$$PaymentBonusDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e, int balance});
+  $Res call({String r, String e, String info, int balance});
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class __$$PaymentBonusDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? info = null,
     Object? balance = null,
   }) {
     return _then(_$PaymentBonusDataModelImpl(
@@ -105,6 +112,10 @@ class __$$PaymentBonusDataModelImplCopyWithImpl<$Res>
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
               as String,
       balance: null == balance
           ? _value.balance
@@ -118,7 +129,10 @@ class __$$PaymentBonusDataModelImplCopyWithImpl<$Res>
 
 class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
   _$PaymentBonusDataModelImpl(
-      {required this.r, required this.e, required this.balance})
+      {required this.r,
+      required this.e,
+      required this.info,
+      required this.balance})
       : super._();
 
   @override
@@ -126,11 +140,13 @@ class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
   @override
   final String e;
   @override
+  final String info;
+  @override
   final int balance;
 
   @override
   String toString() {
-    return 'PaymentBonusDataModel(r: $r, e: $e, balance: $balance)';
+    return 'PaymentBonusDataModel(r: $r, e: $e, info: $info, balance: $balance)';
   }
 
   @override
@@ -140,11 +156,12 @@ class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
             other is _$PaymentBonusDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.info, info) || other.info == info) &&
             (identical(other.balance, balance) || other.balance == balance));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, balance);
+  int get hashCode => Object.hash(runtimeType, r, e, info, balance);
 
   @JsonKey(ignore: true)
   @override
@@ -158,6 +175,7 @@ abstract class _PaymentBonusDataModel extends PaymentBonusDataModel {
   factory _PaymentBonusDataModel(
       {required final String r,
       required final String e,
+      required final String info,
       required final int balance}) = _$PaymentBonusDataModelImpl;
   _PaymentBonusDataModel._() : super._();
 
@@ -165,6 +183,8 @@ abstract class _PaymentBonusDataModel extends PaymentBonusDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get info;
   @override
   int get balance;
   @override

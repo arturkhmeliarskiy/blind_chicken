@@ -76,7 +76,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                             );
                           },
                           child: Text(
-                            'Заказы на сайте',
+                            'Мои заказы',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ),
@@ -232,7 +232,9 @@ class OrderUserInfoScreen extends StatelessWidget {
                         ),
                         Text(
                           'Товары',
-                          style: Theme.of(context).textTheme.displayMedium,
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                         ),
                       ],
                     ),
@@ -245,7 +247,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                             return OrderGiftCard(
                               onSelectCard: () {
                                 context.navigateTo(
-                                  const HomeAutoRouterRoute(
+                                  HomeAutoRouterRoute(
                                     children: [GiftCardRoute()],
                                   ),
                                 );

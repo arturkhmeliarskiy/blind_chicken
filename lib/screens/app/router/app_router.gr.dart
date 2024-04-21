@@ -22,12 +22,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     BoutiquesDescriptionRoute.name: (routeData) {
-      final args = routeData.argsAs<BoutiquesDescriptionRouteArgs>();
+      final args = routeData.argsAs<BoutiquesDescriptionRouteArgs>(
+          orElse: () => const BoutiquesDescriptionRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: BoutiquesDescriptionScreen(
           key: args.key,
-          boutique: args.boutique,
+          uidStore: args.uidStore,
+          isNotification: args.isNotification,
         ),
       );
     },
@@ -214,6 +216,7 @@ abstract class _$AppRouter extends RootStackRouter {
           url: args.url,
           isNotification: args.isNotification,
           sort: args.sort,
+          filterSelect: args.filterSelect,
         ),
       );
     },
@@ -480,9 +483,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     GiftCardRoute.name: (routeData) {
+      final args = routeData.argsAs<GiftCardRouteArgs>(
+          orElse: () => const GiftCardRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const GiftCardScreen(),
+        child: GiftCardScreen(
+          key: args.key,
+          isNotification: args.isNotification,
+        ),
       );
     },
     GiftCardDeliveryInfoRoute.name: (routeData) {
@@ -596,13 +604,15 @@ class BoutiquesDescriptionRoute
     extends PageRouteInfo<BoutiquesDescriptionRouteArgs> {
   BoutiquesDescriptionRoute({
     Key? key,
-    required BoutiqueDataModel boutique,
+    String uidStore = '',
+    bool isNotification = false,
     List<PageRouteInfo>? children,
   }) : super(
           BoutiquesDescriptionRoute.name,
           args: BoutiquesDescriptionRouteArgs(
             key: key,
-            boutique: boutique,
+            uidStore: uidStore,
+            isNotification: isNotification,
           ),
           initialChildren: children,
         );
@@ -616,16 +626,19 @@ class BoutiquesDescriptionRoute
 class BoutiquesDescriptionRouteArgs {
   const BoutiquesDescriptionRouteArgs({
     this.key,
-    required this.boutique,
+    this.uidStore = '',
+    this.isNotification = false,
   });
 
   final Key? key;
 
-  final BoutiqueDataModel boutique;
+  final String uidStore;
+
+  final bool isNotification;
 
   @override
   String toString() {
-    return 'BoutiquesDescriptionRouteArgs{key: $key, boutique: $boutique}';
+    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification}';
   }
 }
 
@@ -1304,6 +1317,7 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
     required String url,
     bool isNotification = false,
     String sort = '',
+    String filterSelect = '',
     List<PageRouteInfo>? children,
   }) : super(
           CatalogRoute.name,
@@ -1315,6 +1329,7 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
             url: url,
             isNotification: isNotification,
             sort: sort,
+            filterSelect: filterSelect,
           ),
           initialChildren: children,
         );
@@ -1334,6 +1349,7 @@ class CatalogRouteArgs {
     required this.url,
     this.isNotification = false,
     this.sort = '',
+    this.filterSelect = '',
   });
 
   final Key? key;
@@ -1350,9 +1366,11 @@ class CatalogRouteArgs {
 
   final String sort;
 
+  final String filterSelect;
+
   @override
   String toString() {
-    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort}';
+    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterSelect: $filterSelect}';
   }
 }
 
@@ -2278,16 +2296,40 @@ class SberbankPaymentWebViewRouteArgs {
 
 /// generated route for
 /// [GiftCardScreen]
-class GiftCardRoute extends PageRouteInfo<void> {
-  const GiftCardRoute({List<PageRouteInfo>? children})
-      : super(
+class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
+  GiftCardRoute({
+    Key? key,
+    bool isNotification = false,
+    List<PageRouteInfo>? children,
+  }) : super(
           GiftCardRoute.name,
+          args: GiftCardRouteArgs(
+            key: key,
+            isNotification: isNotification,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'GiftCardRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<GiftCardRouteArgs> page =
+      PageInfo<GiftCardRouteArgs>(name);
+}
+
+class GiftCardRouteArgs {
+  const GiftCardRouteArgs({
+    this.key,
+    this.isNotification = false,
+  });
+
+  final Key? key;
+
+  final bool isNotification;
+
+  @override
+  String toString() {
+    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification}';
+  }
 }
 
 /// generated route for

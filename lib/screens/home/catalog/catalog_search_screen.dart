@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_search_item.dart';
@@ -26,7 +28,7 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
 
   @override
   void initState() {
-    context.read<SearchBloc>().add(const SearchEvent.init());
+    context.read<SearchBloc>().add(const SearchEvent.searchProfucts(''));
     super.initState();
   }
 
@@ -60,7 +62,17 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                 _search.text,
                               ),
                             );
-                        context.navigateTo(const CatalogSearchResultRoute());
+                        context.navigateTo(
+                          const DashboardRoute(
+                            children: [
+                              HomeAutoRouterRoute(
+                                children: [
+                                  CatalogSearchResultRoute(),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       autofocus: true,
                       controller: _search,
@@ -115,9 +127,9 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
               ),
               InkWell(
                 onTap: () {
-                  context.popRoute();
+                  context.back();
                   context.read<SearchBloc>().add(
-                        SearchEvent.searchProfucts(_search.text),
+                        const SearchEvent.searchProfucts(''),
                       );
                 },
                 child: Container(
@@ -146,151 +158,156 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 10.5,
-                                      left: 11.2,
-                                      bottom: 10.5,
+                                  if (initState.searchSections.isNotEmpty)
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 10.5,
+                                        left: 11.2,
+                                        bottom: 10.5,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Разделы ',
+                                            style:
+                                                Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                          ),
+                                          const SizedBox(
+                                            width: 4,
+                                          ),
+                                          Text(
+                                            initState.searchSections.length.toString(),
+                                            style: Theme.of(context).textTheme.displayMedium,
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Разделы ',
-                                          style:
-                                              Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                        ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        Text(
-                                          initState.searchSections.length.toString(),
-                                          style: Theme.of(context).textTheme.displayMedium,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 204,
-                                    margin: const EdgeInsets.only(
-                                      left: 11.2,
-                                      right: 11.2,
-                                    ),
-                                    child: ListView(
-                                      children: [
-                                        Wrap(
-                                          children: List.generate(
-                                            initState.searchSections.length,
-                                            (index) {
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  context.read<CatalogBloc>().add(
-                                                        CatalogEvent.getInfoProducts(
-                                                          path: initState.searchSections[index].u,
+                                  if (initState.searchSections.isNotEmpty)
+                                    Container(
+                                      height: 204,
+                                      margin: const EdgeInsets.only(
+                                        left: 11.2,
+                                        right: 11.2,
+                                      ),
+                                      child: ListView(
+                                        children: [
+                                          Wrap(
+                                            children: List.generate(
+                                              initState.searchSections.length,
+                                              (index) {
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    context.read<CatalogBloc>().add(
+                                                          CatalogEvent.getInfoProducts(
+                                                            path: initState.searchSections[index].u,
+                                                          ),
+                                                        );
+                                                    context.navigateTo(
+                                                      CatalogRoute(
+                                                        title: '',
+                                                        url: initState.searchSections[index].u,
+                                                      ),
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    margin: const EdgeInsets.only(
+                                                      bottom: 10,
+                                                      right: 10,
+                                                    ),
+                                                    padding: const EdgeInsets.only(
+                                                      top: 7,
+                                                      bottom: 7,
+                                                      left: 14,
+                                                      right: 14,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: BlindChickenColors
+                                                          .backgroundColorItemFilter,
+                                                      borderRadius: BorderRadius.circular(16),
+                                                    ),
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          initState.searchSections[index].n,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium,
                                                         ),
-                                                      );
-                                                  context.navigateTo(
-                                                    CatalogRoute(
-                                                      title: '',
-                                                      url: initState.searchSections[index].u,
+                                                        Text(
+                                                          initState.searchSections[index].g,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .bodyMedium
+                                                              ?.copyWith(
+                                                                fontFamily: 'Roboto-Light',
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  if (initState.searchProducts.isNotEmpty)
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 21,
+                                        left: 11.2,
+                                        right: 11.2,
+                                        bottom: 10.5,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'Товары ',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                              ),
+                                              const SizedBox(
+                                                width: 4,
+                                              ),
+                                              Text(
+                                                initState.searchProducts.length.toString(),
+                                                style: Theme.of(context).textTheme.displayMedium,
+                                              )
+                                            ],
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              context.read<SearchBloc>().add(
+                                                    SearchEvent.searchProfuctsInfo(
+                                                      _search.text,
                                                     ),
                                                   );
-                                                },
-                                                child: Container(
-                                                  margin: const EdgeInsets.only(
-                                                    bottom: 10,
-                                                    right: 10,
-                                                  ),
-                                                  padding: const EdgeInsets.only(
-                                                    top: 7,
-                                                    bottom: 7,
-                                                    left: 14,
-                                                    right: 14,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    color: BlindChickenColors
-                                                        .backgroundColorItemFilter,
-                                                    borderRadius: BorderRadius.circular(16),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text(
-                                                        initState.searchSections[index].n,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .displayMedium,
-                                                      ),
-                                                      Text(
-                                                        initState.searchSections[index].g,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyMedium
-                                                            ?.copyWith(
-                                                              fontFamily: 'Roboto-Light',
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              );
+                                              context.navigateTo(const CatalogSearchResultRoute());
                                             },
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 21,
-                                      left: 11.2,
-                                      right: 11.2,
-                                      bottom: 10.5,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Товары ',
+                                            child: Text(
+                                              'Показать все',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .displayMedium
                                                   ?.copyWith(
-                                                    fontWeight: FontWeight.w700,
+                                                    decoration: TextDecoration.underline,
                                                   ),
                                             ),
-                                            const SizedBox(
-                                              width: 4,
-                                            ),
-                                            Text(
-                                              initState.searchProducts.length.toString(),
-                                              style: Theme.of(context).textTheme.displayMedium,
-                                            )
-                                          ],
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            context.read<SearchBloc>().add(
-                                                  SearchEvent.searchProfuctsInfo(
-                                                    _search.text,
-                                                  ),
-                                                );
-                                            context.navigateTo(const CatalogSearchResultRoute());
-                                          },
-                                          child: Text(
-                                            'Показать все',
-                                            style:
-                                                Theme.of(context).textTheme.displayMedium?.copyWith(
-                                                      decoration: TextDecoration.underline,
-                                                    ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
                                   Expanded(
                                     child: Container(
                                       margin: const EdgeInsets.only(

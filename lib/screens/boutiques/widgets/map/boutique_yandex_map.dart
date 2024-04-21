@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
@@ -37,8 +37,8 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
   List<BoutiqueDataModel> boutiques = [];
 
   Future<void> _initPermission() async {
-    if (!await LocationService().checkPermission()) {
-      await LocationService().requestPermission();
+    if (!await LocationMapService().checkPermission()) {
+      await LocationMapService().requestPermission();
     }
     await _fetchCurrentLocation();
   }
@@ -174,32 +174,33 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    InkWell(
-                      onTap: () async {
-                        final location = await LocationService().getCurrentLocation();
-                        _moveToCurrentLocation(location, isOpenModal: false);
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        margin: const EdgeInsets.only(right: 16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                            5,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
-                              blurRadius: 4,
-                              offset: const Offset(0, 3), // Shadow position
+                    if (Platform.isIOS)
+                      InkWell(
+                        onTap: () async {
+                          final location = await LocationMapService().getCurrentLocation();
+                          _moveToCurrentLocation(location, isOpenModal: false);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          margin: const EdgeInsets.only(right: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              5,
                             ),
-                          ],
+                            boxShadow: [
+                              BoxShadow(
+                                color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
+                                blurRadius: 4,
+                                offset: const Offset(0, 3), // Shadow position
+                              ),
+                            ],
+                          ),
+                          padding: const EdgeInsets.all(2),
+                          child: SvgPicture.asset('assets/icons/location.svg'),
                         ),
-                        padding: const EdgeInsets.all(2),
-                        child: SvgPicture.asset('assets/icons/location.svg'),
                       ),
-                    ),
                     const SizedBox(
                       height: 8,
                     ),
@@ -364,8 +365,9 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        height: 87,
+                        height: 108,
                         width: 300,
+                        padding: const EdgeInsets.only(left: 5, right: 5),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(
@@ -405,7 +407,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                                         Text(
                                           widget.mapPoint.schedule,
                                           style: Theme.of(context).textTheme.displayMedium,
-                                          maxLines: 1,
+                                          maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ],
@@ -440,49 +442,5 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
       ));
     }
     return listPlacemarkMapObject;
-  }
-}
-
-class MoscowLocation extends AppLatLongDataModel {
-  const MoscowLocation({
-    super.lat = 55.7522200,
-    super.long = 37.6155600,
-  });
-}
-
-abstract class AppLocation {
-  Future<AppLatLongDataModel> getCurrentLocation();
-
-  Future<bool> requestPermission();
-
-  Future<bool> checkPermission();
-}
-
-class LocationService implements AppLocation {
-  final defLocation = const MoscowLocation();
-
-  @override
-  Future<AppLatLongDataModel> getCurrentLocation() async {
-    return Geolocator.getCurrentPosition().then((value) {
-      return AppLatLongDataModel(lat: value.latitude, long: value.longitude);
-    }).catchError(
-      (_) => defLocation,
-    );
-  }
-
-  @override
-  Future<bool> requestPermission() {
-    return Geolocator.requestPermission()
-        .then(
-            (value) => value == LocationPermission.always || value == LocationPermission.whileInUse)
-        .catchError((_) => false);
-  }
-
-  @override
-  Future<bool> checkPermission() {
-    return Geolocator.checkPermission()
-        .then(
-            (value) => value == LocationPermission.always || value == LocationPermission.whileInUse)
-        .catchError((_) => false);
   }
 }

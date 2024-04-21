@@ -484,7 +484,7 @@ extension on CatalogResponse {
             return FilterInfoDataModel(
               id: item.n ?? '',
               title: item.n ?? '',
-              typeFilter: item.n ?? '',
+              typeFilter: item.typeFilter ?? '',
               isSearch: (item.v?.length ?? 0) > 10,
               items: item.v?.map((element) {
                     return FilterItemDataModel(
@@ -625,9 +625,9 @@ extension on DetailProductResponse {
         isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
       ),
       price: PriceProductDataModel(
-        p: price?.p ?? '',
+        p: price?.p ?? '0',
         pc: (price?.pc ?? 0).toString(),
-        pb: price?.pb ?? '',
+        pb: price?.pb ?? '0',
         yourPrice: price?.pc ?? 0,
         price: price?.pbc ?? 0,
         bonusGift: price?.bonusGift ?? 0,

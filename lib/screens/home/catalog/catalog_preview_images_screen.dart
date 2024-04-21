@@ -18,41 +18,46 @@ class CatalogPreviewImagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: ListView(
-          children: [
-            InkWell(
-              onTap: goBottonInfoProduct,
-              child: Container(
-                margin: const EdgeInsets.only(
-                  top: 14,
-                  right: 10.5,
-                ),
-                alignment: Alignment.topRight,
-                child: SvgPicture.asset(
-                  'assets/icons/x.svg',
-                  height: 28,
-                  width: 28,
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (value) {},
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              InkWell(
+                onTap: goBottonInfoProduct,
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    top: 14,
+                    right: 10.5,
+                  ),
+                  alignment: Alignment.topRight,
+                  child: SvgPicture.asset(
+                    'assets/icons/x.svg',
+                    height: 28,
+                    width: 28,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            SafeArea(
-              child: CatalogSliderImages(
-                isLike: false,
-                listImages: listImages,
-                goBotton: goBotton,
-                isAddLike: false,
-                isGoBotton: false,
-                addLike: () {},
-                onTap: () {},
-                deleteLike: () {},
+              const SizedBox(
+                height: 60,
               ),
-            ),
-          ],
+              SafeArea(
+                child: CatalogSliderImages(
+                  isLike: false,
+                  listImages: listImages,
+                  goBotton: goBotton,
+                  isAddLike: false,
+                  isGoBotton: false,
+                  addLike: () {},
+                  onTap: () {},
+                  deleteLike: () {},
+                  isZoom: true,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

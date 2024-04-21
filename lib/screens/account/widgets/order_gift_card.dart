@@ -75,19 +75,36 @@ class _OrderGiftCardState extends State<OrderGiftCard> {
                     const SizedBox(
                       height: 14,
                     ),
-                    Text(
-                      '${widget.giftCard.sum.toString().spaceSeparateNumbers()} ₽',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                    )
+                    Text('${widget.giftCard.sum.toString().spaceSeparateNumbers()} ₽',
+                        style: Theme.of(context).textTheme.displayMedium)
                   ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 24),
-                  child: Text(
-                    'Подарочная карта',
-                    style: Theme.of(context).textTheme.displayMedium,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Подарочная карта',
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        widget.giftCard.type,
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        widget.giftCard.name,
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ],
                   ),
                 )
               ],

@@ -37,6 +37,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         goBackProductInfo: (event) => _goBackProductInfo(event, emit),
         getInfoProduct: (event) => _getInfoProduct(event, emit),
         paginationProduct: (event) => _paginationProduct(event, emit),
+        checkButtonTop: (event) => _checkButtonTop(event, emit),
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
       ),
@@ -58,6 +59,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         products: [],
         offset: 1,
         isLoading: false,
+        isButtonTop: false,
         searchDefaultProducts: [],
         filter: [],
         favouritesProducts: [],
@@ -130,6 +132,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         products: searchResultInfo.products,
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        listProductsCode: [],
         filter: searchResultInfo.filter,
         request: request,
       ));
@@ -737,6 +740,17 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       );
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
+  }
+
+  Future<void> _checkButtonTop(
+    CheckButtonTopSearchEvent event,
+    Emitter<SearchState> emit,
+  ) async {
+    state.mapOrNull(searchProductsResult: (initState) {
+      emit(initState.copyWith(
+        isButtonTop: event.isButtonTop,
       ));
     });
   }

@@ -45,6 +45,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         deleteFavouriteProduct: (event) => _deleteFavouriteProduct(event, emit),
         removeAccount: (event) => _removeAccount(event, emit),
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
+        virtualCardsCod: (event) => _virtualcardscod(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
       ),
     );
@@ -85,6 +86,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       listProdcutsBrand: [],
       favouritesProductsId: favouritesProductsId,
       isAuth: isAuth,
+      virtualCardsCod: userInfo.user.virtualcardscod,
+      isLoadVirtualCardsCod: false,
     ));
   }
 
@@ -175,6 +178,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       listProdcutsBrand: [],
       favouritesProductsId: [],
       isAuth: isAuth,
+      virtualCardsCod: '',
     ));
   }
 
@@ -423,9 +427,27 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     AddProductToSoppingCartCAccountEvent event,
     Emitter<AccountState> emit,
   ) async {
-    await state.mapOrNull(preloadDataCompleted: (initState) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
       emit(initState.copyWith(
         isSoppingCart: true,
+      ));
+    });
+  }
+
+  Future<void> _virtualcardscod(
+    VirtualCardsCodAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isLoadVirtualCardsCod: true,
+      ));
+
+      final userInfo = await _authRepository.getUserInfo();
+
+      emit(initState.copyWith(
+        virtualCardsCod: userInfo.user.virtualcardscod,
+        isLoadVirtualCardsCod: false,
       ));
     });
   }

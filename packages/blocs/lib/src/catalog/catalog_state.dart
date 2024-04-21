@@ -33,6 +33,7 @@ class CatalogState with _$CatalogState {
     required String nowVersionApp,
     required String updateVersionApp,
     required bool isUpdateVersionApp,
+    required bool isNotification,
     String? errorMessage,
     bool? isSoppingCart,
     bool? isError,

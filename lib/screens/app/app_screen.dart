@@ -45,10 +45,16 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   init() async {
-    const mc = MethodChannel('blind_chicken/getToken');
-    deviceToken = await mc.invokeMethod('getDeviceToken');
-
-    log("push token: ${deviceToken ?? ''}");
+    if (Platform.isIOS) {
+      await Future<void>.delayed(
+        const Duration(
+          seconds: 3,
+        ),
+      );
+      const mc = MethodChannel('blind_chicken/getToken');
+      deviceToken = await mc.invokeMethod('getDeviceToken');
+      log("push token: ${deviceToken ?? ''}");
+    }
   }
 
   @override
@@ -290,7 +296,18 @@ class _DashboardPageState extends State<DashboardPage> {
                 // }
                 if (mounted) {
                   Timer(const Duration(milliseconds: 150), () {
-                    context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                    final updateData = GetIt.I.get<UpdateDataService>();
+
+                    context.read<CatalogBloc>().add(
+                          CatalogEvent.subCategory(
+                            a: 'get-main-menu',
+                            b: 0,
+                            id: updateData.selectedIndexGender,
+                            u: '',
+                            pid: 0,
+                            selectedGenderIndex: updateData.selectedIndexGender,
+                          ),
+                        );
                   });
                   context.navigateTo(
                     const HomeAutoRouterRoute(

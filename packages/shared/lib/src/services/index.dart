@@ -4,3 +4,5 @@ export 'products/index.dart';
 export 'sberbank_payment_service.dart';
 export 'update_data_service.dart';
 export 'shared_preferences_service.dart';
+export 'location/location_map_service.dart';
+export 'timer_service.dart';

@@ -19,7 +19,7 @@ _$BoutiqueInfoDataResponseImpl _$$BoutiqueInfoDataResponseImplFromJson(
       address: json['address'] as String?,
       schedule: json['schedule'] as String?,
       uidStore: json['uid_store'] as String?,
-      coordinates: json['coordinates'] as String?,
+      coordinates: _convertCoordinates(json['coordinates']),
       addressFull: json['address_full'] as String?,
       nameShort: json['name_short'] as String?,
       name: json['name'] as String?,

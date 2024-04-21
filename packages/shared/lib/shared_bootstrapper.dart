@@ -1,6 +1,5 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get_it/get_it.dart';
-import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 
 Future<void> initShared(GetIt getIt) async {
@@ -27,6 +26,12 @@ Future<void> initShared(GetIt getIt) async {
     ..registerSingleton(SharedPreferencesService())
     ..registerSingleton(
       UpdateDataService(),
+    )
+    ..registerSingleton(
+      LocationMapService(),
+    )
+    ..registerSingleton(
+      TimerService(),
     );
   await getIt.get<SharedPreferencesService>().initialize();
   await getIt.get<ProductsFavouritesService>().initFavouritesProductsHave();

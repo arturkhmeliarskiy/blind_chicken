@@ -50,6 +50,29 @@ class _ContactsScreenState extends State<ContactsScreen> {
     }
   }
 
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
+
+  void _launchMailClient(String targetEmail) async {
+    final Uri launchUri = Uri(
+      scheme: 'mailto',
+      path: targetEmail,
+    );
+    await launchUrl(launchUri);
+  }
+
+  Future<void> openUrl(String url) async {
+    final _url = Uri.parse(url);
+    if (!await launchUrl(_url, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,9 +149,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
               top: 7,
               left: 10.5,
             ),
-            child: Text(
-              '8 (800) 500-53-29',
-              style: Theme.of(context).textTheme.displayMedium,
+            child: GestureDetector(
+              onTap: () {
+                _makePhoneCall('8 (800) 500-53-29');
+              },
+              child: Text(
+                '8 (800) 500-53-29',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
             ),
           ),
           Padding(
@@ -136,9 +164,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
               top: 7,
               left: 10.5,
             ),
-            child: Text(
-              '8 (495) 120-34-27',
-              style: Theme.of(context).textTheme.displayMedium,
+            child: GestureDetector(
+              onTap: () {
+                _makePhoneCall('8 (495) 120-34-27');
+              },
+              child: Text(
+                '8 (495) 120-34-27',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
             ),
           ),
           Padding(
@@ -158,9 +191,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
               top: 7,
               left: 10.5,
             ),
-            child: Text(
-              'sale@slepayakurica.ru',
-              style: Theme.of(context).textTheme.displayMedium,
+            child: GestureDetector(
+              onTap: () {
+                _launchMailClient('sale@slepayakurica.ru');
+              },
+              child: Text(
+                'sale@slepayakurica.ru',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
             ),
           ),
           Padding(
@@ -180,9 +218,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
               top: 7,
               left: 10.5,
             ),
-            child: Text(
-              'Вконтакте',
-              style: Theme.of(context).textTheme.displayMedium,
+            child: GestureDetector(
+              onTap: () async {
+                await openUrl('https://vk.com/slepayakurica');
+              },
+              child: Text(
+                'Вконтакте',
+                style: Theme.of(context).textTheme.displayMedium,
+              ),
             ),
           ),
         ],

@@ -35,6 +35,9 @@ class FavouritesEvent with _$FavouritesEvent {
     required String code,
     bool? isUpdate,
   }) = GetInfoProductFavouritesEvent;
+  const factory FavouritesEvent.checkButtonTop({
+    required bool isButtonTop,
+  }) = CheckButtonTopFavouritesEvent;
   const factory FavouritesEvent.goBackProductInfo() = GoBackProductInfoCategotyFavouritesEvent;
   const factory FavouritesEvent.paginationProduct() = PaginationProductFavouritesEvent;
   const factory FavouritesEvent.addProductToSoppingCart() = AddProductToSoppingCartFavouritesEvent;

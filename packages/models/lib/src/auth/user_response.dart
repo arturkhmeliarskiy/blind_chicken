@@ -17,6 +17,7 @@ class UserDataModel with _$UserDataModel {
     required int buyForNext,
     required int activeBonus,
     required int allBonus,
+    required String virtualcardscod,
     required List<SchemLoyaltyDataModel> schemLoyalty,
   }) = _UserDataModel;
 }

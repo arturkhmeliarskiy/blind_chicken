@@ -43,7 +43,7 @@ mixin _$CatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -79,7 +79,7 @@ mixin _$CatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -114,7 +114,8 @@ mixin _$CatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -327,7 +328,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -366,7 +367,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -404,7 +405,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -622,7 +624,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -661,7 +663,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -699,7 +701,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -919,7 +922,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -958,7 +961,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -996,7 +999,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -1319,7 +1323,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -1358,7 +1362,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -1396,7 +1400,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -1659,7 +1664,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -1698,7 +1703,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -1736,7 +1741,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -2014,7 +2020,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -2053,7 +2059,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -2091,7 +2097,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -2374,7 +2381,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -2413,7 +2420,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -2451,7 +2458,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -2733,7 +2741,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -2772,7 +2780,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -2810,7 +2818,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -3087,7 +3096,7 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -3126,7 +3135,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -3164,7 +3173,8 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -3420,7 +3430,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -3459,7 +3469,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -3497,7 +3507,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -3724,7 +3735,7 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -3763,7 +3774,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -3801,7 +3812,8 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -4046,7 +4058,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -4085,7 +4097,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -4123,7 +4135,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -4386,7 +4399,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -4425,7 +4438,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -4463,7 +4476,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -4721,7 +4735,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -4760,7 +4774,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -4798,7 +4812,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -5057,7 +5072,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -5096,7 +5111,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -5134,7 +5149,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -5388,7 +5404,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -5427,7 +5443,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -5465,7 +5481,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -5717,7 +5734,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -5756,7 +5773,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -5794,7 +5811,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -5961,7 +5979,7 @@ abstract class _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
               then) =
       __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String path, String sort});
+  $Res call({String path, String sort, String filterSelect});
 }
 
 /// @nodoc
@@ -5980,6 +5998,7 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
   $Res call({
     Object? path = null,
     Object? sort = null,
+    Object? filterSelect = null,
   }) {
     return _then(_$GetInfoProductsPushNotificationCatalogEventImpl(
       path: null == path
@@ -5990,6 +6009,10 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
               as String,
+      filterSelect: null == filterSelect
+          ? _value.filterSelect
+          : filterSelect // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -5999,16 +6022,18 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
 class _$GetInfoProductsPushNotificationCatalogEventImpl
     implements GetInfoProductsPushNotificationCatalogEvent {
   const _$GetInfoProductsPushNotificationCatalogEventImpl(
-      {required this.path, required this.sort});
+      {required this.path, required this.sort, required this.filterSelect});
 
   @override
   final String path;
   @override
   final String sort;
+  @override
+  final String filterSelect;
 
   @override
   String toString() {
-    return 'CatalogEvent.getInfoProductsPushNotification(path: $path, sort: $sort)';
+    return 'CatalogEvent.getInfoProductsPushNotification(path: $path, sort: $sort, filterSelect: $filterSelect)';
   }
 
   @override
@@ -6017,11 +6042,13 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductsPushNotificationCatalogEventImpl &&
             (identical(other.path, path) || other.path == path) &&
-            (identical(other.sort, sort) || other.sort == sort));
+            (identical(other.sort, sort) || other.sort == sort) &&
+            (identical(other.filterSelect, filterSelect) ||
+                other.filterSelect == filterSelect));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, path, sort);
+  int get hashCode => Object.hash(runtimeType, path, sort, filterSelect);
 
   @JsonKey(ignore: true)
   @override
@@ -6061,7 +6088,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -6072,7 +6099,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
   }) {
-    return getInfoProductsPushNotification(path, sort);
+    return getInfoProductsPushNotification(path, sort, filterSelect);
   }
 
   @override
@@ -6100,7 +6127,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -6110,7 +6137,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function()? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
-    return getInfoProductsPushNotification?.call(path, sort);
+    return getInfoProductsPushNotification?.call(path, sort, filterSelect);
   }
 
   @override
@@ -6138,7 +6165,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -6149,7 +6177,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult orElse(),
   }) {
     if (getInfoProductsPushNotification != null) {
-      return getInfoProductsPushNotification(path, sort);
+      return getInfoProductsPushNotification(path, sort, filterSelect);
     }
     return orElse();
   }
@@ -6289,11 +6317,14 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
 abstract class GetInfoProductsPushNotificationCatalogEvent
     implements CatalogEvent {
   const factory GetInfoProductsPushNotificationCatalogEvent(
-          {required final String path, required final String sort}) =
+          {required final String path,
+          required final String sort,
+          required final String filterSelect}) =
       _$GetInfoProductsPushNotificationCatalogEventImpl;
 
   String get path;
   String get sort;
+  String get filterSelect;
   @JsonKey(ignore: true)
   _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
           _$GetInfoProductsPushNotificationCatalogEventImpl>
@@ -6401,7 +6432,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -6440,7 +6471,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -6478,7 +6509,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -6730,7 +6762,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -6769,7 +6801,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -6807,7 +6839,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -7033,7 +7066,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -7072,7 +7105,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -7110,7 +7143,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -7359,7 +7393,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -7398,7 +7432,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -7436,7 +7470,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -7665,7 +7700,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -7704,7 +7739,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -7742,7 +7777,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -7964,7 +8000,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -8003,7 +8039,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -8041,7 +8077,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -8299,7 +8336,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
     required TResult Function(String path) getInfoProducts,
-    required TResult Function(String path, String sort)
+    required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
     required TResult Function(String value) sortProducts,
@@ -8338,7 +8375,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path)? getInfoProducts,
-    TResult? Function(String path, String sort)?
+    TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
     TResult? Function(String value)? sortProducts,
@@ -8376,7 +8413,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path)? getInfoProducts,
-    TResult Function(String path, String sort)? getInfoProductsPushNotification,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
     TResult Function(String value)? sortProducts,
     TResult Function()? goBackProductInfo,
@@ -8569,6 +8607,7 @@ mixin _$CatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -8609,6 +8648,7 @@ mixin _$CatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -8649,6 +8689,7 @@ mixin _$CatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -8777,6 +8818,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -8820,6 +8862,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -8863,6 +8906,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -8993,6 +9037,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9036,6 +9081,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9079,6 +9125,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9210,6 +9257,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9253,6 +9301,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9296,6 +9345,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9454,6 +9504,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9497,6 +9548,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9540,6 +9592,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -9641,6 +9694,7 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       String nowVersionApp,
       String updateVersionApp,
       bool isUpdateVersionApp,
+      bool isNotification,
       String? errorMessage,
       bool? isSoppingCart,
       bool? isError,
@@ -9690,6 +9744,7 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? nowVersionApp = null,
     Object? updateVersionApp = null,
     Object? isUpdateVersionApp = null,
+    Object? isNotification = null,
     Object? errorMessage = freezed,
     Object? isSoppingCart = freezed,
     Object? isError = freezed,
@@ -9794,6 +9849,10 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.isUpdateVersionApp
           : isUpdateVersionApp // ignore: cast_nullable_to_non_nullable
               as bool,
+      isNotification: null == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -9884,6 +9943,7 @@ class _$PreloadDataCompletedCatalogStateImpl
       required this.nowVersionApp,
       required this.updateVersionApp,
       required this.isUpdateVersionApp,
+      required this.isNotification,
       this.errorMessage,
       this.isSoppingCart,
       this.isError,
@@ -10065,6 +10125,8 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final bool isUpdateVersionApp;
   @override
+  final bool isNotification;
+  @override
   final String? errorMessage;
   @override
   final bool? isSoppingCart;
@@ -10079,7 +10141,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, errorMessage: $errorMessage, isSoppingCart: $isSoppingCart, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, errorMessage: $errorMessage, isSoppingCart: $isSoppingCart, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -10126,6 +10188,8 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.updateVersionApp == updateVersionApp) &&
             (identical(other.isUpdateVersionApp, isUpdateVersionApp) ||
                 other.isUpdateVersionApp == isUpdateVersionApp) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isSoppingCart, isSoppingCart) ||
@@ -10165,6 +10229,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         nowVersionApp,
         updateVersionApp,
         isUpdateVersionApp,
+        isNotification,
         errorMessage,
         isSoppingCart,
         isError,
@@ -10213,6 +10278,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -10246,6 +10312,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         nowVersionApp,
         updateVersionApp,
         isUpdateVersionApp,
+        isNotification,
         errorMessage,
         isSoppingCart,
         isError,
@@ -10286,6 +10353,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -10319,6 +10387,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         nowVersionApp,
         updateVersionApp,
         isUpdateVersionApp,
+        isNotification,
         errorMessage,
         isSoppingCart,
         isError,
@@ -10359,6 +10428,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             String nowVersionApp,
             String updateVersionApp,
             bool isUpdateVersionApp,
+            bool isNotification,
             String? errorMessage,
             bool? isSoppingCart,
             bool? isError,
@@ -10394,6 +10464,7 @@ class _$PreloadDataCompletedCatalogStateImpl
           nowVersionApp,
           updateVersionApp,
           isUpdateVersionApp,
+          isNotification,
           errorMessage,
           isSoppingCart,
           isError,
@@ -10474,6 +10545,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final String nowVersionApp,
       required final String updateVersionApp,
       required final bool isUpdateVersionApp,
+      required final bool isNotification,
       final String? errorMessage,
       final bool? isSoppingCart,
       final bool? isError,
@@ -10505,6 +10577,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   String get nowVersionApp;
   String get updateVersionApp;
   bool get isUpdateVersionApp;
+  bool get isNotification;
   String? get errorMessage;
   bool? get isSoppingCart;
   bool? get isError;

@@ -19,6 +19,7 @@ Future<void> initBloc(GetIt getIt) async {
       () => BoutiquesBloc(
         getIt.get<BoutiquesRepository>(),
         getIt.get<UpdateDataService>(),
+        getIt.get<AppStoreInfoRepository>(),
       ),
     )
     ..registerFactory(
@@ -89,6 +90,7 @@ Future<void> initBloc(GetIt getIt) async {
       () => GiftCardBloc(
         getIt.get<CatalogRepository>(),
         getIt.get<UpdateDataService>(),
+        getIt.get<AppStoreInfoRepository>(),
       ),
     )
     ..registerFactory(

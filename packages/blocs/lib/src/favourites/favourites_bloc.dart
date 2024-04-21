@@ -40,6 +40,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         paginationProduct: (event) => _paginationProduct(event, emit),
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+        checkButtonTop: (event) => _checkButtonTop(event, emit),
       ),
     );
   }
@@ -68,6 +69,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         offset: 1,
         favouritesProductsId: [],
         isAuth: isAuth,
+        isButtonTop: false,
       ),
     );
   }
@@ -113,6 +115,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         offset: 1,
         favouritesProductsId: favouritesProductsId,
         isAuth: isAuth,
+        isButtonTop: false,
       ),
     );
   }
@@ -812,6 +815,17 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       );
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
+  }
+
+  Future<void> _checkButtonTop(
+    CheckButtonTopFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    state.mapOrNull(productsFavourites: (initState) {
+      emit(initState.copyWith(
+        isButtonTop: event.isButtonTop,
       ));
     });
   }

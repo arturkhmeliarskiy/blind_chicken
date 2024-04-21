@@ -138,6 +138,7 @@ extension on PaymentBonusResponse {
       r: r ?? '',
       e: e ?? '',
       balance: balance ?? 0,
+      info: info ?? '',
     );
   }
 }

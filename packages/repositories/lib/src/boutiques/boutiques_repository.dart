@@ -96,7 +96,11 @@ extension on BoutiqueInfoResponse {
         address: data?.address ?? '',
         schedule: data?.schedule ?? '',
         uidStore: data?.uidStore ?? '',
-        coordinates: data?.coordinates ?? '',
+        coordinates: BoutiqueCoordinatesDataModel(
+          latitude: data?.coordinates?.latitude ?? 0.0,
+          longitude: data?.coordinates?.longitude ?? 0.0,
+        ),
+        iconPath: (data?.caption ?? '').replaceAll(' ', '_').toLowerCase(),
         addressFull: data?.addressFull ?? '',
         nameShort: data?.nameShort ?? '',
         name: data?.name ?? '',

@@ -32,7 +32,9 @@ mixin _$BoutiqueInfoDataResponse {
   String? get schedule => throw _privateConstructorUsedError;
   @JsonKey(name: 'uid_store')
   String? get uidStore => throw _privateConstructorUsedError;
-  String? get coordinates => throw _privateConstructorUsedError;
+  @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
+  BoutiqueCoordinatesResponse? get coordinates =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'address_full')
   String? get addressFull => throw _privateConstructorUsedError;
   @JsonKey(name: 'name_short')
@@ -60,10 +62,13 @@ abstract class $BoutiqueInfoDataResponseCopyWith<$Res> {
       String? address,
       String? schedule,
       @JsonKey(name: 'uid_store') String? uidStore,
-      String? coordinates,
+      @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
+      BoutiqueCoordinatesResponse? coordinates,
       @JsonKey(name: 'address_full') String? addressFull,
       @JsonKey(name: 'name_short') String? nameShort,
       String? name});
+
+  $BoutiqueCoordinatesResponseCopyWith<$Res>? get coordinates;
 }
 
 /// @nodoc
@@ -124,7 +129,7 @@ class _$BoutiqueInfoDataResponseCopyWithImpl<$Res,
       coordinates: freezed == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as BoutiqueCoordinatesResponse?,
       addressFull: freezed == addressFull
           ? _value.addressFull
           : addressFull // ignore: cast_nullable_to_non_nullable
@@ -138,6 +143,19 @@ class _$BoutiqueInfoDataResponseCopyWithImpl<$Res,
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BoutiqueCoordinatesResponseCopyWith<$Res>? get coordinates {
+    if (_value.coordinates == null) {
+      return null;
+    }
+
+    return $BoutiqueCoordinatesResponseCopyWith<$Res>(_value.coordinates!,
+        (value) {
+      return _then(_value.copyWith(coordinates: value) as $Val);
+    });
   }
 }
 
@@ -159,10 +177,14 @@ abstract class _$$BoutiqueInfoDataResponseImplCopyWith<$Res>
       String? address,
       String? schedule,
       @JsonKey(name: 'uid_store') String? uidStore,
-      String? coordinates,
+      @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
+      BoutiqueCoordinatesResponse? coordinates,
       @JsonKey(name: 'address_full') String? addressFull,
       @JsonKey(name: 'name_short') String? nameShort,
       String? name});
+
+  @override
+  $BoutiqueCoordinatesResponseCopyWith<$Res>? get coordinates;
 }
 
 /// @nodoc
@@ -222,7 +244,7 @@ class __$$BoutiqueInfoDataResponseImplCopyWithImpl<$Res>
       coordinates: freezed == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as BoutiqueCoordinatesResponse?,
       addressFull: freezed == addressFull
           ? _value.addressFull
           : addressFull // ignore: cast_nullable_to_non_nullable
@@ -251,6 +273,7 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
       this.address,
       this.schedule,
       @JsonKey(name: 'uid_store') this.uidStore,
+      @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
       this.coordinates,
       @JsonKey(name: 'address_full') this.addressFull,
       @JsonKey(name: 'name_short') this.nameShort,
@@ -287,7 +310,8 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
   @JsonKey(name: 'uid_store')
   final String? uidStore;
   @override
-  final String? coordinates;
+  @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
+  final BoutiqueCoordinatesResponse? coordinates;
   @override
   @JsonKey(name: 'address_full')
   final String? addressFull;
@@ -368,7 +392,8 @@ abstract class _BoutiqueInfoDataResponse extends BoutiqueInfoDataResponse {
       final String? address,
       final String? schedule,
       @JsonKey(name: 'uid_store') final String? uidStore,
-      final String? coordinates,
+      @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
+      final BoutiqueCoordinatesResponse? coordinates,
       @JsonKey(name: 'address_full') final String? addressFull,
       @JsonKey(name: 'name_short') final String? nameShort,
       final String? name}) = _$BoutiqueInfoDataResponseImpl;
@@ -395,7 +420,8 @@ abstract class _BoutiqueInfoDataResponse extends BoutiqueInfoDataResponse {
   @JsonKey(name: 'uid_store')
   String? get uidStore;
   @override
-  String? get coordinates;
+  @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
+  BoutiqueCoordinatesResponse? get coordinates;
   @override
   @JsonKey(name: 'address_full')
   String? get addressFull;

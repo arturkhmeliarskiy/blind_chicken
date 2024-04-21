@@ -96,6 +96,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                     .read<SearchBloc>()
                                     .add(const SearchEvent.goBackProductInfo());
                               },
+                              isZoom: false,
                               addLike: () {
                                 DetailProductDataModel? detailsProduct = initState.detailsProduct;
                                 if (detailsProduct != null) {

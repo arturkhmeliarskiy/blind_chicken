@@ -19,19 +19,19 @@ mixin _$BoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
-    required TResult Function(String uid) getInfoBoutique,
+    required TResult Function(String uid, bool? isNotification) getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid)? getInfoBoutique,
+    TResult? Function(String uid, bool? isNotification)? getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid)? getInfoBoutique,
+    TResult Function(String uid, bool? isNotification)? getInfoBoutique,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
-    required TResult Function(String uid) getInfoBoutique,
+    required TResult Function(String uid, bool? isNotification) getInfoBoutique,
   }) {
     return preloadData();
   }
@@ -122,7 +122,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid)? getInfoBoutique,
+    TResult? Function(String uid, bool? isNotification)? getInfoBoutique,
   }) {
     return preloadData?.call();
   }
@@ -131,7 +131,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid)? getInfoBoutique,
+    TResult Function(String uid, bool? isNotification)? getInfoBoutique,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -183,7 +183,7 @@ abstract class _$$GetInfoBoutiquesEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoBoutiquesEventImpl) then) =
       __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String uid});
+  $Res call({String uid, bool? isNotification});
 }
 
 /// @nodoc
@@ -198,12 +198,17 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = null,
+    Object? isNotification = freezed,
   }) {
     return _then(_$GetInfoBoutiquesEventImpl(
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      isNotification: freezed == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -211,14 +216,16 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
-  const _$GetInfoBoutiquesEventImpl({required this.uid});
+  const _$GetInfoBoutiquesEventImpl({required this.uid, this.isNotification});
 
   @override
   final String uid;
+  @override
+  final bool? isNotification;
 
   @override
   String toString() {
-    return 'BoutiquesEvent.getInfoBoutique(uid: $uid)';
+    return 'BoutiquesEvent.getInfoBoutique(uid: $uid, isNotification: $isNotification)';
   }
 
   @override
@@ -226,11 +233,13 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoBoutiquesEventImpl &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid);
+  int get hashCode => Object.hash(runtimeType, uid, isNotification);
 
   @JsonKey(ignore: true)
   @override
@@ -243,29 +252,29 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
-    required TResult Function(String uid) getInfoBoutique,
+    required TResult Function(String uid, bool? isNotification) getInfoBoutique,
   }) {
-    return getInfoBoutique(uid);
+    return getInfoBoutique(uid, isNotification);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid)? getInfoBoutique,
+    TResult? Function(String uid, bool? isNotification)? getInfoBoutique,
   }) {
-    return getInfoBoutique?.call(uid);
+    return getInfoBoutique?.call(uid, isNotification);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid)? getInfoBoutique,
+    TResult Function(String uid, bool? isNotification)? getInfoBoutique,
     required TResult orElse(),
   }) {
     if (getInfoBoutique != null) {
-      return getInfoBoutique(uid);
+      return getInfoBoutique(uid, isNotification);
     }
     return orElse();
   }
@@ -303,10 +312,12 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
 }
 
 abstract class GetInfoBoutiquesEvent implements BoutiquesEvent {
-  const factory GetInfoBoutiquesEvent({required final String uid}) =
-      _$GetInfoBoutiquesEventImpl;
+  const factory GetInfoBoutiquesEvent(
+      {required final String uid,
+      final bool? isNotification}) = _$GetInfoBoutiquesEventImpl;
 
   String get uid;
+  bool? get isNotification;
   @JsonKey(ignore: true)
   _$$GetInfoBoutiquesEventImplCopyWith<_$GetInfoBoutiquesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -320,6 +331,8 @@ mixin _$BoutiquesState {
     required TResult Function() load,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
@@ -331,6 +344,8 @@ mixin _$BoutiquesState {
     TResult? Function()? load,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
@@ -342,6 +357,8 @@ mixin _$BoutiquesState {
     TResult Function()? load,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
@@ -435,6 +452,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
     required TResult Function() load,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
@@ -449,6 +468,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
     TResult? Function()? load,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
@@ -463,6 +484,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
     TResult Function()? load,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
@@ -560,6 +583,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
     required TResult Function() load,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
@@ -574,6 +599,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
     TResult? Function()? load,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
@@ -588,6 +615,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
     TResult Function()? load,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
@@ -650,6 +679,8 @@ abstract class _$$PreloadDataCompletedBoutiquesStateImplCopyWith<$Res> {
   @useResult
   $Res call(
       {List<BoutiqueDataModel> boutiques,
+      bool isUpdateVersionApp,
+      bool isNotification,
       List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
       BoutiqueDataInfoDataModel? boutiqueDetails});
 
@@ -670,6 +701,8 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? boutiques = null,
+    Object? isUpdateVersionApp = null,
+    Object? isNotification = null,
     Object? boutiqueInfo = freezed,
     Object? boutiqueDetails = freezed,
   }) {
@@ -678,6 +711,14 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
           ? _value._boutiques
           : boutiques // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueDataModel>,
+      isUpdateVersionApp: null == isUpdateVersionApp
+          ? _value.isUpdateVersionApp
+          : isUpdateVersionApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNotification: null == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool,
       boutiqueInfo: freezed == boutiqueInfo
           ? _value._boutiqueInfo
           : boutiqueInfo // ignore: cast_nullable_to_non_nullable
@@ -709,6 +750,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     implements PreloadDataCompletedBoutiquesState {
   const _$PreloadDataCompletedBoutiquesStateImpl(
       {required final List<BoutiqueDataModel> boutiques,
+      required this.isUpdateVersionApp,
+      required this.isNotification,
       final List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
       this.boutiqueDetails})
       : _boutiques = boutiques,
@@ -722,6 +765,10 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     return EqualUnmodifiableListView(_boutiques);
   }
 
+  @override
+  final bool isUpdateVersionApp;
+  @override
+  final bool isNotification;
   final List<BoutiqueCategoryItemDataModel>? _boutiqueInfo;
   @override
   List<BoutiqueCategoryItemDataModel>? get boutiqueInfo {
@@ -737,7 +784,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
 
   @override
   String toString() {
-    return 'BoutiquesState.preloadDataCompleted(boutiques: $boutiques, boutiqueInfo: $boutiqueInfo, boutiqueDetails: $boutiqueDetails)';
+    return 'BoutiquesState.preloadDataCompleted(boutiques: $boutiques, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, boutiqueInfo: $boutiqueInfo, boutiqueDetails: $boutiqueDetails)';
   }
 
   @override
@@ -747,6 +794,10 @@ class _$PreloadDataCompletedBoutiquesStateImpl
             other is _$PreloadDataCompletedBoutiquesStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._boutiques, _boutiques) &&
+            (identical(other.isUpdateVersionApp, isUpdateVersionApp) ||
+                other.isUpdateVersionApp == isUpdateVersionApp) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification) &&
             const DeepCollectionEquality()
                 .equals(other._boutiqueInfo, _boutiqueInfo) &&
             (identical(other.boutiqueDetails, boutiqueDetails) ||
@@ -757,6 +808,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_boutiques),
+      isUpdateVersionApp,
+      isNotification,
       const DeepCollectionEquality().hash(_boutiqueInfo),
       boutiqueDetails);
 
@@ -775,11 +828,14 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     required TResult Function() load,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted(boutiques, boutiqueInfo, boutiqueDetails);
+    return preloadDataCompleted(boutiques, isUpdateVersionApp, isNotification,
+        boutiqueInfo, boutiqueDetails);
   }
 
   @override
@@ -789,11 +845,14 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     TResult? Function()? load,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted?.call(boutiques, boutiqueInfo, boutiqueDetails);
+    return preloadDataCompleted?.call(boutiques, isUpdateVersionApp,
+        isNotification, boutiqueInfo, boutiqueDetails);
   }
 
   @override
@@ -803,13 +862,16 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     TResult Function()? load,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
             List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(boutiques, boutiqueInfo, boutiqueDetails);
+      return preloadDataCompleted(boutiques, isUpdateVersionApp, isNotification,
+          boutiqueInfo, boutiqueDetails);
     }
     return orElse();
   }
@@ -855,11 +917,15 @@ class _$PreloadDataCompletedBoutiquesStateImpl
 abstract class PreloadDataCompletedBoutiquesState implements BoutiquesState {
   const factory PreloadDataCompletedBoutiquesState(
           {required final List<BoutiqueDataModel> boutiques,
+          required final bool isUpdateVersionApp,
+          required final bool isNotification,
           final List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
           final BoutiqueDataInfoDataModel? boutiqueDetails}) =
       _$PreloadDataCompletedBoutiquesStateImpl;
 
   List<BoutiqueDataModel> get boutiques;
+  bool get isUpdateVersionApp;
+  bool get isNotification;
   List<BoutiqueCategoryItemDataModel>? get boutiqueInfo;
   BoutiqueDataInfoDataModel? get boutiqueDetails;
   @JsonKey(ignore: true)

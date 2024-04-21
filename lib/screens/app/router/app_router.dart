@@ -73,6 +73,7 @@ class AppRouter extends _$AppRouter {
           AutoRoute(path: "home", page: HomeAutoRouterRoute.page, children: [
             AutoRoute(
               page: MainRoute.page,
+              path: 'main',
               initial: true,
             ),
             AutoRoute(
@@ -93,6 +94,7 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               keepHistory: false,
               page: CatalogSearchCardInfoRoute.page,
+              path: 'catalog_search_card_info',
             ),
             AutoRoute(
               page: SortRoute.page,

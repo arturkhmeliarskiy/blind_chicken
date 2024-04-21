@@ -1,4 +1,4 @@
-package com.example.blind_chicken
+package com.slepayakurica.app
 import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

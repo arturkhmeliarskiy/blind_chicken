@@ -3,22 +3,10 @@ import Flutter
 import YandexMapsMobile
 
 
-  var tokenId: String = ""
-
-  var tokenIdinfo: String {
-      set {
-        tokenId = newValue 
-      }
-      get {
-          return tokenId
-      }
-  }
-
-
-
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
   var methodChannel: FlutterMethodChannel? = nil
+  var tokenChannel: FlutterMethodChannel? = nil
 
   override func application(
     _ application: UIApplication,
@@ -29,10 +17,21 @@ import YandexMapsMobile
 
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
     methodChannel = FlutterMethodChannel(name: "blind_chicken/getMessages", binaryMessenger: controller.binaryMessenger)
+    let tokenController : FlutterViewController = window?.rootViewController as! FlutterViewController
+    tokenChannel = FlutterMethodChannel(name: "blind_chicken/getToken", binaryMessenger: tokenController.binaryMessenger)
     
     methodChannel?.setMethodCallHandler({
     (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
     if (call.method == "getMessage") {
+      result("")
+      return
+      }
+      return
+    })
+
+    tokenChannel?.setMethodCallHandler({
+    (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+    if (call.method == "getDeviceToken") {
       result("")
       return
       }
@@ -58,10 +57,8 @@ import YandexMapsMobile
                 didRegisterForRemoteNotificationsWithDeviceToken 
                 deviceToken: Data) {
       let token = deviceToken.map {String(format: "%02.2hhx", $0) }.joined()
-      let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-      let dtChannel = FlutterMethodChannel(name: "blind_chicken/getToken", binaryMessenger: controller.binaryMessenger)
        
-      dtChannel.setMethodCallHandler({
+      tokenChannel?.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
         if (call.method == "getDeviceToken") {
           result(token)
@@ -105,11 +102,21 @@ import YandexMapsMobile
         else { return }
     guard let sort = userInfo["sort"] as? String
         else { return }
+    guard let filter = userInfo["filter"] as? String
+        else { return }
 
       methodChannel?.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
         if (call.method == "getMessage") {
-          result("\("\(title)"),\(body),\(section),\(idMessage),\(type),\(sort)")
+          result("\(body),\(section),\(idMessage),\(type),\(sort)")
+          return
+        }        
+        if (call.method == "title") {
+          result("\("\(title)")")
+          return
+        }
+        if (call.method == "filter") {
+          result("\("\(filter)")")
           return
         }
         return

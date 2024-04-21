@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
@@ -70,22 +72,27 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
           orElse: () => const SizedBox(),
         );
       },
-      child: WillPopScope(
-        onWillPop: () async {
-          return true;
-        },
-        child: Stack(
-          children: [
-            Scaffold(
-              body: SafeArea(
-                  child: ListView(
-                children: [
-                  const AppBarBlindChicken(),
-                  BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-                    return state.maybeMap(
-                      preloadDataCompleted: (initState) {
-                        final sky = initState.detailsProduct?.sku ?? [];
-                        return initState.isError ?? false
+      child: Stack(
+        children: [
+          Scaffold(
+            body: SafeArea(
+                child: ListView(
+              children: [
+                const AppBarBlindChicken(),
+                BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+                  return state.maybeMap(
+                    preloadDataCompleted: (initState) {
+                      final sky = initState.detailsProduct?.sku ?? [];
+                      return PopScope(
+                        canPop: false,
+                        onPopInvoked: (value) {
+                          if (initState.listProductsCode.isNotEmpty) {
+                            context.read<CatalogBloc>().add(const CatalogEvent.goBackProductInfo());
+                          } else {
+                            context.back();
+                          }
+                        },
+                        child: initState.isError ?? false
                             ? const SizedBox()
                             : Column(
                                 children: [
@@ -98,6 +105,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                           .read<CatalogBloc>()
                                           .add(const CatalogEvent.goBackProductInfo());
                                     },
+                                    isZoom: false,
                                     addLike: () {
                                       DetailProductDataModel? detailsProduct =
                                           initState.detailsProduct;
@@ -725,12 +733,15 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                   path: path,
                                                                 ),
                                                               );
-                                                          context.navigateTo(
-                                                            CatalogRoute(
-                                                              title: '',
-                                                              url: path,
-                                                            ),
-                                                          );
+                                                          Timer(const Duration(milliseconds: 10),
+                                                              () {
+                                                            context.pushRoute(
+                                                              CatalogRoute(
+                                                                title: '',
+                                                                url: path,
+                                                              ),
+                                                            );
+                                                          });
                                                         },
                                                       ),
                                                       const SizedBox(
@@ -813,48 +824,48 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     ),
                                   )
                                 ],
-                              );
-                      },
-                      orElse: () => const SizedBox(),
-                    );
-                  })
-                ],
-              )),
-            ),
-            BlocBuilder<CatalogBloc, CatalogState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  load: (value) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        backgroundColor: Colors.grey.shade400,
-                      ),
-                    );
-                  },
-                  preloadDataCompleted: (value) {
-                    if (value.isError ?? false) {
-                      return BlindChickenErrorInfo(
-                        errorMessage: value.errorMessage ?? '',
-                        onRepeatRequest: () {
-                          context.read<CatalogBloc>().add(
-                                CatalogEvent.getInfoProduct(
-                                  code: value.listProductsCode.last,
-                                  isUpdate: true,
-                                ),
-                              );
-                        },
+                              ),
                       );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
-            ),
-          ],
-        ),
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                })
+              ],
+            )),
+          ),
+          BlocBuilder<CatalogBloc, CatalogState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                load: (value) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      backgroundColor: Colors.grey.shade400,
+                    ),
+                  );
+                },
+                preloadDataCompleted: (value) {
+                  if (value.isError ?? false) {
+                    return BlindChickenErrorInfo(
+                      errorMessage: value.errorMessage ?? '',
+                      onRepeatRequest: () {
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.getInfoProduct(
+                                code: value.listProductsCode.last,
+                                isUpdate: true,
+                              ),
+                            );
+                      },
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
+                },
+                orElse: () => const SizedBox(),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

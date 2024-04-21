@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/lifecycle_manager.dart';
@@ -98,33 +99,53 @@ class _AppState extends State<App> {
       ],
       child: LifeCycleManager(
         resumed: () async {
-          const me = MethodChannel('blind_chicken/getMessages');
-          final info = await me.invokeMethod('getMessage') as String;
+          if (Platform.isIOS) {
+            const me = MethodChannel('blind_chicken/getMessages');
+            final info = await me.invokeMethod('getMessage') as String;
+            final filterSelect = await me.invokeMethod('filter') as String;
+            final title = await me.invokeMethod('title') as String;
+            log(title);
 
-          if (info.isNotEmpty) {
-            final split = info.split(',');
-            Map<int, String> values = {
-              for (int i = 0; i < split.length; i++) i: split[i],
-            };
+            if (info.isNotEmpty) {
+              final split = info.split(',');
+              Map<int, String> values = {
+                for (int i = 0; i < split.length; i++) i: split[i],
+              };
 
-            if (idMessage != values[3]) {
-              if (values[4] == 'catalog') {
-                _appRouter.push(CatalogRoute(
-                  title: '',
-                  url: values[2] ?? '',
-                  sort: values[5] ?? '',
-                  isNotification: true,
-                ));
+              if (idMessage != values[2]) {
+                if (values[3] == 'catalog') {
+                  await Future<void>.delayed(
+                    const Duration(
+                      milliseconds: 500,
+                    ),
+                  );
+                  _appRouter.push(CatalogRoute(
+                    title: '',
+                    url: values[1] ?? '',
+                    sort: values[4] ?? '',
+                    filterSelect: filterSelect,
+                    isNotification: true,
+                  ));
+                }
+                if (values[3] == 'boutique') {
+                  _appRouter.push(
+                    BoutiquesDescriptionRoute(
+                      uidStore: values[5] ?? '',
+                      isNotification: true,
+                    ),
+                  );
+                }
+                if (values[3] == 'gift_card') {
+                  _appRouter.push(
+                    GiftCardRoute(
+                      isNotification: true,
+                    ),
+                  );
+                }
               }
-              if (values[4] == 'boutiques') {
-                _appRouter.push(const BoutiquesRoute());
-              }
-              if (values[4] == 'gift_card') {
-                _appRouter.push(const GiftCardRoute());
-              }
+              idMessage = values[2] ?? '';
+              log(values.toString());
             }
-            idMessage = values[3] ?? '';
-            log(values.toString());
           }
         },
         paused: () {},

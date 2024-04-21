@@ -24,10 +24,12 @@ mixin _$BoutiqueDataInfoDataModel {
   String get address => throw _privateConstructorUsedError;
   String get schedule => throw _privateConstructorUsedError;
   String get uidStore => throw _privateConstructorUsedError;
-  String get coordinates => throw _privateConstructorUsedError;
+  BoutiqueCoordinatesDataModel get coordinates =>
+      throw _privateConstructorUsedError;
   String get addressFull => throw _privateConstructorUsedError;
   String get nameShort => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get iconPath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BoutiqueDataInfoDataModelCopyWith<BoutiqueDataInfoDataModel> get copyWith =>
@@ -48,10 +50,13 @@ abstract class $BoutiqueDataInfoDataModelCopyWith<$Res> {
       String address,
       String schedule,
       String uidStore,
-      String coordinates,
+      BoutiqueCoordinatesDataModel coordinates,
       String addressFull,
       String nameShort,
-      String name});
+      String name,
+      String iconPath});
+
+  $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates;
 }
 
 /// @nodoc
@@ -79,6 +84,7 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
     Object? addressFull = null,
     Object? nameShort = null,
     Object? name = null,
+    Object? iconPath = null,
   }) {
     return _then(_value.copyWith(
       fotoMinList: null == fotoMinList
@@ -112,7 +118,7 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
       coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
-              as String,
+              as BoutiqueCoordinatesDataModel,
       addressFull: null == addressFull
           ? _value.addressFull
           : addressFull // ignore: cast_nullable_to_non_nullable
@@ -125,7 +131,20 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      iconPath: null == iconPath
+          ? _value.iconPath
+          : iconPath // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates {
+    return $BoutiqueCoordinatesDataModelCopyWith<$Res>(_value.coordinates,
+        (value) {
+      return _then(_value.copyWith(coordinates: value) as $Val);
+    });
   }
 }
 
@@ -146,10 +165,14 @@ abstract class _$$BoutiqueDataInfoDataModelImplCopyWith<$Res>
       String address,
       String schedule,
       String uidStore,
-      String coordinates,
+      BoutiqueCoordinatesDataModel coordinates,
       String addressFull,
       String nameShort,
-      String name});
+      String name,
+      String iconPath});
+
+  @override
+  $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates;
 }
 
 /// @nodoc
@@ -176,6 +199,7 @@ class __$$BoutiqueDataInfoDataModelImplCopyWithImpl<$Res>
     Object? addressFull = null,
     Object? nameShort = null,
     Object? name = null,
+    Object? iconPath = null,
   }) {
     return _then(_$BoutiqueDataInfoDataModelImpl(
       fotoMinList: null == fotoMinList
@@ -209,7 +233,7 @@ class __$$BoutiqueDataInfoDataModelImplCopyWithImpl<$Res>
       coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
-              as String,
+              as BoutiqueCoordinatesDataModel,
       addressFull: null == addressFull
           ? _value.addressFull
           : addressFull // ignore: cast_nullable_to_non_nullable
@@ -221,6 +245,10 @@ class __$$BoutiqueDataInfoDataModelImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      iconPath: null == iconPath
+          ? _value.iconPath
+          : iconPath // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -240,7 +268,8 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
       required this.coordinates,
       required this.addressFull,
       required this.nameShort,
-      required this.name})
+      required this.name,
+      required this.iconPath})
       : _fotoDetail = fotoDetail,
         super._();
 
@@ -265,17 +294,19 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
   @override
   final String uidStore;
   @override
-  final String coordinates;
+  final BoutiqueCoordinatesDataModel coordinates;
   @override
   final String addressFull;
   @override
   final String nameShort;
   @override
   final String name;
+  @override
+  final String iconPath;
 
   @override
   String toString() {
-    return 'BoutiqueDataInfoDataModel(fotoMinList: $fotoMinList, fotoDetail: $fotoDetail, url: $url, caption: $caption, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, addressFull: $addressFull, nameShort: $nameShort, name: $name)';
+    return 'BoutiqueDataInfoDataModel(fotoMinList: $fotoMinList, fotoDetail: $fotoDetail, url: $url, caption: $caption, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, addressFull: $addressFull, nameShort: $nameShort, name: $name, iconPath: $iconPath)';
   }
 
   @override
@@ -300,7 +331,9 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
                 other.addressFull == addressFull) &&
             (identical(other.nameShort, nameShort) ||
                 other.nameShort == nameShort) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.iconPath, iconPath) ||
+                other.iconPath == iconPath));
   }
 
   @override
@@ -316,7 +349,8 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
       coordinates,
       addressFull,
       nameShort,
-      name);
+      name,
+      iconPath);
 
   @JsonKey(ignore: true)
   @override
@@ -335,10 +369,11 @@ abstract class _BoutiqueDataInfoDataModel extends BoutiqueDataInfoDataModel {
       required final String address,
       required final String schedule,
       required final String uidStore,
-      required final String coordinates,
+      required final BoutiqueCoordinatesDataModel coordinates,
       required final String addressFull,
       required final String nameShort,
-      required final String name}) = _$BoutiqueDataInfoDataModelImpl;
+      required final String name,
+      required final String iconPath}) = _$BoutiqueDataInfoDataModelImpl;
   _BoutiqueDataInfoDataModel._() : super._();
 
   @override
@@ -356,13 +391,15 @@ abstract class _BoutiqueDataInfoDataModel extends BoutiqueDataInfoDataModel {
   @override
   String get uidStore;
   @override
-  String get coordinates;
+  BoutiqueCoordinatesDataModel get coordinates;
   @override
   String get addressFull;
   @override
   String get nameShort;
   @override
   String get name;
+  @override
+  String get iconPath;
   @override
   @JsonKey(ignore: true)
   _$$BoutiqueDataInfoDataModelImplCopyWith<_$BoutiqueDataInfoDataModelImpl>

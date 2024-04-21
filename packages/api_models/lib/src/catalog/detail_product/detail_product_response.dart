@@ -68,81 +68,89 @@ List<SkuProductResponse> _convertSku(dynamic json) {
 }
 
 List<StockProductResponse> _convertStock(dynamic json) {
-  Map value = Map.of(json);
-  List<dynamic> keysList = Map.of(json).keys.toList();
-
   List<StockProductResponse> listStock = [];
-  for (int i = 0; i < keysList.length; i++) {
-    List<String> list = (value[keysList[i]] is String)
-        ? []
-        : (value[keysList[i]] as List<dynamic>)
-            .map(
-              (item) => item.toString(),
-            )
-            .toList();
-    listStock.add(
-      StockProductResponse(
-        id: keysList[i],
-        list: (value[keysList[i]] is String) ? [] : list,
-      ),
-    );
+  if (!(json is List)) {
+    Map value = Map.of(json);
+    List<dynamic> keysList = Map.of(json).keys.toList();
+
+    for (int i = 0; i < keysList.length; i++) {
+      List<String> list = (value[keysList[i]] is String)
+          ? []
+          : (value[keysList[i]] as List<dynamic>)
+              .map(
+                (item) => item.toString(),
+              )
+              .toList();
+      listStock.add(
+        StockProductResponse(
+          id: keysList[i],
+          list: (value[keysList[i]] is String) ? [] : list,
+        ),
+      );
+    }
   }
   return listStock;
 }
 
 List<CharProductResponse> _convertChar(dynamic json) {
-  Map value = Map.of(json);
-  List<dynamic> keysList = Map.of(json).keys.toList();
-
   List<CharProductResponse> listChar = [];
-  for (int i = 0; i < keysList.length; i++) {
-    listChar.add(
-      CharProductResponse(
-        name: value[keysList[i]]['n'],
-        value: value[keysList[i]]['v'],
-      ),
-    );
+  if (!(json is List)) {
+    Map value = Map.of(json);
+    List<dynamic> keysList = Map.of(json).keys.toList();
+
+    for (int i = 0; i < keysList.length; i++) {
+      listChar.add(
+        CharProductResponse(
+          name: value[keysList[i]]['n'],
+          value: value[keysList[i]]['v'],
+        ),
+      );
+    }
   }
   return listChar;
 }
 
 List<BreacumbProductResponse> _convertBreadcrumb(dynamic json) {
-  Map value = Map.of(json);
-  List<dynamic> keysList = Map.of(json).keys.toList();
-
   List<BreacumbProductResponse> listBreacumb = [];
-  for (int i = 0; i < keysList.length; i++) {
-    List<dynamic> keysListMap = Map.of(value[keysList[i]]).keys.toList();
-    for (int j = 0; j < keysListMap.length; j++) {
-      listBreacumb.add(
-        BreacumbProductResponse(
-          name: keysListMap[j],
-          value: value[keysList[i]][keysListMap[j]],
-        ),
-      );
+  if (!(json is List)) {
+    Map value = Map.of(json);
+    List<dynamic> keysList = Map.of(json).keys.toList();
+
+    for (int i = 0; i < keysList.length; i++) {
+      List<dynamic> keysListMap = Map.of(value[keysList[i]]).keys.toList();
+      for (int j = 0; j < keysListMap.length; j++) {
+        listBreacumb.add(
+          BreacumbProductResponse(
+            name: keysListMap[j],
+            value: value[keysList[i]][keysListMap[j]],
+          ),
+        );
+      }
     }
   }
   return listBreacumb;
 }
 
 List<SectionsProductResponse> _convertSections(dynamic json) {
-  Map value = Map.of(json);
-  List<dynamic> keysList = Map.of(json).keys.toList();
-
   List<SectionsProductResponse> listSections = [];
-  for (int i = 0; i < keysList.length; i++) {
-    listSections.add(
-      SectionsProductResponse(
-        name: keysList[i],
-        list: List<SectionItemProductResponse>.from(
-          (value[keysList[i]] as List<dynamic>).map(
-            (item) {
-              return SectionItemProductResponse.fromJson(item);
-            },
+  if (!(json is List)) {
+    Map value = Map.of(json);
+    List<dynamic> keysList = Map.of(json).keys.toList();
+
+    for (int i = 0; i < keysList.length; i++) {
+      listSections.add(
+        SectionsProductResponse(
+          name: keysList[i],
+          list: List<SectionItemProductResponse>.from(
+            (value[keysList[i]] as List<dynamic>).map(
+              (item) {
+                return SectionItemProductResponse.fromJson(item);
+              },
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
   return listSections;
 }

@@ -12,6 +12,7 @@ class UserResponse with _$UserResponse {
     int? discount,
     String? name,
     String? email,
+    String? virtualcardscod,
     @JsonKey(name: 'e') String? message,
     @JsonKey(name: 'sum_buy') int? sumBuy,
     @JsonKey(name: 'next_discount') int? nextDiscount,

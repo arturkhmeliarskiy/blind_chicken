@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -100,9 +101,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
                       ),
                     );
                 context.navigateTo(
-                  BoutiquesDescriptionRoute(
-                    boutique: boutiques[index],
-                  ),
+                  BoutiquesDescriptionRoute(),
                 );
               },
             );
@@ -214,32 +213,33 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    InkWell(
-                      onTap: () async {
-                        final location = await LocationService().getCurrentLocation();
-                        _moveToCurrentLocation(location, isOpenModal: false);
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        margin: const EdgeInsets.only(right: 16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                            5,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
-                              blurRadius: 4,
-                              offset: const Offset(0, 3), // Shadow position
+                    if (Platform.isIOS)
+                      GestureDetector(
+                        onTap: () async {
+                          final location = await LocationService().getCurrentLocation();
+                          _moveToCurrentLocation(location, isOpenModal: false);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          margin: const EdgeInsets.only(right: 16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              5,
                             ),
-                          ],
+                            boxShadow: [
+                              BoxShadow(
+                                color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
+                                blurRadius: 4,
+                                offset: const Offset(0, 3), // Shadow position
+                              ),
+                            ],
+                          ),
+                          padding: const EdgeInsets.all(2),
+                          child: SvgPicture.asset('assets/icons/location.svg'),
                         ),
-                        padding: const EdgeInsets.all(2),
-                        child: SvgPicture.asset('assets/icons/location.svg'),
                       ),
-                    ),
                     const SizedBox(
                       height: 8,
                     ),
@@ -460,9 +460,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
                       BoutiquesEvent.getInfoBoutique(uid: boutiques[i].uidStore),
                     );
                 context.navigateTo(
-                  BoutiquesDescriptionRoute(
-                    boutique: boutiques[i],
-                  ),
+                  BoutiquesDescriptionRoute(),
                 );
               },
             );

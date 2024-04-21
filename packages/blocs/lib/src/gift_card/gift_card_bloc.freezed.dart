@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GiftCardEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
+    required TResult Function(bool isNotification) preloadData,
     required TResult Function(CatalogGiftCardRequest request) createOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
+    TResult? Function(bool isNotification)? preloadData,
     TResult? Function(CatalogGiftCardRequest request)? createOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
+    TResult Function(bool isNotification)? preloadData,
     TResult Function(CatalogGiftCardRequest request)? createOrder,
     required TResult orElse(),
   }) =>
@@ -79,6 +79,8 @@ abstract class _$$InitGiftCardEventImplCopyWith<$Res> {
   factory _$$InitGiftCardEventImplCopyWith(_$InitGiftCardEventImpl value,
           $Res Function(_$InitGiftCardEventImpl) then) =
       __$$InitGiftCardEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isNotification});
 }
 
 /// @nodoc
@@ -88,54 +90,80 @@ class __$$InitGiftCardEventImplCopyWithImpl<$Res>
   __$$InitGiftCardEventImplCopyWithImpl(_$InitGiftCardEventImpl _value,
       $Res Function(_$InitGiftCardEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isNotification = null,
+  }) {
+    return _then(_$InitGiftCardEventImpl(
+      isNotification: null == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InitGiftCardEventImpl implements InitGiftCardEvent {
-  const _$InitGiftCardEventImpl();
+  const _$InitGiftCardEventImpl({required this.isNotification});
+
+  @override
+  final bool isNotification;
 
   @override
   String toString() {
-    return 'GiftCardEvent.preloadData()';
+    return 'GiftCardEvent.preloadData(isNotification: $isNotification)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitGiftCardEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitGiftCardEventImpl &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isNotification);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitGiftCardEventImplCopyWith<_$InitGiftCardEventImpl> get copyWith =>
+      __$$InitGiftCardEventImplCopyWithImpl<_$InitGiftCardEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
+    required TResult Function(bool isNotification) preloadData,
     required TResult Function(CatalogGiftCardRequest request) createOrder,
   }) {
-    return preloadData();
+    return preloadData(isNotification);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
+    TResult? Function(bool isNotification)? preloadData,
     TResult? Function(CatalogGiftCardRequest request)? createOrder,
   }) {
-    return preloadData?.call();
+    return preloadData?.call(isNotification);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
+    TResult Function(bool isNotification)? preloadData,
     TResult Function(CatalogGiftCardRequest request)? createOrder,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
-      return preloadData();
+      return preloadData(isNotification);
     }
     return orElse();
   }
@@ -173,7 +201,13 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
 }
 
 abstract class InitGiftCardEvent implements GiftCardEvent {
-  const factory InitGiftCardEvent() = _$InitGiftCardEventImpl;
+  const factory InitGiftCardEvent({required final bool isNotification}) =
+      _$InitGiftCardEventImpl;
+
+  bool get isNotification;
+  @JsonKey(ignore: true)
+  _$$InitGiftCardEventImplCopyWith<_$InitGiftCardEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -253,7 +287,7 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
+    required TResult Function(bool isNotification) preloadData,
     required TResult Function(CatalogGiftCardRequest request) createOrder,
   }) {
     return createOrder(request);
@@ -262,7 +296,7 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
+    TResult? Function(bool isNotification)? preloadData,
     TResult? Function(CatalogGiftCardRequest request)? createOrder,
   }) {
     return createOrder?.call(request);
@@ -271,7 +305,7 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
+    TResult Function(bool isNotification)? preloadData,
     TResult Function(CatalogGiftCardRequest request)? createOrder,
     required TResult orElse(),
   }) {
@@ -330,8 +364,12 @@ mixin _$GiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)
         preloadDataCompleted,
     required TResult Function(int orderId) createOrderSuccessfully,
   }) =>
@@ -340,8 +378,12 @@ mixin _$GiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult? Function(int orderId)? createOrderSuccessfully,
   }) =>
@@ -350,8 +392,12 @@ mixin _$GiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult Function(int orderId)? createOrderSuccessfully,
     required TResult orElse(),
@@ -446,8 +492,12 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)
         preloadDataCompleted,
     required TResult Function(int orderId) createOrderSuccessfully,
   }) {
@@ -459,8 +509,12 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult? Function(int orderId)? createOrderSuccessfully,
   }) {
@@ -472,8 +526,12 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult Function(int orderId)? createOrderSuccessfully,
     required TResult orElse(),
@@ -571,8 +629,12 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)
         preloadDataCompleted,
     required TResult Function(int orderId) createOrderSuccessfully,
   }) {
@@ -584,8 +646,12 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult? Function(int orderId)? createOrderSuccessfully,
   }) {
@@ -597,8 +663,12 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult Function(int orderId)? createOrderSuccessfully,
     required TResult orElse(),
@@ -665,6 +735,8 @@ abstract class _$$PreloadDataGiftCardStateImplCopyWith<$Res> {
   $Res call(
       {List<PaymentItemDataModel> payments,
       bool isLoadCreateOrder,
+      bool isUpdateVersionApp,
+      bool isNotification,
       String? creatOrderMessage});
 }
 
@@ -682,6 +754,8 @@ class __$$PreloadDataGiftCardStateImplCopyWithImpl<$Res>
   $Res call({
     Object? payments = null,
     Object? isLoadCreateOrder = null,
+    Object? isUpdateVersionApp = null,
+    Object? isNotification = null,
     Object? creatOrderMessage = freezed,
   }) {
     return _then(_$PreloadDataGiftCardStateImpl(
@@ -692,6 +766,14 @@ class __$$PreloadDataGiftCardStateImplCopyWithImpl<$Res>
       isLoadCreateOrder: null == isLoadCreateOrder
           ? _value.isLoadCreateOrder
           : isLoadCreateOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUpdateVersionApp: null == isUpdateVersionApp
+          ? _value.isUpdateVersionApp
+          : isUpdateVersionApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNotification: null == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
               as bool,
       creatOrderMessage: freezed == creatOrderMessage
           ? _value.creatOrderMessage
@@ -707,6 +789,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   const _$PreloadDataGiftCardStateImpl(
       {required final List<PaymentItemDataModel> payments,
       required this.isLoadCreateOrder,
+      required this.isUpdateVersionApp,
+      required this.isNotification,
       this.creatOrderMessage})
       : _payments = payments;
 
@@ -721,11 +805,15 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   @override
   final bool isLoadCreateOrder;
   @override
+  final bool isUpdateVersionApp;
+  @override
+  final bool isNotification;
+  @override
   final String? creatOrderMessage;
 
   @override
   String toString() {
-    return 'GiftCardState.preloadDataCompleted(payments: $payments, isLoadCreateOrder: $isLoadCreateOrder, creatOrderMessage: $creatOrderMessage)';
+    return 'GiftCardState.preloadDataCompleted(payments: $payments, isLoadCreateOrder: $isLoadCreateOrder, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, creatOrderMessage: $creatOrderMessage)';
   }
 
   @override
@@ -736,6 +824,10 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
             const DeepCollectionEquality().equals(other._payments, _payments) &&
             (identical(other.isLoadCreateOrder, isLoadCreateOrder) ||
                 other.isLoadCreateOrder == isLoadCreateOrder) &&
+            (identical(other.isUpdateVersionApp, isUpdateVersionApp) ||
+                other.isUpdateVersionApp == isUpdateVersionApp) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification) &&
             (identical(other.creatOrderMessage, creatOrderMessage) ||
                 other.creatOrderMessage == creatOrderMessage));
   }
@@ -745,6 +837,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
       runtimeType,
       const DeepCollectionEquality().hash(_payments),
       isLoadCreateOrder,
+      isUpdateVersionApp,
+      isNotification,
       creatOrderMessage);
 
   @JsonKey(ignore: true)
@@ -759,12 +853,17 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)
         preloadDataCompleted,
     required TResult Function(int orderId) createOrderSuccessfully,
   }) {
-    return preloadDataCompleted(payments, isLoadCreateOrder, creatOrderMessage);
+    return preloadDataCompleted(payments, isLoadCreateOrder, isUpdateVersionApp,
+        isNotification, creatOrderMessage);
   }
 
   @override
@@ -772,13 +871,17 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult? Function(int orderId)? createOrderSuccessfully,
   }) {
-    return preloadDataCompleted?.call(
-        payments, isLoadCreateOrder, creatOrderMessage);
+    return preloadDataCompleted?.call(payments, isLoadCreateOrder,
+        isUpdateVersionApp, isNotification, creatOrderMessage);
   }
 
   @override
@@ -786,15 +889,19 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult Function(int orderId)? createOrderSuccessfully,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(
-          payments, isLoadCreateOrder, creatOrderMessage);
+      return preloadDataCompleted(payments, isLoadCreateOrder,
+          isUpdateVersionApp, isNotification, creatOrderMessage);
     }
     return orElse();
   }
@@ -845,10 +952,14 @@ abstract class PreloadDataGiftCardState implements GiftCardState {
   const factory PreloadDataGiftCardState(
       {required final List<PaymentItemDataModel> payments,
       required final bool isLoadCreateOrder,
+      required final bool isUpdateVersionApp,
+      required final bool isNotification,
       final String? creatOrderMessage}) = _$PreloadDataGiftCardStateImpl;
 
   List<PaymentItemDataModel> get payments;
   bool get isLoadCreateOrder;
+  bool get isUpdateVersionApp;
+  bool get isNotification;
   String? get creatOrderMessage;
   @JsonKey(ignore: true)
   _$$PreloadDataGiftCardStateImplCopyWith<_$PreloadDataGiftCardStateImpl>
@@ -927,8 +1038,12 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)
         preloadDataCompleted,
     required TResult Function(int orderId) createOrderSuccessfully,
   }) {
@@ -940,8 +1055,12 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult? Function(int orderId)? createOrderSuccessfully,
   }) {
@@ -953,8 +1072,12 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(List<PaymentItemDataModel> payments,
-            bool isLoadCreateOrder, String? creatOrderMessage)?
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String? creatOrderMessage)?
         preloadDataCompleted,
     TResult Function(int orderId)? createOrderSuccessfully,
     required TResult orElse(),

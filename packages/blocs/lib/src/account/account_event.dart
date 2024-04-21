@@ -28,6 +28,7 @@ class AccountEvent with _$AccountEvent {
   }) = PayOrderAccountEvent;
   const factory AccountEvent.logOut() = LogOutAccountEvent;
   const factory AccountEvent.removeAccount() = RemoveAccountEvent;
+  const factory AccountEvent.virtualCardsCod() = VirtualCardsCodAccountEvent;
   const factory AccountEvent.addFavouriteProduct({
     required int index,
     required ProductDataModel product,

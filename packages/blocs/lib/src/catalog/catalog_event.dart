@@ -61,6 +61,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.getInfoProductsPushNotification({
     required String path,
     required String sort,
+    required String filterSelect,
   }) = GetInfoProductsPushNotificationCatalogEvent;
   const factory CatalogEvent.getInfoProduct({
     required String code,

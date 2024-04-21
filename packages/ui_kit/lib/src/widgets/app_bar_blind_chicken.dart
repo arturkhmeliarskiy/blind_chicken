@@ -40,11 +40,17 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
           width: 1,
         ),
       ),
-      title: SvgPicture.asset(
-        'assets/images/logo.svg',
-        width: 92,
-        height: 35,
+      title: GestureDetector(
+        onTap: () {
+          context.navigateNamedTo('/dashboard/home/main');
+        },
+        child: SvgPicture.asset(
+          'assets/images/logo.svg',
+          width: 92,
+          height: 35,
+        ),
       ),
+      titleSpacing: 10.5,
       actions: [
         GestureDetector(
           onTap: () {

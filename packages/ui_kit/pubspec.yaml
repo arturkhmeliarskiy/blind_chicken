@@ -13,6 +13,7 @@ dependencies:
   flutter_svg: ^2.0.7
   google_fonts: ^4.0.4
   url_launcher: ^6.2.2
+  qr_flutter: ^4.1.0
   models:
     path: ../models
 

@@ -24,6 +24,7 @@ mixin _$UserResponse {
   int? get discount => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  String? get virtualcardscod => throw _privateConstructorUsedError;
   @JsonKey(name: 'e')
   String? get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'sum_buy')
@@ -57,6 +58,7 @@ abstract class $UserResponseCopyWith<$Res> {
       int? discount,
       String? name,
       String? email,
+      String? virtualcardscod,
       @JsonKey(name: 'e') String? message,
       @JsonKey(name: 'sum_buy') int? sumBuy,
       @JsonKey(name: 'next_discount') int? nextDiscount,
@@ -84,6 +86,7 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
     Object? discount = freezed,
     Object? name = freezed,
     Object? email = freezed,
+    Object? virtualcardscod = freezed,
     Object? message = freezed,
     Object? sumBuy = freezed,
     Object? nextDiscount = freezed,
@@ -108,6 +111,10 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      virtualcardscod: freezed == virtualcardscod
+          ? _value.virtualcardscod
+          : virtualcardscod // ignore: cast_nullable_to_non_nullable
               as String?,
       message: freezed == message
           ? _value.message
@@ -154,6 +161,7 @@ abstract class _$$UserResponseImplCopyWith<$Res>
       int? discount,
       String? name,
       String? email,
+      String? virtualcardscod,
       @JsonKey(name: 'e') String? message,
       @JsonKey(name: 'sum_buy') int? sumBuy,
       @JsonKey(name: 'next_discount') int? nextDiscount,
@@ -179,6 +187,7 @@ class __$$UserResponseImplCopyWithImpl<$Res>
     Object? discount = freezed,
     Object? name = freezed,
     Object? email = freezed,
+    Object? virtualcardscod = freezed,
     Object? message = freezed,
     Object? sumBuy = freezed,
     Object? nextDiscount = freezed,
@@ -203,6 +212,10 @@ class __$$UserResponseImplCopyWithImpl<$Res>
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      virtualcardscod: freezed == virtualcardscod
+          ? _value.virtualcardscod
+          : virtualcardscod // ignore: cast_nullable_to_non_nullable
               as String?,
       message: freezed == message
           ? _value.message
@@ -244,6 +257,7 @@ class _$UserResponseImpl extends _UserResponse {
       this.discount,
       this.name,
       this.email,
+      this.virtualcardscod,
       @JsonKey(name: 'e') this.message,
       @JsonKey(name: 'sum_buy') this.sumBuy,
       @JsonKey(name: 'next_discount') this.nextDiscount,
@@ -266,6 +280,8 @@ class _$UserResponseImpl extends _UserResponse {
   final String? name;
   @override
   final String? email;
+  @override
+  final String? virtualcardscod;
   @override
   @JsonKey(name: 'e')
   final String? message;
@@ -297,7 +313,7 @@ class _$UserResponseImpl extends _UserResponse {
 
   @override
   String toString() {
-    return 'UserResponse(phone: $phone, discount: $discount, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
+    return 'UserResponse(phone: $phone, discount: $discount, name: $name, email: $email, virtualcardscod: $virtualcardscod, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -310,6 +326,8 @@ class _$UserResponseImpl extends _UserResponse {
                 other.discount == discount) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.virtualcardscod, virtualcardscod) ||
+                other.virtualcardscod == virtualcardscod) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.sumBuy, sumBuy) || other.sumBuy == sumBuy) &&
             (identical(other.nextDiscount, nextDiscount) ||
@@ -332,6 +350,7 @@ class _$UserResponseImpl extends _UserResponse {
       discount,
       name,
       email,
+      virtualcardscod,
       message,
       sumBuy,
       nextDiscount,
@@ -360,6 +379,7 @@ abstract class _UserResponse extends UserResponse {
       final int? discount,
       final String? name,
       final String? email,
+      final String? virtualcardscod,
       @JsonKey(name: 'e') final String? message,
       @JsonKey(name: 'sum_buy') final int? sumBuy,
       @JsonKey(name: 'next_discount') final int? nextDiscount,
@@ -381,6 +401,8 @@ abstract class _UserResponse extends UserResponse {
   String? get name;
   @override
   String? get email;
+  @override
+  String? get virtualcardscod;
   @override
   @JsonKey(name: 'e')
   String? get message;
