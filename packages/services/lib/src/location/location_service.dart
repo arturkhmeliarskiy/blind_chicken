@@ -21,6 +21,7 @@ class LocationService {
     String? query,
     String? cityId,
     String? streetId,
+    int? withParent,
     int? limit,
     int? offset,
   }) async {
@@ -34,6 +35,7 @@ class LocationService {
         queryParameters: {
           'token': '5KdnYde7hn9rA3kk25kreySKitEeshYs',
           'contentType': contentType,
+          if (withParent != null) 'withParent': withParent,
           if (query != null) 'query': query,
           if (cityId != null) 'cityId': cityId,
           if (streetId != null) 'streetId': streetId,

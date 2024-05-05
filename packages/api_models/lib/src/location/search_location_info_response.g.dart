@@ -22,6 +22,10 @@ _$SearchLocationInfoResponseImpl _$$SearchLocationInfoResponseImplFromJson(
       oktmo: json['oktmo'] as String?,
       parentGuid: json['parentGuid'] as String?,
       cadnum: json['cadnum'] as String?,
+      parents: (json['parents'] as List<dynamic>?)
+          ?.map((e) =>
+              SearchLocationInfoResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$SearchLocationInfoResponseImplToJson(
@@ -40,4 +44,5 @@ Map<String, dynamic> _$$SearchLocationInfoResponseImplToJson(
       'oktmo': instance.oktmo,
       'parentGuid': instance.parentGuid,
       'cadnum': instance.cadnum,
+      'parents': instance.parents,
     };

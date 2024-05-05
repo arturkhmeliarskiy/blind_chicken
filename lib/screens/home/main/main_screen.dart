@@ -23,6 +23,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _search = TextEditingController();
+  bool _isOpenNotification = true;
 
   @override
   void initState() {
@@ -38,66 +39,85 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvoked: (value) {},
-      child: Stack(
-        children: [
-          BlocListener<CatalogBloc, CatalogState>(
-            listener: (context, state) {
-              state.maybeMap(
-                preloadDataCompleted: (initState) {
-                  final updateData = GetIt.I.get<UpdateDataService>();
-                  if (initState.isUpdateVersionApp && !initState.isNotification) {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return BlindChickenUpdateAppInfo(
-                            nowVersionApp: initState.nowVersionApp,
-                            updateVersionApp: initState.updateVersionApp,
-                            onBack: () {
-                              context.popRoute();
-                            },
-                            onUpdate: () {
-                              context.popRoute();
-                              if (Platform.isAndroid || Platform.isIOS) {
-                                final appId = Platform.isAndroid
-                                    ? 'YOUR_ANDROID_PACKAGE_ID'
-                                    : 'com.slepayakurica.app';
-                                final url = Uri.parse(
-                                  Platform.isAndroid
-                                      ? "market://details?id=$appId"
-                                      : "https://apps.apple.com/ru/app/id6471508431",
-                                );
-                                launchUrl(
-                                  url,
-                                  mode: LaunchMode.externalApplication,
-                                );
-                              }
-                            },
-                          );
-                        }).then((val) {
+    return Stack(
+      children: [
+        BlocListener<CatalogBloc, CatalogState>(
+          listener: (context, state) {
+            state.maybeMap(
+              preloadDataCompleted: (initState) {
+                final updateData = GetIt.I.get<UpdateDataService>();
+
+                if (updateData.isInitApp && updateData.isNotification && _isOpenNotification) {
+                  context.navigateTo(
+                    CatalogRoute(
+                      title: '',
+                      url: updateData.sectionNotification,
+                      sort: updateData.sortNotification,
+                      filterSelect: updateData.filterSelectNotification,
+                      isNotification: true,
+                    ),
+                  );
+                  setState(() {
+                    _isOpenNotification = false;
+                  });
+                }
+                if (initState.isUpdateVersionApp && !initState.isNotification) {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return BlindChickenUpdateAppInfo(
+                        nowVersionApp: initState.nowVersionApp,
+                        updateVersionApp: initState.updateVersionApp,
+                        onBack: () {
+                          context.popRoute();
+                        },
+                        onUpdate: () {
+                          context.popRoute();
+                          if (Platform.isAndroid || Platform.isIOS) {
+                            final appId = Platform.isAndroid
+                                ? 'YOUR_ANDROID_PACKAGE_ID'
+                                : 'com.slepayakurica.app';
+                            final url = Uri.parse(
+                              Platform.isAndroid
+                                  ? "market://details?id=$appId"
+                                  : "https://apps.apple.com/ru/app/id6471508431",
+                            );
+                            launchUrl(
+                              url,
+                              mode: LaunchMode.externalApplication,
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ).then(
+                    (val) {
                       updateData.isOpenUpdateModalWindow = false;
-                    });
-                  }
-                },
-                orElse: () => const SizedBox(),
-              );
-            },
-            child: Scaffold(
-              backgroundColor: BlindChickenColors.backgroundColor,
-              body: SafeArea(
-                child: SingleChildScrollView(
-                  controller: _scrollController,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const AppBarBlindChicken(),
-                      BlocBuilder<CatalogBloc, CatalogState>(
-                        builder: (context, state) {
-                          return state.maybeMap(
-                            preloadDataCompleted: (initState) {
-                              return Column(
+                    },
+                  );
+                }
+                updateData.isInitApp = true;
+              },
+              orElse: () => const SizedBox(),
+            );
+          },
+          child: Scaffold(
+            backgroundColor: BlindChickenColors.backgroundColor,
+            body: SafeArea(
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const AppBarBlindChicken(),
+                    BlocBuilder<CatalogBloc, CatalogState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          preloadDataCompleted: (initState) {
+                            return PopScope(
+                              canPop: false,
+                              onPopInvoked: (value) {},
+                              child: Column(
                                 children: [
                                   GestureDetector(
                                     onTap: () {
@@ -325,33 +345,41 @@ class _MainScreenState extends State<MainScreen> {
                                     height: 96,
                                   ),
                                 ],
-                              );
-                            },
-                            orElse: () => const SizedBox(),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                              ),
+                            );
+                          },
+                          orElse: () => const SizedBox(),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-          BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-            return state.maybeMap(
-              load: (value) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                    backgroundColor: Colors.grey.shade400,
-                  ),
-                );
-              },
-              orElse: () => const SizedBox(),
-            );
-          }),
-        ],
-      ),
+        ),
+        BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+          return state.maybeMap(
+            load: (value) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                  backgroundColor: Colors.grey.shade400,
+                ),
+              );
+            },
+            error: (value) {
+              return BlindChickenErrorInfo(
+                errorMessage: value.errorMessage,
+                onRepeatRequest: () {
+                  context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                },
+              );
+            },
+            orElse: () => const SizedBox(),
+          );
+        }),
+      ],
     );
   }
 }

@@ -25,6 +25,7 @@ class CatalogCashbackInfo extends StatefulWidget {
     required this.userBuyForNextDiscountVal,
     required this.pb,
     required this.successfullyLogin,
+    required this.onBack,
   });
 
   final int cashback;
@@ -41,6 +42,7 @@ class CatalogCashbackInfo extends StatefulWidget {
   final int pb;
   final bool isAuth;
   final VoidCallback successfullyLogin;
+  final ValueChanged<BuildContext> onBack;
 
   @override
   State<CatalogCashbackInfo> createState() => _CatalogCashbackInfoState();
@@ -333,6 +335,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                     userDiscount: widget.userDiscount,
                     p: widget.p,
                     pb: widget.pb,
+                    onBack: widget.onBack,
                   );
                 },
               );

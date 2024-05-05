@@ -4,7 +4,6 @@ import 'package:blind_chicken/screens/home/main/widgets/main_category_product_it
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -61,24 +60,12 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        context.read<CatalogBloc>().add(
-              CatalogEvent.removePathMenu(
-                items: [
-                  MenuItemDataModel(
-                    idParent: 0,
-                    id: 0,
-                    url: '',
-                    name: widget.title,
-                    sub: 0,
-                    title: 0,
-                    brand: 0,
-                  )
-                ],
-              ),
-            );
-        return true;
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {},
+      onHorizontalDragEnd: (DragEndDetails details) {
+        if (details.velocity.pixelsPerSecond.dx > 0) {
+          context.back();
+        }
       },
       child: Scaffold(
         body: ListView(

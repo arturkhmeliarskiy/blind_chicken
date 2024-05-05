@@ -12,7 +12,7 @@ part of 'boutiques_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BoutiquesEvent {
@@ -101,7 +101,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitBoutiquesEventImpl);
   }
@@ -229,7 +229,7 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoBoutiquesEventImpl &&
@@ -437,7 +437,7 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitBoutiquesStateImpl);
   }
@@ -567,7 +567,7 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingBoutiquesStateImpl);
@@ -683,8 +683,6 @@ abstract class _$$PreloadDataCompletedBoutiquesStateImplCopyWith<$Res> {
       bool isNotification,
       List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
       BoutiqueDataInfoDataModel? boutiqueDetails});
-
-  $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails;
 }
 
 /// @nodoc
@@ -728,19 +726,6 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
           : boutiqueDetails // ignore: cast_nullable_to_non_nullable
               as BoutiqueDataInfoDataModel?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails {
-    if (_value.boutiqueDetails == null) {
-      return null;
-    }
-
-    return $BoutiqueDataInfoDataModelCopyWith<$Res>(_value.boutiqueDetails!,
-        (value) {
-      return _then(_value.copyWith(boutiqueDetails: value));
-    });
   }
 }
 
@@ -788,7 +773,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedBoutiquesStateImpl &&
@@ -800,8 +785,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
                 other.isNotification == isNotification) &&
             const DeepCollectionEquality()
                 .equals(other._boutiqueInfo, _boutiqueInfo) &&
-            (identical(other.boutiqueDetails, boutiqueDetails) ||
-                other.boutiqueDetails == boutiqueDetails));
+            const DeepCollectionEquality()
+                .equals(other.boutiqueDetails, boutiqueDetails));
   }
 
   @override
@@ -811,7 +796,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
       isUpdateVersionApp,
       isNotification,
       const DeepCollectionEquality().hash(_boutiqueInfo),
-      boutiqueDetails);
+      const DeepCollectionEquality().hash(boutiqueDetails));
 
   @JsonKey(ignore: true)
   @override

@@ -26,6 +26,10 @@ class AppTheme {
     primaryColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Roboto',
+    pageTransitionsTheme: const PageTransitionsTheme(builders: {
+      TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    }),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 15.4,

@@ -12,7 +12,7 @@ class BlindChickenQrCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return QrImageView(
-      data: '1234567890',
+      data: data,
       version: QrVersions.auto,
     );
   }

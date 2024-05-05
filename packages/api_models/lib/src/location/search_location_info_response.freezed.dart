@@ -12,7 +12,7 @@ part of 'search_location_info_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SearchLocationInfoResponse _$SearchLocationInfoResponseFromJson(
     Map<String, dynamic> json) {
@@ -34,6 +34,8 @@ mixin _$SearchLocationInfoResponse {
   String? get oktmo => throw _privateConstructorUsedError;
   String? get parentGuid => throw _privateConstructorUsedError;
   String? get cadnum => throw _privateConstructorUsedError;
+  List<SearchLocationInfoResponse>? get parents =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,7 +63,8 @@ abstract class $SearchLocationInfoResponseCopyWith<$Res> {
       String? ifnsul,
       String? oktmo,
       String? parentGuid,
-      String? cadnum});
+      String? cadnum,
+      List<SearchLocationInfoResponse>? parents});
 }
 
 /// @nodoc
@@ -91,6 +94,7 @@ class _$SearchLocationInfoResponseCopyWithImpl<$Res,
     Object? oktmo = freezed,
     Object? parentGuid = freezed,
     Object? cadnum = freezed,
+    Object? parents = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -145,6 +149,10 @@ class _$SearchLocationInfoResponseCopyWithImpl<$Res,
           ? _value.cadnum
           : cadnum // ignore: cast_nullable_to_non_nullable
               as String?,
+      parents: freezed == parents
+          ? _value.parents
+          : parents // ignore: cast_nullable_to_non_nullable
+              as List<SearchLocationInfoResponse>?,
     ) as $Val);
   }
 }
@@ -171,7 +179,8 @@ abstract class _$$SearchLocationInfoResponseImplCopyWith<$Res>
       String? ifnsul,
       String? oktmo,
       String? parentGuid,
-      String? cadnum});
+      String? cadnum,
+      List<SearchLocationInfoResponse>? parents});
 }
 
 /// @nodoc
@@ -200,6 +209,7 @@ class __$$SearchLocationInfoResponseImplCopyWithImpl<$Res>
     Object? oktmo = freezed,
     Object? parentGuid = freezed,
     Object? cadnum = freezed,
+    Object? parents = freezed,
   }) {
     return _then(_$SearchLocationInfoResponseImpl(
       id: freezed == id
@@ -254,6 +264,10 @@ class __$$SearchLocationInfoResponseImplCopyWithImpl<$Res>
           ? _value.cadnum
           : cadnum // ignore: cast_nullable_to_non_nullable
               as String?,
+      parents: freezed == parents
+          ? _value._parents
+          : parents // ignore: cast_nullable_to_non_nullable
+              as List<SearchLocationInfoResponse>?,
     ));
   }
 }
@@ -274,8 +288,10 @@ class _$SearchLocationInfoResponseImpl extends _SearchLocationInfoResponse {
       this.ifnsul,
       this.oktmo,
       this.parentGuid,
-      this.cadnum})
-      : super._();
+      this.cadnum,
+      final List<SearchLocationInfoResponse>? parents})
+      : _parents = parents,
+        super._();
 
   factory _$SearchLocationInfoResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -307,14 +323,23 @@ class _$SearchLocationInfoResponseImpl extends _SearchLocationInfoResponse {
   final String? parentGuid;
   @override
   final String? cadnum;
-
+  final List<SearchLocationInfoResponse>? _parents;
   @override
-  String toString() {
-    return 'SearchLocationInfoResponse(id: $id, name: $name, zip: $zip, type: $type, typeShort: $typeShort, okato: $okato, contentType: $contentType, guid: $guid, ifnsfl: $ifnsfl, ifnsul: $ifnsul, oktmo: $oktmo, parentGuid: $parentGuid, cadnum: $cadnum)';
+  List<SearchLocationInfoResponse>? get parents {
+    final value = _parents;
+    if (value == null) return null;
+    if (_parents is EqualUnmodifiableListView) return _parents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  bool operator ==(dynamic other) {
+  String toString() {
+    return 'SearchLocationInfoResponse(id: $id, name: $name, zip: $zip, type: $type, typeShort: $typeShort, okato: $okato, contentType: $contentType, guid: $guid, ifnsfl: $ifnsfl, ifnsul: $ifnsul, oktmo: $oktmo, parentGuid: $parentGuid, cadnum: $cadnum, parents: $parents)';
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchLocationInfoResponseImpl &&
@@ -333,13 +358,28 @@ class _$SearchLocationInfoResponseImpl extends _SearchLocationInfoResponse {
             (identical(other.oktmo, oktmo) || other.oktmo == oktmo) &&
             (identical(other.parentGuid, parentGuid) ||
                 other.parentGuid == parentGuid) &&
-            (identical(other.cadnum, cadnum) || other.cadnum == cadnum));
+            (identical(other.cadnum, cadnum) || other.cadnum == cadnum) &&
+            const DeepCollectionEquality().equals(other._parents, _parents));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, zip, type, typeShort,
-      okato, contentType, guid, ifnsfl, ifnsul, oktmo, parentGuid, cadnum);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      zip,
+      type,
+      typeShort,
+      okato,
+      contentType,
+      guid,
+      ifnsfl,
+      ifnsul,
+      oktmo,
+      parentGuid,
+      cadnum,
+      const DeepCollectionEquality().hash(_parents));
 
   @JsonKey(ignore: true)
   @override
@@ -358,19 +398,21 @@ class _$SearchLocationInfoResponseImpl extends _SearchLocationInfoResponse {
 
 abstract class _SearchLocationInfoResponse extends SearchLocationInfoResponse {
   factory _SearchLocationInfoResponse(
-      {final String? id,
-      final String? name,
-      final int? zip,
-      final String? type,
-      final String? typeShort,
-      final String? okato,
-      final String? contentType,
-      final String? guid,
-      final String? ifnsfl,
-      final String? ifnsul,
-      final String? oktmo,
-      final String? parentGuid,
-      final String? cadnum}) = _$SearchLocationInfoResponseImpl;
+          {final String? id,
+          final String? name,
+          final int? zip,
+          final String? type,
+          final String? typeShort,
+          final String? okato,
+          final String? contentType,
+          final String? guid,
+          final String? ifnsfl,
+          final String? ifnsul,
+          final String? oktmo,
+          final String? parentGuid,
+          final String? cadnum,
+          final List<SearchLocationInfoResponse>? parents}) =
+      _$SearchLocationInfoResponseImpl;
   _SearchLocationInfoResponse._() : super._();
 
   factory _SearchLocationInfoResponse.fromJson(Map<String, dynamic> json) =
@@ -402,6 +444,8 @@ abstract class _SearchLocationInfoResponse extends SearchLocationInfoResponse {
   String? get parentGuid;
   @override
   String? get cadnum;
+  @override
+  List<SearchLocationInfoResponse>? get parents;
   @override
   @JsonKey(ignore: true)
   _$$SearchLocationInfoResponseImplCopyWith<_$SearchLocationInfoResponseImpl>

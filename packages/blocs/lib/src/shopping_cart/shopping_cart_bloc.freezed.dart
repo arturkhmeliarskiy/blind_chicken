@@ -12,7 +12,7 @@ part of 'shopping_cart_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ShoppingCartEvent {
@@ -260,7 +260,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitShoppingCartEventImpl);
@@ -525,7 +525,7 @@ class _$PreloadDataShoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataShoppingCartEventImpl);
@@ -768,8 +768,6 @@ abstract class _$$AddProductToSoppingCartEventImplCopyWith<$Res> {
       __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item});
-
-  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -785,22 +783,14 @@ class __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$AddProductToSoppingCartEventImpl(
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BasketInfoItemDataModelCopyWith<$Res> get item {
-    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -819,15 +809,16 @@ class _$AddProductToSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartEventImpl &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -1078,8 +1069,6 @@ abstract class _$$DeleteProductToSoppingCartEventImplCopyWith<$Res> {
       __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item, int index});
-
-  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1095,11 +1084,11 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = null,
+    Object? item = freezed,
     Object? index = null,
   }) {
     return _then(_$DeleteProductToSoppingCartEventImpl(
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
@@ -1108,14 +1097,6 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BasketInfoItemDataModelCopyWith<$Res> get item {
-    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -1137,16 +1118,17 @@ class _$DeleteProductToSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteProductToSoppingCartEventImpl &&
-            (identical(other.item, item) || other.item == item) &&
+            const DeepCollectionEquality().equals(other.item, item) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item, index);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(item), index);
 
   @JsonKey(ignore: true)
   @override
@@ -1398,8 +1380,6 @@ abstract class _$$UpdateProductToSoppingCartEventImplCopyWith<$Res> {
       __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item, int index});
-
-  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1415,11 +1395,11 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = null,
+    Object? item = freezed,
     Object? index = null,
   }) {
     return _then(_$UpdateProductToSoppingCartEventImpl(
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
@@ -1428,14 +1408,6 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BasketInfoItemDataModelCopyWith<$Res> get item {
-    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -1457,16 +1429,17 @@ class _$UpdateProductToSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateProductToSoppingCartEventImpl &&
-            (identical(other.item, item) || other.item == item) &&
+            const DeepCollectionEquality().equals(other.item, item) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item, index);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(item), index);
 
   @JsonKey(ignore: true)
   @override
@@ -1741,7 +1714,7 @@ class _$PaymentBonusSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentBonusSoppingCartEventImpl);
@@ -2007,7 +1980,7 @@ class _$InitGiftCardSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitGiftCardSoppingCartEventImpl);
@@ -2298,7 +2271,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GiftCardSoppingCartEventImpl &&
@@ -2557,8 +2530,6 @@ abstract class _$$AddGiftCardSoppingCartEventImplCopyWith<$Res> {
       __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketSertDeliveryRequest giftCard});
-
-  $BasketSertDeliveryRequestCopyWith<$Res> get giftCard;
 }
 
 /// @nodoc
@@ -2574,22 +2545,14 @@ class __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? giftCard = null,
+    Object? giftCard = freezed,
   }) {
     return _then(_$AddGiftCardSoppingCartEventImpl(
-      giftCard: null == giftCard
+      giftCard: freezed == giftCard
           ? _value.giftCard
           : giftCard // ignore: cast_nullable_to_non_nullable
               as BasketSertDeliveryRequest,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BasketSertDeliveryRequestCopyWith<$Res> get giftCard {
-    return $BasketSertDeliveryRequestCopyWith<$Res>(_value.giftCard, (value) {
-      return _then(_value.copyWith(giftCard: value));
-    });
   }
 }
 
@@ -2607,16 +2570,16 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddGiftCardSoppingCartEventImpl &&
-            (identical(other.giftCard, giftCard) ||
-                other.giftCard == giftCard));
+            const DeepCollectionEquality().equals(other.giftCard, giftCard));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, giftCard);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(giftCard));
 
   @JsonKey(ignore: true)
   @override
@@ -2905,7 +2868,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeliverySoppingCartEventImpl &&
@@ -3210,7 +3173,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PromoCodeSoppingCartEventImpl &&
@@ -3493,7 +3456,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemovePromoCodeSoppingCartEventImpl);
@@ -3736,8 +3699,6 @@ abstract class _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<$Res> {
       __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketOrderRequest request});
-
-  $BasketOrderRequestCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -3753,22 +3714,14 @@ class __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = null,
+    Object? request = freezed,
   }) {
     return _then(_$CreateOrderPromoCodeSoppingCartEventImpl(
-      request: null == request
+      request: freezed == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as BasketOrderRequest,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BasketOrderRequestCopyWith<$Res> get request {
-    return $BasketOrderRequestCopyWith<$Res>(_value.request, (value) {
-      return _then(_value.copyWith(request: value));
-    });
   }
 }
 
@@ -3787,15 +3740,16 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderPromoCodeSoppingCartEventImpl &&
-            (identical(other.request, request) || other.request == request));
+            const DeepCollectionEquality().equals(other.request, request));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, request);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(request));
 
   @JsonKey(ignore: true)
   @override
@@ -4086,7 +4040,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BonusesSoppingCartEventImpl &&
@@ -4391,7 +4345,7 @@ class _$GetInfoProductShoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductShoppingCartEventImpl &&
@@ -4677,7 +4631,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoBackProductInfoCategotyShoppingCartEventImpl);
@@ -4921,8 +4875,6 @@ abstract class _$$AddFavouriteProductShoppingCartEventImplCopyWith<$Res> {
       __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
-
-  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -4939,26 +4891,18 @@ class __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? product = null,
+    Object? product = freezed,
   }) {
     return _then(_$AddFavouriteProductShoppingCartEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      product: null == product
+      product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductDataModelCopyWith<$Res> get product {
-    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
   }
 }
 
@@ -4980,16 +4924,17 @@ class _$AddFavouriteProductShoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductShoppingCartEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.product, product) || other.product == product));
+            const DeepCollectionEquality().equals(other.product, product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, product);
+  int get hashCode => Object.hash(
+      runtimeType, index, const DeepCollectionEquality().hash(product));
 
   @JsonKey(ignore: true)
   @override
@@ -5283,7 +5228,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFavouriteProductShoppingCartEventImpl &&
@@ -5567,7 +5512,7 @@ class _$AddProductToSoppingCartInfoEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartInfoEventImpl);
@@ -5810,8 +5755,6 @@ abstract class _$$CheckProductToSoppingCartEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
-
-  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -5827,22 +5770,14 @@ class __$$CheckProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = null,
+    Object? size = freezed,
   }) {
     return _then(_$CheckProductToSoppingCartEventImpl(
-      size: null == size
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SkuProductDataModelCopyWith<$Res> get size {
-    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
-      return _then(_value.copyWith(size: value));
-    });
   }
 }
 
@@ -5861,15 +5796,16 @@ class _$CheckProductToSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartEventImpl &&
-            (identical(other.size, size) || other.size == size));
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, size);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -6143,7 +6079,7 @@ class _$OpenAuthModelSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenAuthModelSoppingCartEventImpl);
@@ -6409,7 +6345,7 @@ class _$CloseAuthModelSoppingCartEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CloseAuthModelSoppingCartEventImpl);
@@ -6847,7 +6783,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitShoppingCartStateImpl);
@@ -7068,7 +7004,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingShoppingCartStateImpl);
@@ -7308,7 +7244,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderSuccessfullyShoppingCartStateImpl &&
@@ -7558,13 +7494,6 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       bool? isAuthModel,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct});
-
-  $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart;
-  $BoutiquesDataModelCopyWith<$Res> get boutiques;
-  $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus;
-  $PaymentBonusDataModelCopyWith<$Res>? get paymentGift;
-  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
 }
 
 /// @nodoc
@@ -7580,7 +7509,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shoppingCart = null,
+    Object? shoppingCart = freezed,
     Object? payments = null,
     Object? promoCodeMessage = null,
     Object? numberProducts = null,
@@ -7595,7 +7524,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? isLoadCreateOrder = null,
     Object? promoCode = null,
     Object? pickup = null,
-    Object? boutiques = null,
+    Object? boutiques = freezed,
     Object? listGiftCard = null,
     Object? creatOrderMessage = freezed,
     Object? paymentBonus = freezed,
@@ -7614,7 +7543,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? detailsProduct = freezed,
   }) {
     return _then(_$ProductsShoppingCartStateImpl(
-      shoppingCart: null == shoppingCart
+      shoppingCart: freezed == shoppingCart
           ? _value.shoppingCart
           : shoppingCart // ignore: cast_nullable_to_non_nullable
               as BasketFullInfoDataModel,
@@ -7674,7 +7603,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.pickup
           : pickup // ignore: cast_nullable_to_non_nullable
               as String,
-      boutiques: null == boutiques
+      boutiques: freezed == boutiques
           ? _value.boutiques
           : boutiques // ignore: cast_nullable_to_non_nullable
               as BoutiquesDataModel,
@@ -7743,72 +7672,6 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           : detailsProduct // ignore: cast_nullable_to_non_nullable
               as DetailProductDataModel?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart {
-    return $BasketFullInfoDataModelCopyWith<$Res>(_value.shoppingCart, (value) {
-      return _then(_value.copyWith(shoppingCart: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BoutiquesDataModelCopyWith<$Res> get boutiques {
-    return $BoutiquesDataModelCopyWith<$Res>(_value.boutiques, (value) {
-      return _then(_value.copyWith(boutiques: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus {
-    if (_value.paymentBonus == null) {
-      return null;
-    }
-
-    return $PaymentBonusDataModelCopyWith<$Res>(_value.paymentBonus!, (value) {
-      return _then(_value.copyWith(paymentBonus: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentBonusDataModelCopyWith<$Res>? get paymentGift {
-    if (_value.paymentGift == null) {
-      return null;
-    }
-
-    return $PaymentBonusDataModelCopyWith<$Res>(_value.paymentGift!, (value) {
-      return _then(_value.copyWith(paymentGift: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
-    if (_value.favouritesProductsInfo == null) {
-      return null;
-    }
-
-    return $FavouritesCatalogInfoDataModelCopyWith<$Res>(
-        _value.favouritesProductsInfo!, (value) {
-      return _then(_value.copyWith(favouritesProductsInfo: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
-    if (_value.detailsProduct == null) {
-      return null;
-    }
-
-    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
-        (value) {
-      return _then(_value.copyWith(detailsProduct: value));
-    });
   }
 }
 
@@ -7982,12 +7845,12 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsShoppingCartStateImpl &&
-            (identical(other.shoppingCart, shoppingCart) ||
-                other.shoppingCart == shoppingCart) &&
+            const DeepCollectionEquality()
+                .equals(other.shoppingCart, shoppingCart) &&
             const DeepCollectionEquality().equals(other._payments, _payments) &&
             (identical(other.promoCodeMessage, promoCodeMessage) ||
                 other.promoCodeMessage == promoCodeMessage) &&
@@ -8013,16 +7876,15 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             (identical(other.promoCode, promoCode) ||
                 other.promoCode == promoCode) &&
             (identical(other.pickup, pickup) || other.pickup == pickup) &&
-            (identical(other.boutiques, boutiques) ||
-                other.boutiques == boutiques) &&
+            const DeepCollectionEquality().equals(other.boutiques, boutiques) &&
             const DeepCollectionEquality()
                 .equals(other._listGiftCard, _listGiftCard) &&
             (identical(other.creatOrderMessage, creatOrderMessage) ||
                 other.creatOrderMessage == creatOrderMessage) &&
-            (identical(other.paymentBonus, paymentBonus) ||
-                other.paymentBonus == paymentBonus) &&
-            (identical(other.paymentGift, paymentGift) ||
-                other.paymentGift == paymentGift) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentBonus, paymentBonus) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentGift, paymentGift) &&
             (identical(other.isRemovePromoCode, isRemovePromoCode) ||
                 other.isRemovePromoCode == isRemovePromoCode) &&
             const DeepCollectionEquality()
@@ -8042,16 +7904,16 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 other.isSoppingCart == isSoppingCart) &&
             (identical(other.isAuthModel, isAuthModel) ||
                 other.isAuthModel == isAuthModel) &&
-            (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
-                other.favouritesProductsInfo == favouritesProductsInfo) &&
-            (identical(other.detailsProduct, detailsProduct) ||
-                other.detailsProduct == detailsProduct));
+            const DeepCollectionEquality()
+                .equals(other.favouritesProductsInfo, favouritesProductsInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.detailsProduct, detailsProduct));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        shoppingCart,
+        const DeepCollectionEquality().hash(shoppingCart),
         const DeepCollectionEquality().hash(_payments),
         promoCodeMessage,
         numberProducts,
@@ -8066,11 +7928,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isLoadCreateOrder,
         promoCode,
         pickup,
-        boutiques,
+        const DeepCollectionEquality().hash(boutiques),
         const DeepCollectionEquality().hash(_listGiftCard),
         creatOrderMessage,
-        paymentBonus,
-        paymentGift,
+        const DeepCollectionEquality().hash(paymentBonus),
+        const DeepCollectionEquality().hash(paymentGift),
         isRemovePromoCode,
         const DeepCollectionEquality().hash(_favouritesProducts),
         const DeepCollectionEquality().hash(_listProductsCode),
@@ -8081,8 +7943,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isAuth,
         isSoppingCart,
         isAuthModel,
-        favouritesProductsInfo,
-        detailsProduct
+        const DeepCollectionEquality().hash(favouritesProductsInfo),
+        const DeepCollectionEquality().hash(detailsProduct)
       ]);
 
   @JsonKey(ignore: true)

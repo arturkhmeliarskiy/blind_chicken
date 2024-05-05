@@ -19,5 +19,6 @@ class SearchLocationInfoDataModel with _$SearchLocationInfoDataModel {
     required String oktmo,
     required String parentGuid,
     required String cadnum,
+    required List<SearchLocationInfoDataModel> parents,
   }) = _SearchLocationInfoDataModel;
 }

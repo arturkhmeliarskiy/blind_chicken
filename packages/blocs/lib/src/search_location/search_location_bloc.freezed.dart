@@ -12,7 +12,7 @@ part of 'search_location_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchLocationEvent {
@@ -20,7 +20,7 @@ mixin _$SearchLocationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)
+            String? streetId, int? withParent, int? limit, int? offset)
         searchQuery,
     required TResult Function(String zipcode, int sum, String cityId)
         selectedAddress,
@@ -29,7 +29,7 @@ mixin _$SearchLocationEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)?
+            String? streetId, int? withParent, int? limit, int? offset)?
         searchQuery,
     TResult? Function(String zipcode, int sum, String cityId)? selectedAddress,
   }) =>
@@ -37,7 +37,7 @@ mixin _$SearchLocationEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)?
+            String? streetId, int? withParent, int? limit, int? offset)?
         searchQuery,
     TResult Function(String zipcode, int sum, String cityId)? selectedAddress,
     required TResult orElse(),
@@ -116,6 +116,7 @@ abstract class _$$SearchQuerySearchLocationEventImplCopyWith<$Res>
       String? query,
       String? cityId,
       String? streetId,
+      int? withParent,
       int? limit,
       int? offset});
 }
@@ -137,6 +138,7 @@ class __$$SearchQuerySearchLocationEventImplCopyWithImpl<$Res>
     Object? query = freezed,
     Object? cityId = freezed,
     Object? streetId = freezed,
+    Object? withParent = freezed,
     Object? limit = freezed,
     Object? offset = freezed,
   }) {
@@ -157,6 +159,10 @@ class __$$SearchQuerySearchLocationEventImplCopyWithImpl<$Res>
           ? _value.streetId
           : streetId // ignore: cast_nullable_to_non_nullable
               as String?,
+      withParent: freezed == withParent
+          ? _value.withParent
+          : withParent // ignore: cast_nullable_to_non_nullable
+              as int?,
       limit: freezed == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
@@ -178,6 +184,7 @@ class _$SearchQuerySearchLocationEventImpl
       this.query,
       this.cityId,
       this.streetId,
+      this.withParent,
       this.limit,
       this.offset});
 
@@ -190,17 +197,19 @@ class _$SearchQuerySearchLocationEventImpl
   @override
   final String? streetId;
   @override
+  final int? withParent;
+  @override
   final int? limit;
   @override
   final int? offset;
 
   @override
   String toString() {
-    return 'SearchLocationEvent.searchQuery(contentType: $contentType, query: $query, cityId: $cityId, streetId: $streetId, limit: $limit, offset: $offset)';
+    return 'SearchLocationEvent.searchQuery(contentType: $contentType, query: $query, cityId: $cityId, streetId: $streetId, withParent: $withParent, limit: $limit, offset: $offset)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchQuerySearchLocationEventImpl &&
@@ -210,13 +219,15 @@ class _$SearchQuerySearchLocationEventImpl
             (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.streetId, streetId) ||
                 other.streetId == streetId) &&
+            (identical(other.withParent, withParent) ||
+                other.withParent == withParent) &&
             (identical(other.limit, limit) || other.limit == limit) &&
             (identical(other.offset, offset) || other.offset == offset));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, contentType, query, cityId, streetId, limit, offset);
+  int get hashCode => Object.hash(runtimeType, contentType, query, cityId,
+      streetId, withParent, limit, offset);
 
   @JsonKey(ignore: true)
   @override
@@ -230,37 +241,39 @@ class _$SearchQuerySearchLocationEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)
+            String? streetId, int? withParent, int? limit, int? offset)
         searchQuery,
     required TResult Function(String zipcode, int sum, String cityId)
         selectedAddress,
   }) {
-    return searchQuery(contentType, query, cityId, streetId, limit, offset);
+    return searchQuery(
+        contentType, query, cityId, streetId, withParent, limit, offset);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)?
+            String? streetId, int? withParent, int? limit, int? offset)?
         searchQuery,
     TResult? Function(String zipcode, int sum, String cityId)? selectedAddress,
   }) {
     return searchQuery?.call(
-        contentType, query, cityId, streetId, limit, offset);
+        contentType, query, cityId, streetId, withParent, limit, offset);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)?
+            String? streetId, int? withParent, int? limit, int? offset)?
         searchQuery,
     TResult Function(String zipcode, int sum, String cityId)? selectedAddress,
     required TResult orElse(),
   }) {
     if (searchQuery != null) {
-      return searchQuery(contentType, query, cityId, streetId, limit, offset);
+      return searchQuery(
+          contentType, query, cityId, streetId, withParent, limit, offset);
     }
     return orElse();
   }
@@ -304,6 +317,7 @@ abstract class SearchQuerySearchLocationEvent implements SearchLocationEvent {
       final String? query,
       final String? cityId,
       final String? streetId,
+      final int? withParent,
       final int? limit,
       final int? offset}) = _$SearchQuerySearchLocationEventImpl;
 
@@ -312,6 +326,7 @@ abstract class SearchQuerySearchLocationEvent implements SearchLocationEvent {
   @override
   String? get cityId;
   String? get streetId;
+  int? get withParent;
   int? get limit;
   int? get offset;
   @override
@@ -387,7 +402,7 @@ class _$SelectedAddressLocationEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectedAddressLocationEventImpl &&
@@ -411,7 +426,7 @@ class _$SelectedAddressLocationEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)
+            String? streetId, int? withParent, int? limit, int? offset)
         searchQuery,
     required TResult Function(String zipcode, int sum, String cityId)
         selectedAddress,
@@ -423,7 +438,7 @@ class _$SelectedAddressLocationEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)?
+            String? streetId, int? withParent, int? limit, int? offset)?
         searchQuery,
     TResult? Function(String zipcode, int sum, String cityId)? selectedAddress,
   }) {
@@ -434,7 +449,7 @@ class _$SelectedAddressLocationEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String contentType, String? query, String? cityId,
-            String? streetId, int? limit, int? offset)?
+            String? streetId, int? withParent, int? limit, int? offset)?
         searchQuery,
     TResult Function(String zipcode, int sum, String cityId)? selectedAddress,
     required TResult orElse(),
@@ -597,7 +612,7 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitSearchLocationStateImpl);
@@ -715,7 +730,7 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingSearchLocationStateImpl);
@@ -811,8 +826,6 @@ abstract class _$$PreloadDataCompletedSearchLocationStateImplCopyWith<$Res> {
       __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SearchLocationDataModel searchResult, int price});
-
-  $SearchLocationDataModelCopyWith<$Res> get searchResult;
 }
 
 /// @nodoc
@@ -828,11 +841,11 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? searchResult = null,
+    Object? searchResult = freezed,
     Object? price = null,
   }) {
     return _then(_$PreloadDataCompletedSearchLocationStateImpl(
-      searchResult: null == searchResult
+      searchResult: freezed == searchResult
           ? _value.searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
               as SearchLocationDataModel,
@@ -841,14 +854,6 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
           : price // ignore: cast_nullable_to_non_nullable
               as int,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SearchLocationDataModelCopyWith<$Res> get searchResult {
-    return $SearchLocationDataModelCopyWith<$Res>(_value.searchResult, (value) {
-      return _then(_value.copyWith(searchResult: value));
-    });
   }
 }
 
@@ -870,17 +875,18 @@ class _$PreloadDataCompletedSearchLocationStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedSearchLocationStateImpl &&
-            (identical(other.searchResult, searchResult) ||
-                other.searchResult == searchResult) &&
+            const DeepCollectionEquality()
+                .equals(other.searchResult, searchResult) &&
             (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchResult, price);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(searchResult), price);
 
   @JsonKey(ignore: true)
   @override

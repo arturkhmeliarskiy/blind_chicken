@@ -22,7 +22,7 @@ import YandexMapsMobile
     
     methodChannel?.setMethodCallHandler({
     (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-    if (call.method == "getMessage") {
+    if (call.method == "section") {
       result("")
       return
       }
@@ -84,16 +84,16 @@ import YandexMapsMobile
     let userInfo = response.notification.request.content.userInfo
 
 
-    guard let apsDict = ((userInfo["aps"] as? NSDictionary)?.value(forKey: "alert")) as? NSDictionary,
-        let title = apsDict["title"] as? String,
-        let body = apsDict["body"] as? String
-        else { return }
+    // guard let apsDict = ((userInfo["aps"] as? NSDictionary)?.value(forKey: "alert")) as? NSDictionary,
+    //     let title = apsDict["title"] as? String,
+    //     let body = apsDict["body"] as? String
+    //     else { return }
 
 
-    guard let title = apsDict["title"] as? String
-        else { return }
-    guard let body = apsDict["body"] as? String
-        else { return }
+    // guard let title = apsDict["title"] as? String
+    //     else { return }
+    // guard let body = apsDict["body"] as? String
+    //     else { return }
     guard let section = userInfo["section"] as? String
         else { return }
     guard let idMessage = userInfo["id_message"] as? String
@@ -104,17 +104,39 @@ import YandexMapsMobile
         else { return }
     guard let filter = userInfo["filter"] as? String
         else { return }
+    guard let uid = userInfo["uid"] as? String
+        else { return }
 
       methodChannel?.setMethodCallHandler({
-        (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-        if (call.method == "getMessage") {
-          result("\(body),\(section),\(idMessage),\(type),\(sort)")
+        (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in  
+        if (call.method == "section") {
+          result("\("\(section)")")
           return
-        }        
-        if (call.method == "title") {
-          result("\("\(title)")")
+        }   
+        if (call.method == "idMessage") {
+          result("\("\(idMessage)")")
+          return
+        }  
+        if (call.method == "type") {
+          result("\("\(type)")")
+          return
+        }  
+        if (call.method == "sort") {
+          result("\("\(sort)")")
+          return
+        }  
+        if (call.method == "uid") {
+          result("\("\(uid)")")
           return
         }
+        // if (call.method == "title") {
+        //   result("\("\(title)")")
+        //   return
+        // }
+        // if (call.method == "body") {
+        //   result("\("\(body)")")
+        //   return
+        // }
         if (call.method == "filter") {
           result("\("\(filter)")")
           return

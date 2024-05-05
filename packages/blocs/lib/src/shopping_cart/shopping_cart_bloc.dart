@@ -693,7 +693,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     await state.mapOrNull(productsShoppingCart: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
 
-      listProductsCode.removeLast();
+      if (listProductsCode.isNotEmpty) {
+        listProductsCode.removeLast();
+      }
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,

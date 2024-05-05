@@ -1024,7 +1024,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         category: [],
         selectedGenderIndex: _updateDataService.selectedIndexGender,
         isAuth: isAuth,
-        offset: 0,
+        offset: 1,
         nowVersionApp: nowVersionApp,
         updateVersionApp: updateVersionApp,
         isNotification: true,

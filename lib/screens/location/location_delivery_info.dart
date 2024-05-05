@@ -109,6 +109,7 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                       title: 'Выберите город',
                       contentType: 'city',
                       value: _city.text,
+                      withParent: 1,
                       selectItem: (value) {
                         final item = value;
                         if (item != null) {
@@ -203,6 +204,7 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                       contentType: 'street',
                       cityId: _selectedCity?.id ?? '',
                       value: _street.text,
+                      withParent: 1,
                       selectItem: (value) {
                         final item = value;
                         if (item != null) {

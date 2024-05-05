@@ -527,6 +527,7 @@ extension on CatalogResponse {
 
 extension on DetailProductResponse {
   DetailProductDataModel toDetailsProduct(String genderIndex) {
+    final sectionsInfo = _sections(sections ?? [], genderIndex);
     return DetailProductDataModel(
       code: code ?? 0,
       photo: PhotoDataModel(
@@ -588,7 +589,12 @@ extension on DetailProductResponse {
             ) ??
             [],
       ),
-      sections: _sections(sections ?? [], genderIndex),
+      sections: sectionsInfo.isNotEmpty
+          ? sectionsInfo
+          : _sections(
+              sections ?? [],
+              sections?.first.name ?? '1',
+            ),
       place: PlaceProductDataModel(
         b: place?.b ?? 0,
         s: place?.s ?? 0,

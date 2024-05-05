@@ -158,6 +158,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: CatalogCardInfoScreen(
           key: args.key,
           item: args.item,
+          code: args.code,
           isLike: args.isLike,
           listItems: args.listItems,
           favouritesProducts: args.favouritesProducts,
@@ -277,9 +278,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     BlindChickenCashbackAndDiscountsRoute.name: (routeData) {
+      final args = routeData.argsAs<BlindChickenCashbackAndDiscountsRouteArgs>(
+          orElse: () => const BlindChickenCashbackAndDiscountsRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const BlindChickenCashbackAndDiscountsScreen(),
+        child: BlindChickenCashbackAndDiscountsScreen(
+          key: args.key,
+          onBack: args.onBack,
+        ),
       );
     },
     BrandsRoute.name: (routeData) {
@@ -304,6 +310,7 @@ abstract class _$AppRouter extends RootStackRouter {
           selectItem: args.selectItem,
           cityId: args.cityId,
           streetId: args.streetId,
+          withParent: args.withParent,
         ),
       );
     },
@@ -1100,7 +1107,8 @@ class CatalogSizeProductRouteArgs {
 class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
   CatalogCardInfoRoute({
     Key? key,
-    required ProductDataModel item,
+    ProductDataModel? item,
+    String? code = '',
     required bool isLike,
     required List<ProductDataModel> listItems,
     required List<ProductDataModel> favouritesProducts,
@@ -1111,6 +1119,7 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
           args: CatalogCardInfoRouteArgs(
             key: key,
             item: item,
+            code: code,
             isLike: isLike,
             listItems: listItems,
             favouritesProducts: favouritesProducts,
@@ -1128,7 +1137,8 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
 class CatalogCardInfoRouteArgs {
   const CatalogCardInfoRouteArgs({
     this.key,
-    required this.item,
+    this.item,
+    this.code = '',
     required this.isLike,
     required this.listItems,
     required this.favouritesProducts,
@@ -1137,7 +1147,9 @@ class CatalogCardInfoRouteArgs {
 
   final Key? key;
 
-  final ProductDataModel item;
+  final ProductDataModel? item;
+
+  final String? code;
 
   final bool isLike;
 
@@ -1149,7 +1161,7 @@ class CatalogCardInfoRouteArgs {
 
   @override
   String toString() {
-    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
   }
 }
 
@@ -1565,16 +1577,41 @@ class ChatMessangerRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [BlindChickenCashbackAndDiscountsScreen]
-class BlindChickenCashbackAndDiscountsRoute extends PageRouteInfo<void> {
-  const BlindChickenCashbackAndDiscountsRoute({List<PageRouteInfo>? children})
-      : super(
+class BlindChickenCashbackAndDiscountsRoute
+    extends PageRouteInfo<BlindChickenCashbackAndDiscountsRouteArgs> {
+  BlindChickenCashbackAndDiscountsRoute({
+    Key? key,
+    dynamic Function(BuildContext)? onBack,
+    List<PageRouteInfo>? children,
+  }) : super(
           BlindChickenCashbackAndDiscountsRoute.name,
+          args: BlindChickenCashbackAndDiscountsRouteArgs(
+            key: key,
+            onBack: onBack,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'BlindChickenCashbackAndDiscountsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<BlindChickenCashbackAndDiscountsRouteArgs> page =
+      PageInfo<BlindChickenCashbackAndDiscountsRouteArgs>(name);
+}
+
+class BlindChickenCashbackAndDiscountsRouteArgs {
+  const BlindChickenCashbackAndDiscountsRouteArgs({
+    this.key,
+    this.onBack,
+  });
+
+  final Key? key;
+
+  final dynamic Function(BuildContext)? onBack;
+
+  @override
+  String toString() {
+    return 'BlindChickenCashbackAndDiscountsRouteArgs{key: $key, onBack: $onBack}';
+  }
 }
 
 /// generated route for
@@ -1625,6 +1662,7 @@ class SearchLocationRoute extends PageRouteInfo<SearchLocationRouteArgs> {
     required void Function(SearchLocationInfoDataModel?) selectItem,
     String? cityId,
     String? streetId,
+    int? withParent,
     List<PageRouteInfo>? children,
   }) : super(
           SearchLocationRoute.name,
@@ -1636,6 +1674,7 @@ class SearchLocationRoute extends PageRouteInfo<SearchLocationRouteArgs> {
             selectItem: selectItem,
             cityId: cityId,
             streetId: streetId,
+            withParent: withParent,
           ),
           initialChildren: children,
         );
@@ -1655,6 +1694,7 @@ class SearchLocationRouteArgs {
     required this.selectItem,
     this.cityId,
     this.streetId,
+    this.withParent,
   });
 
   final Key? key;
@@ -1671,9 +1711,11 @@ class SearchLocationRouteArgs {
 
   final String? streetId;
 
+  final int? withParent;
+
   @override
   String toString() {
-    return 'SearchLocationRouteArgs{key: $key, title: $title, value: $value, contentType: $contentType, selectItem: $selectItem, cityId: $cityId, streetId: $streetId}';
+    return 'SearchLocationRouteArgs{key: $key, title: $title, value: $value, contentType: $contentType, selectItem: $selectItem, cityId: $cityId, streetId: $streetId, withParent: $withParent}';
   }
 }
 

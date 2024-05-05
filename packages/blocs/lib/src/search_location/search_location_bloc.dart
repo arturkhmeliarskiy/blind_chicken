@@ -32,6 +32,7 @@ class SearchLocationBloc extends Bloc<SearchLocationEvent, SearchLocationState> 
       query: event.query,
       cityId: event.cityId,
       streetId: event.streetId,
+      withParent: event.withParent,
       limit: event.limit,
       offset: event.offset,
     );

@@ -13,40 +13,34 @@ class BlindChickenFilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 58,
-      decoration: BoxDecoration(
-        color: BlindChickenColors.backgroundColor,
-        boxShadow: [
-          BoxShadow(
-            color: BlindChickenColors.activeBorderTextField.withOpacity(
-              0.1,
-            ),
-            blurRadius: 4,
-            offset: const Offset(0, -5), // Shadow position
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.5),
-        child: ElevatedButton(
-          onPressed: onOpen,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: BlindChickenColors.activeBorderTextField,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4), // <-- Radius
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Показать $countProducts товаров',
-                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      color: BlindChickenColors.backgroundColor,
-                    ),
+    return InkWell(
+      onTap: onOpen,
+      child: Container(
+        height: 58,
+        decoration: BoxDecoration(
+          color: BlindChickenColors.backgroundColor,
+          boxShadow: [
+            BoxShadow(
+              color: BlindChickenColors.activeBorderTextField.withOpacity(
+                0.1,
               ),
-            ],
+              blurRadius: 4,
+              offset: const Offset(0, -5), // Shadow position
+            ),
+          ],
+        ),
+        child: Container(
+          alignment: Alignment.center,
+          margin: const EdgeInsets.all(10.5),
+          decoration: BoxDecoration(
+            color: BlindChickenColors.activeBorderTextField,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Text(
+            'Показать $countProducts товаров',
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  color: BlindChickenColors.backgroundColor,
+                ),
           ),
         ),
       ),

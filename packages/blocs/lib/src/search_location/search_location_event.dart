@@ -7,6 +7,7 @@ class SearchLocationEvent with _$SearchLocationEvent {
     String? query,
     String? cityId,
     String? streetId,
+    int? withParent,
     int? limit,
     int? offset,
   }) = SearchQuerySearchLocationEvent;

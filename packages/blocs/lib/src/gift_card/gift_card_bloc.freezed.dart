@@ -12,7 +12,7 @@ part of 'gift_card_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GiftCardEvent {
@@ -119,7 +119,7 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitGiftCardEventImpl &&
@@ -218,8 +218,6 @@ abstract class _$$CreateOrderGiftCardEventImplCopyWith<$Res> {
       __$$CreateOrderGiftCardEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CatalogGiftCardRequest request});
-
-  $CatalogGiftCardRequestCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -234,22 +232,14 @@ class __$$CreateOrderGiftCardEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = null,
+    Object? request = freezed,
   }) {
     return _then(_$CreateOrderGiftCardEventImpl(
-      request: null == request
+      request: freezed == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as CatalogGiftCardRequest,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CatalogGiftCardRequestCopyWith<$Res> get request {
-    return $CatalogGiftCardRequestCopyWith<$Res>(_value.request, (value) {
-      return _then(_value.copyWith(request: value));
-    });
   }
 }
 
@@ -267,15 +257,16 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderGiftCardEventImpl &&
-            (identical(other.request, request) || other.request == request));
+            const DeepCollectionEquality().equals(other.request, request));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, request);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(request));
 
   @JsonKey(ignore: true)
   @override
@@ -479,7 +470,7 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitGiftCardStateImpl);
   }
@@ -615,7 +606,7 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingGiftCardStateImpl);
@@ -817,7 +808,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataGiftCardStateImpl &&
@@ -1015,7 +1006,7 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderSuccessfullyGiftCardStateImpl &&

@@ -12,7 +12,7 @@ part of 'search_location_info_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchLocationInfoDataModel {
@@ -29,6 +29,8 @@ mixin _$SearchLocationInfoDataModel {
   String get oktmo => throw _privateConstructorUsedError;
   String get parentGuid => throw _privateConstructorUsedError;
   String get cadnum => throw _privateConstructorUsedError;
+  List<SearchLocationInfoDataModel> get parents =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchLocationInfoDataModelCopyWith<SearchLocationInfoDataModel>
@@ -56,7 +58,8 @@ abstract class $SearchLocationInfoDataModelCopyWith<$Res> {
       String ifnsul,
       String oktmo,
       String parentGuid,
-      String cadnum});
+      String cadnum,
+      List<SearchLocationInfoDataModel> parents});
 }
 
 /// @nodoc
@@ -86,6 +89,7 @@ class _$SearchLocationInfoDataModelCopyWithImpl<$Res,
     Object? oktmo = null,
     Object? parentGuid = null,
     Object? cadnum = null,
+    Object? parents = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -140,6 +144,10 @@ class _$SearchLocationInfoDataModelCopyWithImpl<$Res,
           ? _value.cadnum
           : cadnum // ignore: cast_nullable_to_non_nullable
               as String,
+      parents: null == parents
+          ? _value.parents
+          : parents // ignore: cast_nullable_to_non_nullable
+              as List<SearchLocationInfoDataModel>,
     ) as $Val);
   }
 }
@@ -166,7 +174,8 @@ abstract class _$$SearchLocationInfoDataModelImplCopyWith<$Res>
       String ifnsul,
       String oktmo,
       String parentGuid,
-      String cadnum});
+      String cadnum,
+      List<SearchLocationInfoDataModel> parents});
 }
 
 /// @nodoc
@@ -195,6 +204,7 @@ class __$$SearchLocationInfoDataModelImplCopyWithImpl<$Res>
     Object? oktmo = null,
     Object? parentGuid = null,
     Object? cadnum = null,
+    Object? parents = null,
   }) {
     return _then(_$SearchLocationInfoDataModelImpl(
       id: null == id
@@ -249,6 +259,10 @@ class __$$SearchLocationInfoDataModelImplCopyWithImpl<$Res>
           ? _value.cadnum
           : cadnum // ignore: cast_nullable_to_non_nullable
               as String,
+      parents: null == parents
+          ? _value._parents
+          : parents // ignore: cast_nullable_to_non_nullable
+              as List<SearchLocationInfoDataModel>,
     ));
   }
 }
@@ -269,8 +283,10 @@ class _$SearchLocationInfoDataModelImpl extends _SearchLocationInfoDataModel {
       required this.ifnsul,
       required this.oktmo,
       required this.parentGuid,
-      required this.cadnum})
-      : super._();
+      required this.cadnum,
+      required final List<SearchLocationInfoDataModel> parents})
+      : _parents = parents,
+        super._();
 
   @override
   final String id;
@@ -298,14 +314,21 @@ class _$SearchLocationInfoDataModelImpl extends _SearchLocationInfoDataModel {
   final String parentGuid;
   @override
   final String cadnum;
-
+  final List<SearchLocationInfoDataModel> _parents;
   @override
-  String toString() {
-    return 'SearchLocationInfoDataModel(id: $id, name: $name, zip: $zip, type: $type, typeShort: $typeShort, okato: $okato, contentType: $contentType, guid: $guid, ifnsfl: $ifnsfl, ifnsul: $ifnsul, oktmo: $oktmo, parentGuid: $parentGuid, cadnum: $cadnum)';
+  List<SearchLocationInfoDataModel> get parents {
+    if (_parents is EqualUnmodifiableListView) return _parents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_parents);
   }
 
   @override
-  bool operator ==(dynamic other) {
+  String toString() {
+    return 'SearchLocationInfoDataModel(id: $id, name: $name, zip: $zip, type: $type, typeShort: $typeShort, okato: $okato, contentType: $contentType, guid: $guid, ifnsfl: $ifnsfl, ifnsul: $ifnsul, oktmo: $oktmo, parentGuid: $parentGuid, cadnum: $cadnum, parents: $parents)';
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchLocationInfoDataModelImpl &&
@@ -324,12 +347,27 @@ class _$SearchLocationInfoDataModelImpl extends _SearchLocationInfoDataModel {
             (identical(other.oktmo, oktmo) || other.oktmo == oktmo) &&
             (identical(other.parentGuid, parentGuid) ||
                 other.parentGuid == parentGuid) &&
-            (identical(other.cadnum, cadnum) || other.cadnum == cadnum));
+            (identical(other.cadnum, cadnum) || other.cadnum == cadnum) &&
+            const DeepCollectionEquality().equals(other._parents, _parents));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, zip, type, typeShort,
-      okato, contentType, guid, ifnsfl, ifnsul, oktmo, parentGuid, cadnum);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      zip,
+      type,
+      typeShort,
+      okato,
+      contentType,
+      guid,
+      ifnsfl,
+      ifnsul,
+      oktmo,
+      parentGuid,
+      cadnum,
+      const DeepCollectionEquality().hash(_parents));
 
   @JsonKey(ignore: true)
   @override
@@ -342,19 +380,21 @@ class _$SearchLocationInfoDataModelImpl extends _SearchLocationInfoDataModel {
 abstract class _SearchLocationInfoDataModel
     extends SearchLocationInfoDataModel {
   factory _SearchLocationInfoDataModel(
-      {required final String id,
-      required final String name,
-      required final int zip,
-      required final String type,
-      required final String typeShort,
-      required final String okato,
-      required final String contentType,
-      required final String guid,
-      required final String ifnsfl,
-      required final String ifnsul,
-      required final String oktmo,
-      required final String parentGuid,
-      required final String cadnum}) = _$SearchLocationInfoDataModelImpl;
+          {required final String id,
+          required final String name,
+          required final int zip,
+          required final String type,
+          required final String typeShort,
+          required final String okato,
+          required final String contentType,
+          required final String guid,
+          required final String ifnsfl,
+          required final String ifnsul,
+          required final String oktmo,
+          required final String parentGuid,
+          required final String cadnum,
+          required final List<SearchLocationInfoDataModel> parents}) =
+      _$SearchLocationInfoDataModelImpl;
   _SearchLocationInfoDataModel._() : super._();
 
   @override
@@ -383,6 +423,8 @@ abstract class _SearchLocationInfoDataModel
   String get parentGuid;
   @override
   String get cadnum;
+  @override
+  List<SearchLocationInfoDataModel> get parents;
   @override
   @JsonKey(ignore: true)
   _$$SearchLocationInfoDataModelImplCopyWith<_$SearchLocationInfoDataModelImpl>

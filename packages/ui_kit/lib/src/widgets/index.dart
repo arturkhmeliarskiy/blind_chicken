@@ -12,3 +12,4 @@ export 'blind_chicken_update_app_info.dart';
 export 'blind_chicken_error_info.dart';
 export 'blind_chicken_warning_message.dart';
 export 'blind_chicken_qr_code.dart';
+export 'blind_chicken_dialog.dart';

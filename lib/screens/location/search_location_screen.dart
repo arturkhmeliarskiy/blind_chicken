@@ -16,6 +16,7 @@ class SearchLocationScreen extends StatefulWidget {
     required this.selectItem,
     this.cityId,
     this.streetId,
+    this.withParent,
   });
 
   final String title;
@@ -23,6 +24,7 @@ class SearchLocationScreen extends StatefulWidget {
   final String contentType;
   final String? cityId;
   final String? streetId;
+  final int? withParent;
   final ValueChanged<SearchLocationInfoDataModel?> selectItem;
 
   @override
@@ -105,6 +107,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                       contentType: widget.contentType,
                                       cityId: widget.cityId,
                                       streetId: widget.streetId,
+                                      withParent: widget.withParent,
                                     ),
                                   );
                               setState(() {
@@ -199,6 +202,9 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                 shrinkWrap: true,
                                 itemCount: initState.searchResult.result.length,
                                 itemBuilder: (context, index) {
+                                  final parents = initState
+                                      .searchResult.result[index].parents.reversed
+                                      .toList();
                                   return GestureDetector(
                                     onTap: () {
                                       widget.selectItem(initState.searchResult.result[index]);
@@ -210,17 +216,37 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                         top: 14,
                                         left: 12.6,
                                       ),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            '${initState.searchResult.result[index].typeShort}. ',
-                                            style: Theme.of(context).textTheme.displayMedium,
-                                          ),
-                                          Text(
-                                            initState.searchResult.result[index].name,
-                                            style: Theme.of(context).textTheme.displayMedium,
-                                          ),
-                                        ],
+                                      child: RichText(
+                                        maxLines: 2,
+                                        text: TextSpan(
+                                          text:
+                                              '${initState.searchResult.result[index].typeShort}. ',
+                                          style: Theme.of(context).textTheme.displayMedium,
+                                          children: [
+                                            TextSpan(
+                                              text: initState.searchResult.result[index].name,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .displayMedium
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
+                                            ),
+                                            TextSpan(
+                                              children: List.generate(
+                                                parents.length,
+                                                (index) {
+                                                  return TextSpan(
+                                                    text:
+                                                        ' ${parents[index].typeShort}. ${parents[index].name}',
+                                                    style:
+                                                        Theme.of(context).textTheme.displayMedium,
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );

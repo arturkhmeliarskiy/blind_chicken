@@ -20,6 +20,7 @@ class SearchLocationInfoResponse with _$SearchLocationInfoResponse {
     String? oktmo,
     String? parentGuid,
     String? cadnum,
+    List<SearchLocationInfoResponse>? parents,
   }) = _SearchLocationInfoResponse;
   factory SearchLocationInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$SearchLocationInfoResponseFromJson(json);

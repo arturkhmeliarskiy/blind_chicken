@@ -12,7 +12,7 @@ part of 'account_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AccountEvent {
@@ -239,7 +239,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitAccountEventImpl &&
@@ -502,7 +502,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateInfoAccountEventImpl &&
@@ -760,7 +760,7 @@ class _$PaginationOrdersAccountEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaginationOrdersAccountEventImpl &&
@@ -989,7 +989,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetOrdersAccountEventImpl);
@@ -1218,7 +1218,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoOrderAccountEventImpl &&
@@ -1461,7 +1461,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoPayOrderAccountEventImpl &&
@@ -1702,7 +1702,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PayOrderAccountEventImpl &&
@@ -1927,7 +1927,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LogOutAccountEventImpl);
   }
@@ -2135,7 +2135,7 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RemoveAccountEventImpl);
   }
@@ -2345,7 +2345,7 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VirtualCardsCodAccountEventImpl);
@@ -2536,8 +2536,6 @@ abstract class _$$AddFavouriteProductAccountEventImplCopyWith<$Res> {
       __$$AddFavouriteProductAccountEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
-
-  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -2554,26 +2552,18 @@ class __$$AddFavouriteProductAccountEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? product = null,
+    Object? product = freezed,
   }) {
     return _then(_$AddFavouriteProductAccountEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      product: null == product
+      product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductDataModelCopyWith<$Res> get product {
-    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
   }
 }
 
@@ -2595,16 +2585,17 @@ class _$AddFavouriteProductAccountEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductAccountEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.product, product) || other.product == product));
+            const DeepCollectionEquality().equals(other.product, product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, product);
+  int get hashCode => Object.hash(
+      runtimeType, index, const DeepCollectionEquality().hash(product));
 
   @JsonKey(ignore: true)
   @override
@@ -2845,7 +2836,7 @@ class _$DeleteFavouriteProductAccountEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFavouriteProductAccountEventImpl &&
@@ -3097,7 +3088,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductAccountEventImpl &&
@@ -3328,7 +3319,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoBackProductInfoCategotyAccountEventImpl);
@@ -3542,7 +3533,7 @@ class _$AddProductToSoppingCartCAccountEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartCAccountEventImpl);
@@ -3733,8 +3724,6 @@ abstract class _$$CheckProductToSoppingCartAccountEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
-
-  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -3750,22 +3739,14 @@ class __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = null,
+    Object? size = freezed,
   }) {
     return _then(_$CheckProductToSoppingCartAccountEventImpl(
-      size: null == size
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SkuProductDataModelCopyWith<$Res> get size {
-    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
-      return _then(_value.copyWith(size: value));
-    });
   }
 }
 
@@ -3784,15 +3765,16 @@ class _$CheckProductToSoppingCartAccountEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartAccountEventImpl &&
-            (identical(other.size, size) || other.size == size));
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, size);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -3995,6 +3977,7 @@ mixin _$AccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4025,6 +4008,7 @@ mixin _$AccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4055,6 +4039,7 @@ mixin _$AccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4157,7 +4142,7 @@ class _$InitAccountStateImpl implements InitAccountState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitAccountStateImpl);
   }
@@ -4176,6 +4161,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4209,6 +4195,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4242,6 +4229,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4346,7 +4334,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingAccountStateImpl);
@@ -4366,6 +4354,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4399,6 +4388,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4432,6 +4422,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4554,7 +4545,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PayOrderAccountStateImpl &&
@@ -4583,6 +4574,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4616,6 +4608,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4649,6 +4642,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -4744,6 +4738,7 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       String name,
       String email,
       String countOrders,
+      String applicationVersion,
       List<OrderItemDataModel> orders,
       List<ProductDataModel> favouritesProducts,
       List<int> favouritesProductsId,
@@ -4759,11 +4754,6 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       DetailProductDataModel? detailsProduct,
       UserDataModel? user,
       OrderInfoDataModel? orderInfo});
-
-  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
-  $UserDataModelCopyWith<$Res>? get user;
-  $OrderInfoDataModelCopyWith<$Res>? get orderInfo;
 }
 
 /// @nodoc
@@ -4783,6 +4773,7 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     Object? name = null,
     Object? email = null,
     Object? countOrders = null,
+    Object? applicationVersion = null,
     Object? orders = null,
     Object? favouritesProducts = null,
     Object? favouritesProductsId = null,
@@ -4815,6 +4806,10 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
       countOrders: null == countOrders
           ? _value.countOrders
           : countOrders // ignore: cast_nullable_to_non_nullable
+              as String,
+      applicationVersion: null == applicationVersion
+          ? _value.applicationVersion
+          : applicationVersion // ignore: cast_nullable_to_non_nullable
               as String,
       orders: null == orders
           ? _value._orders
@@ -4878,56 +4873,6 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
               as OrderInfoDataModel?,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
-    if (_value.favouritesProductsInfo == null) {
-      return null;
-    }
-
-    return $FavouritesCatalogInfoDataModelCopyWith<$Res>(
-        _value.favouritesProductsInfo!, (value) {
-      return _then(_value.copyWith(favouritesProductsInfo: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
-    if (_value.detailsProduct == null) {
-      return null;
-    }
-
-    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
-        (value) {
-      return _then(_value.copyWith(detailsProduct: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDataModelCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $UserDataModelCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrderInfoDataModelCopyWith<$Res>? get orderInfo {
-    if (_value.orderInfo == null) {
-      return null;
-    }
-
-    return $OrderInfoDataModelCopyWith<$Res>(_value.orderInfo!, (value) {
-      return _then(_value.copyWith(orderInfo: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -4939,6 +4884,7 @@ class _$PreloadDataCompletedAccountStateImpl
       required this.name,
       required this.email,
       required this.countOrders,
+      required this.applicationVersion,
       required final List<OrderItemDataModel> orders,
       required final List<ProductDataModel> favouritesProducts,
       required final List<int> favouritesProductsId,
@@ -4970,6 +4916,8 @@ class _$PreloadDataCompletedAccountStateImpl
   final String email;
   @override
   final String countOrders;
+  @override
+  final String applicationVersion;
   final List<OrderItemDataModel> _orders;
   @override
   List<OrderItemDataModel> get orders {
@@ -5051,11 +4999,11 @@ class _$PreloadDataCompletedAccountStateImpl
 
   @override
   String toString() {
-    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, isSoppingCart: $isSoppingCart, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
+    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, isSoppingCart: $isSoppingCart, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedAccountStateImpl &&
@@ -5064,6 +5012,8 @@ class _$PreloadDataCompletedAccountStateImpl
             (identical(other.email, email) || other.email == email) &&
             (identical(other.countOrders, countOrders) ||
                 other.countOrders == countOrders) &&
+            (identical(other.applicationVersion, applicationVersion) ||
+                other.applicationVersion == applicationVersion) &&
             const DeepCollectionEquality().equals(other._orders, _orders) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProducts, _favouritesProducts) &&
@@ -5084,13 +5034,12 @@ class _$PreloadDataCompletedAccountStateImpl
                 other.isSoppingCart == isSoppingCart) &&
             (identical(other.isLoadVirtualCardsCod, isLoadVirtualCardsCod) ||
                 other.isLoadVirtualCardsCod == isLoadVirtualCardsCod) &&
-            (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
-                other.favouritesProductsInfo == favouritesProductsInfo) &&
-            (identical(other.detailsProduct, detailsProduct) ||
-                other.detailsProduct == detailsProduct) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.orderInfo, orderInfo) ||
-                other.orderInfo == orderInfo));
+            const DeepCollectionEquality()
+                .equals(other.favouritesProductsInfo, favouritesProductsInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.detailsProduct, detailsProduct) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality().equals(other.orderInfo, orderInfo));
   }
 
   @override
@@ -5100,6 +5049,7 @@ class _$PreloadDataCompletedAccountStateImpl
         name,
         email,
         countOrders,
+        applicationVersion,
         const DeepCollectionEquality().hash(_orders),
         const DeepCollectionEquality().hash(_favouritesProducts),
         const DeepCollectionEquality().hash(_favouritesProductsId),
@@ -5111,10 +5061,10 @@ class _$PreloadDataCompletedAccountStateImpl
         virtualCardsCod,
         isSoppingCart,
         isLoadVirtualCardsCod,
-        favouritesProductsInfo,
-        detailsProduct,
-        user,
-        orderInfo
+        const DeepCollectionEquality().hash(favouritesProductsInfo),
+        const DeepCollectionEquality().hash(detailsProduct),
+        const DeepCollectionEquality().hash(user),
+        const DeepCollectionEquality().hash(orderInfo)
       ]);
 
   @JsonKey(ignore: true)
@@ -5136,6 +5086,7 @@ class _$PreloadDataCompletedAccountStateImpl
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5160,6 +5111,7 @@ class _$PreloadDataCompletedAccountStateImpl
         name,
         email,
         countOrders,
+        applicationVersion,
         orders,
         favouritesProducts,
         favouritesProductsId,
@@ -5188,6 +5140,7 @@ class _$PreloadDataCompletedAccountStateImpl
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5212,6 +5165,7 @@ class _$PreloadDataCompletedAccountStateImpl
         name,
         email,
         countOrders,
+        applicationVersion,
         orders,
         favouritesProducts,
         favouritesProductsId,
@@ -5240,6 +5194,7 @@ class _$PreloadDataCompletedAccountStateImpl
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5266,6 +5221,7 @@ class _$PreloadDataCompletedAccountStateImpl
           name,
           email,
           countOrders,
+          applicationVersion,
           orders,
           favouritesProducts,
           favouritesProductsId,
@@ -5338,6 +5294,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
           required final String name,
           required final String email,
           required final String countOrders,
+          required final String applicationVersion,
           required final List<OrderItemDataModel> orders,
           required final List<ProductDataModel> favouritesProducts,
           required final List<int> favouritesProductsId,
@@ -5359,6 +5316,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   String get name;
   String get email;
   String get countOrders;
+  String get applicationVersion;
   List<OrderItemDataModel> get orders;
   List<ProductDataModel> get favouritesProducts;
   List<int> get favouritesProductsId;
@@ -5407,7 +5365,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LogOutAccountStateImpl);
   }
@@ -5426,6 +5384,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5459,6 +5418,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5492,6 +5452,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5596,7 +5557,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RemoveAccountStateImpl);
   }
@@ -5615,6 +5576,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5648,6 +5610,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,
@@ -5681,6 +5644,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             String name,
             String email,
             String countOrders,
+            String applicationVersion,
             List<OrderItemDataModel> orders,
             List<ProductDataModel> favouritesProducts,
             List<int> favouritesProductsId,

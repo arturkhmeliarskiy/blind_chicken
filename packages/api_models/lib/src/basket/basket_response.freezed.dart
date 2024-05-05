@@ -12,7 +12,7 @@ part of 'basket_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BasketResponse _$BasketResponseFromJson(Map<String, dynamic> json) {
   return _BasketResponse.fromJson(json);
@@ -26,12 +26,14 @@ mixin _$BasketResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BasketResponseCopyWith<BasketResponse> get copyWith => throw _privateConstructorUsedError;
+  $BasketResponseCopyWith<BasketResponse> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BasketResponseCopyWith<$Res> {
-  factory $BasketResponseCopyWith(BasketResponse value, $Res Function(BasketResponse) then) =
+  factory $BasketResponseCopyWith(
+          BasketResponse value, $Res Function(BasketResponse) then) =
       _$BasketResponseCopyWithImpl<$Res, BasketResponse>;
   @useResult
   $Res call({String? r, String? e, int? count});
@@ -72,9 +74,10 @@ class _$BasketResponseCopyWithImpl<$Res, $Val extends BasketResponse>
 }
 
 /// @nodoc
-abstract class _$$BasketResponseImplCopyWith<$Res> implements $BasketResponseCopyWith<$Res> {
-  factory _$$BasketResponseImplCopyWith(
-          _$BasketResponseImpl value, $Res Function(_$BasketResponseImpl) then) =
+abstract class _$$BasketResponseImplCopyWith<$Res>
+    implements $BasketResponseCopyWith<$Res> {
+  factory _$$BasketResponseImplCopyWith(_$BasketResponseImpl value,
+          $Res Function(_$BasketResponseImpl) then) =
       __$$BasketResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -134,7 +137,7 @@ class _$BasketResponseImpl extends _BasketResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BasketResponseImpl &&
@@ -151,7 +154,8 @@ class _$BasketResponseImpl extends _BasketResponse {
   @override
   @pragma('vm:prefer-inline')
   _$$BasketResponseImplCopyWith<_$BasketResponseImpl> get copyWith =>
-      __$$BasketResponseImplCopyWithImpl<_$BasketResponseImpl>(this, _$identity);
+      __$$BasketResponseImplCopyWithImpl<_$BasketResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -162,11 +166,14 @@ class _$BasketResponseImpl extends _BasketResponse {
 }
 
 abstract class _BasketResponse extends BasketResponse {
-  factory _BasketResponse({final String? r, final String? e, final int? count}) =
-      _$BasketResponseImpl;
+  factory _BasketResponse(
+      {final String? r,
+      final String? e,
+      final int? count}) = _$BasketResponseImpl;
   _BasketResponse._() : super._();
 
-  factory _BasketResponse.fromJson(Map<String, dynamic> json) = _$BasketResponseImpl.fromJson;
+  factory _BasketResponse.fromJson(Map<String, dynamic> json) =
+      _$BasketResponseImpl.fromJson;
 
   @override
   String? get r;

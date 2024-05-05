@@ -309,6 +309,20 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
         return cluster.copyWith(
           appearance: cluster.appearance.copyWith(
             opacity: 1.0,
+            onTap: (placemarkMapObject, point) async {
+              (await mapControllerCompleter.future).moveCamera(
+                animation: const MapAnimation(
+                  type: MapAnimationType.linear,
+                  duration: 0.5,
+                ),
+                CameraUpdate.newCameraPosition(
+                  _cameraPosition!.copyWith(
+                    target: point,
+                    zoom: _mapZoom + 2.5,
+                  ),
+                ),
+              );
+            },
             icon: PlacemarkIcon.single(
               PlacemarkIconStyle(
                 image: BitmapDescriptor.fromBytes(

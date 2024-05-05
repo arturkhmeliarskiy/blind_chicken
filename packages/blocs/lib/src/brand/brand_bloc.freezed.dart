@@ -12,7 +12,7 @@ part of 'brand_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BrandEvent {
@@ -108,7 +108,7 @@ class _$InitBrandEventImpl implements InitBrandEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitBrandEventImpl);
   }
@@ -237,7 +237,7 @@ class _$SwitchTypePeopleBrandEventImpl implements SwitchTypePeopleBrandEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SwitchTypePeopleBrandEventImpl &&
@@ -381,7 +381,7 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchBrandEventImpl &&
@@ -598,7 +598,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitBrandStateImpl);
   }
@@ -733,7 +733,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingBrandStateImpl);
   }
@@ -988,7 +988,7 @@ class _$PreloadDataCompletedBrandStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedBrandStateImpl &&

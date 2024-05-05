@@ -12,6 +12,7 @@ class AccountState with _$AccountState {
     required String name,
     required String email,
     required String countOrders,
+    required String applicationVersion,
     required List<OrderItemDataModel> orders,
     required List<ProductDataModel> favouritesProducts,
     required List<int> favouritesProductsId,

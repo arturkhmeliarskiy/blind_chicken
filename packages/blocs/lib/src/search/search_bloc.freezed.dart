@@ -12,7 +12,7 @@ part of 'search_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchEvent {
@@ -220,7 +220,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitSearchEventImpl);
   }
@@ -459,7 +459,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfuctsSearchEventImpl &&
@@ -715,7 +715,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfuctsInfoSearchEventImpl &&
@@ -932,8 +932,6 @@ abstract class _$$SelectFilterSearchEventImplCopyWith<$Res> {
       __$$SelectFilterSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, int indexItem, FilterItemDataModel item});
-
-  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -950,7 +948,7 @@ class __$$SelectFilterSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? indexItem = null,
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$SelectFilterSearchEventImpl(
       index: null == index
@@ -961,19 +959,11 @@ class __$$SelectFilterSearchEventImplCopyWithImpl<$Res>
           ? _value.indexItem
           : indexItem // ignore: cast_nullable_to_non_nullable
               as int,
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterItemDataModelCopyWith<$Res> get item {
-    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -996,18 +986,19 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectFilterSearchEventImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.indexItem, indexItem) ||
                 other.indexItem == indexItem) &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, indexItem, item);
+  int get hashCode => Object.hash(
+      runtimeType, index, indexItem, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -1220,8 +1211,6 @@ abstract class _$$DeleteFilterSearchEventImplCopyWith<$Res> {
       __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, int indexItem, FilterItemDataModel item});
-
-  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1238,7 +1227,7 @@ class __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? indexItem = null,
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$DeleteFilterSearchEventImpl(
       index: null == index
@@ -1249,19 +1238,11 @@ class __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>
           ? _value.indexItem
           : indexItem // ignore: cast_nullable_to_non_nullable
               as int,
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterItemDataModelCopyWith<$Res> get item {
-    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -1284,18 +1265,19 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFilterSearchEventImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.indexItem, indexItem) ||
                 other.indexItem == indexItem) &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, indexItem, item);
+  int get hashCode => Object.hash(
+      runtimeType, index, indexItem, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -1549,7 +1531,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveSelectFilterCategotySearchEventImpl &&
@@ -1791,7 +1773,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveSelectAllFiltersCategotySearchEventImpl);
@@ -1996,8 +1978,6 @@ abstract class _$$DeleteCatalogSearchEventImplCopyWith<$Res> {
       __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int key, int index, FilterItemDataModel item});
-
-  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -2014,7 +1994,7 @@ class __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? key = null,
     Object? index = null,
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$DeleteCatalogSearchEventImpl(
       key: null == key
@@ -2025,19 +2005,11 @@ class __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterItemDataModelCopyWith<$Res> get item {
-    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -2060,17 +2032,18 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteCatalogSearchEventImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, key, index, item);
+  int get hashCode => Object.hash(
+      runtimeType, key, index, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -2284,8 +2257,6 @@ abstract class _$$AddFavouriteProductSearchEventImplCopyWith<$Res> {
       __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
-
-  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -2302,26 +2273,18 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? product = null,
+    Object? product = freezed,
   }) {
     return _then(_$AddFavouriteProductSearchEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      product: null == product
+      product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductDataModelCopyWith<$Res> get product {
-    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
   }
 }
 
@@ -2343,16 +2306,17 @@ class _$AddFavouriteProductSearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductSearchEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.product, product) || other.product == product));
+            const DeepCollectionEquality().equals(other.product, product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, product);
+  int get hashCode => Object.hash(
+      runtimeType, index, const DeepCollectionEquality().hash(product));
 
   @JsonKey(ignore: true)
   @override
@@ -2606,7 +2570,7 @@ class _$DeleteFavouriteProductSearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFavouriteProductSearchEventImpl &&
@@ -2871,7 +2835,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductSearchEventImpl &&
@@ -3115,7 +3079,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoBackProductInfoCategotySearchEventImpl);
@@ -3341,7 +3305,7 @@ class _$PaginationProductSearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaginationProductSearchEventImpl);
@@ -3568,7 +3532,7 @@ class _$AddProductToSoppingCartSearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartSearchEventImpl);
@@ -3811,7 +3775,7 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckButtonTopSearchEventImpl &&
@@ -4029,8 +3993,6 @@ abstract class _$$CheckProductToSoppingCartSearchEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
-
-  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -4046,22 +4008,14 @@ class __$$CheckProductToSoppingCartSearchEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = null,
+    Object? size = freezed,
   }) {
     return _then(_$CheckProductToSoppingCartSearchEventImpl(
-      size: null == size
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SkuProductDataModelCopyWith<$Res> get size {
-    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
-      return _then(_value.copyWith(size: value));
-    });
   }
 }
 
@@ -4080,15 +4034,16 @@ class _$CheckProductToSoppingCartSearchEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartSearchEventImpl &&
-            (identical(other.size, size) || other.size == size));
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, size);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -4457,7 +4412,7 @@ class _$InitSearchStateImpl implements InitSearchState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitSearchStateImpl);
   }
@@ -4637,7 +4592,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingSearchStateImpl);
   }
@@ -4820,10 +4775,6 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       DetailProductDataModel? detailsProduct,
       List<ProductDataModel>? favouritesProducts,
       CatalogSearchInfoDataModel? searchResultInfo});
-
-  $CatalogSearchProductsRequestCopyWith<$Res> get request;
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
-  $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo;
 }
 
 /// @nodoc
@@ -4852,7 +4803,7 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? favouritesProductsId = null,
     Object? query = null,
     Object? isLoading = null,
-    Object? request = null,
+    Object? request = freezed,
     Object? listProductsCode = null,
     Object? isAuth = null,
     Object? offset = null,
@@ -4915,7 +4866,7 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      request: null == request
+      request: freezed == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as CatalogSearchProductsRequest,
@@ -4952,40 +4903,6 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           : searchResultInfo // ignore: cast_nullable_to_non_nullable
               as CatalogSearchInfoDataModel?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CatalogSearchProductsRequestCopyWith<$Res> get request {
-    return $CatalogSearchProductsRequestCopyWith<$Res>(_value.request, (value) {
-      return _then(_value.copyWith(request: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
-    if (_value.detailsProduct == null) {
-      return null;
-    }
-
-    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
-        (value) {
-      return _then(_value.copyWith(detailsProduct: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo {
-    if (_value.searchResultInfo == null) {
-      return null;
-    }
-
-    return $CatalogSearchInfoDataModelCopyWith<$Res>(_value.searchResultInfo!,
-        (value) {
-      return _then(_value.copyWith(searchResultInfo: value));
-    });
   }
 }
 
@@ -5168,7 +5085,7 @@ class _$SearchProductsResultSearchStateImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchProductsResultSearchStateImpl &&
@@ -5195,7 +5112,7 @@ class _$SearchProductsResultSearchStateImpl
             (identical(other.query, query) || other.query == query) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.request, request) || other.request == request) &&
+            const DeepCollectionEquality().equals(other.request, request) &&
             const DeepCollectionEquality()
                 .equals(other._listProductsCode, _listProductsCode) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
@@ -5204,12 +5121,12 @@ class _$SearchProductsResultSearchStateImpl
                 other.isButtonTop == isButtonTop) &&
             (identical(other.isSoppingCart, isSoppingCart) ||
                 other.isSoppingCart == isSoppingCart) &&
-            (identical(other.detailsProduct, detailsProduct) ||
-                other.detailsProduct == detailsProduct) &&
+            const DeepCollectionEquality()
+                .equals(other.detailsProduct, detailsProduct) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProducts, _favouritesProducts) &&
-            (identical(other.searchResultInfo, searchResultInfo) ||
-                other.searchResultInfo == searchResultInfo));
+            const DeepCollectionEquality()
+                .equals(other.searchResultInfo, searchResultInfo));
   }
 
   @override
@@ -5228,15 +5145,15 @@ class _$SearchProductsResultSearchStateImpl
         const DeepCollectionEquality().hash(_favouritesProductsId),
         query,
         isLoading,
-        request,
+        const DeepCollectionEquality().hash(request),
         const DeepCollectionEquality().hash(_listProductsCode),
         isAuth,
         offset,
         isButtonTop,
         isSoppingCart,
-        detailsProduct,
+        const DeepCollectionEquality().hash(detailsProduct),
         const DeepCollectionEquality().hash(_favouritesProducts),
-        searchResultInfo
+        const DeepCollectionEquality().hash(searchResultInfo)
       ]);
 
   @JsonKey(ignore: true)

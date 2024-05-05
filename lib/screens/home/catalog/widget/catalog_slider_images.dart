@@ -1,9 +1,8 @@
 import 'dart:developer';
 
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSliderImages extends StatefulWidget {
@@ -18,10 +17,12 @@ class CatalogSliderImages extends StatefulWidget {
     required this.isLike,
     required this.deleteLike,
     required this.isZoom,
+    required this.goSwipeBack,
   });
 
   final List<String> listImages;
   final VoidCallback goBotton;
+  final VoidCallback goSwipeBack;
   final VoidCallback addLike;
   final VoidCallback deleteLike;
   final VoidCallback onTap;
@@ -38,6 +39,7 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
   final ScrollController _scrollController = ScrollController();
   double _position = 0.0;
   bool _isLike = false;
+  bool _isSwipe = true;
 
   @override
   void initState() {
@@ -49,16 +51,22 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
   _scrollListener() {
     setState(() {
       log(_scrollController.position.pixels.toString());
+      if (_scrollController.position.pixels < 0 && _isSwipe) {
+        widget.goSwipeBack();
+        _isSwipe = false;
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return InkWell(
       onTap: widget.onTap,
       child: SizedBox(
-        height: width * 4 / 3,
+        height: widget.isZoom ? height : width * 4 / 3,
         width: width,
         child: Stack(
           children: [
@@ -71,28 +79,9 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
                     controller: _scrollController,
                     itemBuilder: (context, index) {
                       _position = _scrollController.position.pixels;
-                      return CachedNetworkImage(
-                        imageUrl: 'https://slepayakurica.ru/${widget.listImages[index]}',
-                        width: MediaQuery.of(context).orientation == Orientation.portrait
-                            ? width
-                            : width,
-                        height: width * 4 / 3,
-                        fit: BoxFit.cover,
-                        imageBuilder: widget.isZoom
-                            ? (context, imageProvider) => PhotoView(
-                                  tightMode: true,
-                                  imageProvider: imageProvider,
-                                  filterQuality: FilterQuality.high,
-                                  gaplessPlayback: false,
-                                  basePosition: Alignment.center,
-                                  minScale: PhotoViewComputedScale.contained,
-                                  customSize: MediaQuery.of(context).size * 0.99,
-                                  backgroundDecoration: const BoxDecoration(
-                                    color: BlindChickenColors.backgroundColorItemFilter,
-                                  ),
-                                )
-                            : null,
-                        errorWidget: (context, url, error) => const Icon(Icons.error),
+                      return CatalogSliderItemImage(
+                        isZoom: widget.isZoom,
+                        image: widget.listImages[index],
                       );
                     },
                   ),

@@ -5,7 +5,9 @@ import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class AppBarBlindChicken extends StatefulWidget {
-  const AppBarBlindChicken({super.key});
+  const AppBarBlindChicken({super.key, this.onBack});
+
+  final VoidCallback? onBack;
 
   @override
   State<AppBarBlindChicken> createState() => _AppBarBlindChickenState();
@@ -42,7 +44,12 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
       ),
       title: GestureDetector(
         onTap: () {
-          context.navigateNamedTo('/dashboard/home/main');
+          final onBack = widget.onBack;
+          if (onBack != null) {
+            onBack();
+          } else {
+            context.navigateNamedTo('/dashboard/home/main');
+          }
         },
         child: SvgPicture.asset(
           'assets/images/logo.svg',

@@ -12,7 +12,7 @@ part of 'favourites_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FavouritesEvent {
@@ -219,7 +219,7 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitFavouritesEventImpl);
@@ -443,7 +443,7 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataFavouritesEventImpl);
@@ -645,8 +645,6 @@ abstract class _$$SelectFilterFavouritesEventImplCopyWith<$Res> {
       __$$SelectFilterFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, int indexItem, FilterItemDataModel item});
-
-  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -664,7 +662,7 @@ class __$$SelectFilterFavouritesEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? indexItem = null,
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$SelectFilterFavouritesEventImpl(
       index: null == index
@@ -675,19 +673,11 @@ class __$$SelectFilterFavouritesEventImplCopyWithImpl<$Res>
           ? _value.indexItem
           : indexItem // ignore: cast_nullable_to_non_nullable
               as int,
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterItemDataModelCopyWith<$Res> get item {
-    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -710,18 +700,19 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectFilterFavouritesEventImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.indexItem, indexItem) ||
                 other.indexItem == indexItem) &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, indexItem, item);
+  int get hashCode => Object.hash(
+      runtimeType, index, indexItem, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -934,8 +925,6 @@ abstract class _$$DeleteFilterFavouritesEventImplCopyWith<$Res> {
       __$$DeleteFilterFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, int indexItem, FilterItemDataModel item});
-
-  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -953,7 +942,7 @@ class __$$DeleteFilterFavouritesEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? indexItem = null,
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$DeleteFilterFavouritesEventImpl(
       index: null == index
@@ -964,19 +953,11 @@ class __$$DeleteFilterFavouritesEventImplCopyWithImpl<$Res>
           ? _value.indexItem
           : indexItem // ignore: cast_nullable_to_non_nullable
               as int,
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterItemDataModelCopyWith<$Res> get item {
-    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -999,18 +980,19 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFilterFavouritesEventImpl &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.indexItem, indexItem) ||
                 other.indexItem == indexItem) &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, indexItem, item);
+  int get hashCode => Object.hash(
+      runtimeType, index, indexItem, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -1264,7 +1246,7 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveSelectFilterCategotyFavouritesEventImpl &&
@@ -1512,7 +1494,7 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveSelectAllFiltersCategotyFavouritesEventImpl);
@@ -1716,8 +1698,6 @@ abstract class _$$DeleteCatalogFavouritesEventImplCopyWith<$Res> {
       __$$DeleteCatalogFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int key, int index, FilterItemDataModel item});
-
-  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1735,7 +1715,7 @@ class __$$DeleteCatalogFavouritesEventImplCopyWithImpl<$Res>
   $Res call({
     Object? key = null,
     Object? index = null,
-    Object? item = null,
+    Object? item = freezed,
   }) {
     return _then(_$DeleteCatalogFavouritesEventImpl(
       key: null == key
@@ -1746,19 +1726,11 @@ class __$$DeleteCatalogFavouritesEventImplCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      item: null == item
+      item: freezed == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterItemDataModelCopyWith<$Res> get item {
-    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
-      return _then(_value.copyWith(item: value));
-    });
   }
 }
 
@@ -1782,17 +1754,18 @@ class _$DeleteCatalogFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteCatalogFavouritesEventImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.item, item) || other.item == item));
+            const DeepCollectionEquality().equals(other.item, item));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, key, index, item);
+  int get hashCode => Object.hash(
+      runtimeType, key, index, const DeepCollectionEquality().hash(item));
 
   @JsonKey(ignore: true)
   @override
@@ -2007,8 +1980,6 @@ abstract class _$$AddFavouriteProductFavouritesEventImplCopyWith<$Res> {
       __$$AddFavouriteProductFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
-
-  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -2025,26 +1996,18 @@ class __$$AddFavouriteProductFavouritesEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? product = null,
+    Object? product = freezed,
   }) {
     return _then(_$AddFavouriteProductFavouritesEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      product: null == product
+      product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductDataModelCopyWith<$Res> get product {
-    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
-      return _then(_value.copyWith(product: value));
-    });
   }
 }
 
@@ -2066,16 +2029,17 @@ class _$AddFavouriteProductFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductFavouritesEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.product, product) || other.product == product));
+            const DeepCollectionEquality().equals(other.product, product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, product);
+  int get hashCode => Object.hash(
+      runtimeType, index, const DeepCollectionEquality().hash(product));
 
   @JsonKey(ignore: true)
   @override
@@ -2328,7 +2292,7 @@ class _$DeleteFavouriteProductFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFavouriteProductFavouritesEventImpl &&
@@ -2596,7 +2560,7 @@ class _$GetInfoProductFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductFavouritesEventImpl &&
@@ -2859,7 +2823,7 @@ class _$CheckButtonTopFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckButtonTopFavouritesEventImpl &&
@@ -3101,7 +3065,7 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GoBackProductInfoCategotyFavouritesEventImpl);
@@ -3328,7 +3292,7 @@ class _$PaginationProductFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaginationProductFavouritesEventImpl);
@@ -3554,7 +3518,7 @@ class _$AddProductToSoppingCartFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartFavouritesEventImpl);
@@ -3758,8 +3722,6 @@ abstract class _$$CheckProductToSoppingCartFavouritesEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
-
-  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -3775,22 +3737,14 @@ class __$$CheckProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = null,
+    Object? size = freezed,
   }) {
     return _then(_$CheckProductToSoppingCartFavouritesEventImpl(
-      size: null == size
+      size: freezed == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SkuProductDataModelCopyWith<$Res> get size {
-    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
-      return _then(_value.copyWith(size: value));
-    });
   }
 }
 
@@ -3809,15 +3763,16 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartFavouritesEventImpl &&
-            (identical(other.size, size) || other.size == size));
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, size);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
@@ -4172,7 +4127,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitFavouritesStateImpl);
@@ -4340,7 +4295,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingFavouritesStateImpl);
@@ -4505,10 +4460,6 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       bool? isUpdate,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct});
-
-  $FavouritesCatalogProductsRequestCopyWith<$Res> get request;
-  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
 }
 
 /// @nodoc
@@ -4528,7 +4479,7 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? filter = null,
     Object? selectFilter = null,
     Object? allSelectFilter = null,
-    Object? request = null,
+    Object? request = freezed,
     Object? listProductsCode = null,
     Object? favouritesProductsId = null,
     Object? listProdcutsStyle = null,
@@ -4563,7 +4514,7 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
           ? _value._allSelectFilter
           : allSelectFilter // ignore: cast_nullable_to_non_nullable
               as List<Map<int, FilterItemDataModel>>,
-      request: null == request
+      request: freezed == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as FavouritesCatalogProductsRequest,
@@ -4616,41 +4567,6 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
           : detailsProduct // ignore: cast_nullable_to_non_nullable
               as DetailProductDataModel?,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FavouritesCatalogProductsRequestCopyWith<$Res> get request {
-    return $FavouritesCatalogProductsRequestCopyWith<$Res>(_value.request,
-        (value) {
-      return _then(_value.copyWith(request: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
-    if (_value.favouritesProductsInfo == null) {
-      return null;
-    }
-
-    return $FavouritesCatalogInfoDataModelCopyWith<$Res>(
-        _value.favouritesProductsInfo!, (value) {
-      return _then(_value.copyWith(favouritesProductsInfo: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
-    if (_value.detailsProduct == null) {
-      return null;
-    }
-
-    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
-        (value) {
-      return _then(_value.copyWith(detailsProduct: value));
-    });
   }
 }
 
@@ -4797,7 +4713,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsFavouritesStateImpl &&
@@ -4810,7 +4726,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 .equals(other._selectFilter, _selectFilter) &&
             const DeepCollectionEquality()
                 .equals(other._allSelectFilter, _allSelectFilter) &&
-            (identical(other.request, request) || other.request == request) &&
+            const DeepCollectionEquality().equals(other.request, request) &&
             const DeepCollectionEquality()
                 .equals(other._listProductsCode, _listProductsCode) &&
             const DeepCollectionEquality()
@@ -4829,10 +4745,10 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 other.isSoppingCart == isSoppingCart) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate) &&
-            (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
-                other.favouritesProductsInfo == favouritesProductsInfo) &&
-            (identical(other.detailsProduct, detailsProduct) ||
-                other.detailsProduct == detailsProduct));
+            const DeepCollectionEquality()
+                .equals(other.favouritesProductsInfo, favouritesProductsInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.detailsProduct, detailsProduct));
   }
 
   @override
@@ -4843,7 +4759,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_selectFilter),
       const DeepCollectionEquality().hash(_allSelectFilter),
-      request,
+      const DeepCollectionEquality().hash(request),
       const DeepCollectionEquality().hash(_listProductsCode),
       const DeepCollectionEquality().hash(_favouritesProductsId),
       const DeepCollectionEquality().hash(_listProdcutsStyle),
@@ -4854,8 +4770,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       isButtonTop,
       isSoppingCart,
       isUpdate,
-      favouritesProductsInfo,
-      detailsProduct);
+      const DeepCollectionEquality().hash(favouritesProductsInfo),
+      const DeepCollectionEquality().hash(detailsProduct));
 
   @JsonKey(ignore: true)
   @override

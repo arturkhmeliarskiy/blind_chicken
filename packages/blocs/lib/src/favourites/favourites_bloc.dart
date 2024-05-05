@@ -16,6 +16,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   final SharedPreferencesService _sharedPreferencesService;
   final FavouritesRepository _favouritesRepository;
   final BasketRepository _basketRepository;
+  final UpdateDataService _updateDataService;
   StreamSubscription<dynamic>? otherBlocSubscription;
 
   FavouritesBloc(
@@ -23,6 +24,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     this._sharedPreferencesService,
     this._favouritesRepository,
     this._basketRepository,
+    this._updateDataService,
   ) : super(const FavouritesState.init()) {
     on<FavouritesEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -579,7 +581,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: '1',
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
       final additionalProductsDescriptionStyle =
@@ -642,7 +644,9 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     await state.mapOrNull(productsFavourites: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
 
-      listProductsCode.removeLast();
+      if (listProductsCode.isNotEmpty) {
+        listProductsCode.removeLast();
+      }
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,
@@ -653,7 +657,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         emit(const FavouritesState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: '1',
+          genderIndex: _updateDataService.selectedIndexGender.toString(),
         );
 
         final additionalProductsDescriptionStyle =

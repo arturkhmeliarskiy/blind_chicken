@@ -401,6 +401,20 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
         return cluster.copyWith(
           appearance: cluster.appearance.copyWith(
             opacity: 1.0,
+            onTap: (placemarkMapObject, point) async {
+              (await mapControllerCompleter.future).moveCamera(
+                animation: const MapAnimation(
+                  type: MapAnimationType.linear,
+                  duration: 0.5,
+                ),
+                CameraUpdate.newCameraPosition(
+                  _cameraPosition!.copyWith(
+                    target: point,
+                    zoom: _mapZoom + 2.5,
+                  ),
+                ),
+              );
+            },
             icon: PlacemarkIcon.single(
               PlacemarkIconStyle(
                 image: BitmapDescriptor.fromBytes(
@@ -411,13 +425,14 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
           ),
         );
       },
+      onTap: (clusterizedPlacemarkCollection, point) {},
       onClusterTap: (self, cluster) async {
         await _mapController?.moveCamera(
           animation: const MapAnimation(type: MapAnimationType.linear, duration: 0.3),
           CameraUpdate.newCameraPosition(
             CameraPosition(
               target: cluster.placemarks.first.point,
-              zoom: _mapZoom + 1,
+              zoom: _mapZoom + 100,
             ),
           ),
         );

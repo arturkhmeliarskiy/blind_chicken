@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:auto_route/auto_route.dart';
+import 'package:app_links/app_links.dart';
 import 'package:blind_chicken/lifecycle_manager.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class App extends StatefulWidget {
@@ -24,6 +24,7 @@ class _AppState extends State<App> {
   final _appRouter = AppRouter();
   String idMessage = '';
   final StreamController<String> _stateController = StreamController();
+  late AppLinks _appLinks;
 
   Stream<String> get state => _stateController.stream;
 
@@ -99,43 +100,81 @@ class _AppState extends State<App> {
       ],
       child: LifeCycleManager(
         resumed: () async {
+          _appLinks = AppLinks();
+
+          // Check initial link if app was in cold state (terminated)
+          final uri = await _appLinks.getLatestAppLink();
+          if (uri != null) {
+            log('getInitialAppLink: $uri');
+            final productCode = uri.path.replaceAll('/product/', '');
+
+            await Future<void>.delayed(
+              const Duration(
+                milliseconds: 800,
+              ),
+            );
+            _appRouter.push(
+              CatalogCardInfoRoute(
+                isLike: false,
+                listItems: const [],
+                favouritesProducts: const [],
+                isChildRoute: false,
+                code: productCode,
+              ),
+            );
+          }
+
           if (Platform.isIOS) {
             const me = MethodChannel('blind_chicken/getMessages');
-            final info = await me.invokeMethod('getMessage') as String;
+            final section = await me.invokeMethod('section') as String;
+            final iDMessage = await me.invokeMethod('idMessage') as String;
+            final type = await me.invokeMethod('type') as String;
+            final sort = await me.invokeMethod('sort') as String;
+            final uid = await me.invokeMethod('uid') as String;
             final filterSelect = await me.invokeMethod('filter') as String;
-            final title = await me.invokeMethod('title') as String;
-            log(title);
+            final updateData = GetIt.I.get<UpdateDataService>();
+            // final title = await me.invokeMethod('title') as String;
+            // final body = await me.invokeMethod('body') as String;
 
-            if (info.isNotEmpty) {
-              final split = info.split(',');
-              Map<int, String> values = {
-                for (int i = 0; i < split.length; i++) i: split[i],
-              };
+            if (type.isNotEmpty) {
+              // final split = info.split(',');
+              // Map<int, String> values = {
+              //   for (int i = 0; i < split.length; i++) i: split[i],
+              // };
 
-              if (idMessage != values[2]) {
-                if (values[3] == 'catalog') {
-                  await Future<void>.delayed(
-                    const Duration(
-                      milliseconds: 500,
-                    ),
-                  );
-                  _appRouter.push(CatalogRoute(
-                    title: '',
-                    url: values[1] ?? '',
-                    sort: values[4] ?? '',
-                    filterSelect: filterSelect,
-                    isNotification: true,
-                  ));
+              if (iDMessage != idMessage) {
+                if (type == 'catalog') {
+                  if (updateData.isInitApp) {
+                    await Future<void>.delayed(
+                      const Duration(
+                        milliseconds: 800,
+                      ),
+                    );
+                    _appRouter.push(CatalogRoute(
+                      title: '',
+                      url: section,
+                      sort: sort,
+                      filterSelect: filterSelect,
+                      isNotification: true,
+                    ));
+                    updateData.isNotification = false;
+                  } else {
+                    updateData.isInitApp = true;
+                    updateData.isNotification = true;
+                    updateData.sectionNotification = section;
+                    updateData.sortNotification = sort;
+                    updateData.filterSelectNotification = filterSelect;
+                  }
                 }
-                if (values[3] == 'boutique') {
+                if (type == 'boutique') {
                   _appRouter.push(
                     BoutiquesDescriptionRoute(
-                      uidStore: values[5] ?? '',
+                      uidStore: uid,
                       isNotification: true,
                     ),
                   );
                 }
-                if (values[3] == 'gift_card') {
+                if (type == 'gift_card') {
                   _appRouter.push(
                     GiftCardRoute(
                       isNotification: true,
@@ -143,9 +182,11 @@ class _AppState extends State<App> {
                   );
                 }
               }
-              idMessage = values[2] ?? '';
-              log(values.toString());
+
+              idMessage = iDMessage;
+              log(iDMessage.toString());
             }
+            updateData.isInitApp = true;
           }
         },
         paused: () {},

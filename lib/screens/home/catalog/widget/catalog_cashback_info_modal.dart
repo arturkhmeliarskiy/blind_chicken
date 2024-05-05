@@ -24,11 +24,13 @@ class CatalogCashbackInfoModal extends StatefulWidget {
     required this.userDiscount,
     required this.p,
     required this.pb,
+    required this.onBack,
   });
 
   final String bonusLoyal;
   final String bonusGift;
   final String bonusYear;
+  final ValueChanged<BuildContext> onBack;
   final int userNextDiscount;
   final int userBuyForNextDiscount;
   final int userBuyForNextDiscountVal;
@@ -422,7 +424,9 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                     GestureDetector(
                       onTap: () {
                         context.popRoute();
-                        context.navigateTo(const BlindChickenCashbackAndDiscountsRoute());
+                        context.navigateTo(BlindChickenCashbackAndDiscountsRoute(
+                          onBack: widget.onBack,
+                        ));
                       },
                       child: Align(
                         alignment: Alignment.centerRight,

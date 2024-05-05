@@ -5,11 +5,9 @@ import 'package:ui_kit/ui_kit.dart';
 class CatalogDescriptionInfo extends StatefulWidget {
   const CatalogDescriptionInfo({
     super.key,
-    required this.item,
     required this.char,
   });
 
-  final ProductDataModel item;
   final List<CharProductDataModel> char;
 
   @override
@@ -101,7 +99,7 @@ class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
             });
           },
           child: Text(
-            _isWrap ? 'Свернуть характеристики' : 'Развернуть характерестики',
+            _isWrap ? 'Свернуть характеристики' : 'Развернуть характеристики',
             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   decoration: TextDecoration.underline,
                 ),

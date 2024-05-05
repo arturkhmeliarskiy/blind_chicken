@@ -12,7 +12,7 @@ part of 'login_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LoginEvent {
@@ -114,7 +114,7 @@ class _$InitLoginEventImpl implements InitLoginEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitLoginEventImpl);
   }
@@ -247,7 +247,7 @@ class _$PhoneLoginEventImpl implements PhoneLoginEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PhoneLoginEventImpl &&
@@ -412,7 +412,7 @@ class _$CheckCaptchaLoginEventImpl implements CheckCaptchaLoginEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckCaptchaLoginEventImpl &&
@@ -573,7 +573,7 @@ class _$CheckSmsLoginEventImpl implements CheckSmsLoginEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckSmsLoginEventImpl &&
@@ -809,7 +809,7 @@ class _$InitLoginStateImpl implements InitLoginState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitLoginStateImpl &&
@@ -950,7 +950,7 @@ class _$LoadingLoginStateImpl implements LoadingLoginState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingLoginStateImpl);
   }
@@ -1109,7 +1109,7 @@ class _$CaptchaLoginStateImpl implements CaptchaLoginState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CaptchaLoginStateImpl &&
@@ -1282,7 +1282,7 @@ class _$SmsCodeLoginStateImpl implements SmsCodeLoginState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SmsCodeLoginStateImpl &&
@@ -1428,7 +1428,7 @@ class _$SuccessfullyLoginStateImpl implements SuccessfullyLoginState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessfullyLoginStateImpl);
@@ -1583,7 +1583,7 @@ class _$ErrorMessageLoginStateImpl implements ErrorMessageLoginState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorMessageLoginStateImpl &&

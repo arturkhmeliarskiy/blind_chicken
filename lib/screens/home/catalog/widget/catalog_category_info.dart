@@ -22,20 +22,21 @@ class CatalogCategoryInfo extends StatelessWidget {
             onTap(sections[indexCategory].u);
           },
           child: Container(
-              padding: const EdgeInsets.only(
-                top: 7,
-                bottom: 7,
-                right: 14,
-                left: 14,
-              ),
-              margin: const EdgeInsets.only(right: 14, bottom: 14),
-              decoration: BoxDecoration(
-                color: BlindChickenColors.backgroundColorItemFilter,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: CatalogCategoryInfoTitle(
-                title: sections[indexCategory].n,
-              )),
+            padding: const EdgeInsets.only(
+              top: 7,
+              bottom: 7,
+              right: 14,
+              left: 14,
+            ),
+            margin: const EdgeInsets.only(right: 14, bottom: 14),
+            decoration: BoxDecoration(
+              color: BlindChickenColors.backgroundColorItemFilter,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: CatalogCategoryInfoTitle(
+              title: sections[indexCategory].n,
+            ),
+          ),
         );
       }),
     );

@@ -197,23 +197,34 @@ class _FilterSelectValueSearchScreenState extends State<FilterSelectValueSearchS
                 },
               ),
             ),
-            BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-              return state.maybeMap(
-                  preloadDataCompleted: (initState) {
-                    return BlindChickenFilterButton(
-                      onOpen: () {
-                        context.navigateTo(
-                          CatalogRoute(
-                            title: initState.title ?? '',
-                            url: initState.pathMenu.last.url,
-                          ),
-                        );
-                      },
-                      countProducts: initState.catalogInfo?.count ?? '',
-                    );
-                  },
-                  orElse: () => const SizedBox());
-            }),
+            BlocBuilder<CatalogBloc, CatalogState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                    preloadDataCompleted: (initState) {
+                      return BlindChickenFilterButton(
+                        onOpen: () {
+                          if (initState.pathMenu.isNotEmpty) {
+                            context.navigateTo(
+                              CatalogRoute(
+                                title: initState.title ?? '',
+                                url: initState.pathMenu.last.url,
+                              ),
+                            );
+                          } else {
+                            context.navigateTo(
+                              CatalogRoute(
+                                title: initState.title ?? '',
+                                url: '',
+                              ),
+                            );
+                          }
+                        },
+                        countProducts: initState.catalogInfo?.count ?? '',
+                      );
+                    },
+                    orElse: () => const SizedBox());
+              },
+            ),
           ],
         ),
       ),

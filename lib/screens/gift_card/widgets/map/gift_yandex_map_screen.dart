@@ -31,7 +31,7 @@ class GiftYandexMapScreen extends StatefulWidget {
 
 class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
   final mapControllerCompleter = Completer<YandexMapController>();
-  late final YandexMapController _mapController;
+  YandexMapController? _mapController;
 
   /// Значение текущего масштаба карты
   var _mapZoom = 0.0;
@@ -149,10 +149,10 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
             },
             onUserLocationAdded: (view) async {
               // получаем местоположение пользователя
-              _userLocation = await _mapController.getUserCameraPosition();
+              _userLocation = await _mapController?.getUserCameraPosition();
               // если местоположение найдено, центрируем карту относительно этой точки
               if (_userLocation != null) {
-                await _mapController.moveCamera(
+                await _mapController?.moveCamera(
                   CameraUpdate.newCameraPosition(
                     _userLocation!.copyWith(zoom: 10),
                   ),
@@ -403,6 +403,20 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
         return cluster.copyWith(
           appearance: cluster.appearance.copyWith(
             opacity: 1.0,
+            onTap: (placemarkMapObject, point) async {
+              (await mapControllerCompleter.future).moveCamera(
+                animation: const MapAnimation(
+                  type: MapAnimationType.linear,
+                  duration: 0.5,
+                ),
+                CameraUpdate.newCameraPosition(
+                  _cameraPosition!.copyWith(
+                    target: point,
+                    zoom: _mapZoom + 2.5,
+                  ),
+                ),
+              );
+            },
             icon: PlacemarkIcon.single(
               PlacemarkIconStyle(
                 image: BitmapDescriptor.fromBytes(
@@ -414,7 +428,7 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
         );
       },
       onClusterTap: (self, cluster) async {
-        await _mapController.moveCamera(
+        await _mapController?.moveCamera(
           animation: const MapAnimation(type: MapAnimationType.linear, duration: 0.3),
           CameraUpdate.newCameraPosition(
             CameraPosition(

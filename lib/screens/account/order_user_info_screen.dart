@@ -42,6 +42,9 @@ class OrderUserInfoScreen extends StatelessWidget {
         body: BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
           return state.maybeMap(
               preloadDataCompleted: (initState) {
+                final paidInfo = initState.orderInfo?.paidInfo ?? '';
+                final status = (initState.orderInfo?.status ?? '').toLowerCase();
+                final idForPay = initState.orderInfo?.idForPay ?? '';
                 return ListView(
                   padding: const EdgeInsets.only(
                     left: 10.5,
@@ -151,7 +154,8 @@ class OrderUserInfoScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    if (isPay)
+                    if (isPay ||
+                        (paidInfo == 'не оплачено' && status == 'принят' && idForPay.isNotEmpty))
                       Column(
                         children: [
                           const SizedBox(
@@ -263,9 +267,6 @@ class OrderUserInfoScreen extends StatelessWidget {
                                     isBordrerBottom:
                                         (initState.orderInfo?.products.length ?? 0) - 1 != index,
                                     onSelectCard: () {
-                                      context.read<ShoppingCartBloc>().add(
-                                            const ShoppingCartEvent.preloadData(),
-                                          );
                                       context.read<AccountBloc>().add(
                                             AccountEvent.getInfoProduct(
                                               code: orderInfo.products[index].id.toString(),

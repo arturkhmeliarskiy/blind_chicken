@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 
@@ -71,8 +72,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
     }
     final userInfo = await _authRepository.getUserInfo();
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     emit(AccountState.preloadDataCompleted(
+      applicationVersion: packageInfo.version,
       phone: userInfo.user.phone,
       name: userInfo.user.name,
       email: userInfo.user.email,
@@ -158,6 +161,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   ) async {
     emit(const AccountState.load());
 
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final orderInfo = await _ordersRepository.getOrderInfo(id: event.id);
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -165,6 +169,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         false;
 
     emit(AccountState.preloadDataCompleted(
+      applicationVersion: packageInfo.version,
       phone: '',
       name: '',
       email: '',
@@ -309,7 +314,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
 
-      listProductsCode.removeLast();
+      if (listProductsCode.isNotEmpty) {
+        listProductsCode.removeLast();
+      }
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,

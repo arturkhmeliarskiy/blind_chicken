@@ -310,9 +310,13 @@ class _DashboardPageState extends State<DashboardPage> {
                         );
                   });
                   context.navigateTo(
-                    const HomeAutoRouterRoute(
+                    const DashboardRoute(
                       children: [
-                        CategoryRoute(),
+                        HomeAutoRouterRoute(
+                          children: [
+                            CategoryRoute(),
+                          ],
+                        ),
                       ],
                     ),
                   );
@@ -351,7 +355,9 @@ class _DashboardPageState extends State<DashboardPage> {
                       });
                 }
               } else if (index == 2) {
-                context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                Timer(const Duration(milliseconds: 150), () {
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                });
                 context.navigateTo(
                   const ShoppingCartAutoRouterRoute(children: [
                     ShoppingCartRoute(),
