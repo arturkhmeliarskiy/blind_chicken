@@ -43,6 +43,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
         checkButtonTop: (event) => _checkButtonTop(event, emit),
+        changeSizeProduct: (event) => _changeSizeProduct(event, emit),
       ),
     );
   }
@@ -633,6 +634,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         isAuth: isAuth,
         isUpdate: event.isUpdate,
         isSoppingCart: soppingCart.isNotEmpty,
+        selectSizeProduct: null,
       ));
     });
   }
@@ -685,6 +687,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
           isUpdate: initState.isUpdate,
+          selectSizeProduct: null,
         ));
       }
     });
@@ -754,6 +757,17 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     );
 
     return favouritesInfo;
+  }
+
+  Future<void> _changeSizeProduct(
+    ChangeSizeProductFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    state.mapOrNull(productsFavourites: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
+      ));
+    });
   }
 
   Future<BasketFullInfoDataModel> getBasketInfo({

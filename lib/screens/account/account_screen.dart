@@ -246,6 +246,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                                   contex.read<AccountBloc>().add(
                                                         AccountEvent.updateInfo(
                                                           name: value,
+                                                          email: initState.email,
                                                         ),
                                                       );
                                                 },
@@ -307,6 +308,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                                   contex.read<AccountBloc>().add(
                                                         AccountEvent.updateInfo(
                                                           email: value,
+                                                          name: initState.name,
                                                         ),
                                                       );
                                                 },
@@ -462,7 +464,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           ]),
                         ),
                         Container(
-                          height: 40,
+                          height: 110,
                           padding: const EdgeInsets.only(
                             top: 6,
                             bottom: 6,
@@ -476,8 +478,10 @@ class _AccountScreenState extends State<AccountScreen> {
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              const SizedBox(
+                                height: 6,
+                              ),
                               InkWell(
                                 onTap: () {
                                   context.read<AccountBloc>().add(const AccountEvent.getOrders());
@@ -488,7 +492,36 @@ class _AccountScreenState extends State<AccountScreen> {
                                   style: Theme.of(context).textTheme.displayMedium,
                                 ),
                               ),
-
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  context
+                                      .read<AccountBloc>()
+                                      .add(const AccountEvent.getListOrdersBlank());
+                                  context.navigateTo(const ElectronicOrderFormsRoute());
+                                },
+                                child: Text(
+                                  'Электронные бланки заказов',
+                                  style: Theme.of(context).textTheme.displayMedium,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 12,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  context
+                                      .read<AccountBloc>()
+                                      .add(const AccountEvent.getListTailoringBlank());
+                                  context.navigateTo(const TailoringOrderFormsRoute());
+                                },
+                                child: Text(
+                                  'Заказы на подшив',
+                                  style: Theme.of(context).textTheme.displayMedium,
+                                ),
+                              ),
                               // InkWell(
                               //   onTap: () {
                               //     context.navigateTo(const ElectronicOrderFormsRoute());

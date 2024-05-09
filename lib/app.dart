@@ -23,12 +23,46 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   final _appRouter = AppRouter();
   String idMessage = '';
+  StreamSubscription<Uri>? _linkSubscription;
   final StreamController<String> _stateController = StreamController();
   late AppLinks _appLinks;
 
   Stream<String> get state => _stateController.stream;
 
   Sink<String> get stateSink => _stateController.sink;
+
+  @override
+  void initState() {
+    initDeepLinks();
+    super.initState();
+  }
+
+  Future<void> initDeepLinks() async {
+    _appLinks = AppLinks();
+
+    // Handle links
+    _appLinks = AppLinks();
+
+    _appLinks.uriLinkStream.listen((uri) async {
+      log('getInitialAppLink: $uri');
+      final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
+
+      await Future<void>.delayed(
+        const Duration(
+          milliseconds: 800,
+        ),
+      );
+      _appRouter.push(
+        CatalogCardInfoRoute(
+          isLike: false,
+          listItems: const [],
+          favouritesProducts: const [],
+          isChildRoute: false,
+          code: productCode,
+        ),
+      );
+    });
+  }
 
   @override
   void dispose() {
@@ -100,28 +134,32 @@ class _AppState extends State<App> {
       ],
       child: LifeCycleManager(
         resumed: () async {
-          _appLinks = AppLinks();
+          final updateData = GetIt.I.get<UpdateDataService>();
 
-          // Check initial link if app was in cold state (terminated)
-          final uri = await _appLinks.getLatestAppLink();
-          if (uri != null) {
-            log('getInitialAppLink: $uri');
-            final productCode = uri.path.replaceAll('/product/', '');
+          if (!updateData.isInitApp) {
+            _appLinks = AppLinks();
 
-            await Future<void>.delayed(
-              const Duration(
-                milliseconds: 800,
-              ),
-            );
-            _appRouter.push(
-              CatalogCardInfoRoute(
-                isLike: false,
-                listItems: const [],
-                favouritesProducts: const [],
-                isChildRoute: false,
-                code: productCode,
-              ),
-            );
+            // Check initial link if app was in cold state (terminated)
+            final uri = await _appLinks.getLatestAppLink();
+            if (uri != null) {
+              log('getInitialAppLink: $uri');
+              final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
+
+              await Future<void>.delayed(
+                const Duration(
+                  milliseconds: 800,
+                ),
+              );
+              _appRouter.push(
+                CatalogCardInfoRoute(
+                  isLike: false,
+                  listItems: const [],
+                  favouritesProducts: const [],
+                  isChildRoute: false,
+                  code: productCode,
+                ),
+              );
+            }
           }
 
           if (Platform.isIOS) {
@@ -132,7 +170,7 @@ class _AppState extends State<App> {
             final sort = await me.invokeMethod('sort') as String;
             final uid = await me.invokeMethod('uid') as String;
             final filterSelect = await me.invokeMethod('filter') as String;
-            final updateData = GetIt.I.get<UpdateDataService>();
+
             // final title = await me.invokeMethod('title') as String;
             // final body = await me.invokeMethod('body') as String;
 

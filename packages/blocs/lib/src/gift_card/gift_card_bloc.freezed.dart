@@ -218,6 +218,8 @@ abstract class _$$CreateOrderGiftCardEventImplCopyWith<$Res> {
       __$$CreateOrderGiftCardEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CatalogGiftCardRequest request});
+
+  $CatalogGiftCardRequestCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -232,14 +234,22 @@ class __$$CreateOrderGiftCardEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = freezed,
+    Object? request = null,
   }) {
     return _then(_$CreateOrderGiftCardEventImpl(
-      request: freezed == request
+      request: null == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as CatalogGiftCardRequest,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CatalogGiftCardRequestCopyWith<$Res> get request {
+    return $CatalogGiftCardRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
   }
 }
 
@@ -261,12 +271,11 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderGiftCardEventImpl &&
-            const DeepCollectionEquality().equals(other.request, request));
+            (identical(other.request, request) || other.request == request));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(request));
+  int get hashCode => Object.hash(runtimeType, request);
 
   @JsonKey(ignore: true)
   @override

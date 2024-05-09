@@ -38,6 +38,9 @@ class FavouritesEvent with _$FavouritesEvent {
   const factory FavouritesEvent.checkButtonTop({
     required bool isButtonTop,
   }) = CheckButtonTopFavouritesEvent;
+  const factory FavouritesEvent.changeSizeProduct({
+    required SkuProductDataModel selectSizeProduct,
+  }) = ChangeSizeProductFavouritesEvent;
   const factory FavouritesEvent.goBackProductInfo() = GoBackProductInfoCategotyFavouritesEvent;
   const factory FavouritesEvent.paginationProduct() = PaginationProductFavouritesEvent;
   const factory FavouritesEvent.addProductToSoppingCart() = AddProductToSoppingCartFavouritesEvent;

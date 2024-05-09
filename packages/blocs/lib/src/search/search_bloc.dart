@@ -40,6 +40,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         checkButtonTop: (event) => _checkButtonTop(event, emit),
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+        changeSizeProduct: (event) => _changeSizeProduct(event, emit),
       ),
     );
   }
@@ -577,6 +578,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
+        selectSizeProduct: null,
       ));
     });
   }
@@ -625,6 +627,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
+          selectSizeProduct: null,
         ));
       }
     });
@@ -751,6 +754,17 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     state.mapOrNull(searchProductsResult: (initState) {
       emit(initState.copyWith(
         isButtonTop: event.isButtonTop,
+      ));
+    });
+  }
+
+  Future<void> _changeSizeProduct(
+    ChangeSizeProductSearchEvent event,
+    Emitter<SearchState> emit,
+  ) async {
+    state.mapOrNull(searchProductsResult: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
       ));
     });
   }

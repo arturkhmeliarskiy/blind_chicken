@@ -17,6 +17,24 @@ class AccountEvent with _$AccountEvent {
     required int limit,
   }) = PaginationOrdersAccountEvent;
   const factory AccountEvent.getOrders() = GetOrdersAccountEvent;
+  const factory AccountEvent.paginationListOrdersBlank({
+    required int offset,
+    required int limit,
+  }) = PaginationListOrdersBlankAccountEvent;
+  const factory AccountEvent.getListOrdersBlank() = GetListOrdersBlankAccountEvent;
+  const factory AccountEvent.getOrderPdfBlank({
+    required String fileName,
+    required String id,
+  }) = GetOrderPdfBlankAccountEvent;
+  const factory AccountEvent.paginationListTailoringBlank({
+    required int offset,
+    required int limit,
+  }) = PaginationListTailoringBlankAccountEvent;
+  const factory AccountEvent.getListTailoringBlank() = GetListTailoringBlankAccountEvent;
+  const factory AccountEvent.getTailoringPdfBlank({
+    required String fileName,
+    required String id,
+  }) = GetTailoringPdfBlankAccountEvent;
   const factory AccountEvent.getInfoOrder({
     required String id,
   }) = GetInfoOrderAccountEvent;
@@ -40,6 +58,13 @@ class AccountEvent with _$AccountEvent {
     required String code,
     bool? isUpdate,
   }) = GetInfoProductAccountEvent;
+  const factory AccountEvent.changeSizeProduct({
+    required SkuProductDataModel selectSizeProduct,
+  }) = ChangeSizeProductAccountEvent;
+  const factory AccountEvent.saveDocument({
+    required String fileName,
+    required Uint8List bytes,
+  }) = SaveDocumentAccountEvent;
   const factory AccountEvent.goBackProductInfo() = GoBackProductInfoCategotyAccountEvent;
   const factory AccountEvent.addProductToSoppingCart() = AddProductToSoppingCartCAccountEvent;
   const factory AccountEvent.checkProductToSoppingCart({

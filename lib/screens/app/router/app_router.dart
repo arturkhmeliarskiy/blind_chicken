@@ -4,7 +4,8 @@ import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
 import 'package:blind_chicken/screens/account/my_purchases_screen.dart';
 import 'package:blind_chicken/screens/account/order_card_info_screen.dart';
-import 'package:blind_chicken/screens/account/orders_hemming_screen.dart';
+import 'package:blind_chicken/screens/account/order_pdf_blank_view.dart';
+import 'package:blind_chicken/screens/account/tailoring_order_forms_screen.dart';
 import 'package:blind_chicken/screens/app/app_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_description_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_screen.dart';
@@ -58,6 +59,7 @@ import 'package:blind_chicken/screens/web_view/blind_chicken_webview_screen.dart
 import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.dart';
 import 'package:blind_chicken/screens/yandex_map/yandex_map_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:models/models.dart';
 
 import '../../boutiques/widgets/boutique_preview_images_screen.dart';
@@ -160,8 +162,12 @@ class AppRouter extends _$AppRouter {
               path: "electronic_order",
             ),
             AutoRoute(
-              page: OrdersHemmingRoute.page,
-              path: "orders_hemming",
+              page: TailoringOrderFormsRoute.page,
+              path: "tailoring_order",
+            ),
+            AutoRoute(
+              page: OrderPdfBlankViewRoute.page,
+              path: 'order_pdf_blank_view',
             ),
             AutoRoute(
               page: MyOrdersRoute.page,

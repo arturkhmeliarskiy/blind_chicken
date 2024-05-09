@@ -35,6 +35,8 @@ mixin _$SearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -59,6 +61,7 @@ mixin _$SearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -82,6 +85,7 @@ mixin _$SearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -108,6 +112,8 @@ mixin _$SearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -136,6 +142,7 @@ mixin _$SearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -162,6 +169,7 @@ mixin _$SearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -248,6 +256,8 @@ class _$InitSearchEventImpl implements InitSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -275,6 +285,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -301,6 +312,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -333,6 +345,8 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -364,6 +378,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -393,6 +408,7 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -496,6 +512,8 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -523,6 +541,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -549,6 +568,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -581,6 +601,8 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -612,6 +634,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -641,6 +664,7 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -752,6 +776,8 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -779,6 +805,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -805,6 +832,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -837,6 +865,8 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -868,6 +898,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -897,6 +928,7 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -932,6 +964,8 @@ abstract class _$$SelectFilterSearchEventImplCopyWith<$Res> {
       __$$SelectFilterSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, int indexItem, FilterItemDataModel item});
+
+  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -948,7 +982,7 @@ class __$$SelectFilterSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? indexItem = null,
-    Object? item = freezed,
+    Object? item = null,
   }) {
     return _then(_$SelectFilterSearchEventImpl(
       index: null == index
@@ -959,11 +993,19 @@ class __$$SelectFilterSearchEventImplCopyWithImpl<$Res>
           ? _value.indexItem
           : indexItem // ignore: cast_nullable_to_non_nullable
               as int,
-      item: freezed == item
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterItemDataModelCopyWith<$Res> get item {
+    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -993,12 +1035,11 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
             (identical(other.index, index) || other.index == index) &&
             (identical(other.indexItem, indexItem) ||
                 other.indexItem == indexItem) &&
-            const DeepCollectionEquality().equals(other.item, item));
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, index, indexItem, const DeepCollectionEquality().hash(item));
+  int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
   @JsonKey(ignore: true)
   @override
@@ -1027,6 +1068,8 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -1054,6 +1097,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -1080,6 +1124,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -1112,6 +1157,8 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -1143,6 +1190,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1172,6 +1220,7 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1211,6 +1260,8 @@ abstract class _$$DeleteFilterSearchEventImplCopyWith<$Res> {
       __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, int indexItem, FilterItemDataModel item});
+
+  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1227,7 +1278,7 @@ class __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? indexItem = null,
-    Object? item = freezed,
+    Object? item = null,
   }) {
     return _then(_$DeleteFilterSearchEventImpl(
       index: null == index
@@ -1238,11 +1289,19 @@ class __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>
           ? _value.indexItem
           : indexItem // ignore: cast_nullable_to_non_nullable
               as int,
-      item: freezed == item
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterItemDataModelCopyWith<$Res> get item {
+    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -1272,12 +1331,11 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
             (identical(other.index, index) || other.index == index) &&
             (identical(other.indexItem, indexItem) ||
                 other.indexItem == indexItem) &&
-            const DeepCollectionEquality().equals(other.item, item));
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, index, indexItem, const DeepCollectionEquality().hash(item));
+  int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
   @JsonKey(ignore: true)
   @override
@@ -1306,6 +1364,8 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -1333,6 +1393,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -1359,6 +1420,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -1391,6 +1453,8 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -1422,6 +1486,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1451,6 +1516,7 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1569,6 +1635,8 @@ class _$RemoveSelectFilterCategotySearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -1596,6 +1664,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -1622,6 +1691,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -1654,6 +1724,8 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -1685,6 +1757,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1714,6 +1787,7 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1802,6 +1876,8 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -1829,6 +1905,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -1855,6 +1932,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -1887,6 +1965,8 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -1918,6 +1998,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1947,6 +2028,7 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -1978,6 +2060,8 @@ abstract class _$$DeleteCatalogSearchEventImplCopyWith<$Res> {
       __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int key, int index, FilterItemDataModel item});
+
+  $FilterItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1994,7 +2078,7 @@ class __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? key = null,
     Object? index = null,
-    Object? item = freezed,
+    Object? item = null,
   }) {
     return _then(_$DeleteCatalogSearchEventImpl(
       key: null == key
@@ -2005,11 +2089,19 @@ class __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      item: freezed == item
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as FilterItemDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterItemDataModelCopyWith<$Res> get item {
+    return $FilterItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -2038,12 +2130,11 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
             other is _$DeleteCatalogSearchEventImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.index, index) || other.index == index) &&
-            const DeepCollectionEquality().equals(other.item, item));
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, key, index, const DeepCollectionEquality().hash(item));
+  int get hashCode => Object.hash(runtimeType, key, index, item);
 
   @JsonKey(ignore: true)
   @override
@@ -2072,6 +2163,8 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -2099,6 +2192,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -2125,6 +2219,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -2157,6 +2252,8 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -2188,6 +2285,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -2217,6 +2315,7 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -2257,6 +2356,8 @@ abstract class _$$AddFavouriteProductSearchEventImplCopyWith<$Res> {
       __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
+
+  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -2273,18 +2374,26 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? product = freezed,
+    Object? product = null,
   }) {
     return _then(_$AddFavouriteProductSearchEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      product: freezed == product
+      product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res> get product {
+    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 }
 
@@ -2311,12 +2420,11 @@ class _$AddFavouriteProductSearchEventImpl
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductSearchEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            const DeepCollectionEquality().equals(other.product, product));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, index, const DeepCollectionEquality().hash(product));
+  int get hashCode => Object.hash(runtimeType, index, product);
 
   @JsonKey(ignore: true)
   @override
@@ -2346,6 +2454,8 @@ class _$AddFavouriteProductSearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -2373,6 +2483,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -2399,6 +2510,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -2431,6 +2543,8 @@ class _$AddFavouriteProductSearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -2462,6 +2576,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -2491,6 +2606,7 @@ class _$AddFavouriteProductSearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -2608,6 +2724,8 @@ class _$DeleteFavouriteProductSearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -2635,6 +2753,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -2661,6 +2780,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -2693,6 +2813,8 @@ class _$DeleteFavouriteProductSearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -2724,6 +2846,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -2753,6 +2876,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -2874,6 +2998,8 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -2901,6 +3027,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -2927,6 +3054,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -2959,6 +3087,8 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -2990,6 +3120,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3019,6 +3150,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3045,6 +3177,286 @@ abstract class GetInfoProductSearchEvent implements SearchEvent {
   bool? get isUpdate;
   @JsonKey(ignore: true)
   _$$GetInfoProductSearchEventImplCopyWith<_$GetInfoProductSearchEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSizeProductSearchEventImplCopyWith<$Res> {
+  factory _$$ChangeSizeProductSearchEventImplCopyWith(
+          _$ChangeSizeProductSearchEventImpl value,
+          $Res Function(_$ChangeSizeProductSearchEventImpl) then) =
+      __$$ChangeSizeProductSearchEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SkuProductDataModel selectSizeProduct});
+
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct;
+}
+
+/// @nodoc
+class __$$ChangeSizeProductSearchEventImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$ChangeSizeProductSearchEventImpl>
+    implements _$$ChangeSizeProductSearchEventImplCopyWith<$Res> {
+  __$$ChangeSizeProductSearchEventImplCopyWithImpl(
+      _$ChangeSizeProductSearchEventImpl _value,
+      $Res Function(_$ChangeSizeProductSearchEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectSizeProduct = null,
+  }) {
+    return _then(_$ChangeSizeProductSearchEventImpl(
+      selectSizeProduct: null == selectSizeProduct
+          ? _value.selectSizeProduct
+          : selectSizeProduct // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSizeProductSearchEventImpl
+    implements ChangeSizeProductSearchEvent {
+  const _$ChangeSizeProductSearchEventImpl({required this.selectSizeProduct});
+
+  @override
+  final SkuProductDataModel selectSizeProduct;
+
+  @override
+  String toString() {
+    return 'SearchEvent.changeSizeProduct(selectSizeProduct: $selectSizeProduct)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSizeProductSearchEventImpl &&
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectSizeProduct);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSizeProductSearchEventImplCopyWith<
+          _$ChangeSizeProductSearchEventImpl>
+      get copyWith => __$$ChangeSizeProductSearchEventImplCopyWithImpl<
+          _$ChangeSizeProductSearchEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String query) searchProfucts,
+    required TResult Function(String query) searchProfuctsInfo,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
+    required TResult Function() addProductToSoppingCart,
+    required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+  }) {
+    return changeSizeProduct(selectSizeProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String query)? searchProfucts,
+    TResult? Function(String query)? searchProfuctsInfo,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
+    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+  }) {
+    return changeSizeProduct?.call(selectSizeProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String query)? searchProfucts,
+    TResult Function(String query)? searchProfuctsInfo,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
+    TResult Function()? addProductToSoppingCart,
+    TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (changeSizeProduct != null) {
+      return changeSizeProduct(selectSizeProduct);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchEvent value) init,
+    required TResult Function(ProfuctsSearchEvent value) searchProfucts,
+    required TResult Function(ProfuctsInfoSearchEvent value) searchProfuctsInfo,
+    required TResult Function(SelectFilterSearchEvent value) selectFilter,
+    required TResult Function(DeleteFilterSearchEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotySearchEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogSearchEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductSearchEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductSearchEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
+    required TResult Function(GoBackProductInfoCategotySearchEvent value)
+        goBackProductInfo,
+    required TResult Function(PaginationProductSearchEvent value)
+        paginationProduct,
+    required TResult Function(AddProductToSoppingCartSearchEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckButtonTopSearchEvent value) checkButtonTop,
+    required TResult Function(CheckProductToSoppingCartSearchEvent value)
+        checkProductToSoppingCart,
+  }) {
+    return changeSizeProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchEvent value)? init,
+    TResult? Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult? Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult? Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult? Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductSearchEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
+    TResult? Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
+    TResult? Function(AddProductToSoppingCartSearchEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckButtonTopSearchEvent value)? checkButtonTop,
+    TResult? Function(CheckProductToSoppingCartSearchEvent value)?
+        checkProductToSoppingCart,
+  }) {
+    return changeSizeProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchEvent value)? init,
+    TResult Function(ProfuctsSearchEvent value)? searchProfucts,
+    TResult Function(ProfuctsInfoSearchEvent value)? searchProfuctsInfo,
+    TResult Function(SelectFilterSearchEvent value)? selectFilter,
+    TResult Function(DeleteFilterSearchEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotySearchEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotySearchEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogSearchEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductSearchEvent value)? addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductSearchEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
+    TResult Function(GoBackProductInfoCategotySearchEvent value)?
+        goBackProductInfo,
+    TResult Function(PaginationProductSearchEvent value)? paginationProduct,
+    TResult Function(AddProductToSoppingCartSearchEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckButtonTopSearchEvent value)? checkButtonTop,
+    TResult Function(CheckProductToSoppingCartSearchEvent value)?
+        checkProductToSoppingCart,
+    required TResult orElse(),
+  }) {
+    if (changeSizeProduct != null) {
+      return changeSizeProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeSizeProductSearchEvent implements SearchEvent {
+  const factory ChangeSizeProductSearchEvent(
+          {required final SkuProductDataModel selectSizeProduct}) =
+      _$ChangeSizeProductSearchEventImpl;
+
+  SkuProductDataModel get selectSizeProduct;
+  @JsonKey(ignore: true)
+  _$$ChangeSizeProductSearchEventImplCopyWith<
+          _$ChangeSizeProductSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -3108,6 +3520,8 @@ class _$GoBackProductInfoCategotySearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -3135,6 +3549,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -3161,6 +3576,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -3193,6 +3609,8 @@ class _$GoBackProductInfoCategotySearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -3224,6 +3642,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3253,6 +3672,7 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3334,6 +3754,8 @@ class _$PaginationProductSearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -3361,6 +3783,7 @@ class _$PaginationProductSearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -3387,6 +3810,7 @@ class _$PaginationProductSearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -3419,6 +3843,8 @@ class _$PaginationProductSearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -3450,6 +3876,7 @@ class _$PaginationProductSearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3479,6 +3906,7 @@ class _$PaginationProductSearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3561,6 +3989,8 @@ class _$AddProductToSoppingCartSearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -3588,6 +4018,7 @@ class _$AddProductToSoppingCartSearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -3614,6 +4045,7 @@ class _$AddProductToSoppingCartSearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -3646,6 +4078,8 @@ class _$AddProductToSoppingCartSearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -3677,6 +4111,7 @@ class _$AddProductToSoppingCartSearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3706,6 +4141,7 @@ class _$AddProductToSoppingCartSearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3813,6 +4249,8 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -3840,6 +4278,7 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -3866,6 +4305,7 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -3898,6 +4338,8 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -3929,6 +4371,7 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3958,6 +4401,7 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -3993,6 +4437,8 @@ abstract class _$$CheckProductToSoppingCartSearchEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartSearchEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -4008,14 +4454,22 @@ class __$$CheckProductToSoppingCartSearchEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = freezed,
+    Object? size = null,
   }) {
     return _then(_$CheckProductToSoppingCartSearchEventImpl(
-      size: freezed == size
+      size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -4038,12 +4492,11 @@ class _$CheckProductToSoppingCartSearchEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartSearchEventImpl &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   @JsonKey(ignore: true)
   @override
@@ -4073,6 +4526,8 @@ class _$CheckProductToSoppingCartSearchEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
     required TResult Function() addProductToSoppingCart,
@@ -4100,6 +4555,7 @@ class _$CheckProductToSoppingCartSearchEventImpl
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
     TResult? Function()? addProductToSoppingCart,
@@ -4126,6 +4582,7 @@ class _$CheckProductToSoppingCartSearchEventImpl
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
     TResult Function()? addProductToSoppingCart,
@@ -4158,6 +4615,8 @@ class _$CheckProductToSoppingCartSearchEventImpl
     required TResult Function(DeleteFavouriteProductSearchEvent value)
         deleteFavouriteProduct,
     required TResult Function(GetInfoProductSearchEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductSearchEvent value)
+        changeSizeProduct,
     required TResult Function(GoBackProductInfoCategotySearchEvent value)
         goBackProductInfo,
     required TResult Function(PaginationProductSearchEvent value)
@@ -4189,6 +4648,7 @@ class _$CheckProductToSoppingCartSearchEventImpl
     TResult? Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult? Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult? Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult? Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -4218,6 +4678,7 @@ class _$CheckProductToSoppingCartSearchEventImpl
     TResult Function(DeleteFavouriteProductSearchEvent value)?
         deleteFavouriteProduct,
     TResult Function(GetInfoProductSearchEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductSearchEvent value)? changeSizeProduct,
     TResult Function(GoBackProductInfoCategotySearchEvent value)?
         goBackProductInfo,
     TResult Function(PaginationProductSearchEvent value)? paginationProduct,
@@ -4272,6 +4733,7 @@ mixin _$SearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4302,6 +4764,7 @@ mixin _$SearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4332,6 +4795,7 @@ mixin _$SearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4444,6 +4908,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4477,6 +4942,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4510,6 +4976,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4624,6 +5091,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4657,6 +5125,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4690,6 +5159,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -4771,10 +5241,16 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       bool isAuth,
       int offset,
       bool isButtonTop,
+      SkuProductDataModel? selectSizeProduct,
       bool? isSoppingCart,
       DetailProductDataModel? detailsProduct,
       List<ProductDataModel>? favouritesProducts,
       CatalogSearchInfoDataModel? searchResultInfo});
+
+  $CatalogSearchProductsRequestCopyWith<$Res> get request;
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
+  $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo;
 }
 
 /// @nodoc
@@ -4803,11 +5279,12 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? favouritesProductsId = null,
     Object? query = null,
     Object? isLoading = null,
-    Object? request = freezed,
+    Object? request = null,
     Object? listProductsCode = null,
     Object? isAuth = null,
     Object? offset = null,
     Object? isButtonTop = null,
+    Object? selectSizeProduct = freezed,
     Object? isSoppingCart = freezed,
     Object? detailsProduct = freezed,
     Object? favouritesProducts = freezed,
@@ -4866,7 +5343,7 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      request: freezed == request
+      request: null == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as CatalogSearchProductsRequest,
@@ -4886,6 +5363,10 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value.isButtonTop
           : isButtonTop // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectSizeProduct: freezed == selectSizeProduct
+          ? _value.selectSizeProduct
+          : selectSizeProduct // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
       isSoppingCart: freezed == isSoppingCart
           ? _value.isSoppingCart
           : isSoppingCart // ignore: cast_nullable_to_non_nullable
@@ -4903,6 +5384,53 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           : searchResultInfo // ignore: cast_nullable_to_non_nullable
               as CatalogSearchInfoDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CatalogSearchProductsRequestCopyWith<$Res> get request {
+    return $CatalogSearchProductsRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
+    if (_value.selectSizeProduct == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct!,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
+    if (_value.detailsProduct == null) {
+      return null;
+    }
+
+    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
+        (value) {
+      return _then(_value.copyWith(detailsProduct: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo {
+    if (_value.searchResultInfo == null) {
+      return null;
+    }
+
+    return $CatalogSearchInfoDataModelCopyWith<$Res>(_value.searchResultInfo!,
+        (value) {
+      return _then(_value.copyWith(searchResultInfo: value));
+    });
   }
 }
 
@@ -4929,6 +5457,7 @@ class _$SearchProductsResultSearchStateImpl
       required this.isAuth,
       required this.offset,
       required this.isButtonTop,
+      this.selectSizeProduct,
       this.isSoppingCart,
       this.detailsProduct,
       final List<ProductDataModel>? favouritesProducts,
@@ -5062,6 +5591,8 @@ class _$SearchProductsResultSearchStateImpl
   @override
   final bool isButtonTop;
   @override
+  final SkuProductDataModel? selectSizeProduct;
+  @override
   final bool? isSoppingCart;
   @override
   final DetailProductDataModel? detailsProduct;
@@ -5081,7 +5612,7 @@ class _$SearchProductsResultSearchStateImpl
 
   @override
   String toString() {
-    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, isSoppingCart: $isSoppingCart, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
+    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
   }
 
   @override
@@ -5112,21 +5643,23 @@ class _$SearchProductsResultSearchStateImpl
             (identical(other.query, query) || other.query == query) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.request, request) &&
+            (identical(other.request, request) || other.request == request) &&
             const DeepCollectionEquality()
                 .equals(other._listProductsCode, _listProductsCode) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.isButtonTop, isButtonTop) ||
                 other.isButtonTop == isButtonTop) &&
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.isSoppingCart, isSoppingCart) ||
                 other.isSoppingCart == isSoppingCart) &&
-            const DeepCollectionEquality()
-                .equals(other.detailsProduct, detailsProduct) &&
+            (identical(other.detailsProduct, detailsProduct) ||
+                other.detailsProduct == detailsProduct) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProducts, _favouritesProducts) &&
-            const DeepCollectionEquality()
-                .equals(other.searchResultInfo, searchResultInfo));
+            (identical(other.searchResultInfo, searchResultInfo) ||
+                other.searchResultInfo == searchResultInfo));
   }
 
   @override
@@ -5145,15 +5678,16 @@ class _$SearchProductsResultSearchStateImpl
         const DeepCollectionEquality().hash(_favouritesProductsId),
         query,
         isLoading,
-        const DeepCollectionEquality().hash(request),
+        request,
         const DeepCollectionEquality().hash(_listProductsCode),
         isAuth,
         offset,
         isButtonTop,
+        selectSizeProduct,
         isSoppingCart,
-        const DeepCollectionEquality().hash(detailsProduct),
+        detailsProduct,
         const DeepCollectionEquality().hash(_favouritesProducts),
-        const DeepCollectionEquality().hash(searchResultInfo)
+        searchResultInfo
       ]);
 
   @JsonKey(ignore: true)
@@ -5188,6 +5722,7 @@ class _$SearchProductsResultSearchStateImpl
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -5213,6 +5748,7 @@ class _$SearchProductsResultSearchStateImpl
         isAuth,
         offset,
         isButtonTop,
+        selectSizeProduct,
         isSoppingCart,
         detailsProduct,
         favouritesProducts,
@@ -5243,6 +5779,7 @@ class _$SearchProductsResultSearchStateImpl
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -5268,6 +5805,7 @@ class _$SearchProductsResultSearchStateImpl
         isAuth,
         offset,
         isButtonTop,
+        selectSizeProduct,
         isSoppingCart,
         detailsProduct,
         favouritesProducts,
@@ -5298,6 +5836,7 @@ class _$SearchProductsResultSearchStateImpl
             bool isAuth,
             int offset,
             bool isButtonTop,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
@@ -5325,6 +5864,7 @@ class _$SearchProductsResultSearchStateImpl
           isAuth,
           offset,
           isButtonTop,
+          selectSizeProduct,
           isSoppingCart,
           detailsProduct,
           favouritesProducts,
@@ -5391,6 +5931,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
           required final bool isAuth,
           required final int offset,
           required final bool isButtonTop,
+          final SkuProductDataModel? selectSizeProduct,
           final bool? isSoppingCart,
           final DetailProductDataModel? detailsProduct,
           final List<ProductDataModel>? favouritesProducts,
@@ -5415,6 +5956,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
   bool get isAuth;
   int get offset;
   bool get isButtonTop;
+  SkuProductDataModel? get selectSizeProduct;
   bool? get isSoppingCart;
   DetailProductDataModel? get detailsProduct;
   List<ProductDataModel>? get favouritesProducts;

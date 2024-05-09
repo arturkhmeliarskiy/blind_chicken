@@ -5,3 +5,6 @@ export 'schem_loyalty_data_model.dart';
 export 'auth_data_model.dart';
 export 'captha_data_model.dart';
 export 'basket_request.dart';
+export 'orders_blank_data_model.dart';
+export 'order_blank_data_model.dart';
+export 'order_blank_pdf_data_model.dart';

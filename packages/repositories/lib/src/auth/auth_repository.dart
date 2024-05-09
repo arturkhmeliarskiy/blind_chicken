@@ -33,6 +33,26 @@ class AuthRepository {
     return listBoutiques.toAuth();
   }
 
+  Future<AuthDataModel> changeName({
+    required String name,
+  }) async {
+    final listBoutiques = await _authService.changeName(
+          name: name,
+        ) ??
+        AuthResponse();
+    return listBoutiques.toAuth();
+  }
+
+  Future<AuthDataModel> changeEmail({
+    required String email,
+  }) async {
+    final listBoutiques = await _authService.changeEmail(
+          email: email,
+        ) ??
+        AuthResponse();
+    return listBoutiques.toAuth();
+  }
+
   Future<UserInfoDataModel> checkSmsAndAuthorization({
     required String tel,
     required String code,
@@ -60,6 +80,60 @@ class AuthRepository {
   Future<UserInfoDataModel> getUserInfo() async {
     final listBoutiques = await _authService.getUserInfo() ?? UserInfoResponse();
     return listBoutiques.toUserInfo();
+  }
+
+  Future<OrdersBlankDataModel> getListOrdersBlank({
+    String? nav,
+  }) async {
+    final ordersBlank = await _authService.getListOrdersBlank(nav: nav) ?? OrdersBlankResponse();
+    return ordersBlank.toListOrdersBlank();
+  }
+
+  Future<OrderBlankPdfDataModel> getOrderBlank({required String id}) async {
+    final orderBlank = await _authService.getOrderBlank(id: id) ?? OrderBlankPdfResponse();
+    return OrderBlankPdfDataModel(
+      r: orderBlank.r ?? '',
+      message: orderBlank.message ?? '',
+      pdf: orderBlank.pdf ?? '',
+    );
+  }
+
+  Future<OrdersBlankDataModel> getListTailoringBlank({
+    String? nav,
+  }) async {
+    final tailoringBlank =
+        await _authService.getListTailoringBlank(nav: nav) ?? OrdersBlankResponse();
+    return tailoringBlank.toListOrdersBlank();
+  }
+
+  Future<OrderBlankPdfDataModel> getTailoringBlank({required String id}) async {
+    final tailoringBlank = await _authService.getTailoringBlank(id: id) ?? OrderBlankPdfResponse();
+    return OrderBlankPdfDataModel(
+      r: tailoringBlank.r ?? '',
+      message: tailoringBlank.message ?? '',
+      pdf: tailoringBlank.pdf ?? '',
+    );
+  }
+}
+
+extension on OrdersBlankResponse {
+  OrdersBlankDataModel toListOrdersBlank() {
+    return OrdersBlankDataModel(
+      r: r ?? '',
+      message: message ?? '',
+      orders: List<OrderBlankDataModel>.from(
+        orders?.map(
+              (item) {
+                return OrderBlankDataModel(
+                  date: item.date ?? '',
+                  id: item.id ?? '',
+                  number: item.number ?? '',
+                );
+              },
+            ) ??
+            [],
+      ).toList(),
+    );
   }
 }
 

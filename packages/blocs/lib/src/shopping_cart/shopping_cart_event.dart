@@ -54,6 +54,9 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
   }) = CheckProductToSoppingCartEvent;
+  const factory ShoppingCartEvent.changeSizeProduct({
+    required SkuProductDataModel selectSizeProduct,
+  }) = ChangeSizeProductSoppingCartEvent;
   const factory ShoppingCartEvent.openAuthModel() = OpenAuthModelSoppingCartEvent;
   const factory ShoppingCartEvent.closeAuthModel() = CloseAuthModelSoppingCartEvent;
 }

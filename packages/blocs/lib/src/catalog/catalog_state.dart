@@ -34,6 +34,7 @@ class CatalogState with _$CatalogState {
     required String updateVersionApp,
     required bool isUpdateVersionApp,
     required bool isNotification,
+    SkuProductDataModel? selectSizeProduct,
     String? errorMessage,
     bool? isSoppingCart,
     bool? isError,

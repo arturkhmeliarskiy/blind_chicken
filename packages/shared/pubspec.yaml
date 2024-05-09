@@ -17,6 +17,8 @@ dependencies:
   path_provider: ^2.1.1
   geolocator: ^10.1.0
   shared_preferences: ^2.2.2
+  file_picker: ^8.0.0
+  permission_handler: ^11.3.1
   repositories:
     path: ../repositories
   models:

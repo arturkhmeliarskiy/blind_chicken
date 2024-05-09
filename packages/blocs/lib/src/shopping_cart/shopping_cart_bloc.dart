@@ -51,6 +51,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
         openAuthModel: (event) => _openAuthModel(event, emit),
         closeAuthModel: (event) => _closeAuthModel(event, emit),
+        changeSizeProduct: (event) => _changeSizeProduct(event, emit),
       ),
     );
   }
@@ -682,6 +683,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
+        selectSizeProduct: null,
       ));
     });
   }
@@ -732,6 +734,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
+          selectSizeProduct: null,
         ));
       }
     });
@@ -799,6 +802,17 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           favouritesProducts: favouritesInfo.products,
         ),
       );
+    });
+  }
+
+  Future<void> _changeSizeProduct(
+    ChangeSizeProductSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
+      ));
     });
   }
 

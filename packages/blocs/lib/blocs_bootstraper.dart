@@ -67,6 +67,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<BasketRepository>(),
         getIt.get<FavouritesRepository>(),
         getIt.get<PushNotificationRepository>(),
+        getIt.get<FileService>(),
       ),
     )
     ..registerFactory(

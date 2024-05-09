@@ -4,6 +4,12 @@ part of 'account_bloc.dart';
 class AccountState with _$AccountState {
   const factory AccountState.init() = InitAccountState;
   const factory AccountState.load() = LoadingAccountState;
+  const factory AccountState.error({
+    required String message,
+  }) = ErrorAccountState;
+  const factory AccountState.errorOpenPdf({
+    required String message,
+  }) = ErrorOpenPdfAccountState;
   const factory AccountState.payOrder({
     required String url,
   }) = PayOrderAccountState;
@@ -22,8 +28,15 @@ class AccountState with _$AccountState {
     required List<ProductDataModel> listProdcutsBrand,
     required bool isAuth,
     required String virtualCardsCod,
+    required List<OrderBlankDataModel> listOrdersBlank,
+    required List<OrderBlankDataModel> listTailoringBlank,
+    required Uint8List file,
+    required String fileName,
+    SkuProductDataModel? selectSizeProduct,
     bool? isSoppingCart,
+    bool? isSuccessfullySavedFile,
     bool? isLoadVirtualCardsCod,
+    bool? isLoadOpenPdf,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,
     UserDataModel? user,

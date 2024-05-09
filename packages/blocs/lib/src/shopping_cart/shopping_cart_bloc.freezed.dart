@@ -43,6 +43,8 @@ mixin _$ShoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) =>
@@ -71,6 +73,7 @@ mixin _$ShoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) =>
@@ -99,6 +102,7 @@ mixin _$ShoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -137,6 +141,8 @@ mixin _$ShoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -173,6 +179,8 @@ mixin _$ShoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) =>
@@ -207,6 +215,8 @@ mixin _$ShoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -297,6 +307,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -328,6 +340,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -359,6 +372,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -403,6 +417,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -442,6 +458,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -479,6 +497,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -562,6 +582,8 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -593,6 +615,7 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -624,6 +647,7 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -668,6 +692,8 @@ class _$PreloadDataShoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -707,6 +733,8 @@ class _$PreloadDataShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -744,6 +772,8 @@ class _$PreloadDataShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -768,6 +798,8 @@ abstract class _$$AddProductToSoppingCartEventImplCopyWith<$Res> {
       __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item});
+
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -783,14 +815,22 @@ class __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
+    Object? item = null,
   }) {
     return _then(_$AddProductToSoppingCartEventImpl(
-      item: freezed == item
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -813,12 +853,11 @@ class _$AddProductToSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartEventImpl &&
-            const DeepCollectionEquality().equals(other.item, item));
+            (identical(other.item, item) || other.item == item));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(item));
+  int get hashCode => Object.hash(runtimeType, item);
 
   @JsonKey(ignore: true)
   @override
@@ -856,6 +895,8 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -887,6 +928,7 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -918,6 +960,7 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -962,6 +1005,8 @@ class _$AddProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -1001,6 +1046,8 @@ class _$AddProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -1038,6 +1085,8 @@ class _$AddProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -1069,6 +1118,8 @@ abstract class _$$DeleteProductToSoppingCartEventImplCopyWith<$Res> {
       __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item, int index});
+
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1084,11 +1135,11 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
+    Object? item = null,
     Object? index = null,
   }) {
     return _then(_$DeleteProductToSoppingCartEventImpl(
-      item: freezed == item
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
@@ -1097,6 +1148,14 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -1122,13 +1181,12 @@ class _$DeleteProductToSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteProductToSoppingCartEventImpl &&
-            const DeepCollectionEquality().equals(other.item, item) &&
+            (identical(other.item, item) || other.item == item) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(item), index);
+  int get hashCode => Object.hash(runtimeType, item, index);
 
   @JsonKey(ignore: true)
   @override
@@ -1166,6 +1224,8 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -1197,6 +1257,7 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -1228,6 +1289,7 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -1272,6 +1334,8 @@ class _$DeleteProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -1311,6 +1375,8 @@ class _$DeleteProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -1348,6 +1414,8 @@ class _$DeleteProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -1380,6 +1448,8 @@ abstract class _$$UpdateProductToSoppingCartEventImplCopyWith<$Res> {
       __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketInfoItemDataModel item, int index});
+
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
 
 /// @nodoc
@@ -1395,11 +1465,11 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? item = freezed,
+    Object? item = null,
     Object? index = null,
   }) {
     return _then(_$UpdateProductToSoppingCartEventImpl(
-      item: freezed == item
+      item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
@@ -1408,6 +1478,14 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
           : index // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
@@ -1433,13 +1511,12 @@ class _$UpdateProductToSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateProductToSoppingCartEventImpl &&
-            const DeepCollectionEquality().equals(other.item, item) &&
+            (identical(other.item, item) || other.item == item) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(item), index);
+  int get hashCode => Object.hash(runtimeType, item, index);
 
   @JsonKey(ignore: true)
   @override
@@ -1477,6 +1554,8 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -1508,6 +1587,7 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -1539,6 +1619,7 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -1583,6 +1664,8 @@ class _$UpdateProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -1622,6 +1705,8 @@ class _$UpdateProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -1659,6 +1744,8 @@ class _$UpdateProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -1751,6 +1838,8 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -1782,6 +1871,7 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -1813,6 +1903,7 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -1857,6 +1948,8 @@ class _$PaymentBonusSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -1896,6 +1989,8 @@ class _$PaymentBonusSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -1933,6 +2028,8 @@ class _$PaymentBonusSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -2017,6 +2114,8 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -2048,6 +2147,7 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -2079,6 +2179,7 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -2123,6 +2224,8 @@ class _$InitGiftCardSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -2162,6 +2265,8 @@ class _$InitGiftCardSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -2199,6 +2304,8 @@ class _$InitGiftCardSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -2317,6 +2424,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -2348,6 +2457,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -2379,6 +2489,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -2423,6 +2534,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -2462,6 +2575,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -2499,6 +2614,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -2530,6 +2647,8 @@ abstract class _$$AddGiftCardSoppingCartEventImplCopyWith<$Res> {
       __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketSertDeliveryRequest giftCard});
+
+  $BasketSertDeliveryRequestCopyWith<$Res> get giftCard;
 }
 
 /// @nodoc
@@ -2545,14 +2664,22 @@ class __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? giftCard = freezed,
+    Object? giftCard = null,
   }) {
     return _then(_$AddGiftCardSoppingCartEventImpl(
-      giftCard: freezed == giftCard
+      giftCard: null == giftCard
           ? _value.giftCard
           : giftCard // ignore: cast_nullable_to_non_nullable
               as BasketSertDeliveryRequest,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketSertDeliveryRequestCopyWith<$Res> get giftCard {
+    return $BasketSertDeliveryRequestCopyWith<$Res>(_value.giftCard, (value) {
+      return _then(_value.copyWith(giftCard: value));
+    });
   }
 }
 
@@ -2574,12 +2701,12 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddGiftCardSoppingCartEventImpl &&
-            const DeepCollectionEquality().equals(other.giftCard, giftCard));
+            (identical(other.giftCard, giftCard) ||
+                other.giftCard == giftCard));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(giftCard));
+  int get hashCode => Object.hash(runtimeType, giftCard);
 
   @JsonKey(ignore: true)
   @override
@@ -2616,6 +2743,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -2647,6 +2776,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -2678,6 +2808,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -2722,6 +2853,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -2761,6 +2894,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -2798,6 +2933,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -2914,6 +3051,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -2945,6 +3084,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -2976,6 +3116,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -3020,6 +3161,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -3059,6 +3202,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -3096,6 +3241,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -3220,6 +3367,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -3251,6 +3400,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -3282,6 +3432,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -3326,6 +3477,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -3365,6 +3518,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -3402,6 +3557,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -3493,6 +3650,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -3524,6 +3683,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -3555,6 +3715,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -3599,6 +3760,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -3638,6 +3801,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -3675,6 +3840,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -3699,6 +3866,8 @@ abstract class _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<$Res> {
       __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BasketOrderRequest request});
+
+  $BasketOrderRequestCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -3714,14 +3883,22 @@ class __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = freezed,
+    Object? request = null,
   }) {
     return _then(_$CreateOrderPromoCodeSoppingCartEventImpl(
-      request: freezed == request
+      request: null == request
           ? _value.request
           : request // ignore: cast_nullable_to_non_nullable
               as BasketOrderRequest,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketOrderRequestCopyWith<$Res> get request {
+    return $BasketOrderRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
   }
 }
 
@@ -3744,12 +3921,11 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateOrderPromoCodeSoppingCartEventImpl &&
-            const DeepCollectionEquality().equals(other.request, request));
+            (identical(other.request, request) || other.request == request));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(request));
+  int get hashCode => Object.hash(runtimeType, request);
 
   @JsonKey(ignore: true)
   @override
@@ -3787,6 +3963,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -3818,6 +3996,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -3849,6 +4028,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -3893,6 +4073,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -3932,6 +4114,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -3969,6 +4153,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -4085,6 +4271,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -4116,6 +4304,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -4147,6 +4336,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -4191,6 +4381,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -4230,6 +4422,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -4267,6 +4461,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -4393,6 +4589,8 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -4424,6 +4622,7 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -4455,6 +4654,7 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -4499,6 +4699,8 @@ class _$GetInfoProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -4538,6 +4740,8 @@ class _$GetInfoProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -4575,6 +4779,8 @@ class _$GetInfoProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -4668,6 +4874,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -4699,6 +4907,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -4730,6 +4939,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -4774,6 +4984,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -4813,6 +5025,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -4850,6 +5064,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -4875,6 +5091,8 @@ abstract class _$$AddFavouriteProductShoppingCartEventImplCopyWith<$Res> {
       __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index, ProductDataModel product});
+
+  $ProductDataModelCopyWith<$Res> get product;
 }
 
 /// @nodoc
@@ -4891,18 +5109,26 @@ class __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
-    Object? product = freezed,
+    Object? product = null,
   }) {
     return _then(_$AddFavouriteProductShoppingCartEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      product: freezed == product
+      product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res> get product {
+    return $ProductDataModelCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 }
 
@@ -4929,12 +5155,11 @@ class _$AddFavouriteProductShoppingCartEventImpl
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductShoppingCartEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            const DeepCollectionEquality().equals(other.product, product));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, index, const DeepCollectionEquality().hash(product));
+  int get hashCode => Object.hash(runtimeType, index, product);
 
   @JsonKey(ignore: true)
   @override
@@ -4972,6 +5197,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -5003,6 +5230,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -5034,6 +5262,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -5078,6 +5307,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -5117,6 +5348,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -5154,6 +5387,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -5275,6 +5510,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -5306,6 +5543,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -5337,6 +5575,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -5381,6 +5620,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -5420,6 +5661,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -5457,6 +5700,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -5549,6 +5794,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -5580,6 +5827,7 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -5611,6 +5859,7 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -5655,6 +5904,8 @@ class _$AddProductToSoppingCartInfoEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -5694,6 +5945,8 @@ class _$AddProductToSoppingCartInfoEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -5731,6 +5984,8 @@ class _$AddProductToSoppingCartInfoEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -5755,6 +6010,8 @@ abstract class _$$CheckProductToSoppingCartEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -5770,14 +6027,22 @@ class __$$CheckProductToSoppingCartEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = freezed,
+    Object? size = null,
   }) {
     return _then(_$CheckProductToSoppingCartEventImpl(
-      size: freezed == size
+      size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -5800,12 +6065,11 @@ class _$CheckProductToSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartEventImpl &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   @JsonKey(ignore: true)
   @override
@@ -5843,6 +6107,8 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -5874,6 +6140,7 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -5905,6 +6172,7 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -5949,6 +6217,8 @@ class _$CheckProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -5988,6 +6258,8 @@ class _$CheckProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -6025,6 +6297,8 @@ class _$CheckProductToSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -6045,6 +6319,329 @@ abstract class CheckProductToSoppingCartEvent implements ShoppingCartEvent {
   @JsonKey(ignore: true)
   _$$CheckProductToSoppingCartEventImplCopyWith<
           _$CheckProductToSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSizeProductSoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangeSizeProductSoppingCartEventImplCopyWith(
+          _$ChangeSizeProductSoppingCartEventImpl value,
+          $Res Function(_$ChangeSizeProductSoppingCartEventImpl) then) =
+      __$$ChangeSizeProductSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SkuProductDataModel selectSizeProduct});
+
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct;
+}
+
+/// @nodoc
+class __$$ChangeSizeProductSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangeSizeProductSoppingCartEventImpl>
+    implements _$$ChangeSizeProductSoppingCartEventImplCopyWith<$Res> {
+  __$$ChangeSizeProductSoppingCartEventImplCopyWithImpl(
+      _$ChangeSizeProductSoppingCartEventImpl _value,
+      $Res Function(_$ChangeSizeProductSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectSizeProduct = null,
+  }) {
+    return _then(_$ChangeSizeProductSoppingCartEventImpl(
+      selectSizeProduct: null == selectSizeProduct
+          ? _value.selectSizeProduct
+          : selectSizeProduct // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSizeProductSoppingCartEventImpl
+    implements ChangeSizeProductSoppingCartEvent {
+  const _$ChangeSizeProductSoppingCartEventImpl(
+      {required this.selectSizeProduct});
+
+  @override
+  final SkuProductDataModel selectSizeProduct;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changeSizeProduct(selectSizeProduct: $selectSizeProduct)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSizeProductSoppingCartEventImpl &&
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectSizeProduct);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSizeProductSoppingCartEventImplCopyWith<
+          _$ChangeSizeProductSoppingCartEventImpl>
+      get copyWith => __$$ChangeSizeProductSoppingCartEventImplCopyWithImpl<
+          _$ChangeSizeProductSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+  }) {
+    return changeSizeProduct(selectSizeProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+  }) {
+    return changeSizeProduct?.call(selectSizeProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    required TResult orElse(),
+  }) {
+    if (changeSizeProduct != null) {
+      return changeSizeProduct(selectSizeProduct);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+  }) {
+    return changeSizeProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+  }) {
+    return changeSizeProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    required TResult orElse(),
+  }) {
+    if (changeSizeProduct != null) {
+      return changeSizeProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeSizeProductSoppingCartEvent implements ShoppingCartEvent {
+  const factory ChangeSizeProductSoppingCartEvent(
+          {required final SkuProductDataModel selectSizeProduct}) =
+      _$ChangeSizeProductSoppingCartEventImpl;
+
+  SkuProductDataModel get selectSizeProduct;
+  @JsonKey(ignore: true)
+  _$$ChangeSizeProductSoppingCartEventImplCopyWith<
+          _$ChangeSizeProductSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -6116,6 +6713,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -6147,6 +6746,7 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -6178,6 +6778,7 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -6222,6 +6823,8 @@ class _$OpenAuthModelSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -6261,6 +6864,8 @@ class _$OpenAuthModelSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -6298,6 +6903,8 @@ class _$OpenAuthModelSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -6382,6 +6989,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function() addProductToSoppingCartInfo,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
   }) {
@@ -6413,6 +7022,7 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function(int index)? deleteFavouriteProduct,
     TResult? Function()? addProductToSoppingCartInfo,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
   }) {
@@ -6444,6 +7054,7 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function(int index)? deleteFavouriteProduct,
     TResult Function()? addProductToSoppingCartInfo,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
     required TResult orElse(),
@@ -6488,6 +7099,8 @@ class _$CloseAuthModelSoppingCartEventImpl
         addProductToSoppingCartInfo,
     required TResult Function(CheckProductToSoppingCartEvent value)
         checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
     required TResult Function(OpenAuthModelSoppingCartEvent value)
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
@@ -6527,6 +7140,8 @@ class _$CloseAuthModelSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult? Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
   }) {
@@ -6564,6 +7179,8 @@ class _$CloseAuthModelSoppingCartEventImpl
         addProductToSoppingCartInfo,
     TResult Function(CheckProductToSoppingCartEvent value)?
         checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
     required TResult orElse(),
@@ -6616,6 +7233,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -6657,6 +7275,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -6698,6 +7317,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -6827,6 +7447,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -6871,6 +7492,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -6915,6 +7537,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7048,6 +7671,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7092,6 +7716,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7136,6 +7761,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7298,6 +7924,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7342,6 +7969,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7386,6 +8014,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -7490,10 +8119,19 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsBrand,
       List<int> favouritesProductsId,
       bool isAuth,
+      SkuProductDataModel? selectSizeProduct,
       bool? isSoppingCart,
       bool? isAuthModel,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct});
+
+  $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart;
+  $BoutiquesDataModelCopyWith<$Res> get boutiques;
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus;
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentGift;
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
+  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
 }
 
 /// @nodoc
@@ -7509,7 +8147,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? shoppingCart = freezed,
+    Object? shoppingCart = null,
     Object? payments = null,
     Object? promoCodeMessage = null,
     Object? numberProducts = null,
@@ -7524,7 +8162,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? isLoadCreateOrder = null,
     Object? promoCode = null,
     Object? pickup = null,
-    Object? boutiques = freezed,
+    Object? boutiques = null,
     Object? listGiftCard = null,
     Object? creatOrderMessage = freezed,
     Object? paymentBonus = freezed,
@@ -7537,13 +8175,14 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? listProdcutsBrand = null,
     Object? favouritesProductsId = null,
     Object? isAuth = null,
+    Object? selectSizeProduct = freezed,
     Object? isSoppingCart = freezed,
     Object? isAuthModel = freezed,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
   }) {
     return _then(_$ProductsShoppingCartStateImpl(
-      shoppingCart: freezed == shoppingCart
+      shoppingCart: null == shoppingCart
           ? _value.shoppingCart
           : shoppingCart // ignore: cast_nullable_to_non_nullable
               as BasketFullInfoDataModel,
@@ -7603,7 +8242,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.pickup
           : pickup // ignore: cast_nullable_to_non_nullable
               as String,
-      boutiques: freezed == boutiques
+      boutiques: null == boutiques
           ? _value.boutiques
           : boutiques // ignore: cast_nullable_to_non_nullable
               as BoutiquesDataModel,
@@ -7655,6 +8294,10 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.isAuth
           : isAuth // ignore: cast_nullable_to_non_nullable
               as bool,
+      selectSizeProduct: freezed == selectSizeProduct
+          ? _value.selectSizeProduct
+          : selectSizeProduct // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
       isSoppingCart: freezed == isSoppingCart
           ? _value.isSoppingCart
           : isSoppingCart // ignore: cast_nullable_to_non_nullable
@@ -7672,6 +8315,85 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           : detailsProduct // ignore: cast_nullable_to_non_nullable
               as DetailProductDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart {
+    return $BasketFullInfoDataModelCopyWith<$Res>(_value.shoppingCart, (value) {
+      return _then(_value.copyWith(shoppingCart: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BoutiquesDataModelCopyWith<$Res> get boutiques {
+    return $BoutiquesDataModelCopyWith<$Res>(_value.boutiques, (value) {
+      return _then(_value.copyWith(boutiques: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus {
+    if (_value.paymentBonus == null) {
+      return null;
+    }
+
+    return $PaymentBonusDataModelCopyWith<$Res>(_value.paymentBonus!, (value) {
+      return _then(_value.copyWith(paymentBonus: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaymentBonusDataModelCopyWith<$Res>? get paymentGift {
+    if (_value.paymentGift == null) {
+      return null;
+    }
+
+    return $PaymentBonusDataModelCopyWith<$Res>(_value.paymentGift!, (value) {
+      return _then(_value.copyWith(paymentGift: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
+    if (_value.selectSizeProduct == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct!,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
+    if (_value.favouritesProductsInfo == null) {
+      return null;
+    }
+
+    return $FavouritesCatalogInfoDataModelCopyWith<$Res>(
+        _value.favouritesProductsInfo!, (value) {
+      return _then(_value.copyWith(favouritesProductsInfo: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
+    if (_value.detailsProduct == null) {
+      return null;
+    }
+
+    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
+        (value) {
+      return _then(_value.copyWith(detailsProduct: value));
+    });
   }
 }
 
@@ -7707,6 +8429,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required final List<ProductDataModel> listProdcutsBrand,
       required final List<int> favouritesProductsId,
       required this.isAuth,
+      this.selectSizeProduct,
       this.isSoppingCart,
       this.isAuthModel,
       this.favouritesProductsInfo,
@@ -7831,6 +8554,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   @override
   final bool isAuth;
   @override
+  final SkuProductDataModel? selectSizeProduct;
+  @override
   final bool? isSoppingCart;
   @override
   final bool? isAuthModel;
@@ -7841,7 +8566,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, delivery: $delivery, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, boutiques: $boutiques, listGiftCard: $listGiftCard, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, delivery: $delivery, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, boutiques: $boutiques, listGiftCard: $listGiftCard, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -7849,8 +8574,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductsShoppingCartStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other.shoppingCart, shoppingCart) &&
+            (identical(other.shoppingCart, shoppingCart) ||
+                other.shoppingCart == shoppingCart) &&
             const DeepCollectionEquality().equals(other._payments, _payments) &&
             (identical(other.promoCodeMessage, promoCodeMessage) ||
                 other.promoCodeMessage == promoCodeMessage) &&
@@ -7876,15 +8601,16 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             (identical(other.promoCode, promoCode) ||
                 other.promoCode == promoCode) &&
             (identical(other.pickup, pickup) || other.pickup == pickup) &&
-            const DeepCollectionEquality().equals(other.boutiques, boutiques) &&
+            (identical(other.boutiques, boutiques) ||
+                other.boutiques == boutiques) &&
             const DeepCollectionEquality()
                 .equals(other._listGiftCard, _listGiftCard) &&
             (identical(other.creatOrderMessage, creatOrderMessage) ||
                 other.creatOrderMessage == creatOrderMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentBonus, paymentBonus) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentGift, paymentGift) &&
+            (identical(other.paymentBonus, paymentBonus) ||
+                other.paymentBonus == paymentBonus) &&
+            (identical(other.paymentGift, paymentGift) ||
+                other.paymentGift == paymentGift) &&
             (identical(other.isRemovePromoCode, isRemovePromoCode) ||
                 other.isRemovePromoCode == isRemovePromoCode) &&
             const DeepCollectionEquality()
@@ -7900,20 +8626,22 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             const DeepCollectionEquality()
                 .equals(other._favouritesProductsId, _favouritesProductsId) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.isSoppingCart, isSoppingCart) ||
                 other.isSoppingCart == isSoppingCart) &&
             (identical(other.isAuthModel, isAuthModel) ||
                 other.isAuthModel == isAuthModel) &&
-            const DeepCollectionEquality()
-                .equals(other.favouritesProductsInfo, favouritesProductsInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.detailsProduct, detailsProduct));
+            (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
+                other.favouritesProductsInfo == favouritesProductsInfo) &&
+            (identical(other.detailsProduct, detailsProduct) ||
+                other.detailsProduct == detailsProduct));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(shoppingCart),
+        shoppingCart,
         const DeepCollectionEquality().hash(_payments),
         promoCodeMessage,
         numberProducts,
@@ -7928,11 +8656,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isLoadCreateOrder,
         promoCode,
         pickup,
-        const DeepCollectionEquality().hash(boutiques),
+        boutiques,
         const DeepCollectionEquality().hash(_listGiftCard),
         creatOrderMessage,
-        const DeepCollectionEquality().hash(paymentBonus),
-        const DeepCollectionEquality().hash(paymentGift),
+        paymentBonus,
+        paymentGift,
         isRemovePromoCode,
         const DeepCollectionEquality().hash(_favouritesProducts),
         const DeepCollectionEquality().hash(_listProductsCode),
@@ -7941,10 +8669,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         const DeepCollectionEquality().hash(_listProdcutsBrand),
         const DeepCollectionEquality().hash(_favouritesProductsId),
         isAuth,
+        selectSizeProduct,
         isSoppingCart,
         isAuthModel,
-        const DeepCollectionEquality().hash(favouritesProductsInfo),
-        const DeepCollectionEquality().hash(detailsProduct)
+        favouritesProductsInfo,
+        detailsProduct
       ]);
 
   @JsonKey(ignore: true)
@@ -7989,6 +8718,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -8024,6 +8754,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsBrand,
         favouritesProductsId,
         isAuth,
+        selectSizeProduct,
         isSoppingCart,
         isAuthModel,
         favouritesProductsInfo,
@@ -8065,6 +8796,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -8100,6 +8832,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsBrand,
         favouritesProductsId,
         isAuth,
+        selectSizeProduct,
         isSoppingCart,
         isAuthModel,
         favouritesProductsInfo,
@@ -8141,6 +8874,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsBrand,
             List<int> favouritesProductsId,
             bool isAuth,
+            SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -8178,6 +8912,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           listProdcutsBrand,
           favouritesProductsId,
           isAuth,
+          selectSizeProduct,
           isSoppingCart,
           isAuthModel,
           favouritesProductsInfo,
@@ -8258,6 +8993,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final List<ProductDataModel> listProdcutsBrand,
           required final List<int> favouritesProductsId,
           required final bool isAuth,
+          final SkuProductDataModel? selectSizeProduct,
           final bool? isSoppingCart,
           final bool? isAuthModel,
           final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
@@ -8292,6 +9028,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   List<ProductDataModel> get listProdcutsBrand;
   List<int> get favouritesProductsId;
   bool get isAuth;
+  SkuProductDataModel? get selectSizeProduct;
   bool? get isSoppingCart;
   bool? get isAuthModel;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;

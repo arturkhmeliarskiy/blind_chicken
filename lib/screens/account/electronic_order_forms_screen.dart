@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/gestures.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -13,91 +18,276 @@ class ElectronicOrderFormsScreen extends StatefulWidget {
 
 class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen> {
   final ScrollController _scrollController = ScrollController();
-  bool _isLoading = true;
+  bool _isButtonTop = false;
+  bool _isLoading = false;
+  int _offset = 1;
+  int _perOffset = 1;
+  bool _isSwipe = true;
+  double _historyPosition = 0.0;
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () {
-      setState(() {
-        _isLoading = false;
-      });
-    });
+    _scrollController.addListener(_loadMoreData);
     super.initState();
+  }
+
+  void _loadMoreData() async {
+    if (_historyPosition > _scrollController.position.pixels &&
+        _scrollController.position.pixels > 0) {
+      setState(() {
+        _isButtonTop = true;
+      });
+    } else {
+      setState(() {
+        _isButtonTop = false;
+      });
+    }
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      setState(() {
+        _isLoading = true;
+      });
+      await Future<void>.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          _isLoading = false;
+          _offset = _offset + _perOffset;
+          context
+              .read<AccountBloc>()
+              .add(AccountEvent.paginationListOrdersBlank(offset: _offset, limit: 0));
+          log(_offset.toString());
+        });
+      });
+    }
+    _historyPosition = _scrollController.position.pixels;
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        padding: const EdgeInsets.only(
-          left: 10.5,
-          right: 10.5,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocListener<AccountBloc, AccountState>(
+      listener: (context, state) {
+        state.maybeMap(
+          preloadDataCompleted: (initState) {
+            if (initState.file.isNotEmpty) {
+              context.navigateTo(
+                const OrderPdfBlankViewRoute(),
+              );
+            }
+          },
+          errorOpenPdf: (initState) {
+            BlindChickenMessage().showOverlay(
+              context,
+              initState.message,
+              () {},
+            );
+          },
+          orElse: () {},
+        );
+      },
+      child: GestureDetector(
+        onVerticalDragUpdate: (details) {},
+        onHorizontalDragEnd: (DragEndDetails details) {
+          if (details.velocity.pixelsPerSecond.dx > 0) {
+            context.read<AccountBloc>().add(const AccountEvent.preloadData());
+            context.navigateTo(
+              const AccountRoute(),
+            );
+            setState(() {
+              _isSwipe = false;
+            });
+            log((details.velocity.pixelsPerSecond.dx).toString());
+          }
+        },
+        child: Stack(
           children: [
-            const AppBarBlindChicken(),
-            const SizedBox(
-              height: 16.1,
-            ),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Личный кабинет',
-                    style: Theme.of(context).textTheme.displaySmall,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        context.popRoute();
+            Stack(
+              alignment: Alignment.bottomLeft,
+              children: [
+                Scaffold(
+                  body: SingleChildScrollView(
+                    controller: _scrollController,
+                    padding: const EdgeInsets.only(
+                      left: 10.5,
+                      right: 10.5,
+                    ),
+                    child: PopScope(
+                      canPop: false,
+                      onPopInvoked: (value) {
+                        if (_isSwipe) {
+                          context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                          context.navigateTo(
+                            const AccountRoute(),
+                          );
+                        }
                       },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppBarBlindChicken(),
+                          const SizedBox(
+                            height: 16.1,
+                          ),
+                          const SizedBox(
+                            height: 16.1,
+                          ),
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                                  context.navigateTo(
+                                    const AccountRoute(),
+                                  );
+                                },
+                                child: Text(
+                                  'Личный кабинет',
+                                  style: Theme.of(context).textTheme.displaySmall,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Бланки заказов',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: BlindChickenColors.activePageSelected,
+                                    ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 11.9,
+                          ),
+                          Text(
+                            'Бланки заказов',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          const SizedBox(
+                            height: 14.0,
+                          ),
+                          BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
+                            return state.maybeMap(
+                              preloadDataCompleted: (initState) {
+                                return initState.listOrdersBlank.isNotEmpty
+                                    ? Column(
+                                        children: List.generate(initState.listOrdersBlank.length,
+                                            (index) {
+                                          return GestureDetector(
+                                            onTap: () {
+                                              context.read<AccountBloc>().add(
+                                                    AccountEvent.getOrderPdfBlank(
+                                                      fileName:
+                                                          'Заказ ${initState.listOrdersBlank[index].number} '
+                                                          'от ${initState.listOrdersBlank[index].date}.pdf',
+                                                      id: initState.listOrdersBlank[index].id,
+                                                    ),
+                                                  );
+                                            },
+                                            child: Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 21,
+                                              ),
+                                              child: Row(children: [
+                                                SvgPicture.asset(
+                                                  'assets/icons/document.svg',
+                                                  height: 17.5,
+                                                  width: 17.5,
+                                                ),
+                                                const SizedBox(
+                                                  width: 6,
+                                                ),
+                                                Text(
+                                                  'Заказ ${initState.listOrdersBlank[index].number} '
+                                                  'от ${initState.listOrdersBlank[index].date}',
+                                                  style: Theme.of(context).textTheme.headline2,
+                                                ),
+                                              ]),
+                                            ),
+                                          );
+                                        }),
+                                      )
+                                    : Text(
+                                        'Список бланков заказов на подшив пуст.',
+                                        style: Theme.of(context).textTheme.headline2,
+                                      );
+                              },
+                              load: (value) {
+                                return Row(
+                                  children: [
+                                    Container(
+                                      width: 20,
+                                      height: 20,
+                                      alignment: Alignment.center,
+                                      margin: const EdgeInsets.only(),
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 3,
+                                        color: Colors.black,
+                                        backgroundColor: Colors.grey.shade400,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      'Загрузка данных...',
+                                      style: Theme.of(context).textTheme.headline2,
+                                    ),
+                                  ],
+                                );
+                              },
+                              orElse: () => const SizedBox(),
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
                   ),
-                  TextSpan(
-                    text: ' Бланки заказов',
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          color: BlindChickenColors.activePageSelected,
-                        ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 11.9,
-            ),
-            Text(
-              'Бланки заказов',
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            const SizedBox(
-              height: 14.0,
-            ),
-            _isLoading
-                ? Row(
-                    children: [
-                      Container(
-                        width: 20,
-                        height: 20,
-                        alignment: Alignment.center,
-                        margin: const EdgeInsets.only(),
-                        child: CircularProgressIndicator(
-                          strokeWidth: 3,
-                          color: Colors.black,
-                          backgroundColor: Colors.grey.shade400,
-                        ),
+                ),
+                if (_isButtonTop && !_isLoading)
+                  GestureDetector(
+                    onTap: () {
+                      _scrollController.jumpTo(0.0);
+                      setState(() {
+                        _isButtonTop = false;
+                      });
+                    },
+                    child: Container(
+                      height: 45,
+                      width: 45,
+                      margin: const EdgeInsets.only(left: 15, bottom: 15),
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: BlindChickenColors.activeBorderTextField,
+                        borderRadius: BorderRadius.circular(25),
                       ),
-                      const SizedBox(
-                        width: 10,
+                      child: SvgPicture.asset(
+                        'assets/icons/chevron-top.svg',
                       ),
-                      Text(
-                        'Загрузка данных...',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                    ],
+                    ),
                   )
-                : Text(
-                    'Список бланков заказов пуст.',
-                    style: Theme.of(context).textTheme.headline2,
-                  ),
+                else
+                  const SizedBox()
+              ],
+            ),
+            BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (value) {
+                  return _isLoading || (value.isLoadOpenPdf ?? false)
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
+                            backgroundColor: Colors.grey.shade400,
+                          ),
+                        )
+                      : const SizedBox();
+                },
+                orElse: () => const SizedBox(),
+              );
+            })
           ],
         ),
       ),

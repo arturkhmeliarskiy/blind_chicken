@@ -23,6 +23,7 @@ class SearchState with _$SearchState {
     required bool isAuth,
     required int offset,
     required bool isButtonTop,
+    SkuProductDataModel? selectSizeProduct,
     bool? isSoppingCart,
     DetailProductDataModel? detailsProduct,
     List<ProductDataModel>? favouritesProducts,

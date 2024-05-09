@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
@@ -20,6 +22,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final BasketRepository _basketRepository;
   final FavouritesRepository _favouritesRepository;
   final PushNotificationRepository _pushNotificationRepository;
+  final FileService _fileService;
 
   AccountBloc(
     this._catalogRepository,
@@ -29,6 +32,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._basketRepository,
     this._favouritesRepository,
     this._pushNotificationRepository,
+    this._fileService,
   ) : super(const AccountState.init()) {
     on<AccountEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -48,6 +52,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
         virtualCardsCod: (event) => _virtualcardscod(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+        changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+        getListOrdersBlank: (event) => _getListOrdersBlank(event, emit),
+        getOrderPdfBlank: (event) => _getOrderPdfBlank(event, emit),
+        saveDocument: (event) => _saveDocument(event, emit),
+        paginationListOrdersBlank: (event) => _paginationListOrdersBlank(event, emit),
+        getListTailoringBlank: (event) => _getListTailoringBlank(event, emit),
+        getTailoringPdfBlank: (event) => _getTailoringPdfBlank(event, emit),
+        paginationListTailoringBlank: (event) => _paginationListTailoringBlank(event, emit),
       ),
     );
   }
@@ -91,6 +103,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       isAuth: isAuth,
       virtualCardsCod: userInfo.user.virtualcardscod,
       isLoadVirtualCardsCod: false,
+      listOrdersBlank: [],
+      file: Uint8List(0),
+      fileName: '',
+      listTailoringBlank: [],
     ));
   }
 
@@ -98,13 +114,30 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     UpdateInfoAccountEvent event,
     Emitter<AccountState> emit,
   ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
-      emit(initState.copyWith(
-        phone: event.phone != null ? event.phone ?? '' : initState.phone,
-        name: event.name != null ? event.name ?? '' : initState.name,
-        email: event.email != null ? event.email ?? '' : initState.email,
-      ));
-    });
+    await state.mapOrNull(
+      preloadDataCompleted: (initState) async {
+        if ((event.name ?? '') != initState.name) {
+          final result = await _authRepository.changeName(
+            name: event.name ?? '',
+          );
+          if (result.r == '1') {
+            emit(initState.copyWith(
+              name: event.name ?? '',
+            ));
+          }
+        }
+        if ((event.email ?? '') != initState.email) {
+          final result = await _authRepository.changeEmail(
+            email: event.email ?? '',
+          );
+          if (result.r == '1') {
+            emit(initState.copyWith(
+              email: event.email ?? '',
+            ));
+          }
+        }
+      },
+    );
   }
 
   Future<void> _paginationProduct(
@@ -184,6 +217,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       favouritesProductsId: [],
       isAuth: isAuth,
       virtualCardsCod: '',
+      listOrdersBlank: [],
+      file: Uint8List(0),
+      fileName: '',
+      listTailoringBlank: [],
     ));
   }
 
@@ -303,6 +340,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
+        selectSizeProduct: null,
       ));
     });
   }
@@ -353,6 +391,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
+          selectSizeProduct: null,
         ));
       }
     });
@@ -459,6 +498,44 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     });
   }
 
+  Future<void> _paginationListOrdersBlank(
+    PaginationListOrdersBlankAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<OrderBlankDataModel> orders = initState.listOrdersBlank.toList();
+      final ordersBlank = await _authRepository.getListOrdersBlank(
+        nav: 'page-${event.offset}',
+      );
+
+      orders = [...orders, ...ordersBlank.orders];
+
+      emit(initState.copyWith(
+        listOrdersBlank: orders,
+        file: Uint8List(0),
+      ));
+    });
+  }
+
+  Future<void> _paginationListTailoringBlank(
+    PaginationListTailoringBlankAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<OrderBlankDataModel> orders = initState.listOrdersBlank.toList();
+      final ordersBlank = await _authRepository.getListTailoringBlank(
+        nav: 'page-${event.offset}',
+      );
+
+      orders = [...orders, ...ordersBlank.orders];
+
+      emit(initState.copyWith(
+        listOrdersBlank: orders,
+        file: Uint8List(0),
+      ));
+    });
+  }
+
   Future<void> _checkProductToSoppingCart(
     CheckProductToSoppingCartAccountEvent event,
     Emitter<AccountState> emit,
@@ -476,6 +553,135 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       );
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
+      ));
+    });
+  }
+
+  Future<void> _changeSizeProduct(
+    ChangeSizeProductAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
+      ));
+    });
+  }
+
+  Future<void> _getListOrdersBlank(
+    GetListOrdersBlankAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(const AccountState.load());
+      final ordersBlank = await _authRepository.getListOrdersBlank();
+
+      emit(initState.copyWith(
+        listOrdersBlank: ordersBlank.orders,
+      ));
+    });
+  }
+
+  Future<void> _getListTailoringBlank(
+    GetListTailoringBlankAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(const AccountState.load());
+      final tailoringBlank = await _authRepository.getListTailoringBlank();
+
+      emit(initState.copyWith(
+        listTailoringBlank: tailoringBlank.orders,
+      ));
+    });
+  }
+
+  Future<void> _getOrderPdfBlank(
+    GetOrderPdfBlankAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isLoadOpenPdf: true,
+      ));
+      final orderBlank = await _authRepository.getOrderBlank(
+        id: event.id,
+      );
+      if (orderBlank.r == '1') {
+        Uint8List file = const Base64Decoder().convert(
+          orderBlank.pdf.replaceAll(RegExp(r'\s+'), ''),
+        );
+        emit(initState.copyWith(
+          file: file,
+          fileName: event.fileName,
+          isLoadOpenPdf: false,
+          isSuccessfullySavedFile: null,
+        ));
+      } else {
+        emit(
+          AccountState.errorOpenPdf(
+            message: orderBlank.message,
+          ),
+        );
+        emit(initState.copyWith(
+          fileName: event.fileName,
+          file: Uint8List(0),
+          isLoadOpenPdf: false,
+          isSuccessfullySavedFile: null,
+        ));
+      }
+    });
+  }
+
+  Future<void> _getTailoringPdfBlank(
+    GetTailoringPdfBlankAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isLoadOpenPdf: true,
+      ));
+      final orderBlank = await _authRepository.getTailoringBlank(
+        id: event.id,
+      );
+      if (orderBlank.r == '1') {
+        Uint8List file = const Base64Decoder().convert(
+          orderBlank.pdf.replaceAll(RegExp(r'\s+'), ''),
+        );
+        emit(initState.copyWith(
+          file: file,
+          fileName: event.fileName,
+          isLoadOpenPdf: false,
+          isSuccessfullySavedFile: null,
+        ));
+      } else {
+        emit(
+          AccountState.errorOpenPdf(
+            message: orderBlank.message,
+          ),
+        );
+        emit(initState.copyWith(
+          fileName: event.fileName,
+          file: Uint8List(0),
+          isLoadOpenPdf: false,
+          isSuccessfullySavedFile: null,
+        ));
+      }
+    });
+  }
+
+  Future<void> _saveDocument(
+    SaveDocumentAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      final result = await _fileService.saveFile(
+        fileName: event.fileName,
+        bytes: event.bytes,
+      );
+
+      emit(initState.copyWith(
+        isSuccessfullySavedFile: result,
       ));
     });
   }

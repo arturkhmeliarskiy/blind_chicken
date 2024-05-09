@@ -65,6 +65,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           goBackProductInfo: (event) => _goBackProductInfo(event, emit),
           addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
           checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+          changeSizeProduct: (event) => _changeSizeProduct(event, emit),
         ));
   }
 
@@ -1028,6 +1029,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         nowVersionApp: nowVersionApp,
         updateVersionApp: updateVersionApp,
         isNotification: true,
+        selectSizeProduct: null,
       ),
     );
   }
@@ -1109,6 +1111,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         errorMessage: errorMessage,
         isNotification: false,
         isUpdateVersionApp: false,
+        selectSizeProduct: null,
       ));
     });
   }
@@ -1268,6 +1271,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       if (listProductsCode.isNotEmpty) {
         emit(const CatalogState.load());
+        bool isAuth = _sharedPreferencesService.getBool(
+              key: SharedPrefKeys.userAuthorized,
+            ) ??
+            false;
+        bool isError = false;
+        String errorMessage = '';
+        emit(const CatalogState.load());
+
+        final basketInfo = await getBasketInfo(isLocal: !isAuth);
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
           genderIndex: _updateDataService.selectedIndexGender.toString(),
@@ -1291,16 +1303,55 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           block: 'brand',
         );
 
+        List<BasketFullInfoItemDataModel> soppingCart = [];
+
+        if (detailsProduct.sku.isNotEmpty) {
+          soppingCart = basketInfo.basket
+              .where(
+                (element) =>
+                    int.parse(element.code) == detailsProduct.code &&
+                    (element.sku.isNotEmpty ? element.sku == detailsProduct.sku.first.id : true),
+              )
+              .toList();
+        } else {
+          soppingCart = basketInfo.basket
+              .where(
+                (element) => int.parse(element.code) == detailsProduct.code,
+              )
+              .toList();
+        }
+
+        if (detailsProduct.errorMessage.isNotEmpty || basketInfo.errorMessage.isNotEmpty) {
+          isError = true;
+          errorMessage = MessageInfo.errorMessage;
+        }
+
         emit(initState.copyWith(
           detailsProduct: detailsProduct,
           listProdcutsStyle: additionalProductsDescriptionStyle.products,
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
           listProductsCode: listProductsCode,
+          isAuth: isAuth,
+          isSoppingCart: soppingCart.isNotEmpty,
+          isError: isError,
+          errorMessage: errorMessage,
           isNotification: false,
           isUpdateVersionApp: false,
+          selectSizeProduct: null,
         ));
       }
+    });
+  }
+
+  Future<void> _changeSizeProduct(
+    ChangeSizeProductCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      emit(initState.copyWith(
+        selectSizeProduct: event.selectSizeProduct,
+      ));
     });
   }
 

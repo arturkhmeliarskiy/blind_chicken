@@ -826,6 +826,8 @@ abstract class _$$PreloadDataCompletedSearchLocationStateImplCopyWith<$Res> {
       __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SearchLocationDataModel searchResult, int price});
+
+  $SearchLocationDataModelCopyWith<$Res> get searchResult;
 }
 
 /// @nodoc
@@ -841,11 +843,11 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? searchResult = freezed,
+    Object? searchResult = null,
     Object? price = null,
   }) {
     return _then(_$PreloadDataCompletedSearchLocationStateImpl(
-      searchResult: freezed == searchResult
+      searchResult: null == searchResult
           ? _value.searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
               as SearchLocationDataModel,
@@ -854,6 +856,14 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
           : price // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SearchLocationDataModelCopyWith<$Res> get searchResult {
+    return $SearchLocationDataModelCopyWith<$Res>(_value.searchResult, (value) {
+      return _then(_value.copyWith(searchResult: value));
+    });
   }
 }
 
@@ -879,14 +889,13 @@ class _$PreloadDataCompletedSearchLocationStateImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedSearchLocationStateImpl &&
-            const DeepCollectionEquality()
-                .equals(other.searchResult, searchResult) &&
+            (identical(other.searchResult, searchResult) ||
+                other.searchResult == searchResult) &&
             (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(searchResult), price);
+  int get hashCode => Object.hash(runtimeType, searchResult, price);
 
   @JsonKey(ignore: true)
   @override

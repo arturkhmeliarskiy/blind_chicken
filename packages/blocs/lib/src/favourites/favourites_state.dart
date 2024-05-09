@@ -19,6 +19,7 @@ class FavouritesState with _$FavouritesState {
     required bool isAuth,
     required int offset,
     required bool isButtonTop,
+    SkuProductDataModel? selectSizeProduct,
     bool? isSoppingCart,
     bool? isUpdate,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,

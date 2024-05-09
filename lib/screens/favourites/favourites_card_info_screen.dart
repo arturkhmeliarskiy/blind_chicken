@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -42,10 +41,6 @@ class FavouritesCardInfoScreen extends StatefulWidget {
 }
 
 class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
-  SkuProductDataModel _size = SkuProductDataModel(
-    id: '',
-    value: '',
-  );
   bool _isChildRoute = false;
   bool _isSwipe = true;
   ScrollController? _controller;
@@ -404,19 +399,21 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                               context.navigateTo(
                                                 CatalogSizeProductRoute(
                                                   onChange: (value) {
-                                                    setState(() {
-                                                      _size = value;
-                                                    });
+                                                    context.read<FavouritesBloc>().add(
+                                                          FavouritesEvent.changeSizeProduct(
+                                                            selectSizeProduct: value,
+                                                          ),
+                                                        );
                                                     context.read<FavouritesBloc>().add(
                                                           FavouritesEvent.checkProductToSoppingCart(
-                                                            size: _size,
+                                                            size: value,
                                                           ),
                                                         );
                                                     context.back();
                                                   },
                                                   listSizeProduct: sky,
                                                   selectItem:
-                                                      _size.value.isNotEmpty ? _size : sky.first,
+                                                      initState.selectSizeProduct ?? sky.first,
                                                 ),
                                               );
                                             },
@@ -437,18 +434,8 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                       left: 10.5,
                                                     ),
                                                     child: Text(
-                                                      _size.value.isNotEmpty
-                                                          ? _size.value
-                                                          : (sky.isNotEmpty
-                                                                  ? sky
-                                                                  : [
-                                                                      SkuProductDataModel(
-                                                                        id: '',
-                                                                        value: '',
-                                                                      ),
-                                                                    ])
-                                                              .first
-                                                              .value,
+                                                      initState.selectSizeProduct?.value ??
+                                                          sky.first.value,
                                                       style:
                                                           Theme.of(context).textTheme.displayMedium,
                                                     ),
@@ -498,11 +485,8 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                   item: BasketInfoItemDataModel(
                                                     code: (initState.detailsProduct?.code ?? 0)
                                                         .toString(),
-                                                    sku: _size.value.isNotEmpty
-                                                        ? _size.id
-                                                        : sky.isNotEmpty
-                                                            ? sky.first.id
-                                                            : '',
+                                                    sku: initState.selectSizeProduct?.id ??
+                                                        sky.first.id,
                                                     count: 1,
                                                   ),
                                                 ),

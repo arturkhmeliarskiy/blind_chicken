@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -23,6 +25,7 @@ class AccountChangeInfoUser extends StatefulWidget {
 
 class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
   TextEditingController _title = TextEditingController();
+  bool _isWarning = false;
 
   @override
   void initState() {
@@ -42,7 +45,7 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          height: 240,
+          height: _isWarning ? 270 : 240,
           width: MediaQuery.of(context).size.width - 16,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -58,13 +61,20 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 28),
-                      child: Text(
-                        widget.title,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    ),
+                    BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (initState) {
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 28),
+                            child: Text(
+                              widget.title,
+                              style: Theme.of(context).textTheme.titleSmall,
+                            ),
+                          );
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    }),
                     GestureDetector(
                       onTap: () {
                         context.popRoute();
@@ -145,6 +155,29 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
               const SizedBox(
                 height: 21,
               ),
+              if (_isWarning)
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 28,
+                    bottom: 14,
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/warning.svg',
+                        height: 17.5,
+                        width: 17.5,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'Заполните ${widget.subTitle.toLowerCase()}.',
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                    ],
+                  ),
+                ),
               Padding(
                 padding: const EdgeInsets.only(
                   left: 28,
@@ -154,8 +187,17 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
                   child: BlindChickenButton(
                     title: 'Сохранить',
                     onChenge: () {
-                      context.popRoute();
-                      widget.onChange(_title.text);
+                      if (_title.text.isNotEmpty) {
+                        context.popRoute();
+                        widget.onChange(_title.text);
+                        setState(() {
+                          _isWarning = false;
+                        });
+                      } else {
+                        setState(() {
+                          _isWarning = true;
+                        });
+                      }
                     },
                   ),
                 ),

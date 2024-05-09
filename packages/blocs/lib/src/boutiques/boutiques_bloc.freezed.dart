@@ -683,6 +683,8 @@ abstract class _$$PreloadDataCompletedBoutiquesStateImplCopyWith<$Res> {
       bool isNotification,
       List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
       BoutiqueDataInfoDataModel? boutiqueDetails});
+
+  $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails;
 }
 
 /// @nodoc
@@ -726,6 +728,19 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
           : boutiqueDetails // ignore: cast_nullable_to_non_nullable
               as BoutiqueDataInfoDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails {
+    if (_value.boutiqueDetails == null) {
+      return null;
+    }
+
+    return $BoutiqueDataInfoDataModelCopyWith<$Res>(_value.boutiqueDetails!,
+        (value) {
+      return _then(_value.copyWith(boutiqueDetails: value));
+    });
   }
 }
 
@@ -785,8 +800,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
                 other.isNotification == isNotification) &&
             const DeepCollectionEquality()
                 .equals(other._boutiqueInfo, _boutiqueInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.boutiqueDetails, boutiqueDetails));
+            (identical(other.boutiqueDetails, boutiqueDetails) ||
+                other.boutiqueDetails == boutiqueDetails));
   }
 
   @override
@@ -796,7 +811,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
       isUpdateVersionApp,
       isNotification,
       const DeepCollectionEquality().hash(_boutiqueInfo),
-      const DeepCollectionEquality().hash(boutiqueDetails));
+      boutiqueDetails);
 
   @JsonKey(ignore: true)
   @override

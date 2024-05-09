@@ -39,6 +39,9 @@ class SearchEvent with _$SearchEvent {
     required String code,
     bool? isUpdate,
   }) = GetInfoProductSearchEvent;
+  const factory SearchEvent.changeSizeProduct({
+    required SkuProductDataModel selectSizeProduct,
+  }) = ChangeSizeProductSearchEvent;
   const factory SearchEvent.goBackProductInfo() = GoBackProductInfoCategotySearchEvent;
   const factory SearchEvent.paginationProduct() = PaginationProductSearchEvent;
   const factory SearchEvent.addProductToSoppingCart() = AddProductToSoppingCartSearchEvent;

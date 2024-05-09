@@ -46,10 +46,6 @@ class CatalogCardInfoScreen extends StatefulWidget {
 
 class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   final ScrollController _scrollController = ScrollController();
-  SkuProductDataModel _size = SkuProductDataModel(
-    id: '',
-    value: '',
-  );
   bool _isChildRoute = false;
   bool _isSwipe = true;
   late ProductDataModel item;
@@ -486,20 +482,21 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                     context.navigateTo(
                                                       CatalogSizeProductRoute(
                                                         onChange: (value) {
-                                                          setState(() {
-                                                            _size = value;
-                                                          });
+                                                          context.read<CatalogBloc>().add(
+                                                                CatalogEvent.changeSizeProduct(
+                                                                  selectSizeProduct: value,
+                                                                ),
+                                                              );
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent
                                                                     .checkProductToSoppingCart(
-                                                                        size: _size),
+                                                                        size: value),
                                                               );
                                                           context.back();
                                                         },
                                                         listSizeProduct: sky,
-                                                        selectItem: _size.value.isNotEmpty
-                                                            ? _size
-                                                            : sky.first,
+                                                        selectItem: initState.selectSizeProduct ??
+                                                            sky.first,
                                                       ),
                                                     );
                                                   },
@@ -521,18 +518,8 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                             left: 10.5,
                                                           ),
                                                           child: Text(
-                                                            _size.value.isNotEmpty
-                                                                ? _size.value
-                                                                : (sky.isNotEmpty
-                                                                        ? sky
-                                                                        : [
-                                                                            SkuProductDataModel(
-                                                                              id: '',
-                                                                              value: '',
-                                                                            ),
-                                                                          ])
-                                                                    .first
-                                                                    .value,
+                                                            initState.selectSizeProduct?.value ??
+                                                                sky.first.value,
                                                             style: Theme.of(context)
                                                                 .textTheme
                                                                 .displayMedium,
@@ -585,11 +572,8 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                           code:
                                                               (initState.detailsProduct?.code ?? 0)
                                                                   .toString(),
-                                                          sku: _size.value.isNotEmpty
-                                                              ? _size.id
-                                                              : sky.isNotEmpty
-                                                                  ? sky.first.id
-                                                                  : '',
+                                                          sku: initState.selectSizeProduct?.id ??
+                                                              sky.first.id,
                                                           count: 1,
                                                         ),
                                                       ),

@@ -41,10 +41,6 @@ class OrderCardInfoScreen extends StatefulWidget {
 }
 
 class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
-  SkuProductDataModel _size = SkuProductDataModel(
-    id: '',
-    value: '',
-  );
   bool _isChildRoute = false;
   bool _isSwipe = true;
   ScrollController? _controller;
@@ -399,18 +395,19 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                               context.navigateTo(
                                                 CatalogSizeProductRoute(
                                                   onChange: (value) {
-                                                    setState(() {
-                                                      _size = value;
-                                                    });
+                                                    context.read<AccountBloc>().add(
+                                                          AccountEvent.changeSizeProduct(
+                                                              selectSizeProduct: value),
+                                                        );
                                                     context.read<AccountBloc>().add(
                                                           AccountEvent.checkProductToSoppingCart(
-                                                              size: _size),
+                                                              size: value),
                                                         );
                                                     context.back();
                                                   },
                                                   listSizeProduct: sky,
                                                   selectItem:
-                                                      _size.value.isNotEmpty ? _size : sky.first,
+                                                      initState.selectSizeProduct ?? sky.first,
                                                 ),
                                               );
                                             },
@@ -431,18 +428,8 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                       left: 10.5,
                                                     ),
                                                     child: Text(
-                                                      _size.value.isNotEmpty
-                                                          ? _size.value
-                                                          : (sky.isNotEmpty
-                                                                  ? sky
-                                                                  : [
-                                                                      SkuProductDataModel(
-                                                                        id: '',
-                                                                        value: '',
-                                                                      ),
-                                                                    ])
-                                                              .first
-                                                              .value,
+                                                      initState.selectSizeProduct?.value ??
+                                                          sky.first.value,
                                                       style:
                                                           Theme.of(context).textTheme.displayMedium,
                                                     ),
@@ -491,11 +478,8 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                   item: BasketInfoItemDataModel(
                                                     code: (initState.detailsProduct?.code ?? 0)
                                                         .toString(),
-                                                    sku: _size.value.isNotEmpty
-                                                        ? _size.id
-                                                        : sky.isNotEmpty
-                                                            ? sky.first.id
-                                                            : '',
+                                                    sku: initState.selectSizeProduct?.id ??
+                                                        sky.first.id,
                                                     count: 1,
                                                   ),
                                                 ),
