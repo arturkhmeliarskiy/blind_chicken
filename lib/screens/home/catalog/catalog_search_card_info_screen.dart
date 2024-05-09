@@ -213,7 +213,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                         GestureDetector(
                                           onTap: () {
                                             Share.share(
-                                              'https://slepayakurica.ru/product/${initState.detailsProduct?.code ?? 0}',
+                                              'https://slepayakurica.ru/product/${initState.detailsProduct?.code ?? 0}/',
                                               subject: 'Слепая курица',
                                             );
                                           },
