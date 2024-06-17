@@ -32,6 +32,7 @@ mixin _$ProductDataModel {
   int get maximumCashback => throw _privateConstructorUsedError;
   int get maximumPersonalDiscount => throw _privateConstructorUsedError;
   bool get isYourPriceDisplayed => throw _privateConstructorUsedError;
+  bool get isShop => throw _privateConstructorUsedError;
   String? get count => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
 
@@ -63,6 +64,7 @@ abstract class $ProductDataModelCopyWith<$Res> {
       int maximumCashback,
       int maximumPersonalDiscount,
       bool isYourPriceDisplayed,
+      bool isShop,
       String? count,
       Color? color});
 }
@@ -96,6 +98,7 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? maximumCashback = null,
     Object? maximumPersonalDiscount = null,
     Object? isYourPriceDisplayed = null,
+    Object? isShop = null,
     Object? count = freezed,
     Object? color = freezed,
   }) {
@@ -164,6 +167,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.isYourPriceDisplayed
           : isYourPriceDisplayed // ignore: cast_nullable_to_non_nullable
               as bool,
+      isShop: null == isShop
+          ? _value.isShop
+          : isShop // ignore: cast_nullable_to_non_nullable
+              as bool,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -201,6 +208,7 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       int maximumCashback,
       int maximumPersonalDiscount,
       bool isYourPriceDisplayed,
+      bool isShop,
       String? count,
       Color? color});
 }
@@ -232,6 +240,7 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? maximumCashback = null,
     Object? maximumPersonalDiscount = null,
     Object? isYourPriceDisplayed = null,
+    Object? isShop = null,
     Object? count = freezed,
     Object? color = freezed,
   }) {
@@ -300,6 +309,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.isYourPriceDisplayed
           : isYourPriceDisplayed // ignore: cast_nullable_to_non_nullable
               as bool,
+      isShop: null == isShop
+          ? _value.isShop
+          : isShop // ignore: cast_nullable_to_non_nullable
+              as bool,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -332,6 +345,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required this.maximumCashback,
       required this.maximumPersonalDiscount,
       required this.isYourPriceDisplayed,
+      required this.isShop,
       this.count,
       this.color})
       : _size = size,
@@ -390,13 +404,15 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   @override
   final bool isYourPriceDisplayed;
   @override
+  final bool isShop;
+  @override
   final String? count;
   @override
   final Color? color;
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, count: $count, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, count: $count, color: $color)';
   }
 
   @override
@@ -428,31 +444,34 @@ class _$ProductDataModelImpl extends _ProductDataModel {
                 other.maximumPersonalDiscount == maximumPersonalDiscount) &&
             (identical(other.isYourPriceDisplayed, isYourPriceDisplayed) ||
                 other.isYourPriceDisplayed == isYourPriceDisplayed) &&
+            (identical(other.isShop, isShop) || other.isShop == isShop) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.color, color) || other.color == color));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      category,
-      const DeepCollectionEquality().hash(_size),
-      price,
-      pb,
-      yourPrice,
-      brend,
-      lensDiameter,
-      templeLength,
-      country,
-      const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(_variants),
-      maximumCashback,
-      maximumPersonalDiscount,
-      isYourPriceDisplayed,
-      count,
-      color);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        title,
+        category,
+        const DeepCollectionEquality().hash(_size),
+        price,
+        pb,
+        yourPrice,
+        brend,
+        lensDiameter,
+        templeLength,
+        country,
+        const DeepCollectionEquality().hash(_images),
+        const DeepCollectionEquality().hash(_variants),
+        maximumCashback,
+        maximumPersonalDiscount,
+        isYourPriceDisplayed,
+        isShop,
+        count,
+        color
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -480,6 +499,7 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final int maximumCashback,
       required final int maximumPersonalDiscount,
       required final bool isYourPriceDisplayed,
+      required final bool isShop,
       final String? count,
       final Color? color}) = _$ProductDataModelImpl;
   _ProductDataModel._() : super._();
@@ -516,6 +536,8 @@ abstract class _ProductDataModel extends ProductDataModel {
   int get maximumPersonalDiscount;
   @override
   bool get isYourPriceDisplayed;
+  @override
+  bool get isShop;
   @override
   String? get count;
   @override

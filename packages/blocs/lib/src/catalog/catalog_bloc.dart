@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -57,8 +59,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           pathBrandMenu: (event) => _pathBrandMenu(event, emit),
           switchTypePeople: (event) => _switchTypePeople(event, emit),
           getInfoProducts: (event) => _getInfoProducts(event, emit),
+          updateInfoProducts: (event) => _updateInfoProducts(event, emit),
           getInfoProductsPushNotification: (event) => _getInfoProductsPushNotification(event, emit),
           getInfoProduct: (event) => _getInfoProduct(event, emit),
+          getInfoProductSize: (event) => _getInfoProductSize(event, emit),
           sortProducts: (event) => _sortProducts(event, emit),
           removeSelectAllFilters: (event) => _removeSelectAllFilters(event, emit),
           removeSelectFilterCategory: (event) => _removeSelectFilterCategory(event, emit),
@@ -89,11 +93,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     InitCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    bool isAuth = _sharedPreferencesService.getBool(
-          key: SharedPrefKeys.userAuthorized,
-        ) ??
-        false;
-
     String platformDevice = '';
     String pushToken = _sharedPreferencesService.getString(
           key: SharedPrefKeys.pushToken,
@@ -109,6 +108,22 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
       const mc = MethodChannel('blind_chicken/getToken');
       pushToken = await mc.invokeMethod('getDeviceToken');
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.pushToken,
+        value: pushToken,
+      );
+      log('push token app bloc: $pushToken');
+    }
+
+    if (Platform.isAndroid && pushToken.isEmpty) {
+      await Future<void>.delayed(
+        const Duration(
+          seconds: 3,
+        ),
+      );
+
+      pushToken = await FirebaseMessaging.instance.getToken() ?? '';
+
       _sharedPreferencesService.setString(
         key: SharedPrefKeys.pushToken,
         value: pushToken,
@@ -168,38 +183,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
       await _pushNotificationRepository.postNotificationInfo(event: '1');
 
+      AppMetrica.reportEvent('Приложение установленно');
       log('Приложение установленно');
     }
-
-    // emit(
-    //   CatalogState.preloadDataCompleted(
-    //     filter: [],
-    //     selectFilter: {},
-    //     allSelectFilter: [],
-    //     products: [],
-    //     defaultProducts: [],
-    //     favouritesProducts: [],
-    //     menu: [],
-    //     pathMenu: [],
-    //     favouritesProductsId: [],
-    //     brands: [],
-    //     defaultBrands: [],
-    //     category: [],
-    //     allBrands: [],
-    //     request: CatalogProductsRequest(),
-    //     listProdcutsAlso: [],
-    //     listProdcutsBrand: [],
-    //     listProdcutsStyle: [],
-    //     listProductsCode: [],
-    //     offset: 1,
-    //     selectedGenderIndex: _updateDataService.selectedIndexGender,
-    //     isAuth: isAuth,
-    //     nowVersionApp: '',
-    //     updateVersionApp: '',
-    //     isUpdateVersionApp: false,
-    //     isNotification: false,
-    //   ),
-    // );
   }
 
   Future<void> _preloadData(
@@ -214,6 +200,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     List<int> favouritesProductsId = [];
     FavouritesDataModel? favourites;
+    PushNotificationMessageDataModel? notitcationMessage;
+    AppStoreInfoDataModel? appStoreInfo;
 
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -239,16 +227,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
-    final appStoreInfoIOs = await _appStoreInfoRepository.checkiOSVersion();
+
+    if (Platform.isIOS) {
+      appStoreInfo = await _appStoreInfoRepository.checkiOSVersion();
+    } else {
+      appStoreInfo = await _appStoreInfoRepository.checkAndroidVersion();
+    }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    if (appStoreInfoIOs.appStroreVersion.isNotEmpty && Platform.isIOS) {
-      final appStoreIOsVersion = int.parse(appStoreInfoIOs.appStroreVersion.replaceAll('.', ''));
-      final packageInfoIOsVersion = int.parse(packageInfo.version.replaceAll('.', ''));
-      if (appStoreIOsVersion > packageInfoIOsVersion) {
+    if (appStoreInfo.appStroreVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfo.appStroreVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
         nowVersionApp = packageInfo.version;
-        updateVersionApp = appStoreInfoIOs.appStroreVersion;
+        updateVersionApp = appStoreInfo.appStroreVersion;
         isUpdateVersionApp = true;
       }
     }
@@ -262,6 +255,38 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     ];
 
     allBrands.sort();
+
+    const me = MethodChannel('blind_chicken/getMessages');
+    if (Platform.isIOS) {
+      final type = await me.invokeMethod('type') as String;
+      if (type.isNotEmpty) {
+        final section = await me.invokeMethod('section') as String;
+        final idMessage = await me.invokeMethod('idMessage') as String;
+        final sort = await me.invokeMethod('sort') as String;
+        final uid = await me.invokeMethod('uid') as String;
+        final filterSelect = await me.invokeMethod('filter') as String;
+        notitcationMessage = PushNotificationMessageDataModel(
+          section: section,
+          idMessage: idMessage,
+          type: type,
+          sort: sort,
+          uid: uid,
+          filterSelect: filterSelect,
+        );
+      }
+    }
+
+    if (Platform.isAndroid) {
+      final message = await FirebaseMessaging.instance.getInitialMessage();
+      notitcationMessage = PushNotificationMessageDataModel(
+        uid: message?.data['uid'] ?? '',
+        section: message?.data['section'] ?? '',
+        idMessage: message?.data['id_message'] ?? '',
+        type: message?.data['type'] ?? '',
+        sort: message?.data['sort'] ?? '',
+        filterSelect: message?.data['filter'] ?? '',
+      );
+    }
 
     if (menu.errorMessage.isNotEmpty ||
         (favourites?.errorMessage.isNotEmpty ?? false) ||
@@ -300,6 +325,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           updateVersionApp: updateVersionApp,
           isUpdateVersionApp: isUpdateVersionApp,
           isNotification: false,
+          notificationMessage: notitcationMessage,
+          listSize: [],
+          isLoadGetSizeProduct: false,
+          codeProduct: null,
         ),
       );
     }
@@ -871,6 +900,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isError:
             (favourites?.errorMessage.isNotEmpty ?? false) || catalogInfo.errorMessage.isNotEmpty,
         errorMessage: MessageInfo.errorMessage,
+        codeProduct: null,
       ));
     });
   }
@@ -1030,6 +1060,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         updateVersionApp: updateVersionApp,
         isNotification: true,
         selectSizeProduct: null,
+        listSize: [],
+        isLoadGetSizeProduct: false,
       ),
     );
   }
@@ -1039,6 +1071,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -1079,6 +1112,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.isNotEmpty) {
+        if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
+          for (int i = 0; i < detailsProduct.sku.length; i++) {
+            if (detailsProduct.sku[i].id == event.code) {
+              selectSizeProduct = detailsProduct.sku[i];
+            }
+          }
+        }
+
         soppingCart = basketInfo.basket
             .where(
               (element) =>
@@ -1111,7 +1152,55 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         errorMessage: errorMessage,
         isNotification: false,
         isUpdateVersionApp: false,
-        selectSizeProduct: null,
+        selectSizeProduct: selectSizeProduct ?? event.size,
+      ));
+    });
+  }
+
+  Future<void> _getInfoProductSize(
+    GetInfoProductSizeCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isLoadGetSizeProduct: true,
+        codeProduct: event.code,
+      ));
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(CatalogState.getSizeProduct(
+            code: event.code,
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        } else {
+          if (event.isShop) {
+            emit(const CatalogState.openSoppingCart());
+          } else {
+            emit(CatalogState.addProductToSoppingCart(
+              code: event.code,
+            ));
+          }
+        }
+      } else {
+        if (event.isShop) {
+          emit(const CatalogState.openSoppingCart());
+        } else {
+          emit(CatalogState.addProductToSoppingCart(
+            code: event.code,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        listSize: detailsProduct.sku,
+        isLoadGetSizeProduct: false,
+        codeProduct: event.code,
       ));
     });
   }
@@ -1250,6 +1339,43 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         products: catalogInfo.products,
         isNotification: false,
         isUpdateVersionApp: false,
+      ));
+    });
+  }
+
+  Future<void> _updateInfoProducts(
+    UpdateInfoProductsCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        codeProduct: initState.codeProduct,
+      ));
+      final catalogInfo = await _catalogRepository.getCatalogProducts(
+        request: initState.request,
+      );
+
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: initState.codeProduct ?? '0',
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(CatalogState.getSizeProduct(
+            code: initState.codeProduct ?? '0',
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        filter: catalogInfo.filter,
+        catalogInfo: catalogInfo,
+        products: catalogInfo.products,
+        listSize: detailsProduct.sku,
+        defaultProducts: catalogInfo.products,
       ));
     });
   }
@@ -1395,7 +1521,37 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      final listProducts = initState.products.toList();
+      final items = listProducts.where((element) => element.id == event.code).toList();
+
+      if (items.isNotEmpty) {
+        int index = listProducts.indexOf(items.first);
+        ProductDataModel product = ProductDataModel(
+          id: items.first.id,
+          title: items.first.title,
+          category: items.first.category,
+          size: items.first.size,
+          price: items.first.price,
+          pb: items.first.pb,
+          yourPrice: items.first.yourPrice,
+          brend: items.first.brend,
+          lensDiameter: items.first.lensDiameter,
+          templeLength: items.first.templeLength,
+          country: items.first.country,
+          images: items.first.images,
+          variants: items.first.variants,
+          maximumCashback: items.first.maximumCashback,
+          maximumPersonalDiscount: items.first.maximumPersonalDiscount,
+          isYourPriceDisplayed: items.first.isYourPriceDisplayed,
+          isShop: true,
+        );
+
+        listProducts[index] = product;
+      }
+
       emit(initState.copyWith(
+        products: listProducts,
+        defaultProducts: listProducts,
         isSoppingCart: true,
         isNotification: false,
         isUpdateVersionApp: false,
@@ -1413,11 +1569,24 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           ) ??
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
-      final soppingCart = basketInfo.basket.where(
-        (element) =>
-            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
-            element.sku == event.size.id,
-      );
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+
+      if (initState.detailsProduct?.sku.isNotEmpty ?? false) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+                  (element.sku.isNotEmpty ? element.sku == event.size.id : true),
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0),
+            )
+            .toList();
+      }
+
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
         isNotification: false,

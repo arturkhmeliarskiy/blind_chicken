@@ -10,6 +10,8 @@ class BoutiqueDataInfoDataModel with _$BoutiqueDataInfoDataModel {
   factory BoutiqueDataInfoDataModel({
     required String fotoMinList,
     required List<BoutiqueFotoDetailDataModel> fotoDetail,
+    required List<String> media,
+    required List<String> video,
     required String url,
     required String caption,
     required String address,

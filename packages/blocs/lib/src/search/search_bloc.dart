@@ -15,12 +15,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final SharedPreferencesService _sharedPreferencesService;
   final FavouritesRepository _favouritesRepository;
   final BasketRepository _basketRepository;
+  final UpdateDataService _updateDataService;
 
   SearchBloc(
     this._catalogRepository,
     this._sharedPreferencesService,
     this._favouritesRepository,
     this._basketRepository,
+    this._updateDataService,
   ) : super(const SearchState.init()) {
     on<SearchEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -41,6 +43,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+        getInfoProductSize: (event) => _getInfoProductSize(event, emit),
+        updateInfoProducts: (event) => _updateInfoProducts(event, emit),
       ),
     );
   }
@@ -74,6 +78,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProdcutsBrand: [],
         listProductsCode: [],
         isAuth: isAuth,
+        listSize: [],
+        isLoadGetSizeProduct: false,
+        codeProduct: null,
       ),
     );
   }
@@ -96,6 +103,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         searchSections: searchResult.sections,
         query: event.query,
         isLoading: false,
+        codeProduct: null,
       ));
     });
   }
@@ -516,6 +524,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -555,6 +564,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.isNotEmpty) {
+        if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
+          for (int i = 0; i < detailsProduct.sku.length; i++) {
+            if (detailsProduct.sku[i].id == event.code) {
+              selectSizeProduct = detailsProduct.sku[i];
+            }
+          }
+        }
         soppingCart = basketInfo.basket
             .where(
               (element) =>
@@ -578,7 +594,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
-        selectSizeProduct: null,
+        selectSizeProduct: selectSizeProduct ?? event.size,
       ));
     });
   }
@@ -720,8 +736,75 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      final listProducts = initState.products.toList();
+      final items = listProducts.where((element) => element.id == event.code).toList();
+
+      if (items.isNotEmpty) {
+        int index = listProducts.indexOf(items.first);
+        ProductDataModel product = ProductDataModel(
+          id: items.first.id,
+          title: items.first.title,
+          category: items.first.category,
+          size: items.first.size,
+          price: items.first.price,
+          pb: items.first.pb,
+          yourPrice: items.first.yourPrice,
+          brend: items.first.brend,
+          lensDiameter: items.first.lensDiameter,
+          templeLength: items.first.templeLength,
+          country: items.first.country,
+          images: items.first.images,
+          variants: items.first.variants,
+          maximumCashback: items.first.maximumCashback,
+          maximumPersonalDiscount: items.first.maximumPersonalDiscount,
+          isYourPriceDisplayed: items.first.isYourPriceDisplayed,
+          isShop: true,
+        );
+
+        listProducts[index] = product;
+      }
+
       emit(initState.copyWith(
+        products: listProducts,
+        searchDefaultProducts: listProducts,
         isSoppingCart: true,
+      ));
+    });
+  }
+
+  Future<void> _updateInfoProducts(
+    UpdateInfoProductsSearchEvent event,
+    Emitter<SearchState> emit,
+  ) async {
+    await state.mapOrNull(searchProductsResult: (initState) async {
+      emit(initState.copyWith(
+        codeProduct: initState.codeProduct,
+      ));
+      final catalogInfo = await _catalogRepository.searchProductsInfo(
+        request: initState.request,
+      );
+
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: initState.codeProduct ?? '0',
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(SearchState.getSizeProduct(
+            code: initState.codeProduct ?? '0',
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        filter: catalogInfo.filter,
+        searchResultInfo: catalogInfo,
+        products: catalogInfo.products,
+        listSize: detailsProduct.sku,
+        searchDefaultProducts: catalogInfo.products,
       ));
     });
   }
@@ -765,6 +848,54 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     state.mapOrNull(searchProductsResult: (initState) {
       emit(initState.copyWith(
         selectSizeProduct: event.selectSizeProduct,
+      ));
+    });
+  }
+
+  Future<void> _getInfoProductSize(
+    GetInfoProductSizeSearchEvent event,
+    Emitter<SearchState> emit,
+  ) async {
+    await state.mapOrNull(searchProductsResult: (initState) async {
+      emit(initState.copyWith(
+        isLoadGetSizeProduct: true,
+        codeProduct: event.code,
+      ));
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(SearchState.getSizeProduct(
+            code: event.code,
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        } else {
+          if (event.isShop) {
+            emit(const SearchState.openSoppingCart());
+          } else {
+            emit(SearchState.addProductToSoppingCart(
+              code: event.code,
+            ));
+          }
+        }
+      } else {
+        if (event.isShop) {
+          emit(const SearchState.openSoppingCart());
+        } else {
+          emit(SearchState.addProductToSoppingCart(
+            code: event.code,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        listSize: detailsProduct.sku,
+        isLoadGetSizeProduct: false,
+        codeProduct: event.code,
       ));
     });
   }

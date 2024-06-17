@@ -209,7 +209,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const SizedBox(
-                      height: 14,
+                      height: 6,
                     ),
                     Text(
                       initState.orderInfo?.delivery.address ?? '',
@@ -218,6 +218,38 @@ class OrderUserInfoScreen extends StatelessWidget {
                     const SizedBox(
                       height: 14,
                     ),
+                    if ((initState.orderInfo?.delivery.method ?? '') == 'Доставка' &&
+                        int.parse(initState.orderInfo?.delivery.price ?? '') > 0)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Стоимость',
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              text: initState.orderInfo?.delivery.price ?? '',
+                              style: Theme.of(context).textTheme.displayMedium,
+                              children: const <TextSpan>[
+                                TextSpan(
+                                  text: ' ₽ ',
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 14,
+                          ),
+                        ],
+                      ),
                     const Divider(
                       color: BlindChickenColors.borderBottomColor,
                     ),
@@ -250,6 +282,9 @@ class OrderUserInfoScreen extends StatelessWidget {
                           if (orderInfo.giftCard.name.isNotEmpty) {
                             return OrderGiftCard(
                               onSelectCard: () {
+                                context.read<GiftCardBloc>().add(const GiftCardEvent.preloadData(
+                                      isNotification: false,
+                                    ));
                                 context.navigateTo(
                                   HomeAutoRouterRoute(
                                     children: [GiftCardRoute()],

@@ -10,6 +10,8 @@ Future<void> initRepositories(GetIt getIt) async {
         getIt.get<CatalogService>(),
         getIt.get<ProductsFavouritesService>(),
         getIt.get<ProductsShoppingCartService>(),
+        getIt.get<BasketRepository>(),
+        getIt.get<SharedPreferencesService>(),
       ),
     )
     ..registerFactory(
@@ -25,6 +27,9 @@ Future<void> initRepositories(GetIt getIt) async {
     ..registerFactory(
       () => FavouritesRepository(
         getIt.get<FavouritesService>(),
+        getIt.get<CatalogRepository>(),
+        getIt.get<BasketRepository>(),
+        getIt.get<SharedPreferencesService>(),
       ),
     )
     ..registerFactory(

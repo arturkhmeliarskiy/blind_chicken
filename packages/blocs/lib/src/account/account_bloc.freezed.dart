@@ -40,7 +40,9 @@ mixin _$AccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -70,7 +72,8 @@ mixin _$AccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -98,7 +101,8 @@ mixin _$AccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -348,7 +352,9 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -381,7 +387,8 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -412,7 +419,8 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -676,7 +684,9 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -709,7 +719,8 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -740,7 +751,8 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -999,7 +1011,9 @@ class _$PaginationOrdersAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -1032,7 +1046,8 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -1063,7 +1078,8 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -1283,7 +1299,9 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -1316,7 +1334,8 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -1347,7 +1366,8 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -1597,7 +1617,9 @@ class _$PaginationListOrdersBlankAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -1630,7 +1652,8 @@ class _$PaginationListOrdersBlankAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -1661,7 +1684,8 @@ class _$PaginationListOrdersBlankAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -1884,7 +1908,9 @@ class _$GetListOrdersBlankAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -1917,7 +1943,8 @@ class _$GetListOrdersBlankAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -1948,7 +1975,8 @@ class _$GetListOrdersBlankAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -2199,7 +2227,9 @@ class _$GetOrderPdfBlankAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -2232,7 +2262,8 @@ class _$GetOrderPdfBlankAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -2263,7 +2294,8 @@ class _$GetOrderPdfBlankAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -2523,7 +2555,9 @@ class _$PaginationListTailoringBlankAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -2556,7 +2590,8 @@ class _$PaginationListTailoringBlankAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -2587,7 +2622,8 @@ class _$PaginationListTailoringBlankAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -2811,7 +2847,9 @@ class _$GetListTailoringBlankAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -2844,7 +2882,8 @@ class _$GetListTailoringBlankAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -2875,7 +2914,8 @@ class _$GetListTailoringBlankAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -3127,7 +3167,9 @@ class _$GetTailoringPdfBlankAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -3160,7 +3202,8 @@ class _$GetTailoringPdfBlankAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -3191,7 +3234,8 @@ class _$GetTailoringPdfBlankAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -3438,7 +3482,9 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -3471,7 +3517,8 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -3502,7 +3549,8 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -3746,7 +3794,9 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -3779,7 +3829,8 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -3810,7 +3861,8 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -4054,7 +4106,9 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -4087,7 +4141,8 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -4118,7 +4173,8 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -4333,7 +4389,9 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -4366,7 +4424,8 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -4397,7 +4456,8 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -4606,7 +4666,9 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -4639,7 +4701,8 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -4670,7 +4733,8 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -4882,7 +4946,9 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -4915,7 +4981,8 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -4946,7 +5013,8 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -5207,7 +5275,9 @@ class _$AddFavouriteProductAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -5240,7 +5310,8 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -5271,7 +5342,8 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -5521,7 +5593,9 @@ class _$DeleteFavouriteProductAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -5554,7 +5628,8 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -5585,7 +5660,8 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -5748,7 +5824,9 @@ abstract class _$$GetInfoProductAccountEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductAccountEventImpl) then) =
       __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code, bool? isUpdate});
+  $Res call({String code, SkuProductDataModel? size, bool? isUpdate});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -5764,6 +5842,7 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? size = freezed,
     Object? isUpdate = freezed,
   }) {
     return _then(_$GetInfoProductAccountEventImpl(
@@ -5771,27 +5850,46 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
       isUpdate: freezed == isUpdate
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
-  const _$GetInfoProductAccountEventImpl({required this.code, this.isUpdate});
+  const _$GetInfoProductAccountEventImpl(
+      {required this.code, this.size, this.isUpdate});
 
   @override
   final String code;
+  @override
+  final SkuProductDataModel? size;
   @override
   final bool? isUpdate;
 
   @override
   String toString() {
-    return 'AccountEvent.getInfoProduct(code: $code, isUpdate: $isUpdate)';
+    return 'AccountEvent.getInfoProduct(code: $code, size: $size, isUpdate: $isUpdate)';
   }
 
   @override
@@ -5800,12 +5898,13 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductAccountEventImpl &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, isUpdate);
+  int get hashCode => Object.hash(runtimeType, code, size, isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -5839,7 +5938,9 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -5848,7 +5949,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
   }) {
-    return getInfoProduct(code, isUpdate);
+    return getInfoProduct(code, size, isUpdate);
   }
 
   @override
@@ -5872,14 +5973,15 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
   }) {
-    return getInfoProduct?.call(code, isUpdate);
+    return getInfoProduct?.call(code, size, isUpdate);
   }
 
   @override
@@ -5903,7 +6005,8 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -5912,7 +6015,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code, isUpdate);
+      return getInfoProduct(code, size, isUpdate);
     }
     return orElse();
   }
@@ -6051,9 +6154,11 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
 abstract class GetInfoProductAccountEvent implements AccountEvent {
   const factory GetInfoProductAccountEvent(
       {required final String code,
+      final SkuProductDataModel? size,
       final bool? isUpdate}) = _$GetInfoProductAccountEventImpl;
 
   String get code;
+  SkuProductDataModel? get size;
   bool? get isUpdate;
   @JsonKey(ignore: true)
   _$$GetInfoProductAccountEventImplCopyWith<_$GetInfoProductAccountEventImpl>
@@ -6164,7 +6269,9 @@ class _$ChangeSizeProductAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -6197,7 +6304,8 @@ class _$ChangeSizeProductAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -6228,7 +6336,8 @@ class _$ChangeSizeProductAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -6485,7 +6594,9 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -6518,7 +6629,8 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -6549,7 +6661,8 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -6771,7 +6884,9 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -6804,7 +6919,8 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -6835,7 +6951,8 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -7050,7 +7167,9 @@ class _$AddProductToSoppingCartCAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -7083,7 +7202,8 @@ class _$AddProductToSoppingCartCAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -7114,7 +7234,8 @@ class _$AddProductToSoppingCartCAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
@@ -7366,7 +7487,9 @@ class _$CheckProductToSoppingCartAccountEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
@@ -7399,7 +7522,8 @@ class _$CheckProductToSoppingCartAccountEventImpl
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
@@ -7430,7 +7554,8 @@ class _$CheckProductToSoppingCartAccountEventImpl
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,

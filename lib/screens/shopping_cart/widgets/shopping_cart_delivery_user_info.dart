@@ -118,9 +118,12 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                     street: street.address,
                     house: house.address,
                     flat: flat,
-                    onPrice: (value) {
+                    onDeliveryInfo: (price, cityId) {
                       context.read<ShoppingCartBloc>().add(
-                            ShoppingCartEvent.delivery(delivery: value),
+                            ShoppingCartEvent.delivery(
+                              delivery: price,
+                              cityId: cityId,
+                            ),
                           );
                     },
                     onCity: (value) {
@@ -154,6 +157,7 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                           zip: '',
                         );
                       }
+
                       widget.onAddressDelivery(_address(city, street, house, flat));
                     },
                     onHouse: (value) {
@@ -285,5 +289,9 @@ BasketAddress _address(
     address: _address,
     zip: zip,
     cityId: city.cityId,
+    city: _city,
+    street: _street,
+    house: _house,
+    flat: _flat,
   );
 }

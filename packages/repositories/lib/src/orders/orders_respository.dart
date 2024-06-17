@@ -81,6 +81,7 @@ extension on OrderInfoResponse {
                 yourPrice: int.parse(item.price ?? '0'),
                 isYourPriceDisplayed: false,
                 count: item.count ?? '',
+                isShop: false,
               ),
             ) ??
             [],

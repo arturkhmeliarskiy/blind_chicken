@@ -37,6 +37,7 @@ class SearchEvent with _$SearchEvent {
   }) = DeleteFavouriteProductSearchEvent;
   const factory SearchEvent.getInfoProduct({
     required String code,
+    SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductSearchEvent;
   const factory SearchEvent.changeSizeProduct({
@@ -44,11 +45,18 @@ class SearchEvent with _$SearchEvent {
   }) = ChangeSizeProductSearchEvent;
   const factory SearchEvent.goBackProductInfo() = GoBackProductInfoCategotySearchEvent;
   const factory SearchEvent.paginationProduct() = PaginationProductSearchEvent;
-  const factory SearchEvent.addProductToSoppingCart() = AddProductToSoppingCartSearchEvent;
+  const factory SearchEvent.addProductToSoppingCart({
+    required int code,
+  }) = AddProductToSoppingCartSearchEvent;
   const factory SearchEvent.checkButtonTop({
     required bool isButtonTop,
   }) = CheckButtonTopSearchEvent;
   const factory SearchEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
   }) = CheckProductToSoppingCartSearchEvent;
+  const factory SearchEvent.getInfoProductSize({
+    required String code,
+    required bool isShop,
+  }) = GetInfoProductSizeSearchEvent;
+  const factory SearchEvent.updateInfoProducts() = UpdateInfoProductsSearchEvent;
 }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
@@ -156,7 +157,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                 id: initState.orders[index].id,
                                               ),
                                             );
-                                        context.navigateTo(
+
+                                        context.pushRoute(
                                           OrderUserInfoRoute(isPay: false),
                                         );
                                       },

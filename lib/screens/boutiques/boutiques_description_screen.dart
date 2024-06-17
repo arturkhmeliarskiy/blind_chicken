@@ -1,11 +1,13 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider_images.dart';
+import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
@@ -32,14 +34,17 @@ class BoutiquesDescriptionScreen extends StatefulWidget {
 class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen> {
   @override
   void didChangeDependencies() {
-    if (widget.uidStore.isNotEmpty) {
-      context.read<BoutiquesBloc>().add(
-            BoutiquesEvent.getInfoBoutique(
-              uid: widget.uidStore,
-              isNotification: widget.isNotification,
-            ),
-          );
+    if (widget.uidStore.isNotEmpty && widget.isNotification) {
+      Timer(const Duration(milliseconds: 150), () {
+        context.read<BoutiquesBloc>().add(
+              BoutiquesEvent.getInfoBoutique(
+                uid: widget.uidStore,
+                isNotification: widget.isNotification,
+              ),
+            );
+      });
     }
+
     super.didChangeDependencies();
   }
 
@@ -130,13 +135,15 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                     const SizedBox(
                       height: 16,
                     ),
-                    BoutiqueSliderImages(
-                      listImages: initState.boutiqueDetails?.fotoDetail ?? [],
+                    BoutiqueSlider(
+                      media: initState.boutiqueDetails?.media ?? [],
                       goBotton: () {},
                       addLike: () {},
-                      onTap: () {
+                      onTap: (index) {
                         context.pushRoute(
-                          BoutiquePreviewImagesRoute(
+                          BoutiquePreviewMediaRoute(
+                            selectIndex: index,
+                            media: initState.boutiqueDetails?.media ?? [],
                             listImages: initState.boutiqueDetails?.fotoDetail ?? [],
                             goBotton: () {
                               context.back();

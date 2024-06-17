@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSearchItem extends StatelessWidget {
@@ -41,7 +42,7 @@ class CatalogSearchItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product.title,
+                        product.brend,
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
@@ -55,9 +56,43 @@ class CatalogSearchItem extends StatelessWidget {
                       const SizedBox(
                         height: 7,
                       ),
-                      Text(
-                        '${product.price} ₽',
-                        style: Theme.of(context).textTheme.displayMedium,
+                      Row(
+                        children: [
+                          Text(
+                            '${(product.price).toString().spaceSeparateNumbers()} ₽',
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          const SizedBox(
+                            width: 9,
+                          ),
+                          if (product.pb > product.price)
+                            Row(
+                              children: [
+                                Text(
+                                  (product.pb).toString().spaceSeparateNumbers(),
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                        decoration: TextDecoration.lineThrough,
+                                        color: BlindChickenColors.activeBorderTextField
+                                            .withOpacity(0.7),
+                                        decorationColor: BlindChickenColors.activeBorderTextField
+                                            .withOpacity(0.7),
+                                      ),
+                                ),
+                                Text(
+                                  ' ₽',
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 13,
+                                    decoration: TextDecoration.lineThrough,
+                                    color:
+                                        BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                    decorationColor:
+                                        BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                  ),
+                                )
+                              ],
+                            ),
+                        ],
                       )
                     ],
                   ),

@@ -31,7 +31,6 @@ class PushNotificationService {
         _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
     final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
     try {
-      print(pushToken);
       log(_dio.options.headers.toString());
       final response = await _dio.post(
         '/local/service/app/event.php',

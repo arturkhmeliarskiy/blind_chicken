@@ -34,6 +34,9 @@ Future<void> initShared(GetIt getIt) async {
       TimerService(),
     )
     ..registerSingleton(
+      LaunchService(),
+    )
+    ..registerSingleton(
       FileService(),
     );
   await getIt.get<SharedPreferencesService>().initialize();

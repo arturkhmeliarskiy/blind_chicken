@@ -44,6 +44,8 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
         checkButtonTop: (event) => _checkButtonTop(event, emit),
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+        getInfoProductSize: (event) => _getInfoProductSize(event, emit),
+        updateInfoProducts: (event) => _updateInfoProducts(event, emit),
       ),
     );
   }
@@ -73,6 +75,9 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         favouritesProductsId: [],
         isAuth: isAuth,
         isButtonTop: false,
+        listSize: [],
+        isLoadGetSizeProduct: false,
+        codeProduct: null,
       ),
     );
   }
@@ -119,6 +124,9 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         favouritesProductsId: favouritesProductsId,
         isAuth: isAuth,
         isButtonTop: false,
+        listSize: [],
+        isLoadGetSizeProduct: false,
+        codeProduct: null,
       ),
     );
   }
@@ -571,6 +579,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -610,6 +619,13 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.isNotEmpty) {
+        if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
+          for (int i = 0; i < detailsProduct.sku.length; i++) {
+            if (detailsProduct.sku[i].id == event.code) {
+              selectSizeProduct = detailsProduct.sku[i];
+            }
+          }
+        }
         soppingCart = basketInfo.basket
             .where(
               (element) =>
@@ -634,7 +650,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         isAuth: isAuth,
         isUpdate: event.isUpdate,
         isSoppingCart: soppingCart.isNotEmpty,
-        selectSizeProduct: null,
+        selectSizeProduct: selectSizeProduct ?? event.size,
       ));
     });
   }
@@ -740,6 +756,110 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     });
   }
 
+  Future<void> _getInfoProductSize(
+    GetInfoProductSizeFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    await state.mapOrNull(productsFavourites: (initState) async {
+      emit(initState.copyWith(
+        isLoadGetSizeProduct: true,
+        codeProduct: event.code,
+      ));
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(FavouritesState.getSizeProduct(
+            code: event.code,
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        } else {
+          if (event.isShop) {
+            emit(const FavouritesState.openSoppingCart());
+          } else {
+            emit(FavouritesState.addProductToSoppingCart(
+              code: event.code,
+            ));
+          }
+        }
+      } else {
+        if (event.isShop) {
+          emit(const FavouritesState.openSoppingCart());
+        } else {
+          emit(FavouritesState.addProductToSoppingCart(
+            code: event.code,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        listSize: detailsProduct.sku,
+        isLoadGetSizeProduct: false,
+        codeProduct: event.code,
+      ));
+    });
+  }
+
+  Future<void> _updateInfoProducts(
+    UpdateInfoProductsFavouritesEvent event,
+    Emitter<FavouritesState> emit,
+  ) async {
+    await state.mapOrNull(productsFavourites: (initState) async {
+      emit(initState.copyWith(
+        codeProduct: initState.codeProduct,
+      ));
+
+      FavouritesCatalogInfoDataModel? favouritesInfo;
+      List<int> favouritesProductsId = [];
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+
+      if (isAuth) {
+        favouritesInfo = await _favouritesRepository.getFavouritesProdcutsInfo(
+          request: initState.request,
+        );
+        final result = await _favouritesRepository.getFavouritesProdcuts();
+        favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
+        log(result.toString());
+      } else {
+        favouritesInfo = await updateFavouritesProducts(
+          request: initState.request,
+        );
+        favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
+      }
+
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: initState.codeProduct ?? '0',
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(FavouritesState.getSizeProduct(
+            code: initState.codeProduct ?? '0',
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        favouritesProducts: favouritesInfo.products,
+        favouritesDefaultProducts: favouritesInfo.products,
+        favouritesProductsId: favouritesProductsId,
+        favouritesProductsInfo: favouritesInfo,
+        filter: favouritesInfo.filter,
+        listSize: detailsProduct.sku,
+      ));
+    });
+  }
+
   Future<FavouritesCatalogInfoDataModel> updateFavouritesProducts({
     bool isLocal = true,
     required FavouritesCatalogProductsRequest request,
@@ -810,7 +930,37 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      final listProducts = initState.favouritesProducts.toList();
+      final items = listProducts.where((element) => element.id == event.code).toList();
+
+      if (items.isNotEmpty) {
+        int index = listProducts.indexOf(items.first);
+        ProductDataModel product = ProductDataModel(
+          id: items.first.id,
+          title: items.first.title,
+          category: items.first.category,
+          size: items.first.size,
+          price: items.first.price,
+          pb: items.first.pb,
+          yourPrice: items.first.yourPrice,
+          brend: items.first.brend,
+          lensDiameter: items.first.lensDiameter,
+          templeLength: items.first.templeLength,
+          country: items.first.country,
+          images: items.first.images,
+          variants: items.first.variants,
+          maximumCashback: items.first.maximumCashback,
+          maximumPersonalDiscount: items.first.maximumPersonalDiscount,
+          isYourPriceDisplayed: items.first.isYourPriceDisplayed,
+          isShop: true,
+        );
+
+        listProducts[index] = product;
+      }
+
       emit(initState.copyWith(
+        favouritesProducts: listProducts,
+        favouritesDefaultProducts: listProducts,
         isSoppingCart: true,
       ));
     });
@@ -826,11 +976,23 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           ) ??
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
-      final soppingCart = basketInfo.basket.where(
-        (element) =>
-            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
-            element.sku == event.size.id,
-      );
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+
+      if (initState.detailsProduct?.sku.isNotEmpty ?? false) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+                  (element.sku.isNotEmpty ? element.sku == event.size.id : true),
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0),
+            )
+            .toList();
+      }
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
       ));

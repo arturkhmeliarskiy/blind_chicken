@@ -1,12 +1,8 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/widgets/item_catalog_menu.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
@@ -388,7 +384,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               _selectedIndexGender = 1;
                             });
                           } else {
-                            context.popRoute();
+                            // context.popRoute();
                           }
                         }
                       }
@@ -418,7 +414,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               _selectedIndexGender = 1;
                             });
                           } else {
-                            context.popRoute();
+                            // context.popRoute();
                           }
                         }
                       },
@@ -445,6 +441,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                     );
                                   } else if (initState.menu[index].name == 'Подарочная карта') {
                                     context.navigateTo(GiftCardRoute());
+                                  } else if (initState.menu[index].name ==
+                                      'Предупреждение зрения') {
+                                    context.navigateTo(const VisionWarningRoute());
                                   } else if (initState.menu[index].name == 'Бренды') {
                                     context.navigateTo(
                                       BrandsRoute(

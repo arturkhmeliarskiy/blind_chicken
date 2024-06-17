@@ -5,6 +5,15 @@ class CatalogState with _$CatalogState {
   const factory CatalogState.init() = InitCatalogState;
   const factory CatalogState.upload() = UploadCatalogState;
   const factory CatalogState.load() = LoadingCatalogState;
+  const factory CatalogState.openSoppingCart() = OpenSoppingCartCatalogState;
+  const factory CatalogState.getSizeProduct({
+    required String code,
+    required List<SkuProductDataModel> listSize,
+    required List<SkuProductDataModel> listSizeToSoppingCart,
+  }) = GetSizeProductCatalogState;
+  const factory CatalogState.addProductToSoppingCart({
+    required String code,
+  }) = AddProductCatalogState;
   const factory CatalogState.error({
     required String errorMessage,
   }) = ErrorCatalogState;
@@ -34,8 +43,12 @@ class CatalogState with _$CatalogState {
     required String updateVersionApp,
     required bool isUpdateVersionApp,
     required bool isNotification,
+    required List<SkuProductDataModel> listSize,
+    required bool isLoadGetSizeProduct,
+    PushNotificationMessageDataModel? notificationMessage,
     SkuProductDataModel? selectSizeProduct,
     String? errorMessage,
+    String? codeProduct,
     bool? isSoppingCart,
     bool? isError,
     DetailProductDataModel? detailsProduct,

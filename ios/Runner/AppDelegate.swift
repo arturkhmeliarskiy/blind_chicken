@@ -22,7 +22,7 @@ import YandexMapsMobile
     
     methodChannel?.setMethodCallHandler({
     (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-    if (call.method == "section") {
+    if (call.method == "type") {
       result("")
       return
       }
@@ -94,11 +94,11 @@ import YandexMapsMobile
     //     else { return }
     // guard let body = apsDict["body"] as? String
     //     else { return }
+    guard let type = userInfo["type"] as? String
+        else { return }
     guard let section = userInfo["section"] as? String
         else { return }
     guard let idMessage = userInfo["id_message"] as? String
-        else { return }
-    guard let type = userInfo["type"] as? String
         else { return }
     guard let sort = userInfo["sort"] as? String
         else { return }
@@ -109,16 +109,16 @@ import YandexMapsMobile
 
       methodChannel?.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in  
+        if (call.method == "type") {
+          result("\("\(type)")")
+          return
+        }  
         if (call.method == "section") {
           result("\("\(section)")")
           return
         }   
         if (call.method == "idMessage") {
           result("\("\(idMessage)")")
-          return
-        }  
-        if (call.method == "type") {
-          result("\("\(type)")")
           return
         }  
         if (call.method == "sort") {

@@ -58,6 +58,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.getInfoProducts({
     required String path,
   }) = GetInfoProductsCatalogEvent;
+  const factory CatalogEvent.updateInfoProducts() = UpdateInfoProductsCatalogEvent;
   const factory CatalogEvent.getInfoProductsPushNotification({
     required String path,
     required String sort,
@@ -65,6 +66,7 @@ class CatalogEvent with _$CatalogEvent {
   }) = GetInfoProductsPushNotificationCatalogEvent;
   const factory CatalogEvent.getInfoProduct({
     required String code,
+    SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductCatalogEvent;
   const factory CatalogEvent.sortProducts({
@@ -78,8 +80,14 @@ class CatalogEvent with _$CatalogEvent {
     required int index,
   }) = RemoveSelectFilterCategotyCatalogEvent;
   const factory CatalogEvent.removeSelectAllFilters() = RemoveSelectAllFiltersCategotyCatalogEvent;
-  const factory CatalogEvent.addProductToSoppingCart() = AddProductToSoppingCartCatalogEvent;
+  const factory CatalogEvent.addProductToSoppingCart({
+    required int code,
+  }) = AddProductToSoppingCartCatalogEvent;
   const factory CatalogEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
   }) = CheckProductToSoppingCartCatalogEvent;
+  const factory CatalogEvent.getInfoProductSize({
+    required String code,
+    required bool isShop,
+  }) = GetInfoProductSizeCatalogEvent;
 }

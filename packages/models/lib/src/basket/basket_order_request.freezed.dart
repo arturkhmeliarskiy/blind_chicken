@@ -23,6 +23,7 @@ mixin _$BasketOrderRequest {
   List<BasketSertDeliveryRequest>? get sert =>
       throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
+  bool get isValidAddress => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BasketOrderRequestCopyWith<BasketOrderRequest> get copyWith =>
@@ -41,7 +42,8 @@ abstract class $BasketOrderRequestCopyWith<$Res> {
       String? bonus,
       String payment,
       List<BasketSertDeliveryRequest>? sert,
-      String city});
+      String city,
+      bool isValidAddress});
 
   $BasketOrderDeliveryRequestCopyWith<$Res> get delivery;
 }
@@ -65,6 +67,7 @@ class _$BasketOrderRequestCopyWithImpl<$Res, $Val extends BasketOrderRequest>
     Object? payment = null,
     Object? sert = freezed,
     Object? city = null,
+    Object? isValidAddress = null,
   }) {
     return _then(_value.copyWith(
       promo: null == promo
@@ -91,6 +94,10 @@ class _$BasketOrderRequestCopyWithImpl<$Res, $Val extends BasketOrderRequest>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
+      isValidAddress: null == isValidAddress
+          ? _value.isValidAddress
+          : isValidAddress // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -117,7 +124,8 @@ abstract class _$$BasketOrderRequestImplCopyWith<$Res>
       String? bonus,
       String payment,
       List<BasketSertDeliveryRequest>? sert,
-      String city});
+      String city,
+      bool isValidAddress});
 
   @override
   $BasketOrderDeliveryRequestCopyWith<$Res> get delivery;
@@ -140,6 +148,7 @@ class __$$BasketOrderRequestImplCopyWithImpl<$Res>
     Object? payment = null,
     Object? sert = freezed,
     Object? city = null,
+    Object? isValidAddress = null,
   }) {
     return _then(_$BasketOrderRequestImpl(
       promo: null == promo
@@ -166,6 +175,10 @@ class __$$BasketOrderRequestImplCopyWithImpl<$Res>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
+      isValidAddress: null == isValidAddress
+          ? _value.isValidAddress
+          : isValidAddress // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -179,7 +192,8 @@ class _$BasketOrderRequestImpl extends _BasketOrderRequest {
       this.bonus,
       required this.payment,
       final List<BasketSertDeliveryRequest>? sert,
-      required this.city})
+      required this.city,
+      required this.isValidAddress})
       : _sert = sert,
         super._();
 
@@ -203,10 +217,12 @@ class _$BasketOrderRequestImpl extends _BasketOrderRequest {
 
   @override
   final String city;
+  @override
+  final bool isValidAddress;
 
   @override
   String toString() {
-    return 'BasketOrderRequest(promo: $promo, delivery: $delivery, bonus: $bonus, payment: $payment, sert: $sert, city: $city)';
+    return 'BasketOrderRequest(promo: $promo, delivery: $delivery, bonus: $bonus, payment: $payment, sert: $sert, city: $city, isValidAddress: $isValidAddress)';
   }
 
   @override
@@ -220,12 +236,14 @@ class _$BasketOrderRequestImpl extends _BasketOrderRequest {
             (identical(other.bonus, bonus) || other.bonus == bonus) &&
             (identical(other.payment, payment) || other.payment == payment) &&
             const DeepCollectionEquality().equals(other._sert, _sert) &&
-            (identical(other.city, city) || other.city == city));
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.isValidAddress, isValidAddress) ||
+                other.isValidAddress == isValidAddress));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, promo, delivery, bonus, payment,
-      const DeepCollectionEquality().hash(_sert), city);
+      const DeepCollectionEquality().hash(_sert), city, isValidAddress);
 
   @JsonKey(ignore: true)
   @override
@@ -242,7 +260,8 @@ abstract class _BasketOrderRequest extends BasketOrderRequest {
       final String? bonus,
       required final String payment,
       final List<BasketSertDeliveryRequest>? sert,
-      required final String city}) = _$BasketOrderRequestImpl;
+      required final String city,
+      required final bool isValidAddress}) = _$BasketOrderRequestImpl;
   _BasketOrderRequest._() : super._();
 
   @override
@@ -257,6 +276,8 @@ abstract class _BasketOrderRequest extends BasketOrderRequest {
   List<BasketSertDeliveryRequest>? get sert;
   @override
   String get city;
+  @override
+  bool get isValidAddress;
   @override
   @JsonKey(ignore: true)
   _$$BasketOrderRequestImplCopyWith<_$BasketOrderRequestImpl> get copyWith =>

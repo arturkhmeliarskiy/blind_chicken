@@ -10,6 +10,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -23,20 +24,10 @@ class ShoppingCartScreen extends StatefulWidget {
 }
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
-  final bool _isAuth = false;
-  ProductDataModel? product;
-  String _titlePromocode = 'Активация промокода';
-  String _receivingType = 'Самовывоз';
-  String _typePay = 'Банковской картой';
-  String _address = '';
-  String _workingHours = '';
-  BasketAddress _addressDelivery = BasketAddress(address: '', zip: '');
   final ScrollController _scrollController = ScrollController();
   bool _isButtonTop = false;
+  bool _isSwipe = true;
   double _historyPosition = 0.0;
-
-  String _uidPickUpPoint = '';
-  String _paymentId = '1';
 
   @override
   void initState() {
@@ -88,6 +79,27 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
         );
       },
       child: GestureDetector(
+        onVerticalDragUpdate: (details) {},
+        onHorizontalDragEnd: (DragEndDetails details) {
+          if (details.velocity.pixelsPerSecond.dx > 0) {
+            final updateData = GetIt.I.get<UpdateDataService>();
+
+            if (updateData.lastScreen == 'search_result') {
+              context.read<SearchBloc>().add(
+                    const SearchEvent.updateInfoProducts(),
+                  );
+            }
+            if (updateData.lastScreen == 'favourites_products') {
+              context.read<FavouritesBloc>().add(
+                    const FavouritesEvent.updateInfoProducts(),
+                  );
+            }
+            context.back();
+            setState(() {
+              _isSwipe = true;
+            });
+          }
+        },
         child: Stack(
           children: [
             Stack(
@@ -100,7 +112,23 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   ),
                   body: PopScope(
                     canPop: false,
-                    onPopInvoked: (value) {},
+                    onPopInvoked: (value) {
+                      if (_isSwipe) {
+                        final updateData = GetIt.I.get<UpdateDataService>();
+
+                        if (updateData.lastScreen == 'search_result') {
+                          context.read<SearchBloc>().add(
+                                const SearchEvent.updateInfoProducts(),
+                              );
+                        }
+                        if (updateData.lastScreen == 'favourites_products') {
+                          context.read<FavouritesBloc>().add(
+                                const FavouritesEvent.updateInfoProducts(),
+                              );
+                        }
+                        context.back();
+                      }
+                    },
                     child: ListView(
                       controller: _scrollController,
                       padding: const EdgeInsets.only(
@@ -194,7 +222,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           ShoppingCartDeliveryUserInfo(
                                             boutiques: initState.boutiques,
                                             sum: initState.amountPaid +
-                                                initState.delivery -
+                                                (initState.delivery ?? 0) -
                                                 initState.bonuses -
                                                 initState.giftCards,
                                             title: 'Получение',
@@ -203,25 +231,41 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                             subTitle3: 'способ получения.',
                                             isAuth: initState.isAuth,
                                             onReceivingType: (value) {
-                                              setState(() {
-                                                _receivingType = value;
-                                              });
+                                              context.read<ShoppingCartBloc>().add(
+                                                    ShoppingCartEvent.changeReceivingType(
+                                                        receivingType: value),
+                                                  );
                                             },
                                             onAddressPickup: (value) {
-                                              setState(() {
-                                                _address = value.address;
-                                                _workingHours = value.schedule;
-                                                _uidPickUpPoint = value.uidStore;
-                                              });
+                                              context.read<ShoppingCartBloc>().add(
+                                                    ShoppingCartEvent.changeAddress(
+                                                      address: value.address,
+                                                    ),
+                                                  );
+                                              context.read<ShoppingCartBloc>().add(
+                                                    ShoppingCartEvent.changeUidPickUpPoint(
+                                                      uidPickUpPoint: value.uidStore,
+                                                    ),
+                                                  );
                                             },
                                             onAddressDelivery: (value) {
-                                              setState(() {
-                                                _addressDelivery = BasketAddress(
-                                                  address: value.address,
-                                                  zip: value.zip,
-                                                  cityId: value.cityId,
-                                                );
-                                              });
+                                              context.read<ShoppingCartBloc>().add(
+                                                    ShoppingCartEvent.changeAddressDelivery(
+                                                      addressDelivery: BasketAddress(
+                                                        address: value.address
+                                                                .replaceAll(RegExp(r"\s+"), '')
+                                                                .isNotEmpty
+                                                            ? value.address
+                                                            : '',
+                                                        zip: value.zip,
+                                                        cityId: value.cityId,
+                                                        city: value.city,
+                                                        street: value.street,
+                                                        house: value.house,
+                                                        flat: value.flat,
+                                                      ),
+                                                    ),
+                                                  );
                                             },
                                           ),
                                           const SizedBox(
@@ -240,10 +284,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                   );
                                             },
                                             onTypePay: (value) {
-                                              setState(() {
-                                                _paymentId = value.id;
-                                                _typePay = 'Оплата ${value.name.toLowerCase()}';
-                                              });
+                                              context.read<ShoppingCartBloc>().add(
+                                                    ShoppingCartEvent.changePaymentType(
+                                                      paymentId: value.id,
+                                                      typePay: 'Оплата ${value.name.toLowerCase()}',
+                                                    ),
+                                                  );
                                             },
                                             onAddGiftPayment: (value) {
                                               context.read<ShoppingCartBloc>().add(
@@ -252,6 +298,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                     ),
                                                   );
                                             },
+                                            isUponReceipt: initState.receivingType != 'Самовывоз'
+                                                ? initState.isUponReceipt
+                                                : true,
                                           ),
                                           const SizedBox(
                                             height: 56,
@@ -260,8 +309,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                _receivingType.isNotEmpty
-                                                    ? _receivingType
+                                                initState.receivingType.isNotEmpty
+                                                    ? initState.receivingType
                                                     : 'Способ получения',
                                                 textAlign: TextAlign.start,
                                                 style: Theme.of(context)
@@ -289,13 +338,13 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                             height: 4,
                                           ),
                                           Text(
-                                            _receivingType == 'Доставка'
-                                                ? _addressDelivery.address.isNotEmpty
-                                                    ? _addressDelivery.address
-                                                    : 'Не выбран'
-                                                : _address.isNotEmpty
-                                                    ? _address
-                                                    : 'Не выбран',
+                                            initState.receivingType == 'Доставка'
+                                                ? initState.addressDelivery.address.isNotEmpty
+                                                    ? initState.addressDelivery.address
+                                                    : 'Адрес доставки не выбран'
+                                                : initState.address.isNotEmpty
+                                                    ? initState.address
+                                                    : 'Адрес доставки не выбран',
                                             textAlign: TextAlign.start,
                                             style: Theme.of(context).textTheme.displayMedium,
                                           ),
@@ -306,8 +355,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                _typePay.isNotEmpty
-                                                    ? _typePay
+                                                initState.typePay.isNotEmpty
+                                                    ? initState.typePay
                                                     : 'Способ оплаты не выбран',
                                                 textAlign: TextAlign.start,
                                                 style: Theme.of(context)
@@ -388,7 +437,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                 ],
                                               ),
                                             ),
-                                          if (_receivingType == 'Доставка')
+                                          if (initState.receivingType == 'Доставка' &&
+                                              initState.delivery != null)
                                             Column(
                                               children: [
                                                 const SizedBox(
@@ -415,34 +465,38 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           const SizedBox(
                                             height: 16,
                                           ),
-                                          if (!_isAuth)
+                                          if (initState.isAuth)
                                             ShoppingCartPromotionalCode(
                                               isActivePromoCode: initState.isActivePromoCode,
                                               promoCode: initState.promoCode,
                                               onSendPromotional: (value) {
-                                                setState(() {
-                                                  _titlePromocode = 'Активация промокода';
-                                                });
+                                                context.read<ShoppingCartBloc>().add(
+                                                      ShoppingCartEvent.changeTitlePromocode(
+                                                        titlePromocode: value,
+                                                      ),
+                                                    );
                                                 context.read<ShoppingCartBloc>().add(
                                                       ShoppingCartEvent.promoCode(
                                                         promoCode: value,
-                                                        uid: _uidPickUpPoint,
+                                                        uid: initState.uidPickUpPoint,
                                                       ),
                                                     );
                                                 showDialog(
                                                   context: context,
                                                   builder: (context) {
                                                     return ShoppingCartPaymentPromoCode(
-                                                      titlePromocode: _titlePromocode,
+                                                      titlePromocode: initState.titlePromocode,
                                                       isEmpty: value.isEmpty,
                                                     );
                                                   },
                                                 );
                                               },
                                               onRemovePromotional: () {
-                                                setState(() {
-                                                  _titlePromocode = 'Отмена промокода';
-                                                });
+                                                context.read<ShoppingCartBloc>().add(
+                                                      const ShoppingCartEvent.changeTitlePromocode(
+                                                        titlePromocode: 'Отмена промокода',
+                                                      ),
+                                                    );
                                                 context.read<ShoppingCartBloc>().add(
                                                       const ShoppingCartEvent.removePromoCode(),
                                                     );
@@ -450,7 +504,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                   context: context,
                                                   builder: (context) {
                                                     return ShoppingCartPaymentPromoCode(
-                                                      titlePromocode: _titlePromocode,
+                                                      titlePromocode: initState.titlePromocode,
                                                       isEmpty: false,
                                                     );
                                                   },
@@ -487,7 +541,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                     ),
                                               ),
                                               Text(
-                                                '${'${initState.amountPaid + initState.delivery - initState.bonuses - initState.giftCards}'.spaceSeparateNumbers()} ₽',
+                                                '${'${initState.amountPaid + (initState.receivingType != 'Самовывоз' ? initState.delivery ?? 0 : 0) - initState.bonuses - initState.giftCards}'.spaceSeparateNumbers()} ₽',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayMedium
@@ -503,9 +557,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                           BlindChickenButton(
                                             title: 'Заказать',
                                             onChenge: () {
-                                              _uidPickUpPoint = _uidPickUpPoint.isNotEmpty
-                                                  ? _uidPickUpPoint
-                                                  : initState.boutiques.data.first.uidStore;
+                                              bool isValidAddress =
+                                                  ((initState.addressDelivery.city?.isNotEmpty ??
+                                                          false) &&
+                                                      (initState.addressDelivery.street
+                                                              ?.replaceAll(RegExp(r"\s+"), '')
+                                                              .isNotEmpty ??
+                                                          false) &&
+                                                      (initState.addressDelivery.house
+                                                              ?.replaceAll(RegExp(r"\s+"), '')
+                                                              .isNotEmpty ??
+                                                          false));
                                               context.read<ShoppingCartBloc>().add(
                                                     ShoppingCartEvent.createOrder(
                                                         request: BasketOrderRequest(
@@ -514,26 +576,30 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                           : null,
                                                       promo: initState.promoCode,
                                                       delivery: BasketOrderDeliveryRequest(
-                                                        adr: _receivingType != 'Самовывоз'
-                                                            ? _addressDelivery.address
+                                                        adr: initState.receivingType != 'Самовывоз'
+                                                            ? initState.addressDelivery.address
                                                             : '',
-                                                        id: _receivingType == 'Самовывоз'
+                                                        id: initState.receivingType == 'Самовывоз'
                                                             ? '1'
                                                             : '2',
-                                                        pck: _receivingType == 'Самовывоз'
-                                                            ? _uidPickUpPoint
+                                                        pck: initState.receivingType == 'Самовывоз'
+                                                            ? initState.uidPickUpPoint
                                                             : '',
-                                                        zip: _receivingType != 'Самовывоз'
-                                                            ? _addressDelivery.zip
+                                                        zip: initState.receivingType != 'Самовывоз'
+                                                            ? initState.addressDelivery.zip
                                                             : '',
                                                       ),
-                                                      payment: _paymentId,
+                                                      payment: initState.paymentId,
                                                       sert: initState.listGiftCard.isNotEmpty
                                                           ? initState.listGiftCard
                                                           : null,
-                                                      city: _receivingType != 'Самовывоз'
-                                                          ? _addressDelivery.cityId ?? ''
+                                                      city: initState.receivingType != 'Самовывоз'
+                                                          ? initState.addressDelivery.cityId ?? ''
                                                           : '',
+                                                      isValidAddress:
+                                                          initState.receivingType != 'Самовывоз'
+                                                              ? isValidAddress
+                                                              : true,
                                                     )),
                                                   );
 

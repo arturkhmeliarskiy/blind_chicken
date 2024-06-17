@@ -56,6 +56,7 @@ class AccountEvent with _$AccountEvent {
   }) = DeleteFavouriteProductAccountEvent;
   const factory AccountEvent.getInfoProduct({
     required String code,
+    SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductAccountEvent;
   const factory AccountEvent.changeSizeProduct({

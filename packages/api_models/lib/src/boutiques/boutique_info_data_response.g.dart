@@ -14,6 +14,8 @@ _$BoutiqueInfoDataResponseImpl _$$BoutiqueInfoDataResponseImplFromJson(
           ?.map((e) =>
               BoutiqueFotoDetailResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      video:
+          (json['video'] as List<dynamic>?)?.map((e) => e as String).toList(),
       url: json['url'] as String?,
       caption: json['caption'] as String?,
       address: json['address'] as String?,
@@ -30,6 +32,7 @@ Map<String, dynamic> _$$BoutiqueInfoDataResponseImplToJson(
     <String, dynamic>{
       'foto_min_list': instance.fotoMinList,
       'foto_detail': instance.fotoDetail,
+      'video': instance.video,
       'url': instance.url,
       'caption': instance.caption,
       'address': instance.address,

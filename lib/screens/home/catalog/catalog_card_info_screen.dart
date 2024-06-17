@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -187,9 +186,11 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                               );
                                         }
                                       },
-                                      onTap: () {
+                                      onTap: (index) {
+                                        log(index.toString());
                                         context.navigateTo(
                                           CatalogPreviewImagesRoute(
+                                            selectIndex: index,
                                             listImages: initState.detailsProduct?.photo.full ?? [],
                                             goBotton: () {},
                                             goBottonInfoProduct: () {
@@ -482,17 +483,28 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                     context.navigateTo(
                                                       CatalogSizeProductRoute(
                                                         onChange: (value) {
-                                                          context.read<CatalogBloc>().add(
-                                                                CatalogEvent.changeSizeProduct(
-                                                                  selectSizeProduct: value,
-                                                                ),
-                                                              );
-                                                          context.read<CatalogBloc>().add(
-                                                                CatalogEvent
-                                                                    .checkProductToSoppingCart(
-                                                                        size: value),
-                                                              );
-                                                          context.back();
+                                                          if (value.id.contains('-') &&
+                                                              value.id.length > 10) {
+                                                            context.read<CatalogBloc>().add(
+                                                                  CatalogEvent.changeSizeProduct(
+                                                                    selectSizeProduct: value,
+                                                                  ),
+                                                                );
+                                                            context.read<CatalogBloc>().add(
+                                                                  CatalogEvent
+                                                                      .checkProductToSoppingCart(
+                                                                          size: value),
+                                                                );
+                                                            context.back();
+                                                          } else {
+                                                            context.back();
+                                                            context.read<CatalogBloc>().add(
+                                                                  CatalogEvent.getInfoProduct(
+                                                                    code: value.id.toString(),
+                                                                    size: value,
+                                                                  ),
+                                                                );
+                                                          }
                                                         },
                                                         listSizeProduct: sky,
                                                         selectItem: initState.selectSizeProduct ??
@@ -564,16 +576,26 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                 );
                                               } else {
                                                 context.read<CatalogBloc>().add(
-                                                      const CatalogEvent.addProductToSoppingCart(),
+                                                      CatalogEvent.addProductToSoppingCart(
+                                                        code: initState.detailsProduct?.code ?? 0,
+                                                      ),
                                                     );
+
                                                 context.read<ShoppingCartBloc>().add(
-                                                      ShoppingCartEvent.addProductToSoppingCart(
+                                                      ShoppingCartEvent
+                                                          .addOtherProductToSoppingCart(
                                                         item: BasketInfoItemDataModel(
                                                           code:
                                                               (initState.detailsProduct?.code ?? 0)
                                                                   .toString(),
-                                                          sku: initState.selectSizeProduct?.id ??
-                                                              sky.first.id,
+                                                          sku: (initState.selectSizeProduct?.id
+                                                                      .isNotEmpty ??
+                                                                  false)
+                                                              ? (initState.selectSizeProduct?.id ??
+                                                                  '')
+                                                              : sky.isNotEmpty
+                                                                  ? sky.first.id
+                                                                  : '',
                                                           count: 1,
                                                         ),
                                                       ),

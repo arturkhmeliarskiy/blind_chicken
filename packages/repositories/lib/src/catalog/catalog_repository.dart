@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:api_models/api_models.dart';
 import 'package:models/models.dart';
+import 'package:repositories/repositories.dart';
 import 'package:services/services.dart';
 import 'package:shared/shared.dart';
 
@@ -9,6 +10,8 @@ class CatalogRepository {
   final CatalogService _catalogService;
   final ProductsFavouritesService _productsHiveService;
   final ProductsShoppingCartService _productsShoppingCartService;
+  final BasketRepository _basketRepository;
+  final SharedPreferencesService _sharedPreferencesService;
 
   StreamController streamController = StreamController.broadcast();
 
@@ -16,6 +19,8 @@ class CatalogRepository {
     this._catalogService,
     this._productsHiveService,
     this._productsShoppingCartService,
+    this._basketRepository,
+    this._sharedPreferencesService,
   );
 
   //favourites
@@ -91,23 +96,36 @@ class CatalogRepository {
   Future<CatalogDataModel> getCatalogProducts({
     required CatalogProductsRequest request,
   }) async {
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+    final basketInfo = await getBasketInfo(isLocal: !isAuth);
     final catalogProducts = await _catalogService.getCatalogProducts(
           request: request,
         ) ??
         CatalogResponse();
-    return catalogProducts.toCatalogProducts();
+    return catalogProducts.toCatalogProducts(basketInfo);
   }
 
   Future<DetailProductDataModel> getDetailsProduct({
     required String code,
     required String genderIndex,
   }) async {
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+    final basketInfo = await getBasketInfo(isLocal: !isAuth);
     final detailsProduct = await _catalogService.getDetailsProduct(
           code: code,
         ) ??
         DetailProductResponse();
 
-    return detailsProduct.toDetailsProduct(genderIndex);
+    return detailsProduct.toDetailsProduct(
+      genderIndex,
+      basketInfo,
+    );
   }
 
   Future<AdditionalProductsDescriptionDataModel> getAdditionalProductsDescription({
@@ -137,28 +155,73 @@ class CatalogRepository {
   Future<CatalogSearchDataModel> searchProducts({
     required String search,
   }) async {
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+    final basketInfo = await getBasketInfo(isLocal: !isAuth);
     final paymentOrder = await _catalogService.searchProducts(
           search: search,
         ) ??
         CatalogSearchResponse();
 
-    return paymentOrder.toSearchProducts();
+    return paymentOrder.toSearchProducts(basketInfo);
   }
 
   Future<CatalogSearchInfoDataModel> searchProductsInfo({
     required CatalogSearchProductsRequest request,
   }) async {
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+    final basketInfo = await getBasketInfo(isLocal: !isAuth);
     final paymentOrder = await _catalogService.searchProductsInfo(
           request: request,
         ) ??
         CatalogSearchInfoResponse();
 
-    return paymentOrder.toSearchProductsInfo();
+    return paymentOrder.toSearchProductsInfo(basketInfo);
+  }
+
+  Future<BasketFullInfoDataModel> getBasketInfo({
+    bool isLocal = true,
+  }) async {
+    List<BasketInfoItemDataModel> basket = [];
+    if (isLocal) {
+      final shopping = getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+        ));
+      }
+    }
+
+    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
+      basket: isLocal ? basket : null,
+    );
+
+    if (isLocal) {
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        putShoppingCartProduct(
+          i,
+          BasketInfoItemDataModel(
+            code: basketInfo.basket[i].code,
+            sku: basketInfo.basket[i].sku,
+            count: basketInfo.basket[i].count,
+          ),
+        );
+      }
+    }
+
+    return basketInfo;
   }
 }
 
 extension on CatalogSearchInfoResponse {
-  CatalogSearchInfoDataModel toSearchProductsInfo() {
+  CatalogSearchInfoDataModel toSearchProductsInfo(BasketFullInfoDataModel basketInfo) {
     return CatalogSearchInfoDataModel(
       products: List<ProductDataModel>.from(
         products?.map(
@@ -171,7 +234,7 @@ extension on CatalogSearchInfoResponse {
                 pb: int.parse(item.pb ?? '0'),
                 size: [],
                 lensDiameter: 0,
-                price: item.pbc ?? 0,
+                price: int.parse(item.p ?? '0'),
                 templeLength: 0,
                 country: '',
                 variants: [],
@@ -179,6 +242,11 @@ extension on CatalogSearchInfoResponse {
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                isShop: basketInfo.basket
+                    .where(
+                      (element) => element.code == (item.c ?? ''),
+                    )
+                    .isNotEmpty,
               ),
             ) ??
             [],
@@ -211,7 +279,7 @@ extension on CatalogSearchInfoResponse {
 }
 
 extension on CatalogSearchResponse {
-  CatalogSearchDataModel toSearchProducts() {
+  CatalogSearchDataModel toSearchProducts(BasketFullInfoDataModel basketInfo) {
     return CatalogSearchDataModel(
       productsCount: productsCount ?? 0,
       sectionsCount: sectionsCount ?? 0,
@@ -226,7 +294,7 @@ extension on CatalogSearchResponse {
                 size: [],
                 pb: int.parse(item.pb ?? '0'),
                 lensDiameter: 0,
-                price: item.pbc ?? 0,
+                price: int.parse(item.p ?? '0'),
                 templeLength: 0,
                 country: '',
                 variants: [],
@@ -234,6 +302,11 @@ extension on CatalogSearchResponse {
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                isShop: basketInfo.basket
+                    .where(
+                      (element) => element.code == (item.c ?? ''),
+                    )
+                    .isNotEmpty,
               ),
             ) ??
             [],
@@ -308,6 +381,7 @@ extension on List<ProductResponse> {
           maximumPersonalDiscount: 0,
           yourPrice: 0,
           isYourPriceDisplayed: false,
+          isShop: false,
         ),
       ),
     );
@@ -356,6 +430,7 @@ extension on List<ProductFavouriteModel> {
           maximumPersonalDiscount: 0,
           yourPrice: item.youPrice,
           isYourPriceDisplayed: false,
+          isShop: false,
         ),
       ),
     );
@@ -425,7 +500,7 @@ extension on ProductDataModel {
 }
 
 extension on CatalogResponse {
-  CatalogDataModel toCatalogProducts() {
+  CatalogDataModel toCatalogProducts(BasketFullInfoDataModel basketInfo) {
     return CatalogDataModel(
       userDiscount: userDiscount ?? '',
       breadcrumbs: List<CatalogBreadcrumbDataModel>.from(
@@ -510,6 +585,11 @@ extension on CatalogResponse {
               price: int.parse(item.p ?? '0'),
               templeLength: 0,
               country: '',
+              isShop: basketInfo.basket
+                  .where(
+                    (element) => element.code == (item.c ?? ''),
+                  )
+                  .isNotEmpty,
               variants: [],
               maximumCashback: item.ca ?? 0,
               maximumPersonalDiscount: item.dv ?? 0,
@@ -526,8 +606,22 @@ extension on CatalogResponse {
 }
 
 extension on DetailProductResponse {
-  DetailProductDataModel toDetailsProduct(String genderIndex) {
+  DetailProductDataModel toDetailsProduct(
+    String genderIndex,
+    BasketFullInfoDataModel basketInfo,
+  ) {
     final sectionsInfo = _sections(sections ?? [], genderIndex);
+    List<SkuProductDataModel> skuToSoppingCart = [];
+    for (int i = 0; i < basketInfo.basket.length; i++) {
+      if (basketInfo.basket[i].code == (code ?? 0).toString()) {
+        skuToSoppingCart.add(
+          SkuProductDataModel(
+            id: basketInfo.basket[i].sku,
+            value: basketInfo.basket[i].skuName,
+          ),
+        );
+      }
+    }
     return DetailProductDataModel(
       code: code ?? 0,
       photo: PhotoDataModel(
@@ -580,6 +674,7 @@ extension on DetailProductResponse {
             ) ??
             [],
       ),
+      skuToSoppingCart: skuToSoppingCart,
       stock: List<StockProductDataModel>.from(
         stock?.map(
               (item) => StockProductDataModel(
@@ -629,6 +724,7 @@ extension on DetailProductResponse {
         maximumCashback: price?.cashback ?? 0,
         maximumPersonalDiscount: price?.discountVal ?? 0,
         isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
+        isShop: false,
       ),
       price: PriceProductDataModel(
         p: price?.p ?? '0',
@@ -704,6 +800,7 @@ extension on AdditionalProductsDescriptionResponse {
                 maximumCashback: item.ca ?? 0,
                 maximumPersonalDiscount: item.dv ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                isShop: false,
               );
             }) ??
             [],

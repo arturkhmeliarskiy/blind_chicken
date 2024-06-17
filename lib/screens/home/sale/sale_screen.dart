@@ -358,6 +358,10 @@ class _SaleScreenState extends State<SaleScreen> {
                                 price: initState.products[index].price.toString(),
                                 maximumCashback:
                                     initState.favouritesProducts[index].maximumCashback.toString(),
+                                isShop: false,
+                                onAddProductToSoppingCart: () {},
+                                listSize: [],
+                                isLoad: false,
                               );
                             },
                           );

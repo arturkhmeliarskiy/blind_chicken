@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -85,7 +87,7 @@ class BlindChickenUpdateAppInfo extends StatelessWidget {
                       ),
                       alignment: Alignment.center,
                       child: Text(
-                        'Перейти в App Store',
+                        Platform.isAndroid ? 'Перейти в Google Play' : 'Перейти в App Store',
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               color: BlindChickenColors.backgroundColor,
                             ),

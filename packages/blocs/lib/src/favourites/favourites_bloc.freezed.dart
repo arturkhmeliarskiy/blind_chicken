@@ -33,15 +33,19 @@ mixin _$FavouritesEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,13 +62,16 @@ mixin _$FavouritesEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,13 +88,16 @@ mixin _$FavouritesEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +132,10 @@ mixin _$FavouritesEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -151,6 +165,10 @@ mixin _$FavouritesEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -178,6 +196,10 @@ mixin _$FavouritesEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -255,15 +277,19 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return init();
   }
@@ -283,13 +309,16 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return init?.call();
   }
@@ -309,13 +338,16 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -356,6 +388,10 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return init(this);
   }
@@ -388,6 +424,10 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return init?.call(this);
   }
@@ -418,6 +458,10 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -488,15 +532,19 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return preloadData();
   }
@@ -516,13 +564,16 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return preloadData?.call();
   }
@@ -542,13 +593,16 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -589,6 +643,10 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return preloadData(this);
   }
@@ -621,6 +679,10 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return preloadData?.call(this);
   }
@@ -651,6 +713,10 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -775,15 +841,19 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -803,13 +873,16 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -829,13 +902,16 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -876,6 +952,10 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return selectFilter(this);
   }
@@ -908,6 +988,10 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return selectFilter?.call(this);
   }
@@ -938,6 +1022,10 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -1073,15 +1161,19 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -1101,13 +1193,16 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -1127,13 +1222,16 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -1174,6 +1272,10 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return deleteFilter(this);
   }
@@ -1206,6 +1308,10 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return deleteFilter?.call(this);
   }
@@ -1236,6 +1342,10 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -1347,15 +1457,19 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return removeSelectFilterCategory(index);
   }
@@ -1375,13 +1489,16 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return removeSelectFilterCategory?.call(index);
   }
@@ -1401,13 +1518,16 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -1448,6 +1568,10 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return removeSelectFilterCategory(this);
   }
@@ -1480,6 +1604,10 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return removeSelectFilterCategory?.call(this);
   }
@@ -1510,6 +1638,10 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -1593,15 +1725,19 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return removeSelectAllFilters();
   }
@@ -1621,13 +1757,16 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return removeSelectAllFilters?.call();
   }
@@ -1647,13 +1786,16 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -1694,6 +1836,10 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return removeSelectAllFilters(this);
   }
@@ -1726,6 +1872,10 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return removeSelectAllFilters?.call(this);
   }
@@ -1756,6 +1906,10 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -1883,15 +2037,19 @@ class _$DeleteCatalogFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -1911,13 +2069,16 @@ class _$DeleteCatalogFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -1937,13 +2098,16 @@ class _$DeleteCatalogFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -1984,6 +2148,10 @@ class _$DeleteCatalogFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -2016,6 +2184,10 @@ class _$DeleteCatalogFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -2046,6 +2218,10 @@ class _$DeleteCatalogFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -2175,15 +2351,19 @@ class _$AddFavouriteProductFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -2203,13 +2383,16 @@ class _$AddFavouriteProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -2229,13 +2412,16 @@ class _$AddFavouriteProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2276,6 +2462,10 @@ class _$AddFavouriteProductFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return addFavouriteProduct(this);
   }
@@ -2308,6 +2498,10 @@ class _$AddFavouriteProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -2338,6 +2532,10 @@ class _$AddFavouriteProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -2445,15 +2643,19 @@ class _$DeleteFavouriteProductFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -2473,13 +2675,16 @@ class _$DeleteFavouriteProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -2499,13 +2704,16 @@ class _$DeleteFavouriteProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2546,6 +2754,10 @@ class _$DeleteFavouriteProductFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -2578,6 +2790,10 @@ class _$DeleteFavouriteProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -2608,6 +2824,10 @@ class _$DeleteFavouriteProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -2636,7 +2856,9 @@ abstract class _$$GetInfoProductFavouritesEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductFavouritesEventImpl) then) =
       __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code, bool? isUpdate});
+  $Res call({String code, SkuProductDataModel? size, bool? isUpdate});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -2653,6 +2875,7 @@ class __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? size = freezed,
     Object? isUpdate = freezed,
   }) {
     return _then(_$GetInfoProductFavouritesEventImpl(
@@ -2660,11 +2883,27 @@ class __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
       isUpdate: freezed == isUpdate
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -2673,16 +2912,18 @@ class __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>
 class _$GetInfoProductFavouritesEventImpl
     implements GetInfoProductFavouritesEvent {
   const _$GetInfoProductFavouritesEventImpl(
-      {required this.code, this.isUpdate});
+      {required this.code, this.size, this.isUpdate});
 
   @override
   final String code;
+  @override
+  final SkuProductDataModel? size;
   @override
   final bool? isUpdate;
 
   @override
   String toString() {
-    return 'FavouritesEvent.getInfoProduct(code: $code, isUpdate: $isUpdate)';
+    return 'FavouritesEvent.getInfoProduct(code: $code, size: $size, isUpdate: $isUpdate)';
   }
 
   @override
@@ -2691,12 +2932,13 @@ class _$GetInfoProductFavouritesEventImpl
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductFavouritesEventImpl &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, isUpdate);
+  int get hashCode => Object.hash(runtimeType, code, size, isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -2724,17 +2966,21 @@ class _$GetInfoProductFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
-    return getInfoProduct(code, isUpdate);
+    return getInfoProduct(code, size, isUpdate);
   }
 
   @override
@@ -2752,15 +2998,18 @@ class _$GetInfoProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
-    return getInfoProduct?.call(code, isUpdate);
+    return getInfoProduct?.call(code, size, isUpdate);
   }
 
   @override
@@ -2778,17 +3027,20 @@ class _$GetInfoProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code, isUpdate);
+      return getInfoProduct(code, size, isUpdate);
     }
     return orElse();
   }
@@ -2825,6 +3077,10 @@ class _$GetInfoProductFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return getInfoProduct(this);
   }
@@ -2857,6 +3113,10 @@ class _$GetInfoProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -2887,6 +3147,10 @@ class _$GetInfoProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -2899,9 +3163,11 @@ class _$GetInfoProductFavouritesEventImpl
 abstract class GetInfoProductFavouritesEvent implements FavouritesEvent {
   const factory GetInfoProductFavouritesEvent(
       {required final String code,
+      final SkuProductDataModel? size,
       final bool? isUpdate}) = _$GetInfoProductFavouritesEventImpl;
 
   String get code;
+  SkuProductDataModel? get size;
   bool? get isUpdate;
   @JsonKey(ignore: true)
   _$$GetInfoProductFavouritesEventImplCopyWith<
@@ -2995,15 +3261,19 @@ class _$CheckButtonTopFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return checkButtonTop(isButtonTop);
   }
@@ -3023,13 +3293,16 @@ class _$CheckButtonTopFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return checkButtonTop?.call(isButtonTop);
   }
@@ -3049,13 +3322,16 @@ class _$CheckButtonTopFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (checkButtonTop != null) {
@@ -3096,6 +3372,10 @@ class _$CheckButtonTopFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return checkButtonTop(this);
   }
@@ -3128,6 +3408,10 @@ class _$CheckButtonTopFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return checkButtonTop?.call(this);
   }
@@ -3158,6 +3442,10 @@ class _$CheckButtonTopFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (checkButtonTop != null) {
@@ -3276,15 +3564,19 @@ class _$ChangeSizeProductFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return changeSizeProduct(selectSizeProduct);
   }
@@ -3304,13 +3596,16 @@ class _$ChangeSizeProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return changeSizeProduct?.call(selectSizeProduct);
   }
@@ -3330,13 +3625,16 @@ class _$ChangeSizeProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -3377,6 +3675,10 @@ class _$ChangeSizeProductFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return changeSizeProduct(this);
   }
@@ -3409,6 +3711,10 @@ class _$ChangeSizeProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -3439,6 +3745,10 @@ class _$ChangeSizeProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -3518,15 +3828,19 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return goBackProductInfo();
   }
@@ -3546,13 +3860,16 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return goBackProductInfo?.call();
   }
@@ -3572,13 +3889,16 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -3619,6 +3939,10 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return goBackProductInfo(this);
   }
@@ -3651,6 +3975,10 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -3681,6 +4009,10 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -3754,15 +4086,19 @@ class _$PaginationProductFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return paginationProduct();
   }
@@ -3782,13 +4118,16 @@ class _$PaginationProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return paginationProduct?.call();
   }
@@ -3808,13 +4147,16 @@ class _$PaginationProductFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -3855,6 +4197,10 @@ class _$PaginationProductFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return paginationProduct(this);
   }
@@ -3887,6 +4233,10 @@ class _$PaginationProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return paginationProduct?.call(this);
   }
@@ -3917,6 +4267,10 @@ class _$PaginationProductFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -3937,6 +4291,8 @@ abstract class _$$AddProductToSoppingCartFavouritesEventImplCopyWith<$Res> {
           _$AddProductToSoppingCartFavouritesEventImpl value,
           $Res Function(_$AddProductToSoppingCartFavouritesEventImpl) then) =
       __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int code});
 }
 
 /// @nodoc
@@ -3948,28 +4304,54 @@ class __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
       _$AddProductToSoppingCartFavouritesEventImpl _value,
       $Res Function(_$AddProductToSoppingCartFavouritesEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$AddProductToSoppingCartFavouritesEventImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddProductToSoppingCartFavouritesEventImpl
     implements AddProductToSoppingCartFavouritesEvent {
-  const _$AddProductToSoppingCartFavouritesEventImpl();
+  const _$AddProductToSoppingCartFavouritesEventImpl({required this.code});
+
+  @override
+  final int code;
 
   @override
   String toString() {
-    return 'FavouritesEvent.addProductToSoppingCart()';
+    return 'FavouritesEvent.addProductToSoppingCart(code: $code)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddProductToSoppingCartFavouritesEventImpl);
+            other is _$AddProductToSoppingCartFavouritesEventImpl &&
+            (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductToSoppingCartFavouritesEventImplCopyWith<
+          _$AddProductToSoppingCartFavouritesEventImpl>
+      get copyWith =>
+          __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<
+              _$AddProductToSoppingCartFavouritesEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3989,17 +4371,21 @@ class _$AddProductToSoppingCartFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
-    return addProductToSoppingCart();
+    return addProductToSoppingCart(code);
   }
 
   @override
@@ -4017,15 +4403,18 @@ class _$AddProductToSoppingCartFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
-    return addProductToSoppingCart?.call();
+    return addProductToSoppingCart?.call(code);
   }
 
   @override
@@ -4043,17 +4432,20 @@ class _$AddProductToSoppingCartFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
-      return addProductToSoppingCart();
+      return addProductToSoppingCart(code);
     }
     return orElse();
   }
@@ -4090,6 +4482,10 @@ class _$AddProductToSoppingCartFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -4122,6 +4518,10 @@ class _$AddProductToSoppingCartFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -4152,6 +4552,10 @@ class _$AddProductToSoppingCartFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -4163,8 +4567,14 @@ class _$AddProductToSoppingCartFavouritesEventImpl
 
 abstract class AddProductToSoppingCartFavouritesEvent
     implements FavouritesEvent {
-  const factory AddProductToSoppingCartFavouritesEvent() =
-      _$AddProductToSoppingCartFavouritesEventImpl;
+  const factory AddProductToSoppingCartFavouritesEvent(
+      {required final int code}) = _$AddProductToSoppingCartFavouritesEventImpl;
+
+  int get code;
+  @JsonKey(ignore: true)
+  _$$AddProductToSoppingCartFavouritesEventImplCopyWith<
+          _$AddProductToSoppingCartFavouritesEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4263,15 +4673,19 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function(bool isButtonTop) checkButtonTop,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(int code) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
   }) {
     return checkProductToSoppingCart(size);
   }
@@ -4291,13 +4705,16 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
         deleteCatalogFilter,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function(bool isButtonTop)? checkButtonTop,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(int code)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
   }) {
     return checkProductToSoppingCart?.call(size);
   }
@@ -4317,13 +4734,16 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
         deleteCatalogFilter,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function(bool isButtonTop)? checkButtonTop,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(int code)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -4364,6 +4784,10 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
   }) {
     return checkProductToSoppingCart(this);
   }
@@ -4396,6 +4820,10 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -4426,6 +4854,10 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -4449,11 +4881,574 @@ abstract class CheckProductToSoppingCartFavouritesEvent
 }
 
 /// @nodoc
+abstract class _$$GetInfoProductSizeFavouritesEventImplCopyWith<$Res> {
+  factory _$$GetInfoProductSizeFavouritesEventImplCopyWith(
+          _$GetInfoProductSizeFavouritesEventImpl value,
+          $Res Function(_$GetInfoProductSizeFavouritesEventImpl) then) =
+      __$$GetInfoProductSizeFavouritesEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code, bool isShop});
+}
+
+/// @nodoc
+class __$$GetInfoProductSizeFavouritesEventImplCopyWithImpl<$Res>
+    extends _$FavouritesEventCopyWithImpl<$Res,
+        _$GetInfoProductSizeFavouritesEventImpl>
+    implements _$$GetInfoProductSizeFavouritesEventImplCopyWith<$Res> {
+  __$$GetInfoProductSizeFavouritesEventImplCopyWithImpl(
+      _$GetInfoProductSizeFavouritesEventImpl _value,
+      $Res Function(_$GetInfoProductSizeFavouritesEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? isShop = null,
+  }) {
+    return _then(_$GetInfoProductSizeFavouritesEventImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      isShop: null == isShop
+          ? _value.isShop
+          : isShop // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoProductSizeFavouritesEventImpl
+    implements GetInfoProductSizeFavouritesEvent {
+  const _$GetInfoProductSizeFavouritesEventImpl(
+      {required this.code, required this.isShop});
+
+  @override
+  final String code;
+  @override
+  final bool isShop;
+
+  @override
+  String toString() {
+    return 'FavouritesEvent.getInfoProductSize(code: $code, isShop: $isShop)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoProductSizeFavouritesEventImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.isShop, isShop) || other.isShop == isShop));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, isShop);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoProductSizeFavouritesEventImplCopyWith<
+          _$GetInfoProductSizeFavouritesEventImpl>
+      get copyWith => __$$GetInfoProductSizeFavouritesEventImplCopyWithImpl<
+          _$GetInfoProductSizeFavouritesEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
+    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
+  }) {
+    return getInfoProductSize(code, isShop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
+    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
+  }) {
+    return getInfoProductSize?.call(code, isShop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
+    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductSize != null) {
+      return getInfoProductSize(code, isShop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesEvent value) init,
+    required TResult Function(PreloadDataFavouritesEvent value) preloadData,
+    required TResult Function(SelectFilterFavouritesEvent value) selectFilter,
+    required TResult Function(DeleteFilterFavouritesEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotyFavouritesEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(
+            RemoveSelectAllFiltersCategotyFavouritesEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogFavouritesEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductFavouritesEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductFavouritesEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductFavouritesEvent value)
+        getInfoProduct,
+    required TResult Function(CheckButtonTopFavouritesEvent value)
+        checkButtonTop,
+    required TResult Function(ChangeSizeProductFavouritesEvent value)
+        changeSizeProduct,
+    required TResult Function(GoBackProductInfoCategotyFavouritesEvent value)
+        goBackProductInfo,
+    required TResult Function(PaginationProductFavouritesEvent value)
+        paginationProduct,
+    required TResult Function(AddProductToSoppingCartFavouritesEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
+  }) {
+    return getInfoProductSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesEvent value)? init,
+    TResult? Function(PreloadDataFavouritesEvent value)? preloadData,
+    TResult? Function(SelectFilterFavouritesEvent value)? selectFilter,
+    TResult? Function(DeleteFilterFavouritesEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotyFavouritesEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyFavouritesEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogFavouritesEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductFavouritesEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductFavouritesEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductFavouritesEvent value)? getInfoProduct,
+    TResult? Function(CheckButtonTopFavouritesEvent value)? checkButtonTop,
+    TResult? Function(ChangeSizeProductFavouritesEvent value)?
+        changeSizeProduct,
+    TResult? Function(GoBackProductInfoCategotyFavouritesEvent value)?
+        goBackProductInfo,
+    TResult? Function(PaginationProductFavouritesEvent value)?
+        paginationProduct,
+    TResult? Function(AddProductToSoppingCartFavouritesEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
+  }) {
+    return getInfoProductSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesEvent value)? init,
+    TResult Function(PreloadDataFavouritesEvent value)? preloadData,
+    TResult Function(SelectFilterFavouritesEvent value)? selectFilter,
+    TResult Function(DeleteFilterFavouritesEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotyFavouritesEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyFavouritesEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogFavouritesEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductFavouritesEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductFavouritesEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductFavouritesEvent value)? getInfoProduct,
+    TResult Function(CheckButtonTopFavouritesEvent value)? checkButtonTop,
+    TResult Function(ChangeSizeProductFavouritesEvent value)? changeSizeProduct,
+    TResult Function(GoBackProductInfoCategotyFavouritesEvent value)?
+        goBackProductInfo,
+    TResult Function(PaginationProductFavouritesEvent value)? paginationProduct,
+    TResult Function(AddProductToSoppingCartFavouritesEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductSize != null) {
+      return getInfoProductSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoProductSizeFavouritesEvent implements FavouritesEvent {
+  const factory GetInfoProductSizeFavouritesEvent(
+      {required final String code,
+      required final bool isShop}) = _$GetInfoProductSizeFavouritesEventImpl;
+
+  String get code;
+  bool get isShop;
+  @JsonKey(ignore: true)
+  _$$GetInfoProductSizeFavouritesEventImplCopyWith<
+          _$GetInfoProductSizeFavouritesEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateInfoProductsFavouritesEventImplCopyWith<$Res> {
+  factory _$$UpdateInfoProductsFavouritesEventImplCopyWith(
+          _$UpdateInfoProductsFavouritesEventImpl value,
+          $Res Function(_$UpdateInfoProductsFavouritesEventImpl) then) =
+      __$$UpdateInfoProductsFavouritesEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateInfoProductsFavouritesEventImplCopyWithImpl<$Res>
+    extends _$FavouritesEventCopyWithImpl<$Res,
+        _$UpdateInfoProductsFavouritesEventImpl>
+    implements _$$UpdateInfoProductsFavouritesEventImplCopyWith<$Res> {
+  __$$UpdateInfoProductsFavouritesEventImplCopyWithImpl(
+      _$UpdateInfoProductsFavouritesEventImpl _value,
+      $Res Function(_$UpdateInfoProductsFavouritesEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UpdateInfoProductsFavouritesEventImpl
+    implements UpdateInfoProductsFavouritesEvent {
+  const _$UpdateInfoProductsFavouritesEventImpl();
+
+  @override
+  String toString() {
+    return 'FavouritesEvent.updateInfoProducts()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateInfoProductsFavouritesEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function(bool isButtonTop) checkButtonTop,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() paginationProduct,
+    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function() updateInfoProducts,
+  }) {
+    return updateInfoProducts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? paginationProduct,
+    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function()? updateInfoProducts,
+  }) {
+    return updateInfoProducts?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function(bool isButtonTop)? checkButtonTop,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? paginationProduct,
+    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function()? updateInfoProducts,
+    required TResult orElse(),
+  }) {
+    if (updateInfoProducts != null) {
+      return updateInfoProducts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesEvent value) init,
+    required TResult Function(PreloadDataFavouritesEvent value) preloadData,
+    required TResult Function(SelectFilterFavouritesEvent value) selectFilter,
+    required TResult Function(DeleteFilterFavouritesEvent value) deleteFilter,
+    required TResult Function(RemoveSelectFilterCategotyFavouritesEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(
+            RemoveSelectAllFiltersCategotyFavouritesEvent value)
+        removeSelectAllFilters,
+    required TResult Function(DeleteCatalogFavouritesEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductFavouritesEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductFavouritesEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductFavouritesEvent value)
+        getInfoProduct,
+    required TResult Function(CheckButtonTopFavouritesEvent value)
+        checkButtonTop,
+    required TResult Function(ChangeSizeProductFavouritesEvent value)
+        changeSizeProduct,
+    required TResult Function(GoBackProductInfoCategotyFavouritesEvent value)
+        goBackProductInfo,
+    required TResult Function(PaginationProductFavouritesEvent value)
+        paginationProduct,
+    required TResult Function(AddProductToSoppingCartFavouritesEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartFavouritesEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeFavouritesEvent value)
+        getInfoProductSize,
+    required TResult Function(UpdateInfoProductsFavouritesEvent value)
+        updateInfoProducts,
+  }) {
+    return updateInfoProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesEvent value)? init,
+    TResult? Function(PreloadDataFavouritesEvent value)? preloadData,
+    TResult? Function(SelectFilterFavouritesEvent value)? selectFilter,
+    TResult? Function(DeleteFilterFavouritesEvent value)? deleteFilter,
+    TResult? Function(RemoveSelectFilterCategotyFavouritesEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyFavouritesEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(DeleteCatalogFavouritesEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductFavouritesEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductFavouritesEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductFavouritesEvent value)? getInfoProduct,
+    TResult? Function(CheckButtonTopFavouritesEvent value)? checkButtonTop,
+    TResult? Function(ChangeSizeProductFavouritesEvent value)?
+        changeSizeProduct,
+    TResult? Function(GoBackProductInfoCategotyFavouritesEvent value)?
+        goBackProductInfo,
+    TResult? Function(PaginationProductFavouritesEvent value)?
+        paginationProduct,
+    TResult? Function(AddProductToSoppingCartFavouritesEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartFavouritesEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult? Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
+  }) {
+    return updateInfoProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesEvent value)? init,
+    TResult Function(PreloadDataFavouritesEvent value)? preloadData,
+    TResult Function(SelectFilterFavouritesEvent value)? selectFilter,
+    TResult Function(DeleteFilterFavouritesEvent value)? deleteFilter,
+    TResult Function(RemoveSelectFilterCategotyFavouritesEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyFavouritesEvent value)?
+        removeSelectAllFilters,
+    TResult Function(DeleteCatalogFavouritesEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductFavouritesEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductFavouritesEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductFavouritesEvent value)? getInfoProduct,
+    TResult Function(CheckButtonTopFavouritesEvent value)? checkButtonTop,
+    TResult Function(ChangeSizeProductFavouritesEvent value)? changeSizeProduct,
+    TResult Function(GoBackProductInfoCategotyFavouritesEvent value)?
+        goBackProductInfo,
+    TResult Function(PaginationProductFavouritesEvent value)? paginationProduct,
+    TResult Function(AddProductToSoppingCartFavouritesEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartFavouritesEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeFavouritesEvent value)?
+        getInfoProductSize,
+    TResult Function(UpdateInfoProductsFavouritesEvent value)?
+        updateInfoProducts,
+    required TResult orElse(),
+  }) {
+    if (updateInfoProducts != null) {
+      return updateInfoProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateInfoProductsFavouritesEvent implements FavouritesEvent {
+  const factory UpdateInfoProductsFavouritesEvent() =
+      _$UpdateInfoProductsFavouritesEventImpl;
+}
+
+/// @nodoc
 mixin _$FavouritesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4469,6 +5464,9 @@ mixin _$FavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4481,6 +5479,11 @@ mixin _$FavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4496,6 +5499,9 @@ mixin _$FavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4508,6 +5514,11 @@ mixin _$FavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4523,6 +5534,9 @@ mixin _$FavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4536,6 +5550,12 @@ mixin _$FavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) =>
       throw _privateConstructorUsedError;
@@ -4543,6 +5563,9 @@ mixin _$FavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) =>
       throw _privateConstructorUsedError;
@@ -4550,6 +5573,9 @@ mixin _$FavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) =>
@@ -4615,6 +5641,11 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4630,6 +5661,9 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4645,6 +5679,11 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4660,6 +5699,9 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4675,6 +5717,11 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4690,6 +5737,9 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4709,6 +5759,12 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return init(this);
@@ -4719,6 +5775,9 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return init?.call(this);
@@ -4729,6 +5788,9 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -4786,6 +5848,11 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4801,6 +5868,9 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4816,6 +5886,11 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4831,6 +5906,9 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4846,6 +5924,11 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -4861,6 +5944,9 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -4880,6 +5966,12 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return load(this);
@@ -4890,6 +5982,9 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return load?.call(this);
@@ -4900,6 +5995,9 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -4912,6 +6010,744 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
 
 abstract class LoadingFavouritesState implements FavouritesState {
   const factory LoadingFavouritesState() = _$LoadingFavouritesStateImpl;
+}
+
+/// @nodoc
+abstract class _$$OpenSoppingCartFavouritesStateImplCopyWith<$Res> {
+  factory _$$OpenSoppingCartFavouritesStateImplCopyWith(
+          _$OpenSoppingCartFavouritesStateImpl value,
+          $Res Function(_$OpenSoppingCartFavouritesStateImpl) then) =
+      __$$OpenSoppingCartFavouritesStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OpenSoppingCartFavouritesStateImplCopyWithImpl<$Res>
+    extends _$FavouritesStateCopyWithImpl<$Res,
+        _$OpenSoppingCartFavouritesStateImpl>
+    implements _$$OpenSoppingCartFavouritesStateImplCopyWith<$Res> {
+  __$$OpenSoppingCartFavouritesStateImplCopyWithImpl(
+      _$OpenSoppingCartFavouritesStateImpl _value,
+      $Res Function(_$OpenSoppingCartFavouritesStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OpenSoppingCartFavouritesStateImpl
+    implements OpenSoppingCartFavouritesState {
+  const _$OpenSoppingCartFavouritesStateImpl();
+
+  @override
+  String toString() {
+    return 'FavouritesState.openSoppingCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenSoppingCartFavouritesStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsFavourites,
+  }) {
+    return openSoppingCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+  }) {
+    return openSoppingCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (openSoppingCart != null) {
+      return openSoppingCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesState value) init,
+    required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsFavouritesState value) productsFavourites,
+  }) {
+    return openSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesState value)? init,
+    TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ProductsFavouritesState value)? productsFavourites,
+  }) {
+    return openSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesState value)? init,
+    TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ProductsFavouritesState value)? productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (openSoppingCart != null) {
+      return openSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OpenSoppingCartFavouritesState implements FavouritesState {
+  const factory OpenSoppingCartFavouritesState() =
+      _$OpenSoppingCartFavouritesStateImpl;
+}
+
+/// @nodoc
+abstract class _$$GetSizeProductFavouritesStateImplCopyWith<$Res> {
+  factory _$$GetSizeProductFavouritesStateImplCopyWith(
+          _$GetSizeProductFavouritesStateImpl value,
+          $Res Function(_$GetSizeProductFavouritesStateImpl) then) =
+      __$$GetSizeProductFavouritesStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String code,
+      List<SkuProductDataModel> listSize,
+      List<SkuProductDataModel> listSizeToSoppingCart});
+}
+
+/// @nodoc
+class __$$GetSizeProductFavouritesStateImplCopyWithImpl<$Res>
+    extends _$FavouritesStateCopyWithImpl<$Res,
+        _$GetSizeProductFavouritesStateImpl>
+    implements _$$GetSizeProductFavouritesStateImplCopyWith<$Res> {
+  __$$GetSizeProductFavouritesStateImplCopyWithImpl(
+      _$GetSizeProductFavouritesStateImpl _value,
+      $Res Function(_$GetSizeProductFavouritesStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? listSize = null,
+    Object? listSizeToSoppingCart = null,
+  }) {
+    return _then(_$GetSizeProductFavouritesStateImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+      listSizeToSoppingCart: null == listSizeToSoppingCart
+          ? _value._listSizeToSoppingCart
+          : listSizeToSoppingCart // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetSizeProductFavouritesStateImpl
+    implements GetSizeProductFavouritesState {
+  const _$GetSizeProductFavouritesStateImpl(
+      {required this.code,
+      required final List<SkuProductDataModel> listSize,
+      required final List<SkuProductDataModel> listSizeToSoppingCart})
+      : _listSize = listSize,
+        _listSizeToSoppingCart = listSizeToSoppingCart;
+
+  @override
+  final String code;
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
+  final List<SkuProductDataModel> _listSizeToSoppingCart;
+  @override
+  List<SkuProductDataModel> get listSizeToSoppingCart {
+    if (_listSizeToSoppingCart is EqualUnmodifiableListView)
+      return _listSizeToSoppingCart;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSizeToSoppingCart);
+  }
+
+  @override
+  String toString() {
+    return 'FavouritesState.getSizeProduct(code: $code, listSize: $listSize, listSizeToSoppingCart: $listSizeToSoppingCart)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetSizeProductFavouritesStateImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
+            const DeepCollectionEquality()
+                .equals(other._listSizeToSoppingCart, _listSizeToSoppingCart));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      const DeepCollectionEquality().hash(_listSize),
+      const DeepCollectionEquality().hash(_listSizeToSoppingCart));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetSizeProductFavouritesStateImplCopyWith<
+          _$GetSizeProductFavouritesStateImpl>
+      get copyWith => __$$GetSizeProductFavouritesStateImplCopyWithImpl<
+          _$GetSizeProductFavouritesStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsFavourites,
+  }) {
+    return getSizeProduct(code, listSize, listSizeToSoppingCart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+  }) {
+    return getSizeProduct?.call(code, listSize, listSizeToSoppingCart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (getSizeProduct != null) {
+      return getSizeProduct(code, listSize, listSizeToSoppingCart);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesState value) init,
+    required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsFavouritesState value) productsFavourites,
+  }) {
+    return getSizeProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesState value)? init,
+    TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ProductsFavouritesState value)? productsFavourites,
+  }) {
+    return getSizeProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesState value)? init,
+    TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ProductsFavouritesState value)? productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (getSizeProduct != null) {
+      return getSizeProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetSizeProductFavouritesState implements FavouritesState {
+  const factory GetSizeProductFavouritesState(
+          {required final String code,
+          required final List<SkuProductDataModel> listSize,
+          required final List<SkuProductDataModel> listSizeToSoppingCart}) =
+      _$GetSizeProductFavouritesStateImpl;
+
+  String get code;
+  List<SkuProductDataModel> get listSize;
+  List<SkuProductDataModel> get listSizeToSoppingCart;
+  @JsonKey(ignore: true)
+  _$$GetSizeProductFavouritesStateImplCopyWith<
+          _$GetSizeProductFavouritesStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddProductFavouritesStateImplCopyWith<$Res> {
+  factory _$$AddProductFavouritesStateImplCopyWith(
+          _$AddProductFavouritesStateImpl value,
+          $Res Function(_$AddProductFavouritesStateImpl) then) =
+      __$$AddProductFavouritesStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$AddProductFavouritesStateImplCopyWithImpl<$Res>
+    extends _$FavouritesStateCopyWithImpl<$Res, _$AddProductFavouritesStateImpl>
+    implements _$$AddProductFavouritesStateImplCopyWith<$Res> {
+  __$$AddProductFavouritesStateImplCopyWithImpl(
+      _$AddProductFavouritesStateImpl _value,
+      $Res Function(_$AddProductFavouritesStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$AddProductFavouritesStateImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
+  const _$AddProductFavouritesStateImpl({required this.code});
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'FavouritesState.addProductToSoppingCart(code: $code)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductFavouritesStateImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductFavouritesStateImplCopyWith<_$AddProductFavouritesStateImpl>
+      get copyWith => __$$AddProductFavouritesStateImplCopyWithImpl<
+          _$AddProductFavouritesStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsFavourites,
+  }) {
+    return addProductToSoppingCart(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+  }) {
+    return addProductToSoppingCart?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isSoppingCart,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesState value) init,
+    required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsFavouritesState value) productsFavourites,
+  }) {
+    return addProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesState value)? init,
+    TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ProductsFavouritesState value)? productsFavourites,
+  }) {
+    return addProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesState value)? init,
+    TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ProductsFavouritesState value)? productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddProductFavouritesState implements FavouritesState {
+  const factory AddProductFavouritesState({required final String code}) =
+      _$AddProductFavouritesStateImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$AddProductFavouritesStateImplCopyWith<_$AddProductFavouritesStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4936,6 +6772,9 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       bool isAuth,
       int offset,
       bool isButtonTop,
+      List<SkuProductDataModel> listSize,
+      bool isLoadGetSizeProduct,
+      String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
       bool? isSoppingCart,
       bool? isUpdate,
@@ -4974,6 +6813,9 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? isAuth = null,
     Object? offset = null,
     Object? isButtonTop = null,
+    Object? listSize = null,
+    Object? isLoadGetSizeProduct = null,
+    Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
     Object? isSoppingCart = freezed,
     Object? isUpdate = freezed,
@@ -5037,6 +6879,18 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
           ? _value.isButtonTop
           : isButtonTop // ignore: cast_nullable_to_non_nullable
               as bool,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+      isLoadGetSizeProduct: null == isLoadGetSizeProduct
+          ? _value.isLoadGetSizeProduct
+          : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
+      codeProduct: freezed == codeProduct
+          ? _value.codeProduct
+          : codeProduct // ignore: cast_nullable_to_non_nullable
+              as String?,
       selectSizeProduct: freezed == selectSizeProduct
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
@@ -5127,6 +6981,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       required this.isAuth,
       required this.offset,
       required this.isButtonTop,
+      required final List<SkuProductDataModel> listSize,
+      required this.isLoadGetSizeProduct,
+      this.codeProduct,
       this.selectSizeProduct,
       this.isSoppingCart,
       this.isUpdate,
@@ -5141,7 +6998,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         _favouritesProductsId = favouritesProductsId,
         _listProdcutsStyle = listProdcutsStyle,
         _listProdcutsAlso = listProdcutsAlso,
-        _listProdcutsBrand = listProdcutsBrand;
+        _listProdcutsBrand = listProdcutsBrand,
+        _listSize = listSize;
 
   final List<ProductDataModel> _favouritesProducts;
   @override
@@ -5238,6 +7096,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   final int offset;
   @override
   final bool isButtonTop;
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
+  @override
+  final bool isLoadGetSizeProduct;
+  @override
+  final String? codeProduct;
   @override
   final SkuProductDataModel? selectSizeProduct;
   @override
@@ -5251,7 +7121,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
 
   @override
   String toString() {
-    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -5283,6 +7153,11 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.isButtonTop, isButtonTop) ||
                 other.isButtonTop == isButtonTop) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
+            (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
+                other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.codeProduct, codeProduct) ||
+                other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
                 other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.isSoppingCart, isSoppingCart) ||
@@ -5312,6 +7187,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         isAuth,
         offset,
         isButtonTop,
+        const DeepCollectionEquality().hash(_listSize),
+        isLoadGetSizeProduct,
+        codeProduct,
         selectSizeProduct,
         isSoppingCart,
         isUpdate,
@@ -5331,6 +7209,11 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -5346,6 +7229,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -5368,6 +7254,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         isAuth,
         offset,
         isButtonTop,
+        listSize,
+        isLoadGetSizeProduct,
+        codeProduct,
         selectSizeProduct,
         isSoppingCart,
         isUpdate,
@@ -5380,6 +7269,11 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -5395,6 +7289,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -5417,6 +7314,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         isAuth,
         offset,
         isButtonTop,
+        listSize,
+        isLoadGetSizeProduct,
+        codeProduct,
         selectSizeProduct,
         isSoppingCart,
         isUpdate,
@@ -5429,6 +7329,11 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -5444,6 +7349,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             bool isAuth,
             int offset,
             bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
             bool? isUpdate,
@@ -5468,6 +7376,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
           isAuth,
           offset,
           isButtonTop,
+          listSize,
+          isLoadGetSizeProduct,
+          codeProduct,
           selectSizeProduct,
           isSoppingCart,
           isUpdate,
@@ -5482,6 +7393,12 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return productsFavourites(this);
@@ -5492,6 +7409,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return productsFavourites?.call(this);
@@ -5502,6 +7422,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -5528,6 +7451,9 @@ abstract class ProductsFavouritesState implements FavouritesState {
           required final bool isAuth,
           required final int offset,
           required final bool isButtonTop,
+          required final List<SkuProductDataModel> listSize,
+          required final bool isLoadGetSizeProduct,
+          final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
           final bool? isSoppingCart,
           final bool? isUpdate,
@@ -5549,6 +7475,9 @@ abstract class ProductsFavouritesState implements FavouritesState {
   bool get isAuth;
   int get offset;
   bool get isButtonTop;
+  List<SkuProductDataModel> get listSize;
+  bool get isLoadGetSizeProduct;
+  String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
   bool? get isSoppingCart;
   bool? get isUpdate;

@@ -278,6 +278,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -317,6 +318,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.isNotEmpty) {
+        if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
+          for (int i = 0; i < detailsProduct.sku.length; i++) {
+            if (detailsProduct.sku[i].id == event.code) {
+              selectSizeProduct = detailsProduct.sku[i];
+            }
+          }
+        }
         soppingCart = basketInfo.basket
             .where(
               (element) =>
@@ -340,7 +348,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
-        selectSizeProduct: null,
+        selectSizeProduct: selectSizeProduct ?? event.size,
       ));
     });
   }
@@ -546,11 +554,22 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           ) ??
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
-      final soppingCart = basketInfo.basket.where(
-        (element) =>
-            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
-            element.sku == event.size.id,
-      );
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+      if (initState.detailsProduct?.sku.isNotEmpty ?? false) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+                  (element.sku.isNotEmpty ? element.sku == event.size.id : true),
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0),
+            )
+            .toList();
+      }
       emit(initState.copyWith(
         isSoppingCart: soppingCart.isNotEmpty,
       ));

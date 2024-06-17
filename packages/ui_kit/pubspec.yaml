@@ -14,6 +14,8 @@ dependencies:
   google_fonts: ^4.0.4
   url_launcher: ^6.2.2
   qr_flutter: ^4.1.0
+  firebase_messaging: ^14.7.19
+  firebase_core: ^2.27.0
   models:
     path: ../models
 

@@ -3,17 +3,38 @@ import 'package:models/models.dart';
 class UpdateDataService {
   int? _selectedIndexGender;
   bool? _isOpenUpdateModalWindow;
+  bool? _isOpenShowModalBottomSheetSearchScreen;
+  bool? _isOpenShowModalBottomSheetCatalogScreen;
+  bool? _isOpenShowModalBottomSheetFavouritesScreen;
   bool? _isNotification;
   bool? _isInitApp;
   String? _sectionNotification;
   String? _sortNotification;
   String? _filterSelectNotification;
+  String? _idMessageNotification;
+  String? _lastScreen;
   List<String>? _pathHistory;
   List<PaymentItemDataModel>? _payments;
   List<BoutiqueDataModel>? _boutiques;
 
+  String get lastScreen {
+    return _lastScreen ?? '';
+  }
+
+  set lastScreen(String value) {
+    _lastScreen = value;
+  }
+
   String get sectionNotification {
     return _sectionNotification ?? '';
+  }
+
+  set idMessageNotification(String value) {
+    _idMessageNotification = value;
+  }
+
+  String get idMessageNotification {
+    return _idMessageNotification ?? '';
   }
 
   set sectionNotification(String value) {
@@ -50,6 +71,30 @@ class UpdateDataService {
 
   set isOpenUpdateModalWindow(bool value) {
     _isOpenUpdateModalWindow = value;
+  }
+
+  bool get isOpenShowModalBottomSheetSearchScreen {
+    return _isOpenShowModalBottomSheetSearchScreen ?? false;
+  }
+
+  set isOpenShowModalBottomSheetSearchScreen(bool value) {
+    _isOpenShowModalBottomSheetSearchScreen = value;
+  }
+
+  bool get isOpenShowModalBottomSheetCatalogScreen {
+    return _isOpenShowModalBottomSheetCatalogScreen ?? false;
+  }
+
+  set isOpenShowModalBottomSheetCatalogScreen(bool value) {
+    _isOpenShowModalBottomSheetCatalogScreen = value;
+  }
+
+  bool get isOpenShowModalBottomSheetFavouritesScreen {
+    return _isOpenShowModalBottomSheetFavouritesScreen ?? false;
+  }
+
+  set isOpenShowModalBottomSheetFavouritesScreen(bool value) {
+    _isOpenShowModalBottomSheetFavouritesScreen = value;
   }
 
   bool get isNotification {

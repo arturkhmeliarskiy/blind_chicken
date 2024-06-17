@@ -140,9 +140,10 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                         );
                                   }
                                 },
-                                onTap: () {
+                                onTap: (index) {
                                   context.pushRoute(
                                     CatalogPreviewImagesRoute(
+                                      selectIndex: index,
                                       listImages: initState.detailsProduct?.photo.full ?? [],
                                       goBotton: () {},
                                       goBottonInfoProduct: () {
@@ -181,34 +182,41 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              initState.detailsProduct?.brand.n ?? '',
-                                              style:
-                                                  Theme.of(context).textTheme.titleSmall?.copyWith(
-                                                fontWeight: FontWeight.w700,
-                                                shadows: [
-                                                  Shadow(
-                                                    color: BlindChickenColors.activeBorderTextField
-                                                        .withOpacity(
-                                                      0.2,
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                initState.detailsProduct?.brand.n ?? '',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                  fontWeight: FontWeight.w700,
+                                                  shadows: [
+                                                    Shadow(
+                                                      color: BlindChickenColors
+                                                          .activeBorderTextField
+                                                          .withOpacity(
+                                                        0.2,
+                                                      ),
+                                                      offset: const Offset(0, 1),
+                                                      blurRadius: 1,
                                                     ),
-                                                    offset: const Offset(0, 1),
-                                                    blurRadius: 1,
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            const SizedBox(
-                                              height: 9,
-                                            ),
-                                            Text(
-                                              initState.detailsProduct?.name ?? '',
-                                              style: Theme.of(context).textTheme.displayMedium,
-                                            ),
-                                          ],
+                                              const SizedBox(
+                                                height: 9,
+                                              ),
+                                              Text(
+                                                initState.detailsProduct?.name ?? '',
+                                                style: Theme.of(context).textTheme.displayMedium,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         GestureDetector(
                                           onTap: () {
@@ -250,7 +258,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                           ),
                                         RichText(
                                           text: TextSpan(
-                                            text: (initState.detailsProduct?.price.price ?? 0)
+                                            text: (initState.detailsProduct?.price.p ?? 0)
                                                 .toString()
                                                 .spaceSeparateNumbers(),
                                             style:
@@ -272,6 +280,31 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                             ],
                                           ),
                                         ),
+                                        if (int.parse(initState.detailsProduct?.price.pb ?? '0') >
+                                            int.parse(initState.detailsProduct?.price.p ?? '0'))
+                                          Row(
+                                            children: [
+                                              const SizedBox(
+                                                width: 7,
+                                              ),
+                                              Text(
+                                                (initState.detailsProduct?.price.pb ?? '0')
+                                                    .spaceSeparateNumbers(),
+                                                style:
+                                                    Theme.of(context).textTheme.headline2?.copyWith(
+                                                          decoration: TextDecoration.lineThrough,
+                                                        ),
+                                              ),
+                                              const Text(
+                                                ' ₽',
+                                                style: TextStyle(
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 13,
+                                                  decoration: TextDecoration.lineThrough,
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         const SizedBox(
                                           width: 7,
                                         ),
@@ -383,17 +416,28 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                               context.navigateTo(
                                                 CatalogSizeProductRoute(
                                                   onChange: (value) {
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.changeSizeProduct(
-                                                            selectSizeProduct: value,
-                                                          ),
-                                                        );
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.checkProductToSoppingCart(
-                                                            size: value,
-                                                          ),
-                                                        );
-                                                    context.back();
+                                                    if (value.id.contains('-') &&
+                                                        value.id.length > 10) {
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.changeSizeProduct(
+                                                              selectSizeProduct: value,
+                                                            ),
+                                                          );
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.checkProductToSoppingCart(
+                                                              size: value,
+                                                            ),
+                                                          );
+                                                      context.back();
+                                                    } else {
+                                                      context.back();
+                                                      context.read<SearchBloc>().add(
+                                                            SearchEvent.getInfoProduct(
+                                                              code: value.id.toString(),
+                                                              size: value,
+                                                            ),
+                                                          );
+                                                    }
                                                   },
                                                   listSizeProduct: sky,
                                                   selectItem:
@@ -463,11 +507,13 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                           );
                                         } else {
                                           context.read<SearchBloc>().add(
-                                                const SearchEvent.addProductToSoppingCart(),
+                                                SearchEvent.addProductToSoppingCart(
+                                                  code: initState.detailsProduct?.code ?? 0,
+                                                ),
                                               );
 
                                           context.read<ShoppingCartBloc>().add(
-                                                ShoppingCartEvent.addProductToSoppingCart(
+                                                ShoppingCartEvent.addOtherProductToSoppingCart(
                                                   item: BasketInfoItemDataModel(
                                                     code: (initState.detailsProduct?.code ?? 0)
                                                         .toString(),

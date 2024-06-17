@@ -15,7 +15,6 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class DashboardPage extends StatefulWidget {
@@ -27,7 +26,6 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   bool isOpen = false;
-  bool _isMain = false;
   OverlayEntry? overlayEntry;
   Timer? _timer;
   String? deviceToken;
@@ -61,50 +59,6 @@ class _DashboardPageState extends State<DashboardPage> {
   void dispose() {
     _timer?.cancel(); //cancel the timer here
     super.dispose();
-  }
-
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    await launchUrl(launchUri);
-  }
-
-  Future<void> _launchWhatsapp(String phoneNumber) async {
-    var whatsapp = "+$phoneNumber";
-    var whatsappAndroid = Uri.parse("whatsapp://send?phone=$whatsapp&text=Здравствуйте");
-    var iosUrl = Uri.parse("https://wa.me/$whatsapp?text=Здравствуйте");
-    if (await canLaunchUrl(whatsappAndroid) || await canLaunchUrl(iosUrl)) {
-      if (Platform.isIOS) {
-        await launchUrl(iosUrl);
-      } else {
-        await launchUrl(whatsappAndroid);
-      }
-    } else {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: RichText(
-            text: TextSpan(
-              text: 'WhatsApp',
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: BlindChickenColors.backgroundColor,
-                  ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' не установлен на этом устройстве',
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        color: BlindChickenColors.backgroundColor,
-                      ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
   }
 
   void showOverlay({
@@ -158,12 +112,12 @@ class _DashboardPageState extends State<DashboardPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(listItems.length, (index) {
                     return GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         if (listItems[index].route == 'phone') {
-                          _makePhoneCall(listItems[index].title);
+                          await LaunchService.makePhoneCall(listItems[index].title);
                           context.navigateNamedTo('/dashboard/home/${listItems[index].route}');
                         } else if (listItems[index].route == 'WhatsApp') {
-                          _launchWhatsapp('79093335046');
+                          await LaunchService.launchWhatsapp(context, '79093335046');
                         } else {
                           context.navigateNamedTo(listItems[index].route);
                         }
@@ -275,6 +229,7 @@ class _DashboardPageState extends State<DashboardPage> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.green[500],
             onTap: (int index) {
+              final updateData = GetIt.I.get<UpdateDataService>();
               if (index == 0) {
                 // if (_isMain) {
                 //   context.navigateTo(
@@ -295,7 +250,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 //   );
                 // }
                 if (mounted) {
-                  Timer(const Duration(milliseconds: 150), () {
+                  Timer(const Duration(milliseconds: 250), () {
                     final updateData = GetIt.I.get<UpdateDataService>();
 
                     context.read<CatalogBloc>().add(
@@ -321,6 +276,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                   );
                 }
+                updateData.lastScreen = 'catalog';
               } else if (index == 1) {
                 final shared = GetIt.I.get<SharedPreferencesService>();
                 final userAuthorized = shared.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
@@ -354,6 +310,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         );
                       });
                 }
+                updateData.lastScreen = 'account';
               } else if (index == 2) {
                 Timer(const Duration(milliseconds: 150), () {
                   context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
@@ -363,10 +320,14 @@ class _DashboardPageState extends State<DashboardPage> {
                     ShoppingCartRoute(),
                   ]),
                 );
+                updateData.lastScreen = '';
               } else if (index == 3) {
-                Timer(const Duration(milliseconds: 150), () {
-                  context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
-                });
+                if (!updateData.isOpenShowModalBottomSheetFavouritesScreen) {
+                  Timer(const Duration(milliseconds: 150), () {
+                    context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
+                  });
+                }
+                updateData.lastScreen = 'favourites_products';
                 context.navigateTo(
                   const FavouritesRoute(children: [
                     FavouritesProductsRoute(),
@@ -431,12 +392,14 @@ class _DashboardPageState extends State<DashboardPage> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: List.generate(listItems.length, (index) {
                                         return GestureDetector(
-                                          onTap: () {
+                                          onTap: () async {
                                             Navigator.of(context, rootNavigator: true).pop();
                                             if (listItems[index].route == 'phone') {
-                                              _makePhoneCall(listItems[index].title);
+                                              await LaunchService.makePhoneCall(
+                                                  listItems[index].title);
                                             } else if (listItems[index].route == 'WhatsApp') {
-                                              _launchWhatsapp('79093335046');
+                                              await LaunchService.launchWhatsapp(
+                                                  context, '79093335046');
                                             } else {
                                               context.navigateNamedTo(listItems[index].route);
                                             }

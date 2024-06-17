@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1085146611593",
+    "project_id": "blind-chicken-17561",
+    "storage_bucket": "blind-chicken-17561.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085146611593:android:18880eab0fb8784ad56b58",
+        "android_client_info": {
+          "package_name": "com.slepayakurica.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

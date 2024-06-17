@@ -236,6 +236,7 @@ extension on BasketFullInfoResponse {
                     lensDiameter: 0,
                     templeLength: 0,
                     country: '',
+                    isShop: true,
                     images: [],
                     variants: [],
                     maximumCashback: 0,

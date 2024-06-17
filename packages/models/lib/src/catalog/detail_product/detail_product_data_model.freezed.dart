@@ -24,6 +24,8 @@ mixin _$DetailProductDataModel {
   CategoryProductDataModel get category => throw _privateConstructorUsedError;
   List<OptionProductDataModel> get option => throw _privateConstructorUsedError;
   List<SkuProductDataModel> get sku => throw _privateConstructorUsedError;
+  List<SkuProductDataModel> get skuToSoppingCart =>
+      throw _privateConstructorUsedError;
   List<StockProductDataModel> get stock => throw _privateConstructorUsedError;
   PlaceProductDataModel get place => throw _privateConstructorUsedError;
   List<CharProductDataModel> get char => throw _privateConstructorUsedError;
@@ -62,6 +64,7 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
       CategoryProductDataModel category,
       List<OptionProductDataModel> option,
       List<SkuProductDataModel> sku,
+      List<SkuProductDataModel> skuToSoppingCart,
       List<StockProductDataModel> stock,
       PlaceProductDataModel place,
       List<CharProductDataModel> char,
@@ -109,6 +112,7 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     Object? category = null,
     Object? option = null,
     Object? sku = null,
+    Object? skuToSoppingCart = null,
     Object? stock = null,
     Object? place = null,
     Object? char = null,
@@ -155,6 +159,10 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       sku: null == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+      skuToSoppingCart: null == skuToSoppingCart
+          ? _value.skuToSoppingCart
+          : skuToSoppingCart // ignore: cast_nullable_to_non_nullable
               as List<SkuProductDataModel>,
       stock: null == stock
           ? _value.stock
@@ -293,6 +301,7 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
       CategoryProductDataModel category,
       List<OptionProductDataModel> option,
       List<SkuProductDataModel> sku,
+      List<SkuProductDataModel> skuToSoppingCart,
       List<StockProductDataModel> stock,
       PlaceProductDataModel place,
       List<CharProductDataModel> char,
@@ -345,6 +354,7 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
     Object? category = null,
     Object? option = null,
     Object? sku = null,
+    Object? skuToSoppingCart = null,
     Object? stock = null,
     Object? place = null,
     Object? char = null,
@@ -391,6 +401,10 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
       sku: null == sku
           ? _value._sku
           : sku // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+      skuToSoppingCart: null == skuToSoppingCart
+          ? _value._skuToSoppingCart
+          : skuToSoppingCart // ignore: cast_nullable_to_non_nullable
               as List<SkuProductDataModel>,
       stock: null == stock
           ? _value._stock
@@ -475,6 +489,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
       required this.category,
       required final List<OptionProductDataModel> option,
       required final List<SkuProductDataModel> sku,
+      required final List<SkuProductDataModel> skuToSoppingCart,
       required final List<StockProductDataModel> stock,
       required this.place,
       required final List<CharProductDataModel> char,
@@ -495,6 +510,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
       : _breadcrumb = breadcrumb,
         _option = option,
         _sku = sku,
+        _skuToSoppingCart = skuToSoppingCart,
         _stock = stock,
         _char = char,
         _sections = sections,
@@ -530,6 +546,15 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
     if (_sku is EqualUnmodifiableListView) return _sku;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_sku);
+  }
+
+  final List<SkuProductDataModel> _skuToSoppingCart;
+  @override
+  List<SkuProductDataModel> get skuToSoppingCart {
+    if (_skuToSoppingCart is EqualUnmodifiableListView)
+      return _skuToSoppingCart;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_skuToSoppingCart);
   }
 
   final List<StockProductDataModel> _stock;
@@ -587,7 +612,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
 
   @override
   String toString() {
-    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e, errorMessage: $errorMessage)';
+    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, skuToSoppingCart: $skuToSoppingCart, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -604,6 +629,8 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
                 other.category == category) &&
             const DeepCollectionEquality().equals(other._option, _option) &&
             const DeepCollectionEquality().equals(other._sku, _sku) &&
+            const DeepCollectionEquality()
+                .equals(other._skuToSoppingCart, _skuToSoppingCart) &&
             const DeepCollectionEquality().equals(other._stock, _stock) &&
             (identical(other.place, place) || other.place == place) &&
             const DeepCollectionEquality().equals(other._char, _char) &&
@@ -640,6 +667,7 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
         category,
         const DeepCollectionEquality().hash(_option),
         const DeepCollectionEquality().hash(_sku),
+        const DeepCollectionEquality().hash(_skuToSoppingCart),
         const DeepCollectionEquality().hash(_stock),
         place,
         const DeepCollectionEquality().hash(_char),
@@ -676,6 +704,7 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
       required final CategoryProductDataModel category,
       required final List<OptionProductDataModel> option,
       required final List<SkuProductDataModel> sku,
+      required final List<SkuProductDataModel> skuToSoppingCart,
       required final List<StockProductDataModel> stock,
       required final PlaceProductDataModel place,
       required final List<CharProductDataModel> char,
@@ -709,6 +738,8 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   List<OptionProductDataModel> get option;
   @override
   List<SkuProductDataModel> get sku;
+  @override
+  List<SkuProductDataModel> get skuToSoppingCart;
   @override
   List<StockProductDataModel> get stock;
   @override

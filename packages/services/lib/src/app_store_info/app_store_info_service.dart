@@ -10,7 +10,7 @@ class AppStoreInfoService {
 
   Future<AppStoreInfoResponse> checkAndroidVersion() async {
     AppStoreInfoResponse? appStoreInfo;
-    const String bundle = 'com.vkontakte.android';
+    const String bundle = 'com.slepayakurica.app';
     const String url = 'https://play.google.com/store/apps/details?id=$bundle';
 
     try {

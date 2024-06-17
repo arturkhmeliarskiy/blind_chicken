@@ -176,6 +176,13 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                         setState(() {
                           _sum = value;
                         });
+                        context.read<SearchLocationBloc>().add(
+                              SearchLocationEvent.selectedAddress(
+                                zipcode: _addressDelivery.zip.toString(),
+                                sum: int.parse(_sum),
+                                cityId: _addressDelivery.cityId ?? '',
+                              ),
+                            );
                       },
                       onReceivingType: (value) {
                         setState(() {

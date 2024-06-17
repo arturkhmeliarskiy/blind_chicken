@@ -68,65 +68,69 @@ class _ShoppingCartState extends State<ShoppingCart> {
                   imageUrl: 'https://slepayakurica.ru/${widget.item.data.foto}',
                   height: 120,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            '${'$price'.spaceSeparateNumbers()} ₽',
-                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          if (widget.item.data.basePrice > price)
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
                             Text(
-                              '${widget.item.data.basePrice.toString().spaceSeparateNumbers()} ₽',
+                              '${'$price'.spaceSeparateNumbers()} ₽',
                               style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    decoration: TextDecoration.lineThrough,
+                                    fontWeight: FontWeight.w700,
                                   ),
                             ),
-                        ],
-                      ),
-                      if (widget.item.data.loyaltyDiscount1 > 0)
-                        Text(
-                          'Ваша скидка ${(widget.item.data.loyaltyDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      const SizedBox(
-                        height: 2,
-                      ),
-                      if (widget.item.data.promoDiscount1 > 0)
-                        Text(
-                          'Промоскидка ${(widget.item.data.promoDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        widget.item.data.brand.n,
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
+                            const SizedBox(
+                              width: 5,
                             ),
-                      ),
-                      Text(
-                        widget.item.data.category.n,
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
-                      const SizedBox(
-                        height: 7,
-                      ),
-                      Text(
-                        widget.item.skuName,
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                    ],
+                            if (widget.item.data.basePrice > price)
+                              Text(
+                                '${widget.item.data.basePrice.toString().spaceSeparateNumbers()} ₽',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                              ),
+                          ],
+                        ),
+                        if (widget.item.data.loyaltyDiscount1 > 0)
+                          Text(
+                            'Ваша скидка ${(widget.item.data.loyaltyDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                        const SizedBox(
+                          height: 2,
+                        ),
+                        if (widget.item.data.promoDiscount1 > 0)
+                          Text(
+                            'Промоскидка ${(widget.item.data.promoDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          widget.item.data.brand.n,
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
+                          maxLines: 2,
+                        ),
+                        Text(
+                          widget.item.data.category.n,
+                          style: Theme.of(context).textTheme.displayMedium,
+                          maxLines: 2,
+                        ),
+                        const SizedBox(
+                          height: 7,
+                        ),
+                        Text(
+                          widget.item.skuName,
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],

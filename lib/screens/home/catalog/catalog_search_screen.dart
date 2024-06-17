@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_search_item.dart';
@@ -373,7 +371,18 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                     ),
                                   ],
                                 )
-                              : const SizedBox(),
+                              : _search.text.isNotEmpty && !initState.isLoading
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 10.5,
+                                        left: 11.2,
+                                      ),
+                                      child: Text(
+                                        'К сожалению, ничего не найдено. Пожалуйста, воспользуйтесь меню каталога или измените поисковый запрос',
+                                        style: Theme.of(context).textTheme.displayMedium,
+                                      ),
+                                    )
+                                  : const SizedBox(),
                           if (initState.isLoading)
                             const Center(
                               child: CircularProgressIndicator(

@@ -4,6 +4,15 @@ part of 'search_bloc.dart';
 class SearchState with _$SearchState {
   const factory SearchState.init() = InitSearchState;
   const factory SearchState.load() = LoadingSearchState;
+  const factory SearchState.openSoppingCart() = OpenSoppingCartSearchState;
+  const factory SearchState.getSizeProduct({
+    required String code,
+    required List<SkuProductDataModel> listSize,
+    required List<SkuProductDataModel> listSizeToSoppingCart,
+  }) = GetSizeProductSearchState;
+  const factory SearchState.addProductToSoppingCart({
+    required String code,
+  }) = AddProductSearchState;
   const factory SearchState.searchProductsResult({
     required List<ProductDataModel> searchDefaultProducts,
     required List<ProductDataModel> searchProducts,
@@ -23,6 +32,9 @@ class SearchState with _$SearchState {
     required bool isAuth,
     required int offset,
     required bool isButtonTop,
+    required List<SkuProductDataModel> listSize,
+    required bool isLoadGetSizeProduct,
+    String? codeProduct,
     SkuProductDataModel? selectSizeProduct,
     bool? isSoppingCart,
     DetailProductDataModel? detailsProduct,

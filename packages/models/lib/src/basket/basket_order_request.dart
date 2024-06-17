@@ -14,5 +14,6 @@ class BasketOrderRequest with _$BasketOrderRequest {
     required String payment,
     List<BasketSertDeliveryRequest>? sert,
     required String city,
+    required bool isValidAddress,
   }) = _BasketOrderRequest;
 }

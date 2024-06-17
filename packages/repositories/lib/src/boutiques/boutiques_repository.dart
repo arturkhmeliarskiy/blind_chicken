@@ -77,6 +77,14 @@ extension on BoutiquesResponse {
 
 extension on BoutiqueInfoResponse {
   BoutiqueInfoDataModel toInfoBoutique() {
+    final fotoDetail = data?.fotoDetail
+            ?.map(
+              (item) => item.min ?? '',
+            )
+            .toList() ??
+        [];
+    final video = data?.video ?? [];
+    final media = [...video, ...fotoDetail];
     return BoutiqueInfoDataModel(
       r: r ?? '',
       e: e ?? '',
@@ -96,6 +104,8 @@ extension on BoutiqueInfoResponse {
         address: data?.address ?? '',
         schedule: data?.schedule ?? '',
         uidStore: data?.uidStore ?? '',
+        media: media,
+        video: video,
         coordinates: BoutiqueCoordinatesDataModel(
           latitude: data?.coordinates?.latitude ?? 0.0,
           longitude: data?.coordinates?.longitude ?? 0.0,

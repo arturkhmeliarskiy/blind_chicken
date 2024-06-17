@@ -23,6 +23,7 @@ class ProductDataModel with _$ProductDataModel {
     required int maximumCashback,
     required int maximumPersonalDiscount,
     required bool isYourPriceDisplayed,
+    required bool isShop,
     String? count,
     Color? color,
   }) = _ProductDataModel;

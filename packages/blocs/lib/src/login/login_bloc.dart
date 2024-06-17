@@ -1,9 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 
@@ -16,12 +20,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final CatalogRepository _catalogRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final PushNotificationRepository _pushNotificationRepository;
+  final DeviceInfoService _deviceInfoService;
 
   LoginBloc(
     this._authRepository,
     this._catalogRepository,
     this._sharedPreferencesService,
     this._pushNotificationRepository,
+    this._deviceInfoService,
   ) : super(const LoginState.init()) {
     on<LoginEvent>((event, emit) => event.map<Future<void>>(
           init: (event) => _init(event, emit),
@@ -94,8 +100,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     emit(const LoginState.load());
     List<BasketInfoItemDataModel> basket = [];
+    String platformDevice = '';
+
     final favorites = _catalogRepository.getFavouritesProducts();
     final shopping = _catalogRepository.getShoppingCartProducts();
+    final deviceId = await _deviceInfoService.getDeviceId();
     for (int i = 0; i < shopping.length; i++) {
       basket.add(BasketInfoItemDataModel(
         code: shopping[i].code,
@@ -111,6 +120,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       basket: basket,
     );
     if (result.r == '1') {
+      String pushToken = '';
       emit(const LoginState.successfully());
       _sharedPreferencesService.setBool(
         key: SharedPrefKeys.userAuthorized,
@@ -120,6 +130,42 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         key: SharedPrefKeys.userPhoneNumber,
         value: event.phone,
       );
+
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.deviceId,
+        value: deviceId,
+      );
+
+      if (Platform.isIOS) {
+        const mc = MethodChannel('blind_chicken/getToken');
+        pushToken = await mc.invokeMethod('getDeviceToken');
+      } else {
+        pushToken = await FirebaseMessaging.instance.getToken() ?? '';
+      }
+
+      if (Platform.isAndroid) {
+        platformDevice = 'Android';
+      } else if (Platform.isIOS) {
+        platformDevice = 'IOS';
+      }
+
+      PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.pushToken,
+        value: pushToken,
+      );
+
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.appVersion,
+        value: packageInfo.version,
+      );
+
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.platformDevice,
+        value: platformDevice,
+      );
+
       await _pushNotificationRepository.postNotificationInfo(event: '3');
       log('Пользватель вошел');
       _catalogRepository.deleteAllFavouritesProducts();

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -24,10 +23,12 @@ class _MainScreenState extends State<MainScreen> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _search = TextEditingController();
   bool _isOpenNotification = true;
+  bool _isOpenUpdateVersionApp = true;
 
   @override
   void initState() {
     context.read<CatalogBloc>().add(const CatalogEvent.init());
+    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     super.initState();
   }
 
@@ -46,22 +47,43 @@ class _MainScreenState extends State<MainScreen> {
             state.maybeMap(
               preloadDataCompleted: (initState) {
                 final updateData = GetIt.I.get<UpdateDataService>();
+                final notificationMessage = initState.notificationMessage;
+                if (!updateData.isInitApp && notificationMessage != null && _isOpenNotification) {
+                  if (notificationMessage.idMessage != updateData.idMessageNotification) {
+                    if (notificationMessage.type == 'catalog') {
+                      context.navigateTo(CatalogRoute(
+                        title: '',
+                        url: notificationMessage.section,
+                        sort: notificationMessage.sort,
+                        filterSelect: notificationMessage.filterSelect,
+                        isNotification: true,
+                      ));
+                    }
+                    if (notificationMessage.type == 'boutique') {
+                      context.navigateTo(
+                        BoutiquesDescriptionRoute(
+                          uidStore: notificationMessage.uid,
+                          isNotification: true,
+                        ),
+                      );
+                    }
+                    if (notificationMessage.type == 'gift_card') {
+                      context.navigateTo(
+                        GiftCardRoute(
+                          isNotification: true,
+                        ),
+                      );
+                    }
+                  }
 
-                if (updateData.isInitApp && updateData.isNotification && _isOpenNotification) {
-                  context.navigateTo(
-                    CatalogRoute(
-                      title: '',
-                      url: updateData.sectionNotification,
-                      sort: updateData.sortNotification,
-                      filterSelect: updateData.filterSelectNotification,
-                      isNotification: true,
-                    ),
-                  );
+                  updateData.idMessageNotification = notificationMessage.idMessage;
                   setState(() {
                     _isOpenNotification = false;
                   });
                 }
-                if (initState.isUpdateVersionApp && !initState.isNotification) {
+                if (initState.isUpdateVersionApp &&
+                    !initState.isNotification &&
+                    _isOpenUpdateVersionApp) {
                   showDialog(
                     context: context,
                     builder: (context) {
@@ -74,12 +96,9 @@ class _MainScreenState extends State<MainScreen> {
                         onUpdate: () {
                           context.popRoute();
                           if (Platform.isAndroid || Platform.isIOS) {
-                            final appId = Platform.isAndroid
-                                ? 'YOUR_ANDROID_PACKAGE_ID'
-                                : 'com.slepayakurica.app';
                             final url = Uri.parse(
                               Platform.isAndroid
-                                  ? "market://details?id=$appId"
+                                  ? "market://details?id=com.slepayakurica.app"
                                   : "https://apps.apple.com/ru/app/id6471508431",
                             );
                             launchUrl(
@@ -95,6 +114,9 @@ class _MainScreenState extends State<MainScreen> {
                       updateData.isOpenUpdateModalWindow = false;
                     },
                   );
+                  setState(() {
+                    _isOpenUpdateVersionApp = false;
+                  });
                 }
                 updateData.isInitApp = true;
               },
@@ -342,7 +364,7 @@ class _MainScreenState extends State<MainScreen> {
                                   //   );
                                   // }),
                                   const SizedBox(
-                                    height: 96,
+                                    height: 20,
                                   ),
                                 ],
                               ),

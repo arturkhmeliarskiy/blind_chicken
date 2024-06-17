@@ -63,45 +63,64 @@ class _OrderProductCardState extends State<OrderProductCard> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: price.toString().spaceSeparateNumbers(),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: price.toString().spaceSeparateNumbers(),
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            children: const <TextSpan>[
+                              TextSpan(
+                                text: ' ₽ ',
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          widget.product.brend,
                           style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                 fontWeight: FontWeight.w600,
+                                height: 1,
                               ),
-                          children: const <TextSpan>[
-                            TextSpan(
-                              text: ' ₽ ',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        widget.product.brend,
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                      const SizedBox(
-                        height: 3,
-                      ),
-                      Text(
-                        widget.product.category,
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
-                    ],
+
+                        // Text(
+                        //   widget.product.category,
+                        //   style: Theme.of(context).textTheme.displayMedium,
+                        // ),
+                        // const SizedBox(
+                        //   height: 3,
+                        // ),
+                        const SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          widget.product.title,
+                          style: Theme.of(context).textTheme.displayMedium,
+                          maxLines: 2,
+                        ),
+                        const SizedBox(
+                          height: 7,
+                        ),
+                        Text(
+                          widget.product.size.first,
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],

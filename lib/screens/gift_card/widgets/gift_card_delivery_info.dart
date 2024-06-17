@@ -31,6 +31,13 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
   }
 
   @override
+  void didUpdateWidget(covariant GiftCardDeliveryInfo oldWidget) {
+    _total = widget.sum;
+
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: Column(
@@ -42,9 +49,9 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
             street: street.address,
             house: house.address,
             flat: flat,
-            onPrice: (value) {
+            onDeliveryInfo: (price, cityId) {
               setState(() {
-                _deliveryPrice = value;
+                _deliveryPrice = price;
               });
             },
             onCity: (value) {

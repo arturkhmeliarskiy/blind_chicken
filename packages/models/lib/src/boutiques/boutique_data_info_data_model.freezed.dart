@@ -19,6 +19,8 @@ mixin _$BoutiqueDataInfoDataModel {
   String get fotoMinList => throw _privateConstructorUsedError;
   List<BoutiqueFotoDetailDataModel> get fotoDetail =>
       throw _privateConstructorUsedError;
+  List<String> get media => throw _privateConstructorUsedError;
+  List<String> get video => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   String get caption => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
@@ -45,6 +47,8 @@ abstract class $BoutiqueDataInfoDataModelCopyWith<$Res> {
   $Res call(
       {String fotoMinList,
       List<BoutiqueFotoDetailDataModel> fotoDetail,
+      List<String> media,
+      List<String> video,
       String url,
       String caption,
       String address,
@@ -75,6 +79,8 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
   $Res call({
     Object? fotoMinList = null,
     Object? fotoDetail = null,
+    Object? media = null,
+    Object? video = null,
     Object? url = null,
     Object? caption = null,
     Object? address = null,
@@ -95,6 +101,14 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
           ? _value.fotoDetail
           : fotoDetail // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueFotoDetailDataModel>,
+      media: null == media
+          ? _value.media
+          : media // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -160,6 +174,8 @@ abstract class _$$BoutiqueDataInfoDataModelImplCopyWith<$Res>
   $Res call(
       {String fotoMinList,
       List<BoutiqueFotoDetailDataModel> fotoDetail,
+      List<String> media,
+      List<String> video,
       String url,
       String caption,
       String address,
@@ -190,6 +206,8 @@ class __$$BoutiqueDataInfoDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? fotoMinList = null,
     Object? fotoDetail = null,
+    Object? media = null,
+    Object? video = null,
     Object? url = null,
     Object? caption = null,
     Object? address = null,
@@ -210,6 +228,14 @@ class __$$BoutiqueDataInfoDataModelImplCopyWithImpl<$Res>
           ? _value._fotoDetail
           : fotoDetail // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueFotoDetailDataModel>,
+      media: null == media
+          ? _value._media
+          : media // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      video: null == video
+          ? _value._video
+          : video // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -260,6 +286,8 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
   _$BoutiqueDataInfoDataModelImpl(
       {required this.fotoMinList,
       required final List<BoutiqueFotoDetailDataModel> fotoDetail,
+      required final List<String> media,
+      required final List<String> video,
       required this.url,
       required this.caption,
       required this.address,
@@ -271,6 +299,8 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
       required this.name,
       required this.iconPath})
       : _fotoDetail = fotoDetail,
+        _media = media,
+        _video = video,
         super._();
 
   @override
@@ -281,6 +311,22 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
     if (_fotoDetail is EqualUnmodifiableListView) return _fotoDetail;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_fotoDetail);
+  }
+
+  final List<String> _media;
+  @override
+  List<String> get media {
+    if (_media is EqualUnmodifiableListView) return _media;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_media);
+  }
+
+  final List<String> _video;
+  @override
+  List<String> get video {
+    if (_video is EqualUnmodifiableListView) return _video;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_video);
   }
 
   @override
@@ -306,7 +352,7 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
 
   @override
   String toString() {
-    return 'BoutiqueDataInfoDataModel(fotoMinList: $fotoMinList, fotoDetail: $fotoDetail, url: $url, caption: $caption, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, addressFull: $addressFull, nameShort: $nameShort, name: $name, iconPath: $iconPath)';
+    return 'BoutiqueDataInfoDataModel(fotoMinList: $fotoMinList, fotoDetail: $fotoDetail, media: $media, video: $video, url: $url, caption: $caption, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, addressFull: $addressFull, nameShort: $nameShort, name: $name, iconPath: $iconPath)';
   }
 
   @override
@@ -318,6 +364,8 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
                 other.fotoMinList == fotoMinList) &&
             const DeepCollectionEquality()
                 .equals(other._fotoDetail, _fotoDetail) &&
+            const DeepCollectionEquality().equals(other._media, _media) &&
+            const DeepCollectionEquality().equals(other._video, _video) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.caption, caption) || other.caption == caption) &&
             (identical(other.address, address) || other.address == address) &&
@@ -341,6 +389,8 @@ class _$BoutiqueDataInfoDataModelImpl extends _BoutiqueDataInfoDataModel {
       runtimeType,
       fotoMinList,
       const DeepCollectionEquality().hash(_fotoDetail),
+      const DeepCollectionEquality().hash(_media),
+      const DeepCollectionEquality().hash(_video),
       url,
       caption,
       address,
@@ -364,6 +414,8 @@ abstract class _BoutiqueDataInfoDataModel extends BoutiqueDataInfoDataModel {
   factory _BoutiqueDataInfoDataModel(
       {required final String fotoMinList,
       required final List<BoutiqueFotoDetailDataModel> fotoDetail,
+      required final List<String> media,
+      required final List<String> video,
       required final String url,
       required final String caption,
       required final String address,
@@ -380,6 +432,10 @@ abstract class _BoutiqueDataInfoDataModel extends BoutiqueDataInfoDataModel {
   String get fotoMinList;
   @override
   List<BoutiqueFotoDetailDataModel> get fotoDetail;
+  @override
+  List<String> get media;
+  @override
+  List<String> get video;
   @override
   String get url;
   @override

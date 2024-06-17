@@ -22,8 +22,6 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final _appRouter = AppRouter();
-  String idMessage = '';
-  StreamSubscription<Uri>? _linkSubscription;
   final StreamController<String> _stateController = StreamController();
   late AppLinks _appLinks;
 
@@ -38,9 +36,6 @@ class _AppState extends State<App> {
   }
 
   Future<void> initDeepLinks() async {
-    _appLinks = AppLinks();
-
-    // Handle links
     _appLinks = AppLinks();
 
     _appLinks.uriLinkStream.listen((uri) async {
@@ -83,7 +78,7 @@ class _AppState extends State<App> {
         BlocProvider(
           create: (context) => GetIt.I.get<ShoppingCartBloc>()
             ..add(
-              const ShoppingCartEvent.preloadData(),
+              const ShoppingCartEvent.init(),
             ),
         ),
         BlocProvider(
@@ -132,108 +127,136 @@ class _AppState extends State<App> {
             ),
         ),
       ],
-      child: LifeCycleManager(
-        resumed: () async {
+      child: PushNotificationManager(
+        openScreen: (notificationMessage) {
           final updateData = GetIt.I.get<UpdateDataService>();
-
-          if (!updateData.isInitApp) {
-            _appLinks = AppLinks();
-
-            // Check initial link if app was in cold state (terminated)
-            final uri = await _appLinks.getLatestAppLink();
-            if (uri != null) {
-              log('getInitialAppLink: $uri');
-              final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
-
-              await Future<void>.delayed(
-                const Duration(
-                  milliseconds: 800,
-                ),
-              );
-              _appRouter.push(
-                CatalogCardInfoRoute(
-                  isLike: false,
-                  listItems: const [],
-                  favouritesProducts: const [],
-                  isChildRoute: false,
-                  code: productCode,
-                ),
-              );
-            }
-          }
-
-          if (Platform.isIOS) {
-            const me = MethodChannel('blind_chicken/getMessages');
-            final section = await me.invokeMethod('section') as String;
-            final iDMessage = await me.invokeMethod('idMessage') as String;
-            final type = await me.invokeMethod('type') as String;
-            final sort = await me.invokeMethod('sort') as String;
-            final uid = await me.invokeMethod('uid') as String;
-            final filterSelect = await me.invokeMethod('filter') as String;
-
-            // final title = await me.invokeMethod('title') as String;
-            // final body = await me.invokeMethod('body') as String;
-
-            if (type.isNotEmpty) {
-              // final split = info.split(',');
-              // Map<int, String> values = {
-              //   for (int i = 0; i < split.length; i++) i: split[i],
-              // };
-
-              if (iDMessage != idMessage) {
-                if (type == 'catalog') {
-                  if (updateData.isInitApp) {
-                    await Future<void>.delayed(
-                      const Duration(
-                        milliseconds: 800,
-                      ),
-                    );
-                    _appRouter.push(CatalogRoute(
-                      title: '',
-                      url: section,
-                      sort: sort,
-                      filterSelect: filterSelect,
-                      isNotification: true,
-                    ));
-                    updateData.isNotification = false;
-                  } else {
-                    updateData.isInitApp = true;
-                    updateData.isNotification = true;
-                    updateData.sectionNotification = section;
-                    updateData.sortNotification = sort;
-                    updateData.filterSelectNotification = filterSelect;
-                  }
-                }
-                if (type == 'boutique') {
-                  _appRouter.push(
-                    BoutiquesDescriptionRoute(
-                      uidStore: uid,
-                      isNotification: true,
-                    ),
-                  );
-                }
-                if (type == 'gift_card') {
-                  _appRouter.push(
-                    GiftCardRoute(
-                      isNotification: true,
-                    ),
-                  );
-                }
+          if (updateData.isInitApp) {
+            if (notificationMessage.idMessage != updateData.idMessageNotification) {
+              if (notificationMessage.type == 'catalog') {
+                _appRouter.push(CatalogRoute(
+                  title: '',
+                  url: notificationMessage.section,
+                  sort: notificationMessage.sort,
+                  filterSelect: notificationMessage.filterSelect,
+                  isNotification: true,
+                ));
               }
-
-              idMessage = iDMessage;
-              log(iDMessage.toString());
+              if (notificationMessage.type == 'boutique') {
+                _appRouter.push(
+                  BoutiquesDescriptionRoute(
+                    uidStore: notificationMessage.uid,
+                    isNotification: true,
+                  ),
+                );
+              }
+              if (notificationMessage.type == 'gift_card') {
+                _appRouter.push(
+                  GiftCardRoute(
+                    isNotification: true,
+                  ),
+                );
+              }
             }
-            updateData.isInitApp = true;
+            updateData.idMessageNotification = notificationMessage.idMessage;
           }
         },
-        paused: () {},
-        child: MaterialApp.router(
-          theme: AppTheme.light,
-          debugShowCheckedModeBanner: false,
-          routeInformationProvider: _appRouter.routeInfoProvider(),
-          routerDelegate: _appRouter.delegate(),
-          routeInformationParser: _appRouter.defaultRouteParser(),
+        child: LifeCycleManager(
+          resumed: () async {
+            final updateData = GetIt.I.get<UpdateDataService>();
+
+            if (!updateData.isInitApp) {
+              _appLinks = AppLinks();
+
+              // Check initial link if app was in cold state (terminated)
+              final uri = await _appLinks.getLatestAppLink();
+              if (uri != null) {
+                log('getInitialAppLink: $uri');
+                final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
+
+                await Future<void>.delayed(
+                  const Duration(
+                    milliseconds: 800,
+                  ),
+                );
+                _appRouter.push(
+                  CatalogCardInfoRoute(
+                    isLike: false,
+                    listItems: const [],
+                    favouritesProducts: const [],
+                    isChildRoute: false,
+                    code: productCode,
+                  ),
+                );
+              }
+            }
+
+            if (Platform.isIOS) {
+              const me = MethodChannel('blind_chicken/getMessages');
+              final type = await me.invokeMethod('type') as String;
+              final section = await me.invokeMethod('section') as String;
+              final iDMessage = await me.invokeMethod('idMessage') as String;
+              final sort = await me.invokeMethod('sort') as String;
+              final uid = await me.invokeMethod('uid') as String;
+              final filterSelect = await me.invokeMethod('filter') as String;
+
+              // final title = await me.invokeMethod('title') as String;
+              // final body = await me.invokeMethod('body') as String;
+
+              if (type.isNotEmpty) {
+                // final split = info.split(',');
+                // Map<int, String> values = {
+                //   for (int i = 0; i < split.length; i++) i: split[i],
+                // };
+
+                if (iDMessage != updateData.idMessageNotification) {
+                  if (type == 'catalog') {
+                    if (updateData.isInitApp) {
+                      await Future<void>.delayed(
+                        const Duration(
+                          milliseconds: 800,
+                        ),
+                      );
+                      _appRouter.push(CatalogRoute(
+                        title: '',
+                        url: section,
+                        sort: sort,
+                        filterSelect: filterSelect,
+                        isNotification: true,
+                      ));
+                      updateData.idMessageNotification = iDMessage;
+                    }
+                  }
+                  if (type == 'boutique') {
+                    _appRouter.push(
+                      BoutiquesDescriptionRoute(
+                        uidStore: uid,
+                        isNotification: true,
+                      ),
+                    );
+                    updateData.idMessageNotification = iDMessage;
+                  }
+                  if (type == 'gift_card') {
+                    _appRouter.push(
+                      GiftCardRoute(
+                        isNotification: true,
+                      ),
+                    );
+                    updateData.idMessageNotification = iDMessage;
+                  }
+
+                  log(iDMessage.toString());
+                }
+              }
+            }
+          },
+          paused: () {},
+          child: MaterialApp.router(
+            theme: AppTheme.light,
+            debugShowCheckedModeBanner: false,
+            routeInformationProvider: _appRouter.routeInfoProvider(),
+            routerDelegate: _appRouter.delegate(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+          ),
         ),
       ),
     );

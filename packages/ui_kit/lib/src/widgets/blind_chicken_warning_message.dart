@@ -7,45 +7,52 @@ class BlindChickenMessage {
   BlindChickenMessage._internal();
 
   static OverlayState? _overlayState;
-  bool _isVisible = false;
+  bool isVisible = false;
 
   DateTime lastTime = DateTime.now();
 
-  late OverlayEntry _overlayEntry;
+  OverlayEntry? overlayEntry;
 
   void showOverlay(
     BuildContext context,
     String title,
-    VoidCallback onTap,
-  ) {
+    VoidCallback onTap, {
+    BoxShadow boxShadow = const BoxShadow(
+      color: BlindChickenColors.borderInput,
+      offset: Offset(0, 5),
+      blurRadius: 15,
+    ),
+    int time = 3,
+  }) {
     final width = MediaQuery.of(context).size.width;
-    if (_isVisible) {
-      _overlayEntry.remove();
-      _isVisible = false;
+    if (isVisible) {
+      overlayEntry?.remove();
+      isVisible = false;
     }
 
-    if (!_isVisible) {
+    if (!isVisible) {
       _overlayState = Overlay.of(context);
 
-      _overlayEntry = OverlayEntry(
+      overlayEntry = OverlayEntry(
         builder: (context) => Message(
           width: width,
           title: title,
           tap: () {
-            _isVisible = false;
-            _overlayEntry.remove();
+            isVisible = false;
+            overlayEntry?.remove();
             onTap();
           },
+          boxShadow: boxShadow,
         ),
       );
-      _overlayState?.insert(_overlayEntry);
-      _isVisible = true;
+      _overlayState?.insert(overlayEntry!);
+      isVisible = true;
       lastTime = DateTime.now();
-      Future<void>.delayed(const Duration(seconds: 3)).then((value) {
+      Future<void>.delayed(Duration(seconds: time)).then((value) {
         final timeDifference = DateTime.now().difference(lastTime).inMilliseconds;
-        if (_isVisible && timeDifference > (2990)) {
-          _overlayEntry.remove();
-          _isVisible = false;
+        if (isVisible && timeDifference > (time * 1000 - 10)) {
+          overlayEntry?.remove();
+          isVisible = false;
         }
       });
     }
@@ -56,11 +63,13 @@ class Message extends StatefulWidget {
   final double width;
   final String title;
   final void Function() tap;
+  final BoxShadow boxShadow;
 
   const Message({
     required this.width,
     required this.title,
     required this.tap,
+    required this.boxShadow,
     Key? key,
   }) : super(key: key);
 
@@ -118,13 +127,7 @@ class _MessageState extends State<Message> with SingleTickerProviderStateMixin {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  color: BlindChickenColors.borderInput,
-                  offset: Offset(0, 5),
-                  blurRadius: 15,
-                ),
-              ],
+              boxShadow: [widget.boxShadow],
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -6,6 +6,9 @@ class SearchLocationState with _$SearchLocationState {
   const factory SearchLocationState.load() = LoadingSearchLocationState;
   const factory SearchLocationState.preloadData({
     required SearchLocationDataModel searchResult,
-    required int price,
   }) = PreloadDataCompletedSearchLocationState;
+  const factory SearchLocationState.selectInfo({
+    required int price,
+    required String cityId,
+  }) = SelectInfoCompletedSearchLocationState;
 }

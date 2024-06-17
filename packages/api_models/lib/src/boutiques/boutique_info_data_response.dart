@@ -11,6 +11,7 @@ class BoutiqueInfoDataResponse with _$BoutiqueInfoDataResponse {
   factory BoutiqueInfoDataResponse({
     @JsonKey(name: 'foto_min_list') String? fotoMinList,
     @JsonKey(name: 'foto_detail') List<BoutiqueFotoDetailResponse>? fotoDetail,
+    List<String>? video,
     String? url,
     String? caption,
     String? address,

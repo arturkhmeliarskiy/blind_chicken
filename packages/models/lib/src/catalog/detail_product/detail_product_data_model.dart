@@ -15,6 +15,7 @@ class DetailProductDataModel with _$DetailProductDataModel {
     required CategoryProductDataModel category,
     required List<OptionProductDataModel> option,
     required List<SkuProductDataModel> sku,
+    required List<SkuProductDataModel> skuToSoppingCart,
     required List<StockProductDataModel> stock,
     required PlaceProductDataModel place,
     required List<CharProductDataModel> char,

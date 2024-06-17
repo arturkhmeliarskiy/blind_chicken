@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_info.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,6 +42,7 @@ class CatalogScreen extends StatefulWidget {
 
 class _CatalogScreenState extends State<CatalogScreen> {
   final constants = ConstatntsInfo();
+  BlindChickenMessage message = BlindChickenMessage();
   final ScrollController _scrollController = ScrollController();
   bool isLoading = false;
   bool isButtonTop = false;
@@ -66,6 +68,15 @@ class _CatalogScreenState extends State<CatalogScreen> {
   @override
   void didUpdateWidget(covariant CatalogScreen oldWidget) {
     _scrollController.jumpTo(_historyPosition);
+    final updateData = GetIt.I.get<UpdateDataService>();
+
+    if (updateData.lastScreen == 'shopping_cart' &&
+        !updateData.isOpenShowModalBottomSheetCatalogScreen) {
+      context.read<CatalogBloc>().add(
+            const CatalogEvent.updateInfoProducts(),
+          );
+    }
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -111,7 +122,6 @@ class _CatalogScreenState extends State<CatalogScreen> {
               if (updateData.isOpenUpdateModalWindow) {
                 Navigator.of(context, rootNavigator: true).pop();
               }
-
               BlindChickenMessage().showOverlay(context, 'Доступно обновление приложения', () {
                 if (Platform.isAndroid || Platform.isIOS) {
                   final appId =
@@ -128,6 +138,133 @@ class _CatalogScreenState extends State<CatalogScreen> {
                 }
               });
             }
+            final updateData = GetIt.I.get<UpdateDataService>();
+            if (updateData.isOpenShowModalBottomSheetCatalogScreen &&
+                !initState.isLoadGetSizeProduct &&
+                (initState.codeProduct?.isEmpty ?? true)) {
+              _historyPosition = 0;
+              Navigator.pop(context);
+            }
+          },
+          getSizeProduct: (initState) {
+            final updateData = GetIt.I.get<UpdateDataService>();
+            updateData.isOpenShowModalBottomSheetCatalogScreen = true;
+            showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              builder: (context) {
+                return CatalogSizeProductInfo(
+                  listSize: initState.listSize,
+                  listSizeToSoppingCart: initState.listSizeToSoppingCart,
+                  openSoppingCart: () {
+                    updateData.lastScreen = 'shopping_cart';
+                    Navigator.pop(context);
+                    Timer(const Duration(milliseconds: 150), () {
+                      context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                    });
+                    context.navigateTo(
+                      const ShoppingCartAutoRouterRoute(
+                        children: [
+                          ShoppingCartRoute(),
+                        ],
+                      ),
+                    );
+                  },
+                  addProductToSoppingCart: (size) {
+                    context.read<CatalogBloc>().add(
+                          CatalogEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                        );
+                    context.read<ShoppingCartBloc>().add(
+                          ShoppingCartEvent.addOtherProductToSoppingCart(
+                            item: BasketInfoItemDataModel(
+                              code: initState.code,
+                              sku: size.id,
+                              count: 1,
+                            ),
+                          ),
+                        );
+                    message.showOverlay(
+                      context,
+                      'Размер ${size.value} добавлен в корзину',
+                      () {
+                        updateData.lastScreen = 'shopping_cart';
+                        Timer(const Duration(milliseconds: 150), () {
+                          context
+                              .read<ShoppingCartBloc>()
+                              .add(const ShoppingCartEvent.preloadData());
+                        });
+                        context.navigateTo(
+                          const ShoppingCartAutoRouterRoute(
+                            children: [
+                              ShoppingCartRoute(),
+                            ],
+                          ),
+                        );
+                        Navigator.pop(context);
+                      },
+                      boxShadow: const BoxShadow(),
+                      time: 5,
+                    );
+                  },
+                );
+              },
+            ).whenComplete(() {
+              final updateData = GetIt.I.get<UpdateDataService>();
+              updateData.isOpenShowModalBottomSheetCatalogScreen = false;
+
+              if (message.isVisible) {
+                message.overlayEntry?.remove();
+                message.overlayEntry = null;
+              }
+            });
+          },
+          addProductToSoppingCart: (initState) {
+            context.read<CatalogBloc>().add(
+                  CatalogEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                );
+
+            context.read<ShoppingCartBloc>().add(
+                  ShoppingCartEvent.addOtherProductToSoppingCart(
+                    item: BasketInfoItemDataModel(
+                      code: initState.code,
+                      sku: '',
+                      count: 1,
+                    ),
+                  ),
+                );
+            BlindChickenMessage().showOverlay(
+              context,
+              'Добавлено в корзину',
+              () {
+                final updateData = GetIt.I.get<UpdateDataService>();
+                updateData.lastScreen = 'shopping_cart';
+                Timer(const Duration(milliseconds: 150), () {
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                });
+                context.navigateTo(
+                  const ShoppingCartAutoRouterRoute(
+                    children: [
+                      ShoppingCartRoute(),
+                    ],
+                  ),
+                );
+              },
+              time: 5,
+            );
+          },
+          openSoppingCart: (value) {
+            final updateData = GetIt.I.get<UpdateDataService>();
+            updateData.lastScreen = 'shopping_cart';
+            Timer(const Duration(milliseconds: 150), () {
+              context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+            });
+            context.navigateTo(
+              const ShoppingCartAutoRouterRoute(
+                children: [
+                  ShoppingCartRoute(),
+                ],
+              ),
+            );
           },
           orElse: () => const SizedBox(),
         );
@@ -175,7 +312,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                   return Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      if (initState.products.isNotEmpty)
+                                      if (initState.products.isNotEmpty &&
+                                          (initState.catalogInfo?.breadcrumbs.isNotEmpty ?? false))
                                         Container(
                                           height: 50,
                                           padding: const EdgeInsets.only(
@@ -246,7 +384,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                           width: MediaQuery.of(context).size.width - 30,
                                           margin: const EdgeInsets.only(
                                             left: 10.5,
-                                            bottom: 10,
+                                            bottom: 17.5,
                                           ),
                                           alignment: Alignment.topLeft,
                                           child: RichText(
@@ -263,17 +401,31 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 ),
                                                 TextSpan(
                                                   text: '   ${initState.catalogInfo?.count ?? ''}',
-                                                  style: Theme.of(context).textTheme.displaySmall,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                      ?.copyWith(
+                                                        color: BlindChickenColors
+                                                            .activeBorderTextField
+                                                            .withOpacity(0.7),
+                                                      ),
                                                 ),
                                                 TextSpan(
                                                   text: ' товаров',
-                                                  style: Theme.of(context).textTheme.displaySmall,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall
+                                                      ?.copyWith(
+                                                        color: BlindChickenColors
+                                                            .activeBorderTextField
+                                                            .withOpacity(0.7),
+                                                      ),
                                                 ),
                                               ],
                                             ),
                                           ),
                                         ),
-                                      if (initState.products.isNotEmpty)
+                                      if (initState.products.isNotEmpty && listItems.isNotEmpty)
                                         Container(
                                           margin: const EdgeInsets.only(
                                             left: 10.5,
@@ -555,6 +707,19 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 .products[index].maximumCashback
                                                 .toString(),
                                             pb: initState.products[index].pb,
+                                            isShop: initState.products[index].isShop,
+                                            onAddProductToSoppingCart: () {
+                                              context.read<CatalogBloc>().add(
+                                                    CatalogEvent.getInfoProductSize(
+                                                      code: initState.products[index].id.toString(),
+                                                      isShop: initState.products[index].isShop,
+                                                    ),
+                                                  );
+                                            },
+                                            listSize: initState.listSize,
+                                            isLoad: int.parse(initState.codeProduct ?? '0') ==
+                                                    initState.products[index].id &&
+                                                initState.isLoadGetSizeProduct,
                                           );
                                         }),
                                       ),

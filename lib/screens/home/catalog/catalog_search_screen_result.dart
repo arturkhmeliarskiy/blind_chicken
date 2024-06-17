@@ -1,12 +1,14 @@
 import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_info.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -20,13 +22,15 @@ class CatalogSearchResultScreen extends StatefulWidget {
 
 class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   final ScrollController _scrollController = ScrollController();
+  BlindChickenMessage message = BlindChickenMessage();
   bool isLoading = false;
-  bool _isSwitch = true;
 
   double _historyPosition = 0.0;
 
   @override
   void didChangeDependencies() {
+    final updateData = GetIt.I.get<UpdateDataService>();
+    updateData.lastScreen = 'search_result';
     _scrollController.addListener(_loadMoreData);
     super.didChangeDependencies();
   }
@@ -69,68 +73,194 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            Scaffold(
-              backgroundColor: BlindChickenColors.backgroundColor,
-              body: SafeArea(
-                child: ListView(
-                  controller: _scrollController,
-                  cacheExtent: _historyPosition,
-                  children: [
-                    const AppBarBlindChicken(),
-                    BlocBuilder<SearchBloc, SearchState>(
-                      builder: (context, state) {
-                        return state.maybeMap(
-                            searchProductsResult: (initState) {
-                              if (_scrollController.position.pixels == 0) {
-                                WidgetsBinding.instance.addPostFrameCallback((_) {
-                                  _scrollController.jumpTo(_historyPosition);
-                                });
-                              }
+    return BlocListener<SearchBloc, SearchState>(
+      listener: (context, state) {
+        state.maybeMap(
+          searchProductsResult: (initState) {
+            final updateData = GetIt.I.get<UpdateDataService>();
+            if (updateData.isOpenShowModalBottomSheetSearchScreen &&
+                !initState.isLoadGetSizeProduct &&
+                (initState.codeProduct?.isEmpty ?? true)) {
+              _historyPosition = 0;
+              Navigator.pop(context);
+            }
+          },
+          getSizeProduct: (initState) {
+            final updateData = GetIt.I.get<UpdateDataService>();
+            updateData.isOpenShowModalBottomSheetSearchScreen = true;
+            showModalBottomSheet<void>(
+              isScrollControlled: true,
+              context: context,
+              builder: (context) {
+                return CatalogSizeProductInfo(
+                  listSize: initState.listSize,
+                  listSizeToSoppingCart: initState.listSizeToSoppingCart,
+                  openSoppingCart: () {
+                    Navigator.pop(context);
+                    updateData.lastScreen = 'search_result';
+                    Timer(const Duration(milliseconds: 150), () {
+                      context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                    });
+                    context.navigateTo(
+                      const ShoppingCartAutoRouterRoute(
+                        children: [
+                          ShoppingCartRoute(),
+                        ],
+                      ),
+                    );
+                  },
+                  addProductToSoppingCart: (size) {
+                    context.read<SearchBloc>().add(
+                          SearchEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                        );
 
-                              return GestureDetector(
-                                onHorizontalDragUpdate: (details) {},
-                                onHorizontalDragEnd: (DragEndDetails details) {
-                                  if (details.velocity.pixelsPerSecond.dx > 0) {
-                                    context.back();
-                                  }
-                                },
-                                child: PopScope(
-                                  canPop: false,
-                                  onPopInvoked: (value) {
-                                    context.read<SearchBloc>().add(
-                                          SearchEvent.searchProfucts(initState.query),
-                                        );
+                    context.read<ShoppingCartBloc>().add(
+                          ShoppingCartEvent.addOtherProductToSoppingCart(
+                            item: BasketInfoItemDataModel(
+                              code: initState.code,
+                              sku: size.id,
+                              count: 1,
+                            ),
+                          ),
+                        );
+                    message.showOverlay(
+                      context,
+                      'Размер ${size.value} добавлен в корзину',
+                      () {
+                        Timer(const Duration(milliseconds: 150), () {
+                          context
+                              .read<ShoppingCartBloc>()
+                              .add(const ShoppingCartEvent.preloadData());
+                        });
+                        context.navigateTo(
+                          const ShoppingCartAutoRouterRoute(
+                            children: [
+                              ShoppingCartRoute(),
+                            ],
+                          ),
+                        );
+                        Navigator.pop(context);
+                      },
+                      boxShadow: const BoxShadow(),
+                      time: 5,
+                    );
+                  },
+                );
+              },
+            ).whenComplete(() {
+              final updateData = GetIt.I.get<UpdateDataService>();
+              updateData.isOpenShowModalBottomSheetSearchScreen = false;
+              if (message.isVisible) {
+                message.overlayEntry?.remove();
+                message.overlayEntry = null;
+              }
+            });
+          },
+          addProductToSoppingCart: (initState) {
+            context.read<SearchBloc>().add(
+                  SearchEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                );
+
+            context.read<ShoppingCartBloc>().add(
+                  ShoppingCartEvent.addOtherProductToSoppingCart(
+                    item: BasketInfoItemDataModel(
+                      code: initState.code,
+                      sku: '',
+                      count: 1,
+                    ),
+                  ),
+                );
+            BlindChickenMessage().showOverlay(
+              context,
+              'Добавлено в корзину',
+              () {
+                Timer(const Duration(milliseconds: 150), () {
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                });
+                context.navigateTo(
+                  const ShoppingCartAutoRouterRoute(
+                    children: [
+                      ShoppingCartRoute(),
+                    ],
+                  ),
+                );
+              },
+              time: 5,
+            );
+          },
+          openSoppingCart: (value) {
+            Timer(const Duration(milliseconds: 150), () {
+              context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+            });
+            context.navigateTo(
+              const ShoppingCartAutoRouterRoute(
+                children: [
+                  ShoppingCartRoute(),
+                ],
+              ),
+            );
+          },
+          orElse: () => const SizedBox(),
+        );
+      },
+      child: Stack(
+        children: [
+          Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              Scaffold(
+                backgroundColor: BlindChickenColors.backgroundColor,
+                body: SafeArea(
+                  child: ListView(
+                    controller: _scrollController,
+                    cacheExtent: _historyPosition,
+                    children: [
+                      const AppBarBlindChicken(),
+                      BlocBuilder<SearchBloc, SearchState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                              searchProductsResult: (initState) {
+                                if (_scrollController.position.pixels == 0) {
+                                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                                    _scrollController.jumpTo(_historyPosition);
+                                  });
+                                }
+
+                                return GestureDetector(
+                                  onHorizontalDragUpdate: (details) {},
+                                  onHorizontalDragEnd: (DragEndDetails details) {
+                                    if (details.velocity.pixelsPerSecond.dx > 0) {
+                                      context.back();
+                                    }
                                   },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 17.5,
-                                          bottom: 14,
-                                          left: 10.5,
-                                          right: 10.5,
-                                        ),
-                                        child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              'По запросу «${initState.query}» найдено',
-                                              style: Theme.of(context).textTheme.titleSmall,
-                                            ),
-                                            const SizedBox(
-                                              width: 7,
-                                            ),
-                                            Row(
+                                  child: PopScope(
+                                    canPop: false,
+                                    onPopInvoked: (value) {
+                                      context.read<SearchBloc>().add(
+                                            SearchEvent.searchProfucts(initState.query),
+                                          );
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 17.5,
+                                            bottom: 14,
+                                            left: 10.5,
+                                            right: 10.5,
+                                          ),
+                                          child: RichText(
+                                            text: TextSpan(
                                               children: [
-                                                Text(
-                                                  '${initState.searchResultInfo?.count} товаров'
-                                                      .spaceSeparateNumbers(),
+                                                TextSpan(
+                                                  text: 'По запросу «${initState.query}» найдено  ',
+                                                  style: Theme.of(context).textTheme.titleSmall,
+                                                ),
+                                                TextSpan(
+                                                  text:
+                                                      '${initState.searchResultInfo?.count} товара'
+                                                          .spaceSeparateNumbers(),
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyMedium
@@ -140,284 +270,306 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                 )
                                               ],
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          left: 10.5,
-                                          right: 10.5,
-                                          bottom: 10.5,
-                                        ),
-                                        height: 30,
-                                        child: InkWell(
-                                          onTap: () {
-                                            context.navigateTo(const CatalogSearchFiltersRoute());
-                                          },
-                                          child: Row(
-                                            children: [
-                                              SvgPicture.asset(
-                                                'assets/icons/filter.svg',
-                                                height: 17.5,
-                                                width: 17.5,
-                                              ),
-                                              const SizedBox(
-                                                width: 3.5,
-                                              ),
-                                              Text(
-                                                'Фильтры',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayMedium
-                                                    ?.copyWith(
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                              ),
-                                              BlocBuilder<SearchBloc, SearchState>(
-                                                  builder: (context, state) {
-                                                return state.maybeMap(
-                                                  searchProductsResult: (initState) {
-                                                    if (initState.allSelectFilter.isNotEmpty) {
-                                                      return Container(
-                                                        height: 14,
-                                                        padding: const EdgeInsets.only(
-                                                          right: 4,
-                                                          left: 4,
-                                                        ),
-                                                        margin: const EdgeInsets.only(left: 6),
-                                                        alignment: Alignment.center,
-                                                        decoration: BoxDecoration(
-                                                          color: BlindChickenColors
-                                                              .activeBorderTextField,
-                                                          borderRadius: BorderRadius.circular(8),
-                                                        ),
-                                                        child: Text(
-                                                          initState.allSelectFilter.length
-                                                              .toString(),
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .bodyLarge
-                                                              ?.copyWith(
-                                                                color: BlindChickenColors
-                                                                    .backgroundColor,
-                                                                height: 1,
-                                                              ),
-                                                        ),
-                                                      );
-                                                    } else {
-                                                      return const SizedBox();
-                                                    }
-                                                  },
-                                                  orElse: () => const SizedBox(),
-                                                );
-                                              })
-                                            ],
                                           ),
                                         ),
-                                      ),
-                                      if (initState.allSelectFilter.isNotEmpty)
                                         Container(
                                           margin: const EdgeInsets.only(
-                                            left: 12,
-                                            right: 12,
+                                            left: 10.5,
+                                            right: 10.5,
+                                            bottom: 10.5,
                                           ),
-                                          height: 34,
-                                          child:
-                                              ListView(scrollDirection: Axis.horizontal, children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: List.generate(
-                                                  initState.allSelectFilter.length, (index) {
-                                                return InkWell(
-                                                  onTap: () {
-                                                    context.read<SearchBloc>().add(
-                                                          SearchEvent.deleteCatalogFilter(
-                                                            key: initState
-                                                                .allSelectFilter[index].keys.first,
-                                                            index: index,
-                                                            item: initState.allSelectFilter[index]
-                                                                .values.first,
+                                          height: 30,
+                                          child: InkWell(
+                                            onTap: () {
+                                              context.navigateTo(const CatalogSearchFiltersRoute());
+                                            },
+                                            child: Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/icons/filter.svg',
+                                                  height: 17.5,
+                                                  width: 17.5,
+                                                ),
+                                                const SizedBox(
+                                                  width: 3.5,
+                                                ),
+                                                Text(
+                                                  'Фильтры',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium
+                                                      ?.copyWith(
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                ),
+                                                BlocBuilder<SearchBloc, SearchState>(
+                                                    builder: (context, state) {
+                                                  return state.maybeMap(
+                                                    searchProductsResult: (initState) {
+                                                      if (initState.allSelectFilter.isNotEmpty) {
+                                                        return Container(
+                                                          height: 14,
+                                                          padding: const EdgeInsets.only(
+                                                            right: 4,
+                                                            left: 4,
+                                                          ),
+                                                          margin: const EdgeInsets.only(left: 6),
+                                                          alignment: Alignment.center,
+                                                          decoration: BoxDecoration(
+                                                            color: BlindChickenColors
+                                                                .activeBorderTextField,
+                                                            borderRadius: BorderRadius.circular(8),
+                                                          ),
+                                                          child: Text(
+                                                            initState.allSelectFilter.length
+                                                                .toString(),
+                                                            style: Theme.of(context)
+                                                                .textTheme
+                                                                .bodyLarge
+                                                                ?.copyWith(
+                                                                  color: BlindChickenColors
+                                                                      .backgroundColor,
+                                                                  height: 1,
+                                                                ),
                                                           ),
                                                         );
-                                                  },
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: BlindChickenColors
-                                                          .backgroundColorItemFilter,
-                                                      borderRadius: BorderRadius.circular(4),
-                                                    ),
-                                                    margin: EdgeInsets.only(
-                                                      right: initState.allSelectFilter.length - 1 !=
-                                                              index
-                                                          ? 12
-                                                          : 0,
-                                                    ),
-                                                    padding: const EdgeInsets.all(3.5),
-                                                    height: 27,
-                                                    child: Row(
+                                                      } else {
+                                                        return const SizedBox();
+                                                      }
+                                                    },
+                                                    orElse: () => const SizedBox(),
+                                                  );
+                                                })
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        if (initState.allSelectFilter.isNotEmpty)
+                                          Container(
+                                            margin: const EdgeInsets.only(
+                                              left: 12,
+                                              right: 12,
+                                            ),
+                                            height: 34,
+                                            child: ListView(
+                                                scrollDirection: Axis.horizontal,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: List.generate(
+                                                        initState.allSelectFilter.length, (index) {
+                                                      return InkWell(
+                                                        onTap: () {
+                                                          context.read<SearchBloc>().add(
+                                                                SearchEvent.deleteCatalogFilter(
+                                                                  key: initState
+                                                                      .allSelectFilter[index]
+                                                                      .keys
+                                                                      .first,
+                                                                  index: index,
+                                                                  item: initState
+                                                                      .allSelectFilter[index]
+                                                                      .values
+                                                                      .first,
+                                                                ),
+                                                              );
+                                                        },
+                                                        child: Container(
+                                                          decoration: BoxDecoration(
+                                                            color: BlindChickenColors
+                                                                .backgroundColorItemFilter,
+                                                            borderRadius: BorderRadius.circular(4),
+                                                          ),
+                                                          margin: EdgeInsets.only(
+                                                            right:
+                                                                initState.allSelectFilter.length -
+                                                                            1 !=
+                                                                        index
+                                                                    ? 12
+                                                                    : 0,
+                                                          ),
+                                                          padding: const EdgeInsets.all(3.5),
+                                                          height: 27,
+                                                          child: Row(
+                                                            children: [
+                                                              Text(
+                                                                initState.allSelectFilter[index]
+                                                                    .values.first.value,
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displaySmall,
+                                                              ),
+                                                              const SizedBox(
+                                                                width: 7,
+                                                              ),
+                                                              SvgPicture.asset(
+                                                                'assets/icons/x.svg',
+                                                                width: 13.3,
+                                                                height: 13.3,
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }),
+                                                  ),
+                                                ]),
+                                          ),
+                                        Wrap(
+                                          children: List.generate(
+                                            initState.products.length,
+                                            (index) {
+                                              return CatalogCardItem(
+                                                isLike: initState.favouritesProductsId
+                                                    .contains(initState.products[index].id),
+                                                onSelect: () {
+                                                  context.read<SearchBloc>().add(
+                                                        SearchEvent.getInfoProduct(
+                                                          code: initState.products[index].id
+                                                              .toString(),
+                                                        ),
+                                                      );
+
+                                                  context.navigateTo(
+                                                    DashboardRoute(
                                                       children: [
-                                                        Text(
-                                                          initState.allSelectFilter[index].values
-                                                              .first.value,
-                                                          style: Theme.of(context)
-                                                              .textTheme
-                                                              .displaySmall,
+                                                        HomeAutoRouterRoute(
+                                                          children: [
+                                                            CatalogSearchCardInfoRoute(
+                                                              isChildRoute: false,
+                                                              item: initState.products[index],
+                                                              isLike: initState.favouritesProductsId
+                                                                  .contains(
+                                                                      initState.products[index].id),
+                                                              listItems: initState.products,
+                                                              favouritesProducts:
+                                                                  initState.favouritesProducts ??
+                                                                      [],
+                                                            ),
+                                                          ],
                                                         ),
-                                                        const SizedBox(
-                                                          width: 7,
-                                                        ),
-                                                        SvgPicture.asset(
-                                                          'assets/icons/x.svg',
-                                                          width: 13.3,
-                                                          height: 13.3,
-                                                        )
                                                       ],
                                                     ),
-                                                  ),
-                                                );
-                                              }),
-                                            ),
-                                          ]),
+                                                  );
+                                                },
+                                                imageUrl: initState.products[index].images[0],
+                                                brend: initState.products[index].brend,
+                                                category: initState.products[index].category,
+                                                yourPrice:
+                                                    initState.products[index].yourPrice.toString(),
+                                                price: initState.products[index].price.toString(),
+                                                isYourPriceDisplayed:
+                                                    initState.products[index].isYourPriceDisplayed,
+                                                maximumCashback: initState
+                                                    .products[index].maximumCashback
+                                                    .toString(),
+                                                onAddFavouriteProduct: () {
+                                                  context.read<SearchBloc>().add(
+                                                        SearchEvent.addFavouriteProduct(
+                                                          product: initState.products[index],
+                                                          index: initState.products[index].id,
+                                                        ),
+                                                      );
+                                                },
+                                                pb: initState.products[index].pb,
+                                                onDeleteFavouriteProduct: () {
+                                                  context.read<SearchBloc>().add(
+                                                        SearchEvent.deleteFavouriteProduct(
+                                                          index: initState.products[index].id,
+                                                        ),
+                                                      );
+                                                },
+                                                isShop: initState.products[index].isShop,
+                                                onAddProductToSoppingCart: () {
+                                                  context.read<SearchBloc>().add(
+                                                        SearchEvent.getInfoProductSize(
+                                                          code: initState.products[index].id
+                                                              .toString(),
+                                                          isShop: initState.products[index].isShop,
+                                                        ),
+                                                      );
+                                                },
+                                                listSize: initState.listSize,
+                                                isLoad: int.parse(initState.codeProduct ?? '0') ==
+                                                        initState.products[index].id &&
+                                                    initState.isLoadGetSizeProduct,
+                                              );
+                                            },
+                                          ),
                                         ),
-                                      Wrap(
-                                        children: List.generate(
-                                          initState.products.length,
-                                          (index) {
-                                            return CatalogCardItem(
-                                              isLike: initState.favouritesProductsId
-                                                  .contains(initState.products[index].id),
-                                              onSelect: () {
-                                                context.read<SearchBloc>().add(
-                                                      SearchEvent.getInfoProduct(
-                                                        code:
-                                                            initState.products[index].id.toString(),
-                                                      ),
-                                                    );
-
-                                                context.navigateTo(
-                                                  DashboardRoute(
-                                                    children: [
-                                                      HomeAutoRouterRoute(
-                                                        children: [
-                                                          CatalogSearchCardInfoRoute(
-                                                            isChildRoute: false,
-                                                            item: initState.products[index],
-                                                            isLike: initState.favouritesProductsId
-                                                                .contains(
-                                                                    initState.products[index].id),
-                                                            listItems: initState.products,
-                                                            favouritesProducts:
-                                                                initState.favouritesProducts ?? [],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
-                                              imageUrl: initState.products[index].images[0],
-                                              brend: initState.products[index].brend,
-                                              category: initState.products[index].category,
-                                              yourPrice:
-                                                  initState.products[index].yourPrice.toString(),
-                                              price: initState.products[index].price.toString(),
-                                              isYourPriceDisplayed:
-                                                  initState.products[index].isYourPriceDisplayed,
-                                              maximumCashback: initState
-                                                  .products[index].maximumCashback
-                                                  .toString(),
-                                              onAddFavouriteProduct: () {
-                                                context.read<SearchBloc>().add(
-                                                      SearchEvent.addFavouriteProduct(
-                                                        product: initState.products[index],
-                                                        index: initState.products[index].id,
-                                                      ),
-                                                    );
-                                              },
-                                              pb: initState.products[index].pb,
-                                              onDeleteFavouriteProduct: () {
-                                                context.read<SearchBloc>().add(
-                                                      SearchEvent.deleteFavouriteProduct(
-                                                        index: initState.products[index].id,
-                                                      ),
-                                                    );
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            orElse: () => const SizedBox());
-                      },
-                    ),
-                  ],
+                                );
+                              },
+                              orElse: () => const SizedBox());
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            BlocBuilder<SearchBloc, SearchState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  searchProductsResult: (initState) {
-                    if (initState.isButtonTop && !isLoading) {
-                      return GestureDetector(
-                        onTap: () {
-                          _scrollController.jumpTo(0.0);
-                        },
-                        child: Container(
-                          height: 45,
-                          width: 45,
-                          margin: const EdgeInsets.only(left: 15, bottom: 15),
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: BlindChickenColors.activeBorderTextField,
-                            borderRadius: BorderRadius.circular(25),
+              BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    searchProductsResult: (initState) {
+                      if (initState.isButtonTop && !isLoading) {
+                        return GestureDetector(
+                          onTap: () {
+                            _scrollController.jumpTo(0.0);
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 45,
+                            margin: const EdgeInsets.only(left: 15, bottom: 15),
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: BlindChickenColors.activeBorderTextField,
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            child: SvgPicture.asset(
+                              'assets/icons/chevron-top.svg',
+                            ),
                           ),
-                          child: SvgPicture.asset(
-                            'assets/icons/chevron-top.svg',
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                },
+              )
+            ],
+          ),
+          BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                load: (value) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      backgroundColor: Colors.grey.shade400,
+                    ),
+                  );
+                },
+                searchProductsResult: (initState) {
+                  return isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
+                            backgroundColor: Colors.grey.shade400,
                           ),
-                        ),
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
-            )
-          ],
-        ),
-        BlocBuilder<SearchBloc, SearchState>(
-          builder: (context, state) {
-            return state.maybeMap(
-              load: (value) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                    backgroundColor: Colors.grey.shade400,
-                  ),
-                );
-              },
-              searchProductsResult: (initState) {
-                return isLoading
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.black,
-                          backgroundColor: Colors.grey.shade400,
-                        ),
-                      )
-                    : const SizedBox();
-              },
-              orElse: () => const SizedBox(),
-            );
-          },
-        ),
-      ],
+                        )
+                      : const SizedBox();
+                },
+                orElse: () => const SizedBox(),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

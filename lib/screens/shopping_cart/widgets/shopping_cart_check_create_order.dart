@@ -4,6 +4,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ShoppingCartCheckCreateOrder extends StatefulWidget {
   const ShoppingCartCheckCreateOrder({
@@ -53,7 +54,7 @@ class _ShoppingCartCheckCreateOrderState extends State<ShoppingCartCheckCreateOr
                 );
               } else {
                 return Container(
-                  height: initState.creatOrderMessage?.isNotEmpty ?? false ? 220 : 196,
+                  height: initState.creatOrderMessage?.isNotEmpty ?? false ? 210 : 196,
                   width: MediaQuery.of(context).size.width - 16,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -62,13 +63,36 @@ class _ShoppingCartCheckCreateOrderState extends State<ShoppingCartCheckCreateOr
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const SizedBox(),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context, rootNavigator: true).pop();
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              margin: const EdgeInsets.only(
+                                right: 10.5,
+                                top: 10.5,
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/icons/x.svg',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(
                           left: 28,
-                          top: 28,
                         ),
                         child: Text(
-                          'Проверка и создание заказа...',
+                          (initState.creatOrderMessage ?? '').isNotEmpty
+                              ? 'Обнаружены ошибки'
+                              : 'Проверка и создание заказа...',
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ),
@@ -86,6 +110,8 @@ class _ShoppingCartCheckCreateOrderState extends State<ShoppingCartCheckCreateOr
                       if (!initState.isLoadCreateOrder &&
                           (initState.creatOrderMessage?.isNotEmpty ?? false))
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(

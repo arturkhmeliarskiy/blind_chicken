@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,7 @@ class SearchLocationScreen extends StatefulWidget {
 
 class _SearchLocationScreenState extends State<SearchLocationScreen> {
   final TextEditingController _title = TextEditingController();
-  bool _isLoading = false;
+  Timer? _timer;
   final List<String> _searchResultCities = [];
 
   @override
@@ -45,6 +47,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
   @override
   void dispose() {
     _title.dispose();
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -110,14 +113,12 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                       withParent: widget.withParent,
                                     ),
                                   );
-                              setState(() {
-                                _isLoading = true;
-                              });
-                              await Future.delayed(const Duration(seconds: 3), () {
+                              if (_title.text.isEmpty) {
                                 setState(() {
-                                  _isLoading = false;
+                                  _title.clear();
+                                  widget.selectItem(null);
                                 });
-                              });
+                              }
                             },
                             autofocus: true,
                             controller: _title,
@@ -150,39 +151,49 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                               contentPadding: const EdgeInsets.only(
                                 left: 12,
                               ),
-                              suffixIcon: _title.text.isNotEmpty
-                                  ? _isLoading
-                                      ? Container(
-                                          width: 10,
-                                          height: 10,
-                                          alignment: Alignment.center,
-                                          margin: const EdgeInsets.only(
-                                            top: 10,
-                                            bottom: 10,
-                                            left: 16,
-                                            right: 16,
-                                          ),
-                                          child: CircularProgressIndicator(
-                                            strokeWidth: 3,
-                                            color: Colors.black,
-                                            backgroundColor: Colors.grey.shade400,
-                                          ),
-                                        )
-                                      : GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _title.clear();
-                                              widget.selectItem(null);
-                                            });
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: SvgPicture.asset(
-                                              'assets/icons/x.svg',
-                                            ),
-                                          ),
-                                        )
-                                  : const SizedBox(),
+                              suffixIcon: BlocBuilder<SearchLocationBloc, SearchLocationState>(
+                                builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadData: (initState) {
+                                      return _title.text.isNotEmpty
+                                          ? GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _title.clear();
+                                                  widget.selectItem(null);
+                                                });
+                                              },
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: SvgPicture.asset(
+                                                  'assets/icons/x.svg',
+                                                ),
+                                              ),
+                                            )
+                                          : const SizedBox();
+                                    },
+                                    load: (value) {
+                                      return Container(
+                                        width: 10,
+                                        height: 10,
+                                        alignment: Alignment.center,
+                                        margin: const EdgeInsets.only(
+                                          top: 10,
+                                          bottom: 10,
+                                          left: 16,
+                                          right: 16,
+                                        ),
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 3,
+                                          color: Colors.black,
+                                          backgroundColor: Colors.grey.shade400,
+                                        ),
+                                      );
+                                    },
+                                    orElse: () => const SizedBox(),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -196,7 +207,6 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                         preloadData: (initState) {
                           return LayoutBuilder(builder: (context, constraints) {
                             if (_title.text.isNotEmpty &&
-                                !_isLoading &&
                                 initState.searchResult.result.isNotEmpty) {
                               return ListView.builder(
                                 shrinkWrap: true,
@@ -260,9 +270,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                   right: 12.6,
                                 ),
                                 child: Text(
-                                  _title.text.isNotEmpty &&
-                                          _searchResultCities.isEmpty &&
-                                          !_isLoading
+                                  _title.text.isNotEmpty && _searchResultCities.isEmpty
                                       ? 'Ничего не найдено'
                                       : 'Введите наименование населенного пункта',
                                   style: Theme.of(context).textTheme.displayMedium,

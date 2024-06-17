@@ -20,6 +20,7 @@ class ShoppingCartPayUserInfo extends StatefulWidget {
     required this.payments,
     required this.onAddPayment,
     required this.onAddGiftPayment,
+    required this.isUponReceipt,
   });
 
   final String title;
@@ -27,6 +28,7 @@ class ShoppingCartPayUserInfo extends StatefulWidget {
   final String subTitle2;
   final String subTitle3;
   final bool isAuth;
+  final bool isUponReceipt;
   final ValueChanged<PaymentItemDataModel> onTypePay;
   final List<PaymentItemDataModel> payments;
   final ValueChanged<int> onAddPayment;
@@ -45,6 +47,22 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
       _selectedItem = widget.payments.first;
     }
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant ShoppingCartPayUserInfo oldWidget) {
+    if (_selectedItem.name == 'При получении' && !widget.isUponReceipt) {
+      setState(() {
+        _selectedItem = widget.payments.first;
+      });
+      context.read<ShoppingCartBloc>().add(
+            ShoppingCartEvent.changePaymentType(
+              paymentId: _selectedItem.id,
+              typePay: 'Оплата ${_selectedItem.name.toLowerCase()}',
+            ),
+          );
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -72,10 +90,13 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                       padding: EdgeInsets.only(top: index > 0 ? 16 : 0),
                       child: InkWell(
                         onTap: () {
-                          setState(() {
-                            _selectedItem = widget.payments[index];
-                            widget.onTypePay(_selectedItem);
-                          });
+                          if (widget.isUponReceipt ||
+                              widget.payments[index].name != 'При получении') {
+                            setState(() {
+                              _selectedItem = widget.payments[index];
+                              widget.onTypePay(_selectedItem);
+                            });
+                          }
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,7 +130,12 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                             ),
                             Text(
                               widget.payments[index].name,
-                              style: Theme.of(context).textTheme.displayMedium,
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: widget.isUponReceipt ||
+                                            widget.payments[index].name != 'При получении'
+                                        ? BlindChickenColors.activeBorderTextField
+                                        : BlindChickenColors.textInput,
+                                  ),
                             ),
                           ],
                         ),

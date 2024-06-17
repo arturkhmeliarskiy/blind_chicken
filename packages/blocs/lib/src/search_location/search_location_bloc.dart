@@ -16,7 +16,7 @@ class SearchLocationBloc extends Bloc<SearchLocationEvent, SearchLocationState> 
     this._locationRepository,
   ) : super(const SearchLocationState.init()) {
     on<SearchLocationEvent>(
-      (event, emit) => event.map(
+      (event, emit) => event.map<Future<void>>(
         searchQuery: (event) => _searchQuery(event, emit),
         selectedAddress: (event) => _selectedAddress(event, emit),
       ),
@@ -27,6 +27,7 @@ class SearchLocationBloc extends Bloc<SearchLocationEvent, SearchLocationState> 
     SearchQuerySearchLocationEvent event,
     Emitter<SearchLocationState> emit,
   ) async {
+    emit(const SearchLocationState.load());
     final searchResult = await _locationRepository.searchLocation(
       contentType: event.contentType,
       query: event.query,
@@ -40,7 +41,6 @@ class SearchLocationBloc extends Bloc<SearchLocationEvent, SearchLocationState> 
     emit(
       SearchLocationState.preloadData(
         searchResult: searchResult,
-        price: 0,
       ),
     );
   }
@@ -49,20 +49,17 @@ class SearchLocationBloc extends Bloc<SearchLocationEvent, SearchLocationState> 
     SelectedAddressLocationEvent event,
     Emitter<SearchLocationState> emit,
   ) async {
-    await state.mapOrNull(preloadData: (initState) async {
-      emit(const SearchLocationState.load());
-      final result = await _locationRepository.calculationCostDelivery(
+    final result = await _locationRepository.calculationCostDelivery(
+      cityId: event.cityId,
+      zipcode: event.zipcode,
+      sum: event.sum,
+    );
+    log(result.price.toString());
+    emit(
+      SearchLocationState.selectInfo(
+        price: result.price,
         cityId: event.cityId,
-        zipcode: event.zipcode,
-        sum: event.sum,
-      );
-      log(result.price.toString());
-      emit(
-        SearchLocationState.preloadData(
-          searchResult: initState.searchResult,
-          price: result.price,
-        ),
-      );
-    });
+      ),
+    );
   }
 }

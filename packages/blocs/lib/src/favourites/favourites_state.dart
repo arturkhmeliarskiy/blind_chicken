@@ -4,6 +4,15 @@ part of 'favourites_bloc.dart';
 class FavouritesState with _$FavouritesState {
   const factory FavouritesState.init() = InitFavouritesState;
   const factory FavouritesState.load() = LoadingFavouritesState;
+  const factory FavouritesState.openSoppingCart() = OpenSoppingCartFavouritesState;
+  const factory FavouritesState.getSizeProduct({
+    required String code,
+    required List<SkuProductDataModel> listSize,
+    required List<SkuProductDataModel> listSizeToSoppingCart,
+  }) = GetSizeProductFavouritesState;
+  const factory FavouritesState.addProductToSoppingCart({
+    required String code,
+  }) = AddProductFavouritesState;
   const factory FavouritesState.productsFavourites({
     required List<ProductDataModel> favouritesProducts,
     required List<ProductDataModel> favouritesDefaultProducts,
@@ -19,6 +28,9 @@ class FavouritesState with _$FavouritesState {
     required bool isAuth,
     required int offset,
     required bool isButtonTop,
+    required List<SkuProductDataModel> listSize,
+    required bool isLoadGetSizeProduct,
+    String? codeProduct,
     SkuProductDataModel? selectSizeProduct,
     bool? isSoppingCart,
     bool? isUpdate,

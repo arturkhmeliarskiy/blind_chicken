@@ -516,24 +516,24 @@ mixin _$SearchLocationState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(SearchLocationDataModel searchResult, int price)
-        preloadData,
+    required TResult Function(SearchLocationDataModel searchResult) preloadData,
+    required TResult Function(int price, String cityId) selectInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult? Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult? Function(int price, String cityId)? selectInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult Function(int price, String cityId)? selectInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -543,6 +543,8 @@ mixin _$SearchLocationState {
     required TResult Function(LoadingSearchLocationState value) load,
     required TResult Function(PreloadDataCompletedSearchLocationState value)
         preloadData,
+    required TResult Function(SelectInfoCompletedSearchLocationState value)
+        selectInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -551,6 +553,7 @@ mixin _$SearchLocationState {
     TResult? Function(LoadingSearchLocationState value)? load,
     TResult? Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult? Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -559,6 +562,7 @@ mixin _$SearchLocationState {
     TResult Function(LoadingSearchLocationState value)? load,
     TResult Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -626,8 +630,8 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(SearchLocationDataModel searchResult, int price)
-        preloadData,
+    required TResult Function(SearchLocationDataModel searchResult) preloadData,
+    required TResult Function(int price, String cityId) selectInfo,
   }) {
     return init();
   }
@@ -637,8 +641,8 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult? Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult? Function(int price, String cityId)? selectInfo,
   }) {
     return init?.call();
   }
@@ -648,8 +652,8 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult Function(int price, String cityId)? selectInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -665,6 +669,8 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
     required TResult Function(LoadingSearchLocationState value) load,
     required TResult Function(PreloadDataCompletedSearchLocationState value)
         preloadData,
+    required TResult Function(SelectInfoCompletedSearchLocationState value)
+        selectInfo,
   }) {
     return init(this);
   }
@@ -676,6 +682,7 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
     TResult? Function(LoadingSearchLocationState value)? load,
     TResult? Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult? Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
   }) {
     return init?.call(this);
   }
@@ -687,6 +694,7 @@ class _$InitSearchLocationStateImpl implements InitSearchLocationState {
     TResult Function(LoadingSearchLocationState value)? load,
     TResult Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -744,8 +752,8 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(SearchLocationDataModel searchResult, int price)
-        preloadData,
+    required TResult Function(SearchLocationDataModel searchResult) preloadData,
+    required TResult Function(int price, String cityId) selectInfo,
   }) {
     return load();
   }
@@ -755,8 +763,8 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult? Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult? Function(int price, String cityId)? selectInfo,
   }) {
     return load?.call();
   }
@@ -766,8 +774,8 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult Function(int price, String cityId)? selectInfo,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -783,6 +791,8 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
     required TResult Function(LoadingSearchLocationState value) load,
     required TResult Function(PreloadDataCompletedSearchLocationState value)
         preloadData,
+    required TResult Function(SelectInfoCompletedSearchLocationState value)
+        selectInfo,
   }) {
     return load(this);
   }
@@ -794,6 +804,7 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
     TResult? Function(LoadingSearchLocationState value)? load,
     TResult? Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult? Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
   }) {
     return load?.call(this);
   }
@@ -805,6 +816,7 @@ class _$LoadingSearchLocationStateImpl implements LoadingSearchLocationState {
     TResult Function(LoadingSearchLocationState value)? load,
     TResult Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -825,7 +837,7 @@ abstract class _$$PreloadDataCompletedSearchLocationStateImplCopyWith<$Res> {
           $Res Function(_$PreloadDataCompletedSearchLocationStateImpl) then) =
       __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SearchLocationDataModel searchResult, int price});
+  $Res call({SearchLocationDataModel searchResult});
 
   $SearchLocationDataModelCopyWith<$Res> get searchResult;
 }
@@ -844,17 +856,12 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchResult = null,
-    Object? price = null,
   }) {
     return _then(_$PreloadDataCompletedSearchLocationStateImpl(
       searchResult: null == searchResult
           ? _value.searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
               as SearchLocationDataModel,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 
@@ -872,16 +879,14 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
 class _$PreloadDataCompletedSearchLocationStateImpl
     implements PreloadDataCompletedSearchLocationState {
   const _$PreloadDataCompletedSearchLocationStateImpl(
-      {required this.searchResult, required this.price});
+      {required this.searchResult});
 
   @override
   final SearchLocationDataModel searchResult;
-  @override
-  final int price;
 
   @override
   String toString() {
-    return 'SearchLocationState.preloadData(searchResult: $searchResult, price: $price)';
+    return 'SearchLocationState.preloadData(searchResult: $searchResult)';
   }
 
   @override
@@ -890,12 +895,11 @@ class _$PreloadDataCompletedSearchLocationStateImpl
         (other.runtimeType == runtimeType &&
             other is _$PreloadDataCompletedSearchLocationStateImpl &&
             (identical(other.searchResult, searchResult) ||
-                other.searchResult == searchResult) &&
-            (identical(other.price, price) || other.price == price));
+                other.searchResult == searchResult));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchResult, price);
+  int get hashCode => Object.hash(runtimeType, searchResult);
 
   @JsonKey(ignore: true)
   @override
@@ -911,10 +915,10 @@ class _$PreloadDataCompletedSearchLocationStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(SearchLocationDataModel searchResult, int price)
-        preloadData,
+    required TResult Function(SearchLocationDataModel searchResult) preloadData,
+    required TResult Function(int price, String cityId) selectInfo,
   }) {
-    return preloadData(searchResult, price);
+    return preloadData(searchResult);
   }
 
   @override
@@ -922,10 +926,10 @@ class _$PreloadDataCompletedSearchLocationStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult? Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult? Function(int price, String cityId)? selectInfo,
   }) {
-    return preloadData?.call(searchResult, price);
+    return preloadData?.call(searchResult);
   }
 
   @override
@@ -933,12 +937,12 @@ class _$PreloadDataCompletedSearchLocationStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(SearchLocationDataModel searchResult, int price)?
-        preloadData,
+    TResult Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult Function(int price, String cityId)? selectInfo,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
-      return preloadData(searchResult, price);
+      return preloadData(searchResult);
     }
     return orElse();
   }
@@ -950,6 +954,8 @@ class _$PreloadDataCompletedSearchLocationStateImpl
     required TResult Function(LoadingSearchLocationState value) load,
     required TResult Function(PreloadDataCompletedSearchLocationState value)
         preloadData,
+    required TResult Function(SelectInfoCompletedSearchLocationState value)
+        selectInfo,
   }) {
     return preloadData(this);
   }
@@ -961,6 +967,7 @@ class _$PreloadDataCompletedSearchLocationStateImpl
     TResult? Function(LoadingSearchLocationState value)? load,
     TResult? Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult? Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
   }) {
     return preloadData?.call(this);
   }
@@ -972,6 +979,7 @@ class _$PreloadDataCompletedSearchLocationStateImpl
     TResult Function(LoadingSearchLocationState value)? load,
     TResult Function(PreloadDataCompletedSearchLocationState value)?
         preloadData,
+    TResult Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -984,14 +992,182 @@ class _$PreloadDataCompletedSearchLocationStateImpl
 abstract class PreloadDataCompletedSearchLocationState
     implements SearchLocationState {
   const factory PreloadDataCompletedSearchLocationState(
-          {required final SearchLocationDataModel searchResult,
-          required final int price}) =
+          {required final SearchLocationDataModel searchResult}) =
       _$PreloadDataCompletedSearchLocationStateImpl;
 
   SearchLocationDataModel get searchResult;
-  int get price;
   @JsonKey(ignore: true)
   _$$PreloadDataCompletedSearchLocationStateImplCopyWith<
           _$PreloadDataCompletedSearchLocationStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SelectInfoCompletedSearchLocationStateImplCopyWith<$Res> {
+  factory _$$SelectInfoCompletedSearchLocationStateImplCopyWith(
+          _$SelectInfoCompletedSearchLocationStateImpl value,
+          $Res Function(_$SelectInfoCompletedSearchLocationStateImpl) then) =
+      __$$SelectInfoCompletedSearchLocationStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int price, String cityId});
+}
+
+/// @nodoc
+class __$$SelectInfoCompletedSearchLocationStateImplCopyWithImpl<$Res>
+    extends _$SearchLocationStateCopyWithImpl<$Res,
+        _$SelectInfoCompletedSearchLocationStateImpl>
+    implements _$$SelectInfoCompletedSearchLocationStateImplCopyWith<$Res> {
+  __$$SelectInfoCompletedSearchLocationStateImplCopyWithImpl(
+      _$SelectInfoCompletedSearchLocationStateImpl _value,
+      $Res Function(_$SelectInfoCompletedSearchLocationStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? price = null,
+    Object? cityId = null,
+  }) {
+    return _then(_$SelectInfoCompletedSearchLocationStateImpl(
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      cityId: null == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SelectInfoCompletedSearchLocationStateImpl
+    implements SelectInfoCompletedSearchLocationState {
+  const _$SelectInfoCompletedSearchLocationStateImpl(
+      {required this.price, required this.cityId});
+
+  @override
+  final int price;
+  @override
+  final String cityId;
+
+  @override
+  String toString() {
+    return 'SearchLocationState.selectInfo(price: $price, cityId: $cityId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SelectInfoCompletedSearchLocationStateImpl &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, price, cityId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SelectInfoCompletedSearchLocationStateImplCopyWith<
+          _$SelectInfoCompletedSearchLocationStateImpl>
+      get copyWith =>
+          __$$SelectInfoCompletedSearchLocationStateImplCopyWithImpl<
+              _$SelectInfoCompletedSearchLocationStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(SearchLocationDataModel searchResult) preloadData,
+    required TResult Function(int price, String cityId) selectInfo,
+  }) {
+    return selectInfo(price, cityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult? Function(int price, String cityId)? selectInfo,
+  }) {
+    return selectInfo?.call(price, cityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(SearchLocationDataModel searchResult)? preloadData,
+    TResult Function(int price, String cityId)? selectInfo,
+    required TResult orElse(),
+  }) {
+    if (selectInfo != null) {
+      return selectInfo(price, cityId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchLocationState value) init,
+    required TResult Function(LoadingSearchLocationState value) load,
+    required TResult Function(PreloadDataCompletedSearchLocationState value)
+        preloadData,
+    required TResult Function(SelectInfoCompletedSearchLocationState value)
+        selectInfo,
+  }) {
+    return selectInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchLocationState value)? init,
+    TResult? Function(LoadingSearchLocationState value)? load,
+    TResult? Function(PreloadDataCompletedSearchLocationState value)?
+        preloadData,
+    TResult? Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
+  }) {
+    return selectInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchLocationState value)? init,
+    TResult Function(LoadingSearchLocationState value)? load,
+    TResult Function(PreloadDataCompletedSearchLocationState value)?
+        preloadData,
+    TResult Function(SelectInfoCompletedSearchLocationState value)? selectInfo,
+    required TResult orElse(),
+  }) {
+    if (selectInfo != null) {
+      return selectInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SelectInfoCompletedSearchLocationState
+    implements SearchLocationState {
+  const factory SelectInfoCompletedSearchLocationState(
+          {required final int price, required final String cityId}) =
+      _$SelectInfoCompletedSearchLocationStateImpl;
+
+  int get price;
+  String get cityId;
+  @JsonKey(ignore: true)
+  _$$SelectInfoCompletedSearchLocationStateImplCopyWith<
+          _$SelectInfoCompletedSearchLocationStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

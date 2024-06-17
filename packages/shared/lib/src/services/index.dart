@@ -7,3 +7,4 @@ export 'shared_preferences_service.dart';
 export 'location/location_map_service.dart';
 export 'timer_service.dart';
 export 'file_service.dart';
+export 'launch_service.dart';

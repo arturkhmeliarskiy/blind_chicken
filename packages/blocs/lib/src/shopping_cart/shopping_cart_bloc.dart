@@ -32,6 +32,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         init: (event) => _init(event, emit),
         preloadData: (event) => _preloadData(event, emit),
         addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
+        addOtherProductToSoppingCart: (event) => _addOtherProductToSoppingCart(event, emit),
         deleteProductToSoppingCart: (event) => _deleteProductToSoppingCartEvent(event, emit),
         updateProductToSoppingCart: (event) => _updateProductToSoppingCart(event, emit),
         paymentBonus: (event) => _paymentBonus(event, emit),
@@ -52,6 +53,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         openAuthModel: (event) => _openAuthModel(event, emit),
         closeAuthModel: (event) => _closeAuthModel(event, emit),
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+        changeReceivingType: (event) => _changeReceivingType(event, emit),
+        changeUidPickUpPoint: (event) => _changeUidPickUpPoint(event, emit),
+        changeAddress: (event) => _changeAddress(event, emit),
+        changeAddressDelivery: (event) => _changeAddressDelivery(event, emit),
+        changePaymentType: (event) => _changePaymentType(event, emit),
+        changeTitlePromocode: (event) => _changeTitlePromocode(event, emit),
       ),
     );
   }
@@ -60,10 +67,13 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     InitShoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
+    emit(const ShoppingCartState.load());
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
+    final boutiques = await _boutiquesRepository.getBoutiques();
+    _updateDataService.boutiques = boutiques.data;
     emit(
       ShoppingCartState.productsShoppingCart(
         shoppingCart: BasketFullInfoDataModel(
@@ -73,6 +83,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           promoDescription: '',
           errorMessage: '',
         ),
+        receivingType: 'Самовывоз',
         numberProducts: 0,
         amountPaid: 0,
         favouritesProducts: [],
@@ -80,9 +91,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isLoadPaymentBonus: false,
         isLoadPaymentGift: false,
         isLoadPaymentPromoCode: false,
-        delivery: 0,
         boutiques: BoutiquesDataModel(
-          data: [],
+          data: boutiques.data,
           errorMessage: '',
         ),
         promoCodeMessage: '',
@@ -99,6 +109,13 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsBrand: [],
         favouritesProductsId: [],
         isAuth: isAuth,
+        isUponReceipt: true,
+        address: '',
+        addressDelivery: BasketAddress(address: '', zip: ''),
+        uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
+        paymentId: '1',
+        typePay: 'Банковской картой',
+        titlePromocode: 'Активация промокода',
       ),
     );
   }
@@ -146,11 +163,11 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isLoadPaymentBonus: false,
         isLoadPaymentGift: false,
         isLoadPaymentPromoCode: false,
-        delivery: 0,
         boutiques: BoutiquesDataModel(
           data: boutiques.data,
           errorMessage: '',
         ),
+        receivingType: 'Самовывоз',
         promoCodeMessage: '',
         isActivePromoCode: false,
         promoCode: '',
@@ -159,12 +176,108 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         giftCards: 0,
         bonuses: 0,
         isLoadCreateOrder: false,
+        isUponReceipt: true,
         listProductsCode: [],
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
         favouritesProductsId: favouritesProductsId,
         isAuth: isAuth,
+        address: '',
+        addressDelivery: BasketAddress(address: '', zip: ''),
+        uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
+        paymentId: '1',
+        typePay: 'Банковской картой',
+        titlePromocode: 'Активация промокода',
+      ),
+    );
+  }
+
+  Future<void> _addOtherProductToSoppingCart(
+    AddOtherProductToSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    emit(const ShoppingCartState.load());
+    BasketFullInfoDataModel? basketInfo;
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+
+    if (isAuth) {
+      await _basketRepository.addProductToBasket(
+        code: event.item.code,
+        sku: event.item.sku.contains('-') ? event.item.sku : '',
+        count: event.item.count,
+      );
+      basketInfo = await updateBasket(
+        isLocal: false,
+        promo: '',
+        pickup: '',
+      );
+      log(basketInfo.toString());
+    } else {
+      _catalogRepository.addShoppingCartProduct(
+        event.item,
+      );
+      basketInfo = await updateBasket(
+        promo: '',
+        pickup: '',
+      );
+    }
+
+    int numberProducts = 0;
+    int amountPaid = 0;
+    for (int i = 0; i < basketInfo.basket.length; i++) {
+      numberProducts = numberProducts + basketInfo.basket[i].count;
+      amountPaid = amountPaid + basketInfo.basket[i].data.price;
+    }
+
+    final boutiques = await _boutiquesRepository.getBoutiques();
+    _updateDataService.boutiques = boutiques.data;
+
+    emit(
+      ShoppingCartState.productsShoppingCart(
+        shoppingCart: BasketFullInfoDataModel(
+          basket: [],
+          r: '',
+          e: '',
+          promoDescription: '',
+          errorMessage: '',
+        ),
+        receivingType: 'Самовывоз',
+        numberProducts: 0,
+        amountPaid: 0,
+        favouritesProducts: [],
+        payments: _updateDataService.payments,
+        isLoadPaymentBonus: false,
+        isLoadPaymentGift: false,
+        isLoadPaymentPromoCode: false,
+        boutiques: BoutiquesDataModel(
+          data: boutiques.data,
+          errorMessage: '',
+        ),
+        promoCodeMessage: '',
+        isLoadCreateOrder: false,
+        isActivePromoCode: false,
+        promoCode: '',
+        pickup: '',
+        listGiftCard: [],
+        giftCards: 0,
+        bonuses: 0,
+        listProductsCode: [],
+        listProdcutsStyle: [],
+        listProdcutsAlso: [],
+        listProdcutsBrand: [],
+        favouritesProductsId: [],
+        isAuth: isAuth,
+        isUponReceipt: true,
+        address: '',
+        addressDelivery: BasketAddress(address: '', zip: ''),
+        uidPickUpPoint: boutiques.data.first.uidStore,
+        paymentId: '1',
+        typePay: 'Банковской картой',
+        titlePromocode: 'Активация промокода',
       ),
     );
   }
@@ -473,6 +586,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         emit(
           initState.copyWith(
             delivery: event.delivery,
+            isUponReceipt: event.cityId.isNotEmpty ? event.cityId == '7700000000000' : true,
           ),
         );
       },
@@ -593,22 +707,37 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
-        emit(initState.copyWith(isLoadCreateOrder: true));
-        final result = await _basketRepository.createOrder(
-          request: event.request,
+        emit(
+          initState.copyWith(
+            isLoadCreateOrder: true,
+            creatOrderMessage: '',
+          ),
         );
-        log(result.e);
-        if (result.r == '1') {
-          emit(
-            ShoppingCartState.createOrderSuccessfully(
-              orderId: result.id,
-            ),
+        if (event.request.isValidAddress) {
+          final result = await _basketRepository.createOrder(
+            request: event.request,
           );
+          log(result.e);
+
+          if (result.r == '1') {
+            emit(
+              ShoppingCartState.createOrderSuccessfully(
+                orderId: result.id,
+              ),
+            );
+          } else {
+            emit(
+              initState.copyWith(
+                isLoadCreateOrder: false,
+                creatOrderMessage: result.e,
+              ),
+            );
+          }
         } else {
           emit(
             initState.copyWith(
               isLoadCreateOrder: false,
-              creatOrderMessage: result.e,
+              creatOrderMessage: '- Не заполнен адрес доставки.',
             ),
           );
         }
@@ -621,6 +750,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     Emitter<ShoppingCartState> emit,
   ) async {
     await state.mapOrNull(productsShoppingCart: (initState) async {
+      SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -660,6 +790,13 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
       if (detailsProduct.sku.isNotEmpty) {
+        if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
+          for (int i = 0; i < detailsProduct.sku.length; i++) {
+            if (detailsProduct.sku[i].id == event.code) {
+              selectSizeProduct = detailsProduct.sku[i];
+            }
+          }
+        }
         soppingCart = basketInfo.basket
             .where(
               (element) =>
@@ -683,7 +820,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
-        selectSizeProduct: null,
+        selectSizeProduct: selectSizeProduct ?? event.size,
       ));
     });
   }
@@ -812,6 +949,75 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     state.mapOrNull(productsShoppingCart: (initState) {
       emit(initState.copyWith(
         selectSizeProduct: event.selectSizeProduct,
+      ));
+    });
+  }
+
+  Future<void> _changeReceivingType(
+    ChangeReceivingTypeSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        receivingType: event.receivingType,
+      ));
+    });
+  }
+
+  Future<void> _changeUidPickUpPoint(
+    ChangeUidPickUpPointSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        uidPickUpPoint: event.uidPickUpPoint.isNotEmpty
+            ? event.uidPickUpPoint
+            : initState.boutiques.data.first.uidStore,
+      ));
+    });
+  }
+
+  Future<void> _changeAddress(
+    ChangeAddressSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        address: event.address,
+      ));
+    });
+  }
+
+  Future<void> _changeAddressDelivery(
+    ChangeAddressDeliverySoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        addressDelivery: event.addressDelivery,
+      ));
+    });
+  }
+
+  Future<void> _changePaymentType(
+    ChangePaymentTypeSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        paymentId: event.paymentId,
+        typePay: event.typePay,
+      ));
+    });
+  }
+
+  Future<void> _changeTitlePromocode(
+    ChangeTitlePromocodeSoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    state.mapOrNull(productsShoppingCart: (initState) {
+      emit(initState.copyWith(
+        titlePromocode: event.titlePromocode,
       ));
     });
   }

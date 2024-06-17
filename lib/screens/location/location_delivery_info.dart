@@ -20,13 +20,13 @@ class LocationDeliveryInfo extends StatefulWidget {
     required this.street,
     required this.house,
     required this.flat,
-    required this.onPrice,
+    required this.onDeliveryInfo,
   });
 
   final ValueChanged<SearchLocationInfoDataModel?> onCity;
   final ValueChanged<SearchLocationInfoDataModel?> onStreet;
   final ValueChanged<SearchLocationInfoDataModel?> onHouse;
-  final ValueChanged<int> onPrice;
+  final Function(int, String) onDeliveryInfo;
   final String city;
   final String street;
   final String house;
@@ -72,8 +72,8 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
     return BlocListener<SearchLocationBloc, SearchLocationState>(
       listener: (context, state) {
         state.maybeMap(
-          preloadData: (initState) {
-            widget.onPrice(initState.price);
+          selectInfo: (initState) {
+            widget.onDeliveryInfo(initState.price, initState.cityId);
           },
           orElse: () {},
         );
@@ -103,6 +103,9 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                       height: 1,
                     ),
                 controller: _city,
+                showCursor: false,
+                enableInteractiveSelection: false,
+                canRequestFocus: false,
                 onTap: () {
                   context.navigateTo(
                     SearchLocationRoute(
@@ -114,6 +117,14 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                         final item = value;
                         if (item != null) {
                           setState(() {
+                            if (item.id != (_selectedCity?.id ?? '')) {
+                              _street.clear();
+                              _house.clear();
+                              _flat.clear();
+                              widget.onStreet(null);
+                              widget.onHouse(null);
+                              widget.onFlat('');
+                            }
                             _selectedCity = item;
                             _city.text = item.name;
                             widget.onCity(item);
@@ -129,7 +140,14 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                           setState(() {
                             _selectedCity = null;
                             _city.clear();
-                            widget.onCity;
+                            _street.clear();
+                            _house.clear();
+                            _flat.clear();
+                            widget.onCity(null);
+                            widget.onStreet(null);
+                            widget.onHouse(null);
+                            widget.onFlat('');
+                            widget.onDeliveryInfo(0, '');
                           });
                         }
                       },
@@ -156,6 +174,12 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                               _city.clear();
                               _street.clear();
                               _house.clear();
+                              _flat.clear();
+                              widget.onCity(null);
+                              widget.onStreet(null);
+                              widget.onHouse(null);
+                              widget.onFlat('');
+                              widget.onDeliveryInfo(0, '');
                             });
                           },
                           child: Padding(
@@ -197,6 +221,9 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                       height: 1,
                     ),
                 controller: _street,
+                showCursor: false,
+                enableInteractiveSelection: false,
+                canRequestFocus: false,
                 onTap: () {
                   context.navigateTo(
                     SearchLocationRoute(
@@ -224,7 +251,11 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                           setState(() {
                             _selectedStreet = null;
                             _street.clear();
-                            widget.onStreet;
+                            _house.clear();
+                            _flat.clear();
+                            widget.onStreet(null);
+                            widget.onHouse(null);
+                            widget.onFlat('');
                           });
                         }
                       },
@@ -251,6 +282,10 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                             setState(() {
                               _street.clear();
                               _house.clear();
+                              _flat.clear();
+                              widget.onStreet(null);
+                              widget.onHouse(null);
+                              widget.onFlat('');
                             });
                           },
                           child: Padding(
@@ -300,6 +335,9 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                                   height: 1,
                                 ),
                             controller: _house,
+                            showCursor: false,
+                            enableInteractiveSelection: false,
+                            canRequestFocus: false,
                             onTap: () {
                               context.navigateTo(
                                 SearchLocationRoute(
@@ -325,7 +363,9 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                                     } else {
                                       setState(() {
                                         _house.clear();
-                                        widget.onHouse;
+                                        _flat.clear();
+                                        widget.onHouse(null);
+                                        widget.onFlat('');
                                       });
                                     }
                                   },
@@ -351,6 +391,9 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                                       onTap: () {
                                         setState(() {
                                           _house.clear();
+                                          _flat.clear();
+                                          widget.onHouse(null);
+                                          widget.onFlat('');
                                         });
                                       },
                                       child: Padding(
@@ -398,12 +441,10 @@ class _LocationDeliveryInfoState extends State<LocationDeliveryInfo> {
                             style: Theme.of(context).textTheme.displayMedium?.copyWith(height: 1),
                             enabled: _house.text.isNotEmpty,
                             textCapitalization: TextCapitalization.sentences,
-                            onChanged: (value) {
-                              setState(() {
-                                widget.onFlat(value);
-                              });
-                            },
                             controller: _flat,
+                            onChanged: (value) {
+                              widget.onFlat(value);
+                            },
                             decoration: const InputDecoration(
                               isDense: true,
                               filled: false,

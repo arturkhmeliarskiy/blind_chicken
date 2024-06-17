@@ -9,6 +9,7 @@ import 'package:blind_chicken/screens/account/tailoring_order_forms_screen.dart'
 import 'package:blind_chicken/screens/app/app_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_description_screen.dart';
 import 'package:blind_chicken/screens/boutiques/boutiques_screen.dart';
+import 'package:blind_chicken/screens/boutiques/widgets/boutique_preview_media_screen.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/map/boutique_yandex_map.dart';
 import 'package:blind_chicken/screens/brands/brands_screen.dart';
 import 'package:blind_chicken/screens/chat/chat_messanger_screen.dart';
@@ -55,14 +56,12 @@ import 'package:blind_chicken/screens/home/sort/sort_screen.dart';
 import 'package:blind_chicken/screens/login/login_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/map/shopping_yandex_map_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_delivery_info_screen.dart';
+import 'package:blind_chicken/screens/vision_warning/vision_warning_screen.dart';
 import 'package:blind_chicken/screens/web_view/blind_chicken_webview_screen.dart';
 import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.dart';
 import 'package:blind_chicken/screens/yandex_map/yandex_map_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:models/models.dart';
-
-import '../../boutiques/widgets/boutique_preview_images_screen.dart';
 import '../../contacts/contacts_screen.dart';
 
 part 'app_router.gr.dart';
@@ -111,10 +110,12 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               page: ContactsRoute.page,
+              keepHistory: false,
               path: 'contacts',
             ),
             AutoRoute(
               page: InfoRoute.page,
+              keepHistory: false,
               path: 'info',
             ),
             AutoRoute(
@@ -127,6 +128,7 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               page: BlindChickenCashbackAndDiscountsRoute.page,
+              keepHistory: false,
               path: 'cashback_and_discounts',
             ),
             AutoRoute(
@@ -148,6 +150,10 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               page: BrandsRoute.page,
               path: 'brands',
+            ),
+            AutoRoute(
+              page: VisionWarningRoute.page,
+              path: 'vision_warning',
             ),
           ]),
           AutoRoute(page: LoginRoute.page, path: 'login', children: [
@@ -265,7 +271,7 @@ class AppRouter extends _$AppRouter {
           page: CatalogPreviewImagesRoute.page,
         ),
         AutoRoute(
-          page: BoutiquePreviewImagesRoute.page,
+          page: BoutiquePreviewMediaRoute.page,
         ),
         AutoRoute(
           page: YandexMapRoute.page,

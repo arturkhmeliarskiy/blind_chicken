@@ -25,7 +25,7 @@ class CatalogSliderImages extends StatefulWidget {
   final VoidCallback goSwipeBack;
   final VoidCallback addLike;
   final VoidCallback deleteLike;
-  final VoidCallback onTap;
+  final ValueChanged<int> onTap;
   final bool isGoBotton;
   final bool isAddLike;
   final bool isLike;
@@ -51,7 +51,8 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
   _scrollListener() {
     setState(() {
       log(_scrollController.position.pixels.toString());
-      if (_scrollController.position.pixels < 0 && _isSwipe) {
+
+      if (_scrollController.position.pixels < -70 && _isSwipe) {
         widget.goSwipeBack();
         _isSwipe = false;
       }
@@ -63,106 +64,108 @@ class _CatalogSliderImagesState extends State<CatalogSliderImages> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
-    return InkWell(
-      onTap: widget.onTap,
-      child: SizedBox(
-        height: widget.isZoom ? height : width * 4 / 3,
-        width: width,
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: widget.listImages.length,
-                    controller: _scrollController,
-                    itemBuilder: (context, index) {
-                      _position = _scrollController.position.pixels;
-                      return CatalogSliderItemImage(
+    return SizedBox(
+      height: widget.isZoom ? height : width * 4 / 3,
+      width: width,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: widget.listImages.length,
+                  physics: const BouncingScrollPhysics(),
+                  controller: _scrollController,
+                  itemBuilder: (context, index) {
+                    _position = _scrollController.position.pixels;
+                    return InkWell(
+                      onTap: () {
+                        widget.onTap(index);
+                      },
+                      child: CatalogSliderItemImage(
                         isZoom: widget.isZoom,
                         image: widget.listImages[index],
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
-                if (widget.listImages.length > 1)
-                  Container(
-                    color: BlindChickenColors.borderBottomColor,
-                    height: 2,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 1,
-                        itemBuilder: (context, index) {
-                          var isPortrait =
-                              MediaQuery.of(context).orientation == Orientation.portrait;
-                          final widthController = ((MediaQuery.of(context).size.width /
-                                  (isPortrait ? widget.listImages.length : 2)) +
-                              (_position));
+              ),
+              if (widget.listImages.length > 1)
+                Container(
+                  color: BlindChickenColors.borderBottomColor,
+                  height: 2,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+                        final widthController = ((MediaQuery.of(context).size.width /
+                                (isPortrait ? widget.listImages.length : 2)) +
+                            (_position));
 
-                          return Container(
-                            height: 2,
-                            width: _position.isNegative
-                                ? widthController.isNegative
-                                    ? 0
-                                    : widthController
-                                : MediaQuery.of(context).size.width /
-                                    (isPortrait ? widget.listImages.length : 2),
-                            margin: EdgeInsets.symmetric(
-                              horizontal: _position.isNegative
+                        return Container(
+                          height: 2,
+                          width: _position.isNegative
+                              ? widthController.isNegative
                                   ? 0
-                                  : _position / (isPortrait ? widget.listImages.length : 2),
-                            ),
-                            color: BlindChickenColors.activeBorderTextField,
-                          );
-                        }),
-                  )
-              ],
-            ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (widget.isGoBotton)
-                      InkWell(
-                        onTap: widget.goBotton,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/arrow-left.svg',
-                            height: 24,
-                            width: 24,
+                                  : widthController
+                              : MediaQuery.of(context).size.width /
+                                  (isPortrait ? widget.listImages.length : 2),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: _position.isNegative
+                                ? 0
+                                : _position / (isPortrait ? widget.listImages.length : 2),
                           ),
+                          color: BlindChickenColors.activeBorderTextField,
+                        );
+                      }),
+                )
+            ],
+          ),
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (widget.isGoBotton)
+                    InkWell(
+                      onTap: widget.goBotton,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: SvgPicture.asset(
+                          'assets/icons/arrow-left.svg',
+                          height: 24,
+                          width: 24,
                         ),
                       ),
-                    if (widget.isAddLike)
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            _isLike = !_isLike;
-                            if (_isLike) {
-                              widget.addLike();
-                            } else {
-                              widget.deleteLike();
-                            }
-                          });
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: SvgPicture.asset(
-                            _isLike ? 'assets/icons/like_active.svg' : 'assets/icons/like.svg',
-                            height: 21,
-                            width: 21,
-                          ),
+                    ),
+                  if (widget.isAddLike)
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          _isLike = !_isLike;
+                          if (_isLike) {
+                            widget.addLike();
+                          } else {
+                            widget.deleteLike();
+                          }
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: SvgPicture.asset(
+                          _isLike ? 'assets/icons/like_active.svg' : 'assets/icons/like.svg',
+                          height: 21,
+                          width: 21,
                         ),
-                      )
-                  ],
-                )
-              ],
-            ),
-          ],
-        ),
+                      ),
+                    )
+                ],
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

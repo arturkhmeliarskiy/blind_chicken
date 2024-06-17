@@ -22,6 +22,8 @@ mixin _$ShoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -30,12 +32,14 @@ mixin _$ShoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -47,6 +51,14 @@ mixin _$ShoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +66,8 @@ mixin _$ShoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -62,12 +76,13 @@ mixin _$ShoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -76,6 +91,12 @@ mixin _$ShoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +104,8 @@ mixin _$ShoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -91,12 +114,13 @@ mixin _$ShoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -105,6 +129,12 @@ mixin _$ShoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +144,8 @@ mixin _$ShoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -147,6 +179,18 @@ mixin _$ShoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -155,6 +199,8 @@ mixin _$ShoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -183,6 +229,17 @@ mixin _$ShoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -191,6 +248,8 @@ mixin _$ShoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -219,6 +278,17 @@ mixin _$ShoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -286,6 +356,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -294,12 +366,14 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -311,6 +385,14 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return init();
   }
@@ -321,6 +403,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -329,12 +413,13 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -343,6 +428,12 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return init?.call();
   }
@@ -353,6 +444,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -361,12 +454,13 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -375,6 +469,12 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -390,6 +490,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -423,6 +525,18 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return init(this);
   }
@@ -434,6 +548,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -462,6 +578,17 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return init?.call(this);
   }
@@ -473,6 +600,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -501,6 +630,17 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -561,6 +701,8 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -569,12 +711,14 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -586,6 +730,14 @@ class _$PreloadDataShoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return preloadData();
   }
@@ -596,6 +748,8 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -604,12 +758,13 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -618,6 +773,12 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return preloadData?.call();
   }
@@ -628,6 +789,8 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -636,12 +799,13 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -650,6 +814,12 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -665,6 +835,8 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -698,6 +870,18 @@ class _$PreloadDataShoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return preloadData(this);
   }
@@ -709,6 +893,8 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -737,6 +923,17 @@ class _$PreloadDataShoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return preloadData?.call(this);
   }
@@ -748,6 +945,8 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -776,6 +975,17 @@ class _$PreloadDataShoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -874,6 +1084,8 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -882,12 +1094,14 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -899,6 +1113,14 @@ class _$AddProductToSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return addProductToSoppingCart(item);
   }
@@ -909,6 +1131,8 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -917,12 +1141,13 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -931,6 +1156,12 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return addProductToSoppingCart?.call(item);
   }
@@ -941,6 +1172,8 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -949,12 +1182,13 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -963,6 +1197,12 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -978,6 +1218,8 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -1011,6 +1253,18 @@ class _$AddProductToSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -1022,6 +1276,8 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -1050,6 +1306,17 @@ class _$AddProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -1061,6 +1328,8 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -1089,6 +1358,17 @@ class _$AddProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -1107,6 +1387,396 @@ abstract class AddProductToSoppingCartEvent implements ShoppingCartEvent {
   @JsonKey(ignore: true)
   _$$AddProductToSoppingCartEventImplCopyWith<
           _$AddProductToSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddOtherProductToSoppingCartEventImplCopyWith<$Res> {
+  factory _$$AddOtherProductToSoppingCartEventImplCopyWith(
+          _$AddOtherProductToSoppingCartEventImpl value,
+          $Res Function(_$AddOtherProductToSoppingCartEventImpl) then) =
+      __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BasketInfoItemDataModel item});
+
+  $BasketInfoItemDataModelCopyWith<$Res> get item;
+}
+
+/// @nodoc
+class __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$AddOtherProductToSoppingCartEventImpl>
+    implements _$$AddOtherProductToSoppingCartEventImplCopyWith<$Res> {
+  __$$AddOtherProductToSoppingCartEventImplCopyWithImpl(
+      _$AddOtherProductToSoppingCartEventImpl _value,
+      $Res Function(_$AddOtherProductToSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? item = null,
+  }) {
+    return _then(_$AddOtherProductToSoppingCartEventImpl(
+      item: null == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as BasketInfoItemDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res> get item {
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item, (value) {
+      return _then(_value.copyWith(item: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddOtherProductToSoppingCartEventImpl
+    implements AddOtherProductToSoppingCartEvent {
+  const _$AddOtherProductToSoppingCartEventImpl({required this.item});
+
+  @override
+  final BasketInfoItemDataModel item;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.addOtherProductToSoppingCart(item: $item)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddOtherProductToSoppingCartEventImpl &&
+            (identical(other.item, item) || other.item == item));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, item);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddOtherProductToSoppingCartEventImplCopyWith<
+          _$AddOtherProductToSoppingCartEventImpl>
+      get copyWith => __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<
+          _$AddOtherProductToSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return addOtherProductToSoppingCart(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return addOtherProductToSoppingCart?.call(item);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (addOtherProductToSoppingCart != null) {
+      return addOtherProductToSoppingCart(item);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return addOtherProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return addOtherProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (addOtherProductToSoppingCart != null) {
+      return addOtherProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddOtherProductToSoppingCartEvent implements ShoppingCartEvent {
+  const factory AddOtherProductToSoppingCartEvent(
+          {required final BasketInfoItemDataModel item}) =
+      _$AddOtherProductToSoppingCartEventImpl;
+
+  BasketInfoItemDataModel get item;
+  @JsonKey(ignore: true)
+  _$$AddOtherProductToSoppingCartEventImplCopyWith<
+          _$AddOtherProductToSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1203,6 +1873,8 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -1211,12 +1883,14 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -1228,6 +1902,14 @@ class _$DeleteProductToSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return deleteProductToSoppingCart(item, index);
   }
@@ -1238,6 +1920,8 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -1246,12 +1930,13 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -1260,6 +1945,12 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return deleteProductToSoppingCart?.call(item, index);
   }
@@ -1270,6 +1961,8 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -1278,12 +1971,13 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -1292,6 +1986,12 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (deleteProductToSoppingCart != null) {
@@ -1307,6 +2007,8 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -1340,6 +2042,18 @@ class _$DeleteProductToSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return deleteProductToSoppingCart(this);
   }
@@ -1351,6 +2065,8 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -1379,6 +2095,17 @@ class _$DeleteProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return deleteProductToSoppingCart?.call(this);
   }
@@ -1390,6 +2117,8 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -1418,6 +2147,17 @@ class _$DeleteProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (deleteProductToSoppingCart != null) {
@@ -1533,6 +2273,8 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -1541,12 +2283,14 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -1558,6 +2302,14 @@ class _$UpdateProductToSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return updateProductToSoppingCart(item, index);
   }
@@ -1568,6 +2320,8 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -1576,12 +2330,13 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -1590,6 +2345,12 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return updateProductToSoppingCart?.call(item, index);
   }
@@ -1600,6 +2361,8 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -1608,12 +2371,13 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -1622,6 +2386,12 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (updateProductToSoppingCart != null) {
@@ -1637,6 +2407,8 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -1670,6 +2442,18 @@ class _$UpdateProductToSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return updateProductToSoppingCart(this);
   }
@@ -1681,6 +2465,8 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -1709,6 +2495,17 @@ class _$UpdateProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return updateProductToSoppingCart?.call(this);
   }
@@ -1720,6 +2517,8 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -1748,6 +2547,17 @@ class _$UpdateProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (updateProductToSoppingCart != null) {
@@ -1817,6 +2627,8 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -1825,12 +2637,14 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -1842,6 +2656,14 @@ class _$PaymentBonusSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return paymentBonus();
   }
@@ -1852,6 +2674,8 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -1860,12 +2684,13 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -1874,6 +2699,12 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return paymentBonus?.call();
   }
@@ -1884,6 +2715,8 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -1892,12 +2725,13 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -1906,6 +2740,12 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (paymentBonus != null) {
@@ -1921,6 +2761,8 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -1954,6 +2796,18 @@ class _$PaymentBonusSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return paymentBonus(this);
   }
@@ -1965,6 +2819,8 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -1993,6 +2849,17 @@ class _$PaymentBonusSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return paymentBonus?.call(this);
   }
@@ -2004,6 +2871,8 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -2032,6 +2901,17 @@ class _$PaymentBonusSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (paymentBonus != null) {
@@ -2093,6 +2973,8 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -2101,12 +2983,14 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -2118,6 +3002,14 @@ class _$InitGiftCardSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return initGiftCard();
   }
@@ -2128,6 +3020,8 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -2136,12 +3030,13 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -2150,6 +3045,12 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return initGiftCard?.call();
   }
@@ -2160,6 +3061,8 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -2168,12 +3071,13 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -2182,6 +3086,12 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (initGiftCard != null) {
@@ -2197,6 +3107,8 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -2230,6 +3142,18 @@ class _$InitGiftCardSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return initGiftCard(this);
   }
@@ -2241,6 +3165,8 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -2269,6 +3195,17 @@ class _$InitGiftCardSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return initGiftCard?.call(this);
   }
@@ -2280,6 +3217,8 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -2308,6 +3247,17 @@ class _$InitGiftCardSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (initGiftCard != null) {
@@ -2403,6 +3353,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -2411,12 +3363,14 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -2428,6 +3382,14 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return giftCard(number, pin);
   }
@@ -2438,6 +3400,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -2446,12 +3410,13 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -2460,6 +3425,12 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return giftCard?.call(number, pin);
   }
@@ -2470,6 +3441,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -2478,12 +3451,13 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -2492,6 +3466,12 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (giftCard != null) {
@@ -2507,6 +3487,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -2540,6 +3522,18 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return giftCard(this);
   }
@@ -2551,6 +3545,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -2579,6 +3575,17 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return giftCard?.call(this);
   }
@@ -2590,6 +3597,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -2618,6 +3627,17 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (giftCard != null) {
@@ -2722,6 +3742,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -2730,12 +3752,14 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -2747,6 +3771,14 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return addGiftCard(this.giftCard);
   }
@@ -2757,6 +3789,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -2765,12 +3799,13 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -2779,6 +3814,12 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return addGiftCard?.call(this.giftCard);
   }
@@ -2789,6 +3830,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -2797,12 +3840,13 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -2811,6 +3855,12 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addGiftCard != null) {
@@ -2826,6 +3876,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -2859,6 +3911,18 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return addGiftCard(this);
   }
@@ -2870,6 +3934,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -2898,6 +3964,17 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return addGiftCard?.call(this);
   }
@@ -2909,6 +3986,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -2937,6 +4016,17 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addGiftCard != null) {
@@ -2964,7 +4054,7 @@ abstract class _$$DeliverySoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$DeliverySoppingCartEventImpl) then) =
       __$$DeliverySoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int delivery});
+  $Res call({int delivery, String cityId});
 }
 
 /// @nodoc
@@ -2981,12 +4071,17 @@ class __$$DeliverySoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? delivery = null,
+    Object? cityId = null,
   }) {
     return _then(_$DeliverySoppingCartEventImpl(
       delivery: null == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
               as int,
+      cityId: null == cityId
+          ? _value.cityId
+          : cityId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -2994,14 +4089,17 @@ class __$$DeliverySoppingCartEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
-  const _$DeliverySoppingCartEventImpl({required this.delivery});
+  const _$DeliverySoppingCartEventImpl(
+      {required this.delivery, required this.cityId});
 
   @override
   final int delivery;
+  @override
+  final String cityId;
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.delivery(delivery: $delivery)';
+    return 'ShoppingCartEvent.delivery(delivery: $delivery, cityId: $cityId)';
   }
 
   @override
@@ -3010,11 +4108,12 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         (other.runtimeType == runtimeType &&
             other is _$DeliverySoppingCartEventImpl &&
             (identical(other.delivery, delivery) ||
-                other.delivery == delivery));
+                other.delivery == delivery) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, delivery);
+  int get hashCode => Object.hash(runtimeType, delivery, cityId);
 
   @JsonKey(ignore: true)
   @override
@@ -3030,6 +4129,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -3038,12 +4139,14 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -3055,8 +4158,16 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
-    return delivery(this.delivery);
+    return delivery(this.delivery, cityId);
   }
 
   @override
@@ -3065,6 +4176,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -3073,12 +4186,13 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -3087,8 +4201,14 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
-    return delivery?.call(this.delivery);
+    return delivery?.call(this.delivery, cityId);
   }
 
   @override
@@ -3097,6 +4217,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -3105,12 +4227,13 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -3119,10 +4242,16 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (delivery != null) {
-      return delivery(this.delivery);
+      return delivery(this.delivery, cityId);
     }
     return orElse();
   }
@@ -3134,6 +4263,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -3167,6 +4298,18 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return delivery(this);
   }
@@ -3178,6 +4321,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -3206,6 +4351,17 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return delivery?.call(this);
   }
@@ -3217,6 +4373,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -3245,6 +4403,17 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (delivery != null) {
@@ -3255,10 +4424,12 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
 }
 
 abstract class DeliverySoppingCartEvent implements ShoppingCartEvent {
-  const factory DeliverySoppingCartEvent({required final int delivery}) =
-      _$DeliverySoppingCartEventImpl;
+  const factory DeliverySoppingCartEvent(
+      {required final int delivery,
+      required final String cityId}) = _$DeliverySoppingCartEventImpl;
 
   int get delivery;
+  String get cityId;
   @JsonKey(ignore: true)
   _$$DeliverySoppingCartEventImplCopyWith<_$DeliverySoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3346,6 +4517,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -3354,12 +4527,14 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -3371,6 +4546,14 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return promoCode(this.promoCode, uid);
   }
@@ -3381,6 +4564,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -3389,12 +4574,13 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -3403,6 +4589,12 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return promoCode?.call(this.promoCode, uid);
   }
@@ -3413,6 +4605,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -3421,12 +4615,13 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -3435,6 +4630,12 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (promoCode != null) {
@@ -3450,6 +4651,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -3483,6 +4686,18 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return promoCode(this);
   }
@@ -3494,6 +4709,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -3522,6 +4739,17 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return promoCode?.call(this);
   }
@@ -3533,6 +4761,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -3561,6 +4791,17 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (promoCode != null) {
@@ -3629,6 +4870,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -3637,12 +4880,14 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -3654,6 +4899,14 @@ class _$RemovePromoCodeSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return removePromoCode();
   }
@@ -3664,6 +4917,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -3672,12 +4927,13 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -3686,6 +4942,12 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return removePromoCode?.call();
   }
@@ -3696,6 +4958,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -3704,12 +4968,13 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -3718,6 +4983,12 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (removePromoCode != null) {
@@ -3733,6 +5004,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -3766,6 +5039,18 @@ class _$RemovePromoCodeSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return removePromoCode(this);
   }
@@ -3777,6 +5062,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -3805,6 +5092,17 @@ class _$RemovePromoCodeSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return removePromoCode?.call(this);
   }
@@ -3816,6 +5114,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -3844,6 +5144,17 @@ class _$RemovePromoCodeSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (removePromoCode != null) {
@@ -3942,6 +5253,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -3950,12 +5263,14 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -3967,6 +5282,14 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return createOrder(request);
   }
@@ -3977,6 +5300,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -3985,12 +5310,13 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -3999,6 +5325,12 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return createOrder?.call(request);
   }
@@ -4009,6 +5341,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -4017,12 +5351,13 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -4031,6 +5366,12 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -4046,6 +5387,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -4079,6 +5422,18 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return createOrder(this);
   }
@@ -4090,6 +5445,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -4118,6 +5475,17 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return createOrder?.call(this);
   }
@@ -4129,6 +5497,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -4157,6 +5527,17 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -4250,6 +5631,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -4258,12 +5641,14 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -4275,6 +5660,14 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return bonuses(this.bonuses);
   }
@@ -4285,6 +5678,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -4293,12 +5688,13 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -4307,6 +5703,12 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return bonuses?.call(this.bonuses);
   }
@@ -4317,6 +5719,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -4325,12 +5729,13 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -4339,6 +5744,12 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (bonuses != null) {
@@ -4354,6 +5765,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -4387,6 +5800,18 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return bonuses(this);
   }
@@ -4398,6 +5823,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -4426,6 +5853,17 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return bonuses?.call(this);
   }
@@ -4437,6 +5875,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -4465,6 +5905,17 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (bonuses != null) {
@@ -4491,7 +5942,9 @@ abstract class _$$GetInfoProductShoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductShoppingCartEventImpl) then) =
       __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code, bool? isUpdate});
+  $Res call({String code, SkuProductDataModel? size, bool? isUpdate});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -4508,6 +5961,7 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? size = freezed,
     Object? isUpdate = freezed,
   }) {
     return _then(_$GetInfoProductShoppingCartEventImpl(
@@ -4515,11 +5969,27 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
       isUpdate: freezed == isUpdate
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -4528,16 +5998,18 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
 class _$GetInfoProductShoppingCartEventImpl
     implements GetInfoProductShoppingCartEvent {
   const _$GetInfoProductShoppingCartEventImpl(
-      {required this.code, this.isUpdate});
+      {required this.code, this.size, this.isUpdate});
 
   @override
   final String code;
+  @override
+  final SkuProductDataModel? size;
   @override
   final bool? isUpdate;
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.getInfoProduct(code: $code, isUpdate: $isUpdate)';
+    return 'ShoppingCartEvent.getInfoProduct(code: $code, size: $size, isUpdate: $isUpdate)';
   }
 
   @override
@@ -4546,12 +6018,13 @@ class _$GetInfoProductShoppingCartEventImpl
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductShoppingCartEventImpl &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, isUpdate);
+  int get hashCode => Object.hash(runtimeType, code, size, isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -4568,6 +6041,8 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -4576,12 +6051,14 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -4593,8 +6070,16 @@ class _$GetInfoProductShoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
-    return getInfoProduct(code, isUpdate);
+    return getInfoProduct(code, size, isUpdate);
   }
 
   @override
@@ -4603,6 +6088,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -4611,12 +6098,13 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -4625,8 +6113,14 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
-    return getInfoProduct?.call(code, isUpdate);
+    return getInfoProduct?.call(code, size, isUpdate);
   }
 
   @override
@@ -4635,6 +6129,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -4643,12 +6139,13 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -4657,10 +6154,16 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code, isUpdate);
+      return getInfoProduct(code, size, isUpdate);
     }
     return orElse();
   }
@@ -4672,6 +6175,8 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -4705,6 +6210,18 @@ class _$GetInfoProductShoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return getInfoProduct(this);
   }
@@ -4716,6 +6233,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -4744,6 +6263,17 @@ class _$GetInfoProductShoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -4755,6 +6285,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -4783,6 +6315,17 @@ class _$GetInfoProductShoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -4795,9 +6338,11 @@ class _$GetInfoProductShoppingCartEventImpl
 abstract class GetInfoProductShoppingCartEvent implements ShoppingCartEvent {
   const factory GetInfoProductShoppingCartEvent(
       {required final String code,
+      final SkuProductDataModel? size,
       final bool? isUpdate}) = _$GetInfoProductShoppingCartEventImpl;
 
   String get code;
+  SkuProductDataModel? get size;
   bool? get isUpdate;
   @JsonKey(ignore: true)
   _$$GetInfoProductShoppingCartEventImplCopyWith<
@@ -4853,6 +6398,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -4861,12 +6408,14 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -4878,6 +6427,14 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return goBackProductInfo();
   }
@@ -4888,6 +6445,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -4896,12 +6455,13 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -4910,6 +6470,12 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return goBackProductInfo?.call();
   }
@@ -4920,6 +6486,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -4928,12 +6496,13 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -4942,6 +6511,12 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -4957,6 +6532,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -4990,6 +6567,18 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return goBackProductInfo(this);
   }
@@ -5001,6 +6590,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -5029,6 +6620,17 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -5040,6 +6642,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -5068,6 +6672,17 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -5176,6 +6791,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -5184,12 +6801,14 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -5201,6 +6820,14 @@ class _$AddFavouriteProductShoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -5211,6 +6838,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -5219,12 +6848,13 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -5233,6 +6863,12 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -5243,6 +6879,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -5251,12 +6889,13 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -5265,6 +6904,12 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -5280,6 +6925,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -5313,6 +6960,18 @@ class _$AddFavouriteProductShoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return addFavouriteProduct(this);
   }
@@ -5324,6 +6983,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -5352,6 +7013,17 @@ class _$AddFavouriteProductShoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -5363,6 +7035,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -5391,6 +7065,17 @@ class _$AddFavouriteProductShoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -5489,6 +7174,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -5497,12 +7184,14 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -5514,6 +7203,14 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -5524,6 +7221,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -5532,12 +7231,13 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -5546,6 +7246,12 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -5556,6 +7262,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -5564,12 +7272,13 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -5578,6 +7287,12 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -5593,6 +7308,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -5626,6 +7343,18 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -5637,6 +7366,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -5665,6 +7396,17 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -5676,6 +7418,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -5704,6 +7448,17 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -5773,6 +7528,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -5781,12 +7538,14 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -5798,6 +7557,14 @@ class _$AddProductToSoppingCartInfoEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return addProductToSoppingCartInfo();
   }
@@ -5808,6 +7575,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -5816,12 +7585,13 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -5830,6 +7600,12 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return addProductToSoppingCartInfo?.call();
   }
@@ -5840,6 +7616,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -5848,12 +7626,13 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -5862,6 +7641,12 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCartInfo != null) {
@@ -5877,6 +7662,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -5910,6 +7697,18 @@ class _$AddProductToSoppingCartInfoEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return addProductToSoppingCartInfo(this);
   }
@@ -5921,6 +7720,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -5949,6 +7750,17 @@ class _$AddProductToSoppingCartInfoEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return addProductToSoppingCartInfo?.call(this);
   }
@@ -5960,6 +7772,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -5988,6 +7802,17 @@ class _$AddProductToSoppingCartInfoEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCartInfo != null) {
@@ -6086,6 +7911,8 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -6094,12 +7921,14 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -6111,6 +7940,14 @@ class _$CheckProductToSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return checkProductToSoppingCart(size);
   }
@@ -6121,6 +7958,8 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -6129,12 +7968,13 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -6143,6 +7983,12 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return checkProductToSoppingCart?.call(size);
   }
@@ -6153,6 +7999,8 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -6161,12 +8009,13 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -6175,6 +8024,12 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -6190,6 +8045,8 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -6223,6 +8080,18 @@ class _$CheckProductToSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return checkProductToSoppingCart(this);
   }
@@ -6234,6 +8103,8 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -6262,6 +8133,17 @@ class _$CheckProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -6273,6 +8155,8 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -6301,6 +8185,17 @@ class _$CheckProductToSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -6409,6 +8304,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -6417,12 +8314,14 @@ class _$ChangeSizeProductSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -6434,6 +8333,14 @@ class _$ChangeSizeProductSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return changeSizeProduct(selectSizeProduct);
   }
@@ -6444,6 +8351,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -6452,12 +8361,13 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -6466,6 +8376,12 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return changeSizeProduct?.call(selectSizeProduct);
   }
@@ -6476,6 +8392,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -6484,12 +8402,13 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -6498,6 +8417,12 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -6513,6 +8438,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -6546,6 +8473,18 @@ class _$ChangeSizeProductSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return changeSizeProduct(this);
   }
@@ -6557,6 +8496,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -6585,6 +8526,17 @@ class _$ChangeSizeProductSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -6596,6 +8548,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -6624,6 +8578,17 @@ class _$ChangeSizeProductSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -6692,6 +8657,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -6700,12 +8667,14 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -6717,6 +8686,14 @@ class _$OpenAuthModelSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return openAuthModel();
   }
@@ -6727,6 +8704,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -6735,12 +8714,13 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -6749,6 +8729,12 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return openAuthModel?.call();
   }
@@ -6759,6 +8745,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -6767,12 +8755,13 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -6781,6 +8770,12 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (openAuthModel != null) {
@@ -6796,6 +8791,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -6829,6 +8826,18 @@ class _$OpenAuthModelSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return openAuthModel(this);
   }
@@ -6840,6 +8849,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -6868,6 +8879,17 @@ class _$OpenAuthModelSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return openAuthModel?.call(this);
   }
@@ -6879,6 +8901,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -6907,6 +8931,17 @@ class _$OpenAuthModelSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (openAuthModel != null) {
@@ -6968,6 +9003,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
@@ -6976,12 +9013,14 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function() initGiftCard,
     required TResult Function(String number, String pin) giftCard,
     required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
-    required TResult Function(int delivery) delivery,
+    required TResult Function(int delivery, String cityId) delivery,
     required TResult Function(String promoCode, String uid) promoCode,
     required TResult Function() removePromoCode,
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
-    required TResult Function(String code, bool? isUpdate) getInfoProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
         addFavouriteProduct,
@@ -6993,6 +9032,14 @@ class _$CloseAuthModelSoppingCartEventImpl
         changeSizeProduct,
     required TResult Function() openAuthModel,
     required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
   }) {
     return closeAuthModel();
   }
@@ -7003,6 +9050,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
@@ -7011,12 +9060,13 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function()? initGiftCard,
     TResult? Function(String number, String pin)? giftCard,
     TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult? Function(int delivery)? delivery,
+    TResult? Function(int delivery, String cityId)? delivery,
     TResult? Function(String promoCode, String uid)? promoCode,
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
@@ -7025,6 +9075,12 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? openAuthModel,
     TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
   }) {
     return closeAuthModel?.call();
   }
@@ -7035,6 +9091,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
@@ -7043,12 +9101,13 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function()? initGiftCard,
     TResult Function(String number, String pin)? giftCard,
     TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
-    TResult Function(int delivery)? delivery,
+    TResult Function(int delivery, String cityId)? delivery,
     TResult Function(String promoCode, String uid)? promoCode,
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, bool? isUpdate)? getInfoProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
@@ -7057,6 +9116,12 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? openAuthModel,
     TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (closeAuthModel != null) {
@@ -7072,6 +9137,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
     required TResult Function(AddProductToSoppingCartEvent value)
         addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
     required TResult Function(DeleteProductToSoppingCartEvent value)
         deleteProductToSoppingCart,
     required TResult Function(UpdateProductToSoppingCartEvent value)
@@ -7105,6 +9172,18 @@ class _$CloseAuthModelSoppingCartEventImpl
         openAuthModel,
     required TResult Function(CloseAuthModelSoppingCartEvent value)
         closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
   }) {
     return closeAuthModel(this);
   }
@@ -7116,6 +9195,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult? Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult? Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult? Function(UpdateProductToSoppingCartEvent value)?
@@ -7144,6 +9225,17 @@ class _$CloseAuthModelSoppingCartEventImpl
         changeSizeProduct,
     TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
   }) {
     return closeAuthModel?.call(this);
   }
@@ -7155,6 +9247,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
     TResult Function(AddProductToSoppingCartEvent value)?
         addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
     TResult Function(DeleteProductToSoppingCartEvent value)?
         deleteProductToSoppingCart,
     TResult Function(UpdateProductToSoppingCartEvent value)?
@@ -7183,6 +9277,17 @@ class _$CloseAuthModelSoppingCartEventImpl
         changeSizeProduct,
     TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
     TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
     required TResult orElse(),
   }) {
     if (closeAuthModel != null) {
@@ -7198,6 +9303,2308 @@ abstract class CloseAuthModelSoppingCartEvent implements ShoppingCartEvent {
 }
 
 /// @nodoc
+abstract class _$$ChangeReceivingTypeSoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangeReceivingTypeSoppingCartEventImplCopyWith(
+          _$ChangeReceivingTypeSoppingCartEventImpl value,
+          $Res Function(_$ChangeReceivingTypeSoppingCartEventImpl) then) =
+      __$$ChangeReceivingTypeSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String receivingType});
+}
+
+/// @nodoc
+class __$$ChangeReceivingTypeSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangeReceivingTypeSoppingCartEventImpl>
+    implements _$$ChangeReceivingTypeSoppingCartEventImplCopyWith<$Res> {
+  __$$ChangeReceivingTypeSoppingCartEventImplCopyWithImpl(
+      _$ChangeReceivingTypeSoppingCartEventImpl _value,
+      $Res Function(_$ChangeReceivingTypeSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? receivingType = null,
+  }) {
+    return _then(_$ChangeReceivingTypeSoppingCartEventImpl(
+      receivingType: null == receivingType
+          ? _value.receivingType
+          : receivingType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeReceivingTypeSoppingCartEventImpl
+    implements ChangeReceivingTypeSoppingCartEvent {
+  const _$ChangeReceivingTypeSoppingCartEventImpl(
+      {required this.receivingType});
+
+  @override
+  final String receivingType;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changeReceivingType(receivingType: $receivingType)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeReceivingTypeSoppingCartEventImpl &&
+            (identical(other.receivingType, receivingType) ||
+                other.receivingType == receivingType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, receivingType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeReceivingTypeSoppingCartEventImplCopyWith<
+          _$ChangeReceivingTypeSoppingCartEventImpl>
+      get copyWith => __$$ChangeReceivingTypeSoppingCartEventImplCopyWithImpl<
+          _$ChangeReceivingTypeSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return changeReceivingType(receivingType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return changeReceivingType?.call(receivingType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeReceivingType != null) {
+      return changeReceivingType(receivingType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return changeReceivingType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return changeReceivingType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeReceivingType != null) {
+      return changeReceivingType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeReceivingTypeSoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory ChangeReceivingTypeSoppingCartEvent(
+          {required final String receivingType}) =
+      _$ChangeReceivingTypeSoppingCartEventImpl;
+
+  String get receivingType;
+  @JsonKey(ignore: true)
+  _$$ChangeReceivingTypeSoppingCartEventImplCopyWith<
+          _$ChangeReceivingTypeSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith(
+          _$ChangeUidPickUpPointSoppingCartEventImpl value,
+          $Res Function(_$ChangeUidPickUpPointSoppingCartEventImpl) then) =
+      __$$ChangeUidPickUpPointSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String uidPickUpPoint});
+}
+
+/// @nodoc
+class __$$ChangeUidPickUpPointSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangeUidPickUpPointSoppingCartEventImpl>
+    implements _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith<$Res> {
+  __$$ChangeUidPickUpPointSoppingCartEventImplCopyWithImpl(
+      _$ChangeUidPickUpPointSoppingCartEventImpl _value,
+      $Res Function(_$ChangeUidPickUpPointSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uidPickUpPoint = null,
+  }) {
+    return _then(_$ChangeUidPickUpPointSoppingCartEventImpl(
+      uidPickUpPoint: null == uidPickUpPoint
+          ? _value.uidPickUpPoint
+          : uidPickUpPoint // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeUidPickUpPointSoppingCartEventImpl
+    implements ChangeUidPickUpPointSoppingCartEvent {
+  const _$ChangeUidPickUpPointSoppingCartEventImpl(
+      {required this.uidPickUpPoint});
+
+  @override
+  final String uidPickUpPoint;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changeUidPickUpPoint(uidPickUpPoint: $uidPickUpPoint)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeUidPickUpPointSoppingCartEventImpl &&
+            (identical(other.uidPickUpPoint, uidPickUpPoint) ||
+                other.uidPickUpPoint == uidPickUpPoint));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, uidPickUpPoint);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith<
+          _$ChangeUidPickUpPointSoppingCartEventImpl>
+      get copyWith => __$$ChangeUidPickUpPointSoppingCartEventImplCopyWithImpl<
+          _$ChangeUidPickUpPointSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return changeUidPickUpPoint(uidPickUpPoint);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return changeUidPickUpPoint?.call(uidPickUpPoint);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeUidPickUpPoint != null) {
+      return changeUidPickUpPoint(uidPickUpPoint);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return changeUidPickUpPoint(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return changeUidPickUpPoint?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeUidPickUpPoint != null) {
+      return changeUidPickUpPoint(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeUidPickUpPointSoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory ChangeUidPickUpPointSoppingCartEvent(
+          {required final String uidPickUpPoint}) =
+      _$ChangeUidPickUpPointSoppingCartEventImpl;
+
+  String get uidPickUpPoint;
+  @JsonKey(ignore: true)
+  _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith<
+          _$ChangeUidPickUpPointSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeAddressSoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangeAddressSoppingCartEventImplCopyWith(
+          _$ChangeAddressSoppingCartEventImpl value,
+          $Res Function(_$ChangeAddressSoppingCartEventImpl) then) =
+      __$$ChangeAddressSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String address});
+}
+
+/// @nodoc
+class __$$ChangeAddressSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangeAddressSoppingCartEventImpl>
+    implements _$$ChangeAddressSoppingCartEventImplCopyWith<$Res> {
+  __$$ChangeAddressSoppingCartEventImplCopyWithImpl(
+      _$ChangeAddressSoppingCartEventImpl _value,
+      $Res Function(_$ChangeAddressSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? address = null,
+  }) {
+    return _then(_$ChangeAddressSoppingCartEventImpl(
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeAddressSoppingCartEventImpl
+    implements ChangeAddressSoppingCartEvent {
+  const _$ChangeAddressSoppingCartEventImpl({required this.address});
+
+  @override
+  final String address;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changeAddress(address: $address)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeAddressSoppingCartEventImpl &&
+            (identical(other.address, address) || other.address == address));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, address);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeAddressSoppingCartEventImplCopyWith<
+          _$ChangeAddressSoppingCartEventImpl>
+      get copyWith => __$$ChangeAddressSoppingCartEventImplCopyWithImpl<
+          _$ChangeAddressSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return changeAddress(address);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return changeAddress?.call(address);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeAddress != null) {
+      return changeAddress(address);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return changeAddress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return changeAddress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeAddress != null) {
+      return changeAddress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeAddressSoppingCartEvent implements ShoppingCartEvent {
+  const factory ChangeAddressSoppingCartEvent({required final String address}) =
+      _$ChangeAddressSoppingCartEventImpl;
+
+  String get address;
+  @JsonKey(ignore: true)
+  _$$ChangeAddressSoppingCartEventImplCopyWith<
+          _$ChangeAddressSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeAddressDeliverySoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangeAddressDeliverySoppingCartEventImplCopyWith(
+          _$ChangeAddressDeliverySoppingCartEventImpl value,
+          $Res Function(_$ChangeAddressDeliverySoppingCartEventImpl) then) =
+      __$$ChangeAddressDeliverySoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BasketAddress addressDelivery});
+}
+
+/// @nodoc
+class __$$ChangeAddressDeliverySoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangeAddressDeliverySoppingCartEventImpl>
+    implements _$$ChangeAddressDeliverySoppingCartEventImplCopyWith<$Res> {
+  __$$ChangeAddressDeliverySoppingCartEventImplCopyWithImpl(
+      _$ChangeAddressDeliverySoppingCartEventImpl _value,
+      $Res Function(_$ChangeAddressDeliverySoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? addressDelivery = null,
+  }) {
+    return _then(_$ChangeAddressDeliverySoppingCartEventImpl(
+      addressDelivery: null == addressDelivery
+          ? _value.addressDelivery
+          : addressDelivery // ignore: cast_nullable_to_non_nullable
+              as BasketAddress,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeAddressDeliverySoppingCartEventImpl
+    implements ChangeAddressDeliverySoppingCartEvent {
+  const _$ChangeAddressDeliverySoppingCartEventImpl(
+      {required this.addressDelivery});
+
+  @override
+  final BasketAddress addressDelivery;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changeAddressDelivery(addressDelivery: $addressDelivery)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeAddressDeliverySoppingCartEventImpl &&
+            (identical(other.addressDelivery, addressDelivery) ||
+                other.addressDelivery == addressDelivery));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, addressDelivery);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeAddressDeliverySoppingCartEventImplCopyWith<
+          _$ChangeAddressDeliverySoppingCartEventImpl>
+      get copyWith => __$$ChangeAddressDeliverySoppingCartEventImplCopyWithImpl<
+          _$ChangeAddressDeliverySoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return changeAddressDelivery(addressDelivery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return changeAddressDelivery?.call(addressDelivery);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeAddressDelivery != null) {
+      return changeAddressDelivery(addressDelivery);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return changeAddressDelivery(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return changeAddressDelivery?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeAddressDelivery != null) {
+      return changeAddressDelivery(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeAddressDeliverySoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory ChangeAddressDeliverySoppingCartEvent(
+          {required final BasketAddress addressDelivery}) =
+      _$ChangeAddressDeliverySoppingCartEventImpl;
+
+  BasketAddress get addressDelivery;
+  @JsonKey(ignore: true)
+  _$$ChangeAddressDeliverySoppingCartEventImplCopyWith<
+          _$ChangeAddressDeliverySoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangePaymentTypeSoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangePaymentTypeSoppingCartEventImplCopyWith(
+          _$ChangePaymentTypeSoppingCartEventImpl value,
+          $Res Function(_$ChangePaymentTypeSoppingCartEventImpl) then) =
+      __$$ChangePaymentTypeSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String paymentId, String typePay});
+}
+
+/// @nodoc
+class __$$ChangePaymentTypeSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangePaymentTypeSoppingCartEventImpl>
+    implements _$$ChangePaymentTypeSoppingCartEventImplCopyWith<$Res> {
+  __$$ChangePaymentTypeSoppingCartEventImplCopyWithImpl(
+      _$ChangePaymentTypeSoppingCartEventImpl _value,
+      $Res Function(_$ChangePaymentTypeSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? paymentId = null,
+    Object? typePay = null,
+  }) {
+    return _then(_$ChangePaymentTypeSoppingCartEventImpl(
+      paymentId: null == paymentId
+          ? _value.paymentId
+          : paymentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      typePay: null == typePay
+          ? _value.typePay
+          : typePay // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangePaymentTypeSoppingCartEventImpl
+    implements ChangePaymentTypeSoppingCartEvent {
+  const _$ChangePaymentTypeSoppingCartEventImpl(
+      {required this.paymentId, required this.typePay});
+
+  @override
+  final String paymentId;
+  @override
+  final String typePay;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changePaymentType(paymentId: $paymentId, typePay: $typePay)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePaymentTypeSoppingCartEventImpl &&
+            (identical(other.paymentId, paymentId) ||
+                other.paymentId == paymentId) &&
+            (identical(other.typePay, typePay) || other.typePay == typePay));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, paymentId, typePay);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePaymentTypeSoppingCartEventImplCopyWith<
+          _$ChangePaymentTypeSoppingCartEventImpl>
+      get copyWith => __$$ChangePaymentTypeSoppingCartEventImplCopyWithImpl<
+          _$ChangePaymentTypeSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return changePaymentType(paymentId, typePay);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return changePaymentType?.call(paymentId, typePay);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changePaymentType != null) {
+      return changePaymentType(paymentId, typePay);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return changePaymentType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return changePaymentType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changePaymentType != null) {
+      return changePaymentType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangePaymentTypeSoppingCartEvent implements ShoppingCartEvent {
+  const factory ChangePaymentTypeSoppingCartEvent(
+      {required final String paymentId,
+      required final String typePay}) = _$ChangePaymentTypeSoppingCartEventImpl;
+
+  String get paymentId;
+  String get typePay;
+  @JsonKey(ignore: true)
+  _$$ChangePaymentTypeSoppingCartEventImplCopyWith<
+          _$ChangePaymentTypeSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith<$Res> {
+  factory _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith(
+          _$ChangeTitlePromocodeSoppingCartEventImpl value,
+          $Res Function(_$ChangeTitlePromocodeSoppingCartEventImpl) then) =
+      __$$ChangeTitlePromocodeSoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String titlePromocode});
+}
+
+/// @nodoc
+class __$$ChangeTitlePromocodeSoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$ChangeTitlePromocodeSoppingCartEventImpl>
+    implements _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith<$Res> {
+  __$$ChangeTitlePromocodeSoppingCartEventImplCopyWithImpl(
+      _$ChangeTitlePromocodeSoppingCartEventImpl _value,
+      $Res Function(_$ChangeTitlePromocodeSoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? titlePromocode = null,
+  }) {
+    return _then(_$ChangeTitlePromocodeSoppingCartEventImpl(
+      titlePromocode: null == titlePromocode
+          ? _value.titlePromocode
+          : titlePromocode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeTitlePromocodeSoppingCartEventImpl
+    implements ChangeTitlePromocodeSoppingCartEvent {
+  const _$ChangeTitlePromocodeSoppingCartEventImpl(
+      {required this.titlePromocode});
+
+  @override
+  final String titlePromocode;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.changeTitlePromocode(titlePromocode: $titlePromocode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeTitlePromocodeSoppingCartEventImpl &&
+            (identical(other.titlePromocode, titlePromocode) ||
+                other.titlePromocode == titlePromocode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, titlePromocode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith<
+          _$ChangeTitlePromocodeSoppingCartEventImpl>
+      get copyWith => __$$ChangeTitlePromocodeSoppingCartEventImplCopyWithImpl<
+          _$ChangeTitlePromocodeSoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+  }) {
+    return changeTitlePromocode(titlePromocode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+  }) {
+    return changeTitlePromocode?.call(titlePromocode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeTitlePromocode != null) {
+      return changeTitlePromocode(titlePromocode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+  }) {
+    return changeTitlePromocode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+  }) {
+    return changeTitlePromocode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    required TResult orElse(),
+  }) {
+    if (changeTitlePromocode != null) {
+      return changeTitlePromocode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeTitlePromocodeSoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory ChangeTitlePromocodeSoppingCartEvent(
+          {required final String titlePromocode}) =
+      _$ChangeTitlePromocodeSoppingCartEventImpl;
+
+  String get titlePromocode;
+  @JsonKey(ignore: true)
+  _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith<
+          _$ChangeTitlePromocodeSoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ShoppingCartState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -7209,7 +11616,6 @@ mixin _$ShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7220,8 +11626,17 @@ mixin _$ShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7251,7 +11666,6 @@ mixin _$ShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7262,8 +11676,17 @@ mixin _$ShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7293,7 +11716,6 @@ mixin _$ShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7304,8 +11726,17 @@ mixin _$ShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7423,7 +11854,6 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7434,8 +11864,17 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7468,7 +11907,6 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7479,8 +11917,17 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7513,7 +11960,6 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7524,8 +11970,17 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7647,7 +12102,6 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7658,8 +12112,17 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7692,7 +12155,6 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7703,8 +12165,17 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7737,7 +12208,6 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7748,8 +12218,17 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7900,7 +12379,6 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7911,8 +12389,17 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7945,7 +12432,6 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -7956,8 +12442,17 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -7990,7 +12485,6 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -8001,8 +12495,17 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -8095,7 +12598,6 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       List<PaymentItemDataModel> payments,
       String promoCodeMessage,
       int numberProducts,
-      int delivery,
       int amountPaid,
       int giftCards,
       int bonuses,
@@ -8106,8 +12608,17 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       bool isLoadCreateOrder,
       String promoCode,
       String pickup,
+      String receivingType,
       BoutiquesDataModel boutiques,
+      bool isUponReceipt,
       List<BasketSertDeliveryRequest> listGiftCard,
+      String address,
+      BasketAddress addressDelivery,
+      String uidPickUpPoint,
+      String paymentId,
+      String typePay,
+      String titlePromocode,
+      int? delivery,
       String? creatOrderMessage,
       PaymentBonusDataModel? paymentBonus,
       PaymentBonusDataModel? paymentGift,
@@ -8151,7 +12662,6 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? payments = null,
     Object? promoCodeMessage = null,
     Object? numberProducts = null,
-    Object? delivery = null,
     Object? amountPaid = null,
     Object? giftCards = null,
     Object? bonuses = null,
@@ -8162,8 +12672,17 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? isLoadCreateOrder = null,
     Object? promoCode = null,
     Object? pickup = null,
+    Object? receivingType = null,
     Object? boutiques = null,
+    Object? isUponReceipt = null,
     Object? listGiftCard = null,
+    Object? address = null,
+    Object? addressDelivery = null,
+    Object? uidPickUpPoint = null,
+    Object? paymentId = null,
+    Object? typePay = null,
+    Object? titlePromocode = null,
+    Object? delivery = freezed,
     Object? creatOrderMessage = freezed,
     Object? paymentBonus = freezed,
     Object? paymentGift = freezed,
@@ -8197,10 +12716,6 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
       numberProducts: null == numberProducts
           ? _value.numberProducts
           : numberProducts // ignore: cast_nullable_to_non_nullable
-              as int,
-      delivery: null == delivery
-          ? _value.delivery
-          : delivery // ignore: cast_nullable_to_non_nullable
               as int,
       amountPaid: null == amountPaid
           ? _value.amountPaid
@@ -8242,14 +12757,50 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.pickup
           : pickup // ignore: cast_nullable_to_non_nullable
               as String,
+      receivingType: null == receivingType
+          ? _value.receivingType
+          : receivingType // ignore: cast_nullable_to_non_nullable
+              as String,
       boutiques: null == boutiques
           ? _value.boutiques
           : boutiques // ignore: cast_nullable_to_non_nullable
               as BoutiquesDataModel,
+      isUponReceipt: null == isUponReceipt
+          ? _value.isUponReceipt
+          : isUponReceipt // ignore: cast_nullable_to_non_nullable
+              as bool,
       listGiftCard: null == listGiftCard
           ? _value._listGiftCard
           : listGiftCard // ignore: cast_nullable_to_non_nullable
               as List<BasketSertDeliveryRequest>,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      addressDelivery: null == addressDelivery
+          ? _value.addressDelivery
+          : addressDelivery // ignore: cast_nullable_to_non_nullable
+              as BasketAddress,
+      uidPickUpPoint: null == uidPickUpPoint
+          ? _value.uidPickUpPoint
+          : uidPickUpPoint // ignore: cast_nullable_to_non_nullable
+              as String,
+      paymentId: null == paymentId
+          ? _value.paymentId
+          : paymentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      typePay: null == typePay
+          ? _value.typePay
+          : typePay // ignore: cast_nullable_to_non_nullable
+              as String,
+      titlePromocode: null == titlePromocode
+          ? _value.titlePromocode
+          : titlePromocode // ignore: cast_nullable_to_non_nullable
+              as String,
+      delivery: freezed == delivery
+          ? _value.delivery
+          : delivery // ignore: cast_nullable_to_non_nullable
+              as int?,
       creatOrderMessage: freezed == creatOrderMessage
           ? _value.creatOrderMessage
           : creatOrderMessage // ignore: cast_nullable_to_non_nullable
@@ -8405,7 +12956,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required final List<PaymentItemDataModel> payments,
       required this.promoCodeMessage,
       required this.numberProducts,
-      required this.delivery,
       required this.amountPaid,
       required this.giftCards,
       required this.bonuses,
@@ -8416,8 +12966,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required this.isLoadCreateOrder,
       required this.promoCode,
       required this.pickup,
+      required this.receivingType,
       required this.boutiques,
+      required this.isUponReceipt,
       required final List<BasketSertDeliveryRequest> listGiftCard,
+      required this.address,
+      required this.addressDelivery,
+      required this.uidPickUpPoint,
+      required this.paymentId,
+      required this.typePay,
+      required this.titlePromocode,
+      this.delivery,
       this.creatOrderMessage,
       this.paymentBonus,
       this.paymentGift,
@@ -8458,8 +13017,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   @override
   final int numberProducts;
   @override
-  final int delivery;
-  @override
   final int amountPaid;
   @override
   final int giftCards;
@@ -8480,7 +13037,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   @override
   final String pickup;
   @override
+  final String receivingType;
+  @override
   final BoutiquesDataModel boutiques;
+  @override
+  final bool isUponReceipt;
   final List<BasketSertDeliveryRequest> _listGiftCard;
   @override
   List<BasketSertDeliveryRequest> get listGiftCard {
@@ -8489,6 +13050,20 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     return EqualUnmodifiableListView(_listGiftCard);
   }
 
+  @override
+  final String address;
+  @override
+  final BasketAddress addressDelivery;
+  @override
+  final String uidPickUpPoint;
+  @override
+  final String paymentId;
+  @override
+  final String typePay;
+  @override
+  final String titlePromocode;
+  @override
+  final int? delivery;
   @override
   final String? creatOrderMessage;
   @override
@@ -8566,7 +13141,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, delivery: $delivery, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, boutiques: $boutiques, listGiftCard: $listGiftCard, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -8581,8 +13156,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 other.promoCodeMessage == promoCodeMessage) &&
             (identical(other.numberProducts, numberProducts) ||
                 other.numberProducts == numberProducts) &&
-            (identical(other.delivery, delivery) ||
-                other.delivery == delivery) &&
             (identical(other.amountPaid, amountPaid) ||
                 other.amountPaid == amountPaid) &&
             (identical(other.giftCards, giftCards) ||
@@ -8601,10 +13174,26 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             (identical(other.promoCode, promoCode) ||
                 other.promoCode == promoCode) &&
             (identical(other.pickup, pickup) || other.pickup == pickup) &&
+            (identical(other.receivingType, receivingType) ||
+                other.receivingType == receivingType) &&
             (identical(other.boutiques, boutiques) ||
                 other.boutiques == boutiques) &&
+            (identical(other.isUponReceipt, isUponReceipt) ||
+                other.isUponReceipt == isUponReceipt) &&
             const DeepCollectionEquality()
                 .equals(other._listGiftCard, _listGiftCard) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.addressDelivery, addressDelivery) ||
+                other.addressDelivery == addressDelivery) &&
+            (identical(other.uidPickUpPoint, uidPickUpPoint) ||
+                other.uidPickUpPoint == uidPickUpPoint) &&
+            (identical(other.paymentId, paymentId) ||
+                other.paymentId == paymentId) &&
+            (identical(other.typePay, typePay) || other.typePay == typePay) &&
+            (identical(other.titlePromocode, titlePromocode) ||
+                other.titlePromocode == titlePromocode) &&
+            (identical(other.delivery, delivery) ||
+                other.delivery == delivery) &&
             (identical(other.creatOrderMessage, creatOrderMessage) ||
                 other.creatOrderMessage == creatOrderMessage) &&
             (identical(other.paymentBonus, paymentBonus) ||
@@ -8645,7 +13234,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         const DeepCollectionEquality().hash(_payments),
         promoCodeMessage,
         numberProducts,
-        delivery,
         amountPaid,
         giftCards,
         bonuses,
@@ -8656,8 +13244,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isLoadCreateOrder,
         promoCode,
         pickup,
+        receivingType,
         boutiques,
+        isUponReceipt,
         const DeepCollectionEquality().hash(_listGiftCard),
+        address,
+        addressDelivery,
+        uidPickUpPoint,
+        paymentId,
+        typePay,
+        titlePromocode,
+        delivery,
         creatOrderMessage,
         paymentBonus,
         paymentGift,
@@ -8694,7 +13291,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -8705,8 +13301,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -8730,7 +13335,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         payments,
         promoCodeMessage,
         numberProducts,
-        delivery,
         amountPaid,
         giftCards,
         bonuses,
@@ -8741,8 +13345,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isLoadCreateOrder,
         promoCode,
         pickup,
+        receivingType,
         boutiques,
+        isUponReceipt,
         listGiftCard,
+        address,
+        addressDelivery,
+        uidPickUpPoint,
+        paymentId,
+        typePay,
+        titlePromocode,
+        delivery,
         creatOrderMessage,
         paymentBonus,
         paymentGift,
@@ -8772,7 +13385,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -8783,8 +13395,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -8808,7 +13429,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         payments,
         promoCodeMessage,
         numberProducts,
-        delivery,
         amountPaid,
         giftCards,
         bonuses,
@@ -8819,8 +13439,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isLoadCreateOrder,
         promoCode,
         pickup,
+        receivingType,
         boutiques,
+        isUponReceipt,
         listGiftCard,
+        address,
+        addressDelivery,
+        uidPickUpPoint,
+        paymentId,
+        typePay,
+        titlePromocode,
+        delivery,
         creatOrderMessage,
         paymentBonus,
         paymentGift,
@@ -8850,7 +13479,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<PaymentItemDataModel> payments,
             String promoCodeMessage,
             int numberProducts,
-            int delivery,
             int amountPaid,
             int giftCards,
             int bonuses,
@@ -8861,8 +13489,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool isLoadCreateOrder,
             String promoCode,
             String pickup,
+            String receivingType,
             BoutiquesDataModel boutiques,
+            bool isUponReceipt,
             List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
             String? creatOrderMessage,
             PaymentBonusDataModel? paymentBonus,
             PaymentBonusDataModel? paymentGift,
@@ -8888,7 +13525,6 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           payments,
           promoCodeMessage,
           numberProducts,
-          delivery,
           amountPaid,
           giftCards,
           bonuses,
@@ -8899,8 +13535,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           isLoadCreateOrder,
           promoCode,
           pickup,
+          receivingType,
           boutiques,
+          isUponReceipt,
           listGiftCard,
+          address,
+          addressDelivery,
+          uidPickUpPoint,
+          paymentId,
+          typePay,
+          titlePromocode,
+          delivery,
           creatOrderMessage,
           paymentBonus,
           paymentGift,
@@ -8969,7 +13614,6 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final List<PaymentItemDataModel> payments,
           required final String promoCodeMessage,
           required final int numberProducts,
-          required final int delivery,
           required final int amountPaid,
           required final int giftCards,
           required final int bonuses,
@@ -8980,8 +13624,17 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final bool isLoadCreateOrder,
           required final String promoCode,
           required final String pickup,
+          required final String receivingType,
           required final BoutiquesDataModel boutiques,
+          required final bool isUponReceipt,
           required final List<BasketSertDeliveryRequest> listGiftCard,
+          required final String address,
+          required final BasketAddress addressDelivery,
+          required final String uidPickUpPoint,
+          required final String paymentId,
+          required final String typePay,
+          required final String titlePromocode,
+          final int? delivery,
           final String? creatOrderMessage,
           final PaymentBonusDataModel? paymentBonus,
           final PaymentBonusDataModel? paymentGift,
@@ -9004,7 +13657,6 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   List<PaymentItemDataModel> get payments;
   String get promoCodeMessage;
   int get numberProducts;
-  int get delivery;
   int get amountPaid;
   int get giftCards;
   int get bonuses;
@@ -9015,8 +13667,17 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   bool get isLoadCreateOrder;
   String get promoCode;
   String get pickup;
+  String get receivingType;
   BoutiquesDataModel get boutiques;
+  bool get isUponReceipt;
   List<BasketSertDeliveryRequest> get listGiftCard;
+  String get address;
+  BasketAddress get addressDelivery;
+  String get uidPickUpPoint;
+  String get paymentId;
+  String get typePay;
+  String get titlePromocode;
+  int? get delivery;
   String? get creatOrderMessage;
   PaymentBonusDataModel? get paymentBonus;
   PaymentBonusDataModel? get paymentGift;

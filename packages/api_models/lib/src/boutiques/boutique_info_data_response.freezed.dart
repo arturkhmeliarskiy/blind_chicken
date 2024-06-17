@@ -26,6 +26,7 @@ mixin _$BoutiqueInfoDataResponse {
   @JsonKey(name: 'foto_detail')
   List<BoutiqueFotoDetailResponse>? get fotoDetail =>
       throw _privateConstructorUsedError;
+  List<String>? get video => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get caption => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
@@ -57,6 +58,7 @@ abstract class $BoutiqueInfoDataResponseCopyWith<$Res> {
       {@JsonKey(name: 'foto_min_list') String? fotoMinList,
       @JsonKey(name: 'foto_detail')
       List<BoutiqueFotoDetailResponse>? fotoDetail,
+      List<String>? video,
       String? url,
       String? caption,
       String? address,
@@ -87,6 +89,7 @@ class _$BoutiqueInfoDataResponseCopyWithImpl<$Res,
   $Res call({
     Object? fotoMinList = freezed,
     Object? fotoDetail = freezed,
+    Object? video = freezed,
     Object? url = freezed,
     Object? caption = freezed,
     Object? address = freezed,
@@ -106,6 +109,10 @@ class _$BoutiqueInfoDataResponseCopyWithImpl<$Res,
           ? _value.fotoDetail
           : fotoDetail // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueFotoDetailResponse>?,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -172,6 +179,7 @@ abstract class _$$BoutiqueInfoDataResponseImplCopyWith<$Res>
       {@JsonKey(name: 'foto_min_list') String? fotoMinList,
       @JsonKey(name: 'foto_detail')
       List<BoutiqueFotoDetailResponse>? fotoDetail,
+      List<String>? video,
       String? url,
       String? caption,
       String? address,
@@ -202,6 +210,7 @@ class __$$BoutiqueInfoDataResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? fotoMinList = freezed,
     Object? fotoDetail = freezed,
+    Object? video = freezed,
     Object? url = freezed,
     Object? caption = freezed,
     Object? address = freezed,
@@ -221,6 +230,10 @@ class __$$BoutiqueInfoDataResponseImplCopyWithImpl<$Res>
           ? _value._fotoDetail
           : fotoDetail // ignore: cast_nullable_to_non_nullable
               as List<BoutiqueFotoDetailResponse>?,
+      video: freezed == video
+          ? _value._video
+          : video // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -268,6 +281,7 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
       {@JsonKey(name: 'foto_min_list') this.fotoMinList,
       @JsonKey(name: 'foto_detail')
       final List<BoutiqueFotoDetailResponse>? fotoDetail,
+      final List<String>? video,
       this.url,
       this.caption,
       this.address,
@@ -279,6 +293,7 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
       @JsonKey(name: 'name_short') this.nameShort,
       this.name})
       : _fotoDetail = fotoDetail,
+        _video = video,
         super._();
 
   factory _$BoutiqueInfoDataResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -294,6 +309,16 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
     final value = _fotoDetail;
     if (value == null) return null;
     if (_fotoDetail is EqualUnmodifiableListView) return _fotoDetail;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _video;
+  @override
+  List<String>? get video {
+    final value = _video;
+    if (value == null) return null;
+    if (_video is EqualUnmodifiableListView) return _video;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -323,7 +348,7 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
 
   @override
   String toString() {
-    return 'BoutiqueInfoDataResponse(fotoMinList: $fotoMinList, fotoDetail: $fotoDetail, url: $url, caption: $caption, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, addressFull: $addressFull, nameShort: $nameShort, name: $name)';
+    return 'BoutiqueInfoDataResponse(fotoMinList: $fotoMinList, fotoDetail: $fotoDetail, video: $video, url: $url, caption: $caption, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, addressFull: $addressFull, nameShort: $nameShort, name: $name)';
   }
 
   @override
@@ -335,6 +360,7 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
                 other.fotoMinList == fotoMinList) &&
             const DeepCollectionEquality()
                 .equals(other._fotoDetail, _fotoDetail) &&
+            const DeepCollectionEquality().equals(other._video, _video) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.caption, caption) || other.caption == caption) &&
             (identical(other.address, address) || other.address == address) &&
@@ -357,6 +383,7 @@ class _$BoutiqueInfoDataResponseImpl extends _BoutiqueInfoDataResponse {
       runtimeType,
       fotoMinList,
       const DeepCollectionEquality().hash(_fotoDetail),
+      const DeepCollectionEquality().hash(_video),
       url,
       caption,
       address,
@@ -387,6 +414,7 @@ abstract class _BoutiqueInfoDataResponse extends BoutiqueInfoDataResponse {
       {@JsonKey(name: 'foto_min_list') final String? fotoMinList,
       @JsonKey(name: 'foto_detail')
       final List<BoutiqueFotoDetailResponse>? fotoDetail,
+      final List<String>? video,
       final String? url,
       final String? caption,
       final String? address,
@@ -408,6 +436,8 @@ abstract class _BoutiqueInfoDataResponse extends BoutiqueInfoDataResponse {
   @override
   @JsonKey(name: 'foto_detail')
   List<BoutiqueFotoDetailResponse>? get fotoDetail;
+  @override
+  List<String>? get video;
   @override
   String? get url;
   @override

@@ -7,6 +7,9 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.addProductToSoppingCart({
     required BasketInfoItemDataModel item,
   }) = AddProductToSoppingCartEvent;
+  const factory ShoppingCartEvent.addOtherProductToSoppingCart({
+    required BasketInfoItemDataModel item,
+  }) = AddOtherProductToSoppingCartEvent;
   const factory ShoppingCartEvent.deleteProductToSoppingCart({
     required BasketInfoItemDataModel item,
     required int index,
@@ -26,6 +29,7 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = AddGiftCardSoppingCartEvent;
   const factory ShoppingCartEvent.delivery({
     required int delivery,
+    required String cityId,
   }) = DeliverySoppingCartEvent;
   const factory ShoppingCartEvent.promoCode({
     required String promoCode,
@@ -40,6 +44,7 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = BonusesSoppingCartEvent;
   const factory ShoppingCartEvent.getInfoProduct({
     required String code,
+    SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductShoppingCartEvent;
   const factory ShoppingCartEvent.goBackProductInfo() = GoBackProductInfoCategotyShoppingCartEvent;
@@ -59,4 +64,24 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = ChangeSizeProductSoppingCartEvent;
   const factory ShoppingCartEvent.openAuthModel() = OpenAuthModelSoppingCartEvent;
   const factory ShoppingCartEvent.closeAuthModel() = CloseAuthModelSoppingCartEvent;
+  const factory ShoppingCartEvent.changeReceivingType({
+    required String receivingType,
+  }) = ChangeReceivingTypeSoppingCartEvent;
+  const factory ShoppingCartEvent.changeUidPickUpPoint({
+    required String uidPickUpPoint,
+  }) = ChangeUidPickUpPointSoppingCartEvent;
+  const factory ShoppingCartEvent.changeAddress({
+    required String address,
+  }) = ChangeAddressSoppingCartEvent;
+  const factory ShoppingCartEvent.changeAddressDelivery({
+    required BasketAddress addressDelivery,
+  }) = ChangeAddressDeliverySoppingCartEvent;
+  const factory ShoppingCartEvent.changePaymentType({
+    required String paymentId,
+    required String typePay,
+  }) = ChangePaymentTypeSoppingCartEvent;
+  const factory ShoppingCartEvent.changeTitlePromocode({
+    required String titlePromocode,
+  }) = ChangeTitlePromocodeSoppingCartEvent;
+
 }

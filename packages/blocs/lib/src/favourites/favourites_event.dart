@@ -33,6 +33,7 @@ class FavouritesEvent with _$FavouritesEvent {
   }) = DeleteFavouriteProductFavouritesEvent;
   const factory FavouritesEvent.getInfoProduct({
     required String code,
+    SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductFavouritesEvent;
   const factory FavouritesEvent.checkButtonTop({
@@ -43,8 +44,15 @@ class FavouritesEvent with _$FavouritesEvent {
   }) = ChangeSizeProductFavouritesEvent;
   const factory FavouritesEvent.goBackProductInfo() = GoBackProductInfoCategotyFavouritesEvent;
   const factory FavouritesEvent.paginationProduct() = PaginationProductFavouritesEvent;
-  const factory FavouritesEvent.addProductToSoppingCart() = AddProductToSoppingCartFavouritesEvent;
+  const factory FavouritesEvent.addProductToSoppingCart({
+    required int code,
+  }) = AddProductToSoppingCartFavouritesEvent;
   const factory FavouritesEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
   }) = CheckProductToSoppingCartFavouritesEvent;
+  const factory FavouritesEvent.getInfoProductSize({
+    required String code,
+    required bool isShop,
+  }) = GetInfoProductSizeFavouritesEvent;
+  const factory FavouritesEvent.updateInfoProducts() = UpdateInfoProductsFavouritesEvent;
 }
