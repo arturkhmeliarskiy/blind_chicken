@@ -106,7 +106,7 @@ extension on FavouritesCatalogInfoResponse {
     return FavouritesCatalogInfoDataModel(
       r: r ?? '',
       e: e ?? '',
-      userDiscount: userDiscount ?? '',
+      userDiscount: int.parse(userDiscount ?? '0'),
       h1: h1 ?? '',
       count: count ?? '',
       countFilter: countFilter ?? '',

@@ -78,6 +78,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listSize: [],
         isLoadGetSizeProduct: false,
         codeProduct: null,
+        userDiscount: 0,
       ),
     );
   }
@@ -127,6 +128,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listSize: [],
         isLoadGetSizeProduct: false,
         codeProduct: null,
+        userDiscount: favouritesInfo.userDiscount,
       ),
     );
   }

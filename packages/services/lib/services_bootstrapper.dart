@@ -71,5 +71,8 @@ Future<void> initServices(GetIt getIt) async {
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
+    )
+    ..registerFactory(
+      () => NewsService(),
     );
 }

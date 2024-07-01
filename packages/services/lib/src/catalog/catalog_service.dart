@@ -50,6 +50,7 @@ class CatalogService {
           "tel": tel,
           "hash_token_tel": hashTokenTel,
           "parent-id": id,
+          "brands": 2,
         },
       );
       try {
@@ -160,6 +161,68 @@ class CatalogService {
         log(e.message.toString());
       }
       return CatalogResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<BrandsResponse?> getBrands({
+    required int gender,
+  }) async {
+    BrandsResponse? brandsResponse;
+    String hashTokenTel = '';
+
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = await _deviceInfoService.getDeviceId();
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/cache/app/get_brands.php',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "gender": gender,
+        },
+      );
+      log(response.data);
+
+      try {
+        final result = jsonDecode(response.data);
+        if (result['r'] == '1') {
+          brandsResponse = BrandsResponse.fromJson(result);
+        } else {
+          brandsResponse = BrandsResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        final result = jsonDecode(response.data);
+        brandsResponse = BrandsResponse(
+          errorMessage: result['e'] ?? MessageInfo.errorMessage,
+        );
+      }
+
+      return brandsResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return BrandsResponse(
         errorMessage: MessageInfo.errorMessage,
       );
     }

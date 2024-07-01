@@ -298,13 +298,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     BrandsRoute.name: (routeData) {
-      final args = routeData.argsAs<BrandsRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: BrandsScreen(
-          key: args.key,
-          typePeople: args.typePeople,
-        ),
+        child: const BrandsScreen(),
       );
     },
     SearchLocationRoute.name: (routeData) {
@@ -1692,39 +1688,16 @@ class BlindChickenCashbackAndDiscountsRouteArgs {
 
 /// generated route for
 /// [BrandsScreen]
-class BrandsRoute extends PageRouteInfo<BrandsRouteArgs> {
-  BrandsRoute({
-    Key? key,
-    required String typePeople,
-    List<PageRouteInfo>? children,
-  }) : super(
+class BrandsRoute extends PageRouteInfo<void> {
+  const BrandsRoute({List<PageRouteInfo>? children})
+      : super(
           BrandsRoute.name,
-          args: BrandsRouteArgs(
-            key: key,
-            typePeople: typePeople,
-          ),
           initialChildren: children,
         );
 
   static const String name = 'BrandsRoute';
 
-  static const PageInfo<BrandsRouteArgs> page = PageInfo<BrandsRouteArgs>(name);
-}
-
-class BrandsRouteArgs {
-  const BrandsRouteArgs({
-    this.key,
-    required this.typePeople,
-  });
-
-  final Key? key;
-
-  final String typePeople;
-
-  @override
-  String toString() {
-    return 'BrandsRouteArgs{key: $key, typePeople: $typePeople}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

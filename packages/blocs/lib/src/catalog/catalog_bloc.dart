@@ -208,6 +208,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
+
     if (isAuth) {
       favourites = await _favouritesRepository.getFavouritesProdcuts();
       favouritesProductsId = favourites.favorites.map((item) => int.parse(item)).toList();
@@ -331,6 +332,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           isLoadGetSizeProduct: false,
           codeProduct: null,
           listCatalogPath: [],
+          userDiscount: 0,
         ),
       );
     }
@@ -351,6 +353,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         pid: event.pid,
       );
 
+      List<MenuItemDataModel> listItems = menu.items.toList();
       List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
 
       MenuItemDataModel? item = event.item;
@@ -372,7 +375,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         );
       } else {
         emit(initState.copyWith(
-          menu: menu.items,
+          menu: listItems,
           pathMenu: pathMenu,
           selectedGenderIndex: event.selectedGenderIndex ?? initState.selectedGenderIndex,
           isNotification: false,
@@ -890,6 +893,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
 
       emit(initState.copyWith(
+        isAuth: isAuth,
         filter: catalogInfo.filter,
         request: request,
         catalogInfo: catalogInfo,
@@ -907,6 +911,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             (favourites?.errorMessage.isNotEmpty ?? false) || catalogInfo.errorMessage.isNotEmpty,
         errorMessage: MessageInfo.errorMessage,
         codeProduct: null,
+        userDiscount: catalogInfo.userDiscount,
       ));
     });
   }
@@ -1069,6 +1074,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         listSize: [],
         isLoadGetSizeProduct: false,
         listCatalogPath: [],
+        userDiscount: catalogInfo.userDiscount,
       ),
     );
   }
@@ -1494,19 +1500,22 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       if (listCatalogPath.isNotEmpty) {
         emit(const CatalogState.load());
+        bool isAuth = _sharedPreferencesService.getBool(
+              key: SharedPrefKeys.userAuthorized,
+            ) ??
+            false;
+        FavouritesDataModel? favourites;
+        List<int> favouritesProductsId = [];
+        List<ProductDataModel> favouritesProducts = [];
+        bool isError = false;
+        String errorMessage = '';
+        emit(const CatalogState.load());
 
         CatalogProductsRequest request = CatalogProductsRequest(
           url: listCatalogPath.last,
           sort: 'n',
         );
 
-        FavouritesDataModel? favourites;
-        List<int> favouritesProductsId = [];
-        List<ProductDataModel> favouritesProducts = [];
-        bool isAuth = _sharedPreferencesService.getBool(
-              key: SharedPrefKeys.userAuthorized,
-            ) ??
-            false;
         if (isAuth) {
           favourites = await _favouritesRepository.getFavouritesProdcuts();
           favouritesProductsId = favourites.favorites.map((item) => int.parse(item)).toList();
@@ -1518,6 +1527,11 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         final catalogInfo = await _catalogRepository.getCatalogProducts(
           request: request,
         );
+
+        if (catalogInfo.errorMessage.isNotEmpty || (favourites?.errorMessage.isNotEmpty ?? false)) {
+          isError = true;
+          errorMessage = MessageInfo.errorMessage;
+        }
 
         emit(initState.copyWith(
           filter: catalogInfo.filter,
@@ -1533,10 +1547,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           listCatalogPath: listCatalogPath,
           isNotification: false,
           isUpdateVersionApp: false,
-          isError:
-              (favourites?.errorMessage.isNotEmpty ?? false) || catalogInfo.errorMessage.isNotEmpty,
-          errorMessage: MessageInfo.errorMessage,
+          isError: isError,
+          errorMessage: errorMessage,
           codeProduct: null,
+          offset: 0,
         ));
       }
     });

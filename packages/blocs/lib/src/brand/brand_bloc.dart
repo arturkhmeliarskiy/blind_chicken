@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
+import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 
 part 'brand_bloc.freezed.dart';
@@ -8,177 +9,124 @@ part 'brand_event.dart';
 part 'brand_state.dart';
 
 class BrandBloc extends Bloc<BrandEvent, BrandState> {
-  final ConstatntsInfo _constatntsInfo;
-  Map<String, List<String>> listKeyBrands = {};
+  final CatalogRepository _catalogRepository;
 
   BrandBloc(
-    this._constatntsInfo,
+    this._catalogRepository,
   ) : super(const BrandState.init()) {
     on<BrandEvent>(
       (event, emit) => event.map<Future<void>>(
-        preloadData: (event) => _init(event, emit),
-        switchTypePeople: (event) => _switchTypePeople(event, emit),
+        getBrands: (event) => _getBrands(event, emit),
         search: (event) => _search(event, emit),
+        goBackBrandInfo: (event) => _goBackBrandInfo(event, emit),
+        switchGenderBrands: (event) => _switchGenderBrands(event, emit),
       ),
     );
   }
 
-  Future<void> _init(
-    InitBrandEvent event,
+  Future<void> _getBrands(
+    GetBrandsBrandEvent event,
     Emitter<BrandState> emit,
   ) async {
+    List<int> listBrandsPath = [];
     List<String> listTypePeople = [
       'Все',
       'Женщинам',
       'Мужчинам',
       'Детям',
     ];
-    List<String> allBrands = [];
+    List<BrandDataModel> listBrands = [];
+    List<BrandItemDataModel> allBrands = [];
+    String selectedTypePeople = '';
 
-    allBrands = [
-      ..._constatntsInfo.brandsWoman,
-      ..._constatntsInfo.brandsMan,
-      ..._constatntsInfo.brandsChilren,
-    ];
     List<CountBrand> listCountBrand = [];
-    Map<String, List<String>> listBrands = {};
 
-    allBrands.sort();
-    allBrands = allBrands.toSet().toList();
-    for (int i = 0; i < _constatntsInfo.listAlphabetAndNumber.length; i++) {
-      final brands = _getListBrand(_constatntsInfo.listAlphabetAndNumber[i], allBrands);
-      if (brands.isNotEmpty) {
-        listBrands[_constatntsInfo.listAlphabetAndNumber[i]] = brands;
-        final calculatePosition = _getCalculatePosition(_constatntsInfo.listAlphabetAndNumber[i]);
-        listCountBrand.add(calculatePosition);
-      }
+    listBrandsPath.add(event.selectTypePeople ?? 0);
+
+    switch (event.selectTypePeople) {
+      case 0:
+        listTypePeople = [
+          'Женщинам',
+          'Мужчинам',
+          'Детям',
+        ];
+        selectedTypePeople = '';
+        final brandsInfo = await _catalogRepository.getBrands(
+          gender: 0,
+        );
+        listBrands = brandsInfo.brands;
+        for (int i = 0; i < listBrands.length; i++) {
+          final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+          listCountBrand.add(calculatePosition);
+        }
+
+      case 1:
+        listTypePeople = [
+          'Все',
+          'Мужчинам',
+          'Детям',
+        ];
+        selectedTypePeople = 'Женщинам';
+        final brandsInfo = await _catalogRepository.getBrands(
+          gender: 1,
+        );
+        listBrands = brandsInfo.brands;
+
+        for (int i = 0; i < listBrands.length; i++) {
+          final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+          listCountBrand.add(calculatePosition);
+        }
+
+      case 2:
+        listTypePeople = [
+          'Все',
+          'Женщинам',
+          'Детям',
+        ];
+        selectedTypePeople = 'Мужчинам';
+        final brandsInfo = await _catalogRepository.getBrands(
+          gender: 2,
+        );
+        listBrands = brandsInfo.brands;
+
+        for (int i = 0; i < listBrands.length; i++) {
+          final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+          listCountBrand.add(calculatePosition);
+        }
+
+      case 3:
+        listTypePeople = [
+          'Все',
+          'Женщинам',
+          'Мужчинам',
+        ];
+        selectedTypePeople = 'Детям';
+        final brandsInfo = await _catalogRepository.getBrands(
+          gender: 3,
+        );
+        listBrands = brandsInfo.brands;
+
+        for (int i = 0; i < listBrands.length; i++) {
+          final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+          listCountBrand.add(calculatePosition);
+        }
+    }
+
+    for (int i = 0; i < listBrands.length; i++) {
+      allBrands.addAll(listBrands[i].value);
     }
 
     emit(
       BrandState.preloadDataCompleted(
         listTypePeople: listTypePeople,
         allBrands: allBrands,
-        listAlphabetAndNumber: _constatntsInfo.listAlphabetAndNumber,
         listCountBrand: listCountBrand,
         listBrands: listBrands,
         defaultListBrands: listBrands,
-        selectedTypePeople: '',
+        selectedTypePeople: selectedTypePeople,
+        listBrandsPath: listBrandsPath,
       ),
     );
-  }
-
-  Future<void> _switchTypePeople(
-    SwitchTypePeopleBrandEvent event,
-    Emitter<BrandState> emit,
-  ) async {
-    state.mapOrNull(preloadDataCompleted: (initState) {
-      List<String> listTypePeople = [];
-      List<String> listAlphabetAndNumber = [];
-      List<CountBrand> listCountBrand = [];
-      Map<String, List<String>> listBrands = {};
-      String selectedTypePeople = '';
-
-      switch (event.selectTypePeople) {
-        case 'Все':
-          listTypePeople = [
-            'Женщинам',
-            'Мужчинам',
-            'Детям',
-          ];
-          selectedTypePeople = '';
-          List<String> allBrands = [
-            ..._constatntsInfo.brandsWoman,
-            ..._constatntsInfo.brandsMan,
-            ..._constatntsInfo.brandsChilren,
-          ];
-          allBrands = allBrands.toSet().toList();
-          for (int i = 0; i < _constatntsInfo.listAlphabetAndNumber.length; i++) {
-            final brands = _getListBrand(_constatntsInfo.listAlphabetAndNumber[i], allBrands);
-            if (brands.isNotEmpty) {
-              listAlphabetAndNumber.add(_constatntsInfo.listAlphabetAndNumber[i]);
-              listBrands[_constatntsInfo.listAlphabetAndNumber[i]] = brands;
-              final calculatePosition =
-                  _getCalculatePosition(_constatntsInfo.listAlphabetAndNumber[i]);
-              listCountBrand.add(calculatePosition);
-            }
-          }
-
-        case 'Женщинам':
-          listTypePeople = [
-            'Все',
-            'Мужчинам',
-            'Детям',
-          ];
-          selectedTypePeople = 'Женщинам';
-          for (int i = 0; i < _constatntsInfo.listAlphabetAndNumber.length; i++) {
-            final brands = _getListBrand(
-                _constatntsInfo.listAlphabetAndNumber[i], _constatntsInfo.brandsWoman);
-            if (brands.isNotEmpty) {
-              listAlphabetAndNumber.add(_constatntsInfo.listAlphabetAndNumber[i]);
-              listBrands[_constatntsInfo.listAlphabetAndNumber[i]] = brands;
-              final calculatePosition = _getCalculatePosition(
-                _constatntsInfo.listAlphabetAndNumber[i],
-              );
-              listCountBrand.add(calculatePosition);
-            }
-          }
-
-        case 'Мужчинам':
-          listTypePeople = [
-            'Все',
-            'Женщинам',
-            'Детям',
-          ];
-          selectedTypePeople = 'Мужчинам';
-          for (int i = 0; i < _constatntsInfo.listAlphabetAndNumber.length; i++) {
-            final brands = _getListBrand(
-              _constatntsInfo.listAlphabetAndNumber[i],
-              _constatntsInfo.brandsMan,
-            );
-            if (brands.isNotEmpty) {
-              listAlphabetAndNumber.add(_constatntsInfo.listAlphabetAndNumber[i]);
-              listBrands[_constatntsInfo.listAlphabetAndNumber[i]] = brands;
-              final calculatePosition = _getCalculatePosition(
-                _constatntsInfo.listAlphabetAndNumber[i],
-              );
-              listCountBrand.add(calculatePosition);
-            }
-          }
-
-        case 'Детям':
-          listTypePeople = [
-            'Все',
-            'Женщинам',
-            'Мужчинам',
-          ];
-          selectedTypePeople = 'Детям';
-          for (int i = 0; i < _constatntsInfo.listAlphabetAndNumber.length; i++) {
-            final brands = _getListBrand(
-              _constatntsInfo.listAlphabetAndNumber[i],
-              _constatntsInfo.brandsChilren,
-            );
-            if (brands.isNotEmpty) {
-              listAlphabetAndNumber.add(_constatntsInfo.listAlphabetAndNumber[i]);
-              listBrands[_constatntsInfo.listAlphabetAndNumber[i]] = brands;
-              final calculatePosition = _getCalculatePosition(
-                _constatntsInfo.listAlphabetAndNumber[i],
-              );
-              listCountBrand.add(calculatePosition);
-            }
-          }
-      }
-
-      emit(
-        initState.copyWith(
-          listTypePeople: listTypePeople,
-          listAlphabetAndNumber: listAlphabetAndNumber,
-          listCountBrand: listCountBrand,
-          listBrands: listBrands,
-          defaultListBrands: listBrands,
-          selectedTypePeople: selectedTypePeople,
-        ),
-      );
-    });
   }
 
   Future<void> _search(
@@ -186,53 +134,45 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
     Emitter<BrandState> emit,
   ) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
-      List<String> listAlphabetAndNumber = [];
       List<CountBrand> listCountBrand = [];
-      Map<String, List<String>> listBrands = {};
+      List<BrandDataModel> listBrands = [];
+      List<BrandItemDataModel> allBrands = [];
 
       if (event.query.isNotEmpty) {
-        for (int i = 0; i < initState.defaultListBrands.keys.length; i++) {
-          try {
-            int typeValue = int.parse(event.query[0]);
-            if (typeValue.runtimeType == int) {
-              final info = listKeyBrands[listKeyBrands.keys.toList()[i]] ?? [];
-              for (int j = 0; j < info.length; j++) {
-                if (info[j].toLowerCase().contains(event.query.toLowerCase())) {
-                  List<String> brands = (listBrands[listKeyBrands.keys.toList()[i]] ?? []).toList();
-                  listBrands[listKeyBrands.keys.toList()[i]] = brands..add(info[j]);
-                  if (!listAlphabetAndNumber.contains(listKeyBrands.keys.toList()[i])) {
-                    listAlphabetAndNumber.add(listKeyBrands.keys.toList()[i]);
-                  }
-                }
-              }
+        for (int i = 0; i < initState.defaultListBrands.length; i++) {
+          final info = initState.defaultListBrands[i].value;
+          final brands = initState.defaultListBrands[i];
+          List<BrandItemDataModel> brandsItems = [];
+          for (int j = 0; j < info.length; j++) {
+            if (info[j].n.toLowerCase().contains(event.query.toLowerCase())) {
+              brandsItems.add(info[j]);
             }
-          } catch (ex) {
-            final info = listKeyBrands[listKeyBrands.keys.toList()[i]] ?? [];
-            for (int j = 0; j < info.length; j++) {
-              if (info[j].toLowerCase().contains(event.query.toLowerCase())) {
-                List<String> brands = (listBrands[listKeyBrands.keys.toList()[i]] ?? []).toList();
-                listBrands[listKeyBrands.keys.toList()[i]] = brands..add(info[j]);
-                if (!listAlphabetAndNumber.contains(listKeyBrands.keys.toList()[i])) {
-                  listAlphabetAndNumber.add(listKeyBrands.keys.toList()[i]);
-                }
-              }
-            }
+          }
+          if (brandsItems.isNotEmpty) {
+            listBrands.add(
+              BrandDataModel(
+                title: brands.title,
+                value: brandsItems,
+              ),
+            );
           }
         }
       } else {
         listBrands = initState.defaultListBrands;
-        listAlphabetAndNumber = _constatntsInfo.listAlphabetAndNumber;
       }
 
-      for (int i = 0; i < listAlphabetAndNumber.length; i++) {
-        final calculatePosition =
-            _checkCalculatePosition(_constatntsInfo.listAlphabetAndNumber[i], listBrands);
+      for (int i = 0; i < listBrands.length; i++) {
+        final calculatePosition = _getCalculatePosition(listBrands, listBrands[i].title);
         listCountBrand.add(calculatePosition);
+      }
+
+      for (int i = 0; i < listBrands.length; i++) {
+        allBrands.addAll(listBrands[i].value);
       }
 
       emit(
         initState.copyWith(
-          listAlphabetAndNumber: listAlphabetAndNumber,
+          allBrands: allBrands,
           listCountBrand: listCountBrand,
           listBrands: listBrands,
         ),
@@ -240,76 +180,253 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
     });
   }
 
-  List<String> _getListBrand(
-    String value,
-    List<String> allBrands,
-  ) {
-    List<String> result = [];
+  Future<void> _goBackBrandInfo(
+    GoBackBrandInfoCategotyBrandEvent event,
+    Emitter<BrandState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<int> listBrandsPath = initState.listBrandsPath.toList();
 
-    for (int i = 0; i < allBrands.length; i++) {
-      try {
-        int numericValue = int.parse(allBrands[i][0]);
-        int typeValue = int.parse(value[0]);
-        if (numericValue.runtimeType == int && typeValue.runtimeType == int) {
-          result.add(allBrands[i]);
-        }
-      } catch (ex) {
-        if (allBrands[i][0] == value) {
-          result.add(allBrands[i]);
-        }
+      if (listBrandsPath.isNotEmpty) {
+        listBrandsPath.removeLast();
       }
-    }
 
-    listKeyBrands[value] = result;
-    return result;
+      emit(initState.copyWith(
+        listBrandsPath: listBrandsPath,
+      ));
+
+      if (listBrandsPath.isNotEmpty) {
+        List<String> listTypePeople = [
+          'Все',
+          'Женщинам',
+          'Мужчинам',
+          'Детям',
+        ];
+        List<BrandDataModel> listBrands = [];
+        List<BrandItemDataModel> allBrands = [];
+        String selectedTypePeople = '';
+
+        List<CountBrand> listCountBrand = [];
+
+        switch (listBrandsPath.last) {
+          case 0:
+            listTypePeople = [
+              'Женщинам',
+              'Мужчинам',
+              'Детям',
+            ];
+            selectedTypePeople = '';
+            final brandsInfo = await _catalogRepository.getBrands(
+              gender: 0,
+            );
+            listBrands = brandsInfo.brands;
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
+
+          case 1:
+            listTypePeople = [
+              'Все',
+              'Мужчинам',
+              'Детям',
+            ];
+            selectedTypePeople = 'Женщинам';
+            final brandsInfo = await _catalogRepository.getBrands(
+              gender: 1,
+            );
+            listBrands = brandsInfo.brands;
+
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
+
+          case 2:
+            listTypePeople = [
+              'Все',
+              'Женщинам',
+              'Детям',
+            ];
+            selectedTypePeople = 'Мужчинам';
+            final brandsInfo = await _catalogRepository.getBrands(
+              gender: 2,
+            );
+            listBrands = brandsInfo.brands;
+
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
+
+          case 3:
+            listTypePeople = [
+              'Все',
+              'Женщинам',
+              'Мужчинам',
+            ];
+            selectedTypePeople = 'Детям';
+            final brandsInfo = await _catalogRepository.getBrands(
+              gender: 3,
+            );
+            listBrands = brandsInfo.brands;
+
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
+        }
+
+        for (int i = 0; i < listBrands.length; i++) {
+          allBrands.addAll(listBrands[i].value);
+        }
+
+        emit(
+          initState.copyWith(
+            listTypePeople: listTypePeople,
+            allBrands: allBrands,
+            listCountBrand: listCountBrand,
+            listBrands: listBrands,
+            defaultListBrands: listBrands,
+            selectedTypePeople: selectedTypePeople,
+            listBrandsPath: listBrandsPath,
+          ),
+        );
+      }
+    });
+  }
+
+  Future<void> _switchGenderBrands(
+    SwitchGenderBrandsBrandEvent event,
+    Emitter<BrandState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<int> listBrandsPath = initState.listBrandsPath.toList();
+      List<String> listTypePeople = [];
+      List<BrandDataModel> listBrands = [];
+      List<BrandItemDataModel> allBrands = [];
+      String selectedTypePeople = '';
+      List<CountBrand> listCountBrand = [];
+
+      listBrandsPath.add(event.selectTypePeople);
+
+      switch (event.selectTypePeople) {
+        case 0:
+          listTypePeople = [
+            'Женщинам',
+            'Мужчинам',
+            'Детям',
+          ];
+          selectedTypePeople = '';
+          final brandsInfo = await _catalogRepository.getBrands(
+            gender: 0,
+          );
+          listBrands = brandsInfo.brands;
+          for (int i = 0; i < listBrands.length; i++) {
+            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+            listCountBrand.add(calculatePosition);
+          }
+
+        case 1:
+          listTypePeople = [
+            'Все',
+            'Мужчинам',
+            'Детям',
+          ];
+          selectedTypePeople = 'Женщинам';
+          final brandsInfo = await _catalogRepository.getBrands(
+            gender: 1,
+          );
+          listBrands = brandsInfo.brands;
+
+          for (int i = 0; i < listBrands.length; i++) {
+            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+            listCountBrand.add(calculatePosition);
+          }
+
+        case 2:
+          listTypePeople = [
+            'Все',
+            'Женщинам',
+            'Детям',
+          ];
+          selectedTypePeople = 'Мужчинам';
+          final brandsInfo = await _catalogRepository.getBrands(
+            gender: 2,
+          );
+          listBrands = brandsInfo.brands;
+
+          for (int i = 0; i < listBrands.length; i++) {
+            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+            listCountBrand.add(calculatePosition);
+          }
+
+        case 3:
+          listTypePeople = [
+            'Все',
+            'Женщинам',
+            'Мужчинам',
+          ];
+          selectedTypePeople = 'Детям';
+          final brandsInfo = await _catalogRepository.getBrands(
+            gender: 3,
+          );
+          listBrands = brandsInfo.brands;
+
+          for (int i = 0; i < listBrands.length; i++) {
+            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+            listCountBrand.add(calculatePosition);
+          }
+      }
+
+      for (int i = 0; i < listBrands.length; i++) {
+        allBrands.addAll(listBrands[i].value);
+      }
+
+      emit(
+        initState.copyWith(
+          listTypePeople: listTypePeople,
+          allBrands: allBrands,
+          listCountBrand: listCountBrand,
+          listBrands: listBrands,
+          defaultListBrands: listBrands,
+          selectedTypePeople: selectedTypePeople,
+          listBrandsPath: listBrandsPath,
+        ),
+      );
+    });
   }
 
   CountBrand _getCalculatePosition(
+    List<BrandDataModel> brands,
     String value,
   ) {
     double countAlphabet = 0;
     double countBrands = 0;
-    for (int i = 0; i < listKeyBrands.keys.length; i++) {
-      if (listKeyBrands.keys.toList()[i] != value) {
-        final info = listKeyBrands[listKeyBrands.keys.toList()[i]];
-        countBrands = countBrands + (info?.length ?? 0);
+    for (int i = 0; i < brands.length; i++) {
+      if (brands[i].title != value) {
+        final info = brands[i].value;
+        countBrands = countBrands + info.length;
         countAlphabet++;
       } else {
         return CountBrand(
           countAlphabet: countAlphabet,
-          countBrands: countBrands,
+          countBrands: countBrands > 2
+              ? ConverterService.roundUpAbsolute(countBrands / 2).round().toDouble()
+              : countBrands,
         );
       }
     }
 
     return CountBrand(
       countAlphabet: countAlphabet,
-      countBrands: countBrands,
-    );
-  }
-
-  CountBrand _checkCalculatePosition(
-    String value,
-    Map<String, List<String>> listBrands,
-  ) {
-    double countAlphabet = 0;
-    double countBrands = 0;
-    for (int i = 0; i < listBrands.keys.length; i++) {
-      if (listBrands.keys.toList()[i] != value) {
-        final info = listBrands[listBrands.keys.toList()[i]];
-        countBrands = countBrands + (info?.length ?? 0);
-        countAlphabet++;
-      } else {
-        return CountBrand(
-          countAlphabet: countAlphabet,
-          countBrands: countBrands,
-        );
-      }
-    }
-
-    return CountBrand(
-      countAlphabet: countAlphabet,
-      countBrands: countBrands,
+      countBrands: countBrands > 2
+          ? ConverterService.roundUpAbsolute(countBrands / 2).round().toDouble()
+          : countBrands,
     );
   }
 }

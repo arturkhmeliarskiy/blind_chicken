@@ -40,6 +40,7 @@ class CatalogState with _$CatalogState {
     required int selectedGenderIndex,
     required bool isAuth,
     required int offset,
+    required int userDiscount,
     required String nowVersionApp,
     required String updateVersionApp,
     required bool isUpdateVersionApp,

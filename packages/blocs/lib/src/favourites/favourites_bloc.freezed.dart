@@ -5466,6 +5466,7 @@ mixin _$FavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5501,6 +5502,7 @@ mixin _$FavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5536,6 +5538,7 @@ mixin _$FavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5663,6 +5666,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5701,6 +5705,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5739,6 +5744,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5870,6 +5876,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5908,6 +5915,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5946,6 +5954,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6079,6 +6088,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6117,6 +6127,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6155,6 +6166,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6357,6 +6369,7 @@ class _$GetSizeProductFavouritesStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6395,6 +6408,7 @@ class _$GetSizeProductFavouritesStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6433,6 +6447,7 @@ class _$GetSizeProductFavouritesStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6602,6 +6617,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6640,6 +6656,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6678,6 +6695,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6774,6 +6792,7 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       bool isButtonTop,
       List<SkuProductDataModel> listSize,
       bool isLoadGetSizeProduct,
+      int userDiscount,
       String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
       bool? isSoppingCart,
@@ -6815,6 +6834,7 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? isButtonTop = null,
     Object? listSize = null,
     Object? isLoadGetSizeProduct = null,
+    Object? userDiscount = null,
     Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
     Object? isSoppingCart = freezed,
@@ -6887,6 +6907,10 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
           ? _value.isLoadGetSizeProduct
           : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
               as bool,
+      userDiscount: null == userDiscount
+          ? _value.userDiscount
+          : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
       codeProduct: freezed == codeProduct
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
@@ -6983,6 +7007,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       required this.isButtonTop,
       required final List<SkuProductDataModel> listSize,
       required this.isLoadGetSizeProduct,
+      required this.userDiscount,
       this.codeProduct,
       this.selectSizeProduct,
       this.isSoppingCart,
@@ -7107,6 +7132,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   @override
   final bool isLoadGetSizeProduct;
   @override
+  final int userDiscount;
+  @override
   final String? codeProduct;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -7121,7 +7148,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
 
   @override
   String toString() {
-    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -7156,6 +7183,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
                 other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.userDiscount, userDiscount) ||
+                other.userDiscount == userDiscount) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -7189,6 +7218,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         isButtonTop,
         const DeepCollectionEquality().hash(_listSize),
         isLoadGetSizeProduct,
+        userDiscount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7231,6 +7261,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7256,6 +7287,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         isButtonTop,
         listSize,
         isLoadGetSizeProduct,
+        userDiscount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7291,6 +7323,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7316,6 +7349,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         isButtonTop,
         listSize,
         isLoadGetSizeProduct,
+        userDiscount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7351,6 +7385,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7378,6 +7413,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
           isButtonTop,
           listSize,
           isLoadGetSizeProduct,
+          userDiscount,
           codeProduct,
           selectSizeProduct,
           isSoppingCart,
@@ -7453,6 +7489,7 @@ abstract class ProductsFavouritesState implements FavouritesState {
           required final bool isButtonTop,
           required final List<SkuProductDataModel> listSize,
           required final bool isLoadGetSizeProduct,
+          required final int userDiscount,
           final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
           final bool? isSoppingCart,
@@ -7477,6 +7514,7 @@ abstract class ProductsFavouritesState implements FavouritesState {
   bool get isButtonTop;
   List<SkuProductDataModel> get listSize;
   bool get isLoadGetSizeProduct;
+  int get userDiscount;
   String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
   bool? get isSoppingCart;

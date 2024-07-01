@@ -25,6 +25,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   void initState() {
     final updateData = GetIt.I.get<UpdateDataService>();
+
     _selectedIndexGender = updateData.selectedIndexGender;
     super.initState();
   }
@@ -32,11 +33,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
   String checkTypePeople(int value) {
     String result = '';
     switch (value) {
-      case 0:
-        result = 'Женщинам';
       case 1:
-        result = 'Мужчинам';
+        result = 'Женщинам';
       case 2:
+        result = 'Мужчинам';
+      case 3:
         result = 'Детям';
     }
     return result;
@@ -428,7 +429,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 onTap: () {
                                   if (initState.menu[index].brand == 0 &&
                                       initState.menu[index].sub == 0 &&
-                                      initState.menu[index].name != 'Подарочная карта') {
+                                      initState.menu[index].name != 'Подарочная карта' &&
+                                      initState.menu[index].name != 'Бренды' &&
+                                      initState.menu[index].name != 'Предупреждение зрения') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
                                               path: initState.menu[index].url),
@@ -445,10 +448,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       'Предупреждение зрения') {
                                     context.navigateTo(const VisionWarningRoute());
                                   } else if (initState.menu[index].name == 'Бренды') {
+                                    context.read<BrandBloc>().add(
+                                          BrandEvent.getBrands(
+                                            selectTypePeople: initState.selectedGenderIndex,
+                                          ),
+                                        );
                                     context.navigateTo(
-                                      BrandsRoute(
-                                        typePeople: checkTypePeople(initState.selectedGenderIndex),
-                                      ),
+                                      const BrandsRoute(),
                                     );
                                   } else if (initState.menu[index].name == 'Sale') {
                                     context.navigateTo(const SaleRoute());

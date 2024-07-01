@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
+import 'package:blind_chicken/screens/news/news_info_screen.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,6 +55,21 @@ class _DashboardPageState extends State<DashboardPage> {
       log("push token: ${deviceToken ?? ''}");
     }
   }
+
+  final listItemsChat = [
+    DropDownDataModel(
+      title: '8 (800) 500-53-29',
+      route: 'phone',
+    ),
+    // DropDownDataModel(
+    //   title: 'Открыть чат',
+    //   route: '/chat_messanger',
+    // ),
+    DropDownDataModel(
+      title: 'WhatsApp',
+      route: 'WhatsApp',
+    ),
+  ];
 
   @override
   void dispose() {
@@ -224,6 +240,40 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 label: '',
               ),
+              // BottomNavigationBarItem(
+              //   icon: SizedBox(
+              //     height: 25,
+              //     child: Stack(
+              //       alignment: Alignment.topRight,
+              //       children: [
+              //         Padding(
+              //           padding: const EdgeInsets.only(top: 4),
+              //           child: SvgPicture.asset(
+              //             'assets/icons/bell.svg',
+              //             fit: BoxFit.cover,
+              //             height: 21,
+              //           ),
+              //         ),
+              //         Container(
+              //           height: 12,
+              //           width: 12,
+              //           decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(5),
+              //             color: Colors.white,
+              //           ),
+              //           padding: EdgeInsets.all(3),
+              //           child: Container(
+              //             decoration: BoxDecoration(
+              //               borderRadius: BorderRadius.circular(5),
+              //               color: Colors.black,
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              //   label: '',
+              // ),
             ],
             currentIndex: tabsRouter.activeIndex,
             type: BottomNavigationBarType.fixed,
@@ -334,20 +384,11 @@ class _DashboardPageState extends State<DashboardPage> {
                   ]),
                 );
               } else if (index == 4) {
-                // setState(() {
-                //   isOpen = !isOpen;
-                // });
-                // if (isOpen) {
-                //   showOverlay(
-                //     context: context,
-                //     width: 220,
-                //     height: 94,
-                //     bottom: 56,
-                //     right: 0,
-                //   );
-                // } else {
-                //   overlayEntry?.remove();
-                // }
+                // context.navigateTo(
+                //   const NewsRoute(children: [
+                //     NewsInfoRoute(),
+                //   ]),
+                // );
                 showDialog(
                     barrierColor: Colors.transparent,
                     context: context,

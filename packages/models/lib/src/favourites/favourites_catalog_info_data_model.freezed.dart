@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FavouritesCatalogInfoDataModel {
-  String get userDiscount => throw _privateConstructorUsedError;
+  int get userDiscount => throw _privateConstructorUsedError;
   String get h1 => throw _privateConstructorUsedError;
   String get count => throw _privateConstructorUsedError;
   String get countFilter => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $FavouritesCatalogInfoDataModelCopyWith<$Res> {
           FavouritesCatalogInfoDataModel>;
   @useResult
   $Res call(
-      {String userDiscount,
+      {int userDiscount,
       String h1,
       String count,
       String countFilter,
@@ -76,7 +76,7 @@ class _$FavouritesCatalogInfoDataModelCopyWithImpl<$Res,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       h1: null == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -119,7 +119,7 @@ abstract class _$$FavouritesCatalogInfoDataModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userDiscount,
+      {int userDiscount,
       String h1,
       String count,
       String countFilter,
@@ -155,7 +155,7 @@ class __$$FavouritesCatalogInfoDataModelImplCopyWithImpl<$Res>
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       h1: null == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -206,7 +206,7 @@ class _$FavouritesCatalogInfoDataModelImpl
         super._();
 
   @override
-  final String userDiscount;
+  final int userDiscount;
   @override
   final String h1;
   @override
@@ -280,7 +280,7 @@ class _$FavouritesCatalogInfoDataModelImpl
 abstract class _FavouritesCatalogInfoDataModel
     extends FavouritesCatalogInfoDataModel {
   factory _FavouritesCatalogInfoDataModel(
-      {required final String userDiscount,
+      {required final int userDiscount,
       required final String h1,
       required final String count,
       required final String countFilter,
@@ -291,7 +291,7 @@ abstract class _FavouritesCatalogInfoDataModel
   _FavouritesCatalogInfoDataModel._() : super._();
 
   @override
-  String get userDiscount;
+  int get userDiscount;
   @override
   String get h1;
   @override

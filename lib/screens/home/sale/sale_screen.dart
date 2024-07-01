@@ -356,12 +356,15 @@ class _SaleScreenState extends State<SaleScreen> {
                                     initState.products[index].isYourPriceDisplayed,
                                 yourPrice: initState.products[index].yourPrice.toString(),
                                 price: initState.products[index].price.toString(),
-                                maximumCashback:
-                                    initState.favouritesProducts[index].maximumCashback.toString(),
+                                maximumCashback: initState.products[index].maximumCashback,
+                                maximumPersonalDiscount:
+                                    initState.products[index].maximumPersonalDiscount,
+                                isAuth: initState.isAuth,
                                 isShop: false,
                                 onAddProductToSoppingCart: () {},
                                 listSize: [],
                                 isLoad: false,
+                                userDiscount: initState.userDiscount,
                               );
                             },
                           );

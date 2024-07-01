@@ -140,7 +140,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                           canPop: false,
                           onPopInvoked: (value) {
                             if (_isSwipe) {
-                              if (initState.listProductsCode.isNotEmpty) {
+                              if (initState.listCatalogPath.isNotEmpty) {
                                 context
                                     .read<CatalogBloc>()
                                     .add(const CatalogEvent.goBackProductInfo());

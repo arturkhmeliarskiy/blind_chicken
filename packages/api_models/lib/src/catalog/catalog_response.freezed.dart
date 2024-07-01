@@ -20,6 +20,7 @@ CatalogResponse _$CatalogResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CatalogResponse {
+  @JsonKey(name: 'user_discount')
   String? get userDiscount => throw _privateConstructorUsedError;
   @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
   List<CatalogBreadcrumbResponse>? get breadcrumbs =>
@@ -51,7 +52,7 @@ abstract class $CatalogResponseCopyWith<$Res> {
       _$CatalogResponseCopyWithImpl<$Res, CatalogResponse>;
   @useResult
   $Res call(
-      {String? userDiscount,
+      {@JsonKey(name: 'user_discount') String? userDiscount,
       @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
       List<CatalogBreadcrumbResponse>? breadcrumbs,
       String? h1,
@@ -164,7 +165,7 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? userDiscount,
+      {@JsonKey(name: 'user_discount') String? userDiscount,
       @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
       List<CatalogBreadcrumbResponse>? breadcrumbs,
       String? h1,
@@ -259,7 +260,7 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CatalogResponseImpl extends _CatalogResponse {
   _$CatalogResponseImpl(
-      {this.userDiscount,
+      {@JsonKey(name: 'user_discount') this.userDiscount,
       @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
       final List<CatalogBreadcrumbResponse>? breadcrumbs,
       this.h1,
@@ -281,6 +282,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       _$$CatalogResponseImplFromJson(json);
 
   @override
+  @JsonKey(name: 'user_discount')
   final String? userDiscount;
   final List<CatalogBreadcrumbResponse>? _breadcrumbs;
   @override
@@ -391,7 +393,7 @@ class _$CatalogResponseImpl extends _CatalogResponse {
 
 abstract class _CatalogResponse extends CatalogResponse {
   factory _CatalogResponse(
-      {final String? userDiscount,
+      {@JsonKey(name: 'user_discount') final String? userDiscount,
       @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)
       final List<CatalogBreadcrumbResponse>? breadcrumbs,
       final String? h1,
@@ -411,6 +413,7 @@ abstract class _CatalogResponse extends CatalogResponse {
       _$CatalogResponseImpl.fromJson;
 
   @override
+  @JsonKey(name: 'user_discount')
   String? get userDiscount;
   @override
   @JsonKey(name: 'breadcrumbs', fromJson: _convertBreadcrumbs)

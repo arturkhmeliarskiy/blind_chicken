@@ -34,6 +34,7 @@ class SearchState with _$SearchState {
     required bool isButtonTop,
     required List<SkuProductDataModel> listSize,
     required bool isLoadGetSizeProduct,
+    required int userDiscount,
     String? codeProduct,
     SkuProductDataModel? selectSizeProduct,
     bool? isSoppingCart,

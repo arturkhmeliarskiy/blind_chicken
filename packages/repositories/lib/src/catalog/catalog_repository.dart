@@ -76,6 +76,7 @@ class CatalogRepository {
 
   //end shopping cart
 
+  // menu
   Future<MenuDataModel> postMenuItems({
     required String a,
     required int b,
@@ -93,6 +94,9 @@ class CatalogRepository {
     return listMenuItems.toMenuItems();
   }
 
+  // end menu
+
+  // get products
   Future<CatalogDataModel> getCatalogProducts({
     required CatalogProductsRequest request,
   }) async {
@@ -141,6 +145,8 @@ class CatalogRepository {
     return detailsProduct.toAdditionalProductsDescription();
   }
 
+  // end get products
+
   Future<PaymentOrderDataModel> payGiftCard({
     required CatalogGiftCardRequest request,
   }) async {
@@ -152,6 +158,7 @@ class CatalogRepository {
     return paymentOrder.toCreateOrder();
   }
 
+  // search
   Future<CatalogSearchDataModel> searchProducts({
     required String search,
   }) async {
@@ -183,6 +190,20 @@ class CatalogRepository {
 
     return paymentOrder.toSearchProductsInfo(basketInfo);
   }
+  // end search
+
+  // brands
+  Future<BrandsDataModel> getBrands({
+    required int gender,
+  }) async {
+    final brands = await _catalogService.getBrands(
+          gender: gender,
+        ) ??
+        BrandsResponse();
+
+    return brands.toGetBrands();
+  }
+  // end brands
 
   Future<BasketFullInfoDataModel> getBasketInfo({
     bool isLocal = true,
@@ -268,7 +289,7 @@ extension on CatalogSearchInfoResponse {
             );
           }) ??
           []),
-      userDiscount: userDiscount ?? '',
+      userDiscount: int.parse(userDiscount ?? '0'),
       h1: h1 ?? '',
       count: count ?? '',
       countFilter: countFilter ?? '',
@@ -437,6 +458,31 @@ extension on List<ProductFavouriteModel> {
   }
 }
 
+extension on BrandsResponse {
+  BrandsDataModel toGetBrands() {
+    return BrandsDataModel(
+      brands: List<BrandDataModel>.from(
+        brands?.map(
+              (item) => BrandDataModel(
+                title: item.title ?? '',
+                value: List<BrandItemDataModel>.from(
+                  item.value?.map(
+                        (element) => BrandItemDataModel(
+                          n: element.n ?? '',
+                          u: element.u ?? '',
+                        ),
+                      ) ??
+                      [],
+                ),
+              ),
+            ) ??
+            [],
+      ),
+      errorMessage: errorMessage ?? '',
+    );
+  }
+}
+
 extension on List<ProductShoppingCartDataModel> {
   List<BasketInfoItemDataModel> toShoppingCartProducts(
       List<ProductShoppingCartDataModel> listProducts) {
@@ -502,7 +548,7 @@ extension on ProductDataModel {
 extension on CatalogResponse {
   CatalogDataModel toCatalogProducts(BasketFullInfoDataModel basketInfo) {
     return CatalogDataModel(
-      userDiscount: userDiscount ?? '',
+      userDiscount: int.parse(userDiscount ?? '0'),
       breadcrumbs: List<CatalogBreadcrumbDataModel>.from(
         breadcrumbs?.map(
               (item) => CatalogBreadcrumbDataModel(

@@ -35,9 +35,9 @@ import 'package:blind_chicken/screens/account/order_user_info_screen.dart';
 import 'package:blind_chicken/screens/home/sale/sale_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/location/search_location_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/news_info_screen.dart';
 import 'package:blind_chicken/screens/news/news_screen.dart';
-import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_info_description_screen.dart';
 import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
@@ -200,16 +200,6 @@ class AppRouter extends _$AppRouter {
               page: OrderCardInfoRoute.page,
             ),
           ]),
-          AutoRoute(page: FavouritesRoute.page, path: 'favourites', children: [
-            AutoRoute(
-              initial: true,
-              page: FavouritesProductsRoute.page,
-            ),
-            AutoRoute(
-              keepHistory: false,
-              page: FavouritesCardInfoRoute.page,
-            ),
-          ]),
           AutoRoute(page: ShoppingCartAutoRouterRoute.page, path: 'shopping_cart', children: [
             AutoRoute(
               initial: true,
@@ -224,19 +214,32 @@ class AppRouter extends _$AppRouter {
               page: ShoppingCardInfoRoute.page,
             ),
           ]),
-          AutoRoute(page: NewsRoute.page, path: 'news', children: [
+          AutoRoute(page: FavouritesRoute.page, path: 'favourites', children: [
             AutoRoute(
               initial: true,
-              page: NewsInfoRoute.page,
-            ),
-            AutoRoute(
-              page: NewsInfoDescriptionRoute.page,
+              page: FavouritesProductsRoute.page,
             ),
             AutoRoute(
               keepHistory: false,
-              page: ShoppingCardInfoRoute.page,
+              page: FavouritesCardInfoRoute.page,
             ),
           ]),
+          AutoRoute(
+            page: NewsRoute.page,
+            path: 'news',
+            children: [
+              AutoRoute(
+                initial: true,
+                page: NewsInfoRoute.page,
+              ),
+              AutoRoute(
+                page: NewsInfoDescriptionRoute.page,
+              ),
+              AutoRoute(
+                page: NotficationInfoDescriptionRoute.page,
+              ),
+            ],
+          ),
         ]),
         AutoRoute(
           page: ChatRoute.page,

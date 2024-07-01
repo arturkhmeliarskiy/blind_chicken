@@ -7,7 +7,7 @@ part 'catalog_data_model.freezed.dart';
 class CatalogDataModel with _$CatalogDataModel {
   const CatalogDataModel._();
   factory CatalogDataModel({
-    required String userDiscount,
+    required int userDiscount,
     required List<CatalogBreadcrumbDataModel> breadcrumbs,
     required String h1,
     required String count,

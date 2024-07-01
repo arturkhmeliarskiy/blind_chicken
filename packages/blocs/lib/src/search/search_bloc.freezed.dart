@@ -5670,6 +5670,7 @@ mixin _$SearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5709,6 +5710,7 @@ mixin _$SearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5748,6 +5750,7 @@ mixin _$SearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5879,6 +5882,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5921,6 +5925,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5963,6 +5968,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6096,6 +6102,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6138,6 +6145,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6180,6 +6188,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6316,6 +6325,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6358,6 +6368,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6400,6 +6411,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6603,6 +6615,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6645,6 +6658,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6687,6 +6701,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6859,6 +6874,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6901,6 +6917,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6943,6 +6960,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7044,6 +7062,7 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       bool isButtonTop,
       List<SkuProductDataModel> listSize,
       bool isLoadGetSizeProduct,
+      int userDiscount,
       String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
       bool? isSoppingCart,
@@ -7090,6 +7109,7 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? isButtonTop = null,
     Object? listSize = null,
     Object? isLoadGetSizeProduct = null,
+    Object? userDiscount = null,
     Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
     Object? isSoppingCart = freezed,
@@ -7178,6 +7198,10 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value.isLoadGetSizeProduct
           : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
               as bool,
+      userDiscount: null == userDiscount
+          ? _value.userDiscount
+          : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
       codeProduct: freezed == codeProduct
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
@@ -7278,6 +7302,7 @@ class _$SearchProductsResultSearchStateImpl
       required this.isButtonTop,
       required final List<SkuProductDataModel> listSize,
       required this.isLoadGetSizeProduct,
+      required this.userDiscount,
       this.codeProduct,
       this.selectSizeProduct,
       this.isSoppingCart,
@@ -7424,6 +7449,8 @@ class _$SearchProductsResultSearchStateImpl
   @override
   final bool isLoadGetSizeProduct;
   @override
+  final int userDiscount;
+  @override
   final String? codeProduct;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -7447,7 +7474,7 @@ class _$SearchProductsResultSearchStateImpl
 
   @override
   String toString() {
-    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
+    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
   }
 
   @override
@@ -7488,6 +7515,8 @@ class _$SearchProductsResultSearchStateImpl
             const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
                 other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.userDiscount, userDiscount) ||
+                other.userDiscount == userDiscount) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -7525,6 +7554,7 @@ class _$SearchProductsResultSearchStateImpl
         isButtonTop,
         const DeepCollectionEquality().hash(_listSize),
         isLoadGetSizeProduct,
+        userDiscount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7572,6 +7602,7 @@ class _$SearchProductsResultSearchStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7601,6 +7632,7 @@ class _$SearchProductsResultSearchStateImpl
         isButtonTop,
         listSize,
         isLoadGetSizeProduct,
+        userDiscount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7640,6 +7672,7 @@ class _$SearchProductsResultSearchStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7669,6 +7702,7 @@ class _$SearchProductsResultSearchStateImpl
         isButtonTop,
         listSize,
         isLoadGetSizeProduct,
+        userDiscount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7708,6 +7742,7 @@ class _$SearchProductsResultSearchStateImpl
             bool isButtonTop,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7739,6 +7774,7 @@ class _$SearchProductsResultSearchStateImpl
           isButtonTop,
           listSize,
           isLoadGetSizeProduct,
+          userDiscount,
           codeProduct,
           selectSizeProduct,
           isSoppingCart,
@@ -7819,6 +7855,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
           required final bool isButtonTop,
           required final List<SkuProductDataModel> listSize,
           required final bool isLoadGetSizeProduct,
+          required final int userDiscount,
           final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
           final bool? isSoppingCart,
@@ -7847,6 +7884,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
   bool get isButtonTop;
   List<SkuProductDataModel> get listSize;
   bool get isLoadGetSizeProduct;
+  int get userDiscount;
   String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
   bool? get isSoppingCart;

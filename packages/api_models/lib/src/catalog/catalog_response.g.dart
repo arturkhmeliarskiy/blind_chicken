@@ -9,7 +9,7 @@ part of 'catalog_response.dart';
 _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CatalogResponseImpl(
-      userDiscount: json['userDiscount'] as String?,
+      userDiscount: json['user_discount'] as String?,
       breadcrumbs: _convertBreadcrumbs(json['breadcrumbs']),
       h1: json['h1'] as String?,
       count: json['count'] as String?,
@@ -28,7 +28,7 @@ _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
 Map<String, dynamic> _$$CatalogResponseImplToJson(
         _$CatalogResponseImpl instance) =>
     <String, dynamic>{
-      'userDiscount': instance.userDiscount,
+      'user_discount': instance.userDiscount,
       'breadcrumbs': instance.breadcrumbs,
       'h1': instance.h1,
       'count': instance.count,

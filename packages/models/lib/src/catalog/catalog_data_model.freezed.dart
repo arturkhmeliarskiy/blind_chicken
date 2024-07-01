@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CatalogDataModel {
-  String get userDiscount => throw _privateConstructorUsedError;
+  int get userDiscount => throw _privateConstructorUsedError;
   List<CatalogBreadcrumbDataModel> get breadcrumbs =>
       throw _privateConstructorUsedError;
   String get h1 => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $CatalogDataModelCopyWith<$Res> {
       _$CatalogDataModelCopyWithImpl<$Res, CatalogDataModel>;
   @useResult
   $Res call(
-      {String userDiscount,
+      {int userDiscount,
       List<CatalogBreadcrumbDataModel> breadcrumbs,
       String h1,
       String count,
@@ -94,7 +94,7 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       breadcrumbs: null == breadcrumbs
           ? _value.breadcrumbs
           : breadcrumbs // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userDiscount,
+      {int userDiscount,
       List<CatalogBreadcrumbDataModel> breadcrumbs,
       String h1,
       String count,
@@ -217,7 +217,7 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       breadcrumbs: null == breadcrumbs
           ? _value._breadcrumbs
           : breadcrumbs // ignore: cast_nullable_to_non_nullable
@@ -301,7 +301,7 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
         super._();
 
   @override
-  final String userDiscount;
+  final int userDiscount;
   final List<CatalogBreadcrumbDataModel> _breadcrumbs;
   @override
   List<CatalogBreadcrumbDataModel> get breadcrumbs {
@@ -424,7 +424,7 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
 
 abstract class _CatalogDataModel extends CatalogDataModel {
   factory _CatalogDataModel(
-      {required final String userDiscount,
+      {required final int userDiscount,
       required final List<CatalogBreadcrumbDataModel> breadcrumbs,
       required final String h1,
       required final String count,
@@ -441,7 +441,7 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   _CatalogDataModel._() : super._();
 
   @override
-  String get userDiscount;
+  int get userDiscount;
   @override
   List<CatalogBreadcrumbDataModel> get breadcrumbs;
   @override

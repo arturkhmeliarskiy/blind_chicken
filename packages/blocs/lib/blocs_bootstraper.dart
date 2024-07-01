@@ -82,7 +82,7 @@ Future<void> initBloc(GetIt getIt) async {
     )
     ..registerFactory(
       () => BrandBloc(
-        getIt.get<ConstatntsInfo>(),
+        getIt.get<CatalogRepository>(),
       ),
     )
     ..registerFactory(

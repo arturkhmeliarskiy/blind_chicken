@@ -521,8 +521,8 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                             ]),
                                           );
                                         } else {
-                                          context.read<CatalogBloc>().add(
-                                                CatalogEvent.addProductToSoppingCart(
+                                          context.read<FavouritesBloc>().add(
+                                                FavouritesEvent.addProductToSoppingCart(
                                                   code: initState.detailsProduct?.code ?? 0,
                                                 ),
                                               );

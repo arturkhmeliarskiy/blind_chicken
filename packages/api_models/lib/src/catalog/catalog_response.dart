@@ -1,5 +1,4 @@
 import 'package:api_models/api_models.dart';
-import 'package:api_models/src/catalog/breadcrumbs_response.dart';
 import 'package:api_models/src/catalog/catalog_breadcrumb_response.dart';
 import 'package:api_models/src/catalog/section_item_response.dart';
 import 'package:api_models/src/catalog/sections_response.dart';
@@ -14,6 +13,9 @@ part 'catalog_response.g.dart';
 class CatalogResponse with _$CatalogResponse {
   const CatalogResponse._();
   factory CatalogResponse({
+    @JsonKey(
+      name: 'user_discount',
+    )
     String? userDiscount,
     @JsonKey(
       name: 'breadcrumbs',

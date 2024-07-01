@@ -94,7 +94,11 @@ class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen>
           if (details.velocity.pixelsPerSecond.dx > 0) {
             context.read<AccountBloc>().add(const AccountEvent.preloadData());
             context.navigateTo(
-              const AccountRoute(),
+              const LoginRoute(
+                children: [
+                  AccountRoute(),
+                ],
+              ),
             );
             setState(() {
               _isSwipe = false;

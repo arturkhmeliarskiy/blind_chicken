@@ -7,7 +7,7 @@ part 'catalog_search_info_data_model.freezed.dart';
 class CatalogSearchInfoDataModel with _$CatalogSearchInfoDataModel {
   const CatalogSearchInfoDataModel._();
   factory CatalogSearchInfoDataModel({
-    required String userDiscount,
+    required int userDiscount,
     required String h1,
     required String count,
     required String countFilter,

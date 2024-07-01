@@ -111,9 +111,7 @@ class _AppState extends State<App> {
               const SearchEvent.init(),
             ),
         ),
-        BlocProvider(
-          create: (context) => GetIt.I.get<BrandBloc>(),
-        ),
+        BlocProvider(create: (context) => GetIt.I.get<BrandBloc>()),
         BlocProvider(
           create: (context) => GetIt.I.get<SearchLocationBloc>(),
         ),
@@ -126,6 +124,12 @@ class _AppState extends State<App> {
               const InternetConnectionEvent.preloadData(),
             ),
         ),
+        // BlocProvider(
+        //   create: (context) => GetIt.I.get<NewsBloc>()
+        //     ..add(
+        //       const NewsEvent.init(),
+        //     ),
+        // ),
       ],
       child: PushNotificationManager(
         openScreen: (notificationMessage) {

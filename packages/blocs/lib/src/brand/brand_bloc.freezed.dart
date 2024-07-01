@@ -18,46 +18,53 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BrandEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
-    required TResult Function(String selectTypePeople) switchTypePeople,
+    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
+    required TResult Function() goBackBrandInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
-    TResult? Function(String selectTypePeople)? switchTypePeople,
+    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
+    TResult? Function()? goBackBrandInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
-    TResult Function(String selectTypePeople)? switchTypePeople,
+    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
+    TResult Function()? goBackBrandInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitBrandEvent value) preloadData,
-    required TResult Function(SwitchTypePeopleBrandEvent value)
-        switchTypePeople,
+    required TResult Function(GetBrandsBrandEvent value) getBrands,
+    required TResult Function(SwitchGenderBrandsBrandEvent value)
+        switchGenderBrands,
     required TResult Function(SearchBrandEvent value) search,
+    required TResult Function(GoBackBrandInfoCategotyBrandEvent value)
+        goBackBrandInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitBrandEvent value)? preloadData,
-    TResult? Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
+    TResult? Function(GetBrandsBrandEvent value)? getBrands,
+    TResult? Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
     TResult? Function(SearchBrandEvent value)? search,
+    TResult? Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitBrandEvent value)? preloadData,
-    TResult Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
+    TResult Function(GetBrandsBrandEvent value)? getBrands,
+    TResult Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
     TResult Function(SearchBrandEvent value)? search,
+    TResult Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,165 +89,54 @@ class _$BrandEventCopyWithImpl<$Res, $Val extends BrandEvent>
 }
 
 /// @nodoc
-abstract class _$$InitBrandEventImplCopyWith<$Res> {
-  factory _$$InitBrandEventImplCopyWith(_$InitBrandEventImpl value,
-          $Res Function(_$InitBrandEventImpl) then) =
-      __$$InitBrandEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitBrandEventImplCopyWithImpl<$Res>
-    extends _$BrandEventCopyWithImpl<$Res, _$InitBrandEventImpl>
-    implements _$$InitBrandEventImplCopyWith<$Res> {
-  __$$InitBrandEventImplCopyWithImpl(
-      _$InitBrandEventImpl _value, $Res Function(_$InitBrandEventImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitBrandEventImpl implements InitBrandEvent {
-  const _$InitBrandEventImpl();
-
-  @override
-  String toString() {
-    return 'BrandEvent.preloadData()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitBrandEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
-    required TResult Function(String selectTypePeople) switchTypePeople,
-    required TResult Function(String query) search,
-  }) {
-    return preloadData();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
-    TResult? Function(String selectTypePeople)? switchTypePeople,
-    TResult? Function(String query)? search,
-  }) {
-    return preloadData?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
-    TResult Function(String selectTypePeople)? switchTypePeople,
-    TResult Function(String query)? search,
-    required TResult orElse(),
-  }) {
-    if (preloadData != null) {
-      return preloadData();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(InitBrandEvent value) preloadData,
-    required TResult Function(SwitchTypePeopleBrandEvent value)
-        switchTypePeople,
-    required TResult Function(SearchBrandEvent value) search,
-  }) {
-    return preloadData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitBrandEvent value)? preloadData,
-    TResult? Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
-    TResult? Function(SearchBrandEvent value)? search,
-  }) {
-    return preloadData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitBrandEvent value)? preloadData,
-    TResult Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
-    TResult Function(SearchBrandEvent value)? search,
-    required TResult orElse(),
-  }) {
-    if (preloadData != null) {
-      return preloadData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class InitBrandEvent implements BrandEvent {
-  const factory InitBrandEvent() = _$InitBrandEventImpl;
-}
-
-/// @nodoc
-abstract class _$$SwitchTypePeopleBrandEventImplCopyWith<$Res> {
-  factory _$$SwitchTypePeopleBrandEventImplCopyWith(
-          _$SwitchTypePeopleBrandEventImpl value,
-          $Res Function(_$SwitchTypePeopleBrandEventImpl) then) =
-      __$$SwitchTypePeopleBrandEventImplCopyWithImpl<$Res>;
+abstract class _$$GetBrandsBrandEventImplCopyWith<$Res> {
+  factory _$$GetBrandsBrandEventImplCopyWith(_$GetBrandsBrandEventImpl value,
+          $Res Function(_$GetBrandsBrandEventImpl) then) =
+      __$$GetBrandsBrandEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String selectTypePeople});
+  $Res call({int? selectTypePeople});
 }
 
 /// @nodoc
-class __$$SwitchTypePeopleBrandEventImplCopyWithImpl<$Res>
-    extends _$BrandEventCopyWithImpl<$Res, _$SwitchTypePeopleBrandEventImpl>
-    implements _$$SwitchTypePeopleBrandEventImplCopyWith<$Res> {
-  __$$SwitchTypePeopleBrandEventImplCopyWithImpl(
-      _$SwitchTypePeopleBrandEventImpl _value,
-      $Res Function(_$SwitchTypePeopleBrandEventImpl) _then)
+class __$$GetBrandsBrandEventImplCopyWithImpl<$Res>
+    extends _$BrandEventCopyWithImpl<$Res, _$GetBrandsBrandEventImpl>
+    implements _$$GetBrandsBrandEventImplCopyWith<$Res> {
+  __$$GetBrandsBrandEventImplCopyWithImpl(_$GetBrandsBrandEventImpl _value,
+      $Res Function(_$GetBrandsBrandEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectTypePeople = null,
+    Object? selectTypePeople = freezed,
   }) {
-    return _then(_$SwitchTypePeopleBrandEventImpl(
-      selectTypePeople: null == selectTypePeople
+    return _then(_$GetBrandsBrandEventImpl(
+      selectTypePeople: freezed == selectTypePeople
           ? _value.selectTypePeople
           : selectTypePeople // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SwitchTypePeopleBrandEventImpl implements SwitchTypePeopleBrandEvent {
-  const _$SwitchTypePeopleBrandEventImpl({required this.selectTypePeople});
+class _$GetBrandsBrandEventImpl implements GetBrandsBrandEvent {
+  const _$GetBrandsBrandEventImpl({this.selectTypePeople});
 
   @override
-  final String selectTypePeople;
+  final int? selectTypePeople;
 
   @override
   String toString() {
-    return 'BrandEvent.switchTypePeople(selectTypePeople: $selectTypePeople)';
+    return 'BrandEvent.getBrands(selectTypePeople: $selectTypePeople)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SwitchTypePeopleBrandEventImpl &&
+            other is _$GetBrandsBrandEventImpl &&
             (identical(other.selectTypePeople, selectTypePeople) ||
                 other.selectTypePeople == selectTypePeople));
   }
@@ -251,40 +147,43 @@ class _$SwitchTypePeopleBrandEventImpl implements SwitchTypePeopleBrandEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SwitchTypePeopleBrandEventImplCopyWith<_$SwitchTypePeopleBrandEventImpl>
-      get copyWith => __$$SwitchTypePeopleBrandEventImplCopyWithImpl<
-          _$SwitchTypePeopleBrandEventImpl>(this, _$identity);
+  _$$GetBrandsBrandEventImplCopyWith<_$GetBrandsBrandEventImpl> get copyWith =>
+      __$$GetBrandsBrandEventImplCopyWithImpl<_$GetBrandsBrandEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
-    required TResult Function(String selectTypePeople) switchTypePeople,
+    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
+    required TResult Function() goBackBrandInfo,
   }) {
-    return switchTypePeople(selectTypePeople);
+    return getBrands(selectTypePeople);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
-    TResult? Function(String selectTypePeople)? switchTypePeople,
+    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
+    TResult? Function()? goBackBrandInfo,
   }) {
-    return switchTypePeople?.call(selectTypePeople);
+    return getBrands?.call(selectTypePeople);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
-    TResult Function(String selectTypePeople)? switchTypePeople,
+    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
+    TResult Function()? goBackBrandInfo,
     required TResult orElse(),
   }) {
-    if (switchTypePeople != null) {
-      return switchTypePeople(selectTypePeople);
+    if (getBrands != null) {
+      return getBrands(selectTypePeople);
     }
     return orElse();
   }
@@ -292,47 +191,206 @@ class _$SwitchTypePeopleBrandEventImpl implements SwitchTypePeopleBrandEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitBrandEvent value) preloadData,
-    required TResult Function(SwitchTypePeopleBrandEvent value)
-        switchTypePeople,
+    required TResult Function(GetBrandsBrandEvent value) getBrands,
+    required TResult Function(SwitchGenderBrandsBrandEvent value)
+        switchGenderBrands,
     required TResult Function(SearchBrandEvent value) search,
+    required TResult Function(GoBackBrandInfoCategotyBrandEvent value)
+        goBackBrandInfo,
   }) {
-    return switchTypePeople(this);
+    return getBrands(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitBrandEvent value)? preloadData,
-    TResult? Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
+    TResult? Function(GetBrandsBrandEvent value)? getBrands,
+    TResult? Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
     TResult? Function(SearchBrandEvent value)? search,
+    TResult? Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
   }) {
-    return switchTypePeople?.call(this);
+    return getBrands?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitBrandEvent value)? preloadData,
-    TResult Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
+    TResult Function(GetBrandsBrandEvent value)? getBrands,
+    TResult Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
     TResult Function(SearchBrandEvent value)? search,
+    TResult Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
     required TResult orElse(),
   }) {
-    if (switchTypePeople != null) {
-      return switchTypePeople(this);
+    if (getBrands != null) {
+      return getBrands(this);
     }
     return orElse();
   }
 }
 
-abstract class SwitchTypePeopleBrandEvent implements BrandEvent {
-  const factory SwitchTypePeopleBrandEvent(
-          {required final String selectTypePeople}) =
-      _$SwitchTypePeopleBrandEventImpl;
+abstract class GetBrandsBrandEvent implements BrandEvent {
+  const factory GetBrandsBrandEvent({final int? selectTypePeople}) =
+      _$GetBrandsBrandEventImpl;
 
-  String get selectTypePeople;
+  int? get selectTypePeople;
   @JsonKey(ignore: true)
-  _$$SwitchTypePeopleBrandEventImplCopyWith<_$SwitchTypePeopleBrandEventImpl>
+  _$$GetBrandsBrandEventImplCopyWith<_$GetBrandsBrandEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SwitchGenderBrandsBrandEventImplCopyWith<$Res> {
+  factory _$$SwitchGenderBrandsBrandEventImplCopyWith(
+          _$SwitchGenderBrandsBrandEventImpl value,
+          $Res Function(_$SwitchGenderBrandsBrandEventImpl) then) =
+      __$$SwitchGenderBrandsBrandEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int selectTypePeople});
+}
+
+/// @nodoc
+class __$$SwitchGenderBrandsBrandEventImplCopyWithImpl<$Res>
+    extends _$BrandEventCopyWithImpl<$Res, _$SwitchGenderBrandsBrandEventImpl>
+    implements _$$SwitchGenderBrandsBrandEventImplCopyWith<$Res> {
+  __$$SwitchGenderBrandsBrandEventImplCopyWithImpl(
+      _$SwitchGenderBrandsBrandEventImpl _value,
+      $Res Function(_$SwitchGenderBrandsBrandEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectTypePeople = null,
+  }) {
+    return _then(_$SwitchGenderBrandsBrandEventImpl(
+      selectTypePeople: null == selectTypePeople
+          ? _value.selectTypePeople
+          : selectTypePeople // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SwitchGenderBrandsBrandEventImpl
+    implements SwitchGenderBrandsBrandEvent {
+  const _$SwitchGenderBrandsBrandEventImpl({required this.selectTypePeople});
+
+  @override
+  final int selectTypePeople;
+
+  @override
+  String toString() {
+    return 'BrandEvent.switchGenderBrands(selectTypePeople: $selectTypePeople)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SwitchGenderBrandsBrandEventImpl &&
+            (identical(other.selectTypePeople, selectTypePeople) ||
+                other.selectTypePeople == selectTypePeople));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectTypePeople);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SwitchGenderBrandsBrandEventImplCopyWith<
+          _$SwitchGenderBrandsBrandEventImpl>
+      get copyWith => __$$SwitchGenderBrandsBrandEventImplCopyWithImpl<
+          _$SwitchGenderBrandsBrandEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int selectTypePeople) switchGenderBrands,
+    required TResult Function(String query) search,
+    required TResult Function() goBackBrandInfo,
+  }) {
+    return switchGenderBrands(selectTypePeople);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int selectTypePeople)? switchGenderBrands,
+    TResult? Function(String query)? search,
+    TResult? Function()? goBackBrandInfo,
+  }) {
+    return switchGenderBrands?.call(selectTypePeople);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int selectTypePeople)? switchGenderBrands,
+    TResult Function(String query)? search,
+    TResult Function()? goBackBrandInfo,
+    required TResult orElse(),
+  }) {
+    if (switchGenderBrands != null) {
+      return switchGenderBrands(selectTypePeople);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetBrandsBrandEvent value) getBrands,
+    required TResult Function(SwitchGenderBrandsBrandEvent value)
+        switchGenderBrands,
+    required TResult Function(SearchBrandEvent value) search,
+    required TResult Function(GoBackBrandInfoCategotyBrandEvent value)
+        goBackBrandInfo,
+  }) {
+    return switchGenderBrands(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetBrandsBrandEvent value)? getBrands,
+    TResult? Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
+    TResult? Function(SearchBrandEvent value)? search,
+    TResult? Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
+  }) {
+    return switchGenderBrands?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetBrandsBrandEvent value)? getBrands,
+    TResult Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
+    TResult Function(SearchBrandEvent value)? search,
+    TResult Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
+    required TResult orElse(),
+  }) {
+    if (switchGenderBrands != null) {
+      return switchGenderBrands(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SwitchGenderBrandsBrandEvent implements BrandEvent {
+  const factory SwitchGenderBrandsBrandEvent(
+          {required final int selectTypePeople}) =
+      _$SwitchGenderBrandsBrandEventImpl;
+
+  int get selectTypePeople;
+  @JsonKey(ignore: true)
+  _$$SwitchGenderBrandsBrandEventImplCopyWith<
+          _$SwitchGenderBrandsBrandEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -401,9 +459,10 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() preloadData,
-    required TResult Function(String selectTypePeople) switchTypePeople,
+    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
+    required TResult Function() goBackBrandInfo,
   }) {
     return search(query);
   }
@@ -411,9 +470,10 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? preloadData,
-    TResult? Function(String selectTypePeople)? switchTypePeople,
+    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
+    TResult? Function()? goBackBrandInfo,
   }) {
     return search?.call(query);
   }
@@ -421,9 +481,10 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? preloadData,
-    TResult Function(String selectTypePeople)? switchTypePeople,
+    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
+    TResult Function()? goBackBrandInfo,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -435,10 +496,12 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitBrandEvent value) preloadData,
-    required TResult Function(SwitchTypePeopleBrandEvent value)
-        switchTypePeople,
+    required TResult Function(GetBrandsBrandEvent value) getBrands,
+    required TResult Function(SwitchGenderBrandsBrandEvent value)
+        switchGenderBrands,
     required TResult Function(SearchBrandEvent value) search,
+    required TResult Function(GoBackBrandInfoCategotyBrandEvent value)
+        goBackBrandInfo,
   }) {
     return search(this);
   }
@@ -446,9 +509,10 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitBrandEvent value)? preloadData,
-    TResult? Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
+    TResult? Function(GetBrandsBrandEvent value)? getBrands,
+    TResult? Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
     TResult? Function(SearchBrandEvent value)? search,
+    TResult? Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
   }) {
     return search?.call(this);
   }
@@ -456,9 +520,10 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitBrandEvent value)? preloadData,
-    TResult Function(SwitchTypePeopleBrandEvent value)? switchTypePeople,
+    TResult Function(GetBrandsBrandEvent value)? getBrands,
+    TResult Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
     TResult Function(SearchBrandEvent value)? search,
+    TResult Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -479,6 +544,128 @@ abstract class SearchBrandEvent implements BrandEvent {
 }
 
 /// @nodoc
+abstract class _$$GoBackBrandInfoCategotyBrandEventImplCopyWith<$Res> {
+  factory _$$GoBackBrandInfoCategotyBrandEventImplCopyWith(
+          _$GoBackBrandInfoCategotyBrandEventImpl value,
+          $Res Function(_$GoBackBrandInfoCategotyBrandEventImpl) then) =
+      __$$GoBackBrandInfoCategotyBrandEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoBackBrandInfoCategotyBrandEventImplCopyWithImpl<$Res>
+    extends _$BrandEventCopyWithImpl<$Res,
+        _$GoBackBrandInfoCategotyBrandEventImpl>
+    implements _$$GoBackBrandInfoCategotyBrandEventImplCopyWith<$Res> {
+  __$$GoBackBrandInfoCategotyBrandEventImplCopyWithImpl(
+      _$GoBackBrandInfoCategotyBrandEventImpl _value,
+      $Res Function(_$GoBackBrandInfoCategotyBrandEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GoBackBrandInfoCategotyBrandEventImpl
+    implements GoBackBrandInfoCategotyBrandEvent {
+  const _$GoBackBrandInfoCategotyBrandEventImpl();
+
+  @override
+  String toString() {
+    return 'BrandEvent.goBackBrandInfo()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GoBackBrandInfoCategotyBrandEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int selectTypePeople) switchGenderBrands,
+    required TResult Function(String query) search,
+    required TResult Function() goBackBrandInfo,
+  }) {
+    return goBackBrandInfo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int selectTypePeople)? switchGenderBrands,
+    TResult? Function(String query)? search,
+    TResult? Function()? goBackBrandInfo,
+  }) {
+    return goBackBrandInfo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int selectTypePeople)? switchGenderBrands,
+    TResult Function(String query)? search,
+    TResult Function()? goBackBrandInfo,
+    required TResult orElse(),
+  }) {
+    if (goBackBrandInfo != null) {
+      return goBackBrandInfo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetBrandsBrandEvent value) getBrands,
+    required TResult Function(SwitchGenderBrandsBrandEvent value)
+        switchGenderBrands,
+    required TResult Function(SearchBrandEvent value) search,
+    required TResult Function(GoBackBrandInfoCategotyBrandEvent value)
+        goBackBrandInfo,
+  }) {
+    return goBackBrandInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetBrandsBrandEvent value)? getBrands,
+    TResult? Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
+    TResult? Function(SearchBrandEvent value)? search,
+    TResult? Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
+  }) {
+    return goBackBrandInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetBrandsBrandEvent value)? getBrands,
+    TResult Function(SwitchGenderBrandsBrandEvent value)? switchGenderBrands,
+    TResult Function(SearchBrandEvent value)? search,
+    TResult Function(GoBackBrandInfoCategotyBrandEvent value)? goBackBrandInfo,
+    required TResult orElse(),
+  }) {
+    if (goBackBrandInfo != null) {
+      return goBackBrandInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoBackBrandInfoCategotyBrandEvent implements BrandEvent {
+  const factory GoBackBrandInfoCategotyBrandEvent() =
+      _$GoBackBrandInfoCategotyBrandEventImpl;
+}
+
+/// @nodoc
 mixin _$BrandState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -487,11 +674,11 @@ mixin _$BrandState {
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -502,11 +689,11 @@ mixin _$BrandState {
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -517,11 +704,11 @@ mixin _$BrandState {
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -614,11 +801,11 @@ class _$InitBrandStateImpl implements InitBrandState {
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)
         preloadDataCompleted,
   }) {
     return init();
@@ -632,11 +819,11 @@ class _$InitBrandStateImpl implements InitBrandState {
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
   }) {
     return init?.call();
@@ -650,11 +837,11 @@ class _$InitBrandStateImpl implements InitBrandState {
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -749,11 +936,11 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)
         preloadDataCompleted,
   }) {
     return load();
@@ -767,11 +954,11 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
   }) {
     return load?.call();
@@ -785,11 +972,11 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -851,11 +1038,11 @@ abstract class _$$PreloadDataCompletedBrandStateImplCopyWith<$Res> {
   $Res call(
       {String selectedTypePeople,
       List<String> listTypePeople,
-      List<String> allBrands,
-      Map<String, List<String>> listBrands,
-      Map<String, List<String>> defaultListBrands,
-      List<String> listAlphabetAndNumber,
-      List<CountBrand> listCountBrand});
+      List<BrandItemDataModel> allBrands,
+      List<BrandDataModel> listBrands,
+      List<BrandDataModel> defaultListBrands,
+      List<CountBrand> listCountBrand,
+      List<int> listBrandsPath});
 }
 
 /// @nodoc
@@ -875,8 +1062,8 @@ class __$$PreloadDataCompletedBrandStateImplCopyWithImpl<$Res>
     Object? allBrands = null,
     Object? listBrands = null,
     Object? defaultListBrands = null,
-    Object? listAlphabetAndNumber = null,
     Object? listCountBrand = null,
+    Object? listBrandsPath = null,
   }) {
     return _then(_$PreloadDataCompletedBrandStateImpl(
       selectedTypePeople: null == selectedTypePeople
@@ -890,23 +1077,23 @@ class __$$PreloadDataCompletedBrandStateImplCopyWithImpl<$Res>
       allBrands: null == allBrands
           ? _value._allBrands
           : allBrands // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<BrandItemDataModel>,
       listBrands: null == listBrands
           ? _value._listBrands
           : listBrands // ignore: cast_nullable_to_non_nullable
-              as Map<String, List<String>>,
+              as List<BrandDataModel>,
       defaultListBrands: null == defaultListBrands
           ? _value._defaultListBrands
           : defaultListBrands // ignore: cast_nullable_to_non_nullable
-              as Map<String, List<String>>,
-      listAlphabetAndNumber: null == listAlphabetAndNumber
-          ? _value._listAlphabetAndNumber
-          : listAlphabetAndNumber // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<BrandDataModel>,
       listCountBrand: null == listCountBrand
           ? _value._listCountBrand
           : listCountBrand // ignore: cast_nullable_to_non_nullable
               as List<CountBrand>,
+      listBrandsPath: null == listBrandsPath
+          ? _value._listBrandsPath
+          : listBrandsPath // ignore: cast_nullable_to_non_nullable
+              as List<int>,
     ));
   }
 }
@@ -918,17 +1105,17 @@ class _$PreloadDataCompletedBrandStateImpl
   const _$PreloadDataCompletedBrandStateImpl(
       {required this.selectedTypePeople,
       required final List<String> listTypePeople,
-      required final List<String> allBrands,
-      required final Map<String, List<String>> listBrands,
-      required final Map<String, List<String>> defaultListBrands,
-      required final List<String> listAlphabetAndNumber,
-      required final List<CountBrand> listCountBrand})
+      required final List<BrandItemDataModel> allBrands,
+      required final List<BrandDataModel> listBrands,
+      required final List<BrandDataModel> defaultListBrands,
+      required final List<CountBrand> listCountBrand,
+      required final List<int> listBrandsPath})
       : _listTypePeople = listTypePeople,
         _allBrands = allBrands,
         _listBrands = listBrands,
         _defaultListBrands = defaultListBrands,
-        _listAlphabetAndNumber = listAlphabetAndNumber,
-        _listCountBrand = listCountBrand;
+        _listCountBrand = listCountBrand,
+        _listBrandsPath = listBrandsPath;
 
   @override
   final String selectedTypePeople;
@@ -940,38 +1127,29 @@ class _$PreloadDataCompletedBrandStateImpl
     return EqualUnmodifiableListView(_listTypePeople);
   }
 
-  final List<String> _allBrands;
+  final List<BrandItemDataModel> _allBrands;
   @override
-  List<String> get allBrands {
+  List<BrandItemDataModel> get allBrands {
     if (_allBrands is EqualUnmodifiableListView) return _allBrands;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_allBrands);
   }
 
-  final Map<String, List<String>> _listBrands;
+  final List<BrandDataModel> _listBrands;
   @override
-  Map<String, List<String>> get listBrands {
-    if (_listBrands is EqualUnmodifiableMapView) return _listBrands;
+  List<BrandDataModel> get listBrands {
+    if (_listBrands is EqualUnmodifiableListView) return _listBrands;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_listBrands);
+    return EqualUnmodifiableListView(_listBrands);
   }
 
-  final Map<String, List<String>> _defaultListBrands;
+  final List<BrandDataModel> _defaultListBrands;
   @override
-  Map<String, List<String>> get defaultListBrands {
-    if (_defaultListBrands is EqualUnmodifiableMapView)
+  List<BrandDataModel> get defaultListBrands {
+    if (_defaultListBrands is EqualUnmodifiableListView)
       return _defaultListBrands;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_defaultListBrands);
-  }
-
-  final List<String> _listAlphabetAndNumber;
-  @override
-  List<String> get listAlphabetAndNumber {
-    if (_listAlphabetAndNumber is EqualUnmodifiableListView)
-      return _listAlphabetAndNumber;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listAlphabetAndNumber);
+    return EqualUnmodifiableListView(_defaultListBrands);
   }
 
   final List<CountBrand> _listCountBrand;
@@ -982,9 +1160,17 @@ class _$PreloadDataCompletedBrandStateImpl
     return EqualUnmodifiableListView(_listCountBrand);
   }
 
+  final List<int> _listBrandsPath;
+  @override
+  List<int> get listBrandsPath {
+    if (_listBrandsPath is EqualUnmodifiableListView) return _listBrandsPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listBrandsPath);
+  }
+
   @override
   String toString() {
-    return 'BrandState.preloadDataCompleted(selectedTypePeople: $selectedTypePeople, listTypePeople: $listTypePeople, allBrands: $allBrands, listBrands: $listBrands, defaultListBrands: $defaultListBrands, listAlphabetAndNumber: $listAlphabetAndNumber, listCountBrand: $listCountBrand)';
+    return 'BrandState.preloadDataCompleted(selectedTypePeople: $selectedTypePeople, listTypePeople: $listTypePeople, allBrands: $allBrands, listBrands: $listBrands, defaultListBrands: $defaultListBrands, listCountBrand: $listCountBrand, listBrandsPath: $listBrandsPath)';
   }
 
   @override
@@ -1003,9 +1189,9 @@ class _$PreloadDataCompletedBrandStateImpl
             const DeepCollectionEquality()
                 .equals(other._defaultListBrands, _defaultListBrands) &&
             const DeepCollectionEquality()
-                .equals(other._listAlphabetAndNumber, _listAlphabetAndNumber) &&
+                .equals(other._listCountBrand, _listCountBrand) &&
             const DeepCollectionEquality()
-                .equals(other._listCountBrand, _listCountBrand));
+                .equals(other._listBrandsPath, _listBrandsPath));
   }
 
   @override
@@ -1016,8 +1202,8 @@ class _$PreloadDataCompletedBrandStateImpl
       const DeepCollectionEquality().hash(_allBrands),
       const DeepCollectionEquality().hash(_listBrands),
       const DeepCollectionEquality().hash(_defaultListBrands),
-      const DeepCollectionEquality().hash(_listAlphabetAndNumber),
-      const DeepCollectionEquality().hash(_listCountBrand));
+      const DeepCollectionEquality().hash(_listCountBrand),
+      const DeepCollectionEquality().hash(_listBrandsPath));
 
   @JsonKey(ignore: true)
   @override
@@ -1035,15 +1221,15 @@ class _$PreloadDataCompletedBrandStateImpl
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)
         preloadDataCompleted,
   }) {
     return preloadDataCompleted(selectedTypePeople, listTypePeople, allBrands,
-        listBrands, defaultListBrands, listAlphabetAndNumber, listCountBrand);
+        listBrands, defaultListBrands, listCountBrand, listBrandsPath);
   }
 
   @override
@@ -1054,11 +1240,11 @@ class _$PreloadDataCompletedBrandStateImpl
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
   }) {
     return preloadDataCompleted?.call(
@@ -1067,8 +1253,8 @@ class _$PreloadDataCompletedBrandStateImpl
         allBrands,
         listBrands,
         defaultListBrands,
-        listAlphabetAndNumber,
-        listCountBrand);
+        listCountBrand,
+        listBrandsPath);
   }
 
   @override
@@ -1079,17 +1265,17 @@ class _$PreloadDataCompletedBrandStateImpl
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
-            List<String> allBrands,
-            Map<String, List<String>> listBrands,
-            Map<String, List<String>> defaultListBrands,
-            List<String> listAlphabetAndNumber,
-            List<CountBrand> listCountBrand)?
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
       return preloadDataCompleted(selectedTypePeople, listTypePeople, allBrands,
-          listBrands, defaultListBrands, listAlphabetAndNumber, listCountBrand);
+          listBrands, defaultListBrands, listCountBrand, listBrandsPath);
     }
     return orElse();
   }
@@ -1136,20 +1322,20 @@ abstract class PreloadDataCompletedBrandState implements BrandState {
   const factory PreloadDataCompletedBrandState(
           {required final String selectedTypePeople,
           required final List<String> listTypePeople,
-          required final List<String> allBrands,
-          required final Map<String, List<String>> listBrands,
-          required final Map<String, List<String>> defaultListBrands,
-          required final List<String> listAlphabetAndNumber,
-          required final List<CountBrand> listCountBrand}) =
+          required final List<BrandItemDataModel> allBrands,
+          required final List<BrandDataModel> listBrands,
+          required final List<BrandDataModel> defaultListBrands,
+          required final List<CountBrand> listCountBrand,
+          required final List<int> listBrandsPath}) =
       _$PreloadDataCompletedBrandStateImpl;
 
   String get selectedTypePeople;
   List<String> get listTypePeople;
-  List<String> get allBrands;
-  Map<String, List<String>> get listBrands;
-  Map<String, List<String>> get defaultListBrands;
-  List<String> get listAlphabetAndNumber;
+  List<BrandItemDataModel> get allBrands;
+  List<BrandDataModel> get listBrands;
+  List<BrandDataModel> get defaultListBrands;
   List<CountBrand> get listCountBrand;
+  List<int> get listBrandsPath;
   @JsonKey(ignore: true)
   _$$PreloadDataCompletedBrandStateImplCopyWith<
           _$PreloadDataCompletedBrandStateImpl>

@@ -14,6 +14,7 @@ class CatalogCardItem extends StatefulWidget {
     required this.yourPrice,
     required this.price,
     required this.maximumCashback,
+    required this.maximumPersonalDiscount,
     required this.onSelect,
     required this.onAddFavouriteProduct,
     required this.onDeleteFavouriteProduct,
@@ -24,6 +25,8 @@ class CatalogCardItem extends StatefulWidget {
     required this.onAddProductToSoppingCart,
     required this.listSize,
     required this.isLoad,
+    required this.isAuth,
+    required this.userDiscount,
   });
 
   final String imageUrl;
@@ -32,7 +35,10 @@ class CatalogCardItem extends StatefulWidget {
   final String yourPrice;
   final String price;
   final int pb;
-  final String maximumCashback;
+  final int maximumCashback;
+  final int maximumPersonalDiscount;
+  final int userDiscount;
+  final bool isAuth;
   final bool isLike;
   final bool isShop;
   final bool isLoad;
@@ -238,25 +244,48 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          RichText(
-                            maxLines: 2,
-                            text: TextSpan(
-                              text: 'Выгода до ',
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color:
-                                        BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                          if (widget.isAuth && widget.userDiscount > 0)
+                            RichText(
+                              maxLines: 2,
+                              text: TextSpan(
+                                text: 'Кэшбэк до ',
+                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      color:
+                                          BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                    ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text:
+                                        '${widget.maximumCashback.toString().spaceSeparateNumbers()} ₽',
+                                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                          color: BlindChickenColors.activeBorderTextField
+                                              .withOpacity(0.7),
+                                        ),
                                   ),
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: '${widget.maximumCashback.spaceSeparateNumbers()} ₽',
-                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                        color: BlindChickenColors.activeBorderTextField
-                                            .withOpacity(0.7),
-                                      ),
-                                ),
-                              ],
+                                ],
+                              ),
+                            )
+                          else
+                            RichText(
+                              maxLines: 2,
+                              text: TextSpan(
+                                text: 'Выгода до ',
+                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      color:
+                                          BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                    ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text:
+                                        '${(widget.maximumCashback + widget.maximumPersonalDiscount).toString().spaceSeparateNumbers()} ₽',
+                                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                          color: BlindChickenColors.activeBorderTextField
+                                              .withOpacity(0.7),
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
                         ],
                       )
                     ],

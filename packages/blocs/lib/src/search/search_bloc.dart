@@ -81,6 +81,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listSize: [],
         isLoadGetSizeProduct: false,
         codeProduct: null,
+        userDiscount: 0,
       ),
     );
   }
@@ -137,6 +138,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }
 
       emit(initState.copyWith(
+        isAuth: isAuth,
         searchResultInfo: searchResultInfo,
         products: searchResultInfo.products,
         favouritesProducts: favouritesProducts,
@@ -144,6 +146,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProductsCode: [],
         filter: searchResultInfo.filter,
         request: request,
+        userDiscount: searchResultInfo.userDiscount,
       ));
     });
   }

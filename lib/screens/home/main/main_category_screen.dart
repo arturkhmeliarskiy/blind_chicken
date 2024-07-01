@@ -4,6 +4,7 @@ import 'package:blind_chicken/screens/home/main/widgets/main_category_product_it
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -23,7 +24,10 @@ class MainCategoryScreen extends StatefulWidget {
 
 class _MainCategoryScreenState extends State<MainCategoryScreen> {
   final TextEditingController _search = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
   int _selectIndexType = 1;
+  bool _isButtonTop = false;
+  double _historyPosition = 0.0;
 
   @override
   void initState() {
@@ -31,17 +35,13 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
     context.read<CatalogBloc>().add(
           CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
         );
-
+    _scrollController.addListener(_loadMoreData);
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant MainCategoryScreen oldWidget) {
-    _selectIndexType = widget.selectIndexType;
-
-    context.read<CatalogBloc>().add(
-          CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
-        );
+    _scrollController.jumpTo(_historyPosition);
     super.didUpdateWidget(oldWidget);
   }
 
@@ -58,6 +58,28 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
     return result;
   }
 
+  void _loadMoreData() async {
+    if (_historyPosition > _scrollController.position.pixels &&
+        _scrollController.position.pixels > 0) {
+      setState(() {
+        _isButtonTop = true;
+      });
+    } else {
+      setState(() {
+        _isButtonTop = false;
+      });
+    }
+
+    _historyPosition = _scrollController.position.pixels;
+  }
+
+  @override
+  void dispose() {
+    _search.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -67,386 +89,420 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
           context.back();
         }
       },
-      child: Scaffold(
-        body: ListView(
-          children: [
-            const AppBarBlindChicken(),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.only(left: 10.6, right: 10.6),
-              height: 55,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          Scaffold(
+            body: ListView(
+              controller: _scrollController,
+              children: [
+                const AppBarBlindChicken(),
+                Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(left: 10.6, right: 10.6),
+                  height: 55,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectIndexType = 1;
-                          });
-                          context.read<CatalogBloc>().add(
-                                CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
-                              );
-                        },
-                        child: Text(
-                          'Женщинам',
-                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            fontWeight: _selectIndexType == 1 ? FontWeight.w600 : FontWeight.w400,
-                            shadows: [
-                              _selectIndexType == 1
-                                  ? Shadow(
-                                      color: BlindChickenColors.activeBorderTextField.withOpacity(
-                                        0.2,
-                                      ),
-                                      offset: const Offset(0, 1),
-                                      blurRadius: 1,
-                                    )
-                                  : const Shadow(),
-                            ],
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectIndexType = 1;
+                              });
+                              context.read<BrandBloc>().add(
+                                    const BrandEvent.getBrands(
+                                      selectTypePeople: 1,
+                                    ),
+                                  );
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.switchTypePeople(
+                                        selectIndexType: _selectIndexType),
+                                  );
+                            },
+                            child: Text(
+                              'Женщинам',
+                              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontWeight:
+                                    _selectIndexType == 1 ? FontWeight.w600 : FontWeight.w400,
+                                shadows: [
+                                  _selectIndexType == 1
+                                      ? Shadow(
+                                          color:
+                                              BlindChickenColors.activeBorderTextField.withOpacity(
+                                            0.2,
+                                          ),
+                                          offset: const Offset(0, 1),
+                                          blurRadius: 1,
+                                        )
+                                      : const Shadow(),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 17.5,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectIndexType = 2;
-                          });
-                          context.read<CatalogBloc>().add(
-                                CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
-                              );
-                        },
-                        child: Text(
-                          'Мужчинам',
-                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            fontWeight: _selectIndexType == 2 ? FontWeight.w600 : FontWeight.w400,
-                            shadows: [
-                              _selectIndexType == 2
-                                  ? Shadow(
-                                      color: BlindChickenColors.activeBorderTextField.withOpacity(
-                                        0.2,
-                                      ),
-                                      offset: const Offset(0, 1),
-                                      blurRadius: 1,
-                                    )
-                                  : const Shadow(),
-                            ],
+                          const SizedBox(
+                            width: 17.5,
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 17.5,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectIndexType = 3;
-                          });
-                          context.read<CatalogBloc>().add(
-                                CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
-                              );
-                        },
-                        child: Text(
-                          'Детям',
-                          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            fontWeight: _selectIndexType == 3 ? FontWeight.w600 : FontWeight.w400,
-                            shadows: [
-                              _selectIndexType == 3
-                                  ? Shadow(
-                                      color: BlindChickenColors.activeBorderTextField.withOpacity(
-                                        0.2,
-                                      ),
-                                      offset: const Offset(0, 1),
-                                      blurRadius: 1,
-                                    )
-                                  : const Shadow(),
-                            ],
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectIndexType = 2;
+                              });
+                              context.read<BrandBloc>().add(
+                                    const BrandEvent.getBrands(
+                                      selectTypePeople: 2,
+                                    ),
+                                  );
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.switchTypePeople(
+                                        selectIndexType: _selectIndexType),
+                                  );
+                            },
+                            child: Text(
+                              'Мужчинам',
+                              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontWeight:
+                                    _selectIndexType == 2 ? FontWeight.w600 : FontWeight.w400,
+                                shadows: [
+                                  _selectIndexType == 2
+                                      ? Shadow(
+                                          color:
+                                              BlindChickenColors.activeBorderTextField.withOpacity(
+                                            0.2,
+                                          ),
+                                          offset: const Offset(0, 1),
+                                          blurRadius: 1,
+                                        )
+                                      : const Shadow(),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(
+                            width: 17.5,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectIndexType = 3;
+                              });
+                              context.read<BrandBloc>().add(
+                                    const BrandEvent.getBrands(
+                                      selectTypePeople: 3,
+                                    ),
+                                  );
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.switchTypePeople(
+                                        selectIndexType: _selectIndexType),
+                                  );
+                            },
+                            child: Text(
+                              'Детям',
+                              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                                fontWeight:
+                                    _selectIndexType == 3 ? FontWeight.w600 : FontWeight.w400,
+                                shadows: [
+                                  _selectIndexType == 3
+                                      ? Shadow(
+                                          color:
+                                              BlindChickenColors.activeBorderTextField.withOpacity(
+                                            0.2,
+                                          ),
+                                          offset: const Offset(0, 1),
+                                          blurRadius: 1,
+                                        )
+                                      : const Shadow(),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            const Divider(
-              height: 1,
-              color: BlindChickenColors.borderBottomColor,
-            ),
-            const SizedBox(
-              height: 14,
-            ),
-            BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-              return state.maybeMap(
-                preloadDataCompleted: (initState) {
-                  return Wrap(
-                    alignment: WrapAlignment.center,
-                    spacing: 14,
-                    runSpacing: 14,
-                    children: List.generate(initState.category.length, (index) {
-                      return GestureDetector(
+                ),
+                const Divider(
+                  height: 1,
+                  color: BlindChickenColors.borderBottomColor,
+                ),
+                const SizedBox(
+                  height: 14,
+                ),
+                BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+                  return state.maybeMap(
+                    preloadDataCompleted: (initState) {
+                      return Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 14,
+                        runSpacing: 14,
+                        children: List.generate(initState.category.length, (index) {
+                          return GestureDetector(
+                            onTap: () {
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.getInfoProducts(
+                                      path: initState.category[index].pathMenu,
+                                    ),
+                                  );
+                              context.navigateTo(
+                                CatalogRoute(
+                                  title: initState.category[index].title,
+                                  url: initState.category[index].pathMenu,
+                                ),
+                              );
+                            },
+                            child: MainCategoryProductItem(
+                              image: initState.category[index].imagePath,
+                              title: initState.category[index].title,
+                            ),
+                          );
+                        }),
+                      );
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                }),
+                const SizedBox(
+                  height: 16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 10.5,
+                    right: 10.5,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      context.navigateTo(GiftCardRoute());
+                    },
+                    child: SizedBox(
+                      child: Image.asset(
+                        'assets/images/giftcard.jpg',
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Center(
+                  child: Text(
+                    'Подарочная карта',
+                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
+                ),
+                // const SizedBox(
+                //   height: 16,
+                // ),
+                // GestureDetector(
+                //   onTap: () {
+                //     context.navigateTo(const SaleRoute());
+                //   },
+                //   child: SizedBox(
+                //     child: Image.asset(
+                //       'assets/images/sale.jpg',
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 8,
+                // ),
+                // Center(
+                //   child: Text(
+                //     'Распродажа',
+                //     style: Theme.of(context).textTheme.headline2?.copyWith(
+                //           fontWeight: FontWeight.w700,
+                //         ),
+                //   ),
+                // ),
+                const SizedBox(
+                  height: 28,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.6, right: 10.6),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
                         onTap: () {
-                          context.read<CatalogBloc>().add(
-                                CatalogEvent.getInfoProducts(
-                                  path: initState.category[index].pathMenu,
+                          context.read<BrandBloc>().add(
+                                BrandEvent.getBrands(
+                                  selectTypePeople: _selectIndexType,
                                 ),
                               );
                           context.navigateTo(
-                            CatalogRoute(
-                              title: initState.category[index].title,
-                              url: initState.category[index].pathMenu,
-                            ),
+                            const BrandsRoute(),
                           );
                         },
-                        child: MainCategoryProductItem(
-                          image: initState.category[index].imagePath,
-                          title: initState.category[index].title,
+                        child: Text(
+                          'Бренды',
+                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                         ),
-                      );
-                    }),
-                  );
-                },
-                orElse: () => const SizedBox(),
-              );
-            }),
-            const SizedBox(
-              height: 16,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 10.5,
-                right: 10.5,
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  context.navigateTo(GiftCardRoute());
-                },
-                child: SizedBox(
-                  child: Image.asset(
-                    'assets/images/giftcard.jpg',
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      SizedBox(
+                        height: 37,
+                        child: Theme(
+                          data: Theme.of(context).copyWith(splashColor: Colors.transparent),
+                          child: TextField(
+                            onTap: () {},
+                            onChanged: (value) {
+                              setState(() {});
+                              context.read<BrandBloc>().add(BrandEvent.search(query: value));
+                            },
+                            controller: _search,
+                            cursorColor: BlindChickenColors.activeBorderTextField,
+                            textCapitalization: TextCapitalization.sentences,
+                            style: Theme.of(context).textTheme.displayMedium,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: BlindChickenColors.borderTextField,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: BlindChickenColors.borderTextField,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: BlindChickenColors.activeBorderTextField,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              suffixIcon: _search.text.isNotEmpty
+                                  ? InkWell(
+                                      onTap: () {
+                                        _search.clear();
+                                        context.read<BrandBloc>().add(
+                                              const BrandEvent.search(query: ''),
+                                            );
+                                      },
+                                      child: Transform.scale(
+                                        scale: 0.5,
+                                        child: SvgPicture.asset('assets/icons/x.svg'),
+                                      ),
+                                    )
+                                  : const SizedBox(),
+                              hintText: 'Поиск',
+                              hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.textInput,
+                                  ),
+                              prefixIconConstraints: const BoxConstraints(
+                                minWidth: 0,
+                                minHeight: 0,
+                              ),
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 4,
+                                  right: 4,
+                                ),
+                                child: Transform.scale(
+                                  scale: 0.55,
+                                  child: SvgPicture.asset(
+                                    'assets/icons/search.svg',
+                                    color: BlindChickenColors.textInput,
+                                  ),
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.zero,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 18,
+                      ),
+                      BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
+                        return state.maybeMap(
+                          preloadDataCompleted: (initState) {
+                            return MediaQuery.removePadding(
+                              context: context,
+                              removeTop: true,
+                              child: GridView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: initState.allBrands.length,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2, // number of items in each row
+                                    mainAxisSpacing: 11.0, // spacing between rows
+                                    crossAxisSpacing: 11.0, // spacing between columns
+                                    childAspectRatio: 6.5,
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    return InkWell(
+                                      onTap: () {
+                                        FocusScope.of(context).unfocus();
+                                        _search.clear();
+                                        context.read<BrandBloc>().add(
+                                              const BrandEvent.search(query: ''),
+                                            );
+                                        context.read<CatalogBloc>().add(
+                                              CatalogEvent.getInfoProducts(
+                                                path: initState.allBrands[index].u,
+                                              ),
+                                            );
+                                        context.navigateTo(
+                                          CatalogRoute(
+                                            title: initState.allBrands[index].n,
+                                            url: initState.allBrands[index].u,
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        initState.allBrands[index].n,
+                                        style: Theme.of(context).textTheme.headline2,
+                                      ),
+                                    );
+                                  }),
+                            );
+                          },
+                          orElse: () => const SizedBox(),
+                        );
+                      }),
+                      const SizedBox(
+                        height: 48,
+                      ),
+                    ],
                   ),
                 ),
+              ],
+            ),
+          ),
+          if (_isButtonTop)
+            GestureDetector(
+              onTap: () {
+                _scrollController.jumpTo(0.0);
+                setState(() {
+                  _isButtonTop = false;
+                });
+              },
+              child: Container(
+                height: 45,
+                width: 45,
+                margin: const EdgeInsets.only(left: 15, bottom: 15),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: BlindChickenColors.activeBorderTextField,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: SvgPicture.asset(
+                  'assets/icons/chevron-top.svg',
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Center(
-              child: Text(
-                'Подарочная карта',
-                style: Theme.of(context).textTheme.headline2?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            // GestureDetector(
-            //   onTap: () {
-            //     context.navigateTo(const SaleRoute());
-            //   },
-            //   child: SizedBox(
-            //     child: Image.asset(
-            //       'assets/images/sale.jpg',
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 8,
-            // ),
-            // Center(
-            //   child: Text(
-            //     'Распродажа',
-            //     style: Theme.of(context).textTheme.headline2?.copyWith(
-            //           fontWeight: FontWeight.w700,
-            //         ),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 28,
-            // ),
-            // Text(
-            //   'Бренды',
-            //   style: Theme.of(context).textTheme.headline2?.copyWith(
-            //         fontWeight: FontWeight.w700,
-            //       ),
-            // ),
-            // const SizedBox(
-            //   height: 14,
-            // ),
-            // SizedBox(
-            //   height: 37,
-            //   child: Theme(
-            //     data: Theme.of(context).copyWith(splashColor: Colors.transparent),
-            //     child: TextField(
-            //       onTap: () {},
-            //       onChanged: (value) {
-            //         setState(() {});
-            //         context.read<CatalogBloc>().add(CatalogEvent.searchBrand(query: value));
-            //       },
-            //       controller: _search,
-            //       cursorColor: BlindChickenColors.activeBorderTextField,
-            //       textCapitalization: TextCapitalization.sentences,
-            //       style: Theme.of(context).textTheme.displayMedium,
-            //       decoration: InputDecoration(
-            //         isDense: true,
-            //         enabledBorder: OutlineInputBorder(
-            //           borderSide: const BorderSide(
-            //             color: BlindChickenColors.borderTextField,
-            //           ),
-            //           borderRadius: BorderRadius.circular(4),
-            //         ),
-            //         border: OutlineInputBorder(
-            //           borderSide: const BorderSide(
-            //             color: BlindChickenColors.borderTextField,
-            //           ),
-            //           borderRadius: BorderRadius.circular(4),
-            //         ),
-            //         focusedBorder: OutlineInputBorder(
-            //           borderSide: const BorderSide(
-            //             color: BlindChickenColors.activeBorderTextField,
-            //           ),
-            //           borderRadius: BorderRadius.circular(5),
-            //         ),
-            //         suffixIcon: _search.text.isNotEmpty
-            //             ? InkWell(
-            //                 onTap: () {
-            //                   _search.clear();
-            //                   context.read<CatalogBloc>().add(
-            //                         const CatalogEvent.searchBrand(query: ''),
-            //                       );
-            //                 },
-            //                 child: Transform.scale(
-            //                   scale: 0.5,
-            //                   child: SvgPicture.asset('assets/icons/x.svg'),
-            //                 ),
-            //               )
-            //             : const SizedBox(),
-            //         hintText: 'Поиск',
-            //         hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
-            //               color: BlindChickenColors.textInput,
-            //             ),
-            //         prefixIconConstraints: const BoxConstraints(
-            //           minWidth: 0,
-            //           minHeight: 0,
-            //         ),
-            //         prefixIcon: Padding(
-            //           padding: const EdgeInsets.only(
-            //             left: 4,
-            //             right: 4,
-            //           ),
-            //           child: Transform.scale(
-            //             scale: 0.55,
-            //             child: SvgPicture.asset(
-            //               'assets/icons/search.svg',
-            //               color: BlindChickenColors.textInput,
-            //             ),
-            //           ),
-            //         ),
-            //         contentPadding: EdgeInsets.zero,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 14,
-            // ),
-            // BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-            //   return state.maybeMap(
-            //     preloadDataCompleted: (initState) {
-            //       return MediaQuery.removePadding(
-            //         context: context,
-            //         removeTop: true,
-            //         child: GridView.builder(
-            //             shrinkWrap: true,
-            //             itemCount: initState.brands.length,
-            //             physics: const NeverScrollableScrollPhysics(),
-            //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //               crossAxisCount: 2, // number of items in each row
-            //               mainAxisSpacing: 11.0, // spacing between rows
-            //               crossAxisSpacing: 11.0, // spacing between columns
-            //               childAspectRatio: 10.5,
-            //             ),
-            //             itemBuilder: (context, index) {
-            //               return InkWell(
-            //                 onTap: () {
-            //                   context.read<CatalogBloc>().add(
-            //                         CatalogEvent.pathBrandMenu(items: [
-            //                           MenuItemDataModel(
-            //                             idParent: 0,
-            //                             id: 0,
-            //                             url: '',
-            //                             name: 'Бренды',
-            //                             sub: 0,
-            //                             title: 0,
-            //                             brand: 0,
-            //                           ),
-            //                           MenuItemDataModel(
-            //                             idParent: 0,
-            //                             id: index,
-            //                             url: '',
-            //                             name: initState.brands[index],
-            //                             sub: 0,
-            //                             title: 0,
-            //                             brand: 0,
-            //                           ),
-            //                         ]),
-            //                       );
-            //                   context.navigateTo(
-            //                     CatalogRoute(
-            //                       isBack: false,
-            //                       onBack: () {
-            //                         context.read<CatalogBloc>().add(
-            //                               CatalogEvent.removePathMenu(
-            //                                 items: [
-            //                                   MenuItemDataModel(
-            //                                     idParent: 0,
-            //                                     id: 0,
-            //                                     url: '',
-            //                                     name: 'Бренды',
-            //                                     sub: 0,
-            //                                     title: 0,
-            //                                     brand: 0,
-            //                                   ),
-            //                                   MenuItemDataModel(
-            //                                     idParent: 0,
-            //                                     id: index,
-            //                                     url: '',
-            //                                     name: initState.brands[index],
-            //                                     sub: 0,
-            //                                     title: 0,
-            //                                     brand: 0,
-            //                                   ),
-            //                                 ],
-            //                               ),
-            //                             );
-            //                       },
-            //                       path: '',
-            //                       title:
-            //                           '${checkGender(_selectIndexType)} ${initState.brands[index]}',
-            //                     ),
-            //                   );
-            //                 },
-            //                 child: Text(
-            //                   initState.brands[index],
-            //                   style: Theme.of(context).textTheme.headline2,
-            //                 ),
-            //               );
-            //             }),
-            //       );
-            //     },
-            //     orElse: () => const SizedBox(),
-            //   );
-            // }),
-            // const SizedBox(
-            //   height: 96,
-            // ),
-          ],
-        ),
+            )
+          else
+            const SizedBox()
+        ],
       ),
     );
   }

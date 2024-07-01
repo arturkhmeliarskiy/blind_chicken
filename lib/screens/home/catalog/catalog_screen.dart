@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -46,6 +47,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
   final ScrollController _scrollController = ScrollController();
   bool isLoading = false;
   bool isButtonTop = false;
+  bool _isSwipe = true;
   double _historyPosition = 0.0;
 
   @override
@@ -306,13 +308,23 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         initState.listCatalogPath.length == 1) {
                                       context.back();
                                     }
+                                    setState(() {
+                                      _isSwipe = false;
+                                    });
+                                    log((details.velocity.pixelsPerSecond.dx).toString());
                                   }
                                 },
                                 child: PopScope(
+                                  canPop: false,
                                   onPopInvoked: (value) {
                                     final onBack = widget.onBack;
                                     if (onBack != null) {
                                       onBack();
+                                    }
+                                    if (_isSwipe) {
+                                      context
+                                          .read<CatalogBloc>()
+                                          .add(const CatalogEvent.goBackCatalogInfo());
                                     }
                                   },
                                   child: Column(
@@ -352,6 +364,18 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                               selectIndexType: 3,
                                                             ),
                                                           );
+                                                        } else if (item.name == 'Бренды') {
+                                                          context.read<BrandBloc>().add(
+                                                                const BrandEvent.getBrands(
+                                                                  selectTypePeople: 0,
+                                                                ),
+                                                              );
+                                                          context
+                                                              .popRoute(const HomeAutoRouterRoute(
+                                                            children: [
+                                                              BrandsRoute(),
+                                                            ],
+                                                          ));
                                                         } else {
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent.getInfoProducts(
@@ -709,9 +733,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             price: initState.products[index].price.toString(),
                                             isYourPriceDisplayed:
                                                 initState.products[index].isYourPriceDisplayed,
-                                            maximumCashback: initState
-                                                .products[index].maximumCashback
-                                                .toString(),
+                                            maximumCashback:
+                                                initState.products[index].maximumCashback,
+                                            maximumPersonalDiscount:
+                                                initState.products[index].maximumPersonalDiscount,
+                                            isAuth: initState.isAuth,
+                                            userDiscount: initState.userDiscount,
                                             pb: initState.products[index].pb,
                                             isShop: initState.products[index].isShop,
                                             onAddProductToSoppingCart: () {

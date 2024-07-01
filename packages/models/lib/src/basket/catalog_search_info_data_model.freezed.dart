@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CatalogSearchInfoDataModel {
-  String get userDiscount => throw _privateConstructorUsedError;
+  int get userDiscount => throw _privateConstructorUsedError;
   String get h1 => throw _privateConstructorUsedError;
   String get count => throw _privateConstructorUsedError;
   String get countFilter => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $CatalogSearchInfoDataModelCopyWith<$Res> {
           CatalogSearchInfoDataModel>;
   @useResult
   $Res call(
-      {String userDiscount,
+      {int userDiscount,
       String h1,
       String count,
       String countFilter,
@@ -75,7 +75,7 @@ class _$CatalogSearchInfoDataModelCopyWithImpl<$Res,
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       h1: null == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$CatalogSearchInfoDataModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userDiscount,
+      {int userDiscount,
       String h1,
       String count,
       String countFilter,
@@ -154,7 +154,7 @@ class __$$CatalogSearchInfoDataModelImplCopyWithImpl<$Res>
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       h1: null == h1
           ? _value.h1
           : h1 // ignore: cast_nullable_to_non_nullable
@@ -204,7 +204,7 @@ class _$CatalogSearchInfoDataModelImpl extends _CatalogSearchInfoDataModel {
         super._();
 
   @override
-  final String userDiscount;
+  final int userDiscount;
   @override
   final String h1;
   @override
@@ -276,7 +276,7 @@ class _$CatalogSearchInfoDataModelImpl extends _CatalogSearchInfoDataModel {
 
 abstract class _CatalogSearchInfoDataModel extends CatalogSearchInfoDataModel {
   factory _CatalogSearchInfoDataModel(
-      {required final String userDiscount,
+      {required final int userDiscount,
       required final String h1,
       required final String count,
       required final String countFilter,
@@ -287,7 +287,7 @@ abstract class _CatalogSearchInfoDataModel extends CatalogSearchInfoDataModel {
   _CatalogSearchInfoDataModel._() : super._();
 
   @override
-  String get userDiscount;
+  int get userDiscount;
   @override
   String get h1;
   @override

@@ -461,9 +461,11 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                 price: initState.products[index].price.toString(),
                                                 isYourPriceDisplayed:
                                                     initState.products[index].isYourPriceDisplayed,
-                                                maximumCashback: initState
-                                                    .products[index].maximumCashback
-                                                    .toString(),
+                                                maximumCashback:
+                                                    initState.products[index].maximumCashback,
+                                                maximumPersonalDiscount: initState
+                                                    .products[index].maximumPersonalDiscount,
+                                                isAuth: initState.isAuth,
                                                 onAddFavouriteProduct: () {
                                                   context.read<SearchBloc>().add(
                                                         SearchEvent.addFavouriteProduct(
@@ -494,6 +496,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                 isLoad: int.parse(initState.codeProduct ?? '0') ==
                                                         initState.products[index].id &&
                                                     initState.isLoadGetSizeProduct,
+                                                userDiscount: initState.userDiscount,
                                               );
                                             },
                                           ),

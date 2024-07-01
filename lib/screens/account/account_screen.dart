@@ -88,7 +88,7 @@ class _AccountScreenState extends State<AccountScreen> {
           if (details.velocity.pixelsPerSecond.dx > 0) {
             context.back();
             setState(() {
-              _isSwipe = true;
+              _isSwipe = false;
             });
           }
         },
@@ -104,7 +104,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     return PopScope(
                       canPop: false,
                       onPopInvoked: (value) {
-                        if (_isSwipe) {
+                        if (_isSwipe && !value) {
                           context.back();
                         }
                       },

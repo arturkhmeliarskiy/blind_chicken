@@ -450,8 +450,11 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                         .favouritesProducts[index].yourPrice
                                                         .toString(),
                                                     maximumCashback: initState
-                                                        .favouritesProducts[index].maximumCashback
-                                                        .toString(),
+                                                        .favouritesProducts[index].maximumCashback,
+                                                    maximumPersonalDiscount: initState
+                                                        .favouritesProducts[index]
+                                                        .maximumPersonalDiscount,
+                                                    isAuth: initState.isAuth,
                                                     price: initState.favouritesProducts[index].price
                                                         .toString(),
                                                     onAddFavouriteProduct: () {
@@ -489,6 +492,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                           );
                                                     },
                                                     listSize: initState.listSize,
+                                                    userDiscount: initState.userDiscount,
                                                     isLoad:
                                                         int.parse(initState.codeProduct ?? '0') ==
                                                                 initState

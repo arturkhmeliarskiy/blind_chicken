@@ -7,10 +7,10 @@ class BrandState with _$BrandState {
   const factory BrandState.preloadDataCompleted({
     required String selectedTypePeople,
     required List<String> listTypePeople,
-    required List<String> allBrands,
-    required Map<String, List<String>> listBrands,
-    required Map<String, List<String>> defaultListBrands,
-    required List<String> listAlphabetAndNumber,
+    required List<BrandItemDataModel> allBrands,
+    required List<BrandDataModel> listBrands,
+    required List<BrandDataModel> defaultListBrands,
     required List<CountBrand> listCountBrand,
+    required List<int> listBrandsPath,
   }) = PreloadDataCompletedBrandState;
 }

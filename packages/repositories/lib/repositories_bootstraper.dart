@@ -54,5 +54,10 @@ Future<void> initRepositories(GetIt getIt) async {
       () => PushNotificationRepository(
         getIt.get<PushNotificationService>(),
       ),
+    )
+    ..registerFactory(
+      () => NewsRepository(
+        getIt.get<NewsService>(),
+      ),
     );
 }

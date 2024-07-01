@@ -7,7 +7,7 @@ part 'favourites_catalog_info_data_model.freezed.dart';
 class FavouritesCatalogInfoDataModel with _$FavouritesCatalogInfoDataModel {
   const FavouritesCatalogInfoDataModel._();
   factory FavouritesCatalogInfoDataModel({
-    required String userDiscount,
+    required int userDiscount,
     required String h1,
     required String count,
     required String countFilter,
