@@ -176,7 +176,7 @@ class _DashboardPageState extends State<DashboardPage> {
         LoginRoute(),
         ShoppingCartAutoRouterRoute(),
         FavouritesRoute(),
-        ChatRoute(),
+        NewsRoute(),
       ],
       bottomNavigationBuilder: (context, tabsRouter) {
         final child = BottomNavigationBar(

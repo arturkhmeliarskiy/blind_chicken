@@ -7,3 +7,4 @@ export 'location/location_repository.dart';
 export 'orders/orders_respository.dart';
 export 'app_store_info/app_store_info_repository.dart';
 export 'push_notification/push_notification_repository.dart';
+export 'news/news_repository.dart';

@@ -99,5 +99,10 @@ Future<void> initBloc(GetIt getIt) async {
     )
     ..registerFactory(
       () => InternetConnectionBloc(),
+    )
+    ..registerFactory(
+      () => NewsBloc(
+        getIt.get<NewsRepository>(),
+      ),
     );
 }

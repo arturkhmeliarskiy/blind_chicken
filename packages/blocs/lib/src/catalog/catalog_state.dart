@@ -31,6 +31,7 @@ class CatalogState with _$CatalogState {
     required List<int> favouritesProductsId,
     required List<FilterInfoDataModel> filter,
     required List<String> listProductsCode,
+    required List<String> listCatalogPath,
     required Map<int, List<FilterItemDataModel>> selectFilter,
     required List<Map<int, FilterItemDataModel>> allSelectFilter,
     required List<MenuItemDataModel> pathMenu,

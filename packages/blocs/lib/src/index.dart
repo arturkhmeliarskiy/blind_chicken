@@ -10,3 +10,4 @@ export 'brand/brand_bloc.dart';
 export 'search_location/search_location_bloc.dart';
 export 'gift_card/gift_card_bloc.dart';
 export 'internet_connection/internet_connection_bloc.dart';
+export 'news/news_bloc.dart';

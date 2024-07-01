@@ -67,6 +67,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           removeSelectAllFilters: (event) => _removeSelectAllFilters(event, emit),
           removeSelectFilterCategory: (event) => _removeSelectFilterCategory(event, emit),
           goBackProductInfo: (event) => _goBackProductInfo(event, emit),
+          goBackCatalogInfo: (event) => _goBackCatalogInfo(event, emit),
           addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
           checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
           changeSizeProduct: (event) => _changeSizeProduct(event, emit),
@@ -329,6 +330,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           listSize: [],
           isLoadGetSizeProduct: false,
           codeProduct: null,
+          listCatalogPath: [],
         ),
       );
     }
@@ -859,11 +861,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const CatalogState.load());
+      List<String> listCatalogPath = initState.listCatalogPath.toList();
 
       CatalogProductsRequest request = CatalogProductsRequest(
         url: event.path,
         sort: 'n',
       );
+
+      listCatalogPath.add(event.path);
 
       FavouritesDataModel? favourites;
       List<int> favouritesProductsId = [];
@@ -895,6 +900,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         selectFilter: {},
         allSelectFilter: [],
         listProductsCode: [],
+        listCatalogPath: listCatalogPath,
         isNotification: false,
         isUpdateVersionApp: false,
         isError:
@@ -1062,6 +1068,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         selectSizeProduct: null,
         listSize: [],
         isLoadGetSizeProduct: false,
+        listCatalogPath: [],
       ),
     );
   }
@@ -1465,6 +1472,71 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           isNotification: false,
           isUpdateVersionApp: false,
           selectSizeProduct: null,
+        ));
+      }
+    });
+  }
+
+  Future<void> _goBackCatalogInfo(
+    GoBackCatalogInfoCategotyCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<String> listCatalogPath = initState.listCatalogPath.toList();
+
+      if (listCatalogPath.isNotEmpty) {
+        listCatalogPath.removeLast();
+      }
+
+      emit(initState.copyWith(
+        listCatalogPath: listCatalogPath,
+      ));
+
+      if (listCatalogPath.isNotEmpty) {
+        emit(const CatalogState.load());
+
+        CatalogProductsRequest request = CatalogProductsRequest(
+          url: listCatalogPath.last,
+          sort: 'n',
+        );
+
+        FavouritesDataModel? favourites;
+        List<int> favouritesProductsId = [];
+        List<ProductDataModel> favouritesProducts = [];
+        bool isAuth = _sharedPreferencesService.getBool(
+              key: SharedPrefKeys.userAuthorized,
+            ) ??
+            false;
+        if (isAuth) {
+          favourites = await _favouritesRepository.getFavouritesProdcuts();
+          favouritesProductsId = favourites.favorites.map((item) => int.parse(item)).toList();
+        } else {
+          favouritesProducts = _catalogRepository.getFavouritesProducts();
+          favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+        }
+
+        final catalogInfo = await _catalogRepository.getCatalogProducts(
+          request: request,
+        );
+
+        emit(initState.copyWith(
+          filter: catalogInfo.filter,
+          request: request,
+          catalogInfo: catalogInfo,
+          products: catalogInfo.products,
+          defaultProducts: catalogInfo.products,
+          title: catalogInfo.h1,
+          favouritesProductsId: favouritesProductsId,
+          selectFilter: {},
+          allSelectFilter: [],
+          listProductsCode: [],
+          listCatalogPath: listCatalogPath,
+          isNotification: false,
+          isUpdateVersionApp: false,
+          isError:
+              (favourites?.errorMessage.isNotEmpty ?? false) || catalogInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          codeProduct: null,
         ));
       }
     });

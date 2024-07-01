@@ -269,47 +269,53 @@ class _CatalogScreenState extends State<CatalogScreen> {
           orElse: () => const SizedBox(),
         );
       },
-      child: GestureDetector(
-        onHorizontalDragUpdate: (details) {},
-        onHorizontalDragEnd: (DragEndDetails details) {
-          if (details.velocity.pixelsPerSecond.dx > 0) {
-            context.back();
-          }
-        },
-        child: PopScope(
-          onPopInvoked: (value) {
-            final onBack = widget.onBack;
-            if (onBack != null) {
-              onBack();
-            }
-          },
-          child: Stack(
+      child: Stack(
+        children: [
+          Stack(
+            alignment: Alignment.bottomLeft,
             children: [
-              Stack(
-                alignment: Alignment.bottomLeft,
-                children: [
-                  Scaffold(
-                    backgroundColor: BlindChickenColors.backgroundColor,
-                    body: SafeArea(
-                      child: ListView(
-                        controller: _scrollController,
-                        children: [
-                          const AppBarBlindChicken(),
-                          BlocBuilder<CatalogBloc, CatalogState>(
-                            builder: (context, state) {
-                              return state.maybeMap(
-                                preloadDataCompleted: (initState) {
-                                  List<SectionItemDataModel> listPrev =
-                                      initState.catalogInfo?.listPrev ?? [];
-                                  List<SectionItemDataModel> listNext =
-                                      initState.catalogInfo?.listNext ?? [];
-                                  // List<SectionItemDataModel> listThis =
-                                  //     initState.catalogInfo?.listThis ?? [];
-                                  List<SectionItemDataModel> listItems = [
-                                    ...listPrev,
-                                    ...listNext,
-                                  ];
-                                  return Column(
+              Scaffold(
+                backgroundColor: BlindChickenColors.backgroundColor,
+                body: SafeArea(
+                  child: ListView(
+                    controller: _scrollController,
+                    children: [
+                      const AppBarBlindChicken(),
+                      BlocBuilder<CatalogBloc, CatalogState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            preloadDataCompleted: (initState) {
+                              List<SectionItemDataModel> listPrev =
+                                  initState.catalogInfo?.listPrev ?? [];
+                              List<SectionItemDataModel> listNext =
+                                  initState.catalogInfo?.listNext ?? [];
+                              // List<SectionItemDataModel> listThis =
+                              //     initState.catalogInfo?.listThis ?? [];
+                              List<SectionItemDataModel> listItems = [
+                                ...listPrev,
+                                ...listNext,
+                              ];
+                              return GestureDetector(
+                                onHorizontalDragUpdate: (details) {},
+                                onHorizontalDragEnd: (DragEndDetails details) {
+                                  if (details.velocity.pixelsPerSecond.dx > 0) {
+                                    context.read<CatalogBloc>().add(
+                                          const CatalogEvent.goBackCatalogInfo(),
+                                        );
+                                    if (initState.listCatalogPath.isEmpty ||
+                                        initState.listCatalogPath.length == 1) {
+                                      context.back();
+                                    }
+                                  }
+                                },
+                                child: PopScope(
+                                  onPopInvoked: (value) {
+                                    final onBack = widget.onBack;
+                                    if (onBack != null) {
+                                      onBack();
+                                    }
+                                  },
+                                  child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       if (initState.products.isNotEmpty &&
@@ -724,89 +730,89 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         }),
                                       ),
                                     ],
-                                  );
-                                },
-                                orElse: () => const SizedBox(),
+                                  ),
+                                ),
                               );
                             },
-                          )
-                        ],
-                      ),
+                            orElse: () => const SizedBox(),
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              if (isButtonTop && !isLoading)
+                GestureDetector(
+                  onTap: () {
+                    _scrollController.jumpTo(0.0);
+                    setState(() {
+                      isButtonTop = false;
+                    });
+                  },
+                  child: Container(
+                    height: 45,
+                    width: 45,
+                    margin: const EdgeInsets.only(left: 15, bottom: 15),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: BlindChickenColors.activeBorderTextField,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/icons/chevron-top.svg',
                     ),
                   ),
-                  if (isButtonTop && !isLoading)
-                    GestureDetector(
-                      onTap: () {
-                        _scrollController.jumpTo(0.0);
-                        setState(() {
-                          isButtonTop = false;
-                        });
-                      },
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        margin: const EdgeInsets.only(left: 15, bottom: 15),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: BlindChickenColors.activeBorderTextField,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/icons/chevron-top.svg',
-                        ),
-                      ),
-                    )
-                  else
-                    const SizedBox()
-                ],
-              ),
-              BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
-                return state.maybeMap(
-                  load: (value) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        backgroundColor: Colors.grey.shade400,
-                      ),
-                    );
-                  },
-                  preloadDataCompleted: (initState) {
-                    return initState.products.isEmpty
-                        ? Center(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 50),
-                              child: Text(
-                                'Товары не найдены',
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
-                            ),
-                          )
-                        : isLoading
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                  color: Colors.black,
-                                  backgroundColor: Colors.grey.shade400,
-                                ),
-                              )
-                            : initState.isError ?? false
-                                ? BlindChickenErrorInfo(
-                                    errorMessage: initState.errorMessage ?? '',
-                                    onRepeatRequest: () {
-                                      context.read<CatalogBloc>().add(
-                                            CatalogEvent.getInfoProducts(
-                                              path: widget.url,
-                                            ),
-                                          );
-                                    },
-                                  )
-                                : const SizedBox();
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              }),
+                )
+              else
+                const SizedBox()
             ],
           ),
-        ),
+          BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
+            return state.maybeMap(
+              load: (value) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    backgroundColor: Colors.grey.shade400,
+                  ),
+                );
+              },
+              preloadDataCompleted: (initState) {
+                return initState.products.isEmpty
+                    ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 50),
+                          child: Text(
+                            'Товары не найдены',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ),
+                      )
+                    : isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                              backgroundColor: Colors.grey.shade400,
+                            ),
+                          )
+                        : initState.isError ?? false
+                            ? BlindChickenErrorInfo(
+                                errorMessage: initState.errorMessage ?? '',
+                                onRepeatRequest: () {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProducts(
+                                          path: widget.url,
+                                        ),
+                                      );
+                                },
+                              )
+                            : const SizedBox();
+              },
+              orElse: () => const SizedBox(),
+            );
+          }),
+        ],
       ),
     );
   }

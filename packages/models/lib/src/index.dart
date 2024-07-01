@@ -18,3 +18,4 @@ export 'orders/index.dart';
 export 'app_store_info/index.dart';
 export 'push_notification/index.dart';
 export 'enum/index.dart';
+export 'news/index.dart';

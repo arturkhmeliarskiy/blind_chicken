@@ -408,6 +408,38 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    NewsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewsScreen(),
+      );
+    },
+    NewsInfoRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewsInfoScreen(),
+      );
+    },
+    NewsInfoDescriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<NewsInfoDescriptionRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NewsInfoDescriptionScreen(
+          key: args.key,
+          info: args.info,
+        ),
+      );
+    },
+    NotficationInfoDescriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<NotficationInfoDescriptionRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NotficationInfoDescriptionScreen(
+          key: args.key,
+          info: args.info,
+        ),
+      );
+    },
     YandexMapRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -2080,6 +2112,112 @@ class PaymentVerificationRouteArgs {
   @override
   String toString() {
     return 'PaymentVerificationRouteArgs{key: $key, orderId: $orderId}';
+  }
+}
+
+/// generated route for
+/// [NewsScreen]
+class NewsRoute extends PageRouteInfo<void> {
+  const NewsRoute({List<PageRouteInfo>? children})
+      : super(
+          NewsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NewsInfoScreen]
+class NewsInfoRoute extends PageRouteInfo<void> {
+  const NewsInfoRoute({List<PageRouteInfo>? children})
+      : super(
+          NewsInfoRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsInfoRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NewsInfoDescriptionScreen]
+class NewsInfoDescriptionRoute
+    extends PageRouteInfo<NewsInfoDescriptionRouteArgs> {
+  NewsInfoDescriptionRoute({
+    Key? key,
+    required NewsInfoItemDataModel info,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsInfoDescriptionRoute.name,
+          args: NewsInfoDescriptionRouteArgs(
+            key: key,
+            info: info,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsInfoDescriptionRoute';
+
+  static const PageInfo<NewsInfoDescriptionRouteArgs> page =
+      PageInfo<NewsInfoDescriptionRouteArgs>(name);
+}
+
+class NewsInfoDescriptionRouteArgs {
+  const NewsInfoDescriptionRouteArgs({
+    this.key,
+    required this.info,
+  });
+
+  final Key? key;
+
+  final NewsInfoItemDataModel info;
+
+  @override
+  String toString() {
+    return 'NewsInfoDescriptionRouteArgs{key: $key, info: $info}';
+  }
+}
+
+/// generated route for
+/// [NotficationInfoDescriptionScreen]
+class NotficationInfoDescriptionRoute
+    extends PageRouteInfo<NotficationInfoDescriptionRouteArgs> {
+  NotficationInfoDescriptionRoute({
+    Key? key,
+    required NotificationInfoItemDataModel info,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NotficationInfoDescriptionRoute.name,
+          args: NotficationInfoDescriptionRouteArgs(
+            key: key,
+            info: info,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NotficationInfoDescriptionRoute';
+
+  static const PageInfo<NotficationInfoDescriptionRouteArgs> page =
+      PageInfo<NotficationInfoDescriptionRouteArgs>(name);
+}
+
+class NotficationInfoDescriptionRouteArgs {
+  const NotficationInfoDescriptionRouteArgs({
+    this.key,
+    required this.info,
+  });
+
+  final Key? key;
+
+  final NotificationInfoItemDataModel info;
+
+  @override
+  String toString() {
+    return 'NotficationInfoDescriptionRouteArgs{key: $key, info: $info}';
   }
 }
 

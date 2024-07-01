@@ -35,6 +35,10 @@ import 'package:blind_chicken/screens/account/order_user_info_screen.dart';
 import 'package:blind_chicken/screens/home/sale/sale_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/location/search_location_screen.dart';
+import 'package:blind_chicken/screens/news/news_info_screen.dart';
+import 'package:blind_chicken/screens/news/news_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/notifications/notification_info_description_screen.dart';
 import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
 import 'package:blind_chicken/screens/pdf_view/blind_chicken_pdf_view.dart';
@@ -220,11 +224,24 @@ class AppRouter extends _$AppRouter {
               page: ShoppingCardInfoRoute.page,
             ),
           ]),
-          AutoRoute(
-            page: ChatRoute.page,
-            path: 'chat',
-          ),
+          AutoRoute(page: NewsRoute.page, path: 'news', children: [
+            AutoRoute(
+              initial: true,
+              page: NewsInfoRoute.page,
+            ),
+            AutoRoute(
+              page: NewsInfoDescriptionRoute.page,
+            ),
+            AutoRoute(
+              keepHistory: false,
+              page: ShoppingCardInfoRoute.page,
+            ),
+          ]),
         ]),
+        AutoRoute(
+          page: ChatRoute.page,
+          path: '/chat',
+        ),
         AutoRoute(
           page: CatalogSearchRoute.page,
           path: '/search',

@@ -1,0 +1,16 @@
+{
+    "aps": {
+        "alert":
+        {
+            "title": "СЛЕПАЯ КУРИЦА",
+            "body": "Тренды сезона. Коллекция женских сумок бренда Furla"
+        },
+        "sound": "default"
+    },
+    "section": "/sumki/brand-furla/",
+    "id_message": "100186",
+    "type": "catalog",
+    "sort": "n",
+    "uid": "", 
+    "filter": ""
+}

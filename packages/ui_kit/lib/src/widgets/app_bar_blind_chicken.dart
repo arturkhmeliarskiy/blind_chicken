@@ -52,7 +52,7 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
           }
         },
         child: SvgPicture.asset(
-          'assets/images/logo.svg',
+          'assets/images/lgm.svg',
           width: 92,
           height: 35,
         ),

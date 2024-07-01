@@ -73,6 +73,7 @@ class CatalogEvent with _$CatalogEvent {
     required String value,
   }) = SortProductsCatalogEvent;
   const factory CatalogEvent.goBackProductInfo() = GoBackProductInfoCategotyCatalogEvent;
+  const factory CatalogEvent.goBackCatalogInfo() = GoBackCatalogInfoCategotyCatalogEvent;
   const factory CatalogEvent.changeSizeProduct({
     required SkuProductDataModel selectSizeProduct,
   }) = ChangeSizeProductCatalogEvent;
