@@ -321,10 +321,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                     if (onBack != null) {
                                       onBack();
                                     }
-                                    if (_isSwipe) {
+                                    if (_isSwipe && !value) {
                                       context
                                           .read<CatalogBloc>()
                                           .add(const CatalogEvent.goBackCatalogInfo());
+                                      if (initState.listCatalogPath.isEmpty ||
+                                          initState.listCatalogPath.length == 1) {
+                                        context.back();
+                                      }
                                     }
                                   },
                                   child: Column(
