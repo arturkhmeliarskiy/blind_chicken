@@ -90,6 +90,17 @@ class _MainScreenState extends State<MainScreen> {
                         isNotification: true,
                       ));
                     }
+                    if (notificationMessage.type == 'product') {
+                      context.navigateTo(
+                        CatalogCardInfoRoute(
+                          isLike: false,
+                          listItems: const [],
+                          favouritesProducts: const [],
+                          isChildRoute: false,
+                          code: notificationMessage.codeProduct,
+                        ),
+                      );
+                    }
                     if (notificationMessage.type == 'boutique') {
                       context.navigateTo(
                         BoutiquesDescriptionRoute(

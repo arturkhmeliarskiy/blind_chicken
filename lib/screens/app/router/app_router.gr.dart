@@ -30,6 +30,10 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           uidStore: args.uidStore,
           isNotification: args.isNotification,
+          lastPath: args.lastPath,
+          newsInfo: args.newsInfo,
+          newsMediaInfo: args.newsMediaInfo,
+          newsNotificationInfo: args.newsNotificationInfo,
         ),
       );
     },
@@ -159,6 +163,10 @@ abstract class _$AppRouter extends RootStackRouter {
           listItems: args.listItems,
           favouritesProducts: args.favouritesProducts,
           isChildRoute: args.isChildRoute,
+          lastPath: args.lastPath,
+          newsInfo: args.newsInfo,
+          newsMediaInfo: args.newsMediaInfo,
+          newsNotificationInfo: args.newsNotificationInfo,
         ),
       );
     },
@@ -215,6 +223,10 @@ abstract class _$AppRouter extends RootStackRouter {
           isNotification: args.isNotification,
           sort: args.sort,
           filterSelect: args.filterSelect,
+          lastPath: args.lastPath,
+          newsInfo: args.newsInfo,
+          newsMediaInfo: args.newsMediaInfo,
+          newsNotificationInfo: args.newsNotificationInfo,
         ),
       );
     },
@@ -341,7 +353,8 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     FavouritesFilterSelectValueSearchRoute.name: (routeData) {
-      final args = routeData.argsAs<FavouritesFilterSelectValueSearchRouteArgs>();
+      final args =
+          routeData.argsAs<FavouritesFilterSelectValueSearchRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: FavouritesFilterSelectValueSearchScreen(
@@ -404,9 +417,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     NewsInfoRoute.name: (routeData) {
+      final args = routeData.argsAs<NewsInfoRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const NewsInfoScreen(),
+        child: NewsInfoScreen(
+          key: args.key,
+          indexPage: args.indexPage,
+        ),
       );
     },
     NewsInfoDescriptionRoute.name: (routeData) {
@@ -559,12 +576,17 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     GiftCardRoute.name: (routeData) {
-      final args = routeData.argsAs<GiftCardRouteArgs>(orElse: () => const GiftCardRouteArgs());
+      final args = routeData.argsAs<GiftCardRouteArgs>(
+          orElse: () => const GiftCardRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: GiftCardScreen(
           key: args.key,
           isNotification: args.isNotification,
+          lastPath: args.lastPath,
+          newsInfo: args.newsInfo,
+          newsMediaInfo: args.newsMediaInfo,
+          newsNotificationInfo: args.newsNotificationInfo,
         ),
       );
     },
@@ -681,11 +703,16 @@ class BoutiquesRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [BoutiquesDescriptionScreen]
-class BoutiquesDescriptionRoute extends PageRouteInfo<BoutiquesDescriptionRouteArgs> {
+class BoutiquesDescriptionRoute
+    extends PageRouteInfo<BoutiquesDescriptionRouteArgs> {
   BoutiquesDescriptionRoute({
     Key? key,
     String uidStore = '',
     bool isNotification = false,
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
     List<PageRouteInfo>? children,
   }) : super(
           BoutiquesDescriptionRoute.name,
@@ -693,6 +720,10 @@ class BoutiquesDescriptionRoute extends PageRouteInfo<BoutiquesDescriptionRouteA
             key: key,
             uidStore: uidStore,
             isNotification: isNotification,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
           ),
           initialChildren: children,
         );
@@ -708,6 +739,10 @@ class BoutiquesDescriptionRouteArgs {
     this.key,
     this.uidStore = '',
     this.isNotification = false,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final Key? key;
@@ -716,15 +751,24 @@ class BoutiquesDescriptionRouteArgs {
 
   final bool isNotification;
 
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
   @override
   String toString() {
-    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification}';
+    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
   }
 }
 
 /// generated route for
 /// [BoutiquePreviewMediaScreen]
-class BoutiquePreviewMediaRoute extends PageRouteInfo<BoutiquePreviewMediaRouteArgs> {
+class BoutiquePreviewMediaRoute
+    extends PageRouteInfo<BoutiquePreviewMediaRouteArgs> {
   BoutiquePreviewMediaRoute({
     Key? key,
     required List<String> media,
@@ -815,7 +859,8 @@ class BoutiqueYandexMapRouteArgs {
 
 /// generated route for
 /// [FilterSelectValueSearchScreen]
-class FilterSelectValueSearchRoute extends PageRouteInfo<FilterSelectValueSearchRouteArgs> {
+class FilterSelectValueSearchRoute
+    extends PageRouteInfo<FilterSelectValueSearchRouteArgs> {
   FilterSelectValueSearchRoute({
     Key? key,
     required int index,
@@ -1049,7 +1094,8 @@ class SortRouteArgs {
 
 /// generated route for
 /// [CatalogSearchCardInfoScreen]
-class CatalogSearchCardInfoRoute extends PageRouteInfo<CatalogSearchCardInfoRouteArgs> {
+class CatalogSearchCardInfoRoute
+    extends PageRouteInfo<CatalogSearchCardInfoRouteArgs> {
   CatalogSearchCardInfoRoute({
     Key? key,
     required ProductDataModel item,
@@ -1121,7 +1167,8 @@ class CatalogSearchRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CatalogSizeProductScreen]
-class CatalogSizeProductRoute extends PageRouteInfo<CatalogSizeProductRouteArgs> {
+class CatalogSizeProductRoute
+    extends PageRouteInfo<CatalogSizeProductRouteArgs> {
   CatalogSizeProductRoute({
     Key? key,
     required void Function(SkuProductDataModel) onChange,
@@ -1178,6 +1225,10 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
     required List<ProductDataModel> listItems,
     required List<ProductDataModel> favouritesProducts,
     required bool isChildRoute,
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogCardInfoRoute.name,
@@ -1189,13 +1240,18 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
             listItems: listItems,
             favouritesProducts: favouritesProducts,
             isChildRoute: isChildRoute,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
           ),
           initialChildren: children,
         );
 
   static const String name = 'CatalogCardInfoRoute';
 
-  static const PageInfo<CatalogCardInfoRouteArgs> page = PageInfo<CatalogCardInfoRouteArgs>(name);
+  static const PageInfo<CatalogCardInfoRouteArgs> page =
+      PageInfo<CatalogCardInfoRouteArgs>(name);
 }
 
 class CatalogCardInfoRouteArgs {
@@ -1207,6 +1263,10 @@ class CatalogCardInfoRouteArgs {
     required this.listItems,
     required this.favouritesProducts,
     required this.isChildRoute,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final Key? key;
@@ -1223,15 +1283,24 @@ class CatalogCardInfoRouteArgs {
 
   final bool isChildRoute;
 
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
   @override
   String toString() {
-    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
   }
 }
 
 /// generated route for
 /// [CatalogFilterSelectValueScreen]
-class CatalogFilterSelectValueRoute extends PageRouteInfo<CatalogFilterSelectValueRouteArgs> {
+class CatalogFilterSelectValueRoute
+    extends PageRouteInfo<CatalogFilterSelectValueRouteArgs> {
   CatalogFilterSelectValueRoute({
     Key? key,
     required int index,
@@ -1306,7 +1375,8 @@ class CatalogFilterSelectValueRouteArgs {
 
 /// generated route for
 /// [CatalogPreviewImagesScreen]
-class CatalogPreviewImagesRoute extends PageRouteInfo<CatalogPreviewImagesRouteArgs> {
+class CatalogPreviewImagesRoute
+    extends PageRouteInfo<CatalogPreviewImagesRouteArgs> {
   CatalogPreviewImagesRoute({
     Key? key,
     required List<String> listImages,
@@ -1397,6 +1467,10 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
     bool isNotification = false,
     String sort = '',
     String filterSelect = '',
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogRoute.name,
@@ -1409,13 +1483,18 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
             isNotification: isNotification,
             sort: sort,
             filterSelect: filterSelect,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
           ),
           initialChildren: children,
         );
 
   static const String name = 'CatalogRoute';
 
-  static const PageInfo<CatalogRouteArgs> page = PageInfo<CatalogRouteArgs>(name);
+  static const PageInfo<CatalogRouteArgs> page =
+      PageInfo<CatalogRouteArgs>(name);
 }
 
 class CatalogRouteArgs {
@@ -1428,6 +1507,10 @@ class CatalogRouteArgs {
     this.isNotification = false,
     this.sort = '',
     this.filterSelect = '',
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final Key? key;
@@ -1446,9 +1529,17 @@ class CatalogRouteArgs {
 
   final String filterSelect;
 
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
   @override
   String toString() {
-    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterSelect: $filterSelect}';
+    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterSelect: $filterSelect, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
   }
 }
 
@@ -1562,7 +1653,8 @@ class MainCategoryRoute extends PageRouteInfo<MainCategoryRouteArgs> {
 
   static const String name = 'MainCategoryRoute';
 
-  static const PageInfo<MainCategoryRouteArgs> page = PageInfo<MainCategoryRouteArgs>(name);
+  static const PageInfo<MainCategoryRouteArgs> page =
+      PageInfo<MainCategoryRouteArgs>(name);
 }
 
 class MainCategoryRouteArgs {
@@ -1737,7 +1829,8 @@ class SearchLocationRoute extends PageRouteInfo<SearchLocationRouteArgs> {
 
   static const String name = 'SearchLocationRoute';
 
-  static const PageInfo<SearchLocationRouteArgs> page = PageInfo<SearchLocationRouteArgs>(name);
+  static const PageInfo<SearchLocationRouteArgs> page =
+      PageInfo<SearchLocationRouteArgs>(name);
 }
 
 class SearchLocationRouteArgs {
@@ -1790,7 +1883,8 @@ class ContactsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [FavouritesFilterSelectValueScreen]
-class FavouritesFilterSelectValueRoute extends PageRouteInfo<FavouritesFilterSelectValueRouteArgs> {
+class FavouritesFilterSelectValueRoute
+    extends PageRouteInfo<FavouritesFilterSelectValueRouteArgs> {
   FavouritesFilterSelectValueRoute({
     Key? key,
     required int index,
@@ -1983,7 +2077,8 @@ class FavouritesRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [FavouritesCardInfoScreen]
-class FavouritesCardInfoRoute extends PageRouteInfo<FavouritesCardInfoRouteArgs> {
+class FavouritesCardInfoRoute
+    extends PageRouteInfo<FavouritesCardInfoRouteArgs> {
   FavouritesCardInfoRoute({
     Key? key,
     required ProductDataModel item,
@@ -2055,7 +2150,8 @@ class InfoRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [PaymentVerificationScreen]
-class PaymentVerificationRoute extends PageRouteInfo<PaymentVerificationRouteArgs> {
+class PaymentVerificationRoute
+    extends PageRouteInfo<PaymentVerificationRouteArgs> {
   PaymentVerificationRoute({
     Key? key,
     required String orderId,
@@ -2107,21 +2203,46 @@ class NewsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [NewsInfoScreen]
-class NewsInfoRoute extends PageRouteInfo<void> {
-  const NewsInfoRoute({List<PageRouteInfo>? children})
-      : super(
+class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
+  NewsInfoRoute({
+    Key? key,
+    required int indexPage,
+    List<PageRouteInfo>? children,
+  }) : super(
           NewsInfoRoute.name,
+          args: NewsInfoRouteArgs(
+            key: key,
+            indexPage: indexPage,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'NewsInfoRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<NewsInfoRouteArgs> page =
+      PageInfo<NewsInfoRouteArgs>(name);
+}
+
+class NewsInfoRouteArgs {
+  const NewsInfoRouteArgs({
+    this.key,
+    required this.indexPage,
+  });
+
+  final Key? key;
+
+  final int indexPage;
+
+  @override
+  String toString() {
+    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage}';
+  }
 }
 
 /// generated route for
 /// [NewsInfoDescriptionScreen]
-class NewsInfoDescriptionRoute extends PageRouteInfo<NewsInfoDescriptionRouteArgs> {
+class NewsInfoDescriptionRoute
+    extends PageRouteInfo<NewsInfoDescriptionRouteArgs> {
   NewsInfoDescriptionRoute({
     Key? key,
     required NewsInfoItemDataModel info,
@@ -2223,7 +2344,8 @@ class NewsPreviewMediaRoute extends PageRouteInfo<NewsPreviewMediaRouteArgs> {
 
   static const String name = 'NewsPreviewMediaRoute';
 
-  static const PageInfo<NewsPreviewMediaRouteArgs> page = PageInfo<NewsPreviewMediaRouteArgs>(name);
+  static const PageInfo<NewsPreviewMediaRouteArgs> page =
+      PageInfo<NewsPreviewMediaRouteArgs>(name);
 }
 
 class NewsPreviewMediaRouteArgs {
@@ -2250,7 +2372,8 @@ class NewsPreviewMediaRouteArgs {
 
 /// generated route for
 /// [NotficationInfoDescriptionScreen]
-class NotficationInfoDescriptionRoute extends PageRouteInfo<NotficationInfoDescriptionRouteArgs> {
+class NotficationInfoDescriptionRoute
+    extends PageRouteInfo<NotficationInfoDescriptionRouteArgs> {
   NotficationInfoDescriptionRoute({
     Key? key,
     required NotificationInfoItemDataModel info,
@@ -2288,7 +2411,8 @@ class NotficationInfoDescriptionRouteArgs {
 
 /// generated route for
 /// [MediaInfoDescriptionScreen]
-class MediaInfoDescriptionRoute extends PageRouteInfo<MediaInfoDescriptionRouteArgs> {
+class MediaInfoDescriptionRoute
+    extends PageRouteInfo<MediaInfoDescriptionRouteArgs> {
   MediaInfoDescriptionRoute({
     Key? key,
     required MediaInfoItemDataModel info,
@@ -2398,7 +2522,8 @@ class OrderUserInfoRoute extends PageRouteInfo<OrderUserInfoRouteArgs> {
 
   static const String name = 'OrderUserInfoRoute';
 
-  static const PageInfo<OrderUserInfoRouteArgs> page = PageInfo<OrderUserInfoRouteArgs>(name);
+  static const PageInfo<OrderUserInfoRouteArgs> page =
+      PageInfo<OrderUserInfoRouteArgs>(name);
 }
 
 class OrderUserInfoRouteArgs {
@@ -2443,7 +2568,8 @@ class OrderCardInfoRoute extends PageRouteInfo<OrderCardInfoRouteArgs> {
 
   static const String name = 'OrderCardInfoRoute';
 
-  static const PageInfo<OrderCardInfoRouteArgs> page = PageInfo<OrderCardInfoRouteArgs>(name);
+  static const PageInfo<OrderCardInfoRouteArgs> page =
+      PageInfo<OrderCardInfoRouteArgs>(name);
 }
 
 class OrderCardInfoRouteArgs {
@@ -2518,7 +2644,8 @@ class MyOrdersRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [BlindChickenPdfViewScreen]
-class BlindChickenPdfViewRoute extends PageRouteInfo<BlindChickenPdfViewRouteArgs> {
+class BlindChickenPdfViewRoute
+    extends PageRouteInfo<BlindChickenPdfViewRouteArgs> {
   BlindChickenPdfViewRoute({
     Key? key,
     required String url,
@@ -2556,7 +2683,8 @@ class BlindChickenPdfViewRouteArgs {
 
 /// generated route for
 /// [BlindChickenWebViewScreen]
-class BlindChickenWebViewRoute extends PageRouteInfo<BlindChickenWebViewRouteArgs> {
+class BlindChickenWebViewRoute
+    extends PageRouteInfo<BlindChickenWebViewRouteArgs> {
   BlindChickenWebViewRoute({
     Key? key,
     required String url,
@@ -2594,7 +2722,8 @@ class BlindChickenWebViewRouteArgs {
 
 /// generated route for
 /// [SberbankPaymentWebViewScreen]
-class SberbankPaymentWebViewRoute extends PageRouteInfo<SberbankPaymentWebViewRouteArgs> {
+class SberbankPaymentWebViewRoute
+    extends PageRouteInfo<SberbankPaymentWebViewRouteArgs> {
   SberbankPaymentWebViewRoute({
     Key? key,
     required String url,
@@ -2636,40 +2765,62 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
   GiftCardRoute({
     Key? key,
     bool isNotification = false,
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
     List<PageRouteInfo>? children,
   }) : super(
           GiftCardRoute.name,
           args: GiftCardRouteArgs(
             key: key,
             isNotification: isNotification,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
           ),
           initialChildren: children,
         );
 
   static const String name = 'GiftCardRoute';
 
-  static const PageInfo<GiftCardRouteArgs> page = PageInfo<GiftCardRouteArgs>(name);
+  static const PageInfo<GiftCardRouteArgs> page =
+      PageInfo<GiftCardRouteArgs>(name);
 }
 
 class GiftCardRouteArgs {
   const GiftCardRouteArgs({
     this.key,
     this.isNotification = false,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final Key? key;
 
   final bool isNotification;
 
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
   @override
   String toString() {
-    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification}';
+    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
   }
 }
 
 /// generated route for
 /// [GiftCardDeliveryInfoScreen]
-class GiftCardDeliveryInfoRoute extends PageRouteInfo<GiftCardDeliveryInfoRouteArgs> {
+class GiftCardDeliveryInfoRoute
+    extends PageRouteInfo<GiftCardDeliveryInfoRouteArgs> {
   GiftCardDeliveryInfoRoute({
     Key? key,
     required String title,
@@ -2712,7 +2863,8 @@ class GiftCardDeliveryInfoRouteArgs {
 
 /// generated route for
 /// [GiftVirualCardColorsScreen]
-class GiftVirualCardColorsRoute extends PageRouteInfo<GiftVirualCardColorsRouteArgs> {
+class GiftVirualCardColorsRoute
+    extends PageRouteInfo<GiftVirualCardColorsRouteArgs> {
   GiftVirualCardColorsRoute({
     Key? key,
     required GiftCardModel selectedColor,
@@ -2773,7 +2925,8 @@ class GiftYandexMapRoute extends PageRouteInfo<GiftYandexMapRouteArgs> {
 
   static const String name = 'GiftYandexMapRoute';
 
-  static const PageInfo<GiftYandexMapRouteArgs> page = PageInfo<GiftYandexMapRouteArgs>(name);
+  static const PageInfo<GiftYandexMapRouteArgs> page =
+      PageInfo<GiftYandexMapRouteArgs>(name);
 }
 
 class GiftYandexMapRouteArgs {
@@ -2849,7 +3002,8 @@ class ShoppingCardInfoRoute extends PageRouteInfo<ShoppingCardInfoRouteArgs> {
 
   static const String name = 'ShoppingCardInfoRoute';
 
-  static const PageInfo<ShoppingCardInfoRouteArgs> page = PageInfo<ShoppingCardInfoRouteArgs>(name);
+  static const PageInfo<ShoppingCardInfoRouteArgs> page =
+      PageInfo<ShoppingCardInfoRouteArgs>(name);
 }
 
 class ShoppingCardInfoRouteArgs {
@@ -2882,7 +3036,8 @@ class ShoppingCardInfoRouteArgs {
 
 /// generated route for
 /// [ShoppingCartDeliveryInfoScreen]
-class ShoppingCartDeliveryInfoRoute extends PageRouteInfo<ShoppingCartDeliveryInfoRouteArgs> {
+class ShoppingCartDeliveryInfoRoute
+    extends PageRouteInfo<ShoppingCartDeliveryInfoRouteArgs> {
   ShoppingCartDeliveryInfoRoute({
     Key? key,
     required String title,

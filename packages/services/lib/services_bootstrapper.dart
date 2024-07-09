@@ -73,6 +73,10 @@ Future<void> initServices(GetIt getIt) async {
       ),
     )
     ..registerFactory(
-      () => NewsService(),
+      () => NewsService(
+        dio,
+        getIt.get<DeviceInfoService>(),
+        getIt.get<ConverterService>(),
+      ),
     );
 }

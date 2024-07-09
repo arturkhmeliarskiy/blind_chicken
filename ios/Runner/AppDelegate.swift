@@ -100,6 +100,8 @@ import YandexMapsMobile
         else { return }
     guard let idMessage = userInfo["id_message"] as? String
         else { return }
+    guard let codeProduct = userInfo["code_product"] as? String
+        else { return }
     guard let sort = userInfo["sort"] as? String
         else { return }
     guard let filter = userInfo["filter"] as? String
@@ -127,6 +129,10 @@ import YandexMapsMobile
         }  
         if (call.method == "uid") {
           result("\("\(uid)")")
+          return
+        }
+        if (call.method == "codeProduct") {
+          result("\("\(codeProduct)")")
           return
         }
         // if (call.method == "title") {

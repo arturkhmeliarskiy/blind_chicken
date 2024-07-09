@@ -9,7 +9,12 @@ import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
 class NewsInfoScreen extends StatefulWidget {
-  const NewsInfoScreen({super.key});
+  const NewsInfoScreen({
+    super.key,
+    required this.indexPage,
+  });
+
+  final int indexPage;
 
   @override
   State<NewsInfoScreen> createState() => _NewsInfoScreenState();
@@ -17,12 +22,21 @@ class NewsInfoScreen extends StatefulWidget {
 
 class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStateMixin {
   late final TabController _tabController;
+  bool _isSwipe = true;
+  // int _selectedIndex = 0;
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(const NewsEvent.getNews());
     _tabController = TabController(length: 3, vsync: this);
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant NewsInfoScreen oldWidget) {
+    // if (_selectedIndex != 0) {
+    //   _tabController.animateTo(widget.indexPage);
+    // }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -33,110 +47,142 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: <Widget>[
-            const AppBarBlindChicken(),
-            TabBar.secondary(
-              padding: EdgeInsets.zero,
-              labelPadding: EdgeInsets.zero,
-              indicatorPadding: EdgeInsets.zero,
-              controller: _tabController,
-              onTap: (index) {},
-              tabs: <Widget>[
-                Tab(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Новости',
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              fontWeight: _tabController.index == 0 ? FontWeight.w700 : null,
-                            ),
-                      ),
-                      Container(
-                        height: 18,
-                        width: 10,
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          height: 5,
-                          width: 5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: BlindChickenColors.activeBorderTextField,
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {},
+      onHorizontalDragEnd: (DragEndDetails details) {
+        if (details.velocity.pixelsPerSecond.dx > 0) {
+          context.back();
+          setState(() {
+            _isSwipe = false;
+          });
+        }
+      },
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (value) {
+          if (_isSwipe && !value) {
+            context.back();
+          }
+        },
+        child: SafeArea(
+          child: Scaffold(
+            body: Column(
+              children: <Widget>[
+                const AppBarBlindChicken(),
+                TabBar.secondary(
+                  padding: EdgeInsets.zero,
+                  labelPadding: EdgeInsets.zero,
+                  indicatorPadding: EdgeInsets.zero,
+                  controller: _tabController,
+                  onTap: (index) {
+                    setState(() {
+                      _tabController.index = index;
+                      // _selectedIndex = index;
+                    });
+
+                    if (index == 0) {
+                      context.read<NewsBloc>().add(const NewsEvent.getNews());
+                    }
+                  },
+                  tabs: <Widget>[
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Новости',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  fontWeight: _tabController.index == 0 ? FontWeight.w700 : null,
+                                ),
                           ),
-                        ),
+                          // Container(
+                          //   height: 18,
+                          //   width: 10,
+                          //   alignment: Alignment.topCenter,
+                          //   child: Container(
+                          //     height: 5,
+                          //     width: 5,
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(10),
+                          //       color: BlindChickenColors.activeBorderTextField,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Медиа',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  fontWeight: _tabController.index == 1 ? FontWeight.w700 : null,
+                                  fontSize: _tabController.index == 1 ? 13.8 : null,
+                                ),
+                          ),
+                          // Container(
+                          //   height: 18,
+                          //   width: 10,
+                          //   alignment: Alignment.topCenter,
+                          //   child: Container(
+                          //     height: 5,
+                          //     width: 5,
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(10),
+                          //       color: BlindChickenColors.activeBorderTextField,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Уведомления',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  fontWeight: _tabController.index == 2 ? FontWeight.w700 : null,
+                                ),
+                          ),
+                          // Container(
+                          //   height: 18,
+                          //   width: 10,
+                          //   alignment: Alignment.topCenter,
+                          //   child: Container(
+                          //     height: 5,
+                          //     width: 5,
+                          //     decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(10),
+                          //       color: BlindChickenColors.activeBorderTextField,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Tab(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Медиа',
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              fontWeight: _tabController.index == 1 ? FontWeight.w700 : null,
-                              fontSize: _tabController.index == 1 ? 13.8 : null,
-                            ),
-                      ),
-                      Container(
-                        height: 18,
-                        width: 10,
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          height: 5,
-                          width: 5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: BlindChickenColors.activeBorderTextField,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                const Divider(
+                  height: 1,
+                  color: BlindChickenColors.borderBottomColor,
                 ),
-                Tab(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Уведомления',
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              fontWeight: _tabController.index == 2 ? FontWeight.w700 : null,
-                            ),
-                      ),
-                      Container(
-                        height: 18,
-                        width: 10,
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          height: 5,
-                          width: 5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: BlindChickenColors.activeBorderTextField,
-                          ),
-                        ),
-                      ),
+                Expanded(
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: const <Widget>[
+                      NewsTabInfo(),
+                      MediaTabInfo(),
+                      NotificationsTabInfo(),
                     ],
                   ),
                 ),
               ],
             ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: const <Widget>[
-                  NewsTabInfo(),
-                  MediaTabInfo(),
-                  NotificationsTabInfo(),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

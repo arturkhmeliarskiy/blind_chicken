@@ -27,6 +27,10 @@ class CatalogScreen extends StatefulWidget {
     this.isNotification = false,
     this.sort = '',
     this.filterSelect = '',
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final bool isBack;
@@ -36,6 +40,10 @@ class CatalogScreen extends StatefulWidget {
   final String filterSelect;
   final String url;
   final String sort;
+  final String lastPath;
+  final NewsInfoItemDataModel? newsInfo;
+  final MediaInfoItemDataModel? newsMediaInfo;
+  final NotificationInfoItemDataModel? newsNotificationInfo;
 
   @override
   State<CatalogScreen> createState() => _CatalogScreenState();
@@ -45,10 +53,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
   final constants = ConstatntsInfo();
   BlindChickenMessage message = BlindChickenMessage();
   final ScrollController _scrollController = ScrollController();
-  bool isLoading = false;
   bool isButtonTop = false;
   bool _isSwipe = true;
   double _historyPosition = 0.0;
+  double _paginationPosition = 0.0;
 
   @override
   void didChangeDependencies() {
@@ -93,11 +101,13 @@ class _CatalogScreenState extends State<CatalogScreen> {
         isButtonTop = false;
       });
     }
-    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 400) {
-      Future.delayed(const Duration(seconds: 1), () {
-        log('start pagination');
-        context.read<CatalogBloc>().add(const CatalogEvent.paginationProduct());
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 2000) &&
+        (_scrollController.position.maxScrollExtent - 2000) > _paginationPosition &&
+        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
+      setState(() {
+        _paginationPosition = _scrollController.position.maxScrollExtent - 2000;
       });
+      context.read<CatalogBloc>().add(const CatalogEvent.paginationProduct());
     }
     _historyPosition = _scrollController.position.pixels;
   }
@@ -282,6 +292,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                         builder: (context, state) {
                           return state.maybeMap(
                             preloadDataCompleted: (initState) {
+                              if (initState.offset == 1) {
+                                _paginationPosition = 0;
+                              }
                               List<SectionItemDataModel> listPrev =
                                   initState.catalogInfo?.listPrev ?? [];
                               List<SectionItemDataModel> listNext =
@@ -301,7 +314,47 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         );
                                     if (initState.listCatalogPath.isEmpty ||
                                         initState.listCatalogPath.length == 1) {
-                                      context.back();
+                                      if (widget.lastPath.isNotEmpty) {
+                                        if (widget.lastPath == 'news') {
+                                          context.navigateTo(
+                                            NewsRoute(children: [
+                                              NewsInfoRoute(
+                                                indexPage: 0,
+                                              ),
+                                            ]),
+                                          );
+                                        } else if (widget.lastPath == 'news_info_description') {
+                                          final newsInfo = widget.newsInfo;
+                                          if (newsInfo != null) {
+                                            context.navigateTo(
+                                              NewsInfoDescriptionRoute(
+                                                info: newsInfo,
+                                              ),
+                                            );
+                                          }
+                                        } else if (widget.lastPath == 'media_info_description') {
+                                          final newsMediaInfo = widget.newsMediaInfo;
+                                          if (newsMediaInfo != null) {
+                                            context.navigateTo(
+                                              MediaInfoDescriptionRoute(
+                                                info: newsMediaInfo,
+                                              ),
+                                            );
+                                          }
+                                        } else if (widget.lastPath ==
+                                            'notfication_info_description') {
+                                          final newsNotificationInfo = widget.newsNotificationInfo;
+                                          if (newsNotificationInfo != null) {
+                                            context.navigateTo(
+                                              NotficationInfoDescriptionRoute(
+                                                info: newsNotificationInfo,
+                                              ),
+                                            );
+                                          }
+                                        }
+                                      } else {
+                                        context.back();
+                                      }
                                     }
                                     setState(() {
                                       _isSwipe = false;
@@ -322,7 +375,48 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                           .add(const CatalogEvent.goBackCatalogInfo());
                                       if (initState.listCatalogPath.isEmpty ||
                                           initState.listCatalogPath.length == 1) {
-                                        context.back();
+                                        if (widget.lastPath.isNotEmpty) {
+                                          if (widget.lastPath == 'news') {
+                                            context.navigateTo(
+                                              NewsRoute(children: [
+                                                NewsInfoRoute(
+                                                  indexPage: 0,
+                                                ),
+                                              ]),
+                                            );
+                                          } else if (widget.lastPath == 'news_info_description') {
+                                            final newsInfo = widget.newsInfo;
+                                            if (newsInfo != null) {
+                                              context.navigateTo(
+                                                NewsInfoDescriptionRoute(
+                                                  info: newsInfo,
+                                                ),
+                                              );
+                                            }
+                                          } else if (widget.lastPath == 'media_info_description') {
+                                            final newsMediaInfo = widget.newsMediaInfo;
+                                            if (newsMediaInfo != null) {
+                                              context.navigateTo(
+                                                MediaInfoDescriptionRoute(
+                                                  info: newsMediaInfo,
+                                                ),
+                                              );
+                                            }
+                                          } else if (widget.lastPath ==
+                                              'notfication_info_description') {
+                                            final newsNotificationInfo =
+                                                widget.newsNotificationInfo;
+                                            if (newsNotificationInfo != null) {
+                                              context.navigateTo(
+                                                NotficationInfoDescriptionRoute(
+                                                  info: newsNotificationInfo,
+                                                ),
+                                              );
+                                            }
+                                          }
+                                        } else {
+                                          context.back();
+                                        }
                                       }
                                     }
                                   },
@@ -768,7 +862,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                   ),
                 ),
               ),
-              if (isButtonTop && !isLoading)
+              if (isButtonTop)
                 GestureDetector(
                   onTap: () {
                     _scrollController.jumpTo(0.0);
@@ -815,25 +909,18 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           ),
                         ),
                       )
-                    : isLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                              backgroundColor: Colors.grey.shade400,
-                            ),
+                    : initState.isError ?? false
+                        ? BlindChickenErrorInfo(
+                            errorMessage: initState.errorMessage ?? '',
+                            onRepeatRequest: () {
+                              context.read<CatalogBloc>().add(
+                                    CatalogEvent.getInfoProducts(
+                                      path: widget.url,
+                                    ),
+                                  );
+                            },
                           )
-                        : initState.isError ?? false
-                            ? BlindChickenErrorInfo(
-                                errorMessage: initState.errorMessage ?? '',
-                                onRepeatRequest: () {
-                                  context.read<CatalogBloc>().add(
-                                        CatalogEvent.getInfoProducts(
-                                          path: widget.url,
-                                        ),
-                                      );
-                                },
-                              )
-                            : const SizedBox();
+                        : const SizedBox();
               },
               orElse: () => const SizedBox(),
             );

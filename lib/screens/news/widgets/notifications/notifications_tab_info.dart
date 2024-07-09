@@ -17,6 +17,7 @@ class NotificationsTabInfo extends StatefulWidget {
 class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   final ScrollController _scrollController = ScrollController();
   double _historyPosition = 0.0;
+  double _paginationPosition = 0.0;
   bool _isButtonTop = false;
 
   @override
@@ -37,7 +38,12 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
         _isButtonTop = false;
       });
     }
-    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent - 100) {
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 200) &&
+        (_scrollController.position.maxScrollExtent - 200) > _paginationPosition &&
+        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
+      setState(() {
+        _paginationPosition = _scrollController.position.maxScrollExtent - 200;
+      });
       context.read<NewsBloc>().add(const NewsEvent.paginationNotifications());
     }
     _historyPosition = _scrollController.position.pixels;
@@ -59,25 +65,37 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
             BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
               return state.maybeMap(
                 preloadDataCompleted: (initState) {
-                  return ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    controller: _scrollController,
-                    itemCount: initState.notificatios.list.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          context.navigateTo(
-                            NotficationInfoDescriptionRoute(
-                              info: initState.notificatios.list[index],
-                            ),
-                          );
-                        },
-                        child: NotificationItemTabInfo(
-                          item: initState.notificatios.list[index],
-                        ),
-                      );
-                    },
-                  );
+                  if (initState.offsetNotificatios == 1) {
+                    _paginationPosition = 0;
+                  }
+                  if (initState.notificatios.list.isNotEmpty) {
+                    return ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      controller: _scrollController,
+                      itemCount: initState.notificatios.list.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.navigateTo(
+                              NotficationInfoDescriptionRoute(
+                                info: initState.notificatios.list[index],
+                              ),
+                            );
+                          },
+                          child: NotificationItemTabInfo(
+                            item: initState.notificatios.list[index],
+                          ),
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: Text(
+                        'Нет уведомлений',
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                    );
+                  }
                 },
                 orElse: () => const SizedBox(),
               );

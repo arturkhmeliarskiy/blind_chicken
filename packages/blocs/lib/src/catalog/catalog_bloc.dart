@@ -201,7 +201,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     bool isUpdateVersionApp = false;
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     List<int> favouritesProductsId = [];
-    List<MenuItemDataModel> menuItems = [];
     FavouritesDataModel? favourites;
     PushNotificationMessageDataModel? notitcationMessage;
     AppStoreInfoDataModel? appStoreInfo;
@@ -231,18 +230,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
-
-    menuItems.addAll(menu.items);
-    menuItems.add(MenuItemDataModel(
-      bold: 0,
-      idParent: -1,
-      id: -1,
-      url: '',
-      name: 'Сервисная карта',
-      sub: -1,
-      title: 0,
-      brand: 0,
-    ));
 
     if (Platform.isIOS) {
       appStoreInfo = await _appStoreInfoRepository.checkiOSVersion();
@@ -280,6 +267,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         final idMessage = await me.invokeMethod('idMessage') as String;
         final sort = await me.invokeMethod('sort') as String;
         final uid = await me.invokeMethod('uid') as String;
+        final codeProduct = await me.invokeMethod('codeProduct') as String;
         final filterSelect = await me.invokeMethod('filter') as String;
         notitcationMessage = PushNotificationMessageDataModel(
           section: section,
@@ -288,6 +276,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           sort: sort,
           uid: uid,
           filterSelect: filterSelect,
+          codeProduct: codeProduct,
         );
       }
     }
@@ -301,6 +290,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         type: message?.data['type'] ?? '',
         sort: message?.data['sort'] ?? '',
         filterSelect: message?.data['filter'] ?? '',
+        codeProduct: message?.data['code_product'] ?? '',
       );
     }
 
@@ -322,7 +312,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           products: [],
           defaultProducts: [],
           favouritesProducts: favouritesProducts,
-          menu: menuItems,
+          menu: menu.items,
           pathMenu: [],
           favouritesProductsId: favouritesProductsId,
           brands: _constatntsInfo.brandsWoman,
@@ -368,7 +358,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         pid: event.pid,
       );
 
-      List<MenuItemDataModel> listItems = menu.items.toList();
       List<MenuItemDataModel> pathMenu = initState.pathMenu.toList();
 
       MenuItemDataModel? item = event.item;
@@ -378,17 +367,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       } else {
         pathMenu = [];
       }
-
-      listItems.add(MenuItemDataModel(
-        bold: 0,
-        idParent: 1,
-        id: -1,
-        url: '',
-        name: 'Сервисная карта',
-        sub: -1,
-        title: 0,
-        brand: 0,
-      ));
 
       _updateDataService.selectedIndexGender =
           event.selectedGenderIndex ?? initState.selectedGenderIndex;
@@ -401,7 +379,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         );
       } else {
         emit(initState.copyWith(
-          menu: listItems,
+          menu: menu.items,
           pathMenu: pathMenu,
           selectedGenderIndex: event.selectedGenderIndex ?? initState.selectedGenderIndex,
           isNotification: false,
@@ -939,6 +917,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         errorMessage: MessageInfo.errorMessage,
         codeProduct: null,
         userDiscount: catalogInfo.userDiscount,
+        offset: 1,
       ));
     });
   }
@@ -1626,7 +1605,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           isError: isError,
           errorMessage: errorMessage,
           codeProduct: null,
-          offset: 0,
+          offset: 1,
         ));
       }
     });

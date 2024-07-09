@@ -3,18 +3,42 @@ import 'dart:developer';
 
 import 'package:api_models/api_models.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 import 'package:shared/shared.dart';
 
 class NewsService {
-  Future<NewsInfoResponse> getNews() async {
+  final Dio _dio;
+  final DeviceInfoService _deviceInfoService;
+  final ConverterService _converterService;
+
+  NewsService(
+    this._dio,
+    this._deviceInfoService,
+    this._converterService,
+  ) {
+    _dio.options.baseUrl = 'https://slepayakurica.ru';
+    _dio.options.headers["Content-Type"] = "application/x-www-form-urlencoded";
+  }
+
+  Future<NewsInfoResponse> getNews({
+    required int page,
+  }) async {
     NewsInfoResponse? newsInfoResponse;
-    final String response = await rootBundle.loadString('assets/news.json');
+    final token = await _deviceInfoService.getDeviceId();
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+
     try {
-      final data = await jsonDecode(response);
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/list_news.php?nav=page-$page',
+        data: {
+          "token": token,
+          "hash_token": hashToken,
+        },
+      );
       try {
-        if (data["r"] == '1') {
-          newsInfoResponse = NewsInfoResponse.fromJson(data);
+        final result = jsonDecode(response.data);
+        if (result["r"] == '1') {
+          newsInfoResponse = NewsInfoResponse.fromJson(result);
         } else {
           newsInfoResponse = NewsInfoResponse(
             errorMessage: MessageInfo.errorMessage,
@@ -43,14 +67,27 @@ class NewsService {
     }
   }
 
-  Future<MediaInfoResponse> getMedia() async {
+  Future<MediaInfoResponse> getMedia({
+    required int page,
+  }) async {
     MediaInfoResponse? mediaInfoResponse;
-    final String response = await rootBundle.loadString('assets/media.json');
+    final token = await _deviceInfoService.getDeviceId();
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+
     try {
-      final data = await jsonDecode(response);
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/list_media.php?nav=page-$page',
+        data: {
+          "token": token,
+          "hash_token": hashToken,
+        },
+      );
+
       try {
-        if (data["r"] == '1') {
-          mediaInfoResponse = MediaInfoResponse.fromJson(data);
+        final result = await jsonDecode(response.data);
+        if (result["r"] == '1') {
+          mediaInfoResponse = MediaInfoResponse.fromJson(result);
         } else {
           mediaInfoResponse = MediaInfoResponse(
             errorMessage: MessageInfo.errorMessage,
@@ -79,14 +116,25 @@ class NewsService {
     }
   }
 
-  Future<NotificationInfoResponse> getNotifications() async {
+  Future<NotificationInfoResponse> getNotifications({
+    required int page,
+  }) async {
     NotificationInfoResponse? notificationInfoResponse;
-    final String response = await rootBundle.loadString('assets/notifications.json');
+    final token = await _deviceInfoService.getDeviceId();
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     try {
-      final data = await jsonDecode(response);
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/list_notice.php?nav=page-$page',
+        data: {
+          "token": token,
+          "hash_token": hashToken,
+        },
+      );
       try {
-        if (data["r"] == '1') {
-          notificationInfoResponse = NotificationInfoResponse.fromJson(data);
+        final result = await jsonDecode(response.data);
+        if (result["r"] == '1') {
+          notificationInfoResponse = NotificationInfoResponse.fromJson(result);
         } else {
           notificationInfoResponse = NotificationInfoResponse(
             errorMessage: MessageInfo.errorMessage,

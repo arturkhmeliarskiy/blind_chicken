@@ -24,7 +24,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   final ScrollController _scrollController = ScrollController();
   BlindChickenMessage message = BlindChickenMessage();
   bool isLoading = false;
-
+  double _paginationPosition = 0.0;
   double _historyPosition = 0.0;
 
   @override
@@ -48,19 +48,16 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
           ),
         );
 
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 2000) &&
+        (_scrollController.position.maxScrollExtent - 2000) > _paginationPosition &&
+        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
       setState(() {
-        isLoading = true;
+        _paginationPosition = _scrollController.position.maxScrollExtent - 2000;
       });
-      await Future<void>.delayed(const Duration(seconds: 2), () {
-        setState(() {
-          isLoading = false;
 
-          context.read<SearchBloc>().add(
-                const SearchEvent.paginationProduct(),
-              );
-        });
-      });
+      context.read<SearchBloc>().add(
+            const SearchEvent.paginationProduct(),
+          );
     }
     _historyPosition = _scrollController.position.pixels;
   }
@@ -225,7 +222,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                     _scrollController.jumpTo(_historyPosition);
                                   });
                                 }
-
+                                if (initState.offset == 1) {
+                                  _paginationPosition = 0;
+                                }
                                 return GestureDetector(
                                   onHorizontalDragUpdate: (details) {},
                                   onHorizontalDragEnd: (DragEndDetails details) {

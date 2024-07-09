@@ -148,6 +148,17 @@ class _AppState extends State<App> {
                   isNotification: true,
                 ));
               }
+              if (notificationMessage.type == 'product') {
+                _appRouter.push(
+                  CatalogCardInfoRoute(
+                    isLike: false,
+                    listItems: const [],
+                    favouritesProducts: const [],
+                    isChildRoute: false,
+                    code: notificationMessage.codeProduct,
+                  ),
+                );
+              }
               if (notificationMessage.type == 'boutique') {
                 _appRouter.push(
                   BoutiquesDescriptionRoute(
@@ -204,6 +215,7 @@ class _AppState extends State<App> {
               final iDMessage = await me.invokeMethod('idMessage') as String;
               final sort = await me.invokeMethod('sort') as String;
               final uid = await me.invokeMethod('uid') as String;
+              final codeProduct = await me.invokeMethod('codeProduct') as String;
               final filterSelect = await me.invokeMethod('filter') as String;
 
               // final title = await me.invokeMethod('title') as String;
@@ -216,24 +228,39 @@ class _AppState extends State<App> {
                 // };
 
                 if (iDMessage != updateData.idMessageNotification) {
-                  if (type == 'catalog') {
-                    if (updateData.isInitApp) {
-                      await Future<void>.delayed(
-                        const Duration(
-                          milliseconds: 800,
-                        ),
-                      );
-                      _appRouter.push(CatalogRoute(
-                        title: '',
-                        url: section,
-                        sort: sort,
-                        filterSelect: filterSelect,
-                        isNotification: true,
-                      ));
-                      updateData.idMessageNotification = iDMessage;
-                    }
+                  if (type == 'catalog' && updateData.isInitApp) {
+                    await Future<void>.delayed(
+                      const Duration(
+                        milliseconds: 800,
+                      ),
+                    );
+                    _appRouter.push(CatalogRoute(
+                      title: '',
+                      url: section,
+                      sort: sort,
+                      filterSelect: filterSelect,
+                      isNotification: true,
+                    ));
+                    updateData.idMessageNotification = iDMessage;
                   }
-                  if (type == 'boutique') {
+                  if (type == 'product' && updateData.isInitApp) {
+                    await Future<void>.delayed(
+                      const Duration(
+                        milliseconds: 800,
+                      ),
+                    );
+                    _appRouter.push(
+                      CatalogCardInfoRoute(
+                        isLike: false,
+                        listItems: const [],
+                        favouritesProducts: const [],
+                        isChildRoute: false,
+                        code: codeProduct,
+                      ),
+                    );
+                    updateData.idMessageNotification = iDMessage;
+                  }
+                  if (type == 'boutique' && updateData.isInitApp) {
                     _appRouter.push(
                       BoutiquesDescriptionRoute(
                         uidStore: uid,
@@ -242,7 +269,7 @@ class _AppState extends State<App> {
                     );
                     updateData.idMessageNotification = iDMessage;
                   }
-                  if (type == 'gift_card') {
+                  if (type == 'gift_card' && updateData.isInitApp) {
                     _appRouter.push(
                       GiftCardRoute(
                         isNotification: true,

@@ -16,6 +16,7 @@ class MediaTabInfo extends StatefulWidget {
 class _MediaTabInfoState extends State<MediaTabInfo> {
   final ScrollController _scrollController = ScrollController();
   double _historyPosition = 0.0;
+  double _paginationPosition = 0.0;
   bool _isButtonTop = false;
 
   @override
@@ -36,7 +37,12 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
         _isButtonTop = false;
       });
     }
-    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent - 100) {
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 500) &&
+        (_scrollController.position.maxScrollExtent - 500) > _paginationPosition &&
+        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
+      setState(() {
+        _paginationPosition = _scrollController.position.maxScrollExtent - 500;
+      });
       context.read<NewsBloc>().add(const NewsEvent.paginationMedia());
     }
     _historyPosition = _scrollController.position.pixels;
@@ -58,6 +64,9 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
             BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
               return state.maybeMap(
                 preloadDataCompleted: (initState) {
+                  if (initState.offsetMedia == 1) {
+                    _paginationPosition = 0;
+                  }
                   List<List<MediaInfoItemDataModel>> listMedia = [];
                   int chunkSize = 15;
                   for (var i = 0; i < initState.media.list.length; i += chunkSize) {
@@ -70,14 +79,23 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
                       ),
                     );
                   }
-                  return ListView.builder(
-                      controller: _scrollController,
-                      itemCount: listMedia.length,
-                      itemBuilder: (context, index) {
-                        return MediaCollectionItemTabInfo(
-                          listMedia: listMedia[index],
-                        );
-                      });
+                  if (listMedia.isNotEmpty) {
+                    return ListView.builder(
+                        controller: _scrollController,
+                        itemCount: listMedia.length,
+                        itemBuilder: (context, index) {
+                          return MediaCollectionItemTabInfo(
+                            listMedia: listMedia[index],
+                          );
+                        });
+                  } else {
+                    return Center(
+                      child: Text(
+                        'Нет медиа',
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                    );
+                  }
                 },
                 orElse: () => const SizedBox(),
               );

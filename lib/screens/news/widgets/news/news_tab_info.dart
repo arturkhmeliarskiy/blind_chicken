@@ -17,6 +17,7 @@ class NewsTabInfo extends StatefulWidget {
 class _NewsTabInfoState extends State<NewsTabInfo> {
   final ScrollController _scrollController = ScrollController();
   double _historyPosition = 0.0;
+  double _paginationPosition = 0.0;
   bool _isButtonTop = false;
 
   @override
@@ -36,9 +37,15 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
         _isButtonTop = false;
       });
     }
-    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent - 100) {
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 500) &&
+        (_scrollController.position.maxScrollExtent - 500) > _paginationPosition &&
+        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
+      setState(() {
+        _paginationPosition = _scrollController.position.maxScrollExtent - 500;
+      });
       context.read<NewsBloc>().add(const NewsEvent.paginationNews());
     }
+
     _historyPosition = _scrollController.position.pixels;
   }
 
@@ -55,54 +62,109 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
         Stack(
           alignment: Alignment.bottomLeft,
           children: [
-            Container(
-              color: BlindChickenColors.borderBottomColor,
-              child: BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-                return state.maybeMap(
-                  preloadDataCompleted: (initState) {
-                    return ListView.builder(
-                      controller: _scrollController,
-                      itemCount: initState.news.list.length,
-                      itemBuilder: (context, index) {
-                        return NewsItemTabInfo(
-                          item: initState.news.list[index],
-                          path: initState.news.list[index].path,
-                          onTap: () {
-                            context.navigateTo(
-                              NewsInfoDescriptionRoute(
-                                info: initState.news.list[index],
-                              ),
-                            );
-                          },
-                          onGoTap: (path) {
-                            context.read<CatalogBloc>().add(
-                                  CatalogEvent.getInfoProducts(
-                                    path: path,
-                                  ),
-                                );
-                            context.navigateTo(
-                              DashboardRoute(
-                                children: [
+            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (initState) {
+                  if (initState.offsetNews == 1) {
+                    _paginationPosition = 0;
+                  }
+                  if (initState.news.list.isNotEmpty) {
+                    return Container(
+                      color: BlindChickenColors.borderBottomColor,
+                      child: ListView.builder(
+                        controller: _scrollController,
+                        itemCount: initState.news.list.length,
+                        itemBuilder: (context, index) {
+                          return NewsItemTabInfo(
+                            item: initState.news.list[index],
+                            onTap: () {
+                              context.navigateTo(
+                                NewsInfoDescriptionRoute(
+                                  info: initState.news.list[index],
+                                ),
+                              );
+                            },
+                            onGoTap: () {
+                              if (initState.news.list[index].typePath == 'catalog') {
+                                context.read<CatalogBloc>().add(
+                                      CatalogEvent.getInfoProducts(
+                                        path: initState.news.list[index].path,
+                                      ),
+                                    );
+
+                                context.navigateTo(
                                   HomeAutoRouterRoute(
                                     children: [
                                       CatalogRoute(
                                         title: '',
-                                        url: path,
+                                        url: initState.news.list[index].path,
+                                        lastPath: 'news',
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      },
+                                );
+                              } else if (initState.news.list[index].typePath == 'product') {
+                                context.read<CatalogBloc>().add(
+                                      CatalogEvent.getInfoProduct(
+                                        code: initState.news.list[index].code,
+                                      ),
+                                    );
+                                context.navigateTo(
+                                  HomeAutoRouterRoute(
+                                    children: [
+                                      CatalogCardInfoRoute(
+                                        isLike: false,
+                                        listItems: const [],
+                                        favouritesProducts: const [],
+                                        isChildRoute: false,
+                                        lastPath: 'news',
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              } else if (initState.news.list[index].typePath == 'boutique') {
+                                context.read<BoutiquesBloc>().add(
+                                      BoutiquesEvent.getInfoBoutique(
+                                        uid: initState.news.list[index].uidStore,
+                                      ),
+                                    );
+                                context.navigateTo(
+                                  HomeAutoRouterRoute(
+                                    children: [
+                                      BoutiquesDescriptionRoute(
+                                        lastPath: 'news',
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              } else if (initState.news.list[index].typePath == 'gift_card') {
+                                context.navigateTo(
+                                  HomeAutoRouterRoute(
+                                    children: [
+                                      GiftCardRoute(
+                                        lastPath: 'news',
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                          );
+                        },
+                      ),
                     );
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              }),
-            ),
+                  } else {
+                    return Center(
+                      child: Text(
+                        'Нет новостей',
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                    );
+                  }
+                },
+                orElse: () => const SizedBox(),
+              );
+            }),
             if (_isButtonTop)
               GestureDetector(
                 onTap: () {

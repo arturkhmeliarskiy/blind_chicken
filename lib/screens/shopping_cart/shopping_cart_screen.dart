@@ -177,24 +177,44 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                             price: initState.shoppingCart
                                                                 .basket[index].data.price,
                                                             onSelectCard: () {
-                                                              context.read<ShoppingCartBloc>().add(
-                                                                    ShoppingCartEvent
-                                                                        .getInfoProduct(
-                                                                      code: initState.shoppingCart
-                                                                          .basket[index].code,
-                                                                    ),
-                                                                  );
-                                                              context.navigateTo(
-                                                                ShoppingCardInfoRoute(
-                                                                  isChildRoute: false,
-                                                                  item: initState.shoppingCart
-                                                                      .basket[index].product,
-                                                                  isLike: false,
-                                                                  listItems: const [],
-                                                                  favouritesProducts:
-                                                                      initState.favouritesProducts,
-                                                                ),
-                                                              );
+                                                              if (initState.shoppingCart
+                                                                      .basket[index].code !=
+                                                                  '15846') {
+                                                                context
+                                                                    .read<ShoppingCartBloc>()
+                                                                    .add(
+                                                                      ShoppingCartEvent
+                                                                          .getInfoProduct(
+                                                                        code: initState.shoppingCart
+                                                                            .basket[index].code,
+                                                                      ),
+                                                                    );
+                                                                context.navigateTo(
+                                                                  ShoppingCardInfoRoute(
+                                                                    isChildRoute: false,
+                                                                    item: initState.shoppingCart
+                                                                        .basket[index].product,
+                                                                    isLike: false,
+                                                                    listItems: const [],
+                                                                    favouritesProducts: initState
+                                                                        .favouritesProducts,
+                                                                  ),
+                                                                );
+                                                              } else {
+                                                                context.read<CatalogBloc>().add(
+                                                                      const CatalogEvent
+                                                                          .getInfoServiceCard(
+                                                                        code: '15846',
+                                                                      ),
+                                                                    );
+                                                                context.navigateTo(
+                                                                  const HomeAutoRouterRoute(
+                                                                    children: [
+                                                                      ServiceCardRoute(),
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              }
                                                             },
                                                             removeProduct: (value) {
                                                               context.read<ShoppingCartBloc>().add(

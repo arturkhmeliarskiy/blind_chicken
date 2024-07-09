@@ -5,6 +5,7 @@ class PushNotificationMessageDataModel {
   final String sort;
   final String uid;
   final String filterSelect;
+  final String codeProduct;
 
   PushNotificationMessageDataModel({
     required this.section,
@@ -13,5 +14,6 @@ class PushNotificationMessageDataModel {
     required this.sort,
     required this.uid,
     required this.filterSelect,
+    required this.codeProduct,
   });
 }

@@ -30,6 +30,10 @@ class CatalogCardInfoScreen extends StatefulWidget {
     required this.listItems,
     required this.favouritesProducts,
     required this.isChildRoute,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final ProductDataModel? item;
@@ -38,6 +42,10 @@ class CatalogCardInfoScreen extends StatefulWidget {
   final bool isLike;
   final String? code;
   final bool isChildRoute;
+  final String lastPath;
+  final NewsInfoItemDataModel? newsInfo;
+  final MediaInfoItemDataModel? newsMediaInfo;
+  final NotificationInfoItemDataModel? newsNotificationInfo;
 
   @override
   State<CatalogCardInfoScreen> createState() => _CatalogCardInfoScreenState();
@@ -99,7 +107,46 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
         state.maybeMap(
           preloadDataCompleted: (value) {
             if (value.listProductsCode.isEmpty) {
-              context.back();
+              if (widget.lastPath.isNotEmpty) {
+                if (widget.lastPath == 'news') {
+                  context.navigateTo(
+                    NewsRoute(children: [
+                      NewsInfoRoute(
+                        indexPage: 0,
+                      ),
+                    ]),
+                  );
+                } else if (widget.lastPath == 'news_info_description') {
+                  final newsInfo = widget.newsInfo;
+                  if (newsInfo != null) {
+                    context.navigateTo(
+                      NewsInfoDescriptionRoute(
+                        info: newsInfo,
+                      ),
+                    );
+                  }
+                } else if (widget.lastPath == 'media_info_description') {
+                  final newsMediaInfo = widget.newsMediaInfo;
+                  if (newsMediaInfo != null) {
+                    context.navigateTo(
+                      MediaInfoDescriptionRoute(
+                        info: newsMediaInfo,
+                      ),
+                    );
+                  }
+                } else if (widget.lastPath == 'notfication_info_description') {
+                  final newsNotificationInfo = widget.newsNotificationInfo;
+                  if (newsNotificationInfo != null) {
+                    context.navigateTo(
+                      NotficationInfoDescriptionRoute(
+                        info: newsNotificationInfo,
+                      ),
+                    );
+                  }
+                }
+              } else {
+                context.back();
+              }
             }
           },
           orElse: () => const SizedBox(),
@@ -145,7 +192,46 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     .read<CatalogBloc>()
                                     .add(const CatalogEvent.goBackProductInfo());
                               } else {
-                                context.back();
+                                if (widget.lastPath.isNotEmpty) {
+                                  if (widget.lastPath == 'news') {
+                                    context.navigateTo(
+                                      NewsRoute(children: [
+                                        NewsInfoRoute(
+                                          indexPage: 0,
+                                        ),
+                                      ]),
+                                    );
+                                  } else if (widget.lastPath == 'news_info_description') {
+                                    final newsInfo = widget.newsInfo;
+                                    if (newsInfo != null) {
+                                      context.navigateTo(
+                                        NewsInfoDescriptionRoute(
+                                          info: newsInfo,
+                                        ),
+                                      );
+                                    }
+                                  } else if (widget.lastPath == 'media_info_description') {
+                                    final newsMediaInfo = widget.newsMediaInfo;
+                                    if (newsMediaInfo != null) {
+                                      context.navigateTo(
+                                        MediaInfoDescriptionRoute(
+                                          info: newsMediaInfo,
+                                        ),
+                                      );
+                                    }
+                                  } else if (widget.lastPath == 'notfication_info_description') {
+                                    final newsNotificationInfo = widget.newsNotificationInfo;
+                                    if (newsNotificationInfo != null) {
+                                      context.navigateTo(
+                                        NotficationInfoDescriptionRoute(
+                                          info: newsNotificationInfo,
+                                        ),
+                                      );
+                                    }
+                                  }
+                                } else {
+                                  context.back();
+                                }
                               }
                             }
                           },

@@ -59,9 +59,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         news: news,
         media: media,
         notificatios: notificatios,
-        offsetNews: 0,
-        offsetMedia: 0,
-        offsetNotificatios: 0,
+        offsetNews: 1,
+        offsetMedia: 1,
+        offsetNotificatios: 1,
       ),
     );
   }
@@ -72,25 +72,20 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const NewsState.load());
-      NewsInfoDataModel news = await _newsRepository.getNews();
-
-      List<NewsInfoItemDataModel> list = [];
-
-      for (int i = 0; i < 9; i++) {
-        list.add(news.list[i]);
-      }
+      NewsInfoDataModel news = await _newsRepository.getNews(page: 1);
 
       news = NewsInfoDataModel(
         e: news.e,
         r: news.r,
         errorMessage: news.errorMessage,
-        list: list,
+        list: news.list,
         isViewed: news.isViewed,
       );
 
       emit(
         initState.copyWith(
           news: news,
+          offsetNews: 1,
         ),
       );
     });
@@ -103,25 +98,20 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const NewsState.load());
 
-      MediaInfoDataModel media = await _newsRepository.getMedia();
-
-      List<MediaInfoItemDataModel> list = [];
-
-      for (int i = 0; i < 15; i++) {
-        list.add(media.list[i]);
-      }
+      MediaInfoDataModel media = await _newsRepository.getMedia(page: 1);
 
       media = MediaInfoDataModel(
         e: media.e,
         r: media.r,
         errorMessage: media.errorMessage,
-        list: list,
+        list: media.list,
         isViewed: media.isViewed,
       );
 
       emit(
         initState.copyWith(
           media: media,
+          offsetMedia: 1,
         ),
       );
     });
@@ -134,25 +124,20 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const NewsState.load());
 
-      NotificationInfoDataModel notificatios = await _newsRepository.getNotifications();
-
-      List<NotificationInfoItemDataModel> list = [];
-
-      for (int i = 0; i < 9; i++) {
-        list.add(notificatios.list[i]);
-      }
+      NotificationInfoDataModel notificatios = await _newsRepository.getNotifications(page: 1);
 
       notificatios = NotificationInfoDataModel(
         e: notificatios.e,
         r: notificatios.r,
         errorMessage: notificatios.errorMessage,
-        list: list,
+        list: notificatios.list,
         isViewed: notificatios.isViewed,
       );
 
       emit(
         initState.copyWith(
           notificatios: notificatios,
+          offsetNotificatios: 1,
         ),
       );
     });
@@ -163,22 +148,15 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      NewsInfoDataModel news = await _newsRepository.getNews();
-      List<NewsInfoItemDataModel> listNews = news.list.toList();
       int offsetNews = initState.offsetNews + 1;
-      List<NewsInfoItemDataModel> list = [];
 
-      if (9 * (offsetNews + 1) <= listNews.length) {
-        for (int i = 9 * offsetNews; i < 9 * (offsetNews + 1); i++) {
-          list.add(listNews[i]);
-        }
-      }
+      NewsInfoDataModel news = await _newsRepository.getNews(page: offsetNews);
 
       emit(initState.copyWith(
         news: initState.news.copyWith(
           list: [
             ...initState.news.list,
-            ...list,
+            ...news.list,
           ],
         ),
         offsetNews: offsetNews,
@@ -191,22 +169,15 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      MediaInfoDataModel media = await _newsRepository.getMedia();
-      List<MediaInfoItemDataModel> listMedia = media.list.toList();
       int offsetMedia = initState.offsetMedia + 1;
-      List<MediaInfoItemDataModel> list = [];
 
-      if (15 * (offsetMedia + 1) <= listMedia.length) {
-        for (int i = 15 * offsetMedia; i < 15 * (offsetMedia + 1); i++) {
-          list.add(listMedia[i]);
-        }
-      }
+      MediaInfoDataModel media = await _newsRepository.getMedia(page: offsetMedia);
 
       emit(initState.copyWith(
         media: initState.media.copyWith(
           list: [
             ...initState.media.list,
-            ...list,
+            ...media.list,
           ],
         ),
         offsetMedia: offsetMedia,
@@ -219,22 +190,16 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      NotificationInfoDataModel notificatios = await _newsRepository.getNotifications();
-      List<NotificationInfoItemDataModel> listNotificatios = notificatios.list.toList();
       int offsetNotificatios = initState.offsetNotificatios + 1;
-      List<NotificationInfoItemDataModel> list = [];
 
-      if (9 * (offsetNotificatios + 1) <= listNotificatios.length) {
-        for (int i = 9 * offsetNotificatios; i < 9 * (offsetNotificatios + 1); i++) {
-          list.add(listNotificatios[i]);
-        }
-      }
+      NotificationInfoDataModel notificatios =
+          await _newsRepository.getNotifications(page: offsetNotificatios);
 
       emit(initState.copyWith(
         notificatios: initState.notificatios.copyWith(
           list: [
             ...initState.notificatios.list,
-            ...list,
+            ...notificatios.list,
           ],
         ),
         offsetNotificatios: offsetNotificatios,

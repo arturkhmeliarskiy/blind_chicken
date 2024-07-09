@@ -108,6 +108,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         isLoading: false,
         productsCount: searchResult.productsCount,
         codeProduct: null,
+        offset: 1,
       ));
     });
   }
@@ -122,7 +123,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       request = request.copyWith(query: event.query);
       final searchResultInfo = await _catalogRepository.searchProductsInfo(
-        request: request.copyWith(query: event.query),
+        request: request.copyWith(
+          query: event.query,
+          filters: [
+            FilterCatalogDataModel(
+              key: 'nav',
+              value: 'page-1',
+            )
+          ],
+        ),
       );
 
       List<ProductDataModel> favouritesProducts = [];
@@ -149,6 +158,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProductsCode: [],
         filter: searchResultInfo.filter,
         request: request,
+        offset: 1,
         userDiscount: searchResultInfo.userDiscount,
       ));
     });

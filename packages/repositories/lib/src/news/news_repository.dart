@@ -7,18 +7,24 @@ class NewsRepository {
 
   NewsRepository(this._newsService);
 
-  Future<NewsInfoDataModel> getNews() async {
-    final news = await _newsService.getNews();
+  Future<NewsInfoDataModel> getNews({
+    required int page,
+  }) async {
+    final news = await _newsService.getNews(page: page);
     return news.toNews();
   }
 
-  Future<MediaInfoDataModel> getMedia() async {
-    final media = await _newsService.getMedia();
+  Future<MediaInfoDataModel> getMedia({
+    required int page,
+  }) async {
+    final media = await _newsService.getMedia(page: page);
     return media.toMedia();
   }
 
-  Future<NotificationInfoDataModel> getNotifications() async {
-    final media = await _newsService.getNotifications();
+  Future<NotificationInfoDataModel> getNotifications({
+    required int page,
+  }) async {
+    final media = await _newsService.getNotifications(page: page);
     return media.toNotifications();
   }
 }
@@ -35,7 +41,9 @@ extension on NewsInfoResponse {
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
-                images: item.images ?? [],
+                images: item.images?.isNotEmpty ?? false
+                    ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
+                    : [],
                 video: item.video ?? '',
                 announcement: item.announcement ?? '',
                 typeMedia: item.typeMedia ?? '',
@@ -70,7 +78,9 @@ extension on MediaInfoResponse {
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
-                images: item.images ?? [],
+                images: item.images?.isNotEmpty ?? false
+                    ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
+                    : [],
                 video: item.video ?? '',
                 typeMedia: item.typeMedia ?? '',
                 description: item.description ?? '',
@@ -104,7 +114,9 @@ extension on NotificationInfoResponse {
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
-                images: item.images ?? [],
+                images: item.images?.isNotEmpty ?? false
+                    ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
+                    : [],
                 video: item.video ?? '',
                 typeMedia: item.typeMedia ?? '',
                 description: item.description ?? '',

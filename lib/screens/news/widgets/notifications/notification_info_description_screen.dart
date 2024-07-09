@@ -1,15 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
+import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
-class NotficationInfoDescriptionScreen extends StatelessWidget {
+class NotficationInfoDescriptionScreen extends StatefulWidget {
   const NotficationInfoDescriptionScreen({
     super.key,
     required this.info,
@@ -18,123 +21,301 @@ class NotficationInfoDescriptionScreen extends StatelessWidget {
   final NotificationInfoItemDataModel info;
 
   @override
+  State<NotficationInfoDescriptionScreen> createState() => _NotficationInfoDescriptionScreenState();
+}
+
+class _NotficationInfoDescriptionScreenState extends State<NotficationInfoDescriptionScreen> {
+  bool _isFullScreenVideo = false;
+  bool _isSwipe = true;
+
+  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: ListView(
-            padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-            ),
-            children: [
-              const AppBarBlindChicken(),
-              const SizedBox(
-                height: 12,
-              ),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          right: 8,
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            context.back();
-                          },
-                          child: SvgPicture.asset(
-                            'assets/icons/arrow-left.svg',
-                            height: 24,
-                            width: 24,
-                          ),
-                        ),
-                      ),
-                    ),
-                    TextSpan(
-                      text: info.title,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            height: 1.2,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              Text(
-                info.createAt,
-                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      color: BlindChickenColors.textInput,
-                    ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              CachedNetworkImage(
-                imageUrl: info.images.first,
-                height: 250,
-                fit: BoxFit.fill,
-                placeholder: (context, url) => const SizedBox(
-                  height: 250,
-                  child: LoadingImage(),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                info.description,
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              if (info.path.isNotEmpty)
+    final width = MediaQuery.of(context).size.width;
+    return !_isFullScreenVideo
+        ? Scaffold(
+            body: SafeArea(
+              child: ListView(children: [
+                const AppBarBlindChicken(),
                 GestureDetector(
-                  onTap: () {
-                    context.read<CatalogBloc>().add(
-                          CatalogEvent.getInfoProducts(
-                            path: info.path,
+                  onHorizontalDragEnd: (DragEndDetails details) {
+                    if (details.velocity.pixelsPerSecond.dx > 0) {
+                      context.navigateTo(
+                        NewsInfoRoute(
+                          indexPage: 0,
+                        ),
+                      );
+                      setState(() {
+                        _isSwipe = false;
+                      });
+                    }
+                  },
+                  child: PopScope(
+                    canPop: false,
+                    onPopInvoked: (value) {
+                      if (_isSwipe && !value) {
+                        context.navigateTo(
+                          NewsInfoRoute(
+                            indexPage: 0,
                           ),
                         );
-                    context.navigateTo(
-                      DashboardRoute(
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          HomeAutoRouterRoute(
-                            children: [
-                              CatalogRoute(
-                                title: '',
-                                url: info.path,
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                WidgetSpan(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: 8,
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        context.navigateTo(
+                                          NewsInfoRoute(
+                                            indexPage: 0,
+                                          ),
+                                        );
+                                      },
+                                      child: SvgPicture.asset(
+                                        'assets/icons/arrow-left.svg',
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: widget.info.title,
+                                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        height: 1.2,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          Text(
+                            DateInfo.dateFormat(widget.info.createAt),
+                            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  color: BlindChickenColors.textInput,
+                                ),
+                          ),
+                          if (widget.info.typeMedia == 'images' && widget.info.images.length == 1)
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    context.navigateTo(
+                                      NewsPreviewMediaRoute(
+                                        media: widget.info.images,
+                                        goBotton: () {
+                                          context.back();
+                                        },
+                                        selectIndex: 0,
+                                      ),
+                                    );
+                                  },
+                                  child: CachedNetworkImage(
+                                    imageUrl: widget.info.images.first,
+                                    width:
+                                        MediaQuery.of(context).orientation == Orientation.portrait
+                                            ? width
+                                            : width / 2,
+                                    height: 250,
+                                    fit: BoxFit.cover,
+                                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          if (widget.info.typeMedia == 'images' && widget.info.images.length > 1)
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                NewsSlider(
+                                  media: widget.info.images,
+                                  goBotton: () {
+                                    context.back();
+                                  },
+                                  onTap: (index) {
+                                    context.pushRoute(
+                                      NewsPreviewMediaRoute(
+                                        selectIndex: index,
+                                        media: widget.info.images,
+                                        goBotton: () {
+                                          context.back();
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          if (widget.info.typeMedia == 'video' && widget.info.video.isNotEmpty)
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                SizedBox(
+                                  height: 250,
+                                  child: NewsYouTubeVideoPlayer(
+                                    url: widget.info.video,
+                                    onEnterFullScreen: () {
+                                      setState(() {
+                                        _isFullScreenVideo = true;
+                                      });
+                                    },
+                                    onExitFullScreen: () {},
+                                  ),
+                                ),
+                              ],
+                            ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            widget.info.description,
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          if (widget.info.path.isNotEmpty)
+                            GestureDetector(
+                              onTap: () {
+                                if (widget.info.typePath == 'catalog') {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProducts(
+                                          path: widget.info.path,
+                                        ),
+                                      );
+                                  context.navigateTo(DashboardRoute(children: [
+                                    HomeAutoRouterRoute(
+                                      children: [
+                                        CatalogRoute(
+                                          title: '',
+                                          url: widget.info.path,
+                                          lastPath: 'notfication_info_description',
+                                          newsNotificationInfo: widget.info,
+                                        ),
+                                      ],
+                                    ),
+                                  ]));
+                                } else if (widget.info.typePath == 'product') {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProduct(
+                                          code: widget.info.code,
+                                        ),
+                                      );
+                                  context.navigateTo(
+                                    DashboardRoute(
+                                      children: [
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            CatalogCardInfoRoute(
+                                              isLike: false,
+                                              listItems: const [],
+                                              favouritesProducts: const [],
+                                              isChildRoute: false,
+                                              lastPath: 'notfication_info_description',
+                                              newsNotificationInfo: widget.info,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else if (widget.info.typePath == 'boutique') {
+                                  context.read<BoutiquesBloc>().add(
+                                        BoutiquesEvent.getInfoBoutique(
+                                          uid: widget.info.uidStore,
+                                        ),
+                                      );
+                                  context.navigateTo(
+                                    DashboardRoute(
+                                      children: [
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            BoutiquesDescriptionRoute(
+                                              lastPath: 'notfication_info_description',
+                                              newsNotificationInfo: widget.info,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else if (widget.info.typePath == 'gift_card') {
+                                  context.navigateTo(
+                                    DashboardRoute(
+                                      children: [
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            GiftCardRoute(
+                                              lastPath: 'notfication_info_description',
+                                              newsNotificationInfo: widget.info,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }
+                              },
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: BlindChickenColors.borderBottomColor,
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  widget.info.titleButton,
+                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                        color: BlindChickenColors.activeBorderTextField,
+                                      ),
+                                ),
                               ),
-                            ],
+                            ),
+                          const SizedBox(
+                            height: 40,
                           ),
                         ],
                       ),
-                    );
-                  },
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: BlindChickenColors.borderBottomColor,
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      info.titleButton,
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            color: BlindChickenColors.activeBorderTextField,
-                          ),
                     ),
                   ),
                 ),
-              const SizedBox(
-                height: 40,
-              ),
-            ]),
-      ),
-    );
+              ]),
+            ),
+          )
+        : NewsYouTubeVideoPlayer(
+            url: widget.info.video,
+            onEnterFullScreen: () {},
+            onExitFullScreen: () {
+              setState(() {
+                _isFullScreenVideo = false;
+              });
+            },
+          );
   }
 }

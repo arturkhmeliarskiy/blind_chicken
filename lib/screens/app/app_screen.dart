@@ -234,12 +234,20 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  'assets/icons/message-circle.svg',
+                  'assets/icons/bell.svg',
                   fit: BoxFit.cover,
                   height: 21,
                 ),
                 label: '',
               ),
+              // BottomNavigationBarItem(
+              //   icon: SvgPicture.asset(
+              //     'assets/icons/message-circle.svg',
+              //     fit: BoxFit.cover,
+              //     height: 21,
+              //   ),
+              //   label: '',
+              // ),
               // BottomNavigationBarItem(
               //   icon: SizedBox(
               //     height: 25,
@@ -384,92 +392,95 @@ class _DashboardPageState extends State<DashboardPage> {
                   ]),
                 );
               } else if (index == 4) {
-                // context.navigateTo(
-                //   const NewsRoute(children: [
-                //     NewsInfoRoute(),
-                //   ]),
-                // );
-                showDialog(
-                    barrierColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 56),
-                        alignment: Alignment.bottomRight,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context, rootNavigator: true).pop();
-                          },
-                          child: SafeArea(
-                            top: true,
-                            bottom: true,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  height: 94,
-                                  width: 220,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(
-                                      5,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: BlindChickenColors.activeBorderTextField
-                                            .withOpacity(0.1),
-                                        blurRadius: 3,
-                                        offset: const Offset(0, 3), // Shadow position
-                                      ),
-                                    ],
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 10.5,
-                                      bottom: 10.5,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: List.generate(listItems.length, (index) {
-                                        return GestureDetector(
-                                          onTap: () async {
-                                            Navigator.of(context, rootNavigator: true).pop();
-                                            if (listItems[index].route == 'phone') {
-                                              await LaunchService.makePhoneCall(
-                                                  listItems[index].title);
-                                            } else if (listItems[index].route == 'WhatsApp') {
-                                              await LaunchService.launchWhatsapp(
-                                                  context, '79093335046');
-                                            } else {
-                                              context.navigateNamedTo(listItems[index].route);
-                                            }
-                                          },
-                                          child: Container(
-                                            padding: const EdgeInsets.only(
-                                              top: 7,
-                                              bottom: 7,
-                                              left: 24.5,
-                                              right: 24.5,
-                                            ),
-                                            color: Colors.transparent,
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              listItems[index].title,
-                                              style: Theme.of(context).textTheme.displayMedium,
-                                            ),
-                                          ),
-                                        );
-                                      }),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    });
+                context.read<NewsBloc>().add(const NewsEvent.getNews());
+                context.navigateTo(
+                  NewsRoute(children: [
+                    NewsInfoRoute(
+                      indexPage: 0,
+                    ),
+                  ]),
+                );
+                // showDialog(
+                //     barrierColor: Colors.transparent,
+                //     context: context,
+                //     builder: (context) {
+                //       return Container(
+                //         margin: const EdgeInsets.only(bottom: 56),
+                //         alignment: Alignment.bottomRight,
+                //         child: GestureDetector(
+                //           onTap: () {
+                //             Navigator.of(context, rootNavigator: true).pop();
+                //           },
+                //           child: SafeArea(
+                //             top: true,
+                //             bottom: true,
+                //             child: Row(
+                //               mainAxisAlignment: MainAxisAlignment.end,
+                //               children: [
+                //                 Container(
+                //                   height: 94,
+                //                   width: 220,
+                //                   decoration: BoxDecoration(
+                //                     color: Colors.white,
+                //                     borderRadius: BorderRadius.circular(
+                //                       5,
+                //                     ),
+                //                     boxShadow: [
+                //                       BoxShadow(
+                //                         color: BlindChickenColors.activeBorderTextField
+                //                             .withOpacity(0.1),
+                //                         blurRadius: 3,
+                //                         offset: const Offset(0, 3), // Shadow position
+                //                       ),
+                //                     ],
+                //                   ),
+                //                   child: Padding(
+                //                     padding: const EdgeInsets.only(
+                //                       top: 10.5,
+                //                       bottom: 10.5,
+                //                     ),
+                //                     child: Column(
+                //                       crossAxisAlignment: CrossAxisAlignment.start,
+                //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //                       children: List.generate(listItems.length, (index) {
+                //                         return GestureDetector(
+                //                           onTap: () async {
+                //                             Navigator.of(context, rootNavigator: true).pop();
+                //                             if (listItems[index].route == 'phone') {
+                //                               await LaunchService.makePhoneCall(
+                //                                   listItems[index].title);
+                //                             } else if (listItems[index].route == 'WhatsApp') {
+                //                               await LaunchService.launchWhatsapp(
+                //                                   context, '79093335046');
+                //                             } else {
+                //                               context.navigateNamedTo(listItems[index].route);
+                //                             }
+                //                           },
+                //                           child: Container(
+                //                             padding: const EdgeInsets.only(
+                //                               top: 7,
+                //                               bottom: 7,
+                //                               left: 24.5,
+                //                               right: 24.5,
+                //                             ),
+                //                             color: Colors.transparent,
+                //                             alignment: Alignment.centerLeft,
+                //                             child: Text(
+                //                               listItems[index].title,
+                //                               style: Theme.of(context).textTheme.displayMedium,
+                //                             ),
+                //                           ),
+                //                         );
+                //                       }),
+                //                     ),
+                //                   ),
+                //                 ),
+                //               ],
+                //             ),
+                //           ),
+                //         ),
+                //       );
+                //     });
               } else if (tabsRouter.activeIndex != index) {
                 tabsRouter.setActiveIndex(index);
               } else {

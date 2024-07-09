@@ -27,6 +27,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
   final ScrollController _scrollController = ScrollController();
   BlindChickenMessage message = BlindChickenMessage();
   double _historyPosition = 0.0;
+  double _paginationPosition = 0.0;
 
   @override
   void initState() {
@@ -44,17 +45,14 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
           ),
         );
 
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 2000) &&
+        (_scrollController.position.maxScrollExtent - 2000) > _paginationPosition &&
+        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
       setState(() {
-        isLoading = true;
+        _paginationPosition = _scrollController.position.maxScrollExtent - 2000;
       });
-      await Future<void>.delayed(const Duration(seconds: 2), () {
-        setState(() {
-          isLoading = false;
 
-          context.read<FavouritesBloc>().add(const FavouritesEvent.paginationProduct());
-        });
-      });
+      context.read<FavouritesBloc>().add(const FavouritesEvent.paginationProduct());
     }
     _historyPosition = _scrollController.position.pixels;
   }
@@ -247,7 +245,9 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                         _scrollController.jumpTo(_historyPosition);
                                       });
                                     }
-
+                                    if (initState.offset == 1) {
+                                      _paginationPosition = 0;
+                                    }
                                     return initState.favouritesProducts.isEmpty &&
                                             initState.selectFilter.isEmpty
                                         ? Padding(
