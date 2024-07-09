@@ -5461,6 +5461,7 @@ mixin _$FavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5497,6 +5498,7 @@ mixin _$FavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5533,6 +5535,7 @@ mixin _$FavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5661,6 +5664,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5700,6 +5704,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5739,6 +5744,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5871,6 +5877,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5910,6 +5917,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -5949,6 +5957,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6083,6 +6092,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6122,6 +6132,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6161,6 +6172,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6364,6 +6376,7 @@ class _$GetSizeProductFavouritesStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6403,6 +6416,7 @@ class _$GetSizeProductFavouritesStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6442,6 +6456,7 @@ class _$GetSizeProductFavouritesStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6612,6 +6627,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6651,6 +6667,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6690,6 +6707,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -6787,6 +6805,7 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsStyle,
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
+      List<ProductDataModel> listProdcutsComplect,
       bool isAuth,
       int offset,
       bool isButtonTop,
@@ -6829,6 +6848,7 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? listProdcutsStyle = null,
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
+    Object? listProdcutsComplect = null,
     Object? isAuth = null,
     Object? offset = null,
     Object? isButtonTop = null,
@@ -6886,6 +6906,10 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
       listProdcutsBrand: null == listProdcutsBrand
           ? _value._listProdcutsBrand
           : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsComplect: null == listProdcutsComplect
+          ? _value._listProdcutsComplect
+          : listProdcutsComplect // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
       isAuth: null == isAuth
           ? _value.isAuth
@@ -7002,6 +7026,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
+      required final List<ProductDataModel> listProdcutsComplect,
       required this.isAuth,
       required this.offset,
       required this.isButtonTop,
@@ -7024,6 +7049,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         _listProdcutsStyle = listProdcutsStyle,
         _listProdcutsAlso = listProdcutsAlso,
         _listProdcutsBrand = listProdcutsBrand,
+        _listProdcutsComplect = listProdcutsComplect,
         _listSize = listSize;
 
   final List<ProductDataModel> _favouritesProducts;
@@ -7115,6 +7141,15 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
     return EqualUnmodifiableListView(_listProdcutsBrand);
   }
 
+  final List<ProductDataModel> _listProdcutsComplect;
+  @override
+  List<ProductDataModel> get listProdcutsComplect {
+    if (_listProdcutsComplect is EqualUnmodifiableListView)
+      return _listProdcutsComplect;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsComplect);
+  }
+
   @override
   final bool isAuth;
   @override
@@ -7148,7 +7183,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
 
   @override
   String toString() {
-    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -7176,6 +7211,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 .equals(other._listProdcutsAlso, _listProdcutsAlso) &&
             const DeepCollectionEquality()
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsComplect, _listProdcutsComplect) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.offset, offset) || other.offset == offset) &&
             (identical(other.isButtonTop, isButtonTop) ||
@@ -7213,6 +7250,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         const DeepCollectionEquality().hash(_listProdcutsStyle),
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
+        const DeepCollectionEquality().hash(_listProdcutsComplect),
         isAuth,
         offset,
         isButtonTop,
@@ -7256,6 +7294,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -7282,6 +7321,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         isAuth,
         offset,
         isButtonTop,
@@ -7318,6 +7358,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -7344,6 +7385,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         isAuth,
         offset,
         isButtonTop,
@@ -7380,6 +7422,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             int offset,
             bool isButtonTop,
@@ -7408,6 +7451,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
           listProdcutsStyle,
           listProdcutsAlso,
           listProdcutsBrand,
+          listProdcutsComplect,
           isAuth,
           offset,
           isButtonTop,
@@ -7484,6 +7528,7 @@ abstract class ProductsFavouritesState implements FavouritesState {
           required final List<ProductDataModel> listProdcutsStyle,
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
+          required final List<ProductDataModel> listProdcutsComplect,
           required final bool isAuth,
           required final int offset,
           required final bool isButtonTop,
@@ -7509,6 +7554,7 @@ abstract class ProductsFavouritesState implements FavouritesState {
   List<ProductDataModel> get listProdcutsStyle;
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
+  List<ProductDataModel> get listProdcutsComplect;
   bool get isAuth;
   int get offset;
   bool get isButtonTop;

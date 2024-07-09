@@ -261,7 +261,7 @@ class _DashboardPageState extends State<DashboardPage> {
               //             borderRadius: BorderRadius.circular(5),
               //             color: Colors.white,
               //           ),
-              //           padding: EdgeInsets.all(3),
+              //           padding: const EdgeInsets.all(3),
               //           child: Container(
               //             decoration: BoxDecoration(
               //               borderRadius: BorderRadius.circular(5),
@@ -478,7 +478,7 @@ class _DashboardPageState extends State<DashboardPage> {
             });
         return Platform.isAndroid
             ? SizedBox(
-                height: 56,
+                height: 60,
                 child: child,
               )
             : child;

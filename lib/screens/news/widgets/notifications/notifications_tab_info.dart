@@ -4,6 +4,8 @@ import 'package:blind_chicken/screens/news/widgets/notifications/notification_it
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 class NotificationsTabInfo extends StatefulWidget {
   const NotificationsTabInfo({super.key});
@@ -13,31 +15,113 @@ class NotificationsTabInfo extends StatefulWidget {
 }
 
 class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
+  final ScrollController _scrollController = ScrollController();
+  double _historyPosition = 0.0;
+  bool _isButtonTop = false;
+
+  @override
+  void initState() {
+    context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+    _scrollController.addListener(_loadMoreData);
+    super.initState();
+  }
+
+  void _loadMoreData() async {
+    if (_historyPosition > _scrollController.position.pixels &&
+        _scrollController.position.pixels > 0) {
+      setState(() {
+        _isButtonTop = true;
+      });
+    } else {
+      setState(() {
+        _isButtonTop = false;
+      });
+    }
+    if (_scrollController.position.pixels > _scrollController.position.maxScrollExtent - 100) {
+      context.read<NewsBloc>().add(const NewsEvent.paginationNotifications());
+    }
+    _historyPosition = _scrollController.position.pixels;
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-      return state.maybeMap(
-        preloadDataCompleted: (initState) {
-          return ListView.builder(
-            itemCount: initState.notificatios.list.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  context.navigateTo(
-                    NotficationInfoDescriptionRoute(
-                      info: initState.notificatios.list[index],
-                    ),
+    return Stack(
+      children: [
+        Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (initState) {
+                  return ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    controller: _scrollController,
+                    itemCount: initState.notificatios.list.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          context.navigateTo(
+                            NotficationInfoDescriptionRoute(
+                              info: initState.notificatios.list[index],
+                            ),
+                          );
+                        },
+                        child: NotificationItemTabInfo(
+                          item: initState.notificatios.list[index],
+                        ),
+                      );
+                    },
                   );
                 },
-                child: NotificationItemTabInfo(
-                  item: initState.notificatios.list[index],
+                orElse: () => const SizedBox(),
+              );
+            }),
+            if (_isButtonTop)
+              GestureDetector(
+                onTap: () {
+                  _scrollController.jumpTo(0.0);
+                  setState(() {
+                    _isButtonTop = false;
+                  });
+                },
+                child: Container(
+                  height: 45,
+                  width: 45,
+                  margin: const EdgeInsets.only(left: 15, bottom: 15),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: BlindChickenColors.activeBorderTextField,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/icons/chevron-top.svg',
+                  ),
+                ),
+              )
+            else
+              const SizedBox()
+          ],
+        ),
+        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+          return state.maybeMap(
+            load: (value) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.black,
+                  backgroundColor: Colors.grey.shade400,
                 ),
               );
             },
+            orElse: () => const SizedBox(),
           );
-        },
-        orElse: () => const SizedBox(),
-      );
-    });
+        }),
+      ],
+    );
   }
 }

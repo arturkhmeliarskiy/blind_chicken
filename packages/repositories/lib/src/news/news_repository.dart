@@ -37,6 +37,7 @@ extension on NewsInfoResponse {
                 createAt: item.createAt ?? '',
                 images: item.images ?? [],
                 video: item.video ?? '',
+                announcement: item.announcement ?? '',
                 typeMedia: item.typeMedia ?? '',
                 description: item.description ?? '',
                 titleButton: item.titleButton ?? '',

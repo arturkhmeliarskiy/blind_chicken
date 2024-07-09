@@ -11646,6 +11646,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -11696,6 +11697,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -11746,6 +11748,7 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -11884,6 +11887,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -11937,6 +11941,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -11990,6 +11995,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12132,6 +12138,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12185,6 +12192,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12238,6 +12246,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12409,6 +12418,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12462,6 +12472,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12515,6 +12526,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -12628,6 +12640,7 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsStyle,
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
+      List<ProductDataModel> listProdcutsComplect,
       List<int> favouritesProductsId,
       bool isAuth,
       SkuProductDataModel? selectSizeProduct,
@@ -12692,6 +12705,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? listProdcutsStyle = null,
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
+    Object? listProdcutsComplect = null,
     Object? favouritesProductsId = null,
     Object? isAuth = null,
     Object? selectSizeProduct = freezed,
@@ -12836,6 +12850,10 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
       listProdcutsBrand: null == listProdcutsBrand
           ? _value._listProdcutsBrand
           : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsComplect: null == listProdcutsComplect
+          ? _value._listProdcutsComplect
+          : listProdcutsComplect // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
       favouritesProductsId: null == favouritesProductsId
           ? _value._favouritesProductsId
@@ -12986,6 +13004,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
+      required final List<ProductDataModel> listProdcutsComplect,
       required final List<int> favouritesProductsId,
       required this.isAuth,
       this.selectSizeProduct,
@@ -13000,6 +13019,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         _listProdcutsStyle = listProdcutsStyle,
         _listProdcutsAlso = listProdcutsAlso,
         _listProdcutsBrand = listProdcutsBrand,
+        _listProdcutsComplect = listProdcutsComplect,
         _favouritesProductsId = favouritesProductsId;
 
   @override
@@ -13117,6 +13137,15 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     return EqualUnmodifiableListView(_listProdcutsBrand);
   }
 
+  final List<ProductDataModel> _listProdcutsComplect;
+  @override
+  List<ProductDataModel> get listProdcutsComplect {
+    if (_listProdcutsComplect is EqualUnmodifiableListView)
+      return _listProdcutsComplect;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsComplect);
+  }
+
   final List<int> _favouritesProductsId;
   @override
   List<int> get favouritesProductsId {
@@ -13141,7 +13170,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -13213,6 +13242,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             const DeepCollectionEquality()
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
             const DeepCollectionEquality()
+                .equals(other._listProdcutsComplect, _listProdcutsComplect) &&
+            const DeepCollectionEquality()
                 .equals(other._favouritesProductsId, _favouritesProductsId) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -13264,6 +13295,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         const DeepCollectionEquality().hash(_listProdcutsStyle),
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
+        const DeepCollectionEquality().hash(_listProdcutsComplect),
         const DeepCollectionEquality().hash(_favouritesProductsId),
         isAuth,
         selectSizeProduct,
@@ -13321,6 +13353,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -13365,6 +13398,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         favouritesProductsId,
         isAuth,
         selectSizeProduct,
@@ -13415,6 +13449,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -13459,6 +13494,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         favouritesProductsId,
         isAuth,
         selectSizeProduct,
@@ -13509,6 +13545,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             bool isAuth,
             SkuProductDataModel? selectSizeProduct,
@@ -13555,6 +13592,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           listProdcutsStyle,
           listProdcutsAlso,
           listProdcutsBrand,
+          listProdcutsComplect,
           favouritesProductsId,
           isAuth,
           selectSizeProduct,
@@ -13644,6 +13682,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final List<ProductDataModel> listProdcutsStyle,
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
+          required final List<ProductDataModel> listProdcutsComplect,
           required final List<int> favouritesProductsId,
           required final bool isAuth,
           final SkuProductDataModel? selectSizeProduct,
@@ -13687,6 +13726,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   List<ProductDataModel> get listProdcutsStyle;
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
+  List<ProductDataModel> get listProdcutsComplect;
   List<int> get favouritesProductsId;
   bool get isAuth;
   SkuProductDataModel? get selectSizeProduct;

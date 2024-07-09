@@ -27,6 +27,7 @@ class CatalogState with _$CatalogState {
     required List<ProductDataModel> listProdcutsStyle,
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
+    required List<ProductDataModel> listProdcutsComplect,
     required List<ProductDataModel> favouritesProducts,
     required List<int> favouritesProductsId,
     required List<FilterInfoDataModel> filter,

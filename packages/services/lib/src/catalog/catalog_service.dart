@@ -22,7 +22,7 @@ class CatalogService {
     _dio.options.headers["Content-Type"] = "application/x-www-form-urlencoded";
   }
 
-  Future<MenuResponse> postMenuItems({
+  Future<MenuResponse?> postMenuItems({
     required String a,
     required int b,
     required int id,
@@ -91,6 +91,63 @@ class CatalogService {
         log(e.message.toString());
       }
       return MenuResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<TopBannerResponse?> postTopBanner() async {
+    TopBannerResponse? topBannerResponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = await _deviceInfoService.getDeviceId();
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    log(hashTokenTel);
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/get_topbanner.php',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+        },
+      );
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          topBannerResponse = TopBannerResponse.fromJson(result);
+        } else {
+          topBannerResponse = TopBannerResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        topBannerResponse = TopBannerResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return topBannerResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return TopBannerResponse(
         errorMessage: MessageInfo.errorMessage,
       );
     }

@@ -42,6 +42,7 @@ class ShoppingCartState with _$ShoppingCartState {
     required List<ProductDataModel> listProdcutsStyle,
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
+    required List<ProductDataModel> listProdcutsComplect,
     required List<int> favouritesProductsId,
     required bool isAuth,
     SkuProductDataModel? selectSizeProduct,

@@ -290,7 +290,7 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                   width: 4,
                                                 ),
                                                 Text(
-                                                  initState.searchProducts.length.toString(),
+                                                  initState.productsCount.toString(),
                                                   style: Theme.of(context).textTheme.displayMedium,
                                                 )
                                               ],

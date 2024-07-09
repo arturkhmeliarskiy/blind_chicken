@@ -212,13 +212,9 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
             Stack(
               alignment: Alignment.bottomLeft,
               children: [
-                Scaffold(
-                  appBar: const PreferredSize(
-                    preferredSize: Size.fromHeight(55),
-                    child: AppBarBlindChicken(),
-                  ),
-                  body: SafeArea(
-                    child: PopScope(
+                SafeArea(
+                  child: Scaffold(
+                    body: PopScope(
                       canPop: false,
                       onPopInvoked: (value) {
                         if (_isSwipe) {
@@ -228,6 +224,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                       child: ListView(
                         controller: _scrollController,
                         children: [
+                          const AppBarBlindChicken(),
                           const SizedBox(
                             height: 17.5,
                           ),

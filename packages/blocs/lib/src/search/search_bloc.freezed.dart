@@ -5660,6 +5660,7 @@ mixin _$SearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -5671,6 +5672,7 @@ mixin _$SearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5700,6 +5702,7 @@ mixin _$SearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -5711,6 +5714,7 @@ mixin _$SearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5740,6 +5744,7 @@ mixin _$SearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -5751,6 +5756,7 @@ mixin _$SearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5872,6 +5878,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -5883,6 +5890,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5915,6 +5923,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -5926,6 +5935,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -5958,6 +5968,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -5969,6 +5980,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6092,6 +6104,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6103,6 +6116,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6135,6 +6149,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6146,6 +6161,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6178,6 +6194,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6189,6 +6206,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6315,6 +6333,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6326,6 +6345,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6358,6 +6378,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6369,6 +6390,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6401,6 +6423,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6412,6 +6435,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6605,6 +6629,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6616,6 +6641,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6648,6 +6674,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6659,6 +6686,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6691,6 +6719,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6702,6 +6731,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6864,6 +6894,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6875,6 +6906,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6907,6 +6939,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6918,6 +6951,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -6950,6 +6984,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -6961,6 +6996,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7052,6 +7088,7 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsStyle,
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
+      List<ProductDataModel> listProdcutsComplect,
       List<int> favouritesProductsId,
       String query,
       bool isLoading,
@@ -7063,6 +7100,7 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       List<SkuProductDataModel> listSize,
       bool isLoadGetSizeProduct,
       int userDiscount,
+      int productsCount,
       String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
       bool? isSoppingCart,
@@ -7099,6 +7137,7 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? listProdcutsStyle = null,
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
+    Object? listProdcutsComplect = null,
     Object? favouritesProductsId = null,
     Object? query = null,
     Object? isLoading = null,
@@ -7110,6 +7149,7 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? listSize = null,
     Object? isLoadGetSizeProduct = null,
     Object? userDiscount = null,
+    Object? productsCount = null,
     Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
     Object? isSoppingCart = freezed,
@@ -7158,6 +7198,10 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value._listProdcutsBrand
           : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
+      listProdcutsComplect: null == listProdcutsComplect
+          ? _value._listProdcutsComplect
+          : listProdcutsComplect // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
       favouritesProductsId: null == favouritesProductsId
           ? _value._favouritesProductsId
           : favouritesProductsId // ignore: cast_nullable_to_non_nullable
@@ -7201,6 +7245,10 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
       userDiscount: null == userDiscount
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
+              as int,
+      productsCount: null == productsCount
+          ? _value.productsCount
+          : productsCount // ignore: cast_nullable_to_non_nullable
               as int,
       codeProduct: freezed == codeProduct
           ? _value.codeProduct
@@ -7292,6 +7340,7 @@ class _$SearchProductsResultSearchStateImpl
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
+      required final List<ProductDataModel> listProdcutsComplect,
       required final List<int> favouritesProductsId,
       required this.query,
       required this.isLoading,
@@ -7303,6 +7352,7 @@ class _$SearchProductsResultSearchStateImpl
       required final List<SkuProductDataModel> listSize,
       required this.isLoadGetSizeProduct,
       required this.userDiscount,
+      required this.productsCount,
       this.codeProduct,
       this.selectSizeProduct,
       this.isSoppingCart,
@@ -7319,6 +7369,7 @@ class _$SearchProductsResultSearchStateImpl
         _listProdcutsStyle = listProdcutsStyle,
         _listProdcutsAlso = listProdcutsAlso,
         _listProdcutsBrand = listProdcutsBrand,
+        _listProdcutsComplect = listProdcutsComplect,
         _favouritesProductsId = favouritesProductsId,
         _listProductsCode = listProductsCode,
         _listSize = listSize,
@@ -7408,6 +7459,15 @@ class _$SearchProductsResultSearchStateImpl
     return EqualUnmodifiableListView(_listProdcutsBrand);
   }
 
+  final List<ProductDataModel> _listProdcutsComplect;
+  @override
+  List<ProductDataModel> get listProdcutsComplect {
+    if (_listProdcutsComplect is EqualUnmodifiableListView)
+      return _listProdcutsComplect;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsComplect);
+  }
+
   final List<int> _favouritesProductsId;
   @override
   List<int> get favouritesProductsId {
@@ -7451,6 +7511,8 @@ class _$SearchProductsResultSearchStateImpl
   @override
   final int userDiscount;
   @override
+  final int productsCount;
+  @override
   final String? codeProduct;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -7474,7 +7536,7 @@ class _$SearchProductsResultSearchStateImpl
 
   @override
   String toString() {
-    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
+    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, productsCount: $productsCount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
   }
 
   @override
@@ -7501,6 +7563,8 @@ class _$SearchProductsResultSearchStateImpl
             const DeepCollectionEquality()
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
             const DeepCollectionEquality()
+                .equals(other._listProdcutsComplect, _listProdcutsComplect) &&
+            const DeepCollectionEquality()
                 .equals(other._favouritesProductsId, _favouritesProductsId) &&
             (identical(other.query, query) || other.query == query) &&
             (identical(other.isLoading, isLoading) ||
@@ -7517,6 +7581,8 @@ class _$SearchProductsResultSearchStateImpl
                 other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
+            (identical(other.productsCount, productsCount) ||
+                other.productsCount == productsCount) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -7544,6 +7610,7 @@ class _$SearchProductsResultSearchStateImpl
         const DeepCollectionEquality().hash(_listProdcutsStyle),
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
+        const DeepCollectionEquality().hash(_listProdcutsComplect),
         const DeepCollectionEquality().hash(_favouritesProductsId),
         query,
         isLoading,
@@ -7555,6 +7622,7 @@ class _$SearchProductsResultSearchStateImpl
         const DeepCollectionEquality().hash(_listSize),
         isLoadGetSizeProduct,
         userDiscount,
+        productsCount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7592,6 +7660,7 @@ class _$SearchProductsResultSearchStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -7603,6 +7672,7 @@ class _$SearchProductsResultSearchStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7622,6 +7692,7 @@ class _$SearchProductsResultSearchStateImpl
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         favouritesProductsId,
         query,
         isLoading,
@@ -7633,6 +7704,7 @@ class _$SearchProductsResultSearchStateImpl
         listSize,
         isLoadGetSizeProduct,
         userDiscount,
+        productsCount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7662,6 +7734,7 @@ class _$SearchProductsResultSearchStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -7673,6 +7746,7 @@ class _$SearchProductsResultSearchStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7692,6 +7766,7 @@ class _$SearchProductsResultSearchStateImpl
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         favouritesProductsId,
         query,
         isLoading,
@@ -7703,6 +7778,7 @@ class _$SearchProductsResultSearchStateImpl
         listSize,
         isLoadGetSizeProduct,
         userDiscount,
+        productsCount,
         codeProduct,
         selectSizeProduct,
         isSoppingCart,
@@ -7732,6 +7808,7 @@ class _$SearchProductsResultSearchStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             List<int> favouritesProductsId,
             String query,
             bool isLoading,
@@ -7743,6 +7820,7 @@ class _$SearchProductsResultSearchStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            int productsCount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isSoppingCart,
@@ -7764,6 +7842,7 @@ class _$SearchProductsResultSearchStateImpl
           listProdcutsStyle,
           listProdcutsAlso,
           listProdcutsBrand,
+          listProdcutsComplect,
           favouritesProductsId,
           query,
           isLoading,
@@ -7775,6 +7854,7 @@ class _$SearchProductsResultSearchStateImpl
           listSize,
           isLoadGetSizeProduct,
           userDiscount,
+          productsCount,
           codeProduct,
           selectSizeProduct,
           isSoppingCart,
@@ -7845,6 +7925,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
           required final List<ProductDataModel> listProdcutsStyle,
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
+          required final List<ProductDataModel> listProdcutsComplect,
           required final List<int> favouritesProductsId,
           required final String query,
           required final bool isLoading,
@@ -7856,6 +7937,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
           required final List<SkuProductDataModel> listSize,
           required final bool isLoadGetSizeProduct,
           required final int userDiscount,
+          required final int productsCount,
           final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
           final bool? isSoppingCart,
@@ -7874,6 +7956,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
   List<ProductDataModel> get listProdcutsStyle;
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
+  List<ProductDataModel> get listProdcutsComplect;
   List<int> get favouritesProductsId;
   String get query;
   bool get isLoading;
@@ -7885,6 +7968,7 @@ abstract class SearchProductsResultSearchState implements SearchState {
   List<SkuProductDataModel> get listSize;
   bool get isLoadGetSizeProduct;
   int get userDiscount;
+  int get productsCount;
   String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
   bool? get isSoppingCart;

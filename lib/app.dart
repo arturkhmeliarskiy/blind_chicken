@@ -124,12 +124,15 @@ class _AppState extends State<App> {
               const InternetConnectionEvent.preloadData(),
             ),
         ),
-        // BlocProvider(
-        //   create: (context) => GetIt.I.get<NewsBloc>()
-        //     ..add(
-        //       const NewsEvent.init(),
-        //     ),
-        // ),
+        BlocProvider(
+          create: (context) => GetIt.I.get<NewsBloc>()
+            ..add(
+              const NewsEvent.init(),
+            ),
+        ),
+        BlocProvider(
+          create: (context) => GetIt.I.get<TopBannerBloc>(),
+        ),
       ],
       child: PushNotificationManager(
         openScreen: (notificationMessage) {

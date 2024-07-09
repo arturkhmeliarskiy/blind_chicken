@@ -14,6 +14,7 @@ class MenuItemResponse with _$MenuItemResponse {
     int? title,
     int? sub,
     int? brand,
+    int? bold,
   }) = _MenuItemResponse;
   factory MenuItemResponse.fromJson(Map<String, dynamic> json) => _$MenuItemResponseFromJson(json);
 }

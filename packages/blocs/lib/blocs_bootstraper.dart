@@ -104,5 +104,10 @@ Future<void> initBloc(GetIt getIt) async {
       () => NewsBloc(
         getIt.get<NewsRepository>(),
       ),
+    )
+    ..registerFactory(
+      () => TopBannerBloc(
+        getIt.get<CatalogRepository>(),
+      ),
     );
 }

@@ -70,6 +70,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           goBackCatalogInfo: (event) => _goBackCatalogInfo(event, emit),
           addProductToSoppingCart: (event) => _addProductToSoppingCart(event, emit),
           checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
+          getInfoServiceCard: (event) => _getInfoServiceCard(event, emit),
           changeSizeProduct: (event) => _changeSizeProduct(event, emit),
         ));
   }
@@ -200,6 +201,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     bool isUpdateVersionApp = false;
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     List<int> favouritesProductsId = [];
+    List<MenuItemDataModel> menuItems = [];
     FavouritesDataModel? favourites;
     PushNotificationMessageDataModel? notitcationMessage;
     AppStoreInfoDataModel? appStoreInfo;
@@ -229,6 +231,18 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
+
+    menuItems.addAll(menu.items);
+    menuItems.add(MenuItemDataModel(
+      bold: 0,
+      idParent: -1,
+      id: -1,
+      url: '',
+      name: 'Сервисная карта',
+      sub: -1,
+      title: 0,
+      brand: 0,
+    ));
 
     if (Platform.isIOS) {
       appStoreInfo = await _appStoreInfoRepository.checkiOSVersion();
@@ -308,7 +322,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           products: [],
           defaultProducts: [],
           favouritesProducts: favouritesProducts,
-          menu: menu.items,
+          menu: menuItems,
           pathMenu: [],
           favouritesProductsId: favouritesProductsId,
           brands: _constatntsInfo.brandsWoman,
@@ -318,6 +332,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           request: CatalogProductsRequest(),
           listProdcutsAlso: [],
           listProdcutsBrand: [],
+          listProdcutsComplect: [],
           listProdcutsStyle: [],
           listProductsCode: [],
           offset: 1,
@@ -363,6 +378,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       } else {
         pathMenu = [];
       }
+
+      listItems.add(MenuItemDataModel(
+        bold: 0,
+        idParent: 1,
+        id: -1,
+        url: '',
+        name: 'Сервисная карта',
+        sub: -1,
+        title: 0,
+        brand: 0,
+      ));
 
       _updateDataService.selectedIndexGender =
           event.selectedGenderIndex ?? initState.selectedGenderIndex;
@@ -842,6 +868,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           sub: 0,
           title: 0,
           brand: 0,
+          bold: 0,
         )
       ];
 
@@ -1035,6 +1062,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         sub: 0,
         title: 0,
         brand: 0,
+        bold: 0,
       )
     ];
 
@@ -1061,6 +1089,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         favouritesProducts: [],
         pathMenu: pathMenu,
         category: [],
@@ -1118,6 +1147,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         code: event.code,
         block: 'brand',
       );
+
+      final additionalProductsDescriptionComplect =
+          await _catalogRepository.getAdditionalProductsDescription(
+        code: event.code,
+        block: 'complect',
+      );
+
       if (!(event.isUpdate ?? false)) {
         listProductsCode.add(event.code);
       }
@@ -1158,6 +1194,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
+        listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
@@ -1166,6 +1203,38 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isNotification: false,
         isUpdateVersionApp: false,
         selectSizeProduct: selectSizeProduct ?? event.size,
+      ));
+    });
+  }
+
+  Future<void> _getInfoServiceCard(
+    GetInfoServiceCardCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
+
+      emit(const CatalogState.load());
+
+      final basketInfo = await getBasketInfo(isLocal: !isAuth);
+
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+
+      soppingCart = basketInfo.basket
+          .where(
+            (element) => element.code.contains(event.code),
+          )
+          .toList();
+
+      emit(initState.copyWith(
+        codeProduct: event.code,
+        isAuth: isAuth,
+        isSoppingCart: soppingCart.isNotEmpty,
+        isNotification: false,
+        isUpdateVersionApp: false,
       ));
     });
   }
@@ -1442,6 +1511,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           block: 'brand',
         );
 
+        final additionalProductsDescriptionComplect =
+            await _catalogRepository.getAdditionalProductsDescription(
+          code: listProductsCode.last,
+          block: 'complect',
+        );
+
         List<BasketFullInfoItemDataModel> soppingCart = [];
 
         if (detailsProduct.sku.isNotEmpty) {
@@ -1470,6 +1545,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           listProdcutsStyle: additionalProductsDescriptionStyle.products,
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
+          listProdcutsComplect: additionalProductsDescriptionComplect.products,
           listProductsCode: listProductsCode,
           isAuth: isAuth,
           isSoppingCart: soppingCart.isNotEmpty,

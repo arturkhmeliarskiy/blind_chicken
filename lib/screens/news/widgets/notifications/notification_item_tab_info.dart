@@ -29,10 +29,12 @@ class _NotificationItemTabInfoState extends State<NotificationItemTabInfo> {
       ),
       padding: const EdgeInsets.all(12),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   widget.item.title,

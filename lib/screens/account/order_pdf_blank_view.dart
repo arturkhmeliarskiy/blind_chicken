@@ -40,52 +40,57 @@ class OrderPdfBlankViewScreen extends StatelessWidget {
       },
       child: Stack(
         children: [
-          Scaffold(
-            appBar: const PreferredSize(
-              preferredSize: Size.fromHeight(55),
-              child: AppBarBlindChicken(),
-            ),
-            body: BlocBuilder<AccountBloc, AccountState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  preloadDataCompleted: (initState) {
-                    return SfPdfViewerTheme(
-                      data: SfPdfViewerThemeData(
-                        progressBarColor: BlindChickenColors.activeBorderTextField,
-                      ),
-                      child: SfPdfViewer.memory(
-                        initState.file,
-                      ),
-                    );
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
-            ),
-            floatingActionButton: BlocBuilder<AccountBloc, AccountState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  preloadDataCompleted: (initState) {
-                    return FloatingActionButton(
-                      backgroundColor: BlindChickenColors.backgroundColor,
-                      onPressed: () {
-                        context.read<AccountBloc>().add(
-                              AccountEvent.saveDocument(
-                                fileName: initState.fileName,
-                                bytes: initState.file,
+          SafeArea(
+            child: Scaffold(
+              body: Column(
+                children: [
+                  const AppBarBlindChicken(),
+                  Expanded(
+                    child: BlocBuilder<AccountBloc, AccountState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          preloadDataCompleted: (initState) {
+                            return SfPdfViewerTheme(
+                              data: SfPdfViewerThemeData(
+                                progressBarColor: BlindChickenColors.activeBorderTextField,
+                              ),
+                              child: SfPdfViewer.memory(
+                                initState.file,
                               ),
                             );
+                          },
+                          orElse: () => const SizedBox(),
+                        );
                       },
-                      child: const Icon(
-                        Icons.download,
-                        color: BlindChickenColors.activeBorderTextField,
-                        size: 28,
-                      ),
-                    );
-                  },
-                  orElse: () => const SizedBox(),
-                );
-              },
+                    ),
+                  ),
+                ],
+              ),
+              floatingActionButton: BlocBuilder<AccountBloc, AccountState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    preloadDataCompleted: (initState) {
+                      return FloatingActionButton(
+                        backgroundColor: BlindChickenColors.backgroundColor,
+                        onPressed: () {
+                          context.read<AccountBloc>().add(
+                                AccountEvent.saveDocument(
+                                  fileName: initState.fileName,
+                                  bytes: initState.file,
+                                ),
+                              );
+                        },
+                        child: const Icon(
+                          Icons.download,
+                          color: BlindChickenColors.activeBorderTextField,
+                          size: 28,
+                        ),
+                      );
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                },
+              ),
             ),
           ),
           BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {

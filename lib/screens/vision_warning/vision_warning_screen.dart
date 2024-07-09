@@ -48,163 +48,170 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
           body: SafeArea(
             child: ListView(
               controller: _scrollController,
-              padding: const EdgeInsets.only(
-                left: 10.5,
-                right: 10.5,
-              ),
               children: [
                 const AppBarBlindChicken(),
                 const SizedBox(
                   height: 17.5,
                 ),
-                Text(
-                  'Предупреждение зрения',
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 44.5,
-                    right: 44.5,
+                    left: 10.5,
+                    right: 10.5,
                   ),
-                  child: CachedNetworkImage(
-                    fit: BoxFit.fill,
-                    imageUrl:
-                        'https://slepayakurica.ru/local/templates/m/content/vision/220524/w.jpg',
-                    placeholder: (context, url) => SizedBox(
-                      width: MediaQuery.of(context).size.width / 2 - 21,
-                      height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                      child: const LoadingImage(),
-                    ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
-                  ),
-                ),
-                const SizedBox(
-                  height: 21,
-                ),
-                Text(
-                  'Профессиональная проверка зрения',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w700,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Предупреждение зрения',
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/check.svg',
-                      color: BlindChickenColors.activeBorderTextField,
-                      height: 14,
-                      width: 14,
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Опытные врачи',
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/check.svg',
-                      color: BlindChickenColors.activeBorderTextField,
-                      height: 14,
-                      width: 14,
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Инновационное оборудование',
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/check.svg',
-                      color: BlindChickenColors.activeBorderTextField,
-                      height: 14,
-                      width: 14,
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'В удобное для вас время',
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/check.svg',
-                      color: BlindChickenColors.activeBorderTextField,
-                      height: 14,
-                      width: 14,
-                    ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Консультация бесплатно',
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 28,
-                ),
-                Text(
-                  'Запишитесь на диагностику зрения в Слепой курице',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontWeight: FontWeight.w700,
+                      const SizedBox(
+                        height: 14,
                       ),
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    await LaunchService.makePhoneCall('8 (800) 500-53-29');
-                  },
-                  child: Text(
-                    '8 (800) 500-53-29',
-                    style: Theme.of(context).textTheme.displayMedium,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 44.5,
+                          right: 44.5,
+                        ),
+                        child: CachedNetworkImage(
+                          fit: BoxFit.fill,
+                          imageUrl:
+                              'https://slepayakurica.ru/local/templates/m/content/vision/220524/w.jpg',
+                          placeholder: (context, url) => SizedBox(
+                            width: MediaQuery.of(context).size.width / 2 - 21,
+                            height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                            child: const LoadingImage(),
+                          ),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 21,
+                      ),
+                      Text(
+                        'Профессиональная проверка зрения',
+                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/check.svg',
+                            color: BlindChickenColors.activeBorderTextField,
+                            height: 14,
+                            width: 14,
+                          ),
+                          const SizedBox(
+                            width: 7,
+                          ),
+                          Text(
+                            'Опытные врачи',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/check.svg',
+                            color: BlindChickenColors.activeBorderTextField,
+                            height: 14,
+                            width: 14,
+                          ),
+                          const SizedBox(
+                            width: 7,
+                          ),
+                          Text(
+                            'Инновационное оборудование',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/check.svg',
+                            color: BlindChickenColors.activeBorderTextField,
+                            height: 14,
+                            width: 14,
+                          ),
+                          const SizedBox(
+                            width: 7,
+                          ),
+                          Text(
+                            'В удобное для вас время',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/check.svg',
+                            color: BlindChickenColors.activeBorderTextField,
+                            height: 14,
+                            width: 14,
+                          ),
+                          const SizedBox(
+                            width: 7,
+                          ),
+                          Text(
+                            'Консультация бесплатно',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 28,
+                      ),
+                      Text(
+                        'Запишитесь на диагностику зрения в Слепой курице',
+                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          await LaunchService.makePhoneCall('8 (800) 500-53-29');
+                        },
+                        child: Text(
+                          '8 (800) 500-53-29',
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          await LaunchService.launchWhatsapp(context, '79093335046');
+                        },
+                        child: Text(
+                          'WhatsApp',
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 100,
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    await LaunchService.launchWhatsapp(context, '79093335046');
-                  },
-                  child: Text(
-                    'WhatsApp',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ),
-                const SizedBox(
-                  height: 100,
                 ),
               ],
             ),

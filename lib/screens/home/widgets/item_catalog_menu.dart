@@ -36,7 +36,7 @@ class ItemCatalogMenu extends StatelessWidget {
                 Text(
                   item.name,
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                    fontWeight: item.title == 1 ? FontWeight.w600 : FontWeight.w400,
+                    fontWeight: item.bold == 1 ? FontWeight.w600 : FontWeight.w400,
                     shadows: [
                       item.title != 0
                           ? Shadow(

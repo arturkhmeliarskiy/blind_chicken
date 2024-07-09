@@ -76,12 +76,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         listProductsCode: [],
         isAuth: isAuth,
         listSize: [],
         isLoadGetSizeProduct: false,
         codeProduct: null,
         userDiscount: 0,
+        productsCount: 0,
       ),
     );
   }
@@ -104,6 +106,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         searchSections: searchResult.sections,
         query: event.query,
         isLoading: false,
+        productsCount: searchResult.productsCount,
         codeProduct: null,
       ));
     });
@@ -560,6 +563,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         block: 'brand',
       );
 
+      final additionalProductsDescriptionComplect =
+          await _catalogRepository.getAdditionalProductsDescription(
+        code: event.code,
+        block: 'complect',
+      );
+
       if (!(event.isUpdate ?? false)) {
         listProductsCode.add(event.code);
       }
@@ -594,6 +603,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
+        listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
@@ -640,11 +650,18 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           block: 'brand',
         );
 
+        final additionalProductsDescriptionComplect =
+            await _catalogRepository.getAdditionalProductsDescription(
+          code: listProductsCode.last,
+          block: 'complect',
+        );
+
         emit(initState.copyWith(
           detailsProduct: detailsProduct,
           listProdcutsStyle: additionalProductsDescriptionStyle.products,
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
+          listProdcutsComplect: additionalProductsDescriptionComplect.products,
           listProductsCode: listProductsCode,
           selectSizeProduct: null,
         ));

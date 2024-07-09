@@ -50,99 +50,105 @@ class _BoutiquesScreenState extends State<BoutiquesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(55),
-        child: AppBarBlindChicken(),
-      ),
-      body: Stack(
-        alignment: Alignment.bottomLeft,
-        children: [
-          ListView(
-            controller: _scrollController,
-            padding: const EdgeInsets.only(
-              left: 10.5,
-              right: 10.5,
-            ),
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 17.5,
-                  bottom: 17.5,
-                ),
-                child: Text(
-                  'Бутики Слепая курица',
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ),
-              BoutiquesSwitch(
-                indexSelect: 0,
-                navigateToMap: () {
-                  context.navigateTo(const YandexMapRoute());
-                },
-                navigateToBoutiques: () {},
-              ),
-              const SizedBox(
-                height: 21,
-              ),
-              BlocBuilder<BoutiquesBloc, BoutiquesState>(
-                builder: (context, state) {
-                  return state.maybeMap(
-                    preloadDataCompleted: (initState) {
-                      return Column(
-                        children: List.generate(
-                          initState.boutiques.length,
-                          (index) => BoutiqueCard(
-                            onTap: () {
-                              context.read<BoutiquesBloc>().add(
-                                    BoutiquesEvent.getInfoBoutique(
-                                      uid: initState.boutiques[index].uidStore,
-                                    ),
-                                  );
-                              context.navigateTo(
-                                HomeAutoRouterRoute(
-                                  children: [
-                                    BoutiquesDescriptionRoute(),
-                                  ],
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            ListView(
+              controller: _scrollController,
+              children: [
+                const AppBarBlindChicken(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 10.5,
+                    right: 10.5,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 17.5,
+                          bottom: 17.5,
+                        ),
+                        child: Text(
+                          'Бутики Слепая курица',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                      ),
+                      BoutiquesSwitch(
+                        indexSelect: 0,
+                        navigateToMap: () {
+                          context.navigateTo(const YandexMapRoute());
+                        },
+                        navigateToBoutiques: () {},
+                      ),
+                      const SizedBox(
+                        height: 21,
+                      ),
+                      BlocBuilder<BoutiquesBloc, BoutiquesState>(
+                        builder: (context, state) {
+                          return state.maybeMap(
+                            preloadDataCompleted: (initState) {
+                              return Column(
+                                children: List.generate(
+                                  initState.boutiques.length,
+                                  (index) => BoutiqueCard(
+                                    onTap: () {
+                                      context.read<BoutiquesBloc>().add(
+                                            BoutiquesEvent.getInfoBoutique(
+                                              uid: initState.boutiques[index].uidStore,
+                                            ),
+                                          );
+                                      context.navigateTo(
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            BoutiquesDescriptionRoute(),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    boutique: initState.boutiques[index],
+                                  ),
                                 ),
                               );
                             },
-                            boutique: initState.boutiques[index],
-                          ),
-                        ),
-                      );
-                    },
-                    orElse: () => const SizedBox(),
-                  );
+                            orElse: () => const SizedBox(),
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            if (_isButtonTop)
+              GestureDetector(
+                onTap: () {
+                  _scrollController.jumpTo(0.0);
+                  setState(() {
+                    _isButtonTop = false;
+                  });
                 },
+                child: Container(
+                  height: 45,
+                  width: 45,
+                  margin: const EdgeInsets.only(left: 15, bottom: 15),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: BlindChickenColors.activeBorderTextField,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/icons/chevron-top.svg',
+                  ),
+                ),
               )
-            ],
-          ),
-          if (_isButtonTop)
-            GestureDetector(
-              onTap: () {
-                _scrollController.jumpTo(0.0);
-                setState(() {
-                  _isButtonTop = false;
-                });
-              },
-              child: Container(
-                height: 45,
-                width: 45,
-                margin: const EdgeInsets.only(left: 15, bottom: 15),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: BlindChickenColors.activeBorderTextField,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: SvgPicture.asset(
-                  'assets/icons/chevron-top.svg',
-                ),
-              ),
-            )
-          else
-            const SizedBox()
-        ],
+            else
+              const SizedBox()
+          ],
+        ),
       ),
     );
   }

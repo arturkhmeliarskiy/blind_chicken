@@ -26,6 +26,7 @@ class AccountState with _$AccountState {
     required List<ProductDataModel> listProdcutsStyle,
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
+    required List<ProductDataModel> listProdcutsComplect,
     required bool isAuth,
     required String virtualCardsCod,
     required List<OrderBlankDataModel> listOrdersBlank,

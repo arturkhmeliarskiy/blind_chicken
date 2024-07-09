@@ -628,13 +628,77 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                       builder: (context, state) {
                                         return state.maybeMap(
                                             productsFavourites: (initState) {
-                                              if (initState.listProdcutsStyle.isNotEmpty) {
+                                              if (initState.listProdcutsComplect.isNotEmpty) {
                                                 return Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     const SizedBox(
                                                       height: 40,
                                                     ),
+                                                    Text(
+                                                      'Носят вместе',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10.5,
+                                                    ),
+                                                    CatalogSliderProducts(
+                                                      onSelectProduct: (value) {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent.getInfoProduct(
+                                                                code: value.id.toString(),
+                                                              ),
+                                                            );
+                                                      },
+                                                      listProducts: initState.listProdcutsComplect,
+                                                      favouritesProductsId:
+                                                          initState.favouritesProductsId,
+                                                      addLike: (index) {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent.addFavouriteProduct(
+                                                                product: initState
+                                                                    .listProdcutsComplect[index],
+                                                                index: initState
+                                                                    .listProdcutsComplect[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                      deleteLike: (index) {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent
+                                                                  .deleteFavouriteProduct(
+                                                                index: initState
+                                                                    .listProdcutsComplect[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                    )
+                                                  ],
+                                                );
+                                              } else {
+                                                return const SizedBox();
+                                              }
+                                            },
+                                            orElse: () => const SizedBox());
+                                      },
+                                    ),
+                                    BlocBuilder<FavouritesBloc, FavouritesState>(
+                                      builder: (context, state) {
+                                        return state.maybeMap(
+                                            productsFavourites: (initState) {
+                                              if (initState.listProdcutsStyle.isNotEmpty) {
+                                                return Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    if (initState.listProdcutsComplect.isEmpty)
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
                                                     Text(
                                                       'Рекомендации стилистов',
                                                       style: Theme.of(context)
@@ -695,9 +759,11 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                 return Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    const SizedBox(
-                                                      height: 40,
-                                                    ),
+                                                    if (initState.listProdcutsComplect.isEmpty &&
+                                                        initState.listProdcutsStyle.isEmpty)
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
                                                     Text(
                                                       'Смотрите также',
                                                       style: Theme.of(context)

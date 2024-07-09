@@ -71,6 +71,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         offset: 1,
         favouritesProductsId: [],
         isAuth: isAuth,
@@ -121,6 +122,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         offset: 1,
         favouritesProductsId: favouritesProductsId,
         isAuth: isAuth,
@@ -614,6 +616,12 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         block: 'brand',
       );
 
+      final additionalProductsDescriptionComplect =
+          await _catalogRepository.getAdditionalProductsDescription(
+        code: event.code,
+        block: 'complect',
+      );
+
       if (!(event.isUpdate ?? false)) {
         listProductsCode.add(event.code);
       }
@@ -648,6 +656,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
+        listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isUpdate: event.isUpdate,
@@ -698,11 +707,18 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           block: 'brand',
         );
 
+        final additionalProductsDescriptionComplect =
+            await _catalogRepository.getAdditionalProductsDescription(
+          code: listProductsCode.last,
+          block: 'complect',
+        );
+
         emit(initState.copyWith(
           detailsProduct: detailsProduct,
           listProdcutsStyle: additionalProductsDescriptionStyle.products,
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
+          listProdcutsComplect: additionalProductsDescriptionComplect.products,
           listProductsCode: listProductsCode,
           isUpdate: initState.isUpdate,
           selectSizeProduct: null,

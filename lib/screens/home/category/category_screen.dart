@@ -431,7 +431,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       initState.menu[index].sub == 0 &&
                                       initState.menu[index].name != 'Подарочная карта' &&
                                       initState.menu[index].name != 'Бренды' &&
-                                      initState.menu[index].name != 'Предупреждение зрения') {
+                                      initState.menu[index].name != 'Предупреждение зрения' &&
+                                      initState.menu[index].name != 'Sale' &&
+                                      initState.menu[index].name != 'Сервисная карта') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
                                               path: initState.menu[index].url),
@@ -444,6 +446,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                     );
                                   } else if (initState.menu[index].name == 'Подарочная карта') {
                                     context.navigateTo(GiftCardRoute());
+                                  } else if (initState.menu[index].name == 'Сервисная карта') {
+                                    context.read<CatalogBloc>().add(
+                                          const CatalogEvent.getInfoServiceCard(
+                                            code: '15846',
+                                          ),
+                                        );
+                                    context.navigateTo(const ServiceCardRoute());
                                   } else if (initState.menu[index].name ==
                                       'Предупреждение зрения') {
                                     context.navigateTo(const VisionWarningRoute());
@@ -457,7 +466,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       const BrandsRoute(),
                                     );
                                   } else if (initState.menu[index].name == 'Sale') {
-                                    context.navigateTo(const SaleRoute());
+                                    context.read<CatalogBloc>().add(
+                                          CatalogEvent.getInfoProducts(
+                                              path: initState.menu[index].url),
+                                        );
+                                    context.navigateTo(
+                                      CatalogRoute(
+                                        title: initState.menu[index].name,
+                                        url: initState.menu[index].url,
+                                      ),
+                                    );
                                   } else {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.subCategory(

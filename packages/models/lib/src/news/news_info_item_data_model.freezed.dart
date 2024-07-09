@@ -21,6 +21,7 @@ mixin _$NewsInfoItemDataModel {
   String get createAt => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   String get video => throw _privateConstructorUsedError;
+  String get announcement => throw _privateConstructorUsedError;
   String get typeMedia => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get titleButton => throw _privateConstructorUsedError;
@@ -28,7 +29,7 @@ mixin _$NewsInfoItemDataModel {
   String get path => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
   String get sort => throw _privateConstructorUsedError;
-  String? get filterSelect => throw _privateConstructorUsedError;
+  String get filterSelect => throw _privateConstructorUsedError;
   String get uidStore => throw _privateConstructorUsedError;
   int get numberViews => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $NewsInfoItemDataModelCopyWith<$Res> {
       String createAt,
       List<String> images,
       String video,
+      String announcement,
       String typeMedia,
       String description,
       String titleButton,
@@ -57,7 +59,7 @@ abstract class $NewsInfoItemDataModelCopyWith<$Res> {
       String path,
       String code,
       String sort,
-      String? filterSelect,
+      String filterSelect,
       String uidStore,
       int numberViews,
       bool isViewed});
@@ -82,6 +84,7 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
     Object? createAt = null,
     Object? images = null,
     Object? video = null,
+    Object? announcement = null,
     Object? typeMedia = null,
     Object? description = null,
     Object? titleButton = null,
@@ -89,7 +92,7 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
     Object? path = null,
     Object? code = null,
     Object? sort = null,
-    Object? filterSelect = freezed,
+    Object? filterSelect = null,
     Object? uidStore = null,
     Object? numberViews = null,
     Object? isViewed = null,
@@ -114,6 +117,10 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String,
+      announcement: null == announcement
+          ? _value.announcement
+          : announcement // ignore: cast_nullable_to_non_nullable
               as String,
       typeMedia: null == typeMedia
           ? _value.typeMedia
@@ -143,10 +150,10 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
               as String,
-      filterSelect: freezed == filterSelect
+      filterSelect: null == filterSelect
           ? _value.filterSelect
           : filterSelect // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       uidStore: null == uidStore
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
@@ -178,6 +185,7 @@ abstract class _$$NewsInfoItemDataModelImplCopyWith<$Res>
       String createAt,
       List<String> images,
       String video,
+      String announcement,
       String typeMedia,
       String description,
       String titleButton,
@@ -185,7 +193,7 @@ abstract class _$$NewsInfoItemDataModelImplCopyWith<$Res>
       String path,
       String code,
       String sort,
-      String? filterSelect,
+      String filterSelect,
       String uidStore,
       int numberViews,
       bool isViewed});
@@ -208,6 +216,7 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
     Object? createAt = null,
     Object? images = null,
     Object? video = null,
+    Object? announcement = null,
     Object? typeMedia = null,
     Object? description = null,
     Object? titleButton = null,
@@ -215,7 +224,7 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
     Object? path = null,
     Object? code = null,
     Object? sort = null,
-    Object? filterSelect = freezed,
+    Object? filterSelect = null,
     Object? uidStore = null,
     Object? numberViews = null,
     Object? isViewed = null,
@@ -240,6 +249,10 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String,
+      announcement: null == announcement
+          ? _value.announcement
+          : announcement // ignore: cast_nullable_to_non_nullable
               as String,
       typeMedia: null == typeMedia
           ? _value.typeMedia
@@ -269,10 +282,10 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
           ? _value.sort
           : sort // ignore: cast_nullable_to_non_nullable
               as String,
-      filterSelect: freezed == filterSelect
+      filterSelect: null == filterSelect
           ? _value.filterSelect
           : filterSelect // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       uidStore: null == uidStore
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
@@ -298,6 +311,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
       required this.createAt,
       required final List<String> images,
       required this.video,
+      required this.announcement,
       required this.typeMedia,
       required this.description,
       required this.titleButton,
@@ -329,6 +343,8 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
   @override
   final String video;
   @override
+  final String announcement;
+  @override
   final String typeMedia;
   @override
   final String description;
@@ -343,7 +359,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
   @override
   final String sort;
   @override
-  final String? filterSelect;
+  final String filterSelect;
   @override
   final String uidStore;
   @override
@@ -353,7 +369,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
 
   @override
   String toString() {
-    return 'NewsInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'NewsInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -367,6 +383,8 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.video, video) || other.video == video) &&
+            (identical(other.announcement, announcement) ||
+                other.announcement == announcement) &&
             (identical(other.typeMedia, typeMedia) ||
                 other.typeMedia == typeMedia) &&
             (identical(other.description, description) ||
@@ -396,6 +414,7 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
       createAt,
       const DeepCollectionEquality().hash(_images),
       video,
+      announcement,
       typeMedia,
       description,
       titleButton,
@@ -423,6 +442,7 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
       required final String createAt,
       required final List<String> images,
       required final String video,
+      required final String announcement,
       required final String typeMedia,
       required final String description,
       required final String titleButton,
@@ -430,7 +450,7 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
       required final String path,
       required final String code,
       required final String sort,
-      required final String? filterSelect,
+      required final String filterSelect,
       required final String uidStore,
       required final int numberViews,
       required final bool isViewed}) = _$NewsInfoItemDataModelImpl;
@@ -447,6 +467,8 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
   @override
   String get video;
   @override
+  String get announcement;
+  @override
   String get typeMedia;
   @override
   String get description;
@@ -461,7 +483,7 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
   @override
   String get sort;
   @override
-  String? get filterSelect;
+  String get filterSelect;
   @override
   String get uidStore;
   @override

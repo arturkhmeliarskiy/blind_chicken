@@ -17,17 +17,22 @@ class BlindChickenPdfViewScreen extends StatefulWidget {
 class _BlindChickenPdfViewScreenState extends State<BlindChickenPdfViewScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(55),
-        child: AppBarBlindChicken(),
-      ),
-      body: SfPdfViewerTheme(
-        data: SfPdfViewerThemeData(
-          progressBarColor: BlindChickenColors.activeBorderTextField,
-        ),
-        child: SfPdfViewer.network(
-          widget.url,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            const AppBarBlindChicken(),
+            Expanded(
+              child: SfPdfViewerTheme(
+                data: SfPdfViewerThemeData(
+                  progressBarColor: BlindChickenColors.activeBorderTextField,
+                ),
+                child: SfPdfViewer.network(
+                  widget.url,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

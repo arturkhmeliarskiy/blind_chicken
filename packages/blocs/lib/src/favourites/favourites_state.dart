@@ -25,6 +25,7 @@ class FavouritesState with _$FavouritesState {
     required List<ProductDataModel> listProdcutsStyle,
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
+    required List<ProductDataModel> listProdcutsComplect,
     required bool isAuth,
     required int offset,
     required bool isButtonTop,

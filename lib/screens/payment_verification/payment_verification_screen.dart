@@ -42,28 +42,27 @@ class _PaymentVerificationScreenState extends State<PaymentVerificationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(55),
-        child: AppBarBlindChicken(),
-      ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Проверка оплаты...',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            CircularProgressIndicator(
-              color: Colors.black,
-              backgroundColor: Colors.grey.shade400,
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const AppBarBlindChicken(),
+              Text(
+                'Проверка оплаты...',
+                style: Theme.of(context).textTheme.displayLarge,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              CircularProgressIndicator(
+                color: Colors.black,
+                backgroundColor: Colors.grey.shade400,
+              ),
+            ],
+          ),
         ),
       ),
     );

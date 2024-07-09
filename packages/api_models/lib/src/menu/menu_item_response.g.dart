@@ -16,6 +16,7 @@ _$MenuItemResponseImpl _$$MenuItemResponseImplFromJson(
       title: json['title'] as int?,
       sub: json['sub'] as int?,
       brand: json['brand'] as int?,
+      bold: json['bold'] as int?,
     );
 
 Map<String, dynamic> _$$MenuItemResponseImplToJson(
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$MenuItemResponseImplToJson(
       'title': instance.title,
       'sub': instance.sub,
       'brand': instance.brand,
+      'bold': instance.bold,
     };

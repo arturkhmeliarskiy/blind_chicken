@@ -32,16 +32,19 @@ import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_s
 import 'package:blind_chicken/screens/home/main/main_category_screen.dart';
 import 'package:blind_chicken/screens/home/main/main_screen.dart';
 import 'package:blind_chicken/screens/account/order_user_info_screen.dart';
-import 'package:blind_chicken/screens/home/sale/sale_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/location/search_location_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/media/media_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/news_info_screen.dart';
 import 'package:blind_chicken/screens/news/news_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news_preview_media_screen.dart';
+import 'package:blind_chicken/screens/news/widgets/news_preview_youtube_player_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/notifications/notification_info_description_screen.dart';
 import 'package:blind_chicken/screens/no_internet/no_internet_screen.dart';
 import 'package:blind_chicken/screens/payment_verification/payment_verification_screen.dart';
 import 'package:blind_chicken/screens/pdf_view/blind_chicken_pdf_view.dart';
+import 'package:blind_chicken/screens/service_card/service_card_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_card_info_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_auto_route_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/shopping_cart_screen.dart';
@@ -66,6 +69,7 @@ import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.d
 import 'package:blind_chicken/screens/yandex_map/yandex_map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../contacts/contacts_screen.dart';
 
 part 'app_router.gr.dart';
@@ -87,9 +91,6 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               page: CatalogRoute.page,
               path: 'catalog',
-            ),
-            AutoRoute(
-              page: SaleRoute.page,
             ),
             AutoRoute(
               keepHistory: false,
@@ -158,6 +159,10 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               page: VisionWarningRoute.page,
               path: 'vision_warning',
+            ),
+            AutoRoute(
+              page: ServiceCardRoute.page,
+              path: 'service_card',
             ),
           ]),
           AutoRoute(page: LoginRoute.page, path: 'login', children: [
@@ -232,12 +237,6 @@ class AppRouter extends _$AppRouter {
                 initial: true,
                 page: NewsInfoRoute.page,
               ),
-              AutoRoute(
-                page: NewsInfoDescriptionRoute.page,
-              ),
-              AutoRoute(
-                page: NotficationInfoDescriptionRoute.page,
-              ),
             ],
           ),
         ]),
@@ -256,6 +255,26 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: GiftVirualCardColorsRoute.page,
           path: '/gift_virual_card_colors',
+        ),
+        AutoRoute(
+          page: NewsPreviewYouTubeVideoPlayerRoute.page,
+          path: '/news_preview_youtube_video_player',
+        ),
+        AutoRoute(
+          page: NewsInfoDescriptionRoute.page,
+          path: '/news_info_description',
+        ),
+        AutoRoute(
+          page: MediaInfoDescriptionRoute.page,
+          path: '/media_info_description',
+        ),
+        AutoRoute(
+          page: NotficationInfoDescriptionRoute.page,
+          path: '/notfication_info_description',
+        ),
+        AutoRoute(
+          page: NewsPreviewMediaRoute.page,
+          path: '/news_preview_media',
         ),
         AutoRoute(
           page: FiltersRoute.page,

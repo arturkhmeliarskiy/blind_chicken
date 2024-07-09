@@ -28,6 +28,7 @@ mixin _$MenuItemResponse {
   int? get title => throw _privateConstructorUsedError;
   int? get sub => throw _privateConstructorUsedError;
   int? get brand => throw _privateConstructorUsedError;
+  int? get bold => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +49,8 @@ abstract class $MenuItemResponseCopyWith<$Res> {
       String? name,
       int? title,
       int? sub,
-      int? brand});
+      int? brand,
+      int? bold});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$MenuItemResponseCopyWithImpl<$Res, $Val extends MenuItemResponse>
     Object? title = freezed,
     Object? sub = freezed,
     Object? brand = freezed,
+    Object? bold = freezed,
   }) {
     return _then(_value.copyWith(
       idParent: freezed == idParent
@@ -101,6 +104,10 @@ class _$MenuItemResponseCopyWithImpl<$Res, $Val extends MenuItemResponse>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as int?,
+      bold: freezed == bold
+          ? _value.bold
+          : bold // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -120,7 +127,8 @@ abstract class _$$MenuItemResponseImplCopyWith<$Res>
       String? name,
       int? title,
       int? sub,
-      int? brand});
+      int? brand,
+      int? bold});
 }
 
 /// @nodoc
@@ -141,6 +149,7 @@ class __$$MenuItemResponseImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? sub = freezed,
     Object? brand = freezed,
+    Object? bold = freezed,
   }) {
     return _then(_$MenuItemResponseImpl(
       idParent: freezed == idParent
@@ -171,6 +180,10 @@ class __$$MenuItemResponseImplCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as int?,
+      bold: freezed == bold
+          ? _value.bold
+          : bold // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -185,7 +198,8 @@ class _$MenuItemResponseImpl extends _MenuItemResponse {
       this.name,
       this.title,
       this.sub,
-      this.brand})
+      this.brand,
+      this.bold})
       : super._();
 
   factory _$MenuItemResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -206,10 +220,12 @@ class _$MenuItemResponseImpl extends _MenuItemResponse {
   final int? sub;
   @override
   final int? brand;
+  @override
+  final int? bold;
 
   @override
   String toString() {
-    return 'MenuItemResponse(idParent: $idParent, id: $id, url: $url, name: $name, title: $title, sub: $sub, brand: $brand)';
+    return 'MenuItemResponse(idParent: $idParent, id: $id, url: $url, name: $name, title: $title, sub: $sub, brand: $brand, bold: $bold)';
   }
 
   @override
@@ -224,13 +240,14 @@ class _$MenuItemResponseImpl extends _MenuItemResponse {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.sub, sub) || other.sub == sub) &&
-            (identical(other.brand, brand) || other.brand == brand));
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.bold, bold) || other.bold == bold));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, idParent, id, url, name, title, sub, brand);
+  int get hashCode => Object.hash(
+      runtimeType, idParent, id, url, name, title, sub, brand, bold);
 
   @JsonKey(ignore: true)
   @override
@@ -255,7 +272,8 @@ abstract class _MenuItemResponse extends MenuItemResponse {
       final String? name,
       final int? title,
       final int? sub,
-      final int? brand}) = _$MenuItemResponseImpl;
+      final int? brand,
+      final int? bold}) = _$MenuItemResponseImpl;
   _MenuItemResponse._() : super._();
 
   factory _MenuItemResponse.fromJson(Map<String, dynamic> json) =
@@ -276,6 +294,8 @@ abstract class _MenuItemResponse extends MenuItemResponse {
   int? get sub;
   @override
   int? get brand;
+  @override
+  int? get bold;
   @override
   @JsonKey(ignore: true)
   _$$MenuItemResponseImplCopyWith<_$MenuItemResponseImpl> get copyWith =>

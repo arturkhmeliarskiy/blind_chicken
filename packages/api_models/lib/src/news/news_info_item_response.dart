@@ -12,6 +12,7 @@ class NewsInfoItemResponse with _$NewsInfoItemResponse {
     @JsonKey(name: 'create_at') String? createAt,
     List<String>? images,
     String? video,
+    String? announcement,
     @JsonKey(name: 'type_media') String? typeMedia,
     String? description,
     @JsonKey(name: 'title_button') String? titleButton,

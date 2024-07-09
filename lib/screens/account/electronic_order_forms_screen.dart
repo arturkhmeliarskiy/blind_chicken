@@ -111,142 +111,152 @@ class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen>
             Stack(
               alignment: Alignment.bottomLeft,
               children: [
-                Scaffold(
-                  body: SingleChildScrollView(
-                    controller: _scrollController,
-                    padding: const EdgeInsets.only(
-                      left: 10.5,
-                      right: 10.5,
-                    ),
-                    child: PopScope(
-                      canPop: false,
-                      onPopInvoked: (value) {
-                        if (_isSwipe) {
-                          context.read<AccountBloc>().add(const AccountEvent.preloadData());
-                          context.navigateTo(
-                            const AccountRoute(),
-                          );
-                        }
-                      },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const AppBarBlindChicken(),
-                          const SizedBox(
-                            height: 16.1,
-                          ),
-                          const SizedBox(
-                            height: 16.1,
-                          ),
-                          Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  context.read<AccountBloc>().add(const AccountEvent.preloadData());
-                                  context.navigateTo(
-                                    const AccountRoute(),
-                                  );
-                                },
-                                child: Text(
-                                  'Личный кабинет',
-                                  style: Theme.of(context).textTheme.displaySmall,
-                                ),
+                SafeArea(
+                  child: Scaffold(
+                    body: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: PopScope(
+                        canPop: false,
+                        onPopInvoked: (value) {
+                          if (_isSwipe) {
+                            context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                            context.navigateTo(
+                              const AccountRoute(),
+                            );
+                          }
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const AppBarBlindChicken(),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10.5,
+                                right: 10.5,
                               ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                'Бланки заказов',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: BlindChickenColors.activePageSelected,
-                                    ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 11.9,
-                          ),
-                          Text(
-                            'Бланки заказов',
-                            style: Theme.of(context).textTheme.titleSmall,
-                          ),
-                          const SizedBox(
-                            height: 14.0,
-                          ),
-                          BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
-                            return state.maybeMap(
-                              preloadDataCompleted: (initState) {
-                                return initState.listOrdersBlank.isNotEmpty
-                                    ? Column(
-                                        children: List.generate(initState.listOrdersBlank.length,
-                                            (index) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              context.read<AccountBloc>().add(
-                                                    AccountEvent.getOrderPdfBlank(
-                                                      fileName:
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    height: 16.1,
+                                  ),
+                                  Row(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          context
+                                              .read<AccountBloc>()
+                                              .add(const AccountEvent.preloadData());
+                                          context.navigateTo(
+                                            const AccountRoute(),
+                                          );
+                                        },
+                                        child: Text(
+                                          'Личный кабинет',
+                                          style: Theme.of(context).textTheme.displaySmall,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        'Бланки заказов',
+                                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                              color: BlindChickenColors.activePageSelected,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 11.9,
+                                  ),
+                                  Text(
+                                    'Бланки заказов',
+                                    style: Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                  const SizedBox(
+                                    height: 14.0,
+                                  ),
+                                  BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
+                                    return state.maybeMap(
+                                      preloadDataCompleted: (initState) {
+                                        return initState.listOrdersBlank.isNotEmpty
+                                            ? Column(
+                                                children: List.generate(
+                                                    initState.listOrdersBlank.length, (index) {
+                                                  return GestureDetector(
+                                                    onTap: () {
+                                                      context.read<AccountBloc>().add(
+                                                            AccountEvent.getOrderPdfBlank(
+                                                              fileName:
+                                                                  'Заказ ${initState.listOrdersBlank[index].number} '
+                                                                  'от ${initState.listOrdersBlank[index].date}.pdf',
+                                                              id: initState
+                                                                  .listOrdersBlank[index].id,
+                                                            ),
+                                                          );
+                                                    },
+                                                    child: Container(
+                                                      margin: const EdgeInsets.only(
+                                                        bottom: 21,
+                                                      ),
+                                                      child: Row(children: [
+                                                        SvgPicture.asset(
+                                                          'assets/icons/document.svg',
+                                                          height: 17.5,
+                                                          width: 17.5,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 6,
+                                                        ),
+                                                        Text(
                                                           'Заказ ${initState.listOrdersBlank[index].number} '
-                                                          'от ${initState.listOrdersBlank[index].date}.pdf',
-                                                      id: initState.listOrdersBlank[index].id,
+                                                          'от ${initState.listOrdersBlank[index].date}',
+                                                          style:
+                                                              Theme.of(context).textTheme.headline2,
+                                                        ),
+                                                      ]),
                                                     ),
                                                   );
-                                            },
-                                            child: Container(
-                                              margin: const EdgeInsets.only(
-                                                bottom: 21,
+                                                }),
+                                              )
+                                            : Text(
+                                                'Список бланков заказов на подшив пуст.',
+                                                style: Theme.of(context).textTheme.headline2,
+                                              );
+                                      },
+                                      load: (value) {
+                                        return Row(
+                                          children: [
+                                            Container(
+                                              width: 20,
+                                              height: 20,
+                                              alignment: Alignment.center,
+                                              margin: const EdgeInsets.only(),
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 3,
+                                                color: Colors.black,
+                                                backgroundColor: Colors.grey.shade400,
                                               ),
-                                              child: Row(children: [
-                                                SvgPicture.asset(
-                                                  'assets/icons/document.svg',
-                                                  height: 17.5,
-                                                  width: 17.5,
-                                                ),
-                                                const SizedBox(
-                                                  width: 6,
-                                                ),
-                                                Text(
-                                                  'Заказ ${initState.listOrdersBlank[index].number} '
-                                                  'от ${initState.listOrdersBlank[index].date}',
-                                                  style: Theme.of(context).textTheme.headline2,
-                                                ),
-                                              ]),
                                             ),
-                                          );
-                                        }),
-                                      )
-                                    : Text(
-                                        'Список бланков заказов на подшив пуст.',
-                                        style: Theme.of(context).textTheme.headline2,
-                                      );
-                              },
-                              load: (value) {
-                                return Row(
-                                  children: [
-                                    Container(
-                                      width: 20,
-                                      height: 20,
-                                      alignment: Alignment.center,
-                                      margin: const EdgeInsets.only(),
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 3,
-                                        color: Colors.black,
-                                        backgroundColor: Colors.grey.shade400,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      'Загрузка данных...',
-                                      style: Theme.of(context).textTheme.headline2,
-                                    ),
-                                  ],
-                                );
-                              },
-                              orElse: () => const SizedBox(),
-                            );
-                          }),
-                        ],
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              'Загрузка данных...',
+                                              style: Theme.of(context).textTheme.headline2,
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                      orElse: () => const SizedBox(),
+                                    );
+                                  }),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

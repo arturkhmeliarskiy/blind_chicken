@@ -46,6 +46,10 @@ class _BoutiqueSliderState extends State<BoutiqueSlider> {
 
   _scrollListener() {
     setState(() {
+      if (_scrollController.position.pixels < -80) {
+        widget.goBotton();
+      }
+
       log(_scrollController.position.pixels.toString());
     });
   }

@@ -85,12 +85,13 @@ class CatalogRepository {
     required int pid,
   }) async {
     final listMenuItems = await _catalogService.postMenuItems(
-      a: a,
-      b: b,
-      id: id,
-      u: '',
-      pid: 0,
-    );
+          a: a,
+          b: b,
+          id: id,
+          u: '',
+          pid: 0,
+        ) ??
+        MenuResponse();
     return listMenuItems.toMenuItems();
   }
 
@@ -204,6 +205,14 @@ class CatalogRepository {
     return brands.toGetBrands();
   }
   // end brands
+
+  // top baanner
+  Future<TopBannerDataModel> postTopBanner() async {
+    final topBanner = await _catalogService.postTopBanner() ?? TopBannerResponse();
+
+    return topBanner.toTopBanner();
+  }
+  // end top baanner
 
   Future<BasketFullInfoDataModel> getBasketInfo({
     bool isLocal = true,
@@ -422,6 +431,7 @@ extension on MenuResponse {
                   sub: item.sub ?? 0,
                   title: item.title ?? 0,
                   brand: item.brand ?? 0,
+                  bold: item.bold ?? 0,
                 ),
               ) ??
               [],
@@ -852,6 +862,24 @@ extension on AdditionalProductsDescriptionResponse {
             [],
       ),
       errorMessage: errorMessage ?? '',
+    );
+  }
+}
+
+extension on TopBannerResponse {
+  TopBannerDataModel toTopBanner() {
+    return TopBannerDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+      data: TopBannerInfoDataModel(
+        title: data?.title ?? '',
+        colorText: data?.colorText ?? '',
+        colorBackground: data?.colorBackground ?? '',
+        type: data?.type ?? '',
+        section: data?.section ?? '',
+        uid: data?.uid ?? '',
+      ),
     );
   }
 }

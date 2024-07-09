@@ -102,388 +102,415 @@ class _BrandsScreenState extends State<BrandsScreen> {
                   );
             }
           },
-          child: Scaffold(
-            body: Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                Scaffold(
-                  body: SingleChildScrollView(
-                    controller: _scrollController,
-                    padding: const EdgeInsets.only(
-                      left: 10.5,
-                      right: 10.5,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const AppBarBlindChicken(),
-                        const SizedBox(
-                          height: 16.1,
-                        ),
-                        BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
-                          return state.maybeMap(
-                            preloadDataCompleted: (initState) {
-                              return Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      context.navigateTo(
-                                        const MainRoute(),
-                                      );
-                                    },
-                                    child: Text(
-                                      'Главная',
-                                      style: Theme.of(context).textTheme.displaySmall,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 11.2,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      context.read<BrandBloc>().add(
-                                            const BrandEvent.switchGenderBrands(
-                                              selectTypePeople: 0,
+          child: SafeArea(
+            child: Scaffold(
+              body: Stack(
+                alignment: Alignment.bottomLeft,
+                children: [
+                  Scaffold(
+                    body: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppBarBlindChicken(),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 10.5,
+                              right: 10.5,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 16.1,
+                                ),
+                                BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      return Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              context.navigateTo(
+                                                const MainRoute(),
+                                              );
+                                            },
+                                            child: Text(
+                                              'Главная',
+                                              style: Theme.of(context).textTheme.displaySmall,
                                             ),
-                                          );
-                                    },
-                                    child: Text(
-                                      'Бренды',
-                                      style: Theme.of(context).textTheme.displaySmall,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      const SizedBox(
-                                        width: 11.2,
-                                      ),
-                                      Text(
-                                        initState.selectedTypePeople,
-                                        style: Theme.of(context).textTheme.displaySmall,
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              );
-                            },
-                            orElse: () => const SizedBox(),
-                          );
-                        }),
-                        const SizedBox(
-                          height: 11.9,
-                        ),
-                        BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
-                          return state.maybeMap(
-                            preloadDataCompleted: (initState) {
-                              return Row(
-                                children: [
-                                  Text(
-                                    'Бренды',
-                                    style: Theme.of(context).textTheme.titleSmall,
-                                  ),
-                                  const SizedBox(
-                                    width: 5.2,
-                                  ),
-                                  Text(
-                                    initState.selectedTypePeople.toLowerCase(),
-                                    style: Theme.of(context).textTheme.titleSmall,
-                                  ),
-                                ],
-                              );
-                            },
-                            orElse: () => const SizedBox(),
-                          );
-                        }),
-                        const SizedBox(
-                          height: 17.5,
-                        ),
-                        SizedBox(
-                            height: 35,
-                            width: MediaQuery.of(context).size.width,
-                            child: BlocBuilder<BrandBloc, BrandState>(
-                              builder: (cntext, state) {
-                                return state.maybeMap(
-                                  preloadDataCompleted: (initState) {
-                                    return ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        shrinkWrap: true,
-                                        itemCount: initState.listTypePeople.length,
-                                        itemBuilder: (context, index) {
-                                          return InkWell(
+                                          ),
+                                          const SizedBox(
+                                            width: 11.2,
+                                          ),
+                                          GestureDetector(
                                             onTap: () {
                                               context.read<BrandBloc>().add(
-                                                    BrandEvent.switchGenderBrands(
-                                                      selectTypePeople: checkTypePeople(
-                                                        initState.listTypePeople[index],
-                                                      ),
+                                                    const BrandEvent.switchGenderBrands(
+                                                      selectTypePeople: 0,
                                                     ),
                                                   );
-                                              _search.clear();
                                             },
-                                            child: Container(
-                                              padding: const EdgeInsets.symmetric(
-                                                horizontal: 14,
-                                                vertical: 7,
-                                              ),
-                                              margin: const EdgeInsets.only(
-                                                right: 10.5,
-                                              ),
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                color: BlindChickenColors.backgroundColorItemFilter,
-                                                borderRadius: BorderRadius.circular(
-                                                  4,
-                                                ),
-                                              ),
-                                              child: Text(initState.listTypePeople[index],
-                                                  style: Theme.of(context).textTheme.displayMedium),
+                                            child: Text(
+                                              'Бренды',
+                                              style: Theme.of(context).textTheme.displaySmall,
                                             ),
-                                          );
-                                        });
-                                  },
-                                  orElse: () => const SizedBox(),
-                                );
-                              },
-                            )),
-                        const SizedBox(
-                          height: 17.5,
-                        ),
-                        SizedBox(
-                          height: 37,
-                          child: Theme(
-                            data: Theme.of(context).copyWith(splashColor: Colors.transparent),
-                            child: TextField(
-                              onTap: () {},
-                              onChanged: (value) {
-                                setState(() {});
-                                context.read<BrandBloc>().add(BrandEvent.search(query: value));
-                              },
-                              controller: _search,
-                              cursorColor: BlindChickenColors.activeBorderTextField,
-                              textCapitalization: TextCapitalization.sentences,
-                              style: Theme.of(context).textTheme.displayMedium,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: BlindChickenColors.borderTextField,
-                                  ),
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: BlindChickenColors.borderTextField,
-                                  ),
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: BlindChickenColors.activeBorderTextField,
-                                  ),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                suffixIcon: _search.text.isNotEmpty
-                                    ? InkWell(
-                                        onTap: () {
-                                          _search.clear();
-                                          context.read<BrandBloc>().add(
-                                                const BrandEvent.search(query: ''),
-                                              );
-                                        },
-                                        child: Transform.scale(
-                                          scale: 0.5,
-                                          child: SvgPicture.asset('assets/icons/x.svg'),
-                                        ),
-                                      )
-                                    : const SizedBox(),
-                                hintText: 'Поиск',
-                                hintStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: BlindChickenColors.textInput,
-                                    ),
-                                prefixIconConstraints: const BoxConstraints(
-                                  minWidth: 0,
-                                  minHeight: 0,
-                                ),
-                                prefixIcon: Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 4,
-                                    right: 4,
-                                  ),
-                                  child: Transform.scale(
-                                    scale: 0.55,
-                                    child: SvgPicture.asset(
-                                      'assets/icons/search.svg',
-                                      color: BlindChickenColors.textInput,
-                                    ),
-                                  ),
-                                ),
-                                contentPadding: EdgeInsets.zero,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 14,
-                        ),
-                        BlocBuilder<BrandBloc, BrandState>(
-                          builder: (cntext, state) {
-                            return state.maybeMap(
-                              preloadDataCompleted: (initState) {
-                                return RichText(
-                                  text: TextSpan(
-                                    children: List.generate(
-                                      initState.listBrands.length,
-                                      (index) {
-                                        if (initState.listBrands.isNotEmpty) {
-                                          return TextSpan(
-                                            text: '${initState.listBrands[index].title}   ',
-                                            style: Theme.of(context).textTheme.headline2,
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () {
-                                                _scrollController.animateTo(
-                                                  (initState.listCountBrand[index].countAlphabet *
-                                                          50) +
-                                                      ((initState
-                                                              .listCountBrand[index].countBrands *
-                                                          40)),
-                                                  duration: const Duration(microseconds: 1),
-                                                  curve: Curves.linearToEaseOut,
-                                                );
-                                              },
-                                          );
-                                        } else {
-                                          return const TextSpan();
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                );
-                              },
-                              orElse: () => const SizedBox(),
-                            );
-                          },
-                        ),
-                        const SizedBox(
-                          height: 18,
-                        ),
-                        BlocBuilder<BrandBloc, BrandState>(builder: (cntext, state) {
-                          return state.maybeMap(
-                            preloadDataCompleted: (initState) {
-                              return MediaQuery.removePadding(
-                                context: context,
-                                removeTop: true,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: initState.listBrands.length,
-                                  itemBuilder: (context, index) {
-                                    if (initState.listBrands.isNotEmpty) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(bottom: 10),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 21,
-                                                bottom: 18.5,
+                                          ),
+                                          Row(
+                                            children: [
+                                              const SizedBox(
+                                                width: 11.2,
                                               ),
-                                              child: Text(
-                                                initState.listBrands[index].title,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displayLarge
-                                                    ?.copyWith(
-                                                      fontWeight: FontWeight.w700,
+                                              Text(
+                                                initState.selectedTypePeople,
+                                                style: Theme.of(context).textTheme.displaySmall,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      );
+                                    },
+                                    orElse: () => const SizedBox(),
+                                  );
+                                }),
+                                const SizedBox(
+                                  height: 11.9,
+                                ),
+                                BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      return Row(
+                                        children: [
+                                          Text(
+                                            'Бренды',
+                                            style: Theme.of(context).textTheme.titleSmall,
+                                          ),
+                                          const SizedBox(
+                                            width: 5.2,
+                                          ),
+                                          Text(
+                                            initState.selectedTypePeople.toLowerCase(),
+                                            style: Theme.of(context).textTheme.titleSmall,
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                    orElse: () => const SizedBox(),
+                                  );
+                                }),
+                                const SizedBox(
+                                  height: 17.5,
+                                ),
+                                SizedBox(
+                                    height: 35,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: BlocBuilder<BrandBloc, BrandState>(
+                                      builder: (cntext, state) {
+                                        return state.maybeMap(
+                                          preloadDataCompleted: (initState) {
+                                            return ListView.builder(
+                                                scrollDirection: Axis.horizontal,
+                                                shrinkWrap: true,
+                                                itemCount: initState.listTypePeople.length,
+                                                itemBuilder: (context, index) {
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      context.read<BrandBloc>().add(
+                                                            BrandEvent.switchGenderBrands(
+                                                              selectTypePeople: checkTypePeople(
+                                                                initState.listTypePeople[index],
+                                                              ),
+                                                            ),
+                                                          );
+                                                      _search.clear();
+                                                    },
+                                                    child: Container(
+                                                      padding: const EdgeInsets.symmetric(
+                                                        horizontal: 14,
+                                                        vertical: 7,
+                                                      ),
+                                                      margin: const EdgeInsets.only(
+                                                        right: 10.5,
+                                                      ),
+                                                      alignment: Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                        color: BlindChickenColors
+                                                            .backgroundColorItemFilter,
+                                                        borderRadius: BorderRadius.circular(
+                                                          4,
+                                                        ),
+                                                      ),
+                                                      child: Text(initState.listTypePeople[index],
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium),
                                                     ),
-                                              ),
+                                                  );
+                                                });
+                                          },
+                                          orElse: () => const SizedBox(),
+                                        );
+                                      },
+                                    )),
+                                const SizedBox(
+                                  height: 17.5,
+                                ),
+                                SizedBox(
+                                  height: 37,
+                                  child: Theme(
+                                    data:
+                                        Theme.of(context).copyWith(splashColor: Colors.transparent),
+                                    child: TextField(
+                                      onTap: () {},
+                                      onChanged: (value) {
+                                        setState(() {});
+                                        context
+                                            .read<BrandBloc>()
+                                            .add(BrandEvent.search(query: value));
+                                      },
+                                      controller: _search,
+                                      cursorColor: BlindChickenColors.activeBorderTextField,
+                                      textCapitalization: TextCapitalization.sentences,
+                                      style: Theme.of(context).textTheme.displayMedium,
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: BlindChickenColors.borderTextField,
+                                          ),
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: BlindChickenColors.borderTextField,
+                                          ),
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: BlindChickenColors.activeBorderTextField,
+                                          ),
+                                          borderRadius: BorderRadius.circular(5),
+                                        ),
+                                        suffixIcon: _search.text.isNotEmpty
+                                            ? InkWell(
+                                                onTap: () {
+                                                  _search.clear();
+                                                  context.read<BrandBloc>().add(
+                                                        const BrandEvent.search(query: ''),
+                                                      );
+                                                },
+                                                child: Transform.scale(
+                                                  scale: 0.5,
+                                                  child: SvgPicture.asset('assets/icons/x.svg'),
+                                                ),
+                                              )
+                                            : const SizedBox(),
+                                        hintText: 'Поиск',
+                                        hintStyle:
+                                            Theme.of(context).textTheme.displayMedium?.copyWith(
+                                                  color: BlindChickenColors.textInput,
+                                                ),
+                                        prefixIconConstraints: const BoxConstraints(
+                                          minWidth: 0,
+                                          minHeight: 0,
+                                        ),
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 4,
+                                            right: 4,
+                                          ),
+                                          child: Transform.scale(
+                                            scale: 0.55,
+                                            child: SvgPicture.asset(
+                                              'assets/icons/search.svg',
+                                              color: BlindChickenColors.textInput,
                                             ),
-                                            GridView.builder(
-                                              shrinkWrap: true,
-                                              itemCount: initState.listBrands[index].value.length,
-                                              physics: const NeverScrollableScrollPhysics(),
-                                              gridDelegate:
-                                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 2, // number of items in each row
-                                                mainAxisSpacing: 11.0, // spacing between rows
-                                                crossAxisSpacing: 11.0, // spacing between columns
-                                                childAspectRatio: 6.5,
-                                              ),
-                                              itemBuilder: (context, indexBrand) {
-                                                return InkWell(
-                                                  onTap: () {
-                                                    FocusScope.of(context).unfocus();
-                                                    _search.clear();
-                                                    context.read<BrandBloc>().add(
-                                                          const BrandEvent.search(query: ''),
+                                          ),
+                                        ),
+                                        contentPadding: EdgeInsets.zero,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 14,
+                                ),
+                                BlocBuilder<BrandBloc, BrandState>(
+                                  builder: (cntext, state) {
+                                    return state.maybeMap(
+                                      preloadDataCompleted: (initState) {
+                                        return RichText(
+                                          text: TextSpan(
+                                            children: List.generate(
+                                              initState.listBrands.length,
+                                              (index) {
+                                                if (initState.listBrands.isNotEmpty) {
+                                                  return TextSpan(
+                                                    text: '${initState.listBrands[index].title}   ',
+                                                    style: Theme.of(context).textTheme.headline2,
+                                                    recognizer: TapGestureRecognizer()
+                                                      ..onTap = () {
+                                                        _scrollController.animateTo(
+                                                          (initState.listCountBrand[index]
+                                                                      .countAlphabet *
+                                                                  50) +
+                                                              ((initState.listCountBrand[index]
+                                                                      .countBrands *
+                                                                  40)),
+                                                          duration: const Duration(microseconds: 1),
+                                                          curve: Curves.linearToEaseOut,
                                                         );
-                                                    context.read<CatalogBloc>().add(
-                                                          CatalogEvent.getInfoProducts(
-                                                            path: initState.listBrands[index]
-                                                                .value[indexBrand].u,
+                                                      },
+                                                  );
+                                                } else {
+                                                  return const TextSpan();
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      orElse: () => const SizedBox(),
+                                    );
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 18,
+                                ),
+                                BlocBuilder<BrandBloc, BrandState>(builder: (cntext, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      return MediaQuery.removePadding(
+                                        context: context,
+                                        removeTop: true,
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          physics: const NeverScrollableScrollPhysics(),
+                                          itemCount: initState.listBrands.length,
+                                          itemBuilder: (context, index) {
+                                            if (initState.listBrands.isNotEmpty) {
+                                              return Padding(
+                                                padding: const EdgeInsets.only(bottom: 10),
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(
+                                                        top: 21,
+                                                        bottom: 18.5,
+                                                      ),
+                                                      child: Text(
+                                                        initState.listBrands[index].title,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .displayLarge
+                                                            ?.copyWith(
+                                                              fontWeight: FontWeight.w700,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    GridView.builder(
+                                                      shrinkWrap: true,
+                                                      itemCount:
+                                                          initState.listBrands[index].value.length,
+                                                      physics: const NeverScrollableScrollPhysics(),
+                                                      gridDelegate:
+                                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount:
+                                                            2, // number of items in each row
+                                                        mainAxisSpacing:
+                                                            11.0, // spacing between rows
+                                                        crossAxisSpacing:
+                                                            11.0, // spacing between columns
+                                                        childAspectRatio: 6.5,
+                                                      ),
+                                                      itemBuilder: (context, indexBrand) {
+                                                        return InkWell(
+                                                          onTap: () {
+                                                            FocusScope.of(context).unfocus();
+                                                            _search.clear();
+                                                            context.read<BrandBloc>().add(
+                                                                  const BrandEvent.search(
+                                                                      query: ''),
+                                                                );
+                                                            context.read<CatalogBloc>().add(
+                                                                  CatalogEvent.getInfoProducts(
+                                                                    path: initState
+                                                                        .listBrands[index]
+                                                                        .value[indexBrand]
+                                                                        .u,
+                                                                  ),
+                                                                );
+                                                            context.navigateTo(
+                                                              CatalogRoute(
+                                                                title: initState.listBrands[index]
+                                                                    .value[indexBrand].n,
+                                                                url: initState.listBrands[index]
+                                                                    .value[indexBrand].u,
+                                                              ),
+                                                            );
+                                                          },
+                                                          child: Text(
+                                                            initState.listBrands[index]
+                                                                .value[indexBrand].n,
+                                                            style: Theme.of(context)
+                                                                .textTheme
+                                                                .headline2,
                                                           ),
                                                         );
-                                                    context.navigateTo(
-                                                      CatalogRoute(
-                                                        title: initState
-                                                            .listBrands[index].value[indexBrand].n,
-                                                        url: initState
-                                                            .listBrands[index].value[indexBrand].u,
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: Text(
-                                                    initState.listBrands[index].value[indexBrand].n,
-                                                    style: Theme.of(context).textTheme.headline2,
-                                                  ),
-                                                );
-                                              },
-                                            )
-                                          ],
+                                                      },
+                                                    )
+                                                  ],
+                                                ),
+                                              );
+                                            } else {
+                                              return const SizedBox();
+                                            }
+                                          },
                                         ),
                                       );
-                                    } else {
-                                      return const SizedBox();
-                                    }
-                                  },
+                                    },
+                                    orElse: () => const SizedBox(),
+                                  );
+                                }),
+                                const SizedBox(
+                                  height: 48,
                                 ),
-                              );
-                            },
-                            orElse: () => const SizedBox(),
-                          );
-                        }),
-                        const SizedBox(
-                          height: 48,
-                        ),
-                      ],
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                if (_isButtonTop)
-                  GestureDetector(
-                    onTap: () {
-                      _scrollController.jumpTo(0.0);
-                      setState(() {
-                        _isButtonTop = false;
-                      });
-                    },
-                    child: Container(
-                      height: 45,
-                      width: 45,
-                      margin: const EdgeInsets.only(left: 15, bottom: 15),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: BlindChickenColors.activeBorderTextField,
-                        borderRadius: BorderRadius.circular(25),
+                  if (_isButtonTop)
+                    GestureDetector(
+                      onTap: () {
+                        _scrollController.jumpTo(0.0);
+                        setState(() {
+                          _isButtonTop = false;
+                        });
+                      },
+                      child: Container(
+                        height: 45,
+                        width: 45,
+                        margin: const EdgeInsets.only(left: 15, bottom: 15),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.activeBorderTextField,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/chevron-top.svg',
+                        ),
                       ),
-                      child: SvgPicture.asset(
-                        'assets/icons/chevron-top.svg',
-                      ),
-                    ),
-                  )
-                else
-                  const SizedBox()
-              ],
+                    )
+                  else
+                    const SizedBox()
+                ],
+              ),
             ),
           ),
         ),

@@ -11,3 +11,4 @@ export 'search_location/search_location_bloc.dart';
 export 'gift_card/gift_card_bloc.dart';
 export 'internet_connection/internet_connection_bloc.dart';
 export 'news/news_bloc.dart';
+export 'top_banner/top_banner_bloc.dart';

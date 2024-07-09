@@ -23,6 +23,7 @@ mixin _$MenuItemDataModel {
   int get sub => throw _privateConstructorUsedError;
   int get title => throw _privateConstructorUsedError;
   int get brand => throw _privateConstructorUsedError;
+  int get bold => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MenuItemDataModelCopyWith<MenuItemDataModel> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $MenuItemDataModelCopyWith<$Res> {
       String name,
       int sub,
       int title,
-      int brand});
+      int brand,
+      int bold});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$MenuItemDataModelCopyWithImpl<$Res, $Val extends MenuItemDataModel>
     Object? sub = null,
     Object? title = null,
     Object? brand = null,
+    Object? bold = null,
   }) {
     return _then(_value.copyWith(
       idParent: null == idParent
@@ -95,6 +98,10 @@ class _$MenuItemDataModelCopyWithImpl<$Res, $Val extends MenuItemDataModel>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as int,
+      bold: null == bold
+          ? _value.bold
+          : bold // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -114,7 +121,8 @@ abstract class _$$MenuItemDataModelImplCopyWith<$Res>
       String name,
       int sub,
       int title,
-      int brand});
+      int brand,
+      int bold});
 }
 
 /// @nodoc
@@ -135,6 +143,7 @@ class __$$MenuItemDataModelImplCopyWithImpl<$Res>
     Object? sub = null,
     Object? title = null,
     Object? brand = null,
+    Object? bold = null,
   }) {
     return _then(_$MenuItemDataModelImpl(
       idParent: null == idParent
@@ -165,6 +174,10 @@ class __$$MenuItemDataModelImplCopyWithImpl<$Res>
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
               as int,
+      bold: null == bold
+          ? _value.bold
+          : bold // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -179,7 +192,8 @@ class _$MenuItemDataModelImpl extends _MenuItemDataModel {
       required this.name,
       required this.sub,
       required this.title,
-      required this.brand})
+      required this.brand,
+      required this.bold})
       : super._();
 
   @override
@@ -196,10 +210,12 @@ class _$MenuItemDataModelImpl extends _MenuItemDataModel {
   final int title;
   @override
   final int brand;
+  @override
+  final int bold;
 
   @override
   String toString() {
-    return 'MenuItemDataModel(idParent: $idParent, id: $id, url: $url, name: $name, sub: $sub, title: $title, brand: $brand)';
+    return 'MenuItemDataModel(idParent: $idParent, id: $id, url: $url, name: $name, sub: $sub, title: $title, brand: $brand, bold: $bold)';
   }
 
   @override
@@ -214,12 +230,13 @@ class _$MenuItemDataModelImpl extends _MenuItemDataModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.sub, sub) || other.sub == sub) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.brand, brand) || other.brand == brand));
+            (identical(other.brand, brand) || other.brand == brand) &&
+            (identical(other.bold, bold) || other.bold == bold));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, idParent, id, url, name, sub, title, brand);
+  int get hashCode => Object.hash(
+      runtimeType, idParent, id, url, name, sub, title, brand, bold);
 
   @JsonKey(ignore: true)
   @override
@@ -237,7 +254,8 @@ abstract class _MenuItemDataModel extends MenuItemDataModel {
       required final String name,
       required final int sub,
       required final int title,
-      required final int brand}) = _$MenuItemDataModelImpl;
+      required final int brand,
+      required final int bold}) = _$MenuItemDataModelImpl;
   _MenuItemDataModel._() : super._();
 
   @override
@@ -254,6 +272,8 @@ abstract class _MenuItemDataModel extends MenuItemDataModel {
   int get title;
   @override
   int get brand;
+  @override
+  int get bold;
   @override
   @JsonKey(ignore: true)
   _$$MenuItemDataModelImplCopyWith<_$MenuItemDataModelImpl> get copyWith =>

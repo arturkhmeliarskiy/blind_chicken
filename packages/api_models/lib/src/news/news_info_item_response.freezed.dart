@@ -26,6 +26,7 @@ mixin _$NewsInfoItemResponse {
   String? get createAt => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
   String? get video => throw _privateConstructorUsedError;
+  String? get announcement => throw _privateConstructorUsedError;
   @JsonKey(name: 'type_media')
   String? get typeMedia => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -64,6 +65,7 @@ abstract class $NewsInfoItemResponseCopyWith<$Res> {
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
       String? video,
+      String? announcement,
       @JsonKey(name: 'type_media') String? typeMedia,
       String? description,
       @JsonKey(name: 'title_button') String? titleButton,
@@ -96,6 +98,7 @@ class _$NewsInfoItemResponseCopyWithImpl<$Res,
     Object? createAt = freezed,
     Object? images = freezed,
     Object? video = freezed,
+    Object? announcement = freezed,
     Object? typeMedia = freezed,
     Object? description = freezed,
     Object? titleButton = freezed,
@@ -128,6 +131,10 @@ class _$NewsInfoItemResponseCopyWithImpl<$Res,
       video: freezed == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String?,
+      announcement: freezed == announcement
+          ? _value.announcement
+          : announcement // ignore: cast_nullable_to_non_nullable
               as String?,
       typeMedia: freezed == typeMedia
           ? _value.typeMedia
@@ -191,6 +198,7 @@ abstract class _$$NewsInfoItemResponseImplCopyWith<$Res>
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
       String? video,
+      String? announcement,
       @JsonKey(name: 'type_media') String? typeMedia,
       String? description,
       @JsonKey(name: 'title_button') String? titleButton,
@@ -220,6 +228,7 @@ class __$$NewsInfoItemResponseImplCopyWithImpl<$Res>
     Object? createAt = freezed,
     Object? images = freezed,
     Object? video = freezed,
+    Object? announcement = freezed,
     Object? typeMedia = freezed,
     Object? description = freezed,
     Object? titleButton = freezed,
@@ -252,6 +261,10 @@ class __$$NewsInfoItemResponseImplCopyWithImpl<$Res>
       video: freezed == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String?,
+      announcement: freezed == announcement
+          ? _value.announcement
+          : announcement // ignore: cast_nullable_to_non_nullable
               as String?,
       typeMedia: freezed == typeMedia
           ? _value.typeMedia
@@ -310,6 +323,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
       @JsonKey(name: 'create_at') this.createAt,
       final List<String>? images,
       this.video,
+      this.announcement,
       @JsonKey(name: 'type_media') this.typeMedia,
       this.description,
       @JsonKey(name: 'title_button') this.titleButton,
@@ -347,6 +361,8 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
   @override
   final String? video;
   @override
+  final String? announcement;
+  @override
   @JsonKey(name: 'type_media')
   final String? typeMedia;
   @override
@@ -379,7 +395,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
 
   @override
   String toString() {
-    return 'NewsInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'NewsInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -393,6 +409,8 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.video, video) || other.video == video) &&
+            (identical(other.announcement, announcement) ||
+                other.announcement == announcement) &&
             (identical(other.typeMedia, typeMedia) ||
                 other.typeMedia == typeMedia) &&
             (identical(other.description, description) ||
@@ -423,6 +441,7 @@ class _$NewsInfoItemResponseImpl extends _NewsInfoItemResponse {
       createAt,
       const DeepCollectionEquality().hash(_images),
       video,
+      announcement,
       typeMedia,
       description,
       titleButton,
@@ -458,6 +477,7 @@ abstract class _NewsInfoItemResponse extends NewsInfoItemResponse {
           @JsonKey(name: 'create_at') final String? createAt,
           final List<String>? images,
           final String? video,
+          final String? announcement,
           @JsonKey(name: 'type_media') final String? typeMedia,
           final String? description,
           @JsonKey(name: 'title_button') final String? titleButton,
@@ -486,6 +506,8 @@ abstract class _NewsInfoItemResponse extends NewsInfoItemResponse {
   List<String>? get images;
   @override
   String? get video;
+  @override
+  String? get announcement;
   @override
   @JsonKey(name: 'type_media')
   String? get typeMedia;

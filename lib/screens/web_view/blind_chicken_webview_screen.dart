@@ -43,13 +43,18 @@ class _BlindChickenWebViewScreenState extends State<BlindChickenWebViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(55),
-        child: AppBarBlindChicken(),
-      ),
-      body: WebViewWidget(
-        controller: controller,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            const AppBarBlindChicken(),
+            Expanded(
+              child: WebViewWidget(
+                controller: controller,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

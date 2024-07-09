@@ -80,211 +80,218 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
           orElse: () {},
         );
       },
-      child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(55),
-          child: AppBarBlindChicken(),
-        ),
-        body: BlocBuilder<BoutiquesBloc, BoutiquesState>(
-          builder: (context, state) {
-            return state.maybeMap(
-              preloadDataCompleted: (initState) {
-                return ListView(
-                  padding: const EdgeInsets.only(
-                    left: 10.5,
-                    right: 10.5,
-                  ),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 16,
-                        bottom: 12,
-                      ),
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              context.popRoute();
-                            },
-                            child: Text(
-                              'Бутики',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 11.2,
-                          ),
-                          Text(
-                            initState.boutiqueDetails?.nameShort ?? '',
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      initState.boutiqueDetails?.caption ?? '',
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    Text(
-                      initState.boutiqueDetails?.address ?? '',
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    BoutiqueSlider(
-                      media: initState.boutiqueDetails?.media ?? [],
-                      goBotton: () {},
-                      addLike: () {},
-                      onTap: (index) {
-                        context.pushRoute(
-                          BoutiquePreviewMediaRoute(
-                            selectIndex: index,
-                            media: initState.boutiqueDetails?.media ?? [],
-                            listImages: initState.boutiqueDetails?.fotoDetail ?? [],
-                            goBotton: () {
-                              context.back();
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                      'График работы',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    Text(
-                      initState.boutiqueDetails?.schedule ?? '',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    Text(
-                      'Адрес',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        text: '${initState.boutiqueDetails?.address ?? ''}  ',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        children: [
-                          TextSpan(
-                            text: 'Показать на карте',
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                context.pushRoute(
-                                  BoutiqueYandexMapRoute(
-                                    mapPoint: BoutiqueDataModel(
-                                      address: initState.boutiqueDetails?.address ?? '',
-                                      fotoMin: initState.boutiqueDetails?.fotoMinList ?? '',
-                                      url: initState.boutiqueDetails?.url ?? '',
-                                      caption: initState.boutiqueDetails?.caption ?? '',
-                                      name: initState.boutiqueDetails?.name ?? '',
-                                      nameShort: initState.boutiqueDetails?.nameShort ?? '',
-                                      schedule: initState.boutiqueDetails?.schedule ?? '',
-                                      uidStore: initState.boutiqueDetails?.uidStore ?? '',
-                                      iconPath: initState.boutiqueDetails?.iconPath ?? '',
-                                      coordinates: initState.boutiqueDetails?.coordinates ??
-                                          BoutiqueCoordinatesDataModel(
-                                            latitude: 0,
-                                            longitude: 0,
-                                          ),
+      child: SafeArea(
+        child: Scaffold(
+          body: BlocBuilder<BoutiquesBloc, BoutiquesState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                preloadDataCompleted: (initState) {
+                  return ListView(
+                    children: [
+                      const AppBarBlindChicken(),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 10.5,
+                          right: 10.5,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 16,
+                                bottom: 12,
+                              ),
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      context.popRoute();
+                                    },
+                                    child: Text(
+                                      'Бутики',
+                                      style: Theme.of(context).textTheme.displaySmall,
                                     ),
                                   ),
-                                );
-                              },
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  decoration: TextDecoration.underline,
-                                ),
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    Text(
-                      'Категории товаров',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                    ),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    Column(
-                      children: List.generate(initState.boutiqueInfo?.length ?? 0, (index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                                  const SizedBox(
+                                    width: 11.2,
+                                  ),
+                                  Text(
+                                    initState.boutiqueDetails?.nameShort ?? '',
+                                    style: Theme.of(context).textTheme.displaySmall,
+                                  ),
+                                ],
+                              ),
+                            ),
                             Text(
-                              initState.boutiqueInfo?[index].title ?? '',
+                              initState.boutiqueDetails?.caption ?? '',
+                              style: Theme.of(context).textTheme.titleSmall,
+                            ),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              initState.boutiqueDetails?.address ?? '',
                               style: Theme.of(context).textTheme.displayMedium,
                             ),
                             const SizedBox(
-                              height: 3.5,
+                              height: 16,
                             ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Text.rich(
-                                TextSpan(
-                                  children: List.generate(
-                                    initState.boutiqueInfo?[index].listInfo.length ?? 0,
-                                    (indexItem) {
-                                      int indexLast =
-                                          initState.boutiqueInfo?[index].listInfo.length ?? 0;
-                                      return TextSpan(
-                                        text:
-                                            '${initState.boutiqueInfo?[index].listInfo[indexItem]}${indexLast == indexItem + 1 ? ' ' : ', '}',
-                                        style: Theme.of(context).textTheme.bodyMedium,
-                                      );
+                            BoutiqueSlider(
+                              media: initState.boutiqueDetails?.media ?? [],
+                              goBotton: () {},
+                              addLike: () {},
+                              onTap: (index) {
+                                context.pushRoute(
+                                  BoutiquePreviewMediaRoute(
+                                    selectIndex: index,
+                                    media: initState.boutiqueDetails?.media ?? [],
+                                    listImages: initState.boutiqueDetails?.fotoDetail ?? [],
+                                    goBotton: () {
+                                      context.back();
                                     },
                                   ),
-                                ),
+                                );
+                              },
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Text(
+                              'График работы',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            Text(
+                              initState.boutiqueDetails?.schedule ?? '',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                            const SizedBox(
+                              height: 28,
+                            ),
+                            Text(
+                              'Адрес',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                text: '${initState.boutiqueDetails?.address ?? ''}  ',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                children: [
+                                  TextSpan(
+                                    text: 'Показать на карте',
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        context.pushRoute(
+                                          BoutiqueYandexMapRoute(
+                                            mapPoint: BoutiqueDataModel(
+                                              address: initState.boutiqueDetails?.address ?? '',
+                                              fotoMin: initState.boutiqueDetails?.fotoMinList ?? '',
+                                              url: initState.boutiqueDetails?.url ?? '',
+                                              caption: initState.boutiqueDetails?.caption ?? '',
+                                              name: initState.boutiqueDetails?.name ?? '',
+                                              nameShort: initState.boutiqueDetails?.nameShort ?? '',
+                                              schedule: initState.boutiqueDetails?.schedule ?? '',
+                                              uidStore: initState.boutiqueDetails?.uidStore ?? '',
+                                              iconPath: initState.boutiqueDetails?.iconPath ?? '',
+                                              coordinates: initState.boutiqueDetails?.coordinates ??
+                                                  BoutiqueCoordinatesDataModel(
+                                                    latitude: 0,
+                                                    longitude: 0,
+                                                  ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                  )
+                                ],
                               ),
                             ),
                             const SizedBox(
                               height: 28,
                             ),
+                            Text(
+                              'Категории товаров',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                            ),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            Column(
+                              children: List.generate(initState.boutiqueInfo?.length ?? 0, (index) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      initState.boutiqueInfo?[index].title ?? '',
+                                      style: Theme.of(context).textTheme.displayMedium,
+                                    ),
+                                    const SizedBox(
+                                      height: 3.5,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text.rich(
+                                        TextSpan(
+                                          children: List.generate(
+                                            initState.boutiqueInfo?[index].listInfo.length ?? 0,
+                                            (indexItem) {
+                                              int indexLast =
+                                                  initState.boutiqueInfo?[index].listInfo.length ??
+                                                      0;
+                                              return TextSpan(
+                                                text:
+                                                    '${initState.boutiqueInfo?[index].listInfo[indexItem]}${indexLast == indexItem + 1 ? ' ' : ', '}',
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 28,
+                                    ),
+                                  ],
+                                );
+                              }),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            )
                           ],
-                        );
-                      }),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+                orElse: () => const SizedBox(),
+                load: (value) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                      backgroundColor: Colors.grey.shade400,
                     ),
-                    const SizedBox(
-                      height: 40,
-                    )
-                  ],
-                );
-              },
-              orElse: () => const SizedBox(),
-              load: (value) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.black,
-                    backgroundColor: Colors.grey.shade400,
-                  ),
-                );
-              },
-            );
-          },
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

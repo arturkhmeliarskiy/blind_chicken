@@ -23,6 +23,8 @@ dependencies:
     path: ../blocs
   shared:
     path: ../shared
+  blind_chicken:
+    path: ../../
 
 dev_dependencies:
   flutter_test:

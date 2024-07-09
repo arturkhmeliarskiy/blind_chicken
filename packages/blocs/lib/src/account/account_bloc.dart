@@ -107,6 +107,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       file: Uint8List(0),
       fileName: '',
       listTailoringBlank: [],
+      listProdcutsComplect: [],
     ));
   }
 
@@ -221,6 +222,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       file: Uint8List(0),
       fileName: '',
       listTailoringBlank: [],
+      listProdcutsComplect: [],
     ));
   }
 
@@ -311,6 +313,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         block: 'brand',
       );
 
+      final additionalProductsDescriptionComplect =
+          await _catalogRepository.getAdditionalProductsDescription(
+        code: event.code,
+        block: 'complect',
+      );
+
       if (!(event.isUpdate ?? false)) {
         listProductsCode.add(event.code);
       }
@@ -345,6 +353,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
+        listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
@@ -393,11 +402,18 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           block: 'brand',
         );
 
+        final additionalProductsDescriptionComplect =
+            await _catalogRepository.getAdditionalProductsDescription(
+          code: listProductsCode.last,
+          block: 'complect',
+        );
+
         emit(initState.copyWith(
           detailsProduct: detailsProduct,
           listProdcutsStyle: additionalProductsDescriptionStyle.products,
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
+          listProdcutsComplect: additionalProductsDescriptionComplect.products,
           listProductsCode: listProductsCode,
           selectSizeProduct: null,
         ));

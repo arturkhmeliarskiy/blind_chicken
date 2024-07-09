@@ -61,16 +61,21 @@ class _SberbankPaymentWebViewScreenState extends State<SberbankPaymentWebViewScr
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(55),
-        child: AppBarBlindChicken(),
-      ),
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: WebViewWidget(
-          controller: controller,
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              const AppBarBlindChicken(),
+              Expanded(
+                child: WebViewWidget(
+                  controller: controller,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

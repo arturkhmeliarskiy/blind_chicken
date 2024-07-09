@@ -7734,6 +7734,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -7774,6 +7775,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -7814,6 +7816,7 @@ mixin _$AccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -7951,6 +7954,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -7994,6 +7998,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8037,6 +8042,7 @@ class _$InitAccountStateImpl implements InitAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8177,6 +8183,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8220,6 +8227,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8263,6 +8271,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8429,6 +8438,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8472,6 +8482,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8515,6 +8526,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8689,6 +8701,7 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8732,6 +8745,7 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8775,6 +8789,7 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8948,6 +8963,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -8991,6 +9007,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -9034,6 +9051,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -9143,6 +9161,7 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsStyle,
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
+      List<ProductDataModel> listProdcutsComplect,
       bool isAuth,
       String virtualCardsCod,
       List<OrderBlankDataModel> listOrdersBlank,
@@ -9191,6 +9210,7 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     Object? listProdcutsStyle = null,
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
+    Object? listProdcutsComplect = null,
     Object? isAuth = null,
     Object? virtualCardsCod = null,
     Object? listOrdersBlank = null,
@@ -9255,6 +9275,10 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
       listProdcutsBrand: null == listProdcutsBrand
           ? _value._listProdcutsBrand
           : listProdcutsBrand // ignore: cast_nullable_to_non_nullable
+              as List<ProductDataModel>,
+      listProdcutsComplect: null == listProdcutsComplect
+          ? _value._listProdcutsComplect
+          : listProdcutsComplect // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
       isAuth: null == isAuth
           ? _value.isAuth
@@ -9400,6 +9424,7 @@ class _$PreloadDataCompletedAccountStateImpl
       required final List<ProductDataModel> listProdcutsStyle,
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
+      required final List<ProductDataModel> listProdcutsComplect,
       required this.isAuth,
       required this.virtualCardsCod,
       required final List<OrderBlankDataModel> listOrdersBlank,
@@ -9422,6 +9447,7 @@ class _$PreloadDataCompletedAccountStateImpl
         _listProdcutsStyle = listProdcutsStyle,
         _listProdcutsAlso = listProdcutsAlso,
         _listProdcutsBrand = listProdcutsBrand,
+        _listProdcutsComplect = listProdcutsComplect,
         _listOrdersBlank = listOrdersBlank,
         _listTailoringBlank = listTailoringBlank;
 
@@ -9497,6 +9523,15 @@ class _$PreloadDataCompletedAccountStateImpl
     return EqualUnmodifiableListView(_listProdcutsBrand);
   }
 
+  final List<ProductDataModel> _listProdcutsComplect;
+  @override
+  List<ProductDataModel> get listProdcutsComplect {
+    if (_listProdcutsComplect is EqualUnmodifiableListView)
+      return _listProdcutsComplect;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listProdcutsComplect);
+  }
+
   @override
   final bool isAuth;
   @override
@@ -9543,7 +9578,7 @@ class _$PreloadDataCompletedAccountStateImpl
 
   @override
   String toString() {
-    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, listOrdersBlank: $listOrdersBlank, listTailoringBlank: $listTailoringBlank, file: $file, fileName: $fileName, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isSuccessfullySavedFile: $isSuccessfullySavedFile, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, isLoadOpenPdf: $isLoadOpenPdf, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
+    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, listOrdersBlank: $listOrdersBlank, listTailoringBlank: $listTailoringBlank, file: $file, fileName: $fileName, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isSuccessfullySavedFile: $isSuccessfullySavedFile, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, isLoadOpenPdf: $isLoadOpenPdf, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
   }
 
   @override
@@ -9571,6 +9606,8 @@ class _$PreloadDataCompletedAccountStateImpl
                 .equals(other._listProdcutsAlso, _listProdcutsAlso) &&
             const DeepCollectionEquality()
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
+            const DeepCollectionEquality()
+                .equals(other._listProdcutsComplect, _listProdcutsComplect) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.virtualCardsCod, virtualCardsCod) ||
                 other.virtualCardsCod == virtualCardsCod) &&
@@ -9616,6 +9653,7 @@ class _$PreloadDataCompletedAccountStateImpl
         const DeepCollectionEquality().hash(_listProdcutsStyle),
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
+        const DeepCollectionEquality().hash(_listProdcutsComplect),
         isAuth,
         virtualCardsCod,
         const DeepCollectionEquality().hash(_listOrdersBlank),
@@ -9662,6 +9700,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -9694,6 +9733,7 @@ class _$PreloadDataCompletedAccountStateImpl
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         isAuth,
         virtualCardsCod,
         listOrdersBlank,
@@ -9732,6 +9772,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -9764,6 +9805,7 @@ class _$PreloadDataCompletedAccountStateImpl
         listProdcutsStyle,
         listProdcutsAlso,
         listProdcutsBrand,
+        listProdcutsComplect,
         isAuth,
         virtualCardsCod,
         listOrdersBlank,
@@ -9802,6 +9844,7 @@ class _$PreloadDataCompletedAccountStateImpl
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -9836,6 +9879,7 @@ class _$PreloadDataCompletedAccountStateImpl
           listProdcutsStyle,
           listProdcutsAlso,
           listProdcutsBrand,
+          listProdcutsComplect,
           isAuth,
           virtualCardsCod,
           listOrdersBlank,
@@ -9922,6 +9966,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
           required final List<ProductDataModel> listProdcutsStyle,
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
+          required final List<ProductDataModel> listProdcutsComplect,
           required final bool isAuth,
           required final String virtualCardsCod,
           required final List<OrderBlankDataModel> listOrdersBlank,
@@ -9951,6 +9996,7 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   List<ProductDataModel> get listProdcutsStyle;
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
+  List<ProductDataModel> get listProdcutsComplect;
   bool get isAuth;
   String get virtualCardsCod;
   List<OrderBlankDataModel> get listOrdersBlank;
@@ -10028,6 +10074,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -10071,6 +10118,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -10114,6 +10162,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -10253,6 +10302,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -10296,6 +10346,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
@@ -10339,6 +10390,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             List<ProductDataModel> listProdcutsStyle,
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
             bool isAuth,
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,

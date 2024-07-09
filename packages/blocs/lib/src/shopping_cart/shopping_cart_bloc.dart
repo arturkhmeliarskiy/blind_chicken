@@ -107,6 +107,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         favouritesProductsId: [],
         isAuth: isAuth,
         isUponReceipt: true,
@@ -181,6 +182,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         favouritesProductsId: favouritesProductsId,
         isAuth: isAuth,
         address: '',
@@ -269,6 +271,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsStyle: [],
         listProdcutsAlso: [],
         listProdcutsBrand: [],
+        listProdcutsComplect: [],
         favouritesProductsId: [],
         isAuth: isAuth,
         isUponReceipt: true,
@@ -783,6 +786,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         block: 'brand',
       );
 
+      final additionalProductsDescriptionComplect =
+          await _catalogRepository.getAdditionalProductsDescription(
+        code: event.code,
+        block: 'complect',
+      );
+
       if (!(event.isUpdate ?? false)) {
         listProductsCode.add(event.code);
       }
@@ -817,6 +826,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
         listProdcutsBrand: additionalProductsDescriptionBrand.products,
+        listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isSoppingCart: soppingCart.isNotEmpty,
@@ -865,11 +875,18 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           block: 'brand',
         );
 
+        final additionalProductsDescriptionComplect =
+            await _catalogRepository.getAdditionalProductsDescription(
+          code: listProductsCode.last,
+          block: 'complect',
+        );
+
         emit(initState.copyWith(
           detailsProduct: detailsProduct,
           listProdcutsStyle: additionalProductsDescriptionStyle.products,
           listProdcutsAlso: additionalProductsDescriptionAlso.products,
           listProdcutsBrand: additionalProductsDescriptionBrand.products,
+          listProdcutsComplect: additionalProductsDescriptionComplect.products,
           listProductsCode: listProductsCode,
           selectSizeProduct: null,
         ));

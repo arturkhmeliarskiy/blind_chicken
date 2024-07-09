@@ -609,13 +609,78 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                       builder: (context, state) {
                                         return state.maybeMap(
                                             searchProductsResult: (initState) {
-                                              if (initState.listProdcutsStyle.isNotEmpty) {
+                                              if (initState.listProdcutsComplect.isNotEmpty) {
                                                 return Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     const SizedBox(
                                                       height: 40,
                                                     ),
+                                                    Text(
+                                                      'Носят вместе',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10.5,
+                                                    ),
+                                                    CatalogSliderProducts(
+                                                      onSelectProduct: (value) {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.getInfoProduct(
+                                                                code: value.id.toString(),
+                                                              ),
+                                                            );
+                                                      },
+                                                      listProducts: initState.listProdcutsComplect,
+                                                      favouritesProductsId:
+                                                          initState.favouritesProductsId,
+                                                      addLike: (index) {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.addFavouriteProduct(
+                                                                product: initState
+                                                                    .listProdcutsComplect[index],
+                                                                index: initState
+                                                                    .listProdcutsComplect[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                      deleteLike: (index) {
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.deleteFavouriteProduct(
+                                                                index: initState
+                                                                    .listProdcutsComplect[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                    )
+                                                  ],
+                                                );
+                                              } else {
+                                                return const SizedBox(
+                                                  height: 20,
+                                                );
+                                              }
+                                            },
+                                            orElse: () => const SizedBox());
+                                      },
+                                    ),
+                                    BlocBuilder<SearchBloc, SearchState>(
+                                      builder: (context, state) {
+                                        return state.maybeMap(
+                                            searchProductsResult: (initState) {
+                                              if (initState.listProdcutsStyle.isNotEmpty) {
+                                                return Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    if (initState.listProdcutsComplect.isEmpty)
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
                                                     Text(
                                                       'Рекомендации стилистов',
                                                       style: Theme.of(context)
@@ -630,8 +695,8 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                     ),
                                                     CatalogSliderProducts(
                                                       onSelectProduct: (value) {
-                                                        context.read<CatalogBloc>().add(
-                                                              CatalogEvent.getInfoProduct(
+                                                        context.read<SearchBloc>().add(
+                                                              SearchEvent.getInfoProduct(
                                                                 code: value.id.toString(),
                                                               ),
                                                             );
@@ -675,6 +740,11 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                 return Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
+                                                    if (initState.listProdcutsStyle.isEmpty &&
+                                                        initState.listProdcutsComplect.isEmpty)
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
                                                     const SizedBox(
                                                       height: 40,
                                                     ),

@@ -13,5 +13,6 @@ class MenuItemDataModel with _$MenuItemDataModel {
     required int sub,
     required int title,
     required int brand,
+    required int bold,
   }) = _MenuItemDataModel;
 }

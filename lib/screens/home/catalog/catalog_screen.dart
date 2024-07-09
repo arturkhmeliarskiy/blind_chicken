@@ -93,15 +93,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
         isButtonTop = false;
       });
     }
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-      setState(() {
-        isLoading = true;
-      });
-      await Future<void>.delayed(const Duration(seconds: 2), () {
-        setState(() {
-          isLoading = false;
-          context.read<CatalogBloc>().add(const CatalogEvent.paginationProduct());
-        });
+    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 400) {
+      Future.delayed(const Duration(seconds: 1), () {
+        log('start pagination');
+        context.read<CatalogBloc>().add(const CatalogEvent.paginationProduct());
       });
     }
     _historyPosition = _scrollController.position.pixels;

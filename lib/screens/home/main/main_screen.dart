@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
@@ -27,12 +28,20 @@ class _MainScreenState extends State<MainScreen> {
   bool _isOpenUpdateVersionApp = true;
   bool _isButtonTop = false;
   double _historyPosition = 0.0;
+  Timer? timer;
 
   @override
   void initState() {
     context.read<CatalogBloc>().add(const CatalogEvent.init());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
+    context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
+    timer = Timer.periodic(
+      const Duration(hours: 1),
+      (timer) {
+        context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
+      },
+    );
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }
@@ -56,6 +65,7 @@ class _MainScreenState extends State<MainScreen> {
   void dispose() {
     _search.dispose();
     _scrollController.dispose();
+    timer?.cancel();
     super.dispose();
   }
 

@@ -4,8 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class NewsItemTabInfo extends StatelessWidget {
+class NewsItemTabInfo extends StatefulWidget {
   const NewsItemTabInfo({
     super.key,
     required this.item,
@@ -20,127 +21,181 @@ class NewsItemTabInfo extends StatelessWidget {
   final String path;
 
   @override
+  State<NewsItemTabInfo> createState() => _NewsItemTabInfoState();
+}
+
+class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
+  bool _isWrap = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 10),
-          padding: const EdgeInsets.only(left: 12, right: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: BlindChickenColors.backgroundColor,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 12,
-              ),
-              Text(
-                item.title,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-              Text(
-                item.createAt,
-                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      color: BlindChickenColors.textInput,
-                    ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              RichText(
-                text: TextSpan(
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(left: 12, right: 12),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: BlindChickenColors.backgroundColor,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
                   children: [
-                    TextSpan(
-                      text: '${item.description.substring(0, 120)}  ',
-                      style: Theme.of(context).textTheme.displayMedium,
+                    Expanded(
+                      child: Text(
+                        widget.item.title,
+                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
                     ),
-                    TextSpan(
-                      text: 'Подробнее',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            decoration: TextDecoration.underline,
-                          ),
-                      recognizer: TapGestureRecognizer()..onTap = onTap,
-                    ),
+                    if (!widget.item.isViewed)
+                      const SizedBox(
+                        height: 15,
+                        width: 25,
+                      ),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              CachedNetworkImage(
-                imageUrl: item.images.first,
-                height: 250,
-                fit: BoxFit.fill,
-                placeholder: (context, url) => const SizedBox(
-                  height: 250,
-                  child: LoadingImage(),
+                Text(
+                  widget.item.createAt,
+                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        color: BlindChickenColors.textInput,
+                      ),
                 ),
-              ),
-              Container(
-                height: 40,
-                color: BlindChickenColors.backgroundColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (path.isNotEmpty)
-                      GestureDetector(
-                        onTap: () {
-                          onGoTap(path);
-                        },
-                        child: Container(
-                          height: 25,
-                          padding: const EdgeInsets.only(left: 8, right: 8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: BlindChickenColors.borderBottomColor,
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            item.titleButton,
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                  color: BlindChickenColors.activeBorderTextField,
-                                ),
-                          ),
-                        ),
-                      )
-                    else
-                      const SizedBox(),
-                    Row(
+                const SizedBox(
+                  height: 8,
+                ),
+                if (widget.item.announcement.length > 140)
+                  RichText(
+                    text: TextSpan(
                       children: [
-                        const Icon(
-                          Icons.remove_red_eye,
-                          size: 14,
-                          color: BlindChickenColors.borderInput,
+                        TextSpan(
+                          text: _isWrap
+                              ? '${widget.item.announcement}  '
+                              : '${widget.item.announcement.substring(0, 120)}  ',
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          item.numberViews.toString(),
-                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                fontSize: 12,
-                                color: BlindChickenColors.borderInput,
+                        TextSpan(
+                          text: _isWrap ? 'Скрыть' : 'Показать еще',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                decoration: TextDecoration.underline,
+                                decorationColor: BlindChickenColors.textInput,
+                                color: BlindChickenColors.textInput,
                               ),
-                        )
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              setState(() {
+                                _isWrap = !_isWrap;
+                              });
+                            },
+                        ),
                       ],
-                    )
-                  ],
+                    ),
+                  )
+                else
+                  Text(
+                    widget.item.announcement,
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                const SizedBox(
+                  height: 12,
                 ),
-              )
-            ],
+                if (widget.item.typeMedia == 'images' && widget.item.images.isNotEmpty)
+                  LayoutBuilder(builder: (context, constraints) {
+                    return CachedNetworkImage(
+                      imageUrl: widget.item.images.first,
+                      height: 250,
+                      width: constraints.maxWidth,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => const SizedBox(
+                        height: 250,
+                        child: LoadingImage(),
+                      ),
+                    );
+                  }),
+                if (widget.item.typeMedia == 'video')
+                  LayoutBuilder(builder: (context, constraints) {
+                    final videoId = YoutubePlayer.convertUrlToId(widget.item.video) ?? '';
+                    return CachedNetworkImage(
+                      imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
+                      height: 250,
+                      width: constraints.maxWidth,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => const SizedBox(
+                        height: 250,
+                        child: LoadingImage(),
+                      ),
+                    );
+                  }),
+                Container(
+                  height: 40,
+                  color: BlindChickenColors.backgroundColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      if (widget.path.isNotEmpty)
+                        GestureDetector(
+                          onTap: () {
+                            widget.onGoTap(widget.path);
+                          },
+                          child: Container(
+                            height: 25,
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: BlindChickenColors.borderBottomColor,
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              widget.item.titleButton,
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: BlindChickenColors.activeBorderTextField,
+                                  ),
+                            ),
+                          ),
+                        )
+                      else
+                        const SizedBox(),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.remove_red_eye,
+                            size: 14,
+                            color: BlindChickenColors.borderInput,
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            widget.item.numberViews.toString(),
+                            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  fontSize: 12,
+                                  color: BlindChickenColors.borderInput,
+                                ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-        if (!item.isViewed)
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: NewsItemIndicator(),
-          )
-      ],
+          if (!widget.item.isViewed)
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: NewsItemIndicator(),
+            )
+        ],
+      ),
     );
   }
 }

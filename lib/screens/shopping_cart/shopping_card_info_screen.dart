@@ -629,13 +629,77 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                       builder: (context, state) {
                                         return state.maybeMap(
                                             productsShoppingCart: (initState) {
-                                              if (initState.listProdcutsStyle.isNotEmpty) {
+                                              if (initState.listProdcutsComplect.isNotEmpty) {
                                                 return Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
                                                     const SizedBox(
                                                       height: 40,
                                                     ),
+                                                    Text(
+                                                      'Носят вместе',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10.5,
+                                                    ),
+                                                    CatalogSliderProducts(
+                                                      onSelectProduct: (value) {
+                                                        context.read<ShoppingCartBloc>().add(
+                                                              ShoppingCartEvent.getInfoProduct(
+                                                                code: value.id.toString(),
+                                                              ),
+                                                            );
+                                                      },
+                                                      listProducts: initState.listProdcutsComplect,
+                                                      favouritesProductsId:
+                                                          initState.favouritesProductsId,
+                                                      addLike: (index) {
+                                                        context.read<ShoppingCartBloc>().add(
+                                                              ShoppingCartEvent.addFavouriteProduct(
+                                                                product: initState
+                                                                    .listProdcutsComplect[index],
+                                                                index: initState
+                                                                    .listProdcutsComplect[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                      deleteLike: (index) {
+                                                        context.read<ShoppingCartBloc>().add(
+                                                              ShoppingCartEvent
+                                                                  .deleteFavouriteProduct(
+                                                                index: initState
+                                                                    .listProdcutsComplect[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                    )
+                                                  ],
+                                                );
+                                              } else {
+                                                return const SizedBox();
+                                              }
+                                            },
+                                            orElse: () => const SizedBox());
+                                      },
+                                    ),
+                                    BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                                      builder: (context, state) {
+                                        return state.maybeMap(
+                                            productsShoppingCart: (initState) {
+                                              if (initState.listProdcutsStyle.isNotEmpty) {
+                                                return Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    if (initState.listProdcutsComplect.isEmpty)
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
                                                     Text(
                                                       'Рекомендации стилистов',
                                                       style: Theme.of(context)
@@ -696,9 +760,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                 return Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    const SizedBox(
-                                                      height: 40,
-                                                    ),
+                                                    if (initState.listProdcutsComplect.isEmpty &&
+                                                        initState.listProdcutsStyle.isEmpty)
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
                                                     Text(
                                                       'Смотрите также',
                                                       style: Theme.of(context)
