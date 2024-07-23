@@ -32,7 +32,6 @@ class _NewsPreviewYouTubeVideoPlayerScreenState extends State<NewsPreviewYouTube
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
-        mute: true,
       ),
     );
     super.initState();

@@ -35,6 +35,7 @@ class _PushNotificationManagerState extends State<PushNotificationManager> {
         sort: message.data['sort'],
         filterSelect: message.data['filter'],
         codeProduct: message.data['code_product'],
+        idNews: message.data['id_news'],
       ));
     }
     log('${message.data['tag']}');

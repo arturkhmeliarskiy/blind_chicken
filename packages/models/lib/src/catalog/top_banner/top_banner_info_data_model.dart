@@ -9,8 +9,10 @@ class TopBannerInfoDataModel with _$TopBannerInfoDataModel {
     required String title,
     required String colorText,
     required String colorBackground,
+    required String code,
     required String type,
     required String section,
     required String uid,
+    required String idNews,
   }) = _TopBannerInfoDataModel;
 }

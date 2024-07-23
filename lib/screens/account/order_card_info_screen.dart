@@ -668,6 +668,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                                 ),
                                                               );
                                                         },
+                                                        isAuth: initState.isAuth,
                                                       )
                                                     ],
                                                   );
@@ -731,6 +732,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                                 ),
                                                               );
                                                         },
+                                                        isAuth: initState.isAuth,
                                                       )
                                                     ],
                                                   );
@@ -795,6 +797,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                                 ),
                                                               );
                                                         },
+                                                        isAuth: initState.isAuth,
                                                       )
                                                     ],
                                                   );
@@ -837,6 +840,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                         context.read<CatalogBloc>().add(
                                                               CatalogEvent.getInfoProducts(
                                                                 path: path,
+                                                                isCleanHistory: true,
                                                               ),
                                                             );
 
@@ -918,6 +922,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     ),
                                                   ],
                                                 );

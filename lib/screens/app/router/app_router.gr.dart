@@ -416,6 +416,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const NewsScreen(),
       );
     },
+    NewsNotificationDescriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<NewsNotificationDescriptionRouteArgs>(
+          orElse: () => const NewsNotificationDescriptionRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NewsNotificationDescriptionScreen(
+          key: args.key,
+          idNews: args.idNews,
+          isNotification: args.isNotification,
+        ),
+      );
+    },
     NewsInfoRoute.name: (routeData) {
       final args = routeData.argsAs<NewsInfoRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -423,6 +435,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: NewsInfoScreen(
           key: args.key,
           indexPage: args.indexPage,
+        ),
+      );
+    },
+    MediaNotificationDescriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<MediaNotificationDescriptionRouteArgs>(
+          orElse: () => const MediaNotificationDescriptionRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MediaNotificationDescriptionScreen(
+          key: args.key,
+          idNews: args.idNews,
+          isNotification: args.isNotification,
         ),
       );
     },
@@ -477,6 +501,12 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           info: args.info,
         ),
+      );
+    },
+    ServiceCardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ServiceCardScreen(),
       );
     },
     YandexMapRoute.name: (routeData) {
@@ -676,12 +706,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const LoginScreen(),
-      );
-    },
-    ServiceCardRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ServiceCardScreen(),
       );
     },
   };
@@ -2202,6 +2226,50 @@ class NewsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NewsNotificationDescriptionScreen]
+class NewsNotificationDescriptionRoute
+    extends PageRouteInfo<NewsNotificationDescriptionRouteArgs> {
+  NewsNotificationDescriptionRoute({
+    Key? key,
+    String idNews = '',
+    bool isNotification = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewsNotificationDescriptionRoute.name,
+          args: NewsNotificationDescriptionRouteArgs(
+            key: key,
+            idNews: idNews,
+            isNotification: isNotification,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsNotificationDescriptionRoute';
+
+  static const PageInfo<NewsNotificationDescriptionRouteArgs> page =
+      PageInfo<NewsNotificationDescriptionRouteArgs>(name);
+}
+
+class NewsNotificationDescriptionRouteArgs {
+  const NewsNotificationDescriptionRouteArgs({
+    this.key,
+    this.idNews = '',
+    this.isNotification = false,
+  });
+
+  final Key? key;
+
+  final String idNews;
+
+  final bool isNotification;
+
+  @override
+  String toString() {
+    return 'NewsNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, isNotification: $isNotification}';
+  }
+}
+
+/// generated route for
 /// [NewsInfoScreen]
 class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
   NewsInfoRoute({
@@ -2236,6 +2304,50 @@ class NewsInfoRouteArgs {
   @override
   String toString() {
     return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage}';
+  }
+}
+
+/// generated route for
+/// [MediaNotificationDescriptionScreen]
+class MediaNotificationDescriptionRoute
+    extends PageRouteInfo<MediaNotificationDescriptionRouteArgs> {
+  MediaNotificationDescriptionRoute({
+    Key? key,
+    String idNews = '',
+    bool isNotification = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MediaNotificationDescriptionRoute.name,
+          args: MediaNotificationDescriptionRouteArgs(
+            key: key,
+            idNews: idNews,
+            isNotification: isNotification,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MediaNotificationDescriptionRoute';
+
+  static const PageInfo<MediaNotificationDescriptionRouteArgs> page =
+      PageInfo<MediaNotificationDescriptionRouteArgs>(name);
+}
+
+class MediaNotificationDescriptionRouteArgs {
+  const MediaNotificationDescriptionRouteArgs({
+    this.key,
+    this.idNews = '',
+    this.isNotification = false,
+  });
+
+  final Key? key;
+
+  final String idNews;
+
+  final bool isNotification;
+
+  @override
+  String toString() {
+    return 'MediaNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, isNotification: $isNotification}';
   }
 }
 
@@ -2446,6 +2558,20 @@ class MediaInfoDescriptionRouteArgs {
   String toString() {
     return 'MediaInfoDescriptionRouteArgs{key: $key, info: $info}';
   }
+}
+
+/// generated route for
+/// [ServiceCardScreen]
+class ServiceCardRoute extends PageRouteInfo<void> {
+  const ServiceCardRoute({List<PageRouteInfo>? children})
+      : super(
+          ServiceCardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ServiceCardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -3136,20 +3262,6 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [ServiceCardScreen]
-class ServiceCardRoute extends PageRouteInfo<void> {
-  const ServiceCardRoute({List<PageRouteInfo>? children})
-      : super(
-          ServiceCardRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ServiceCardRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

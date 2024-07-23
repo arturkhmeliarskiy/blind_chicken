@@ -8,12 +8,10 @@ import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
-
 import 'package:ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
 

@@ -25,8 +25,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final UpdateDataService _updateDataService;
   final BoutiquesRepository _boutiquesRepository;
   final BasketRepository _basketRepository;
-  final AppStoreInfoRepository _appStoreInfoRepository;
-  final DeviceInfoService _deviceInfoService;
+  final StoreVersionAppRepository _storeVersionAppRepository;
   final PushNotificationRepository _pushNotificationRepository;
 
   CatalogBloc(
@@ -37,8 +36,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     this._updateDataService,
     this._boutiquesRepository,
     this._basketRepository,
-    this._appStoreInfoRepository,
-    this._deviceInfoService,
+    this._storeVersionAppRepository,
     this._pushNotificationRepository,
   ) : super(const CatalogState.init()) {
     on<CatalogEvent>((event, emit) => event.map<Future<void>>(
@@ -101,7 +99,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         ) ??
         '';
 
-    final deviceId = await _deviceInfoService.getDeviceId();
     if (Platform.isIOS && pushToken.isEmpty) {
       await Future<void>.delayed(
         const Duration(
@@ -161,11 +158,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     }
 
     _sharedPreferencesService.setString(
-      key: SharedPrefKeys.deviceId,
-      value: deviceId,
-    );
-
-    _sharedPreferencesService.setString(
       key: SharedPrefKeys.platformDevice,
       value: platformDevice,
     );
@@ -203,7 +195,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     List<int> favouritesProductsId = [];
     FavouritesDataModel? favourites;
     PushNotificationMessageDataModel? notitcationMessage;
-    AppStoreInfoDataModel? appStoreInfo;
+    String appStoreInfoVersion = '';
 
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -230,21 +222,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
-
+    final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
-      appStoreInfo = await _appStoreInfoRepository.checkiOSVersion();
+      appStoreInfoVersion = result.version.ios;
     } else {
-      appStoreInfo = await _appStoreInfoRepository.checkAndroidVersion();
+      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    if (appStoreInfo.appStroreVersion.isNotEmpty) {
-      final appStoreVersion = int.parse((appStoreInfo.appStroreVersion).replaceAll('.', ''));
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
       final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
       if (appStoreVersion > packageInfoVersion) {
         nowVersionApp = packageInfo.version;
-        updateVersionApp = appStoreInfo.appStroreVersion;
+        updateVersionApp = appStoreInfoVersion;
         isUpdateVersionApp = true;
       }
     }
@@ -269,6 +261,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         final uid = await me.invokeMethod('uid') as String;
         final codeProduct = await me.invokeMethod('codeProduct') as String;
         final filterSelect = await me.invokeMethod('filter') as String;
+        final idNews = await me.invokeMethod('idNews') as String;
         notitcationMessage = PushNotificationMessageDataModel(
           section: section,
           idMessage: idMessage,
@@ -277,6 +270,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           uid: uid,
           filterSelect: filterSelect,
           codeProduct: codeProduct,
+          idNews: idNews,
         );
       }
     }
@@ -291,6 +285,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         sort: message?.data['sort'] ?? '',
         filterSelect: message?.data['filter'] ?? '',
         codeProduct: message?.data['code_product'] ?? '',
+        idNews: message?.data['id_news'] ?? '',
       );
     }
 
@@ -454,6 +449,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         products: catalogInfo.products,
         catalogInfo: catalogInfo,
         request: request,
+        offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
       ));
@@ -876,7 +872,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         sort: 'n',
       );
 
-      listCatalogPath.add(event.path);
+      if (event.isCleanHistory ?? false) {
+        listCatalogPath.clear();
+        listCatalogPath.add(event.path);
+      } else {
+        listCatalogPath.add(event.path);
+      }
 
       FavouritesDataModel? favourites;
       List<int> favouritesProductsId = [];
@@ -932,6 +933,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Map<int, List<FilterItemDataModel>> selectFilter = {};
     List<Map<int, FilterItemDataModel>> allSelectFilter = [];
     Map<String, FilterCatalogDataModel> filtersInfo = {};
+    String appStoreInfoVersion = '';
 
     if (event.filterSelect.isNotEmpty) {
       List<dynamic> list = json.decode(event.filterSelect).cast<dynamic>();
@@ -1000,16 +1002,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       request: request,
     );
 
-    final appStoreInfoIOs = await _appStoreInfoRepository.checkiOSVersion();
+    final result = await _storeVersionAppRepository.getStoreVersion();
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    } else {
+      appStoreInfoVersion = result.version.android;
+    }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    if (appStoreInfoIOs.appStroreVersion.isNotEmpty && Platform.isIOS) {
-      final appStoreIOsVersion = int.parse(appStoreInfoIOs.appStroreVersion.replaceAll('.', ''));
-      final packageInfoIOsVersion = int.parse(packageInfo.version.replaceAll('.', ''));
-      if (appStoreIOsVersion > packageInfoIOsVersion) {
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
         nowVersionApp = packageInfo.version;
-        updateVersionApp = appStoreInfoIOs.appStroreVersion;
+        updateVersionApp = appStoreInfoVersion;
         isUpdateVersionApp = true;
       }
     }
@@ -1081,7 +1088,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         selectSizeProduct: null,
         listSize: [],
         isLoadGetSizeProduct: false,
-        listCatalogPath: [],
+        listCatalogPath: [event.path],
         userDiscount: catalogInfo.userDiscount,
       ),
     );
@@ -1294,6 +1301,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         request: request,
         products: catalogInfo.products,
         catalogInfo: catalogInfo,
+        offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
       ));
@@ -1364,6 +1372,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         filter: catalogInfo.filter,
         catalogInfo: catalogInfo,
         products: listProducts,
+        offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
       ));
@@ -1398,6 +1407,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         filter: catalogInfo.filter,
         catalogInfo: catalogInfo,
         products: catalogInfo.products,
+        offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
       ));

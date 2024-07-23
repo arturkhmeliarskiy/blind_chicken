@@ -19,9 +19,11 @@ mixin _$TopBannerInfoDataModel {
   String get title => throw _privateConstructorUsedError;
   String get colorText => throw _privateConstructorUsedError;
   String get colorBackground => throw _privateConstructorUsedError;
+  String get code => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get section => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
+  String get idNews => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopBannerInfoDataModelCopyWith<TopBannerInfoDataModel> get copyWith =>
@@ -38,9 +40,11 @@ abstract class $TopBannerInfoDataModelCopyWith<$Res> {
       {String title,
       String colorText,
       String colorBackground,
+      String code,
       String type,
       String section,
-      String uid});
+      String uid,
+      String idNews});
 }
 
 /// @nodoc
@@ -60,9 +64,11 @@ class _$TopBannerInfoDataModelCopyWithImpl<$Res,
     Object? title = null,
     Object? colorText = null,
     Object? colorBackground = null,
+    Object? code = null,
     Object? type = null,
     Object? section = null,
     Object? uid = null,
+    Object? idNews = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -77,6 +83,10 @@ class _$TopBannerInfoDataModelCopyWithImpl<$Res,
           ? _value.colorBackground
           : colorBackground // ignore: cast_nullable_to_non_nullable
               as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -88,6 +98,10 @@ class _$TopBannerInfoDataModelCopyWithImpl<$Res,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      idNews: null == idNews
+          ? _value.idNews
+          : idNews // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -106,9 +120,11 @@ abstract class _$$TopBannerInfoDataModelImplCopyWith<$Res>
       {String title,
       String colorText,
       String colorBackground,
+      String code,
       String type,
       String section,
-      String uid});
+      String uid,
+      String idNews});
 }
 
 /// @nodoc
@@ -127,9 +143,11 @@ class __$$TopBannerInfoDataModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? colorText = null,
     Object? colorBackground = null,
+    Object? code = null,
     Object? type = null,
     Object? section = null,
     Object? uid = null,
+    Object? idNews = null,
   }) {
     return _then(_$TopBannerInfoDataModelImpl(
       title: null == title
@@ -144,6 +162,10 @@ class __$$TopBannerInfoDataModelImplCopyWithImpl<$Res>
           ? _value.colorBackground
           : colorBackground // ignore: cast_nullable_to_non_nullable
               as String,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -156,6 +178,10 @@ class __$$TopBannerInfoDataModelImplCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      idNews: null == idNews
+          ? _value.idNews
+          : idNews // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -167,9 +193,11 @@ class _$TopBannerInfoDataModelImpl extends _TopBannerInfoDataModel {
       {required this.title,
       required this.colorText,
       required this.colorBackground,
+      required this.code,
       required this.type,
       required this.section,
-      required this.uid})
+      required this.uid,
+      required this.idNews})
       : super._();
 
   @override
@@ -179,15 +207,19 @@ class _$TopBannerInfoDataModelImpl extends _TopBannerInfoDataModel {
   @override
   final String colorBackground;
   @override
+  final String code;
+  @override
   final String type;
   @override
   final String section;
   @override
   final String uid;
+  @override
+  final String idNews;
 
   @override
   String toString() {
-    return 'TopBannerInfoDataModel(title: $title, colorText: $colorText, colorBackground: $colorBackground, type: $type, section: $section, uid: $uid)';
+    return 'TopBannerInfoDataModel(title: $title, colorText: $colorText, colorBackground: $colorBackground, code: $code, type: $type, section: $section, uid: $uid, idNews: $idNews)';
   }
 
   @override
@@ -200,14 +232,16 @@ class _$TopBannerInfoDataModelImpl extends _TopBannerInfoDataModel {
                 other.colorText == colorText) &&
             (identical(other.colorBackground, colorBackground) ||
                 other.colorBackground == colorBackground) &&
+            (identical(other.code, code) || other.code == code) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.section, section) || other.section == section) &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.idNews, idNews) || other.idNews == idNews));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, title, colorText, colorBackground, type, section, uid);
+  int get hashCode => Object.hash(runtimeType, title, colorText,
+      colorBackground, code, type, section, uid, idNews);
 
   @JsonKey(ignore: true)
   @override
@@ -222,9 +256,11 @@ abstract class _TopBannerInfoDataModel extends TopBannerInfoDataModel {
       {required final String title,
       required final String colorText,
       required final String colorBackground,
+      required final String code,
       required final String type,
       required final String section,
-      required final String uid}) = _$TopBannerInfoDataModelImpl;
+      required final String uid,
+      required final String idNews}) = _$TopBannerInfoDataModelImpl;
   _TopBannerInfoDataModel._() : super._();
 
   @override
@@ -234,11 +270,15 @@ abstract class _TopBannerInfoDataModel extends TopBannerInfoDataModel {
   @override
   String get colorBackground;
   @override
+  String get code;
+  @override
   String get type;
   @override
   String get section;
   @override
   String get uid;
+  @override
+  String get idNews;
   @override
   @JsonKey(ignore: true)
   _$$TopBannerInfoDataModelImplCopyWith<_$TopBannerInfoDataModelImpl>

@@ -9,6 +9,8 @@ class UserDataModel with _$UserDataModel {
   factory UserDataModel({
     required String phone,
     required int discount,
+    required int rest,
+    required int limit,
     required String name,
     required String email,
     required String message,

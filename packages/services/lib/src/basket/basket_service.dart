@@ -8,13 +8,11 @@ import 'package:shared/shared.dart';
 
 class BasketService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
   final ConverterService _converterService;
   final SharedPreferencesService _sharedPreferencesService;
 
   BasketService(
     this._dio,
-    this._deviceInfoService,
     this._converterService,
     this._sharedPreferencesService,
   ) {
@@ -29,7 +27,7 @@ class BasketService {
   }) async {
     BasketResponse? basketResponse;
     String hashTokenTel = '';
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -75,7 +73,7 @@ class BasketService {
   Future<BasketInfoResponse?> getProductToBasket() async {
     BasketInfoResponse? basketInfoResponse;
     String hashTokenTel = '';
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -124,7 +122,7 @@ class BasketService {
     BasketFullInfoResponse? basketFullInfoResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -178,7 +176,7 @@ class BasketService {
 
   Future<PaymentsResponse?> getPaymentMethods() async {
     PaymentsResponse? paymentsResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     try {
       log(_dio.options.headers.toString());
@@ -224,7 +222,7 @@ class BasketService {
     PaymentBonusResponse? paymentBonusResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -272,7 +270,7 @@ class BasketService {
     PaymentBonusResponse? paymentBonusResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -322,7 +320,7 @@ class BasketService {
     PaymentOrderResponse? paymentOrderResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -380,7 +378,7 @@ class BasketService {
     required String id,
   }) async {
     PayOrderResponse? payOrderResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
 
     try {

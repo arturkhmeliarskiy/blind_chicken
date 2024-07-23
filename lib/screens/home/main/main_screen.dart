@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,6 +34,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
+    _init();
     context.read<CatalogBloc>().add(const CatalogEvent.init());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
@@ -40,10 +43,91 @@ class _MainScreenState extends State<MainScreen> {
       const Duration(hours: 1),
       (timer) {
         context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
+        _updateVersionApp();
       },
     );
     _scrollController.addListener(_loadMoreData);
     super.initState();
+  }
+
+  _init() async {
+    final sharedPreferencesService = GetIt.I.get<SharedPreferencesService>();
+    final deviceInfoService = GetIt.I.get<DeviceInfoService>();
+    String deviceId = sharedPreferencesService.getString(
+          key: SharedPrefKeys.deviceId,
+        ) ??
+        '';
+
+    if (deviceId.isEmpty) {
+      deviceId = await deviceInfoService.getDeviceId();
+      sharedPreferencesService.setString(
+        key: SharedPrefKeys.deviceId,
+        value: deviceId,
+      );
+    }
+  }
+
+  _updateVersionApp() async {
+    String appStoreInfoVersion = '';
+    String nowVersionApp = '';
+    String updateVersionApp = '';
+    bool isUpdateVersionApp = false;
+    final storeVersionAppRepository = GetIt.I.get<StoreVersionAppRepository>();
+    final updateData = GetIt.I.get<UpdateDataService>();
+    final result = await storeVersionAppRepository.getStoreVersion();
+
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    } else {
+      appStoreInfoVersion = result.version.android;
+    }
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
+        nowVersionApp = packageInfo.version;
+        updateVersionApp = appStoreInfoVersion;
+        isUpdateVersionApp = true;
+      }
+    }
+
+    if (isUpdateVersionApp && !updateData.isOpenUpdateModalWindow) {
+      updateData.isOpenUpdateModalWindow = true;
+      // ignore: use_build_context_synchronously
+      showDialog(
+        context: context,
+        builder: (context) {
+          return BlindChickenUpdateAppInfo(
+            nowVersionApp: nowVersionApp,
+            updateVersionApp: updateVersionApp,
+            onBack: () {
+              context.popRoute();
+            },
+            onUpdate: () {
+              context.popRoute();
+              if (Platform.isAndroid || Platform.isIOS) {
+                final url = Uri.parse(
+                  Platform.isAndroid
+                      ? "market://details?id=com.slepayakurica.app"
+                      : "https://apps.apple.com/ru/app/id6471508431",
+                );
+                launchUrl(
+                  url,
+                  mode: LaunchMode.externalApplication,
+                );
+              }
+            },
+          );
+        },
+      ).then(
+        (val) {
+          updateData.isOpenUpdateModalWindow = false;
+        },
+      );
+    }
   }
 
   void _loadMoreData() async {
@@ -116,6 +200,20 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       );
                     }
+                    if (notificationMessage.type == 'news') {
+                      context.navigateTo(
+                        NewsNotificationDescriptionRoute(
+                          idNews: notificationMessage.idNews,
+                        ),
+                      );
+                    }
+                    if (notificationMessage.type == 'media') {
+                      context.navigateTo(
+                        MediaNotificationDescriptionRoute(
+                          idNews: notificationMessage.idNews,
+                        ),
+                      );
+                    }
                   }
 
                   updateData.idMessageNotification = notificationMessage.idMessage;
@@ -125,7 +223,10 @@ class _MainScreenState extends State<MainScreen> {
                 }
                 if (initState.isUpdateVersionApp &&
                     !initState.isNotification &&
-                    _isOpenUpdateVersionApp) {
+                    _isOpenUpdateVersionApp &&
+                    notificationMessage?.type != 'news' &&
+                    notificationMessage?.type != 'media') {
+                  updateData.isOpenUpdateModalWindow = true;
                   showDialog(
                     context: context,
                     builder: (context) {

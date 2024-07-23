@@ -243,18 +243,41 @@ Widget _itemMediaSize({
               MediaInfoDescriptionRoute(info: info),
             );
           },
-          child: SizedBox(
-            width: width,
-            child: CachedNetworkImage(
-              imageUrl: info.images.first,
-              width: width,
-              height: height,
-              fit: BoxFit.cover,
-              placeholder: (context, url) => SizedBox(
-                height: height,
-                child: const LoadingImage(),
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              SizedBox(
+                width: width,
+                child: CachedNetworkImage(
+                  imageUrl: info.images.first,
+                  width: width,
+                  height: height,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => SizedBox(
+                    height: height,
+                    child: const LoadingImage(),
+                  ),
+                ),
               ),
-            ),
+              if (info.images.length > 1)
+                const Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Icon(
+                    Icons.filter,
+                    color: Colors.white,
+                    size: 14,
+                  ),
+                )
+              else
+                const Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Icon(
+                    Icons.image_outlined,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                )
+            ],
           ),
         );
       } else {
@@ -265,18 +288,31 @@ Widget _itemMediaSize({
               MediaInfoDescriptionRoute(info: info),
             );
           },
-          child: SizedBox(
-            width: width,
-            child: CachedNetworkImage(
-              imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
-              width: width,
-              height: height,
-              fit: BoxFit.cover,
-              placeholder: (context, url) => SizedBox(
-                height: height,
-                child: const LoadingImage(),
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              SizedBox(
+                width: width,
+                child: CachedNetworkImage(
+                  imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
+                  width: width,
+                  height: height,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => SizedBox(
+                    height: height,
+                    child: const LoadingImage(),
+                  ),
+                ),
               ),
-            ),
+              const Padding(
+                padding: EdgeInsets.all(6.0),
+                child: Icon(
+                  Icons.videocam_outlined,
+                  color: Colors.white,
+                  size: 18,
+                ),
+              )
+            ],
           ),
         );
       }
@@ -298,10 +334,35 @@ Widget _itemMediaExpandex({
               MediaInfoDescriptionRoute(info: info),
             );
           },
-          child: CachedNetworkImage(
-            imageUrl: info.images.first,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => const LoadingImage(),
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              CachedNetworkImage(
+                imageUrl: info.images.first,
+                fit: BoxFit.cover,
+                height: constraints.maxHeight,
+                width: constraints.maxWidth,
+                placeholder: (context, url) => const LoadingImage(),
+              ),
+              if (info.images.length > 1)
+                const Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Icon(
+                    Icons.filter,
+                    color: Colors.white,
+                    size: 14,
+                  ),
+                )
+              else
+                const Padding(
+                  padding: EdgeInsets.all(6.0),
+                  child: Icon(
+                    Icons.image_outlined,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                )
+            ],
           ),
         );
       } else {
@@ -312,10 +373,25 @@ Widget _itemMediaExpandex({
               MediaInfoDescriptionRoute(info: info),
             );
           },
-          child: CachedNetworkImage(
-            imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
-            fit: BoxFit.cover,
-            placeholder: (context, url) => const LoadingImage(),
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              CachedNetworkImage(
+                imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
+                fit: BoxFit.cover,
+                height: constraints.maxHeight,
+                width: constraints.maxWidth,
+                placeholder: (context, url) => const LoadingImage(),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(6.0),
+                child: Icon(
+                  Icons.videocam_outlined,
+                  color: Colors.white,
+                  size: 18,
+                ),
+              )
+            ],
           ),
         );
       }

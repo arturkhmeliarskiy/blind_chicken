@@ -121,7 +121,7 @@ class CatalogRepository {
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
-    final basketInfo = await getBasketInfo(isLocal: !isAuth);
+    final basketInfo = await getDetailsProductBasketInfo(isLocal: !isAuth);
     final detailsProduct = await _catalogService.getDetailsProduct(
           code: code,
         ) ??
@@ -214,7 +214,33 @@ class CatalogRepository {
   }
   // end top baanner
 
-  Future<BasketFullInfoDataModel> getBasketInfo({
+  Future<BasketInfoDataModel> getBasketInfo({
+    bool isLocal = true,
+  }) async {
+    List<BasketInfoItemDataModel> basket = [];
+    BasketInfoDataModel? basketInfo;
+    if (isLocal) {
+      final shopping = getShoppingCartProducts();
+      for (int i = 0; i < shopping.length; i++) {
+        basket.add(BasketInfoItemDataModel(
+          code: shopping[i].code,
+          sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
+          count: shopping[i].count,
+        ));
+      }
+      basketInfo = BasketInfoDataModel(
+        basket: basket,
+        r: '1',
+        e: '',
+      );
+    } else {
+      basketInfo = await _basketRepository.getProductToBasket();
+    }
+
+    return basketInfo;
+  }
+
+  Future<BasketFullInfoDataModel> getDetailsProductBasketInfo({
     bool isLocal = true,
   }) async {
     List<BasketInfoItemDataModel> basket = [];
@@ -251,7 +277,7 @@ class CatalogRepository {
 }
 
 extension on CatalogSearchInfoResponse {
-  CatalogSearchInfoDataModel toSearchProductsInfo(BasketFullInfoDataModel basketInfo) {
+  CatalogSearchInfoDataModel toSearchProductsInfo(BasketInfoDataModel basketInfo) {
     return CatalogSearchInfoDataModel(
       products: List<ProductDataModel>.from(
         products?.map(
@@ -309,7 +335,7 @@ extension on CatalogSearchInfoResponse {
 }
 
 extension on CatalogSearchResponse {
-  CatalogSearchDataModel toSearchProducts(BasketFullInfoDataModel basketInfo) {
+  CatalogSearchDataModel toSearchProducts(BasketInfoDataModel basketInfo) {
     return CatalogSearchDataModel(
       productsCount: productsCount ?? 0,
       sectionsCount: sectionsCount ?? 0,
@@ -556,7 +582,7 @@ extension on ProductDataModel {
 }
 
 extension on CatalogResponse {
-  CatalogDataModel toCatalogProducts(BasketFullInfoDataModel basketInfo) {
+  CatalogDataModel toCatalogProducts(BasketInfoDataModel basketInfo) {
     return CatalogDataModel(
       userDiscount: int.parse(userDiscount ?? '0'),
       breadcrumbs: List<CatalogBreadcrumbDataModel>.from(
@@ -876,9 +902,11 @@ extension on TopBannerResponse {
         title: data?.title ?? '',
         colorText: data?.colorText ?? '',
         colorBackground: data?.colorBackground ?? '',
+        code: data?.code ?? '',
         type: data?.type ?? '',
         section: data?.section ?? '',
         uid: data?.uid ?? '',
+        idNews: data?.idNews ?? '',
       ),
     );
   }

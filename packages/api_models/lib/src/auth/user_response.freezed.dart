@@ -22,6 +22,8 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
 mixin _$UserResponse {
   String? get phone => throw _privateConstructorUsedError;
   int? get discount => throw _privateConstructorUsedError;
+  int? get rest => throw _privateConstructorUsedError;
+  int? get limit => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get virtualcardscod => throw _privateConstructorUsedError;
@@ -56,6 +58,8 @@ abstract class $UserResponseCopyWith<$Res> {
   $Res call(
       {String? phone,
       int? discount,
+      int? rest,
+      int? limit,
       String? name,
       String? email,
       String? virtualcardscod,
@@ -84,6 +88,8 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
   $Res call({
     Object? phone = freezed,
     Object? discount = freezed,
+    Object? rest = freezed,
+    Object? limit = freezed,
     Object? name = freezed,
     Object? email = freezed,
     Object? virtualcardscod = freezed,
@@ -103,6 +109,14 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rest: freezed == rest
+          ? _value.rest
+          : rest // ignore: cast_nullable_to_non_nullable
+              as int?,
+      limit: freezed == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
               as int?,
       name: freezed == name
           ? _value.name
@@ -159,6 +173,8 @@ abstract class _$$UserResponseImplCopyWith<$Res>
   $Res call(
       {String? phone,
       int? discount,
+      int? rest,
+      int? limit,
       String? name,
       String? email,
       String? virtualcardscod,
@@ -185,6 +201,8 @@ class __$$UserResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? phone = freezed,
     Object? discount = freezed,
+    Object? rest = freezed,
+    Object? limit = freezed,
     Object? name = freezed,
     Object? email = freezed,
     Object? virtualcardscod = freezed,
@@ -204,6 +222,14 @@ class __$$UserResponseImplCopyWithImpl<$Res>
       discount: freezed == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rest: freezed == rest
+          ? _value.rest
+          : rest // ignore: cast_nullable_to_non_nullable
+              as int?,
+      limit: freezed == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
               as int?,
       name: freezed == name
           ? _value.name
@@ -255,6 +281,8 @@ class _$UserResponseImpl extends _UserResponse {
   _$UserResponseImpl(
       {this.phone,
       this.discount,
+      this.rest,
+      this.limit,
       this.name,
       this.email,
       this.virtualcardscod,
@@ -276,6 +304,10 @@ class _$UserResponseImpl extends _UserResponse {
   final String? phone;
   @override
   final int? discount;
+  @override
+  final int? rest;
+  @override
+  final int? limit;
   @override
   final String? name;
   @override
@@ -313,7 +345,7 @@ class _$UserResponseImpl extends _UserResponse {
 
   @override
   String toString() {
-    return 'UserResponse(phone: $phone, discount: $discount, name: $name, email: $email, virtualcardscod: $virtualcardscod, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
+    return 'UserResponse(phone: $phone, discount: $discount, rest: $rest, limit: $limit, name: $name, email: $email, virtualcardscod: $virtualcardscod, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -324,6 +356,8 @@ class _$UserResponseImpl extends _UserResponse {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
+            (identical(other.rest, rest) || other.rest == rest) &&
+            (identical(other.limit, limit) || other.limit == limit) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.virtualcardscod, virtualcardscod) ||
@@ -348,6 +382,8 @@ class _$UserResponseImpl extends _UserResponse {
       runtimeType,
       phone,
       discount,
+      rest,
+      limit,
       name,
       email,
       virtualcardscod,
@@ -377,6 +413,8 @@ abstract class _UserResponse extends UserResponse {
   factory _UserResponse(
       {final String? phone,
       final int? discount,
+      final int? rest,
+      final int? limit,
       final String? name,
       final String? email,
       final String? virtualcardscod,
@@ -397,6 +435,10 @@ abstract class _UserResponse extends UserResponse {
   String? get phone;
   @override
   int? get discount;
+  @override
+  int? get rest;
+  @override
+  int? get limit;
   @override
   String? get name;
   @override

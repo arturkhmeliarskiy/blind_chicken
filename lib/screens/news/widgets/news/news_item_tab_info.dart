@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -23,10 +23,9 @@ class NewsItemTabInfo extends StatefulWidget {
 }
 
 class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
-  bool _isWrap = false;
-
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: widget.onTap,
       child: Stack(
@@ -35,6 +34,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
           Container(
             margin: const EdgeInsets.only(top: 10),
             padding: const EdgeInsets.only(left: 12, right: 12),
+            width: width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: BlindChickenColors.backgroundColor,
@@ -71,38 +71,22 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                 const SizedBox(
                   height: 8,
                 ),
-                if (widget.item.announcement.length > 140)
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: _isWrap
-                              ? '${widget.item.announcement}  '
-                              : '${widget.item.announcement.substring(0, 120)}  ',
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
-                        TextSpan(
-                          text: _isWrap ? 'Скрыть' : 'Показать еще',
-                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                decoration: TextDecoration.underline,
-                                decorationColor: BlindChickenColors.textInput,
-                                color: BlindChickenColors.textInput,
-                              ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              setState(() {
-                                _isWrap = !_isWrap;
-                              });
-                            },
-                        ),
-                      ],
-                    ),
-                  )
-                else
-                  Text(
-                    widget.item.announcement,
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
+                LayoutBuilder(builder: (context, constraints) {
+                  if (widget.item.announcement.length > 140) {
+                    return SizedBox(
+                      height: 60,
+                      child: HtmlWidget(
+                        widget.item.announcement,
+                        textStyle: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    );
+                  } else {
+                    return HtmlWidget(
+                      widget.item.announcement,
+                      textStyle: Theme.of(context).textTheme.displayMedium,
+                    );
+                  }
+                }),
                 if (widget.item.typeMedia == 'images' && widget.item.images.isNotEmpty)
                   Column(
                     children: [
@@ -131,68 +115,83 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                       ),
                       LayoutBuilder(builder: (context, constraints) {
                         final videoId = YoutubePlayer.convertUrlToId(widget.item.video) ?? '';
+
                         return CachedNetworkImage(
                           imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
-                          height: 250,
-                          width: constraints.maxWidth,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) => const SizedBox(
-                            height: 250,
-                            child: LoadingImage(),
+                          height: 9 / 16 * constraints.maxWidth,
+                          width: constraints.maxWidth,
+                          placeholder: (context, url) => SizedBox(
+                            height: 9 / 16 * constraints.maxWidth,
+                            width: constraints.maxWidth,
+                            child: const LoadingImage(),
                           ),
                         );
                       }),
                     ],
                   ),
-                if (widget.item.path.isNotEmpty)
-                  Container(
-                    height: 40,
-                    color: BlindChickenColors.backgroundColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        if (widget.item.path.isNotEmpty)
-                          GestureDetector(
-                            onTap: widget.onGoTap,
-                            child: Container(
-                              height: 25,
-                              padding: const EdgeInsets.only(left: 8, right: 8),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: BlindChickenColors.borderBottomColor,
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                widget.item.titleButton,
-                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      color: BlindChickenColors.activeBorderTextField,
+                if (widget.item.titleButton.isNotEmpty)
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Container(
+                        height: 40,
+                        color: BlindChickenColors.backgroundColor,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            if (widget.item.titleButton.isNotEmpty)
+                              GestureDetector(
+                                onTap: widget.onGoTap,
+                                child: IntrinsicWidth(
+                                  child: Container(
+                                    height: 25,
+                                    constraints: BoxConstraints(maxWidth: constraints.maxWidth),
+                                    padding: const EdgeInsets.only(
+                                      left: 8,
+                                      right: 8,
                                     ),
-                              ),
-                            ),
-                          )
-                        else
-                          const SizedBox(),
-                        // Row(
-                        //   children: [
-                        //     const Icon(
-                        //       Icons.remove_red_eye,
-                        //       size: 14,
-                        //       color: BlindChickenColors.borderInput,
-                        //     ),
-                        //     const SizedBox(
-                        //       width: 4,
-                        //     ),
-                        //     Text(
-                        //       widget.item.numberViews.toString(),
-                        //       style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        //             fontSize: 12,
-                        //             color: BlindChickenColors.borderInput,
-                        //           ),
-                        //     )
-                        //   ],
-                        // )
-                      ],
-                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: BlindChickenColors.borderBottomColor,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      widget.item.titleButton,
+                                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                            color: BlindChickenColors.activeBorderTextField,
+                                            backgroundColor: BlindChickenColors.borderBottomColor,
+                                          ),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            else
+                              const SizedBox(),
+                            // Row(
+                            //   children: [
+                            //     const Icon(
+                            //       Icons.remove_red_eye,
+                            //       size: 14,
+                            //       color: BlindChickenColors.borderInput,
+                            //     ),
+                            //     const SizedBox(
+                            //       width: 4,
+                            //     ),
+                            //     Text(
+                            //       widget.item.numberViews.toString(),
+                            //       style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            //             fontSize: 12,
+                            //             color: BlindChickenColors.borderInput,
+                            //           ),
+                            //     )
+                            //   ],
+                            // )
+                          ],
+                        ),
+                      );
+                    },
                   )
                 else
                   const SizedBox(

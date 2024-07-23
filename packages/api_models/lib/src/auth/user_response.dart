@@ -10,6 +10,8 @@ class UserResponse with _$UserResponse {
   factory UserResponse({
     String? phone,
     int? discount,
+    int? rest,
+    int? limit,
     String? name,
     String? email,
     String? virtualcardscod,

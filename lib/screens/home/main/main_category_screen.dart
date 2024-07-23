@@ -45,15 +45,15 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
     super.didUpdateWidget(oldWidget);
   }
 
-  String checkGender(int indexType) {
+  String checkPath(int indexType) {
     String result = '';
     switch (indexType) {
       case 1:
-        result = 'Женская коллекция';
+        result = '/sale/zhenshchinam/';
       case 2:
-        result = 'Мужская коллекция';
+        result = '/sale/muzhchinam/';
       case 3:
-        result = 'Детская коллекция';
+        result = '/sale/detyam/';
     }
     return result;
   }
@@ -242,6 +242,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                               context.read<CatalogBloc>().add(
                                     CatalogEvent.getInfoProducts(
                                       path: initState.category[index].pathMenu,
+                                      isCleanHistory: true,
                                     ),
                                   );
                               context.navigateTo(
@@ -292,30 +293,47 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                         ),
                   ),
                 ),
-                // const SizedBox(
-                //   height: 16,
-                // ),
-                // GestureDetector(
-                //   onTap: () {
-                //     context.navigateTo(const SaleRoute());
-                //   },
-                //   child: SizedBox(
-                //     child: Image.asset(
-                //       'assets/images/sale.jpg',
-                //     ),
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 8,
-                // ),
-                // Center(
-                //   child: Text(
-                //     'Распродажа',
-                //     style: Theme.of(context).textTheme.headline2?.copyWith(
-                //           fontWeight: FontWeight.w700,
-                //         ),
-                //   ),
-                // ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 10.5,
+                    right: 10.5,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      context.read<CatalogBloc>().add(
+                            CatalogEvent.getInfoProducts(
+                              path: checkPath(_selectIndexType),
+                              isCleanHistory: true,
+                            ),
+                          );
+                      context.navigateTo(
+                        CatalogRoute(
+                          title: '',
+                          url: checkPath(_selectIndexType),
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      child: Image.asset(
+                        'assets/images/sale.jpg',
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Center(
+                  child: Text(
+                    'Распродажа',
+                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
+                ),
                 const SizedBox(
                   height: 28,
                 ),
@@ -449,6 +467,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                         context.read<CatalogBloc>().add(
                                               CatalogEvent.getInfoProducts(
                                                 path: initState.allBrands[index].u,
+                                                isCleanHistory: true,
                                               ),
                                             );
                                         context.navigateTo(

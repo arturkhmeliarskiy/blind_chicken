@@ -1,9 +1,9 @@
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared/shared.dart';
+import 'package:uuid/uuid.dart';
 
 Future<void> initShared(GetIt getIt) async {
-  DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  var uuid = const Uuid();
   getIt
     ..registerFactory(
       () => ConverterService(),
@@ -12,7 +12,7 @@ Future<void> initShared(GetIt getIt) async {
       () => FormatNumber(),
     )
     ..registerFactory(
-      () => DeviceInfoService(deviceInfoPlugin),
+      () => DeviceInfoService(uuid),
     )
     ..registerFactory(
       () => ProductsFavouritesService(),

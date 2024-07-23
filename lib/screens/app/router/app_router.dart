@@ -34,6 +34,8 @@ import 'package:blind_chicken/screens/home/main/main_screen.dart';
 import 'package:blind_chicken/screens/account/order_user_info_screen.dart';
 import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/location/search_location_screen.dart';
+import 'package:blind_chicken/screens/news/media_notification_description_screen.dart';
+import 'package:blind_chicken/screens/news/news_notification_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/media/media_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/news_info_screen.dart';
@@ -271,6 +273,14 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: NotficationInfoDescriptionRoute.page,
           path: '/notfication_info_description',
+        ),
+        AutoRoute(
+          page: NewsNotificationDescriptionRoute.page,
+          path: '/news_notfication_info_description',
+        ),
+        AutoRoute(
+          page: MediaNotificationDescriptionRoute.page,
+          path: '/media_notfication_info_description',
         ),
         AutoRoute(
           page: NewsPreviewMediaRoute.page,

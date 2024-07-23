@@ -42,7 +42,8 @@ mixin _$CatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -86,7 +87,7 @@ mixin _$CatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -127,7 +128,7 @@ mixin _$CatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -369,7 +370,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -416,7 +418,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -460,7 +462,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -707,7 +709,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -754,7 +757,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -798,7 +801,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -1047,7 +1050,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -1094,7 +1098,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -1138,7 +1142,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -1490,7 +1494,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -1537,7 +1542,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -1581,7 +1586,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -1873,7 +1878,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -1920,7 +1926,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -1964,7 +1970,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -2271,7 +2277,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -2318,7 +2325,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -2362,7 +2369,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -2674,7 +2681,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -2721,7 +2729,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -2765,7 +2773,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -3076,7 +3084,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -3123,7 +3132,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -3167,7 +3176,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -3473,7 +3482,8 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -3520,7 +3530,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -3564,7 +3574,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -3849,7 +3859,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -3896,7 +3907,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -3940,7 +3951,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -4196,7 +4207,8 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -4243,7 +4255,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -4287,7 +4299,7 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -4561,7 +4573,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -4608,7 +4621,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -4652,7 +4665,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -4944,7 +4957,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -4991,7 +5005,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -5035,7 +5049,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -5322,7 +5336,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -5369,7 +5384,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -5413,7 +5428,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -5701,7 +5716,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -5748,7 +5764,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -5792,7 +5808,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -6075,7 +6091,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -6122,7 +6139,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -6166,7 +6183,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -6363,7 +6380,7 @@ abstract class _$$GetInfoProductsCatalogEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductsCatalogEventImpl) then) =
       __$$GetInfoProductsCatalogEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String path});
+  $Res call({String path, bool? isCleanHistory});
 }
 
 /// @nodoc
@@ -6379,12 +6396,17 @@ class __$$GetInfoProductsCatalogEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? path = null,
+    Object? isCleanHistory = freezed,
   }) {
     return _then(_$GetInfoProductsCatalogEventImpl(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
+      isCleanHistory: freezed == isCleanHistory
+          ? _value.isCleanHistory
+          : isCleanHistory // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -6392,14 +6414,17 @@ class __$$GetInfoProductsCatalogEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
-  const _$GetInfoProductsCatalogEventImpl({required this.path});
+  const _$GetInfoProductsCatalogEventImpl(
+      {required this.path, this.isCleanHistory});
 
   @override
   final String path;
+  @override
+  final bool? isCleanHistory;
 
   @override
   String toString() {
-    return 'CatalogEvent.getInfoProducts(path: $path)';
+    return 'CatalogEvent.getInfoProducts(path: $path, isCleanHistory: $isCleanHistory)';
   }
 
   @override
@@ -6407,11 +6432,13 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductsCatalogEventImpl &&
-            (identical(other.path, path) || other.path == path));
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.isCleanHistory, isCleanHistory) ||
+                other.isCleanHistory == isCleanHistory));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, path);
+  int get hashCode => Object.hash(runtimeType, path, isCleanHistory);
 
   @JsonKey(ignore: true)
   @override
@@ -6447,7 +6474,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -6467,7 +6495,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
   }) {
-    return getInfoProducts(path);
+    return getInfoProducts(path, isCleanHistory);
   }
 
   @override
@@ -6494,7 +6522,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -6511,7 +6539,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
   }) {
-    return getInfoProducts?.call(path);
+    return getInfoProducts?.call(path, isCleanHistory);
   }
 
   @override
@@ -6538,7 +6566,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -6557,7 +6585,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
-      return getInfoProducts(path);
+      return getInfoProducts(path, isCleanHistory);
     }
     return orElse();
   }
@@ -6717,10 +6745,12 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
 }
 
 abstract class GetInfoProductsCatalogEvent implements CatalogEvent {
-  const factory GetInfoProductsCatalogEvent({required final String path}) =
-      _$GetInfoProductsCatalogEventImpl;
+  const factory GetInfoProductsCatalogEvent(
+      {required final String path,
+      final bool? isCleanHistory}) = _$GetInfoProductsCatalogEventImpl;
 
   String get path;
+  bool? get isCleanHistory;
   @JsonKey(ignore: true)
   _$$GetInfoProductsCatalogEventImplCopyWith<_$GetInfoProductsCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6793,7 +6823,8 @@ class _$UpdateInfoProductsCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -6840,7 +6871,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -6884,7 +6915,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -7184,7 +7215,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -7231,7 +7263,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -7275,7 +7307,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -7593,7 +7625,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -7640,7 +7673,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -7684,7 +7717,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -7967,7 +8000,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -8014,7 +8048,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -8058,7 +8092,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -8313,7 +8347,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -8360,7 +8395,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -8404,7 +8439,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -8654,7 +8689,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -8701,7 +8737,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -8745,7 +8781,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -9034,7 +9070,8 @@ class _$ChangeSizeProductCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -9081,7 +9118,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -9125,7 +9162,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -9410,7 +9447,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -9457,7 +9495,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -9501,7 +9539,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -9759,7 +9797,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -9806,7 +9845,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -9850,7 +9889,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -10128,7 +10167,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -10175,7 +10215,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -10219,7 +10259,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -10512,7 +10552,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -10559,7 +10600,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -10603,7 +10644,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -10896,7 +10937,8 @@ class _$GetInfoProductSizeCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -10943,7 +10985,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -10987,7 +11029,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -11272,7 +11314,8 @@ class _$GetInfoServiceCardCatalogEventImpl
     required TResult Function(List<MenuItemDataModel> items) removePathMenu,
     required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
     required TResult Function(int selectIndexType) switchTypePeople,
-    required TResult Function(String path) getInfoProducts,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
     required TResult Function() updateInfoProducts,
     required TResult Function(String path, String sort, String filterSelect)
         getInfoProductsPushNotification,
@@ -11319,7 +11362,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult? Function(int selectIndexType)? switchTypePeople,
-    TResult? Function(String path)? getInfoProducts,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function()? updateInfoProducts,
     TResult? Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,
@@ -11363,7 +11406,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult Function(List<MenuItemDataModel> items)? removePathMenu,
     TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
     TResult Function(int selectIndexType)? switchTypePeople,
-    TResult Function(String path)? getInfoProducts,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function()? updateInfoProducts,
     TResult Function(String path, String sort, String filterSelect)?
         getInfoProductsPushNotification,

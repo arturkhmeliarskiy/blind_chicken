@@ -20,14 +20,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final CatalogRepository _catalogRepository;
   final SharedPreferencesService _sharedPreferencesService;
   final PushNotificationRepository _pushNotificationRepository;
-  final DeviceInfoService _deviceInfoService;
 
   LoginBloc(
     this._authRepository,
     this._catalogRepository,
     this._sharedPreferencesService,
     this._pushNotificationRepository,
-    this._deviceInfoService,
   ) : super(const LoginState.init()) {
     on<LoginEvent>((event, emit) => event.map<Future<void>>(
           init: (event) => _init(event, emit),
@@ -104,7 +102,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     final favorites = _catalogRepository.getFavouritesProducts();
     final shopping = _catalogRepository.getShoppingCartProducts();
-    final deviceId = await _deviceInfoService.getDeviceId();
+    String deviceId = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.deviceId,
+        ) ??
+        '';
     for (int i = 0; i < shopping.length; i++) {
       basket.add(BasketInfoItemDataModel(
         code: shopping[i].code,

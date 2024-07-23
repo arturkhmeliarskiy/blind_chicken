@@ -108,6 +108,8 @@ import YandexMapsMobile
         else { return }
     guard let uid = userInfo["uid"] as? String
         else { return }
+    guard let idNews = userInfo["id_news"] as? String
+        else { return }
 
       methodChannel?.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in  
@@ -133,6 +135,10 @@ import YandexMapsMobile
         }
         if (call.method == "codeProduct") {
           result("\("\(codeProduct)")")
+          return
+        }
+        if (call.method == "idNews") {
+          result("\("\(idNews)")")
           return
         }
         // if (call.method == "title") {

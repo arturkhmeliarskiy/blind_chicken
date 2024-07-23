@@ -7,12 +7,12 @@ import 'package:shared/shared.dart';
 
 class LocationService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
+  final SharedPreferencesService _sharedPreferencesService;
   final ConverterService _converterService;
 
   LocationService(
     this._dio,
-    this._deviceInfoService,
+    this._sharedPreferencesService,
     this._converterService,
   );
 
@@ -69,7 +69,7 @@ class LocationService {
     required String cityId,
   }) async {
     CalculationCostDeliveryRsponse? calculationCostDeliveryRsponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     try {
       log(_dio.options.headers.toString());

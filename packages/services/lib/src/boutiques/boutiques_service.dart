@@ -7,12 +7,12 @@ import 'package:shared/shared.dart';
 
 class BoutiquesService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
+  final SharedPreferencesService _sharedPreferencesService;
   final ConverterService _converterService;
 
   BoutiquesService(
     this._dio,
-    this._deviceInfoService,
+    this._sharedPreferencesService,
     this._converterService,
   ) {
     _dio.options.baseUrl = 'https://slepayakurica.ru';
@@ -21,7 +21,7 @@ class BoutiquesService {
 
   Future<BoutiquesResponse?> getBoutiques() async {
     BoutiquesResponse? boutiquesResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     try {
       log(_dio.options.headers.toString());
@@ -67,7 +67,7 @@ class BoutiquesService {
     required String uid,
   }) async {
     BoutiqueInfoResponse? boutiqueInfoResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     try {
       log(_dio.options.headers.toString());
@@ -106,7 +106,7 @@ class BoutiquesService {
     required String uid,
   }) async {
     BoutiqueInfoDetailResponse? boutiqueInfoDetailResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     try {
       log(_dio.options.headers.toString());

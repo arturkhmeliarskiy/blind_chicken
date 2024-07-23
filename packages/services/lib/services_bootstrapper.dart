@@ -9,7 +9,6 @@ Future<void> initServices(GetIt getIt) async {
     ..registerFactory(
       () => CatalogService(
         dio,
-        getIt.get<DeviceInfoService>(),
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
@@ -17,14 +16,13 @@ Future<void> initServices(GetIt getIt) async {
     ..registerFactory(
       () => BoutiquesService(
         dio,
-        getIt.get<DeviceInfoService>(),
+        getIt.get<SharedPreferencesService>(),
         getIt.get<ConverterService>(),
       ),
     )
     ..registerFactory(
       () => AuthService(
         dio,
-        getIt.get<DeviceInfoService>(),
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
@@ -32,7 +30,6 @@ Future<void> initServices(GetIt getIt) async {
     ..registerFactory(
       () => BasketService(
         dio,
-        getIt.get<DeviceInfoService>(),
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
@@ -40,7 +37,6 @@ Future<void> initServices(GetIt getIt) async {
     ..registerFactory(
       () => FavouritesService(
         dio,
-        getIt.get<DeviceInfoService>(),
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
@@ -48,14 +44,13 @@ Future<void> initServices(GetIt getIt) async {
     ..registerFactory(
       () => LocationService(
         dio,
-        getIt.get<DeviceInfoService>(),
+        getIt.get<SharedPreferencesService>(),
         getIt.get<ConverterService>(),
       ),
     )
     ..registerFactory(
       () => OrdersService(
         dio,
-        getIt.get<DeviceInfoService>(),
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
@@ -75,8 +70,15 @@ Future<void> initServices(GetIt getIt) async {
     ..registerFactory(
       () => NewsService(
         dio,
-        getIt.get<DeviceInfoService>(),
+        getIt.get<SharedPreferencesService>(),
         getIt.get<ConverterService>(),
+      ),
+    )
+    ..registerFactory(
+      () => StoreVersionAppService(
+        dio,
+        getIt.get<ConverterService>(),
+        getIt.get<SharedPreferencesService>(),
       ),
     );
 }

@@ -134,7 +134,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                             ),
                           ),
                           Text(
-                            '${widget.bonusLoyal} ₽',
+                            '${widget.bonusLoyal.spaceSeparateNumbers()} ₽',
                             style: Theme.of(context).textTheme.headline2?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -166,7 +166,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                 ),
                               ),
                               Text(
-                                '${widget.bonusGift} ₽',
+                                '${widget.bonusGift.spaceSeparateNumbers()} ₽',
                                 style: Theme.of(context).textTheme.headline2?.copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),
@@ -209,7 +209,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                   style: Theme.of(context).textTheme.headline2,
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: '${widget.bonusYear} ₽',
+                                      text: '${widget.bonusYear.spaceSeparateNumbers()} ₽',
                                       style: Theme.of(context).textTheme.headline2?.copyWith(
                                             fontWeight: FontWeight.w700,
                                           ),
@@ -258,7 +258,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                               ),
                             ),
                             Text(
-                              '${widget.discountVal} ₽',
+                              '${widget.discountVal.toString().spaceSeparateNumbers()} ₽',
                               style: Theme.of(context).textTheme.headline2?.copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -343,7 +343,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                 ),
                                 RichText(
                                   text: TextSpan(
-                                    text: widget.userNextDiscount.toString(),
+                                    text: widget.userNextDiscount.toString().spaceSeparateNumbers(),
                                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                           fontWeight: FontWeight.w700,
                                         ),

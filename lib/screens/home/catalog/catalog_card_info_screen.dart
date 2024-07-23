@@ -55,6 +55,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   final ScrollController _scrollController = ScrollController();
   bool _isChildRoute = false;
   bool _isSwipe = true;
+  bool _isShoppingCartButton = true;
   late ProductDataModel item;
 
   @override
@@ -230,7 +231,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     }
                                   }
                                 } else {
-                                  context.back();
+                                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                                    context.back();
+                                  });
                                 }
                               }
                             }
@@ -833,6 +836,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                     ),
                                                                   );
                                                             },
+                                                            isAuth: initState.isAuth,
                                                           )
                                                         ],
                                                       );
@@ -905,6 +909,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                     ),
                                                                   );
                                                             },
+                                                            isAuth: initState.isAuth,
                                                           )
                                                         ],
                                                       );
@@ -976,6 +981,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                     ),
                                                                   );
                                                             },
+                                                            isAuth: initState.isAuth,
                                                           )
                                                         ],
                                                       );
@@ -1096,6 +1102,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                   ),
                                                                 );
                                                           },
+                                                          isAuth: initState.isAuth,
                                                         ),
                                                       ],
                                                     );

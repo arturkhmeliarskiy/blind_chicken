@@ -66,7 +66,7 @@ class UpdateDataService {
   }
 
   bool get isOpenUpdateModalWindow {
-    return _isOpenUpdateModalWindow ?? true;
+    return _isOpenUpdateModalWindow ?? false;
   }
 
   set isOpenUpdateModalWindow(bool value) {

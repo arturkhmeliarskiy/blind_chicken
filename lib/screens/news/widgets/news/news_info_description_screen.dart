@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -177,26 +178,23 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                 const SizedBox(
                                   height: 12,
                                 ),
-                                SizedBox(
-                                  height: 250,
-                                  child: NewsYouTubeVideoPlayer(
-                                    url: widget.info.video,
-                                    onEnterFullScreen: () {
-                                      setState(() {
-                                        _isFullScreenVideo = true;
-                                      });
-                                    },
-                                    onExitFullScreen: () {},
-                                  ),
+                                NewsYouTubeVideoPlayer(
+                                  url: widget.info.video,
+                                  onEnterFullScreen: () {
+                                    setState(() {
+                                      _isFullScreenVideo = true;
+                                    });
+                                  },
+                                  onExitFullScreen: () {},
                                 ),
                               ],
                             ),
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
+                          HtmlWidget(
                             widget.info.description,
-                            style: Theme.of(context).textTheme.displayMedium,
+                            textStyle: Theme.of(context).textTheme.displayMedium,
                           ),
                           // Container(
                           //   height: 40,
@@ -230,13 +228,14 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          if (widget.info.path.isNotEmpty)
+                          if (widget.info.titleButton.isNotEmpty)
                             GestureDetector(
                               onTap: () {
                                 if (widget.info.typePath == 'catalog') {
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.getInfoProducts(
                                           path: widget.info.path,
+                                          isCleanHistory: true,
                                         ),
                                       );
                                   context.navigateTo(DashboardRoute(children: [
@@ -324,6 +323,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                         color: BlindChickenColors.activeBorderTextField,
                                       ),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ),

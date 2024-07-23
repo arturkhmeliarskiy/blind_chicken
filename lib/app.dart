@@ -174,6 +174,22 @@ class _AppState extends State<App> {
                   ),
                 );
               }
+              if (notificationMessage.type == 'news') {
+                _appRouter.push(
+                  NewsNotificationDescriptionRoute(
+                    idNews: notificationMessage.idNews,
+                    isNotification: true,
+                  ),
+                );
+              }
+              if (notificationMessage.type == 'media') {
+                _appRouter.push(
+                  MediaNotificationDescriptionRoute(
+                    idNews: notificationMessage.idNews,
+                    isNotification: true,
+                  ),
+                );
+              }
             }
             updateData.idMessageNotification = notificationMessage.idMessage;
           }
@@ -216,6 +232,7 @@ class _AppState extends State<App> {
               final sort = await me.invokeMethod('sort') as String;
               final uid = await me.invokeMethod('uid') as String;
               final codeProduct = await me.invokeMethod('codeProduct') as String;
+              final idNews = await me.invokeMethod('idNews') as String;
               final filterSelect = await me.invokeMethod('filter') as String;
 
               // final title = await me.invokeMethod('title') as String;
@@ -272,6 +289,24 @@ class _AppState extends State<App> {
                   if (type == 'gift_card' && updateData.isInitApp) {
                     _appRouter.push(
                       GiftCardRoute(
+                        isNotification: true,
+                      ),
+                    );
+                    updateData.idMessageNotification = iDMessage;
+                  }
+                  if (type == 'news' && updateData.isInitApp) {
+                    _appRouter.push(
+                      NewsNotificationDescriptionRoute(
+                        idNews: idNews,
+                        isNotification: true,
+                      ),
+                    );
+                    updateData.idMessageNotification = iDMessage;
+                  }
+                  if (type == 'media' && updateData.isInitApp) {
+                    _appRouter.push(
+                      MediaNotificationDescriptionRoute(
+                        idNews: idNews,
                         isNotification: true,
                       ),
                     );

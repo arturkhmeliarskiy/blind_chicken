@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,18 +18,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
       listener: (context, state) {
         state.maybeWhen(
           active: () {
-            context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
-            context.navigateTo(
-              const DashboardRoute(
-                children: [
-                  HomeAutoRouterRoute(
-                    children: [
-                      CategoryRoute(),
-                    ],
-                  ),
-                ],
-              ),
-            );
+            context.back();
           },
           notActive: () {},
           orElse: () {},

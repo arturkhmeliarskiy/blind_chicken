@@ -7,13 +7,11 @@ import 'package:shared/shared.dart';
 
 class AuthService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
   final ConverterService _converterService;
   final SharedPreferencesService _sharedPreferencesService;
 
   AuthService(
     this._dio,
-    this._deviceInfoService,
     this._converterService,
     this._sharedPreferencesService,
   ) {
@@ -25,7 +23,7 @@ class AuthService {
     required String tel,
   }) async {
     AuthResponse? authResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
     try {
@@ -62,7 +60,7 @@ class AuthService {
     required String captchaCode,
   }) async {
     AuthResponse? authResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
     try {
@@ -99,7 +97,7 @@ class AuthService {
     required String name,
   }) async {
     AuthResponse? authResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
@@ -137,7 +135,7 @@ class AuthService {
     required String email,
   }) async {
     AuthResponse? authResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
@@ -175,7 +173,7 @@ class AuthService {
     required UserInformationRequest request,
   }) async {
     UserInfoResponse? userInfoResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p${request.tel}");
     try {
@@ -211,7 +209,7 @@ class AuthService {
 
   Future<UserInfoResponse?> getUserInfo() async {
     UserInfoResponse? userInfoResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
@@ -266,7 +264,7 @@ class AuthService {
     String? nav,
   }) async {
     OrdersBlankResponse? ordersBlankResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
@@ -329,7 +327,7 @@ class AuthService {
     required String id,
   }) async {
     OrderBlankPdfResponse? orderBlankPdfResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
@@ -389,7 +387,7 @@ class AuthService {
     String? nav,
   }) async {
     OrdersBlankResponse? ordersBlankResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
@@ -452,7 +450,7 @@ class AuthService {
     required String id,
   }) async {
     OrderBlankPdfResponse? orderBlankPdfResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");

@@ -27,6 +27,20 @@ class NewsRepository {
     final media = await _newsService.getNotifications(page: page);
     return media.toNotifications();
   }
+
+  Future<OneNewsInfoDataModel> getOneNews({
+    required String id,
+  }) async {
+    final news = await _newsService.getOneNews(id: id);
+    return news.toOneNews();
+  }
+
+  Future<OneMediaInfoDataModel> getOneMedia({
+    required String id,
+  }) async {
+    final media = await _newsService.getOneMedia(id: id);
+    return media.toOneMedia();
+  }
 }
 
 extension on NewsInfoResponse {
@@ -131,6 +145,69 @@ extension on NotificationInfoResponse {
               ),
             ) ??
             [],
+      ),
+      isViewed: isViewed ?? false,
+    );
+  }
+}
+
+extension on OneNewsInfoResponse {
+  OneNewsInfoDataModel toOneNews() {
+    return OneNewsInfoDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+      data: NewsInfoItemDataModel(
+        id: data?.id ?? '',
+        title: data?.title ?? '',
+        createAt: data?.createAt ?? '',
+        images: data?.images?.isNotEmpty ?? false
+            ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
+            : [],
+        video: data?.video ?? '',
+        announcement: data?.announcement ?? '',
+        typeMedia: data?.typeMedia ?? '',
+        description: data?.description ?? '',
+        titleButton: data?.titleButton ?? '',
+        typePath: data?.typePath ?? '',
+        path: data?.path ?? '',
+        code: data?.code ?? '',
+        sort: data?.sort ?? '',
+        filterSelect: data?.filterSelect ?? '',
+        uidStore: data?.uidStore ?? '',
+        numberViews: data?.numberViews ?? 0,
+        isViewed: data?.isViewed ?? false,
+      ),
+      isViewed: isViewed ?? false,
+    );
+  }
+}
+
+extension on OneMediaInfoResponse {
+  OneMediaInfoDataModel toOneMedia() {
+    return OneMediaInfoDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+      data: MediaInfoItemDataModel(
+        id: data?.id ?? '',
+        title: data?.title ?? '',
+        createAt: data?.createAt ?? '',
+        images: data?.images?.isNotEmpty ?? false
+            ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
+            : [],
+        video: data?.video ?? '',
+        typeMedia: data?.typeMedia ?? '',
+        description: data?.description ?? '',
+        titleButton: data?.titleButton ?? '',
+        typePath: data?.typePath ?? '',
+        path: data?.path ?? '',
+        code: data?.code ?? '',
+        sort: data?.sort ?? '',
+        filterSelect: data?.filterSelect ?? '',
+        uidStore: data?.uidStore ?? '',
+        numberViews: data?.numberViews ?? 0,
+        isViewed: data?.isViewed ?? false,
       ),
       isViewed: isViewed ?? false,
     );

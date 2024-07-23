@@ -59,5 +59,10 @@ Future<void> initRepositories(GetIt getIt) async {
       () => NewsRepository(
         getIt.get<NewsService>(),
       ),
+    )
+    ..registerFactory(
+      () => StoreVersionAppRepository(
+        getIt.get<StoreVersionAppService>(),
+      ),
     );
 }

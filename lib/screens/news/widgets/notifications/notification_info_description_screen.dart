@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -193,9 +194,9 @@ class _NotficationInfoDescriptionScreenState extends State<NotficationInfoDescri
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
+                          HtmlWidget(
                             widget.info.description,
-                            style: Theme.of(context).textTheme.displayMedium,
+                            textStyle: Theme.of(context).textTheme.displayMedium,
                           ),
                           const SizedBox(
                             height: 10,
@@ -207,6 +208,7 @@ class _NotficationInfoDescriptionScreenState extends State<NotficationInfoDescri
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.getInfoProducts(
                                           path: widget.info.path,
+                                          isCleanHistory: true,
                                         ),
                                       );
                                   context.navigateTo(DashboardRoute(children: [

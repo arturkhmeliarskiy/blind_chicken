@@ -353,7 +353,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                           }
                                         }
                                       } else {
-                                        context.back();
+                                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                                          context.back();
+                                        });
                                       }
                                     }
                                     setState(() {
@@ -415,7 +417,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             }
                                           }
                                         } else {
-                                          context.back();
+                                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                                            context.back();
+                                          });
                                         }
                                       }
                                     }
@@ -514,7 +518,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                             text: TextSpan(
                                               children: [
                                                 TextSpan(
-                                                  text: '${initState.catalogInfo?.h1 ?? ''} ',
+                                                  text: (initState.catalogInfo?.h1 ?? '')
+                                                      .replaceAll("\n", ""),
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .titleSmall
@@ -523,7 +528,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       ),
                                                 ),
                                                 TextSpan(
-                                                  text: '   ${initState.catalogInfo?.count ?? ''}',
+                                                  text: ' ${initState.catalogInfo?.count ?? ''}',
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .displaySmall
@@ -565,7 +570,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                   onTap: () {
                                                     context.read<CatalogBloc>().add(
                                                           CatalogEvent.getInfoProducts(
-                                                              path: listItems[index].value),
+                                                            path: listItems[index].value,
+                                                          ),
                                                         );
                                                   },
                                                   child: Container(

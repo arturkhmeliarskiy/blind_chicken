@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:repositories/repositories.dart';
 
 part 'news_bloc.freezed.dart';
@@ -9,9 +12,17 @@ part 'news_state.dart';
 
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final NewsRepository _newsRepository;
+  final StoreVersionAppRepository _storeVersionAppRepository;
+  NewsInfoDataModel _news =
+      NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+  MediaInfoDataModel _media =
+      MediaInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
+  NotificationInfoDataModel _notificatios =
+      NotificationInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
 
   NewsBloc(
     this._newsRepository,
+    this._storeVersionAppRepository,
   ) : super(const NewsState.init()) {
     on<NewsEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -22,6 +33,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         paginationNews: (event) => _paginationNews(event, emit),
         paginationMedia: (event) => _paginationMedia(event, emit),
         paginationNotifications: (event) => _paginationNotifications(event, emit),
+        getNewsDescriptionInfo: (event) => _getNewsDescriptionInfo(event, emit),
+        getMediaDescriptionInfo: (event) => _getMediaDescriptionInfo(event, emit),
+        goBackNewsInfo: (event) => _goBackNewsInfo(event, emit),
       ),
     );
   }
@@ -30,38 +44,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     InitNewsEvent event,
     Emitter<NewsState> emit,
   ) async {
-    NewsInfoDataModel news = NewsInfoDataModel(
-      e: '',
-      r: '',
-      errorMessage: '',
-      list: [],
-      isViewed: false,
-    );
-
-    MediaInfoDataModel media = MediaInfoDataModel(
-      e: '',
-      r: '',
-      errorMessage: '',
-      list: [],
-      isViewed: false,
-    );
-
-    NotificationInfoDataModel notificatios = NotificationInfoDataModel(
-      e: '',
-      r: '',
-      errorMessage: '',
-      list: [],
-      isViewed: false,
-    );
-
     emit(
       NewsState.preloadDataCompleted(
-        news: news,
-        media: media,
-        notificatios: notificatios,
+        news: _news,
+        media: _media,
+        notificatios: _notificatios,
         offsetNews: 1,
         offsetMedia: 1,
         offsetNotificatios: 1,
+        listNewsPath: [],
+        isUpdateVersionApp: false,
+        isNotification: false,
       ),
     );
   }
@@ -72,9 +65,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const NewsState.load());
+      List<String> listNewsPath = initState.listNewsPath.toList();
       NewsInfoDataModel news = await _newsRepository.getNews(page: 1);
+      listNewsPath.add('0');
 
-      news = NewsInfoDataModel(
+      _news = NewsInfoDataModel(
         e: news.e,
         r: news.r,
         errorMessage: news.errorMessage,
@@ -84,8 +79,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          news: news,
+          news: _news,
           offsetNews: 1,
+          listNewsPath: listNewsPath,
         ),
       );
     });
@@ -97,10 +93,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const NewsState.load());
-
+      List<String> listNewsPath = initState.listNewsPath.toList();
       MediaInfoDataModel media = await _newsRepository.getMedia(page: 1);
+      listNewsPath.add('1');
 
-      media = MediaInfoDataModel(
+      _media = MediaInfoDataModel(
         e: media.e,
         r: media.r,
         errorMessage: media.errorMessage,
@@ -110,8 +107,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          media: media,
+          media: _media,
           offsetMedia: 1,
+          listNewsPath: listNewsPath,
         ),
       );
     });
@@ -123,10 +121,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const NewsState.load());
-
+      List<String> listNewsPath = initState.listNewsPath.toList();
       NotificationInfoDataModel notificatios = await _newsRepository.getNotifications(page: 1);
+      listNewsPath.add('2');
 
-      notificatios = NotificationInfoDataModel(
+      _notificatios = NotificationInfoDataModel(
         e: notificatios.e,
         r: notificatios.r,
         errorMessage: notificatios.errorMessage,
@@ -136,8 +135,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          notificatios: notificatios,
+          notificatios: _notificatios,
           offsetNotificatios: 1,
+          listNewsPath: listNewsPath,
         ),
       );
     });
@@ -204,6 +204,140 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         ),
         offsetNotificatios: offsetNotificatios,
       ));
+    });
+  }
+
+  Future<void> _getNewsDescriptionInfo(
+    GetNewsDescriptionInfoNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    emit(const NewsState.load());
+    String appStoreInfoVersion = '';
+    bool isUpdateVersionApp = false;
+
+    final oneNews = await _newsRepository.getOneNews(id: event.id);
+
+    final result = await _storeVersionAppRepository.getStoreVersion();
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    } else {
+      appStoreInfoVersion = result.version.android;
+    }
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
+        isUpdateVersionApp = true;
+      }
+    }
+
+    emit(
+      NewsState.preloadDataCompleted(
+        news: _news,
+        media: _media,
+        notificatios: _notificatios,
+        offsetNews: 1,
+        offsetMedia: 1,
+        offsetNotificatios: 1,
+        oneNews: oneNews,
+        listNewsPath: [],
+        isNotification: true,
+        isUpdateVersionApp: isUpdateVersionApp,
+      ),
+    );
+  }
+
+  Future<void> _getMediaDescriptionInfo(
+    GetMediaDescriptionInfoNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    emit(const NewsState.load());
+    String appStoreInfoVersion = '';
+    bool isUpdateVersionApp = false;
+
+    final oneMedia = await _newsRepository.getOneMedia(id: event.id);
+
+    final result = await _storeVersionAppRepository.getStoreVersion();
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    } else {
+      appStoreInfoVersion = result.version.android;
+    }
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
+        isUpdateVersionApp = true;
+      }
+    }
+
+    emit(
+      NewsState.preloadDataCompleted(
+        news: _news,
+        media: _media,
+        notificatios: _notificatios,
+        offsetNews: 1,
+        offsetMedia: 1,
+        offsetNotificatios: 1,
+        oneMedia: oneMedia,
+        listNewsPath: [],
+        isNotification: true,
+        isUpdateVersionApp: isUpdateVersionApp,
+      ),
+    );
+  }
+
+  Future<void> _goBackNewsInfo(
+    GoBackNewsInfoNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<String> listNewsPath = initState.listNewsPath.toList();
+      if (listNewsPath.isNotEmpty) {
+        listNewsPath.removeLast();
+      }
+
+      emit(initState.copyWith(
+        listNewsPath: listNewsPath,
+      ));
+
+      if (listNewsPath.isNotEmpty) {
+        emit(const NewsState.load());
+        if (listNewsPath.last == '0') {
+          NewsInfoDataModel news = await _newsRepository.getNews(page: 1);
+          emit(
+            initState.copyWith(
+              news: news,
+              offsetNews: 1,
+              listNewsPath: listNewsPath,
+            ),
+          );
+        } else if (listNewsPath.last == '1') {
+          MediaInfoDataModel media = await _newsRepository.getMedia(page: 1);
+          emit(
+            initState.copyWith(
+              media: media,
+              offsetMedia: 1,
+              listNewsPath: listNewsPath,
+            ),
+          );
+        } else if (listNewsPath.last == '2') {
+          NotificationInfoDataModel notificatios = await _newsRepository.getNotifications(page: 1);
+          emit(
+            initState.copyWith(
+              notificatios: notificatios,
+              offsetNotificatios: 1,
+              listNewsPath: listNewsPath,
+            ),
+          );
+        }
+      }
     });
   }
 }

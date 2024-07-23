@@ -57,6 +57,7 @@ class CatalogEvent with _$CatalogEvent {
   }) = SwitchTypePeopleCatalogEvent;
   const factory CatalogEvent.getInfoProducts({
     required String path,
+    bool? isCleanHistory,
   }) = GetInfoProductsCatalogEvent;
   const factory CatalogEvent.updateInfoProducts() = UpdateInfoProductsCatalogEvent;
   const factory CatalogEvent.getInfoProductsPushNotification({

@@ -16,12 +16,12 @@ part 'gift_card_state.dart';
 class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
   final CatalogRepository _catalogRepository;
   final UpdateDataService _updateDataService;
-  final AppStoreInfoRepository _appStoreInfoRepository;
+  final StoreVersionAppRepository _storeVersionAppRepository;
 
   GiftCardBloc(
     this._catalogRepository,
     this._updateDataService,
-    this._appStoreInfoRepository,
+    this._storeVersionAppRepository,
   ) : super(const GiftCardState.init()) {
     on<GiftCardEvent>(
       (event, emit) => event.map(
@@ -37,17 +37,25 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
   ) async {
     emit(const GiftCardState.load());
     bool isUpdateVersionApp = false;
-    final appStoreInfoIOs = await _appStoreInfoRepository.checkiOSVersion();
+    String appStoreInfoVersion = '';
+
+    final result = await _storeVersionAppRepository.getStoreVersion();
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    } else {
+      appStoreInfoVersion = result.version.android;
+    }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    if (appStoreInfoIOs.appStroreVersion.isNotEmpty && Platform.isIOS) {
-      final appStoreIOsVersion = int.parse(appStoreInfoIOs.appStroreVersion.replaceAll('.', ''));
-      final packageInfoIOsVersion = int.parse(packageInfo.version.replaceAll('.', ''));
-      if (appStoreIOsVersion > packageInfoIOsVersion) {
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
         isUpdateVersionApp = true;
       }
     }
+
     emit(
       GiftCardState.preloadDataCompleted(
         payments: _updateDataService.payments,

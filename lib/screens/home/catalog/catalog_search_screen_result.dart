@@ -431,24 +431,14 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                       );
 
                                                   context.navigateTo(
-                                                    DashboardRoute(
-                                                      children: [
-                                                        HomeAutoRouterRoute(
-                                                          children: [
-                                                            CatalogSearchCardInfoRoute(
-                                                              isChildRoute: false,
-                                                              item: initState.products[index],
-                                                              isLike: initState.favouritesProductsId
-                                                                  .contains(
-                                                                      initState.products[index].id),
-                                                              listItems: initState.products,
-                                                              favouritesProducts:
-                                                                  initState.favouritesProducts ??
-                                                                      [],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                    CatalogSearchCardInfoRoute(
+                                                      isChildRoute: false,
+                                                      item: initState.products[index],
+                                                      isLike: initState.favouritesProductsId
+                                                          .contains(initState.products[index].id),
+                                                      listItems: initState.products,
+                                                      favouritesProducts:
+                                                          initState.favouritesProducts ?? [],
                                                     ),
                                                   );
                                                 },

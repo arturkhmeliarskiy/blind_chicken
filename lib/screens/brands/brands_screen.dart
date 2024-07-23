@@ -441,6 +441,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                                         .listBrands[index]
                                                                         .value[indexBrand]
                                                                         .u,
+                                                                    isCleanHistory: true,
                                                                   ),
                                                                 );
                                                             context.navigateTo(

@@ -210,6 +210,7 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                             CatalogEvent.getInfoProducts(
                                                               path:
                                                                   initState.searchSections[index].u,
+                                                              isCleanHistory: true,
                                                             ),
                                                           );
                                                       context.navigateTo(

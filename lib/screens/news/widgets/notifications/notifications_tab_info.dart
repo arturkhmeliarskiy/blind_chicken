@@ -8,7 +8,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class NotificationsTabInfo extends StatefulWidget {
-  const NotificationsTabInfo({super.key});
+  const NotificationsTabInfo({
+    super.key,
+    required this.goBack,
+  });
+
+  final VoidCallback goBack;
 
   @override
   State<NotificationsTabInfo> createState() => _NotificationsTabInfoState();
@@ -57,89 +62,103 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-              return state.maybeMap(
-                preloadDataCompleted: (initState) {
-                  if (initState.offsetNotificatios == 1) {
-                    _paginationPosition = 0;
-                  }
-                  if (initState.notificatios.list.isNotEmpty) {
-                    return ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      controller: _scrollController,
-                      itemCount: initState.notificatios.list.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            context.navigateTo(
-                              NotficationInfoDescriptionRoute(
-                                info: initState.notificatios.list[index],
-                              ),
-                            );
-                          },
-                          child: NotificationItemTabInfo(
-                            item: initState.notificatios.list[index],
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {},
+      onHorizontalDragEnd: (DragEndDetails details) {
+        if (details.velocity.pixelsPerSecond.dx > 0) {
+          widget.goBack();
+        }
+      },
+      child: Stack(
+        children: [
+          Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+                return state.maybeMap(
+                  preloadDataCompleted: (initState) {
+                    if (initState.offsetNotificatios == 1) {
+                      _paginationPosition = 0;
+                    }
+                    if (initState.notificatios.list.isNotEmpty) {
+                      return ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        controller: _scrollController,
+                        itemCount: initState.notificatios.list.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              context.navigateTo(
+                                NotficationInfoDescriptionRoute(
+                                  info: initState.notificatios.list[index],
+                                ),
+                              );
+                            },
+                            child: NotificationItemTabInfo(
+                              item: initState.notificatios.list[index],
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      return LayoutBuilder(builder: (context, constraint) {
+                        return Container(
+                          height: constraint.maxHeight,
+                          width: constraint.maxWidth,
+                          alignment: Alignment.center,
+                          color: Colors.transparent,
+                          child: Text(
+                            'Нет уведомлений',
+                            style: Theme.of(context).textTheme.headline2,
                           ),
                         );
-                      },
-                    );
-                  } else {
-                    return Center(
-                      child: Text(
-                        'Нет уведомлений',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                    );
-                  }
-                },
-                orElse: () => const SizedBox(),
-              );
-            }),
-            if (_isButtonTop)
-              GestureDetector(
-                onTap: () {
-                  _scrollController.jumpTo(0.0);
-                  setState(() {
-                    _isButtonTop = false;
-                  });
-                },
-                child: Container(
-                  height: 45,
-                  width: 45,
-                  margin: const EdgeInsets.only(left: 15, bottom: 15),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: BlindChickenColors.activeBorderTextField,
-                    borderRadius: BorderRadius.circular(25),
+                      });
+                    }
+                  },
+                  orElse: () => const SizedBox(),
+                );
+              }),
+              if (_isButtonTop)
+                GestureDetector(
+                  onTap: () {
+                    _scrollController.jumpTo(0.0);
+                    setState(() {
+                      _isButtonTop = false;
+                    });
+                  },
+                  child: Container(
+                    height: 45,
+                    width: 45,
+                    margin: const EdgeInsets.only(left: 15, bottom: 15),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: BlindChickenColors.activeBorderTextField,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/icons/chevron-top.svg',
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    'assets/icons/chevron-top.svg',
+                )
+              else
+                const SizedBox()
+            ],
+          ),
+          BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+            return state.maybeMap(
+              load: (value) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    backgroundColor: Colors.grey.shade400,
                   ),
-                ),
-              )
-            else
-              const SizedBox()
-          ],
-        ),
-        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-          return state.maybeMap(
-            load: (value) {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey.shade400,
-                ),
-              );
-            },
-            orElse: () => const SizedBox(),
-          );
-        }),
-      ],
+                );
+              },
+              orElse: () => const SizedBox(),
+            );
+          }),
+        ],
+      ),
     );
   }
 }

@@ -65,10 +65,11 @@ class FavouritesRepository {
     return productToBasket.toFavouritesProdcutsInfo(basketInfo);
   }
 
-  Future<BasketFullInfoDataModel> getBasketInfo({
+  Future<BasketInfoDataModel> getBasketInfo({
     bool isLocal = true,
   }) async {
     List<BasketInfoItemDataModel> basket = [];
+    BasketInfoDataModel? basketInfo;
     if (isLocal) {
       final shopping = _catalogRepository.getShoppingCartProducts();
       for (int i = 0; i < shopping.length; i++) {
@@ -78,23 +79,13 @@ class FavouritesRepository {
           count: shopping[i].count,
         ));
       }
-    }
-
-    final basketInfo = await _basketRepository.getProductToBasketFullInfo(
-      basket: isLocal ? basket : null,
-    );
-
-    if (isLocal) {
-      for (int i = 0; i < basketInfo.basket.length; i++) {
-        _catalogRepository.putShoppingCartProduct(
-          i,
-          BasketInfoItemDataModel(
-            code: basketInfo.basket[i].code,
-            sku: basketInfo.basket[i].sku,
-            count: basketInfo.basket[i].count,
-          ),
-        );
-      }
+      basketInfo = BasketInfoDataModel(
+        basket: basket,
+        r: '1',
+        e: '',
+      );
+    } else {
+      basketInfo = await _basketRepository.getProductToBasket();
     }
 
     return basketInfo;
@@ -102,7 +93,7 @@ class FavouritesRepository {
 }
 
 extension on FavouritesCatalogInfoResponse {
-  FavouritesCatalogInfoDataModel toFavouritesProdcutsInfo(BasketFullInfoDataModel basketInfo) {
+  FavouritesCatalogInfoDataModel toFavouritesProdcutsInfo(BasketInfoDataModel basketInfo) {
     return FavouritesCatalogInfoDataModel(
       r: r ?? '',
       e: e ?? '',

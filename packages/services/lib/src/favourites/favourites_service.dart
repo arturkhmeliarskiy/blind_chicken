@@ -8,13 +8,11 @@ import 'package:shared/shared.dart';
 
 class FavouritesService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
   final ConverterService _converterService;
   final SharedPreferencesService _sharedPreferencesService;
 
   FavouritesService(
     this._dio,
-    this._deviceInfoService,
     this._converterService,
     this._sharedPreferencesService,
   ) {
@@ -26,7 +24,7 @@ class FavouritesService {
     required String code,
   }) async {
     FavouritesInfoResponse? favouritesInfoResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
@@ -69,7 +67,7 @@ class FavouritesService {
     required String code,
   }) async {
     FavouritesInfoResponse? favouritesInfoResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
@@ -110,7 +108,7 @@ class FavouritesService {
 
   Future<FavouritesResponse?> getFavouritesProdcuts() async {
     FavouritesResponse? favouritesResponse;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
@@ -164,7 +162,7 @@ class FavouritesService {
     List<FilterCatalogDataModel> filters = request.filters ?? [];
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {

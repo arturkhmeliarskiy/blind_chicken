@@ -623,6 +623,21 @@ class _AccountScreenState extends State<AccountScreen> {
                                                 ),
                                               ],
                                             ),
+                                          if ((initState.user?.limit ?? 0) > 0)
+                                            Padding(
+                                              padding: const EdgeInsets.only(top: 4),
+                                              child: Text(
+                                                'Доступно ${(initState.user?.rest ?? 0).toString().spaceSeparateNumbers()} ₽ из ${(initState.user?.limit ?? 0).toString().spaceSeparateNumbers()} ₽',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      color: BlindChickenColors
+                                                          .activeBorderTextField
+                                                          .withOpacity(0.8),
+                                                    ),
+                                              ),
+                                            ),
                                           const SizedBox(
                                             height: 14,
                                           ),

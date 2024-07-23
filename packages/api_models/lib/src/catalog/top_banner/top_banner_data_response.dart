@@ -10,6 +10,8 @@ class TopBannerDataResponse with _$TopBannerDataResponse {
     String? title,
     @JsonKey(name: 'color_text') String? colorText,
     @JsonKey(name: 'color_background') String? colorBackground,
+    @JsonKey(name: 'code_product') String? code,
+    @JsonKey(name: 'id_news') String? idNews,
     String? type,
     String? section,
     String? uid,

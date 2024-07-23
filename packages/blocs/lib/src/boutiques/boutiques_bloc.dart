@@ -14,13 +14,13 @@ part 'boutiques_state.dart';
 class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
   final BoutiquesRepository _boutiquesRepository;
   final UpdateDataService _updateDataService;
-  final AppStoreInfoRepository _appStoreInfoRepository;
+  final StoreVersionAppRepository _storeVersionAppRepository;
   List<BoutiqueDataModel> _boutiques = [];
 
   BoutiquesBloc(
     this._boutiquesRepository,
     this._updateDataService,
-    this._appStoreInfoRepository,
+    this._storeVersionAppRepository,
   ) : super(const BoutiquesState.init()) {
     on<BoutiquesEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -52,6 +52,7 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
   ) async {
     emit(const BoutiquesState.load());
     bool isUpdateVersionApp = false;
+    String appStoreInfoVersion = '';
     final detailsBoutique = await _boutiquesRepository.getInfoBoutique(
       uid: event.uid,
     );
@@ -59,14 +60,19 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
       uid: event.uid,
     );
 
-    final appStoreInfoIOs = await _appStoreInfoRepository.checkiOSVersion();
+    final result = await _storeVersionAppRepository.getStoreVersion();
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    } else {
+      appStoreInfoVersion = result.version.android;
+    }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    if (appStoreInfoIOs.appStroreVersion.isNotEmpty && Platform.isIOS) {
-      final appStoreIOsVersion = int.parse(appStoreInfoIOs.appStroreVersion.replaceAll('.', ''));
-      final packageInfoIOsVersion = int.parse(packageInfo.version.replaceAll('.', ''));
-      if (appStoreIOsVersion > packageInfoIOsVersion) {
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
         isUpdateVersionApp = true;
       }
     }

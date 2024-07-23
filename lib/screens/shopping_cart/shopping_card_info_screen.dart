@@ -678,6 +678,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -742,6 +743,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -807,6 +809,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -852,6 +855,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           context.read<CatalogBloc>().add(
                                                                 CatalogEvent.getInfoProducts(
                                                                   path: path,
+                                                                  isCleanHistory: true,
                                                                 ),
                                                               );
                                                         },
@@ -931,6 +935,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                             ),
                                                           );
                                                     },
+                                                    isAuth: initState.isAuth,
                                                   ),
                                                 ],
                                               );

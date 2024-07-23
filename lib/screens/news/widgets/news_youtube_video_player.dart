@@ -30,7 +30,6 @@ class NewsYouTubeVideoPlayerState extends State<NewsYouTubeVideoPlayer> {
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
-        mute: true,
       ),
     );
     super.initState();

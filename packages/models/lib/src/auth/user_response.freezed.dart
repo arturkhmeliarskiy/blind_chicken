@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserDataModel {
   String get phone => throw _privateConstructorUsedError;
   int get discount => throw _privateConstructorUsedError;
+  int get rest => throw _privateConstructorUsedError;
+  int get limit => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
@@ -44,6 +46,8 @@ abstract class $UserDataModelCopyWith<$Res> {
   $Res call(
       {String phone,
       int discount,
+      int rest,
+      int limit,
       String name,
       String email,
       String message,
@@ -71,6 +75,8 @@ class _$UserDataModelCopyWithImpl<$Res, $Val extends UserDataModel>
   $Res call({
     Object? phone = null,
     Object? discount = null,
+    Object? rest = null,
+    Object? limit = null,
     Object? name = null,
     Object? email = null,
     Object? message = null,
@@ -90,6 +96,14 @@ class _$UserDataModelCopyWithImpl<$Res, $Val extends UserDataModel>
       discount: null == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
+              as int,
+      rest: null == rest
+          ? _value.rest
+          : rest // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -146,6 +160,8 @@ abstract class _$$UserDataModelImplCopyWith<$Res>
   $Res call(
       {String phone,
       int discount,
+      int rest,
+      int limit,
       String name,
       String email,
       String message,
@@ -171,6 +187,8 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? phone = null,
     Object? discount = null,
+    Object? rest = null,
+    Object? limit = null,
     Object? name = null,
     Object? email = null,
     Object? message = null,
@@ -190,6 +208,14 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
       discount: null == discount
           ? _value.discount
           : discount // ignore: cast_nullable_to_non_nullable
+              as int,
+      rest: null == rest
+          ? _value.rest
+          : rest // ignore: cast_nullable_to_non_nullable
+              as int,
+      limit: null == limit
+          ? _value.limit
+          : limit // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
@@ -241,6 +267,8 @@ class _$UserDataModelImpl extends _UserDataModel {
   _$UserDataModelImpl(
       {required this.phone,
       required this.discount,
+      required this.rest,
+      required this.limit,
       required this.name,
       required this.email,
       required this.message,
@@ -258,6 +286,10 @@ class _$UserDataModelImpl extends _UserDataModel {
   final String phone;
   @override
   final int discount;
+  @override
+  final int rest;
+  @override
+  final int limit;
   @override
   final String name;
   @override
@@ -286,7 +318,7 @@ class _$UserDataModelImpl extends _UserDataModel {
 
   @override
   String toString() {
-    return 'UserDataModel(phone: $phone, discount: $discount, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, virtualcardscod: $virtualcardscod, schemLoyalty: $schemLoyalty)';
+    return 'UserDataModel(phone: $phone, discount: $discount, rest: $rest, limit: $limit, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, virtualcardscod: $virtualcardscod, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -297,6 +329,8 @@ class _$UserDataModelImpl extends _UserDataModel {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
+            (identical(other.rest, rest) || other.rest == rest) &&
+            (identical(other.limit, limit) || other.limit == limit) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.message, message) || other.message == message) &&
@@ -320,6 +354,8 @@ class _$UserDataModelImpl extends _UserDataModel {
       runtimeType,
       phone,
       discount,
+      rest,
+      limit,
       name,
       email,
       message,
@@ -342,6 +378,8 @@ abstract class _UserDataModel extends UserDataModel {
   factory _UserDataModel(
           {required final String phone,
           required final int discount,
+          required final int rest,
+          required final int limit,
           required final String name,
           required final String email,
           required final String message,
@@ -359,6 +397,10 @@ abstract class _UserDataModel extends UserDataModel {
   String get phone;
   @override
   int get discount;
+  @override
+  int get rest;
+  @override
+  int get limit;
   @override
   String get name;
   @override

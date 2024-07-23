@@ -96,18 +96,29 @@ class _FilterSelectValueScreenState extends State<FilterSelectValueScreen> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: widget.filterItems.length,
-                itemBuilder: (context, indexItem) {
-                  return FilterItemValue(
-                    item: widget.filterItems[indexItem],
-                    onDelete: (item) {
-                      widget.onDelete(item, indexItem);
+              child: BlocBuilder<CatalogBloc, CatalogState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    preloadDataCompleted: (initState) {
+                      return ListView.builder(
+                        itemCount: widget.filterItems.length,
+                        itemBuilder: (context, indexItem) {
+                          List<FilterItemDataModel> selectFilter =
+                              (initState.selectFilter[widget.index] ?? []).toList();
+                          return FilterItemValue(
+                            item: widget.filterItems[indexItem],
+                            onDelete: (item) {
+                              widget.onDelete(item, indexItem);
+                            },
+                            onSelect: (item) {
+                              widget.onSelect(item, indexItem);
+                            },
+                            isSelect: selectFilter.contains(widget.filterItems[indexItem]),
+                          );
+                        },
+                      );
                     },
-                    onSelect: (item) {
-                      widget.onSelect(item, indexItem);
-                    },
-                    isSelect: widget.selectFilter.contains(widget.filterItems[indexItem]),
+                    orElse: () => const SizedBox(),
                   );
                 },
               ),

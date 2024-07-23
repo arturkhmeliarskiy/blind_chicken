@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSliderProductItem extends StatefulWidget {
   const CatalogSliderProductItem({
@@ -13,6 +14,7 @@ class CatalogSliderProductItem extends StatefulWidget {
     required this.onTap,
     required this.addLike,
     required this.deleteLike,
+    required this.isAuth,
   });
 
   final ProductDataModel product;
@@ -21,6 +23,7 @@ class CatalogSliderProductItem extends StatefulWidget {
   final VoidCallback addLike;
   final VoidCallback deleteLike;
   final bool isLike;
+  final bool isAuth;
 
   @override
   State<CatalogSliderProductItem> createState() => _CatalogSliderProductItemState();
@@ -103,80 +106,137 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
           const SizedBox(
             height: 8,
           ),
-          RichText(
-            text: TextSpan(
-              text: (widget.product.price).toString().spaceSeparateNumbers(),
-              style: Theme.of(context).textTheme.displaySmall,
-              children: <TextSpan>[
-                TextSpan(
-                  text: ' ₽',
-                  style: Theme.of(context).textTheme.displaySmall,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.product.pb > widget.product.price)
+                Row(
+                  children: [
+                    Text(
+                      (widget.product.pb).toString().spaceSeparateNumbers(),
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                            decorationColor:
+                                BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                          ),
+                    ),
+                    Text(
+                      ' ₽',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 13,
+                        decoration: TextDecoration.lineThrough,
+                        color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                        decorationColor: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                      ),
+                    )
+                  ],
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          if (widget.product.isYourPriceDisplayed)
-            Column(
-              children: [
-                RichText(
-                  maxLines: 2,
-                  text: TextSpan(
-                    text: (widget.product.yourPrice).toString().spaceSeparateNumbers(),
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: ' ₽',
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
+              RichText(
+                text: TextSpan(
+                  text: widget.product.price.toString().spaceSeparateNumbers(),
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: BlindChickenColors.activeBorderTextField,
+                      ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: ' ₽',
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            color: BlindChickenColors.activeBorderTextField,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+              if (widget.product.isYourPriceDisplayed)
+                Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: BlindChickenColors.borderBottomColor,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      height: 17,
+                      width: 17,
+                      padding: const EdgeInsets.all(2),
+                      child: SvgPicture.asset(
+                        'assets/icons/percent.svg',
+                        height: 15,
+                        width: 15,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        text: widget.product.yourPrice.toString().spaceSeparateNumbers(),
+                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: ' ₽',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                          TextSpan(
+                            text: '',
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                ),
+                          ),
+                        ],
                       ),
-                      TextSpan(
-                        text: ' Ваша цена',
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-              ],
-            ),
-          Row(
-            children: [
-              SvgPicture.asset(
-                'assets/icons/lightning.svg',
-                height: 14,
-                width: 14,
-              ),
-              const SizedBox(
-                width: 7,
-              ),
-              Expanded(
-                child: RichText(
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  text: TextSpan(
-                    text: 'Выгода до ',
-                    style: Theme.of(context).textTheme.displaySmall,
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: (widget.product.price).toString().spaceSeparateNumbers(),
-                        style: Theme.of(context).textTheme.displaySmall,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (widget.isAuth && widget.product.yourPrice != widget.product.price)
+                    RichText(
+                      maxLines: 2,
+                      text: TextSpan(
+                        text: 'Кэшбэк до ',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                            ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text:
+                                '${widget.product.maximumCashback.toString().spaceSeparateNumbers()} ₽',
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                ),
+                          ),
+                        ],
                       ),
-                      TextSpan(
-                        text: ' ₽',
-                        style: Theme.of(context).textTheme.displaySmall,
+                    )
+                  else
+                    RichText(
+                      maxLines: 2,
+                      text: TextSpan(
+                        text: 'Выгода до ',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                            ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text:
+                                '${(widget.product.maximumCashback + widget.product.maximumPersonalDiscount).toString().spaceSeparateNumbers()} ₽',
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.7),
+                                ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
+                ],
+              )
             ],
           ),
         ]),

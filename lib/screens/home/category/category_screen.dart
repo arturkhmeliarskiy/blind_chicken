@@ -310,7 +310,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       onTap: () {
                                         context.read<CatalogBloc>().add(
                                               CatalogEvent.getInfoProducts(
-                                                  path: initState.pathMenu.last.url),
+                                                path: initState.pathMenu.last.url,
+                                                isCleanHistory: true,
+                                              ),
                                             );
                                         context.navigateTo(
                                           CatalogRoute(
@@ -436,7 +438,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       initState.menu[index].name != 'Сервисная карта') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
-                                              path: initState.menu[index].url),
+                                            path: initState.menu[index].url,
+                                            isCleanHistory: true,
+                                          ),
                                         );
                                     context.navigateTo(
                                       CatalogRoute(
@@ -468,7 +472,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   } else if (initState.menu[index].name == 'Sale') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
-                                              path: initState.menu[index].url),
+                                            path: initState.menu[index].url,
+                                            isCleanHistory: true,
+                                          ),
                                         );
                                     context.navigateTo(
                                       CatalogRoute(

@@ -8,7 +8,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class NewsTabInfo extends StatefulWidget {
-  const NewsTabInfo({super.key});
+  const NewsTabInfo({
+    super.key,
+    required this.goBack,
+  });
+
+  final VoidCallback goBack;
 
   @override
   State<NewsTabInfo> createState() => _NewsTabInfoState();
@@ -57,154 +62,169 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-              return state.maybeMap(
-                preloadDataCompleted: (initState) {
-                  if (initState.offsetNews == 1) {
-                    _paginationPosition = 0;
-                  }
-                  if (initState.news.list.isNotEmpty) {
-                    return Container(
-                      color: BlindChickenColors.borderBottomColor,
-                      child: ListView.builder(
-                        controller: _scrollController,
-                        itemCount: initState.news.list.length,
-                        itemBuilder: (context, index) {
-                          return NewsItemTabInfo(
-                            item: initState.news.list[index],
-                            onTap: () {
-                              context.navigateTo(
-                                NewsInfoDescriptionRoute(
-                                  info: initState.news.list[index],
-                                ),
-                              );
-                            },
-                            onGoTap: () {
-                              if (initState.news.list[index].typePath == 'catalog') {
-                                context.read<CatalogBloc>().add(
-                                      CatalogEvent.getInfoProducts(
-                                        path: initState.news.list[index].path,
-                                      ),
-                                    );
+    return GestureDetector(
+      onVerticalDragUpdate: (details) {},
+      onHorizontalDragEnd: (DragEndDetails details) {
+        if (details.velocity.pixelsPerSecond.dx > 0) {
+          widget.goBack();
+        }
+      },
+      child: Stack(
+        children: [
+          Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+                return state.maybeMap(
+                  preloadDataCompleted: (initState) {
+                    if (initState.offsetNews == 1) {
+                      _paginationPosition = 0;
+                    }
+                    if (initState.news.list.isNotEmpty) {
+                      return Container(
+                        color: BlindChickenColors.borderBottomColor,
+                        child: ListView.builder(
+                          controller: _scrollController,
+                          itemCount: initState.news.list.length,
+                          itemBuilder: (context, index) {
+                            return NewsItemTabInfo(
+                              item: initState.news.list[index],
+                              onTap: () {
+                                context.navigateTo(
+                                  NewsInfoDescriptionRoute(
+                                    info: initState.news.list[index],
+                                  ),
+                                );
+                              },
+                              onGoTap: () {
+                                if (initState.news.list[index].typePath == 'catalog') {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProducts(
+                                          path: initState.news.list[index].path,
+                                          isCleanHistory: true,
+                                        ),
+                                      );
 
-                                context.navigateTo(
-                                  HomeAutoRouterRoute(
-                                    children: [
-                                      CatalogRoute(
-                                        title: '',
-                                        url: initState.news.list[index].path,
-                                        lastPath: 'news',
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              } else if (initState.news.list[index].typePath == 'product') {
-                                context.read<CatalogBloc>().add(
-                                      CatalogEvent.getInfoProduct(
-                                        code: initState.news.list[index].code,
-                                      ),
-                                    );
-                                context.navigateTo(
-                                  HomeAutoRouterRoute(
-                                    children: [
-                                      CatalogCardInfoRoute(
-                                        isLike: false,
-                                        listItems: const [],
-                                        favouritesProducts: const [],
-                                        isChildRoute: false,
-                                        lastPath: 'news',
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              } else if (initState.news.list[index].typePath == 'boutique') {
-                                context.read<BoutiquesBloc>().add(
-                                      BoutiquesEvent.getInfoBoutique(
-                                        uid: initState.news.list[index].uidStore,
-                                      ),
-                                    );
-                                context.navigateTo(
-                                  HomeAutoRouterRoute(
-                                    children: [
-                                      BoutiquesDescriptionRoute(
-                                        lastPath: 'news',
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              } else if (initState.news.list[index].typePath == 'gift_card') {
-                                context.navigateTo(
-                                  HomeAutoRouterRoute(
-                                    children: [
-                                      GiftCardRoute(
-                                        lastPath: 'news',
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }
-                            },
-                          );
-                        },
-                      ),
-                    );
-                  } else {
-                    return Center(
-                      child: Text(
-                        'Нет новостей',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                    );
-                  }
-                },
-                orElse: () => const SizedBox(),
-              );
-            }),
-            if (_isButtonTop)
-              GestureDetector(
-                onTap: () {
-                  _scrollController.jumpTo(0.0);
-                  setState(() {
-                    _isButtonTop = false;
-                  });
-                },
-                child: Container(
-                  height: 45,
-                  width: 45,
-                  margin: const EdgeInsets.only(left: 15, bottom: 15),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: BlindChickenColors.activeBorderTextField,
-                    borderRadius: BorderRadius.circular(25),
+                                  context.navigateTo(
+                                    HomeAutoRouterRoute(
+                                      children: [
+                                        CatalogRoute(
+                                          title: '',
+                                          url: initState.news.list[index].path,
+                                          lastPath: 'news',
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else if (initState.news.list[index].typePath == 'product') {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProduct(
+                                          code: initState.news.list[index].code,
+                                        ),
+                                      );
+                                  context.navigateTo(
+                                    HomeAutoRouterRoute(
+                                      children: [
+                                        CatalogCardInfoRoute(
+                                          isLike: false,
+                                          listItems: const [],
+                                          favouritesProducts: const [],
+                                          isChildRoute: false,
+                                          lastPath: 'news',
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else if (initState.news.list[index].typePath == 'boutique') {
+                                  context.read<BoutiquesBloc>().add(
+                                        BoutiquesEvent.getInfoBoutique(
+                                          uid: initState.news.list[index].uidStore,
+                                        ),
+                                      );
+                                  context.navigateTo(
+                                    HomeAutoRouterRoute(
+                                      children: [
+                                        BoutiquesDescriptionRoute(
+                                          lastPath: 'news',
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                } else if (initState.news.list[index].typePath == 'gift_card') {
+                                  context.navigateTo(
+                                    HomeAutoRouterRoute(
+                                      children: [
+                                        GiftCardRoute(
+                                          lastPath: 'news',
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }
+                              },
+                            );
+                          },
+                        ),
+                      );
+                    } else {
+                      return LayoutBuilder(builder: (context, constraint) {
+                        return Container(
+                          height: constraint.maxHeight,
+                          width: constraint.maxWidth,
+                          alignment: Alignment.center,
+                          color: Colors.transparent,
+                          child: Text(
+                            'Нет новостей',
+                            style: Theme.of(context).textTheme.headline2,
+                          ),
+                        );
+                      });
+                    }
+                  },
+                  orElse: () => const SizedBox(),
+                );
+              }),
+              if (_isButtonTop)
+                GestureDetector(
+                  onTap: () {
+                    _scrollController.jumpTo(0.0);
+                    setState(() {
+                      _isButtonTop = false;
+                    });
+                  },
+                  child: Container(
+                    height: 45,
+                    width: 45,
+                    margin: const EdgeInsets.only(left: 15, bottom: 15),
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: BlindChickenColors.activeBorderTextField,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/icons/chevron-top.svg',
+                    ),
                   ),
-                  child: SvgPicture.asset(
-                    'assets/icons/chevron-top.svg',
+                )
+              else
+                const SizedBox()
+            ],
+          ),
+          BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+            return state.maybeMap(
+              load: (value) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                    backgroundColor: Colors.grey.shade400,
                   ),
-                ),
-              )
-            else
-              const SizedBox()
-          ],
-        ),
-        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-          return state.maybeMap(
-            load: (value) {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey.shade400,
-                ),
-              );
-            },
-            orElse: () => const SizedBox(),
-          );
-        }),
-      ],
+                );
+              },
+              orElse: () => const SizedBox(),
+            );
+          }),
+        ],
+      ),
     );
   }
 }

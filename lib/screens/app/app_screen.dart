@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
-import 'package:blind_chicken/screens/news/news_info_screen.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

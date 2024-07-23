@@ -249,10 +249,19 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   ) async {
     final result = await _pushNotificationRepository.postNotificationInfo(event: '4');
     if (result.r == '1') {
+      String deviceId = _sharedPreferencesService.getString(
+            key: SharedPrefKeys.deviceId,
+          ) ??
+          '';
+      String deviceid = deviceId;
       _sharedPreferencesService.clear();
       _sharedPreferencesService.setBool(
         key: SharedPrefKeys.appInstalled,
         value: true,
+      );
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.deviceId,
+        value: deviceid,
       );
       _catalogRepository.deleteAllShoppingProducts();
       _catalogRepository.deleteAllFavouritesProducts();

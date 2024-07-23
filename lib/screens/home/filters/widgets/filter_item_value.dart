@@ -31,6 +31,12 @@ class _FilterItemValueState extends State<FilterItemValue> {
   }
 
   @override
+  void didUpdateWidget(covariant FilterItemValue oldWidget) {
+    _isSelect = widget.isSelect;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {

@@ -10,6 +10,8 @@ _$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
     _$UserResponseImpl(
       phone: json['phone'] as String?,
       discount: json['discount'] as int?,
+      rest: json['rest'] as int?,
+      limit: json['limit'] as int?,
       name: json['name'] as String?,
       email: json['email'] as String?,
       virtualcardscod: json['virtualcardscod'] as String?,
@@ -28,6 +30,8 @@ Map<String, dynamic> _$$UserResponseImplToJson(_$UserResponseImpl instance) =>
     <String, dynamic>{
       'phone': instance.phone,
       'discount': instance.discount,
+      'rest': instance.rest,
+      'limit': instance.limit,
       'name': instance.name,
       'email': instance.email,
       'virtualcardscod': instance.virtualcardscod,

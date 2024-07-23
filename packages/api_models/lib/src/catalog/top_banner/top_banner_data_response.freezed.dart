@@ -26,6 +26,10 @@ mixin _$TopBannerDataResponse {
   String? get colorText => throw _privateConstructorUsedError;
   @JsonKey(name: 'color_background')
   String? get colorBackground => throw _privateConstructorUsedError;
+  @JsonKey(name: 'code_product')
+  String? get code => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_news')
+  String? get idNews => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   String? get section => throw _privateConstructorUsedError;
   String? get uid => throw _privateConstructorUsedError;
@@ -46,6 +50,8 @@ abstract class $TopBannerDataResponseCopyWith<$Res> {
       {String? title,
       @JsonKey(name: 'color_text') String? colorText,
       @JsonKey(name: 'color_background') String? colorBackground,
+      @JsonKey(name: 'code_product') String? code,
+      @JsonKey(name: 'id_news') String? idNews,
       String? type,
       String? section,
       String? uid});
@@ -68,6 +74,8 @@ class _$TopBannerDataResponseCopyWithImpl<$Res,
     Object? title = freezed,
     Object? colorText = freezed,
     Object? colorBackground = freezed,
+    Object? code = freezed,
+    Object? idNews = freezed,
     Object? type = freezed,
     Object? section = freezed,
     Object? uid = freezed,
@@ -84,6 +92,14 @@ class _$TopBannerDataResponseCopyWithImpl<$Res,
       colorBackground: freezed == colorBackground
           ? _value.colorBackground
           : colorBackground // ignore: cast_nullable_to_non_nullable
+              as String?,
+      code: freezed == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idNews: freezed == idNews
+          ? _value.idNews
+          : idNews // ignore: cast_nullable_to_non_nullable
               as String?,
       type: freezed == type
           ? _value.type
@@ -114,6 +130,8 @@ abstract class _$$TopBannerDataResponseImplCopyWith<$Res>
       {String? title,
       @JsonKey(name: 'color_text') String? colorText,
       @JsonKey(name: 'color_background') String? colorBackground,
+      @JsonKey(name: 'code_product') String? code,
+      @JsonKey(name: 'id_news') String? idNews,
       String? type,
       String? section,
       String? uid});
@@ -134,6 +152,8 @@ class __$$TopBannerDataResponseImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? colorText = freezed,
     Object? colorBackground = freezed,
+    Object? code = freezed,
+    Object? idNews = freezed,
     Object? type = freezed,
     Object? section = freezed,
     Object? uid = freezed,
@@ -150,6 +170,14 @@ class __$$TopBannerDataResponseImplCopyWithImpl<$Res>
       colorBackground: freezed == colorBackground
           ? _value.colorBackground
           : colorBackground // ignore: cast_nullable_to_non_nullable
+              as String?,
+      code: freezed == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idNews: freezed == idNews
+          ? _value.idNews
+          : idNews // ignore: cast_nullable_to_non_nullable
               as String?,
       type: freezed == type
           ? _value.type
@@ -174,6 +202,8 @@ class _$TopBannerDataResponseImpl extends _TopBannerDataResponse {
       {this.title,
       @JsonKey(name: 'color_text') this.colorText,
       @JsonKey(name: 'color_background') this.colorBackground,
+      @JsonKey(name: 'code_product') this.code,
+      @JsonKey(name: 'id_news') this.idNews,
       this.type,
       this.section,
       this.uid})
@@ -191,6 +221,12 @@ class _$TopBannerDataResponseImpl extends _TopBannerDataResponse {
   @JsonKey(name: 'color_background')
   final String? colorBackground;
   @override
+  @JsonKey(name: 'code_product')
+  final String? code;
+  @override
+  @JsonKey(name: 'id_news')
+  final String? idNews;
+  @override
   final String? type;
   @override
   final String? section;
@@ -199,7 +235,7 @@ class _$TopBannerDataResponseImpl extends _TopBannerDataResponse {
 
   @override
   String toString() {
-    return 'TopBannerDataResponse(title: $title, colorText: $colorText, colorBackground: $colorBackground, type: $type, section: $section, uid: $uid)';
+    return 'TopBannerDataResponse(title: $title, colorText: $colorText, colorBackground: $colorBackground, code: $code, idNews: $idNews, type: $type, section: $section, uid: $uid)';
   }
 
   @override
@@ -212,6 +248,8 @@ class _$TopBannerDataResponseImpl extends _TopBannerDataResponse {
                 other.colorText == colorText) &&
             (identical(other.colorBackground, colorBackground) ||
                 other.colorBackground == colorBackground) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.idNews, idNews) || other.idNews == idNews) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.section, section) || other.section == section) &&
             (identical(other.uid, uid) || other.uid == uid));
@@ -219,8 +257,8 @@ class _$TopBannerDataResponseImpl extends _TopBannerDataResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, title, colorText, colorBackground, type, section, uid);
+  int get hashCode => Object.hash(runtimeType, title, colorText,
+      colorBackground, code, idNews, type, section, uid);
 
   @JsonKey(ignore: true)
   @override
@@ -242,6 +280,8 @@ abstract class _TopBannerDataResponse extends TopBannerDataResponse {
       {final String? title,
       @JsonKey(name: 'color_text') final String? colorText,
       @JsonKey(name: 'color_background') final String? colorBackground,
+      @JsonKey(name: 'code_product') final String? code,
+      @JsonKey(name: 'id_news') final String? idNews,
       final String? type,
       final String? section,
       final String? uid}) = _$TopBannerDataResponseImpl;
@@ -258,6 +298,12 @@ abstract class _TopBannerDataResponse extends TopBannerDataResponse {
   @override
   @JsonKey(name: 'color_background')
   String? get colorBackground;
+  @override
+  @JsonKey(name: 'code_product')
+  String? get code;
+  @override
+  @JsonKey(name: 'id_news')
+  String? get idNews;
   @override
   String? get type;
   @override

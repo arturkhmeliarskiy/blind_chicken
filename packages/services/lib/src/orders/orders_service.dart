@@ -7,13 +7,11 @@ import 'package:shared/shared.dart';
 
 class OrdersService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
   final ConverterService _converterService;
   final SharedPreferencesService _sharedPreferencesService;
 
   OrdersService(
     this._dio,
-    this._deviceInfoService,
     this._converterService,
     this._sharedPreferencesService,
   ) {
@@ -27,7 +25,7 @@ class OrdersService {
     OrdersResponse? ordersResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -74,7 +72,7 @@ class OrdersService {
     OrderInfoResponse? orderInfoResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {

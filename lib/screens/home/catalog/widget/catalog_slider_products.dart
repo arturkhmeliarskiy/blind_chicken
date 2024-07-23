@@ -11,6 +11,7 @@ class CatalogSliderProducts extends StatefulWidget {
     required this.onSelectProduct,
     required this.addLike,
     required this.deleteLike,
+    required this.isAuth,
   });
 
   final List<ProductDataModel> listProducts;
@@ -18,6 +19,7 @@ class CatalogSliderProducts extends StatefulWidget {
   final ValueChanged<ProductDataModel> onSelectProduct;
   final ValueChanged<int> addLike;
   final ValueChanged<int> deleteLike;
+  final bool isAuth;
 
   @override
   State<CatalogSliderProducts> createState() => _CatalogSliderProductsState();
@@ -47,6 +49,7 @@ class _CatalogSliderProductsState extends State<CatalogSliderProducts> {
             deleteLike: () {
               widget.deleteLike(index);
             },
+            isAuth: widget.isAuth,
           );
         },
       ),

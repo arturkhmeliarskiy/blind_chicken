@@ -228,6 +228,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         products: searchResultInfo.products,
         searchResultInfo: searchResultInfo,
         request: request,
+        offset: 1,
       ));
     });
   }
@@ -392,6 +393,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       emit(initState.copyWith(
         selectFilter: {},
         allSelectFilter: [],
+        offset: 1,
         filter: searchResultInfo.filter,
         searchResultInfo: searchResultInfo,
         products: searchResultInfo.products,
@@ -629,7 +631,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     await state.mapOrNull(searchProductsResult: (initState) async {
       List<String> listProductsCode = initState.listProductsCode.toList();
 
-      listProductsCode.removeLast();
+      if (listProductsCode.isNotEmpty) {
+        listProductsCode.removeLast();
+      }
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,

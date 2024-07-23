@@ -8,13 +8,11 @@ import 'package:shared/shared.dart';
 
 class CatalogService {
   final Dio _dio;
-  final DeviceInfoService _deviceInfoService;
   final ConverterService _converterService;
   final SharedPreferencesService _sharedPreferencesService;
 
   CatalogService(
     this._dio,
-    this._deviceInfoService,
     this._converterService,
     this._sharedPreferencesService,
   ) {
@@ -32,7 +30,7 @@ class CatalogService {
     MenuResponse? menuResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -100,7 +98,7 @@ class CatalogService {
     TopBannerResponse? topBannerResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -161,7 +159,7 @@ class CatalogService {
     Map<String, dynamic> queryParameters = {};
     List<FilterCatalogDataModel> filters = request.filters ?? [];
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -230,7 +228,7 @@ class CatalogService {
     String hashTokenTel = '';
 
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -291,7 +289,7 @@ class CatalogService {
     DetailProductResponse? detailProductResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -353,7 +351,7 @@ class CatalogService {
     AdditionalProductsDescriptionResponse? additionalProductsDescriptionResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -409,7 +407,7 @@ class CatalogService {
     PaymentOrderResponse? paymentOrderResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -469,7 +467,7 @@ class CatalogService {
     CatalogSearchResponse? catalogSearchResponse;
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {
@@ -516,7 +514,7 @@ class CatalogService {
     Map<String, dynamic> queryParameters = {};
     String hashTokenTel = '';
     final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
-    final token = await _deviceInfoService.getDeviceId();
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
     if (tel.isNotEmpty) {

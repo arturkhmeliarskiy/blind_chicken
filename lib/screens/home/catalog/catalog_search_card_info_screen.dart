@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
@@ -103,7 +104,13 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                     .read<SearchBloc>()
                                     .add(const SearchEvent.goBackProductInfo());
                               } else {
-                                context.back();
+                                WidgetsBinding.instance.addPostFrameCallback((_) {
+                                  if (Platform.isIOS) {
+                                    context.popRoute();
+                                  } else {
+                                    context.back();
+                                  }
+                                });
                               }
                             }
                           },
@@ -657,6 +664,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -722,6 +730,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -789,6 +798,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -831,6 +841,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                       context.read<CatalogBloc>().add(
                                                             CatalogEvent.getInfoProducts(
                                                               path: path,
+                                                              isCleanHistory: true,
                                                             ),
                                                           );
                                                       context.navigateTo(
@@ -903,6 +914,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                             ),
                                                           );
                                                     },
+                                                    isAuth: initState.isAuth,
                                                   ),
                                                 ],
                                               );

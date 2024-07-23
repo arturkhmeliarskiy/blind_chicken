@@ -677,6 +677,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -741,6 +742,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -806,6 +808,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                               ),
                                                             );
                                                       },
+                                                      isAuth: initState.isAuth,
                                                     )
                                                   ],
                                                 );
@@ -848,6 +851,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                       context.read<CatalogBloc>().add(
                                                             CatalogEvent.getInfoProducts(
                                                               path: path,
+                                                              isCleanHistory: true,
                                                             ),
                                                           );
 
@@ -929,6 +933,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                             ),
                                                           );
                                                     },
+                                                    isAuth: initState.isAuth,
                                                   ),
                                                 ],
                                               );

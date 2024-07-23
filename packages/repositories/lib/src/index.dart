@@ -8,3 +8,4 @@ export 'orders/orders_respository.dart';
 export 'app_store_info/app_store_info_repository.dart';
 export 'push_notification/push_notification_repository.dart';
 export 'news/news_repository.dart';
+export 'store_version_app/store_version_app_repository.dart';

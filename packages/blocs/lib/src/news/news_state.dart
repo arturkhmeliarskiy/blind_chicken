@@ -11,5 +11,10 @@ class NewsState with _$NewsState {
     required int offsetNews,
     required int offsetMedia,
     required int offsetNotificatios,
+    required List<String> listNewsPath,
+    required bool isUpdateVersionApp,
+    required bool isNotification,
+    OneNewsInfoDataModel? oneNews,
+    OneMediaInfoDataModel? oneMedia,
   }) = PreloadDataCompletedNewsState;
 }

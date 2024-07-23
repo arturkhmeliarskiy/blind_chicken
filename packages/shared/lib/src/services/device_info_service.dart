@@ -1,21 +1,11 @@
-import 'dart:io';
-
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:uuid/uuid.dart';
 
 class DeviceInfoService {
-  final DeviceInfoPlugin _deviceInfoPlugin;
+  final Uuid _uuid;
+  DeviceInfoService(this._uuid);
 
-  DeviceInfoService(this._deviceInfoPlugin);
   Future<String> getDeviceId() async {
-    String result = '';
-
-    final deviceInfo = await _deviceInfoPlugin.deviceInfo;
-    if (Platform.isAndroid) {
-      result = deviceInfo.data['id'];
-    } else {
-      result = deviceInfo.data['identifierForVendor'];
-    }
-
+    String result = _uuid.v8();
     return result;
   }
 }

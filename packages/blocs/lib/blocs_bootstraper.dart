@@ -19,7 +19,7 @@ Future<void> initBloc(GetIt getIt) async {
       () => BoutiquesBloc(
         getIt.get<BoutiquesRepository>(),
         getIt.get<UpdateDataService>(),
-        getIt.get<AppStoreInfoRepository>(),
+        getIt.get<StoreVersionAppRepository>(),
       ),
     )
     ..registerFactory(
@@ -28,7 +28,6 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<SharedPreferencesService>(),
         getIt.get<PushNotificationRepository>(),
-        getIt.get<DeviceInfoService>(),
       ),
     )
     ..registerFactory(
@@ -49,8 +48,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<UpdateDataService>(),
         getIt.get<BoutiquesRepository>(),
         getIt.get<BasketRepository>(),
-        getIt.get<AppStoreInfoRepository>(),
-        getIt.get<DeviceInfoService>(),
+        getIt.get<StoreVersionAppRepository>(),
         getIt.get<PushNotificationRepository>(),
       ),
     )
@@ -94,7 +92,7 @@ Future<void> initBloc(GetIt getIt) async {
       () => GiftCardBloc(
         getIt.get<CatalogRepository>(),
         getIt.get<UpdateDataService>(),
-        getIt.get<AppStoreInfoRepository>(),
+        getIt.get<StoreVersionAppRepository>(),
       ),
     )
     ..registerFactory(
@@ -103,6 +101,7 @@ Future<void> initBloc(GetIt getIt) async {
     ..registerFactory(
       () => NewsBloc(
         getIt.get<NewsRepository>(),
+        getIt.get<StoreVersionAppRepository>(),
       ),
     )
     ..registerFactory(

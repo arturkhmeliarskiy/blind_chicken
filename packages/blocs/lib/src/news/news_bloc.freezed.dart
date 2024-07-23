@@ -20,33 +20,44 @@ mixin _$NewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,36 +65,51 @@ mixin _$NewsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,11 +172,16 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return init();
   }
@@ -160,11 +191,14 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return init?.call();
   }
@@ -174,11 +208,14 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -192,12 +229,17 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return init(this);
   }
@@ -207,12 +249,17 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return init?.call(this);
   }
@@ -222,12 +269,17 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -281,11 +333,16 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return getNews();
   }
@@ -295,11 +352,14 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return getNews?.call();
   }
@@ -309,11 +369,14 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (getNews != null) {
@@ -327,12 +390,17 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return getNews(this);
   }
@@ -342,12 +410,17 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return getNews?.call(this);
   }
@@ -357,12 +430,17 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (getNews != null) {
@@ -374,6 +452,217 @@ class _$GetNewsEventImpl implements GetNewsEvent {
 
 abstract class GetNewsEvent implements NewsEvent {
   const factory GetNewsEvent() = _$GetNewsEventImpl;
+}
+
+/// @nodoc
+abstract class _$$GetNewsDescriptionInfoNewsEventImplCopyWith<$Res> {
+  factory _$$GetNewsDescriptionInfoNewsEventImplCopyWith(
+          _$GetNewsDescriptionInfoNewsEventImpl value,
+          $Res Function(_$GetNewsDescriptionInfoNewsEventImpl) then) =
+      __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, bool? isNotification});
+}
+
+/// @nodoc
+class __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>
+    extends _$NewsEventCopyWithImpl<$Res, _$GetNewsDescriptionInfoNewsEventImpl>
+    implements _$$GetNewsDescriptionInfoNewsEventImplCopyWith<$Res> {
+  __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl(
+      _$GetNewsDescriptionInfoNewsEventImpl _value,
+      $Res Function(_$GetNewsDescriptionInfoNewsEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? isNotification = freezed,
+  }) {
+    return _then(_$GetNewsDescriptionInfoNewsEventImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isNotification: freezed == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetNewsDescriptionInfoNewsEventImpl
+    implements GetNewsDescriptionInfoNewsEvent {
+  const _$GetNewsDescriptionInfoNewsEventImpl(
+      {required this.id, this.isNotification});
+
+  @override
+  final String id;
+  @override
+  final bool? isNotification;
+
+  @override
+  String toString() {
+    return 'NewsEvent.getNewsDescriptionInfo(id: $id, isNotification: $isNotification)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetNewsDescriptionInfoNewsEventImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, isNotification);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetNewsDescriptionInfoNewsEventImplCopyWith<
+          _$GetNewsDescriptionInfoNewsEventImpl>
+      get copyWith => __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<
+          _$GetNewsDescriptionInfoNewsEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
+    required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
+    required TResult Function() getNotifications,
+    required TResult Function() paginationNews,
+    required TResult Function() paginationMedia,
+    required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
+  }) {
+    return getNewsDescriptionInfo(id, isNotification);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function()? getNotifications,
+    TResult? Function()? paginationNews,
+    TResult? Function()? paginationMedia,
+    TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
+  }) {
+    return getNewsDescriptionInfo?.call(id, isNotification);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function()? getNotifications,
+    TResult Function()? paginationNews,
+    TResult Function()? paginationMedia,
+    TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
+    required TResult orElse(),
+  }) {
+    if (getNewsDescriptionInfo != null) {
+      return getNewsDescriptionInfo(id, isNotification);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitNewsEvent value) init,
+    required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
+    required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
+    required TResult Function(GetNotificationsEvent value) getNotifications,
+    required TResult Function(PaginationNewsNewsEvent value) paginationNews,
+    required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
+    required TResult Function(PaginationNotificationsNewsEvent value)
+        paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
+  }) {
+    return getNewsDescriptionInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitNewsEvent value)? init,
+    TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult? Function(GetNotificationsEvent value)? getNotifications,
+    TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult? Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+  }) {
+    return getNewsDescriptionInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitNewsEvent value)? init,
+    TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult Function(GetNotificationsEvent value)? getNotifications,
+    TResult Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+    required TResult orElse(),
+  }) {
+    if (getNewsDescriptionInfo != null) {
+      return getNewsDescriptionInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetNewsDescriptionInfoNewsEvent implements NewsEvent {
+  const factory GetNewsDescriptionInfoNewsEvent(
+      {required final String id,
+      final bool? isNotification}) = _$GetNewsDescriptionInfoNewsEventImpl;
+
+  String get id;
+  bool? get isNotification;
+  @JsonKey(ignore: true)
+  _$$GetNewsDescriptionInfoNewsEventImplCopyWith<
+          _$GetNewsDescriptionInfoNewsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -416,11 +705,16 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return getMedia();
   }
@@ -430,11 +724,14 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return getMedia?.call();
   }
@@ -444,11 +741,14 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (getMedia != null) {
@@ -462,12 +762,17 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return getMedia(this);
   }
@@ -477,12 +782,17 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return getMedia?.call(this);
   }
@@ -492,12 +802,17 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (getMedia != null) {
@@ -509,6 +824,218 @@ class _$GetMediaEventImpl implements GetMediaEvent {
 
 abstract class GetMediaEvent implements NewsEvent {
   const factory GetMediaEvent() = _$GetMediaEventImpl;
+}
+
+/// @nodoc
+abstract class _$$GetMediaDescriptionInfoNewsEventImplCopyWith<$Res> {
+  factory _$$GetMediaDescriptionInfoNewsEventImplCopyWith(
+          _$GetMediaDescriptionInfoNewsEventImpl value,
+          $Res Function(_$GetMediaDescriptionInfoNewsEventImpl) then) =
+      __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, bool? isNotification});
+}
+
+/// @nodoc
+class __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>
+    extends _$NewsEventCopyWithImpl<$Res,
+        _$GetMediaDescriptionInfoNewsEventImpl>
+    implements _$$GetMediaDescriptionInfoNewsEventImplCopyWith<$Res> {
+  __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl(
+      _$GetMediaDescriptionInfoNewsEventImpl _value,
+      $Res Function(_$GetMediaDescriptionInfoNewsEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? isNotification = freezed,
+  }) {
+    return _then(_$GetMediaDescriptionInfoNewsEventImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      isNotification: freezed == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetMediaDescriptionInfoNewsEventImpl
+    implements GetMediaDescriptionInfoNewsEvent {
+  const _$GetMediaDescriptionInfoNewsEventImpl(
+      {required this.id, this.isNotification});
+
+  @override
+  final String id;
+  @override
+  final bool? isNotification;
+
+  @override
+  String toString() {
+    return 'NewsEvent.getMediaDescriptionInfo(id: $id, isNotification: $isNotification)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetMediaDescriptionInfoNewsEventImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, isNotification);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetMediaDescriptionInfoNewsEventImplCopyWith<
+          _$GetMediaDescriptionInfoNewsEventImpl>
+      get copyWith => __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<
+          _$GetMediaDescriptionInfoNewsEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
+    required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
+    required TResult Function() getNotifications,
+    required TResult Function() paginationNews,
+    required TResult Function() paginationMedia,
+    required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
+  }) {
+    return getMediaDescriptionInfo(id, isNotification);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function()? getNotifications,
+    TResult? Function()? paginationNews,
+    TResult? Function()? paginationMedia,
+    TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
+  }) {
+    return getMediaDescriptionInfo?.call(id, isNotification);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function()? getNotifications,
+    TResult Function()? paginationNews,
+    TResult Function()? paginationMedia,
+    TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
+    required TResult orElse(),
+  }) {
+    if (getMediaDescriptionInfo != null) {
+      return getMediaDescriptionInfo(id, isNotification);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitNewsEvent value) init,
+    required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
+    required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
+    required TResult Function(GetNotificationsEvent value) getNotifications,
+    required TResult Function(PaginationNewsNewsEvent value) paginationNews,
+    required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
+    required TResult Function(PaginationNotificationsNewsEvent value)
+        paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
+  }) {
+    return getMediaDescriptionInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitNewsEvent value)? init,
+    TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult? Function(GetNotificationsEvent value)? getNotifications,
+    TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult? Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+  }) {
+    return getMediaDescriptionInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitNewsEvent value)? init,
+    TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult Function(GetNotificationsEvent value)? getNotifications,
+    TResult Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+    required TResult orElse(),
+  }) {
+    if (getMediaDescriptionInfo != null) {
+      return getMediaDescriptionInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetMediaDescriptionInfoNewsEvent implements NewsEvent {
+  const factory GetMediaDescriptionInfoNewsEvent(
+      {required final String id,
+      final bool? isNotification}) = _$GetMediaDescriptionInfoNewsEventImpl;
+
+  String get id;
+  bool? get isNotification;
+  @JsonKey(ignore: true)
+  _$$GetMediaDescriptionInfoNewsEventImplCopyWith<
+          _$GetMediaDescriptionInfoNewsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -553,11 +1080,16 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return getNotifications();
   }
@@ -567,11 +1099,14 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return getNotifications?.call();
   }
@@ -581,11 +1116,14 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (getNotifications != null) {
@@ -599,12 +1137,17 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return getNotifications(this);
   }
@@ -614,12 +1157,17 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return getNotifications?.call(this);
   }
@@ -629,12 +1177,17 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (getNotifications != null) {
@@ -691,11 +1244,16 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return paginationNews();
   }
@@ -705,11 +1263,14 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return paginationNews?.call();
   }
@@ -719,11 +1280,14 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (paginationNews != null) {
@@ -737,12 +1301,17 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return paginationNews(this);
   }
@@ -752,12 +1321,17 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return paginationNews?.call(this);
   }
@@ -767,12 +1341,17 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (paginationNews != null) {
@@ -829,11 +1408,16 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return paginationMedia();
   }
@@ -843,11 +1427,14 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return paginationMedia?.call();
   }
@@ -857,11 +1444,14 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (paginationMedia != null) {
@@ -875,12 +1465,17 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return paginationMedia(this);
   }
@@ -890,12 +1485,17 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return paginationMedia?.call(this);
   }
@@ -905,12 +1505,17 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (paginationMedia != null) {
@@ -969,11 +1574,16 @@ class _$PaginationNotificationsNewsEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
     required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
     required TResult Function() paginationMedia,
     required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
   }) {
     return paginationNotifications();
   }
@@ -983,11 +1593,14 @@ class _$PaginationNotificationsNewsEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
   }) {
     return paginationNotifications?.call();
   }
@@ -997,11 +1610,14 @@ class _$PaginationNotificationsNewsEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
     TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
     TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (paginationNotifications != null) {
@@ -1015,12 +1631,17 @@ class _$PaginationNotificationsNewsEventImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsEvent value) init,
     required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
     required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
     required TResult Function(GetNotificationsEvent value) getNotifications,
     required TResult Function(PaginationNewsNewsEvent value) paginationNews,
     required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
     required TResult Function(PaginationNotificationsNewsEvent value)
         paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
   }) {
     return paginationNotifications(this);
   }
@@ -1030,12 +1651,17 @@ class _$PaginationNotificationsNewsEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsEvent value)? init,
     TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult? Function(GetNotificationsEvent value)? getNotifications,
     TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult? Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
   }) {
     return paginationNotifications?.call(this);
   }
@@ -1045,12 +1671,17 @@ class _$PaginationNotificationsNewsEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsEvent value)? init,
     TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
     TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
     TResult Function(GetNotificationsEvent value)? getNotifications,
     TResult Function(PaginationNewsNewsEvent value)? paginationNews,
     TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
     TResult Function(PaginationNotificationsNewsEvent value)?
         paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     required TResult orElse(),
   }) {
     if (paginationNotifications != null) {
@@ -1066,6 +1697,170 @@ abstract class PaginationNotificationsNewsEvent implements NewsEvent {
 }
 
 /// @nodoc
+abstract class _$$GoBackNewsInfoNewsEventImplCopyWith<$Res> {
+  factory _$$GoBackNewsInfoNewsEventImplCopyWith(
+          _$GoBackNewsInfoNewsEventImpl value,
+          $Res Function(_$GoBackNewsInfoNewsEventImpl) then) =
+      __$$GoBackNewsInfoNewsEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoBackNewsInfoNewsEventImplCopyWithImpl<$Res>
+    extends _$NewsEventCopyWithImpl<$Res, _$GoBackNewsInfoNewsEventImpl>
+    implements _$$GoBackNewsInfoNewsEventImplCopyWith<$Res> {
+  __$$GoBackNewsInfoNewsEventImplCopyWithImpl(
+      _$GoBackNewsInfoNewsEventImpl _value,
+      $Res Function(_$GoBackNewsInfoNewsEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
+  const _$GoBackNewsInfoNewsEventImpl();
+
+  @override
+  String toString() {
+    return 'NewsEvent.goBackNewsInfo()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GoBackNewsInfoNewsEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() getNews,
+    required TResult Function(String id, bool? isNotification)
+        getNewsDescriptionInfo,
+    required TResult Function() getMedia,
+    required TResult Function(String id, bool? isNotification)
+        getMediaDescriptionInfo,
+    required TResult Function() getNotifications,
+    required TResult Function() paginationNews,
+    required TResult Function() paginationMedia,
+    required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
+  }) {
+    return goBackNewsInfo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function()? getNotifications,
+    TResult? Function()? paginationNews,
+    TResult? Function()? paginationMedia,
+    TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
+  }) {
+    return goBackNewsInfo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function()? getNotifications,
+    TResult Function()? paginationNews,
+    TResult Function()? paginationMedia,
+    TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
+    required TResult orElse(),
+  }) {
+    if (goBackNewsInfo != null) {
+      return goBackNewsInfo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitNewsEvent value) init,
+    required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
+    required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
+    required TResult Function(GetNotificationsEvent value) getNotifications,
+    required TResult Function(PaginationNewsNewsEvent value) paginationNews,
+    required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
+    required TResult Function(PaginationNotificationsNewsEvent value)
+        paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
+  }) {
+    return goBackNewsInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitNewsEvent value)? init,
+    TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult? Function(GetNotificationsEvent value)? getNotifications,
+    TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult? Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+  }) {
+    return goBackNewsInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitNewsEvent value)? init,
+    TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult Function(GetNotificationsEvent value)? getNotifications,
+    TResult Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+    required TResult orElse(),
+  }) {
+    if (goBackNewsInfo != null) {
+      return goBackNewsInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GoBackNewsInfoNewsEvent implements NewsEvent {
+  const factory GoBackNewsInfoNewsEvent() = _$GoBackNewsInfoNewsEventImpl;
+}
+
+/// @nodoc
 mixin _$NewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1077,7 +1872,12 @@ mixin _$NewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -1091,7 +1891,12 @@ mixin _$NewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -1105,7 +1910,12 @@ mixin _$NewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -1199,7 +2009,12 @@ class _$InitNewsStateImpl implements InitNewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)
         preloadDataCompleted,
   }) {
     return init();
@@ -1216,7 +2031,12 @@ class _$InitNewsStateImpl implements InitNewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
   }) {
     return init?.call();
@@ -1233,7 +2053,12 @@ class _$InitNewsStateImpl implements InitNewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1330,7 +2155,12 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)
         preloadDataCompleted,
   }) {
     return load();
@@ -1347,7 +2177,12 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
   }) {
     return load?.call();
@@ -1364,7 +2199,12 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1428,11 +2268,18 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
       NotificationInfoDataModel notificatios,
       int offsetNews,
       int offsetMedia,
-      int offsetNotificatios});
+      int offsetNotificatios,
+      List<String> listNewsPath,
+      bool isUpdateVersionApp,
+      bool isNotification,
+      OneNewsInfoDataModel? oneNews,
+      OneMediaInfoDataModel? oneMedia});
 
   $NewsInfoDataModelCopyWith<$Res> get news;
   $MediaInfoDataModelCopyWith<$Res> get media;
   $NotificationInfoDataModelCopyWith<$Res> get notificatios;
+  $OneNewsInfoDataModelCopyWith<$Res>? get oneNews;
+  $OneMediaInfoDataModelCopyWith<$Res>? get oneMedia;
 }
 
 /// @nodoc
@@ -1453,6 +2300,11 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     Object? offsetNews = null,
     Object? offsetMedia = null,
     Object? offsetNotificatios = null,
+    Object? listNewsPath = null,
+    Object? isUpdateVersionApp = null,
+    Object? isNotification = null,
+    Object? oneNews = freezed,
+    Object? oneMedia = freezed,
   }) {
     return _then(_$PreloadDataCompletedNewsStateImpl(
       news: null == news
@@ -1479,6 +2331,26 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
           ? _value.offsetNotificatios
           : offsetNotificatios // ignore: cast_nullable_to_non_nullable
               as int,
+      listNewsPath: null == listNewsPath
+          ? _value._listNewsPath
+          : listNewsPath // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isUpdateVersionApp: null == isUpdateVersionApp
+          ? _value.isUpdateVersionApp
+          : isUpdateVersionApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNotification: null == isNotification
+          ? _value.isNotification
+          : isNotification // ignore: cast_nullable_to_non_nullable
+              as bool,
+      oneNews: freezed == oneNews
+          ? _value.oneNews
+          : oneNews // ignore: cast_nullable_to_non_nullable
+              as OneNewsInfoDataModel?,
+      oneMedia: freezed == oneMedia
+          ? _value.oneMedia
+          : oneMedia // ignore: cast_nullable_to_non_nullable
+              as OneMediaInfoDataModel?,
     ));
   }
 
@@ -1506,6 +2378,30 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
       return _then(_value.copyWith(notificatios: value));
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OneNewsInfoDataModelCopyWith<$Res>? get oneNews {
+    if (_value.oneNews == null) {
+      return null;
+    }
+
+    return $OneNewsInfoDataModelCopyWith<$Res>(_value.oneNews!, (value) {
+      return _then(_value.copyWith(oneNews: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OneMediaInfoDataModelCopyWith<$Res>? get oneMedia {
+    if (_value.oneMedia == null) {
+      return null;
+    }
+
+    return $OneMediaInfoDataModelCopyWith<$Res>(_value.oneMedia!, (value) {
+      return _then(_value.copyWith(oneMedia: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -1518,7 +2414,13 @@ class _$PreloadDataCompletedNewsStateImpl
       required this.notificatios,
       required this.offsetNews,
       required this.offsetMedia,
-      required this.offsetNotificatios});
+      required this.offsetNotificatios,
+      required final List<String> listNewsPath,
+      required this.isUpdateVersionApp,
+      required this.isNotification,
+      this.oneNews,
+      this.oneMedia})
+      : _listNewsPath = listNewsPath;
 
   @override
   final NewsInfoDataModel news;
@@ -1532,10 +2434,26 @@ class _$PreloadDataCompletedNewsStateImpl
   final int offsetMedia;
   @override
   final int offsetNotificatios;
+  final List<String> _listNewsPath;
+  @override
+  List<String> get listNewsPath {
+    if (_listNewsPath is EqualUnmodifiableListView) return _listNewsPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listNewsPath);
+  }
+
+  @override
+  final bool isUpdateVersionApp;
+  @override
+  final bool isNotification;
+  @override
+  final OneNewsInfoDataModel? oneNews;
+  @override
+  final OneMediaInfoDataModel? oneMedia;
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, oneNews: $oneNews, oneMedia: $oneMedia)';
   }
 
   @override
@@ -1552,12 +2470,32 @@ class _$PreloadDataCompletedNewsStateImpl
             (identical(other.offsetMedia, offsetMedia) ||
                 other.offsetMedia == offsetMedia) &&
             (identical(other.offsetNotificatios, offsetNotificatios) ||
-                other.offsetNotificatios == offsetNotificatios));
+                other.offsetNotificatios == offsetNotificatios) &&
+            const DeepCollectionEquality()
+                .equals(other._listNewsPath, _listNewsPath) &&
+            (identical(other.isUpdateVersionApp, isUpdateVersionApp) ||
+                other.isUpdateVersionApp == isUpdateVersionApp) &&
+            (identical(other.isNotification, isNotification) ||
+                other.isNotification == isNotification) &&
+            (identical(other.oneNews, oneNews) || other.oneNews == oneNews) &&
+            (identical(other.oneMedia, oneMedia) ||
+                other.oneMedia == oneMedia));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, news, media, notificatios,
-      offsetNews, offsetMedia, offsetNotificatios);
+  int get hashCode => Object.hash(
+      runtimeType,
+      news,
+      media,
+      notificatios,
+      offsetNews,
+      offsetMedia,
+      offsetNotificatios,
+      const DeepCollectionEquality().hash(_listNewsPath),
+      isUpdateVersionApp,
+      isNotification,
+      oneNews,
+      oneMedia);
 
   @JsonKey(ignore: true)
   @override
@@ -1578,11 +2516,26 @@ class _$PreloadDataCompletedNewsStateImpl
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)
         preloadDataCompleted,
   }) {
     return preloadDataCompleted(
-        news, media, notificatios, offsetNews, offsetMedia, offsetNotificatios);
+        news,
+        media,
+        notificatios,
+        offsetNews,
+        offsetMedia,
+        offsetNotificatios,
+        listNewsPath,
+        isUpdateVersionApp,
+        isNotification,
+        oneNews,
+        oneMedia);
   }
 
   @override
@@ -1596,11 +2549,26 @@ class _$PreloadDataCompletedNewsStateImpl
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
   }) {
     return preloadDataCompleted?.call(
-        news, media, notificatios, offsetNews, offsetMedia, offsetNotificatios);
+        news,
+        media,
+        notificatios,
+        offsetNews,
+        offsetMedia,
+        offsetNotificatios,
+        listNewsPath,
+        isUpdateVersionApp,
+        isNotification,
+        oneNews,
+        oneMedia);
   }
 
   @override
@@ -1614,13 +2582,28 @@ class _$PreloadDataCompletedNewsStateImpl
             NotificationInfoDataModel notificatios,
             int offsetNews,
             int offsetMedia,
-            int offsetNotificatios)?
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(news, media, notificatios, offsetNews,
-          offsetMedia, offsetNotificatios);
+      return preloadDataCompleted(
+          news,
+          media,
+          notificatios,
+          offsetNews,
+          offsetMedia,
+          offsetNotificatios,
+          listNewsPath,
+          isUpdateVersionApp,
+          isNotification,
+          oneNews,
+          oneMedia);
     }
     return orElse();
   }
@@ -1669,7 +2652,12 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
           required final NotificationInfoDataModel notificatios,
           required final int offsetNews,
           required final int offsetMedia,
-          required final int offsetNotificatios}) =
+          required final int offsetNotificatios,
+          required final List<String> listNewsPath,
+          required final bool isUpdateVersionApp,
+          required final bool isNotification,
+          final OneNewsInfoDataModel? oneNews,
+          final OneMediaInfoDataModel? oneMedia}) =
       _$PreloadDataCompletedNewsStateImpl;
 
   NewsInfoDataModel get news;
@@ -1678,6 +2666,11 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   int get offsetNews;
   int get offsetMedia;
   int get offsetNotificatios;
+  List<String> get listNewsPath;
+  bool get isUpdateVersionApp;
+  bool get isNotification;
+  OneNewsInfoDataModel? get oneNews;
+  OneMediaInfoDataModel? get oneMedia;
   @JsonKey(ignore: true)
   _$$PreloadDataCompletedNewsStateImplCopyWith<
           _$PreloadDataCompletedNewsStateImpl>
