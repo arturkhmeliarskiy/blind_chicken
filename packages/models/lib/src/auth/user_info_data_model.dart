@@ -8,7 +8,7 @@ class UserInfoDataModel with _$UserInfoDataModel {
   const UserInfoDataModel._();
   factory UserInfoDataModel({
     required String r,
-    required String message,
+    required String errorMessage,
     required UserDataModel user,
   }) = _UserInfoDataModel;
 }

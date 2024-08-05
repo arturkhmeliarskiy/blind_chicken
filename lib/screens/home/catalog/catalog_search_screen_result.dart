@@ -108,7 +108,10 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                   },
                   addProductToSoppingCart: (size) {
                     context.read<SearchBloc>().add(
-                          SearchEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                          SearchEvent.addProductToSoppingCart(
+                            code: int.parse(initState.code),
+                            size: size,
+                          ),
                         );
 
                     context.read<ShoppingCartBloc>().add(
@@ -155,7 +158,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
           },
           addProductToSoppingCart: (initState) {
             context.read<SearchBloc>().add(
-                  SearchEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                  SearchEvent.addProductToSoppingCart(
+                    code: int.parse(initState.code),
+                  ),
                 );
 
             context.read<ShoppingCartBloc>().add(

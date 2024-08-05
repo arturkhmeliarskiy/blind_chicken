@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthDataModel {
   String get r => throw _privateConstructorUsedError;
   CapthaDataModel get captcha => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   int get seconds => throw _privateConstructorUsedError;
   String get send => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $AuthDataModelCopyWith<$Res> {
   $Res call(
       {String r,
       CapthaDataModel captcha,
-      String message,
+      String errorMessage,
       int seconds,
       String send});
 
@@ -58,7 +58,7 @@ class _$AuthDataModelCopyWithImpl<$Res, $Val extends AuthDataModel>
   $Res call({
     Object? r = null,
     Object? captcha = null,
-    Object? message = null,
+    Object? errorMessage = null,
     Object? seconds = null,
     Object? send = null,
   }) {
@@ -71,9 +71,9 @@ class _$AuthDataModelCopyWithImpl<$Res, $Val extends AuthDataModel>
           ? _value.captcha
           : captcha // ignore: cast_nullable_to_non_nullable
               as CapthaDataModel,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       seconds: null == seconds
           ? _value.seconds
@@ -106,7 +106,7 @@ abstract class _$$AuthDataModelImplCopyWith<$Res>
   $Res call(
       {String r,
       CapthaDataModel captcha,
-      String message,
+      String errorMessage,
       int seconds,
       String send});
 
@@ -127,7 +127,7 @@ class __$$AuthDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? captcha = null,
-    Object? message = null,
+    Object? errorMessage = null,
     Object? seconds = null,
     Object? send = null,
   }) {
@@ -140,9 +140,9 @@ class __$$AuthDataModelImplCopyWithImpl<$Res>
           ? _value.captcha
           : captcha // ignore: cast_nullable_to_non_nullable
               as CapthaDataModel,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       seconds: null == seconds
           ? _value.seconds
@@ -162,7 +162,7 @@ class _$AuthDataModelImpl extends _AuthDataModel {
   _$AuthDataModelImpl(
       {required this.r,
       required this.captcha,
-      required this.message,
+      required this.errorMessage,
       required this.seconds,
       required this.send})
       : super._();
@@ -172,7 +172,7 @@ class _$AuthDataModelImpl extends _AuthDataModel {
   @override
   final CapthaDataModel captcha;
   @override
-  final String message;
+  final String errorMessage;
   @override
   final int seconds;
   @override
@@ -180,7 +180,7 @@ class _$AuthDataModelImpl extends _AuthDataModel {
 
   @override
   String toString() {
-    return 'AuthDataModel(r: $r, captcha: $captcha, message: $message, seconds: $seconds, send: $send)';
+    return 'AuthDataModel(r: $r, captcha: $captcha, errorMessage: $errorMessage, seconds: $seconds, send: $send)';
   }
 
   @override
@@ -190,14 +190,15 @@ class _$AuthDataModelImpl extends _AuthDataModel {
             other is _$AuthDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.captcha, captcha) || other.captcha == captcha) &&
-            (identical(other.message, message) || other.message == message) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.seconds, seconds) || other.seconds == seconds) &&
             (identical(other.send, send) || other.send == send));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, r, captcha, message, seconds, send);
+      Object.hash(runtimeType, r, captcha, errorMessage, seconds, send);
 
   @JsonKey(ignore: true)
   @override
@@ -210,7 +211,7 @@ abstract class _AuthDataModel extends AuthDataModel {
   factory _AuthDataModel(
       {required final String r,
       required final CapthaDataModel captcha,
-      required final String message,
+      required final String errorMessage,
       required final int seconds,
       required final String send}) = _$AuthDataModelImpl;
   _AuthDataModel._() : super._();
@@ -220,7 +221,7 @@ abstract class _AuthDataModel extends AuthDataModel {
   @override
   CapthaDataModel get captcha;
   @override
-  String get message;
+  String get errorMessage;
   @override
   int get seconds;
   @override

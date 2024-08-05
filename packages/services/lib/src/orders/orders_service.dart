@@ -48,8 +48,20 @@ class OrdersService {
         },
       );
       log(response.data);
-
-      ordersResponse = OrdersResponse.fromJson(jsonDecode(response.data));
+      try {
+        final result = jsonDecode(response.data);
+        if (result["r"] == '1') {
+          ordersResponse = OrdersResponse.fromJson(result);
+        } else {
+          ordersResponse = OrdersResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        ordersResponse = OrdersResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return ordersResponse;
     } on DioError catch (e) {
@@ -62,8 +74,10 @@ class OrdersService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return OrdersResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<OrderInfoResponse?> getOrderInfo({
@@ -94,7 +108,20 @@ class OrdersService {
       );
       log(response.data);
 
-      orderInfoResponse = OrderInfoResponse.fromJson(jsonDecode(response.data));
+      try {
+        final result = jsonDecode(response.data);
+        if (result["r"] == '1') {
+          orderInfoResponse = OrderInfoResponse.fromJson(result);
+        } else {
+          orderInfoResponse = OrderInfoResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        orderInfoResponse = OrderInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return orderInfoResponse;
     } on DioError catch (e) {
@@ -107,8 +134,8 @@ class OrdersService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
-      return orderInfoResponse = OrderInfoResponse(
-        error: 'Нет информации',
+      return OrderInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
       );
     }
   }

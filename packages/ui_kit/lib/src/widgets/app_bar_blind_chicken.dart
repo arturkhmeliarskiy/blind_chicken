@@ -3,6 +3,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/src/widgets/blind_chicken_top_banner.dart';
@@ -71,6 +72,12 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
                 onBack();
               } else {
                 context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
+                final sharedService = GetIt.I.get<SharedPreferencesService>();
+                if (sharedService.getString(key: SharedPrefKeys.lastScreen) ==
+                    'catalog_card_info') {
+                  context.back();
+                  sharedService.remove(SharedPrefKeys.lastScreen);
+                }
                 context.navigateNamedTo('/dashboard/home/main');
               }
             },

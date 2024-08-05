@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OrdersDataModel {
   String get r => throw _privateConstructorUsedError;
-  String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   String get countOrders => throw _privateConstructorUsedError;
   List<OrderItemDataModel> get orders => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $OrdersDataModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String r,
-      String e,
+      String errorMessage,
       String countOrders,
       List<OrderItemDataModel> orders});
 }
@@ -53,7 +53,7 @@ class _$OrdersDataModelCopyWithImpl<$Res, $Val extends OrdersDataModel>
   @override
   $Res call({
     Object? r = null,
-    Object? e = null,
+    Object? errorMessage = null,
     Object? countOrders = null,
     Object? orders = null,
   }) {
@@ -62,9 +62,9 @@ class _$OrdersDataModelCopyWithImpl<$Res, $Val extends OrdersDataModel>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String,
-      e: null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       countOrders: null == countOrders
           ? _value.countOrders
@@ -88,7 +88,7 @@ abstract class _$$OrdersDataModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String r,
-      String e,
+      String errorMessage,
       String countOrders,
       List<OrderItemDataModel> orders});
 }
@@ -105,7 +105,7 @@ class __$$OrdersDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = null,
-    Object? e = null,
+    Object? errorMessage = null,
     Object? countOrders = null,
     Object? orders = null,
   }) {
@@ -114,9 +114,9 @@ class __$$OrdersDataModelImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String,
-      e: null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       countOrders: null == countOrders
           ? _value.countOrders
@@ -135,7 +135,7 @@ class __$$OrdersDataModelImplCopyWithImpl<$Res>
 class _$OrdersDataModelImpl extends _OrdersDataModel {
   _$OrdersDataModelImpl(
       {required this.r,
-      required this.e,
+      required this.errorMessage,
       required this.countOrders,
       required final List<OrderItemDataModel> orders})
       : _orders = orders,
@@ -144,7 +144,7 @@ class _$OrdersDataModelImpl extends _OrdersDataModel {
   @override
   final String r;
   @override
-  final String e;
+  final String errorMessage;
   @override
   final String countOrders;
   final List<OrderItemDataModel> _orders;
@@ -157,7 +157,7 @@ class _$OrdersDataModelImpl extends _OrdersDataModel {
 
   @override
   String toString() {
-    return 'OrdersDataModel(r: $r, e: $e, countOrders: $countOrders, orders: $orders)';
+    return 'OrdersDataModel(r: $r, errorMessage: $errorMessage, countOrders: $countOrders, orders: $orders)';
   }
 
   @override
@@ -166,14 +166,15 @@ class _$OrdersDataModelImpl extends _OrdersDataModel {
         (other.runtimeType == runtimeType &&
             other is _$OrdersDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.countOrders, countOrders) ||
                 other.countOrders == countOrders) &&
             const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, countOrders,
+  int get hashCode => Object.hash(runtimeType, r, errorMessage, countOrders,
       const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
@@ -187,7 +188,7 @@ class _$OrdersDataModelImpl extends _OrdersDataModel {
 abstract class _OrdersDataModel extends OrdersDataModel {
   factory _OrdersDataModel(
       {required final String r,
-      required final String e,
+      required final String errorMessage,
       required final String countOrders,
       required final List<OrderItemDataModel> orders}) = _$OrdersDataModelImpl;
   _OrdersDataModel._() : super._();
@@ -195,7 +196,7 @@ abstract class _OrdersDataModel extends OrdersDataModel {
   @override
   String get r;
   @override
-  String get e;
+  String get errorMessage;
   @override
   String get countOrders;
   @override

@@ -12,24 +12,15 @@ class AccountEvent with _$AccountEvent {
     String? name,
     String? email,
   }) = UpdateInfoAccountEvent;
-  const factory AccountEvent.paginationProduct({
-    required int offset,
-    required int limit,
-  }) = PaginationOrdersAccountEvent;
+  const factory AccountEvent.paginationProduct() = PaginationOrdersAccountEvent;
   const factory AccountEvent.getOrders() = GetOrdersAccountEvent;
-  const factory AccountEvent.paginationListOrdersBlank({
-    required int offset,
-    required int limit,
-  }) = PaginationListOrdersBlankAccountEvent;
+  const factory AccountEvent.paginationListOrdersBlank() = PaginationListOrdersBlankAccountEvent;
   const factory AccountEvent.getListOrdersBlank() = GetListOrdersBlankAccountEvent;
   const factory AccountEvent.getOrderPdfBlank({
     required String fileName,
     required String id,
   }) = GetOrderPdfBlankAccountEvent;
-  const factory AccountEvent.paginationListTailoringBlank({
-    required int offset,
-    required int limit,
-  }) = PaginationListTailoringBlankAccountEvent;
+  const factory AccountEvent.paginationListTailoringBlank() = PaginationListTailoringBlankAccountEvent;
   const factory AccountEvent.getListTailoringBlank() = GetListTailoringBlankAccountEvent;
   const factory AccountEvent.getTailoringPdfBlank({
     required String fileName,
@@ -67,8 +58,14 @@ class AccountEvent with _$AccountEvent {
     required Uint8List bytes,
   }) = SaveDocumentAccountEvent;
   const factory AccountEvent.goBackProductInfo() = GoBackProductInfoCategotyAccountEvent;
-  const factory AccountEvent.addProductToSoppingCart() = AddProductToSoppingCartCAccountEvent;
+  const factory AccountEvent.addProductToSoppingCart({
+    required SkuProductDataModel size,
+  }) = AddProductToSoppingCartCAccountEvent;
   const factory AccountEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,
   }) = CheckProductToSoppingCartAccountEvent;
+  const factory AccountEvent.getInfoProductSize({
+    required String code,
+    required bool isShop,
+  }) = GetInfoProductSizeAccountEvent;
 }

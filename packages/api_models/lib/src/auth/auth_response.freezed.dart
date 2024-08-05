@@ -23,7 +23,7 @@ mixin _$AuthResponse {
   String? get r => throw _privateConstructorUsedError;
   CapthaResponse? get captcha => throw _privateConstructorUsedError;
   @JsonKey(name: 'e')
-  String? get message => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   @JsonKey(name: 't')
   int? get seconds => throw _privateConstructorUsedError;
   String? get send => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $AuthResponseCopyWith<$Res> {
   $Res call(
       {String? r,
       CapthaResponse? captcha,
-      @JsonKey(name: 'e') String? message,
+      @JsonKey(name: 'e') String? errorMessage,
       @JsonKey(name: 't') int? seconds,
       String? send});
 
@@ -65,7 +65,7 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
   $Res call({
     Object? r = freezed,
     Object? captcha = freezed,
-    Object? message = freezed,
+    Object? errorMessage = freezed,
     Object? seconds = freezed,
     Object? send = freezed,
   }) {
@@ -78,9 +78,9 @@ class _$AuthResponseCopyWithImpl<$Res, $Val extends AuthResponse>
           ? _value.captcha
           : captcha // ignore: cast_nullable_to_non_nullable
               as CapthaResponse?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       seconds: freezed == seconds
           ? _value.seconds
@@ -117,7 +117,7 @@ abstract class _$$AuthResponseImplCopyWith<$Res>
   $Res call(
       {String? r,
       CapthaResponse? captcha,
-      @JsonKey(name: 'e') String? message,
+      @JsonKey(name: 'e') String? errorMessage,
       @JsonKey(name: 't') int? seconds,
       String? send});
 
@@ -138,7 +138,7 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? captcha = freezed,
-    Object? message = freezed,
+    Object? errorMessage = freezed,
     Object? seconds = freezed,
     Object? send = freezed,
   }) {
@@ -151,9 +151,9 @@ class __$$AuthResponseImplCopyWithImpl<$Res>
           ? _value.captcha
           : captcha // ignore: cast_nullable_to_non_nullable
               as CapthaResponse?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       seconds: freezed == seconds
           ? _value.seconds
@@ -173,7 +173,7 @@ class _$AuthResponseImpl extends _AuthResponse {
   _$AuthResponseImpl(
       {this.r,
       this.captcha,
-      @JsonKey(name: 'e') this.message,
+      @JsonKey(name: 'e') this.errorMessage,
       @JsonKey(name: 't') this.seconds,
       this.send})
       : super._();
@@ -187,7 +187,7 @@ class _$AuthResponseImpl extends _AuthResponse {
   final CapthaResponse? captcha;
   @override
   @JsonKey(name: 'e')
-  final String? message;
+  final String? errorMessage;
   @override
   @JsonKey(name: 't')
   final int? seconds;
@@ -196,7 +196,7 @@ class _$AuthResponseImpl extends _AuthResponse {
 
   @override
   String toString() {
-    return 'AuthResponse(r: $r, captcha: $captcha, message: $message, seconds: $seconds, send: $send)';
+    return 'AuthResponse(r: $r, captcha: $captcha, errorMessage: $errorMessage, seconds: $seconds, send: $send)';
   }
 
   @override
@@ -206,7 +206,8 @@ class _$AuthResponseImpl extends _AuthResponse {
             other is _$AuthResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.captcha, captcha) || other.captcha == captcha) &&
-            (identical(other.message, message) || other.message == message) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.seconds, seconds) || other.seconds == seconds) &&
             (identical(other.send, send) || other.send == send));
   }
@@ -214,7 +215,7 @@ class _$AuthResponseImpl extends _AuthResponse {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, r, captcha, message, seconds, send);
+      Object.hash(runtimeType, r, captcha, errorMessage, seconds, send);
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +235,7 @@ abstract class _AuthResponse extends AuthResponse {
   factory _AuthResponse(
       {final String? r,
       final CapthaResponse? captcha,
-      @JsonKey(name: 'e') final String? message,
+      @JsonKey(name: 'e') final String? errorMessage,
       @JsonKey(name: 't') final int? seconds,
       final String? send}) = _$AuthResponseImpl;
   _AuthResponse._() : super._();
@@ -248,7 +249,7 @@ abstract class _AuthResponse extends AuthResponse {
   CapthaResponse? get captcha;
   @override
   @JsonKey(name: 'e')
-  String? get message;
+  String? get errorMessage;
   @override
   @JsonKey(name: 't')
   int? get seconds;

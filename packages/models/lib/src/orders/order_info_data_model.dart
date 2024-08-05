@@ -8,7 +8,7 @@ class OrderInfoDataModel with _$OrderInfoDataModel {
   const OrderInfoDataModel._();
   factory OrderInfoDataModel({
     required String r,
-    required String e,
+    required String errorMessage,
     required String id,
     required String date,
     required String status,

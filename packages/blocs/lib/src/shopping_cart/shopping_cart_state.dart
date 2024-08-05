@@ -7,6 +7,15 @@ class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState.createOrderSuccessfully({
     required int orderId,
   }) = CreateOrderSuccessfullyShoppingCartState;
+  const factory ShoppingCartState.openSoppingCart() = OpenSoppingCartShoppingCartState;
+  const factory ShoppingCartState.getSizeProduct({
+    required String code,
+    required List<SkuProductDataModel> listSize,
+    required List<SkuProductDataModel> listSizeToSoppingCart,
+  }) = GetSizeProductShoppingCartState;
+  const factory ShoppingCartState.addProductToSoppingCart({
+    required String code,
+  }) = AddProductShoppingCartState;
   const factory ShoppingCartState.productsShoppingCart({
     required BasketFullInfoDataModel shoppingCart,
     required List<PaymentItemDataModel> payments,
@@ -43,10 +52,14 @@ class ShoppingCartState with _$ShoppingCartState {
     required List<ProductDataModel> listProdcutsAlso,
     required List<ProductDataModel> listProdcutsBrand,
     required List<ProductDataModel> listProdcutsComplect,
+    required List<SkuProductDataModel> listSize,
     required List<int> favouritesProductsId,
     required bool isAuth,
+    required bool isLoadGetSizeProduct,
+    String? codeProduct,
     SkuProductDataModel? selectSizeProduct,
-    bool? isSoppingCart,
+    bool? isShoppingCart,
+    bool? isShoppingCartDetailsProduct,
     bool? isAuthModel,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,

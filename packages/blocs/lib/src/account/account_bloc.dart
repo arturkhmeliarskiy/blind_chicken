@@ -22,6 +22,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final BasketRepository _basketRepository;
   final FavouritesRepository _favouritesRepository;
   final PushNotificationRepository _pushNotificationRepository;
+  final UpdateDataService _updateDataService;
   final FileService _fileService;
 
   AccountBloc(
@@ -33,6 +34,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._favouritesRepository,
     this._pushNotificationRepository,
     this._fileService,
+    this._updateDataService,
   ) : super(const AccountState.init()) {
     on<AccountEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -60,6 +62,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         getListTailoringBlank: (event) => _getListTailoringBlank(event, emit),
         getTailoringPdfBlank: (event) => _getTailoringPdfBlank(event, emit),
         paginationListTailoringBlank: (event) => _paginationListTailoringBlank(event, emit),
+        getInfoProductSize: (event) => _getInfoProductSize(event, emit),
       ),
     );
   }
@@ -84,8 +87,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
     }
     final userInfo = await _authRepository.getUserInfo();
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
     emit(AccountState.preloadDataCompleted(
       applicationVersion: packageInfo.version,
       phone: userInfo.user.phone,
@@ -101,6 +104,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       listProdcutsBrand: [],
       favouritesProductsId: favouritesProductsId,
       isAuth: isAuth,
+      isError: userInfo.r != '1',
+      errorMessage: userInfo.errorMessage,
       virtualCardsCod: userInfo.user.virtualcardscod,
       isLoadVirtualCardsCod: false,
       listOrdersBlank: [],
@@ -108,6 +113,11 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       fileName: '',
       listTailoringBlank: [],
       listProdcutsComplect: [],
+      listSize: [],
+      isLoadGetSizeProduct: false,
+      offsetOrders: 1,
+      offsetOrdersBlank: 1,
+      offsetTailoringBlank: 1,
     ));
   }
 
@@ -148,15 +158,15 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<OrderItemDataModel> orders = initState.orders.toList();
       final ordersInfo = await _ordersRepository.getListOrders(
-        nav: 'page-${event.offset}',
+        nav: 'page-${initState.offsetOrders + 1}',
       );
 
       orders = [...orders, ...ordersInfo.orders];
 
       emit(initState.copyWith(
-        orders: orders,
-        countOrders: ordersInfo.countOrders,
-      ));
+          orders: orders,
+          countOrders: ordersInfo.countOrders,
+          offsetOrders: initState.offsetOrders + 1));
     });
   }
 
@@ -171,6 +181,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       emit(initState.copyWith(
         orders: ordersInfo.orders,
         countOrders: ordersInfo.countOrders,
+        isError: ordersInfo.r != '1',
+        errorMessage: ordersInfo.errorMessage,
+        offsetOrders: 1,
       ));
     });
   }
@@ -185,6 +198,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       emit(initState.copyWith(
         orderInfo: orderInfo,
+        isError: orderInfo.r != '1',
+        errorMessage: orderInfo.errorMessage,
       ));
     });
   }
@@ -223,6 +238,11 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       fileName: '',
       listTailoringBlank: [],
       listProdcutsComplect: [],
+      listSize: [],
+      isLoadGetSizeProduct: false,
+      offsetOrders: 1,
+      offsetOrdersBlank: 1,
+      offsetTailoringBlank: 1,
     ));
   }
 
@@ -291,6 +311,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
+      bool isShoppingCartDetailsProduct = false;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
@@ -299,7 +320,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: '',
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
@@ -334,7 +355,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
-      if (detailsProduct.sku.isNotEmpty) {
+      if (detailsProduct.sku.length > 1) {
         if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
           for (int i = 0; i < detailsProduct.sku.length; i++) {
             if (detailsProduct.sku[i].id == event.code) {
@@ -355,6 +376,11 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
               (element) => int.parse(element.code) == detailsProduct.code,
             )
             .toList();
+        if (soppingCart.isNotEmpty) {
+          if (!soppingCart.first.sku.contains('-')) {
+            isShoppingCartDetailsProduct = true;
+          }
+        }
       }
 
       emit(initState.copyWith(
@@ -365,8 +391,9 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
-        isSoppingCart: soppingCart.isNotEmpty,
+        isShoppingCart: soppingCart.isNotEmpty,
         selectSizeProduct: selectSizeProduct ?? event.size,
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
       ));
     });
   }
@@ -390,7 +417,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         emit(const AccountState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: '',
+          genderIndex: _updateDataService.selectedIndexGender.toString(),
         );
 
         final additionalProductsDescriptionStyle =
@@ -507,8 +534,45 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
+      bool isShoppingCart = false;
+      bool isShoppingCartDetailsProduct = false;
+      final detailsProduct = initState.detailsProduct;
+
+      if (detailsProduct != null) {
+        SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
+            (initState.detailsProduct?.sku.isNotEmpty ?? false
+                ? (initState.detailsProduct?.sku.first ??
+                    SkuProductDataModel(
+                      id: '',
+                      value: '',
+                    ))
+                : SkuProductDataModel(
+                    id: '',
+                    value: '',
+                  ));
+        if (selectSizeProduct.id == (event.size.id) && (event.size.id).contains('-')) {
+          isShoppingCart = true;
+        }
+
+        if (selectSizeProduct.id == (event.size.id) &&
+            detailsProduct.sku.length == 1 &&
+            !(event.size.id).contains('-')) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+
+        if (event.size.id.isEmpty) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+      } else {
+        isShoppingCart = false;
+        isShoppingCartDetailsProduct = true;
+      }
+
       emit(initState.copyWith(
-        isSoppingCart: true,
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+        isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
       ));
     });
   }
@@ -538,13 +602,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<OrderBlankDataModel> orders = initState.listOrdersBlank.toList();
       final ordersBlank = await _authRepository.getListOrdersBlank(
-        nav: 'page-${event.offset}',
+        nav: 'page-${initState.offsetOrdersBlank + 1}',
       );
 
       orders = [...orders, ...ordersBlank.orders];
 
       emit(initState.copyWith(
         listOrdersBlank: orders,
+        offsetOrdersBlank: initState.offsetOrdersBlank + 1,
         file: Uint8List(0),
       ));
     });
@@ -557,13 +622,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<OrderBlankDataModel> orders = initState.listOrdersBlank.toList();
       final ordersBlank = await _authRepository.getListTailoringBlank(
-        nav: 'page-${event.offset}',
+        nav: 'page-${initState.offsetTailoringBlank + 1}',
       );
 
       orders = [...orders, ...ordersBlank.orders];
 
       emit(initState.copyWith(
         listOrdersBlank: orders,
+        offsetTailoringBlank: initState.offsetTailoringBlank + 1,
         file: Uint8List(0),
       ));
     });
@@ -596,7 +662,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             .toList();
       }
       emit(initState.copyWith(
-        isSoppingCart: soppingCart.isNotEmpty,
+        isShoppingCart: soppingCart.isNotEmpty,
       ));
     });
   }
@@ -726,6 +792,54 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
       emit(initState.copyWith(
         isSuccessfullySavedFile: result,
+      ));
+    });
+  }
+
+  Future<void> _getInfoProductSize(
+    GetInfoProductSizeAccountEvent event,
+    Emitter<AccountState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(initState.copyWith(
+        isLoadGetSizeProduct: true,
+        codeProduct: event.code,
+      ));
+      final detailsProduct = await _catalogRepository.getDetailsProduct(
+        code: event.code,
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
+      );
+
+      if (detailsProduct.sku.isNotEmpty) {
+        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
+          emit(AccountState.getSizeProduct(
+            code: event.code,
+            listSize: detailsProduct.sku,
+            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+          ));
+        } else {
+          if (event.isShop) {
+            emit(const AccountState.openSoppingCart());
+          } else {
+            emit(AccountState.addProductToSoppingCart(
+              code: event.code,
+            ));
+          }
+        }
+      } else {
+        if (event.isShop) {
+          emit(const AccountState.openSoppingCart());
+        } else {
+          emit(AccountState.addProductToSoppingCart(
+            code: event.code,
+          ));
+        }
+      }
+
+      emit(initState.copyWith(
+        listSize: detailsProduct.sku,
+        isLoadGetSizeProduct: false,
+        codeProduct: event.code,
       ));
     });
   }

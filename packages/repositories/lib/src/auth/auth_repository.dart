@@ -141,7 +141,7 @@ extension on AuthResponse {
   AuthDataModel toAuth() {
     return AuthDataModel(
       r: r ?? '',
-      message: message ?? '',
+      errorMessage: errorMessage ?? '',
       captcha: CapthaDataModel(
         img: captcha?.img ?? '',
         code: captcha?.code ?? '',
@@ -156,7 +156,7 @@ extension on UserInfoResponse {
   UserInfoDataModel toUserInfo() {
     return UserInfoDataModel(
       r: r ?? '',
-      message: message ?? '',
+      errorMessage: errorMessage ?? '',
       user: UserDataModel(
         sumBuy: user?.sumBuy ?? 0,
         phone: user?.phone ?? '',

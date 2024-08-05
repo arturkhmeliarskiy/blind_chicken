@@ -13,5 +13,6 @@ class SharedPrefKeys {
   static const String platformDevice = 'platform_device';
   static const String appVersion = 'app_version';
   static const String appInstalled = 'app_installed';
+  static const String lastScreen = 'last_screen';
   static const String notification = 'notification';
 }

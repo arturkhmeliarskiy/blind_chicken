@@ -41,7 +41,8 @@ mixin _$FavouritesEvent {
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -68,7 +69,8 @@ mixin _$FavouritesEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -94,7 +96,8 @@ mixin _$FavouritesEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -285,7 +288,8 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -315,7 +319,8 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -344,7 +349,8 @@ class _$InitFavouritesEventImpl implements InitFavouritesEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -540,7 +546,8 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -570,7 +577,8 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -599,7 +607,8 @@ class _$PreloadDataFavouritesEventImpl implements PreloadDataFavouritesEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -849,7 +858,8 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -879,7 +889,8 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -908,7 +919,8 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -1169,7 +1181,8 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1199,7 +1212,8 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -1228,7 +1242,8 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -1465,7 +1480,8 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1495,7 +1511,8 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -1524,7 +1541,8 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -1733,7 +1751,8 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1763,7 +1782,8 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -1792,7 +1812,8 @@ class _$RemoveSelectAllFiltersCategotyFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -2045,7 +2066,8 @@ class _$DeleteCatalogFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2075,7 +2097,8 @@ class _$DeleteCatalogFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -2104,7 +2127,8 @@ class _$DeleteCatalogFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -2359,7 +2383,8 @@ class _$AddFavouriteProductFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2389,7 +2414,8 @@ class _$AddFavouriteProductFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -2418,7 +2444,8 @@ class _$AddFavouriteProductFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -2651,7 +2678,8 @@ class _$DeleteFavouriteProductFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2681,7 +2709,8 @@ class _$DeleteFavouriteProductFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -2710,7 +2739,8 @@ class _$DeleteFavouriteProductFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -2974,7 +3004,8 @@ class _$GetInfoProductFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3004,7 +3035,8 @@ class _$GetInfoProductFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -3033,7 +3065,8 @@ class _$GetInfoProductFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -3269,7 +3302,8 @@ class _$CheckButtonTopFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3299,7 +3333,8 @@ class _$CheckButtonTopFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -3328,7 +3363,8 @@ class _$CheckButtonTopFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -3572,7 +3608,8 @@ class _$ChangeSizeProductFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3602,7 +3639,8 @@ class _$ChangeSizeProductFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -3631,7 +3669,8 @@ class _$ChangeSizeProductFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -3836,7 +3875,8 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3866,7 +3906,8 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -3895,7 +3936,8 @@ class _$GoBackProductInfoCategotyFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -4094,7 +4136,8 @@ class _$PaginationProductFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4124,7 +4167,8 @@ class _$PaginationProductFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -4153,7 +4197,8 @@ class _$PaginationProductFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -4292,7 +4337,9 @@ abstract class _$$AddProductToSoppingCartFavouritesEventImplCopyWith<$Res> {
           $Res Function(_$AddProductToSoppingCartFavouritesEventImpl) then) =
       __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int code});
+  $Res call({int code, SkuProductDataModel? size});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -4309,13 +4356,30 @@ class __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? size = freezed,
   }) {
     return _then(_$AddProductToSoppingCartFavouritesEventImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as int,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -4323,14 +4387,17 @@ class __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
 
 class _$AddProductToSoppingCartFavouritesEventImpl
     implements AddProductToSoppingCartFavouritesEvent {
-  const _$AddProductToSoppingCartFavouritesEventImpl({required this.code});
+  const _$AddProductToSoppingCartFavouritesEventImpl(
+      {required this.code, this.size});
 
   @override
   final int code;
+  @override
+  final SkuProductDataModel? size;
 
   @override
   String toString() {
-    return 'FavouritesEvent.addProductToSoppingCart(code: $code)';
+    return 'FavouritesEvent.addProductToSoppingCart(code: $code, size: $size)';
   }
 
   @override
@@ -4338,11 +4405,12 @@ class _$AddProductToSoppingCartFavouritesEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartFavouritesEventImpl &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => Object.hash(runtimeType, code, size);
 
   @JsonKey(ignore: true)
   @override
@@ -4379,13 +4447,14 @@ class _$AddProductToSoppingCartFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function() updateInfoProducts,
   }) {
-    return addProductToSoppingCart(code);
+    return addProductToSoppingCart(code, size);
   }
 
   @override
@@ -4409,12 +4478,13 @@ class _$AddProductToSoppingCartFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
   }) {
-    return addProductToSoppingCart?.call(code);
+    return addProductToSoppingCart?.call(code, size);
   }
 
   @override
@@ -4438,14 +4508,15 @@ class _$AddProductToSoppingCartFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
-      return addProductToSoppingCart(code);
+      return addProductToSoppingCart(code, size);
     }
     return orElse();
   }
@@ -4568,9 +4639,11 @@ class _$AddProductToSoppingCartFavouritesEventImpl
 abstract class AddProductToSoppingCartFavouritesEvent
     implements FavouritesEvent {
   const factory AddProductToSoppingCartFavouritesEvent(
-      {required final int code}) = _$AddProductToSoppingCartFavouritesEventImpl;
+          {required final int code, final SkuProductDataModel? size}) =
+      _$AddProductToSoppingCartFavouritesEventImpl;
 
   int get code;
+  SkuProductDataModel? get size;
   @JsonKey(ignore: true)
   _$$AddProductToSoppingCartFavouritesEventImplCopyWith<
           _$AddProductToSoppingCartFavouritesEventImpl>
@@ -4681,7 +4754,8 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4711,7 +4785,8 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -4740,7 +4815,8 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -4982,7 +5058,8 @@ class _$GetInfoProductSizeFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5012,7 +5089,8 @@ class _$GetInfoProductSizeFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -5041,7 +5119,8 @@ class _$GetInfoProductSizeFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -5247,7 +5326,8 @@ class _$UpdateInfoProductsFavouritesEventImpl
         changeSizeProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function() paginationProduct,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5277,7 +5357,8 @@ class _$UpdateInfoProductsFavouritesEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function()? paginationProduct,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function()? updateInfoProducts,
@@ -5306,7 +5387,8 @@ class _$UpdateInfoProductsFavouritesEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
     TResult Function()? paginationProduct,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function()? updateInfoProducts,
@@ -5470,7 +5552,8 @@ mixin _$FavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -5507,7 +5590,8 @@ mixin _$FavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -5544,7 +5628,8 @@ mixin _$FavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -5673,7 +5758,8 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -5713,7 +5799,8 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -5753,7 +5840,8 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -5886,7 +5974,8 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -5926,7 +6015,8 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -5966,7 +6056,8 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6101,7 +6192,8 @@ class _$OpenSoppingCartFavouritesStateImpl
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -6141,7 +6233,8 @@ class _$OpenSoppingCartFavouritesStateImpl
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6181,7 +6274,8 @@ class _$OpenSoppingCartFavouritesStateImpl
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6385,7 +6479,8 @@ class _$GetSizeProductFavouritesStateImpl
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -6425,7 +6520,8 @@ class _$GetSizeProductFavouritesStateImpl
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6465,7 +6561,8 @@ class _$GetSizeProductFavouritesStateImpl
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6636,7 +6733,8 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -6676,7 +6774,8 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6716,7 +6815,8 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -6814,7 +6914,8 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       int userDiscount,
       String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
-      bool? isSoppingCart,
+      bool? isShoppingCart,
+      bool? isShoppingCartDetailsProduct,
       bool? isUpdate,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct});
@@ -6857,7 +6958,8 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? userDiscount = null,
     Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
-    Object? isSoppingCart = freezed,
+    Object? isShoppingCart = freezed,
+    Object? isShoppingCartDetailsProduct = freezed,
     Object? isUpdate = freezed,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
@@ -6943,9 +7045,13 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel?,
-      isSoppingCart: freezed == isSoppingCart
-          ? _value.isSoppingCart
-          : isSoppingCart // ignore: cast_nullable_to_non_nullable
+      isShoppingCart: freezed == isShoppingCart
+          ? _value.isShoppingCart
+          : isShoppingCart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isShoppingCartDetailsProduct: freezed == isShoppingCartDetailsProduct
+          ? _value.isShoppingCartDetailsProduct
+          : isShoppingCartDetailsProduct // ignore: cast_nullable_to_non_nullable
               as bool?,
       isUpdate: freezed == isUpdate
           ? _value.isUpdate
@@ -7035,7 +7141,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       required this.userDiscount,
       this.codeProduct,
       this.selectSizeProduct,
-      this.isSoppingCart,
+      this.isShoppingCart,
+      this.isShoppingCartDetailsProduct,
       this.isUpdate,
       this.favouritesProductsInfo,
       this.detailsProduct})
@@ -7173,7 +7280,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   @override
   final SkuProductDataModel? selectSizeProduct;
   @override
-  final bool? isSoppingCart;
+  final bool? isShoppingCart;
+  @override
+  final bool? isShoppingCartDetailsProduct;
   @override
   final bool? isUpdate;
   @override
@@ -7183,7 +7292,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
 
   @override
   String toString() {
-    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -7226,8 +7335,12 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
                 other.selectSizeProduct == selectSizeProduct) &&
-            (identical(other.isSoppingCart, isSoppingCart) ||
-                other.isSoppingCart == isSoppingCart) &&
+            (identical(other.isShoppingCart, isShoppingCart) ||
+                other.isShoppingCart == isShoppingCart) &&
+            (identical(other.isShoppingCartDetailsProduct,
+                    isShoppingCartDetailsProduct) ||
+                other.isShoppingCartDetailsProduct ==
+                    isShoppingCartDetailsProduct) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
@@ -7259,7 +7372,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         userDiscount,
         codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isUpdate,
         favouritesProductsInfo,
         detailsProduct
@@ -7303,7 +7417,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -7330,7 +7445,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         userDiscount,
         codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isUpdate,
         favouritesProductsInfo,
         detailsProduct);
@@ -7367,7 +7483,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -7394,7 +7511,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         userDiscount,
         codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isUpdate,
         favouritesProductsInfo,
         detailsProduct);
@@ -7431,7 +7549,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             int userDiscount,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isUpdate,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -7460,7 +7579,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
           userDiscount,
           codeProduct,
           selectSizeProduct,
-          isSoppingCart,
+          isShoppingCart,
+          isShoppingCartDetailsProduct,
           isUpdate,
           favouritesProductsInfo,
           detailsProduct);
@@ -7537,7 +7657,8 @@ abstract class ProductsFavouritesState implements FavouritesState {
           required final int userDiscount,
           final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
-          final bool? isSoppingCart,
+          final bool? isShoppingCart,
+          final bool? isShoppingCartDetailsProduct,
           final bool? isUpdate,
           final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
           final DetailProductDataModel? detailsProduct}) =
@@ -7563,7 +7684,8 @@ abstract class ProductsFavouritesState implements FavouritesState {
   int get userDiscount;
   String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
-  bool? get isSoppingCart;
+  bool? get isShoppingCart;
+  bool? get isShoppingCartDetailsProduct;
   bool? get isUpdate;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;

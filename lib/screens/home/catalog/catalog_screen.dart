@@ -179,7 +179,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
                   },
                   addProductToSoppingCart: (size) {
                     context.read<CatalogBloc>().add(
-                          CatalogEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                          CatalogEvent.addProductToSoppingCart(
+                            code: int.parse(initState.code),
+                            size: size,
+                          ),
                         );
                     context.read<ShoppingCartBloc>().add(
                           ShoppingCartEvent.addOtherProductToSoppingCart(
@@ -227,7 +230,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
           },
           addProductToSoppingCart: (initState) {
             context.read<CatalogBloc>().add(
-                  CatalogEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                  CatalogEvent.addProductToSoppingCart(
+                    code: int.parse(initState.code),
+                  ),
                 );
 
             context.read<ShoppingCartBloc>().add(

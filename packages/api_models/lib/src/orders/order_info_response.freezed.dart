@@ -21,11 +21,11 @@ OrderInfoResponse _$OrderInfoResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrderInfoResponse {
   String? get r => throw _privateConstructorUsedError;
-  String? get e => throw _privateConstructorUsedError;
+  @JsonKey(name: 'e')
+  String? get errorMessage => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
   @JsonKey(name: 'paid_info')
   String? get paidInfo => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_paid')
@@ -64,11 +64,10 @@ abstract class $OrderInfoResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? r,
-      String? e,
+      @JsonKey(name: 'e') String? errorMessage,
       String? id,
       String? date,
       String? status,
-      String? error,
       @JsonKey(name: 'paid_info') String? paidInfo,
       @JsonKey(name: 'is_paid') String? isPaid,
       @JsonKey(name: 'sum_for_paid') String? sumForPaid,
@@ -102,11 +101,10 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
   @override
   $Res call({
     Object? r = freezed,
-    Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? id = freezed,
     Object? date = freezed,
     Object? status = freezed,
-    Object? error = freezed,
     Object? paidInfo = freezed,
     Object? isPaid = freezed,
     Object? sumForPaid = freezed,
@@ -125,9 +123,9 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      e: freezed == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       id: freezed == id
           ? _value.id
@@ -140,10 +138,6 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
               as String?,
       paidInfo: freezed == paidInfo
           ? _value.paidInfo
@@ -243,11 +237,10 @@ abstract class _$$OrderInfoResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? r,
-      String? e,
+      @JsonKey(name: 'e') String? errorMessage,
       String? id,
       String? date,
       String? status,
-      String? error,
       @JsonKey(name: 'paid_info') String? paidInfo,
       @JsonKey(name: 'is_paid') String? isPaid,
       @JsonKey(name: 'sum_for_paid') String? sumForPaid,
@@ -282,11 +275,10 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = freezed,
-    Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? id = freezed,
     Object? date = freezed,
     Object? status = freezed,
-    Object? error = freezed,
     Object? paidInfo = freezed,
     Object? isPaid = freezed,
     Object? sumForPaid = freezed,
@@ -305,9 +297,9 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      e: freezed == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       id: freezed == id
           ? _value.id
@@ -320,10 +312,6 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
-      error: freezed == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
               as String?,
       paidInfo: freezed == paidInfo
           ? _value.paidInfo
@@ -382,11 +370,10 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
 class _$OrderInfoResponseImpl extends _OrderInfoResponse {
   _$OrderInfoResponseImpl(
       {this.r,
-      this.e,
+      @JsonKey(name: 'e') this.errorMessage,
       this.id,
       this.date,
       this.status,
-      this.error,
       @JsonKey(name: 'paid_info') this.paidInfo,
       @JsonKey(name: 'is_paid') this.isPaid,
       @JsonKey(name: 'sum_for_paid') this.sumForPaid,
@@ -410,15 +397,14 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
   @override
   final String? r;
   @override
-  final String? e;
+  @JsonKey(name: 'e')
+  final String? errorMessage;
   @override
   final String? id;
   @override
   final String? date;
   @override
   final String? status;
-  @override
-  final String? error;
   @override
   @JsonKey(name: 'paid_info')
   final String? paidInfo;
@@ -472,7 +458,7 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
 
   @override
   String toString() {
-    return 'OrderInfoResponse(r: $r, e: $e, id: $id, date: $date, status: $status, error: $error, paidInfo: $paidInfo, isPaid: $isPaid, sumForPaid: $sumForPaid, idForPay: $idForPay, promo: $promo, paymentName: $paymentName, paymentsGiftCard: $paymentsGiftCard, sumPaymentGiftCard: $sumPaymentGiftCard, sumPaymentBonus: $sumPaymentBonus, delivery: $delivery, products: $products, giftCard: $giftCard)';
+    return 'OrderInfoResponse(r: $r, errorMessage: $errorMessage, id: $id, date: $date, status: $status, paidInfo: $paidInfo, isPaid: $isPaid, sumForPaid: $sumForPaid, idForPay: $idForPay, promo: $promo, paymentName: $paymentName, paymentsGiftCard: $paymentsGiftCard, sumPaymentGiftCard: $sumPaymentGiftCard, sumPaymentBonus: $sumPaymentBonus, delivery: $delivery, products: $products, giftCard: $giftCard)';
   }
 
   @override
@@ -481,11 +467,11 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
         (other.runtimeType == runtimeType &&
             other is _$OrderInfoResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.error, error) || other.error == error) &&
             (identical(other.paidInfo, paidInfo) ||
                 other.paidInfo == paidInfo) &&
             (identical(other.isPaid, isPaid) || other.isPaid == isPaid) &&
@@ -514,11 +500,10 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
   int get hashCode => Object.hash(
       runtimeType,
       r,
-      e,
+      errorMessage,
       id,
       date,
       status,
-      error,
       paidInfo,
       isPaid,
       sumForPaid,
@@ -550,11 +535,10 @@ class _$OrderInfoResponseImpl extends _OrderInfoResponse {
 abstract class _OrderInfoResponse extends OrderInfoResponse {
   factory _OrderInfoResponse(
       {final String? r,
-      final String? e,
+      @JsonKey(name: 'e') final String? errorMessage,
       final String? id,
       final String? date,
       final String? status,
-      final String? error,
       @JsonKey(name: 'paid_info') final String? paidInfo,
       @JsonKey(name: 'is_paid') final String? isPaid,
       @JsonKey(name: 'sum_for_paid') final String? sumForPaid,
@@ -577,15 +561,14 @@ abstract class _OrderInfoResponse extends OrderInfoResponse {
   @override
   String? get r;
   @override
-  String? get e;
+  @JsonKey(name: 'e')
+  String? get errorMessage;
   @override
   String? get id;
   @override
   String? get date;
   @override
   String? get status;
-  @override
-  String? get error;
   @override
   @JsonKey(name: 'paid_info')
   String? get paidInfo;

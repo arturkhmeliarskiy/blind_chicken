@@ -103,7 +103,10 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                   },
                   addProductToSoppingCart: (size) {
                     context.read<FavouritesBloc>().add(
-                          FavouritesEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                          FavouritesEvent.addProductToSoppingCart(
+                            code: int.parse(initState.code),
+                            size: size,
+                          ),
                         );
 
                     context.read<ShoppingCartBloc>().add(
@@ -150,7 +153,9 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
           },
           addProductToSoppingCart: (initState) {
             context.read<FavouritesBloc>().add(
-                  FavouritesEvent.addProductToSoppingCart(code: int.parse(initState.code)),
+                  FavouritesEvent.addProductToSoppingCart(
+                    code: int.parse(initState.code),
+                  ),
                 );
 
             context.read<ShoppingCartBloc>().add(

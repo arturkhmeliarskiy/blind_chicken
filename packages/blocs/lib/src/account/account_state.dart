@@ -13,6 +13,15 @@ class AccountState with _$AccountState {
   const factory AccountState.payOrder({
     required String url,
   }) = PayOrderAccountState;
+  const factory AccountState.openSoppingCart() = OpenSoppingCartAccountState;
+  const factory AccountState.getSizeProduct({
+    required String code,
+    required List<SkuProductDataModel> listSize,
+    required List<SkuProductDataModel> listSizeToSoppingCart,
+  }) = GetSizeProductAccountState;
+  const factory AccountState.addProductToSoppingCart({
+    required String code,
+  }) = AddProductAccountState;
   const factory AccountState.preloadDataCompleted({
     required String phone,
     required String name,
@@ -31,10 +40,19 @@ class AccountState with _$AccountState {
     required String virtualCardsCod,
     required List<OrderBlankDataModel> listOrdersBlank,
     required List<OrderBlankDataModel> listTailoringBlank,
+    required List<SkuProductDataModel> listSize,
     required Uint8List file,
     required String fileName,
+    required bool isLoadGetSizeProduct,
+    required int offsetOrders,
+    required int offsetOrdersBlank,
+    required int offsetTailoringBlank,
+    String? codeProduct,
     SkuProductDataModel? selectSizeProduct,
-    bool? isSoppingCart,
+    bool? isShoppingCart,
+    bool? isError,
+    String? errorMessage,
+    bool? isShoppingCartDetailsProduct,
     bool? isSuccessfullySavedFile,
     bool? isLoadVirtualCardsCod,
     bool? isLoadOpenPdf,

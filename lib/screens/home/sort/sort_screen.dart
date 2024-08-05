@@ -77,8 +77,9 @@ class _SortScreenState extends State<SortScreen> {
                 },
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
+            BlindChickenTitleButton(
+              title: 'Закрыть',
+              onChange: () {
                 context.popRoute();
               },
             ),

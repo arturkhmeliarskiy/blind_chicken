@@ -373,9 +373,11 @@ class _DashboardPageState extends State<DashboardPage> {
                   context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                 });
                 context.navigateTo(
-                  const ShoppingCartAutoRouterRoute(children: [
-                    ShoppingCartRoute(),
-                  ]),
+                  const ShoppingCartAutoRouterRoute(
+                    children: [
+                      ShoppingCartRoute(),
+                    ],
+                  ),
                 );
                 updateData.lastScreen = '';
               } else if (index == 3) {

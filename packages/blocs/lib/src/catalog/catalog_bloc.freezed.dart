@@ -57,7 +57,8 @@ mixin _$CatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -99,7 +100,8 @@ mixin _$CatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -140,7 +142,8 @@ mixin _$CatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -385,7 +388,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -430,7 +434,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -474,7 +479,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -724,7 +730,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -769,7 +776,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -813,7 +821,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -1065,7 +1074,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1110,7 +1120,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -1154,7 +1165,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -1509,7 +1521,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1554,7 +1567,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -1598,7 +1612,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -1893,7 +1908,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1938,7 +1954,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -1982,7 +1999,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -2292,7 +2310,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2337,7 +2356,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -2381,7 +2401,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -2696,7 +2717,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2741,7 +2763,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -2785,7 +2808,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -3099,7 +3123,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3144,7 +3169,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -3188,7 +3214,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -3497,7 +3524,8 @@ class _$AddFavouriteProductCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3542,7 +3570,8 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -3586,7 +3615,8 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -3874,7 +3904,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3919,7 +3950,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -3963,7 +3995,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -4222,7 +4255,8 @@ class _$PaginationProductCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4267,7 +4301,8 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -4311,7 +4346,8 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -4588,7 +4624,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4633,7 +4670,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -4677,7 +4715,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -4972,7 +5011,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5017,7 +5057,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -5061,7 +5102,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -5351,7 +5393,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5396,7 +5439,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -5440,7 +5484,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -5731,7 +5776,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5776,7 +5822,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -5820,7 +5867,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -6106,7 +6154,8 @@ class _$SwitchTypePeopleCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -6151,7 +6200,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -6195,7 +6245,8 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -6489,7 +6540,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -6534,7 +6586,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -6578,7 +6631,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -6838,7 +6892,8 @@ class _$UpdateInfoProductsCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -6883,7 +6938,8 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -6927,7 +6983,8 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -7230,7 +7287,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -7275,7 +7333,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -7319,7 +7378,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -7640,7 +7700,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -7685,7 +7746,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -7729,7 +7791,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -8015,7 +8078,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -8060,7 +8124,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -8104,7 +8169,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -8362,7 +8428,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -8407,7 +8474,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -8451,7 +8519,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -8704,7 +8773,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -8749,7 +8819,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -8793,7 +8864,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -9085,7 +9157,8 @@ class _$ChangeSizeProductCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -9130,7 +9203,8 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -9174,7 +9248,8 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -9462,7 +9537,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -9507,7 +9583,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -9551,7 +9628,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -9812,7 +9890,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -9857,7 +9936,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -9901,7 +9981,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -10080,7 +10161,9 @@ abstract class _$$AddProductToSoppingCartCatalogEventImplCopyWith<$Res> {
           $Res Function(_$AddProductToSoppingCartCatalogEventImpl) then) =
       __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int code});
+  $Res call({int code, SkuProductDataModel? size});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -10097,13 +10180,30 @@ class __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? size = freezed,
   }) {
     return _then(_$AddProductToSoppingCartCatalogEventImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as int,
+      size: freezed == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -10111,14 +10211,17 @@ class __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
 
 class _$AddProductToSoppingCartCatalogEventImpl
     implements AddProductToSoppingCartCatalogEvent {
-  const _$AddProductToSoppingCartCatalogEventImpl({required this.code});
+  const _$AddProductToSoppingCartCatalogEventImpl(
+      {required this.code, this.size});
 
   @override
   final int code;
+  @override
+  final SkuProductDataModel? size;
 
   @override
   String toString() {
-    return 'CatalogEvent.addProductToSoppingCart(code: $code)';
+    return 'CatalogEvent.addProductToSoppingCart(code: $code, size: $size)';
   }
 
   @override
@@ -10126,11 +10229,12 @@ class _$AddProductToSoppingCartCatalogEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartCatalogEventImpl &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => Object.hash(runtimeType, code, size);
 
   @JsonKey(ignore: true)
   @override
@@ -10182,13 +10286,14 @@ class _$AddProductToSoppingCartCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
   }) {
-    return addProductToSoppingCart(code);
+    return addProductToSoppingCart(code, size);
   }
 
   @override
@@ -10227,12 +10332,13 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
   }) {
-    return addProductToSoppingCart?.call(code);
+    return addProductToSoppingCart?.call(code, size);
   }
 
   @override
@@ -10271,14 +10377,15 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
-      return addProductToSoppingCart(code);
+      return addProductToSoppingCart(code, size);
     }
     return orElse();
   }
@@ -10438,10 +10545,12 @@ class _$AddProductToSoppingCartCatalogEventImpl
 }
 
 abstract class AddProductToSoppingCartCatalogEvent implements CatalogEvent {
-  const factory AddProductToSoppingCartCatalogEvent({required final int code}) =
+  const factory AddProductToSoppingCartCatalogEvent(
+          {required final int code, final SkuProductDataModel? size}) =
       _$AddProductToSoppingCartCatalogEventImpl;
 
   int get code;
+  SkuProductDataModel? get size;
   @JsonKey(ignore: true)
   _$$AddProductToSoppingCartCatalogEventImplCopyWith<
           _$AddProductToSoppingCartCatalogEventImpl>
@@ -10567,7 +10676,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -10612,7 +10722,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -10656,7 +10767,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -10952,7 +11064,8 @@ class _$GetInfoProductSizeCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -10997,7 +11110,8 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -11041,7 +11155,8 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -11329,7 +11444,8 @@ class _$GetInfoServiceCardCatalogEventImpl
         changeSizeProduct,
     required TResult Function(int index) removeSelectFilterCategory,
     required TResult Function() removeSelectAllFilters,
-    required TResult Function(int code) addProductToSoppingCart,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -11374,7 +11490,8 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(int index)? removeSelectFilterCategory,
     TResult? Function()? removeSelectAllFilters,
-    TResult? Function(int code)? addProductToSoppingCart,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
@@ -11418,7 +11535,8 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(int index)? removeSelectFilterCategory,
     TResult Function()? removeSelectAllFilters,
-    TResult Function(int code)? addProductToSoppingCart,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
@@ -11643,7 +11761,8 @@ mixin _$CatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -11697,7 +11816,8 @@ mixin _$CatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -11751,7 +11871,8 @@ mixin _$CatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -11904,7 +12025,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -11961,7 +12083,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12018,7 +12141,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12173,7 +12297,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12230,7 +12355,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12287,7 +12413,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12443,7 +12570,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12500,7 +12628,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12557,7 +12686,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12715,7 +12845,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12772,7 +12903,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -12829,7 +12961,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13055,7 +13188,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13112,7 +13246,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13169,7 +13304,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13364,7 +13500,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13421,7 +13558,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13478,7 +13616,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13667,7 +13806,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13724,7 +13864,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13781,7 +13922,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -13902,7 +14044,8 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       SkuProductDataModel? selectSizeProduct,
       String? errorMessage,
       String? codeProduct,
-      bool? isSoppingCart,
+      bool? isShoppingCart,
+      bool? isShoppingCartDetailsProduct,
       bool? isError,
       DetailProductDataModel? detailsProduct,
       CatalogDataModel? catalogInfo,
@@ -13961,7 +14104,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? selectSizeProduct = freezed,
     Object? errorMessage = freezed,
     Object? codeProduct = freezed,
-    Object? isSoppingCart = freezed,
+    Object? isShoppingCart = freezed,
+    Object? isShoppingCartDetailsProduct = freezed,
     Object? isError = freezed,
     Object? detailsProduct = freezed,
     Object? catalogInfo = freezed,
@@ -14104,9 +14248,13 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSoppingCart: freezed == isSoppingCart
-          ? _value.isSoppingCart
-          : isSoppingCart // ignore: cast_nullable_to_non_nullable
+      isShoppingCart: freezed == isShoppingCart
+          ? _value.isShoppingCart
+          : isShoppingCart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isShoppingCartDetailsProduct: freezed == isShoppingCartDetailsProduct
+          ? _value.isShoppingCartDetailsProduct
+          : isShoppingCartDetailsProduct // ignore: cast_nullable_to_non_nullable
               as bool?,
       isError: freezed == isError
           ? _value.isError
@@ -14213,7 +14361,8 @@ class _$PreloadDataCompletedCatalogStateImpl
       this.selectSizeProduct,
       this.errorMessage,
       this.codeProduct,
-      this.isSoppingCart,
+      this.isShoppingCart,
+      this.isShoppingCartDetailsProduct,
       this.isError,
       this.detailsProduct,
       this.catalogInfo,
@@ -14435,7 +14584,9 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final String? codeProduct;
   @override
-  final bool? isSoppingCart;
+  final bool? isShoppingCart;
+  @override
+  final bool? isShoppingCartDetailsProduct;
   @override
   final bool? isError;
   @override
@@ -14447,7 +14598,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isSoppingCart: $isSoppingCart, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -14513,8 +14664,12 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.errorMessage == errorMessage) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
-            (identical(other.isSoppingCart, isSoppingCart) ||
-                other.isSoppingCart == isSoppingCart) &&
+            (identical(other.isShoppingCart, isShoppingCart) ||
+                other.isShoppingCart == isShoppingCart) &&
+            (identical(other.isShoppingCartDetailsProduct,
+                    isShoppingCartDetailsProduct) ||
+                other.isShoppingCartDetailsProduct ==
+                    isShoppingCartDetailsProduct) &&
             (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
@@ -14560,7 +14715,8 @@ class _$PreloadDataCompletedCatalogStateImpl
         selectSizeProduct,
         errorMessage,
         codeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isError,
         detailsProduct,
         catalogInfo,
@@ -14622,7 +14778,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -14664,7 +14821,8 @@ class _$PreloadDataCompletedCatalogStateImpl
         selectSizeProduct,
         errorMessage,
         codeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isError,
         detailsProduct,
         catalogInfo,
@@ -14718,7 +14876,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -14760,7 +14919,8 @@ class _$PreloadDataCompletedCatalogStateImpl
         selectSizeProduct,
         errorMessage,
         codeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isError,
         detailsProduct,
         catalogInfo,
@@ -14814,7 +14974,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
             String? codeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isError,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
@@ -14858,7 +15019,8 @@ class _$PreloadDataCompletedCatalogStateImpl
           selectSizeProduct,
           errorMessage,
           codeProduct,
-          isSoppingCart,
+          isShoppingCart,
+          isShoppingCartDetailsProduct,
           isError,
           detailsProduct,
           catalogInfo,
@@ -14958,7 +15120,8 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       final SkuProductDataModel? selectSizeProduct,
       final String? errorMessage,
       final String? codeProduct,
-      final bool? isSoppingCart,
+      final bool? isShoppingCart,
+      final bool? isShoppingCartDetailsProduct,
       final bool? isError,
       final DetailProductDataModel? detailsProduct,
       final CatalogDataModel? catalogInfo,
@@ -14998,7 +15161,8 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   SkuProductDataModel? get selectSizeProduct;
   String? get errorMessage;
   String? get codeProduct;
-  bool? get isSoppingCart;
+  bool? get isShoppingCart;
+  bool? get isShoppingCartDetailsProduct;
   bool? get isError;
   DetailProductDataModel? get detailsProduct;
   CatalogDataModel? get catalogInfo;

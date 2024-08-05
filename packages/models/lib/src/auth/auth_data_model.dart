@@ -9,7 +9,7 @@ class AuthDataModel with _$AuthDataModel {
   factory AuthDataModel({
     required String r,
     required CapthaDataModel captcha,
-    required String message,
+    required String errorMessage,
     required int seconds,
     required String send,
   }) = _AuthDataModel;

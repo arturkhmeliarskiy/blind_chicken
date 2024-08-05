@@ -59,6 +59,7 @@ mixin _$ShoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +98,7 @@ mixin _$ShoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -135,6 +137,7 @@ mixin _$ShoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -191,6 +194,8 @@ mixin _$ShoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -240,6 +245,8 @@ mixin _$ShoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -289,6 +296,8 @@ mixin _$ShoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -393,6 +402,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return init();
   }
@@ -434,6 +444,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return init?.call();
   }
@@ -475,6 +486,7 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -537,6 +549,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return init(this);
   }
@@ -589,6 +603,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return init?.call(this);
   }
@@ -641,6 +657,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -738,6 +756,7 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return preloadData();
   }
@@ -779,6 +798,7 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return preloadData?.call();
   }
@@ -820,6 +840,7 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -882,6 +903,8 @@ class _$PreloadDataShoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return preloadData(this);
   }
@@ -934,6 +957,8 @@ class _$PreloadDataShoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return preloadData?.call(this);
   }
@@ -986,6 +1011,8 @@ class _$PreloadDataShoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -1121,6 +1148,7 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return addProductToSoppingCart(item);
   }
@@ -1162,6 +1190,7 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return addProductToSoppingCart?.call(item);
   }
@@ -1203,6 +1232,7 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -1265,6 +1295,8 @@ class _$AddProductToSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -1317,6 +1349,8 @@ class _$AddProductToSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -1369,6 +1403,8 @@ class _$AddProductToSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -1511,6 +1547,7 @@ class _$AddOtherProductToSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return addOtherProductToSoppingCart(item);
   }
@@ -1552,6 +1589,7 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return addOtherProductToSoppingCart?.call(item);
   }
@@ -1593,6 +1631,7 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addOtherProductToSoppingCart != null) {
@@ -1655,6 +1694,8 @@ class _$AddOtherProductToSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return addOtherProductToSoppingCart(this);
   }
@@ -1707,6 +1748,8 @@ class _$AddOtherProductToSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return addOtherProductToSoppingCart?.call(this);
   }
@@ -1759,6 +1802,8 @@ class _$AddOtherProductToSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addOtherProductToSoppingCart != null) {
@@ -1910,6 +1955,7 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return deleteProductToSoppingCart(item, index);
   }
@@ -1951,6 +1997,7 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return deleteProductToSoppingCart?.call(item, index);
   }
@@ -1992,6 +2039,7 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteProductToSoppingCart != null) {
@@ -2054,6 +2102,8 @@ class _$DeleteProductToSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return deleteProductToSoppingCart(this);
   }
@@ -2106,6 +2156,8 @@ class _$DeleteProductToSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return deleteProductToSoppingCart?.call(this);
   }
@@ -2158,6 +2210,8 @@ class _$DeleteProductToSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteProductToSoppingCart != null) {
@@ -2310,6 +2364,7 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return updateProductToSoppingCart(item, index);
   }
@@ -2351,6 +2406,7 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return updateProductToSoppingCart?.call(item, index);
   }
@@ -2392,6 +2448,7 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateProductToSoppingCart != null) {
@@ -2454,6 +2511,8 @@ class _$UpdateProductToSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return updateProductToSoppingCart(this);
   }
@@ -2506,6 +2565,8 @@ class _$UpdateProductToSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return updateProductToSoppingCart?.call(this);
   }
@@ -2558,6 +2619,8 @@ class _$UpdateProductToSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateProductToSoppingCart != null) {
@@ -2664,6 +2727,7 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return paymentBonus();
   }
@@ -2705,6 +2769,7 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return paymentBonus?.call();
   }
@@ -2746,6 +2811,7 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paymentBonus != null) {
@@ -2808,6 +2874,8 @@ class _$PaymentBonusSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return paymentBonus(this);
   }
@@ -2860,6 +2928,8 @@ class _$PaymentBonusSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return paymentBonus?.call(this);
   }
@@ -2912,6 +2982,8 @@ class _$PaymentBonusSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paymentBonus != null) {
@@ -3010,6 +3082,7 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return initGiftCard();
   }
@@ -3051,6 +3124,7 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return initGiftCard?.call();
   }
@@ -3092,6 +3166,7 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (initGiftCard != null) {
@@ -3154,6 +3229,8 @@ class _$InitGiftCardSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return initGiftCard(this);
   }
@@ -3206,6 +3283,8 @@ class _$InitGiftCardSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return initGiftCard?.call(this);
   }
@@ -3258,6 +3337,8 @@ class _$InitGiftCardSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (initGiftCard != null) {
@@ -3390,6 +3471,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return giftCard(number, pin);
   }
@@ -3431,6 +3513,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return giftCard?.call(number, pin);
   }
@@ -3472,6 +3555,7 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (giftCard != null) {
@@ -3534,6 +3618,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return giftCard(this);
   }
@@ -3586,6 +3672,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return giftCard?.call(this);
   }
@@ -3638,6 +3726,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (giftCard != null) {
@@ -3779,6 +3869,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return addGiftCard(this.giftCard);
   }
@@ -3820,6 +3911,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return addGiftCard?.call(this.giftCard);
   }
@@ -3861,6 +3953,7 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addGiftCard != null) {
@@ -3923,6 +4016,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return addGiftCard(this);
   }
@@ -3975,6 +4070,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return addGiftCard?.call(this);
   }
@@ -4027,6 +4124,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addGiftCard != null) {
@@ -4166,6 +4265,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return delivery(this.delivery, cityId);
   }
@@ -4207,6 +4307,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return delivery?.call(this.delivery, cityId);
   }
@@ -4248,6 +4349,7 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (delivery != null) {
@@ -4310,6 +4412,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return delivery(this);
   }
@@ -4362,6 +4466,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return delivery?.call(this);
   }
@@ -4414,6 +4520,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (delivery != null) {
@@ -4554,6 +4662,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return promoCode(this.promoCode, uid);
   }
@@ -4595,6 +4704,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return promoCode?.call(this.promoCode, uid);
   }
@@ -4636,6 +4746,7 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (promoCode != null) {
@@ -4698,6 +4809,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return promoCode(this);
   }
@@ -4750,6 +4863,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return promoCode?.call(this);
   }
@@ -4802,6 +4917,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (promoCode != null) {
@@ -4907,6 +5024,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return removePromoCode();
   }
@@ -4948,6 +5066,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return removePromoCode?.call();
   }
@@ -4989,6 +5108,7 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (removePromoCode != null) {
@@ -5051,6 +5171,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return removePromoCode(this);
   }
@@ -5103,6 +5225,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return removePromoCode?.call(this);
   }
@@ -5155,6 +5279,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (removePromoCode != null) {
@@ -5290,6 +5416,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return createOrder(request);
   }
@@ -5331,6 +5458,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return createOrder?.call(request);
   }
@@ -5372,6 +5500,7 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -5434,6 +5563,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return createOrder(this);
   }
@@ -5486,6 +5617,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return createOrder?.call(this);
   }
@@ -5538,6 +5671,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -5668,6 +5803,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return bonuses(this.bonuses);
   }
@@ -5709,6 +5845,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return bonuses?.call(this.bonuses);
   }
@@ -5750,6 +5887,7 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (bonuses != null) {
@@ -5812,6 +5950,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return bonuses(this);
   }
@@ -5864,6 +6004,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return bonuses?.call(this);
   }
@@ -5916,6 +6058,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (bonuses != null) {
@@ -6078,6 +6222,7 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getInfoProduct(code, size, isUpdate);
   }
@@ -6119,6 +6264,7 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getInfoProduct?.call(code, size, isUpdate);
   }
@@ -6160,6 +6306,7 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -6222,6 +6369,8 @@ class _$GetInfoProductShoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return getInfoProduct(this);
   }
@@ -6274,6 +6423,8 @@ class _$GetInfoProductShoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -6326,6 +6477,8 @@ class _$GetInfoProductShoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -6435,6 +6588,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return goBackProductInfo();
   }
@@ -6476,6 +6630,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return goBackProductInfo?.call();
   }
@@ -6517,6 +6672,7 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -6579,6 +6735,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return goBackProductInfo(this);
   }
@@ -6631,6 +6789,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -6683,6 +6843,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -6828,6 +6990,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -6869,6 +7032,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -6910,6 +7074,7 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -6972,6 +7137,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return addFavouriteProduct(this);
   }
@@ -7024,6 +7191,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -7076,6 +7245,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -7211,6 +7382,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -7252,6 +7424,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -7293,6 +7466,7 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -7355,6 +7529,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -7407,6 +7583,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -7459,6 +7637,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -7565,6 +7745,7 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return addProductToSoppingCartInfo();
   }
@@ -7606,6 +7787,7 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return addProductToSoppingCartInfo?.call();
   }
@@ -7647,6 +7829,7 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCartInfo != null) {
@@ -7709,6 +7892,8 @@ class _$AddProductToSoppingCartInfoEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return addProductToSoppingCartInfo(this);
   }
@@ -7761,6 +7946,8 @@ class _$AddProductToSoppingCartInfoEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return addProductToSoppingCartInfo?.call(this);
   }
@@ -7813,6 +8000,8 @@ class _$AddProductToSoppingCartInfoEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCartInfo != null) {
@@ -7948,6 +8137,7 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return checkProductToSoppingCart(size);
   }
@@ -7989,6 +8179,7 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return checkProductToSoppingCart?.call(size);
   }
@@ -8030,6 +8221,7 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -8092,6 +8284,8 @@ class _$CheckProductToSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return checkProductToSoppingCart(this);
   }
@@ -8144,6 +8338,8 @@ class _$CheckProductToSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -8196,6 +8392,8 @@ class _$CheckProductToSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -8341,6 +8539,7 @@ class _$ChangeSizeProductSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeSizeProduct(selectSizeProduct);
   }
@@ -8382,6 +8581,7 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeSizeProduct?.call(selectSizeProduct);
   }
@@ -8423,6 +8623,7 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -8485,6 +8686,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changeSizeProduct(this);
   }
@@ -8537,6 +8740,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -8589,6 +8794,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -8694,6 +8901,7 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return openAuthModel();
   }
@@ -8735,6 +8943,7 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return openAuthModel?.call();
   }
@@ -8776,6 +8985,7 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (openAuthModel != null) {
@@ -8838,6 +9048,8 @@ class _$OpenAuthModelSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return openAuthModel(this);
   }
@@ -8890,6 +9102,8 @@ class _$OpenAuthModelSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return openAuthModel?.call(this);
   }
@@ -8942,6 +9156,8 @@ class _$OpenAuthModelSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (openAuthModel != null) {
@@ -9040,6 +9256,7 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return closeAuthModel();
   }
@@ -9081,6 +9298,7 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return closeAuthModel?.call();
   }
@@ -9122,6 +9340,7 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (closeAuthModel != null) {
@@ -9184,6 +9403,8 @@ class _$CloseAuthModelSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return closeAuthModel(this);
   }
@@ -9236,6 +9457,8 @@ class _$CloseAuthModelSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return closeAuthModel?.call(this);
   }
@@ -9288,6 +9511,8 @@ class _$CloseAuthModelSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (closeAuthModel != null) {
@@ -9415,6 +9640,7 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeReceivingType(receivingType);
   }
@@ -9456,6 +9682,7 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeReceivingType?.call(receivingType);
   }
@@ -9497,6 +9724,7 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeReceivingType != null) {
@@ -9559,6 +9787,8 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changeReceivingType(this);
   }
@@ -9611,6 +9841,8 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changeReceivingType?.call(this);
   }
@@ -9663,6 +9895,8 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeReceivingType != null) {
@@ -9798,6 +10032,7 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeUidPickUpPoint(uidPickUpPoint);
   }
@@ -9839,6 +10074,7 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeUidPickUpPoint?.call(uidPickUpPoint);
   }
@@ -9880,6 +10116,7 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeUidPickUpPoint != null) {
@@ -9942,6 +10179,8 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changeUidPickUpPoint(this);
   }
@@ -9994,6 +10233,8 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changeUidPickUpPoint?.call(this);
   }
@@ -10046,6 +10287,8 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeUidPickUpPoint != null) {
@@ -10179,6 +10422,7 @@ class _$ChangeAddressSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeAddress(address);
   }
@@ -10220,6 +10464,7 @@ class _$ChangeAddressSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeAddress?.call(address);
   }
@@ -10261,6 +10506,7 @@ class _$ChangeAddressSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeAddress != null) {
@@ -10323,6 +10569,8 @@ class _$ChangeAddressSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changeAddress(this);
   }
@@ -10375,6 +10623,8 @@ class _$ChangeAddressSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changeAddress?.call(this);
   }
@@ -10427,6 +10677,8 @@ class _$ChangeAddressSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeAddress != null) {
@@ -10560,6 +10812,7 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeAddressDelivery(addressDelivery);
   }
@@ -10601,6 +10854,7 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeAddressDelivery?.call(addressDelivery);
   }
@@ -10642,6 +10896,7 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeAddressDelivery != null) {
@@ -10704,6 +10959,8 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changeAddressDelivery(this);
   }
@@ -10756,6 +11013,8 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changeAddressDelivery?.call(this);
   }
@@ -10808,6 +11067,8 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeAddressDelivery != null) {
@@ -10951,6 +11212,7 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changePaymentType(paymentId, typePay);
   }
@@ -10992,6 +11254,7 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changePaymentType?.call(paymentId, typePay);
   }
@@ -11033,6 +11296,7 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changePaymentType != null) {
@@ -11095,6 +11359,8 @@ class _$ChangePaymentTypeSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changePaymentType(this);
   }
@@ -11147,6 +11413,8 @@ class _$ChangePaymentTypeSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changePaymentType?.call(this);
   }
@@ -11199,6 +11467,8 @@ class _$ChangePaymentTypeSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changePaymentType != null) {
@@ -11334,6 +11604,7 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     required TResult Function(String paymentId, String typePay)
         changePaymentType,
     required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeTitlePromocode(titlePromocode);
   }
@@ -11375,6 +11646,7 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult? Function(String paymentId, String typePay)? changePaymentType,
     TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeTitlePromocode?.call(titlePromocode);
   }
@@ -11416,6 +11688,7 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
     TResult Function(String paymentId, String typePay)? changePaymentType,
     TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeTitlePromocode != null) {
@@ -11478,6 +11751,8 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
         changePaymentType,
     required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
         changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
   }) {
     return changeTitlePromocode(this);
   }
@@ -11530,6 +11805,8 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
         changePaymentType,
     TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
   }) {
     return changeTitlePromocode?.call(this);
   }
@@ -11582,6 +11859,8 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
         changePaymentType,
     TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
         changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeTitlePromocode != null) {
@@ -11605,12 +11884,417 @@ abstract class ChangeTitlePromocodeSoppingCartEvent
 }
 
 /// @nodoc
+abstract class _$$GetInfoProductSizeShoppingCartEventImplCopyWith<$Res> {
+  factory _$$GetInfoProductSizeShoppingCartEventImplCopyWith(
+          _$GetInfoProductSizeShoppingCartEventImpl value,
+          $Res Function(_$GetInfoProductSizeShoppingCartEventImpl) then) =
+      __$$GetInfoProductSizeShoppingCartEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code, bool isShop});
+}
+
+/// @nodoc
+class __$$GetInfoProductSizeShoppingCartEventImplCopyWithImpl<$Res>
+    extends _$ShoppingCartEventCopyWithImpl<$Res,
+        _$GetInfoProductSizeShoppingCartEventImpl>
+    implements _$$GetInfoProductSizeShoppingCartEventImplCopyWith<$Res> {
+  __$$GetInfoProductSizeShoppingCartEventImplCopyWithImpl(
+      _$GetInfoProductSizeShoppingCartEventImpl _value,
+      $Res Function(_$GetInfoProductSizeShoppingCartEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? isShop = null,
+  }) {
+    return _then(_$GetInfoProductSizeShoppingCartEventImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      isShop: null == isShop
+          ? _value.isShop
+          : isShop // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoProductSizeShoppingCartEventImpl
+    implements GetInfoProductSizeShoppingCartEvent {
+  const _$GetInfoProductSizeShoppingCartEventImpl(
+      {required this.code, required this.isShop});
+
+  @override
+  final String code;
+  @override
+  final bool isShop;
+
+  @override
+  String toString() {
+    return 'ShoppingCartEvent.getInfoProductSize(code: $code, isShop: $isShop)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoProductSizeShoppingCartEventImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.isShop, isShop) || other.isShop == isShop));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, isShop);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoProductSizeShoppingCartEventImplCopyWith<
+          _$GetInfoProductSizeShoppingCartEventImpl>
+      get copyWith => __$$GetInfoProductSizeShoppingCartEventImplCopyWithImpl<
+          _$GetInfoProductSizeShoppingCartEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(BasketInfoItemDataModel item)
+        addProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item)
+        addOtherProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        deleteProductToSoppingCart,
+    required TResult Function(BasketInfoItemDataModel item, int index)
+        updateProductToSoppingCart,
+    required TResult Function() paymentBonus,
+    required TResult Function() initGiftCard,
+    required TResult Function(String number, String pin) giftCard,
+    required TResult Function(BasketSertDeliveryRequest giftCard) addGiftCard,
+    required TResult Function(int delivery, String cityId) delivery,
+    required TResult Function(String promoCode, String uid) promoCode,
+    required TResult Function() removePromoCode,
+    required TResult Function(BasketOrderRequest request) createOrder,
+    required TResult Function(int bonuses) bonuses,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() addProductToSoppingCartInfo,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function() openAuthModel,
+    required TResult Function() closeAuthModel,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(String address) changeAddress,
+    required TResult Function(BasketAddress addressDelivery)
+        changeAddressDelivery,
+    required TResult Function(String paymentId, String typePay)
+        changePaymentType,
+    required TResult Function(String titlePromocode) changeTitlePromocode,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+  }) {
+    return getInfoProductSize(code, isShop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult? Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult? Function()? paymentBonus,
+    TResult? Function()? initGiftCard,
+    TResult? Function(String number, String pin)? giftCard,
+    TResult? Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult? Function(int delivery, String cityId)? delivery,
+    TResult? Function(String promoCode, String uid)? promoCode,
+    TResult? Function()? removePromoCode,
+    TResult? Function(BasketOrderRequest request)? createOrder,
+    TResult? Function(int bonuses)? bonuses,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? addProductToSoppingCartInfo,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function()? openAuthModel,
+    TResult? Function()? closeAuthModel,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(String address)? changeAddress,
+    TResult? Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult? Function(String paymentId, String typePay)? changePaymentType,
+    TResult? Function(String titlePromocode)? changeTitlePromocode,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+  }) {
+    return getInfoProductSize?.call(code, isShop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item)?
+        addOtherProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        deleteProductToSoppingCart,
+    TResult Function(BasketInfoItemDataModel item, int index)?
+        updateProductToSoppingCart,
+    TResult Function()? paymentBonus,
+    TResult Function()? initGiftCard,
+    TResult Function(String number, String pin)? giftCard,
+    TResult Function(BasketSertDeliveryRequest giftCard)? addGiftCard,
+    TResult Function(int delivery, String cityId)? delivery,
+    TResult Function(String promoCode, String uid)? promoCode,
+    TResult Function()? removePromoCode,
+    TResult Function(BasketOrderRequest request)? createOrder,
+    TResult Function(int bonuses)? bonuses,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function()? goBackProductInfo,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? addProductToSoppingCartInfo,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function()? openAuthModel,
+    TResult Function()? closeAuthModel,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(String address)? changeAddress,
+    TResult Function(BasketAddress addressDelivery)? changeAddressDelivery,
+    TResult Function(String paymentId, String typePay)? changePaymentType,
+    TResult Function(String titlePromocode)? changeTitlePromocode,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductSize != null) {
+      return getInfoProductSize(code, isShop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartEvent value) init,
+    required TResult Function(PreloadDataShoppingCartEvent value) preloadData,
+    required TResult Function(AddProductToSoppingCartEvent value)
+        addProductToSoppingCart,
+    required TResult Function(AddOtherProductToSoppingCartEvent value)
+        addOtherProductToSoppingCart,
+    required TResult Function(DeleteProductToSoppingCartEvent value)
+        deleteProductToSoppingCart,
+    required TResult Function(UpdateProductToSoppingCartEvent value)
+        updateProductToSoppingCart,
+    required TResult Function(PaymentBonusSoppingCartEvent value) paymentBonus,
+    required TResult Function(InitGiftCardSoppingCartEvent value) initGiftCard,
+    required TResult Function(GiftCardSoppingCartEvent value) giftCard,
+    required TResult Function(AddGiftCardSoppingCartEvent value) addGiftCard,
+    required TResult Function(DeliverySoppingCartEvent value) delivery,
+    required TResult Function(PromoCodeSoppingCartEvent value) promoCode,
+    required TResult Function(RemovePromoCodeSoppingCartEvent value)
+        removePromoCode,
+    required TResult Function(CreateOrderPromoCodeSoppingCartEvent value)
+        createOrder,
+    required TResult Function(BonusesSoppingCartEvent value) bonuses,
+    required TResult Function(GetInfoProductShoppingCartEvent value)
+        getInfoProduct,
+    required TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)
+        goBackProductInfo,
+    required TResult Function(AddFavouriteProductShoppingCartEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductShoppingCartEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(AddProductToSoppingCartInfoEvent value)
+        addProductToSoppingCartInfo,
+    required TResult Function(CheckProductToSoppingCartEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(ChangeSizeProductSoppingCartEvent value)
+        changeSizeProduct,
+    required TResult Function(OpenAuthModelSoppingCartEvent value)
+        openAuthModel,
+    required TResult Function(CloseAuthModelSoppingCartEvent value)
+        closeAuthModel,
+    required TResult Function(ChangeReceivingTypeSoppingCartEvent value)
+        changeReceivingType,
+    required TResult Function(ChangeUidPickUpPointSoppingCartEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangeAddressSoppingCartEvent value)
+        changeAddress,
+    required TResult Function(ChangeAddressDeliverySoppingCartEvent value)
+        changeAddressDelivery,
+    required TResult Function(ChangePaymentTypeSoppingCartEvent value)
+        changePaymentType,
+    required TResult Function(ChangeTitlePromocodeSoppingCartEvent value)
+        changeTitlePromocode,
+    required TResult Function(GetInfoProductSizeShoppingCartEvent value)
+        getInfoProductSize,
+  }) {
+    return getInfoProductSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartEvent value)? init,
+    TResult? Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult? Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult? Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult? Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult? Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult? Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult? Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult? Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult? Function(DeliverySoppingCartEvent value)? delivery,
+    TResult? Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult? Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult? Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult? Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult? Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult? Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult? Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult? Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult? Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult? Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult? Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult? Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult? Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult? Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    TResult? Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
+  }) {
+    return getInfoProductSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartEvent value)? init,
+    TResult Function(PreloadDataShoppingCartEvent value)? preloadData,
+    TResult Function(AddProductToSoppingCartEvent value)?
+        addProductToSoppingCart,
+    TResult Function(AddOtherProductToSoppingCartEvent value)?
+        addOtherProductToSoppingCart,
+    TResult Function(DeleteProductToSoppingCartEvent value)?
+        deleteProductToSoppingCart,
+    TResult Function(UpdateProductToSoppingCartEvent value)?
+        updateProductToSoppingCart,
+    TResult Function(PaymentBonusSoppingCartEvent value)? paymentBonus,
+    TResult Function(InitGiftCardSoppingCartEvent value)? initGiftCard,
+    TResult Function(GiftCardSoppingCartEvent value)? giftCard,
+    TResult Function(AddGiftCardSoppingCartEvent value)? addGiftCard,
+    TResult Function(DeliverySoppingCartEvent value)? delivery,
+    TResult Function(PromoCodeSoppingCartEvent value)? promoCode,
+    TResult Function(RemovePromoCodeSoppingCartEvent value)? removePromoCode,
+    TResult Function(CreateOrderPromoCodeSoppingCartEvent value)? createOrder,
+    TResult Function(BonusesSoppingCartEvent value)? bonuses,
+    TResult Function(GetInfoProductShoppingCartEvent value)? getInfoProduct,
+    TResult Function(GoBackProductInfoCategotyShoppingCartEvent value)?
+        goBackProductInfo,
+    TResult Function(AddFavouriteProductShoppingCartEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductShoppingCartEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(AddProductToSoppingCartInfoEvent value)?
+        addProductToSoppingCartInfo,
+    TResult Function(CheckProductToSoppingCartEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(ChangeSizeProductSoppingCartEvent value)?
+        changeSizeProduct,
+    TResult Function(OpenAuthModelSoppingCartEvent value)? openAuthModel,
+    TResult Function(CloseAuthModelSoppingCartEvent value)? closeAuthModel,
+    TResult Function(ChangeReceivingTypeSoppingCartEvent value)?
+        changeReceivingType,
+    TResult Function(ChangeUidPickUpPointSoppingCartEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangeAddressSoppingCartEvent value)? changeAddress,
+    TResult Function(ChangeAddressDeliverySoppingCartEvent value)?
+        changeAddressDelivery,
+    TResult Function(ChangePaymentTypeSoppingCartEvent value)?
+        changePaymentType,
+    TResult Function(ChangeTitlePromocodeSoppingCartEvent value)?
+        changeTitlePromocode,
+    TResult Function(GetInfoProductSizeShoppingCartEvent value)?
+        getInfoProductSize,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductSize != null) {
+      return getInfoProductSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoProductSizeShoppingCartEvent
+    implements ShoppingCartEvent {
+  const factory GetInfoProductSizeShoppingCartEvent(
+      {required final String code,
+      required final bool isShop}) = _$GetInfoProductSizeShoppingCartEventImpl;
+
+  String get code;
+  bool get isShop;
+  @JsonKey(ignore: true)
+  _$$GetInfoProductSizeShoppingCartEventImplCopyWith<
+          _$GetInfoProductSizeShoppingCartEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ShoppingCartState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -11647,10 +12331,14 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -11662,6 +12350,11 @@ mixin _$ShoppingCartState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -11698,10 +12391,14 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -11713,6 +12410,11 @@ mixin _$ShoppingCartState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -11749,10 +12451,14 @@ mixin _$ShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -11766,6 +12472,12 @@ mixin _$ShoppingCartState {
     required TResult Function(LoadingShoppingCartState value) load,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) =>
@@ -11776,6 +12488,10 @@ mixin _$ShoppingCartState {
     TResult? Function(LoadingShoppingCartState value)? load,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -11785,6 +12501,10 @@ mixin _$ShoppingCartState {
     TResult Function(LoadingShoppingCartState value)? load,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) =>
@@ -11852,6 +12572,11 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -11888,10 +12613,14 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -11906,6 +12635,11 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -11942,10 +12676,14 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -11960,6 +12698,11 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -11996,10 +12739,14 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -12019,6 +12766,12 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     required TResult Function(LoadingShoppingCartState value) load,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -12032,6 +12785,10 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     TResult? Function(LoadingShoppingCartState value)? load,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return init?.call(this);
@@ -12044,6 +12801,10 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     TResult Function(LoadingShoppingCartState value)? load,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -12103,6 +12864,11 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -12139,10 +12905,14 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -12157,6 +12927,11 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -12193,10 +12968,14 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -12211,6 +12990,11 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -12247,10 +13031,14 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -12270,6 +13058,12 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     required TResult Function(LoadingShoppingCartState value) load,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -12283,6 +13077,10 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     TResult? Function(LoadingShoppingCartState value)? load,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return load?.call(this);
@@ -12295,6 +13093,10 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     TResult Function(LoadingShoppingCartState value)? load,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -12383,6 +13185,11 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -12419,10 +13226,14 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -12437,6 +13248,11 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -12473,10 +13289,14 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -12491,6 +13311,11 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -12527,10 +13352,14 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -12550,6 +13379,12 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     required TResult Function(LoadingShoppingCartState value) load,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -12563,6 +13398,10 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     TResult? Function(LoadingShoppingCartState value)? load,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return createOrderSuccessfully?.call(this);
@@ -12575,6 +13414,10 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     TResult Function(LoadingShoppingCartState value)? load,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -12595,6 +13438,997 @@ abstract class CreateOrderSuccessfullyShoppingCartState
   @JsonKey(ignore: true)
   _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<
           _$CreateOrderSuccessfullyShoppingCartStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OpenSoppingCartShoppingCartStateImplCopyWith<$Res> {
+  factory _$$OpenSoppingCartShoppingCartStateImplCopyWith(
+          _$OpenSoppingCartShoppingCartStateImpl value,
+          $Res Function(_$OpenSoppingCartShoppingCartStateImpl) then) =
+      __$$OpenSoppingCartShoppingCartStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OpenSoppingCartShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res,
+        _$OpenSoppingCartShoppingCartStateImpl>
+    implements _$$OpenSoppingCartShoppingCartStateImplCopyWith<$Res> {
+  __$$OpenSoppingCartShoppingCartStateImplCopyWithImpl(
+      _$OpenSoppingCartShoppingCartStateImpl _value,
+      $Res Function(_$OpenSoppingCartShoppingCartStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OpenSoppingCartShoppingCartStateImpl
+    implements OpenSoppingCartShoppingCartState {
+  const _$OpenSoppingCartShoppingCartStateImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.openSoppingCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenSoppingCartShoppingCartStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsShoppingCart,
+  }) {
+    return openSoppingCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+  }) {
+    return openSoppingCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (openSoppingCart != null) {
+      return openSoppingCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return openSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return openSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (openSoppingCart != null) {
+      return openSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OpenSoppingCartShoppingCartState implements ShoppingCartState {
+  const factory OpenSoppingCartShoppingCartState() =
+      _$OpenSoppingCartShoppingCartStateImpl;
+}
+
+/// @nodoc
+abstract class _$$GetSizeProductShoppingCartStateImplCopyWith<$Res> {
+  factory _$$GetSizeProductShoppingCartStateImplCopyWith(
+          _$GetSizeProductShoppingCartStateImpl value,
+          $Res Function(_$GetSizeProductShoppingCartStateImpl) then) =
+      __$$GetSizeProductShoppingCartStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String code,
+      List<SkuProductDataModel> listSize,
+      List<SkuProductDataModel> listSizeToSoppingCart});
+}
+
+/// @nodoc
+class __$$GetSizeProductShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res,
+        _$GetSizeProductShoppingCartStateImpl>
+    implements _$$GetSizeProductShoppingCartStateImplCopyWith<$Res> {
+  __$$GetSizeProductShoppingCartStateImplCopyWithImpl(
+      _$GetSizeProductShoppingCartStateImpl _value,
+      $Res Function(_$GetSizeProductShoppingCartStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? listSize = null,
+    Object? listSizeToSoppingCart = null,
+  }) {
+    return _then(_$GetSizeProductShoppingCartStateImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+      listSizeToSoppingCart: null == listSizeToSoppingCart
+          ? _value._listSizeToSoppingCart
+          : listSizeToSoppingCart // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetSizeProductShoppingCartStateImpl
+    implements GetSizeProductShoppingCartState {
+  const _$GetSizeProductShoppingCartStateImpl(
+      {required this.code,
+      required final List<SkuProductDataModel> listSize,
+      required final List<SkuProductDataModel> listSizeToSoppingCart})
+      : _listSize = listSize,
+        _listSizeToSoppingCart = listSizeToSoppingCart;
+
+  @override
+  final String code;
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
+  final List<SkuProductDataModel> _listSizeToSoppingCart;
+  @override
+  List<SkuProductDataModel> get listSizeToSoppingCart {
+    if (_listSizeToSoppingCart is EqualUnmodifiableListView)
+      return _listSizeToSoppingCart;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSizeToSoppingCart);
+  }
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.getSizeProduct(code: $code, listSize: $listSize, listSizeToSoppingCart: $listSizeToSoppingCart)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetSizeProductShoppingCartStateImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
+            const DeepCollectionEquality()
+                .equals(other._listSizeToSoppingCart, _listSizeToSoppingCart));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      const DeepCollectionEquality().hash(_listSize),
+      const DeepCollectionEquality().hash(_listSizeToSoppingCart));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetSizeProductShoppingCartStateImplCopyWith<
+          _$GetSizeProductShoppingCartStateImpl>
+      get copyWith => __$$GetSizeProductShoppingCartStateImplCopyWithImpl<
+          _$GetSizeProductShoppingCartStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsShoppingCart,
+  }) {
+    return getSizeProduct(code, listSize, listSizeToSoppingCart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+  }) {
+    return getSizeProduct?.call(code, listSize, listSizeToSoppingCart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (getSizeProduct != null) {
+      return getSizeProduct(code, listSize, listSizeToSoppingCart);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return getSizeProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return getSizeProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (getSizeProduct != null) {
+      return getSizeProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetSizeProductShoppingCartState implements ShoppingCartState {
+  const factory GetSizeProductShoppingCartState(
+          {required final String code,
+          required final List<SkuProductDataModel> listSize,
+          required final List<SkuProductDataModel> listSizeToSoppingCart}) =
+      _$GetSizeProductShoppingCartStateImpl;
+
+  String get code;
+  List<SkuProductDataModel> get listSize;
+  List<SkuProductDataModel> get listSizeToSoppingCart;
+  @JsonKey(ignore: true)
+  _$$GetSizeProductShoppingCartStateImplCopyWith<
+          _$GetSizeProductShoppingCartStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddProductShoppingCartStateImplCopyWith<$Res> {
+  factory _$$AddProductShoppingCartStateImplCopyWith(
+          _$AddProductShoppingCartStateImpl value,
+          $Res Function(_$AddProductShoppingCartStateImpl) then) =
+      __$$AddProductShoppingCartStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$AddProductShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res,
+        _$AddProductShoppingCartStateImpl>
+    implements _$$AddProductShoppingCartStateImplCopyWith<$Res> {
+  __$$AddProductShoppingCartStateImplCopyWithImpl(
+      _$AddProductShoppingCartStateImpl _value,
+      $Res Function(_$AddProductShoppingCartStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$AddProductShoppingCartStateImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
+  const _$AddProductShoppingCartStateImpl({required this.code});
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.addProductToSoppingCart(code: $code)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductShoppingCartStateImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductShoppingCartStateImplCopyWith<_$AddProductShoppingCartStateImpl>
+      get copyWith => __$$AddProductShoppingCartStateImplCopyWithImpl<
+          _$AddProductShoppingCartStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsShoppingCart,
+  }) {
+    return addProductToSoppingCart(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+  }) {
+    return addProductToSoppingCart?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return addProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return addProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddProductShoppingCartState implements ShoppingCartState {
+  const factory AddProductShoppingCartState({required final String code}) =
+      _$AddProductShoppingCartStateImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$AddProductShoppingCartStateImplCopyWith<_$AddProductShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -12641,10 +14475,14 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       List<ProductDataModel> listProdcutsAlso,
       List<ProductDataModel> listProdcutsBrand,
       List<ProductDataModel> listProdcutsComplect,
+      List<SkuProductDataModel> listSize,
       List<int> favouritesProductsId,
       bool isAuth,
+      bool isLoadGetSizeProduct,
+      String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
-      bool? isSoppingCart,
+      bool? isShoppingCart,
+      bool? isShoppingCartDetailsProduct,
       bool? isAuthModel,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
       DetailProductDataModel? detailsProduct});
@@ -12706,10 +14544,14 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? listProdcutsAlso = null,
     Object? listProdcutsBrand = null,
     Object? listProdcutsComplect = null,
+    Object? listSize = null,
     Object? favouritesProductsId = null,
     Object? isAuth = null,
+    Object? isLoadGetSizeProduct = null,
+    Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
-    Object? isSoppingCart = freezed,
+    Object? isShoppingCart = freezed,
+    Object? isShoppingCartDetailsProduct = freezed,
     Object? isAuthModel = freezed,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
@@ -12855,6 +14697,10 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value._listProdcutsComplect
           : listProdcutsComplect // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
       favouritesProductsId: null == favouritesProductsId
           ? _value._favouritesProductsId
           : favouritesProductsId // ignore: cast_nullable_to_non_nullable
@@ -12863,13 +14709,25 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.isAuth
           : isAuth // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoadGetSizeProduct: null == isLoadGetSizeProduct
+          ? _value.isLoadGetSizeProduct
+          : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
+      codeProduct: freezed == codeProduct
+          ? _value.codeProduct
+          : codeProduct // ignore: cast_nullable_to_non_nullable
+              as String?,
       selectSizeProduct: freezed == selectSizeProduct
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel?,
-      isSoppingCart: freezed == isSoppingCart
-          ? _value.isSoppingCart
-          : isSoppingCart // ignore: cast_nullable_to_non_nullable
+      isShoppingCart: freezed == isShoppingCart
+          ? _value.isShoppingCart
+          : isShoppingCart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isShoppingCartDetailsProduct: freezed == isShoppingCartDetailsProduct
+          ? _value.isShoppingCartDetailsProduct
+          : isShoppingCartDetailsProduct // ignore: cast_nullable_to_non_nullable
               as bool?,
       isAuthModel: freezed == isAuthModel
           ? _value.isAuthModel
@@ -13005,10 +14863,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required final List<ProductDataModel> listProdcutsAlso,
       required final List<ProductDataModel> listProdcutsBrand,
       required final List<ProductDataModel> listProdcutsComplect,
+      required final List<SkuProductDataModel> listSize,
       required final List<int> favouritesProductsId,
       required this.isAuth,
+      required this.isLoadGetSizeProduct,
+      this.codeProduct,
       this.selectSizeProduct,
-      this.isSoppingCart,
+      this.isShoppingCart,
+      this.isShoppingCartDetailsProduct,
       this.isAuthModel,
       this.favouritesProductsInfo,
       this.detailsProduct})
@@ -13020,6 +14882,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         _listProdcutsAlso = listProdcutsAlso,
         _listProdcutsBrand = listProdcutsBrand,
         _listProdcutsComplect = listProdcutsComplect,
+        _listSize = listSize,
         _favouritesProductsId = favouritesProductsId;
 
   @override
@@ -13146,6 +15009,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     return EqualUnmodifiableListView(_listProdcutsComplect);
   }
 
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
   final List<int> _favouritesProductsId;
   @override
   List<int> get favouritesProductsId {
@@ -13158,9 +15029,15 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   @override
   final bool isAuth;
   @override
+  final bool isLoadGetSizeProduct;
+  @override
+  final String? codeProduct;
+  @override
   final SkuProductDataModel? selectSizeProduct;
   @override
-  final bool? isSoppingCart;
+  final bool? isShoppingCart;
+  @override
+  final bool? isShoppingCartDetailsProduct;
   @override
   final bool? isAuthModel;
   @override
@@ -13170,7 +15047,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -13243,13 +15120,22 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 .equals(other._listProdcutsBrand, _listProdcutsBrand) &&
             const DeepCollectionEquality()
                 .equals(other._listProdcutsComplect, _listProdcutsComplect) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProductsId, _favouritesProductsId) &&
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
+            (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
+                other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.codeProduct, codeProduct) ||
+                other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
                 other.selectSizeProduct == selectSizeProduct) &&
-            (identical(other.isSoppingCart, isSoppingCart) ||
-                other.isSoppingCart == isSoppingCart) &&
+            (identical(other.isShoppingCart, isShoppingCart) ||
+                other.isShoppingCart == isShoppingCart) &&
+            (identical(other.isShoppingCartDetailsProduct,
+                    isShoppingCartDetailsProduct) ||
+                other.isShoppingCartDetailsProduct ==
+                    isShoppingCartDetailsProduct) &&
             (identical(other.isAuthModel, isAuthModel) ||
                 other.isAuthModel == isAuthModel) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
@@ -13296,10 +15182,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         const DeepCollectionEquality().hash(_listProdcutsAlso),
         const DeepCollectionEquality().hash(_listProdcutsBrand),
         const DeepCollectionEquality().hash(_listProdcutsComplect),
+        const DeepCollectionEquality().hash(_listSize),
         const DeepCollectionEquality().hash(_favouritesProductsId),
         isAuth,
+        isLoadGetSizeProduct,
+        codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isAuthModel,
         favouritesProductsInfo,
         detailsProduct
@@ -13318,6 +15208,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13354,10 +15249,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)
@@ -13399,10 +15298,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsAlso,
         listProdcutsBrand,
         listProdcutsComplect,
+        listSize,
         favouritesProductsId,
         isAuth,
+        isLoadGetSizeProduct,
+        codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isAuthModel,
         favouritesProductsInfo,
         detailsProduct);
@@ -13414,6 +15317,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13450,10 +15358,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -13495,10 +15407,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         listProdcutsAlso,
         listProdcutsBrand,
         listProdcutsComplect,
+        listSize,
         favouritesProductsId,
         isAuth,
+        isLoadGetSizeProduct,
+        codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isShoppingCartDetailsProduct,
         isAuthModel,
         favouritesProductsInfo,
         detailsProduct);
@@ -13510,6 +15426,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13546,10 +15467,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<ProductDataModel> listProdcutsAlso,
             List<ProductDataModel> listProdcutsBrand,
             List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
             List<int> favouritesProductsId,
             bool isAuth,
+            bool isLoadGetSizeProduct,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
             DetailProductDataModel? detailsProduct)?
@@ -13593,10 +15518,14 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           listProdcutsAlso,
           listProdcutsBrand,
           listProdcutsComplect,
+          listSize,
           favouritesProductsId,
           isAuth,
+          isLoadGetSizeProduct,
+          codeProduct,
           selectSizeProduct,
-          isSoppingCart,
+          isShoppingCart,
+          isShoppingCartDetailsProduct,
           isAuthModel,
           favouritesProductsInfo,
           detailsProduct);
@@ -13611,6 +15540,12 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     required TResult Function(LoadingShoppingCartState value) load,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -13624,6 +15559,10 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     TResult? Function(LoadingShoppingCartState value)? load,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return productsShoppingCart?.call(this);
@@ -13636,6 +15575,10 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     TResult Function(LoadingShoppingCartState value)? load,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -13683,10 +15626,14 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final List<ProductDataModel> listProdcutsAlso,
           required final List<ProductDataModel> listProdcutsBrand,
           required final List<ProductDataModel> listProdcutsComplect,
+          required final List<SkuProductDataModel> listSize,
           required final List<int> favouritesProductsId,
           required final bool isAuth,
+          required final bool isLoadGetSizeProduct,
+          final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
-          final bool? isSoppingCart,
+          final bool? isShoppingCart,
+          final bool? isShoppingCartDetailsProduct,
           final bool? isAuthModel,
           final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
           final DetailProductDataModel? detailsProduct}) =
@@ -13727,10 +15674,14 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   List<ProductDataModel> get listProdcutsAlso;
   List<ProductDataModel> get listProdcutsBrand;
   List<ProductDataModel> get listProdcutsComplect;
+  List<SkuProductDataModel> get listSize;
   List<int> get favouritesProductsId;
   bool get isAuth;
+  bool get isLoadGetSizeProduct;
+  String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
-  bool? get isSoppingCart;
+  bool? get isShoppingCart;
+  bool? get isShoppingCartDetailsProduct;
   bool? get isAuthModel;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;

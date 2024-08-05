@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserInfoDataModel {
   String get r => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   UserDataModel get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $UserInfoDataModelCopyWith<$Res> {
           UserInfoDataModel value, $Res Function(UserInfoDataModel) then) =
       _$UserInfoDataModelCopyWithImpl<$Res, UserInfoDataModel>;
   @useResult
-  $Res call({String r, String message, UserDataModel user});
+  $Res call({String r, String errorMessage, UserDataModel user});
 
   $UserDataModelCopyWith<$Res> get user;
 }
@@ -50,7 +50,7 @@ class _$UserInfoDataModelCopyWithImpl<$Res, $Val extends UserInfoDataModel>
   @override
   $Res call({
     Object? r = null,
-    Object? message = null,
+    Object? errorMessage = null,
     Object? user = null,
   }) {
     return _then(_value.copyWith(
@@ -58,9 +58,9 @@ class _$UserInfoDataModelCopyWithImpl<$Res, $Val extends UserInfoDataModel>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       user: null == user
           ? _value.user
@@ -86,7 +86,7 @@ abstract class _$$UserInfoDataModelImplCopyWith<$Res>
       __$$UserInfoDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String message, UserDataModel user});
+  $Res call({String r, String errorMessage, UserDataModel user});
 
   @override
   $UserDataModelCopyWith<$Res> get user;
@@ -104,7 +104,7 @@ class __$$UserInfoDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = null,
-    Object? message = null,
+    Object? errorMessage = null,
     Object? user = null,
   }) {
     return _then(_$UserInfoDataModelImpl(
@@ -112,9 +112,9 @@ class __$$UserInfoDataModelImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       user: null == user
           ? _value.user
@@ -128,19 +128,19 @@ class __$$UserInfoDataModelImplCopyWithImpl<$Res>
 
 class _$UserInfoDataModelImpl extends _UserInfoDataModel {
   _$UserInfoDataModelImpl(
-      {required this.r, required this.message, required this.user})
+      {required this.r, required this.errorMessage, required this.user})
       : super._();
 
   @override
   final String r;
   @override
-  final String message;
+  final String errorMessage;
   @override
   final UserDataModel user;
 
   @override
   String toString() {
-    return 'UserInfoDataModel(r: $r, message: $message, user: $user)';
+    return 'UserInfoDataModel(r: $r, errorMessage: $errorMessage, user: $user)';
   }
 
   @override
@@ -149,12 +149,13 @@ class _$UserInfoDataModelImpl extends _UserInfoDataModel {
         (other.runtimeType == runtimeType &&
             other is _$UserInfoDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.message, message) || other.message == message) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, message, user);
+  int get hashCode => Object.hash(runtimeType, r, errorMessage, user);
 
   @JsonKey(ignore: true)
   @override
@@ -167,14 +168,14 @@ class _$UserInfoDataModelImpl extends _UserInfoDataModel {
 abstract class _UserInfoDataModel extends UserInfoDataModel {
   factory _UserInfoDataModel(
       {required final String r,
-      required final String message,
+      required final String errorMessage,
       required final UserDataModel user}) = _$UserInfoDataModelImpl;
   _UserInfoDataModel._() : super._();
 
   @override
   String get r;
   @override
-  String get message;
+  String get errorMessage;
   @override
   UserDataModel get user;
   @override

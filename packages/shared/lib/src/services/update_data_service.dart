@@ -6,6 +6,8 @@ class UpdateDataService {
   bool? _isOpenShowModalBottomSheetSearchScreen;
   bool? _isOpenShowModalBottomSheetCatalogScreen;
   bool? _isOpenShowModalBottomSheetFavouritesScreen;
+  bool? _isOpenShowModalBottomSheetShoppingCardInfoScreen;
+  bool? _isOpenShowModalBottomSheetOrderCardInfoScreen;
   bool? _isNotification;
   bool? _isInitApp;
   String? _sectionNotification;
@@ -95,6 +97,22 @@ class UpdateDataService {
 
   set isOpenShowModalBottomSheetFavouritesScreen(bool value) {
     _isOpenShowModalBottomSheetFavouritesScreen = value;
+  }
+
+  bool get isOpenShowModalBottomSheetShoppingCardInfoScreen {
+    return _isOpenShowModalBottomSheetShoppingCardInfoScreen ?? false;
+  }
+
+  set isOpenShowModalBottomSheetShoppingCardInfoScreen(bool value) {
+    _isOpenShowModalBottomSheetShoppingCardInfoScreen = value;
+  }
+
+  bool get isOpenShowModalBottomSheetOrderCardInfoScreen {
+    return _isOpenShowModalBottomSheetOrderCardInfoScreen ?? false;
+  }
+
+  set isOpenShowModalBottomSheetOrderCardInfoScreen(bool value) {
+    _isOpenShowModalBottomSheetOrderCardInfoScreen = value;
   }
 
   bool get isNotification {

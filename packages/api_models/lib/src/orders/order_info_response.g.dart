@@ -10,11 +10,10 @@ _$OrderInfoResponseImpl _$$OrderInfoResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OrderInfoResponseImpl(
       r: json['r'] as String?,
-      e: json['e'] as String?,
+      errorMessage: json['e'] as String?,
       id: json['id'] as String?,
       date: json['date'] as String?,
       status: json['status'] as String?,
-      error: json['error'] as String?,
       paidInfo: json['paid_info'] as String?,
       isPaid: json['is_paid'] as String?,
       sumForPaid: json['sum_for_paid'] as String?,
@@ -46,11 +45,10 @@ Map<String, dynamic> _$$OrderInfoResponseImplToJson(
         _$OrderInfoResponseImpl instance) =>
     <String, dynamic>{
       'r': instance.r,
-      'e': instance.e,
+      'e': instance.errorMessage,
       'id': instance.id,
       'date': instance.date,
       'status': instance.status,
-      'error': instance.error,
       'paid_info': instance.paidInfo,
       'is_paid': instance.isPaid,
       'sum_for_paid': instance.sumForPaid,

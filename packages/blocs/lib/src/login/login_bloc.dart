@@ -60,10 +60,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
     }
 
-    if (result.message.isNotEmpty) {
+    if (result.errorMessage.isNotEmpty) {
       emit(
         LoginState.init(
-          message: result.message,
+          message: result.errorMessage,
         ),
       );
     }
@@ -86,7 +86,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         LoginState.captcha(
           code: result.captcha.code,
           phone: event.phone,
-          message: result.message,
+          message: result.errorMessage,
         ),
       );
     }
@@ -175,7 +175,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(
         LoginState.smsCode(
           phone: event.phone,
-          message: result.message,
+          message: result.errorMessage,
         ),
       );
     }

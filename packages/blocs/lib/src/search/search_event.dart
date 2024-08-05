@@ -47,6 +47,7 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.paginationProduct() = PaginationProductSearchEvent;
   const factory SearchEvent.addProductToSoppingCart({
     required int code,
+    SkuProductDataModel? size,
   }) = AddProductToSoppingCartSearchEvent;
   const factory SearchEvent.checkButtonTop({
     required bool isButtonTop,

@@ -34,6 +34,9 @@ class ShoppingCart extends StatefulWidget {
 class _ShoppingCartState extends State<ShoppingCart> {
   int count = 1;
   int price = 0;
+  bool isLoadPole = false;
+  bool isLoadMinus = false;
+  bool isLoadDelete = false;
 
   @override
   void initState() {
@@ -46,6 +49,9 @@ class _ShoppingCartState extends State<ShoppingCart> {
   void didUpdateWidget(covariant ShoppingCart oldWidget) {
     price = widget.price;
     count = widget.count;
+    isLoadPole = false;
+    isLoadMinus = false;
+    isLoadDelete = false;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -147,7 +153,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       onTap: () {
                         setState(() {
                           count--;
-                          price = price - widget.item.data.price;
+                          isLoadMinus = true;
                           widget.updateProduct(
                             BasketInfoItemDataModel(
                               sku: widget.item.sku,
@@ -164,18 +170,27 @@ class _ShoppingCartState extends State<ShoppingCart> {
                           color: BlindChickenColors.backgroundColorItemFilter,
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        padding: const EdgeInsets.only(
-                          top: 13,
-                          left: 8,
-                          right: 8,
-                          bottom: 13,
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: BlindChickenColors.activeBorderTextField,
-                            border: Border.all(width: 1),
-                          ),
-                        ),
+                        padding: isLoadMinus
+                            ? null
+                            : const EdgeInsets.only(
+                                top: 13,
+                                left: 8,
+                                right: 8,
+                                bottom: 13,
+                              ),
+                        child: isLoadMinus
+                            ? const Padding(
+                                padding: EdgeInsets.all(6),
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : Container(
+                                decoration: BoxDecoration(
+                                  color: BlindChickenColors.activeBorderTextField,
+                                  border: Border.all(width: 1),
+                                ),
+                              ),
                       ),
                     ),
                     Container(
@@ -190,6 +205,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       onTap: () {
                         setState(() {
                           count++;
+                          isLoadPole = true;
                           // price = widget.product.price * count;
                           widget.updateProduct(
                             BasketInfoItemDataModel(
@@ -208,13 +224,20 @@ class _ShoppingCartState extends State<ShoppingCart> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         alignment: Alignment.center,
-                        child: const Text(
-                          '+',
-                          style: TextStyle(
-                            fontSize: 22,
-                            height: 1,
-                          ),
-                        ),
+                        child: isLoadPole
+                            ? const Padding(
+                                padding: EdgeInsets.all(6),
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : const Text(
+                                '+',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  height: 1,
+                                ),
+                              ),
                       ),
                     ),
                   ],
@@ -228,17 +251,27 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         code: widget.item.code,
                       ),
                     );
+                    setState(() {
+                      isLoadDelete = true;
+                    });
                   },
                   child: Container(
                     height: 30,
                     width: 30,
                     color: Colors.transparent,
                     padding: const EdgeInsets.all(5),
-                    child: SvgPicture.asset(
-                      'assets/icons/shopping_cart.svg',
-                      height: 17.5,
-                      width: 17.5,
-                    ),
+                    child: isLoadDelete
+                        ? const Padding(
+                            padding: EdgeInsets.all(2),
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : SvgPicture.asset(
+                            'assets/icons/shopping_cart.svg',
+                            height: 17.5,
+                            width: 17.5,
+                          ),
                   ),
                 ),
               ],

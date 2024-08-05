@@ -95,8 +95,9 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
                 },
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
+            BlindChickenTitleButton(
+              title: 'Закрыть',
+              onChange: () {
                 context.popRoute();
               },
             ),

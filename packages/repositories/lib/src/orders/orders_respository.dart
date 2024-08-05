@@ -32,7 +32,7 @@ extension on OrderInfoResponse {
   OrderInfoDataModel toOrderInfo() {
     return OrderInfoDataModel(
       r: r ?? '',
-      e: e ?? '',
+      errorMessage: errorMessage ?? '',
       id: id ?? '',
       date: date ?? '',
       status: status ?? '',
@@ -101,7 +101,7 @@ extension on OrdersResponse {
   OrdersDataModel toListOrders() {
     return OrdersDataModel(
       r: r ?? '',
-      e: e ?? '',
+      errorMessage: errorMessage ?? '',
       orders: List<OrderItemDataModel>.from(
         orders?.map(
               (item) {

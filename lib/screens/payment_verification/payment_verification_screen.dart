@@ -32,7 +32,10 @@ class _PaymentVerificationScreenState extends State<PaymentVerificationScreen> {
       context.navigateTo(
         LoginRoute(
           children: [
-            OrderUserInfoRoute(isPay: true),
+            OrderUserInfoRoute(
+              isPay: true,
+              orderId: widget.orderId,
+            ),
           ],
         ),
       );

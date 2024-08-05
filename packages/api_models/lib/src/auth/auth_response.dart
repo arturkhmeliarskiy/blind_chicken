@@ -10,7 +10,7 @@ class AuthResponse with _$AuthResponse {
   factory AuthResponse({
     String? r,
     CapthaResponse? captcha,
-    @JsonKey(name: 'e') String? message,
+    @JsonKey(name: 'e') String? errorMessage,
     @JsonKey(name: 't') int? seconds,
     String? send,
   }) = _AuthResponse;

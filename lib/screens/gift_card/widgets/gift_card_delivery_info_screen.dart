@@ -253,8 +253,9 @@ class _GiftCardDeliveryInfoScreenState extends State<GiftCardDeliveryInfoScreen>
                 ],
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
+            BlindChickenTitleButton(
+              title: 'Закрыть',
+              onChange: () {
                 widget.selectItem(_title.text);
                 context.popRoute();
               },

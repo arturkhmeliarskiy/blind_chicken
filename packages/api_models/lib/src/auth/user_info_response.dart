@@ -9,7 +9,7 @@ class UserInfoResponse with _$UserInfoResponse {
   const UserInfoResponse._();
   factory UserInfoResponse({
     String? r,
-    @JsonKey(name: 'e') String? message,
+    @JsonKey(name: 'e') String? errorMessage,
     UserResponse? user,
   }) = _UserInfoResponse;
   factory UserInfoResponse.fromJson(Map<String, dynamic> json) => _$UserInfoResponseFromJson(json);

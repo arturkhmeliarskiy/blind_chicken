@@ -253,8 +253,9 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                 ],
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
+            BlindChickenTitleButton(
+              title: 'Закрыть',
+              onChange: () {
                 widget.selectItem(_title.text);
                 context.popRoute();
               },

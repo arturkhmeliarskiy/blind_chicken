@@ -83,5 +83,8 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.changeTitlePromocode({
     required String titlePromocode,
   }) = ChangeTitlePromocodeSoppingCartEvent;
-
+  const factory ShoppingCartEvent.getInfoProductSize({
+    required String code,
+    required bool isShop,
+  }) = GetInfoProductSizeShoppingCartEvent;
 }

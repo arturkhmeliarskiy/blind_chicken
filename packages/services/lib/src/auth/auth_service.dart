@@ -37,7 +37,21 @@ class AuthService {
           "hash_token_tel": hashTokenTel,
         },
       );
-      authResponse = AuthResponse.fromJson(jsonDecode(response.data));
+
+      try {
+        final result = jsonDecode(response.data);
+        if (result["r"] == '1') {
+          authResponse = AuthResponse.fromJson(result);
+        } else {
+          authResponse = AuthResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        authResponse = AuthResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return authResponse;
     } on DioError catch (e) {
@@ -50,8 +64,10 @@ class AuthService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return AuthResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<AuthResponse?> checkCaptcha({
@@ -76,7 +92,15 @@ class AuthService {
           "captcha_code": captchaCode,
         },
       );
-      authResponse = AuthResponse.fromJson(jsonDecode(response.data));
+
+      try {
+        final result = jsonDecode(response.data);
+        authResponse = AuthResponse.fromJson(result);
+      } catch (e) {
+        authResponse = AuthResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return authResponse;
     } on DioError catch (e) {
@@ -89,8 +113,10 @@ class AuthService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return AuthResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<AuthResponse?> changeName({
@@ -114,7 +140,20 @@ class AuthService {
           "name": name,
         },
       );
-      authResponse = AuthResponse.fromJson(jsonDecode(response.data));
+      try {
+        final result = jsonDecode(response.data);
+        if (result["r"] == '1') {
+          authResponse = AuthResponse.fromJson(result);
+        } else {
+          authResponse = AuthResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        authResponse = AuthResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return authResponse;
     } on DioError catch (e) {
@@ -127,8 +166,10 @@ class AuthService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return AuthResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<AuthResponse?> changeEmail({
@@ -152,7 +193,20 @@ class AuthService {
           "email": email,
         },
       );
-      authResponse = AuthResponse.fromJson(jsonDecode(response.data));
+      try {
+        final result = jsonDecode(response.data);
+        if (result["r"] == '1') {
+          authResponse = AuthResponse.fromJson(result);
+        } else {
+          authResponse = AuthResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        authResponse = AuthResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return authResponse;
     } on DioError catch (e) {
@@ -165,8 +219,10 @@ class AuthService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return AuthResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<UserInfoResponse?> checkSmsAndAuthorization({
@@ -190,7 +246,14 @@ class AuthService {
           "basket": jsonEncode(request.basket),
         },
       );
-      userInfoResponse = UserInfoResponse.fromJson(jsonDecode(response.data));
+      try {
+        final result = jsonDecode(response.data);
+        userInfoResponse = UserInfoResponse.fromJson(result);
+      } catch (e) {
+        userInfoResponse = UserInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return userInfoResponse;
     } on DioError catch (e) {
@@ -203,8 +266,10 @@ class AuthService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return userInfoResponse = UserInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<UserInfoResponse?> getUserInfo() async {
@@ -235,12 +300,12 @@ class AuthService {
           userInfoResponse = UserInfoResponse.fromJson(jsonDecode(response.data));
         } else {
           userInfoResponse = UserInfoResponse(
-            message: MessageInfo.errorMessage,
+            errorMessage: MessageInfo.errorMessage,
           );
         }
       } catch (e) {
         userInfoResponse = UserInfoResponse(
-          message: MessageInfo.errorMessage,
+          errorMessage: MessageInfo.errorMessage,
         );
       }
       return userInfoResponse;
@@ -255,7 +320,7 @@ class AuthService {
         log(e.message.toString());
       }
       return UserInfoResponse(
-        message: MessageInfo.errorMessage,
+        errorMessage: MessageInfo.errorMessage,
       );
     }
   }

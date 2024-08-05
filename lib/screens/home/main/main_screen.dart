@@ -572,6 +572,16 @@ class _MainScreenState extends State<MainScreen> {
                 errorMessage: value.errorMessage,
                 onRepeatRequest: () {
                   context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
+                  context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
+                  context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
+                  timer = Timer.periodic(
+                    const Duration(hours: 1),
+                    (timer) {
+                      context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
+                      _updateVersionApp();
+                    },
+                  );
                 },
               );
             },

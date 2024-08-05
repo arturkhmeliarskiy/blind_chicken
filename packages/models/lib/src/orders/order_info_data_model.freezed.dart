@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OrderInfoDataModel {
   String get r => throw _privateConstructorUsedError;
-  String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $OrderInfoDataModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String r,
-      String e,
+      String errorMessage,
       String id,
       String date,
       String status,
@@ -84,7 +84,7 @@ class _$OrderInfoDataModelCopyWithImpl<$Res, $Val extends OrderInfoDataModel>
   @override
   $Res call({
     Object? r = null,
-    Object? e = null,
+    Object? errorMessage = null,
     Object? id = null,
     Object? date = null,
     Object? status = null,
@@ -106,9 +106,9 @@ class _$OrderInfoDataModelCopyWithImpl<$Res, $Val extends OrderInfoDataModel>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String,
-      e: null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -208,7 +208,7 @@ abstract class _$$OrderInfoDataModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String r,
-      String e,
+      String errorMessage,
       String id,
       String date,
       String status,
@@ -245,7 +245,7 @@ class __$$OrderInfoDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = null,
-    Object? e = null,
+    Object? errorMessage = null,
     Object? id = null,
     Object? date = null,
     Object? status = null,
@@ -267,9 +267,9 @@ class __$$OrderInfoDataModelImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String,
-      e: null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -340,7 +340,7 @@ class __$$OrderInfoDataModelImplCopyWithImpl<$Res>
 class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
   _$OrderInfoDataModelImpl(
       {required this.r,
-      required this.e,
+      required this.errorMessage,
       required this.id,
       required this.date,
       required this.status,
@@ -363,7 +363,7 @@ class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
   @override
   final String r;
   @override
-  final String e;
+  final String errorMessage;
   @override
   final String id;
   @override
@@ -410,7 +410,7 @@ class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
 
   @override
   String toString() {
-    return 'OrderInfoDataModel(r: $r, e: $e, id: $id, date: $date, status: $status, paidInfo: $paidInfo, isPaid: $isPaid, sumForPaid: $sumForPaid, idForPay: $idForPay, promo: $promo, paymentName: $paymentName, paymentsGiftCard: $paymentsGiftCard, sumPaymentGiftCard: $sumPaymentGiftCard, sumPaymentBonus: $sumPaymentBonus, delivery: $delivery, products: $products, giftCard: $giftCard)';
+    return 'OrderInfoDataModel(r: $r, errorMessage: $errorMessage, id: $id, date: $date, status: $status, paidInfo: $paidInfo, isPaid: $isPaid, sumForPaid: $sumForPaid, idForPay: $idForPay, promo: $promo, paymentName: $paymentName, paymentsGiftCard: $paymentsGiftCard, sumPaymentGiftCard: $sumPaymentGiftCard, sumPaymentBonus: $sumPaymentBonus, delivery: $delivery, products: $products, giftCard: $giftCard)';
   }
 
   @override
@@ -419,7 +419,8 @@ class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
         (other.runtimeType == runtimeType &&
             other is _$OrderInfoDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.status, status) || other.status == status) &&
@@ -450,7 +451,7 @@ class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       r,
-      e,
+      errorMessage,
       id,
       date,
       status,
@@ -478,7 +479,7 @@ class _$OrderInfoDataModelImpl extends _OrderInfoDataModel {
 abstract class _OrderInfoDataModel extends OrderInfoDataModel {
   factory _OrderInfoDataModel(
           {required final String r,
-          required final String e,
+          required final String errorMessage,
           required final String id,
           required final String date,
           required final String status,
@@ -500,7 +501,7 @@ abstract class _OrderInfoDataModel extends OrderInfoDataModel {
   @override
   String get r;
   @override
-  String get e;
+  String get errorMessage;
   @override
   String get id;
   @override

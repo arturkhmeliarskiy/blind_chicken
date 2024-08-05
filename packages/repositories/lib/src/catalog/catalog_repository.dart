@@ -806,7 +806,7 @@ extension on DetailProductResponse {
         maximumCashback: price?.cashback ?? 0,
         maximumPersonalDiscount: price?.discountVal ?? 0,
         isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
-        isShop: false,
+        isShop: skuToSoppingCart.isNotEmpty,
       ),
       price: PriceProductDataModel(
         p: price?.p ?? '0',

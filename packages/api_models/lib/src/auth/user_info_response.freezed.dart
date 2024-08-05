@@ -22,7 +22,7 @@ UserInfoResponse _$UserInfoResponseFromJson(Map<String, dynamic> json) {
 mixin _$UserInfoResponse {
   String? get r => throw _privateConstructorUsedError;
   @JsonKey(name: 'e')
-  String? get message => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   UserResponse? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +38,9 @@ abstract class $UserInfoResponseCopyWith<$Res> {
       _$UserInfoResponseCopyWithImpl<$Res, UserInfoResponse>;
   @useResult
   $Res call(
-      {String? r, @JsonKey(name: 'e') String? message, UserResponse? user});
+      {String? r,
+      @JsonKey(name: 'e') String? errorMessage,
+      UserResponse? user});
 
   $UserResponseCopyWith<$Res>? get user;
 }
@@ -57,7 +59,7 @@ class _$UserInfoResponseCopyWithImpl<$Res, $Val extends UserInfoResponse>
   @override
   $Res call({
     Object? r = freezed,
-    Object? message = freezed,
+    Object? errorMessage = freezed,
     Object? user = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,9 +67,9 @@ class _$UserInfoResponseCopyWithImpl<$Res, $Val extends UserInfoResponse>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       user: freezed == user
           ? _value.user
@@ -98,7 +100,9 @@ abstract class _$$UserInfoResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? r, @JsonKey(name: 'e') String? message, UserResponse? user});
+      {String? r,
+      @JsonKey(name: 'e') String? errorMessage,
+      UserResponse? user});
 
   @override
   $UserResponseCopyWith<$Res>? get user;
@@ -116,7 +120,7 @@ class __$$UserInfoResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = freezed,
-    Object? message = freezed,
+    Object? errorMessage = freezed,
     Object? user = freezed,
   }) {
     return _then(_$UserInfoResponseImpl(
@@ -124,9 +128,9 @@ class __$$UserInfoResponseImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       user: freezed == user
           ? _value.user
@@ -139,7 +143,8 @@ class __$$UserInfoResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserInfoResponseImpl extends _UserInfoResponse {
-  _$UserInfoResponseImpl({this.r, @JsonKey(name: 'e') this.message, this.user})
+  _$UserInfoResponseImpl(
+      {this.r, @JsonKey(name: 'e') this.errorMessage, this.user})
       : super._();
 
   factory _$UserInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -149,13 +154,13 @@ class _$UserInfoResponseImpl extends _UserInfoResponse {
   final String? r;
   @override
   @JsonKey(name: 'e')
-  final String? message;
+  final String? errorMessage;
   @override
   final UserResponse? user;
 
   @override
   String toString() {
-    return 'UserInfoResponse(r: $r, message: $message, user: $user)';
+    return 'UserInfoResponse(r: $r, errorMessage: $errorMessage, user: $user)';
   }
 
   @override
@@ -164,13 +169,14 @@ class _$UserInfoResponseImpl extends _UserInfoResponse {
         (other.runtimeType == runtimeType &&
             other is _$UserInfoResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.message, message) || other.message == message) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, message, user);
+  int get hashCode => Object.hash(runtimeType, r, errorMessage, user);
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +196,7 @@ class _$UserInfoResponseImpl extends _UserInfoResponse {
 abstract class _UserInfoResponse extends UserInfoResponse {
   factory _UserInfoResponse(
       {final String? r,
-      @JsonKey(name: 'e') final String? message,
+      @JsonKey(name: 'e') final String? errorMessage,
       final UserResponse? user}) = _$UserInfoResponseImpl;
   _UserInfoResponse._() : super._();
 
@@ -201,7 +207,7 @@ abstract class _UserInfoResponse extends UserInfoResponse {
   String? get r;
   @override
   @JsonKey(name: 'e')
-  String? get message;
+  String? get errorMessage;
   @override
   UserResponse? get user;
   @override

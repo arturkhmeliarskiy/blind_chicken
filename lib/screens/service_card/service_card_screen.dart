@@ -73,11 +73,11 @@ class ServiceCardScreen extends StatelessWidget {
                       preloadDataCompleted: (initState) {
                         return BlindChickenButton(
                           width: 252,
-                          title: (initState.isSoppingCart ?? false)
+                          title: (initState.isShoppingCart ?? false)
                               ? 'Перейти в корзину'
                               : 'Добавить в корзину',
                           onChenge: () {
-                            if (initState.isSoppingCart ?? false) {
+                            if (initState.isShoppingCart ?? false) {
                               Timer(const Duration(milliseconds: 150), () {
                                 context
                                     .read<ShoppingCartBloc>()

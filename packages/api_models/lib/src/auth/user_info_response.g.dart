@@ -10,7 +10,7 @@ _$UserInfoResponseImpl _$$UserInfoResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$UserInfoResponseImpl(
       r: json['r'] as String?,
-      message: json['e'] as String?,
+      errorMessage: json['e'] as String?,
       user: json['user'] == null
           ? null
           : UserResponse.fromJson(json['user'] as Map<String, dynamic>),
@@ -20,6 +20,6 @@ Map<String, dynamic> _$$UserInfoResponseImplToJson(
         _$UserInfoResponseImpl instance) =>
     <String, dynamic>{
       'r': instance.r,
-      'e': instance.message,
+      'e': instance.errorMessage,
       'user': instance.user,
     };

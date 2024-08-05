@@ -101,8 +101,9 @@ class _CatalogSizeProductScreenState extends State<CatalogSizeProductScreen> {
                     },
                   ),
                 ),
-                BlindChickenCloseButton(
-                  onClose: () {
+                BlindChickenTitleButton(
+                  title: 'Закрыть',
+                  onChange: () {
                     setState(() {
                       _isSwipe = false;
                     });

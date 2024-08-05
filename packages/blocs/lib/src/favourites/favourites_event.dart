@@ -46,6 +46,7 @@ class FavouritesEvent with _$FavouritesEvent {
   const factory FavouritesEvent.paginationProduct() = PaginationProductFavouritesEvent;
   const factory FavouritesEvent.addProductToSoppingCart({
     required int code,
+    SkuProductDataModel? size,
   }) = AddProductToSoppingCartFavouritesEvent;
   const factory FavouritesEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,

@@ -540,6 +540,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: OrderUserInfoScreen(
           key: args.key,
           isPay: args.isPay,
+          orderId: args.orderId,
         ),
       );
     },
@@ -2636,12 +2637,14 @@ class OrderUserInfoRoute extends PageRouteInfo<OrderUserInfoRouteArgs> {
   OrderUserInfoRoute({
     Key? key,
     required bool isPay,
+    required String orderId,
     List<PageRouteInfo>? children,
   }) : super(
           OrderUserInfoRoute.name,
           args: OrderUserInfoRouteArgs(
             key: key,
             isPay: isPay,
+            orderId: orderId,
           ),
           initialChildren: children,
         );
@@ -2656,15 +2659,18 @@ class OrderUserInfoRouteArgs {
   const OrderUserInfoRouteArgs({
     this.key,
     required this.isPay,
+    required this.orderId,
   });
 
   final Key? key;
 
   final bool isPay;
 
+  final String orderId;
+
   @override
   String toString() {
-    return 'OrderUserInfoRouteArgs{key: $key, isPay: $isPay}';
+    return 'OrderUserInfoRouteArgs{key: $key, isPay: $isPay, orderId: $orderId}';
   }
 }
 

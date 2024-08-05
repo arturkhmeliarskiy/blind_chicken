@@ -70,7 +70,10 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             context.navigateTo(
               LoginRoute(
                 children: [
-                  OrderUserInfoRoute(isPay: true),
+                  OrderUserInfoRoute(
+                    isPay: true,
+                    orderId: value.orderId.toString(),
+                  ),
                 ],
               ),
             );

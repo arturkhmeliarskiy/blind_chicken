@@ -543,6 +543,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      bool isShoppingCartDetailsProduct = false;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
@@ -554,7 +555,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
-        genderIndex: '1',
+        genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
       final additionalProductsDescriptionStyle =
@@ -587,7 +588,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
-      if (detailsProduct.sku.isNotEmpty) {
+      if (detailsProduct.sku.length > 1) {
         if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
           for (int i = 0; i < detailsProduct.sku.length; i++) {
             if (detailsProduct.sku[i].id == event.code) {
@@ -608,6 +609,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               (element) => int.parse(element.code) == detailsProduct.code,
             )
             .toList();
+        if (soppingCart.isNotEmpty) {
+          if (!soppingCart.first.sku.contains('-')) {
+            isShoppingCartDetailsProduct = true;
+          }
+        }
       }
 
       emit(initState.copyWith(
@@ -618,7 +624,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProdcutsComplect: additionalProductsDescriptionComplect.products,
         listProductsCode: listProductsCode,
         isAuth: isAuth,
-        isSoppingCart: soppingCart.isNotEmpty,
+        isShoppingCart: soppingCart.isNotEmpty,
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
         selectSizeProduct: selectSizeProduct ?? event.size,
       ));
     });
@@ -643,7 +650,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(const SearchState.load());
         final detailsProduct = await _catalogRepository.getDetailsProduct(
           code: listProductsCode.last,
-          genderIndex: '1',
+          genderIndex: _updateDataService.selectedIndexGender.toString(),
         );
 
         final additionalProductsDescriptionStyle =
@@ -771,6 +778,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
       final listProducts = initState.products.toList();
+      bool isShoppingCart = false;
+      bool isShoppingCartDetailsProduct = false;
+      final detailsProduct = initState.detailsProduct;
+
       final items = listProducts.where((element) => element.id == event.code).toList();
 
       if (items.isNotEmpty) {
@@ -798,10 +809,44 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         listProducts[index] = product;
       }
 
+      if (detailsProduct != null) {
+        SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
+            (initState.detailsProduct?.sku.isNotEmpty ?? false
+                ? (initState.detailsProduct?.sku.first ??
+                    SkuProductDataModel(
+                      id: '',
+                      value: '',
+                    ))
+                : SkuProductDataModel(
+                    id: '',
+                    value: '',
+                  ));
+        if (selectSizeProduct.id == (event.size?.id ?? '') &&
+            (event.size?.id ?? '').contains('-')) {
+          isShoppingCart = true;
+        }
+
+        if (selectSizeProduct.id == (event.size?.id ?? '') &&
+            detailsProduct.sku.length == 1 &&
+            !(event.size?.id ?? '').contains('-')) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+
+        if (event.size?.id.isEmpty ?? true) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+      } else {
+        isShoppingCart = false;
+        isShoppingCartDetailsProduct = true;
+      }
+
       emit(initState.copyWith(
         products: listProducts,
         searchDefaultProducts: listProducts,
-        isSoppingCart: true,
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+        isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
       ));
     });
   }
@@ -853,13 +898,33 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           ) ??
           false;
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
-      final soppingCart = basketInfo.basket.where(
-        (element) =>
-            int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
-            element.sku == event.size.id,
-      );
+      List<BasketFullInfoItemDataModel> soppingCart = [];
+      SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
+          (initState.detailsProduct?.sku.first ??
+              SkuProductDataModel(
+                id: '',
+                value: '',
+              ));
+
+      if (initState.detailsProduct?.sku.isNotEmpty ?? false) {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) =>
+                  int.parse(element.code) == (initState.detailsProduct?.code ?? 0) &&
+                  ((element.sku.isNotEmpty ? element.sku == event.size.id : true) ||
+                      selectSizeProduct.id == element.sku),
+            )
+            .toList();
+      } else {
+        soppingCart = basketInfo.basket
+            .where(
+              (element) => int.parse(element.code) == (initState.detailsProduct?.code ?? 0),
+            )
+            .toList();
+      }
+
       emit(initState.copyWith(
-        isSoppingCart: soppingCart.isNotEmpty,
+        isShoppingCart: soppingCart.isNotEmpty,
       ));
     });
   }

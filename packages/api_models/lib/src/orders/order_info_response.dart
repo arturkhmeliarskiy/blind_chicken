@@ -14,11 +14,10 @@ class OrderInfoResponse with _$OrderInfoResponse {
   const OrderInfoResponse._();
   factory OrderInfoResponse({
     String? r,
-    String? e,
+    @JsonKey(name: 'e') String? errorMessage,
     String? id,
     String? date,
     String? status,
-    String? error,
     @JsonKey(name: 'paid_info') String? paidInfo,
     @JsonKey(name: 'is_paid') String? isPaid,
     @JsonKey(name: 'sum_for_paid') String? sumForPaid,

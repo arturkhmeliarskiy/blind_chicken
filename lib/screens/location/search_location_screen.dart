@@ -286,8 +286,9 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                 ],
               ),
             ),
-            BlindChickenCloseButton(
-              onClose: () {
+            BlindChickenTitleButton(
+              title: 'Закрыть',
+              onChange: () {
                 context.popRoute();
               },
             ),

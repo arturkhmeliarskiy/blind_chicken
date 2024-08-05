@@ -84,6 +84,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.removeSelectAllFilters() = RemoveSelectAllFiltersCategotyCatalogEvent;
   const factory CatalogEvent.addProductToSoppingCart({
     required int code,
+    SkuProductDataModel? size,
   }) = AddProductToSoppingCartCatalogEvent;
   const factory CatalogEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,

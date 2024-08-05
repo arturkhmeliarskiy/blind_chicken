@@ -112,7 +112,10 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
             context.navigateTo(
               LoginRoute(
                 children: [
-                  OrderUserInfoRoute(isPay: true),
+                  OrderUserInfoRoute(
+                    isPay: true,
+                    orderId: value.orderId.toString(),
+                  ),
                 ],
               ),
             );

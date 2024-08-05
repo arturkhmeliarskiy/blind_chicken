@@ -9,7 +9,7 @@ class OrdersResponse with _$OrdersResponse {
   const OrdersResponse._();
   factory OrdersResponse({
     String? r,
-    String? e,
+    @JsonKey(name: 'e') String? errorMessage,
     @JsonKey(name: 'count_orders') String? countOrders,
     List<OrderItemResponse>? orders,
   }) = _OrdersResponse;

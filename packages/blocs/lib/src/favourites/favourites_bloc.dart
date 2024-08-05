@@ -585,6 +585,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     await state.mapOrNull(productsFavourites: (initState) async {
       SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
+      bool isShoppingCartDetailsProduct = false;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
@@ -628,7 +629,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
-      if (detailsProduct.sku.isNotEmpty) {
+      if (detailsProduct.sku.length > 1) {
         if (!detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length < 10) {
           for (int i = 0; i < detailsProduct.sku.length; i++) {
             if (detailsProduct.sku[i].id == event.code) {
@@ -649,6 +650,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
               (element) => int.parse(element.code) == detailsProduct.code,
             )
             .toList();
+        if (soppingCart.isNotEmpty) {
+          if (!soppingCart.first.sku.contains('-')) {
+            isShoppingCartDetailsProduct = true;
+          }
+        }
       }
 
       emit(initState.copyWith(
@@ -660,8 +666,9 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listProductsCode: listProductsCode,
         isAuth: isAuth,
         isUpdate: event.isUpdate,
-        isSoppingCart: soppingCart.isNotEmpty,
+        isShoppingCart: soppingCart.isNotEmpty,
         selectSizeProduct: selectSizeProduct ?? event.size,
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
       ));
     });
   }
@@ -949,6 +956,10 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
       final listProducts = initState.favouritesProducts.toList();
+      bool isShoppingCart = false;
+      bool isShoppingCartDetailsProduct = false;
+      final detailsProduct = initState.detailsProduct;
+
       final items = listProducts.where((element) => element.id == event.code).toList();
 
       if (items.isNotEmpty) {
@@ -976,10 +987,44 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         listProducts[index] = product;
       }
 
+      if (detailsProduct != null) {
+        SkuProductDataModel selectSizeProduct = initState.selectSizeProduct ??
+            (initState.detailsProduct?.sku.isNotEmpty ?? false
+                ? (initState.detailsProduct?.sku.first ??
+                    SkuProductDataModel(
+                      id: '',
+                      value: '',
+                    ))
+                : SkuProductDataModel(
+                    id: '',
+                    value: '',
+                  ));
+        if (selectSizeProduct.id == (event.size?.id ?? '') &&
+            (event.size?.id ?? '').contains('-')) {
+          isShoppingCart = true;
+        }
+
+        if (selectSizeProduct.id == (event.size?.id ?? '') &&
+            detailsProduct.sku.length == 1 &&
+            !(event.size?.id ?? '').contains('-')) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+
+        if (event.size?.id.isEmpty ?? true) {
+          isShoppingCart = true;
+          isShoppingCartDetailsProduct = true;
+        }
+      } else {
+        isShoppingCart = false;
+        isShoppingCartDetailsProduct = true;
+      }
+
       emit(initState.copyWith(
         favouritesProducts: listProducts,
         favouritesDefaultProducts: listProducts,
-        isSoppingCart: true,
+        isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+        isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
       ));
     });
   }
@@ -1012,7 +1057,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
             .toList();
       }
       emit(initState.copyWith(
-        isSoppingCart: soppingCart.isNotEmpty,
+        isShoppingCart: soppingCart.isNotEmpty,
       ));
     });
   }

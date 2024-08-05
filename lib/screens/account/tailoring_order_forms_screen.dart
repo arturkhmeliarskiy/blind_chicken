@@ -20,8 +20,6 @@ class _TailoringOrderFormsScreenState extends State<TailoringOrderFormsScreen> {
   final ScrollController _scrollController = ScrollController();
   bool _isButtonTop = false;
   bool _isLoading = false;
-  int _offset = 1;
-  int _perOffset = 1;
   bool _isSwipe = true;
   double _historyPosition = 0.0;
 
@@ -49,11 +47,9 @@ class _TailoringOrderFormsScreenState extends State<TailoringOrderFormsScreen> {
       await Future<void>.delayed(const Duration(seconds: 2), () {
         setState(() {
           _isLoading = false;
-          _offset = _offset + _perOffset;
-          context
-              .read<AccountBloc>()
-              .add(AccountEvent.paginationListOrdersBlank(offset: _offset, limit: 0));
-          log(_offset.toString());
+          context.read<AccountBloc>().add(
+                const AccountEvent.paginationListOrdersBlank(),
+              );
         });
       });
     }

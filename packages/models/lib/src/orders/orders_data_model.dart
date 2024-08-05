@@ -8,7 +8,7 @@ class OrdersDataModel with _$OrdersDataModel {
   const OrdersDataModel._();
   factory OrdersDataModel({
     required String r,
-    required String e,
+    required String errorMessage,
     required String countOrders,
     required List<OrderItemDataModel> orders,
   }) = _OrdersDataModel;

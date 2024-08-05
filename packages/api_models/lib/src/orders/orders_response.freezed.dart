@@ -21,7 +21,8 @@ OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrdersResponse {
   String? get r => throw _privateConstructorUsedError;
-  String? get e => throw _privateConstructorUsedError;
+  @JsonKey(name: 'e')
+  String? get errorMessage => throw _privateConstructorUsedError;
   @JsonKey(name: 'count_orders')
   String? get countOrders => throw _privateConstructorUsedError;
   List<OrderItemResponse>? get orders => throw _privateConstructorUsedError;
@@ -40,7 +41,7 @@ abstract class $OrdersResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? r,
-      String? e,
+      @JsonKey(name: 'e') String? errorMessage,
       @JsonKey(name: 'count_orders') String? countOrders,
       List<OrderItemResponse>? orders});
 }
@@ -59,7 +60,7 @@ class _$OrdersResponseCopyWithImpl<$Res, $Val extends OrdersResponse>
   @override
   $Res call({
     Object? r = freezed,
-    Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? countOrders = freezed,
     Object? orders = freezed,
   }) {
@@ -68,9 +69,9 @@ class _$OrdersResponseCopyWithImpl<$Res, $Val extends OrdersResponse>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      e: freezed == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       countOrders: freezed == countOrders
           ? _value.countOrders
@@ -94,7 +95,7 @@ abstract class _$$OrdersResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? r,
-      String? e,
+      @JsonKey(name: 'e') String? errorMessage,
       @JsonKey(name: 'count_orders') String? countOrders,
       List<OrderItemResponse>? orders});
 }
@@ -111,7 +112,7 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = freezed,
-    Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? countOrders = freezed,
     Object? orders = freezed,
   }) {
@@ -120,9 +121,9 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      e: freezed == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       countOrders: freezed == countOrders
           ? _value.countOrders
@@ -141,7 +142,7 @@ class __$$OrdersResponseImplCopyWithImpl<$Res>
 class _$OrdersResponseImpl extends _OrdersResponse {
   _$OrdersResponseImpl(
       {this.r,
-      this.e,
+      @JsonKey(name: 'e') this.errorMessage,
       @JsonKey(name: 'count_orders') this.countOrders,
       final List<OrderItemResponse>? orders})
       : _orders = orders,
@@ -153,7 +154,8 @@ class _$OrdersResponseImpl extends _OrdersResponse {
   @override
   final String? r;
   @override
-  final String? e;
+  @JsonKey(name: 'e')
+  final String? errorMessage;
   @override
   @JsonKey(name: 'count_orders')
   final String? countOrders;
@@ -169,7 +171,7 @@ class _$OrdersResponseImpl extends _OrdersResponse {
 
   @override
   String toString() {
-    return 'OrdersResponse(r: $r, e: $e, countOrders: $countOrders, orders: $orders)';
+    return 'OrdersResponse(r: $r, errorMessage: $errorMessage, countOrders: $countOrders, orders: $orders)';
   }
 
   @override
@@ -178,7 +180,8 @@ class _$OrdersResponseImpl extends _OrdersResponse {
         (other.runtimeType == runtimeType &&
             other is _$OrdersResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.countOrders, countOrders) ||
                 other.countOrders == countOrders) &&
             const DeepCollectionEquality().equals(other._orders, _orders));
@@ -186,7 +189,7 @@ class _$OrdersResponseImpl extends _OrdersResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, countOrders,
+  int get hashCode => Object.hash(runtimeType, r, errorMessage, countOrders,
       const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
@@ -207,7 +210,7 @@ class _$OrdersResponseImpl extends _OrdersResponse {
 abstract class _OrdersResponse extends OrdersResponse {
   factory _OrdersResponse(
       {final String? r,
-      final String? e,
+      @JsonKey(name: 'e') final String? errorMessage,
       @JsonKey(name: 'count_orders') final String? countOrders,
       final List<OrderItemResponse>? orders}) = _$OrdersResponseImpl;
   _OrdersResponse._() : super._();
@@ -218,7 +221,8 @@ abstract class _OrdersResponse extends OrdersResponse {
   @override
   String? get r;
   @override
-  String? get e;
+  @JsonKey(name: 'e')
+  String? get errorMessage;
   @override
   @JsonKey(name: 'count_orders')
   String? get countOrders;

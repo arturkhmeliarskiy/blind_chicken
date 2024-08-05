@@ -22,13 +22,12 @@ mixin _$AccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -47,21 +46,22 @@ mixin _$AccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -77,20 +77,21 @@ mixin _$AccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -106,8 +107,9 @@ mixin _$AccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,6 +154,8 @@ mixin _$AccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -189,6 +193,7 @@ mixin _$AccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -226,6 +231,7 @@ mixin _$AccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -334,13 +340,12 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -359,9 +364,10 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return preloadData(phone, name, email);
   }
@@ -371,12 +377,12 @@ class _$InitAccountEventImpl implements InitAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -392,8 +398,9 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return preloadData?.call(phone, name, email);
   }
@@ -403,12 +410,12 @@ class _$InitAccountEventImpl implements InitAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -424,8 +431,9 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -476,6 +484,8 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return preloadData(this);
   }
@@ -516,6 +526,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return preloadData?.call(this);
   }
@@ -556,6 +567,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -666,13 +678,12 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -691,9 +702,10 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return updateInfo(phone, name, email);
   }
@@ -703,12 +715,12 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -724,8 +736,9 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return updateInfo?.call(phone, name, email);
   }
@@ -735,12 +748,12 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -756,8 +769,9 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateInfo != null) {
@@ -808,6 +822,8 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return updateInfo(this);
   }
@@ -848,6 +864,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return updateInfo?.call(this);
   }
@@ -888,6 +905,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateInfo != null) {
@@ -917,8 +935,6 @@ abstract class _$$PaginationOrdersAccountEventImplCopyWith<$Res> {
           _$PaginationOrdersAccountEventImpl value,
           $Res Function(_$PaginationOrdersAccountEventImpl) then) =
       __$$PaginationOrdersAccountEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int offset, int limit});
 }
 
 /// @nodoc
@@ -929,62 +945,28 @@ class __$$PaginationOrdersAccountEventImplCopyWithImpl<$Res>
       _$PaginationOrdersAccountEventImpl _value,
       $Res Function(_$PaginationOrdersAccountEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? offset = null,
-    Object? limit = null,
-  }) {
-    return _then(_$PaginationOrdersAccountEventImpl(
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$PaginationOrdersAccountEventImpl
     implements PaginationOrdersAccountEvent {
-  const _$PaginationOrdersAccountEventImpl(
-      {required this.offset, required this.limit});
-
-  @override
-  final int offset;
-  @override
-  final int limit;
+  const _$PaginationOrdersAccountEventImpl();
 
   @override
   String toString() {
-    return 'AccountEvent.paginationProduct(offset: $offset, limit: $limit)';
+    return 'AccountEvent.paginationProduct()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaginationOrdersAccountEventImpl &&
-            (identical(other.offset, offset) || other.offset == offset) &&
-            (identical(other.limit, limit) || other.limit == limit));
+            other is _$PaginationOrdersAccountEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaginationOrdersAccountEventImplCopyWith<
-          _$PaginationOrdersAccountEventImpl>
-      get copyWith => __$$PaginationOrdersAccountEventImplCopyWithImpl<
-          _$PaginationOrdersAccountEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -993,13 +975,12 @@ class _$PaginationOrdersAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -1018,11 +999,12 @@ class _$PaginationOrdersAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return paginationProduct(offset, limit);
+    return paginationProduct();
   }
 
   @override
@@ -1030,12 +1012,12 @@ class _$PaginationOrdersAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -1051,10 +1033,11 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return paginationProduct?.call(offset, limit);
+    return paginationProduct?.call();
   }
 
   @override
@@ -1062,12 +1045,12 @@ class _$PaginationOrdersAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -1083,12 +1066,13 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
-      return paginationProduct(offset, limit);
+      return paginationProduct();
     }
     return orElse();
   }
@@ -1135,6 +1119,8 @@ class _$PaginationOrdersAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return paginationProduct(this);
   }
@@ -1175,6 +1161,7 @@ class _$PaginationOrdersAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return paginationProduct?.call(this);
   }
@@ -1215,6 +1202,7 @@ class _$PaginationOrdersAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -1225,16 +1213,8 @@ class _$PaginationOrdersAccountEventImpl
 }
 
 abstract class PaginationOrdersAccountEvent implements AccountEvent {
-  const factory PaginationOrdersAccountEvent(
-      {required final int offset,
-      required final int limit}) = _$PaginationOrdersAccountEventImpl;
-
-  int get offset;
-  int get limit;
-  @JsonKey(ignore: true)
-  _$$PaginationOrdersAccountEventImplCopyWith<
-          _$PaginationOrdersAccountEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  const factory PaginationOrdersAccountEvent() =
+      _$PaginationOrdersAccountEventImpl;
 }
 
 /// @nodoc
@@ -1281,13 +1261,12 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -1306,9 +1285,10 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getOrders();
   }
@@ -1318,12 +1298,12 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -1339,8 +1319,9 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getOrders?.call();
   }
@@ -1350,12 +1331,12 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -1371,8 +1352,9 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1423,6 +1405,8 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getOrders(this);
   }
@@ -1463,6 +1447,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getOrders?.call(this);
   }
@@ -1503,6 +1488,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getOrders != null) {
@@ -1522,8 +1508,6 @@ abstract class _$$PaginationListOrdersBlankAccountEventImplCopyWith<$Res> {
           _$PaginationListOrdersBlankAccountEventImpl value,
           $Res Function(_$PaginationListOrdersBlankAccountEventImpl) then) =
       __$$PaginationListOrdersBlankAccountEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int offset, int limit});
 }
 
 /// @nodoc
@@ -1535,62 +1519,28 @@ class __$$PaginationListOrdersBlankAccountEventImplCopyWithImpl<$Res>
       _$PaginationListOrdersBlankAccountEventImpl _value,
       $Res Function(_$PaginationListOrdersBlankAccountEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? offset = null,
-    Object? limit = null,
-  }) {
-    return _then(_$PaginationListOrdersBlankAccountEventImpl(
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$PaginationListOrdersBlankAccountEventImpl
     implements PaginationListOrdersBlankAccountEvent {
-  const _$PaginationListOrdersBlankAccountEventImpl(
-      {required this.offset, required this.limit});
-
-  @override
-  final int offset;
-  @override
-  final int limit;
+  const _$PaginationListOrdersBlankAccountEventImpl();
 
   @override
   String toString() {
-    return 'AccountEvent.paginationListOrdersBlank(offset: $offset, limit: $limit)';
+    return 'AccountEvent.paginationListOrdersBlank()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaginationListOrdersBlankAccountEventImpl &&
-            (identical(other.offset, offset) || other.offset == offset) &&
-            (identical(other.limit, limit) || other.limit == limit));
+            other is _$PaginationListOrdersBlankAccountEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaginationListOrdersBlankAccountEventImplCopyWith<
-          _$PaginationListOrdersBlankAccountEventImpl>
-      get copyWith => __$$PaginationListOrdersBlankAccountEventImplCopyWithImpl<
-          _$PaginationListOrdersBlankAccountEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -1599,13 +1549,12 @@ class _$PaginationListOrdersBlankAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -1624,11 +1573,12 @@ class _$PaginationListOrdersBlankAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return paginationListOrdersBlank(offset, limit);
+    return paginationListOrdersBlank();
   }
 
   @override
@@ -1636,12 +1586,12 @@ class _$PaginationListOrdersBlankAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -1657,10 +1607,11 @@ class _$PaginationListOrdersBlankAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return paginationListOrdersBlank?.call(offset, limit);
+    return paginationListOrdersBlank?.call();
   }
 
   @override
@@ -1668,12 +1619,12 @@ class _$PaginationListOrdersBlankAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -1689,12 +1640,13 @@ class _$PaginationListOrdersBlankAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationListOrdersBlank != null) {
-      return paginationListOrdersBlank(offset, limit);
+      return paginationListOrdersBlank();
     }
     return orElse();
   }
@@ -1741,6 +1693,8 @@ class _$PaginationListOrdersBlankAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return paginationListOrdersBlank(this);
   }
@@ -1781,6 +1735,7 @@ class _$PaginationListOrdersBlankAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return paginationListOrdersBlank?.call(this);
   }
@@ -1821,6 +1776,7 @@ class _$PaginationListOrdersBlankAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationListOrdersBlank != null) {
@@ -1831,16 +1787,8 @@ class _$PaginationListOrdersBlankAccountEventImpl
 }
 
 abstract class PaginationListOrdersBlankAccountEvent implements AccountEvent {
-  const factory PaginationListOrdersBlankAccountEvent(
-      {required final int offset,
-      required final int limit}) = _$PaginationListOrdersBlankAccountEventImpl;
-
-  int get offset;
-  int get limit;
-  @JsonKey(ignore: true)
-  _$$PaginationListOrdersBlankAccountEventImplCopyWith<
-          _$PaginationListOrdersBlankAccountEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  const factory PaginationListOrdersBlankAccountEvent() =
+      _$PaginationListOrdersBlankAccountEventImpl;
 }
 
 /// @nodoc
@@ -1890,13 +1838,12 @@ class _$GetListOrdersBlankAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -1915,9 +1862,10 @@ class _$GetListOrdersBlankAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getListOrdersBlank();
   }
@@ -1927,12 +1875,12 @@ class _$GetListOrdersBlankAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -1948,8 +1896,9 @@ class _$GetListOrdersBlankAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getListOrdersBlank?.call();
   }
@@ -1959,12 +1908,12 @@ class _$GetListOrdersBlankAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -1980,8 +1929,9 @@ class _$GetListOrdersBlankAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getListOrdersBlank != null) {
@@ -2032,6 +1982,8 @@ class _$GetListOrdersBlankAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getListOrdersBlank(this);
   }
@@ -2072,6 +2024,7 @@ class _$GetListOrdersBlankAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getListOrdersBlank?.call(this);
   }
@@ -2112,6 +2065,7 @@ class _$GetListOrdersBlankAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getListOrdersBlank != null) {
@@ -2209,13 +2163,12 @@ class _$GetOrderPdfBlankAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -2234,9 +2187,10 @@ class _$GetOrderPdfBlankAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getOrderPdfBlank(fileName, id);
   }
@@ -2246,12 +2200,12 @@ class _$GetOrderPdfBlankAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -2267,8 +2221,9 @@ class _$GetOrderPdfBlankAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getOrderPdfBlank?.call(fileName, id);
   }
@@ -2278,12 +2233,12 @@ class _$GetOrderPdfBlankAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -2299,8 +2254,9 @@ class _$GetOrderPdfBlankAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getOrderPdfBlank != null) {
@@ -2351,6 +2307,8 @@ class _$GetOrderPdfBlankAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getOrderPdfBlank(this);
   }
@@ -2391,6 +2349,7 @@ class _$GetOrderPdfBlankAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getOrderPdfBlank?.call(this);
   }
@@ -2431,6 +2390,7 @@ class _$GetOrderPdfBlankAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getOrderPdfBlank != null) {
@@ -2459,8 +2419,6 @@ abstract class _$$PaginationListTailoringBlankAccountEventImplCopyWith<$Res> {
           _$PaginationListTailoringBlankAccountEventImpl value,
           $Res Function(_$PaginationListTailoringBlankAccountEventImpl) then) =
       __$$PaginationListTailoringBlankAccountEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int offset, int limit});
 }
 
 /// @nodoc
@@ -2472,63 +2430,28 @@ class __$$PaginationListTailoringBlankAccountEventImplCopyWithImpl<$Res>
       _$PaginationListTailoringBlankAccountEventImpl _value,
       $Res Function(_$PaginationListTailoringBlankAccountEventImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? offset = null,
-    Object? limit = null,
-  }) {
-    return _then(_$PaginationListTailoringBlankAccountEventImpl(
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-      limit: null == limit
-          ? _value.limit
-          : limit // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$PaginationListTailoringBlankAccountEventImpl
     implements PaginationListTailoringBlankAccountEvent {
-  const _$PaginationListTailoringBlankAccountEventImpl(
-      {required this.offset, required this.limit});
-
-  @override
-  final int offset;
-  @override
-  final int limit;
+  const _$PaginationListTailoringBlankAccountEventImpl();
 
   @override
   String toString() {
-    return 'AccountEvent.paginationListTailoringBlank(offset: $offset, limit: $limit)';
+    return 'AccountEvent.paginationListTailoringBlank()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaginationListTailoringBlankAccountEventImpl &&
-            (identical(other.offset, offset) || other.offset == offset) &&
-            (identical(other.limit, limit) || other.limit == limit));
+            other is _$PaginationListTailoringBlankAccountEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, offset, limit);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaginationListTailoringBlankAccountEventImplCopyWith<
-          _$PaginationListTailoringBlankAccountEventImpl>
-      get copyWith =>
-          __$$PaginationListTailoringBlankAccountEventImplCopyWithImpl<
-              _$PaginationListTailoringBlankAccountEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -2537,13 +2460,12 @@ class _$PaginationListTailoringBlankAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -2562,11 +2484,12 @@ class _$PaginationListTailoringBlankAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return paginationListTailoringBlank(offset, limit);
+    return paginationListTailoringBlank();
   }
 
   @override
@@ -2574,12 +2497,12 @@ class _$PaginationListTailoringBlankAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -2595,10 +2518,11 @@ class _$PaginationListTailoringBlankAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return paginationListTailoringBlank?.call(offset, limit);
+    return paginationListTailoringBlank?.call();
   }
 
   @override
@@ -2606,12 +2530,12 @@ class _$PaginationListTailoringBlankAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -2627,12 +2551,13 @@ class _$PaginationListTailoringBlankAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationListTailoringBlank != null) {
-      return paginationListTailoringBlank(offset, limit);
+      return paginationListTailoringBlank();
     }
     return orElse();
   }
@@ -2679,6 +2604,8 @@ class _$PaginationListTailoringBlankAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return paginationListTailoringBlank(this);
   }
@@ -2719,6 +2646,7 @@ class _$PaginationListTailoringBlankAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return paginationListTailoringBlank?.call(this);
   }
@@ -2759,6 +2687,7 @@ class _$PaginationListTailoringBlankAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationListTailoringBlank != null) {
@@ -2770,16 +2699,8 @@ class _$PaginationListTailoringBlankAccountEventImpl
 
 abstract class PaginationListTailoringBlankAccountEvent
     implements AccountEvent {
-  const factory PaginationListTailoringBlankAccountEvent(
-          {required final int offset, required final int limit}) =
+  const factory PaginationListTailoringBlankAccountEvent() =
       _$PaginationListTailoringBlankAccountEventImpl;
-
-  int get offset;
-  int get limit;
-  @JsonKey(ignore: true)
-  _$$PaginationListTailoringBlankAccountEventImplCopyWith<
-          _$PaginationListTailoringBlankAccountEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2829,13 +2750,12 @@ class _$GetListTailoringBlankAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -2854,9 +2774,10 @@ class _$GetListTailoringBlankAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getListTailoringBlank();
   }
@@ -2866,12 +2787,12 @@ class _$GetListTailoringBlankAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -2887,8 +2808,9 @@ class _$GetListTailoringBlankAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getListTailoringBlank?.call();
   }
@@ -2898,12 +2820,12 @@ class _$GetListTailoringBlankAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -2919,8 +2841,9 @@ class _$GetListTailoringBlankAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getListTailoringBlank != null) {
@@ -2971,6 +2894,8 @@ class _$GetListTailoringBlankAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getListTailoringBlank(this);
   }
@@ -3011,6 +2936,7 @@ class _$GetListTailoringBlankAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getListTailoringBlank?.call(this);
   }
@@ -3051,6 +2977,7 @@ class _$GetListTailoringBlankAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getListTailoringBlank != null) {
@@ -3149,13 +3076,12 @@ class _$GetTailoringPdfBlankAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -3174,9 +3100,10 @@ class _$GetTailoringPdfBlankAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getTailoringPdfBlank(fileName, id);
   }
@@ -3186,12 +3113,12 @@ class _$GetTailoringPdfBlankAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -3207,8 +3134,9 @@ class _$GetTailoringPdfBlankAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getTailoringPdfBlank?.call(fileName, id);
   }
@@ -3218,12 +3146,12 @@ class _$GetTailoringPdfBlankAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -3239,8 +3167,9 @@ class _$GetTailoringPdfBlankAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getTailoringPdfBlank != null) {
@@ -3291,6 +3220,8 @@ class _$GetTailoringPdfBlankAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getTailoringPdfBlank(this);
   }
@@ -3331,6 +3262,7 @@ class _$GetTailoringPdfBlankAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getTailoringPdfBlank?.call(this);
   }
@@ -3371,6 +3303,7 @@ class _$GetTailoringPdfBlankAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getTailoringPdfBlank != null) {
@@ -3464,13 +3397,12 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -3489,9 +3421,10 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getInfoOrder(id);
   }
@@ -3501,12 +3434,12 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -3522,8 +3455,9 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getInfoOrder?.call(id);
   }
@@ -3533,12 +3467,12 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -3554,8 +3488,9 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoOrder != null) {
@@ -3606,6 +3541,8 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getInfoOrder(this);
   }
@@ -3646,6 +3583,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getInfoOrder?.call(this);
   }
@@ -3686,6 +3624,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoOrder != null) {
@@ -3776,13 +3715,12 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -3801,9 +3739,10 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getInfoPayOrder(id);
   }
@@ -3813,12 +3752,12 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -3834,8 +3773,9 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getInfoPayOrder?.call(id);
   }
@@ -3845,12 +3785,12 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -3866,8 +3806,9 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoPayOrder != null) {
@@ -3918,6 +3859,8 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getInfoPayOrder(this);
   }
@@ -3958,6 +3901,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getInfoPayOrder?.call(this);
   }
@@ -3998,6 +3942,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoPayOrder != null) {
@@ -4088,13 +4033,12 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -4113,9 +4057,10 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return payOrder(idForPay);
   }
@@ -4125,12 +4070,12 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -4146,8 +4091,9 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return payOrder?.call(idForPay);
   }
@@ -4157,12 +4103,12 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -4178,8 +4124,9 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (payOrder != null) {
@@ -4230,6 +4177,8 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return payOrder(this);
   }
@@ -4270,6 +4219,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return payOrder?.call(this);
   }
@@ -4310,6 +4260,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (payOrder != null) {
@@ -4371,13 +4322,12 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -4396,9 +4346,10 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return logOut();
   }
@@ -4408,12 +4359,12 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -4429,8 +4380,9 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return logOut?.call();
   }
@@ -4440,12 +4392,12 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -4461,8 +4413,9 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -4513,6 +4466,8 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return logOut(this);
   }
@@ -4553,6 +4508,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return logOut?.call(this);
   }
@@ -4593,6 +4549,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (logOut != null) {
@@ -4648,13 +4605,12 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -4673,9 +4629,10 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return removeAccount();
   }
@@ -4685,12 +4642,12 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -4706,8 +4663,9 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return removeAccount?.call();
   }
@@ -4717,12 +4675,12 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -4738,8 +4696,9 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (removeAccount != null) {
@@ -4790,6 +4749,8 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return removeAccount(this);
   }
@@ -4830,6 +4791,7 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return removeAccount?.call(this);
   }
@@ -4870,6 +4832,7 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (removeAccount != null) {
@@ -4928,13 +4891,12 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -4953,9 +4915,10 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return virtualCardsCod();
   }
@@ -4965,12 +4928,12 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -4986,8 +4949,9 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return virtualCardsCod?.call();
   }
@@ -4997,12 +4961,12 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -5018,8 +4982,9 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (virtualCardsCod != null) {
@@ -5070,6 +5035,8 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return virtualCardsCod(this);
   }
@@ -5110,6 +5077,7 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return virtualCardsCod?.call(this);
   }
@@ -5150,6 +5118,7 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (virtualCardsCod != null) {
@@ -5257,13 +5226,12 @@ class _$AddFavouriteProductAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -5282,9 +5250,10 @@ class _$AddFavouriteProductAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -5294,12 +5263,12 @@ class _$AddFavouriteProductAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -5315,8 +5284,9 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -5326,12 +5296,12 @@ class _$AddFavouriteProductAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -5347,8 +5317,9 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -5399,6 +5370,8 @@ class _$AddFavouriteProductAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return addFavouriteProduct(this);
   }
@@ -5439,6 +5412,7 @@ class _$AddFavouriteProductAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -5479,6 +5453,7 @@ class _$AddFavouriteProductAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -5575,13 +5550,12 @@ class _$DeleteFavouriteProductAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -5600,9 +5574,10 @@ class _$DeleteFavouriteProductAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -5612,12 +5587,12 @@ class _$DeleteFavouriteProductAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -5633,8 +5608,9 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -5644,12 +5620,12 @@ class _$DeleteFavouriteProductAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -5665,8 +5641,9 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -5717,6 +5694,8 @@ class _$DeleteFavouriteProductAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -5757,6 +5736,7 @@ class _$DeleteFavouriteProductAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -5797,6 +5777,7 @@ class _$DeleteFavouriteProductAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -5920,13 +5901,12 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -5945,9 +5925,10 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return getInfoProduct(code, size, isUpdate);
   }
@@ -5957,12 +5938,12 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -5978,8 +5959,9 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return getInfoProduct?.call(code, size, isUpdate);
   }
@@ -5989,12 +5971,12 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -6010,8 +5992,9 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -6062,6 +6045,8 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return getInfoProduct(this);
   }
@@ -6102,6 +6087,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -6142,6 +6128,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -6251,13 +6238,12 @@ class _$ChangeSizeProductAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -6276,9 +6262,10 @@ class _$ChangeSizeProductAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return changeSizeProduct(selectSizeProduct);
   }
@@ -6288,12 +6275,12 @@ class _$ChangeSizeProductAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -6309,8 +6296,9 @@ class _$ChangeSizeProductAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return changeSizeProduct?.call(selectSizeProduct);
   }
@@ -6320,12 +6308,12 @@ class _$ChangeSizeProductAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -6341,8 +6329,9 @@ class _$ChangeSizeProductAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -6393,6 +6382,8 @@ class _$ChangeSizeProductAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return changeSizeProduct(this);
   }
@@ -6433,6 +6424,7 @@ class _$ChangeSizeProductAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -6473,6 +6465,7 @@ class _$ChangeSizeProductAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -6576,13 +6569,12 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -6601,9 +6593,10 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return saveDocument(fileName, bytes);
   }
@@ -6613,12 +6606,12 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -6634,8 +6627,9 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return saveDocument?.call(fileName, bytes);
   }
@@ -6645,12 +6639,12 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -6666,8 +6660,9 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (saveDocument != null) {
@@ -6718,6 +6713,8 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return saveDocument(this);
   }
@@ -6758,6 +6755,7 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return saveDocument?.call(this);
   }
@@ -6798,6 +6796,7 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (saveDocument != null) {
@@ -6866,13 +6865,12 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -6891,9 +6889,10 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return goBackProductInfo();
   }
@@ -6903,12 +6902,12 @@ class _$GoBackProductInfoCategotyAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -6924,8 +6923,9 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return goBackProductInfo?.call();
   }
@@ -6935,12 +6935,12 @@ class _$GoBackProductInfoCategotyAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -6956,8 +6956,9 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -7008,6 +7009,8 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return goBackProductInfo(this);
   }
@@ -7048,6 +7051,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -7088,6 +7092,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -7108,6 +7113,10 @@ abstract class _$$AddProductToSoppingCartCAccountEventImplCopyWith<$Res> {
           _$AddProductToSoppingCartCAccountEventImpl value,
           $Res Function(_$AddProductToSoppingCartCAccountEventImpl) then) =
       __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -7119,28 +7128,61 @@ class __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>
       _$AddProductToSoppingCartCAccountEventImpl _value,
       $Res Function(_$AddProductToSoppingCartCAccountEventImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$AddProductToSoppingCartCAccountEventImpl(
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as SkuProductDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$AddProductToSoppingCartCAccountEventImpl
     implements AddProductToSoppingCartCAccountEvent {
-  const _$AddProductToSoppingCartCAccountEventImpl();
+  const _$AddProductToSoppingCartCAccountEventImpl({required this.size});
+
+  @override
+  final SkuProductDataModel size;
 
   @override
   String toString() {
-    return 'AccountEvent.addProductToSoppingCart()';
+    return 'AccountEvent.addProductToSoppingCart(size: $size)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddProductToSoppingCartCAccountEventImpl);
+            other is _$AddProductToSoppingCartCAccountEventImpl &&
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, size);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductToSoppingCartCAccountEventImplCopyWith<
+          _$AddProductToSoppingCartCAccountEventImpl>
+      get copyWith => __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<
+          _$AddProductToSoppingCartCAccountEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -7149,13 +7191,12 @@ class _$AddProductToSoppingCartCAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -7174,11 +7215,12 @@ class _$AddProductToSoppingCartCAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return addProductToSoppingCart();
+    return addProductToSoppingCart(size);
   }
 
   @override
@@ -7186,12 +7228,12 @@ class _$AddProductToSoppingCartCAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -7207,10 +7249,11 @@ class _$AddProductToSoppingCartCAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return addProductToSoppingCart?.call();
+    return addProductToSoppingCart?.call(size);
   }
 
   @override
@@ -7218,12 +7261,12 @@ class _$AddProductToSoppingCartCAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -7239,12 +7282,13 @@ class _$AddProductToSoppingCartCAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
-      return addProductToSoppingCart();
+      return addProductToSoppingCart(size);
     }
     return orElse();
   }
@@ -7291,6 +7335,8 @@ class _$AddProductToSoppingCartCAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -7331,6 +7377,7 @@ class _$AddProductToSoppingCartCAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -7371,6 +7418,7 @@ class _$AddProductToSoppingCartCAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -7381,8 +7429,15 @@ class _$AddProductToSoppingCartCAccountEventImpl
 }
 
 abstract class AddProductToSoppingCartCAccountEvent implements AccountEvent {
-  const factory AddProductToSoppingCartCAccountEvent() =
+  const factory AddProductToSoppingCartCAccountEvent(
+          {required final SkuProductDataModel size}) =
       _$AddProductToSoppingCartCAccountEventImpl;
+
+  SkuProductDataModel get size;
+  @JsonKey(ignore: true)
+  _$$AddProductToSoppingCartCAccountEventImplCopyWith<
+          _$AddProductToSoppingCartCAccountEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -7469,13 +7524,12 @@ class _$CheckProductToSoppingCartAccountEventImpl
         preloadData,
     required TResult Function(String? phone, String? name, String? email)
         updateInfo,
-    required TResult Function(int offset, int limit) paginationProduct,
+    required TResult Function() paginationProduct,
     required TResult Function() getOrders,
-    required TResult Function(int offset, int limit) paginationListOrdersBlank,
+    required TResult Function() paginationListOrdersBlank,
     required TResult Function() getListOrdersBlank,
     required TResult Function(String fileName, String id) getOrderPdfBlank,
-    required TResult Function(int offset, int limit)
-        paginationListTailoringBlank,
+    required TResult Function() paginationListTailoringBlank,
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
@@ -7494,9 +7548,10 @@ class _$CheckProductToSoppingCartAccountEventImpl
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function() addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
     return checkProductToSoppingCart(size);
   }
@@ -7506,12 +7561,12 @@ class _$CheckProductToSoppingCartAccountEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? phone, String? name, String? email)? preloadData,
     TResult? Function(String? phone, String? name, String? email)? updateInfo,
-    TResult? Function(int offset, int limit)? paginationProduct,
+    TResult? Function()? paginationProduct,
     TResult? Function()? getOrders,
-    TResult? Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult? Function()? paginationListOrdersBlank,
     TResult? Function()? getListOrdersBlank,
     TResult? Function(String fileName, String id)? getOrderPdfBlank,
-    TResult? Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult? Function()? paginationListTailoringBlank,
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
@@ -7527,8 +7582,9 @@ class _$CheckProductToSoppingCartAccountEventImpl
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function()? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
     return checkProductToSoppingCart?.call(size);
   }
@@ -7538,12 +7594,12 @@ class _$CheckProductToSoppingCartAccountEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? phone, String? name, String? email)? preloadData,
     TResult Function(String? phone, String? name, String? email)? updateInfo,
-    TResult Function(int offset, int limit)? paginationProduct,
+    TResult Function()? paginationProduct,
     TResult Function()? getOrders,
-    TResult Function(int offset, int limit)? paginationListOrdersBlank,
+    TResult Function()? paginationListOrdersBlank,
     TResult Function()? getListOrdersBlank,
     TResult Function(String fileName, String id)? getOrderPdfBlank,
-    TResult Function(int offset, int limit)? paginationListTailoringBlank,
+    TResult Function()? paginationListTailoringBlank,
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
@@ -7559,8 +7615,9 @@ class _$CheckProductToSoppingCartAccountEventImpl
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function()? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -7611,6 +7668,8 @@ class _$CheckProductToSoppingCartAccountEventImpl
         addProductToSoppingCart,
     required TResult Function(CheckProductToSoppingCartAccountEvent value)
         checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
   }) {
     return checkProductToSoppingCart(this);
   }
@@ -7651,6 +7710,7 @@ class _$CheckProductToSoppingCartAccountEventImpl
         addProductToSoppingCart,
     TResult? Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -7691,6 +7751,7 @@ class _$CheckProductToSoppingCartAccountEventImpl
         addProductToSoppingCart,
     TResult Function(CheckProductToSoppingCartAccountEvent value)?
         checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -7713,6 +7774,339 @@ abstract class CheckProductToSoppingCartAccountEvent implements AccountEvent {
 }
 
 /// @nodoc
+abstract class _$$GetInfoProductSizeAccountEventImplCopyWith<$Res> {
+  factory _$$GetInfoProductSizeAccountEventImplCopyWith(
+          _$GetInfoProductSizeAccountEventImpl value,
+          $Res Function(_$GetInfoProductSizeAccountEventImpl) then) =
+      __$$GetInfoProductSizeAccountEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code, bool isShop});
+}
+
+/// @nodoc
+class __$$GetInfoProductSizeAccountEventImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res,
+        _$GetInfoProductSizeAccountEventImpl>
+    implements _$$GetInfoProductSizeAccountEventImplCopyWith<$Res> {
+  __$$GetInfoProductSizeAccountEventImplCopyWithImpl(
+      _$GetInfoProductSizeAccountEventImpl _value,
+      $Res Function(_$GetInfoProductSizeAccountEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? isShop = null,
+  }) {
+    return _then(_$GetInfoProductSizeAccountEventImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      isShop: null == isShop
+          ? _value.isShop
+          : isShop // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetInfoProductSizeAccountEventImpl
+    implements GetInfoProductSizeAccountEvent {
+  const _$GetInfoProductSizeAccountEventImpl(
+      {required this.code, required this.isShop});
+
+  @override
+  final String code;
+  @override
+  final bool isShop;
+
+  @override
+  String toString() {
+    return 'AccountEvent.getInfoProductSize(code: $code, isShop: $isShop)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetInfoProductSizeAccountEventImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.isShop, isShop) || other.isShop == isShop));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code, isShop);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetInfoProductSizeAccountEventImplCopyWith<
+          _$GetInfoProductSizeAccountEventImpl>
+      get copyWith => __$$GetInfoProductSizeAccountEventImplCopyWithImpl<
+          _$GetInfoProductSizeAccountEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? phone, String? name, String? email)
+        preloadData,
+    required TResult Function(String? phone, String? name, String? email)
+        updateInfo,
+    required TResult Function() paginationProduct,
+    required TResult Function() getOrders,
+    required TResult Function() paginationListOrdersBlank,
+    required TResult Function() getListOrdersBlank,
+    required TResult Function(String fileName, String id) getOrderPdfBlank,
+    required TResult Function() paginationListTailoringBlank,
+    required TResult Function() getListTailoringBlank,
+    required TResult Function(String fileName, String id) getTailoringPdfBlank,
+    required TResult Function(String id) getInfoOrder,
+    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String idForPay) payOrder,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+    required TResult Function() virtualCardsCod,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function(String fileName, Uint8List bytes) saveDocument,
+    required TResult Function() goBackProductInfo,
+    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+  }) {
+    return getInfoProductSize(code, isShop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? phone, String? name, String? email)? preloadData,
+    TResult? Function(String? phone, String? name, String? email)? updateInfo,
+    TResult? Function()? paginationProduct,
+    TResult? Function()? getOrders,
+    TResult? Function()? paginationListOrdersBlank,
+    TResult? Function()? getListOrdersBlank,
+    TResult? Function(String fileName, String id)? getOrderPdfBlank,
+    TResult? Function()? paginationListTailoringBlank,
+    TResult? Function()? getListTailoringBlank,
+    TResult? Function(String fileName, String id)? getTailoringPdfBlank,
+    TResult? Function(String id)? getInfoOrder,
+    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String idForPay)? payOrder,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+    TResult? Function()? virtualCardsCod,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function(String fileName, Uint8List bytes)? saveDocument,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+  }) {
+    return getInfoProductSize?.call(code, isShop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? phone, String? name, String? email)? preloadData,
+    TResult Function(String? phone, String? name, String? email)? updateInfo,
+    TResult Function()? paginationProduct,
+    TResult Function()? getOrders,
+    TResult Function()? paginationListOrdersBlank,
+    TResult Function()? getListOrdersBlank,
+    TResult Function(String fileName, String id)? getOrderPdfBlank,
+    TResult Function()? paginationListTailoringBlank,
+    TResult Function()? getListTailoringBlank,
+    TResult Function(String fileName, String id)? getTailoringPdfBlank,
+    TResult Function(String id)? getInfoOrder,
+    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String idForPay)? payOrder,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    TResult Function()? virtualCardsCod,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function(String fileName, Uint8List bytes)? saveDocument,
+    TResult Function()? goBackProductInfo,
+    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductSize != null) {
+      return getInfoProductSize(code, isShop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountEvent value) preloadData,
+    required TResult Function(UpdateInfoAccountEvent value) updateInfo,
+    required TResult Function(PaginationOrdersAccountEvent value)
+        paginationProduct,
+    required TResult Function(GetOrdersAccountEvent value) getOrders,
+    required TResult Function(PaginationListOrdersBlankAccountEvent value)
+        paginationListOrdersBlank,
+    required TResult Function(GetListOrdersBlankAccountEvent value)
+        getListOrdersBlank,
+    required TResult Function(GetOrderPdfBlankAccountEvent value)
+        getOrderPdfBlank,
+    required TResult Function(PaginationListTailoringBlankAccountEvent value)
+        paginationListTailoringBlank,
+    required TResult Function(GetListTailoringBlankAccountEvent value)
+        getListTailoringBlank,
+    required TResult Function(GetTailoringPdfBlankAccountEvent value)
+        getTailoringPdfBlank,
+    required TResult Function(GetInfoOrderAccountEvent value) getInfoOrder,
+    required TResult Function(GetInfoPayOrderAccountEvent value)
+        getInfoPayOrder,
+    required TResult Function(PayOrderAccountEvent value) payOrder,
+    required TResult Function(LogOutAccountEvent value) logOut,
+    required TResult Function(RemoveAccountEvent value) removeAccount,
+    required TResult Function(VirtualCardsCodAccountEvent value)
+        virtualCardsCod,
+    required TResult Function(AddFavouriteProductAccountEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductAccountEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(GetInfoProductAccountEvent value) getInfoProduct,
+    required TResult Function(ChangeSizeProductAccountEvent value)
+        changeSizeProduct,
+    required TResult Function(SaveDocumentAccountEvent value) saveDocument,
+    required TResult Function(GoBackProductInfoCategotyAccountEvent value)
+        goBackProductInfo,
+    required TResult Function(AddProductToSoppingCartCAccountEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartAccountEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeAccountEvent value)
+        getInfoProductSize,
+  }) {
+    return getInfoProductSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountEvent value)? preloadData,
+    TResult? Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult? Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult? Function(GetOrdersAccountEvent value)? getOrders,
+    TResult? Function(PaginationListOrdersBlankAccountEvent value)?
+        paginationListOrdersBlank,
+    TResult? Function(GetListOrdersBlankAccountEvent value)? getListOrdersBlank,
+    TResult? Function(GetOrderPdfBlankAccountEvent value)? getOrderPdfBlank,
+    TResult? Function(PaginationListTailoringBlankAccountEvent value)?
+        paginationListTailoringBlank,
+    TResult? Function(GetListTailoringBlankAccountEvent value)?
+        getListTailoringBlank,
+    TResult? Function(GetTailoringPdfBlankAccountEvent value)?
+        getTailoringPdfBlank,
+    TResult? Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult? Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult? Function(PayOrderAccountEvent value)? payOrder,
+    TResult? Function(LogOutAccountEvent value)? logOut,
+    TResult? Function(RemoveAccountEvent value)? removeAccount,
+    TResult? Function(VirtualCardsCodAccountEvent value)? virtualCardsCod,
+    TResult? Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult? Function(ChangeSizeProductAccountEvent value)? changeSizeProduct,
+    TResult? Function(SaveDocumentAccountEvent value)? saveDocument,
+    TResult? Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    TResult? Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
+  }) {
+    return getInfoProductSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountEvent value)? preloadData,
+    TResult Function(UpdateInfoAccountEvent value)? updateInfo,
+    TResult Function(PaginationOrdersAccountEvent value)? paginationProduct,
+    TResult Function(GetOrdersAccountEvent value)? getOrders,
+    TResult Function(PaginationListOrdersBlankAccountEvent value)?
+        paginationListOrdersBlank,
+    TResult Function(GetListOrdersBlankAccountEvent value)? getListOrdersBlank,
+    TResult Function(GetOrderPdfBlankAccountEvent value)? getOrderPdfBlank,
+    TResult Function(PaginationListTailoringBlankAccountEvent value)?
+        paginationListTailoringBlank,
+    TResult Function(GetListTailoringBlankAccountEvent value)?
+        getListTailoringBlank,
+    TResult Function(GetTailoringPdfBlankAccountEvent value)?
+        getTailoringPdfBlank,
+    TResult Function(GetInfoOrderAccountEvent value)? getInfoOrder,
+    TResult Function(GetInfoPayOrderAccountEvent value)? getInfoPayOrder,
+    TResult Function(PayOrderAccountEvent value)? payOrder,
+    TResult Function(LogOutAccountEvent value)? logOut,
+    TResult Function(RemoveAccountEvent value)? removeAccount,
+    TResult Function(VirtualCardsCodAccountEvent value)? virtualCardsCod,
+    TResult Function(AddFavouriteProductAccountEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductAccountEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(GetInfoProductAccountEvent value)? getInfoProduct,
+    TResult Function(ChangeSizeProductAccountEvent value)? changeSizeProduct,
+    TResult Function(SaveDocumentAccountEvent value)? saveDocument,
+    TResult Function(GoBackProductInfoCategotyAccountEvent value)?
+        goBackProductInfo,
+    TResult Function(AddProductToSoppingCartCAccountEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartAccountEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeAccountEvent value)? getInfoProductSize,
+    required TResult orElse(),
+  }) {
+    if (getInfoProductSize != null) {
+      return getInfoProductSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetInfoProductSizeAccountEvent implements AccountEvent {
+  const factory GetInfoProductSizeAccountEvent(
+      {required final String code,
+      required final bool isShop}) = _$GetInfoProductSizeAccountEventImpl;
+
+  String get code;
+  bool get isShop;
+  @JsonKey(ignore: true)
+  _$$GetInfoProductSizeAccountEventImplCopyWith<
+          _$GetInfoProductSizeAccountEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -7721,6 +8115,11 @@ mixin _$AccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -7739,10 +8138,19 @@ mixin _$AccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -7762,6 +8170,11 @@ mixin _$AccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -7780,10 +8193,19 @@ mixin _$AccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -7803,6 +8225,11 @@ mixin _$AccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -7821,10 +8248,19 @@ mixin _$AccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -7845,6 +8281,11 @@ mixin _$AccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -7858,6 +8299,9 @@ mixin _$AccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -7871,6 +8315,9 @@ mixin _$AccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -7941,6 +8388,11 @@ class _$InitAccountStateImpl implements InitAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -7959,10 +8411,19 @@ class _$InitAccountStateImpl implements InitAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -7985,6 +8446,11 @@ class _$InitAccountStateImpl implements InitAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -8003,10 +8469,19 @@ class _$InitAccountStateImpl implements InitAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8029,6 +8504,11 @@ class _$InitAccountStateImpl implements InitAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -8047,10 +8527,19 @@ class _$InitAccountStateImpl implements InitAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8077,6 +8566,11 @@ class _$InitAccountStateImpl implements InitAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -8093,6 +8587,9 @@ class _$InitAccountStateImpl implements InitAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -8109,6 +8606,9 @@ class _$InitAccountStateImpl implements InitAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -8170,6 +8670,11 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -8188,10 +8693,19 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8214,6 +8728,11 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -8232,10 +8751,19 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8258,6 +8786,11 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -8276,10 +8809,19 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8306,6 +8848,11 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -8322,6 +8869,9 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -8338,6 +8888,9 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -8425,6 +8978,11 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -8443,10 +9001,19 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8469,6 +9036,11 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -8487,10 +9059,19 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8513,6 +9094,11 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -8531,10 +9117,19 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8561,6 +9156,11 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -8577,6 +9177,9 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -8593,6 +9196,9 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -8688,6 +9294,11 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -8706,10 +9317,19 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8732,6 +9352,11 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -8750,10 +9375,19 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8776,6 +9410,11 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -8794,10 +9433,19 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8824,6 +9472,11 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -8840,6 +9493,9 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -8856,6 +9512,9 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -8950,6 +9609,11 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -8968,10 +9632,19 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -8994,6 +9667,11 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -9012,10 +9690,19 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -9038,6 +9725,11 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -9056,10 +9748,19 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -9086,6 +9787,11 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -9102,6 +9808,9 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -9118,6 +9827,9 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -9138,6 +9850,969 @@ abstract class PayOrderAccountState implements AccountState {
   String get url;
   @JsonKey(ignore: true)
   _$$PayOrderAccountStateImplCopyWith<_$PayOrderAccountStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OpenSoppingCartAccountStateImplCopyWith<$Res> {
+  factory _$$OpenSoppingCartAccountStateImplCopyWith(
+          _$OpenSoppingCartAccountStateImpl value,
+          $Res Function(_$OpenSoppingCartAccountStateImpl) then) =
+      __$$OpenSoppingCartAccountStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OpenSoppingCartAccountStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$OpenSoppingCartAccountStateImpl>
+    implements _$$OpenSoppingCartAccountStateImplCopyWith<$Res> {
+  __$$OpenSoppingCartAccountStateImplCopyWithImpl(
+      _$OpenSoppingCartAccountStateImpl _value,
+      $Res Function(_$OpenSoppingCartAccountStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
+  const _$OpenSoppingCartAccountStateImpl();
+
+  @override
+  String toString() {
+    return 'AccountState.openSoppingCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenSoppingCartAccountStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String message) error,
+    required TResult Function(String message) errorOpenPdf,
+    required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)
+        preloadDataCompleted,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+  }) {
+    return openSoppingCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? errorOpenPdf,
+    TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+  }) {
+    return openSoppingCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String message)? error,
+    TResult Function(String message)? errorOpenPdf,
+    TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (openSoppingCart != null) {
+      return openSoppingCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountState value) init,
+    required TResult Function(LoadingAccountState value) load,
+    required TResult Function(ErrorAccountState value) error,
+    required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
+    required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
+    required TResult Function(PreloadDataCompletedAccountState value)
+        preloadDataCompleted,
+    required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
+  }) {
+    return openSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountState value)? init,
+    TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(ErrorAccountState value)? error,
+    TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult? Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
+  }) {
+    return openSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountState value)? init,
+    TResult Function(LoadingAccountState value)? load,
+    TResult Function(ErrorAccountState value)? error,
+    TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (openSoppingCart != null) {
+      return openSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OpenSoppingCartAccountState implements AccountState {
+  const factory OpenSoppingCartAccountState() =
+      _$OpenSoppingCartAccountStateImpl;
+}
+
+/// @nodoc
+abstract class _$$GetSizeProductAccountStateImplCopyWith<$Res> {
+  factory _$$GetSizeProductAccountStateImplCopyWith(
+          _$GetSizeProductAccountStateImpl value,
+          $Res Function(_$GetSizeProductAccountStateImpl) then) =
+      __$$GetSizeProductAccountStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String code,
+      List<SkuProductDataModel> listSize,
+      List<SkuProductDataModel> listSizeToSoppingCart});
+}
+
+/// @nodoc
+class __$$GetSizeProductAccountStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$GetSizeProductAccountStateImpl>
+    implements _$$GetSizeProductAccountStateImplCopyWith<$Res> {
+  __$$GetSizeProductAccountStateImplCopyWithImpl(
+      _$GetSizeProductAccountStateImpl _value,
+      $Res Function(_$GetSizeProductAccountStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+    Object? listSize = null,
+    Object? listSizeToSoppingCart = null,
+  }) {
+    return _then(_$GetSizeProductAccountStateImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+      listSizeToSoppingCart: null == listSizeToSoppingCart
+          ? _value._listSizeToSoppingCart
+          : listSizeToSoppingCart // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
+  const _$GetSizeProductAccountStateImpl(
+      {required this.code,
+      required final List<SkuProductDataModel> listSize,
+      required final List<SkuProductDataModel> listSizeToSoppingCart})
+      : _listSize = listSize,
+        _listSizeToSoppingCart = listSizeToSoppingCart;
+
+  @override
+  final String code;
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
+  final List<SkuProductDataModel> _listSizeToSoppingCart;
+  @override
+  List<SkuProductDataModel> get listSizeToSoppingCart {
+    if (_listSizeToSoppingCart is EqualUnmodifiableListView)
+      return _listSizeToSoppingCart;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSizeToSoppingCart);
+  }
+
+  @override
+  String toString() {
+    return 'AccountState.getSizeProduct(code: $code, listSize: $listSize, listSizeToSoppingCart: $listSizeToSoppingCart)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetSizeProductAccountStateImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
+            const DeepCollectionEquality()
+                .equals(other._listSizeToSoppingCart, _listSizeToSoppingCart));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      const DeepCollectionEquality().hash(_listSize),
+      const DeepCollectionEquality().hash(_listSizeToSoppingCart));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetSizeProductAccountStateImplCopyWith<_$GetSizeProductAccountStateImpl>
+      get copyWith => __$$GetSizeProductAccountStateImplCopyWithImpl<
+          _$GetSizeProductAccountStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String message) error,
+    required TResult Function(String message) errorOpenPdf,
+    required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)
+        preloadDataCompleted,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+  }) {
+    return getSizeProduct(code, listSize, listSizeToSoppingCart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? errorOpenPdf,
+    TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+  }) {
+    return getSizeProduct?.call(code, listSize, listSizeToSoppingCart);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String message)? error,
+    TResult Function(String message)? errorOpenPdf,
+    TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (getSizeProduct != null) {
+      return getSizeProduct(code, listSize, listSizeToSoppingCart);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountState value) init,
+    required TResult Function(LoadingAccountState value) load,
+    required TResult Function(ErrorAccountState value) error,
+    required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
+    required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
+    required TResult Function(PreloadDataCompletedAccountState value)
+        preloadDataCompleted,
+    required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
+  }) {
+    return getSizeProduct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountState value)? init,
+    TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(ErrorAccountState value)? error,
+    TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult? Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
+  }) {
+    return getSizeProduct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountState value)? init,
+    TResult Function(LoadingAccountState value)? load,
+    TResult Function(ErrorAccountState value)? error,
+    TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (getSizeProduct != null) {
+      return getSizeProduct(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetSizeProductAccountState implements AccountState {
+  const factory GetSizeProductAccountState(
+          {required final String code,
+          required final List<SkuProductDataModel> listSize,
+          required final List<SkuProductDataModel> listSizeToSoppingCart}) =
+      _$GetSizeProductAccountStateImpl;
+
+  String get code;
+  List<SkuProductDataModel> get listSize;
+  List<SkuProductDataModel> get listSizeToSoppingCart;
+  @JsonKey(ignore: true)
+  _$$GetSizeProductAccountStateImplCopyWith<_$GetSizeProductAccountStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddProductAccountStateImplCopyWith<$Res> {
+  factory _$$AddProductAccountStateImplCopyWith(
+          _$AddProductAccountStateImpl value,
+          $Res Function(_$AddProductAccountStateImpl) then) =
+      __$$AddProductAccountStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$AddProductAccountStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AddProductAccountStateImpl>
+    implements _$$AddProductAccountStateImplCopyWith<$Res> {
+  __$$AddProductAccountStateImplCopyWithImpl(
+      _$AddProductAccountStateImpl _value,
+      $Res Function(_$AddProductAccountStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$AddProductAccountStateImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddProductAccountStateImpl implements AddProductAccountState {
+  const _$AddProductAccountStateImpl({required this.code});
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'AccountState.addProductToSoppingCart(code: $code)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddProductAccountStateImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddProductAccountStateImplCopyWith<_$AddProductAccountStateImpl>
+      get copyWith => __$$AddProductAccountStateImplCopyWithImpl<
+          _$AddProductAccountStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String message) error,
+    required TResult Function(String message) errorOpenPdf,
+    required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)
+        preloadDataCompleted,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+  }) {
+    return addProductToSoppingCart(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String message)? error,
+    TResult? Function(String message)? errorOpenPdf,
+    TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+  }) {
+    return addProductToSoppingCart?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String message)? error,
+    TResult Function(String message)? errorOpenPdf,
+    TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountState value) init,
+    required TResult Function(LoadingAccountState value) load,
+    required TResult Function(ErrorAccountState value) error,
+    required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
+    required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
+    required TResult Function(PreloadDataCompletedAccountState value)
+        preloadDataCompleted,
+    required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
+  }) {
+    return addProductToSoppingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountState value)? init,
+    TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(ErrorAccountState value)? error,
+    TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult? Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
+  }) {
+    return addProductToSoppingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountState value)? init,
+    TResult Function(LoadingAccountState value)? load,
+    TResult Function(ErrorAccountState value)? error,
+    TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (addProductToSoppingCart != null) {
+      return addProductToSoppingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddProductAccountState implements AccountState {
+  const factory AddProductAccountState({required final String code}) =
+      _$AddProductAccountStateImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$AddProductAccountStateImplCopyWith<_$AddProductAccountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -9166,10 +10841,19 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       String virtualCardsCod,
       List<OrderBlankDataModel> listOrdersBlank,
       List<OrderBlankDataModel> listTailoringBlank,
+      List<SkuProductDataModel> listSize,
       Uint8List file,
       String fileName,
+      bool isLoadGetSizeProduct,
+      int offsetOrders,
+      int offsetOrdersBlank,
+      int offsetTailoringBlank,
+      String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
-      bool? isSoppingCart,
+      bool? isShoppingCart,
+      bool? isError,
+      String? errorMessage,
+      bool? isShoppingCartDetailsProduct,
       bool? isSuccessfullySavedFile,
       bool? isLoadVirtualCardsCod,
       bool? isLoadOpenPdf,
@@ -9215,10 +10899,19 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     Object? virtualCardsCod = null,
     Object? listOrdersBlank = null,
     Object? listTailoringBlank = null,
+    Object? listSize = null,
     Object? file = null,
     Object? fileName = null,
+    Object? isLoadGetSizeProduct = null,
+    Object? offsetOrders = null,
+    Object? offsetOrdersBlank = null,
+    Object? offsetTailoringBlank = null,
+    Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
-    Object? isSoppingCart = freezed,
+    Object? isShoppingCart = freezed,
+    Object? isError = freezed,
+    Object? errorMessage = freezed,
+    Object? isShoppingCartDetailsProduct = freezed,
     Object? isSuccessfullySavedFile = freezed,
     Object? isLoadVirtualCardsCod = freezed,
     Object? isLoadOpenPdf = freezed,
@@ -9296,6 +10989,10 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
           ? _value._listTailoringBlank
           : listTailoringBlank // ignore: cast_nullable_to_non_nullable
               as List<OrderBlankDataModel>,
+      listSize: null == listSize
+          ? _value._listSize
+          : listSize // ignore: cast_nullable_to_non_nullable
+              as List<SkuProductDataModel>,
       file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -9304,13 +11001,45 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoadGetSizeProduct: null == isLoadGetSizeProduct
+          ? _value.isLoadGetSizeProduct
+          : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
+      offsetOrders: null == offsetOrders
+          ? _value.offsetOrders
+          : offsetOrders // ignore: cast_nullable_to_non_nullable
+              as int,
+      offsetOrdersBlank: null == offsetOrdersBlank
+          ? _value.offsetOrdersBlank
+          : offsetOrdersBlank // ignore: cast_nullable_to_non_nullable
+              as int,
+      offsetTailoringBlank: null == offsetTailoringBlank
+          ? _value.offsetTailoringBlank
+          : offsetTailoringBlank // ignore: cast_nullable_to_non_nullable
+              as int,
+      codeProduct: freezed == codeProduct
+          ? _value.codeProduct
+          : codeProduct // ignore: cast_nullable_to_non_nullable
+              as String?,
       selectSizeProduct: freezed == selectSizeProduct
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel?,
-      isSoppingCart: freezed == isSoppingCart
-          ? _value.isSoppingCart
-          : isSoppingCart // ignore: cast_nullable_to_non_nullable
+      isShoppingCart: freezed == isShoppingCart
+          ? _value.isShoppingCart
+          : isShoppingCart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isShoppingCartDetailsProduct: freezed == isShoppingCartDetailsProduct
+          ? _value.isShoppingCartDetailsProduct
+          : isShoppingCartDetailsProduct // ignore: cast_nullable_to_non_nullable
               as bool?,
       isSuccessfullySavedFile: freezed == isSuccessfullySavedFile
           ? _value.isSuccessfullySavedFile
@@ -9429,10 +11158,19 @@ class _$PreloadDataCompletedAccountStateImpl
       required this.virtualCardsCod,
       required final List<OrderBlankDataModel> listOrdersBlank,
       required final List<OrderBlankDataModel> listTailoringBlank,
+      required final List<SkuProductDataModel> listSize,
       required this.file,
       required this.fileName,
+      required this.isLoadGetSizeProduct,
+      required this.offsetOrders,
+      required this.offsetOrdersBlank,
+      required this.offsetTailoringBlank,
+      this.codeProduct,
       this.selectSizeProduct,
-      this.isSoppingCart,
+      this.isShoppingCart,
+      this.isError,
+      this.errorMessage,
+      this.isShoppingCartDetailsProduct,
       this.isSuccessfullySavedFile,
       this.isLoadVirtualCardsCod,
       this.isLoadOpenPdf,
@@ -9449,7 +11187,8 @@ class _$PreloadDataCompletedAccountStateImpl
         _listProdcutsBrand = listProdcutsBrand,
         _listProdcutsComplect = listProdcutsComplect,
         _listOrdersBlank = listOrdersBlank,
-        _listTailoringBlank = listTailoringBlank;
+        _listTailoringBlank = listTailoringBlank,
+        _listSize = listSize;
 
   @override
   final String phone;
@@ -9553,14 +11292,38 @@ class _$PreloadDataCompletedAccountStateImpl
     return EqualUnmodifiableListView(_listTailoringBlank);
   }
 
+  final List<SkuProductDataModel> _listSize;
+  @override
+  List<SkuProductDataModel> get listSize {
+    if (_listSize is EqualUnmodifiableListView) return _listSize;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listSize);
+  }
+
   @override
   final Uint8List file;
   @override
   final String fileName;
   @override
+  final bool isLoadGetSizeProduct;
+  @override
+  final int offsetOrders;
+  @override
+  final int offsetOrdersBlank;
+  @override
+  final int offsetTailoringBlank;
+  @override
+  final String? codeProduct;
+  @override
   final SkuProductDataModel? selectSizeProduct;
   @override
-  final bool? isSoppingCart;
+  final bool? isShoppingCart;
+  @override
+  final bool? isError;
+  @override
+  final String? errorMessage;
+  @override
+  final bool? isShoppingCartDetailsProduct;
   @override
   final bool? isSuccessfullySavedFile;
   @override
@@ -9578,7 +11341,7 @@ class _$PreloadDataCompletedAccountStateImpl
 
   @override
   String toString() {
-    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, listOrdersBlank: $listOrdersBlank, listTailoringBlank: $listTailoringBlank, file: $file, fileName: $fileName, selectSizeProduct: $selectSizeProduct, isSoppingCart: $isSoppingCart, isSuccessfullySavedFile: $isSuccessfullySavedFile, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, isLoadOpenPdf: $isLoadOpenPdf, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
+    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, listOrdersBlank: $listOrdersBlank, listTailoringBlank: $listTailoringBlank, listSize: $listSize, file: $file, fileName: $fileName, isLoadGetSizeProduct: $isLoadGetSizeProduct, offsetOrders: $offsetOrders, offsetOrdersBlank: $offsetOrdersBlank, offsetTailoringBlank: $offsetTailoringBlank, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isError: $isError, errorMessage: $errorMessage, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isSuccessfullySavedFile: $isSuccessfullySavedFile, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, isLoadOpenPdf: $isLoadOpenPdf, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
   }
 
   @override
@@ -9615,13 +11378,31 @@ class _$PreloadDataCompletedAccountStateImpl
                 .equals(other._listOrdersBlank, _listOrdersBlank) &&
             const DeepCollectionEquality()
                 .equals(other._listTailoringBlank, _listTailoringBlank) &&
+            const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             const DeepCollectionEquality().equals(other.file, file) &&
             (identical(other.fileName, fileName) ||
                 other.fileName == fileName) &&
+            (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
+                other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.offsetOrders, offsetOrders) ||
+                other.offsetOrders == offsetOrders) &&
+            (identical(other.offsetOrdersBlank, offsetOrdersBlank) ||
+                other.offsetOrdersBlank == offsetOrdersBlank) &&
+            (identical(other.offsetTailoringBlank, offsetTailoringBlank) ||
+                other.offsetTailoringBlank == offsetTailoringBlank) &&
+            (identical(other.codeProduct, codeProduct) ||
+                other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
                 other.selectSizeProduct == selectSizeProduct) &&
-            (identical(other.isSoppingCart, isSoppingCart) ||
-                other.isSoppingCart == isSoppingCart) &&
+            (identical(other.isShoppingCart, isShoppingCart) ||
+                other.isShoppingCart == isShoppingCart) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.isShoppingCartDetailsProduct,
+                    isShoppingCartDetailsProduct) ||
+                other.isShoppingCartDetailsProduct ==
+                    isShoppingCartDetailsProduct) &&
             (identical(
                     other.isSuccessfullySavedFile, isSuccessfullySavedFile) ||
                 other.isSuccessfullySavedFile == isSuccessfullySavedFile) &&
@@ -9658,10 +11439,19 @@ class _$PreloadDataCompletedAccountStateImpl
         virtualCardsCod,
         const DeepCollectionEquality().hash(_listOrdersBlank),
         const DeepCollectionEquality().hash(_listTailoringBlank),
+        const DeepCollectionEquality().hash(_listSize),
         const DeepCollectionEquality().hash(file),
         fileName,
+        isLoadGetSizeProduct,
+        offsetOrders,
+        offsetOrdersBlank,
+        offsetTailoringBlank,
+        codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isError,
+        errorMessage,
+        isShoppingCartDetailsProduct,
         isSuccessfullySavedFile,
         isLoadVirtualCardsCod,
         isLoadOpenPdf,
@@ -9687,6 +11477,11 @@ class _$PreloadDataCompletedAccountStateImpl
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -9705,10 +11500,19 @@ class _$PreloadDataCompletedAccountStateImpl
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -9738,10 +11542,19 @@ class _$PreloadDataCompletedAccountStateImpl
         virtualCardsCod,
         listOrdersBlank,
         listTailoringBlank,
+        listSize,
         file,
         fileName,
+        isLoadGetSizeProduct,
+        offsetOrders,
+        offsetOrdersBlank,
+        offsetTailoringBlank,
+        codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isError,
+        errorMessage,
+        isShoppingCartDetailsProduct,
         isSuccessfullySavedFile,
         isLoadVirtualCardsCod,
         isLoadOpenPdf,
@@ -9759,6 +11572,11 @@ class _$PreloadDataCompletedAccountStateImpl
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -9777,10 +11595,19 @@ class _$PreloadDataCompletedAccountStateImpl
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -9810,10 +11637,19 @@ class _$PreloadDataCompletedAccountStateImpl
         virtualCardsCod,
         listOrdersBlank,
         listTailoringBlank,
+        listSize,
         file,
         fileName,
+        isLoadGetSizeProduct,
+        offsetOrders,
+        offsetOrdersBlank,
+        offsetTailoringBlank,
+        codeProduct,
         selectSizeProduct,
-        isSoppingCart,
+        isShoppingCart,
+        isError,
+        errorMessage,
+        isShoppingCartDetailsProduct,
         isSuccessfullySavedFile,
         isLoadVirtualCardsCod,
         isLoadOpenPdf,
@@ -9831,6 +11667,11 @@ class _$PreloadDataCompletedAccountStateImpl
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -9849,10 +11690,19 @@ class _$PreloadDataCompletedAccountStateImpl
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -9884,10 +11734,19 @@ class _$PreloadDataCompletedAccountStateImpl
           virtualCardsCod,
           listOrdersBlank,
           listTailoringBlank,
+          listSize,
           file,
           fileName,
+          isLoadGetSizeProduct,
+          offsetOrders,
+          offsetOrdersBlank,
+          offsetTailoringBlank,
+          codeProduct,
           selectSizeProduct,
-          isSoppingCart,
+          isShoppingCart,
+          isError,
+          errorMessage,
+          isShoppingCartDetailsProduct,
           isSuccessfullySavedFile,
           isLoadVirtualCardsCod,
           isLoadOpenPdf,
@@ -9907,6 +11766,11 @@ class _$PreloadDataCompletedAccountStateImpl
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -9923,6 +11787,9 @@ class _$PreloadDataCompletedAccountStateImpl
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -9939,6 +11806,9 @@ class _$PreloadDataCompletedAccountStateImpl
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -9971,10 +11841,19 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
           required final String virtualCardsCod,
           required final List<OrderBlankDataModel> listOrdersBlank,
           required final List<OrderBlankDataModel> listTailoringBlank,
+          required final List<SkuProductDataModel> listSize,
           required final Uint8List file,
           required final String fileName,
+          required final bool isLoadGetSizeProduct,
+          required final int offsetOrders,
+          required final int offsetOrdersBlank,
+          required final int offsetTailoringBlank,
+          final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
-          final bool? isSoppingCart,
+          final bool? isShoppingCart,
+          final bool? isError,
+          final String? errorMessage,
+          final bool? isShoppingCartDetailsProduct,
           final bool? isSuccessfullySavedFile,
           final bool? isLoadVirtualCardsCod,
           final bool? isLoadOpenPdf,
@@ -10001,10 +11880,19 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   String get virtualCardsCod;
   List<OrderBlankDataModel> get listOrdersBlank;
   List<OrderBlankDataModel> get listTailoringBlank;
+  List<SkuProductDataModel> get listSize;
   Uint8List get file;
   String get fileName;
+  bool get isLoadGetSizeProduct;
+  int get offsetOrders;
+  int get offsetOrdersBlank;
+  int get offsetTailoringBlank;
+  String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
-  bool? get isSoppingCart;
+  bool? get isShoppingCart;
+  bool? get isError;
+  String? get errorMessage;
+  bool? get isShoppingCartDetailsProduct;
   bool? get isSuccessfullySavedFile;
   bool? get isLoadVirtualCardsCod;
   bool? get isLoadOpenPdf;
@@ -10061,6 +11949,11 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -10079,10 +11972,19 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -10105,6 +12007,11 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -10123,10 +12030,19 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -10149,6 +12065,11 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -10167,10 +12088,19 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -10197,6 +12127,11 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -10213,6 +12148,9 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -10229,6 +12167,9 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,
@@ -10289,6 +12230,11 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
     required TResult Function(String message) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
     required TResult Function(
             String phone,
             String name,
@@ -10307,10 +12253,19 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -10333,6 +12288,11 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
     TResult? Function(String message)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
     TResult? Function(
             String phone,
             String name,
@@ -10351,10 +12311,19 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -10377,6 +12346,11 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
     TResult Function(String message)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
     TResult Function(
             String phone,
             String name,
@@ -10395,10 +12369,19 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             String virtualCardsCod,
             List<OrderBlankDataModel> listOrdersBlank,
             List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
             Uint8List file,
             String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
-            bool? isSoppingCart,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
             bool? isLoadVirtualCardsCod,
             bool? isLoadOpenPdf,
@@ -10425,6 +12408,11 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
     required TResult Function(PreloadDataCompletedAccountState value)
         preloadDataCompleted,
     required TResult Function(LogOutAccountState value) logOut,
@@ -10441,6 +12429,9 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult? Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult? Function(LogOutAccountState value)? logOut,
@@ -10457,6 +12448,9 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
     TResult Function(PreloadDataCompletedAccountState value)?
         preloadDataCompleted,
     TResult Function(LogOutAccountState value)? logOut,

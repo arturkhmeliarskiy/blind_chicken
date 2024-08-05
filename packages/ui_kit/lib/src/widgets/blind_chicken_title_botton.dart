@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class BlindChickenCloseButton extends StatelessWidget {
-  const BlindChickenCloseButton({super.key, required this.onClose});
+class BlindChickenTitleButton extends StatelessWidget {
+  const BlindChickenTitleButton({
+    super.key,
+    required this.onChange,
+    required this.title,
+    this.isLoad = false,
+  });
 
-  final VoidCallback onClose;
+  final VoidCallback onChange;
+  final String title;
+  final bool isLoad;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,7 @@ class BlindChickenCloseButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.5),
         child: ElevatedButton(
-          onPressed: onClose,
+          onPressed: onChange,
           style: ElevatedButton.styleFrom(
             backgroundColor: BlindChickenColors.activeBorderTextField,
             shape: RoundedRectangleBorder(
@@ -35,12 +42,24 @@ class BlindChickenCloseButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Закрыть',
-                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      color: BlindChickenColors.backgroundColor,
-                    ),
-              ),
+              if (!isLoad)
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        color: BlindChickenColors.backgroundColor,
+                      ),
+                )
+              else
+                Container(
+                  height: 30,
+                  width: 30,
+                  padding: const EdgeInsets.all(5),
+                  alignment: Alignment.center,
+                  child: const CircularProgressIndicator(
+                    strokeWidth: 3,
+                    color: BlindChickenColors.backgroundColor,
+                  ),
+                )
             ],
           ),
         ),

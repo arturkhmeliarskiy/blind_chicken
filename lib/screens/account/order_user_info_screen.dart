@@ -15,9 +15,11 @@ class OrderUserInfoScreen extends StatelessWidget {
   const OrderUserInfoScreen({
     super.key,
     required this.isPay,
+    required this.orderId,
   });
 
   final bool isPay;
+  final String orderId;
 
   @override
   Widget build(BuildContext context) {
@@ -42,314 +44,338 @@ class OrderUserInfoScreen extends StatelessWidget {
                   final paidInfo = initState.orderInfo?.paidInfo ?? '';
                   final status = (initState.orderInfo?.status ?? '').toLowerCase();
                   final idForPay = initState.orderInfo?.idForPay ?? '';
-                  return ListView(
-                    children: [
-                      const AppBarBlindChicken(),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10.5,
-                          right: 10.5,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  return initState.isError ?? false
+                      ? Column(
                           children: [
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    context
-                                        .read<AccountBloc>()
-                                        .add(const AccountEvent.preloadData());
-                                    context.navigateTo(
-                                      const AccountRoute(),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Личный кабинет',
-                                    style: Theme.of(context).textTheme.bodyMedium,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    context.read<AccountBloc>().add(const AccountEvent.getOrders());
-                                    context.navigateTo(
-                                      const MyOrdersRoute(),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Мои заказы',
-                                    style: Theme.of(context).textTheme.bodyMedium,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  'Заказ №${initState.orderInfo?.id}',
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                        fontFamily: 'Roboto-Light',
-                                      ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              // ignore: unnecessary_brace_in_string_interps
-                              'Заказ № ${initState.orderInfo?.id} от ${initState.orderInfo?.date}',
-                              style: Theme.of(context).textTheme.titleSmall,
-                            ),
-                            Text(
-                              'Принят',
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            const SizedBox(
-                              height: 14,
-                            ),
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/credit_card.svg',
-                                  width: 17.5,
-                                  height: 17.5,
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Text(
-                                  'Оплата',
-                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 14,
-                            ),
-                            Text(
-                              initState.orderInfo?.paymentName ?? '',
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  '${initState.orderInfo?.sumForPaid.toString().spaceSeparateNumbers()} ₽',
-                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  initState.orderInfo?.paidInfo ?? '',
-                                  style: Theme.of(context).textTheme.displaySmall,
-                                ),
-                              ],
-                            ),
-                            if (isPay ||
-                                (paidInfo == 'не оплачено' &&
-                                    status == 'принят' &&
-                                    idForPay.isNotEmpty))
-                              Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  BlindChickenButton(
-                                    title: 'Оплатить',
-                                    height: 40,
-                                    onChenge: () {
-                                      context.read<AccountBloc>().add(
-                                            AccountEvent.payOrder(
-                                              idForPay: initState.orderInfo?.idForPay ?? '',
-                                            ),
-                                          );
-                                    },
-                                  ),
-                                ],
+                            const AppBarBlindChicken(),
+                            Expanded(
+                              child: BlindChickenErrorInfo(
+                                errorMessage: initState.errorMessage ?? '',
+                                onRepeatRequest: () {
+                                  context.read<AccountBloc>().add(
+                                        AccountEvent.getInfoOrder(
+                                          id: orderId,
+                                        ),
+                                      );
+                                },
                               ),
-                            const SizedBox(
-                              height: 14,
                             ),
-                            const Divider(
-                              color: BlindChickenColors.borderBottomColor,
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/point_locate.svg',
-                                  height: 17.5,
-                                  width: 17.5,
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Text(
-                                  'Получение',
-                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 14,
-                            ),
-                            Text(
-                              initState.orderInfo?.delivery.method ?? '',
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              initState.orderInfo?.delivery.address ?? '',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            const SizedBox(
-                              height: 14,
-                            ),
-                            if ((initState.orderInfo?.delivery.method ?? '') == 'Доставка' &&
-                                int.parse(initState.orderInfo?.delivery.price ?? '') > 0)
-                              Column(
+                          ],
+                        )
+                      : ListView(
+                          children: [
+                            const AppBarBlindChicken(),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10.5,
+                                right: 10.5,
+                              ),
+                              child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Стоимость',
-                                    style: Theme.of(context).textTheme.displayMedium,
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<AccountBloc>()
+                                              .add(const AccountEvent.preloadData());
+                                          context.navigateTo(
+                                            const AccountRoute(),
+                                          );
+                                        },
+                                        child: Text(
+                                          'Личный кабинет',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          context
+                                              .read<AccountBloc>()
+                                              .add(const AccountEvent.getOrders());
+                                          context.navigateTo(
+                                            const MyOrdersRoute(),
+                                          );
+                                        },
+                                        child: Text(
+                                          'Мои заказы',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      Text(
+                                        'Заказ №${initState.orderInfo?.id}',
+                                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                              fontFamily: 'Roboto-Light',
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                   const SizedBox(
-                                    height: 6,
+                                    height: 12,
                                   ),
-                                  RichText(
-                                    text: TextSpan(
-                                      text: initState.orderInfo?.delivery.price ?? '',
-                                      style: Theme.of(context).textTheme.displayMedium,
-                                      children: const <TextSpan>[
-                                        TextSpan(
-                                          text: ' ₽ ',
-                                          style: TextStyle(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                  Text(
+                                    // ignore: unnecessary_brace_in_string_interps
+                                    'Заказ № ${initState.orderInfo?.id} от ${initState.orderInfo?.date}',
+                                    style: Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                  Text(
+                                    'Принят',
+                                    style: Theme.of(context).textTheme.bodyMedium,
                                   ),
                                   const SizedBox(
                                     height: 14,
                                   ),
-                                ],
-                              ),
-                            const Divider(
-                              color: BlindChickenColors.borderBottomColor,
-                            ),
-                            const SizedBox(
-                              height: 14,
-                            ),
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/product.svg',
-                                  height: 17.5,
-                                  width: 17.5,
-                                ),
-                                const SizedBox(
-                                  width: 7,
-                                ),
-                                Text(
-                                  'Товары',
-                                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                        fontWeight: FontWeight.w700,
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/icons/credit_card.svg',
+                                        width: 17.5,
+                                        height: 17.5,
                                       ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 17.5),
-                              child: LayoutBuilder(builder: (context, constraints) {
-                                OrderInfoDataModel? orderInfo = initState.orderInfo;
-                                if (orderInfo != null) {
-                                  if (orderInfo.giftCard.name.isNotEmpty) {
-                                    return OrderGiftCard(
-                                      onSelectCard: () {
-                                        context
-                                            .read<GiftCardBloc>()
-                                            .add(const GiftCardEvent.preloadData(
-                                              isNotification: false,
-                                            ));
-                                        context.navigateTo(
-                                          HomeAutoRouterRoute(
-                                            children: [GiftCardRoute()],
+                                      const SizedBox(
+                                        width: 7,
+                                      ),
+                                      Text(
+                                        'Оплата',
+                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 14,
+                                  ),
+                                  Text(
+                                    initState.orderInfo?.paymentName ?? '',
+                                    style: Theme.of(context).textTheme.bodyMedium,
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '${initState.orderInfo?.sumForPaid.toString().spaceSeparateNumbers()} ₽',
+                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      Text(
+                                        initState.orderInfo?.paidInfo ?? '',
+                                        style: Theme.of(context).textTheme.displaySmall,
+                                      ),
+                                    ],
+                                  ),
+                                  if (isPay ||
+                                      (paidInfo == 'не оплачено' &&
+                                          status == 'принят' &&
+                                          idForPay.isNotEmpty))
+                                    Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        BlindChickenButton(
+                                          title: 'Оплатить',
+                                          height: 40,
+                                          onChenge: () {
+                                            context.read<AccountBloc>().add(
+                                                  AccountEvent.payOrder(
+                                                    idForPay: initState.orderInfo?.idForPay ?? '',
+                                                  ),
+                                                );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  const SizedBox(
+                                    height: 14,
+                                  ),
+                                  const Divider(
+                                    color: BlindChickenColors.borderBottomColor,
+                                  ),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/icons/point_locate.svg',
+                                        height: 17.5,
+                                        width: 17.5,
+                                      ),
+                                      const SizedBox(
+                                        width: 7,
+                                      ),
+                                      Text(
+                                        'Получение',
+                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 14,
+                                  ),
+                                  Text(
+                                    initState.orderInfo?.delivery.method ?? '',
+                                    style: Theme.of(context).textTheme.bodyMedium,
+                                  ),
+                                  const SizedBox(
+                                    height: 6,
+                                  ),
+                                  Text(
+                                    initState.orderInfo?.delivery.address ?? '',
+                                    style: Theme.of(context).textTheme.displayMedium,
+                                  ),
+                                  const SizedBox(
+                                    height: 14,
+                                  ),
+                                  if ((initState.orderInfo?.delivery.method ?? '') == 'Доставка' &&
+                                      int.parse(initState.orderInfo?.delivery.price ?? '') > 0)
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Стоимость',
+                                          style: Theme.of(context).textTheme.displayMedium,
+                                        ),
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            text: initState.orderInfo?.delivery.price ?? '',
+                                            style: Theme.of(context).textTheme.displayMedium,
+                                            children: const <TextSpan>[
+                                              TextSpan(
+                                                text: ' ₽ ',
+                                                style: TextStyle(
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        );
-                                      },
-                                      giftCard: orderInfo.giftCard,
-                                    );
-                                  } else {
-                                    return Column(
-                                      children: List.generate(
-                                        initState.orderInfo?.products.length ?? 0,
-                                        (index) {
-                                          return OrderProductCard(
-                                            isBordrerBottom:
-                                                (initState.orderInfo?.products.length ?? 0) - 1 !=
-                                                    index,
+                                        ),
+                                        const SizedBox(
+                                          height: 14,
+                                        ),
+                                      ],
+                                    ),
+                                  const Divider(
+                                    color: BlindChickenColors.borderBottomColor,
+                                  ),
+                                  const SizedBox(
+                                    height: 14,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/icons/product.svg',
+                                        height: 17.5,
+                                        width: 17.5,
+                                      ),
+                                      const SizedBox(
+                                        width: 7,
+                                      ),
+                                      Text(
+                                        'Товары',
+                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 17.5),
+                                    child: LayoutBuilder(builder: (context, constraints) {
+                                      OrderInfoDataModel? orderInfo = initState.orderInfo;
+                                      if (orderInfo != null) {
+                                        if (orderInfo.giftCard.name.isNotEmpty) {
+                                          return OrderGiftCard(
                                             onSelectCard: () {
-                                              context.read<AccountBloc>().add(
-                                                    AccountEvent.getInfoProduct(
-                                                      code: orderInfo.products[index].id.toString(),
-                                                    ),
-                                                  );
+                                              context
+                                                  .read<GiftCardBloc>()
+                                                  .add(const GiftCardEvent.preloadData(
+                                                    isNotification: false,
+                                                  ));
                                               context.navigateTo(
-                                                OrderCardInfoRoute(
-                                                  isChildRoute: false,
-                                                  item: orderInfo.products[index],
-                                                  isLike: initState.favouritesProductsId
-                                                      .contains(orderInfo.products[index].id),
-                                                  listItems: const [],
-                                                  favouritesProducts: initState.favouritesProducts,
+                                                HomeAutoRouterRoute(
+                                                  children: [GiftCardRoute()],
                                                 ),
                                               );
                                             },
-                                            product: orderInfo.products[index],
-                                            price: (orderInfo.products[index].price *
-                                                    int.parse(
-                                                        orderInfo.products[index].count ?? '0'))
-                                                .toString(),
+                                            giftCard: orderInfo.giftCard,
                                           );
-                                        },
-                                      ),
-                                    );
-                                  }
-                                } else {
-                                  return const SizedBox();
-                                }
-                              }),
-                            ),
-                            const SizedBox(
-                              height: 30,
+                                        } else {
+                                          return Column(
+                                            children: List.generate(
+                                              initState.orderInfo?.products.length ?? 0,
+                                              (index) {
+                                                return OrderProductCard(
+                                                  isBordrerBottom:
+                                                      (initState.orderInfo?.products.length ?? 0) -
+                                                              1 !=
+                                                          index,
+                                                  onSelectCard: () {
+                                                    context.read<AccountBloc>().add(
+                                                          AccountEvent.getInfoProduct(
+                                                            code: orderInfo.products[index].id
+                                                                .toString(),
+                                                          ),
+                                                        );
+                                                    context.navigateTo(
+                                                      OrderCardInfoRoute(
+                                                        isChildRoute: false,
+                                                        item: orderInfo.products[index],
+                                                        isLike: initState.favouritesProductsId
+                                                            .contains(orderInfo.products[index].id),
+                                                        listItems: const [],
+                                                        favouritesProducts:
+                                                            initState.favouritesProducts,
+                                                      ),
+                                                    );
+                                                  },
+                                                  product: orderInfo.products[index],
+                                                  price: (orderInfo.products[index].price *
+                                                          int.parse(
+                                                              orderInfo.products[index].count ??
+                                                                  '0'))
+                                                      .toString(),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        }
+                                      } else {
+                                        return const SizedBox();
+                                      }
+                                    }),
+                                  ),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
-                        ),
-                      ),
-                    ],
-                  );
+                        );
                 },
                 orElse: () => const SizedBox(),
                 load: (value) {
