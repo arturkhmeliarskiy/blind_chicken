@@ -56,6 +56,8 @@ class ShoppingCartState with _$ShoppingCartState {
     required List<int> favouritesProductsId,
     required bool isAuth,
     required bool isLoadGetSizeProduct,
+    required bool isLoadAddProductToShopingCart,
+    required bool isBlocBackBotton, // нужна для блокировки навигации назад при переходе из каталога
     String? codeProduct,
     SkuProductDataModel? selectSizeProduct,
     bool? isShoppingCart,

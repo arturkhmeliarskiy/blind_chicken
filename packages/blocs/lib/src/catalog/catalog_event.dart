@@ -96,4 +96,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.getInfoServiceCard({
     required String code,
   }) = GetInfoServiceCardCatalogEvent;
+  const factory CatalogEvent.checkOpenGetInfoProductSize({
+    required bool isOpenGetSizeProduct,
+  }) = CheckOpenGetInfoProductSizeCatalogEvent;
 }

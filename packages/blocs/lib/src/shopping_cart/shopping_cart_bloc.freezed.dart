@@ -12335,6 +12335,8 @@ mixin _$ShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12395,6 +12397,8 @@ mixin _$ShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12455,6 +12459,8 @@ mixin _$ShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12617,6 +12623,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12680,6 +12688,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12743,6 +12753,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12909,6 +12921,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -12972,6 +12986,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13035,6 +13051,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13230,6 +13248,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13293,6 +13313,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13356,6 +13378,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13532,6 +13556,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13595,6 +13621,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13658,6 +13686,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13894,6 +13924,8 @@ class _$GetSizeProductShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -13957,6 +13989,8 @@ class _$GetSizeProductShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -14020,6 +14054,8 @@ class _$GetSizeProductShoppingCartStateImpl
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -14224,6 +14260,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -14287,6 +14325,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -14350,6 +14390,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -14479,6 +14521,8 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       List<int> favouritesProductsId,
       bool isAuth,
       bool isLoadGetSizeProduct,
+      bool isLoadAddProductToShopingCart,
+      bool isBlocBackBotton,
       String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
       bool? isShoppingCart,
@@ -14548,6 +14592,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? favouritesProductsId = null,
     Object? isAuth = null,
     Object? isLoadGetSizeProduct = null,
+    Object? isLoadAddProductToShopingCart = null,
+    Object? isBlocBackBotton = null,
     Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
     Object? isShoppingCart = freezed,
@@ -14713,6 +14759,14 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.isLoadGetSizeProduct
           : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoadAddProductToShopingCart: null == isLoadAddProductToShopingCart
+          ? _value.isLoadAddProductToShopingCart
+          : isLoadAddProductToShopingCart // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBlocBackBotton: null == isBlocBackBotton
+          ? _value.isBlocBackBotton
+          : isBlocBackBotton // ignore: cast_nullable_to_non_nullable
+              as bool,
       codeProduct: freezed == codeProduct
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
@@ -14867,6 +14921,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required final List<int> favouritesProductsId,
       required this.isAuth,
       required this.isLoadGetSizeProduct,
+      required this.isLoadAddProductToShopingCart,
+      required this.isBlocBackBotton,
       this.codeProduct,
       this.selectSizeProduct,
       this.isShoppingCart,
@@ -15031,6 +15087,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   @override
   final bool isLoadGetSizeProduct;
   @override
+  final bool isLoadAddProductToShopingCart;
+  @override
+  final bool isBlocBackBotton;
+// нужна для блокировки навигации назад при переходе из каталога
+  @override
   final String? codeProduct;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -15047,7 +15108,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isLoadAddProductToShopingCart: $isLoadAddProductToShopingCart, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -15126,22 +15187,25 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
                 other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.isLoadAddProductToShopingCart, isLoadAddProductToShopingCart) ||
+                other.isLoadAddProductToShopingCart ==
+                    isLoadAddProductToShopingCart) &&
+            (identical(other.isBlocBackBotton, isBlocBackBotton) ||
+                other.isBlocBackBotton == isBlocBackBotton) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
                 other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.isShoppingCart, isShoppingCart) ||
                 other.isShoppingCart == isShoppingCart) &&
-            (identical(other.isShoppingCartDetailsProduct,
-                    isShoppingCartDetailsProduct) ||
+            (identical(other.isShoppingCartDetailsProduct, isShoppingCartDetailsProduct) ||
                 other.isShoppingCartDetailsProduct ==
                     isShoppingCartDetailsProduct) &&
             (identical(other.isAuthModel, isAuthModel) ||
                 other.isAuthModel == isAuthModel) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
                 other.favouritesProductsInfo == favouritesProductsInfo) &&
-            (identical(other.detailsProduct, detailsProduct) ||
-                other.detailsProduct == detailsProduct));
+            (identical(other.detailsProduct, detailsProduct) || other.detailsProduct == detailsProduct));
   }
 
   @override
@@ -15186,6 +15250,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         const DeepCollectionEquality().hash(_favouritesProductsId),
         isAuth,
         isLoadGetSizeProduct,
+        isLoadAddProductToShopingCart,
+        isBlocBackBotton,
         codeProduct,
         selectSizeProduct,
         isShoppingCart,
@@ -15253,6 +15319,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -15302,6 +15370,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         favouritesProductsId,
         isAuth,
         isLoadGetSizeProduct,
+        isLoadAddProductToShopingCart,
+        isBlocBackBotton,
         codeProduct,
         selectSizeProduct,
         isShoppingCart,
@@ -15362,6 +15432,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -15411,6 +15483,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         favouritesProductsId,
         isAuth,
         isLoadGetSizeProduct,
+        isLoadAddProductToShopingCart,
+        isBlocBackBotton,
         codeProduct,
         selectSizeProduct,
         isShoppingCart,
@@ -15471,6 +15545,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             List<int> favouritesProductsId,
             bool isAuth,
             bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -15522,6 +15598,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           favouritesProductsId,
           isAuth,
           isLoadGetSizeProduct,
+          isLoadAddProductToShopingCart,
+          isBlocBackBotton,
           codeProduct,
           selectSizeProduct,
           isShoppingCart,
@@ -15630,6 +15708,8 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
           required final List<int> favouritesProductsId,
           required final bool isAuth,
           required final bool isLoadGetSizeProduct,
+          required final bool isLoadAddProductToShopingCart,
+          required final bool isBlocBackBotton,
           final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
           final bool? isShoppingCart,
@@ -15678,6 +15758,9 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   List<int> get favouritesProductsId;
   bool get isAuth;
   bool get isLoadGetSizeProduct;
+  bool get isLoadAddProductToShopingCart;
+  bool
+      get isBlocBackBotton; // нужна для блокировки навигации назад при переходе из каталога
   String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
   bool? get isShoppingCart;

@@ -63,6 +63,8 @@ mixin _$CatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +107,7 @@ mixin _$CatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -147,6 +150,7 @@ mixin _$CatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -200,6 +204,8 @@ mixin _$CatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -244,6 +250,8 @@ mixin _$CatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -288,6 +296,8 @@ mixin _$CatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -394,6 +404,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return init();
   }
@@ -439,6 +451,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return init?.call();
   }
@@ -484,6 +497,7 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -543,6 +557,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return init(this);
   }
@@ -590,6 +606,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return init?.call(this);
   }
@@ -637,6 +655,8 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -736,6 +756,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return preloadData();
   }
@@ -781,6 +803,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return preloadData?.call();
   }
@@ -826,6 +849,7 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -885,6 +909,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return preloadData(this);
   }
@@ -932,6 +958,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return preloadData?.call(this);
   }
@@ -979,6 +1007,8 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -1080,6 +1110,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return updateFavouritesProducts();
   }
@@ -1125,6 +1157,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return updateFavouritesProducts?.call();
   }
@@ -1170,6 +1203,7 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -1229,6 +1263,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return updateFavouritesProducts(this);
   }
@@ -1276,6 +1312,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return updateFavouritesProducts?.call(this);
   }
@@ -1323,6 +1361,8 @@ class _$UpdateFavouritesProductsCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateFavouritesProducts != null) {
@@ -1527,6 +1567,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return subCategory(a, b, id, u, pid, item, selectedGenderIndex);
   }
@@ -1572,6 +1614,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return subCategory?.call(a, b, id, u, pid, item, selectedGenderIndex);
   }
@@ -1617,6 +1660,7 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -1676,6 +1720,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return subCategory(this);
   }
@@ -1723,6 +1769,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return subCategory?.call(this);
   }
@@ -1770,6 +1818,8 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (subCategory != null) {
@@ -1914,6 +1964,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return backPathMenu(idParent);
   }
@@ -1959,6 +2011,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return backPathMenu?.call(idParent);
   }
@@ -2004,6 +2057,7 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -2063,6 +2117,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return backPathMenu(this);
   }
@@ -2110,6 +2166,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return backPathMenu?.call(this);
   }
@@ -2157,6 +2215,8 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (backPathMenu != null) {
@@ -2316,6 +2376,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return selectFilter(index, indexItem, item);
   }
@@ -2361,6 +2423,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return selectFilter?.call(index, indexItem, item);
   }
@@ -2406,6 +2469,7 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -2465,6 +2529,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return selectFilter(this);
   }
@@ -2512,6 +2578,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return selectFilter?.call(this);
   }
@@ -2559,6 +2627,8 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (selectFilter != null) {
@@ -2723,6 +2793,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return deleteFilter(index, indexItem, item);
   }
@@ -2768,6 +2840,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return deleteFilter?.call(index, indexItem, item);
   }
@@ -2813,6 +2886,7 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -2872,6 +2946,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return deleteFilter(this);
   }
@@ -2919,6 +2995,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return deleteFilter?.call(this);
   }
@@ -2966,6 +3044,8 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFilter != null) {
@@ -3129,6 +3209,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return deleteCatalogFilter(key, index, item);
   }
@@ -3174,6 +3256,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return deleteCatalogFilter?.call(key, index, item);
   }
@@ -3219,6 +3302,7 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -3278,6 +3362,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return deleteCatalogFilter(this);
   }
@@ -3325,6 +3411,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return deleteCatalogFilter?.call(this);
   }
@@ -3372,6 +3460,8 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteCatalogFilter != null) {
@@ -3530,6 +3620,8 @@ class _$AddFavouriteProductCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return addFavouriteProduct(index, product);
   }
@@ -3575,6 +3667,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return addFavouriteProduct?.call(index, product);
   }
@@ -3620,6 +3713,7 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -3679,6 +3773,8 @@ class _$AddFavouriteProductCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return addFavouriteProduct(this);
   }
@@ -3726,6 +3822,8 @@ class _$AddFavouriteProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return addFavouriteProduct?.call(this);
   }
@@ -3773,6 +3871,8 @@ class _$AddFavouriteProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
@@ -3910,6 +4010,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return deleteFavouriteProduct(index);
   }
@@ -3955,6 +4057,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return deleteFavouriteProduct?.call(index);
   }
@@ -4000,6 +4103,7 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -4059,6 +4163,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return deleteFavouriteProduct(this);
   }
@@ -4106,6 +4212,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return deleteFavouriteProduct?.call(this);
   }
@@ -4153,6 +4261,8 @@ class _$DeleteFavouriteProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
@@ -4261,6 +4371,8 @@ class _$PaginationProductCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return paginationProduct();
   }
@@ -4306,6 +4418,7 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return paginationProduct?.call();
   }
@@ -4351,6 +4464,7 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -4410,6 +4524,8 @@ class _$PaginationProductCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return paginationProduct(this);
   }
@@ -4457,6 +4573,8 @@ class _$PaginationProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return paginationProduct?.call(this);
   }
@@ -4504,6 +4622,8 @@ class _$PaginationProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (paginationProduct != null) {
@@ -4630,6 +4750,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return searchBrand(query);
   }
@@ -4675,6 +4797,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return searchBrand?.call(query);
   }
@@ -4720,6 +4843,7 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (searchBrand != null) {
@@ -4779,6 +4903,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return searchBrand(this);
   }
@@ -4826,6 +4952,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return searchBrand?.call(this);
   }
@@ -4873,6 +5001,8 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (searchBrand != null) {
@@ -5017,6 +5147,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return pathMenu(item);
   }
@@ -5062,6 +5194,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return pathMenu?.call(item);
   }
@@ -5107,6 +5240,7 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (pathMenu != null) {
@@ -5166,6 +5300,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return pathMenu(this);
   }
@@ -5213,6 +5349,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return pathMenu?.call(this);
   }
@@ -5260,6 +5398,8 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (pathMenu != null) {
@@ -5399,6 +5539,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return removePathMenu(items);
   }
@@ -5444,6 +5586,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return removePathMenu?.call(items);
   }
@@ -5489,6 +5632,7 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (removePathMenu != null) {
@@ -5548,6 +5692,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return removePathMenu(this);
   }
@@ -5595,6 +5741,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return removePathMenu?.call(this);
   }
@@ -5642,6 +5790,8 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (removePathMenu != null) {
@@ -5782,6 +5932,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return pathBrandMenu(items);
   }
@@ -5827,6 +5979,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return pathBrandMenu?.call(items);
   }
@@ -5872,6 +6025,7 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (pathBrandMenu != null) {
@@ -5931,6 +6085,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return pathBrandMenu(this);
   }
@@ -5978,6 +6134,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return pathBrandMenu?.call(this);
   }
@@ -6025,6 +6183,8 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (pathBrandMenu != null) {
@@ -6160,6 +6320,8 @@ class _$SwitchTypePeopleCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return switchTypePeople(selectIndexType);
   }
@@ -6205,6 +6367,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return switchTypePeople?.call(selectIndexType);
   }
@@ -6250,6 +6413,7 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (switchTypePeople != null) {
@@ -6309,6 +6473,8 @@ class _$SwitchTypePeopleCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return switchTypePeople(this);
   }
@@ -6356,6 +6522,8 @@ class _$SwitchTypePeopleCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return switchTypePeople?.call(this);
   }
@@ -6403,6 +6571,8 @@ class _$SwitchTypePeopleCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (switchTypePeople != null) {
@@ -6546,6 +6716,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProducts(path, isCleanHistory);
   }
@@ -6591,6 +6763,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return getInfoProducts?.call(path, isCleanHistory);
   }
@@ -6636,6 +6809,7 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
@@ -6695,6 +6869,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProducts(this);
   }
@@ -6742,6 +6918,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProducts?.call(this);
   }
@@ -6789,6 +6967,8 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProducts != null) {
@@ -6898,6 +7078,8 @@ class _$UpdateInfoProductsCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return updateInfoProducts();
   }
@@ -6943,6 +7125,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return updateInfoProducts?.call();
   }
@@ -6988,6 +7171,7 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateInfoProducts != null) {
@@ -7047,6 +7231,8 @@ class _$UpdateInfoProductsCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return updateInfoProducts(this);
   }
@@ -7094,6 +7280,8 @@ class _$UpdateInfoProductsCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return updateInfoProducts?.call(this);
   }
@@ -7141,6 +7329,8 @@ class _$UpdateInfoProductsCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (updateInfoProducts != null) {
@@ -7293,6 +7483,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProductsPushNotification(path, sort, filterSelect);
   }
@@ -7338,6 +7530,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return getInfoProductsPushNotification?.call(path, sort, filterSelect);
   }
@@ -7383,6 +7576,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProductsPushNotification != null) {
@@ -7442,6 +7636,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProductsPushNotification(this);
   }
@@ -7489,6 +7685,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProductsPushNotification?.call(this);
   }
@@ -7536,6 +7734,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProductsPushNotification != null) {
@@ -7706,6 +7906,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProduct(code, size, isUpdate);
   }
@@ -7751,6 +7953,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return getInfoProduct?.call(code, size, isUpdate);
   }
@@ -7796,6 +7999,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -7855,6 +8059,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProduct(this);
   }
@@ -7902,6 +8108,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProduct?.call(this);
   }
@@ -7949,6 +8157,8 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
@@ -8084,6 +8294,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return sortProducts(value);
   }
@@ -8129,6 +8341,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return sortProducts?.call(value);
   }
@@ -8174,6 +8387,7 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (sortProducts != null) {
@@ -8233,6 +8447,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return sortProducts(this);
   }
@@ -8280,6 +8496,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return sortProducts?.call(this);
   }
@@ -8327,6 +8545,8 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (sortProducts != null) {
@@ -8434,6 +8654,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return goBackProductInfo();
   }
@@ -8479,6 +8701,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return goBackProductInfo?.call();
   }
@@ -8524,6 +8747,7 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -8583,6 +8807,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return goBackProductInfo(this);
   }
@@ -8630,6 +8856,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return goBackProductInfo?.call(this);
   }
@@ -8677,6 +8905,8 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackProductInfo != null) {
@@ -8779,6 +9009,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return goBackCatalogInfo();
   }
@@ -8824,6 +9056,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return goBackCatalogInfo?.call();
   }
@@ -8869,6 +9102,7 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackCatalogInfo != null) {
@@ -8928,6 +9162,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return goBackCatalogInfo(this);
   }
@@ -8975,6 +9211,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return goBackCatalogInfo?.call(this);
   }
@@ -9022,6 +9260,8 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (goBackCatalogInfo != null) {
@@ -9163,6 +9403,8 @@ class _$ChangeSizeProductCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return changeSizeProduct(selectSizeProduct);
   }
@@ -9208,6 +9450,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return changeSizeProduct?.call(selectSizeProduct);
   }
@@ -9253,6 +9496,7 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -9312,6 +9556,8 @@ class _$ChangeSizeProductCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return changeSizeProduct(this);
   }
@@ -9359,6 +9605,8 @@ class _$ChangeSizeProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return changeSizeProduct?.call(this);
   }
@@ -9406,6 +9654,8 @@ class _$ChangeSizeProductCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (changeSizeProduct != null) {
@@ -9543,6 +9793,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return removeSelectFilterCategory(index);
   }
@@ -9588,6 +9840,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return removeSelectFilterCategory?.call(index);
   }
@@ -9633,6 +9886,7 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -9692,6 +9946,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return removeSelectFilterCategory(this);
   }
@@ -9739,6 +9995,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return removeSelectFilterCategory?.call(this);
   }
@@ -9786,6 +10044,8 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (removeSelectFilterCategory != null) {
@@ -9896,6 +10156,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return removeSelectAllFilters();
   }
@@ -9941,6 +10203,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return removeSelectAllFilters?.call();
   }
@@ -9986,6 +10249,7 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -10045,6 +10309,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return removeSelectAllFilters(this);
   }
@@ -10092,6 +10358,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return removeSelectAllFilters?.call(this);
   }
@@ -10139,6 +10407,8 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (removeSelectAllFilters != null) {
@@ -10292,6 +10562,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return addProductToSoppingCart(code, size);
   }
@@ -10337,6 +10609,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return addProductToSoppingCart?.call(code, size);
   }
@@ -10382,6 +10655,7 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -10441,6 +10715,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return addProductToSoppingCart(this);
   }
@@ -10488,6 +10764,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return addProductToSoppingCart?.call(this);
   }
@@ -10535,6 +10813,8 @@ class _$AddProductToSoppingCartCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
@@ -10682,6 +10962,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return checkProductToSoppingCart(size);
   }
@@ -10727,6 +11009,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return checkProductToSoppingCart?.call(size);
   }
@@ -10772,6 +11055,7 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -10831,6 +11115,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return checkProductToSoppingCart(this);
   }
@@ -10878,6 +11164,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return checkProductToSoppingCart?.call(this);
   }
@@ -10925,6 +11213,8 @@ class _$CheckProductToSoppingCartCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (checkProductToSoppingCart != null) {
@@ -11070,6 +11360,8 @@ class _$GetInfoProductSizeCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProductSize(code, isShop);
   }
@@ -11115,6 +11407,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return getInfoProductSize?.call(code, isShop);
   }
@@ -11160,6 +11453,7 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProductSize != null) {
@@ -11219,6 +11513,8 @@ class _$GetInfoProductSizeCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProductSize(this);
   }
@@ -11266,6 +11562,8 @@ class _$GetInfoProductSizeCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoProductSize?.call(this);
   }
@@ -11313,6 +11611,8 @@ class _$GetInfoProductSizeCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProductSize != null) {
@@ -11450,6 +11750,8 @@ class _$GetInfoServiceCardCatalogEventImpl
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
     required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoServiceCard(code);
   }
@@ -11495,6 +11797,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
     TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
   }) {
     return getInfoServiceCard?.call(code);
   }
@@ -11540,6 +11843,7 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoServiceCard != null) {
@@ -11599,6 +11903,8 @@ class _$GetInfoServiceCardCatalogEventImpl
         getInfoProductSize,
     required TResult Function(GetInfoServiceCardCatalogEvent value)
         getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoServiceCard(this);
   }
@@ -11646,6 +11952,8 @@ class _$GetInfoServiceCardCatalogEventImpl
         checkProductToSoppingCart,
     TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
   }) {
     return getInfoServiceCard?.call(this);
   }
@@ -11693,6 +12001,8 @@ class _$GetInfoServiceCardCatalogEventImpl
         checkProductToSoppingCart,
     TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
     TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoServiceCard != null) {
@@ -11710,6 +12020,398 @@ abstract class GetInfoServiceCardCatalogEvent implements CatalogEvent {
   @JsonKey(ignore: true)
   _$$GetInfoServiceCardCatalogEventImplCopyWith<
           _$GetInfoServiceCardCatalogEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith<$Res> {
+  factory _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith(
+          _$CheckOpenGetInfoProductSizeCatalogEventImpl value,
+          $Res Function(_$CheckOpenGetInfoProductSizeCatalogEventImpl) then) =
+      __$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isOpenGetSizeProduct});
+}
+
+/// @nodoc
+class __$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWithImpl<$Res>
+    extends _$CatalogEventCopyWithImpl<$Res,
+        _$CheckOpenGetInfoProductSizeCatalogEventImpl>
+    implements _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith<$Res> {
+  __$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWithImpl(
+      _$CheckOpenGetInfoProductSizeCatalogEventImpl _value,
+      $Res Function(_$CheckOpenGetInfoProductSizeCatalogEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isOpenGetSizeProduct = null,
+  }) {
+    return _then(_$CheckOpenGetInfoProductSizeCatalogEventImpl(
+      isOpenGetSizeProduct: null == isOpenGetSizeProduct
+          ? _value.isOpenGetSizeProduct
+          : isOpenGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckOpenGetInfoProductSizeCatalogEventImpl
+    implements CheckOpenGetInfoProductSizeCatalogEvent {
+  const _$CheckOpenGetInfoProductSizeCatalogEventImpl(
+      {required this.isOpenGetSizeProduct});
+
+  @override
+  final bool isOpenGetSizeProduct;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.checkOpenGetInfoProductSize(isOpenGetSizeProduct: $isOpenGetSizeProduct)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckOpenGetInfoProductSizeCatalogEventImpl &&
+            (identical(other.isOpenGetSizeProduct, isOpenGetSizeProduct) ||
+                other.isOpenGetSizeProduct == isOpenGetSizeProduct));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isOpenGetSizeProduct);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith<
+          _$CheckOpenGetInfoProductSizeCatalogEventImpl>
+      get copyWith =>
+          __$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWithImpl<
+              _$CheckOpenGetInfoProductSizeCatalogEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function() updateFavouritesProducts,
+    required TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)
+        subCategory,
+    required TResult Function(int idParent) backPathMenu,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        selectFilter,
+    required TResult Function(
+            int index, int indexItem, FilterItemDataModel item)
+        deleteFilter,
+    required TResult Function(int key, int index, FilterItemDataModel item)
+        deleteCatalogFilter,
+    required TResult Function(int index, ProductDataModel product)
+        addFavouriteProduct,
+    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function() paginationProduct,
+    required TResult Function(String query) searchBrand,
+    required TResult Function(MenuItemDataModel? item) pathMenu,
+    required TResult Function(List<MenuItemDataModel> items) removePathMenu,
+    required TResult Function(List<MenuItemDataModel> items) pathBrandMenu,
+    required TResult Function(int selectIndexType) switchTypePeople,
+    required TResult Function(String path, bool? isCleanHistory)
+        getInfoProducts,
+    required TResult Function() updateInfoProducts,
+    required TResult Function(String path, String sort, String filterSelect)
+        getInfoProductsPushNotification,
+    required TResult Function(
+            String code, SkuProductDataModel? size, bool? isUpdate)
+        getInfoProduct,
+    required TResult Function(String value) sortProducts,
+    required TResult Function() goBackProductInfo,
+    required TResult Function() goBackCatalogInfo,
+    required TResult Function(SkuProductDataModel selectSizeProduct)
+        changeSizeProduct,
+    required TResult Function(int index) removeSelectFilterCategory,
+    required TResult Function() removeSelectAllFilters,
+    required TResult Function(int code, SkuProductDataModel? size)
+        addProductToSoppingCart,
+    required TResult Function(SkuProductDataModel size)
+        checkProductToSoppingCart,
+    required TResult Function(String code, bool isShop) getInfoProductSize,
+    required TResult Function(String code) getInfoServiceCard,
+    required TResult Function(bool isOpenGetSizeProduct)
+        checkOpenGetInfoProductSize,
+  }) {
+    return checkOpenGetInfoProductSize(isOpenGetSizeProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function()? updateFavouritesProducts,
+    TResult? Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult? Function(int idParent)? backPathMenu,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult? Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult? Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function()? paginationProduct,
+    TResult? Function(String query)? searchBrand,
+    TResult? Function(MenuItemDataModel? item)? pathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult? Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult? Function(int selectIndexType)? switchTypePeople,
+    TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
+    TResult? Function()? updateInfoProducts,
+    TResult? Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
+    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult? Function(String value)? sortProducts,
+    TResult? Function()? goBackProductInfo,
+    TResult? Function()? goBackCatalogInfo,
+    TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult? Function(int index)? removeSelectFilterCategory,
+    TResult? Function()? removeSelectAllFilters,
+    TResult? Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
+    TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult? Function(String code, bool isShop)? getInfoProductSize,
+    TResult? Function(String code)? getInfoServiceCard,
+    TResult? Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
+  }) {
+    return checkOpenGetInfoProductSize?.call(isOpenGetSizeProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function()? updateFavouritesProducts,
+    TResult Function(String a, int b, int id, String u, int pid,
+            MenuItemDataModel? item, int? selectedGenderIndex)?
+        subCategory,
+    TResult Function(int idParent)? backPathMenu,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        selectFilter,
+    TResult Function(int index, int indexItem, FilterItemDataModel item)?
+        deleteFilter,
+    TResult Function(int key, int index, FilterItemDataModel item)?
+        deleteCatalogFilter,
+    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
+    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function()? paginationProduct,
+    TResult Function(String query)? searchBrand,
+    TResult Function(MenuItemDataModel? item)? pathMenu,
+    TResult Function(List<MenuItemDataModel> items)? removePathMenu,
+    TResult Function(List<MenuItemDataModel> items)? pathBrandMenu,
+    TResult Function(int selectIndexType)? switchTypePeople,
+    TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
+    TResult Function()? updateInfoProducts,
+    TResult Function(String path, String sort, String filterSelect)?
+        getInfoProductsPushNotification,
+    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+        getInfoProduct,
+    TResult Function(String value)? sortProducts,
+    TResult Function()? goBackProductInfo,
+    TResult Function()? goBackCatalogInfo,
+    TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
+    TResult Function(int index)? removeSelectFilterCategory,
+    TResult Function()? removeSelectAllFilters,
+    TResult Function(int code, SkuProductDataModel? size)?
+        addProductToSoppingCart,
+    TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
+    TResult Function(String code, bool isShop)? getInfoProductSize,
+    TResult Function(String code)? getInfoServiceCard,
+    TResult Function(bool isOpenGetSizeProduct)? checkOpenGetInfoProductSize,
+    required TResult orElse(),
+  }) {
+    if (checkOpenGetInfoProductSize != null) {
+      return checkOpenGetInfoProductSize(isOpenGetSizeProduct);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogEvent value) init,
+    required TResult Function(PreloadDataCatalogEvent value) preloadData,
+    required TResult Function(UpdateFavouritesProductsCatalogEvent value)
+        updateFavouritesProducts,
+    required TResult Function(SubCategoryatalogEvent value) subCategory,
+    required TResult Function(BackPathMenuCatalogEvent value) backPathMenu,
+    required TResult Function(SelectFilterCatalogEvent value) selectFilter,
+    required TResult Function(DeleteFilterCatalogEvent value) deleteFilter,
+    required TResult Function(DeleteCatalogFilterEvent value)
+        deleteCatalogFilter,
+    required TResult Function(AddFavouriteProductCatalogEvent value)
+        addFavouriteProduct,
+    required TResult Function(DeleteFavouriteProductCatalogEvent value)
+        deleteFavouriteProduct,
+    required TResult Function(PaginationProductCatalogEvent value)
+        paginationProduct,
+    required TResult Function(SearchBrandCatalogEvent value) searchBrand,
+    required TResult Function(PathMenuCatalogEvent value) pathMenu,
+    required TResult Function(RemovePathMenuCatalogEvent value) removePathMenu,
+    required TResult Function(PathBrandMenuCatalogEvent value) pathBrandMenu,
+    required TResult Function(SwitchTypePeopleCatalogEvent value)
+        switchTypePeople,
+    required TResult Function(GetInfoProductsCatalogEvent value)
+        getInfoProducts,
+    required TResult Function(UpdateInfoProductsCatalogEvent value)
+        updateInfoProducts,
+    required TResult Function(GetInfoProductsPushNotificationCatalogEvent value)
+        getInfoProductsPushNotification,
+    required TResult Function(GetInfoProductCatalogEvent value) getInfoProduct,
+    required TResult Function(SortProductsCatalogEvent value) sortProducts,
+    required TResult Function(GoBackProductInfoCategotyCatalogEvent value)
+        goBackProductInfo,
+    required TResult Function(GoBackCatalogInfoCategotyCatalogEvent value)
+        goBackCatalogInfo,
+    required TResult Function(ChangeSizeProductCatalogEvent value)
+        changeSizeProduct,
+    required TResult Function(RemoveSelectFilterCategotyCatalogEvent value)
+        removeSelectFilterCategory,
+    required TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)
+        removeSelectAllFilters,
+    required TResult Function(AddProductToSoppingCartCatalogEvent value)
+        addProductToSoppingCart,
+    required TResult Function(CheckProductToSoppingCartCatalogEvent value)
+        checkProductToSoppingCart,
+    required TResult Function(GetInfoProductSizeCatalogEvent value)
+        getInfoProductSize,
+    required TResult Function(GetInfoServiceCardCatalogEvent value)
+        getInfoServiceCard,
+    required TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)
+        checkOpenGetInfoProductSize,
+  }) {
+    return checkOpenGetInfoProductSize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogEvent value)? init,
+    TResult? Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult? Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult? Function(SubCategoryatalogEvent value)? subCategory,
+    TResult? Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult? Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult? Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult? Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult? Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult? Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult? Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult? Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult? Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult? Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult? Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult? Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult? Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult? Function(UpdateInfoProductsCatalogEvent value)? updateInfoProducts,
+    TResult? Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult? Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult? Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult? Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult? Function(GoBackCatalogInfoCategotyCatalogEvent value)?
+        goBackCatalogInfo,
+    TResult? Function(ChangeSizeProductCatalogEvent value)? changeSizeProduct,
+    TResult? Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult? Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult? Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult? Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    TResult? Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
+    TResult? Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult? Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
+  }) {
+    return checkOpenGetInfoProductSize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogEvent value)? init,
+    TResult Function(PreloadDataCatalogEvent value)? preloadData,
+    TResult Function(UpdateFavouritesProductsCatalogEvent value)?
+        updateFavouritesProducts,
+    TResult Function(SubCategoryatalogEvent value)? subCategory,
+    TResult Function(BackPathMenuCatalogEvent value)? backPathMenu,
+    TResult Function(SelectFilterCatalogEvent value)? selectFilter,
+    TResult Function(DeleteFilterCatalogEvent value)? deleteFilter,
+    TResult Function(DeleteCatalogFilterEvent value)? deleteCatalogFilter,
+    TResult Function(AddFavouriteProductCatalogEvent value)?
+        addFavouriteProduct,
+    TResult Function(DeleteFavouriteProductCatalogEvent value)?
+        deleteFavouriteProduct,
+    TResult Function(PaginationProductCatalogEvent value)? paginationProduct,
+    TResult Function(SearchBrandCatalogEvent value)? searchBrand,
+    TResult Function(PathMenuCatalogEvent value)? pathMenu,
+    TResult Function(RemovePathMenuCatalogEvent value)? removePathMenu,
+    TResult Function(PathBrandMenuCatalogEvent value)? pathBrandMenu,
+    TResult Function(SwitchTypePeopleCatalogEvent value)? switchTypePeople,
+    TResult Function(GetInfoProductsCatalogEvent value)? getInfoProducts,
+    TResult Function(UpdateInfoProductsCatalogEvent value)? updateInfoProducts,
+    TResult Function(GetInfoProductsPushNotificationCatalogEvent value)?
+        getInfoProductsPushNotification,
+    TResult Function(GetInfoProductCatalogEvent value)? getInfoProduct,
+    TResult Function(SortProductsCatalogEvent value)? sortProducts,
+    TResult Function(GoBackProductInfoCategotyCatalogEvent value)?
+        goBackProductInfo,
+    TResult Function(GoBackCatalogInfoCategotyCatalogEvent value)?
+        goBackCatalogInfo,
+    TResult Function(ChangeSizeProductCatalogEvent value)? changeSizeProduct,
+    TResult Function(RemoveSelectFilterCategotyCatalogEvent value)?
+        removeSelectFilterCategory,
+    TResult Function(RemoveSelectAllFiltersCategotyCatalogEvent value)?
+        removeSelectAllFilters,
+    TResult Function(AddProductToSoppingCartCatalogEvent value)?
+        addProductToSoppingCart,
+    TResult Function(CheckProductToSoppingCartCatalogEvent value)?
+        checkProductToSoppingCart,
+    TResult Function(GetInfoProductSizeCatalogEvent value)? getInfoProductSize,
+    TResult Function(GetInfoServiceCardCatalogEvent value)? getInfoServiceCard,
+    TResult Function(CheckOpenGetInfoProductSizeCatalogEvent value)?
+        checkOpenGetInfoProductSize,
+    required TResult orElse(),
+  }) {
+    if (checkOpenGetInfoProductSize != null) {
+      return checkOpenGetInfoProductSize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckOpenGetInfoProductSizeCatalogEvent implements CatalogEvent {
+  const factory CheckOpenGetInfoProductSizeCatalogEvent(
+          {required final bool isOpenGetSizeProduct}) =
+      _$CheckOpenGetInfoProductSizeCatalogEventImpl;
+
+  bool get isOpenGetSizeProduct;
+  @JsonKey(ignore: true)
+  _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith<
+          _$CheckOpenGetInfoProductSizeCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -11757,6 +12459,7 @@ mixin _$CatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -11812,6 +12515,7 @@ mixin _$CatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -11867,6 +12571,7 @@ mixin _$CatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12021,6 +12726,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12079,6 +12785,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12137,6 +12844,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12293,6 +13001,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12351,6 +13060,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12409,6 +13119,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12566,6 +13277,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12624,6 +13336,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12682,6 +13395,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12841,6 +13555,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12899,6 +13614,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -12957,6 +13673,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13184,6 +13901,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13242,6 +13960,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13300,6 +14019,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13496,6 +14216,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13554,6 +14275,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13612,6 +14334,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13802,6 +14525,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13860,6 +14584,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -13918,6 +14643,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14040,6 +14766,7 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       bool isNotification,
       List<SkuProductDataModel> listSize,
       bool isLoadGetSizeProduct,
+      bool isOpenGetSizeProduct,
       PushNotificationMessageDataModel? notificationMessage,
       SkuProductDataModel? selectSizeProduct,
       String? errorMessage,
@@ -14100,6 +14827,7 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? isNotification = null,
     Object? listSize = null,
     Object? isLoadGetSizeProduct = null,
+    Object? isOpenGetSizeProduct = null,
     Object? notificationMessage = freezed,
     Object? selectSizeProduct = freezed,
     Object? errorMessage = freezed,
@@ -14232,6 +14960,10 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.isLoadGetSizeProduct
           : isLoadGetSizeProduct // ignore: cast_nullable_to_non_nullable
               as bool,
+      isOpenGetSizeProduct: null == isOpenGetSizeProduct
+          ? _value.isOpenGetSizeProduct
+          : isOpenGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool,
       notificationMessage: freezed == notificationMessage
           ? _value.notificationMessage
           : notificationMessage // ignore: cast_nullable_to_non_nullable
@@ -14357,6 +15089,7 @@ class _$PreloadDataCompletedCatalogStateImpl
       required this.isNotification,
       required final List<SkuProductDataModel> listSize,
       required this.isLoadGetSizeProduct,
+      required this.isOpenGetSizeProduct,
       this.notificationMessage,
       this.selectSizeProduct,
       this.errorMessage,
@@ -14576,6 +15309,8 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final bool isLoadGetSizeProduct;
   @override
+  final bool isOpenGetSizeProduct;
+  @override
   final PushNotificationMessageDataModel? notificationMessage;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -14598,7 +15333,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -14656,6 +15391,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             const DeepCollectionEquality().equals(other._listSize, _listSize) &&
             (identical(other.isLoadGetSizeProduct, isLoadGetSizeProduct) ||
                 other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
+            (identical(other.isOpenGetSizeProduct, isOpenGetSizeProduct) ||
+                other.isOpenGetSizeProduct == isOpenGetSizeProduct) &&
             (identical(other.notificationMessage, notificationMessage) ||
                 other.notificationMessage == notificationMessage) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -14711,6 +15448,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         isNotification,
         const DeepCollectionEquality().hash(_listSize),
         isLoadGetSizeProduct,
+        isOpenGetSizeProduct,
         notificationMessage,
         selectSizeProduct,
         errorMessage,
@@ -14774,6 +15512,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14817,6 +15556,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         isNotification,
         listSize,
         isLoadGetSizeProduct,
+        isOpenGetSizeProduct,
         notificationMessage,
         selectSizeProduct,
         errorMessage,
@@ -14872,6 +15612,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14915,6 +15656,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         isNotification,
         listSize,
         isLoadGetSizeProduct,
+        isOpenGetSizeProduct,
         notificationMessage,
         selectSizeProduct,
         errorMessage,
@@ -14970,6 +15712,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isNotification,
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15015,6 +15758,7 @@ class _$PreloadDataCompletedCatalogStateImpl
           isNotification,
           listSize,
           isLoadGetSizeProduct,
+          isOpenGetSizeProduct,
           notificationMessage,
           selectSizeProduct,
           errorMessage,
@@ -15116,6 +15860,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final bool isNotification,
       required final List<SkuProductDataModel> listSize,
       required final bool isLoadGetSizeProduct,
+      required final bool isOpenGetSizeProduct,
       final PushNotificationMessageDataModel? notificationMessage,
       final SkuProductDataModel? selectSizeProduct,
       final String? errorMessage,
@@ -15157,6 +15902,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   bool get isNotification;
   List<SkuProductDataModel> get listSize;
   bool get isLoadGetSizeProduct;
+  bool get isOpenGetSizeProduct;
   PushNotificationMessageDataModel? get notificationMessage;
   SkuProductDataModel? get selectSizeProduct;
   String? get errorMessage;

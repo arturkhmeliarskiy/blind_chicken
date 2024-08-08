@@ -35,11 +35,6 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
     super.didChangeDependencies();
   }
 
-  @override
-  void didUpdateWidget(covariant CatalogSearchResultScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
-
   void _loadMoreData() async {
     context.read<SearchBloc>().add(
           SearchEvent.checkButtonTop(

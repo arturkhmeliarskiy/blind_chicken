@@ -46,7 +46,9 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
   bool _isSwipe = true;
   bool _isChildRoute = false;
   bool _isShoppingCartButton = true;
+  bool _isNavigateMainScreen = false;
   late ProductDataModel item;
+
   @override
   void initState() {
     _isChildRoute = widget.isChildRoute;
@@ -101,7 +103,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
       listener: (context, state) {
         state.maybeMap(
           searchProductsResult: (value) {
-            if (value.listProductsCode.isEmpty) {
+            if (value.listProductsCode.isEmpty && !_isNavigateMainScreen) {
               context.back();
             }
           },
@@ -131,7 +133,14 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                       child: ListView(
                     controller: _scrollController,
                     children: [
-                      const AppBarBlindChicken(),
+                      AppBarBlindChicken(
+                        onBack: () {
+                          setState(() {
+                            _isNavigateMainScreen = true;
+                          });
+                          context.navigateNamedTo('/dashboard/home/main');
+                        },
+                      ),
                       BlocBuilder<SearchBloc, SearchState>(builder: (context, state) {
                         return state.maybeMap(
                           searchProductsResult: (initState) {

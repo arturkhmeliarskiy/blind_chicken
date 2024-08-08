@@ -52,6 +52,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
 
   @override
   void initState() {
+    final sharedService = GetIt.I.get<SharedPreferencesService>();
+    sharedService.setString(
+      key: SharedPrefKeys.lastScreen,
+      value: 'shopping_card_info',
+    );
     _isChildRoute = widget.isChildRoute;
     item = widget.item;
     _scrollController.addListener(_loadMoreData);
@@ -106,7 +111,8 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
           productsShoppingCart: (value) {
             final updateData = GetIt.I.get<UpdateDataService>();
             if (value.listProductsCode.isEmpty &&
-                !updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen) {
+                !updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
+                !value.isBlocBackBotton) {
               context.back();
             }
           },
@@ -249,21 +255,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                       child: ListView(
                     controller: _scrollController,
                     children: [
-                      AppBarBlindChicken(
-                        onBack: () {
-                          context.pushRoute(
-                            const DashboardRoute(
-                              children: [
-                                HomeAutoRouterRoute(
-                                  children: [
-                                    MainRoute(),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                      const AppBarBlindChicken(),
                       BlocBuilder<ShoppingCartBloc, ShoppingCartState>(builder: (context, state) {
                         return state.maybeMap(
                           productsShoppingCart: (initState) {
@@ -679,7 +671,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                               ),
                                             ],
                                           ),
-                                        BlindChickenButton(
+                                        BlindChickenButtonShoppingCart(
                                           title: initState.isShoppingCart ?? false
                                               ? 'Перейти в корзину'
                                               : 'Добавить в корзину',

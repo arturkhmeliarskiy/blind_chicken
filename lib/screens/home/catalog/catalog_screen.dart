@@ -169,6 +169,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                     Timer(const Duration(milliseconds: 150), () {
                       context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
                     });
+                    context.read<CatalogBloc>().add(
+                        const CatalogEvent.checkOpenGetInfoProductSize(isOpenGetSizeProduct: true));
                     context.navigateTo(
                       const ShoppingCartAutoRouterRoute(
                         children: [
@@ -794,6 +796,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                         ),
                                       Wrap(
                                         children: List.generate(initState.products.length, (index) {
+                                          final codeProduct =
+                                              (initState.codeProduct?.isNotEmpty ?? false)
+                                                  ? int.parse(initState.codeProduct ?? '0')
+                                                  : '';
                                           return CatalogCardItem(
                                             isLike: initState.favouritesProductsId
                                                 .contains(initState.products[index].id),
@@ -854,8 +860,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                   );
                                             },
                                             listSize: initState.listSize,
-                                            isLoad: int.parse(initState.codeProduct ?? '0') ==
-                                                    initState.products[index].id &&
+                                            isLoad: codeProduct == initState.products[index].id &&
                                                 initState.isLoadGetSizeProduct,
                                           );
                                         }),

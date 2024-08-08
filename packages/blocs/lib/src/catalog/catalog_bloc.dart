@@ -70,6 +70,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           checkProductToSoppingCart: (event) => _checkProductToSoppingCart(event, emit),
           getInfoServiceCard: (event) => _getInfoServiceCard(event, emit),
           changeSizeProduct: (event) => _changeSizeProduct(event, emit),
+          checkOpenGetInfoProductSize: (event) => _checkOpenGetInfoProductSize(event, emit),
         ));
   }
 
@@ -333,6 +334,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           codeProduct: null,
           listCatalogPath: [],
           userDiscount: 0,
+          isOpenGetSizeProduct: false,
         ),
       );
     }
@@ -1090,6 +1092,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isLoadGetSizeProduct: false,
         listCatalogPath: [event.path],
         userDiscount: catalogInfo.userDiscount,
+        isOpenGetSizeProduct: false,
       ),
     );
   }
@@ -1471,6 +1474,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       emit(initState.copyWith(
         listProductsCode: listProductsCode,
+        codeProduct: listProductsCode.isNotEmpty ? initState.codeProduct ?? '' : '',
       ));
 
       if (listProductsCode.isNotEmpty) {
@@ -1635,6 +1639,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     state.mapOrNull(preloadDataCompleted: (initState) {
       emit(initState.copyWith(
         selectSizeProduct: event.selectSizeProduct,
+      ));
+    });
+  }
+
+  Future<void> _checkOpenGetInfoProductSize(
+    CheckOpenGetInfoProductSizeCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      emit(initState.copyWith(
+        isOpenGetSizeProduct: event.isOpenGetSizeProduct,
       ));
     });
   }

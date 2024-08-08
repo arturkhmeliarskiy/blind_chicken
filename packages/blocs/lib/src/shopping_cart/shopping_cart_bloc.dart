@@ -120,6 +120,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         titlePromocode: 'Активация промокода',
         listSize: [],
         isLoadGetSizeProduct: false,
+        isLoadAddProductToShopingCart: false,
+        isBlocBackBotton: false,
       ),
     );
   }
@@ -196,6 +198,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         titlePromocode: 'Активация промокода',
         listSize: [],
         isLoadGetSizeProduct: false,
+        isLoadAddProductToShopingCart: false,
+        isBlocBackBotton: false,
       ),
     );
   }
@@ -293,6 +297,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             titlePromocode: 'Активация промокода',
             listSize: [],
             isLoadGetSizeProduct: false,
+            isLoadAddProductToShopingCart: false,
+            isBlocBackBotton: true,
           ),
         );
       }
@@ -305,6 +311,11 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
+        emit(
+          initState.copyWith(
+            isLoadAddProductToShopingCart: true,
+          ),
+        );
         BasketFullInfoDataModel? basketInfo;
         bool isShoppingCart = false;
         bool isShoppingCartDetailsProduct = false;
@@ -382,6 +393,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             amountPaid: amountPaid,
             isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
             isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
+            isLoadAddProductToShopingCart: false,
           ),
         );
       },
@@ -889,6 +901,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isShoppingCart: soppingCart.isNotEmpty,
         selectSizeProduct: selectSizeProduct ?? event.size,
         isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+        isBlocBackBotton: false,
       ));
     });
   }

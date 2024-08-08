@@ -14,6 +14,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared/shared.dart';
@@ -49,6 +50,11 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
 
   @override
   void initState() {
+    final sharedService = GetIt.I.get<SharedPreferencesService>();
+    sharedService.setString(
+      key: SharedPrefKeys.lastScreen,
+      value: 'favourites_card_info',
+    );
     _isChildRoute = widget.isChildRoute;
     item = widget.item;
     _scrollController.addListener(_loadMoreData);

@@ -58,6 +58,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   bool _isShoppingCartButton = true;
   bool _isChildRoute = false;
   bool _isSwipe = true;
+  bool _isOpenSizeProduct = false;
   late ProductDataModel item;
 
   @override
@@ -121,6 +122,19 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
     if (product != null) {
       item = product;
     }
+
+    if (product != null && _isOpenSizeProduct) {
+      context
+          .read<CatalogBloc>()
+          .add(const CatalogEvent.checkOpenGetInfoProductSize(isOpenGetSizeProduct: false));
+      context.read<CatalogBloc>().add(
+            CatalogEvent.getInfoProductSize(
+              code: product.id.toString(),
+              isShop: product.isShop,
+            ),
+          );
+    }
+
     if (widget.code?.isNotEmpty ?? false) {
       Timer(const Duration(milliseconds: 150), () {
         context.read<CatalogBloc>().add(
@@ -146,6 +160,11 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (value) {
+            if (value.isOpenGetSizeProduct) {
+              _isOpenSizeProduct = true;
+            } else {
+              _isOpenSizeProduct = false;
+            }
             if (value.listProductsCode.isEmpty) {
               if (widget.lastPath.isNotEmpty) {
                 if (widget.lastPath == 'news') {
@@ -185,7 +204,11 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   }
                 }
               } else {
-                context.back();
+                final sharedService = GetIt.I.get<SharedPreferencesService>();
+                if (sharedService.getString(key: SharedPrefKeys.lastScreen) ==
+                    'catalog_card_info') {
+                  context.back();
+                }
               }
             }
           },

@@ -219,6 +219,7 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               keepHistory: false,
               page: ShoppingCardInfoRoute.page,
+              path: "shopping_card_info",
             ),
           ]),
           AutoRoute(page: FavouritesRoute.page, path: 'favourites', children: [
@@ -229,6 +230,7 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               keepHistory: false,
               page: FavouritesCardInfoRoute.page,
+              path: "favourites_card_info",
             ),
           ]),
           AutoRoute(

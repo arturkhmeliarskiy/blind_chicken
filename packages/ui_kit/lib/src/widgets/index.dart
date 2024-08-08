@@ -14,3 +14,4 @@ export 'blind_chicken_warning_message.dart';
 export 'blind_chicken_qr_code.dart';
 export 'blind_chicken_dialog.dart';
 export 'push_notification_manager.dart';
+export 'blind_chicken_button_shopping_cart.dart';
