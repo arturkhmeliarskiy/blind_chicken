@@ -11,6 +11,12 @@ class BasketFullInfoItemResponse with _$BasketFullInfoItemResponse {
     String? code,
     String? sku,
     int? count,
+    String? type,
+    String? identifier,
+    @JsonKey(name: "section_categories_path") List<String>? sectionCategoriesPath,
+    @JsonKey(name: "product_categories_path") List<String>? productCategoriesPath,
+    @JsonKey(name: "title_screen") String? titleScreen,
+    @JsonKey(name: "search_query") String? searchQuery,
     BasketDataInfoResponse? data,
     @JsonKey(name: 'sku_name') String? skuName,
   }) = _BasketFullInfoItemResponse;

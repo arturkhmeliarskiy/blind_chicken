@@ -34,6 +34,7 @@ abstract class _$AppRouter extends RootStackRouter {
           newsInfo: args.newsInfo,
           newsMediaInfo: args.newsMediaInfo,
           newsNotificationInfo: args.newsNotificationInfo,
+          messageId: args.messageId,
         ),
       );
     },
@@ -167,6 +168,7 @@ abstract class _$AppRouter extends RootStackRouter {
           newsInfo: args.newsInfo,
           newsMediaInfo: args.newsMediaInfo,
           newsNotificationInfo: args.newsNotificationInfo,
+          messageId: args.messageId,
         ),
       );
     },
@@ -222,11 +224,12 @@ abstract class _$AppRouter extends RootStackRouter {
           url: args.url,
           isNotification: args.isNotification,
           sort: args.sort,
-          filterSelect: args.filterSelect,
+          filterNotifcation: args.filterNotifcation,
           lastPath: args.lastPath,
           newsInfo: args.newsInfo,
           newsMediaInfo: args.newsMediaInfo,
           newsNotificationInfo: args.newsNotificationInfo,
+          messageId: args.messageId,
         ),
       );
     },
@@ -424,6 +427,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: NewsNotificationDescriptionScreen(
           key: args.key,
           idNews: args.idNews,
+          messageId: args.messageId,
           isNotification: args.isNotification,
         ),
       );
@@ -446,6 +450,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: MediaNotificationDescriptionScreen(
           key: args.key,
           idNews: args.idNews,
+          messageId: args.messageId,
           isNotification: args.isNotification,
         ),
       );
@@ -618,6 +623,8 @@ abstract class _$AppRouter extends RootStackRouter {
           newsInfo: args.newsInfo,
           newsMediaInfo: args.newsMediaInfo,
           newsNotificationInfo: args.newsNotificationInfo,
+          messageId: args.messageId,
+          searchQuery: args.searchQuery,
         ),
       );
     },
@@ -738,6 +745,7 @@ class BoutiquesDescriptionRoute
     NewsInfoItemDataModel? newsInfo,
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
     List<PageRouteInfo>? children,
   }) : super(
           BoutiquesDescriptionRoute.name,
@@ -749,6 +757,7 @@ class BoutiquesDescriptionRoute
             newsInfo: newsInfo,
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
           ),
           initialChildren: children,
         );
@@ -768,6 +777,7 @@ class BoutiquesDescriptionRouteArgs {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
   });
 
   final Key? key;
@@ -784,9 +794,11 @@ class BoutiquesDescriptionRouteArgs {
 
   final NotificationInfoItemDataModel? newsNotificationInfo;
 
+  final String? messageId;
+
   @override
   String toString() {
-    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
+    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId}';
   }
 }
 
@@ -1254,6 +1266,7 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
     NewsInfoItemDataModel? newsInfo,
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogCardInfoRoute.name,
@@ -1269,6 +1282,7 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
             newsInfo: newsInfo,
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
           ),
           initialChildren: children,
         );
@@ -1292,6 +1306,7 @@ class CatalogCardInfoRouteArgs {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
   });
 
   final Key? key;
@@ -1316,9 +1331,11 @@ class CatalogCardInfoRouteArgs {
 
   final NotificationInfoItemDataModel? newsNotificationInfo;
 
+  final String? messageId;
+
   @override
   String toString() {
-    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
+    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId}';
   }
 }
 
@@ -1491,11 +1508,12 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
     required String url,
     bool isNotification = false,
     String sort = '',
-    String filterSelect = '',
+    FilterNotifcationDataModel? filterNotifcation,
     String lastPath = '',
     NewsInfoItemDataModel? newsInfo,
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogRoute.name,
@@ -1507,11 +1525,12 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
             url: url,
             isNotification: isNotification,
             sort: sort,
-            filterSelect: filterSelect,
+            filterNotifcation: filterNotifcation,
             lastPath: lastPath,
             newsInfo: newsInfo,
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
           ),
           initialChildren: children,
         );
@@ -1531,11 +1550,12 @@ class CatalogRouteArgs {
     required this.url,
     this.isNotification = false,
     this.sort = '',
-    this.filterSelect = '',
+    this.filterNotifcation,
     this.lastPath = '',
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
   });
 
   final Key? key;
@@ -1552,7 +1572,7 @@ class CatalogRouteArgs {
 
   final String sort;
 
-  final String filterSelect;
+  final FilterNotifcationDataModel? filterNotifcation;
 
   final String lastPath;
 
@@ -1562,9 +1582,11 @@ class CatalogRouteArgs {
 
   final NotificationInfoItemDataModel? newsNotificationInfo;
 
+  final String? messageId;
+
   @override
   String toString() {
-    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterSelect: $filterSelect, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
+    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterNotifcation: $filterNotifcation, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId}';
   }
 }
 
@@ -2233,6 +2255,7 @@ class NewsNotificationDescriptionRoute
   NewsNotificationDescriptionRoute({
     Key? key,
     String idNews = '',
+    String? messageId,
     bool isNotification = false,
     List<PageRouteInfo>? children,
   }) : super(
@@ -2240,6 +2263,7 @@ class NewsNotificationDescriptionRoute
           args: NewsNotificationDescriptionRouteArgs(
             key: key,
             idNews: idNews,
+            messageId: messageId,
             isNotification: isNotification,
           ),
           initialChildren: children,
@@ -2255,6 +2279,7 @@ class NewsNotificationDescriptionRouteArgs {
   const NewsNotificationDescriptionRouteArgs({
     this.key,
     this.idNews = '',
+    this.messageId,
     this.isNotification = false,
   });
 
@@ -2262,11 +2287,13 @@ class NewsNotificationDescriptionRouteArgs {
 
   final String idNews;
 
+  final String? messageId;
+
   final bool isNotification;
 
   @override
   String toString() {
-    return 'NewsNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, isNotification: $isNotification}';
+    return 'NewsNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, messageId: $messageId, isNotification: $isNotification}';
   }
 }
 
@@ -2315,6 +2342,7 @@ class MediaNotificationDescriptionRoute
   MediaNotificationDescriptionRoute({
     Key? key,
     String idNews = '',
+    String? messageId,
     bool isNotification = false,
     List<PageRouteInfo>? children,
   }) : super(
@@ -2322,6 +2350,7 @@ class MediaNotificationDescriptionRoute
           args: MediaNotificationDescriptionRouteArgs(
             key: key,
             idNews: idNews,
+            messageId: messageId,
             isNotification: isNotification,
           ),
           initialChildren: children,
@@ -2337,6 +2366,7 @@ class MediaNotificationDescriptionRouteArgs {
   const MediaNotificationDescriptionRouteArgs({
     this.key,
     this.idNews = '',
+    this.messageId,
     this.isNotification = false,
   });
 
@@ -2344,11 +2374,13 @@ class MediaNotificationDescriptionRouteArgs {
 
   final String idNews;
 
+  final String? messageId;
+
   final bool isNotification;
 
   @override
   String toString() {
-    return 'MediaNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, isNotification: $isNotification}';
+    return 'MediaNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, messageId: $messageId, isNotification: $isNotification}';
   }
 }
 
@@ -2901,6 +2933,8 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
     NewsInfoItemDataModel? newsInfo,
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
+    String? searchQuery,
     List<PageRouteInfo>? children,
   }) : super(
           GiftCardRoute.name,
@@ -2911,6 +2945,8 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
             newsInfo: newsInfo,
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
+            searchQuery: searchQuery,
           ),
           initialChildren: children,
         );
@@ -2929,6 +2965,8 @@ class GiftCardRouteArgs {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
+    this.searchQuery,
   });
 
   final Key? key;
@@ -2943,9 +2981,13 @@ class GiftCardRouteArgs {
 
   final NotificationInfoItemDataModel? newsNotificationInfo;
 
+  final String? messageId;
+
+  final String? searchQuery;
+
   @override
   String toString() {
-    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
+    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, searchQuery: $searchQuery}';
   }
 }
 

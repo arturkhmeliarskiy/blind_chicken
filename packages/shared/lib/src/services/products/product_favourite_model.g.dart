@@ -29,13 +29,19 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       country: fields[9] as String,
       images: (fields[10] as List).cast<String>(),
       variants: (fields[11] as List).cast<String>(),
+      titleScreen: fields[12] as String,
+      searchQuery: fields[13] as String,
+      typeAddProductToShoppingCart: fields[14] as String,
+      identifierAddProductToShoppingCart: fields[15] as String,
+      sectionCategoriesPath: (fields[16] as List).cast<String>(),
+      productCategoriesPath: (fields[17] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductFavouriteModel obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(18)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -59,7 +65,19 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       ..writeByte(10)
       ..write(obj.images)
       ..writeByte(11)
-      ..write(obj.variants);
+      ..write(obj.variants)
+      ..writeByte(12)
+      ..write(obj.titleScreen)
+      ..writeByte(13)
+      ..write(obj.searchQuery)
+      ..writeByte(14)
+      ..write(obj.typeAddProductToShoppingCart)
+      ..writeByte(15)
+      ..write(obj.identifierAddProductToShoppingCart)
+      ..writeByte(16)
+      ..write(obj.sectionCategoriesPath)
+      ..writeByte(17)
+      ..write(obj.productCategoriesPath);
   }
 
   @override

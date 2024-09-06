@@ -27,6 +27,7 @@ class CatalogCardItem extends StatefulWidget {
     required this.isLoad,
     required this.isAuth,
     required this.userDiscount,
+    required this.sizeProduct,
   });
 
   final String imageUrl;
@@ -48,6 +49,7 @@ class CatalogCardItem extends StatefulWidget {
   final VoidCallback onDeleteFavouriteProduct;
   final VoidCallback onAddProductToSoppingCart;
   final List<SkuProductDataModel> listSize;
+  final List<CatalogSizeProductDataModel> sizeProduct;
 
   @override
   State<CatalogCardItem> createState() => _CatalogCardItemState();
@@ -335,6 +337,25 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                   ],
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 7,
+              ),
+              child: Wrap(
+                children: List.generate(widget.sizeProduct.length, (index) {
+                  return Container(
+                    margin: const EdgeInsets.only(
+                      right: 7,
+                      bottom: 7,
+                    ),
+                    child: Text(
+                      widget.sizeProduct[index].name,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  );
+                }),
+              ),
             ),
           ],
         ),

@@ -49,6 +49,8 @@ class CatalogService {
           "hash_token_tel": hashTokenTel,
           "parent-id": id,
           "brands": 2,
+          "proverka_zreniya": 1,
+          "servisnaya_karta": 1,
         },
       );
       try {
@@ -153,6 +155,7 @@ class CatalogService {
 
   Future<CatalogResponse?> getCatalogProducts({
     required CatalogProductsRequest request,
+    String? messageId,
   }) async {
     CatalogResponse? catalogResponse;
     String hashTokenTel = '';
@@ -165,6 +168,10 @@ class CatalogService {
     if (tel.isNotEmpty) {
       hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
     }
+    final pushToken = _sharedPreferencesService.getString(key: SharedPrefKeys.pushToken) ?? '';
+    final platformDevice =
+        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
 
     for (int i = 0; i < filters.length; i++) {
       queryParameters[filters[i].key] = filters[i].value;
@@ -183,6 +190,14 @@ class CatalogService {
           "hash_token_tel": hashTokenTel,
           "url": request.url ?? '',
           "sort": request.sort,
+          "proverka_zreniya": 1,
+          if (messageId != null)
+            "push_open": {
+              "message_id": messageId,
+              "platform": platformDevice == 'IOS' ? 1 : 2,
+              "version": appVersion,
+              "push_token": pushToken,
+            },
         },
       );
       log(response.data);
@@ -285,6 +300,7 @@ class CatalogService {
 
   Future<DetailProductResponse?> getDetailsProduct({
     required String code,
+    String? messageId,
   }) async {
     DetailProductResponse? detailProductResponse;
     String hashTokenTel = '';
@@ -295,6 +311,10 @@ class CatalogService {
     if (tel.isNotEmpty) {
       hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
     }
+    final pushToken = _sharedPreferencesService.getString(key: SharedPrefKeys.pushToken) ?? '';
+    final platformDevice =
+        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
     try {
       log(_dio.options.headers.toString());
       final response = await _dio.post(
@@ -306,6 +326,13 @@ class CatalogService {
           "tel": tel,
           "hash_token_tel": hashTokenTel,
           "code": code,
+          if (messageId != null)
+            "push_open": {
+              "message_id": messageId,
+              "platform": platformDevice == 'IOS' ? 1 : 2,
+              "version": appVersion,
+              "push_token": pushToken,
+            },
         },
       );
 
@@ -485,6 +512,7 @@ class CatalogService {
           "tel": tel,
           "hash_token_tel": hashTokenTel,
           "search": search,
+          "proverka_zreniya": 1,
         },
       );
       log(response.data);

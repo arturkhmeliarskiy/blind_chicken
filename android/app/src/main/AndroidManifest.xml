@@ -58,11 +58,19 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <intent-filter>
+                <!-- Receive silent push notifications -->
+                <action android:name="com.slepayakurica.app.action.ymp.SILENT_PUSH_RECEIVE"/>
+            </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="ymp_firebase_default_app_id" android:value="1:1085146611593:android:18880eab0fb8784ad56b58"/>
+        <meta-data android:name="ymp_gcm_default_sender_id" android:value="number:1085146611593"/>
+        <meta-data android:name="ymp_firebase_default_api_key" android:value="AIzaSyCIgCCJNbiCYSS4kcT7iIxHIjO7yi80Sww"/>
+        <meta-data android:name="ymp_firebase_default_project_id" android:value="blind-chicken-17561"/>
     </application>
 </manifest>

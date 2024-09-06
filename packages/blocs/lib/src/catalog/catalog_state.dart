@@ -10,9 +10,15 @@ class CatalogState with _$CatalogState {
     required String code,
     required List<SkuProductDataModel> listSize,
     required List<SkuProductDataModel> listSizeToSoppingCart,
+    required String titleScreen,
+    required List<String> sectionCategoriesPath,
+    required List<String> productCategoriesPath,
   }) = GetSizeProductCatalogState;
   const factory CatalogState.addProductToSoppingCart({
     required String code,
+    required String titleScreen,
+    required List<String> sectionCategoriesPath,
+    required List<String> productCategoriesPath,
   }) = AddProductCatalogState;
   const factory CatalogState.error({
     required String errorMessage,
@@ -49,6 +55,7 @@ class CatalogState with _$CatalogState {
     required List<SkuProductDataModel> listSize,
     required bool isLoadGetSizeProduct,
     required bool isOpenGetSizeProduct,
+    required bool isButtonTop,
     PushNotificationMessageDataModel? notificationMessage,
     SkuProductDataModel? selectSizeProduct,
     String? errorMessage,

@@ -888,7 +888,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                                                         'Удалить аккаунт?',
                                                                         style: Theme.of(context)
                                                                             .textTheme
-                                                                            .headline2,
+                                                                            .headlineLarge,
                                                                       ),
                                                                       const SizedBox(
                                                                         height: 20,

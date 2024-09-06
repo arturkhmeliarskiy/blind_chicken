@@ -109,7 +109,7 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
                           color: Colors.transparent,
                           child: Text(
                             'Нет медиа',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         );
                       });

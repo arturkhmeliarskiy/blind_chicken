@@ -136,14 +136,22 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                     context.read<AccountBloc>().add(
                           AccountEvent.addProductToSoppingCart(
                             size: size,
+                            typeAddProductToShoppingCart: 'Выпадающий список',
+                            identifierAddProductToShoppingCart: '2',
                           ),
                         );
                     context.read<ShoppingCartBloc>().add(
-                          ShoppingCartEvent.addProductToSoppingCart(
+                          ShoppingCartEvent.addOtherProductToSoppingCart(
                             item: BasketInfoItemDataModel(
                               code: initState.code,
                               sku: size.id,
                               count: 1,
+                              titleScreen: 'Карточка товара в аккаунте (Мои заказы)',
+                              searchQuery: '',
+                              typeAddProductToShoppingCart: 'Выпадающий список',
+                              identifierAddProductToShoppingCart: '2',
+                              sectionCategoriesPath: [],
+                              productCategoriesPath: [],
                             ),
                           ),
                         );
@@ -185,6 +193,8 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
           addProductToSoppingCart: (initState) {
             context.read<AccountBloc>().add(
                   AccountEvent.addProductToSoppingCart(
+                    typeAddProductToShoppingCart: 'Кнопка',
+                    identifierAddProductToShoppingCart: '1',
                     size: SkuProductDataModel(
                       id: '',
                       value: '',
@@ -197,6 +207,12 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                       code: initState.code,
                       sku: '',
                       count: 1,
+                      titleScreen: 'Карточка товара в аккаунте (Мои заказы)',
+                      searchQuery: '',
+                      typeAddProductToShoppingCart: 'Кнопка',
+                      identifierAddProductToShoppingCart: '1',
+                      sectionCategoriesPath: [],
+                      productCategoriesPath: [],
                     ),
                   ),
                 );
@@ -475,7 +491,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                           .spaceSeparateNumbers(),
                                                       style: Theme.of(context)
                                                           .textTheme
-                                                          .headline2
+                                                          .headlineLarge
                                                           ?.copyWith(
                                                             decoration: TextDecoration.lineThrough,
                                                           ),
@@ -581,6 +597,9 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                       code: (initState.detailsProduct?.code ?? 0)
                                                           .toString(),
                                                       isUpdate: true,
+                                                      titleScreen: 'Описание товара в моих заказах',
+                                                      typeAddProductToShoppingCart: 'Кнопка',
+                                                      identifierAddProductToShoppingCart: '4',
                                                     ),
                                                   );
                                             },
@@ -630,6 +649,12 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                                   AccountEvent.getInfoProduct(
                                                                     code: value.id.toString(),
                                                                     size: value,
+                                                                    titleScreen:
+                                                                        'Описание товара в моих заказах',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Кнопка',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '4',
                                                                   ),
                                                                 );
                                                           }
@@ -684,7 +709,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                 ),
                                               ],
                                             ),
-                                          BlindChickenButton(
+                                          BlindChickenButtonShoppingCartProduct(
                                             title: initState.isShoppingCart ?? false
                                                 ? 'Перейти в корзину'
                                                 : 'Добавить в корзину',
@@ -703,6 +728,8 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                               } else {
                                                 context.read<AccountBloc>().add(
                                                       AccountEvent.addProductToSoppingCart(
+                                                        typeAddProductToShoppingCart: 'Кнопка',
+                                                        identifierAddProductToShoppingCart: '1',
                                                         size: initState.selectSizeProduct ??
                                                             (sky.isNotEmpty
                                                                 ? sky.first
@@ -728,6 +755,13 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                                   ? sky.first.id
                                                                   : '',
                                                           count: 1,
+                                                          titleScreen:
+                                                              'Карточка товара в аккаунте (Мои заказы)',
+                                                          searchQuery: '',
+                                                          typeAddProductToShoppingCart: 'Кнопка',
+                                                          identifierAddProductToShoppingCart: '1',
+                                                          sectionCategoriesPath: [],
+                                                          productCategoriesPath: [],
                                                         ),
                                                       ),
                                                     );
@@ -784,6 +818,10 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                     context.read<AccountBloc>().add(
                                                           AccountEvent.getInfoProduct(
                                                             code: product.id.toString(),
+                                                            titleScreen:
+                                                                'Описание товара в моих заказах (Варианты)',
+                                                            typeAddProductToShoppingCart: 'Кнопка',
+                                                            identifierAddProductToShoppingCart: '4',
                                                           ),
                                                         );
                                                   },
@@ -835,6 +873,12 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                               context.read<AccountBloc>().add(
                                                                     AccountEvent.getInfoProduct(
                                                                       code: value.id.toString(),
+                                                                      titleScreen:
+                                                                          'Описание товара в моих заказах (Носят вместе)',
+                                                                      typeAddProductToShoppingCart:
+                                                                          'Карточка товара',
+                                                                      identifierAddProductToShoppingCart:
+                                                                          '1',
                                                                     ),
                                                                   );
                                                             },
@@ -909,6 +953,12 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                               context.read<AccountBloc>().add(
                                                                     AccountEvent.getInfoProduct(
                                                                       code: value.id.toString(),
+                                                                      titleScreen:
+                                                                          'Описание товара в моих заказах (Рекомендации стилистов)',
+                                                                      typeAddProductToShoppingCart:
+                                                                          'Карточка товара',
+                                                                      identifierAddProductToShoppingCart:
+                                                                          '1',
                                                                     ),
                                                                   );
                                                             },
@@ -981,6 +1031,12 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                               context.read<AccountBloc>().add(
                                                                     AccountEvent.getInfoProduct(
                                                                       code: value.id.toString(),
+                                                                      titleScreen:
+                                                                          'Описание товара в моих заказах (Смотрите также)',
+                                                                      typeAddProductToShoppingCart:
+                                                                          'Карточка товара',
+                                                                      identifierAddProductToShoppingCart:
+                                                                          '1',
                                                                     ),
                                                                   );
                                                             },
@@ -1112,6 +1168,12 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                             context.read<AccountBloc>().add(
                                                                   AccountEvent.getInfoProduct(
                                                                     code: value.id.toString(),
+                                                                    titleScreen:
+                                                                        'Описание товара в моих заказах (Товары бренда)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },

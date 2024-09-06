@@ -43,7 +43,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
                 Text(
                   'Отсутствует интернет\nсоединение',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const SizedBox(
                   height: 25,
@@ -65,7 +65,7 @@ class _NoInternetScreenState extends State<NoInternetScreen> {
                 Text(
                   'Повторить подключение',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ],
             ),

@@ -9,9 +9,11 @@ class GiftCardState with _$GiftCardState {
     required bool isLoadCreateOrder,
     required bool isUpdateVersionApp,
     required bool isNotification,
+    required String searchQuery,
     String? creatOrderMessage,
   }) = PreloadDataGiftCardState;
   const factory GiftCardState.createOrderSuccessfully({
     required int orderId,
+    required String searchQuery,
   }) = CreateOrderSuccessfullyGiftCardState;
 }

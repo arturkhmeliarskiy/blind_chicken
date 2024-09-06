@@ -14,9 +14,13 @@ class BoutiquesRepository {
     return boutiques.toBoutiques();
   }
 
-  Future<BoutiqueInfoDataModel> getInfoBoutique({required String uid}) async {
+  Future<BoutiqueInfoDataModel> getInfoBoutique({
+    required String uid,
+    String? messageId,
+  }) async {
     final boutiques = await _boutiquesService.getInfoBoutique(
           uid: uid,
+          messageId: messageId,
         ) ??
         BoutiqueInfoResponse();
     return boutiques.toInfoBoutique();

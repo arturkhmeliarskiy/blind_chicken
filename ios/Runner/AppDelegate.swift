@@ -1,9 +1,11 @@
 import UIKit
 import Flutter
 import YandexMapsMobile
+import AppMetricaCore
+import AppMetricaPush
+import AppMetricaPushLazy
 
-
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate {
   var methodChannel: FlutterMethodChannel? = nil
   var tokenChannel: FlutterMethodChannel? = nil
@@ -14,6 +16,8 @@ import YandexMapsMobile
   ) -> Bool {
     UIApplication.shared.registerForRemoteNotifications()
     YMKMapKit.setApiKey("6c8801e7-18fc-4835-b7bd-f60e7b42ce84") // Your generated API key
+    let configuration = AppMetricaConfiguration(apiKey: "0f36d6f0-0774-4cf2-ad27-20b0289ddcf1") // Initializing the AppMetrica SDK.
+    AppMetrica.activate(with: configuration!) 
 
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
     methodChannel = FlutterMethodChannel(name: "blind_chicken/getMessages", binaryMessenger: controller.binaryMessenger)
@@ -49,6 +53,8 @@ import YandexMapsMobile
         UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
     }
+    AppMetricaPush.setExtensionAppGroup("group.push.slepayakurica")
+    AppMetricaPush.handleApplicationDidFinishLaunching(options: launchOptions)
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
@@ -57,7 +63,16 @@ import YandexMapsMobile
                 didRegisterForRemoteNotificationsWithDeviceToken 
                 deviceToken: Data) {
       let token = deviceToken.map {String(format: "%02.2hhx", $0) }.joined()
-       
+     
+      // If the AppMetrica SDK library was not initialized before this step,
+      // calling the method causes the app to crash.
+      #if DEBUG
+          let pushEnvironment = AppMetricaPushEnvironment.development
+      #else
+          let pushEnvironment = AppMetricaPushEnvironment.production
+      #endif
+      AppMetricaPush.setDeviceTokenFrom(deviceToken, pushEnvironment: pushEnvironment)
+
       tokenChannel?.setMethodCallHandler({
         (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
         if (call.method == "getDeviceToken") {
@@ -82,8 +97,9 @@ import YandexMapsMobile
   override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
     let userInfo = response.notification.request.content.userInfo
-
-
+    let delegate = AppMetricaPush.userNotificationCenterDelegate
+    UNUserNotificationCenter.current().delegate = delegate
+    
     // guard let apsDict = ((userInfo["aps"] as? NSDictionary)?.value(forKey: "alert")) as? NSDictionary,
     //     let title = apsDict["title"] as? String,
     //     let body = apsDict["body"] as? String
@@ -104,8 +120,8 @@ import YandexMapsMobile
         else { return }
     guard let sort = userInfo["sort"] as? String
         else { return }
-    guard let filter = userInfo["filter"] as? String
-        else { return }
+    // guard let filter = userInfo["filter"] as? String
+    //     else { return }
     guard let uid = userInfo["uid"] as? String
         else { return }
     guard let idNews = userInfo["id_news"] as? String
@@ -149,10 +165,10 @@ import YandexMapsMobile
         //   result("\("\(body)")")
         //   return
         // }
-        if (call.method == "filter") {
-          result("\("\(filter)")")
-          return
-        }
+        // if (call.method == "filter") {
+        //   result("\("\(filter)")")
+        //   return
+        // }
         return
       })
   }

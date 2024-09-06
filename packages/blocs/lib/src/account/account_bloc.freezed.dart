@@ -31,7 +31,7 @@ mixin _$AccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -40,13 +40,22 @@ mixin _$AccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -65,19 +74,29 @@ mixin _$AccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) =>
@@ -95,19 +114,29 @@ mixin _$AccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -349,7 +378,7 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -358,13 +387,22 @@ class _$InitAccountEventImpl implements InitAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -386,19 +424,29 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -419,19 +467,29 @@ class _$InitAccountEventImpl implements InitAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -687,7 +745,7 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -696,13 +754,22 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -724,19 +791,29 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -757,19 +834,29 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -984,7 +1071,7 @@ class _$PaginationOrdersAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -993,13 +1080,22 @@ class _$PaginationOrdersAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1021,19 +1117,29 @@ class _$PaginationOrdersAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -1054,19 +1160,29 @@ class _$PaginationOrdersAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -1270,7 +1386,7 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -1279,13 +1395,22 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1307,19 +1432,29 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -1340,19 +1475,29 @@ class _$GetOrdersAccountEventImpl implements GetOrdersAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -1558,7 +1703,7 @@ class _$PaginationListOrdersBlankAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -1567,13 +1712,22 @@ class _$PaginationListOrdersBlankAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1595,19 +1749,29 @@ class _$PaginationListOrdersBlankAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -1628,19 +1792,29 @@ class _$PaginationListOrdersBlankAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -1847,7 +2021,7 @@ class _$GetListOrdersBlankAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -1856,13 +2030,22 @@ class _$GetListOrdersBlankAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -1884,19 +2067,29 @@ class _$GetListOrdersBlankAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -1917,19 +2110,29 @@ class _$GetListOrdersBlankAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -2172,7 +2375,7 @@ class _$GetOrderPdfBlankAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -2181,13 +2384,22 @@ class _$GetOrderPdfBlankAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2209,19 +2421,29 @@ class _$GetOrderPdfBlankAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -2242,19 +2464,29 @@ class _$GetOrderPdfBlankAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -2469,7 +2701,7 @@ class _$PaginationListTailoringBlankAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -2478,13 +2710,22 @@ class _$PaginationListTailoringBlankAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2506,19 +2747,29 @@ class _$PaginationListTailoringBlankAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -2539,19 +2790,29 @@ class _$PaginationListTailoringBlankAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -2759,7 +3020,7 @@ class _$GetListTailoringBlankAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -2768,13 +3029,22 @@ class _$GetListTailoringBlankAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -2796,19 +3066,29 @@ class _$GetListTailoringBlankAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -2829,19 +3109,29 @@ class _$GetListTailoringBlankAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -3085,7 +3375,7 @@ class _$GetTailoringPdfBlankAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -3094,13 +3384,22 @@ class _$GetTailoringPdfBlankAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3122,19 +3421,29 @@ class _$GetTailoringPdfBlankAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -3155,19 +3464,29 @@ class _$GetTailoringPdfBlankAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -3406,7 +3725,7 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -3415,13 +3734,22 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -3443,19 +3771,29 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -3476,19 +3814,29 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -3651,7 +3999,7 @@ abstract class _$$GetInfoPayOrderAccountEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoPayOrderAccountEventImpl) then) =
       __$$GetInfoPayOrderAccountEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String id, String? searchQuery});
 }
 
 /// @nodoc
@@ -3667,12 +4015,17 @@ class __$$GetInfoPayOrderAccountEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? searchQuery = freezed,
   }) {
     return _then(_$GetInfoPayOrderAccountEventImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -3680,14 +4033,16 @@ class __$$GetInfoPayOrderAccountEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
-  const _$GetInfoPayOrderAccountEventImpl({required this.id});
+  const _$GetInfoPayOrderAccountEventImpl({required this.id, this.searchQuery});
 
   @override
   final String id;
+  @override
+  final String? searchQuery;
 
   @override
   String toString() {
-    return 'AccountEvent.getInfoPayOrder(id: $id)';
+    return 'AccountEvent.getInfoPayOrder(id: $id, searchQuery: $searchQuery)';
   }
 
   @override
@@ -3695,11 +4050,13 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetInfoPayOrderAccountEventImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -3724,7 +4081,7 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -3733,18 +4090,27 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return getInfoPayOrder(id);
+    return getInfoPayOrder(id, searchQuery);
   }
 
   @override
@@ -3761,23 +4127,33 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return getInfoPayOrder?.call(id);
+    return getInfoPayOrder?.call(id, searchQuery);
   }
 
   @override
@@ -3794,25 +4170,35 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoPayOrder != null) {
-      return getInfoPayOrder(id);
+      return getInfoPayOrder(id, searchQuery);
     }
     return orElse();
   }
@@ -3953,10 +4339,12 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
 }
 
 abstract class GetInfoPayOrderAccountEvent implements AccountEvent {
-  const factory GetInfoPayOrderAccountEvent({required final String id}) =
-      _$GetInfoPayOrderAccountEventImpl;
+  const factory GetInfoPayOrderAccountEvent(
+      {required final String id,
+      final String? searchQuery}) = _$GetInfoPayOrderAccountEventImpl;
 
   String get id;
+  String? get searchQuery;
   @JsonKey(ignore: true)
   _$$GetInfoPayOrderAccountEventImplCopyWith<_$GetInfoPayOrderAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4042,7 +4430,7 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -4051,13 +4439,22 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4079,19 +4476,29 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -4112,19 +4519,29 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -4331,7 +4748,7 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -4340,13 +4757,22 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4368,19 +4794,29 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -4401,19 +4837,29 @@ class _$LogOutAccountEventImpl implements LogOutAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -4614,7 +5060,7 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -4623,13 +5069,22 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4651,19 +5106,29 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -4684,19 +5149,29 @@ class _$RemoveAccountEventImpl implements RemoveAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -4900,7 +5375,7 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -4909,13 +5384,22 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -4937,19 +5421,29 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -4970,19 +5464,29 @@ class _$VirtualCardsCodAccountEventImpl implements VirtualCardsCodAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -5235,7 +5739,7 @@ class _$AddFavouriteProductAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -5244,13 +5748,22 @@ class _$AddFavouriteProductAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5272,19 +5785,29 @@ class _$AddFavouriteProductAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -5305,19 +5828,29 @@ class _$AddFavouriteProductAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -5559,7 +6092,7 @@ class _$DeleteFavouriteProductAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -5568,13 +6101,22 @@ class _$DeleteFavouriteProductAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -5596,19 +6138,29 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -5629,19 +6181,29 @@ class _$DeleteFavouriteProductAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -5805,7 +6367,13 @@ abstract class _$$GetInfoProductAccountEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductAccountEventImpl) then) =
       __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code, SkuProductDataModel? size, bool? isUpdate});
+  $Res call(
+      {String code,
+      String titleScreen,
+      String typeAddProductToShoppingCart,
+      String identifierAddProductToShoppingCart,
+      SkuProductDataModel? size,
+      bool? isUpdate});
 
   $SkuProductDataModelCopyWith<$Res>? get size;
 }
@@ -5823,6 +6391,9 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? titleScreen = null,
+    Object? typeAddProductToShoppingCart = null,
+    Object? identifierAddProductToShoppingCart = null,
     Object? size = freezed,
     Object? isUpdate = freezed,
   }) {
@@ -5830,6 +6401,19 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      titleScreen: null == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeAddProductToShoppingCart: null == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      identifierAddProductToShoppingCart: null ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
               as String,
       size: freezed == size
           ? _value.size
@@ -5859,10 +6443,21 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
 
 class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
   const _$GetInfoProductAccountEventImpl(
-      {required this.code, this.size, this.isUpdate});
+      {required this.code,
+      required this.titleScreen,
+      required this.typeAddProductToShoppingCart,
+      required this.identifierAddProductToShoppingCart,
+      this.size,
+      this.isUpdate});
 
   @override
   final String code;
+  @override
+  final String titleScreen;
+  @override
+  final String typeAddProductToShoppingCart;
+  @override
+  final String identifierAddProductToShoppingCart;
   @override
   final SkuProductDataModel? size;
   @override
@@ -5870,7 +6465,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
 
   @override
   String toString() {
-    return 'AccountEvent.getInfoProduct(code: $code, size: $size, isUpdate: $isUpdate)';
+    return 'AccountEvent.getInfoProduct(code: $code, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, size: $size, isUpdate: $isUpdate)';
   }
 
   @override
@@ -5879,13 +6474,30 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductAccountEventImpl &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart,
+                    identifierAddProductToShoppingCart) ||
+                other.identifierAddProductToShoppingCart ==
+                    identifierAddProductToShoppingCart) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, size, isUpdate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      titleScreen,
+      typeAddProductToShoppingCart,
+      identifierAddProductToShoppingCart,
+      size,
+      isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -5910,7 +6522,7 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -5919,18 +6531,28 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return getInfoProduct(code, size, isUpdate);
+    return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart, size, isUpdate);
   }
 
   @override
@@ -5947,23 +6569,34 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return getInfoProduct?.call(code, size, isUpdate);
+    return getInfoProduct?.call(code, titleScreen, typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart, size, isUpdate);
   }
 
   @override
@@ -5980,25 +6613,36 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code, size, isUpdate);
+      return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart, size, isUpdate);
     }
     return orElse();
   }
@@ -6141,10 +6785,16 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
 abstract class GetInfoProductAccountEvent implements AccountEvent {
   const factory GetInfoProductAccountEvent(
       {required final String code,
+      required final String titleScreen,
+      required final String typeAddProductToShoppingCart,
+      required final String identifierAddProductToShoppingCart,
       final SkuProductDataModel? size,
       final bool? isUpdate}) = _$GetInfoProductAccountEventImpl;
 
   String get code;
+  String get titleScreen;
+  String get typeAddProductToShoppingCart;
+  String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
   @JsonKey(ignore: true)
@@ -6247,7 +6897,7 @@ class _$ChangeSizeProductAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -6256,13 +6906,22 @@ class _$ChangeSizeProductAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -6284,19 +6943,29 @@ class _$ChangeSizeProductAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -6317,19 +6986,29 @@ class _$ChangeSizeProductAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -6578,7 +7257,7 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -6587,13 +7266,22 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -6615,19 +7303,29 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -6648,19 +7346,29 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -6874,7 +7582,7 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -6883,13 +7591,22 @@ class _$GoBackProductInfoCategotyAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -6911,19 +7628,29 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -6944,19 +7671,29 @@ class _$GoBackProductInfoCategotyAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -7114,7 +7851,10 @@ abstract class _$$AddProductToSoppingCartCAccountEventImplCopyWith<$Res> {
           $Res Function(_$AddProductToSoppingCartCAccountEventImpl) then) =
       __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SkuProductDataModel size});
+  $Res call(
+      {SkuProductDataModel size,
+      String typeAddProductToShoppingCart,
+      String identifierAddProductToShoppingCart});
 
   $SkuProductDataModelCopyWith<$Res> get size;
 }
@@ -7133,12 +7873,23 @@ class __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? size = null,
+    Object? typeAddProductToShoppingCart = null,
+    Object? identifierAddProductToShoppingCart = null,
   }) {
     return _then(_$AddProductToSoppingCartCAccountEventImpl(
       size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
+      typeAddProductToShoppingCart: null == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      identifierAddProductToShoppingCart: null ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -7155,14 +7906,21 @@ class __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>
 
 class _$AddProductToSoppingCartCAccountEventImpl
     implements AddProductToSoppingCartCAccountEvent {
-  const _$AddProductToSoppingCartCAccountEventImpl({required this.size});
+  const _$AddProductToSoppingCartCAccountEventImpl(
+      {required this.size,
+      required this.typeAddProductToShoppingCart,
+      required this.identifierAddProductToShoppingCart});
 
   @override
   final SkuProductDataModel size;
+  @override
+  final String typeAddProductToShoppingCart;
+  @override
+  final String identifierAddProductToShoppingCart;
 
   @override
   String toString() {
-    return 'AccountEvent.addProductToSoppingCart(size: $size)';
+    return 'AccountEvent.addProductToSoppingCart(size: $size, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart)';
   }
 
   @override
@@ -7170,11 +7928,20 @@ class _$AddProductToSoppingCartCAccountEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddProductToSoppingCartCAccountEventImpl &&
-            (identical(other.size, size) || other.size == size));
+            (identical(other.size, size) || other.size == size) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart,
+                    identifierAddProductToShoppingCart) ||
+                other.identifierAddProductToShoppingCart ==
+                    identifierAddProductToShoppingCart));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, size);
+  int get hashCode => Object.hash(runtimeType, size,
+      typeAddProductToShoppingCart, identifierAddProductToShoppingCart);
 
   @JsonKey(ignore: true)
   @override
@@ -7200,7 +7967,7 @@ class _$AddProductToSoppingCartCAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -7209,18 +7976,28 @@ class _$AddProductToSoppingCartCAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return addProductToSoppingCart(size);
+    return addProductToSoppingCart(
+        size, typeAddProductToShoppingCart, identifierAddProductToShoppingCart);
   }
 
   @override
@@ -7237,23 +8014,34 @@ class _$AddProductToSoppingCartCAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return addProductToSoppingCart?.call(size);
+    return addProductToSoppingCart?.call(
+        size, typeAddProductToShoppingCart, identifierAddProductToShoppingCart);
   }
 
   @override
@@ -7270,25 +8058,36 @@ class _$AddProductToSoppingCartCAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
   }) {
     if (addProductToSoppingCart != null) {
-      return addProductToSoppingCart(size);
+      return addProductToSoppingCart(size, typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart);
     }
     return orElse();
   }
@@ -7430,10 +8229,14 @@ class _$AddProductToSoppingCartCAccountEventImpl
 
 abstract class AddProductToSoppingCartCAccountEvent implements AccountEvent {
   const factory AddProductToSoppingCartCAccountEvent(
-          {required final SkuProductDataModel size}) =
+          {required final SkuProductDataModel size,
+          required final String typeAddProductToShoppingCart,
+          required final String identifierAddProductToShoppingCart}) =
       _$AddProductToSoppingCartCAccountEventImpl;
 
   SkuProductDataModel get size;
+  String get typeAddProductToShoppingCart;
+  String get identifierAddProductToShoppingCart;
   @JsonKey(ignore: true)
   _$$AddProductToSoppingCartCAccountEventImplCopyWith<
           _$AddProductToSoppingCartCAccountEventImpl>
@@ -7533,7 +8336,7 @@ class _$CheckProductToSoppingCartAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -7542,13 +8345,22 @@ class _$CheckProductToSoppingCartAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -7570,19 +8382,29 @@ class _$CheckProductToSoppingCartAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -7603,19 +8425,29 @@ class _$CheckProductToSoppingCartAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),
@@ -7865,7 +8697,7 @@ class _$GetInfoProductSizeAccountEventImpl
     required TResult Function() getListTailoringBlank,
     required TResult Function(String fileName, String id) getTailoringPdfBlank,
     required TResult Function(String id) getInfoOrder,
-    required TResult Function(String id) getInfoPayOrder,
+    required TResult Function(String id, String? searchQuery) getInfoPayOrder,
     required TResult Function(String idForPay) payOrder,
     required TResult Function() logOut,
     required TResult Function() removeAccount,
@@ -7874,13 +8706,22 @@ class _$GetInfoProductSizeAccountEventImpl
         addFavouriteProduct,
     required TResult Function(int index) deleteFavouriteProduct,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
     required TResult Function(String fileName, Uint8List bytes) saveDocument,
     required TResult Function() goBackProductInfo,
-    required TResult Function(SkuProductDataModel size) addProductToSoppingCart,
+    required TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)
+        addProductToSoppingCart,
     required TResult Function(SkuProductDataModel size)
         checkProductToSoppingCart,
     required TResult Function(String code, bool isShop) getInfoProductSize,
@@ -7902,19 +8743,29 @@ class _$GetInfoProductSizeAccountEventImpl
     TResult? Function()? getListTailoringBlank,
     TResult? Function(String fileName, String id)? getTailoringPdfBlank,
     TResult? Function(String id)? getInfoOrder,
-    TResult? Function(String id)? getInfoPayOrder,
+    TResult? Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult? Function(String idForPay)? payOrder,
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
     TResult? Function()? virtualCardsCod,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult? Function(int index)? deleteFavouriteProduct,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function(String fileName, Uint8List bytes)? saveDocument,
     TResult? Function()? goBackProductInfo,
-    TResult? Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult? Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult? Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
@@ -7935,19 +8786,29 @@ class _$GetInfoProductSizeAccountEventImpl
     TResult Function()? getListTailoringBlank,
     TResult Function(String fileName, String id)? getTailoringPdfBlank,
     TResult Function(String id)? getInfoOrder,
-    TResult Function(String id)? getInfoPayOrder,
+    TResult Function(String id, String? searchQuery)? getInfoPayOrder,
     TResult Function(String idForPay)? payOrder,
     TResult Function()? logOut,
     TResult Function()? removeAccount,
     TResult Function()? virtualCardsCod,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
     TResult Function(int index)? deleteFavouriteProduct,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function(String fileName, Uint8List bytes)? saveDocument,
     TResult Function()? goBackProductInfo,
-    TResult Function(SkuProductDataModel size)? addProductToSoppingCart,
+    TResult Function(
+            SkuProductDataModel size,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart)?
+        addProductToSoppingCart,
     TResult Function(SkuProductDataModel size)? checkProductToSoppingCart,
     TResult Function(String code, bool isShop)? getInfoProductSize,
     required TResult orElse(),

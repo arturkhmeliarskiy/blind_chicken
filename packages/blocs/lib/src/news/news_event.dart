@@ -7,11 +7,13 @@ class NewsEvent with _$NewsEvent {
   const factory NewsEvent.getNewsDescriptionInfo({
     required String id,
     bool? isNotification,
+    String? messageId,
   }) = GetNewsDescriptionInfoNewsEvent;
   const factory NewsEvent.getMedia() = GetMediaEvent;
   const factory NewsEvent.getMediaDescriptionInfo({
     required String id,
     bool? isNotification,
+    String? messageId,
   }) = GetMediaDescriptionInfoNewsEvent;
   const factory NewsEvent.getNotifications() = GetNotificationsEvent;
   const factory NewsEvent.paginationNews() = PaginationNewsNewsEvent;

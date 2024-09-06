@@ -80,5 +80,19 @@ Future<void> initServices(GetIt getIt) async {
         getIt.get<ConverterService>(),
         getIt.get<SharedPreferencesService>(),
       ),
+    )
+    ..registerFactory(
+      () => GiftCardService(
+        dio,
+        getIt.get<ConverterService>(),
+        getIt.get<SharedPreferencesService>(),
+      ),
+    )
+    ..registerFactory(
+      () => ErrorAnalyzerService(
+        dio,
+        getIt.get<ConverterService>(),
+        getIt.get<SharedPreferencesService>(),
+      ),
     );
 }

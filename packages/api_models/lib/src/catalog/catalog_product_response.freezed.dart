@@ -31,6 +31,8 @@ mixin _$CatalogProductResponse {
   int? get pbc => throw _privateConstructorUsedError;
   int? get ca => throw _privateConstructorUsedError;
   int? get dv => throw _privateConstructorUsedError;
+  List<CatalogSizeProductResponse>? get sz =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +56,8 @@ abstract class $CatalogProductResponseCopyWith<$Res> {
       int? pc,
       int? pbc,
       int? ca,
-      int? dv});
+      int? dv,
+      List<CatalogSizeProductResponse>? sz});
 }
 
 /// @nodoc
@@ -81,6 +84,7 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
     Object? pbc = freezed,
     Object? ca = freezed,
     Object? dv = freezed,
+    Object? sz = freezed,
   }) {
     return _then(_value.copyWith(
       c: freezed == c
@@ -123,6 +127,10 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int?,
+      sz: freezed == sz
+          ? _value.sz
+          : sz // ignore: cast_nullable_to_non_nullable
+              as List<CatalogSizeProductResponse>?,
     ) as $Val);
   }
 }
@@ -146,7 +154,8 @@ abstract class _$$CatalogProductResponseImplCopyWith<$Res>
       int? pc,
       int? pbc,
       int? ca,
-      int? dv});
+      int? dv,
+      List<CatalogSizeProductResponse>? sz});
 }
 
 /// @nodoc
@@ -172,6 +181,7 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
     Object? pbc = freezed,
     Object? ca = freezed,
     Object? dv = freezed,
+    Object? sz = freezed,
   }) {
     return _then(_$CatalogProductResponseImpl(
       c: freezed == c
@@ -214,6 +224,10 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int?,
+      sz: freezed == sz
+          ? _value._sz
+          : sz // ignore: cast_nullable_to_non_nullable
+              as List<CatalogSizeProductResponse>?,
     ));
   }
 }
@@ -231,8 +245,10 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
       this.pc,
       this.pbc,
       this.ca,
-      this.dv})
-      : super._();
+      this.dv,
+      final List<CatalogSizeProductResponse>? sz})
+      : _sz = sz,
+        super._();
 
   factory _$CatalogProductResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CatalogProductResponseImplFromJson(json);
@@ -257,10 +273,19 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   final int? ca;
   @override
   final int? dv;
+  final List<CatalogSizeProductResponse>? _sz;
+  @override
+  List<CatalogSizeProductResponse>? get sz {
+    final value = _sz;
+    if (value == null) return null;
+    if (_sz is EqualUnmodifiableListView) return _sz;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'CatalogProductResponse(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv)';
+    return 'CatalogProductResponse(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, sz: $sz)';
   }
 
   @override
@@ -277,13 +302,14 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
             (identical(other.pc, pc) || other.pc == pc) &&
             (identical(other.pbc, pbc) || other.pbc == pbc) &&
             (identical(other.ca, ca) || other.ca == ca) &&
-            (identical(other.dv, dv) || other.dv == dv));
+            (identical(other.dv, dv) || other.dv == dv) &&
+            const DeepCollectionEquality().equals(other._sz, _sz));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca, dv);
+  int get hashCode => Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca,
+      dv, const DeepCollectionEquality().hash(_sz));
 
   @JsonKey(ignore: true)
   @override
@@ -302,16 +328,18 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
 abstract class _CatalogProductResponse extends CatalogProductResponse {
   factory _CatalogProductResponse(
-      {final String? c,
-      final String? f,
-      final String? b,
-      final String? n,
-      final String? p,
-      final String? pb,
-      final int? pc,
-      final int? pbc,
-      final int? ca,
-      final int? dv}) = _$CatalogProductResponseImpl;
+          {final String? c,
+          final String? f,
+          final String? b,
+          final String? n,
+          final String? p,
+          final String? pb,
+          final int? pc,
+          final int? pbc,
+          final int? ca,
+          final int? dv,
+          final List<CatalogSizeProductResponse>? sz}) =
+      _$CatalogProductResponseImpl;
   _CatalogProductResponse._() : super._();
 
   factory _CatalogProductResponse.fromJson(Map<String, dynamic> json) =
@@ -337,6 +365,8 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   int? get ca;
   @override
   int? get dv;
+  @override
+  List<CatalogSizeProductResponse>? get sz;
   @override
   @JsonKey(ignore: true)
   _$$CatalogProductResponseImplCopyWith<_$CatalogProductResponseImpl>

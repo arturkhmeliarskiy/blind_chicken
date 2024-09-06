@@ -2,6 +2,8 @@ import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/src/widgets/custom_rich_text.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -34,6 +36,10 @@ class BlindChickenTopBanner extends StatelessWidget {
                                 isCleanHistory: true,
                               ),
                             );
+                        final appMetricaEcommerce = GetIt.I.get<AppMetricaEcommerceService>();
+                        appMetricaEcommerce.openPages(
+                          titleScreen: 'Sale баннер в шапке',
+                        );
                         if (context.router.navigationHistory.urlState.path ==
                             "/news_info_description") {
                           NewsInfoDescriptionRouteArgs newsInfoArgs =
@@ -101,6 +107,9 @@ class BlindChickenTopBanner extends StatelessWidget {
                         context.read<CatalogBloc>().add(
                               CatalogEvent.getInfoProduct(
                                 code: initState.info.data.code,
+                                titleScreen: 'Баннер в шапке',
+                                typeAddProductToShoppingCart: 'Кнопка',
+                                identifierAddProductToShoppingCart: '4',
                               ),
                             );
                         if (context.router.navigationHistory.urlState.path ==

@@ -19,6 +19,19 @@ mixin _$BasketInfoItemDataModel {
   String get code => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
+  String get titleScreen =>
+      throw _privateConstructorUsedError; // экран добавления в корзину
+  String get searchQuery =>
+      throw _privateConstructorUsedError; // поисковой запрос
+  String get typeAddProductToShoppingCart =>
+      throw _privateConstructorUsedError; // с помощью чего добавляется в корзину
+  String get identifierAddProductToShoppingCart =>
+      throw _privateConstructorUsedError; // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  List<String> get sectionCategoriesPath =>
+      throw _privateConstructorUsedError; // категории в к оторых находится товар "Акции", "Красная цена"
+  List<String> get productCategoriesPath =>
+      throw _privateConstructorUsedError; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+  String? get skuName => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BasketInfoItemDataModelCopyWith<BasketInfoItemDataModel> get copyWith =>
@@ -31,7 +44,17 @@ abstract class $BasketInfoItemDataModelCopyWith<$Res> {
           $Res Function(BasketInfoItemDataModel) then) =
       _$BasketInfoItemDataModelCopyWithImpl<$Res, BasketInfoItemDataModel>;
   @useResult
-  $Res call({String code, String sku, int count});
+  $Res call(
+      {String code,
+      String sku,
+      int count,
+      String titleScreen,
+      String searchQuery,
+      String typeAddProductToShoppingCart,
+      String identifierAddProductToShoppingCart,
+      List<String> sectionCategoriesPath,
+      List<String> productCategoriesPath,
+      String? skuName});
 }
 
 /// @nodoc
@@ -51,6 +74,13 @@ class _$BasketInfoItemDataModelCopyWithImpl<$Res,
     Object? code = null,
     Object? sku = null,
     Object? count = null,
+    Object? titleScreen = null,
+    Object? searchQuery = null,
+    Object? typeAddProductToShoppingCart = null,
+    Object? identifierAddProductToShoppingCart = null,
+    Object? sectionCategoriesPath = null,
+    Object? productCategoriesPath = null,
+    Object? skuName = freezed,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -65,6 +95,35 @@ class _$BasketInfoItemDataModelCopyWithImpl<$Res,
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      titleScreen: null == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeAddProductToShoppingCart: null == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      identifierAddProductToShoppingCart: null ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      sectionCategoriesPath: null == sectionCategoriesPath
+          ? _value.sectionCategoriesPath
+          : sectionCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      productCategoriesPath: null == productCategoriesPath
+          ? _value.productCategoriesPath
+          : productCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      skuName: freezed == skuName
+          ? _value.skuName
+          : skuName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +137,17 @@ abstract class _$$BasketInfoItemDataModelImplCopyWith<$Res>
       __$$BasketInfoItemDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String code, String sku, int count});
+  $Res call(
+      {String code,
+      String sku,
+      int count,
+      String titleScreen,
+      String searchQuery,
+      String typeAddProductToShoppingCart,
+      String identifierAddProductToShoppingCart,
+      List<String> sectionCategoriesPath,
+      List<String> productCategoriesPath,
+      String? skuName});
 }
 
 /// @nodoc
@@ -97,6 +166,13 @@ class __$$BasketInfoItemDataModelImplCopyWithImpl<$Res>
     Object? code = null,
     Object? sku = null,
     Object? count = null,
+    Object? titleScreen = null,
+    Object? searchQuery = null,
+    Object? typeAddProductToShoppingCart = null,
+    Object? identifierAddProductToShoppingCart = null,
+    Object? sectionCategoriesPath = null,
+    Object? productCategoriesPath = null,
+    Object? skuName = freezed,
   }) {
     return _then(_$BasketInfoItemDataModelImpl(
       code: null == code
@@ -111,6 +187,35 @@ class __$$BasketInfoItemDataModelImplCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      titleScreen: null == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchQuery: null == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeAddProductToShoppingCart: null == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      identifierAddProductToShoppingCart: null ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      sectionCategoriesPath: null == sectionCategoriesPath
+          ? _value._sectionCategoriesPath
+          : sectionCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      productCategoriesPath: null == productCategoriesPath
+          ? _value._productCategoriesPath
+          : productCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      skuName: freezed == skuName
+          ? _value.skuName
+          : skuName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,8 +224,19 @@ class __$$BasketInfoItemDataModelImplCopyWithImpl<$Res>
 
 class _$BasketInfoItemDataModelImpl extends _BasketInfoItemDataModel {
   _$BasketInfoItemDataModelImpl(
-      {required this.code, required this.sku, required this.count})
-      : super._();
+      {required this.code,
+      required this.sku,
+      required this.count,
+      required this.titleScreen,
+      required this.searchQuery,
+      required this.typeAddProductToShoppingCart,
+      required this.identifierAddProductToShoppingCart,
+      required final List<String> sectionCategoriesPath,
+      required final List<String> productCategoriesPath,
+      this.skuName})
+      : _sectionCategoriesPath = sectionCategoriesPath,
+        _productCategoriesPath = productCategoriesPath,
+        super._();
 
   @override
   final String code;
@@ -128,10 +244,46 @@ class _$BasketInfoItemDataModelImpl extends _BasketInfoItemDataModel {
   final String sku;
   @override
   final int count;
+  @override
+  final String titleScreen;
+// экран добавления в корзину
+  @override
+  final String searchQuery;
+// поисковой запрос
+  @override
+  final String typeAddProductToShoppingCart;
+// с помощью чего добавляется в корзину
+  @override
+  final String identifierAddProductToShoppingCart;
+// идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  final List<String> _sectionCategoriesPath;
+// идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  @override
+  List<String> get sectionCategoriesPath {
+    if (_sectionCategoriesPath is EqualUnmodifiableListView)
+      return _sectionCategoriesPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sectionCategoriesPath);
+  }
+
+// категории в к оторых находится товар "Акции", "Красная цена"
+  final List<String> _productCategoriesPath;
+// категории в к оторых находится товар "Акции", "Красная цена"
+  @override
+  List<String> get productCategoriesPath {
+    if (_productCategoriesPath is EqualUnmodifiableListView)
+      return _productCategoriesPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productCategoriesPath);
+  }
+
+// категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+  @override
+  final String? skuName;
 
   @override
   String toString() {
-    return 'BasketInfoItemDataModel(code: $code, sku: $sku, count: $count)';
+    return 'BasketInfoItemDataModel(code: $code, sku: $sku, count: $count, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, skuName: $skuName)';
   }
 
   @override
@@ -141,11 +293,39 @@ class _$BasketInfoItemDataModelImpl extends _BasketInfoItemDataModel {
             other is _$BasketInfoItemDataModelImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.sku, sku) || other.sku == sku) &&
-            (identical(other.count, count) || other.count == count));
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart,
+                    identifierAddProductToShoppingCart) ||
+                other.identifierAddProductToShoppingCart ==
+                    identifierAddProductToShoppingCart) &&
+            const DeepCollectionEquality()
+                .equals(other._sectionCategoriesPath, _sectionCategoriesPath) &&
+            const DeepCollectionEquality()
+                .equals(other._productCategoriesPath, _productCategoriesPath) &&
+            (identical(other.skuName, skuName) || other.skuName == skuName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, sku, count);
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      sku,
+      count,
+      titleScreen,
+      searchQuery,
+      typeAddProductToShoppingCart,
+      identifierAddProductToShoppingCart,
+      const DeepCollectionEquality().hash(_sectionCategoriesPath),
+      const DeepCollectionEquality().hash(_productCategoriesPath),
+      skuName);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +339,14 @@ abstract class _BasketInfoItemDataModel extends BasketInfoItemDataModel {
   factory _BasketInfoItemDataModel(
       {required final String code,
       required final String sku,
-      required final int count}) = _$BasketInfoItemDataModelImpl;
+      required final int count,
+      required final String titleScreen,
+      required final String searchQuery,
+      required final String typeAddProductToShoppingCart,
+      required final String identifierAddProductToShoppingCart,
+      required final List<String> sectionCategoriesPath,
+      required final List<String> productCategoriesPath,
+      final String? skuName}) = _$BasketInfoItemDataModelImpl;
   _BasketInfoItemDataModel._() : super._();
 
   @override
@@ -168,6 +355,20 @@ abstract class _BasketInfoItemDataModel extends BasketInfoItemDataModel {
   String get sku;
   @override
   int get count;
+  @override
+  String get titleScreen;
+  @override // экран добавления в корзину
+  String get searchQuery;
+  @override // поисковой запрос
+  String get typeAddProductToShoppingCart;
+  @override // с помощью чего добавляется в корзину
+  String get identifierAddProductToShoppingCart;
+  @override // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  List<String> get sectionCategoriesPath;
+  @override // категории в к оторых находится товар "Акции", "Красная цена"
+  List<String> get productCategoriesPath;
+  @override // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+  String? get skuName;
   @override
   @JsonKey(ignore: true)
   _$$BasketInfoItemDataModelImplCopyWith<_$BasketInfoItemDataModelImpl>

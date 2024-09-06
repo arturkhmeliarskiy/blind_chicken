@@ -126,6 +126,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           setState(() {
                             _selectedIndexGender = 1;
                           });
+                          final appMetricaEcommerce = GetIt.I.get<AppMetricaEcommerceService>();
+                          appMetricaEcommerce.openPages(
+                            titleScreen: 'Раздел женское в меню',
+                          );
                         },
                         child: Text(
                           'Женщинам',
@@ -165,6 +169,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           setState(() {
                             _selectedIndexGender = 2;
                           });
+                          final appMetricaEcommerce = GetIt.I.get<AppMetricaEcommerceService>();
+                          appMetricaEcommerce.openPages(
+                            titleScreen: 'Раздел мужское в меню',
+                          );
                         },
                         child: Text(
                           'Мужчинам',
@@ -204,6 +212,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           setState(() {
                             _selectedIndexGender = 3;
                           });
+                          final appMetricaEcommerce = GetIt.I.get<AppMetricaEcommerceService>();
+                          appMetricaEcommerce.openPages(
+                            titleScreen: 'Раздел детям в меню',
+                          );
                         },
                         child: Text(
                           'Детям',
@@ -433,9 +445,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       initState.menu[index].sub == 0 &&
                                       initState.menu[index].name != 'Подарочная карта' &&
                                       initState.menu[index].name != 'Бренды' &&
-                                      initState.menu[index].name != 'Предупреждение зрения' &&
+                                      initState.menu[index].url != '/proverka-zreniya/' &&
                                       initState.menu[index].name != 'Sale' &&
-                                      initState.menu[index].name != 'Сервисная карта') {
+                                      initState.menu[index].url != '/servisnaya-karta/') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
                                             path: initState.menu[index].url,
@@ -450,15 +462,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                     );
                                   } else if (initState.menu[index].name == 'Подарочная карта') {
                                     context.navigateTo(GiftCardRoute());
-                                  } else if (initState.menu[index].name == 'Сервисная карта') {
+                                  } else if (initState.menu[index].url == '/servisnaya-karta/') {
                                     context.read<CatalogBloc>().add(
                                           const CatalogEvent.getInfoServiceCard(
                                             code: '15846',
                                           ),
                                         );
                                     context.navigateTo(const ServiceCardRoute());
-                                  } else if (initState.menu[index].name ==
-                                      'Предупреждение зрения') {
+                                  } else if (initState.menu[index].url == '/proverka-zreniya/') {
                                     context.navigateTo(const VisionWarningRoute());
                                   } else if (initState.menu[index].name == 'Бренды') {
                                     context.read<BrandBloc>().add(
@@ -481,6 +492,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                         title: initState.menu[index].name,
                                         url: initState.menu[index].url,
                                       ),
+                                    );
+                                    final appMetricaEcommerce =
+                                        GetIt.I.get<AppMetricaEcommerceService>();
+                                    appMetricaEcommerce.openPages(
+                                      titleScreen: 'Sale в меню',
                                     );
                                   } else {
                                     context.read<CatalogBloc>().add(

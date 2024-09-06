@@ -20,10 +20,12 @@ class MediaNotificationDescriptionScreen extends StatefulWidget {
   const MediaNotificationDescriptionScreen({
     super.key,
     this.idNews = '',
+    this.messageId,
     this.isNotification = false,
   });
 
   final String idNews;
+  final String? messageId;
   final bool isNotification;
 
   @override
@@ -42,6 +44,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
             NewsEvent.getMediaDescriptionInfo(
               id: widget.idNews,
               isNotification: widget.isNotification,
+              messageId: widget.messageId,
             ),
           );
     }
@@ -287,6 +290,9 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                               context.read<CatalogBloc>().add(
                                                     CatalogEvent.getInfoProduct(
                                                       code: initState.oneMedia?.data.code ?? '',
+                                                      titleScreen: 'Описание медиа (уведомление)',
+                                                      typeAddProductToShoppingCart: 'Кнопка',
+                                                      identifierAddProductToShoppingCart: '4',
                                                     ),
                                                   );
                                               context.navigateTo(

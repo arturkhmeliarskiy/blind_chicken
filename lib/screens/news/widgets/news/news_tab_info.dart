@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_item_tab_info.dart';
@@ -95,6 +96,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     info: initState.news.list[index],
                                   ),
                                 );
+                                AppMetrica.reportEvent('Страница новостей');
                               },
                               onGoTap: () {
                                 if (initState.news.list[index].typePath == 'catalog') {
@@ -120,6 +122,9 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.getInfoProduct(
                                           code: initState.news.list[index].code,
+                                          titleScreen: 'Список новостей',
+                                          typeAddProductToShoppingCart: 'Кнопка',
+                                          identifierAddProductToShoppingCart: '4',
                                         ),
                                       );
                                   context.navigateTo(
@@ -175,7 +180,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                           color: Colors.transparent,
                           child: Text(
                             'Нет новостей',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         );
                       });

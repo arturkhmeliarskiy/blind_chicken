@@ -208,8 +208,9 @@ class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen>
                                                         Text(
                                                           'Заказ ${initState.listOrdersBlank[index].number} '
                                                           'от ${initState.listOrdersBlank[index].date}',
-                                                          style:
-                                                              Theme.of(context).textTheme.headline2,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .headlineLarge,
                                                         ),
                                                       ]),
                                                     ),
@@ -218,7 +219,7 @@ class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen>
                                               )
                                             : Text(
                                                 'Список бланков заказов на подшив пуст.',
-                                                style: Theme.of(context).textTheme.headline2,
+                                                style: Theme.of(context).textTheme.headlineLarge,
                                               );
                                       },
                                       load: (value) {
@@ -240,7 +241,7 @@ class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen>
                                             ),
                                             Text(
                                               'Загрузка данных...',
-                                              style: Theme.of(context).textTheme.headline2,
+                                              style: Theme.of(context).textTheme.headlineLarge,
                                             ),
                                           ],
                                         );

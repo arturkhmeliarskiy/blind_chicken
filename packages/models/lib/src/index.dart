@@ -20,3 +20,5 @@ export 'push_notification/index.dart';
 export 'enum/index.dart';
 export 'news/index.dart';
 export 'store_version_app/index.dart';
+export 'error_analyzer/index.dart';
+export 'app_metrica/index.dart';

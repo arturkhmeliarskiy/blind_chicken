@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:models/src/catalog/catalog_size_product_data_model.dart';
 
 part 'catalog_product_data_model.freezed.dart';
 
@@ -16,5 +17,6 @@ class CatalogProductDataModel with _$CatalogProductDataModel {
     required int pbc,
     required int ca,
     required int dv,
+    required List<CatalogSizeProductDataModel> sz,
   }) = _CatalogProductDataModel;
 }

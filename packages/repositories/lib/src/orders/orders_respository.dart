@@ -82,6 +82,18 @@ extension on OrderInfoResponse {
                 isYourPriceDisplayed: false,
                 count: item.count ?? '',
                 isShop: false,
+                sz: [
+                  CatalogSizeProductDataModel(
+                    id: '',
+                    name: item.sku ?? '',
+                  ),
+                ],
+                titleScreen: item.titleScreen ?? '',
+                searchQuery: item.searchQuery ?? '',
+                typeAddProductToShoppingCart: item.type ?? '',
+                identifierAddProductToShoppingCart: item.identifier ?? '',
+                sectionCategoriesPath: item.sectionCategoriesPath ?? [],
+                productCategoriesPath: item.productCategoriesPath ?? [],
               ),
             ) ??
             [],

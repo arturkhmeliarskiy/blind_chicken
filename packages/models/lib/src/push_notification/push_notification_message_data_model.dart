@@ -1,10 +1,12 @@
+import 'package:models/models.dart';
+
 class PushNotificationMessageDataModel {
   final String section;
   final String idMessage;
   final String type;
   final String sort;
   final String uid;
-  final String filterSelect;
+  final FilterNotifcationDataModel filterNotifcation;
   final String codeProduct;
   final String idNews;
 
@@ -14,7 +16,7 @@ class PushNotificationMessageDataModel {
     required this.type,
     required this.sort,
     required this.uid,
-    required this.filterSelect,
+    required this.filterNotifcation,
     required this.codeProduct,
     required this.idNews,
   });

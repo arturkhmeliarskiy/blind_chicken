@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/gift_card/widgets/gift_card_blind_chicken.dart';
@@ -27,10 +28,14 @@ class GiftCardScreen extends StatefulWidget {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
+    this.searchQuery,
   });
 
   final bool isNotification;
   final String lastPath;
+  final String? searchQuery;
+  final String? messageId;
   final NewsInfoItemDataModel? newsInfo;
   final MediaInfoItemDataModel? newsMediaInfo;
   final NotificationInfoItemDataModel? newsNotificationInfo;
@@ -56,6 +61,8 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
       Timer(const Duration(milliseconds: 500), () {
         context.read<GiftCardBloc>().add(GiftCardEvent.preloadData(
               isNotification: widget.isNotification,
+              messageId: widget.messageId,
+              searchQuery: '',
             ));
         final updateDataService = GetIt.I.get<UpdateDataService>();
         _address = updateDataService.boutiques[1].address;
@@ -65,6 +72,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
     } else {
       context.read<GiftCardBloc>().add(GiftCardEvent.preloadData(
             isNotification: widget.isNotification,
+            searchQuery: widget.searchQuery ?? '',
           ));
       final updateDataService = GetIt.I.get<UpdateDataService>();
       _address = updateDataService.boutiques[1].address;
@@ -107,6 +115,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
             context.read<AccountBloc>().add(
                   AccountEvent.getInfoPayOrder(
                     id: value.orderId.toString(),
+                    searchQuery: value.searchQuery,
                   ),
                 );
             context.navigateTo(
@@ -145,6 +154,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                             ),
                           ]),
                         );
+                        AppMetrica.reportEvent('Список новостей');
                       } else if (widget.lastPath == 'news_info_description') {
                         final newsInfo = widget.newsInfo;
                         if (newsInfo != null) {
@@ -153,6 +163,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                               info: newsInfo,
                             ),
                           );
+                          AppMetrica.reportEvent('Страница новостей');
                         }
                       } else if (widget.lastPath == 'media_info_description') {
                         final newsMediaInfo = widget.newsMediaInfo;
@@ -193,6 +204,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                               ),
                             ]),
                           );
+                          AppMetrica.reportEvent('Список новостей');
                         } else if (widget.lastPath == 'news_info_description') {
                           final newsInfo = widget.newsInfo;
                           if (newsInfo != null) {
@@ -201,6 +213,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                 info: newsInfo,
                               ),
                             );
+                            AppMetrica.reportEvent('Страница новостей');
                           }
                         } else if (widget.lastPath == 'media_info_description') {
                           final newsMediaInfo = widget.newsMediaInfo;

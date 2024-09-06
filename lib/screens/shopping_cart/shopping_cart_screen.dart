@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart.dart';
@@ -62,21 +64,22 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       listener: (context, state) {
         state.maybeMap(
           createOrderSuccessfully: (value) {
-            context.read<AccountBloc>().add(
-                  AccountEvent.getInfoPayOrder(
-                    id: value.orderId.toString(),
-                  ),
-                );
-            context.navigateTo(
-              LoginRoute(
-                children: [
-                  OrderUserInfoRoute(
-                    isPay: true,
-                    orderId: value.orderId.toString(),
-                  ),
-                ],
-              ),
-            );
+            Timer(const Duration(milliseconds: 150), () {
+              context.read<AccountBloc>().add(
+                    AccountEvent.getInfoPayOrder(
+                      id: value.orderId.toString(),
+                    ),
+                  );
+            });
+
+            context.navigateTo(LoginRoute(
+              children: [
+                OrderUserInfoRoute(
+                  isPay: true,
+                  orderId: value.orderId.toString(),
+                ),
+              ],
+            ));
           },
           orElse: () {},
         );
@@ -89,12 +92,16 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
 
             if (updateData.lastScreen == 'search_result') {
               context.read<SearchBloc>().add(
-                    const SearchEvent.updateInfoProducts(),
+                    const SearchEvent.updateInfoProducts(
+                      titleScreen: 'Результаты поиска',
+                    ),
                   );
             }
             if (updateData.lastScreen == 'favourites_products') {
               context.read<FavouritesBloc>().add(
-                    const FavouritesEvent.updateInfoProducts(),
+                    const FavouritesEvent.updateInfoProducts(
+                      titleScreen: 'Избранное',
+                    ),
                   );
             }
             context.back();
@@ -118,12 +125,16 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
 
                           if (updateData.lastScreen == 'search_result') {
                             context.read<SearchBloc>().add(
-                                  const SearchEvent.updateInfoProducts(),
+                                  const SearchEvent.updateInfoProducts(
+                                    titleScreen: 'Результаты поиска',
+                                  ),
                                 );
                           }
                           if (updateData.lastScreen == 'favourites_products') {
                             context.read<FavouritesBloc>().add(
-                                  const FavouritesEvent.updateInfoProducts(),
+                                  const FavouritesEvent.updateInfoProducts(
+                                    titleScreen: 'Избранное',
+                                  ),
                                 );
                           }
                           context.back();
@@ -190,6 +201,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                                           .getInfoProduct(
                                                                         code: initState.shoppingCart
                                                                             .basket[index].code,
+                                                                        titleScreen:
+                                                                            'Элемента списка в корзине',
+                                                                        typeAddProductToShoppingCart:
+                                                                            'Элемента списка',
+                                                                        identifierAddProductToShoppingCart:
+                                                                            '3',
                                                                       ),
                                                                     );
                                                                 context.navigateTo(
@@ -523,12 +540,13 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                           initState.isActivePromoCode,
                                                       promoCode: initState.promoCode,
                                                       onSendPromotional: (value) {
-                                                        context.read<ShoppingCartBloc>().add(
-                                                              ShoppingCartEvent
-                                                                  .changeTitlePromocode(
-                                                                titlePromocode: value,
-                                                              ),
-                                                            );
+                                                        // context.read<ShoppingCartBloc>().add(
+                                                        //       const ShoppingCartEvent
+                                                        //           .changeTitlePromocode(
+                                                        //         titlePromocode:
+                                                        //             'Активация промокода',
+                                                        //       ),
+                                                        //     );
                                                         context.read<ShoppingCartBloc>().add(
                                                               ShoppingCartEvent.promoCode(
                                                                 promoCode: value,
@@ -539,20 +557,19 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                           context: context,
                                                           builder: (context) {
                                                             return ShoppingCartPaymentPromoCode(
-                                                              titlePromocode:
-                                                                  initState.titlePromocode,
+                                                              titlePromocode: 'Активация промокода',
                                                               isEmpty: value.isEmpty,
                                                             );
                                                           },
                                                         );
                                                       },
                                                       onRemovePromotional: () {
-                                                        context.read<ShoppingCartBloc>().add(
-                                                              const ShoppingCartEvent
-                                                                  .changeTitlePromocode(
-                                                                titlePromocode: 'Отмена промокода',
-                                                              ),
-                                                            );
+                                                        // context.read<ShoppingCartBloc>().add(
+                                                        //       const ShoppingCartEvent
+                                                        //           .changeTitlePromocode(
+                                                        //         titlePromocode: 'Отмена промокода',
+                                                        //       ),
+                                                        //     );
                                                         context.read<ShoppingCartBloc>().add(
                                                               const ShoppingCartEvent
                                                                   .removePromoCode(),
@@ -560,9 +577,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                         showDialog(
                                                           context: context,
                                                           builder: (context) {
-                                                            return ShoppingCartPaymentPromoCode(
-                                                              titlePromocode:
-                                                                  initState.titlePromocode,
+                                                            return const ShoppingCartPaymentPromoCode(
+                                                              titlePromocode: 'Отмена промокода',
                                                               isEmpty: false,
                                                             );
                                                           },
@@ -613,7 +629,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                   const SizedBox(
                                                     height: 16,
                                                   ),
-                                                  BlindChickenButton(
+                                                  BlindChickenButtonShoppingCartProduct(
                                                     title: 'Заказать',
                                                     onChenge: () {
                                                       bool isValidAddress = ((initState

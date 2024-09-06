@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,6 +70,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return BlocListener<BrandBloc, BrandState>(
       listener: (context, state) {
         state.maybeMap(
@@ -349,7 +351,8 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                 if (initState.listBrands.isNotEmpty) {
                                                   return TextSpan(
                                                     text: '${initState.listBrands[index].title}   ',
-                                                    style: Theme.of(context).textTheme.headline2,
+                                                    style:
+                                                        Theme.of(context).textTheme.headlineLarge,
                                                     recognizer: TapGestureRecognizer()
                                                       ..onTap = () {
                                                         _scrollController.animateTo(
@@ -411,22 +414,17 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                             ),
                                                       ),
                                                     ),
-                                                    GridView.builder(
+                                                    DynamicHeightGridView(
                                                       shrinkWrap: true,
                                                       itemCount:
                                                           initState.listBrands[index].value.length,
                                                       physics: const NeverScrollableScrollPhysics(),
-                                                      gridDelegate:
-                                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                                        crossAxisCount:
-                                                            2, // number of items in each row
-                                                        mainAxisSpacing:
-                                                            11.0, // spacing between rows
-                                                        crossAxisSpacing:
-                                                            11.0, // spacing between columns
-                                                        childAspectRatio: 6.5,
-                                                      ),
-                                                      itemBuilder: (context, indexBrand) {
+                                                      crossAxisCount: width > 767
+                                                          ? 3
+                                                          : 2, // number of items in each row
+                                                      crossAxisSpacing: 13,
+                                                      mainAxisSpacing: 13,
+                                                      builder: (context, indexBrand) {
                                                         return InkWell(
                                                           onTap: () {
                                                             FocusScope.of(context).unfocus();
@@ -458,7 +456,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
                                                                 .value[indexBrand].n,
                                                             style: Theme.of(context)
                                                                 .textTheme
-                                                                .headline2,
+                                                                .headlineLarge,
                                                           ),
                                                         );
                                                       },

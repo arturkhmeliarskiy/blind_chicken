@@ -12,3 +12,5 @@ export 'app_store_info/index.dart';
 export 'push_notification/index.dart';
 export 'news/index.dart';
 export 'store_version_app/index.dart';
+export 'gift_card/index.dart';
+export 'error_analyzer/index.dart';

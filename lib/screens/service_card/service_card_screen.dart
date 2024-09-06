@@ -71,7 +71,7 @@ class ServiceCardScreen extends StatelessWidget {
                   BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
                     return state.maybeMap(
                       preloadDataCompleted: (initState) {
-                        return BlindChickenButton(
+                        return BlindChickenButtonShoppingCartProduct(
                           width: 252,
                           title: (initState.isShoppingCart ?? false)
                               ? 'Перейти в корзину'
@@ -94,15 +94,28 @@ class ServiceCardScreen extends StatelessWidget {
                               context.read<CatalogBloc>().add(
                                     CatalogEvent.addProductToSoppingCart(
                                       code: int.parse(initState.codeProduct ?? '0'),
+                                      titleScreen: 'Сервисная карта',
+                                      typeAddProductToShoppingCart: 'Кнопка',
+                                      identifierAddProductToShoppingCart: '1',
                                     ),
                                   );
-
+                              context.read<CatalogBloc>().add(
+                                    const CatalogEvent.getInfoServiceCard(
+                                      code: '15846',
+                                    ),
+                                  );
                               context.read<ShoppingCartBloc>().add(
                                     ShoppingCartEvent.addOtherProductToSoppingCart(
                                       item: BasketInfoItemDataModel(
                                         code: initState.codeProduct ?? '',
                                         sku: '',
                                         count: 1,
+                                        titleScreen: 'Сервисная карта',
+                                        searchQuery: '',
+                                        typeAddProductToShoppingCart: 'Кнопка',
+                                        identifierAddProductToShoppingCart: '1',
+                                        sectionCategoriesPath: [],
+                                        productCategoriesPath: [],
                                       ),
                                     ),
                                   );

@@ -37,6 +37,9 @@ class SearchEvent with _$SearchEvent {
   }) = DeleteFavouriteProductSearchEvent;
   const factory SearchEvent.getInfoProduct({
     required String code,
+    required String titleScreen,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductSearchEvent;
@@ -47,6 +50,9 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.paginationProduct() = PaginationProductSearchEvent;
   const factory SearchEvent.addProductToSoppingCart({
     required int code,
+    required String titleScreen,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
   }) = AddProductToSoppingCartSearchEvent;
   const factory SearchEvent.checkButtonTop({
@@ -58,6 +64,9 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.getInfoProductSize({
     required String code,
     required bool isShop,
+    required String titleScreen,
   }) = GetInfoProductSizeSearchEvent;
-  const factory SearchEvent.updateInfoProducts() = UpdateInfoProductsSearchEvent;
+  const factory SearchEvent.updateInfoProducts({
+    required String titleScreen,
+  }) = UpdateInfoProductsSearchEvent;
 }

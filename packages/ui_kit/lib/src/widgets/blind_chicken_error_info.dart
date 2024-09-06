@@ -19,7 +19,7 @@ class BlindChickenErrorInfo extends StatelessWidget {
         children: [
           Text(
             errorMessage,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(
             height: 15,

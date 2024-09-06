@@ -16,12 +16,16 @@ part 'gift_card_state.dart';
 class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
   final CatalogRepository _catalogRepository;
   final UpdateDataService _updateDataService;
+  final GiftCardRepository _giftCardRepository;
   final StoreVersionAppRepository _storeVersionAppRepository;
+  final AppMetricaEcommerceService _appMetricaEcommerceService;
 
   GiftCardBloc(
     this._catalogRepository,
     this._updateDataService,
+    this._giftCardRepository,
     this._storeVersionAppRepository,
+    this._appMetricaEcommerceService,
   ) : super(const GiftCardState.init()) {
     on<GiftCardEvent>(
       (event, emit) => event.map(
@@ -39,11 +43,16 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
     bool isUpdateVersionApp = false;
     String appStoreInfoVersion = '';
 
+    _appMetricaEcommerceService.openPages(titleScreen: 'Подарочная карта');
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
+    }
+
+    if (event.isNotification) {
+      await _giftCardRepository.pushOpenGiftcard(
+        messageId: event.messageId,
+      );
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -62,6 +71,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
         isLoadCreateOrder: false,
         isUpdateVersionApp: isUpdateVersionApp,
         isNotification: event.isNotification,
+        searchQuery: event.searchQuery,
       ),
     );
   }
@@ -76,11 +86,24 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
         final result = await _catalogRepository.payGiftCard(
           request: event.request,
         );
+
+        _appMetricaEcommerceService.startAndEndCreatePurchaseGiftCard(
+          typeProductToSoppingCart: AppMetricaTypeCreatePurchaseEnum.startCreatePurchase,
+          titleScreen: initState.searchQuery.isNotEmpty ? 'Поиск' : 'Подарочная карта',
+          idColor: event.request.color,
+          searchQuery: initState.searchQuery,
+          typeGiftCard: event.request.type,
+          priceActual: event.request.sum,
+          priceOriginal: '50000',
+          quantity: 1,
+        );
+
         log(result.e);
         if (result.r == '1') {
           emit(
             GiftCardState.createOrderSuccessfully(
               orderId: result.id,
+              searchQuery: initState.searchQuery,
             ),
           );
         } else {

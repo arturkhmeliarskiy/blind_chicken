@@ -29,7 +29,7 @@ class MainCategoryProductItem extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             title,
-            style: Theme.of(context).textTheme.headline2?.copyWith(
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                   fontWeight: FontWeight.w700,
                 ),
           ),

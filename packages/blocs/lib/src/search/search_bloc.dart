@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
@@ -16,6 +18,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final FavouritesRepository _favouritesRepository;
   final BasketRepository _basketRepository;
   final UpdateDataService _updateDataService;
+  final AppMetricaEcommerceService _appMetricaEcommerceService;
 
   SearchBloc(
     this._catalogRepository,
@@ -23,6 +26,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     this._favouritesRepository,
     this._basketRepository,
     this._updateDataService,
+    this._appMetricaEcommerceService,
   ) : super(const SearchState.init()) {
     on<SearchEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -616,6 +620,42 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         }
       }
 
+      _appMetricaEcommerceService.viewingProductPage(
+        titleScreen: event.titleScreen,
+        titleProduct: detailsProduct.name,
+        codeProduct: detailsProduct.code.toString(),
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        sectionCategoriesPath: [],
+        productCategoriesPath: [],
+        priceActual: detailsProduct.price.yourPrice,
+        priceOriginal: int.parse(detailsProduct.price.pb),
+        internalComponentsActualPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+        internalComponentsOriginalPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+      );
+
       emit(initState.copyWith(
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
@@ -699,17 +739,24 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       List<ProductDataModel> products = initState.products.toList();
       List<FilterCatalogDataModel> filters = initState.request.filters?.toList() ?? [];
       List<int> favouritesProductsId = [];
+      CatalogSearchInfoDataModel? searchResultInfo;
+      int offset = 0;
+
       filters.add(FilterCatalogDataModel(
         key: 'nav',
         value: 'page-${initState.offset + 1}',
       ));
 
-      final searchResultInfo = await _catalogRepository.searchProductsInfo(
-        request: request.copyWith(
-          query: initState.query,
-          filters: filters,
-        ),
-      );
+      if (initState.offset != int.parse(filters.last.value.replaceAll('page-', '')) &&
+          offset != initState.offset) {
+        offset = initState.offset;
+        searchResultInfo = await _catalogRepository.searchProductsInfo(
+          request: request.copyWith(
+            query: initState.query,
+            filters: filters,
+          ),
+        );
+      }
 
       List<ProductDataModel> favouritesProducts = [];
 
@@ -726,7 +773,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
       }
 
-      products = [...products, ...searchResultInfo.products];
+      products = [...products, ...searchResultInfo?.products ?? []];
 
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
@@ -748,6 +795,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
     }
@@ -764,6 +817,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             code: basketInfo.basket[i].code,
             sku: basketInfo.basket[i].sku,
             count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }
@@ -777,6 +838,40 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+        titleScreen: event.titleScreen,
+        titleProduct: initState.detailsProduct?.name ?? '',
+        codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
+        typeProductToSoppingCart: AppMetricaShoppingCartEnum.addProductToShoppingCart,
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        quantity: 1,
+        searchQuery: initState.query,
+        sectionCategoriesPath: [],
+        productCategoriesPath: [],
+        priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
+        priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+        internalComponentsActualPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size?.value ?? '',
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size?.id ?? '',
+          ),
+        ],
+        internalComponentsOriginalPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size?.value ?? '',
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size?.id ?? '',
+          ),
+        ],
+      );
       final listProducts = initState.products.toList();
       bool isShoppingCart = false;
       bool isShoppingCartDetailsProduct = false;
@@ -804,6 +899,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           maximumPersonalDiscount: items.first.maximumPersonalDiscount,
           isYourPriceDisplayed: items.first.isYourPriceDisplayed,
           isShop: true,
+          sz: [],
         );
 
         listProducts[index] = product;
@@ -874,6 +970,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             code: initState.codeProduct ?? '0',
             listSize: detailsProduct.sku,
             listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            titleScreen: event.titleScreen,
+            query: initState.query,
           ));
         }
       }
@@ -971,6 +1069,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             code: event.code,
             listSize: detailsProduct.sku,
             listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            titleScreen: event.titleScreen,
+            query: initState.query,
           ));
         } else {
           if (event.isShop) {
@@ -978,6 +1078,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           } else {
             emit(SearchState.addProductToSoppingCart(
               code: event.code,
+              titleScreen: event.titleScreen,
+              query: initState.query,
             ));
           }
         }
@@ -987,11 +1089,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         } else {
           emit(SearchState.addProductToSoppingCart(
             code: event.code,
+            titleScreen: event.titleScreen,
+            query: initState.query,
           ));
         }
       }
 
       emit(initState.copyWith(
+        detailsProduct: detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,

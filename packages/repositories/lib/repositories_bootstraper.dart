@@ -64,5 +64,15 @@ Future<void> initRepositories(GetIt getIt) async {
       () => StoreVersionAppRepository(
         getIt.get<StoreVersionAppService>(),
       ),
+    )
+    ..registerFactory(
+      () => GiftCardRepository(
+        getIt.get<GiftCardService>(),
+      ),
+    )
+    ..registerFactory(
+      () => ErrorAnalyzerRepository(
+        getIt.get<ErrorAnalyzerService>(),
+      ),
     );
 }

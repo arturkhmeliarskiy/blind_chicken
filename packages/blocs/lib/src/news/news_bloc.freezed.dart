@@ -20,10 +20,12 @@ mixin _$NewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -36,9 +38,11 @@ mixin _$NewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -50,9 +54,11 @@ mixin _$NewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -172,10 +178,12 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -191,9 +199,11 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -208,9 +218,11 @@ class _$InitNewsEventImpl implements InitNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -333,10 +345,12 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -352,9 +366,11 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -369,9 +385,11 @@ class _$GetNewsEventImpl implements GetNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -461,7 +479,7 @@ abstract class _$$GetNewsDescriptionInfoNewsEventImplCopyWith<$Res> {
           $Res Function(_$GetNewsDescriptionInfoNewsEventImpl) then) =
       __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, bool? isNotification});
+  $Res call({String id, bool? isNotification, String? messageId});
 }
 
 /// @nodoc
@@ -478,6 +496,7 @@ class __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? isNotification = freezed,
+    Object? messageId = freezed,
   }) {
     return _then(_$GetNewsDescriptionInfoNewsEventImpl(
       id: null == id
@@ -488,6 +507,10 @@ class __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
               as bool?,
+      messageId: freezed == messageId
+          ? _value.messageId
+          : messageId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -497,16 +520,18 @@ class __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>
 class _$GetNewsDescriptionInfoNewsEventImpl
     implements GetNewsDescriptionInfoNewsEvent {
   const _$GetNewsDescriptionInfoNewsEventImpl(
-      {required this.id, this.isNotification});
+      {required this.id, this.isNotification, this.messageId});
 
   @override
   final String id;
   @override
   final bool? isNotification;
+  @override
+  final String? messageId;
 
   @override
   String toString() {
-    return 'NewsEvent.getNewsDescriptionInfo(id: $id, isNotification: $isNotification)';
+    return 'NewsEvent.getNewsDescriptionInfo(id: $id, isNotification: $isNotification, messageId: $messageId)';
   }
 
   @override
@@ -516,11 +541,13 @@ class _$GetNewsDescriptionInfoNewsEventImpl
             other is _$GetNewsDescriptionInfoNewsEventImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isNotification, isNotification) ||
-                other.isNotification == isNotification));
+                other.isNotification == isNotification) &&
+            (identical(other.messageId, messageId) ||
+                other.messageId == messageId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, isNotification);
+  int get hashCode => Object.hash(runtimeType, id, isNotification, messageId);
 
   @JsonKey(ignore: true)
   @override
@@ -535,10 +562,12 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -546,7 +575,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     required TResult Function() paginationNotifications,
     required TResult Function() goBackNewsInfo,
   }) {
-    return getNewsDescriptionInfo(id, isNotification);
+    return getNewsDescriptionInfo(id, isNotification, messageId);
   }
 
   @override
@@ -554,16 +583,18 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
     TResult? Function()? goBackNewsInfo,
   }) {
-    return getNewsDescriptionInfo?.call(id, isNotification);
+    return getNewsDescriptionInfo?.call(id, isNotification, messageId);
   }
 
   @override
@@ -571,9 +602,11 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -582,7 +615,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     required TResult orElse(),
   }) {
     if (getNewsDescriptionInfo != null) {
-      return getNewsDescriptionInfo(id, isNotification);
+      return getNewsDescriptionInfo(id, isNotification, messageId);
     }
     return orElse();
   }
@@ -655,10 +688,12 @@ class _$GetNewsDescriptionInfoNewsEventImpl
 abstract class GetNewsDescriptionInfoNewsEvent implements NewsEvent {
   const factory GetNewsDescriptionInfoNewsEvent(
       {required final String id,
-      final bool? isNotification}) = _$GetNewsDescriptionInfoNewsEventImpl;
+      final bool? isNotification,
+      final String? messageId}) = _$GetNewsDescriptionInfoNewsEventImpl;
 
   String get id;
   bool? get isNotification;
+  String? get messageId;
   @JsonKey(ignore: true)
   _$$GetNewsDescriptionInfoNewsEventImplCopyWith<
           _$GetNewsDescriptionInfoNewsEventImpl>
@@ -705,10 +740,12 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -724,9 +761,11 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -741,9 +780,11 @@ class _$GetMediaEventImpl implements GetMediaEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -833,7 +874,7 @@ abstract class _$$GetMediaDescriptionInfoNewsEventImplCopyWith<$Res> {
           $Res Function(_$GetMediaDescriptionInfoNewsEventImpl) then) =
       __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, bool? isNotification});
+  $Res call({String id, bool? isNotification, String? messageId});
 }
 
 /// @nodoc
@@ -851,6 +892,7 @@ class __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? isNotification = freezed,
+    Object? messageId = freezed,
   }) {
     return _then(_$GetMediaDescriptionInfoNewsEventImpl(
       id: null == id
@@ -861,6 +903,10 @@ class __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
               as bool?,
+      messageId: freezed == messageId
+          ? _value.messageId
+          : messageId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -870,16 +916,18 @@ class __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>
 class _$GetMediaDescriptionInfoNewsEventImpl
     implements GetMediaDescriptionInfoNewsEvent {
   const _$GetMediaDescriptionInfoNewsEventImpl(
-      {required this.id, this.isNotification});
+      {required this.id, this.isNotification, this.messageId});
 
   @override
   final String id;
   @override
   final bool? isNotification;
+  @override
+  final String? messageId;
 
   @override
   String toString() {
-    return 'NewsEvent.getMediaDescriptionInfo(id: $id, isNotification: $isNotification)';
+    return 'NewsEvent.getMediaDescriptionInfo(id: $id, isNotification: $isNotification, messageId: $messageId)';
   }
 
   @override
@@ -889,11 +937,13 @@ class _$GetMediaDescriptionInfoNewsEventImpl
             other is _$GetMediaDescriptionInfoNewsEventImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isNotification, isNotification) ||
-                other.isNotification == isNotification));
+                other.isNotification == isNotification) &&
+            (identical(other.messageId, messageId) ||
+                other.messageId == messageId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, isNotification);
+  int get hashCode => Object.hash(runtimeType, id, isNotification, messageId);
 
   @JsonKey(ignore: true)
   @override
@@ -908,10 +958,12 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -919,7 +971,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     required TResult Function() paginationNotifications,
     required TResult Function() goBackNewsInfo,
   }) {
-    return getMediaDescriptionInfo(id, isNotification);
+    return getMediaDescriptionInfo(id, isNotification, messageId);
   }
 
   @override
@@ -927,16 +979,18 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
     TResult? Function()? paginationNotifications,
     TResult? Function()? goBackNewsInfo,
   }) {
-    return getMediaDescriptionInfo?.call(id, isNotification);
+    return getMediaDescriptionInfo?.call(id, isNotification, messageId);
   }
 
   @override
@@ -944,9 +998,11 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -955,7 +1011,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     required TResult orElse(),
   }) {
     if (getMediaDescriptionInfo != null) {
-      return getMediaDescriptionInfo(id, isNotification);
+      return getMediaDescriptionInfo(id, isNotification, messageId);
     }
     return orElse();
   }
@@ -1028,10 +1084,12 @@ class _$GetMediaDescriptionInfoNewsEventImpl
 abstract class GetMediaDescriptionInfoNewsEvent implements NewsEvent {
   const factory GetMediaDescriptionInfoNewsEvent(
       {required final String id,
-      final bool? isNotification}) = _$GetMediaDescriptionInfoNewsEventImpl;
+      final bool? isNotification,
+      final String? messageId}) = _$GetMediaDescriptionInfoNewsEventImpl;
 
   String get id;
   bool? get isNotification;
+  String? get messageId;
   @JsonKey(ignore: true)
   _$$GetMediaDescriptionInfoNewsEventImplCopyWith<
           _$GetMediaDescriptionInfoNewsEventImpl>
@@ -1080,10 +1138,12 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -1099,9 +1159,11 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -1116,9 +1178,11 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -1244,10 +1308,12 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -1263,9 +1329,11 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -1280,9 +1348,11 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -1408,10 +1478,12 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -1427,9 +1499,11 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -1444,9 +1518,11 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -1574,10 +1650,12 @@ class _$PaginationNotificationsNewsEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -1593,9 +1671,11 @@ class _$PaginationNotificationsNewsEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -1610,9 +1690,11 @@ class _$PaginationNotificationsNewsEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,
@@ -1739,10 +1821,12 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() getNews,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getNewsDescriptionInfo,
     required TResult Function() getMedia,
-    required TResult Function(String id, bool? isNotification)
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
         getMediaDescriptionInfo,
     required TResult Function() getNotifications,
     required TResult Function() paginationNews,
@@ -1758,9 +1842,11 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? getNews,
-    TResult? Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult? Function()? getMedia,
-    TResult? Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult? Function()? getNotifications,
     TResult? Function()? paginationNews,
     TResult? Function()? paginationMedia,
@@ -1775,9 +1861,11 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? getNews,
-    TResult Function(String id, bool? isNotification)? getNewsDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
     TResult Function()? getMedia,
-    TResult Function(String id, bool? isNotification)? getMediaDescriptionInfo,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
     TResult Function()? getNotifications,
     TResult Function()? paginationNews,
     TResult Function()? paginationMedia,

@@ -8,6 +8,7 @@ class UpdateDataService {
   bool? _isOpenShowModalBottomSheetFavouritesScreen;
   bool? _isOpenShowModalBottomSheetShoppingCardInfoScreen;
   bool? _isOpenShowModalBottomSheetOrderCardInfoScreen;
+  bool? _isScapeUpdateApp;
   bool? _isNotification;
   bool? _isInitApp;
   String? _sectionNotification;
@@ -121,6 +122,14 @@ class UpdateDataService {
 
   set isNotification(bool value) {
     _isNotification = value;
+  }
+  
+  bool get isScapeUpdateApp {
+    return _isScapeUpdateApp ?? false;
+  }
+
+  set isScapeUpdateApp(bool value) {
+    _isScapeUpdateApp = value;
   }
 
   bool get isInitApp {

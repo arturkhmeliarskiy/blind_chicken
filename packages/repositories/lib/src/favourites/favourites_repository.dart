@@ -1,4 +1,5 @@
 import 'package:api_models/api_models.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:models/models.dart';
 import 'package:repositories/repositories.dart';
 import 'package:services/services.dart';
@@ -25,6 +26,8 @@ class FavouritesRepository {
         ) ??
         FavouritesInfoResponse();
 
+    AppMetrica.reportEvent('Добавление в избранное');
+
     return productToBasket.toFavouriteProduct();
   }
 
@@ -35,6 +38,8 @@ class FavouritesRepository {
           code: code,
         ) ??
         FavouritesInfoResponse();
+
+    AppMetrica.reportEvent('Удаление из избранного');
 
     return productToBasket.toFavouriteProduct();
   }
@@ -77,6 +82,12 @@ class FavouritesRepository {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
       basketInfo = BasketInfoDataModel(
@@ -142,6 +153,7 @@ extension on FavouritesCatalogInfoResponse {
                       (element) => element.code == (item.c ?? ''),
                     )
                     .isNotEmpty,
+                sz: [],
               ),
             ) ??
             [],

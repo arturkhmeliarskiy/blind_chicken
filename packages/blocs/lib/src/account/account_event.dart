@@ -20,7 +20,8 @@ class AccountEvent with _$AccountEvent {
     required String fileName,
     required String id,
   }) = GetOrderPdfBlankAccountEvent;
-  const factory AccountEvent.paginationListTailoringBlank() = PaginationListTailoringBlankAccountEvent;
+  const factory AccountEvent.paginationListTailoringBlank() =
+      PaginationListTailoringBlankAccountEvent;
   const factory AccountEvent.getListTailoringBlank() = GetListTailoringBlankAccountEvent;
   const factory AccountEvent.getTailoringPdfBlank({
     required String fileName,
@@ -31,6 +32,7 @@ class AccountEvent with _$AccountEvent {
   }) = GetInfoOrderAccountEvent;
   const factory AccountEvent.getInfoPayOrder({
     required String id,
+    String? searchQuery,
   }) = GetInfoPayOrderAccountEvent;
   const factory AccountEvent.payOrder({
     required String idForPay,
@@ -47,6 +49,9 @@ class AccountEvent with _$AccountEvent {
   }) = DeleteFavouriteProductAccountEvent;
   const factory AccountEvent.getInfoProduct({
     required String code,
+    required String titleScreen,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductAccountEvent;
@@ -60,6 +65,8 @@ class AccountEvent with _$AccountEvent {
   const factory AccountEvent.goBackProductInfo() = GoBackProductInfoCategotyAccountEvent;
   const factory AccountEvent.addProductToSoppingCart({
     required SkuProductDataModel size,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
   }) = AddProductToSoppingCartCAccountEvent;
   const factory AccountEvent.checkProductToSoppingCart({
     required SkuProductDataModel size,

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +75,7 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
                 onBack();
               } else {
                 context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
+                context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
                 final sharedService = GetIt.I.get<SharedPreferencesService>();
                 if (sharedService.getString(key: SharedPrefKeys.lastScreen) ==
                     'catalog_card_info') {
@@ -287,6 +291,9 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
                                                 Navigator.of(context, rootNavigator: true).pop();
                                                 context.navigateNamedTo(
                                                     '/dashboard/home${listItems[index].route}');
+                                                if (listItems[index].route == '/contacts') {
+                                                  AppMetrica.reportEvent('Контакты');
+                                                }
                                               },
                                               child: Container(
                                                 padding: const EdgeInsets.only(

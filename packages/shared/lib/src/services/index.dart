@@ -9,3 +9,5 @@ export 'timer_service.dart';
 export 'file_service.dart';
 export 'launch_service.dart';
 export 'text_service.dart';
+export 'app_metrica_ecommerce_service.dart';
+export 'filter_service.dart';

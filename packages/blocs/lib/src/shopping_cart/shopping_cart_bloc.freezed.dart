@@ -22,7 +22,8 @@ mixin _$ShoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -38,7 +39,12 @@ mixin _$ShoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -67,7 +73,8 @@ mixin _$ShoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -82,7 +89,13 @@ mixin _$ShoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -106,7 +119,8 @@ mixin _$ShoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -121,7 +135,13 @@ mixin _$ShoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -365,7 +385,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -381,7 +402,12 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -413,7 +439,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -428,7 +455,13 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -455,7 +488,8 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -470,7 +504,13 @@ class _$InitShoppingCartEventImpl implements InitShoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -719,7 +759,8 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -735,7 +776,12 @@ class _$PreloadDataShoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -767,7 +813,8 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -782,7 +829,13 @@ class _$PreloadDataShoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -809,7 +862,8 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -824,7 +878,13 @@ class _$PreloadDataShoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -1111,7 +1171,8 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -1127,7 +1188,12 @@ class _$AddProductToSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -1159,7 +1225,8 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -1174,7 +1241,13 @@ class _$AddProductToSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -1201,7 +1274,8 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -1216,7 +1290,13 @@ class _$AddProductToSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -1433,7 +1513,10 @@ abstract class _$$AddOtherProductToSoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$AddOtherProductToSoppingCartEventImpl) then) =
       __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BasketInfoItemDataModel item});
+  $Res call(
+      {BasketInfoItemDataModel item,
+      String? titleScreen,
+      String? typeAddProductToShoppingCart});
 
   $BasketInfoItemDataModelCopyWith<$Res> get item;
 }
@@ -1452,12 +1535,22 @@ class __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? item = null,
+    Object? titleScreen = freezed,
+    Object? typeAddProductToShoppingCart = freezed,
   }) {
     return _then(_$AddOtherProductToSoppingCartEventImpl(
       item: null == item
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as BasketInfoItemDataModel,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeAddProductToShoppingCart: freezed == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1474,14 +1567,21 @@ class __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>
 
 class _$AddOtherProductToSoppingCartEventImpl
     implements AddOtherProductToSoppingCartEvent {
-  const _$AddOtherProductToSoppingCartEventImpl({required this.item});
+  const _$AddOtherProductToSoppingCartEventImpl(
+      {required this.item,
+      this.titleScreen,
+      this.typeAddProductToShoppingCart});
 
   @override
   final BasketInfoItemDataModel item;
+  @override
+  final String? titleScreen;
+  @override
+  final String? typeAddProductToShoppingCart;
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.addOtherProductToSoppingCart(item: $item)';
+    return 'ShoppingCartEvent.addOtherProductToSoppingCart(item: $item, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart)';
   }
 
   @override
@@ -1489,11 +1589,18 @@ class _$AddOtherProductToSoppingCartEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddOtherProductToSoppingCartEventImpl &&
-            (identical(other.item, item) || other.item == item));
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, item);
+  int get hashCode =>
+      Object.hash(runtimeType, item, titleScreen, typeAddProductToShoppingCart);
 
   @JsonKey(ignore: true)
   @override
@@ -1510,7 +1617,8 @@ class _$AddOtherProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -1526,7 +1634,12 @@ class _$AddOtherProductToSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -1549,7 +1662,8 @@ class _$AddOtherProductToSoppingCartEventImpl
     required TResult Function(String titlePromocode) changeTitlePromocode,
     required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return addOtherProductToSoppingCart(item);
+    return addOtherProductToSoppingCart(
+        item, titleScreen, typeAddProductToShoppingCart);
   }
 
   @override
@@ -1558,7 +1672,8 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -1573,7 +1688,13 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -1591,7 +1712,8 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult? Function(String titlePromocode)? changeTitlePromocode,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return addOtherProductToSoppingCart?.call(item);
+    return addOtherProductToSoppingCart?.call(
+        item, titleScreen, typeAddProductToShoppingCart);
   }
 
   @override
@@ -1600,7 +1722,8 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -1615,7 +1738,13 @@ class _$AddOtherProductToSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -1635,7 +1764,8 @@ class _$AddOtherProductToSoppingCartEventImpl
     required TResult orElse(),
   }) {
     if (addOtherProductToSoppingCart != null) {
-      return addOtherProductToSoppingCart(item);
+      return addOtherProductToSoppingCart(
+          item, titleScreen, typeAddProductToShoppingCart);
     }
     return orElse();
   }
@@ -1815,10 +1945,14 @@ class _$AddOtherProductToSoppingCartEventImpl
 
 abstract class AddOtherProductToSoppingCartEvent implements ShoppingCartEvent {
   const factory AddOtherProductToSoppingCartEvent(
-          {required final BasketInfoItemDataModel item}) =
+          {required final BasketInfoItemDataModel item,
+          final String? titleScreen,
+          final String? typeAddProductToShoppingCart}) =
       _$AddOtherProductToSoppingCartEventImpl;
 
   BasketInfoItemDataModel get item;
+  String? get titleScreen;
+  String? get typeAddProductToShoppingCart;
   @JsonKey(ignore: true)
   _$$AddOtherProductToSoppingCartEventImplCopyWith<
           _$AddOtherProductToSoppingCartEventImpl>
@@ -1918,7 +2052,8 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -1934,7 +2069,12 @@ class _$DeleteProductToSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -1966,7 +2106,8 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -1981,7 +2122,13 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -2008,7 +2155,8 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -2023,7 +2171,13 @@ class _$DeleteProductToSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -2327,7 +2481,8 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -2343,7 +2498,12 @@ class _$UpdateProductToSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -2375,7 +2535,8 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -2390,7 +2551,13 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -2417,7 +2584,8 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -2432,7 +2600,13 @@ class _$UpdateProductToSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -2690,7 +2864,8 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -2706,7 +2881,12 @@ class _$PaymentBonusSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -2738,7 +2918,8 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -2753,7 +2934,13 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -2780,7 +2967,8 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -2795,7 +2983,13 @@ class _$PaymentBonusSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -3045,7 +3239,8 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -3061,7 +3256,12 @@ class _$InitGiftCardSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -3093,7 +3293,8 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -3108,7 +3309,13 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -3135,7 +3342,8 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -3150,7 +3358,13 @@ class _$InitGiftCardSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -3434,7 +3648,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -3450,7 +3665,12 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -3482,7 +3702,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -3497,7 +3718,13 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -3524,7 +3751,8 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -3539,7 +3767,13 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -3832,7 +4066,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -3848,7 +4083,12 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -3880,7 +4120,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -3895,7 +4136,13 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -3922,7 +4169,8 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -3937,7 +4185,13 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -4228,7 +4482,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -4244,7 +4499,12 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -4276,7 +4536,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -4291,7 +4552,13 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -4318,7 +4585,8 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -4333,7 +4601,13 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -4625,7 +4899,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -4641,7 +4916,12 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -4673,7 +4953,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -4688,7 +4969,13 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -4715,7 +5002,8 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -4730,7 +5018,13 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -4987,7 +5281,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -5003,7 +5298,12 @@ class _$RemovePromoCodeSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -5035,7 +5335,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -5050,7 +5351,13 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -5077,7 +5384,8 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -5092,7 +5400,13 @@ class _$RemovePromoCodeSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -5379,7 +5693,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -5395,7 +5710,12 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -5427,7 +5747,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -5442,7 +5763,13 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -5469,7 +5796,8 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -5484,7 +5812,13 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -5766,7 +6100,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -5782,7 +6117,12 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -5814,7 +6154,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -5829,7 +6170,13 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -5856,7 +6203,8 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -5871,7 +6219,13 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -6086,7 +6440,13 @@ abstract class _$$GetInfoProductShoppingCartEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoProductShoppingCartEventImpl) then) =
       __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String code, SkuProductDataModel? size, bool? isUpdate});
+  $Res call(
+      {String code,
+      String titleScreen,
+      String typeAddProductToShoppingCart,
+      String identifierAddProductToShoppingCart,
+      SkuProductDataModel? size,
+      bool? isUpdate});
 
   $SkuProductDataModelCopyWith<$Res>? get size;
 }
@@ -6105,6 +6465,9 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? titleScreen = null,
+    Object? typeAddProductToShoppingCart = null,
+    Object? identifierAddProductToShoppingCart = null,
     Object? size = freezed,
     Object? isUpdate = freezed,
   }) {
@@ -6112,6 +6475,19 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      titleScreen: null == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeAddProductToShoppingCart: null == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String,
+      identifierAddProductToShoppingCart: null ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
               as String,
       size: freezed == size
           ? _value.size
@@ -6142,10 +6518,21 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
 class _$GetInfoProductShoppingCartEventImpl
     implements GetInfoProductShoppingCartEvent {
   const _$GetInfoProductShoppingCartEventImpl(
-      {required this.code, this.size, this.isUpdate});
+      {required this.code,
+      required this.titleScreen,
+      required this.typeAddProductToShoppingCart,
+      required this.identifierAddProductToShoppingCart,
+      this.size,
+      this.isUpdate});
 
   @override
   final String code;
+  @override
+  final String titleScreen;
+  @override
+  final String typeAddProductToShoppingCart;
+  @override
+  final String identifierAddProductToShoppingCart;
   @override
   final SkuProductDataModel? size;
   @override
@@ -6153,7 +6540,7 @@ class _$GetInfoProductShoppingCartEventImpl
 
   @override
   String toString() {
-    return 'ShoppingCartEvent.getInfoProduct(code: $code, size: $size, isUpdate: $isUpdate)';
+    return 'ShoppingCartEvent.getInfoProduct(code: $code, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, size: $size, isUpdate: $isUpdate)';
   }
 
   @override
@@ -6162,13 +6549,30 @@ class _$GetInfoProductShoppingCartEventImpl
         (other.runtimeType == runtimeType &&
             other is _$GetInfoProductShoppingCartEventImpl &&
             (identical(other.code, code) || other.code == code) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart,
+                    identifierAddProductToShoppingCart) ||
+                other.identifierAddProductToShoppingCart ==
+                    identifierAddProductToShoppingCart) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, size, isUpdate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      titleScreen,
+      typeAddProductToShoppingCart,
+      identifierAddProductToShoppingCart,
+      size,
+      isUpdate);
 
   @JsonKey(ignore: true)
   @override
@@ -6185,7 +6589,8 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -6201,7 +6606,12 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -6224,7 +6634,8 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult Function(String titlePromocode) changeTitlePromocode,
     required TResult Function(String code, bool isShop) getInfoProductSize,
   }) {
-    return getInfoProduct(code, size, isUpdate);
+    return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart, size, isUpdate);
   }
 
   @override
@@ -6233,7 +6644,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -6248,7 +6660,13 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -6266,7 +6684,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult? Function(String titlePromocode)? changeTitlePromocode,
     TResult? Function(String code, bool isShop)? getInfoProductSize,
   }) {
-    return getInfoProduct?.call(code, size, isUpdate);
+    return getInfoProduct?.call(code, titleScreen, typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart, size, isUpdate);
   }
 
   @override
@@ -6275,7 +6694,8 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -6290,7 +6710,13 @@ class _$GetInfoProductShoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -6310,7 +6736,8 @@ class _$GetInfoProductShoppingCartEventImpl
     required TResult orElse(),
   }) {
     if (getInfoProduct != null) {
-      return getInfoProduct(code, size, isUpdate);
+      return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart, size, isUpdate);
     }
     return orElse();
   }
@@ -6491,10 +6918,16 @@ class _$GetInfoProductShoppingCartEventImpl
 abstract class GetInfoProductShoppingCartEvent implements ShoppingCartEvent {
   const factory GetInfoProductShoppingCartEvent(
       {required final String code,
+      required final String titleScreen,
+      required final String typeAddProductToShoppingCart,
+      required final String identifierAddProductToShoppingCart,
       final SkuProductDataModel? size,
       final bool? isUpdate}) = _$GetInfoProductShoppingCartEventImpl;
 
   String get code;
+  String get titleScreen;
+  String get typeAddProductToShoppingCart;
+  String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
   @JsonKey(ignore: true)
@@ -6551,7 +6984,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -6567,7 +7001,12 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -6599,7 +7038,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -6614,7 +7054,13 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -6641,7 +7087,8 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -6656,7 +7103,13 @@ class _$GoBackProductInfoCategotyShoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -6953,7 +7406,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -6969,7 +7423,12 @@ class _$AddFavouriteProductShoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -7001,7 +7460,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -7016,7 +7476,13 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -7043,7 +7509,8 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -7058,7 +7525,13 @@ class _$AddFavouriteProductShoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -7345,7 +7818,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -7361,7 +7835,12 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -7393,7 +7872,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -7408,7 +7888,13 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -7435,7 +7921,8 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -7450,7 +7937,13 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -7708,7 +8201,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -7724,7 +8218,12 @@ class _$AddProductToSoppingCartInfoEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -7756,7 +8255,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -7771,7 +8271,13 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -7798,7 +8304,8 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -7813,7 +8320,13 @@ class _$AddProductToSoppingCartInfoEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -8100,7 +8613,8 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -8116,7 +8630,12 @@ class _$CheckProductToSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -8148,7 +8667,8 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -8163,7 +8683,13 @@ class _$CheckProductToSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -8190,7 +8716,8 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -8205,7 +8732,13 @@ class _$CheckProductToSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -8502,7 +9035,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -8518,7 +9052,12 @@ class _$ChangeSizeProductSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -8550,7 +9089,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -8565,7 +9105,13 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -8592,7 +9138,8 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -8607,7 +9154,13 @@ class _$ChangeSizeProductSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -8864,7 +9417,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -8880,7 +9434,12 @@ class _$OpenAuthModelSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -8912,7 +9471,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -8927,7 +9487,13 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -8954,7 +9520,8 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -8969,7 +9536,13 @@ class _$OpenAuthModelSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -9219,7 +9792,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -9235,7 +9809,12 @@ class _$CloseAuthModelSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -9267,7 +9846,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -9282,7 +9862,13 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -9309,7 +9895,8 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -9324,7 +9911,13 @@ class _$CloseAuthModelSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -9603,7 +10196,8 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -9619,7 +10213,12 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -9651,7 +10250,8 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -9666,7 +10266,13 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -9693,7 +10299,8 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -9708,7 +10315,13 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -9995,7 +10608,8 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -10011,7 +10625,12 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -10043,7 +10662,8 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -10058,7 +10678,13 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -10085,7 +10711,8 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -10100,7 +10727,13 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -10385,7 +11018,8 @@ class _$ChangeAddressSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -10401,7 +11035,12 @@ class _$ChangeAddressSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -10433,7 +11072,8 @@ class _$ChangeAddressSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -10448,7 +11088,13 @@ class _$ChangeAddressSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -10475,7 +11121,8 @@ class _$ChangeAddressSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -10490,7 +11137,13 @@ class _$ChangeAddressSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -10775,7 +11428,8 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -10791,7 +11445,12 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -10823,7 +11482,8 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -10838,7 +11498,13 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -10865,7 +11531,8 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -10880,7 +11547,13 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -11175,7 +11848,8 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -11191,7 +11865,12 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -11223,7 +11902,8 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -11238,7 +11918,13 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -11265,7 +11951,8 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -11280,7 +11967,13 @@ class _$ChangePaymentTypeSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -11567,7 +12260,8 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -11583,7 +12277,12 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -11615,7 +12314,8 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -11630,7 +12330,13 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -11657,7 +12363,8 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -11672,7 +12379,13 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -11966,7 +12679,8 @@ class _$GetInfoProductSizeShoppingCartEventImpl
     required TResult Function() preloadData,
     required TResult Function(BasketInfoItemDataModel item)
         addProductToSoppingCart,
-    required TResult Function(BasketInfoItemDataModel item)
+    required TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)
         addOtherProductToSoppingCart,
     required TResult Function(BasketInfoItemDataModel item, int index)
         deleteProductToSoppingCart,
@@ -11982,7 +12696,12 @@ class _$GetInfoProductSizeShoppingCartEventImpl
     required TResult Function(BasketOrderRequest request) createOrder,
     required TResult Function(int bonuses) bonuses,
     required TResult Function(
-            String code, SkuProductDataModel? size, bool? isUpdate)
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)
         getInfoProduct,
     required TResult Function() goBackProductInfo,
     required TResult Function(int index, ProductDataModel product)
@@ -12014,7 +12733,8 @@ class _$GetInfoProductSizeShoppingCartEventImpl
     TResult? Function()? init,
     TResult? Function()? preloadData,
     TResult? Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult? Function(BasketInfoItemDataModel item)?
+    TResult? Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult? Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -12029,7 +12749,13 @@ class _$GetInfoProductSizeShoppingCartEventImpl
     TResult? Function()? removePromoCode,
     TResult? Function(BasketOrderRequest request)? createOrder,
     TResult? Function(int bonuses)? bonuses,
-    TResult? Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult? Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult? Function()? goBackProductInfo,
     TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
@@ -12056,7 +12782,8 @@ class _$GetInfoProductSizeShoppingCartEventImpl
     TResult Function()? init,
     TResult Function()? preloadData,
     TResult Function(BasketInfoItemDataModel item)? addProductToSoppingCart,
-    TResult Function(BasketInfoItemDataModel item)?
+    TResult Function(BasketInfoItemDataModel item, String? titleScreen,
+            String? typeAddProductToShoppingCart)?
         addOtherProductToSoppingCart,
     TResult Function(BasketInfoItemDataModel item, int index)?
         deleteProductToSoppingCart,
@@ -12071,7 +12798,13 @@ class _$GetInfoProductSizeShoppingCartEventImpl
     TResult Function()? removePromoCode,
     TResult Function(BasketOrderRequest request)? createOrder,
     TResult Function(int bonuses)? bonuses,
-    TResult Function(String code, SkuProductDataModel? size, bool? isUpdate)?
+    TResult Function(
+            String code,
+            String titleScreen,
+            String typeAddProductToShoppingCart,
+            String identifierAddProductToShoppingCart,
+            SkuProductDataModel? size,
+            bool? isUpdate)?
         getInfoProduct,
     TResult Function()? goBackProductInfo,
     TResult Function(int index, ProductDataModel product)? addFavouriteProduct,

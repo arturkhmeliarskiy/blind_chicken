@@ -1,3 +1,4 @@
+import 'package:api_models/src/catalog/catalog_size_product_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'catalog_product_response.freezed.dart';
@@ -17,6 +18,7 @@ class CatalogProductResponse with _$CatalogProductResponse {
     int? pbc,
     int? ca,
     int? dv,
+    List<CatalogSizeProductResponse>? sz,
   }) = _CatalogProductResponse;
   factory CatalogProductResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogProductResponseFromJson(json);

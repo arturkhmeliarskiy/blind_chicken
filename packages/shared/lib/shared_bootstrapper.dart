@@ -38,6 +38,12 @@ Future<void> initShared(GetIt getIt) async {
     )
     ..registerSingleton(
       FileService(),
+    )
+    ..registerSingleton(
+      AppMetricaEcommerceService(),
+    )
+    ..registerSingleton(
+      FilterService(),
     );
   await getIt.get<SharedPreferencesService>().initialize();
   await getIt.get<ProductsFavouritesService>().initFavouritesProductsHave();

@@ -69,6 +69,12 @@ class AuthRepository {
                 code: item.code,
                 sku: item.sku,
                 count: item.count,
+                type: item.typeAddProductToShoppingCart,
+                identifier: item.identifierAddProductToShoppingCart,
+                sectionCategoriesPath: item.sectionCategoriesPath,
+                productCategoriesPath: item.productCategoriesPath,
+                titleScreen: item.titleScreen,
+                searchQuery: item.searchQuery,
               );
             })),
           ),
@@ -113,6 +119,11 @@ class AuthRepository {
       message: tailoringBlank.message ?? '',
       pdf: tailoringBlank.pdf ?? '',
     );
+  }
+
+  Future<AuthDataModel> checkDiscount() async {
+    final listBoutiques = await _authService.checkDiscount() ?? AuthResponse();
+    return listBoutiques.toAuth();
   }
 }
 

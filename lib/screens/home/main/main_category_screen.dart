@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_product_item.dart';
 import 'package:blocs/blocs.dart';
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -82,6 +83,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onVerticalDragUpdate: (details) {},
       onHorizontalDragEnd: (DragEndDetails details) {
@@ -277,7 +279,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                     },
                     child: SizedBox(
                       child: Image.asset(
-                        'assets/images/giftcard.jpg',
+                        'assets/images/giftcard_f.jpg',
                       ),
                     ),
                   ),
@@ -288,7 +290,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                 Center(
                   child: Text(
                     'Подарочная карта',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -329,7 +331,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                 Center(
                   child: Text(
                     'Распродажа',
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                   ),
@@ -355,7 +357,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                         },
                         child: Text(
                           'Бренды',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                 fontWeight: FontWeight.w700,
                               ),
                         ),
@@ -446,17 +448,15 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                             return MediaQuery.removePadding(
                               context: context,
                               removeTop: true,
-                              child: GridView.builder(
+                              child: DynamicHeightGridView(
                                   shrinkWrap: true,
                                   itemCount: initState.allBrands.length,
+                                  crossAxisCount:
+                                      width > 767 ? 3 : 2, // number of items in each row
+                                  crossAxisSpacing: 13,
+                                  mainAxisSpacing: 13,
                                   physics: const NeverScrollableScrollPhysics(),
-                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2, // number of items in each row
-                                    mainAxisSpacing: 11.0, // spacing between rows
-                                    crossAxisSpacing: 11.0, // spacing between columns
-                                    childAspectRatio: 6.5,
-                                  ),
-                                  itemBuilder: (context, index) {
+                                  builder: (context, index) {
                                     return InkWell(
                                       onTap: () {
                                         FocusScope.of(context).unfocus();
@@ -479,7 +479,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                       },
                                       child: Text(
                                         initState.allBrands[index].n,
-                                        style: Theme.of(context).textTheme.headline2,
+                                        style: Theme.of(context).textTheme.headlineLarge,
                                       ),
                                     );
                                   }),

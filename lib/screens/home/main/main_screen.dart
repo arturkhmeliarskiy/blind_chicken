@@ -1,11 +1,15 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
 import 'package:blocs/blocs.dart';
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
@@ -35,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     _init();
-    context.read<CatalogBloc>().add(const CatalogEvent.init());
+    context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
     context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
@@ -44,8 +48,10 @@ class _MainScreenState extends State<MainScreen> {
       (timer) {
         context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
         _updateVersionApp();
+        _checkPushToken();
       },
     );
+
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }
@@ -78,8 +84,6 @@ class _MainScreenState extends State<MainScreen> {
 
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -130,6 +134,32 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
+  _checkPushToken() async {
+    final sharedPreferencesService = GetIt.I.get<SharedPreferencesService>();
+    final pushToken = sharedPreferencesService.getString(key: SharedPrefKeys.pushToken);
+    bool isAuth = sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+    final pushNotification = GetIt.I.get<PushNotificationRepository>();
+    String pushTokenNow = '';
+
+    if (Platform.isIOS) {
+      const mc = MethodChannel('blind_chicken/getToken');
+      pushTokenNow = await mc.invokeMethod('getDeviceToken');
+    } else {
+      pushTokenNow = await FirebaseMessaging.instance.getToken() ?? '';
+    }
+
+    if (!pushTokenNow.contains(pushToken ?? '')) {
+      if (isAuth) {
+        await pushNotification.postNotificationInfo(event: '3');
+      } else {
+        await pushNotification.postNotificationInfo(event: '4');
+      }
+    }
+  }
+
   void _loadMoreData() async {
     if (_historyPosition > _scrollController.position.pixels &&
         _scrollController.position.pixels > 0) {
@@ -155,6 +185,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Stack(
       children: [
         BlocListener<CatalogBloc, CatalogState>(
@@ -165,13 +196,15 @@ class _MainScreenState extends State<MainScreen> {
                 final notificationMessage = initState.notificationMessage;
                 if (!updateData.isInitApp && notificationMessage != null && _isOpenNotification) {
                   if (notificationMessage.idMessage != updateData.idMessageNotification) {
+                    AppMetrica.reportEvent('Открытие PUSH-уведомления (Приложение было закрыnо)');
                     if (notificationMessage.type == 'catalog') {
                       context.navigateTo(CatalogRoute(
                         title: '',
                         url: notificationMessage.section,
                         sort: notificationMessage.sort,
-                        filterSelect: notificationMessage.filterSelect,
+                        filterNotifcation: notificationMessage.filterNotifcation,
                         isNotification: true,
+                        messageId: notificationMessage.idMessage,
                       ));
                     }
                     if (notificationMessage.type == 'product') {
@@ -182,6 +215,7 @@ class _MainScreenState extends State<MainScreen> {
                           favouritesProducts: const [],
                           isChildRoute: false,
                           code: notificationMessage.codeProduct,
+                          messageId: notificationMessage.idMessage,
                         ),
                       );
                     }
@@ -190,6 +224,7 @@ class _MainScreenState extends State<MainScreen> {
                         BoutiquesDescriptionRoute(
                           uidStore: notificationMessage.uid,
                           isNotification: true,
+                          messageId: notificationMessage.idMessage,
                         ),
                       );
                     }
@@ -197,6 +232,7 @@ class _MainScreenState extends State<MainScreen> {
                       context.navigateTo(
                         GiftCardRoute(
                           isNotification: true,
+                          messageId: notificationMessage.idMessage,
                         ),
                       );
                     }
@@ -204,6 +240,7 @@ class _MainScreenState extends State<MainScreen> {
                       context.navigateTo(
                         NewsNotificationDescriptionRoute(
                           idNews: notificationMessage.idNews,
+                          messageId: notificationMessage.idMessage,
                         ),
                       );
                     }
@@ -211,6 +248,7 @@ class _MainScreenState extends State<MainScreen> {
                       context.navigateTo(
                         MediaNotificationDescriptionRoute(
                           idNews: notificationMessage.idNews,
+                          messageId: notificationMessage.idMessage,
                         ),
                       );
                     }
@@ -225,7 +263,8 @@ class _MainScreenState extends State<MainScreen> {
                     !initState.isNotification &&
                     _isOpenUpdateVersionApp &&
                     notificationMessage?.type != 'news' &&
-                    notificationMessage?.type != 'media') {
+                    notificationMessage?.type != 'media' &&
+                    !updateData.isScapeUpdateApp) {
                   updateData.isOpenUpdateModalWindow = true;
                   showDialog(
                     context: context,
@@ -235,6 +274,7 @@ class _MainScreenState extends State<MainScreen> {
                         updateVersionApp: initState.updateVersionApp,
                         onBack: () {
                           context.popRoute();
+                          updateData.isScapeUpdateApp = true;
                         },
                         onUpdate: () {
                           context.popRoute();
@@ -254,6 +294,7 @@ class _MainScreenState extends State<MainScreen> {
                     },
                   ).then(
                     (val) {
+                      updateData.isScapeUpdateApp = true;
                       updateData.isOpenUpdateModalWindow = false;
                     },
                   );
@@ -293,62 +334,174 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          context.read<BrandBloc>().add(
-                                                const BrandEvent.getBrands(
-                                                  selectTypePeople: 1,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              context.read<BrandBloc>().add(
+                                                    const BrandEvent.getBrands(
+                                                      selectTypePeople: 1,
+                                                    ),
+                                                  );
+                                              context.navigateTo(
+                                                MainCategoryRoute(
+                                                  title: 'Женщинам',
+                                                  selectIndexType: 1,
                                                 ),
                                               );
-                                          context.navigateTo(
-                                            MainCategoryRoute(
+                                              final appMetricaEcommerce =
+                                                  GetIt.I.get<AppMetricaEcommerceService>();
+                                              appMetricaEcommerce.openPages(
+                                                titleScreen: 'Раздел женское на главной странице',
+                                              );
+                                            },
+                                            child: MainCategoryItem(
+                                              image: 'woman',
                                               title: 'Женщинам',
-                                              selectIndexType: 1,
+                                              width: width > 767 ? width / 3 - 7 : width / 2 - 14,
+                                              padding: EdgeInsets.only(
+                                                top: 14,
+                                                right: 7,
+                                                left: width > 767 ? 7 : 0,
+                                              ),
                                             ),
-                                          );
-                                        },
-                                        child: const MainCategoryItem(
-                                          image: 'woman',
-                                          title: 'Женщинам',
-                                        ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          context.read<BrandBloc>().add(
-                                                const BrandEvent.getBrands(
-                                                  selectTypePeople: 2,
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              context.read<BrandBloc>().add(
+                                                    const BrandEvent.getBrands(
+                                                      selectTypePeople: 2,
+                                                    ),
+                                                  );
+                                              context.navigateTo(
+                                                MainCategoryRoute(
+                                                  title: 'Мужчинам',
+                                                  selectIndexType: 2,
                                                 ),
                                               );
-                                          context.navigateTo(
-                                            MainCategoryRoute(
+                                              final appMetricaEcommerce =
+                                                  GetIt.I.get<AppMetricaEcommerceService>();
+                                              appMetricaEcommerce.openPages(
+                                                titleScreen: 'Раздел мужское на главной странице',
+                                              );
+                                            },
+                                            child: MainCategoryItem(
+                                              image: 'man',
                                               title: 'Мужчинам',
-                                              selectIndexType: 2,
+                                              width: width > 767 ? width / 3 - 7 : width / 2 - 14,
+                                              padding: EdgeInsets.only(
+                                                top: 14,
+                                                left: 7,
+                                                right: width > 767 ? 7 : 0,
+                                              ),
                                             ),
-                                          );
-                                        },
-                                        child: const MainCategoryItem(
-                                          image: 'man',
-                                          title: 'Мужчинам',
-                                        ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          context.read<BrandBloc>().add(
-                                                const BrandEvent.getBrands(
-                                                  selectTypePeople: 3,
+                                          ),
+                                          if (width > 767)
+                                            GestureDetector(
+                                              onTap: () {
+                                                context.read<BrandBloc>().add(
+                                                      const BrandEvent.getBrands(
+                                                        selectTypePeople: 3,
+                                                      ),
+                                                    );
+                                                context.navigateTo(
+                                                  MainCategoryRoute(
+                                                    title: 'Детям',
+                                                    selectIndexType: 3,
+                                                  ),
+                                                );
+                                                final appMetricaEcommerce =
+                                                    GetIt.I.get<AppMetricaEcommerceService>();
+                                                appMetricaEcommerce.openPages(
+                                                  titleScreen: 'Раздел детям на главной странице',
+                                                );
+                                              },
+                                              child: MainCategoryItem(
+                                                image: 'child',
+                                                title: 'Детям',
+                                                width: width > 767 ? width / 3 - 7 : width / 2 - 14,
+                                                padding: EdgeInsets.only(
+                                                  top: 14,
+                                                  right: 7,
+                                                  left: width > 767 ? 7 : 0,
                                                 ),
-                                              );
-                                          context.navigateTo(
-                                            MainCategoryRoute(
-                                              title: 'Детям',
-                                              selectIndexType: 3,
+                                              ),
                                             ),
-                                          );
-                                        },
-                                        child: const MainCategoryItem(
-                                          image: 'child',
-                                          title: 'Детям',
-                                        ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          if (width < 767)
+                                            GestureDetector(
+                                              onTap: () {
+                                                context.read<BrandBloc>().add(
+                                                      const BrandEvent.getBrands(
+                                                        selectTypePeople: 3,
+                                                      ),
+                                                    );
+                                                context.navigateTo(
+                                                  MainCategoryRoute(
+                                                    title: 'Детям',
+                                                    selectIndexType: 3,
+                                                  ),
+                                                );
+                                              },
+                                              child: MainCategoryItem(
+                                                image: 'child',
+                                                title: 'Детям',
+                                                width: width / 2 - 14,
+                                                padding: const EdgeInsets.only(
+                                                  top: 14,
+                                                  right: 7,
+                                                ),
+                                              ),
+                                            ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              context.navigateTo(GiftCardRoute());
+                                            },
+                                            child: MainCategoryItem(
+                                              image: width > 767 ? 'giftcard_f' : 'giftcard_m',
+                                              title: 'Подарочная карта',
+                                              width: width > 767 ? width / 2 - 10 : width / 2 - 14,
+                                              padding: EdgeInsets.only(
+                                                top: 14,
+                                                left: 7,
+                                                right: width > 767 ? 7 : 0,
+                                              ),
+                                            ),
+                                          ),
+                                          if (width > 767)
+                                            GestureDetector(
+                                              onTap: () {
+                                                context.read<CatalogBloc>().add(
+                                                      const CatalogEvent.getInfoProducts(
+                                                        path: '/sale/',
+                                                        isCleanHistory: true,
+                                                      ),
+                                                    );
+                                                context.navigateTo(
+                                                  CatalogRoute(
+                                                    title: '',
+                                                    url: '/sale/',
+                                                  ),
+                                                );
+                                              },
+                                              child: MainCategoryItem(
+                                                image: width > 767 ? 'sale_f' : 'sale',
+                                                title: 'Распродажа',
+                                                width:
+                                                    width > 767 ? width / 2 - 10 : width / 2 - 14,
+                                                padding: EdgeInsets.only(
+                                                  top: 14,
+                                                  right: 7,
+                                                  left: width > 767 ? 7 : 0,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
                                       ),
                                       GestureDetector(
                                         onTap: () {
@@ -369,9 +522,10 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                           child: Text(
                                             'Бренды',
-                                            style: Theme.of(context).textTheme.headline2?.copyWith(
-                                                  fontWeight: FontWeight.w700,
-                                                ),
+                                            style:
+                                                Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
                                           ),
                                         ),
                                       ),
@@ -466,47 +620,51 @@ class _MainScreenState extends State<MainScreen> {
                                       BlocBuilder<BrandBloc, BrandState>(builder: (context, state) {
                                         return state.maybeMap(
                                           preloadDataCompleted: (initState) {
-                                            return GridView.builder(
-                                                shrinkWrap: true,
-                                                itemCount: initState.allBrands.length,
-                                                physics: const NeverScrollableScrollPhysics(),
-                                                gridDelegate:
-                                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 2, // number of items in each row
-                                                  mainAxisSpacing: 11.0, // spacing between rows
-                                                  crossAxisSpacing: 11.0, // spacing between columns
-                                                  childAspectRatio: 6.5,
-                                                ),
-                                                padding: const EdgeInsets.only(
-                                                  left: 14.0,
-                                                  right: 14.0,
-                                                ), // padding around the grid
-                                                itemBuilder: (context, index) {
-                                                  return InkWell(
-                                                    onTap: () {
-                                                      FocusScope.of(context).unfocus();
-                                                      _search.clear();
-                                                      context.read<BrandBloc>().add(
-                                                            const BrandEvent.search(query: ''),
-                                                          );
-                                                      context.read<CatalogBloc>().add(
-                                                            CatalogEvent.getInfoProducts(
-                                                              path: initState.allBrands[index].u,
-                                                            ),
-                                                          );
-                                                      context.navigateTo(
-                                                        CatalogRoute(
-                                                          title: initState.allBrands[index].n,
-                                                          url: initState.allBrands[index].u,
+                                            return Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 12.5,
+                                                right: 12.5,
+                                              ),
+                                              child: DynamicHeightGridView(
+                                                  shrinkWrap: true,
+                                                  itemCount: initState.allBrands.length,
+                                                  crossAxisCount: width > 767
+                                                      ? 3
+                                                      : 2, // number of items in each row
+                                                  crossAxisSpacing: 13,
+                                                  mainAxisSpacing: 13,
+                                                  physics: const NeverScrollableScrollPhysics(),
+                                                  builder: (context, index) {
+                                                    return InkWell(
+                                                      onTap: () {
+                                                        FocusScope.of(context).unfocus();
+                                                        _search.clear();
+                                                        context.read<BrandBloc>().add(
+                                                              const BrandEvent.search(query: ''),
+                                                            );
+                                                        context.read<CatalogBloc>().add(
+                                                              CatalogEvent.getInfoProducts(
+                                                                path: initState.allBrands[index].u,
+                                                              ),
+                                                            );
+                                                        context.navigateTo(
+                                                          CatalogRoute(
+                                                            title: initState.allBrands[index].n,
+                                                            url: initState.allBrands[index].u,
+                                                          ),
+                                                        );
+                                                      },
+                                                      child: SizedBox(
+                                                        child: Text(
+                                                          initState.allBrands[index].n,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .headlineLarge,
                                                         ),
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      initState.allBrands[index].n,
-                                                      style: Theme.of(context).textTheme.headline2,
-                                                    ),
-                                                  );
-                                                });
+                                                      ),
+                                                    );
+                                                  }),
+                                            );
                                           },
                                           orElse: () => const SizedBox(),
                                         );

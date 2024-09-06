@@ -17,6 +17,16 @@ _$OrderProductResponseImpl _$$OrderProductResponseImplFromJson(
       brand: json['brand'] as String?,
       name: json['name'] as String?,
       sku: json['sku'] as String?,
+      type: json['type'] as String?,
+      identifier: json['identifier'] as String?,
+      sectionCategoriesPath: (json['section_categories_path'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      productCategoriesPath: (json['product_categories_path'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      titleScreen: json['title_screen'] as String?,
+      searchQuery: json['search_query'] as String?,
     );
 
 Map<String, dynamic> _$$OrderProductResponseImplToJson(
@@ -30,4 +40,10 @@ Map<String, dynamic> _$$OrderProductResponseImplToJson(
       'brand': instance.brand,
       'name': instance.name,
       'sku': instance.sku,
+      'type': instance.type,
+      'identifier': instance.identifier,
+      'section_categories_path': instance.sectionCategoriesPath,
+      'product_categories_path': instance.productCategoriesPath,
+      'title_screen': instance.titleScreen,
+      'search_query': instance.searchQuery,
     };

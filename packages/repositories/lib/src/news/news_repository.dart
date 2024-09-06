@@ -30,15 +30,23 @@ class NewsRepository {
 
   Future<OneNewsInfoDataModel> getOneNews({
     required String id,
+    String? messageId,
   }) async {
-    final news = await _newsService.getOneNews(id: id);
+    final news = await _newsService.getOneNews(
+      id: id,
+      messageId: messageId,
+    );
     return news.toOneNews();
   }
 
   Future<OneMediaInfoDataModel> getOneMedia({
     required String id,
+    String? messageId,
   }) async {
-    final media = await _newsService.getOneMedia(id: id);
+    final media = await _newsService.getOneMedia(
+      id: id,
+      messageId: messageId,
+    );
     return media.toOneMedia();
   }
 }

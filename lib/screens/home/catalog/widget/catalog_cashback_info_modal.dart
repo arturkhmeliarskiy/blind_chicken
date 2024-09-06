@@ -109,7 +109,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                     ),
                     Text(
                       'Кэшбэк на бонусный счет:',
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                     ),
@@ -122,7 +122,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                         children: [
                           Text(
                             'Бонусы',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                           Expanded(
                             child: Text(
@@ -135,7 +135,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                           ),
                           Text(
                             '${widget.bonusLoyal.spaceSeparateNumbers()} ₽',
-                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -154,7 +154,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                             children: [
                               Text(
                                 'Подарочные бонусы',
-                                style: Theme.of(context).textTheme.headline2,
+                                style: Theme.of(context).textTheme.headlineLarge,
                               ),
                               Expanded(
                                 child: Text(
@@ -167,7 +167,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                               ),
                               Text(
                                 '${widget.bonusGift.spaceSeparateNumbers()} ₽',
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                       fontWeight: FontWeight.w700,
                                     ),
                               ),
@@ -192,7 +192,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                             children: [
                               Text(
                                 'Годовые бонусы',
-                                style: Theme.of(context).textTheme.headline2,
+                                style: Theme.of(context).textTheme.headlineLarge,
                               ),
                               Expanded(
                                 child: Text(
@@ -206,11 +206,11 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                               RichText(
                                 text: TextSpan(
                                   text: 'до ',
-                                  style: Theme.of(context).textTheme.headline2,
+                                  style: Theme.of(context).textTheme.headlineLarge,
                                   children: <TextSpan>[
                                     TextSpan(
                                       text: '${widget.bonusYear.spaceSeparateNumbers()} ₽',
-                                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                             fontWeight: FontWeight.w700,
                                           ),
                                     ),
@@ -232,7 +232,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                     if (widget.pb == widget.p)
                       Text(
                         'Персональная скидка:',
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                       ),
@@ -246,7 +246,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                           children: [
                             Text(
                               'Ваша скидка',
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.headlineLarge,
                             ),
                             Expanded(
                               child: Text(
@@ -259,7 +259,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                             ),
                             Text(
                               '${widget.discountVal.toString().spaceSeparateNumbers()} ₽',
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
+                              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                     fontWeight: FontWeight.w700,
                                   ),
                             ),
@@ -273,7 +273,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                           children: [
                             Text(
                               'Ваша скидка',
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.headlineLarge,
                             ),
                             Expanded(
                               child: Text(
@@ -432,7 +432,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                         alignment: Alignment.centerRight,
                         child: Text(
                           'Информация о кэшбэк и скидках',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                 decoration: TextDecoration.underline,
                               ),
                         ),

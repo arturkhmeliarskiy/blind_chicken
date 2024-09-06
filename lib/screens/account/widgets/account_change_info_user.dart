@@ -173,7 +173,7 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
                       ),
                       Text(
                         'Заполните ${widget.subTitle.toLowerCase()}.',
-                        style: Theme.of(context).textTheme.headline2,
+                        style: Theme.of(context).textTheme.headlineLarge,
                       ),
                     ],
                   ),

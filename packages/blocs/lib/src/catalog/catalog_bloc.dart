@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:decimal/decimal.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   final BasketRepository _basketRepository;
   final StoreVersionAppRepository _storeVersionAppRepository;
   final PushNotificationRepository _pushNotificationRepository;
+  final AppMetricaEcommerceService _appMetricaEcommerceService;
+  final FilterService _filterService;
 
   CatalogBloc(
     this._catalogRepository,
@@ -38,6 +41,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     this._basketRepository,
     this._storeVersionAppRepository,
     this._pushNotificationRepository,
+    this._appMetricaEcommerceService,
+    this._filterService,
   ) : super(const CatalogState.init()) {
     on<CatalogEvent>((event, emit) => event.map<Future<void>>(
           init: (event) => _init(event, emit),
@@ -71,6 +76,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           getInfoServiceCard: (event) => _getInfoServiceCard(event, emit),
           changeSizeProduct: (event) => _changeSizeProduct(event, emit),
           checkOpenGetInfoProductSize: (event) => _checkOpenGetInfoProductSize(event, emit),
+          checkButtonTop: (event) => _checkButtonTop(event, emit),
         ));
   }
 
@@ -187,7 +193,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     PreloadDataCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
-    emit(const CatalogState.load());
+    if (state is LoadingCatalogState) {
+      emit(const CatalogState.init());
+      emit(const CatalogState.load());
+    } else {
+      emit(const CatalogState.load());
+    }
+
+    AppMetrica.reportEvent('Главная страница');
     List<ProductDataModel> favouritesProducts = [];
     String nowVersionApp = '';
     String updateVersionApp = '';
@@ -195,6 +208,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     List<int> favouritesProductsId = [];
     FavouritesDataModel? favourites;
+    FilterNotifcationDataModel? filterNotifcation;
     PushNotificationMessageDataModel? notitcationMessage;
     String appStoreInfoVersion = '';
 
@@ -226,8 +240,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -261,15 +273,23 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         final sort = await me.invokeMethod('sort') as String;
         final uid = await me.invokeMethod('uid') as String;
         final codeProduct = await me.invokeMethod('codeProduct') as String;
-        final filterSelect = await me.invokeMethod('filter') as String;
+        if (section.isNotEmpty) {
+          filterNotifcation = _filterService.converterNotificationInfo(value: section);
+        }
+
         final idNews = await me.invokeMethod('idNews') as String;
         notitcationMessage = PushNotificationMessageDataModel(
-          section: section,
+          section: filterNotifcation?.url ?? '',
           idMessage: idMessage,
           type: type,
           sort: sort,
           uid: uid,
-          filterSelect: filterSelect,
+          filterNotifcation: filterNotifcation ??
+              FilterNotifcationDataModel(
+                url: '',
+                filter: [],
+                fullFilter: [],
+              ),
           codeProduct: codeProduct,
           idNews: idNews,
         );
@@ -278,13 +298,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
     if (Platform.isAndroid) {
       final message = await FirebaseMessaging.instance.getInitialMessage();
+      final filterNotifcation =
+          _filterService.converterNotificationInfo(value: message?.data['section'] ?? '');
       notitcationMessage = PushNotificationMessageDataModel(
         uid: message?.data['uid'] ?? '',
-        section: message?.data['section'] ?? '',
+        section: filterNotifcation.url,
         idMessage: message?.data['id_message'] ?? '',
         type: message?.data['type'] ?? '',
         sort: message?.data['sort'] ?? '',
-        filterSelect: message?.data['filter'] ?? '',
+        filterNotifcation: filterNotifcation,
         codeProduct: message?.data['code_product'] ?? '',
         idNews: message?.data['id_news'] ?? '',
       );
@@ -335,6 +357,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           listCatalogPath: [],
           userDiscount: 0,
           isOpenGetSizeProduct: false,
+          isButtonTop: false,
         ),
       );
     }
@@ -344,6 +367,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     SubCategoryatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
+    if (state is LoadingCatalogState) {
+      add(const PreloadDataCatalogEvent());
+    }
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const CatalogState.load());
 
@@ -703,6 +729,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       CatalogProductsRequest request = initState.request;
       List<FilterCatalogDataModel> filters = initState.request.filters?.toList() ?? [];
       List<ProductDataModel> products = initState.products.toList();
+      int offset = 0;
+      CatalogDataModel? catalogInfo;
 
       filters.add(FilterCatalogDataModel(
         key: 'nav',
@@ -711,11 +739,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       request = request.copyWith(filters: filters);
 
-      final catalogInfo = await _catalogRepository.getCatalogProducts(
-        request: request,
-      );
+      if (initState.offset != int.parse(filters.last.value.replaceAll('page-', '')) &&
+          offset != initState.offset) {
+        offset = initState.offset;
+        catalogInfo = await _catalogRepository.getCatalogProducts(
+          request: request,
+        );
+      }
 
-      products = [...products, ...catalogInfo.products];
+      products = [...products, ...catalogInfo?.products ?? []];
 
       emit(initState.copyWith(
         products: products,
@@ -865,6 +897,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     GetInfoProductsCatalogEvent event,
     Emitter<CatalogState> emit,
   ) async {
+    if (state is LoadingCatalogState) {
+      add(const PreloadDataCatalogEvent());
+    }
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       emit(const CatalogState.load());
       List<String> listCatalogPath = initState.listCatalogPath.toList();
@@ -900,6 +935,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         request: request,
       );
 
+      _appMetricaEcommerceService.openPages(titleScreen: catalogInfo.h1);
+
       emit(initState.copyWith(
         isAuth: isAuth,
         filter: catalogInfo.filter,
@@ -921,6 +958,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         codeProduct: null,
         userDiscount: catalogInfo.userDiscount,
         offset: 1,
+        isButtonTop: false,
       ));
     });
   }
@@ -937,15 +975,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Map<String, FilterCatalogDataModel> filtersInfo = {};
     String appStoreInfoVersion = '';
 
-    if (event.filterSelect.isNotEmpty) {
-      List<dynamic> list = json.decode(event.filterSelect).cast<dynamic>();
-
-      for (int i = 0; i < list.length; i++) {
+    if (event.filterNotifcation.filter.isNotEmpty) {
+      for (int i = 0; i < event.filterNotifcation.fullFilter.length; i++) {
         selectItems.add(
           FilterItemDataModel(
-            id: int.parse(list[i]['id']),
-            value: list[i]['value'],
-            typeFilter: list[i]['typeFilter'],
+            id: int.parse(event.filterNotifcation.fullFilter[i].value),
+            value: '',
+            typeFilter: event.filterNotifcation.fullFilter[i].typeFilter,
           ),
         );
       }
@@ -979,7 +1015,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       filters: filtersInfo.values.toList(),
     );
 
-    log(event.filterSelect);
+    log(event.filterNotifcation.toString());
 
     FavouritesDataModel? favourites;
     List<int> favouritesProductsId = [];
@@ -1002,13 +1038,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
     final catalogInfo = await _catalogRepository.getCatalogProducts(
       request: request,
+      messageId: event.messageId,
     );
 
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -1023,12 +1058,30 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       }
     }
 
-    if (event.filterSelect.isNotEmpty) {
+    if (event.filterNotifcation.filter.isNotEmpty) {
       for (int j = 0; j < selectItems.length; j++) {
         final index = catalogInfo.filter.indexWhere(
           (element) => element.typeFilter == selectItems[j].typeFilter,
         );
-        allSelectFilter.add({index: selectItems[j]});
+        List<FilterItemDataModel> filters = [];
+        for (int k = 0; k < catalogInfo.filter.length; k++) {
+          for (int m = 0; m < catalogInfo.filter[k].items.length; m++) {
+            if (catalogInfo.filter[k].typeFilter == selectItems[j].typeFilter &&
+                catalogInfo.filter[k].items[m].id == selectItems[j].id) {
+              filters.add(catalogInfo.filter[k].items[m]);
+            }
+          }
+        }
+
+        selectItems[j] = selectItems[j].copyWith(
+          value: filters.isNotEmpty ? filters.first.value : '',
+        );
+
+        allSelectFilter.add({
+          index: selectItems[j].copyWith(
+            value: filters.isNotEmpty ? filters.first.value : '',
+          )
+        });
         if (selectFilter.containsKey(index)) {
           List<FilterItemDataModel> listItems = selectFilter[index]?.toList() ?? [];
 
@@ -1093,6 +1146,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         listCatalogPath: [event.path],
         userDiscount: catalogInfo.userDiscount,
         isOpenGetSizeProduct: false,
+        isButtonTop: false,
       ),
     );
   }
@@ -1118,6 +1172,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: _updateDataService.selectedIndexGender.toString(),
+        messageId: event.messageId,
       );
 
       final additionalProductsDescriptionStyle =
@@ -1179,6 +1234,50 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         }
       }
 
+      _appMetricaEcommerceService.viewingProductPage(
+        titleScreen: event.messageId?.isNotEmpty ?? false ? 'Уведомление' : event.titleScreen,
+        titleProduct: detailsProduct.name,
+        codeProduct: detailsProduct.code.toString(),
+        type: event.messageId?.isNotEmpty ?? false
+            ? 'Уведомление'
+            : event.typeAddProductToShoppingCart,
+        identifier:
+            event.messageId?.isNotEmpty ?? false ? '2' : event.identifierAddProductToShoppingCart,
+        sectionCategoriesPath: [initState.catalogInfo?.h1 ?? ''],
+        productCategoriesPath: initState.catalogInfo?.breadcrumbs
+                .map(
+                  (item) => item.name,
+                )
+                .toList() ??
+            [],
+        priceActual: detailsProduct.price.yourPrice,
+        priceOriginal: int.parse(detailsProduct.price.pb),
+        internalComponentsActualPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+        internalComponentsOriginalPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+      );
+
       if (detailsProduct.errorMessage.isNotEmpty || basketInfo.errorMessage.isNotEmpty) {
         isError = true;
         errorMessage = MessageInfo.errorMessage;
@@ -1213,7 +1312,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           ) ??
           false;
 
-      emit(const CatalogState.load());
+      _appMetricaEcommerceService.openPages(titleScreen: 'Сервисная карта');
 
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
@@ -1255,6 +1354,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             code: event.code,
             listSize: detailsProduct.sku,
             listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            titleScreen: event.titleScreen,
+            sectionCategoriesPath: [initState.catalogInfo?.h1 ?? ''],
+            productCategoriesPath: initState.catalogInfo?.breadcrumbs
+                    .map(
+                      (item) => item.name,
+                    )
+                    .toList() ??
+                [],
           ));
         } else {
           if (event.isShop) {
@@ -1262,6 +1369,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           } else {
             emit(CatalogState.addProductToSoppingCart(
               code: event.code,
+              titleScreen: event.titleScreen,
+              sectionCategoriesPath: [initState.catalogInfo?.h1 ?? ''],
+              productCategoriesPath: initState.catalogInfo?.breadcrumbs
+                      .map(
+                        (item) => item.name,
+                      )
+                      .toList() ??
+                  [],
             ));
           }
         }
@@ -1271,11 +1386,20 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         } else {
           emit(CatalogState.addProductToSoppingCart(
             code: event.code,
+            titleScreen: event.titleScreen,
+            sectionCategoriesPath: [initState.catalogInfo?.h1 ?? ''],
+            productCategoriesPath: initState.catalogInfo?.breadcrumbs
+                    .map(
+                      (item) => item.name,
+                    )
+                    .toList() ??
+                [],
           ));
         }
       }
 
       emit(initState.copyWith(
+        detailsProduct: detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
@@ -1447,6 +1571,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             code: initState.codeProduct ?? '0',
             listSize: detailsProduct.sku,
             listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            titleScreen: event.titleScreen,
+            sectionCategoriesPath: [initState.catalogInfo?.h1 ?? ''],
+            productCategoriesPath: initState.catalogInfo?.breadcrumbs
+                    .map(
+                      (item) => item.name,
+                    )
+                    .toList() ??
+                [],
           ));
         }
       }
@@ -1665,6 +1797,12 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
     }
@@ -1681,6 +1819,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             code: basketInfo.basket[i].code,
             sku: basketInfo.basket[i].sku,
             count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }
@@ -1694,6 +1840,45 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+        typeProductToSoppingCart: AppMetricaShoppingCartEnum.addProductToShoppingCart,
+        titleScreen: event.titleScreen,
+        titleProduct: initState.detailsProduct?.name ?? '',
+        codeProduct: initState.codeProduct ?? '',
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        quantity: 1,
+        sectionCategoriesPath: [initState.catalogInfo?.h1 ?? ''],
+        productCategoriesPath: initState.catalogInfo?.breadcrumbs
+                .map(
+                  (item) => item.name,
+                )
+                .toList() ??
+            [],
+        priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
+        priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+        internalComponentsActualPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size?.value ?? '',
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size?.id ?? '',
+          ),
+        ],
+        internalComponentsOriginalPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size?.value ?? '',
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size?.id ?? '',
+          ),
+        ],
+      );
+
       final listProducts = initState.products.toList();
       bool isShoppingCart = false;
       bool isShoppingCartDetailsProduct = false;
@@ -1721,6 +1906,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           maximumPersonalDiscount: items.first.maximumPersonalDiscount,
           isYourPriceDisplayed: items.first.isYourPriceDisplayed,
           isShop: true,
+          sz: [],
         );
 
         listProducts[index] = product;
@@ -1809,6 +1995,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isShoppingCart: soppingCart.isNotEmpty,
         isNotification: false,
         isUpdateVersionApp: false,
+      ));
+    });
+  }
+
+  Future<void> _checkButtonTop(
+    CheckButtonTopCatalogEvent event,
+    Emitter<CatalogState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      emit(initState.copyWith(
+        isButtonTop: event.isButtonTop,
       ));
     });
   }

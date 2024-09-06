@@ -109,7 +109,7 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                           color: Colors.transparent,
                           child: Text(
                             'Нет уведомлений',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         );
                       });

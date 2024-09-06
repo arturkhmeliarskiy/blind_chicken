@@ -44,7 +44,7 @@ class AuthService {
           authResponse = AuthResponse.fromJson(result);
         } else {
           authResponse = AuthResponse(
-            errorMessage: MessageInfo.errorMessage,
+            errorMessage: result['e'],
           );
         }
       } catch (e) {
@@ -567,6 +567,50 @@ class AuthService {
       }
       return OrderBlankPdfResponse(
         message: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<AuthResponse?> checkDiscount() async {
+    AuthResponse? authResponse;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/auth.php?action=update_discount',
+        data: {
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+        },
+      );
+
+      try {
+        final result = jsonDecode(response.data);
+        authResponse = AuthResponse.fromJson(result);
+      } catch (e) {
+        authResponse = AuthResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return authResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return AuthResponse(
+        errorMessage: MessageInfo.errorMessage,
       );
     }
   }

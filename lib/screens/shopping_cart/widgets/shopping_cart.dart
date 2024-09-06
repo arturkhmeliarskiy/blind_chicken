@@ -133,7 +133,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         ),
                         Text(
                           widget.item.skuName,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
                       ],
                     ),
@@ -159,6 +159,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               sku: widget.item.sku,
                               count: count,
                               code: widget.item.code,
+                              titleScreen: 'Корзина',
+                              searchQuery: '',
+                              typeAddProductToShoppingCart: 'Кнопка уменьшения количества товаров',
+                              identifierAddProductToShoppingCart: '3',
+                              sectionCategoriesPath: [],
+                              productCategoriesPath: [],
                             ),
                           );
                         });
@@ -212,6 +218,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               sku: widget.item.sku,
                               count: count,
                               code: widget.item.code,
+                              titleScreen: 'Корзина',
+                              searchQuery: '',
+                              typeAddProductToShoppingCart: 'Кнопка увеличение количества товаров',
+                              identifierAddProductToShoppingCart: '4',
+                              sectionCategoriesPath: [],
+                              productCategoriesPath: [],
                             ),
                           );
                         });
@@ -249,6 +261,12 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         sku: widget.item.sku,
                         count: 0,
                         code: widget.item.code,
+                        titleScreen: 'Корзина',
+                        searchQuery: '',
+                        typeAddProductToShoppingCart: 'Кнопка удаления тоарва из корзины',
+                        identifierAddProductToShoppingCart: '5',
+                        sectionCategoriesPath: [],
+                        productCategoriesPath: [],
                       ),
                     );
                     setState(() {

@@ -22,7 +22,7 @@ class _CatalogDescriptionProductInfoState extends State<CatalogDescriptionProduc
       children: [
         Text(
           widget.text,
-          style: Theme.of(context).textTheme.headline2,
+          style: Theme.of(context).textTheme.headlineLarge,
           maxLines: _isWrap ? null : 4,
         ),
         const SizedBox(

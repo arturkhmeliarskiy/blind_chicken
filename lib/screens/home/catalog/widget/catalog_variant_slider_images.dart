@@ -44,6 +44,7 @@ class CatalogVariantSliderImages extends StatelessWidget {
                   isYourPriceDisplayed: false,
                   pb: double.parse(listOptionProduct[index].pr).toInt(),
                   isShop: false,
+                  sz: [],
                 ),
               );
             },

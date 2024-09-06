@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
@@ -46,6 +47,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                           indexPage: 0,
                         ),
                       );
+                      AppMetrica.reportEvent('Список новостей');
                       setState(() {
                         _isSwipe = false;
                       });
@@ -60,6 +62,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                             indexPage: 0,
                           ),
                         );
+                        AppMetrica.reportEvent('Список новостей');
                       }
                     },
                     child: Padding(
@@ -88,6 +91,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                             indexPage: 0,
                                           ),
                                         );
+                                        AppMetrica.reportEvent('Список новостей');
                                       },
                                       child: SvgPicture.asset(
                                         'assets/icons/arrow-left.svg',
@@ -254,6 +258,9 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.getInfoProduct(
                                           code: widget.info.code,
+                                          titleScreen: 'Описание новостей',
+                                          typeAddProductToShoppingCart: 'Кнопка',
+                                          identifierAddProductToShoppingCart: '4',
                                         ),
                                       );
                                   context.navigateTo(

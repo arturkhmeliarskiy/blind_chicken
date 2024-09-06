@@ -59,16 +59,23 @@ class CatalogEvent with _$CatalogEvent {
     required String path,
     bool? isCleanHistory,
   }) = GetInfoProductsCatalogEvent;
-  const factory CatalogEvent.updateInfoProducts() = UpdateInfoProductsCatalogEvent;
+  const factory CatalogEvent.updateInfoProducts({
+    required String titleScreen,
+  }) = UpdateInfoProductsCatalogEvent;
   const factory CatalogEvent.getInfoProductsPushNotification({
     required String path,
     required String sort,
-    required String filterSelect,
+    required FilterNotifcationDataModel filterNotifcation,
+    String? messageId,
   }) = GetInfoProductsPushNotificationCatalogEvent;
   const factory CatalogEvent.getInfoProduct({
     required String code,
+    required String titleScreen,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
     bool? isUpdate,
+    String? messageId,
   }) = GetInfoProductCatalogEvent;
   const factory CatalogEvent.sortProducts({
     required String value,
@@ -84,6 +91,9 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.removeSelectAllFilters() = RemoveSelectAllFiltersCategotyCatalogEvent;
   const factory CatalogEvent.addProductToSoppingCart({
     required int code,
+    required String titleScreen,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
   }) = AddProductToSoppingCartCatalogEvent;
   const factory CatalogEvent.checkProductToSoppingCart({
@@ -92,6 +102,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.getInfoProductSize({
     required String code,
     required bool isShop,
+    required String titleScreen,
   }) = GetInfoProductSizeCatalogEvent;
   const factory CatalogEvent.getInfoServiceCard({
     required String code,
@@ -99,4 +110,7 @@ class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent.checkOpenGetInfoProductSize({
     required bool isOpenGetSizeProduct,
   }) = CheckOpenGetInfoProductSizeCatalogEvent;
+  const factory CatalogEvent.checkButtonTop({
+    required bool isButtonTop,
+  }) = CheckButtonTopCatalogEvent;
 }

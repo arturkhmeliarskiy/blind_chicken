@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
@@ -37,6 +38,7 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     final boutiques = await _boutiquesRepository.getBoutiques();
     _updateDataService.boutiques = boutiques.data;
     _boutiques = boutiques.data;
+    AppMetrica.reportEvent('Список бутиков');
     emit(
       BoutiquesState.preloadDataCompleted(
         boutiques: _boutiques,
@@ -54,6 +56,7 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     bool isUpdateVersionApp = false;
     String appStoreInfoVersion = '';
     final detailsBoutique = await _boutiquesRepository.getInfoBoutique(
+      messageId: event.messageId,
       uid: event.uid,
     );
     final boutiqueInfo = await _boutiquesRepository.getInfoBoutiqueDetail(
@@ -63,8 +66,6 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -77,6 +78,7 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
       }
     }
 
+    AppMetrica.reportEvent('Страница бутика');
     emit(
       BoutiquesState.preloadDataCompleted(
         boutiques: _boutiques,

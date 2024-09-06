@@ -54,6 +54,10 @@ class AppTheme {
         fontSize: 32.0,
         color: BlindChickenColors.activeBorderTextField,
       ),
+      headlineLarge: TextStyle(
+        fontSize: 14.0,
+        color: BlindChickenColors.activeBorderTextField,
+      ),
       titleLarge: TextStyle(
         fontWeight: FontWeight.w800,
         fontSize: 18.0,

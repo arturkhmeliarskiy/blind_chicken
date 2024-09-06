@@ -24,6 +24,16 @@ mixin _$BasketFullInfoItemResponse {
   String? get code => throw _privateConstructorUsedError;
   String? get sku => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+  String? get identifier => throw _privateConstructorUsedError;
+  @JsonKey(name: "section_categories_path")
+  List<String>? get sectionCategoriesPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "product_categories_path")
+  List<String>? get productCategoriesPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "title_screen")
+  String? get titleScreen => throw _privateConstructorUsedError;
+  @JsonKey(name: "search_query")
+  String? get searchQuery => throw _privateConstructorUsedError;
   BasketDataInfoResponse? get data => throw _privateConstructorUsedError;
   @JsonKey(name: 'sku_name')
   String? get skuName => throw _privateConstructorUsedError;
@@ -45,6 +55,14 @@ abstract class $BasketFullInfoItemResponseCopyWith<$Res> {
       {String? code,
       String? sku,
       int? count,
+      String? type,
+      String? identifier,
+      @JsonKey(name: "section_categories_path")
+      List<String>? sectionCategoriesPath,
+      @JsonKey(name: "product_categories_path")
+      List<String>? productCategoriesPath,
+      @JsonKey(name: "title_screen") String? titleScreen,
+      @JsonKey(name: "search_query") String? searchQuery,
       BasketDataInfoResponse? data,
       @JsonKey(name: 'sku_name') String? skuName});
 
@@ -68,6 +86,12 @@ class _$BasketFullInfoItemResponseCopyWithImpl<$Res,
     Object? code = freezed,
     Object? sku = freezed,
     Object? count = freezed,
+    Object? type = freezed,
+    Object? identifier = freezed,
+    Object? sectionCategoriesPath = freezed,
+    Object? productCategoriesPath = freezed,
+    Object? titleScreen = freezed,
+    Object? searchQuery = freezed,
     Object? data = freezed,
     Object? skuName = freezed,
   }) {
@@ -84,6 +108,30 @@ class _$BasketFullInfoItemResponseCopyWithImpl<$Res,
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identifier: freezed == identifier
+          ? _value.identifier
+          : identifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sectionCategoriesPath: freezed == sectionCategoriesPath
+          ? _value.sectionCategoriesPath
+          : sectionCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      productCategoriesPath: freezed == productCategoriesPath
+          ? _value.productCategoriesPath
+          : productCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -121,6 +169,14 @@ abstract class _$$BasketFullInfoItemResponseImplCopyWith<$Res>
       {String? code,
       String? sku,
       int? count,
+      String? type,
+      String? identifier,
+      @JsonKey(name: "section_categories_path")
+      List<String>? sectionCategoriesPath,
+      @JsonKey(name: "product_categories_path")
+      List<String>? productCategoriesPath,
+      @JsonKey(name: "title_screen") String? titleScreen,
+      @JsonKey(name: "search_query") String? searchQuery,
       BasketDataInfoResponse? data,
       @JsonKey(name: 'sku_name') String? skuName});
 
@@ -144,6 +200,12 @@ class __$$BasketFullInfoItemResponseImplCopyWithImpl<$Res>
     Object? code = freezed,
     Object? sku = freezed,
     Object? count = freezed,
+    Object? type = freezed,
+    Object? identifier = freezed,
+    Object? sectionCategoriesPath = freezed,
+    Object? productCategoriesPath = freezed,
+    Object? titleScreen = freezed,
+    Object? searchQuery = freezed,
     Object? data = freezed,
     Object? skuName = freezed,
   }) {
@@ -160,6 +222,30 @@ class __$$BasketFullInfoItemResponseImplCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identifier: freezed == identifier
+          ? _value.identifier
+          : identifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sectionCategoriesPath: freezed == sectionCategoriesPath
+          ? _value._sectionCategoriesPath
+          : sectionCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      productCategoriesPath: freezed == productCategoriesPath
+          ? _value._productCategoriesPath
+          : productCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -179,9 +265,19 @@ class _$BasketFullInfoItemResponseImpl extends _BasketFullInfoItemResponse {
       {this.code,
       this.sku,
       this.count,
+      this.type,
+      this.identifier,
+      @JsonKey(name: "section_categories_path")
+      final List<String>? sectionCategoriesPath,
+      @JsonKey(name: "product_categories_path")
+      final List<String>? productCategoriesPath,
+      @JsonKey(name: "title_screen") this.titleScreen,
+      @JsonKey(name: "search_query") this.searchQuery,
       this.data,
       @JsonKey(name: 'sku_name') this.skuName})
-      : super._();
+      : _sectionCategoriesPath = sectionCategoriesPath,
+        _productCategoriesPath = productCategoriesPath,
+        super._();
 
   factory _$BasketFullInfoItemResponseImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -194,6 +290,40 @@ class _$BasketFullInfoItemResponseImpl extends _BasketFullInfoItemResponse {
   @override
   final int? count;
   @override
+  final String? type;
+  @override
+  final String? identifier;
+  final List<String>? _sectionCategoriesPath;
+  @override
+  @JsonKey(name: "section_categories_path")
+  List<String>? get sectionCategoriesPath {
+    final value = _sectionCategoriesPath;
+    if (value == null) return null;
+    if (_sectionCategoriesPath is EqualUnmodifiableListView)
+      return _sectionCategoriesPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<String>? _productCategoriesPath;
+  @override
+  @JsonKey(name: "product_categories_path")
+  List<String>? get productCategoriesPath {
+    final value = _productCategoriesPath;
+    if (value == null) return null;
+    if (_productCategoriesPath is EqualUnmodifiableListView)
+      return _productCategoriesPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: "title_screen")
+  final String? titleScreen;
+  @override
+  @JsonKey(name: "search_query")
+  final String? searchQuery;
+  @override
   final BasketDataInfoResponse? data;
   @override
   @JsonKey(name: 'sku_name')
@@ -201,7 +331,7 @@ class _$BasketFullInfoItemResponseImpl extends _BasketFullInfoItemResponse {
 
   @override
   String toString() {
-    return 'BasketFullInfoItemResponse(code: $code, sku: $sku, count: $count, data: $data, skuName: $skuName)';
+    return 'BasketFullInfoItemResponse(code: $code, sku: $sku, count: $count, type: $type, identifier: $identifier, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, titleScreen: $titleScreen, searchQuery: $searchQuery, data: $data, skuName: $skuName)';
   }
 
   @override
@@ -212,13 +342,36 @@ class _$BasketFullInfoItemResponseImpl extends _BasketFullInfoItemResponse {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.count, count) || other.count == count) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.identifier, identifier) ||
+                other.identifier == identifier) &&
+            const DeepCollectionEquality()
+                .equals(other._sectionCategoriesPath, _sectionCategoriesPath) &&
+            const DeepCollectionEquality()
+                .equals(other._productCategoriesPath, _productCategoriesPath) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery) &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.skuName, skuName) || other.skuName == skuName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, code, sku, count, data, skuName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      code,
+      sku,
+      count,
+      type,
+      identifier,
+      const DeepCollectionEquality().hash(_sectionCategoriesPath),
+      const DeepCollectionEquality().hash(_productCategoriesPath),
+      titleScreen,
+      searchQuery,
+      data,
+      skuName);
 
   @JsonKey(ignore: true)
   @override
@@ -240,6 +393,14 @@ abstract class _BasketFullInfoItemResponse extends BasketFullInfoItemResponse {
           {final String? code,
           final String? sku,
           final int? count,
+          final String? type,
+          final String? identifier,
+          @JsonKey(name: "section_categories_path")
+          final List<String>? sectionCategoriesPath,
+          @JsonKey(name: "product_categories_path")
+          final List<String>? productCategoriesPath,
+          @JsonKey(name: "title_screen") final String? titleScreen,
+          @JsonKey(name: "search_query") final String? searchQuery,
           final BasketDataInfoResponse? data,
           @JsonKey(name: 'sku_name') final String? skuName}) =
       _$BasketFullInfoItemResponseImpl;
@@ -254,6 +415,22 @@ abstract class _BasketFullInfoItemResponse extends BasketFullInfoItemResponse {
   String? get sku;
   @override
   int? get count;
+  @override
+  String? get type;
+  @override
+  String? get identifier;
+  @override
+  @JsonKey(name: "section_categories_path")
+  List<String>? get sectionCategoriesPath;
+  @override
+  @JsonKey(name: "product_categories_path")
+  List<String>? get productCategoriesPath;
+  @override
+  @JsonKey(name: "title_screen")
+  String? get titleScreen;
+  @override
+  @JsonKey(name: "search_query")
+  String? get searchQuery;
   @override
   BasketDataInfoResponse? get data;
   @override

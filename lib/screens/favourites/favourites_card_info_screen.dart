@@ -353,7 +353,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                         .spaceSeparateNumbers(),
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .headline2
+                                                        .headlineLarge
                                                         ?.copyWith(
                                                           decoration: TextDecoration.lineThrough,
                                                         ),
@@ -453,6 +453,9 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                     code: (initState.detailsProduct?.code ?? 0)
                                                         .toString(),
                                                     isUpdate: true,
+                                                    titleScreen: 'Описание товара в избранном',
+                                                    typeAddProductToShoppingCart: 'Кнопка',
+                                                    identifierAddProductToShoppingCart: '4',
                                                   ),
                                                 );
                                           },
@@ -504,6 +507,12 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                                 FavouritesEvent.getInfoProduct(
                                                                   code: value.id.toString(),
                                                                   size: value,
+                                                                  titleScreen:
+                                                                      'Описание товара в избранном',
+                                                                  typeAddProductToShoppingCart:
+                                                                      'Кнопка',
+                                                                  identifierAddProductToShoppingCart:
+                                                                      '4',
                                                                 ),
                                                               );
                                                         }
@@ -558,7 +567,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                               ),
                                             ],
                                           ),
-                                        BlindChickenButton(
+                                        BlindChickenButtonShoppingCartProduct(
                                           title: initState.isShoppingCart ?? false
                                               ? 'Перейти в корзину'
                                               : 'Добавить в корзину',
@@ -580,6 +589,9 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                       code: initState.detailsProduct?.code ?? 0,
                                                       size: initState.selectSizeProduct ??
                                                           (sky.isNotEmpty ? sky.first : null),
+                                                      titleScreen: 'Карточка товара в избранном',
+                                                      typeAddProductToShoppingCart: 'Кнопка',
+                                                      identifierAddProductToShoppingCart: '1',
                                                     ),
                                                   );
 
@@ -597,6 +609,12 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                                 ? sky.first.id
                                                                 : '',
                                                         count: 1,
+                                                        titleScreen: 'Карточка товара в избранном',
+                                                        searchQuery: '',
+                                                        typeAddProductToShoppingCart: 'Кнопка',
+                                                        identifierAddProductToShoppingCart: '1',
+                                                        sectionCategoriesPath: [],
+                                                        productCategoriesPath: [],
                                                       ),
                                                     ),
                                                   );
@@ -653,6 +671,10 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                   context.read<FavouritesBloc>().add(
                                                         FavouritesEvent.getInfoProduct(
                                                           code: product.id.toString(),
+                                                          titleScreen:
+                                                              'Описание товара в избранном (Варианты)',
+                                                          typeAddProductToShoppingCart: 'Кнопка',
+                                                          identifierAddProductToShoppingCart: '4',
                                                         ),
                                                       );
 
@@ -719,6 +741,12 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                             context.read<FavouritesBloc>().add(
                                                                   FavouritesEvent.getInfoProduct(
                                                                     code: value.id.toString(),
+                                                                    titleScreen:
+                                                                        'Описание товара в избранном (Носят вместе)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },
@@ -789,6 +817,12 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                             context.read<FavouritesBloc>().add(
                                                                   FavouritesEvent.getInfoProduct(
                                                                     code: value.id.toString(),
+                                                                    titleScreen:
+                                                                        'Описание товара в избранном (Рекомендации стилистов)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },
@@ -859,6 +893,12 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                             context.read<FavouritesBloc>().add(
                                                                   FavouritesEvent.getInfoProduct(
                                                                     code: value.id.toString(),
+                                                                    titleScreen:
+                                                                        'Описание товара в избранном (Смотрите также)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },
@@ -986,6 +1026,12 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                           context.read<FavouritesBloc>().add(
                                                                 FavouritesEvent.getInfoProduct(
                                                                   code: value.id.toString(),
+                                                                  titleScreen:
+                                                                      'Описание товара в избранном (Товары бренда)',
+                                                                  typeAddProductToShoppingCart:
+                                                                      'Карточка товара',
+                                                                  identifierAddProductToShoppingCart:
+                                                                      '1',
                                                                 ),
                                                               );
                                                         },
@@ -1071,6 +1117,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                   FavouritesEvent.getInfoProductSize(
                                     code: (initState.detailsProduct?.code ?? 0).toString(),
                                     isShop: initState.isShoppingCart ?? false,
+                                    titleScreen: 'Карточка товара в избранном',
                                   ),
                                 );
                           }

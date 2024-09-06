@@ -20,10 +20,12 @@ class NewsNotificationDescriptionScreen extends StatefulWidget {
   const NewsNotificationDescriptionScreen({
     super.key,
     this.idNews = '',
+    this.messageId,
     this.isNotification = false,
   });
 
   final String idNews;
+  final String? messageId;
   final bool isNotification;
 
   @override
@@ -42,6 +44,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
             NewsEvent.getNewsDescriptionInfo(
               id: widget.idNews,
               isNotification: widget.isNotification,
+              messageId: widget.messageId,
             ),
           );
     }
@@ -246,6 +249,13 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                       HtmlWidget(
                                         initState.oneNews?.data.description ?? '',
                                         textStyle: Theme.of(context).textTheme.displayMedium,
+                                        onTapUrl: (url) async {
+                                          await launchUrl(
+                                            Uri.parse(url),
+                                            mode: LaunchMode.inAppWebView,
+                                          );
+                                          return true;
+                                        },
                                       ),
                                       // Container(
                                       //   height: 40,
@@ -307,6 +317,10 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                               context.read<CatalogBloc>().add(
                                                     CatalogEvent.getInfoProduct(
                                                       code: initState.oneNews?.data.code ?? '',
+                                                      titleScreen:
+                                                          'Описнаие новостей (уведомление)',
+                                                      typeAddProductToShoppingCart: 'Кнопка',
+                                                      identifierAddProductToShoppingCart: '4',
                                                     ),
                                                   );
                                               context.navigateTo(

@@ -52,7 +52,7 @@ class BlindChickenUpdateAppInfo extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 child: Text(
                   'Ваша версия $nowVersionApp, а новая - $updateVersionApp',
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: BlindChickenColors.textInput,
                       ),
                   textAlign: TextAlign.center,

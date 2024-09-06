@@ -9,3 +9,5 @@ export 'app_store_info/app_store_info_service.dart';
 export 'push_notification/push_notification_service.dart';
 export 'news/news_service.dart';
 export 'store_version_app/store_version_app_service.dart';
+export 'gift_card/gift_card_service.dart';
+export 'error_analyzer/error_analyzer_service.dart';

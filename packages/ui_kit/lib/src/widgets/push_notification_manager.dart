@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
+import 'package:shared/shared.dart';
 
 class PushNotificationManager extends StatefulWidget {
   final ValueChanged<PushNotificationMessageDataModel> openScreen;
@@ -27,13 +29,17 @@ class _PushNotificationManagerState extends State<PushNotificationManager> {
 
   Future<void> openMessage(RemoteMessage message) async {
     if (message.data != null) {
+      final filterService = GetIt.I.get<FilterService>();
+      final info = filterService.converterNotificationInfo(
+        value: message.data['section'],
+      );
       widget.openScreen(PushNotificationMessageDataModel(
         uid: message.data['uid'],
-        section: message.data['section'],
+        section: info.url,
         idMessage: message.data['id_message'],
         type: message.data['type'],
         sort: message.data['sort'],
-        filterSelect: message.data['filter'],
+        filterNotifcation: info,
         codeProduct: message.data['code_product'],
         idNews: message.data['id_news'],
       ));

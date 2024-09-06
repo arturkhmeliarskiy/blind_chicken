@@ -215,13 +215,14 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
-    final oneNews = await _newsRepository.getOneNews(id: event.id);
+    final oneNews = await _newsRepository.getOneNews(
+      id: event.id,
+      messageId: event.messageId,
+    );
 
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -258,13 +259,14 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
-    final oneMedia = await _newsRepository.getOneMedia(id: event.id);
+    final oneMedia = await _newsRepository.getOneMedia(
+      id: event.id,
+      messageId: event.messageId,
+    );
 
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
-    } else {
-      appStoreInfoVersion = result.version.android;
     }
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();

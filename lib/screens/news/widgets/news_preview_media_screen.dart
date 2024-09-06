@@ -60,10 +60,7 @@ class _NewsPreviewMediaScreenState extends State<NewsPreviewMediaScreen> {
   void dispose() {
     _pageController.dispose();
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
       DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
     ]);
     super.dispose();
   }

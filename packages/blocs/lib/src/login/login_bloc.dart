@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -111,6 +112,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         code: shopping[i].code,
         sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
         count: shopping[i].count,
+        titleScreen: shopping[i].titleScreen,
+        searchQuery: shopping[i].searchQuery,
+        typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+        sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+        productCategoriesPath: shopping[i].productCategoriesPath,
       ));
     }
     List<String> favoriteProducts = favorites.map((item) => item.id.toString()).toList();
@@ -169,6 +176,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       await _pushNotificationRepository.postNotificationInfo(event: '3');
       log('Пользватель вошел');
+      AppMetrica.reportEvent('Пользователь авторизовался');
       _catalogRepository.deleteAllFavouritesProducts();
       _catalogRepository.deleteAllShoppingProducts();
     } else {

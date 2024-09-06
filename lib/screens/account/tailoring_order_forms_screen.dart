@@ -204,8 +204,9 @@ class _TailoringOrderFormsScreenState extends State<TailoringOrderFormsScreen> {
                                                         Text(
                                                           'Заказ ${initState.listTailoringBlank[index].number} '
                                                           'от ${initState.listTailoringBlank[index].date}',
-                                                          style:
-                                                              Theme.of(context).textTheme.headline2,
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .headlineLarge,
                                                         ),
                                                       ]),
                                                     ),
@@ -214,7 +215,7 @@ class _TailoringOrderFormsScreenState extends State<TailoringOrderFormsScreen> {
                                               )
                                             : Text(
                                                 'Список бланков заказов на подшив пуст.',
-                                                style: Theme.of(context).textTheme.headline2,
+                                                style: Theme.of(context).textTheme.headlineLarge,
                                               );
                                       },
                                       load: (value) {
@@ -236,7 +237,7 @@ class _TailoringOrderFormsScreenState extends State<TailoringOrderFormsScreen> {
                                             ),
                                             Text(
                                               'Загрузка данных...',
-                                              style: Theme.of(context).textTheme.headline2,
+                                              style: Theme.of(context).textTheme.headlineLarge,
                                             ),
                                           ],
                                         );

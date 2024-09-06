@@ -100,6 +100,7 @@ class CatalogRepository {
   // get products
   Future<CatalogDataModel> getCatalogProducts({
     required CatalogProductsRequest request,
+    String? messageId,
   }) async {
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -108,6 +109,7 @@ class CatalogRepository {
     final basketInfo = await getBasketInfo(isLocal: !isAuth);
     final catalogProducts = await _catalogService.getCatalogProducts(
           request: request,
+          messageId: messageId,
         ) ??
         CatalogResponse();
     return catalogProducts.toCatalogProducts(basketInfo);
@@ -116,6 +118,7 @@ class CatalogRepository {
   Future<DetailProductDataModel> getDetailsProduct({
     required String code,
     required String genderIndex,
+    String? messageId,
   }) async {
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -124,6 +127,7 @@ class CatalogRepository {
     final basketInfo = await getDetailsProductBasketInfo(isLocal: !isAuth);
     final detailsProduct = await _catalogService.getDetailsProduct(
           code: code,
+          messageId: messageId,
         ) ??
         DetailProductResponse();
 
@@ -226,6 +230,12 @@ class CatalogRepository {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
       basketInfo = BasketInfoDataModel(
@@ -251,6 +261,12 @@ class CatalogRepository {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
     }
@@ -267,6 +283,14 @@ class CatalogRepository {
             code: basketInfo.basket[i].code,
             sku: basketInfo.basket[i].sku,
             count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }
@@ -303,6 +327,7 @@ extension on CatalogSearchInfoResponse {
                       (element) => element.code == (item.c ?? ''),
                     )
                     .isNotEmpty,
+                sz: [],
               ),
             ) ??
             [],
@@ -363,6 +388,7 @@ extension on CatalogSearchResponse {
                       (element) => element.code == (item.c ?? ''),
                     )
                     .isNotEmpty,
+                sz: [],
               ),
             ) ??
             [],
@@ -438,6 +464,7 @@ extension on List<ProductResponse> {
           yourPrice: 0,
           isYourPriceDisplayed: false,
           isShop: false,
+          sz: [],
         ),
       ),
     );
@@ -488,6 +515,13 @@ extension on List<ProductFavouriteModel> {
           yourPrice: item.youPrice,
           isYourPriceDisplayed: false,
           isShop: false,
+          sz: [],
+          titleScreen: item.titleScreen,
+          searchQuery: item.searchQuery,
+          typeAddProductToShoppingCart: item.typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: item.identifierAddProductToShoppingCart,
+          sectionCategoriesPath: item.sectionCategoriesPath,
+          productCategoriesPath: item.productCategoriesPath,
         ),
       ),
     );
@@ -528,6 +562,12 @@ extension on List<ProductShoppingCartDataModel> {
           code: item.code,
           sku: item.sku,
           count: item.count,
+          titleScreen: item.titleScreen,
+          searchQuery: item.searchQuery,
+          typeAddProductToShoppingCart: item.typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: item.identifierAddProductToShoppingCart,
+          sectionCategoriesPath: item.sectionCategoriesPath,
+          productCategoriesPath: item.productCategoriesPath,
         ),
       ),
     );
@@ -540,6 +580,12 @@ extension on BasketInfoItemDataModel {
       code: code,
       sku: sku,
       count: count,
+      titleScreen: titleScreen,
+      searchQuery: searchQuery,
+      typeAddProductToShoppingCart: typeAddProductToShoppingCart,
+      identifierAddProductToShoppingCart: identifierAddProductToShoppingCart,
+      sectionCategoriesPath: sectionCategoriesPath,
+      productCategoriesPath: productCategoriesPath,
     );
   }
 }
@@ -555,6 +601,12 @@ extension on List<BasketInfoItemDataModel> {
             code: item.code,
             sku: item.sku,
             count: item.count,
+            titleScreen: item.titleScreen,
+            searchQuery: item.searchQuery,
+            typeAddProductToShoppingCart: item.typeAddProductToShoppingCart,
+            identifierAddProductToShoppingCart: item.identifierAddProductToShoppingCart,
+            sectionCategoriesPath: item.sectionCategoriesPath,
+            productCategoriesPath: item.productCategoriesPath,
           );
         },
       ),
@@ -577,6 +629,12 @@ extension on ProductDataModel {
       images: images,
       variants: variants,
       youPrice: yourPrice,
+      titleScreen: titleScreen ?? '',
+      searchQuery: searchQuery ?? '',
+      typeAddProductToShoppingCart: typeAddProductToShoppingCart ?? '',
+      identifierAddProductToShoppingCart: identifierAddProductToShoppingCart ?? '',
+      sectionCategoriesPath: sectionCategoriesPath ?? [],
+      productCategoriesPath: productCategoriesPath ?? [],
     );
   }
 }
@@ -656,28 +714,34 @@ extension on CatalogResponse {
           []),
       products: List<ProductDataModel>.from(products?.map(
             (item) => ProductDataModel(
-              id: int.parse(item.c ?? '0'),
-              title: item.n ?? '',
-              images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
-              brend: item.b ?? '',
-              category: item.n ?? '',
-              size: [],
-              pb: int.parse(item.pb ?? '0'),
-              lensDiameter: 0,
-              price: int.parse(item.p ?? '0'),
-              templeLength: 0,
-              country: '',
-              isShop: basketInfo.basket
-                  .where(
-                    (element) => element.code == (item.c ?? ''),
-                  )
-                  .isNotEmpty,
-              variants: [],
-              maximumCashback: item.ca ?? 0,
-              maximumPersonalDiscount: item.dv ?? 0,
-              yourPrice: item.pc ?? 0,
-              isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
-            ),
+                id: int.parse(item.c ?? '0'),
+                title: item.n ?? '',
+                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+                brend: item.b ?? '',
+                category: item.n ?? '',
+                size: [],
+                pb: int.parse(item.pb ?? '0'),
+                lensDiameter: 0,
+                price: int.parse(item.p ?? '0'),
+                templeLength: 0,
+                country: '',
+                isShop: basketInfo.basket
+                    .where(
+                      (element) => element.code == (item.c ?? ''),
+                    )
+                    .isNotEmpty,
+                variants: [],
+                maximumCashback: item.ca ?? 0,
+                maximumPersonalDiscount: item.dv ?? 0,
+                yourPrice: item.pc ?? 0,
+                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                sz: List<CatalogSizeProductDataModel>.from(item.sz?.map((element) {
+                      return CatalogSizeProductDataModel(
+                        id: element.id ?? '',
+                        name: element.name ?? '',
+                      );
+                    }) ??
+                    [])),
           ) ??
           []),
       r: r ?? '',
@@ -807,6 +871,7 @@ extension on DetailProductResponse {
         maximumPersonalDiscount: price?.discountVal ?? 0,
         isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
         isShop: skuToSoppingCart.isNotEmpty,
+        sz: [],
       ),
       price: PriceProductDataModel(
         p: price?.p ?? '0',
@@ -883,6 +948,7 @@ extension on AdditionalProductsDescriptionResponse {
                 maximumPersonalDiscount: item.dv ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
                 isShop: false,
+                sz: [],
               );
             }) ??
             [],

@@ -70,10 +70,15 @@ class NewsService {
 
   Future<OneNewsInfoResponse> getOneNews({
     required String id,
+    String? messageId,
   }) async {
     OneNewsInfoResponse? oneNewsInfoResponse;
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final pushToken = _sharedPreferencesService.getString(key: SharedPrefKeys.pushToken) ?? '';
+    final platformDevice =
+        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
 
     try {
       log(_dio.options.headers.toString());
@@ -82,6 +87,13 @@ class NewsService {
         data: {
           "token": token,
           "hash_token": hashToken,
+          if (messageId != null)
+            "push_open": {
+              "message_id": messageId,
+              "platform": platformDevice == 'IOS' ? 1 : 2,
+              "version": appVersion,
+              "push_token": pushToken,
+            },
         },
       );
       try {
@@ -167,10 +179,15 @@ class NewsService {
 
   Future<OneMediaInfoResponse> getOneMedia({
     required String id,
+    String? messageId,
   }) async {
     OneMediaInfoResponse? oneMediaInfoResponse;
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final pushToken = _sharedPreferencesService.getString(key: SharedPrefKeys.pushToken) ?? '';
+    final platformDevice =
+        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+    final appVersion = _sharedPreferencesService.getString(key: SharedPrefKeys.appVersion) ?? '';
 
     try {
       log(_dio.options.headers.toString());
@@ -179,6 +196,13 @@ class NewsService {
         data: {
           "token": token,
           "hash_token": hashToken,
+          if (messageId != null)
+            "push_open": {
+              "message_id": messageId,
+              "platform": platformDevice == 'IOS' ? 1 : 2,
+              "version": appVersion,
+              "push_token": pushToken,
+            },
         },
       );
 

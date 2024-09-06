@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -9,6 +11,7 @@ import 'package:models/models.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:repositories/repositories.dart';
 import 'package:shared/shared.dart';
+import 'package:ui_kit/ui_kit.dart';
 
 part 'account_bloc.freezed.dart';
 part 'account_event.dart';
@@ -24,6 +27,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final PushNotificationRepository _pushNotificationRepository;
   final UpdateDataService _updateDataService;
   final FileService _fileService;
+  final AppMetricaEcommerceService _appMetricaEcommerceService;
 
   AccountBloc(
     this._catalogRepository,
@@ -35,6 +39,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._pushNotificationRepository,
     this._fileService,
     this._updateDataService,
+    this._appMetricaEcommerceService,
   ) : super(const AccountState.init()) {
     on<AccountEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -217,6 +222,34 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         ) ??
         false;
 
+    if (orderInfo.products.isNotEmpty) {
+      _appMetricaEcommerceService.startAndEndCreatePurchaseProducts(
+        typeProductToSoppingCart: AppMetricaTypeCreatePurchaseEnum.endCreatePurchase,
+        orderId: event.id,
+        products: orderInfo.products.toList(),
+        promocode: orderInfo.promo.promocode,
+      );
+    }
+
+    if (orderInfo.giftCard.type.isNotEmpty) {
+      _appMetricaEcommerceService.startAndEndCreatePurchaseGiftCard(
+        typeProductToSoppingCart: AppMetricaTypeCreatePurchaseEnum.endCreatePurchase,
+        orderId: event.id,
+        idColor: BlindChickenGiftCardColors.listColors
+            .where((element) => element.code.contains(orderInfo.giftCard.color))
+            .first
+            .id,
+        titleScreen: 'Оформление заказа',
+        typeGiftCard: orderInfo.giftCard.type == 'Виртуальная' ? '1' : '2',
+        searchQuery: event.searchQuery ?? '',
+        priceActual: orderInfo.giftCard.sum,
+        priceOriginal: '50000',
+        quantity: 1,
+      );
+    }
+
+    AppMetrica.reportEvent('Оплатить');
+
     emit(AccountState.preloadDataCompleted(
       applicationVersion: packageInfo.version,
       phone: '',
@@ -286,7 +319,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       _catalogRepository.deleteAllShoppingProducts();
       _catalogRepository.deleteAllFavouritesProducts();
       emit(const AccountState.logOut());
-      log('Пользватель вышел');
+      log('Пользователь вышел');
+      AppMetrica.reportEvent('Пользователь вышел из аккаунта');
     }
   }
 
@@ -382,6 +416,42 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           }
         }
       }
+
+      _appMetricaEcommerceService.viewingProductPage(
+        titleScreen: event.titleScreen,
+        titleProduct: detailsProduct.name,
+        codeProduct: detailsProduct.code.toString(),
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        sectionCategoriesPath: [],
+        productCategoriesPath: [],
+        priceActual: detailsProduct.price.yourPrice,
+        priceOriginal: int.parse(detailsProduct.price.pb),
+        internalComponentsActualPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+        internalComponentsOriginalPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+      );
 
       emit(initState.copyWith(
         detailsProduct: detailsProduct,
@@ -534,6 +604,39 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
+      _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+        titleScreen: 'Карточка товара в аккаунте (Мои заказы)',
+        titleProduct: initState.detailsProduct?.name ?? '',
+        codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
+        typeProductToSoppingCart: AppMetricaShoppingCartEnum.addProductToShoppingCart,
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        quantity: 1,
+        sectionCategoriesPath: [],
+        productCategoriesPath: [],
+        priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
+        priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+        internalComponentsActualPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size.value,
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+            currency: event.size.id,
+          ),
+        ],
+        internalComponentsOriginalPrice: [
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size.value,
+          ),
+          AppMetricaECommerceAmount(
+            amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+            currency: event.size.id,
+          ),
+        ],
+      );
       bool isShoppingCart = false;
       bool isShoppingCartDetailsProduct = false;
       final detailsProduct = initState.detailsProduct;
@@ -874,6 +977,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
     }
@@ -890,6 +999,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             code: basketInfo.basket[i].code,
             sku: basketInfo.basket[i].sku,
             count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }

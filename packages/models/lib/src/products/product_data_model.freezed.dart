@@ -33,6 +33,20 @@ mixin _$ProductDataModel {
   int get maximumPersonalDiscount => throw _privateConstructorUsedError;
   bool get isYourPriceDisplayed => throw _privateConstructorUsedError;
   bool get isShop => throw _privateConstructorUsedError;
+  List<CatalogSizeProductDataModel> get sz =>
+      throw _privateConstructorUsedError;
+  String? get titleScreen =>
+      throw _privateConstructorUsedError; // экран добавления в корзину
+  String? get searchQuery =>
+      throw _privateConstructorUsedError; // поисковой запрос
+  String? get typeAddProductToShoppingCart =>
+      throw _privateConstructorUsedError; // с помощью чего добавляется в корзину
+  String? get identifierAddProductToShoppingCart =>
+      throw _privateConstructorUsedError; // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  List<String>? get sectionCategoriesPath =>
+      throw _privateConstructorUsedError; // категории в к оторых находится товар "Акции", "Красная цена"
+  List<String>? get productCategoriesPath =>
+      throw _privateConstructorUsedError; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
   String? get count => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
 
@@ -65,6 +79,13 @@ abstract class $ProductDataModelCopyWith<$Res> {
       int maximumPersonalDiscount,
       bool isYourPriceDisplayed,
       bool isShop,
+      List<CatalogSizeProductDataModel> sz,
+      String? titleScreen,
+      String? searchQuery,
+      String? typeAddProductToShoppingCart,
+      String? identifierAddProductToShoppingCart,
+      List<String>? sectionCategoriesPath,
+      List<String>? productCategoriesPath,
       String? count,
       Color? color});
 }
@@ -99,6 +120,13 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? maximumPersonalDiscount = null,
     Object? isYourPriceDisplayed = null,
     Object? isShop = null,
+    Object? sz = null,
+    Object? titleScreen = freezed,
+    Object? searchQuery = freezed,
+    Object? typeAddProductToShoppingCart = freezed,
+    Object? identifierAddProductToShoppingCart = freezed,
+    Object? sectionCategoriesPath = freezed,
+    Object? productCategoriesPath = freezed,
     Object? count = freezed,
     Object? color = freezed,
   }) {
@@ -171,6 +199,35 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.isShop
           : isShop // ignore: cast_nullable_to_non_nullable
               as bool,
+      sz: null == sz
+          ? _value.sz
+          : sz // ignore: cast_nullable_to_non_nullable
+              as List<CatalogSizeProductDataModel>,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeAddProductToShoppingCart: freezed == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identifierAddProductToShoppingCart: freezed ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sectionCategoriesPath: freezed == sectionCategoriesPath
+          ? _value.sectionCategoriesPath
+          : sectionCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      productCategoriesPath: freezed == productCategoriesPath
+          ? _value.productCategoriesPath
+          : productCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -209,6 +266,13 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       int maximumPersonalDiscount,
       bool isYourPriceDisplayed,
       bool isShop,
+      List<CatalogSizeProductDataModel> sz,
+      String? titleScreen,
+      String? searchQuery,
+      String? typeAddProductToShoppingCart,
+      String? identifierAddProductToShoppingCart,
+      List<String>? sectionCategoriesPath,
+      List<String>? productCategoriesPath,
       String? count,
       Color? color});
 }
@@ -241,6 +305,13 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? maximumPersonalDiscount = null,
     Object? isYourPriceDisplayed = null,
     Object? isShop = null,
+    Object? sz = null,
+    Object? titleScreen = freezed,
+    Object? searchQuery = freezed,
+    Object? typeAddProductToShoppingCart = freezed,
+    Object? identifierAddProductToShoppingCart = freezed,
+    Object? sectionCategoriesPath = freezed,
+    Object? productCategoriesPath = freezed,
     Object? count = freezed,
     Object? color = freezed,
   }) {
@@ -313,6 +384,35 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.isShop
           : isShop // ignore: cast_nullable_to_non_nullable
               as bool,
+      sz: null == sz
+          ? _value._sz
+          : sz // ignore: cast_nullable_to_non_nullable
+              as List<CatalogSizeProductDataModel>,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      searchQuery: freezed == searchQuery
+          ? _value.searchQuery
+          : searchQuery // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeAddProductToShoppingCart: freezed == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identifierAddProductToShoppingCart: freezed ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sectionCategoriesPath: freezed == sectionCategoriesPath
+          ? _value._sectionCategoriesPath
+          : sectionCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      productCategoriesPath: freezed == productCategoriesPath
+          ? _value._productCategoriesPath
+          : productCategoriesPath // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -346,11 +446,21 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required this.maximumPersonalDiscount,
       required this.isYourPriceDisplayed,
       required this.isShop,
+      required final List<CatalogSizeProductDataModel> sz,
+      this.titleScreen,
+      this.searchQuery,
+      this.typeAddProductToShoppingCart,
+      this.identifierAddProductToShoppingCart,
+      final List<String>? sectionCategoriesPath,
+      final List<String>? productCategoriesPath,
       this.count,
       this.color})
       : _size = size,
         _images = images,
         _variants = variants,
+        _sz = sz,
+        _sectionCategoriesPath = sectionCategoriesPath,
+        _productCategoriesPath = productCategoriesPath,
         super._();
 
   @override
@@ -405,6 +515,52 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   final bool isYourPriceDisplayed;
   @override
   final bool isShop;
+  final List<CatalogSizeProductDataModel> _sz;
+  @override
+  List<CatalogSizeProductDataModel> get sz {
+    if (_sz is EqualUnmodifiableListView) return _sz;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sz);
+  }
+
+  @override
+  final String? titleScreen;
+// экран добавления в корзину
+  @override
+  final String? searchQuery;
+// поисковой запрос
+  @override
+  final String? typeAddProductToShoppingCart;
+// с помощью чего добавляется в корзину
+  @override
+  final String? identifierAddProductToShoppingCart;
+// идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  final List<String>? _sectionCategoriesPath;
+// идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  @override
+  List<String>? get sectionCategoriesPath {
+    final value = _sectionCategoriesPath;
+    if (value == null) return null;
+    if (_sectionCategoriesPath is EqualUnmodifiableListView)
+      return _sectionCategoriesPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// категории в к оторых находится товар "Акции", "Красная цена"
+  final List<String>? _productCategoriesPath;
+// категории в к оторых находится товар "Акции", "Красная цена"
+  @override
+  List<String>? get productCategoriesPath {
+    final value = _productCategoriesPath;
+    if (value == null) return null;
+    if (_productCategoriesPath is EqualUnmodifiableListView)
+      return _productCategoriesPath;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// категории тоарва "Продукты", "Молочные продукты", "Йогурты"
   @override
   final String? count;
   @override
@@ -412,7 +568,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, count: $count, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
   }
 
   @override
@@ -445,6 +601,23 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             (identical(other.isYourPriceDisplayed, isYourPriceDisplayed) ||
                 other.isYourPriceDisplayed == isYourPriceDisplayed) &&
             (identical(other.isShop, isShop) || other.isShop == isShop) &&
+            const DeepCollectionEquality().equals(other._sz, _sz) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.searchQuery, searchQuery) ||
+                other.searchQuery == searchQuery) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart,
+                    identifierAddProductToShoppingCart) ||
+                other.identifierAddProductToShoppingCart ==
+                    identifierAddProductToShoppingCart) &&
+            const DeepCollectionEquality()
+                .equals(other._sectionCategoriesPath, _sectionCategoriesPath) &&
+            const DeepCollectionEquality()
+                .equals(other._productCategoriesPath, _productCategoriesPath) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.color, color) || other.color == color));
   }
@@ -469,6 +642,13 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         maximumPersonalDiscount,
         isYourPriceDisplayed,
         isShop,
+        const DeepCollectionEquality().hash(_sz),
+        titleScreen,
+        searchQuery,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        const DeepCollectionEquality().hash(_sectionCategoriesPath),
+        const DeepCollectionEquality().hash(_productCategoriesPath),
         count,
         color
       ]);
@@ -500,6 +680,13 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final int maximumPersonalDiscount,
       required final bool isYourPriceDisplayed,
       required final bool isShop,
+      required final List<CatalogSizeProductDataModel> sz,
+      final String? titleScreen,
+      final String? searchQuery,
+      final String? typeAddProductToShoppingCart,
+      final String? identifierAddProductToShoppingCart,
+      final List<String>? sectionCategoriesPath,
+      final List<String>? productCategoriesPath,
       final String? count,
       final Color? color}) = _$ProductDataModelImpl;
   _ProductDataModel._() : super._();
@@ -539,6 +726,20 @@ abstract class _ProductDataModel extends ProductDataModel {
   @override
   bool get isShop;
   @override
+  List<CatalogSizeProductDataModel> get sz;
+  @override
+  String? get titleScreen;
+  @override // экран добавления в корзину
+  String? get searchQuery;
+  @override // поисковой запрос
+  String? get typeAddProductToShoppingCart;
+  @override // с помощью чего добавляется в корзину
+  String? get identifierAddProductToShoppingCart;
+  @override // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+  List<String>? get sectionCategoriesPath;
+  @override // категории в к оторых находится товар "Акции", "Красная цена"
+  List<String>? get productCategoriesPath;
+  @override // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
   String? get count;
   @override
   Color? get color;

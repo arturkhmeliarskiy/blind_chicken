@@ -17,6 +17,12 @@ class ProductFavouriteModel {
     required this.country,
     required this.images,
     required this.variants,
+    required this.titleScreen,
+    required this.searchQuery,
+    required this.typeAddProductToShoppingCart,
+    required this.identifierAddProductToShoppingCart,
+    required this.sectionCategoriesPath,
+    required this.productCategoriesPath,
   });
 
   @HiveField(0)
@@ -54,4 +60,24 @@ class ProductFavouriteModel {
 
   @HiveField(11)
   List<String> variants;
+
+  @HiveField(12)
+  String titleScreen; // экран добавления в корзину
+
+  @HiveField(13)
+  String searchQuery; // поисковой запрос
+
+  @HiveField(14)
+  String typeAddProductToShoppingCart; // с помощью чего добавляется в корзину
+
+  @HiveField(15)
+  String
+      identifierAddProductToShoppingCart; // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+
+  @HiveField(16)
+  List<String>
+      sectionCategoriesPath; // категории в к оторых находится товар "Акции", "Красная цена"
+
+  @HiveField(17)
+  List<String> productCategoriesPath; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
 }

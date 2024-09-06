@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:app_links/app_links.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:blind_chicken/lifecycle_manager.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blocs/blocs.dart';
@@ -31,6 +33,8 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
+    AppMetricaPush.requestPermission(alert: true, badge: true, sound: true);
+    AppMetricaPush.getTokens();
     initDeepLinks();
     super.initState();
   }
@@ -70,9 +74,15 @@ class _AppState extends State<App> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          create: (context) => GetIt.I.get<InternetConnectionBloc>()
+            ..add(
+              const InternetConnectionEvent.init(),
+            ),
+        ),
+        BlocProvider(
           create: (context) => GetIt.I.get<CatalogBloc>()
             ..add(
-              const CatalogEvent.preloadData(),
+              const CatalogEvent.init(),
             ),
         ),
         BlocProvider(
@@ -119,12 +129,6 @@ class _AppState extends State<App> {
           create: (context) => GetIt.I.get<GiftCardBloc>(),
         ),
         BlocProvider(
-          create: (context) => GetIt.I.get<InternetConnectionBloc>()
-            ..add(
-              const InternetConnectionEvent.preloadData(),
-            ),
-        ),
-        BlocProvider(
           create: (context) => GetIt.I.get<NewsBloc>()
             ..add(
               const NewsEvent.init(),
@@ -137,15 +141,21 @@ class _AppState extends State<App> {
       child: PushNotificationManager(
         openScreen: (notificationMessage) {
           final updateData = GetIt.I.get<UpdateDataService>();
+          final filterService = GetIt.I.get<FilterService>();
           if (updateData.isInitApp) {
             if (notificationMessage.idMessage != updateData.idMessageNotification) {
+              AppMetrica.reportEvent('Открытие PUSH-уведомления (Приложение было свернуто)');
               if (notificationMessage.type == 'catalog') {
+                final info = filterService.converterNotificationInfo(
+                  value: notificationMessage.section,
+                );
                 _appRouter.push(CatalogRoute(
                   title: '',
-                  url: notificationMessage.section,
+                  url: info.url,
                   sort: notificationMessage.sort,
-                  filterSelect: notificationMessage.filterSelect,
+                  filterNotifcation: info,
                   isNotification: true,
+                  messageId: notificationMessage.idMessage,
                 ));
               }
               if (notificationMessage.type == 'product') {
@@ -156,6 +166,7 @@ class _AppState extends State<App> {
                     favouritesProducts: const [],
                     isChildRoute: false,
                     code: notificationMessage.codeProduct,
+                    messageId: notificationMessage.idMessage,
                   ),
                 );
               }
@@ -164,6 +175,7 @@ class _AppState extends State<App> {
                   BoutiquesDescriptionRoute(
                     uidStore: notificationMessage.uid,
                     isNotification: true,
+                    messageId: notificationMessage.idMessage,
                   ),
                 );
               }
@@ -171,6 +183,7 @@ class _AppState extends State<App> {
                 _appRouter.push(
                   GiftCardRoute(
                     isNotification: true,
+                    messageId: notificationMessage.idMessage,
                   ),
                 );
               }
@@ -179,6 +192,7 @@ class _AppState extends State<App> {
                   NewsNotificationDescriptionRoute(
                     idNews: notificationMessage.idNews,
                     isNotification: true,
+                    messageId: notificationMessage.idMessage,
                   ),
                 );
               }
@@ -187,6 +201,7 @@ class _AppState extends State<App> {
                   MediaNotificationDescriptionRoute(
                     idNews: notificationMessage.idNews,
                     isNotification: true,
+                    messageId: notificationMessage.idMessage,
                   ),
                 );
               }
@@ -197,7 +212,7 @@ class _AppState extends State<App> {
         child: LifeCycleManager(
           resumed: () async {
             final updateData = GetIt.I.get<UpdateDataService>();
-
+            final filterService = GetIt.I.get<FilterService>();
             if (!updateData.isInitApp) {
               _appLinks = AppLinks();
 
@@ -233,19 +248,14 @@ class _AppState extends State<App> {
               final uid = await me.invokeMethod('uid') as String;
               final codeProduct = await me.invokeMethod('codeProduct') as String;
               final idNews = await me.invokeMethod('idNews') as String;
-              final filterSelect = await me.invokeMethod('filter') as String;
-
-              // final title = await me.invokeMethod('title') as String;
-              // final body = await me.invokeMethod('body') as String;
 
               if (type.isNotEmpty) {
-                // final split = info.split(',');
-                // Map<int, String> values = {
-                //   for (int i = 0; i < split.length; i++) i: split[i],
-                // };
-
                 if (iDMessage != updateData.idMessageNotification) {
+                  AppMetrica.reportEvent('Открытие PUSH-уведомления');
                   if (type == 'catalog' && updateData.isInitApp) {
+                    final info = filterService.converterNotificationInfo(
+                      value: section,
+                    );
                     await Future<void>.delayed(
                       const Duration(
                         milliseconds: 800,
@@ -253,11 +263,13 @@ class _AppState extends State<App> {
                     );
                     _appRouter.push(CatalogRoute(
                       title: '',
-                      url: section,
+                      url: info.url,
                       sort: sort,
-                      filterSelect: filterSelect,
+                      filterNotifcation: info,
                       isNotification: true,
+                      messageId: iDMessage,
                     ));
+
                     updateData.idMessageNotification = iDMessage;
                   }
                   if (type == 'product' && updateData.isInitApp) {
@@ -273,6 +285,7 @@ class _AppState extends State<App> {
                         favouritesProducts: const [],
                         isChildRoute: false,
                         code: codeProduct,
+                        messageId: iDMessage,
                       ),
                     );
                     updateData.idMessageNotification = iDMessage;
@@ -282,6 +295,7 @@ class _AppState extends State<App> {
                       BoutiquesDescriptionRoute(
                         uidStore: uid,
                         isNotification: true,
+                        messageId: iDMessage,
                       ),
                     );
                     updateData.idMessageNotification = iDMessage;
@@ -290,6 +304,7 @@ class _AppState extends State<App> {
                     _appRouter.push(
                       GiftCardRoute(
                         isNotification: true,
+                        messageId: iDMessage,
                       ),
                     );
                     updateData.idMessageNotification = iDMessage;
@@ -299,6 +314,7 @@ class _AppState extends State<App> {
                       NewsNotificationDescriptionRoute(
                         idNews: idNews,
                         isNotification: true,
+                        messageId: iDMessage,
                       ),
                     );
                     updateData.idMessageNotification = iDMessage;
@@ -308,6 +324,7 @@ class _AppState extends State<App> {
                       MediaNotificationDescriptionRoute(
                         idNews: idNews,
                         isNotification: true,
+                        messageId: iDMessage,
                       ),
                     );
                     updateData.idMessageNotification = iDMessage;

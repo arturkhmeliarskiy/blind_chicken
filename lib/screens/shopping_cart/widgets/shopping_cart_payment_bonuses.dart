@@ -95,7 +95,7 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                             padding: const EdgeInsets.only(left: 28),
                             child: Text(
                               'На бонусном счете $balance ₽',
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.headlineLarge,
                             ),
                           ),
                           const SizedBox(
@@ -105,7 +105,7 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                             padding: const EdgeInsets.only(left: 28),
                             child: Text(
                               'Оплатить',
-                              style: Theme.of(context).textTheme.headline2,
+                              style: Theme.of(context).textTheme.headlineLarge,
                             ),
                           ),
                           const SizedBox(

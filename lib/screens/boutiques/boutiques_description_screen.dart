@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/boutique_slider.dart';
@@ -25,11 +26,13 @@ class BoutiquesDescriptionScreen extends StatefulWidget {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
   });
 
   final String uidStore;
   final bool isNotification;
   final String lastPath;
+  final String? messageId;
   final NewsInfoItemDataModel? newsInfo;
   final MediaInfoItemDataModel? newsMediaInfo;
   final NotificationInfoItemDataModel? newsNotificationInfo;
@@ -47,6 +50,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
               BoutiquesEvent.getInfoBoutique(
                 uid: widget.uidStore,
                 isNotification: widget.isNotification,
+                messageId: widget.messageId,
               ),
             );
       });
@@ -100,6 +104,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                     ),
                   ]),
                 );
+                AppMetrica.reportEvent('Список новостей');
               } else if (widget.lastPath == 'news_info_description') {
                 final newsInfo = widget.newsInfo;
                 if (newsInfo != null) {
@@ -108,6 +113,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                       info: newsInfo,
                     ),
                   );
+                  AppMetrica.reportEvent('Страница новостей');
                 }
               } else if (widget.lastPath == 'media_info_description') {
                 final newsMediaInfo = widget.newsMediaInfo;
@@ -148,6 +154,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                       ),
                     ]),
                   );
+                  AppMetrica.reportEvent('Список новостей');
                 } else if (widget.lastPath == 'news_info_description') {
                   final newsInfo = widget.newsInfo;
                   if (newsInfo != null) {
@@ -156,6 +163,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                         info: newsInfo,
                       ),
                     );
+                    AppMetrica.reportEvent('Страница новостей');
                   }
                 } else if (widget.lastPath == 'media_info_description') {
                   final newsMediaInfo = widget.newsMediaInfo;

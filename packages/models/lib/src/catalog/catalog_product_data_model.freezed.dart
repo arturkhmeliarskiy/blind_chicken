@@ -26,6 +26,8 @@ mixin _$CatalogProductDataModel {
   int get pbc => throw _privateConstructorUsedError;
   int get ca => throw _privateConstructorUsedError;
   int get dv => throw _privateConstructorUsedError;
+  List<CatalogSizeProductDataModel> get sz =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogProductDataModelCopyWith<CatalogProductDataModel> get copyWith =>
@@ -48,7 +50,8 @@ abstract class $CatalogProductDataModelCopyWith<$Res> {
       int pc,
       int pbc,
       int ca,
-      int dv});
+      int dv,
+      List<CatalogSizeProductDataModel> sz});
 }
 
 /// @nodoc
@@ -75,6 +78,7 @@ class _$CatalogProductDataModelCopyWithImpl<$Res,
     Object? pbc = null,
     Object? ca = null,
     Object? dv = null,
+    Object? sz = null,
   }) {
     return _then(_value.copyWith(
       c: null == c
@@ -117,6 +121,10 @@ class _$CatalogProductDataModelCopyWithImpl<$Res,
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int,
+      sz: null == sz
+          ? _value.sz
+          : sz // ignore: cast_nullable_to_non_nullable
+              as List<CatalogSizeProductDataModel>,
     ) as $Val);
   }
 }
@@ -140,7 +148,8 @@ abstract class _$$CatalogProductDataModelImplCopyWith<$Res>
       int pc,
       int pbc,
       int ca,
-      int dv});
+      int dv,
+      List<CatalogSizeProductDataModel> sz});
 }
 
 /// @nodoc
@@ -166,6 +175,7 @@ class __$$CatalogProductDataModelImplCopyWithImpl<$Res>
     Object? pbc = null,
     Object? ca = null,
     Object? dv = null,
+    Object? sz = null,
   }) {
     return _then(_$CatalogProductDataModelImpl(
       c: null == c
@@ -208,6 +218,10 @@ class __$$CatalogProductDataModelImplCopyWithImpl<$Res>
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int,
+      sz: null == sz
+          ? _value._sz
+          : sz // ignore: cast_nullable_to_non_nullable
+              as List<CatalogSizeProductDataModel>,
     ));
   }
 }
@@ -225,8 +239,10 @@ class _$CatalogProductDataModelImpl extends _CatalogProductDataModel {
       required this.pc,
       required this.pbc,
       required this.ca,
-      required this.dv})
-      : super._();
+      required this.dv,
+      required final List<CatalogSizeProductDataModel> sz})
+      : _sz = sz,
+        super._();
 
   @override
   final String c;
@@ -248,10 +264,17 @@ class _$CatalogProductDataModelImpl extends _CatalogProductDataModel {
   final int ca;
   @override
   final int dv;
+  final List<CatalogSizeProductDataModel> _sz;
+  @override
+  List<CatalogSizeProductDataModel> get sz {
+    if (_sz is EqualUnmodifiableListView) return _sz;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sz);
+  }
 
   @override
   String toString() {
-    return 'CatalogProductDataModel(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv)';
+    return 'CatalogProductDataModel(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, sz: $sz)';
   }
 
   @override
@@ -268,12 +291,13 @@ class _$CatalogProductDataModelImpl extends _CatalogProductDataModel {
             (identical(other.pc, pc) || other.pc == pc) &&
             (identical(other.pbc, pbc) || other.pbc == pbc) &&
             (identical(other.ca, ca) || other.ca == ca) &&
-            (identical(other.dv, dv) || other.dv == dv));
+            (identical(other.dv, dv) || other.dv == dv) &&
+            const DeepCollectionEquality().equals(other._sz, _sz));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca, dv);
+  int get hashCode => Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca,
+      dv, const DeepCollectionEquality().hash(_sz));
 
   @JsonKey(ignore: true)
   @override
@@ -285,16 +309,18 @@ class _$CatalogProductDataModelImpl extends _CatalogProductDataModel {
 
 abstract class _CatalogProductDataModel extends CatalogProductDataModel {
   factory _CatalogProductDataModel(
-      {required final String c,
-      required final String f,
-      required final String b,
-      required final String n,
-      required final String p,
-      required final String pb,
-      required final int pc,
-      required final int pbc,
-      required final int ca,
-      required final int dv}) = _$CatalogProductDataModelImpl;
+          {required final String c,
+          required final String f,
+          required final String b,
+          required final String n,
+          required final String p,
+          required final String pb,
+          required final int pc,
+          required final int pbc,
+          required final int ca,
+          required final int dv,
+          required final List<CatalogSizeProductDataModel> sz}) =
+      _$CatalogProductDataModelImpl;
   _CatalogProductDataModel._() : super._();
 
   @override
@@ -317,6 +343,8 @@ abstract class _CatalogProductDataModel extends CatalogProductDataModel {
   int get ca;
   @override
   int get dv;
+  @override
+  List<CatalogSizeProductDataModel> get sz;
   @override
   @JsonKey(ignore: true)
   _$$CatalogProductDataModelImplCopyWith<_$CatalogProductDataModelImpl>

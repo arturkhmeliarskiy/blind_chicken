@@ -26,6 +26,8 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   bool isLoading = false;
   double _paginationPosition = 0.0;
   double _historyPosition = 0.0;
+  int _currentPage = 1;
+  double _boundaryOffset = 0.5;
 
   @override
   void didChangeDependencies() {
@@ -43,12 +45,15 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
           ),
         );
 
-    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 2000) &&
-        (_scrollController.position.maxScrollExtent - 2000) > _paginationPosition &&
-        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
-      setState(() {
-        _paginationPosition = _scrollController.position.maxScrollExtent - 2000;
-      });
+    bool isActive = (_scrollController.position.maxScrollExtent - 2500).toInt() >
+            _paginationPosition.toInt() &&
+        (_scrollController.position.maxScrollExtent - 2500).toInt() != _paginationPosition.toInt();
+    //load more data
+    if ((_scrollController.offset > _scrollController.position.maxScrollExtent * _boundaryOffset) &&
+        isActive) {
+      _paginationPosition = _scrollController.position.maxScrollExtent - 2500;
+      _currentPage++;
+      _boundaryOffset = 1 - 1 / (_currentPage * 2);
 
       context.read<SearchBloc>().add(
             const SearchEvent.paginationProduct(),
@@ -106,6 +111,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                           SearchEvent.addProductToSoppingCart(
                             code: int.parse(initState.code),
                             size: size,
+                            titleScreen: initState.titleScreen,
+                            typeAddProductToShoppingCart: 'Выпадающий список',
+                            identifierAddProductToShoppingCart: '2',
                           ),
                         );
 
@@ -115,6 +123,12 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                               code: initState.code,
                               sku: size.id,
                               count: 1,
+                              titleScreen: initState.titleScreen,
+                              searchQuery: initState.query,
+                              typeAddProductToShoppingCart: 'Выпадающий список',
+                              identifierAddProductToShoppingCart: '2',
+                              sectionCategoriesPath: [],
+                              productCategoriesPath: [],
                             ),
                           ),
                         );
@@ -155,6 +169,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
             context.read<SearchBloc>().add(
                   SearchEvent.addProductToSoppingCart(
                     code: int.parse(initState.code),
+                    titleScreen: initState.titleScreen,
+                    typeAddProductToShoppingCart: 'Кнопка',
+                    identifierAddProductToShoppingCart: '1',
                   ),
                 );
 
@@ -164,6 +181,12 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                       code: initState.code,
                       sku: '',
                       count: 1,
+                      titleScreen: initState.titleScreen,
+                      searchQuery: initState.query,
+                      typeAddProductToShoppingCart: 'Кнопка',
+                      identifierAddProductToShoppingCart: '1',
+                      sectionCategoriesPath: [],
+                      productCategoriesPath: [],
                     ),
                   ),
                 );
@@ -427,6 +450,11 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                         SearchEvent.getInfoProduct(
                                                           code: initState.products[index].id
                                                               .toString(),
+                                                          titleScreen:
+                                                              'Карточка товара в резльтате поиска',
+                                                          typeAddProductToShoppingCart:
+                                                              'Карточка товара',
+                                                          identifierAddProductToShoppingCart: '1',
                                                         ),
                                                       );
 
@@ -478,6 +506,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                           code: initState.products[index].id
                                                               .toString(),
                                                           isShop: initState.products[index].isShop,
+                                                          titleScreen: 'Результаты поиска',
                                                         ),
                                                       );
                                                 },
@@ -486,6 +515,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                         initState.products[index].id &&
                                                     initState.isLoadGetSizeProduct,
                                                 userDiscount: initState.userDiscount,
+                                                sizeProduct: const [],
                                               );
                                             },
                                           ),

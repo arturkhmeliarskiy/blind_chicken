@@ -9,9 +9,13 @@ class SearchState with _$SearchState {
     required String code,
     required List<SkuProductDataModel> listSize,
     required List<SkuProductDataModel> listSizeToSoppingCart,
+    required String titleScreen,
+    required String query,
   }) = GetSizeProductSearchState;
   const factory SearchState.addProductToSoppingCart({
     required String code,
+    required String titleScreen,
+    required String query,
   }) = AddProductSearchState;
   const factory SearchState.searchProductsResult({
     required List<ProductDataModel> searchDefaultProducts,

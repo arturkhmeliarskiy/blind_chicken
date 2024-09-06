@@ -90,7 +90,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                       ),
                       Text(
                         'Профессиональная проверка зрения',
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                       ),
@@ -110,7 +110,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           ),
                           Text(
                             'Опытные врачи',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         ],
                       ),
@@ -130,7 +130,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           ),
                           Text(
                             'Инновационное оборудование',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         ],
                       ),
@@ -150,7 +150,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           ),
                           Text(
                             'В удобное для вас время',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         ],
                       ),
@@ -170,7 +170,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           ),
                           Text(
                             'Консультация бесплатно',
-                            style: Theme.of(context).textTheme.headline2,
+                            style: Theme.of(context).textTheme.headlineLarge,
                           ),
                         ],
                       ),
@@ -179,7 +179,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                       ),
                       Text(
                         'Запишитесь на диагностику зрения в Слепой курице',
-                        style: Theme.of(context).textTheme.headline2?.copyWith(
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                       ),

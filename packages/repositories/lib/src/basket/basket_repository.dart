@@ -13,11 +13,26 @@ class BasketRepository {
     required String code,
     required String sku,
     required int count,
+    required String titleScreen, // экран добавления в корзину
+    required String searchQuery, // поисковой запрос
+    required String typeAddProductToShoppingCart, // с помощью чего добавляется в корзину
+    required String
+        identifierAddProductToShoppingCart, // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
+    required List<String>
+        sectionCategoriesPath, // категории в к оторых находится товар "Акции", "Красная цена"
+    required List<String>
+        productCategoriesPath, // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
   }) async {
     final productToBasket = await _basketService.addProductToBasket(
           code: code,
           sku: sku,
           count: count,
+          sectionCategoriesPath: sectionCategoriesPath,
+          productCategoriesPath: productCategoriesPath,
+          titleScreen: titleScreen,
+          type: typeAddProductToShoppingCart,
+          identifier: identifierAddProductToShoppingCart,
+          searchQuery: searchQuery,
         ) ??
         BasketResponse();
 
@@ -43,6 +58,12 @@ class BasketRepository {
                   code: item.code,
                   sku: item.sku,
                   count: item.count,
+                  type: item.typeAddProductToShoppingCart,
+                  identifier: item.identifierAddProductToShoppingCart,
+                  sectionCategoriesPath: item.sectionCategoriesPath,
+                  productCategoriesPath: item.productCategoriesPath,
+                  titleScreen: item.titleScreen,
+                  searchQuery: item.searchQuery,
                 );
               }) ??
               []),
@@ -183,6 +204,12 @@ extension on BasketInfoResponse {
                 code: item.code ?? '',
                 sku: item.sku ?? '',
                 count: item.count ?? 0,
+                titleScreen: item.titleScreen ?? '',
+                searchQuery: item.searchQuery ?? '',
+                typeAddProductToShoppingCart: item.type ?? '',
+                identifierAddProductToShoppingCart: item.identifier ?? '',
+                sectionCategoriesPath: item.sectionCategoriesPath ?? [],
+                productCategoriesPath: item.productCategoriesPath ?? [],
               );
             }) ??
             [],
@@ -229,7 +256,9 @@ extension on BasketFullInfoResponse {
                     id: int.parse(item.code ?? '0'),
                     title: item.data?.nameView ?? '',
                     category: item.data?.category?.n ?? '',
-                    size: [],
+                    size: [
+                      item.sku ?? '',
+                    ],
                     price: item.data?.price ?? 0,
                     yourPrice: item.data?.price ?? 0,
                     brend: '',
@@ -243,6 +272,19 @@ extension on BasketFullInfoResponse {
                     maximumPersonalDiscount: 0,
                     isYourPriceDisplayed: false,
                     pb: item.data?.price1 ?? 0,
+                    sz: [
+                      CatalogSizeProductDataModel(
+                        id: item.sku ?? '',
+                        name: item.skuName ?? '',
+                      ),
+                    ],
+                    count: (item.count ?? 0).toString(),
+                    titleScreen: item.titleScreen ?? '',
+                    searchQuery: item.searchQuery ?? '',
+                    typeAddProductToShoppingCart: item.type ?? '',
+                    identifierAddProductToShoppingCart: item.identifier ?? '',
+                    sectionCategoriesPath: item.sectionCategoriesPath ?? [],
+                    productCategoriesPath: item.productCategoriesPath ?? [],
                   ),
                 );
               },

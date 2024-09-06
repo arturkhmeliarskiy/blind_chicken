@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
@@ -11,10 +11,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
+
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 @RoutePage()
 class DashboardPage extends StatefulWidget {
@@ -25,21 +28,111 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  bool isOpen = false;
+  ScaffoldMessengerState internetConnect = ScaffoldMessengerState();
+  ScaffoldMessengerState noInternetConnect = ScaffoldMessengerState();
+  late StreamSubscription<InternetStatus> _connectivitySubscription;
+  bool _isOpenShowDialog = false;
   OverlayEntry? overlayEntry;
-  Timer? _timer;
   String? deviceToken;
 
   @override
   void initState() {
-    InternetConnection().onStatusChange.listen((value) {
-      if (value != InternetStatus.connected) {
-        context.navigateTo(const NoInternetRoute());
-      }
-    });
-
     init();
+    checkForUpdate();
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    internetConnect = ScaffoldMessenger.of(context);
+    noInternetConnect = ScaffoldMessenger.of(context);
+    final InternetConnection connection = InternetConnection.createInstance(
+      customCheckOptions: [
+        InternetCheckOption(uri: Uri.parse('https://example.com')),
+        InternetCheckOption(uri: Uri.parse('https://yandex.com')),
+      ],
+    );
+    _connectivitySubscription = connection.onStatusChange.listen((state) {
+      checkInternet(state);
+    });
+    super.didChangeDependencies();
+  }
+
+  checkInternet(InternetStatus state) async {
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        log('connected');
+        if (_isOpenShowDialog) {
+          thereAreInternetConnections();
+          closeShowDialog();
+          _isOpenShowDialog = false;
+        }
+      }
+    } on SocketException catch (_) {
+      log('not connected');
+      if (!_isOpenShowDialog) {
+        noInternetConnection();
+        _isOpenShowDialog = true;
+      }
+    }
+  }
+
+  thereAreInternetConnections() {
+    internetConnect.showSnackBar(SnackBar(
+      backgroundColor: BlindChickenColors.aqua,
+      content: Text(
+        'Есть интернет соединение',
+        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+              color: BlindChickenColors.backgroundColor,
+            ),
+      ),
+    ));
+  }
+
+  closeShowDialog() {
+    Navigator.of(context).pop();
+  }
+
+  noInternetConnection() {
+    showGeneralDialog(
+        context: context,
+        useRootNavigator: false,
+        barrierDismissible: false,
+        barrierColor: BlindChickenColors.activeBorderTextField.withOpacity(0.4),
+        pageBuilder: (context, __, ___) {
+          return SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(),
+                Container(
+                  height: kBottomNavigationBarHeight,
+                  alignment: Alignment.centerLeft,
+                  color: BlindChickenColors.red,
+                  padding: const EdgeInsets.only(left: 14),
+                  child: Text(
+                    'Отсутствует интернет соединение',
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                          color: BlindChickenColors.backgroundColor,
+                        ),
+                  ),
+                )
+              ],
+            ),
+          );
+        });
+  }
+
+  checkForUpdate() async {
+    if (Platform.isAndroid) {
+      AppUpdateInfo updateInfo = await InAppUpdate.checkForUpdate();
+      if (updateInfo.updateAvailability == UpdateAvailability.updateAvailable) {
+        InAppUpdate.startFlexibleUpdate().catchError((e) {
+          return AppUpdateResult.inAppUpdateFailed;
+        });
+      }
+    }
   }
 
   init() async {
@@ -72,7 +165,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   void dispose() {
-    _timer?.cancel(); //cancel the timer here
+    _connectivitySubscription.cancel();
     super.dispose();
   }
 
@@ -320,6 +413,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             selectedGenderIndex: updateData.selectedIndexGender,
                           ),
                         );
+                    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
                   });
                   context.navigateTo(
                     const DashboardRoute(
@@ -339,6 +433,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 final userAuthorized = shared.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
                 if (userAuthorized) {
                   context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
                   context.navigateTo(const LoginRoute(
                     children: [
                       AccountRoute(),
@@ -346,6 +441,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   ));
                 } else {
                   context.read<LoginBloc>().add(const LoginEvent.init());
+
                   showDialog(
                       context: context,
                       builder: (context) {
@@ -384,6 +480,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 if (!updateData.isOpenShowModalBottomSheetFavouritesScreen) {
                   Timer(const Duration(milliseconds: 150), () {
                     context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
+                    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
                   });
                 }
                 updateData.lastScreen = 'favourites_products';
@@ -392,6 +489,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     FavouritesProductsRoute(),
                   ]),
                 );
+                AppMetrica.reportEvent('Избранное');
               } else if (index == 4) {
                 context.read<NewsBloc>().add(const NewsEvent.getNews());
                 context.navigateTo(
@@ -401,6 +499,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                   ]),
                 );
+                AppMetrica.reportEvent('Список новостей');
                 // showDialog(
                 //     barrierColor: Colors.transparent,
                 //     context: context,

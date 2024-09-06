@@ -18,33 +18,50 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$InternetConnectionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
+    required TResult Function(ConnectivityResult status)
+        checkInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
+    TResult? Function(ConnectivityResult status)? checkInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
+    TResult Function(ConnectivityResult status)? checkInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInternetConnectionEvent value) preloadData,
+    required TResult Function(InitInternetConnectionEvent value) init,
+    required TResult Function(PreloadDataInternetConnectionEvent value)
+        preloadData,
+    required TResult Function(CheckInitInternetConnectionEvent value)
+        checkInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInternetConnectionEvent value)? preloadData,
+    TResult? Function(InitInternetConnectionEvent value)? init,
+    TResult? Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult? Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInternetConnectionEvent value)? preloadData,
+    TResult Function(InitInternetConnectionEvent value)? init,
+    TResult Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -95,7 +112,7 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
 
   @override
   String toString() {
-    return 'InternetConnectionEvent.preloadData()';
+    return 'InternetConnectionEvent.init()';
   }
 
   @override
@@ -111,7 +128,129 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() preloadData,
+    required TResult Function(ConnectivityResult status)
+        checkInternetConnection,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(ConnectivityResult status)? checkInternetConnection,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(ConnectivityResult status)? checkInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitInternetConnectionEvent value) init,
+    required TResult Function(PreloadDataInternetConnectionEvent value)
+        preloadData,
+    required TResult Function(CheckInitInternetConnectionEvent value)
+        checkInternetConnection,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitInternetConnectionEvent value)? init,
+    TResult? Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult? Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitInternetConnectionEvent value)? init,
+    TResult Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitInternetConnectionEvent implements InternetConnectionEvent {
+  const factory InitInternetConnectionEvent() =
+      _$InitInternetConnectionEventImpl;
+}
+
+/// @nodoc
+abstract class _$$PreloadDataInternetConnectionEventImplCopyWith<$Res> {
+  factory _$$PreloadDataInternetConnectionEventImplCopyWith(
+          _$PreloadDataInternetConnectionEventImpl value,
+          $Res Function(_$PreloadDataInternetConnectionEventImpl) then) =
+      __$$PreloadDataInternetConnectionEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PreloadDataInternetConnectionEventImplCopyWithImpl<$Res>
+    extends _$InternetConnectionEventCopyWithImpl<$Res,
+        _$PreloadDataInternetConnectionEventImpl>
+    implements _$$PreloadDataInternetConnectionEventImplCopyWith<$Res> {
+  __$$PreloadDataInternetConnectionEventImplCopyWithImpl(
+      _$PreloadDataInternetConnectionEventImpl _value,
+      $Res Function(_$PreloadDataInternetConnectionEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PreloadDataInternetConnectionEventImpl
+    implements PreloadDataInternetConnectionEvent {
+  const _$PreloadDataInternetConnectionEventImpl();
+
+  @override
+  String toString() {
+    return 'InternetConnectionEvent.preloadData()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PreloadDataInternetConnectionEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(ConnectivityResult status)
+        checkInternetConnection,
   }) {
     return preloadData();
   }
@@ -119,7 +258,9 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? preloadData,
+    TResult? Function(ConnectivityResult status)? checkInternetConnection,
   }) {
     return preloadData?.call();
   }
@@ -127,7 +268,9 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? preloadData,
+    TResult Function(ConnectivityResult status)? checkInternetConnection,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -139,7 +282,11 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitInternetConnectionEvent value) preloadData,
+    required TResult Function(InitInternetConnectionEvent value) init,
+    required TResult Function(PreloadDataInternetConnectionEvent value)
+        preloadData,
+    required TResult Function(CheckInitInternetConnectionEvent value)
+        checkInternetConnection,
   }) {
     return preloadData(this);
   }
@@ -147,7 +294,10 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(InitInternetConnectionEvent value)? preloadData,
+    TResult? Function(InitInternetConnectionEvent value)? init,
+    TResult? Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult? Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
   }) {
     return preloadData?.call(this);
   }
@@ -155,7 +305,10 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitInternetConnectionEvent value)? preloadData,
+    TResult Function(InitInternetConnectionEvent value)? init,
+    TResult Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -165,9 +318,166 @@ class _$InitInternetConnectionEventImpl implements InitInternetConnectionEvent {
   }
 }
 
-abstract class InitInternetConnectionEvent implements InternetConnectionEvent {
-  const factory InitInternetConnectionEvent() =
-      _$InitInternetConnectionEventImpl;
+abstract class PreloadDataInternetConnectionEvent
+    implements InternetConnectionEvent {
+  const factory PreloadDataInternetConnectionEvent() =
+      _$PreloadDataInternetConnectionEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckInitInternetConnectionEventImplCopyWith<$Res> {
+  factory _$$CheckInitInternetConnectionEventImplCopyWith(
+          _$CheckInitInternetConnectionEventImpl value,
+          $Res Function(_$CheckInitInternetConnectionEventImpl) then) =
+      __$$CheckInitInternetConnectionEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ConnectivityResult status});
+}
+
+/// @nodoc
+class __$$CheckInitInternetConnectionEventImplCopyWithImpl<$Res>
+    extends _$InternetConnectionEventCopyWithImpl<$Res,
+        _$CheckInitInternetConnectionEventImpl>
+    implements _$$CheckInitInternetConnectionEventImplCopyWith<$Res> {
+  __$$CheckInitInternetConnectionEventImplCopyWithImpl(
+      _$CheckInitInternetConnectionEventImpl _value,
+      $Res Function(_$CheckInitInternetConnectionEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$CheckInitInternetConnectionEventImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ConnectivityResult,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckInitInternetConnectionEventImpl
+    implements CheckInitInternetConnectionEvent {
+  const _$CheckInitInternetConnectionEventImpl({required this.status});
+
+// required InternetStatus status,
+  @override
+  final ConnectivityResult status;
+
+  @override
+  String toString() {
+    return 'InternetConnectionEvent.checkInternetConnection(status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckInitInternetConnectionEventImpl &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckInitInternetConnectionEventImplCopyWith<
+          _$CheckInitInternetConnectionEventImpl>
+      get copyWith => __$$CheckInitInternetConnectionEventImplCopyWithImpl<
+          _$CheckInitInternetConnectionEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() preloadData,
+    required TResult Function(ConnectivityResult status)
+        checkInternetConnection,
+  }) {
+    return checkInternetConnection(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? preloadData,
+    TResult? Function(ConnectivityResult status)? checkInternetConnection,
+  }) {
+    return checkInternetConnection?.call(status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? preloadData,
+    TResult Function(ConnectivityResult status)? checkInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (checkInternetConnection != null) {
+      return checkInternetConnection(status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitInternetConnectionEvent value) init,
+    required TResult Function(PreloadDataInternetConnectionEvent value)
+        preloadData,
+    required TResult Function(CheckInitInternetConnectionEvent value)
+        checkInternetConnection,
+  }) {
+    return checkInternetConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitInternetConnectionEvent value)? init,
+    TResult? Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult? Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
+  }) {
+    return checkInternetConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitInternetConnectionEvent value)? init,
+    TResult Function(PreloadDataInternetConnectionEvent value)? preloadData,
+    TResult Function(CheckInitInternetConnectionEvent value)?
+        checkInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (checkInternetConnection != null) {
+      return checkInternetConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckInitInternetConnectionEvent
+    implements InternetConnectionEvent {
+  const factory CheckInitInternetConnectionEvent(
+          {required final ConnectivityResult status}) =
+      _$CheckInitInternetConnectionEventImpl;
+
+// required InternetStatus status,
+  ConnectivityResult get status;
+  @JsonKey(ignore: true)
+  _$$CheckInitInternetConnectionEventImplCopyWith<
+          _$CheckInitInternetConnectionEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

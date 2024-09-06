@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   freezed_annotation: ^2.4.1
   internet_connection_checker_plus: ^2.2.0
+  connectivity_plus: ^5.0.2
   json_annotation: ^4.8.1
   yandex_mapkit: ^3.3.3
   shared:
@@ -25,9 +26,10 @@ dependencies:
     path: ../models
   ui_kit:
     path: ../ui_kit
-  package_info_plus: ^5.0.1
+  package_info_plus: ^8.0.2
   firebase_messaging: ^14.7.19
-  appmetrica_plugin: ^2.1.1
+  appmetrica_plugin: ^3.0.0
+  decimal: ^3.0.2
 
 dev_dependencies:
   flutter_test:

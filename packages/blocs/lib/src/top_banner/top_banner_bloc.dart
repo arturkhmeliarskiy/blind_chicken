@@ -9,9 +9,11 @@ part 'top_banner_state.dart';
 
 class TopBannerBloc extends Bloc<TopBannerEvent, TopBannerState> {
   final CatalogRepository _catalogRepository;
+  final AuthRepository _authRepository;
 
   TopBannerBloc(
     this._catalogRepository,
+    this._authRepository,
   ) : super(const TopBannerState.init()) {
     on<TopBannerEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -27,6 +29,7 @@ class TopBannerBloc extends Bloc<TopBannerEvent, TopBannerState> {
     emit(const TopBannerState.load());
 
     final result = await _catalogRepository.postTopBanner();
+    await _authRepository.checkDiscount();
 
     emit(
       TopBannerState.preloadData(

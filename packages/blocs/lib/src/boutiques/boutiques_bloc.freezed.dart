@@ -19,19 +19,23 @@ mixin _$BoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
-    required TResult Function(String uid, bool? isNotification) getInfoBoutique,
+    required TResult Function(
+            String uid, bool? isNotification, String? messageId)
+        getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid, bool? isNotification)? getInfoBoutique,
+    TResult? Function(String uid, bool? isNotification, String? messageId)?
+        getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid, bool? isNotification)? getInfoBoutique,
+    TResult Function(String uid, bool? isNotification, String? messageId)?
+        getInfoBoutique,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +117,9 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
-    required TResult Function(String uid, bool? isNotification) getInfoBoutique,
+    required TResult Function(
+            String uid, bool? isNotification, String? messageId)
+        getInfoBoutique,
   }) {
     return preloadData();
   }
@@ -122,7 +128,8 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid, bool? isNotification)? getInfoBoutique,
+    TResult? Function(String uid, bool? isNotification, String? messageId)?
+        getInfoBoutique,
   }) {
     return preloadData?.call();
   }
@@ -131,7 +138,8 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid, bool? isNotification)? getInfoBoutique,
+    TResult Function(String uid, bool? isNotification, String? messageId)?
+        getInfoBoutique,
     required TResult orElse(),
   }) {
     if (preloadData != null) {
@@ -183,7 +191,7 @@ abstract class _$$GetInfoBoutiquesEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoBoutiquesEventImpl) then) =
       __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String uid, bool? isNotification});
+  $Res call({String uid, bool? isNotification, String? messageId});
 }
 
 /// @nodoc
@@ -199,6 +207,7 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
   $Res call({
     Object? uid = null,
     Object? isNotification = freezed,
+    Object? messageId = freezed,
   }) {
     return _then(_$GetInfoBoutiquesEventImpl(
       uid: null == uid
@@ -209,6 +218,10 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
               as bool?,
+      messageId: freezed == messageId
+          ? _value.messageId
+          : messageId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -216,16 +229,19 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
-  const _$GetInfoBoutiquesEventImpl({required this.uid, this.isNotification});
+  const _$GetInfoBoutiquesEventImpl(
+      {required this.uid, this.isNotification, this.messageId});
 
   @override
   final String uid;
   @override
   final bool? isNotification;
+  @override
+  final String? messageId;
 
   @override
   String toString() {
-    return 'BoutiquesEvent.getInfoBoutique(uid: $uid, isNotification: $isNotification)';
+    return 'BoutiquesEvent.getInfoBoutique(uid: $uid, isNotification: $isNotification, messageId: $messageId)';
   }
 
   @override
@@ -235,11 +251,13 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
             other is _$GetInfoBoutiquesEventImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.isNotification, isNotification) ||
-                other.isNotification == isNotification));
+                other.isNotification == isNotification) &&
+            (identical(other.messageId, messageId) ||
+                other.messageId == messageId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, isNotification);
+  int get hashCode => Object.hash(runtimeType, uid, isNotification, messageId);
 
   @JsonKey(ignore: true)
   @override
@@ -252,29 +270,33 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
-    required TResult Function(String uid, bool? isNotification) getInfoBoutique,
+    required TResult Function(
+            String uid, bool? isNotification, String? messageId)
+        getInfoBoutique,
   }) {
-    return getInfoBoutique(uid, isNotification);
+    return getInfoBoutique(uid, isNotification, messageId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid, bool? isNotification)? getInfoBoutique,
+    TResult? Function(String uid, bool? isNotification, String? messageId)?
+        getInfoBoutique,
   }) {
-    return getInfoBoutique?.call(uid, isNotification);
+    return getInfoBoutique?.call(uid, isNotification, messageId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid, bool? isNotification)? getInfoBoutique,
+    TResult Function(String uid, bool? isNotification, String? messageId)?
+        getInfoBoutique,
     required TResult orElse(),
   }) {
     if (getInfoBoutique != null) {
-      return getInfoBoutique(uid, isNotification);
+      return getInfoBoutique(uid, isNotification, messageId);
     }
     return orElse();
   }
@@ -314,10 +336,12 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
 abstract class GetInfoBoutiquesEvent implements BoutiquesEvent {
   const factory GetInfoBoutiquesEvent(
       {required final String uid,
-      final bool? isNotification}) = _$GetInfoBoutiquesEventImpl;
+      final bool? isNotification,
+      final String? messageId}) = _$GetInfoBoutiquesEventImpl;
 
   String get uid;
   bool? get isNotification;
+  String? get messageId;
   @JsonKey(ignore: true)
   _$$GetInfoBoutiquesEventImplCopyWith<_$GetInfoBoutiquesEventImpl>
       get copyWith => throw _privateConstructorUsedError;

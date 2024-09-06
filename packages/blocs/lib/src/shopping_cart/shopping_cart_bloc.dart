@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
@@ -18,6 +20,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   final FavouritesRepository _favouritesRepository;
   final UpdateDataService _updateDataService;
   final BoutiquesRepository _boutiquesRepository;
+  final AppMetricaEcommerceService _appMetricaEcommerceService;
 
   ShoppingCartBloc(
     this._catalogRepository,
@@ -26,6 +29,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     this._favouritesRepository,
     this._updateDataService,
     this._boutiquesRepository,
+    this._appMetricaEcommerceService,
   ) : super(const ShoppingCartState.init()) {
     on<ShoppingCartEvent>(
       (event, emit) => event.map(
@@ -131,6 +135,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     Emitter<ShoppingCartState> emit,
   ) async {
     emit(const ShoppingCartState.load());
+    _appMetricaEcommerceService.openPages(titleScreen: 'Корзина');
     List<ProductDataModel> favouritesProducts = [];
     List<int> favouritesProductsId = [];
     BasketFullInfoDataModel? basketInfo;
@@ -211,7 +216,11 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     if (state is ProductsShoppingCartState) {
       final stateInfo = state as ProductsShoppingCartState;
       if (stateInfo.listProductsCode.isNotEmpty) {
-        add(AddProductToSoppingCartEvent(item: event.item));
+        add(
+          AddProductToSoppingCartEvent(
+            item: event.item,
+          ),
+        );
       } else {
         emit(const ShoppingCartState.load());
         BasketFullInfoDataModel? basketInfo;
@@ -225,6 +234,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             code: event.item.code,
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: event.item.count,
+            titleScreen: event.item.titleScreen,
+            searchQuery: event.item.searchQuery,
+            typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
+            identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
+            sectionCategoriesPath: event.item.sectionCategoriesPath,
+            productCategoriesPath: event.item.productCategoriesPath,
           );
           basketInfo = await updateBasket(
             isLocal: false,
@@ -311,6 +326,42 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
+        if (event.item.typeAddProductToShoppingCart != '') {
+          _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+            titleScreen: event.item.titleScreen,
+            titleProduct: initState.detailsProduct?.name ?? '',
+            codeProduct: (initState.detailsProduct?.code ?? 0).toString(),
+            typeProductToSoppingCart: AppMetricaShoppingCartEnum.addProductToShoppingCart,
+            type: event.item.typeAddProductToShoppingCart,
+            identifier: event.item.identifierAddProductToShoppingCart,
+            quantity: 1,
+            sectionCategoriesPath: event.item.sectionCategoriesPath,
+            productCategoriesPath: event.item.productCategoriesPath,
+            priceActual: initState.detailsProduct?.price.yourPrice ?? 0,
+            priceOriginal: int.parse(initState.detailsProduct?.price.pb ?? '0'),
+            internalComponentsActualPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+                currency: event.item.skuName ?? '',
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(initState.detailsProduct?.price.yourPrice ?? 0),
+                currency: event.item.sku,
+              ),
+            ],
+            internalComponentsOriginalPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+                currency: event.item.skuName ?? '',
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.parse(initState.detailsProduct?.price.pb ?? '0'),
+                currency: event.item.sku,
+              ),
+            ],
+          );
+        }
+
         emit(
           initState.copyWith(
             isLoadAddProductToShopingCart: true,
@@ -330,6 +381,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             code: event.item.code,
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: event.item.count,
+            titleScreen: event.item.titleScreen,
+            searchQuery: event.item.searchQuery,
+            typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
+            identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
+            sectionCategoriesPath: event.item.sectionCategoriesPath,
+            productCategoriesPath: event.item.productCategoriesPath,
           );
           basketInfo = await updateBasket(
             isLocal: false,
@@ -406,6 +463,47 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
+        final count = initState.shoppingCart.basket[event.index].count;
+        final yourPrice = initState.shoppingCart.basket[event.index].product.yourPrice;
+        final pb = initState.shoppingCart.basket[event.index].product.pb;
+        final priceActual = yourPrice ~/ count;
+        final priceOriginal = pb ~/ count;
+        for (int i = 0; i < count; i++) {
+          _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+            titleScreen: 'Корзина',
+            titleProduct: initState.shoppingCart.basket[event.index].product.title,
+            codeProduct: initState.shoppingCart.basket[event.index].code,
+            typeProductToSoppingCart: AppMetricaShoppingCartEnum.removeProductToShoppingCart,
+            type: 'Кнопка',
+            identifier: '1',
+            quantity: 1,
+            sectionCategoriesPath: [],
+            productCategoriesPath: [],
+            priceActual: priceActual,
+            priceOriginal: priceOriginal,
+            internalComponentsActualPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceActual),
+                currency: initState.shoppingCart.basket[event.index].skuName,
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceActual),
+                currency: initState.shoppingCart.basket[event.index].sku,
+              ),
+            ],
+            internalComponentsOriginalPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceOriginal),
+                currency: initState.shoppingCart.basket[event.index].skuName,
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceOriginal),
+                currency: initState.shoppingCart.basket[event.index].sku,
+              ),
+            ],
+          );
+        }
+
         BasketFullInfoDataModel? basketInfo;
         bool isAuth = _sharedPreferencesService.getBool(
               key: SharedPrefKeys.userAuthorized,
@@ -416,6 +514,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             code: event.item.code,
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: 0,
+            titleScreen: event.item.titleScreen,
+            searchQuery: event.item.searchQuery,
+            typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
+            identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
+            sectionCategoriesPath: event.item.sectionCategoriesPath,
+            productCategoriesPath: event.item.productCategoriesPath,
           );
           basketInfo = await updateBasket(
             isLocal: false,
@@ -465,6 +569,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               code: event.item.code,
               sku: event.item.sku,
               count: 0,
+              titleScreen: event.item.titleScreen,
+              searchQuery: event.item.searchQuery,
+              typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
+              identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
+              sectionCategoriesPath: event.item.sectionCategoriesPath,
+              productCategoriesPath: event.item.productCategoriesPath,
             );
           } else {
             _catalogRepository.deleteShoppingCartProduct(event.index);
@@ -475,6 +585,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               code: event.item.code,
               sku: event.item.sku,
               count: event.item.count,
+              titleScreen: event.item.titleScreen,
+              searchQuery: event.item.searchQuery,
+              typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
+              identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
+              sectionCategoriesPath: event.item.sectionCategoriesPath,
+              productCategoriesPath: event.item.productCategoriesPath,
             );
           } else {
             _catalogRepository.putShoppingCartProduct(event.index, event.item);
@@ -500,6 +616,53 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           numberProducts = numberProducts + basketInfo.basket[i].count;
           amountPaid = amountPaid + basketInfo.basket[i].data.price;
         }
+
+        if (initState.shoppingCart.basket[event.index].count !=
+                basketInfo.basket[event.index].count ||
+            event.item.count == 0) {
+          final count = basketInfo.basket[event.index].count;
+          final yourPrice = basketInfo.basket[event.index].product.yourPrice;
+          final pb = basketInfo.basket[event.index].product.pb;
+          final priceActual = yourPrice ~/ count;
+          final priceOriginal = pb ~/ count;
+          _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+            titleScreen: 'Корзина',
+            titleProduct: basketInfo.basket[event.index].product.title,
+            codeProduct: basketInfo.basket[event.index].code,
+            typeProductToSoppingCart:
+                event.item.count > initState.shoppingCart.basket[event.index].count
+                    ? AppMetricaShoppingCartEnum.addProductToShoppingCart
+                    : AppMetricaShoppingCartEnum.removeProductToShoppingCart,
+            type: event.item.typeAddProductToShoppingCart,
+            identifier: event.item.identifierAddProductToShoppingCart,
+            quantity: 1,
+            sectionCategoriesPath: [],
+            productCategoriesPath: [],
+            priceActual: priceActual,
+            priceOriginal: priceOriginal,
+            internalComponentsActualPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceActual),
+                currency: basketInfo.basket[event.index].skuName,
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceActual),
+                currency: basketInfo.basket[event.index].sku,
+              ),
+            ],
+            internalComponentsOriginalPrice: [
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceOriginal),
+                currency: basketInfo.basket[event.index].skuName,
+              ),
+              AppMetricaECommerceAmount(
+                amount: Decimal.fromInt(priceOriginal),
+                currency: basketInfo.basket[event.index].sku,
+              ),
+            ],
+          );
+        }
+
         emit(const ShoppingCartState.load());
         final result = _catalogRepository.getShoppingCartProducts();
         log(result.toString());
@@ -527,6 +690,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
     }
@@ -545,6 +714,14 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             code: basketInfo.basket[i].code,
             sku: basketInfo.basket[i].sku,
             count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }
@@ -780,6 +957,15 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           ),
         );
         if (event.request.isValidAddress) {
+          _appMetricaEcommerceService.startAndEndCreatePurchaseProducts(
+            typeProductToSoppingCart: AppMetricaTypeCreatePurchaseEnum.startCreatePurchase,
+            products: initState.shoppingCart.basket
+                .map(
+                  (item) => item.product,
+                )
+                .toList(),
+            promocode: initState.promoCode,
+          );
           final result = await _basketRepository.createOrder(
             request: event.request,
           );
@@ -889,6 +1075,42 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           }
         }
       }
+
+      _appMetricaEcommerceService.viewingProductPage(
+        titleScreen: event.titleScreen,
+        titleProduct: detailsProduct.name,
+        codeProduct: detailsProduct.code.toString(),
+        type: event.typeAddProductToShoppingCart,
+        identifier: event.identifierAddProductToShoppingCart,
+        sectionCategoriesPath: [],
+        productCategoriesPath: [],
+        priceActual: detailsProduct.price.yourPrice,
+        priceOriginal: int.parse(detailsProduct.price.pb),
+        internalComponentsActualPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(detailsProduct.price.yourPrice),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+        internalComponentsOriginalPrice: detailsProduct.sku.isNotEmpty
+            ? [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.value : '',
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.parse(detailsProduct.price.pb),
+                  currency: detailsProduct.sku.isNotEmpty ? detailsProduct.sku.first.id : '',
+                ),
+              ]
+            : [],
+      );
 
       emit(initState.copyWith(
         detailsProduct: detailsProduct,
@@ -1206,6 +1428,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       }
 
       emit(initState.copyWith(
+        detailsProduct: detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
@@ -1243,6 +1466,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           code: shopping[i].code,
           sku: shopping[i].sku.contains('-') ? shopping[i].sku : '',
           count: shopping[i].count,
+          titleScreen: shopping[i].titleScreen,
+          searchQuery: shopping[i].searchQuery,
+          typeAddProductToShoppingCart: shopping[i].typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: shopping[i].identifierAddProductToShoppingCart,
+          sectionCategoriesPath: shopping[i].sectionCategoriesPath,
+          productCategoriesPath: shopping[i].productCategoriesPath,
         ));
       }
     }
@@ -1259,6 +1488,14 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             code: basketInfo.basket[i].code,
             sku: basketInfo.basket[i].sku,
             count: basketInfo.basket[i].count,
+            titleScreen: basketInfo.basket[i].product.titleScreen ?? '',
+            searchQuery: basketInfo.basket[i].product.searchQuery ?? '',
+            typeAddProductToShoppingCart:
+                basketInfo.basket[i].product.typeAddProductToShoppingCart ?? '',
+            identifierAddProductToShoppingCart:
+                basketInfo.basket[i].product.identifierAddProductToShoppingCart ?? '',
+            sectionCategoriesPath: basketInfo.basket[i].product.sectionCategoriesPath ?? [],
+            productCategoriesPath: basketInfo.basket[i].product.productCategoriesPath ?? [],
           ),
         );
       }

@@ -26,6 +26,7 @@ dependencies:
     path: ../shared
   blind_chicken:
     path: ../../
+  appmetrica_plugin: ^3.0.0
 
 dev_dependencies:
   flutter_test:

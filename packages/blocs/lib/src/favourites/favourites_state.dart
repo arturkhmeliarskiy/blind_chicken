@@ -9,9 +9,11 @@ class FavouritesState with _$FavouritesState {
     required String code,
     required List<SkuProductDataModel> listSize,
     required List<SkuProductDataModel> listSizeToSoppingCart,
+    required String titleScreen,
   }) = GetSizeProductFavouritesState;
   const factory FavouritesState.addProductToSoppingCart({
     required String code,
+    required String titleScreen,
   }) = AddProductFavouritesState;
   const factory FavouritesState.productsFavourites({
     required List<ProductDataModel> favouritesProducts,

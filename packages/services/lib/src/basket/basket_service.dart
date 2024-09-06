@@ -24,6 +24,12 @@ class BasketService {
     required String code,
     required String sku,
     required int count,
+    required List<String> sectionCategoriesPath,
+    required List<String> productCategoriesPath,
+    required String titleScreen,
+    required String type,
+    required String identifier,
+    required String searchQuery,
   }) async {
     BasketResponse? basketResponse;
     String hashTokenTel = '';
@@ -45,6 +51,12 @@ class BasketService {
           "code": code,
           "sku": sku,
           "count": count,
+          "section_categories_path": sectionCategoriesPath,
+          "product_categories_path": productCategoriesPath,
+          "title_screen": titleScreen,
+          "type": type,
+          "identifier": identifier,
+          "search_query": searchQuery,
         },
       );
       log(response.data);

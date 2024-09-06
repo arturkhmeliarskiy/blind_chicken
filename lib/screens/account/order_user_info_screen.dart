@@ -189,7 +189,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                                         const SizedBox(
                                           height: 8,
                                         ),
-                                        BlindChickenButton(
+                                        BlindChickenButtonOrderInfo(
                                           title: 'Оплатить',
                                           height: 40,
                                           onChenge: () {
@@ -314,6 +314,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                                                   .read<GiftCardBloc>()
                                                   .add(const GiftCardEvent.preloadData(
                                                     isNotification: false,
+                                                    searchQuery: '',
                                                   ));
                                               context.navigateTo(
                                                 HomeAutoRouterRoute(
@@ -338,6 +339,10 @@ class OrderUserInfoScreen extends StatelessWidget {
                                                           AccountEvent.getInfoProduct(
                                                             code: orderInfo.products[index].id
                                                                 .toString(),
+                                                            titleScreen: 'Элемент списка заказа',
+                                                            typeAddProductToShoppingCart:
+                                                                'Элемент списка',
+                                                            identifierAddProductToShoppingCart: '3',
                                                           ),
                                                         );
                                                     context.navigateTo(

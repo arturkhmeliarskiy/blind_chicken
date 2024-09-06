@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info.dart';
@@ -35,6 +36,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.messageId,
   });
 
   final ProductDataModel? item;
@@ -42,6 +44,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
   final List<ProductDataModel> favouritesProducts;
   final bool isLike;
   final String? code;
+  final String? messageId;
   final bool isChildRoute;
   final String lastPath;
   final NewsInfoItemDataModel? newsInfo;
@@ -59,6 +62,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
   bool _isChildRoute = false;
   bool _isSwipe = true;
   bool _isOpenSizeProduct = false;
+  bool _isGoBack = true;
   late ProductDataModel item;
 
   @override
@@ -79,6 +83,10 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
         context.read<CatalogBloc>().add(
               CatalogEvent.getInfoProduct(
                 code: widget.code ?? '',
+                messageId: widget.messageId,
+                titleScreen: 'Описание товара в каталоге',
+                typeAddProductToShoppingCart: 'Уведомление',
+                identifierAddProductToShoppingCart: '2',
               ),
             );
       });
@@ -131,6 +139,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
             CatalogEvent.getInfoProductSize(
               code: product.id.toString(),
               isShop: product.isShop,
+              titleScreen: 'Описание товара в каталоге',
             ),
           );
     }
@@ -140,6 +149,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
         context.read<CatalogBloc>().add(
               CatalogEvent.getInfoProduct(
                 code: widget.code ?? '',
+                titleScreen: 'Описание товара в каталоге',
+                typeAddProductToShoppingCart: 'Кнопка',
+                identifierAddProductToShoppingCart: '4',
               ),
             );
       });
@@ -175,6 +187,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                       ),
                     ]),
                   );
+                  AppMetrica.reportEvent('Список новостей');
                 } else if (widget.lastPath == 'news_info_description') {
                   final newsInfo = widget.newsInfo;
                   if (newsInfo != null) {
@@ -183,6 +196,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                         info: newsInfo,
                       ),
                     );
+                    AppMetrica.reportEvent('Страница новостей');
                   }
                 } else if (widget.lastPath == 'media_info_description') {
                   final newsMediaInfo = widget.newsMediaInfo;
@@ -206,8 +220,10 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
               } else {
                 final sharedService = GetIt.I.get<SharedPreferencesService>();
                 if (sharedService.getString(key: SharedPrefKeys.lastScreen) ==
-                    'catalog_card_info') {
+                        'catalog_card_info' &&
+                    _isGoBack) {
                   context.back();
+                  _isGoBack = false;
                 }
               }
             }
@@ -255,9 +271,11 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                               onPopInvoked: (value) {
                                 if (_isSwipe) {
                                   if (initState.listCatalogPath.isNotEmpty) {
-                                    context
-                                        .read<CatalogBloc>()
-                                        .add(const CatalogEvent.goBackProductInfo());
+                                    if (_isGoBack) {
+                                      context
+                                          .read<CatalogBloc>()
+                                          .add(const CatalogEvent.goBackProductInfo());
+                                    }
                                   } else {
                                     if (widget.lastPath.isNotEmpty) {
                                       if (widget.lastPath == 'news') {
@@ -268,6 +286,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                             ),
                                           ]),
                                         );
+                                        AppMetrica.reportEvent('Список новостей');
                                       } else if (widget.lastPath == 'news_info_description') {
                                         final newsInfo = widget.newsInfo;
                                         if (newsInfo != null) {
@@ -276,6 +295,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                               info: newsInfo,
                                             ),
                                           );
+                                          AppMetrica.reportEvent('Страница новостей');
                                         }
                                       } else if (widget.lastPath == 'media_info_description') {
                                         final newsMediaInfo = widget.newsMediaInfo;
@@ -507,7 +527,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                               .spaceSeparateNumbers(),
                                                           style: Theme.of(context)
                                                               .textTheme
-                                                              .headline2
+                                                              .headlineLarge
                                                               ?.copyWith(
                                                                 decoration:
                                                                     TextDecoration.lineThrough,
@@ -618,6 +638,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                               (initState.detailsProduct?.code ?? 0)
                                                                   .toString(),
                                                           isUpdate: true,
+                                                          titleScreen: 'Описание товара в каталоге',
+                                                          typeAddProductToShoppingCart: 'Кнопка',
+                                                          identifierAddProductToShoppingCart: '4',
                                                         ),
                                                       );
                                                 },
@@ -669,6 +692,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                       CatalogEvent.getInfoProduct(
                                                                         code: value.id.toString(),
                                                                         size: value,
+                                                                        titleScreen:
+                                                                            'Описание товара в каталоге',
+                                                                        typeAddProductToShoppingCart:
+                                                                            'Кнопка',
+                                                                        identifierAddProductToShoppingCart:
+                                                                            '4',
                                                                       ),
                                                                     );
                                                               }
@@ -726,7 +755,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                     ),
                                                   ],
                                                 ),
-                                              BlindChickenButton(
+                                              BlindChickenButtonShoppingCartProduct(
                                                 title: (initState.isShoppingCart ?? false)
                                                     ? 'Перейти в корзину'
                                                     : 'Добавить в корзину',
@@ -750,6 +779,10 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                 initState.detailsProduct?.code ?? 0,
                                                             size: initState.selectSizeProduct ??
                                                                 (sky.isNotEmpty ? sky.first : null),
+                                                            titleScreen:
+                                                                'Карточка товара в каталоге',
+                                                            typeAddProductToShoppingCart: 'Кнопка',
+                                                            identifierAddProductToShoppingCart: '1',
                                                           ),
                                                         );
 
@@ -757,6 +790,13 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                           ShoppingCartEvent
                                                               .addOtherProductToSoppingCart(
                                                             item: BasketInfoItemDataModel(
+                                                              titleScreen:
+                                                                  'Карточка товара в каталоге',
+                                                              typeAddProductToShoppingCart:
+                                                                  'Кнопка',
+                                                              searchQuery: '',
+                                                              identifierAddProductToShoppingCart:
+                                                                  '1',
                                                               code:
                                                                   (initState.detailsProduct?.code ??
                                                                           0)
@@ -771,6 +811,16 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                       ? sky.first.id
                                                                       : '',
                                                               count: 1,
+                                                              sectionCategoriesPath: [
+                                                                initState.catalogInfo?.h1 ?? ''
+                                                              ],
+                                                              productCategoriesPath:
+                                                                  initState.catalogInfo?.breadcrumbs
+                                                                          .map(
+                                                                            (item) => item.name,
+                                                                          )
+                                                                          .toList() ??
+                                                                      [],
                                                             ),
                                                           ),
                                                         );
@@ -831,6 +881,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                         context.read<CatalogBloc>().add(
                                                               CatalogEvent.getInfoProduct(
                                                                 code: product.id.toString(),
+                                                                titleScreen:
+                                                                    'Описание товара в каталоге (Варианты)',
+                                                                typeAddProductToShoppingCart:
+                                                                    'Кнопка',
+                                                                identifierAddProductToShoppingCart:
+                                                                    '4',
                                                               ),
                                                             );
                                                       },
@@ -897,6 +953,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                   context.read<CatalogBloc>().add(
                                                                         CatalogEvent.getInfoProduct(
                                                                           code: value.id.toString(),
+                                                                          titleScreen:
+                                                                              'Описание товара в каталоге (Носят вместе)',
+                                                                          typeAddProductToShoppingCart:
+                                                                              'Карточка товара',
+                                                                          identifierAddProductToShoppingCart:
+                                                                              '1',
                                                                         ),
                                                                       );
                                                                 },
@@ -974,6 +1036,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                   context.read<CatalogBloc>().add(
                                                                         CatalogEvent.getInfoProduct(
                                                                           code: value.id.toString(),
+                                                                          titleScreen:
+                                                                              'Описание товара в каталоге (Рекомендации стилистов)',
+                                                                          typeAddProductToShoppingCart:
+                                                                              'Карточка товара',
+                                                                          identifierAddProductToShoppingCart:
+                                                                              '1',
                                                                         ),
                                                                       );
                                                                 },
@@ -1050,6 +1118,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                   context.read<CatalogBloc>().add(
                                                                         CatalogEvent.getInfoProduct(
                                                                           code: value.id.toString(),
+                                                                          titleScreen:
+                                                                              'Описание товара в каталоге (Смотрите также)',
+                                                                          typeAddProductToShoppingCart:
+                                                                              'Карточка товара',
+                                                                          identifierAddProductToShoppingCart:
+                                                                              '1',
                                                                         ),
                                                                       );
                                                                 },
@@ -1179,6 +1253,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                 context.read<CatalogBloc>().add(
                                                                       CatalogEvent.getInfoProduct(
                                                                         code: value.id.toString(),
+                                                                        titleScreen:
+                                                                            'Описание товара в каталоге (Товары бренда)',
+                                                                        typeAddProductToShoppingCart:
+                                                                            'Карточка товара',
+                                                                        identifierAddProductToShoppingCart:
+                                                                            '1',
                                                                       ),
                                                                     );
                                                               },
@@ -1259,6 +1339,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                     CatalogEvent.getInfoProduct(
                                       code: value.listProductsCode.last,
                                       isUpdate: true,
+                                      titleScreen: 'Описание товара в каталоге',
+                                      typeAddProductToShoppingCart: 'Кнопка',
+                                      identifierAddProductToShoppingCart: '4',
                                     ),
                                   );
                             },
@@ -1288,6 +1371,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                   CatalogEvent.getInfoProductSize(
                                     code: (initState.detailsProduct?.code ?? 0).toString(),
                                     isShop: initState.isShoppingCart ?? false,
+                                    titleScreen: 'Карточка товара в каталоге',
                                   ),
                                 );
                           }

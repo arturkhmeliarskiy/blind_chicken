@@ -208,13 +208,13 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                                                                   'Заказ ${initState.orders[index].id} от ${initState.orders[index].date}',
                                                                   style: Theme.of(context)
                                                                       .textTheme
-                                                                      .headline2,
+                                                                      .headlineLarge,
                                                                 ),
                                                                 Text(
                                                                   '${initState.orders[index].sum.toString().spaceSeparateNumbers()} ₽',
                                                                   style: Theme.of(context)
                                                                       .textTheme
-                                                                      .headline2,
+                                                                      .headlineLarge,
                                                                 ),
                                                               ],
                                                             ),

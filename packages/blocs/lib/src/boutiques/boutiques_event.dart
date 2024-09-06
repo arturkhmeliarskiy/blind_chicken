@@ -6,5 +6,6 @@ class BoutiquesEvent with _$BoutiquesEvent {
   const factory BoutiquesEvent.getInfoBoutique({
     required String uid,
     bool? isNotification,
+    String? messageId,
   }) = GetInfoBoutiquesEvent;
 }

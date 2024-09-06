@@ -21,19 +21,37 @@ class ProductShoppingCartDataModelAdapter
       code: fields[0] as String,
       sku: fields[1] as String,
       count: fields[2] as int,
+      titleScreen: fields[3] as String,
+      searchQuery: fields[4] as String,
+      typeAddProductToShoppingCart: fields[5] as String,
+      identifierAddProductToShoppingCart: fields[6] as String,
+      sectionCategoriesPath: (fields[7] as List).cast<String>(),
+      productCategoriesPath: (fields[8] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductShoppingCartDataModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.code)
       ..writeByte(1)
       ..write(obj.sku)
       ..writeByte(2)
-      ..write(obj.count);
+      ..write(obj.count)
+      ..writeByte(3)
+      ..write(obj.titleScreen)
+      ..writeByte(4)
+      ..write(obj.searchQuery)
+      ..writeByte(5)
+      ..write(obj.typeAddProductToShoppingCart)
+      ..writeByte(6)
+      ..write(obj.identifierAddProductToShoppingCart)
+      ..writeByte(7)
+      ..write(obj.sectionCategoriesPath)
+      ..writeByte(8)
+      ..write(obj.productCategoriesPath);
   }
 
   @override

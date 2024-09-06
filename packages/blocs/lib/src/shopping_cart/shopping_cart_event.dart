@@ -9,6 +9,8 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = AddProductToSoppingCartEvent;
   const factory ShoppingCartEvent.addOtherProductToSoppingCart({
     required BasketInfoItemDataModel item,
+    String? titleScreen,
+    String? typeAddProductToShoppingCart,
   }) = AddOtherProductToSoppingCartEvent;
   const factory ShoppingCartEvent.deleteProductToSoppingCart({
     required BasketInfoItemDataModel item,
@@ -44,6 +46,9 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = BonusesSoppingCartEvent;
   const factory ShoppingCartEvent.getInfoProduct({
     required String code,
+    required String titleScreen,
+    required String typeAddProductToShoppingCart,
+    required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
     bool? isUpdate,
   }) = GetInfoProductShoppingCartEvent;

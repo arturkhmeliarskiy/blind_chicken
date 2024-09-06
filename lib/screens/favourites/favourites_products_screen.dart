@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
@@ -28,6 +30,8 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
   BlindChickenMessage message = BlindChickenMessage();
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
+  int _currentPage = 1;
+  double _boundaryOffset = 0.5;
 
   @override
   void initState() {
@@ -45,12 +49,17 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
           ),
         );
 
-    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 2000) &&
-        (_scrollController.position.maxScrollExtent - 2000) > _paginationPosition &&
-        _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
-      setState(() {
-        _paginationPosition = _scrollController.position.maxScrollExtent - 2000;
-      });
+    bool isActive = (_scrollController.position.maxScrollExtent - 2500).toInt() >
+            _paginationPosition.toInt() &&
+        (_scrollController.position.maxScrollExtent - 2500).toInt() != _paginationPosition.toInt();
+    //load more data
+    if ((_scrollController.offset > _scrollController.position.maxScrollExtent * _boundaryOffset) &&
+        isActive) {
+      _paginationPosition = _scrollController.position.maxScrollExtent - 2500;
+      _currentPage++;
+      _boundaryOffset = 1 - 1 / (_currentPage * 2);
+
+      log(_currentPage.toString());
 
       context.read<FavouritesBloc>().add(const FavouritesEvent.paginationProduct());
     }
@@ -106,6 +115,9 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                           FavouritesEvent.addProductToSoppingCart(
                             code: int.parse(initState.code),
                             size: size,
+                            titleScreen: initState.titleScreen,
+                            typeAddProductToShoppingCart: 'Выпадающий список',
+                            identifierAddProductToShoppingCart: '2',
                           ),
                         );
 
@@ -115,6 +127,12 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                               code: initState.code,
                               sku: size.id,
                               count: 1,
+                              titleScreen: initState.titleScreen,
+                              searchQuery: '',
+                              typeAddProductToShoppingCart: 'Выпадающий список',
+                              identifierAddProductToShoppingCart: '2',
+                              sectionCategoriesPath: [],
+                              productCategoriesPath: [],
                             ),
                           ),
                         );
@@ -155,6 +173,9 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
             context.read<FavouritesBloc>().add(
                   FavouritesEvent.addProductToSoppingCart(
                     code: int.parse(initState.code),
+                    titleScreen: initState.titleScreen,
+                    typeAddProductToShoppingCart: 'Кнопка',
+                    identifierAddProductToShoppingCart: '1',
                   ),
                 );
 
@@ -164,6 +185,12 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                       code: initState.code,
                       sku: '',
                       count: 1,
+                      titleScreen: initState.titleScreen,
+                      searchQuery: '',
+                      typeAddProductToShoppingCart: 'Кнопка',
+                      identifierAddProductToShoppingCart: '1',
+                      sectionCategoriesPath: [],
+                      productCategoriesPath: [],
                     ),
                   ),
                 );
@@ -426,6 +453,12 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                               code: initState
                                                                   .favouritesProducts[index].id
                                                                   .toString(),
+                                                              titleScreen:
+                                                                  'Карточка товара в избранном',
+                                                              typeAddProductToShoppingCart:
+                                                                  'Карточка товара',
+                                                              identifierAddProductToShoppingCart:
+                                                                  '1',
                                                             ),
                                                           );
                                                       context.navigateTo(
@@ -490,6 +523,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                                   .toString(),
                                                               isShop: initState
                                                                   .favouritesProducts[index].isShop,
+                                                              titleScreen: 'Избранное',
                                                             ),
                                                           );
                                                     },
@@ -500,6 +534,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                                 initState
                                                                     .favouritesProducts[index].id &&
                                                             initState.isLoadGetSizeProduct,
+                                                    sizeProduct: const [],
                                                   );
                                                 }),
                                               ),

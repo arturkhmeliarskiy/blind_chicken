@@ -355,7 +355,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                         .spaceSeparateNumbers(),
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .headline2
+                                                        .headlineLarge
                                                         ?.copyWith(
                                                           decoration: TextDecoration.lineThrough,
                                                         ),
@@ -454,6 +454,9 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                   SearchEvent.getInfoProduct(
                                                     code: (initState.detailsProduct?.code ?? 0)
                                                         .toString(),
+                                                    titleScreen: 'Описание товара в поиске',
+                                                    typeAddProductToShoppingCart: 'Кнопка',
+                                                    identifierAddProductToShoppingCart: '4',
                                                     isUpdate: true,
                                                   ),
                                                 );
@@ -505,6 +508,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                           context.read<SearchBloc>().add(
                                                                 SearchEvent.getInfoProduct(
                                                                   code: value.id.toString(),
+                                                                  titleScreen:
+                                                                      'Описание товара в поиске',
+                                                                  typeAddProductToShoppingCart:
+                                                                      'Кнопка',
+                                                                  identifierAddProductToShoppingCart:
+                                                                      '4',
                                                                   size: value,
                                                                 ),
                                                               );
@@ -560,7 +569,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                               ),
                                             ],
                                           ),
-                                        BlindChickenButton(
+                                        BlindChickenButtonShoppingCartProduct(
                                           title: initState.isShoppingCart ?? false
                                               ? 'Перейти в корзину'
                                               : 'Добавить в корзину',
@@ -584,6 +593,9 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                       code: initState.detailsProduct?.code ?? 0,
                                                       size: initState.selectSizeProduct ??
                                                           (sky.isNotEmpty ? sky.first : null),
+                                                      titleScreen: 'Карточка товара',
+                                                      typeAddProductToShoppingCart: 'Кнопка',
+                                                      identifierAddProductToShoppingCart: '1',
                                                     ),
                                                   );
 
@@ -601,6 +613,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                                 ? sky.first.id
                                                                 : '',
                                                         count: 1,
+                                                        titleScreen: 'Карточка товара',
+                                                        searchQuery: '',
+                                                        typeAddProductToShoppingCart: 'Кнопка',
+                                                        identifierAddProductToShoppingCart: '1',
+                                                        sectionCategoriesPath: [],
+                                                        productCategoriesPath: [],
                                                       ),
                                                     ),
                                                   );
@@ -654,9 +672,13 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                     initState.detailsProduct?.option ?? [],
                                                 onTap: (product) {
                                                   // в боевой Api раскомментировать
-                                                  context.read<CatalogBloc>().add(
-                                                        CatalogEvent.getInfoProduct(
+                                                  context.read<SearchBloc>().add(
+                                                        SearchEvent.getInfoProduct(
                                                           code: product.id.toString(),
+                                                          titleScreen:
+                                                              'Описание товара в поиске (Варианты)',
+                                                          typeAddProductToShoppingCart: 'Кнопка',
+                                                          identifierAddProductToShoppingCart: '4',
                                                         ),
                                                       );
 
@@ -717,7 +739,13 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                           onSelectProduct: (value) {
                                                             context.read<SearchBloc>().add(
                                                                   SearchEvent.getInfoProduct(
+                                                                    titleScreen:
+                                                                        'Описание товара в поиске (Носят вместе)',
                                                                     code: value.id.toString(),
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },
@@ -789,6 +817,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                             context.read<SearchBloc>().add(
                                                                   SearchEvent.getInfoProduct(
                                                                     code: value.id.toString(),
+                                                                    titleScreen:
+                                                                        'Описание товара в поиске (Рекомендации стилистов)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },
@@ -860,6 +894,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                             context.read<SearchBloc>().add(
                                                                   SearchEvent.getInfoProduct(
                                                                     code: value.id.toString(),
+                                                                    titleScreen:
+                                                                        'Описание товара в поиске (Смотрите также)',
+                                                                    typeAddProductToShoppingCart:
+                                                                        'Карточка товара',
+                                                                    identifierAddProductToShoppingCart:
+                                                                        '1',
                                                                   ),
                                                                 );
                                                           },
@@ -977,6 +1017,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                           context.read<SearchBloc>().add(
                                                                 SearchEvent.getInfoProduct(
                                                                   code: value.id.toString(),
+                                                                  titleScreen:
+                                                                      'Описание товара в поиске (Товары бренда)',
+                                                                  typeAddProductToShoppingCart:
+                                                                      'Карточка товара',
+                                                                  identifierAddProductToShoppingCart:
+                                                                      '1',
                                                                 ),
                                                               );
                                                         },
@@ -1061,6 +1107,7 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                   SearchEvent.getInfoProductSize(
                                     code: (initState.detailsProduct?.code ?? 0).toString(),
                                     isShop: initState.isShoppingCart ?? false,
+                                    titleScreen: 'Описание товара в поиске',
                                   ),
                                 );
                           }

@@ -206,19 +206,41 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                 (index) {
                                                   return GestureDetector(
                                                     onTap: () {
-                                                      context.read<CatalogBloc>().add(
-                                                            CatalogEvent.getInfoProducts(
-                                                              path:
-                                                                  initState.searchSections[index].u,
-                                                              isCleanHistory: true,
-                                                            ),
-                                                          );
-                                                      context.navigateTo(
-                                                        CatalogRoute(
-                                                          title: '',
-                                                          url: initState.searchSections[index].u,
-                                                        ),
-                                                      );
+                                                      if (initState.searchSections[index].u ==
+                                                          '/proverka-zreniya/') {
+                                                        context
+                                                            .navigateTo(const VisionWarningRoute());
+                                                      } else if (initState
+                                                              .searchSections[index].u ==
+                                                          '/servisnaya-karta/') {
+                                                        context.read<CatalogBloc>().add(
+                                                              const CatalogEvent.getInfoServiceCard(
+                                                                code: '15846',
+                                                              ),
+                                                            );
+                                                        context
+                                                            .navigateTo(const ServiceCardRoute());
+                                                      } else if (initState
+                                                              .searchSections[index].u ==
+                                                          '/giftcard/') {
+                                                        context.navigateTo(GiftCardRoute(
+                                                          searchQuery: initState.query,
+                                                        ));
+                                                      } else {
+                                                        context.read<CatalogBloc>().add(
+                                                              CatalogEvent.getInfoProducts(
+                                                                path: initState
+                                                                    .searchSections[index].u,
+                                                                isCleanHistory: true,
+                                                              ),
+                                                            );
+                                                        context.navigateTo(
+                                                          CatalogRoute(
+                                                            title: '',
+                                                            url: initState.searchSections[index].u,
+                                                          ),
+                                                        );
+                                                      }
                                                     },
                                                     child: Container(
                                                       margin: const EdgeInsets.only(
@@ -246,15 +268,17 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                                 .textTheme
                                                                 .displayMedium,
                                                           ),
-                                                          Text(
-                                                            initState.searchSections[index].g,
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .bodyMedium
-                                                                ?.copyWith(
-                                                                  fontFamily: 'Roboto-Light',
-                                                                ),
-                                                          ),
+                                                          if (initState
+                                                              .searchSections[index].g.isNotEmpty)
+                                                            Text(
+                                                              initState.searchSections[index].g,
+                                                              style: Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyMedium
+                                                                  ?.copyWith(
+                                                                    fontFamily: 'Roboto-Light',
+                                                                  ),
+                                                            ),
                                                         ],
                                                       ),
                                                     ),
@@ -340,6 +364,12 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                               code: initState
                                                                   .searchProducts[index].id
                                                                   .toString(),
+                                                              titleScreen:
+                                                                  'Карточка товара в резльтате поиска',
+                                                              typeAddProductToShoppingCart:
+                                                                  'Элемент списка',
+                                                              identifierAddProductToShoppingCart:
+                                                                  '3',
                                                             ),
                                                           );
                                                       context.navigateTo(

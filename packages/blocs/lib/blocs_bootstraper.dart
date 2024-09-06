@@ -13,6 +13,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<FavouritesRepository>(),
         getIt.get<UpdateDataService>(),
         getIt.get<BoutiquesRepository>(),
+        getIt.get<AppMetricaEcommerceService>(),
       ),
     )
     ..registerFactory(
@@ -37,6 +38,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<FavouritesRepository>(),
         getIt.get<BasketRepository>(),
         getIt.get<UpdateDataService>(),
+        getIt.get<AppMetricaEcommerceService>(),
       ),
     )
     ..registerFactory(
@@ -50,6 +52,8 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<BasketRepository>(),
         getIt.get<StoreVersionAppRepository>(),
         getIt.get<PushNotificationRepository>(),
+        getIt.get<AppMetricaEcommerceService>(),
+        getIt.get<FilterService>(),
       ),
     )
     ..registerFactory(
@@ -68,6 +72,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<PushNotificationRepository>(),
         getIt.get<FileService>(),
         getIt.get<UpdateDataService>(),
+        getIt.get<AppMetricaEcommerceService>(),
       ),
     )
     ..registerFactory(
@@ -77,6 +82,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<FavouritesRepository>(),
         getIt.get<BasketRepository>(),
         getIt.get<UpdateDataService>(),
+        getIt.get<AppMetricaEcommerceService>(),
       ),
     )
     ..registerFactory(
@@ -93,7 +99,9 @@ Future<void> initBloc(GetIt getIt) async {
       () => GiftCardBloc(
         getIt.get<CatalogRepository>(),
         getIt.get<UpdateDataService>(),
+        getIt.get<GiftCardRepository>(),
         getIt.get<StoreVersionAppRepository>(),
+        getIt.get<AppMetricaEcommerceService>(),
       ),
     )
     ..registerFactory(
@@ -108,6 +116,7 @@ Future<void> initBloc(GetIt getIt) async {
     ..registerFactory(
       () => TopBannerBloc(
         getIt.get<CatalogRepository>(),
+        getIt.get<AuthRepository>(),
       ),
     );
 }

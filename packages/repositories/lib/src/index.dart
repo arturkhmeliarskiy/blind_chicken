@@ -9,3 +9,5 @@ export 'app_store_info/app_store_info_repository.dart';
 export 'push_notification/push_notification_repository.dart';
 export 'news/news_repository.dart';
 export 'store_version_app/store_version_app_repository.dart';
+export 'gift_card/gift_card_repository.dart';
+export 'error_analyzer/error_analyzer_repository.dart';

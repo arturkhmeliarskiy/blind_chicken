@@ -34,6 +34,7 @@ class BlindChickenMessage {
       _overlayState = Overlay.of(context);
 
       overlayEntry = OverlayEntry(
+        maintainState: true,
         builder: (context) => Message(
           width: width,
           title: title,
@@ -134,7 +135,7 @@ class _MessageState extends State<Message> with SingleTickerProviderStateMixin {
               children: <Widget>[
                 Text(
                   widget.title,
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
               ],

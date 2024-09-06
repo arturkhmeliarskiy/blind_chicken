@@ -45,7 +45,7 @@ class BlindChickenDialog {
                     ),
                     Text(
                       'Вы хотите выйти из приложения?',
-                      style: Theme.of(context).textTheme.headline2,
+                      style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -77,7 +77,7 @@ class BlindChickenDialog {
                         padding: const EdgeInsets.only(left: 15, right: 15),
                         child: Text(
                           'Выйти',
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                       ),
                     ),
@@ -96,7 +96,7 @@ class BlindChickenDialog {
                         padding: const EdgeInsets.only(left: 15, right: 15),
                         child: Text(
                           'Отмена',
-                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                                 color: BlindChickenColors.backgroundColor,
                               ),
                         ),
