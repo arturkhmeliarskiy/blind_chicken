@@ -35,6 +35,8 @@ mixin _$ProductDataModel {
   bool get isShop => throw _privateConstructorUsedError;
   List<CatalogSizeProductDataModel> get sz =>
       throw _privateConstructorUsedError;
+  String get promo => throw _privateConstructorUsedError;
+  int get promoValue => throw _privateConstructorUsedError;
   String? get titleScreen =>
       throw _privateConstructorUsedError; // экран добавления в корзину
   String? get searchQuery =>
@@ -80,6 +82,8 @@ abstract class $ProductDataModelCopyWith<$Res> {
       bool isYourPriceDisplayed,
       bool isShop,
       List<CatalogSizeProductDataModel> sz,
+      String promo,
+      int promoValue,
       String? titleScreen,
       String? searchQuery,
       String? typeAddProductToShoppingCart,
@@ -121,6 +125,8 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? isYourPriceDisplayed = null,
     Object? isShop = null,
     Object? sz = null,
+    Object? promo = null,
+    Object? promoValue = null,
     Object? titleScreen = freezed,
     Object? searchQuery = freezed,
     Object? typeAddProductToShoppingCart = freezed,
@@ -203,6 +209,14 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.sz
           : sz // ignore: cast_nullable_to_non_nullable
               as List<CatalogSizeProductDataModel>,
+      promo: null == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String,
+      promoValue: null == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int,
       titleScreen: freezed == titleScreen
           ? _value.titleScreen
           : titleScreen // ignore: cast_nullable_to_non_nullable
@@ -267,6 +281,8 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       bool isYourPriceDisplayed,
       bool isShop,
       List<CatalogSizeProductDataModel> sz,
+      String promo,
+      int promoValue,
       String? titleScreen,
       String? searchQuery,
       String? typeAddProductToShoppingCart,
@@ -306,6 +322,8 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? isYourPriceDisplayed = null,
     Object? isShop = null,
     Object? sz = null,
+    Object? promo = null,
+    Object? promoValue = null,
     Object? titleScreen = freezed,
     Object? searchQuery = freezed,
     Object? typeAddProductToShoppingCart = freezed,
@@ -388,6 +406,14 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value._sz
           : sz // ignore: cast_nullable_to_non_nullable
               as List<CatalogSizeProductDataModel>,
+      promo: null == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String,
+      promoValue: null == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int,
       titleScreen: freezed == titleScreen
           ? _value.titleScreen
           : titleScreen // ignore: cast_nullable_to_non_nullable
@@ -447,6 +473,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required this.isYourPriceDisplayed,
       required this.isShop,
       required final List<CatalogSizeProductDataModel> sz,
+      required this.promo,
+      required this.promoValue,
       this.titleScreen,
       this.searchQuery,
       this.typeAddProductToShoppingCart,
@@ -524,6 +552,10 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   }
 
   @override
+  final String promo;
+  @override
+  final int promoValue;
+  @override
   final String? titleScreen;
 // экран добавления в корзину
   @override
@@ -568,7 +600,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, promo: $promo, promoValue: $promoValue, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
   }
 
   @override
@@ -602,6 +634,9 @@ class _$ProductDataModelImpl extends _ProductDataModel {
                 other.isYourPriceDisplayed == isYourPriceDisplayed) &&
             (identical(other.isShop, isShop) || other.isShop == isShop) &&
             const DeepCollectionEquality().equals(other._sz, _sz) &&
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.promoValue, promoValue) ||
+                other.promoValue == promoValue) &&
             (identical(other.titleScreen, titleScreen) ||
                 other.titleScreen == titleScreen) &&
             (identical(other.searchQuery, searchQuery) ||
@@ -643,6 +678,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         isYourPriceDisplayed,
         isShop,
         const DeepCollectionEquality().hash(_sz),
+        promo,
+        promoValue,
         titleScreen,
         searchQuery,
         typeAddProductToShoppingCart,
@@ -681,6 +718,8 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final bool isYourPriceDisplayed,
       required final bool isShop,
       required final List<CatalogSizeProductDataModel> sz,
+      required final String promo,
+      required final int promoValue,
       final String? titleScreen,
       final String? searchQuery,
       final String? typeAddProductToShoppingCart,
@@ -727,6 +766,10 @@ abstract class _ProductDataModel extends ProductDataModel {
   bool get isShop;
   @override
   List<CatalogSizeProductDataModel> get sz;
+  @override
+  String get promo;
+  @override
+  int get promoValue;
   @override
   String? get titleScreen;
   @override // экран добавления в корзину

@@ -250,6 +250,8 @@ extension on BasketFullInfoResponse {
                       chN: item.data?.category?.chN ?? '',
                     ),
                     nameView: item.data?.nameView ?? '',
+                    promo: item.data?.promo ?? '',
+                    promoValue: item.data?.promoValue ?? 0,
                   ),
                   skuName: item.skuName ?? '',
                   product: ProductDataModel(
@@ -285,6 +287,8 @@ extension on BasketFullInfoResponse {
                     identifierAddProductToShoppingCart: item.identifier ?? '',
                     sectionCategoriesPath: item.sectionCategoriesPath ?? [],
                     productCategoriesPath: item.productCategoriesPath ?? [],
+                    promo: item.data?.promo ?? '',
+                    promoValue: item.data?.promoValue ?? 0,
                   ),
                 );
               },

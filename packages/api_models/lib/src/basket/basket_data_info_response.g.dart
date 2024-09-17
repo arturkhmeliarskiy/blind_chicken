@@ -24,6 +24,8 @@ _$BasketDataInfoResponseImpl _$$BasketDataInfoResponseImplFromJson(
           : BasketCategoryResponse.fromJson(
               json['category'] as Map<String, dynamic>),
       nameView: json['name_view'] as String?,
+      promo: json['promo'] as String?,
+      promoValue: json['promo_value'] as int?,
     );
 
 Map<String, dynamic> _$$BasketDataInfoResponseImplToJson(
@@ -39,4 +41,6 @@ Map<String, dynamic> _$$BasketDataInfoResponseImplToJson(
       'brand': instance.brand,
       'category': instance.category,
       'name_view': instance.nameView,
+      'promo': instance.promo,
+      'promo_value': instance.promoValue,
     };

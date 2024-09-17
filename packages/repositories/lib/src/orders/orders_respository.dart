@@ -94,6 +94,8 @@ extension on OrderInfoResponse {
                 identifierAddProductToShoppingCart: item.identifier ?? '',
                 sectionCategoriesPath: item.sectionCategoriesPath ?? [],
                 productCategoriesPath: item.productCategoriesPath ?? [],
+                promo: item.promo ?? '',
+                promoValue: item.promoValue ?? 0,
               ),
             ) ??
             [],

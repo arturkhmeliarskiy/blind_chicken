@@ -242,15 +242,24 @@ class NewsService {
     required int page,
   }) async {
     NotificationInfoResponse? notificationInfoResponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
     try {
       log(_dio.options.headers.toString());
       final response = await _dio.post(
         '/local/service/app/list_notice.php?nav=page-$page',
         data: {
+          "auth": isAuth ? 1 : 0,
           "token": token,
           "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
         },
       );
       try {
@@ -280,6 +289,64 @@ class NewsService {
         log(e.message.toString());
       }
       return NotificationInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<OneNotificationInfoResponse> getOneNotifcation({
+    required String id,
+    String? messageId,
+  }) async {
+    OneNotificationInfoResponse? oneNotificationInfoResponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/list_notice.php?id=$id',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+        },
+      );
+      try {
+        final result = await jsonDecode(response.data);
+        if (result["r"] == '1') {
+          oneNotificationInfoResponse = OneNotificationInfoResponse.fromJson(result);
+        } else {
+          oneNotificationInfoResponse = OneNotificationInfoResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        oneNotificationInfoResponse = OneNotificationInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return oneNotificationInfoResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return OneNotificationInfoResponse(
         errorMessage: MessageInfo.errorMessage,
       );
     }

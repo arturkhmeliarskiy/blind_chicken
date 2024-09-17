@@ -22,6 +22,31 @@ class ConstatntsInfo {
     'декабря',
   ];
 
+  List<String> monthsDA = [
+    'Январь',
+    'Февраль',
+    'Марта',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
+
+  List<String> weekdayShrot = [
+    'Пн',
+    'Вт',
+    'Ср',
+    'Чт',
+    'Пт',
+    'Сб',
+    'Вс',
+  ];
+
   List<String> brandsWoman = [
     '3JUIN',
     'A Better Mistake',

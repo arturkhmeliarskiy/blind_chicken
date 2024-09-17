@@ -154,6 +154,8 @@ extension on FavouritesCatalogInfoResponse {
                     )
                     .isNotEmpty,
                 sz: [],
+                promo: item.promo ?? '',
+                promoValue: item.promoValue ?? 0,
               ),
             ) ??
             [],

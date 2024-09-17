@@ -56,6 +56,7 @@ class CatalogState with _$CatalogState {
     required bool isLoadGetSizeProduct,
     required bool isOpenGetSizeProduct,
     required bool isButtonTop,
+    required bool isPromotionsForPurchases,
     PushNotificationMessageDataModel? notificationMessage,
     SkuProductDataModel? selectSizeProduct,
     String? errorMessage,

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -128,6 +129,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       basket: basket,
     );
     if (result.r == '1') {
+      AppMetricaNumberAttribute.withValue(
+        'номер телефона',
+        double.parse(
+          event.phone,
+        ),
+      );
+
       String pushToken = '';
       emit(const LoginState.successfully());
       _sharedPreferencesService.setBool(
@@ -145,8 +153,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
 
       if (Platform.isIOS) {
-        const mc = MethodChannel('blind_chicken/getToken');
-        pushToken = await mc.invokeMethod('getDeviceToken');
+        final tokens = await AppMetricaPush.getTokens();
+        pushToken = tokens['apns'] ?? '';
       } else {
         pushToken = await FirebaseMessaging.instance.getToken() ?? '';
       }

@@ -241,6 +241,7 @@ DEPENDENCIES:
   - app_links (from `.symlinks/plugins/app_links/ios`)
   - appmetrica_plugin (from `.symlinks/plugins/appmetrica_plugin/ios`)
   - appmetrica_push_plugin (from `.symlinks/plugins/appmetrica_push_plugin/ios`)
+  - AppMetricaPush
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
@@ -418,6 +419,6 @@ SPEC CHECKSUMS:
   yandex_mapkit: 5ab063b9cb8ef57b40bb02bf3dec3ec324ef50c9
   YandexMapsMobile: a76ddceccf2d78f9f1034d07a354810cd21ef21a
 
-PODFILE CHECKSUM: ef5f05e54bde5121600b0c477042494b100c2c10
+PODFILE CHECKSUM: baabccd6a261e2c297b2c4922e90cc3861ae1a0e
 
 COCOAPODS: 1.15.2

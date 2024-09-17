@@ -21,6 +21,8 @@ class OrderProductResponse with _$OrderProductResponse {
     @JsonKey(name: "product_categories_path") List<String>? productCategoriesPath,
     @JsonKey(name: "title_screen") String? titleScreen,
     @JsonKey(name: "search_query") String? searchQuery,
+    String? promo,
+    @JsonKey(name: 'promo_value') int? promoValue,
   }) = _OrderProductResponse;
   factory OrderProductResponse.fromJson(Map<String, dynamic> json) =>
       _$OrderProductResponseFromJson(json);

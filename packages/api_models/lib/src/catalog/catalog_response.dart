@@ -39,6 +39,7 @@ class CatalogResponse with _$CatalogResponse {
     String? r,
     String? e,
     String? errorMessage,
+    @JsonKey(name: 'discount_first_mobile') int? discountFirstMobile,
   }) = _CatalogResponse;
   factory CatalogResponse.fromJson(Map<String, dynamic> json) => _$CatalogResponseFromJson(json);
 }

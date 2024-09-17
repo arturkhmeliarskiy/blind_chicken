@@ -470,7 +470,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                         );
                                     context.navigateTo(const ServiceCardRoute());
                                   } else if (initState.menu[index].url == '/proverka-zreniya/') {
-                                    context.navigateTo(const VisionWarningRoute());
+                                    context.navigateTo(VisionWarningRoute());
                                   } else if (initState.menu[index].name == 'Бренды') {
                                     context.read<BrandBloc>().add(
                                           BrandEvent.getBrands(

@@ -185,6 +185,7 @@ class FavouritesService {
           "tel": tel,
           "hash_token_tel": hashTokenTel,
           "favorites": jsonEncode(request.favourites),
+          "discount_first_mobile": 1,
         },
       );
       log(response.data);

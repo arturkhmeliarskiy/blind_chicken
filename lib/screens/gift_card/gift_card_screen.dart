@@ -178,7 +178,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                         final newsNotificationInfo = widget.newsNotificationInfo;
                         if (newsNotificationInfo != null) {
                           context.navigateTo(
-                            NotficationInfoDescriptionRoute(
+                            NotificationInfoDescriptionRoute(
                               info: newsNotificationInfo,
                             ),
                           );
@@ -228,7 +228,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                           final newsNotificationInfo = widget.newsNotificationInfo;
                           if (newsNotificationInfo != null) {
                             context.navigateTo(
-                              NotficationInfoDescriptionRoute(
+                              NotificationInfoDescriptionRoute(
                                 info: newsNotificationInfo,
                               ),
                             );

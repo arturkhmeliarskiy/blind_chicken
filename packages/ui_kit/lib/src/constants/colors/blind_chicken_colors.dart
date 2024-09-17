@@ -9,6 +9,7 @@ class BlindChickenColors {
   static const backgroundColorItemFilter = Color(0xFFf5f5f5);
   static const backgroundIamge = Color(0xFFf4f4f4);
   static const textInput = Color(0xFF777777);
+  static const weekdayColorCalendar = Color(0xFF888888);
   static const borderTextFieldSearch = Color(0xFFbdbdbd);
   static const dotItem = Color(0xFFd5d5d5);
   static const backgrounInputColor = Color(0xFFf1f0f0);

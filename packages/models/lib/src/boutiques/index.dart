@@ -6,3 +6,4 @@ export 'boutique_foto_detail_data_model.dart';
 export 'boutique_info_detail_data_model.dart';
 export 'boutique_category_item_data_model.dart';
 export 'boutique_coordinates_data_model.dart';
+export 'boutique_shedule_data_model.dart';

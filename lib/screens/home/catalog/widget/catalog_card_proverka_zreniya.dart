@@ -50,7 +50,7 @@ class CatalogCardProverkaZreniya extends StatelessWidget {
                   shadowColor: BlindChickenColors.backgrounInputColor,
                 ),
                 onPressed: () {
-                  context.navigateTo(const VisionWarningRoute());
+                  context.navigateTo(VisionWarningRoute());
                 },
                 child: Container(
                   alignment: Alignment.center,

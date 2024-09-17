@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -137,6 +138,12 @@ class _AppState extends State<App> {
         BlocProvider(
           create: (context) => GetIt.I.get<TopBannerBloc>(),
         ),
+        BlocProvider(
+          create: (context) => GetIt.I.get<AppointmentBloc>()
+            ..add(
+              const AppointmentEvent.preloadData(),
+            ),
+        ),
       ],
       child: PushNotificationManager(
         openScreen: (notificationMessage) {
@@ -205,6 +212,15 @@ class _AppState extends State<App> {
                   ),
                 );
               }
+              if (notificationMessage.type == 'notification') {
+                _appRouter.push(
+                  NotificationInfoNotificationDescriptionRoute(
+                    idNews: notificationMessage.idNews,
+                    isNotification: true,
+                    messageId: notificationMessage.idMessage,
+                  ),
+                );
+              }
             }
             updateData.idMessageNotification = notificationMessage.idMessage;
           }
@@ -213,6 +229,7 @@ class _AppState extends State<App> {
           resumed: () async {
             final updateData = GetIt.I.get<UpdateDataService>();
             final filterService = GetIt.I.get<FilterService>();
+
             if (!updateData.isInitApp) {
               _appLinks = AppLinks();
 
@@ -239,99 +256,143 @@ class _AppState extends State<App> {
               }
             }
 
-            if (Platform.isIOS) {
-              const me = MethodChannel('blind_chicken/getMessages');
-              final type = await me.invokeMethod('type') as String;
-              final section = await me.invokeMethod('section') as String;
-              final iDMessage = await me.invokeMethod('idMessage') as String;
-              final sort = await me.invokeMethod('sort') as String;
-              final uid = await me.invokeMethod('uid') as String;
-              final codeProduct = await me.invokeMethod('codeProduct') as String;
-              final idNews = await me.invokeMethod('idNews') as String;
+            String type = '';
+            String section = '';
+            String iDMessage = '';
+            String sort = '';
+            String uid = '';
+            String codeProduct = '';
+            String idNews = '';
 
-              if (type.isNotEmpty) {
-                if (iDMessage != updateData.idMessageNotification) {
-                  AppMetrica.reportEvent('Открытие PUSH-уведомления');
-                  if (type == 'catalog' && updateData.isInitApp) {
-                    final info = filterService.converterNotificationInfo(
-                      value: section,
-                    );
-                    await Future<void>.delayed(
-                      const Duration(
-                        milliseconds: 800,
-                      ),
-                    );
-                    _appRouter.push(CatalogRoute(
-                      title: '',
-                      url: info.url,
-                      sort: sort,
-                      filterNotifcation: info,
+            if (Platform.isIOS) {
+              const platformAppMetrica = MethodChannel('blind_chicken/getMessagesAppMetrica');
+              final appMetrica = await platformAppMetrica.invokeMethod('appMetrica') as String;
+              if (appMetrica.isNotEmpty) {
+                final info = jsonDecode(appMetrica) as Map;
+                type = info['type'] as String;
+                section = info['section'] as String;
+                iDMessage = info['id_message'] as String;
+                sort = info['sort'] as String;
+                uid = info['uid'] as String;
+                codeProduct = info['code_product'] as String;
+                idNews = info['id_news'] as String;
+              } else {
+                const platform = MethodChannel('blind_chicken/getMessages');
+                type = await platform.invokeMethod('type') as String;
+                section = await platform.invokeMethod('section') as String;
+                iDMessage = await platform.invokeMethod('idMessage') as String;
+                sort = await platform.invokeMethod('sort') as String;
+                uid = await platform.invokeMethod('uid') as String;
+                codeProduct = await platform.invokeMethod('codeProduct') as String;
+                idNews = await platform.invokeMethod('idNews') as String;
+              }
+            } else {
+              const platform = MethodChannel('appmetrica.push.notification');
+              final message = await platform.invokeMethod('message') as String;
+              if (message.isNotEmpty) {
+                final info = jsonDecode(message) as Map;
+                type = info['type'] as String;
+                section = info['section'] as String;
+                iDMessage = info['id_message'] as String;
+                sort = info['sort'] as String;
+                uid = info['uid'] as String;
+                codeProduct = info['code_product'] as String;
+                idNews = info['id_news'] as String;
+              }
+            }
+
+            if (type.isNotEmpty) {
+              if (iDMessage != updateData.idMessageNotification) {
+                AppMetrica.reportEvent('Открытие PUSH-уведомления');
+                if (type == 'catalog' && updateData.isInitApp) {
+                  final info = filterService.converterNotificationInfo(
+                    value: section,
+                  );
+                  await Future<void>.delayed(
+                    const Duration(
+                      milliseconds: 800,
+                    ),
+                  );
+                  _appRouter.push(CatalogRoute(
+                    title: '',
+                    url: info.url,
+                    sort: sort,
+                    filterNotifcation: info,
+                    isNotification: true,
+                    messageId: iDMessage,
+                  ));
+
+                  updateData.idMessageNotification = iDMessage;
+                }
+                if (type == 'product' && updateData.isInitApp) {
+                  await Future<void>.delayed(
+                    const Duration(
+                      milliseconds: 800,
+                    ),
+                  );
+                  _appRouter.push(
+                    CatalogCardInfoRoute(
+                      isLike: false,
+                      listItems: const [],
+                      favouritesProducts: const [],
+                      isChildRoute: false,
+                      code: codeProduct,
+                      messageId: iDMessage,
+                    ),
+                  );
+                  updateData.idMessageNotification = iDMessage;
+                }
+                if (type == 'boutique' && updateData.isInitApp) {
+                  _appRouter.push(
+                    BoutiquesDescriptionRoute(
+                      uidStore: uid,
                       isNotification: true,
                       messageId: iDMessage,
-                    ));
-
-                    updateData.idMessageNotification = iDMessage;
-                  }
-                  if (type == 'product' && updateData.isInitApp) {
-                    await Future<void>.delayed(
-                      const Duration(
-                        milliseconds: 800,
-                      ),
-                    );
-                    _appRouter.push(
-                      CatalogCardInfoRoute(
-                        isLike: false,
-                        listItems: const [],
-                        favouritesProducts: const [],
-                        isChildRoute: false,
-                        code: codeProduct,
-                        messageId: iDMessage,
-                      ),
-                    );
-                    updateData.idMessageNotification = iDMessage;
-                  }
-                  if (type == 'boutique' && updateData.isInitApp) {
-                    _appRouter.push(
-                      BoutiquesDescriptionRoute(
-                        uidStore: uid,
-                        isNotification: true,
-                        messageId: iDMessage,
-                      ),
-                    );
-                    updateData.idMessageNotification = iDMessage;
-                  }
-                  if (type == 'gift_card' && updateData.isInitApp) {
-                    _appRouter.push(
-                      GiftCardRoute(
-                        isNotification: true,
-                        messageId: iDMessage,
-                      ),
-                    );
-                    updateData.idMessageNotification = iDMessage;
-                  }
-                  if (type == 'news' && updateData.isInitApp) {
-                    _appRouter.push(
-                      NewsNotificationDescriptionRoute(
-                        idNews: idNews,
-                        isNotification: true,
-                        messageId: iDMessage,
-                      ),
-                    );
-                    updateData.idMessageNotification = iDMessage;
-                  }
-                  if (type == 'media' && updateData.isInitApp) {
-                    _appRouter.push(
-                      MediaNotificationDescriptionRoute(
-                        idNews: idNews,
-                        isNotification: true,
-                        messageId: iDMessage,
-                      ),
-                    );
-                    updateData.idMessageNotification = iDMessage;
-                  }
-
-                  log(iDMessage.toString());
+                    ),
+                  );
+                  updateData.idMessageNotification = iDMessage;
                 }
+                if (type == 'gift_card' && updateData.isInitApp) {
+                  _appRouter.push(
+                    GiftCardRoute(
+                      isNotification: true,
+                      messageId: iDMessage,
+                    ),
+                  );
+                  updateData.idMessageNotification = iDMessage;
+                }
+                if (type == 'news' && updateData.isInitApp) {
+                  _appRouter.push(
+                    NewsNotificationDescriptionRoute(
+                      idNews: idNews,
+                      isNotification: true,
+                      messageId: iDMessage,
+                    ),
+                  );
+                  updateData.idMessageNotification = iDMessage;
+                }
+                if (type == 'media' && updateData.isInitApp) {
+                  _appRouter.push(
+                    MediaNotificationDescriptionRoute(
+                      idNews: idNews,
+                      isNotification: true,
+                      messageId: iDMessage,
+                    ),
+                  );
+                  updateData.idMessageNotification = iDMessage;
+                }
+                if (type == 'notification' && updateData.isInitApp) {
+                  _appRouter.push(
+                    NotificationInfoNotificationDescriptionRoute(
+                      idNews: idNews,
+                      isNotification: true,
+                      messageId: iDMessage,
+                    ),
+                  );
+                  updateData.idMessageNotification = iDMessage;
+                }
+
+                log(iDMessage.toString());
               }
             }
           },

@@ -76,7 +76,7 @@ class BlindChickenTopBanner extends StatelessWidget {
                           ]));
                         } else if (context.router.navigationHistory.urlState.path ==
                             "/notfication_info_description") {
-                          NotficationInfoDescriptionRouteArgs notficationInfoArgs =
+                          NotificationInfoDescriptionRouteArgs notficationInfoArgs =
                               context.router.navigationHistory.urlState.segments.first.args;
 
                           context.navigateTo(DashboardRoute(children: [
@@ -158,7 +158,7 @@ class BlindChickenTopBanner extends StatelessWidget {
                           );
                         } else if (context.router.navigationHistory.urlState.path ==
                             "/notfication_info_description") {
-                          NotficationInfoDescriptionRouteArgs notficationInfoArgs =
+                          NotificationInfoDescriptionRouteArgs notficationInfoArgs =
                               context.router.navigationHistory.urlState.segments.first.args;
                           context.navigateTo(
                             DashboardRoute(
@@ -236,7 +236,7 @@ class BlindChickenTopBanner extends StatelessWidget {
                           );
                         } else if (context.router.navigationHistory.urlState.path ==
                             "/notfication_info_description") {
-                          NotficationInfoDescriptionRouteArgs notficationInfoArgs =
+                          NotificationInfoDescriptionRouteArgs notficationInfoArgs =
                               context.router.navigationHistory.urlState.segments.first.args;
                           context.navigateTo(
                             DashboardRoute(
@@ -300,7 +300,7 @@ class BlindChickenTopBanner extends StatelessWidget {
                           );
                         } else if (context.router.navigationHistory.urlState.path ==
                             "/notfication_info_description") {
-                          NotficationInfoDescriptionRouteArgs notficationInfoArgs =
+                          NotificationInfoDescriptionRouteArgs notficationInfoArgs =
                               context.router.navigationHistory.urlState.segments.first.args;
                           context.navigateTo(
                             DashboardRoute(
@@ -338,6 +338,14 @@ class BlindChickenTopBanner extends StatelessWidget {
                             );
                         context.navigateTo(
                           MediaNotificationDescriptionRoute(),
+                        );
+                      } else if (initState.info.data.type == 'notification') {
+                        context.read<NewsBloc>().add(
+                              NewsEvent.getNotificationDescriptionInfo(
+                                  id: initState.info.data.idNews),
+                            );
+                        context.navigateTo(
+                          NotificationInfoNotificationDescriptionRoute(),
                         );
                       }
                     },

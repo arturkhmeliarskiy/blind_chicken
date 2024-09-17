@@ -18,6 +18,8 @@ _$PriceProductResponseImpl _$$PriceProductResponseImplFromJson(
       bonusGift: json['bonus_gift'] as int?,
       bonusYear: json['bonus_year'] as int?,
       discountVal: json['discount_val'] as int?,
+      promo: json['promo'] as String?,
+      promoValue: json['promo_value'] as int?,
     );
 
 Map<String, dynamic> _$$PriceProductResponseImplToJson(
@@ -32,4 +34,6 @@ Map<String, dynamic> _$$PriceProductResponseImplToJson(
       'bonus_gift': instance.bonusGift,
       'bonus_year': instance.bonusYear,
       'discount_val': instance.discountVal,
+      'promo': instance.promo,
+      'promo_value': instance.promoValue,
     };

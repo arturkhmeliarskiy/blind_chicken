@@ -324,6 +324,7 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
                     });
                   },
                   point: _mapPoint,
+                  route: GiftCardRoute(),
                 ),
               );
             },

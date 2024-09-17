@@ -21,7 +21,7 @@ class _GiftPlasticCardEditDeliveryInfoState extends State<GiftPlasticCardEditDel
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 115,
+      padding: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
         border: Border.all(
           color: BlindChickenColors.borderBottomColor,

@@ -1,13 +1,26 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/vision_warning/widgets/doctor_appointment_create_record.dart';
+import 'package:blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
 class VisionWarningScreen extends StatefulWidget {
-  const VisionWarningScreen({super.key});
+  const VisionWarningScreen({
+    super.key,
+    this.name,
+    this.date,
+    this.time,
+  });
+
+  final String? name;
+  final String? date;
+  final String? time;
 
   @override
   State<VisionWarningScreen> createState() => _VisionWarningScreenState();
@@ -22,6 +35,25 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
   void initState() {
     _scrollController.addListener(_loadMoreData);
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant VisionWarningScreen oldWidget) {
+    if (widget.name?.isNotEmpty ?? false) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return DoctorAppointmentCreateRecord(
+              name: widget.name ?? '',
+              date: widget.date ?? '',
+              time: widget.time ?? '',
+            );
+          },
+        );
+      });
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   void _loadMoreData() async {
@@ -83,6 +115,36 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                             child: const LoadingImage(),
                           ),
                           errorWidget: (context, url, error) => const Icon(Icons.error),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 21,
+                      ),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            context
+                                .read<AppointmentBloc>()
+                                .add(const AppointmentEvent.preloadData());
+                            context.navigateTo(const DoctorAppointmentRoute());
+                          },
+                          child: Container(
+                            height: 44,
+                            decoration: BoxDecoration(
+                              color: BlindChickenColors.activeBorderTextField,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            padding: const EdgeInsets.all(
+                              14,
+                            ),
+                            child: Text(
+                              'Записаться на проверку зрения',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                    height: 1,
+                                  ),
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(

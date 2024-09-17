@@ -459,7 +459,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                       );
 
                                                   context.navigateTo(
-                                                    CatalogSearchCardInfoRoute(
+                                                    CatalogSearchCardInfoResultRoute(
                                                       isChildRoute: false,
                                                       item: initState.products[index],
                                                       isLike: initState.favouritesProductsId
@@ -516,6 +516,8 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                     initState.isLoadGetSizeProduct,
                                                 userDiscount: initState.userDiscount,
                                                 sizeProduct: const [],
+                                                promo: initState.products[index].promo,
+                                                promoValue: initState.products[index].promoValue,
                                               );
                                             },
                                           ),

@@ -26,6 +26,8 @@ class ProductDataModel with _$ProductDataModel {
     required bool isYourPriceDisplayed,
     required bool isShop,
     required List<CatalogSizeProductDataModel> sz,
+    required String promo,
+    required int promoValue,
     String? titleScreen, // экран добавления в корзину
     String? searchQuery, // поисковой запрос
     String? typeAddProductToShoppingCart, // с помощью чего добавляется в корзину

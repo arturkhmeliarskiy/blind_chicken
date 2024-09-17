@@ -23,6 +23,7 @@ _$CatalogResponseImpl _$$CatalogResponseImplFromJson(
       r: json['r'] as String?,
       e: json['e'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      discountFirstMobile: json['discount_first_mobile'] as int?,
     );
 
 Map<String, dynamic> _$$CatalogResponseImplToJson(
@@ -39,4 +40,5 @@ Map<String, dynamic> _$$CatalogResponseImplToJson(
       'r': instance.r,
       'e': instance.e,
       'errorMessage': instance.errorMessage,
+      'discount_first_mobile': instance.discountFirstMobile,
     };

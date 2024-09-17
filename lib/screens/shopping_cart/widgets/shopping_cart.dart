@@ -100,10 +100,64 @@ class _ShoppingCartState extends State<ShoppingCart> {
                               ),
                           ],
                         ),
-                        if (widget.item.data.loyaltyDiscount1 > 0)
+                        if (widget.item.data.loyaltyDiscount1 > 0 &&
+                            widget.item.data.promoValue == 0)
                           Text(
                             'Ваша скидка ${(widget.item.data.loyaltyDiscount1.toInt() * count).toString().spaceSeparateNumbers()} ₽',
                             style: Theme.of(context).textTheme.displaySmall,
+                          ),
+                        if (widget.item.data.promoValue > 0)
+                          Tooltip(
+                            decoration: BoxDecoration(
+                              color: BlindChickenColors.activeBorderTextField.withOpacity(0.8),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(4),
+                              ),
+                            ),
+                            margin: const EdgeInsets.only(left: 10, right: 10),
+                            richMessage: WidgetSpan(
+                              alignment: PlaceholderAlignment.baseline,
+                              baseline: TextBaseline.alphabetic,
+                              child: Text(
+                                widget.item.data.promo,
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      color: BlindChickenColors.backgroundColor,
+                                    ),
+                              ),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                top: 1,
+                                left: 4,
+                                right: 4,
+                                bottom: 1,
+                              ),
+                              margin: const EdgeInsets.only(top: 7, bottom: 7),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: BlindChickenColors.activeBorderTextField,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    '-${widget.item.data.promoValue}% по акции',
+                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                          color: BlindChickenColors.backgroundColor,
+                                        ),
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  SvgPicture.asset(
+                                    'assets/icons/info.svg',
+                                    color: BlindChickenColors.backgroundColor,
+                                    height: 16,
+                                    width: 16,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         const SizedBox(
                           height: 2,

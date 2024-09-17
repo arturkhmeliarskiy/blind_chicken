@@ -1,14 +1,12 @@
 import UIKit
 import Flutter
 import YandexMapsMobile
-import AppMetricaCore
 import AppMetricaPush
-import AppMetricaPushLazy
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
   var methodChannel: FlutterMethodChannel? = nil
-  var tokenChannel: FlutterMethodChannel? = nil
+  var methodChannelAppMetrica: FlutterMethodChannel? = nil
 
   override func application(
     _ application: UIApplication,
@@ -16,14 +14,22 @@ import AppMetricaPushLazy
   ) -> Bool {
     UIApplication.shared.registerForRemoteNotifications()
     YMKMapKit.setApiKey("6c8801e7-18fc-4835-b7bd-f60e7b42ce84") // Your generated API key
-    let configuration = AppMetricaConfiguration(apiKey: "0f36d6f0-0774-4cf2-ad27-20b0289ddcf1") // Initializing the AppMetrica SDK.
-    AppMetrica.activate(with: configuration!) 
+    AppMetricaPush.setExtensionAppGroup("group.push.slepayakurica")
 
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
     methodChannel = FlutterMethodChannel(name: "blind_chicken/getMessages", binaryMessenger: controller.binaryMessenger)
-    let tokenController : FlutterViewController = window?.rootViewController as! FlutterViewController
-    tokenChannel = FlutterMethodChannel(name: "blind_chicken/getToken", binaryMessenger: tokenController.binaryMessenger)
+    let controllerAppMetrica : FlutterViewController = window?.rootViewController as! FlutterViewController
+    methodChannelAppMetrica = FlutterMethodChannel(name: "blind_chicken/getMessagesAppMetrica", binaryMessenger: controllerAppMetrica.binaryMessenger)
     
+    methodChannelAppMetrica?.setMethodCallHandler({
+    (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+    if (call.method == "appMetrica") {
+      result("")
+      return
+      }
+      return
+    })
+
     methodChannel?.setMethodCallHandler({
     (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
     if (call.method == "type") {
@@ -33,14 +39,6 @@ import AppMetricaPushLazy
       return
     })
 
-    tokenChannel?.setMethodCallHandler({
-    (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-    if (call.method == "getDeviceToken") {
-      result("")
-      return
-      }
-      return
-    })
     if #available(iOS 10.0, *) {
               // For iOS 10 display notification (sent via APNS)
         UNUserNotificationCenter.current().delegate = self
@@ -53,40 +51,42 @@ import AppMetricaPushLazy
         UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
     }
-    AppMetricaPush.setExtensionAppGroup("group.push.slepayakurica")
+    
+    
     AppMetricaPush.handleApplicationDidFinishLaunching(options: launchOptions)
+
+    self.registerForPushNotificationsWithApplication(application)
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
-  override func application(_ application: UIApplication,
-                didRegisterForRemoteNotificationsWithDeviceToken 
-                deviceToken: Data) {
-      let token = deviceToken.map {String(format: "%02.2hhx", $0) }.joined()
-     
-      // If the AppMetrica SDK library was not initialized before this step,
-      // calling the method causes the app to crash.
-      #if DEBUG
-          let pushEnvironment = AppMetricaPushEnvironment.development
-      #else
-          let pushEnvironment = AppMetricaPushEnvironment.production
-      #endif
-      AppMetricaPush.setDeviceTokenFrom(deviceToken, pushEnvironment: pushEnvironment)
-
-      tokenChannel?.setMethodCallHandler({
-        (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
-        if (call.method == "getDeviceToken") {
-          result(token)
-          return
-        }
-        return
-      })
+  func registerForPushNotificationsWithApplication(_ application: UIApplication)
+  {
+      // Register for push notifications
+      if #available(iOS 8.0, *) {
+          if #available(iOS 10.0, *) {
+              // iOS 10.0 and above
+              let center = UNUserNotificationCenter.current()
+              let category = UNNotificationCategory(identifier: "Custom category",
+                                                    actions: [],
+                                                    intentIdentifiers: [],
+                                                    options:UNNotificationCategoryOptions.customDismissAction)
+              // Only for push notifications of this category dismiss action will be tracked.
+              center.setNotificationCategories(Set([category]))
+              center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                  // Enable or disable features based on authorization.
+              }
+          } else {
+              // iOS 8 and iOS 9
+              let settings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+              application.registerUserNotificationSettings(settings)
+          }
+          application.registerForRemoteNotifications()
+      } else {
+          // iOS 7
+          application.registerForRemoteNotifications(matching: [.badge, .alert, .sound])
+      }
   }
-
-  override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-      print("Received remote notification: \(userInfo)")
-  }
-
 
   override func application(_ application: UIApplication,
                  didFailToRegisterForRemoteNotificationsWithError
@@ -97,79 +97,125 @@ import AppMetricaPushLazy
   override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
     let userInfo = response.notification.request.content.userInfo
-    let delegate = AppMetricaPush.userNotificationCenterDelegate
-    UNUserNotificationCenter.current().delegate = delegate
-    
-    // guard let apsDict = ((userInfo["aps"] as? NSDictionary)?.value(forKey: "alert")) as? NSDictionary,
-    //     let title = apsDict["title"] as? String,
-    //     let body = apsDict["body"] as? String
-    //     else { return }
+
+            // Track received remote notification.
+        // Method AppMetrica.activate should be called before using this method.
+        AppMetricaPush.handleRemoteNotification(userInfo)
+
+        // Check if notification is related to AppMetrica (optionally)
+        if AppMetricaPush.isNotificationRelated(toSDK: userInfo) {
+            // Get user data from remote notification.
+            let userData = AppMetricaPush.userData(forNotification: userInfo)
+            methodChannelAppMetrica?.setMethodCallHandler({
+            (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+            if (call.method == "appMetrica") {
+              result(userData)
+              return
+              }
+              return
+            })
+            print("User Data: %@", userData?.description ?? "[no data]")
+        } else { 
+             // guard let apsDict = ((userInfo["aps"] as? NSDictionary)?.value(forKey: "alert")) as? NSDictionary,
+        //     let title = apsDict["title"] as? String,
+        //     let body = apsDict["body"] as? String
+        //     else { return }
 
 
-    // guard let title = apsDict["title"] as? String
-    //     else { return }
-    // guard let body = apsDict["body"] as? String
-    //     else { return }
-    guard let type = userInfo["type"] as? String
-        else { return }
-    guard let section = userInfo["section"] as? String
-        else { return }
-    guard let idMessage = userInfo["id_message"] as? String
-        else { return }
-    guard let codeProduct = userInfo["code_product"] as? String
-        else { return }
-    guard let sort = userInfo["sort"] as? String
-        else { return }
-    // guard let filter = userInfo["filter"] as? String
-    //     else { return }
-    guard let uid = userInfo["uid"] as? String
-        else { return }
-    guard let idNews = userInfo["id_news"] as? String
-        else { return }
+        // guard let title = apsDict["title"] as? String
+        //     else { return }
+        // guard let body = apsDict["body"] as? String
+        //     else { return }
+        guard let type = userInfo["type"] as? String
+            else { return }
+        guard let section = userInfo["section"] as? String
+            else { return }
+        guard let idMessage = userInfo["id_message"] as? String
+            else { return }
+        guard let codeProduct = userInfo["code_product"] as? String
+            else { return }
+        guard let sort = userInfo["sort"] as? String
+            else { return }
+        // guard let filter = userInfo["filter"] as? String
+        //     else { return }
+        guard let uid = userInfo["uid"] as? String
+            else { return }
+        guard let idNews = userInfo["id_news"] as? String
+            else { return }
 
-      methodChannel?.setMethodCallHandler({
-        (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in  
-        if (call.method == "type") {
-          result("\("\(type)")")
-          return
-        }  
-        if (call.method == "section") {
-          result("\("\(section)")")
-          return
-        }   
-        if (call.method == "idMessage") {
-          result("\("\(idMessage)")")
-          return
-        }  
-        if (call.method == "sort") {
-          result("\("\(sort)")")
-          return
-        }  
-        if (call.method == "uid") {
-          result("\("\(uid)")")
-          return
+          methodChannel?.setMethodCallHandler({
+            (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in  
+            if (call.method == "type") {
+              result("\("\(type)")")
+              return
+            }  
+            if (call.method == "section") {
+              result("\("\(section)")")
+              return
+            }   
+            if (call.method == "idMessage") {
+              result("\("\(idMessage)")")
+              return
+            }  
+            if (call.method == "sort") {
+              result("\("\(sort)")")
+              return
+            }  
+            if (call.method == "uid") {
+              result("\("\(uid)")")
+              return
+            }
+            if (call.method == "codeProduct") {
+              result("\("\(codeProduct)")")
+              return
+            }
+            if (call.method == "idNews") {
+              result("\("\(idNews)")")
+              return
+            }
+            // if (call.method == "title") {
+            //   result("\("\(title)")")
+            //   return
+            // }
+            // if (call.method == "body") {
+            //   result("\("\(body)")")
+            //   return
+            // }
+            // if (call.method == "filter") {
+            //   result("\("\(filter)")")
+            //   return
+            // }
+            return
+          })
         }
-        if (call.method == "codeProduct") {
-          result("\("\(codeProduct)")")
-          return
-        }
-        if (call.method == "idNews") {
-          result("\("\(idNews)")")
-          return
-        }
-        // if (call.method == "title") {
-        //   result("\("\(title)")")
-        //   return
-        // }
-        // if (call.method == "body") {
-        //   result("\("\(body)")")
-        //   return
-        // }
-        // if (call.method == "filter") {
-        //   result("\("\(filter)")")
-        //   return
-        // }
-        return
-      })
   }
+
+  override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any])
+    {
+        print("Received remote notification: \(userInfo)")
+        self.handlePushNotification(userInfo)
+    }
+
+  override func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+      self.handlePushNotification(userInfo)
+      print("Received remote notification: \(userInfo)")
+      completionHandler(.newData)
+  }
+
+  func handlePushNotification(_ userInfo: [AnyHashable : Any])
+    {
+        // // Track received remote notification.
+        // // Method AppMetrica.activate should be called before using this method.
+        // AppMetricaPush.handleRemoteNotification(userInfo)
+
+        // // Check if notification is related to AppMetrica (optionally)
+        // if AppMetricaPush.isNotificationRelated(toSDK: userInfo) {
+        //     // Get user data from remote notification.
+        //     let userData = AppMetricaPush.userData(forNotification: userInfo)
+           
+        //     print("User Data: %@", userData?.description ?? "[no data]")
+        // } else { 
+        //     print("Push is not related to AppMetrica")
+        // }
+    }
 }

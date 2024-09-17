@@ -18,6 +18,10 @@ _$BoutiquesDataResponseImpl _$$BoutiquesDataResponseImplFromJson(
       schedule: json['schedule'] as String?,
       uidStore: json['uid_store'] as String?,
       coordinates: _convertCoordinates(json['coordinates']),
+      scheduleInfo: (json['schedule_json'] as List<dynamic>?)
+          ?.map((e) =>
+              BoutiqueSheduleResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$BoutiquesDataResponseImplToJson(
@@ -32,4 +36,5 @@ Map<String, dynamic> _$$BoutiquesDataResponseImplToJson(
       'schedule': instance.schedule,
       'uid_store': instance.uidStore,
       'coordinates': instance.coordinates,
+      'schedule_json': instance.scheduleInfo,
     };

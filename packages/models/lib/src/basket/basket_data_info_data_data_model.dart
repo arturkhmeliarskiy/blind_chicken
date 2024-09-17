@@ -18,5 +18,7 @@ class BasketDataInfoDataModel with _$BasketDataInfoDataModel {
     required BasketBrandDataModel brand,
     required BasketCategoryDataModel category,
     required String nameView,
+    required String promo,
+    required int promoValue,
   }) = _BasketDataInfoDataModel;
 }

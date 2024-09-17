@@ -18,6 +18,8 @@ class CatalogProductResponse with _$CatalogProductResponse {
     int? pbc,
     int? ca,
     int? dv,
+    String? promo,
+    @JsonKey(name: 'promo_value') int? promoValue,
     List<CatalogSizeProductResponse>? sz,
   }) = _CatalogProductResponse;
   factory CatalogProductResponse.fromJson(Map<String, dynamic> json) =>

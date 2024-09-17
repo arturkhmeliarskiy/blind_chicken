@@ -16,5 +16,6 @@ class NewsState with _$NewsState {
     required bool isNotification,
     OneNewsInfoDataModel? oneNews,
     OneMediaInfoDataModel? oneMedia,
+    OneNotificationInfoDataModel? oneNotification,
   }) = PreloadDataCompletedNewsState;
 }

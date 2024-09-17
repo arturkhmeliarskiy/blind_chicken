@@ -19,6 +19,8 @@ _$CatalogProductResponseImpl _$$CatalogProductResponseImplFromJson(
       pbc: json['pbc'] as int?,
       ca: json['ca'] as int?,
       dv: json['dv'] as int?,
+      promo: json['promo'] as String?,
+      promoValue: json['promo_value'] as int?,
       sz: (json['sz'] as List<dynamic>?)
           ?.map((e) =>
               CatalogSizeProductResponse.fromJson(e as Map<String, dynamic>))
@@ -38,5 +40,7 @@ Map<String, dynamic> _$$CatalogProductResponseImplToJson(
       'pbc': instance.pbc,
       'ca': instance.ca,
       'dv': instance.dv,
+      'promo': instance.promo,
+      'promo_value': instance.promoValue,
       'sz': instance.sz,
     };

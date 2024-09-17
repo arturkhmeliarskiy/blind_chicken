@@ -31,17 +31,19 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       variants: (fields[11] as List).cast<String>(),
       titleScreen: fields[12] as String,
       searchQuery: fields[13] as String,
-      typeAddProductToShoppingCart: fields[14] as String,
-      identifierAddProductToShoppingCart: fields[15] as String,
-      sectionCategoriesPath: (fields[16] as List).cast<String>(),
-      productCategoriesPath: (fields[17] as List).cast<String>(),
+      promo: fields[14] as String,
+      promoValue: fields[15] as int,
+      typeAddProductToShoppingCart: fields[16] as String,
+      identifierAddProductToShoppingCart: fields[17] as String,
+      sectionCategoriesPath: (fields[18] as List).cast<String>(),
+      productCategoriesPath: (fields[19] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, ProductFavouriteModel obj) {
     writer
-      ..writeByte(18)
+      ..writeByte(20)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -71,12 +73,16 @@ class ProductFavouriteModelAdapter extends TypeAdapter<ProductFavouriteModel> {
       ..writeByte(13)
       ..write(obj.searchQuery)
       ..writeByte(14)
-      ..write(obj.typeAddProductToShoppingCart)
+      ..write(obj.promo)
       ..writeByte(15)
-      ..write(obj.identifierAddProductToShoppingCart)
+      ..write(obj.promoValue)
       ..writeByte(16)
-      ..write(obj.sectionCategoriesPath)
+      ..write(obj.typeAddProductToShoppingCart)
       ..writeByte(17)
+      ..write(obj.identifierAddProductToShoppingCart)
+      ..writeByte(18)
+      ..write(obj.sectionCategoriesPath)
+      ..writeByte(19)
       ..write(obj.productCategoriesPath);
   }
 

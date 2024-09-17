@@ -9,8 +9,13 @@ class BoutiquesRepository {
     this._boutiquesService,
   );
 
-  Future<BoutiquesDataModel> getBoutiques() async {
-    final boutiques = await _boutiquesService.getBoutiques() ?? BoutiquesResponse();
+  Future<BoutiquesDataModel> getBoutiques({
+    int? optic,
+  }) async {
+    final boutiques = await _boutiquesService.getBoutiques(
+          optic: optic,
+        ) ??
+        BoutiquesResponse();
     return boutiques.toBoutiques();
   }
 
@@ -32,6 +37,18 @@ class BoutiquesRepository {
         ) ??
         BoutiqueInfoDetailResponse();
     return boutiques.toInfoBoutiqueDetail();
+  }
+
+  Future<AppointmentVisionCheckDataModel> createVc({
+    required String uid,
+    required String date,
+  }) async {
+    final boutiques = await _boutiquesService.createVc(
+          uid: uid,
+          date: date,
+        ) ??
+        AppointmentVisionCheckResponse();
+    return boutiques.toCreateVc();
   }
 }
 
@@ -57,21 +74,34 @@ extension on BoutiquesResponse {
     return BoutiquesDataModel(
         data: List<BoutiqueDataModel>.from(
           data?.map(
-                (item) => BoutiqueDataModel(
-                  address: item.address ?? '',
-                  fotoMin: item.fotoMin ?? '',
-                  url: item.url ?? '',
-                  caption: item.caption ?? '',
-                  name: item.name ?? '',
-                  nameShort: item.nameShort ?? '',
-                  schedule: item.schedule ?? '',
-                  coordinates: BoutiqueCoordinatesDataModel(
-                    latitude: item.coordinates?.latitude ?? 0.0,
-                    longitude: item.coordinates?.longitude ?? 0.0,
-                  ),
-                  uidStore: item.uidStore ?? '',
-                  iconPath: (item.caption ?? '').replaceAll(' ', '_').toLowerCase(),
-                ),
+                (item) {
+                  List<BoutiqueSheduleDataModel> sheduleInfo = List<BoutiqueSheduleDataModel>.from(
+                    item.scheduleInfo?.map(
+                          (element) => BoutiqueSheduleDataModel(
+                            s: element.s ?? 0,
+                            e: element.e ?? 0,
+                          ),
+                        ) ??
+                        [],
+                  );
+                  return BoutiqueDataModel(
+                    address: item.address ?? '',
+                    fotoMin: item.fotoMin ?? '',
+                    url: item.url ?? '',
+                    caption: item.caption ?? '',
+                    name: item.name ?? '',
+                    nameShort: item.nameShort ?? '',
+                    schedule: item.schedule ?? '',
+                    coordinates: BoutiqueCoordinatesDataModel(
+                      latitude: item.coordinates?.latitude ?? 0.0,
+                      longitude: item.coordinates?.longitude ?? 0.0,
+                    ),
+                    uidStore: item.uidStore ?? '',
+                    iconPath: (item.caption ?? '').replaceAll(' ', '_').toLowerCase(),
+                    sheduleInfo: sheduleInfo,
+                    sheduleDateTimeInfo: _converSheduleTime(sheduleInfo),
+                  );
+                },
               ) ??
               [],
         ),
@@ -121,4 +151,31 @@ extension on BoutiqueInfoResponse {
       ),
     );
   }
+}
+
+extension on AppointmentVisionCheckResponse {
+  AppointmentVisionCheckDataModel toCreateVc() {
+    return AppointmentVisionCheckDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      name: name ?? '',
+      date: date ?? '',
+      time: time ?? '',
+      errorMessage: errorMessage ?? '',
+    );
+  }
+}
+
+Map<int, List<DateTime>> _converSheduleTime(List<BoutiqueSheduleDataModel> sheduleInfo) {
+  Map<int, List<DateTime>> result = {};
+  List<DateTime> shedule = [];
+  for (int i = 0; i < sheduleInfo.length; i++) {
+    for (int j = sheduleInfo[i].s; j < sheduleInfo[i].e; j++) {
+      shedule.add(DateTime(0, 0, 0, j));
+      shedule.add(DateTime(0, 0, 0, j, 30));
+    }
+    result[i] = shedule;
+    shedule = [];
+  }
+  return result;
 }

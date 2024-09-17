@@ -1082,6 +1082,8 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           isYourPriceDisplayed: items.first.isYourPriceDisplayed,
           isShop: true,
           sz: [],
+          promo: '',
+          promoValue: 0,
         );
 
         listProducts[index] = product;

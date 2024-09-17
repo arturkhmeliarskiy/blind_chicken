@@ -154,6 +154,7 @@ class BasketService {
           "promo": promo ?? '',
           "pickup": pickup ?? '',
           "basket": basket?.isNotEmpty ?? false ? jsonEncode(basket) : '',
+          "discount_first_mobile": 1,
         },
       );
       try {

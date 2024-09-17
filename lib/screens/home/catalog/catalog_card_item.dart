@@ -28,6 +28,8 @@ class CatalogCardItem extends StatefulWidget {
     required this.isAuth,
     required this.userDiscount,
     required this.sizeProduct,
+    required this.promo,
+    required this.promoValue,
   });
 
   final String imageUrl;
@@ -50,6 +52,8 @@ class CatalogCardItem extends StatefulWidget {
   final VoidCallback onAddProductToSoppingCart;
   final List<SkuProductDataModel> listSize;
   final List<CatalogSizeProductDataModel> sizeProduct;
+  final String promo;
+  final int promoValue;
 
   @override
   State<CatalogCardItem> createState() => _CatalogCardItemState();
@@ -87,17 +91,61 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
           children: [
             Stack(
               children: [
-                CachedNetworkImage(
-                  imageUrl: widget.imageUrl,
-                  fit: BoxFit.fill,
-                  width: MediaQuery.of(context).size.width / 2 - 21,
-                  height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                  placeholder: (context, url) => SizedBox(
-                    width: MediaQuery.of(context).size.width / 2 - 21,
-                    height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                    child: const LoadingImage(),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                Stack(
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl: widget.imageUrl,
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width / 2 - 21,
+                      height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                      placeholder: (context, url) => SizedBox(
+                        width: MediaQuery.of(context).size.width / 2 - 21,
+                        height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                        child: const LoadingImage(),
+                      ),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                    ),
+                    if (widget.promoValue > 0)
+                      Tooltip(
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.activeBorderTextField.withOpacity(0.8),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
+                        margin: const EdgeInsets.only(left: 10, right: 10),
+                        richMessage: WidgetSpan(
+                          alignment: PlaceholderAlignment.baseline,
+                          baseline: TextBaseline.alphabetic,
+                          child: Text(
+                            widget.promo,
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                          ),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.only(
+                            top: 1,
+                            left: 4,
+                            right: 4,
+                            bottom: 1,
+                          ),
+                          margin: const EdgeInsets.all(7),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: BlindChickenColors.activeBorderTextField,
+                          ),
+                          child: Text(
+                            '-${widget.promoValue}%',
+                            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  color: BlindChickenColors.backgroundColor,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                          ),
+                        ),
+                      )
+                  ],
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 2 - 21,

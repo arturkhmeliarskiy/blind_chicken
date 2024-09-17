@@ -19,6 +19,8 @@ class ProductFavouriteModel {
     required this.variants,
     required this.titleScreen,
     required this.searchQuery,
+    required this.promo,
+    required this.promoValue,
     required this.typeAddProductToShoppingCart,
     required this.identifierAddProductToShoppingCart,
     required this.sectionCategoriesPath,
@@ -68,16 +70,22 @@ class ProductFavouriteModel {
   String searchQuery; // поисковой запрос
 
   @HiveField(14)
-  String typeAddProductToShoppingCart; // с помощью чего добавляется в корзину
+  String promo;
 
   @HiveField(15)
+  int promoValue;
+
+  @HiveField(16)
+  String typeAddProductToShoppingCart; // с помощью чего добавляется в корзину
+
+  @HiveField(17)
   String
       identifierAddProductToShoppingCart; // идентификатор отарвителя товара в корзину (1 кнопка, 2 выпадающий список)
 
-  @HiveField(16)
+  @HiveField(18)
   List<String>
       sectionCategoriesPath; // категории в к оторых находится товар "Акции", "Красная цена"
 
-  @HiveField(17)
+  @HiveField(19)
   List<String> productCategoriesPath; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
 }

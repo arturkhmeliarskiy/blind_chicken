@@ -8,6 +8,7 @@ import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_category_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_info.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_products.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_variant_slider_images.dart';
@@ -15,6 +16,7 @@ import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared/shared.dart';
@@ -43,6 +45,7 @@ class CatalogSearchCardInfoScreen extends StatefulWidget {
 
 class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScreen> {
   final ScrollController _scrollController = ScrollController();
+  BlindChickenMessage message = BlindChickenMessage();
   bool _isSwipe = true;
   bool _isChildRoute = false;
   bool _isShoppingCartButton = true;
@@ -106,6 +109,144 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
             if (value.listProductsCode.isEmpty && !_isNavigateMainScreen) {
               context.back();
             }
+          },
+          getSizeProduct: (initState) {
+            final updateData = GetIt.I.get<UpdateDataService>();
+            updateData.isOpenShowModalBottomSheetSearchScreen = true;
+            showModalBottomSheet<void>(
+              isScrollControlled: true,
+              context: context,
+              builder: (context) {
+                return CatalogSizeProductInfo(
+                  listSize: initState.listSize,
+                  listSizeToSoppingCart: initState.listSizeToSoppingCart,
+                  openSoppingCart: () {
+                    Navigator.pop(context);
+                    updateData.lastScreen = 'search_result';
+                    Timer(const Duration(milliseconds: 150), () {
+                      context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                    });
+                    context.navigateTo(
+                      const ShoppingCartAutoRouterRoute(
+                        children: [
+                          ShoppingCartRoute(),
+                        ],
+                      ),
+                    );
+                  },
+                  addProductToSoppingCart: (size) {
+                    context.read<SearchBloc>().add(
+                          SearchEvent.addProductToSoppingCart(
+                            code: int.parse(initState.code),
+                            size: size,
+                            titleScreen: initState.titleScreen,
+                            typeAddProductToShoppingCart: 'Выпадающий список',
+                            identifierAddProductToShoppingCart: '2',
+                          ),
+                        );
+
+                    context.read<ShoppingCartBloc>().add(
+                          ShoppingCartEvent.addOtherProductToSoppingCart(
+                            item: BasketInfoItemDataModel(
+                              code: initState.code,
+                              sku: size.id,
+                              count: 1,
+                              titleScreen: initState.titleScreen,
+                              searchQuery: initState.query,
+                              typeAddProductToShoppingCart: 'Выпадающий список',
+                              identifierAddProductToShoppingCart: '2',
+                              sectionCategoriesPath: [],
+                              productCategoriesPath: [],
+                            ),
+                          ),
+                        );
+                    message.showOverlay(
+                      context,
+                      'Размер ${size.value} добавлен в корзину',
+                      () {
+                        Timer(const Duration(milliseconds: 150), () {
+                          context
+                              .read<ShoppingCartBloc>()
+                              .add(const ShoppingCartEvent.preloadData());
+                        });
+                        context.navigateTo(
+                          const ShoppingCartAutoRouterRoute(
+                            children: [
+                              ShoppingCartRoute(),
+                            ],
+                          ),
+                        );
+                        Navigator.pop(context);
+                      },
+                      boxShadow: const BoxShadow(),
+                      time: 5,
+                    );
+                  },
+                );
+              },
+            ).whenComplete(() {
+              final updateData = GetIt.I.get<UpdateDataService>();
+              updateData.isOpenShowModalBottomSheetSearchScreen = false;
+              if (message.isVisible) {
+                message.overlayEntry?.remove();
+                message.overlayEntry = null;
+              }
+            });
+          },
+          addProductToSoppingCart: (initState) {
+            context.read<SearchBloc>().add(
+                  SearchEvent.addProductToSoppingCart(
+                    code: int.parse(initState.code),
+                    titleScreen: initState.titleScreen,
+                    typeAddProductToShoppingCart: 'Кнопка',
+                    identifierAddProductToShoppingCart: '1',
+                  ),
+                );
+
+            context.read<ShoppingCartBloc>().add(
+                  ShoppingCartEvent.addOtherProductToSoppingCart(
+                    item: BasketInfoItemDataModel(
+                      code: initState.code,
+                      sku: '',
+                      count: 1,
+                      titleScreen: initState.titleScreen,
+                      searchQuery: initState.query,
+                      typeAddProductToShoppingCart: 'Кнопка',
+                      identifierAddProductToShoppingCart: '1',
+                      sectionCategoriesPath: [],
+                      productCategoriesPath: [],
+                    ),
+                  ),
+                );
+            BlindChickenMessage().showOverlay(
+              context,
+              'Добавлено в корзину',
+              () {
+                Timer(const Duration(milliseconds: 150), () {
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                });
+                context.navigateTo(
+                  const ShoppingCartAutoRouterRoute(
+                    children: [
+                      ShoppingCartRoute(),
+                    ],
+                  ),
+                );
+              },
+              time: 5,
+            );
+          },
+          openSoppingCart: (value) {
+            Timer(const Duration(milliseconds: 150), () {
+              context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+            });
+            context.navigateTo(
+              const ShoppingCartAutoRouterRoute(
+                children: [
+                  ShoppingCartRoute(),
+                ],
+              ),
+            );
           },
           orElse: () => const SizedBox(),
         );
@@ -301,9 +442,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                         ),
                                         Row(
                                           children: [
-                                            if (!(initState
-                                                    .detailsProduct?.product.isYourPriceDisplayed ??
-                                                false))
+                                            if (!(initState.detailsProduct?.product
+                                                        .isYourPriceDisplayed ??
+                                                    false) ||
+                                                (initState.detailsProduct?.product.promoValue ??
+                                                        0) >
+                                                    0)
                                               Row(
                                                 children: [
                                                   SvgPicture.asset(
@@ -314,6 +458,37 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                   const SizedBox(
                                                     width: 7,
                                                   ),
+                                                  if ((initState
+                                                              .detailsProduct?.product.promoValue ??
+                                                          0) >
+                                                      0)
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(right: 7),
+                                                      child: RichText(
+                                                        text: TextSpan(
+                                                          text: (initState.detailsProduct?.price
+                                                                      .yourPrice ??
+                                                                  0)
+                                                              .toString()
+                                                              .spaceSeparateNumbers(),
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium
+                                                              ?.copyWith(
+                                                                fontWeight: FontWeight.w700,
+                                                              ),
+                                                          children: const <TextSpan>[
+                                                            TextSpan(
+                                                              text: ' ₽',
+                                                              style: TextStyle(
+                                                                fontFamily: 'Roboto',
+                                                                fontSize: 13,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
                                                 ],
                                               ),
                                             RichText(
@@ -330,6 +505,12 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                                               false
                                                           ? FontWeight.w400
                                                           : FontWeight.w700,
+                                                      decoration: (initState.detailsProduct?.product
+                                                                      .promoValue ??
+                                                                  0) >
+                                                              0
+                                                          ? TextDecoration.lineThrough
+                                                          : TextDecoration.none,
                                                     ),
                                                 children: const <TextSpan>[
                                                   TextSpan(
@@ -373,9 +554,10 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                             const SizedBox(
                                               width: 7,
                                             ),
-                                            if (initState
-                                                    .detailsProduct?.product.isYourPriceDisplayed ??
-                                                false)
+                                            if ((initState.detailsProduct?.product
+                                                        .isYourPriceDisplayed ??
+                                                    false) &&
+                                                initState.detailsProduct?.product.promoValue == 0)
                                               Row(
                                                 children: [
                                                   SvgPicture.asset(
@@ -425,6 +607,66 @@ class _CatalogSearchCardInfoScreenState extends State<CatalogSearchCardInfoScree
                                               ),
                                           ],
                                         ),
+                                        if ((initState.detailsProduct?.product.promoValue ?? 0) > 0)
+                                          Tooltip(
+                                            decoration: BoxDecoration(
+                                              color: BlindChickenColors.activeBorderTextField
+                                                  .withOpacity(0.8),
+                                              borderRadius: const BorderRadius.all(
+                                                Radius.circular(4),
+                                              ),
+                                            ),
+                                            margin: const EdgeInsets.only(left: 10, right: 10),
+                                            richMessage: WidgetSpan(
+                                              alignment: PlaceholderAlignment.baseline,
+                                              baseline: TextBaseline.alphabetic,
+                                              child: Text(
+                                                initState.detailsProduct?.product.promo ?? '',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      color: BlindChickenColors.backgroundColor,
+                                                    ),
+                                              ),
+                                            ),
+                                            child: Container(
+                                              padding: const EdgeInsets.only(
+                                                top: 1,
+                                                left: 4,
+                                                right: 4,
+                                                bottom: 1,
+                                              ),
+                                              margin: const EdgeInsets.only(top: 7, bottom: 7),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(4),
+                                                color: BlindChickenColors.activeBorderTextField,
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    '-${initState.detailsProduct?.product.promoValue ?? 0}% по акции',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .displayMedium
+                                                        ?.copyWith(
+                                                          color: BlindChickenColors.backgroundColor,
+                                                        ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  SvgPicture.asset(
+                                                    'assets/icons/info.svg',
+                                                    color: BlindChickenColors.backgroundColor,
+                                                    height: 16,
+                                                    width: 16,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
                                         const SizedBox(
                                           height: 7,
                                         ),

@@ -9,5 +9,9 @@
 		<string>applinks:slepayakurica.ru/product/*</string>
 		<string>webcredentials:slepayakurica.ru/product/*</string>
 	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.push.slepayakurica</string>
+	</array>
 </dict>
 </plist>

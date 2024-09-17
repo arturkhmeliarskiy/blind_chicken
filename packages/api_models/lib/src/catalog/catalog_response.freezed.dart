@@ -38,6 +38,8 @@ mixin _$CatalogResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'discount_first_mobile')
+  int? get discountFirstMobile => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +67,8 @@ abstract class $CatalogResponseCopyWith<$Res> {
       List<CatalogProductResponse>? products,
       String? r,
       String? e,
-      String? errorMessage});
+      String? errorMessage,
+      @JsonKey(name: 'discount_first_mobile') int? discountFirstMobile});
 
   $SectionsResponseCopyWith<$Res>? get sections;
 }
@@ -94,6 +97,7 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
     Object? r = freezed,
     Object? e = freezed,
     Object? errorMessage = freezed,
+    Object? discountFirstMobile = freezed,
   }) {
     return _then(_value.copyWith(
       userDiscount: freezed == userDiscount
@@ -140,6 +144,10 @@ class _$CatalogResponseCopyWithImpl<$Res, $Val extends CatalogResponse>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      discountFirstMobile: freezed == discountFirstMobile
+          ? _value.discountFirstMobile
+          : discountFirstMobile // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 
@@ -178,7 +186,8 @@ abstract class _$$CatalogResponseImplCopyWith<$Res>
       List<CatalogProductResponse>? products,
       String? r,
       String? e,
-      String? errorMessage});
+      String? errorMessage,
+      @JsonKey(name: 'discount_first_mobile') int? discountFirstMobile});
 
   @override
   $SectionsResponseCopyWith<$Res>? get sections;
@@ -206,6 +215,7 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
     Object? r = freezed,
     Object? e = freezed,
     Object? errorMessage = freezed,
+    Object? discountFirstMobile = freezed,
   }) {
     return _then(_$CatalogResponseImpl(
       userDiscount: freezed == userDiscount
@@ -252,6 +262,10 @@ class __$$CatalogResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      discountFirstMobile: freezed == discountFirstMobile
+          ? _value.discountFirstMobile
+          : discountFirstMobile // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -272,7 +286,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       final List<CatalogProductResponse>? products,
       this.r,
       this.e,
-      this.errorMessage})
+      this.errorMessage,
+      @JsonKey(name: 'discount_first_mobile') this.discountFirstMobile})
       : _breadcrumbs = breadcrumbs,
         _filter = filter,
         _products = products,
@@ -331,10 +346,13 @@ class _$CatalogResponseImpl extends _CatalogResponse {
   final String? e;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey(name: 'discount_first_mobile')
+  final int? discountFirstMobile;
 
   @override
   String toString() {
-    return 'CatalogResponse(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
+    return 'CatalogResponse(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage, discountFirstMobile: $discountFirstMobile)';
   }
 
   @override
@@ -357,7 +375,9 @@ class _$CatalogResponseImpl extends _CatalogResponse {
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.discountFirstMobile, discountFirstMobile) ||
+                other.discountFirstMobile == discountFirstMobile));
   }
 
   @JsonKey(ignore: true)
@@ -374,7 +394,8 @@ class _$CatalogResponseImpl extends _CatalogResponse {
       const DeepCollectionEquality().hash(_products),
       r,
       e,
-      errorMessage);
+      errorMessage,
+      discountFirstMobile);
 
   @JsonKey(ignore: true)
   @override
@@ -406,7 +427,9 @@ abstract class _CatalogResponse extends CatalogResponse {
       final List<CatalogProductResponse>? products,
       final String? r,
       final String? e,
-      final String? errorMessage}) = _$CatalogResponseImpl;
+      final String? errorMessage,
+      @JsonKey(name: 'discount_first_mobile')
+      final int? discountFirstMobile}) = _$CatalogResponseImpl;
   _CatalogResponse._() : super._();
 
   factory _CatalogResponse.fromJson(Map<String, dynamic> json) =
@@ -438,6 +461,9 @@ abstract class _CatalogResponse extends CatalogResponse {
   String? get e;
   @override
   String? get errorMessage;
+  @override
+  @JsonKey(name: 'discount_first_mobile')
+  int? get discountFirstMobile;
   @override
   @JsonKey(ignore: true)
   _$$CatalogResponseImplCopyWith<_$CatalogResponseImpl> get copyWith =>

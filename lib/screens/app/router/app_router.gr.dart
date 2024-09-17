@@ -212,6 +212,20 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CatalogSearchResultScreen(),
       );
     },
+    CatalogSearchCardInfoResultRoute.name: (routeData) {
+      final args = routeData.argsAs<CatalogSearchCardInfoResultRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CatalogSearchCardInfoResultScreen(
+          key: args.key,
+          item: args.item,
+          isLike: args.isLike,
+          listItems: args.listItems,
+          favouritesProducts: args.favouritesProducts,
+          isChildRoute: args.isChildRoute,
+        ),
+      );
+    },
     CatalogRoute.name: (routeData) {
       final args = routeData.argsAs<CatalogRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -290,9 +304,22 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     VisionWarningRoute.name: (routeData) {
+      final args = routeData.argsAs<VisionWarningRouteArgs>(
+          orElse: () => const VisionWarningRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const VisionWarningScreen(),
+        child: VisionWarningScreen(
+          key: args.key,
+          name: args.name,
+          date: args.date,
+          time: args.time,
+        ),
+      );
+    },
+    DoctorAppointmentRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DoctorAppointmentScreen(),
       );
     },
     BlindChickenCashbackAndDiscountsRoute.name: (routeData) {
@@ -419,6 +446,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const NewsScreen(),
       );
     },
+    NotificationInfoNotificationDescriptionRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<NotificationInfoNotificationDescriptionRouteArgs>(
+              orElse: () =>
+                  const NotificationInfoNotificationDescriptionRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NotificationInfoNotificationDescriptionScreen(
+          key: args.key,
+          idNews: args.idNews,
+          messageId: args.messageId,
+          isNotification: args.isNotification,
+        ),
+      );
+    },
     NewsNotificationDescriptionRoute.name: (routeData) {
       final args = routeData.argsAs<NewsNotificationDescriptionRouteArgs>(
           orElse: () => const NewsNotificationDescriptionRouteArgs());
@@ -488,11 +530,11 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    NotficationInfoDescriptionRoute.name: (routeData) {
-      final args = routeData.argsAs<NotficationInfoDescriptionRouteArgs>();
+    NotificationInfoDescriptionRoute.name: (routeData) {
+      final args = routeData.argsAs<NotificationInfoDescriptionRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: NotficationInfoDescriptionScreen(
+        child: NotificationInfoDescriptionScreen(
           key: args.key,
           info: args.info,
         ),
@@ -658,6 +700,7 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           onMapPoint: args.onMapPoint,
           point: args.point,
+          route: args.route,
         ),
       );
     },
@@ -1498,6 +1541,65 @@ class CatalogSearchResultRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CatalogSearchCardInfoResultScreen]
+class CatalogSearchCardInfoResultRoute
+    extends PageRouteInfo<CatalogSearchCardInfoResultRouteArgs> {
+  CatalogSearchCardInfoResultRoute({
+    Key? key,
+    required ProductDataModel item,
+    required bool isLike,
+    required List<ProductDataModel> listItems,
+    required List<ProductDataModel> favouritesProducts,
+    required bool isChildRoute,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CatalogSearchCardInfoResultRoute.name,
+          args: CatalogSearchCardInfoResultRouteArgs(
+            key: key,
+            item: item,
+            isLike: isLike,
+            listItems: listItems,
+            favouritesProducts: favouritesProducts,
+            isChildRoute: isChildRoute,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogSearchCardInfoResultRoute';
+
+  static const PageInfo<CatalogSearchCardInfoResultRouteArgs> page =
+      PageInfo<CatalogSearchCardInfoResultRouteArgs>(name);
+}
+
+class CatalogSearchCardInfoResultRouteArgs {
+  const CatalogSearchCardInfoResultRouteArgs({
+    this.key,
+    required this.item,
+    required this.isLike,
+    required this.listItems,
+    required this.favouritesProducts,
+    required this.isChildRoute,
+  });
+
+  final Key? key;
+
+  final ProductDataModel item;
+
+  final bool isLike;
+
+  final List<ProductDataModel> listItems;
+
+  final List<ProductDataModel> favouritesProducts;
+
+  final bool isChildRoute;
+
+  @override
+  String toString() {
+    return 'CatalogSearchCardInfoResultRouteArgs{key: $key, item: $item, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute}';
+  }
+}
+
+/// generated route for
 /// [CatalogScreen]
 class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
   CatalogRoute({
@@ -1781,14 +1883,62 @@ class ChatMessangerRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [VisionWarningScreen]
-class VisionWarningRoute extends PageRouteInfo<void> {
-  const VisionWarningRoute({List<PageRouteInfo>? children})
-      : super(
+class VisionWarningRoute extends PageRouteInfo<VisionWarningRouteArgs> {
+  VisionWarningRoute({
+    Key? key,
+    String? name,
+    String? date,
+    String? time,
+    List<PageRouteInfo>? children,
+  }) : super(
           VisionWarningRoute.name,
+          args: VisionWarningRouteArgs(
+            key: key,
+            name: name,
+            date: date,
+            time: time,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'VisionWarningRoute';
+
+  static const PageInfo<VisionWarningRouteArgs> page =
+      PageInfo<VisionWarningRouteArgs>(name);
+}
+
+class VisionWarningRouteArgs {
+  const VisionWarningRouteArgs({
+    this.key,
+    this.name,
+    this.date,
+    this.time,
+  });
+
+  final Key? key;
+
+  final String? name;
+
+  final String? date;
+
+  final String? time;
+
+  @override
+  String toString() {
+    return 'VisionWarningRouteArgs{key: $key, name: $name, date: $date, time: $time}';
+  }
+}
+
+/// generated route for
+/// [DoctorAppointmentScreen]
+class DoctorAppointmentRoute extends PageRouteInfo<void> {
+  const DoctorAppointmentRoute({List<PageRouteInfo>? children})
+      : super(
+          DoctorAppointmentRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DoctorAppointmentRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -2249,6 +2399,55 @@ class NewsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NotificationInfoNotificationDescriptionScreen]
+class NotificationInfoNotificationDescriptionRoute
+    extends PageRouteInfo<NotificationInfoNotificationDescriptionRouteArgs> {
+  NotificationInfoNotificationDescriptionRoute({
+    Key? key,
+    String idNews = '',
+    String? messageId,
+    bool isNotification = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NotificationInfoNotificationDescriptionRoute.name,
+          args: NotificationInfoNotificationDescriptionRouteArgs(
+            key: key,
+            idNews: idNews,
+            messageId: messageId,
+            isNotification: isNotification,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NotificationInfoNotificationDescriptionRoute';
+
+  static const PageInfo<NotificationInfoNotificationDescriptionRouteArgs> page =
+      PageInfo<NotificationInfoNotificationDescriptionRouteArgs>(name);
+}
+
+class NotificationInfoNotificationDescriptionRouteArgs {
+  const NotificationInfoNotificationDescriptionRouteArgs({
+    this.key,
+    this.idNews = '',
+    this.messageId,
+    this.isNotification = false,
+  });
+
+  final Key? key;
+
+  final String idNews;
+
+  final String? messageId;
+
+  final bool isNotification;
+
+  @override
+  String toString() {
+    return 'NotificationInfoNotificationDescriptionRouteArgs{key: $key, idNews: $idNews, messageId: $messageId, isNotification: $isNotification}';
+  }
+}
+
+/// generated route for
 /// [NewsNotificationDescriptionScreen]
 class NewsNotificationDescriptionRoute
     extends PageRouteInfo<NewsNotificationDescriptionRouteArgs> {
@@ -2516,30 +2715,30 @@ class NewsPreviewMediaRouteArgs {
 }
 
 /// generated route for
-/// [NotficationInfoDescriptionScreen]
-class NotficationInfoDescriptionRoute
-    extends PageRouteInfo<NotficationInfoDescriptionRouteArgs> {
-  NotficationInfoDescriptionRoute({
+/// [NotificationInfoDescriptionScreen]
+class NotificationInfoDescriptionRoute
+    extends PageRouteInfo<NotificationInfoDescriptionRouteArgs> {
+  NotificationInfoDescriptionRoute({
     Key? key,
     required NotificationInfoItemDataModel info,
     List<PageRouteInfo>? children,
   }) : super(
-          NotficationInfoDescriptionRoute.name,
-          args: NotficationInfoDescriptionRouteArgs(
+          NotificationInfoDescriptionRoute.name,
+          args: NotificationInfoDescriptionRouteArgs(
             key: key,
             info: info,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'NotficationInfoDescriptionRoute';
+  static const String name = 'NotificationInfoDescriptionRoute';
 
-  static const PageInfo<NotficationInfoDescriptionRouteArgs> page =
-      PageInfo<NotficationInfoDescriptionRouteArgs>(name);
+  static const PageInfo<NotificationInfoDescriptionRouteArgs> page =
+      PageInfo<NotificationInfoDescriptionRouteArgs>(name);
 }
 
-class NotficationInfoDescriptionRouteArgs {
-  const NotficationInfoDescriptionRouteArgs({
+class NotificationInfoDescriptionRouteArgs {
+  const NotificationInfoDescriptionRouteArgs({
     this.key,
     required this.info,
   });
@@ -2550,7 +2749,7 @@ class NotficationInfoDescriptionRouteArgs {
 
   @override
   String toString() {
-    return 'NotficationInfoDescriptionRouteArgs{key: $key, info: $info}';
+    return 'NotificationInfoDescriptionRouteArgs{key: $key, info: $info}';
   }
 }
 
@@ -3086,6 +3285,7 @@ class GiftYandexMapRoute extends PageRouteInfo<GiftYandexMapRouteArgs> {
     Key? key,
     required void Function(BoutiqueDataModel) onMapPoint,
     required BoutiqueDataModel point,
+    required PageRouteInfo<dynamic> route,
     List<PageRouteInfo>? children,
   }) : super(
           GiftYandexMapRoute.name,
@@ -3093,6 +3293,7 @@ class GiftYandexMapRoute extends PageRouteInfo<GiftYandexMapRouteArgs> {
             key: key,
             onMapPoint: onMapPoint,
             point: point,
+            route: route,
           ),
           initialChildren: children,
         );
@@ -3108,6 +3309,7 @@ class GiftYandexMapRouteArgs {
     this.key,
     required this.onMapPoint,
     required this.point,
+    required this.route,
   });
 
   final Key? key;
@@ -3116,9 +3318,11 @@ class GiftYandexMapRouteArgs {
 
   final BoutiqueDataModel point;
 
+  final PageRouteInfo<dynamic> route;
+
   @override
   String toString() {
-    return 'GiftYandexMapRouteArgs{key: $key, onMapPoint: $onMapPoint, point: $point}';
+    return 'GiftYandexMapRouteArgs{key: $key, onMapPoint: $onMapPoint, point: $point, route: $route}';
   }
 }
 

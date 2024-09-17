@@ -27,6 +27,8 @@ _$OrderProductResponseImpl _$$OrderProductResponseImplFromJson(
           .toList(),
       titleScreen: json['title_screen'] as String?,
       searchQuery: json['search_query'] as String?,
+      promo: json['promo'] as String?,
+      promoValue: json['promo_value'] as int?,
     );
 
 Map<String, dynamic> _$$OrderProductResponseImplToJson(
@@ -46,4 +48,6 @@ Map<String, dynamic> _$$OrderProductResponseImplToJson(
       'product_categories_path': instance.productCategoriesPath,
       'title_screen': instance.titleScreen,
       'search_query': instance.searchQuery,
+      'promo': instance.promo,
+      'promo_value': instance.promoValue,
     };

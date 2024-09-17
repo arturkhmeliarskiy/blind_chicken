@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
@@ -70,6 +71,7 @@ class _MainScreenState extends State<MainScreen> {
         key: SharedPrefKeys.deviceId,
         value: deviceId,
       );
+      AppMetricaStringAttribute.withValue('deviceId', deviceId);
     }
   }
 
@@ -145,8 +147,8 @@ class _MainScreenState extends State<MainScreen> {
     String pushTokenNow = '';
 
     if (Platform.isIOS) {
-      const mc = MethodChannel('blind_chicken/getToken');
-      pushTokenNow = await mc.invokeMethod('getDeviceToken');
+      final tokens = await AppMetricaPush.getTokens();
+      pushTokenNow = tokens['apns'] ?? '';
     } else {
       pushTokenNow = await FirebaseMessaging.instance.getToken() ?? '';
     }
@@ -247,6 +249,14 @@ class _MainScreenState extends State<MainScreen> {
                     if (notificationMessage.type == 'media') {
                       context.navigateTo(
                         MediaNotificationDescriptionRoute(
+                          idNews: notificationMessage.idNews,
+                          messageId: notificationMessage.idMessage,
+                        ),
+                      );
+                    }
+                    if (notificationMessage.type == 'notification') {
+                      context.navigateTo(
+                        NotificationInfoNotificationDescriptionRoute(
                           idNews: notificationMessage.idNews,
                           messageId: notificationMessage.idMessage,
                         ),

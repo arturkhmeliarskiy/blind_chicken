@@ -118,5 +118,12 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<AuthRepository>(),
       ),
+    )
+    ..registerFactory(
+      () => AppointmentBloc(
+        getIt.get<BoutiquesRepository>(),
+        getIt.get<UpdateDataService>(),
+        getIt.get<SharedPreferencesService>(),
+      ),
     );
 }

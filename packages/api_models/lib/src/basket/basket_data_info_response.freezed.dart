@@ -37,6 +37,9 @@ mixin _$BasketDataInfoResponse {
   BasketCategoryResponse? get category => throw _privateConstructorUsedError;
   @JsonKey(name: 'name_view')
   String? get nameView => throw _privateConstructorUsedError;
+  String? get promo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'promo_value')
+  int? get promoValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +63,9 @@ abstract class $BasketDataInfoResponseCopyWith<$Res> {
       @JsonKey(name: 'loyalty_discount_1') double? loyaltyDiscount1,
       BasketBrandResponse? brand,
       BasketCategoryResponse? category,
-      @JsonKey(name: 'name_view') String? nameView});
+      @JsonKey(name: 'name_view') String? nameView,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue});
 
   $BasketBrandResponseCopyWith<$Res>? get brand;
   $BasketCategoryResponseCopyWith<$Res>? get category;
@@ -90,6 +95,8 @@ class _$BasketDataInfoResponseCopyWithImpl<$Res,
     Object? brand = freezed,
     Object? category = freezed,
     Object? nameView = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
   }) {
     return _then(_value.copyWith(
       foto: freezed == foto
@@ -132,6 +139,14 @@ class _$BasketDataInfoResponseCopyWithImpl<$Res,
           ? _value.nameView
           : nameView // ignore: cast_nullable_to_non_nullable
               as String?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 
@@ -179,7 +194,9 @@ abstract class _$$BasketDataInfoResponseImplCopyWith<$Res>
       @JsonKey(name: 'loyalty_discount_1') double? loyaltyDiscount1,
       BasketBrandResponse? brand,
       BasketCategoryResponse? category,
-      @JsonKey(name: 'name_view') String? nameView});
+      @JsonKey(name: 'name_view') String? nameView,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue});
 
   @override
   $BasketBrandResponseCopyWith<$Res>? get brand;
@@ -210,6 +227,8 @@ class __$$BasketDataInfoResponseImplCopyWithImpl<$Res>
     Object? brand = freezed,
     Object? category = freezed,
     Object? nameView = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
   }) {
     return _then(_$BasketDataInfoResponseImpl(
       foto: freezed == foto
@@ -252,6 +271,14 @@ class __$$BasketDataInfoResponseImplCopyWithImpl<$Res>
           ? _value.nameView
           : nameView // ignore: cast_nullable_to_non_nullable
               as String?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -269,7 +296,9 @@ class _$BasketDataInfoResponseImpl extends _BasketDataInfoResponse {
       @JsonKey(name: 'loyalty_discount_1') this.loyaltyDiscount1,
       this.brand,
       this.category,
-      @JsonKey(name: 'name_view') this.nameView})
+      @JsonKey(name: 'name_view') this.nameView,
+      this.promo,
+      @JsonKey(name: 'promo_value') this.promoValue})
       : super._();
 
   factory _$BasketDataInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -301,10 +330,15 @@ class _$BasketDataInfoResponseImpl extends _BasketDataInfoResponse {
   @override
   @JsonKey(name: 'name_view')
   final String? nameView;
+  @override
+  final String? promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  final int? promoValue;
 
   @override
   String toString() {
-    return 'BasketDataInfoResponse(foto: $foto, price: $price, basePrice: $basePrice, price1: $price1, basePrice1: $basePrice1, promoDiscount1: $promoDiscount1, loyaltyDiscount1: $loyaltyDiscount1, brand: $brand, category: $category, nameView: $nameView)';
+    return 'BasketDataInfoResponse(foto: $foto, price: $price, basePrice: $basePrice, price1: $price1, basePrice1: $basePrice1, promoDiscount1: $promoDiscount1, loyaltyDiscount1: $loyaltyDiscount1, brand: $brand, category: $category, nameView: $nameView, promo: $promo, promoValue: $promoValue)';
   }
 
   @override
@@ -327,13 +361,28 @@ class _$BasketDataInfoResponseImpl extends _BasketDataInfoResponse {
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.nameView, nameView) ||
-                other.nameView == nameView));
+                other.nameView == nameView) &&
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.promoValue, promoValue) ||
+                other.promoValue == promoValue));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, foto, price, basePrice, price1,
-      basePrice1, promoDiscount1, loyaltyDiscount1, brand, category, nameView);
+  int get hashCode => Object.hash(
+      runtimeType,
+      foto,
+      price,
+      basePrice,
+      price1,
+      basePrice1,
+      promoDiscount1,
+      loyaltyDiscount1,
+      brand,
+      category,
+      nameView,
+      promo,
+      promoValue);
 
   @JsonKey(ignore: true)
   @override
@@ -361,7 +410,9 @@ abstract class _BasketDataInfoResponse extends BasketDataInfoResponse {
           @JsonKey(name: 'loyalty_discount_1') final double? loyaltyDiscount1,
           final BasketBrandResponse? brand,
           final BasketCategoryResponse? category,
-          @JsonKey(name: 'name_view') final String? nameView}) =
+          @JsonKey(name: 'name_view') final String? nameView,
+          final String? promo,
+          @JsonKey(name: 'promo_value') final int? promoValue}) =
       _$BasketDataInfoResponseImpl;
   _BasketDataInfoResponse._() : super._();
 
@@ -394,6 +445,11 @@ abstract class _BasketDataInfoResponse extends BasketDataInfoResponse {
   @override
   @JsonKey(name: 'name_view')
   String? get nameView;
+  @override
+  String? get promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  int? get promoValue;
   @override
   @JsonKey(ignore: true)
   _$$BasketDataInfoResponseImplCopyWith<_$BasketDataInfoResponseImpl>

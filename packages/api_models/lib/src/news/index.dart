@@ -6,3 +6,4 @@ export 'notification_info_item_response.dart';
 export 'notification_info_response.dart';
 export 'one_news_info_response.dart';
 export 'one_media_info_response.dart';
+export 'one_notification_info_response.dart';

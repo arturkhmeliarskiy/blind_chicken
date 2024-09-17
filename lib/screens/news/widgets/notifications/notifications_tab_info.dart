@@ -89,7 +89,7 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                           return GestureDetector(
                             onTap: () {
                               context.navigateTo(
-                                NotficationInfoDescriptionRoute(
+                                NotificationInfoDescriptionRoute(
                                   info: initState.notificatios.list[index],
                                 ),
                               );

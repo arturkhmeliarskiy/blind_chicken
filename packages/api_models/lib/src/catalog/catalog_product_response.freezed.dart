@@ -31,6 +31,9 @@ mixin _$CatalogProductResponse {
   int? get pbc => throw _privateConstructorUsedError;
   int? get ca => throw _privateConstructorUsedError;
   int? get dv => throw _privateConstructorUsedError;
+  String? get promo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'promo_value')
+  int? get promoValue => throw _privateConstructorUsedError;
   List<CatalogSizeProductResponse>? get sz =>
       throw _privateConstructorUsedError;
 
@@ -57,6 +60,8 @@ abstract class $CatalogProductResponseCopyWith<$Res> {
       int? pbc,
       int? ca,
       int? dv,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue,
       List<CatalogSizeProductResponse>? sz});
 }
 
@@ -84,6 +89,8 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
     Object? pbc = freezed,
     Object? ca = freezed,
     Object? dv = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
     Object? sz = freezed,
   }) {
     return _then(_value.copyWith(
@@ -127,6 +134,14 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
       sz: freezed == sz
           ? _value.sz
           : sz // ignore: cast_nullable_to_non_nullable
@@ -155,6 +170,8 @@ abstract class _$$CatalogProductResponseImplCopyWith<$Res>
       int? pbc,
       int? ca,
       int? dv,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue,
       List<CatalogSizeProductResponse>? sz});
 }
 
@@ -181,6 +198,8 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
     Object? pbc = freezed,
     Object? ca = freezed,
     Object? dv = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
     Object? sz = freezed,
   }) {
     return _then(_$CatalogProductResponseImpl(
@@ -224,6 +243,14 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
       sz: freezed == sz
           ? _value._sz
           : sz // ignore: cast_nullable_to_non_nullable
@@ -246,6 +273,8 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
       this.pbc,
       this.ca,
       this.dv,
+      this.promo,
+      @JsonKey(name: 'promo_value') this.promoValue,
       final List<CatalogSizeProductResponse>? sz})
       : _sz = sz,
         super._();
@@ -273,6 +302,11 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   final int? ca;
   @override
   final int? dv;
+  @override
+  final String? promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  final int? promoValue;
   final List<CatalogSizeProductResponse>? _sz;
   @override
   List<CatalogSizeProductResponse>? get sz {
@@ -285,7 +319,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
   @override
   String toString() {
-    return 'CatalogProductResponse(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, sz: $sz)';
+    return 'CatalogProductResponse(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, promo: $promo, promoValue: $promoValue, sz: $sz)';
   }
 
   @override
@@ -303,13 +337,16 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
             (identical(other.pbc, pbc) || other.pbc == pbc) &&
             (identical(other.ca, ca) || other.ca == ca) &&
             (identical(other.dv, dv) || other.dv == dv) &&
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.promoValue, promoValue) ||
+                other.promoValue == promoValue) &&
             const DeepCollectionEquality().equals(other._sz, _sz));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca,
-      dv, const DeepCollectionEquality().hash(_sz));
+      dv, promo, promoValue, const DeepCollectionEquality().hash(_sz));
 
   @JsonKey(ignore: true)
   @override
@@ -338,6 +375,8 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
           final int? pbc,
           final int? ca,
           final int? dv,
+          final String? promo,
+          @JsonKey(name: 'promo_value') final int? promoValue,
           final List<CatalogSizeProductResponse>? sz}) =
       _$CatalogProductResponseImpl;
   _CatalogProductResponse._() : super._();
@@ -365,6 +404,11 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   int? get ca;
   @override
   int? get dv;
+  @override
+  String? get promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  int? get promoValue;
   @override
   List<CatalogSizeProductResponse>? get sz;
   @override

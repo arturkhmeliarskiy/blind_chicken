@@ -211,7 +211,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                   final newsNotificationInfo = widget.newsNotificationInfo;
                   if (newsNotificationInfo != null) {
                     context.navigateTo(
-                      NotficationInfoDescriptionRoute(
+                      NotificationInfoDescriptionRoute(
                         info: newsNotificationInfo,
                       ),
                     );
@@ -311,7 +311,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                         final newsNotificationInfo = widget.newsNotificationInfo;
                                         if (newsNotificationInfo != null) {
                                           context.navigateTo(
-                                            NotficationInfoDescriptionRoute(
+                                            NotificationInfoDescriptionRoute(
                                               info: newsNotificationInfo,
                                             ),
                                           );
@@ -469,8 +469,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                               Row(
                                                 children: [
                                                   if (!(initState.detailsProduct?.product
-                                                          .isYourPriceDisplayed ??
-                                                      false))
+                                                              .isYourPriceDisplayed ??
+                                                          false) ||
+                                                      (initState.detailsProduct?.product
+                                                                  .promoValue ??
+                                                              0) >
+                                                          0)
                                                     Row(
                                                       children: [
                                                         SvgPicture.asset(
@@ -481,6 +485,38 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                         const SizedBox(
                                                           width: 7,
                                                         ),
+                                                        if ((initState.detailsProduct?.product
+                                                                    .promoValue ??
+                                                                0) >
+                                                            0)
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets.only(right: 7),
+                                                            child: RichText(
+                                                              text: TextSpan(
+                                                                text: (initState.detailsProduct
+                                                                            ?.price.yourPrice ??
+                                                                        0)
+                                                                    .toString()
+                                                                    .spaceSeparateNumbers(),
+                                                                style: Theme.of(context)
+                                                                    .textTheme
+                                                                    .displayMedium
+                                                                    ?.copyWith(
+                                                                      fontWeight: FontWeight.w700,
+                                                                    ),
+                                                                children: const <TextSpan>[
+                                                                  TextSpan(
+                                                                    text: ' ₽',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Roboto',
+                                                                      fontSize: 13,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
                                                       ],
                                                     ),
                                                   RichText(
@@ -499,6 +535,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                     false
                                                                 ? FontWeight.w400
                                                                 : FontWeight.w700,
+                                                            decoration: (initState.detailsProduct
+                                                                            ?.product.promoValue ??
+                                                                        0) >
+                                                                    0
+                                                                ? TextDecoration.lineThrough
+                                                                : TextDecoration.none,
                                                           ),
                                                       children: const <TextSpan>[
                                                         TextSpan(
@@ -546,9 +588,12 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                   const SizedBox(
                                                     width: 7,
                                                   ),
-                                                  if (initState.detailsProduct?.product
-                                                          .isYourPriceDisplayed ??
-                                                      false)
+                                                  if ((initState.detailsProduct?.product
+                                                              .isYourPriceDisplayed ??
+                                                          false) &&
+                                                      initState
+                                                              .detailsProduct?.product.promoValue ==
+                                                          0)
                                                     Row(
                                                       children: [
                                                         SvgPicture.asset(
@@ -598,6 +643,73 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                     ),
                                                 ],
                                               ),
+                                              if ((initState.detailsProduct?.product.promoValue ??
+                                                      0) >
+                                                  0)
+                                                Tooltip(
+                                                  decoration: BoxDecoration(
+                                                    color: BlindChickenColors.activeBorderTextField
+                                                        .withOpacity(0.8),
+                                                    borderRadius: const BorderRadius.all(
+                                                      Radius.circular(4),
+                                                    ),
+                                                  ),
+                                                  margin:
+                                                      const EdgeInsets.only(left: 10, right: 10),
+                                                  richMessage: WidgetSpan(
+                                                    alignment: PlaceholderAlignment.baseline,
+                                                    baseline: TextBaseline.alphabetic,
+                                                    child: Text(
+                                                      initState.detailsProduct?.product.promo ?? '',
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .displayMedium
+                                                          ?.copyWith(
+                                                            color:
+                                                                BlindChickenColors.backgroundColor,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  child: Container(
+                                                    padding: const EdgeInsets.only(
+                                                      top: 1,
+                                                      left: 4,
+                                                      right: 4,
+                                                      bottom: 1,
+                                                    ),
+                                                    margin:
+                                                        const EdgeInsets.only(top: 7, bottom: 7),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(4),
+                                                      color:
+                                                          BlindChickenColors.activeBorderTextField,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisSize: MainAxisSize.min,
+                                                      children: [
+                                                        Text(
+                                                          '-${initState.detailsProduct?.product.promoValue ?? 0}% по акции',
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium
+                                                              ?.copyWith(
+                                                                color: BlindChickenColors
+                                                                    .backgroundColor,
+                                                              ),
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 5,
+                                                        ),
+                                                        SvgPicture.asset(
+                                                          'assets/icons/info.svg',
+                                                          color: BlindChickenColors.backgroundColor,
+                                                          height: 16,
+                                                          width: 16,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
                                               const SizedBox(
                                                 height: 7,
                                               ),

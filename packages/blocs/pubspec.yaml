@@ -29,6 +29,7 @@ dependencies:
   package_info_plus: ^8.0.2
   firebase_messaging: ^14.7.19
   appmetrica_plugin: ^3.0.0
+  appmetrica_push_plugin: ^2.0.0
   decimal: ^3.0.2
 
 dev_dependencies:

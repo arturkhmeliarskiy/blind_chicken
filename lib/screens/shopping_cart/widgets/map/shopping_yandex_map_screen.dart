@@ -105,6 +105,8 @@ class _ShoppingYandexMapScreenState extends State<ShoppingYandexMapScreen> {
                 uidStore: boutiques[index].uidStore,
                 coordinates: boutiques[index].coordinates,
                 iconPath: boutiques[index].iconPath,
+                sheduleInfo: boutiques[index].sheduleInfo,
+                sheduleDateTimeInfo: boutiques[index].sheduleDateTimeInfo,
               ),
               onMoreDetailed: () {
                 widget.onMapPoint(boutiques[index]);

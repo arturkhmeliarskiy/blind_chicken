@@ -26,6 +26,7 @@ import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value/c
 import 'package:blind_chicken/screens/home/catalog/catalog_filter_select_value_search/catalog_filter_select_value_search_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_auto_router_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen.dart';
+import 'package:blind_chicken/screens/home/catalog/catalog_search_card_info_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_filter_screen.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_search_screen_result.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_size_product_screen.dart';
@@ -36,6 +37,7 @@ import 'package:blind_chicken/screens/info/info_screen.dart';
 import 'package:blind_chicken/screens/location/search_location_screen.dart';
 import 'package:blind_chicken/screens/news/media_notification_description_screen.dart';
 import 'package:blind_chicken/screens/news/news_notification_description_screen.dart';
+import 'package:blind_chicken/screens/news/notification_info_notification_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/media/media_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_info_description_screen.dart';
 import 'package:blind_chicken/screens/news/news_info_screen.dart';
@@ -65,6 +67,7 @@ import 'package:blind_chicken/screens/home/sort/sort_screen.dart';
 import 'package:blind_chicken/screens/login/login_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/map/shopping_yandex_map_screen.dart';
 import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_delivery_info_screen.dart';
+import 'package:blind_chicken/screens/vision_warning/doctor_appointment_screen.dart';
 import 'package:blind_chicken/screens/vision_warning/vision_warning_screen.dart';
 import 'package:blind_chicken/screens/web_view/blind_chicken_webview_screen.dart';
 import 'package:blind_chicken/screens/web_view/sberbank_payment_webview_screen.dart';
@@ -103,6 +106,11 @@ class AppRouter extends _$AppRouter {
               keepHistory: false,
               page: CatalogSearchCardInfoRoute.page,
               path: 'catalog_search_card_info',
+            ),
+            AutoRoute(
+              keepHistory: false,
+              page: CatalogSearchCardInfoResultRoute.page,
+              path: 'catalog_search_card_info_result',
             ),
             AutoRoute(
               page: SortRoute.page,
@@ -273,7 +281,7 @@ class AppRouter extends _$AppRouter {
           path: '/media_info_description',
         ),
         AutoRoute(
-          page: NotficationInfoDescriptionRoute.page,
+          page: NotificationInfoDescriptionRoute.page,
           path: '/notfication_info_description',
         ),
         AutoRoute(
@@ -283,6 +291,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: MediaNotificationDescriptionRoute.page,
           path: '/media_notfication_info_description',
+        ),
+        AutoRoute(
+          page: NotificationInfoNotificationDescriptionRoute.page,
+          path: '/notfication_info_notification_description',
         ),
         AutoRoute(
           page: NewsPreviewMediaRoute.page,
@@ -343,6 +355,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           keepHistory: false,
           page: CatalogSizeProductRoute.page,
+        ),
+        AutoRoute(
+          page: DoctorAppointmentRoute.page,
+          path: '/doctor_appointment',
         ),
       ];
 }

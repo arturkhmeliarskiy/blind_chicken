@@ -26,6 +26,8 @@ mixin _$BasketDataInfoDataModel {
   BasketBrandDataModel get brand => throw _privateConstructorUsedError;
   BasketCategoryDataModel get category => throw _privateConstructorUsedError;
   String get nameView => throw _privateConstructorUsedError;
+  String get promo => throw _privateConstructorUsedError;
+  int get promoValue => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BasketDataInfoDataModelCopyWith<BasketDataInfoDataModel> get copyWith =>
@@ -48,7 +50,9 @@ abstract class $BasketDataInfoDataModelCopyWith<$Res> {
       double loyaltyDiscount1,
       BasketBrandDataModel brand,
       BasketCategoryDataModel category,
-      String nameView});
+      String nameView,
+      String promo,
+      int promoValue});
 
   $BasketBrandDataModelCopyWith<$Res> get brand;
   $BasketCategoryDataModelCopyWith<$Res> get category;
@@ -78,6 +82,8 @@ class _$BasketDataInfoDataModelCopyWithImpl<$Res,
     Object? brand = null,
     Object? category = null,
     Object? nameView = null,
+    Object? promo = null,
+    Object? promoValue = null,
   }) {
     return _then(_value.copyWith(
       foto: null == foto
@@ -120,6 +126,14 @@ class _$BasketDataInfoDataModelCopyWithImpl<$Res,
           ? _value.nameView
           : nameView // ignore: cast_nullable_to_non_nullable
               as String,
+      promo: null == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String,
+      promoValue: null == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -159,7 +173,9 @@ abstract class _$$BasketDataInfoDataModelImplCopyWith<$Res>
       double loyaltyDiscount1,
       BasketBrandDataModel brand,
       BasketCategoryDataModel category,
-      String nameView});
+      String nameView,
+      String promo,
+      int promoValue});
 
   @override
   $BasketBrandDataModelCopyWith<$Res> get brand;
@@ -190,6 +206,8 @@ class __$$BasketDataInfoDataModelImplCopyWithImpl<$Res>
     Object? brand = null,
     Object? category = null,
     Object? nameView = null,
+    Object? promo = null,
+    Object? promoValue = null,
   }) {
     return _then(_$BasketDataInfoDataModelImpl(
       foto: null == foto
@@ -232,6 +250,14 @@ class __$$BasketDataInfoDataModelImplCopyWithImpl<$Res>
           ? _value.nameView
           : nameView // ignore: cast_nullable_to_non_nullable
               as String,
+      promo: null == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String,
+      promoValue: null == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -249,7 +275,9 @@ class _$BasketDataInfoDataModelImpl extends _BasketDataInfoDataModel {
       required this.loyaltyDiscount1,
       required this.brand,
       required this.category,
-      required this.nameView})
+      required this.nameView,
+      required this.promo,
+      required this.promoValue})
       : super._();
 
   @override
@@ -272,10 +300,14 @@ class _$BasketDataInfoDataModelImpl extends _BasketDataInfoDataModel {
   final BasketCategoryDataModel category;
   @override
   final String nameView;
+  @override
+  final String promo;
+  @override
+  final int promoValue;
 
   @override
   String toString() {
-    return 'BasketDataInfoDataModel(foto: $foto, price: $price, basePrice: $basePrice, price1: $price1, basePrice1: $basePrice1, promoDiscount1: $promoDiscount1, loyaltyDiscount1: $loyaltyDiscount1, brand: $brand, category: $category, nameView: $nameView)';
+    return 'BasketDataInfoDataModel(foto: $foto, price: $price, basePrice: $basePrice, price1: $price1, basePrice1: $basePrice1, promoDiscount1: $promoDiscount1, loyaltyDiscount1: $loyaltyDiscount1, brand: $brand, category: $category, nameView: $nameView, promo: $promo, promoValue: $promoValue)';
   }
 
   @override
@@ -298,12 +330,27 @@ class _$BasketDataInfoDataModelImpl extends _BasketDataInfoDataModel {
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.nameView, nameView) ||
-                other.nameView == nameView));
+                other.nameView == nameView) &&
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.promoValue, promoValue) ||
+                other.promoValue == promoValue));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, foto, price, basePrice, price1,
-      basePrice1, promoDiscount1, loyaltyDiscount1, brand, category, nameView);
+  int get hashCode => Object.hash(
+      runtimeType,
+      foto,
+      price,
+      basePrice,
+      price1,
+      basePrice1,
+      promoDiscount1,
+      loyaltyDiscount1,
+      brand,
+      category,
+      nameView,
+      promo,
+      promoValue);
 
   @JsonKey(ignore: true)
   @override
@@ -324,7 +371,9 @@ abstract class _BasketDataInfoDataModel extends BasketDataInfoDataModel {
       required final double loyaltyDiscount1,
       required final BasketBrandDataModel brand,
       required final BasketCategoryDataModel category,
-      required final String nameView}) = _$BasketDataInfoDataModelImpl;
+      required final String nameView,
+      required final String promo,
+      required final int promoValue}) = _$BasketDataInfoDataModelImpl;
   _BasketDataInfoDataModel._() : super._();
 
   @override
@@ -347,6 +396,10 @@ abstract class _BasketDataInfoDataModel extends BasketDataInfoDataModel {
   BasketCategoryDataModel get category;
   @override
   String get nameView;
+  @override
+  String get promo;
+  @override
+  int get promoValue;
   @override
   @JsonKey(ignore: true)
   _$$BasketDataInfoDataModelImplCopyWith<_$BasketDataInfoDataModelImpl>

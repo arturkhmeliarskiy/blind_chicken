@@ -208,8 +208,7 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                     onTap: () {
                                                       if (initState.searchSections[index].u ==
                                                           '/proverka-zreniya/') {
-                                                        context
-                                                            .navigateTo(const VisionWarningRoute());
+                                                        context.navigateTo(VisionWarningRoute());
                                                       } else if (initState
                                                               .searchSections[index].u ==
                                                           '/servisnaya-karta/') {

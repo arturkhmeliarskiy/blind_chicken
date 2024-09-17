@@ -1,3 +1,4 @@
+import 'package:api_models/api_models.dart';
 import 'package:api_models/src/boutiques/boutique_coordinates_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,6 +22,7 @@ class BoutiquesDataResponse with _$BoutiquesDataResponse {
       fromJson: _convertCoordinates,
     )
     BoutiqueCoordinatesResponse? coordinates,
+    @JsonKey(name: 'schedule_json') List<BoutiqueSheduleResponse>? scheduleInfo,
   }) = _BoutiquesDataResponse;
   factory BoutiquesDataResponse.fromJson(Map<String, dynamic> json) =>
       _$BoutiquesDataResponseFromJson(json);

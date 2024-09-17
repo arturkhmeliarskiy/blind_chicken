@@ -617,22 +617,63 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           amountPaid = amountPaid + basketInfo.basket[i].data.price;
         }
 
-        if (initState.shoppingCart.basket[event.index].count !=
-                basketInfo.basket[event.index].count ||
-            event.item.count == 0) {
-          final count = basketInfo.basket[event.index].count;
-          final yourPrice = basketInfo.basket[event.index].product.yourPrice;
-          final pb = basketInfo.basket[event.index].product.pb;
+        if (basketInfo.basket.isNotEmpty && basketInfo.basket.length - 1 == event.index) {
+          if (initState.shoppingCart.basket[event.index].count !=
+                  basketInfo.basket[event.index].count ||
+              event.item.count == 0) {
+            final count = basketInfo.basket[event.index].count;
+            final yourPrice = basketInfo.basket[event.index].product.yourPrice;
+            final pb = basketInfo.basket[event.index].product.pb;
+            final priceActual = yourPrice ~/ count;
+            final priceOriginal = pb ~/ count;
+            _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
+              titleScreen: 'Корзина',
+              titleProduct: basketInfo.basket[event.index].product.title,
+              codeProduct: basketInfo.basket[event.index].code,
+              typeProductToSoppingCart:
+                  event.item.count > initState.shoppingCart.basket[event.index].count
+                      ? AppMetricaShoppingCartEnum.addProductToShoppingCart
+                      : AppMetricaShoppingCartEnum.removeProductToShoppingCart,
+              type: event.item.typeAddProductToShoppingCart,
+              identifier: event.item.identifierAddProductToShoppingCart,
+              quantity: 1,
+              sectionCategoriesPath: [],
+              productCategoriesPath: [],
+              priceActual: priceActual,
+              priceOriginal: priceOriginal,
+              internalComponentsActualPrice: [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(priceActual),
+                  currency: basketInfo.basket[event.index].skuName,
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(priceActual),
+                  currency: basketInfo.basket[event.index].sku,
+                ),
+              ],
+              internalComponentsOriginalPrice: [
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(priceOriginal),
+                  currency: basketInfo.basket[event.index].skuName,
+                ),
+                AppMetricaECommerceAmount(
+                  amount: Decimal.fromInt(priceOriginal),
+                  currency: basketInfo.basket[event.index].sku,
+                ),
+              ],
+            );
+          }
+        } else {
+          final count = initState.shoppingCart.basket[event.index].count;
+          final yourPrice = initState.shoppingCart.basket[event.index].product.yourPrice;
+          final pb = initState.shoppingCart.basket[event.index].product.pb;
           final priceActual = yourPrice ~/ count;
           final priceOriginal = pb ~/ count;
           _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
             titleScreen: 'Корзина',
-            titleProduct: basketInfo.basket[event.index].product.title,
-            codeProduct: basketInfo.basket[event.index].code,
-            typeProductToSoppingCart:
-                event.item.count > initState.shoppingCart.basket[event.index].count
-                    ? AppMetricaShoppingCartEnum.addProductToShoppingCart
-                    : AppMetricaShoppingCartEnum.removeProductToShoppingCart,
+            titleProduct: initState.shoppingCart.basket[event.index].product.title,
+            codeProduct: initState.shoppingCart.basket[event.index].code,
+            typeProductToSoppingCart: AppMetricaShoppingCartEnum.removeProductToShoppingCart,
             type: event.item.typeAddProductToShoppingCart,
             identifier: event.item.identifierAddProductToShoppingCart,
             quantity: 1,
@@ -643,21 +684,21 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             internalComponentsActualPrice: [
               AppMetricaECommerceAmount(
                 amount: Decimal.fromInt(priceActual),
-                currency: basketInfo.basket[event.index].skuName,
+                currency: initState.shoppingCart.basket[event.index].skuName,
               ),
               AppMetricaECommerceAmount(
                 amount: Decimal.fromInt(priceActual),
-                currency: basketInfo.basket[event.index].sku,
+                currency: initState.shoppingCart.basket[event.index].sku,
               ),
             ],
             internalComponentsOriginalPrice: [
               AppMetricaECommerceAmount(
                 amount: Decimal.fromInt(priceOriginal),
-                currency: basketInfo.basket[event.index].skuName,
+                currency: initState.shoppingCart.basket[event.index].skuName,
               ),
               AppMetricaECommerceAmount(
                 amount: Decimal.fromInt(priceOriginal),
-                currency: basketInfo.basket[event.index].sku,
+                currency: initState.shoppingCart.basket[event.index].sku,
               ),
             ],
           );

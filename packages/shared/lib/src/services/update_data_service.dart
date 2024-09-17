@@ -123,7 +123,7 @@ class UpdateDataService {
   set isNotification(bool value) {
     _isNotification = value;
   }
-  
+
   bool get isScapeUpdateApp {
     return _isScapeUpdateApp ?? false;
   }

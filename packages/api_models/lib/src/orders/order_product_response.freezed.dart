@@ -39,6 +39,9 @@ mixin _$OrderProductResponse {
   String? get titleScreen => throw _privateConstructorUsedError;
   @JsonKey(name: "search_query")
   String? get searchQuery => throw _privateConstructorUsedError;
+  String? get promo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'promo_value')
+  int? get promoValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +71,9 @@ abstract class $OrderProductResponseCopyWith<$Res> {
       @JsonKey(name: "product_categories_path")
       List<String>? productCategoriesPath,
       @JsonKey(name: "title_screen") String? titleScreen,
-      @JsonKey(name: "search_query") String? searchQuery});
+      @JsonKey(name: "search_query") String? searchQuery,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue});
 }
 
 /// @nodoc
@@ -99,6 +104,8 @@ class _$OrderProductResponseCopyWithImpl<$Res,
     Object? productCategoriesPath = freezed,
     Object? titleScreen = freezed,
     Object? searchQuery = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -157,6 +164,14 @@ class _$OrderProductResponseCopyWithImpl<$Res,
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -185,7 +200,9 @@ abstract class _$$OrderProductResponseImplCopyWith<$Res>
       @JsonKey(name: "product_categories_path")
       List<String>? productCategoriesPath,
       @JsonKey(name: "title_screen") String? titleScreen,
-      @JsonKey(name: "search_query") String? searchQuery});
+      @JsonKey(name: "search_query") String? searchQuery,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue});
 }
 
 /// @nodoc
@@ -213,6 +230,8 @@ class __$$OrderProductResponseImplCopyWithImpl<$Res>
     Object? productCategoriesPath = freezed,
     Object? titleScreen = freezed,
     Object? searchQuery = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
   }) {
     return _then(_$OrderProductResponseImpl(
       code: freezed == code
@@ -271,6 +290,14 @@ class __$$OrderProductResponseImplCopyWithImpl<$Res>
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -294,7 +321,9 @@ class _$OrderProductResponseImpl extends _OrderProductResponse {
       @JsonKey(name: "product_categories_path")
       final List<String>? productCategoriesPath,
       @JsonKey(name: "title_screen") this.titleScreen,
-      @JsonKey(name: "search_query") this.searchQuery})
+      @JsonKey(name: "search_query") this.searchQuery,
+      this.promo,
+      @JsonKey(name: 'promo_value') this.promoValue})
       : _sectionCategoriesPath = sectionCategoriesPath,
         _productCategoriesPath = productCategoriesPath,
         super._();
@@ -353,10 +382,15 @@ class _$OrderProductResponseImpl extends _OrderProductResponse {
   @override
   @JsonKey(name: "search_query")
   final String? searchQuery;
+  @override
+  final String? promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  final int? promoValue;
 
   @override
   String toString() {
-    return 'OrderProductResponse(code: $code, img: $img, price: $price, count: $count, promocodeInfo: $promocodeInfo, brand: $brand, name: $name, sku: $sku, type: $type, identifier: $identifier, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, titleScreen: $titleScreen, searchQuery: $searchQuery)';
+    return 'OrderProductResponse(code: $code, img: $img, price: $price, count: $count, promocodeInfo: $promocodeInfo, brand: $brand, name: $name, sku: $sku, type: $type, identifier: $identifier, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, titleScreen: $titleScreen, searchQuery: $searchQuery, promo: $promo, promoValue: $promoValue)';
   }
 
   @override
@@ -383,7 +417,10 @@ class _$OrderProductResponseImpl extends _OrderProductResponse {
             (identical(other.titleScreen, titleScreen) ||
                 other.titleScreen == titleScreen) &&
             (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+                other.searchQuery == searchQuery) &&
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.promoValue, promoValue) ||
+                other.promoValue == promoValue));
   }
 
   @JsonKey(ignore: true)
@@ -403,7 +440,9 @@ class _$OrderProductResponseImpl extends _OrderProductResponse {
       const DeepCollectionEquality().hash(_sectionCategoriesPath),
       const DeepCollectionEquality().hash(_productCategoriesPath),
       titleScreen,
-      searchQuery);
+      searchQuery,
+      promo,
+      promoValue);
 
   @JsonKey(ignore: true)
   @override
@@ -438,7 +477,9 @@ abstract class _OrderProductResponse extends OrderProductResponse {
           @JsonKey(name: "product_categories_path")
           final List<String>? productCategoriesPath,
           @JsonKey(name: "title_screen") final String? titleScreen,
-          @JsonKey(name: "search_query") final String? searchQuery}) =
+          @JsonKey(name: "search_query") final String? searchQuery,
+          final String? promo,
+          @JsonKey(name: 'promo_value') final int? promoValue}) =
       _$OrderProductResponseImpl;
   _OrderProductResponse._() : super._();
 
@@ -478,6 +519,11 @@ abstract class _OrderProductResponse extends OrderProductResponse {
   @override
   @JsonKey(name: "search_query")
   String? get searchQuery;
+  @override
+  String? get promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  int? get promoValue;
   @override
   @JsonKey(ignore: true)
   _$$OrderProductResponseImplCopyWith<_$OrderProductResponseImpl>

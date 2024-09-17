@@ -49,6 +49,17 @@ class NewsRepository {
     );
     return media.toOneMedia();
   }
+
+  Future<OneNotificationInfoDataModel> getOneNotifcation({
+    required String id,
+    String? messageId,
+  }) async {
+    final media = await _newsService.getOneNotifcation(
+      id: id,
+      messageId: messageId,
+    );
+    return media.toOneNotification();
+  }
 }
 
 extension on NewsInfoResponse {
@@ -218,6 +229,35 @@ extension on OneMediaInfoResponse {
         isViewed: data?.isViewed ?? false,
       ),
       isViewed: isViewed ?? false,
+    );
+  }
+}
+
+extension on OneNotificationInfoResponse {
+  OneNotificationInfoDataModel toOneNotification() {
+    return OneNotificationInfoDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+      data: NotificationInfoItemDataModel(
+        id: data?.id ?? '',
+        title: data?.title ?? '',
+        createAt: data?.createAt ?? '',
+        images: data?.images?.isNotEmpty ?? false
+            ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
+            : [],
+        video: data?.video ?? '',
+        typeMedia: data?.typeMedia ?? '',
+        description: data?.description ?? '',
+        titleButton: data?.titleButton ?? '',
+        typePath: data?.typePath ?? '',
+        path: data?.path ?? '',
+        code: data?.code ?? '',
+        sort: data?.sort ?? '',
+        filterSelect: data?.filterSelect ?? '',
+        uidStore: data?.uidStore ?? '',
+        isViewed: data?.isViewed ?? false,
+      ),
     );
   }
 }

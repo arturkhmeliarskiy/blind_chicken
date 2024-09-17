@@ -31,6 +31,7 @@ mixin _$CatalogDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  int get discountFirstMobile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogDataModelCopyWith<CatalogDataModel> get copyWith =>
@@ -57,7 +58,8 @@ abstract class $CatalogDataModelCopyWith<$Res> {
       List<ProductDataModel> products,
       String r,
       String e,
-      String errorMessage});
+      String errorMessage,
+      int discountFirstMobile});
 
   $SectionsDataModelCopyWith<$Res> get sections;
 }
@@ -89,6 +91,7 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
     Object? r = null,
     Object? e = null,
     Object? errorMessage = null,
+    Object? discountFirstMobile = null,
   }) {
     return _then(_value.copyWith(
       userDiscount: null == userDiscount
@@ -147,6 +150,10 @@ class _$CatalogDataModelCopyWithImpl<$Res, $Val extends CatalogDataModel>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      discountFirstMobile: null == discountFirstMobile
+          ? _value.discountFirstMobile
+          : discountFirstMobile // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -181,7 +188,8 @@ abstract class _$$CatalogDataModelImplCopyWith<$Res>
       List<ProductDataModel> products,
       String r,
       String e,
-      String errorMessage});
+      String errorMessage,
+      int discountFirstMobile});
 
   @override
   $SectionsDataModelCopyWith<$Res> get sections;
@@ -212,6 +220,7 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
     Object? r = null,
     Object? e = null,
     Object? errorMessage = null,
+    Object? discountFirstMobile = null,
   }) {
     return _then(_$CatalogDataModelImpl(
       userDiscount: null == userDiscount
@@ -270,6 +279,10 @@ class __$$CatalogDataModelImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      discountFirstMobile: null == discountFirstMobile
+          ? _value.discountFirstMobile
+          : discountFirstMobile // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -291,7 +304,8 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       required final List<ProductDataModel> products,
       required this.r,
       required this.e,
-      required this.errorMessage})
+      required this.errorMessage,
+      required this.discountFirstMobile})
       : _breadcrumbs = breadcrumbs,
         _listNext = listNext,
         _listPrev = listPrev,
@@ -364,10 +378,12 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
   final String e;
   @override
   final String errorMessage;
+  @override
+  final int discountFirstMobile;
 
   @override
   String toString() {
-    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, listThis: $listThis, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
+    return 'CatalogDataModel(userDiscount: $userDiscount, breadcrumbs: $breadcrumbs, h1: $h1, count: $count, sections: $sections, listNext: $listNext, listPrev: $listPrev, listThis: $listThis, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage, discountFirstMobile: $discountFirstMobile)';
   }
 
   @override
@@ -393,7 +409,9 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.discountFirstMobile, discountFirstMobile) ||
+                other.discountFirstMobile == discountFirstMobile));
   }
 
   @override
@@ -412,7 +430,8 @@ class _$CatalogDataModelImpl extends _CatalogDataModel {
       const DeepCollectionEquality().hash(_products),
       r,
       e,
-      errorMessage);
+      errorMessage,
+      discountFirstMobile);
 
   @JsonKey(ignore: true)
   @override
@@ -437,7 +456,8 @@ abstract class _CatalogDataModel extends CatalogDataModel {
       required final List<ProductDataModel> products,
       required final String r,
       required final String e,
-      required final String errorMessage}) = _$CatalogDataModelImpl;
+      required final String errorMessage,
+      required final int discountFirstMobile}) = _$CatalogDataModelImpl;
   _CatalogDataModel._() : super._();
 
   @override
@@ -468,6 +488,8 @@ abstract class _CatalogDataModel extends CatalogDataModel {
   String get e;
   @override
   String get errorMessage;
+  @override
+  int get discountFirstMobile;
   @override
   @JsonKey(ignore: true)
   _$$CatalogDataModelImplCopyWith<_$CatalogDataModelImpl> get copyWith =>

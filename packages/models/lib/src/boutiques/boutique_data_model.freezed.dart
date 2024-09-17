@@ -27,6 +27,10 @@ mixin _$BoutiqueDataModel {
   String get iconPath => throw _privateConstructorUsedError;
   BoutiqueCoordinatesDataModel get coordinates =>
       throw _privateConstructorUsedError;
+  List<BoutiqueSheduleDataModel> get sheduleInfo =>
+      throw _privateConstructorUsedError;
+  Map<int, List<DateTime>> get sheduleDateTimeInfo =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BoutiqueDataModelCopyWith<BoutiqueDataModel> get copyWith =>
@@ -49,7 +53,9 @@ abstract class $BoutiqueDataModelCopyWith<$Res> {
       String schedule,
       String uidStore,
       String iconPath,
-      BoutiqueCoordinatesDataModel coordinates});
+      BoutiqueCoordinatesDataModel coordinates,
+      List<BoutiqueSheduleDataModel> sheduleInfo,
+      Map<int, List<DateTime>> sheduleDateTimeInfo});
 
   $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates;
 }
@@ -77,6 +83,8 @@ class _$BoutiqueDataModelCopyWithImpl<$Res, $Val extends BoutiqueDataModel>
     Object? uidStore = null,
     Object? iconPath = null,
     Object? coordinates = null,
+    Object? sheduleInfo = null,
+    Object? sheduleDateTimeInfo = null,
   }) {
     return _then(_value.copyWith(
       fotoMin: null == fotoMin
@@ -119,6 +127,14 @@ class _$BoutiqueDataModelCopyWithImpl<$Res, $Val extends BoutiqueDataModel>
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as BoutiqueCoordinatesDataModel,
+      sheduleInfo: null == sheduleInfo
+          ? _value.sheduleInfo
+          : sheduleInfo // ignore: cast_nullable_to_non_nullable
+              as List<BoutiqueSheduleDataModel>,
+      sheduleDateTimeInfo: null == sheduleDateTimeInfo
+          ? _value.sheduleDateTimeInfo
+          : sheduleDateTimeInfo // ignore: cast_nullable_to_non_nullable
+              as Map<int, List<DateTime>>,
     ) as $Val);
   }
 
@@ -150,7 +166,9 @@ abstract class _$$BoutiqueDataModelImplCopyWith<$Res>
       String schedule,
       String uidStore,
       String iconPath,
-      BoutiqueCoordinatesDataModel coordinates});
+      BoutiqueCoordinatesDataModel coordinates,
+      List<BoutiqueSheduleDataModel> sheduleInfo,
+      Map<int, List<DateTime>> sheduleDateTimeInfo});
 
   @override
   $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates;
@@ -177,6 +195,8 @@ class __$$BoutiqueDataModelImplCopyWithImpl<$Res>
     Object? uidStore = null,
     Object? iconPath = null,
     Object? coordinates = null,
+    Object? sheduleInfo = null,
+    Object? sheduleDateTimeInfo = null,
   }) {
     return _then(_$BoutiqueDataModelImpl(
       fotoMin: null == fotoMin
@@ -219,6 +239,14 @@ class __$$BoutiqueDataModelImplCopyWithImpl<$Res>
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as BoutiqueCoordinatesDataModel,
+      sheduleInfo: null == sheduleInfo
+          ? _value._sheduleInfo
+          : sheduleInfo // ignore: cast_nullable_to_non_nullable
+              as List<BoutiqueSheduleDataModel>,
+      sheduleDateTimeInfo: null == sheduleDateTimeInfo
+          ? _value._sheduleDateTimeInfo
+          : sheduleDateTimeInfo // ignore: cast_nullable_to_non_nullable
+              as Map<int, List<DateTime>>,
     ));
   }
 }
@@ -236,8 +264,12 @@ class _$BoutiqueDataModelImpl extends _BoutiqueDataModel {
       required this.schedule,
       required this.uidStore,
       required this.iconPath,
-      required this.coordinates})
-      : super._();
+      required this.coordinates,
+      required final List<BoutiqueSheduleDataModel> sheduleInfo,
+      required final Map<int, List<DateTime>> sheduleDateTimeInfo})
+      : _sheduleInfo = sheduleInfo,
+        _sheduleDateTimeInfo = sheduleDateTimeInfo,
+        super._();
 
   @override
   final String fotoMin;
@@ -259,10 +291,26 @@ class _$BoutiqueDataModelImpl extends _BoutiqueDataModel {
   final String iconPath;
   @override
   final BoutiqueCoordinatesDataModel coordinates;
+  final List<BoutiqueSheduleDataModel> _sheduleInfo;
+  @override
+  List<BoutiqueSheduleDataModel> get sheduleInfo {
+    if (_sheduleInfo is EqualUnmodifiableListView) return _sheduleInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sheduleInfo);
+  }
+
+  final Map<int, List<DateTime>> _sheduleDateTimeInfo;
+  @override
+  Map<int, List<DateTime>> get sheduleDateTimeInfo {
+    if (_sheduleDateTimeInfo is EqualUnmodifiableMapView)
+      return _sheduleDateTimeInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_sheduleDateTimeInfo);
+  }
 
   @override
   String toString() {
-    return 'BoutiqueDataModel(fotoMin: $fotoMin, url: $url, caption: $caption, name: $name, nameShort: $nameShort, address: $address, schedule: $schedule, uidStore: $uidStore, iconPath: $iconPath, coordinates: $coordinates)';
+    return 'BoutiqueDataModel(fotoMin: $fotoMin, url: $url, caption: $caption, name: $name, nameShort: $nameShort, address: $address, schedule: $schedule, uidStore: $uidStore, iconPath: $iconPath, coordinates: $coordinates, sheduleInfo: $sheduleInfo, sheduleDateTimeInfo: $sheduleDateTimeInfo)';
   }
 
   @override
@@ -284,12 +332,28 @@ class _$BoutiqueDataModelImpl extends _BoutiqueDataModel {
             (identical(other.iconPath, iconPath) ||
                 other.iconPath == iconPath) &&
             (identical(other.coordinates, coordinates) ||
-                other.coordinates == coordinates));
+                other.coordinates == coordinates) &&
+            const DeepCollectionEquality()
+                .equals(other._sheduleInfo, _sheduleInfo) &&
+            const DeepCollectionEquality()
+                .equals(other._sheduleDateTimeInfo, _sheduleDateTimeInfo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fotoMin, url, caption, name,
-      nameShort, address, schedule, uidStore, iconPath, coordinates);
+  int get hashCode => Object.hash(
+      runtimeType,
+      fotoMin,
+      url,
+      caption,
+      name,
+      nameShort,
+      address,
+      schedule,
+      uidStore,
+      iconPath,
+      coordinates,
+      const DeepCollectionEquality().hash(_sheduleInfo),
+      const DeepCollectionEquality().hash(_sheduleDateTimeInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -310,7 +374,9 @@ abstract class _BoutiqueDataModel extends BoutiqueDataModel {
           required final String schedule,
           required final String uidStore,
           required final String iconPath,
-          required final BoutiqueCoordinatesDataModel coordinates}) =
+          required final BoutiqueCoordinatesDataModel coordinates,
+          required final List<BoutiqueSheduleDataModel> sheduleInfo,
+          required final Map<int, List<DateTime>> sheduleDateTimeInfo}) =
       _$BoutiqueDataModelImpl;
   _BoutiqueDataModel._() : super._();
 
@@ -334,6 +400,10 @@ abstract class _BoutiqueDataModel extends BoutiqueDataModel {
   String get iconPath;
   @override
   BoutiqueCoordinatesDataModel get coordinates;
+  @override
+  List<BoutiqueSheduleDataModel> get sheduleInfo;
+  @override
+  Map<int, List<DateTime>> get sheduleDateTimeInfo;
   @override
   @JsonKey(ignore: true)
   _$$BoutiqueDataModelImplCopyWith<_$BoutiqueDataModelImpl> get copyWith =>

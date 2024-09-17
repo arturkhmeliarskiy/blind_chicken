@@ -25,6 +25,7 @@ Future<void> main() async {
     ]);
     AppMetrica.activate(_config);
     AppMetricaPush.activate();
+
     await setupIoc();
 
     FlutterError.onError = (details) async {

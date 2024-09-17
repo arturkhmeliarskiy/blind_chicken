@@ -173,6 +173,28 @@ class _CatalogScreenState extends State<CatalogScreen> {
               _historyPosition = 0;
               Navigator.pop(context);
             }
+            final sharedPreferences = GetIt.I.get<SharedPreferencesService>();
+            bool? isPromotionsForPurchases = sharedPreferences.getBool(
+              key: SharedPrefKeys.isPromotionsForPurchases,
+            );
+
+            if (initState.isPromotionsForPurchases &&
+                (isPromotionsForPurchases == null || isPromotionsForPurchases)) {
+              final sharedPreferences = GetIt.I.get<SharedPreferencesService>();
+              sharedPreferences.setBool(
+                key: SharedPrefKeys.isPromotionsForPurchases,
+                value: false,
+              );
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return BlindChickenPromotionsForPurchases(
+                      onBack: () {
+                        context.popRoute();
+                      },
+                    );
+                  });
+            }
           },
           getSizeProduct: (initState) {
             final updateData = GetIt.I.get<UpdateDataService>();
@@ -397,7 +419,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                           final newsNotificationInfo = widget.newsNotificationInfo;
                                           if (newsNotificationInfo != null) {
                                             context.navigateTo(
-                                              NotficationInfoDescriptionRoute(
+                                              NotificationInfoDescriptionRoute(
                                                 info: newsNotificationInfo,
                                               ),
                                             );
@@ -463,7 +485,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 widget.newsNotificationInfo;
                                             if (newsNotificationInfo != null) {
                                               context.navigateTo(
-                                                NotficationInfoDescriptionRoute(
+                                                NotificationInfoDescriptionRoute(
                                                   info: newsNotificationInfo,
                                                 ),
                                               );
@@ -569,6 +591,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                     codeProduct == initState.products[index].id &&
                                                         initState.isLoadGetSizeProduct,
                                                 sizeProduct: initState.products[index].sz,
+                                                promo: initState.products[index].promo,
+                                                promoValue: initState.products[index].promoValue,
                                               );
                                             }
                                           },

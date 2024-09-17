@@ -33,6 +33,9 @@ mixin _$PriceProductResponse {
   int? get bonusYear => throw _privateConstructorUsedError;
   @JsonKey(name: 'discount_val')
   int? get discountVal => throw _privateConstructorUsedError;
+  String? get promo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'promo_value')
+  int? get promoValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +58,9 @@ abstract class $PriceProductResponseCopyWith<$Res> {
       @JsonKey(name: 'bonus_loyal') int? bonusLoyal,
       @JsonKey(name: 'bonus_gift') int? bonusGift,
       @JsonKey(name: 'bonus_year') int? bonusYear,
-      @JsonKey(name: 'discount_val') int? discountVal});
+      @JsonKey(name: 'discount_val') int? discountVal,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue});
 }
 
 /// @nodoc
@@ -81,6 +86,8 @@ class _$PriceProductResponseCopyWithImpl<$Res,
     Object? bonusGift = freezed,
     Object? bonusYear = freezed,
     Object? discountVal = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
   }) {
     return _then(_value.copyWith(
       p: freezed == p
@@ -119,6 +126,14 @@ class _$PriceProductResponseCopyWithImpl<$Res,
           ? _value.discountVal
           : discountVal // ignore: cast_nullable_to_non_nullable
               as int?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -140,7 +155,9 @@ abstract class _$$PriceProductResponseImplCopyWith<$Res>
       @JsonKey(name: 'bonus_loyal') int? bonusLoyal,
       @JsonKey(name: 'bonus_gift') int? bonusGift,
       @JsonKey(name: 'bonus_year') int? bonusYear,
-      @JsonKey(name: 'discount_val') int? discountVal});
+      @JsonKey(name: 'discount_val') int? discountVal,
+      String? promo,
+      @JsonKey(name: 'promo_value') int? promoValue});
 }
 
 /// @nodoc
@@ -163,6 +180,8 @@ class __$$PriceProductResponseImplCopyWithImpl<$Res>
     Object? bonusGift = freezed,
     Object? bonusYear = freezed,
     Object? discountVal = freezed,
+    Object? promo = freezed,
+    Object? promoValue = freezed,
   }) {
     return _then(_$PriceProductResponseImpl(
       p: freezed == p
@@ -201,6 +220,14 @@ class __$$PriceProductResponseImplCopyWithImpl<$Res>
           ? _value.discountVal
           : discountVal // ignore: cast_nullable_to_non_nullable
               as int?,
+      promo: freezed == promo
+          ? _value.promo
+          : promo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoValue: freezed == promoValue
+          ? _value.promoValue
+          : promoValue // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -217,7 +244,9 @@ class _$PriceProductResponseImpl extends _PriceProductResponse {
       @JsonKey(name: 'bonus_loyal') this.bonusLoyal,
       @JsonKey(name: 'bonus_gift') this.bonusGift,
       @JsonKey(name: 'bonus_year') this.bonusYear,
-      @JsonKey(name: 'discount_val') this.discountVal})
+      @JsonKey(name: 'discount_val') this.discountVal,
+      this.promo,
+      @JsonKey(name: 'promo_value') this.promoValue})
       : super._();
 
   factory _$PriceProductResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -245,10 +274,15 @@ class _$PriceProductResponseImpl extends _PriceProductResponse {
   @override
   @JsonKey(name: 'discount_val')
   final int? discountVal;
+  @override
+  final String? promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  final int? promoValue;
 
   @override
   String toString() {
-    return 'PriceProductResponse(p: $p, pb: $pb, pc: $pc, pbc: $pbc, cashback: $cashback, bonusLoyal: $bonusLoyal, bonusGift: $bonusGift, bonusYear: $bonusYear, discountVal: $discountVal)';
+    return 'PriceProductResponse(p: $p, pb: $pb, pc: $pc, pbc: $pbc, cashback: $cashback, bonusLoyal: $bonusLoyal, bonusGift: $bonusGift, bonusYear: $bonusYear, discountVal: $discountVal, promo: $promo, promoValue: $promoValue)';
   }
 
   @override
@@ -269,13 +303,16 @@ class _$PriceProductResponseImpl extends _PriceProductResponse {
             (identical(other.bonusYear, bonusYear) ||
                 other.bonusYear == bonusYear) &&
             (identical(other.discountVal, discountVal) ||
-                other.discountVal == discountVal));
+                other.discountVal == discountVal) &&
+            (identical(other.promo, promo) || other.promo == promo) &&
+            (identical(other.promoValue, promoValue) ||
+                other.promoValue == promoValue));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, p, pb, pc, pbc, cashback,
-      bonusLoyal, bonusGift, bonusYear, discountVal);
+      bonusLoyal, bonusGift, bonusYear, discountVal, promo, promoValue);
 
   @JsonKey(ignore: true)
   @override
@@ -303,7 +340,9 @@ abstract class _PriceProductResponse extends PriceProductResponse {
           @JsonKey(name: 'bonus_loyal') final int? bonusLoyal,
           @JsonKey(name: 'bonus_gift') final int? bonusGift,
           @JsonKey(name: 'bonus_year') final int? bonusYear,
-          @JsonKey(name: 'discount_val') final int? discountVal}) =
+          @JsonKey(name: 'discount_val') final int? discountVal,
+          final String? promo,
+          @JsonKey(name: 'promo_value') final int? promoValue}) =
       _$PriceProductResponseImpl;
   _PriceProductResponse._() : super._();
 
@@ -332,6 +371,11 @@ abstract class _PriceProductResponse extends PriceProductResponse {
   @override
   @JsonKey(name: 'discount_val')
   int? get discountVal;
+  @override
+  String? get promo;
+  @override
+  @JsonKey(name: 'promo_value')
+  int? get promoValue;
   @override
   @JsonKey(ignore: true)
   _$$PriceProductResponseImplCopyWith<_$PriceProductResponseImpl>

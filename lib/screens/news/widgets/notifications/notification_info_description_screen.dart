@@ -14,8 +14,8 @@ import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
-class NotficationInfoDescriptionScreen extends StatefulWidget {
-  const NotficationInfoDescriptionScreen({
+class NotificationInfoDescriptionScreen extends StatefulWidget {
+  const NotificationInfoDescriptionScreen({
     super.key,
     required this.info,
   });
@@ -23,10 +23,11 @@ class NotficationInfoDescriptionScreen extends StatefulWidget {
   final NotificationInfoItemDataModel info;
 
   @override
-  State<NotficationInfoDescriptionScreen> createState() => _NotficationInfoDescriptionScreenState();
+  State<NotificationInfoDescriptionScreen> createState() =>
+      _NotificationInfoDescriptionScreenState();
 }
 
-class _NotficationInfoDescriptionScreenState extends State<NotficationInfoDescriptionScreen> {
+class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDescriptionScreen> {
   bool _isFullScreenVideo = false;
   bool _isSwipe = true;
 

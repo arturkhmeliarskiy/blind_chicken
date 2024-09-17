@@ -328,6 +328,8 @@ extension on CatalogSearchInfoResponse {
                     )
                     .isNotEmpty,
                 sz: [],
+                promo: item.promo ?? '',
+                promoValue: item.promoValue ?? 0,
               ),
             ) ??
             [],
@@ -389,6 +391,8 @@ extension on CatalogSearchResponse {
                     )
                     .isNotEmpty,
                 sz: [],
+                promo: item.promo ?? '',
+                promoValue: item.promoValue ?? 0,
               ),
             ) ??
             [],
@@ -465,6 +469,8 @@ extension on List<ProductResponse> {
           isYourPriceDisplayed: false,
           isShop: false,
           sz: [],
+          promo: '',
+          promoValue: 0,
         ),
       ),
     );
@@ -522,6 +528,8 @@ extension on List<ProductFavouriteModel> {
           identifierAddProductToShoppingCart: item.identifierAddProductToShoppingCart,
           sectionCategoriesPath: item.sectionCategoriesPath,
           productCategoriesPath: item.productCategoriesPath,
+          promo: item.promo,
+          promoValue: item.promoValue,
         ),
       ),
     );
@@ -635,6 +643,8 @@ extension on ProductDataModel {
       identifierAddProductToShoppingCart: identifierAddProductToShoppingCart ?? '',
       sectionCategoriesPath: sectionCategoriesPath ?? [],
       productCategoriesPath: productCategoriesPath ?? [],
+      promo: promo,
+      promoValue: promoValue,
     );
   }
 }
@@ -714,39 +724,43 @@ extension on CatalogResponse {
           []),
       products: List<ProductDataModel>.from(products?.map(
             (item) => ProductDataModel(
-                id: int.parse(item.c ?? '0'),
-                title: item.n ?? '',
-                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
-                brend: item.b ?? '',
-                category: item.n ?? '',
-                size: [],
-                pb: int.parse(item.pb ?? '0'),
-                lensDiameter: 0,
-                price: int.parse(item.p ?? '0'),
-                templeLength: 0,
-                country: '',
-                isShop: basketInfo.basket
-                    .where(
-                      (element) => element.code == (item.c ?? ''),
-                    )
-                    .isNotEmpty,
-                variants: [],
-                maximumCashback: item.ca ?? 0,
-                maximumPersonalDiscount: item.dv ?? 0,
-                yourPrice: item.pc ?? 0,
-                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
-                sz: List<CatalogSizeProductDataModel>.from(item.sz?.map((element) {
-                      return CatalogSizeProductDataModel(
-                        id: element.id ?? '',
-                        name: element.name ?? '',
-                      );
-                    }) ??
-                    [])),
+              id: int.parse(item.c ?? '0'),
+              title: item.n ?? '',
+              images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+              brend: item.b ?? '',
+              category: item.n ?? '',
+              size: [],
+              pb: int.parse(item.pb ?? '0'),
+              lensDiameter: 0,
+              price: int.parse(item.p ?? '0'),
+              templeLength: 0,
+              country: '',
+              isShop: basketInfo.basket
+                  .where(
+                    (element) => element.code == (item.c ?? ''),
+                  )
+                  .isNotEmpty,
+              variants: [],
+              maximumCashback: item.ca ?? 0,
+              maximumPersonalDiscount: item.dv ?? 0,
+              yourPrice: item.pc ?? 0,
+              isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+              sz: List<CatalogSizeProductDataModel>.from(item.sz?.map((element) {
+                    return CatalogSizeProductDataModel(
+                      id: element.id ?? '',
+                      name: element.name ?? '',
+                    );
+                  }) ??
+                  []),
+              promo: item.promo ?? '',
+              promoValue: item.promoValue ?? 0,
+            ),
           ) ??
           []),
       r: r ?? '',
       e: e ?? '',
       errorMessage: errorMessage ?? '',
+      discountFirstMobile: discountFirstMobile ?? 0,
     );
   }
 }
@@ -872,6 +886,8 @@ extension on DetailProductResponse {
         isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
         isShop: skuToSoppingCart.isNotEmpty,
         sz: [],
+        promo: price?.promo ?? '',
+        promoValue: price?.promoValue ?? 0,
       ),
       price: PriceProductDataModel(
         p: price?.p ?? '0',
@@ -949,6 +965,8 @@ extension on AdditionalProductsDescriptionResponse {
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
                 isShop: false,
                 sz: [],
+                promo: item.promo ?? '',
+                promoValue: item.promoValue ?? 0,
               );
             }) ??
             [],

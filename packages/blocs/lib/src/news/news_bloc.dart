@@ -35,6 +35,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         paginationNotifications: (event) => _paginationNotifications(event, emit),
         getNewsDescriptionInfo: (event) => _getNewsDescriptionInfo(event, emit),
         getMediaDescriptionInfo: (event) => _getMediaDescriptionInfo(event, emit),
+        getNotificationDescriptionInfo: (event) => _getNotificationDescriptionInfo(event, emit),
         goBackNewsInfo: (event) => _goBackNewsInfo(event, emit),
       ),
     );
@@ -288,6 +289,50 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         offsetMedia: 1,
         offsetNotificatios: 1,
         oneMedia: oneMedia,
+        listNewsPath: [],
+        isNotification: true,
+        isUpdateVersionApp: isUpdateVersionApp,
+      ),
+    );
+  }
+
+  Future<void> _getNotificationDescriptionInfo(
+    GetNotificationDescriptionInfoNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    emit(const NewsState.load());
+    String appStoreInfoVersion = '';
+    bool isUpdateVersionApp = false;
+
+    final oneNotifcation = await _newsRepository.getOneNotifcation(
+      id: event.id,
+      messageId: event.messageId,
+    );
+
+    final result = await _storeVersionAppRepository.getStoreVersion();
+    if (Platform.isIOS) {
+      appStoreInfoVersion = result.version.ios;
+    }
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    if (appStoreInfoVersion.isNotEmpty) {
+      final appStoreVersion = int.parse((appStoreInfoVersion).replaceAll('.', ''));
+      final packageInfoVersion = int.parse(packageInfo.version.replaceAll('.', ''));
+      if (appStoreVersion > packageInfoVersion) {
+        isUpdateVersionApp = true;
+      }
+    }
+
+    emit(
+      NewsState.preloadDataCompleted(
+        news: _news,
+        media: _media,
+        notificatios: _notificatios,
+        offsetNews: 1,
+        offsetMedia: 1,
+        offsetNotificatios: 1,
+        oneNotification: oneNotifcation,
         listNewsPath: [],
         isNotification: true,
         isUpdateVersionApp: isUpdateVersionApp,

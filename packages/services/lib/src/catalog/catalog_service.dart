@@ -191,6 +191,7 @@ class CatalogService {
           "url": request.url ?? '',
           "sort": request.sort,
           "proverka_zreniya": 1,
+          "discount_first_mobile": 1,
           if (messageId != null)
             "push_open": {
               "message_id": messageId,
@@ -326,6 +327,7 @@ class CatalogService {
           "tel": tel,
           "hash_token_tel": hashTokenTel,
           "code": code,
+          "discount_first_mobile": 1,
           if (messageId != null)
             "push_open": {
               "message_id": messageId,
@@ -565,6 +567,7 @@ class CatalogService {
           "tel": tel,
           "hash_token_tel": hashTokenTel,
           "search": request.query,
+          "discount_first_mobile": 1,
         },
       );
       log(response.data);

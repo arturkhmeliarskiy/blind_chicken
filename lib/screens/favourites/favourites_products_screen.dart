@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/catalog/catalog_card_item.dart';
@@ -535,6 +534,10 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                                     .favouritesProducts[index].id &&
                                                             initState.isLoadGetSizeProduct,
                                                     sizeProduct: const [],
+                                                    promo:
+                                                        initState.favouritesProducts[index].promo,
+                                                    promoValue: initState
+                                                        .favouritesProducts[index].promoValue,
                                                   );
                                                 }),
                                               ),

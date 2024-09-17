@@ -83,6 +83,8 @@ class CatalogListProducts extends StatelessWidget {
               listSize: initState.listSize,
               isLoad: codeProduct == initState.products[index].id && initState.isLoadGetSizeProduct,
               sizeProduct: const [],
+              promo: initState.products[index].promo,
+              promoValue: initState.products[index].promoValue,
             );
           },
         ));

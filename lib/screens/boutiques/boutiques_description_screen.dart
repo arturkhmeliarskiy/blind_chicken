@@ -128,7 +128,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                 final newsNotificationInfo = widget.newsNotificationInfo;
                 if (newsNotificationInfo != null) {
                   context.navigateTo(
-                    NotficationInfoDescriptionRoute(
+                    NotificationInfoDescriptionRoute(
                       info: newsNotificationInfo,
                     ),
                   );
@@ -178,7 +178,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                   final newsNotificationInfo = widget.newsNotificationInfo;
                   if (newsNotificationInfo != null) {
                     context.navigateTo(
-                      NotficationInfoDescriptionRoute(
+                      NotificationInfoDescriptionRoute(
                         info: newsNotificationInfo,
                       ),
                     );
@@ -323,6 +323,8 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                                                             latitude: 0,
                                                             longitude: 0,
                                                           ),
+                                                  sheduleInfo: [],
+                                                  sheduleDateTimeInfo: {},
                                                 ),
                                               ),
                                             );

@@ -20,10 +20,12 @@ class GiftYandexMapScreen extends StatefulWidget {
     super.key,
     required this.onMapPoint,
     required this.point,
+    required this.route,
   });
 
   final ValueChanged<BoutiqueDataModel> onMapPoint;
   final BoutiqueDataModel point;
+  final PageRouteInfo<dynamic> route;
 
   @override
   State<GiftYandexMapScreen> createState() => _GiftYandexMapScreenState();
@@ -102,10 +104,12 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
                 uidStore: boutiques[index].uidStore,
                 coordinates: boutiques[index].coordinates,
                 iconPath: boutiques[index].iconPath,
+                sheduleInfo: boutiques[index].sheduleInfo,
+                sheduleDateTimeInfo: boutiques[index].sheduleDateTimeInfo,
               ),
               onMoreDetailed: () {
                 widget.onMapPoint(boutiques[index]);
-                context.navigateTo(GiftCardRoute());
+                context.navigateTo(widget.route);
               },
             );
           },
@@ -473,7 +477,7 @@ class _GiftYandexMapScreenState extends State<GiftYandexMapScreen> {
               point: boutiques[i],
               onMoreDetailed: () {
                 widget.onMapPoint(boutiques[i]);
-                context.navigateTo(GiftCardRoute());
+                context.navigateTo(widget.route);
               },
             );
           },

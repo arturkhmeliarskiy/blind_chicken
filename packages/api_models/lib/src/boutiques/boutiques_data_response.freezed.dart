@@ -35,6 +35,9 @@ mixin _$BoutiquesDataResponse {
   @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
   BoutiqueCoordinatesResponse? get coordinates =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'schedule_json')
+  List<BoutiqueSheduleResponse>? get scheduleInfo =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +61,9 @@ abstract class $BoutiquesDataResponseCopyWith<$Res> {
       String? schedule,
       @JsonKey(name: 'uid_store') String? uidStore,
       @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
-      BoutiqueCoordinatesResponse? coordinates});
+      BoutiqueCoordinatesResponse? coordinates,
+      @JsonKey(name: 'schedule_json')
+      List<BoutiqueSheduleResponse>? scheduleInfo});
 
   $BoutiqueCoordinatesResponseCopyWith<$Res>? get coordinates;
 }
@@ -86,6 +91,7 @@ class _$BoutiquesDataResponseCopyWithImpl<$Res,
     Object? schedule = freezed,
     Object? uidStore = freezed,
     Object? coordinates = freezed,
+    Object? scheduleInfo = freezed,
   }) {
     return _then(_value.copyWith(
       fotoMin: freezed == fotoMin
@@ -124,6 +130,10 @@ class _$BoutiquesDataResponseCopyWithImpl<$Res,
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as BoutiqueCoordinatesResponse?,
+      scheduleInfo: freezed == scheduleInfo
+          ? _value.scheduleInfo
+          : scheduleInfo // ignore: cast_nullable_to_non_nullable
+              as List<BoutiqueSheduleResponse>?,
     ) as $Val);
   }
 
@@ -160,7 +170,9 @@ abstract class _$$BoutiquesDataResponseImplCopyWith<$Res>
       String? schedule,
       @JsonKey(name: 'uid_store') String? uidStore,
       @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
-      BoutiqueCoordinatesResponse? coordinates});
+      BoutiqueCoordinatesResponse? coordinates,
+      @JsonKey(name: 'schedule_json')
+      List<BoutiqueSheduleResponse>? scheduleInfo});
 
   @override
   $BoutiqueCoordinatesResponseCopyWith<$Res>? get coordinates;
@@ -187,6 +199,7 @@ class __$$BoutiquesDataResponseImplCopyWithImpl<$Res>
     Object? schedule = freezed,
     Object? uidStore = freezed,
     Object? coordinates = freezed,
+    Object? scheduleInfo = freezed,
   }) {
     return _then(_$BoutiquesDataResponseImpl(
       fotoMin: freezed == fotoMin
@@ -225,6 +238,10 @@ class __$$BoutiquesDataResponseImplCopyWithImpl<$Res>
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
               as BoutiqueCoordinatesResponse?,
+      scheduleInfo: freezed == scheduleInfo
+          ? _value._scheduleInfo
+          : scheduleInfo // ignore: cast_nullable_to_non_nullable
+              as List<BoutiqueSheduleResponse>?,
     ));
   }
 }
@@ -242,8 +259,11 @@ class _$BoutiquesDataResponseImpl extends _BoutiquesDataResponse {
       this.schedule,
       @JsonKey(name: 'uid_store') this.uidStore,
       @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
-      this.coordinates})
-      : super._();
+      this.coordinates,
+      @JsonKey(name: 'schedule_json')
+      final List<BoutiqueSheduleResponse>? scheduleInfo})
+      : _scheduleInfo = scheduleInfo,
+        super._();
 
   factory _$BoutiquesDataResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$BoutiquesDataResponseImplFromJson(json);
@@ -270,10 +290,20 @@ class _$BoutiquesDataResponseImpl extends _BoutiquesDataResponse {
   @override
   @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
   final BoutiqueCoordinatesResponse? coordinates;
+  final List<BoutiqueSheduleResponse>? _scheduleInfo;
+  @override
+  @JsonKey(name: 'schedule_json')
+  List<BoutiqueSheduleResponse>? get scheduleInfo {
+    final value = _scheduleInfo;
+    if (value == null) return null;
+    if (_scheduleInfo is EqualUnmodifiableListView) return _scheduleInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'BoutiquesDataResponse(fotoMin: $fotoMin, url: $url, caption: $caption, name: $name, nameShort: $nameShort, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates)';
+    return 'BoutiquesDataResponse(fotoMin: $fotoMin, url: $url, caption: $caption, name: $name, nameShort: $nameShort, address: $address, schedule: $schedule, uidStore: $uidStore, coordinates: $coordinates, scheduleInfo: $scheduleInfo)';
   }
 
   @override
@@ -293,13 +323,25 @@ class _$BoutiquesDataResponseImpl extends _BoutiquesDataResponse {
             (identical(other.uidStore, uidStore) ||
                 other.uidStore == uidStore) &&
             (identical(other.coordinates, coordinates) ||
-                other.coordinates == coordinates));
+                other.coordinates == coordinates) &&
+            const DeepCollectionEquality()
+                .equals(other._scheduleInfo, _scheduleInfo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, fotoMin, url, caption, name,
-      nameShort, address, schedule, uidStore, coordinates);
+  int get hashCode => Object.hash(
+      runtimeType,
+      fotoMin,
+      url,
+      caption,
+      name,
+      nameShort,
+      address,
+      schedule,
+      uidStore,
+      coordinates,
+      const DeepCollectionEquality().hash(_scheduleInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -327,7 +369,9 @@ abstract class _BoutiquesDataResponse extends BoutiquesDataResponse {
           final String? schedule,
           @JsonKey(name: 'uid_store') final String? uidStore,
           @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
-          final BoutiqueCoordinatesResponse? coordinates}) =
+          final BoutiqueCoordinatesResponse? coordinates,
+          @JsonKey(name: 'schedule_json')
+          final List<BoutiqueSheduleResponse>? scheduleInfo}) =
       _$BoutiquesDataResponseImpl;
   _BoutiquesDataResponse._() : super._();
 
@@ -356,6 +400,9 @@ abstract class _BoutiquesDataResponse extends BoutiquesDataResponse {
   @override
   @JsonKey(name: 'coordinates', fromJson: _convertCoordinates)
   BoutiqueCoordinatesResponse? get coordinates;
+  @override
+  @JsonKey(name: 'schedule_json')
+  List<BoutiqueSheduleResponse>? get scheduleInfo;
   @override
   @JsonKey(ignore: true)
   _$$BoutiquesDataResponseImplCopyWith<_$BoutiquesDataResponseImpl>

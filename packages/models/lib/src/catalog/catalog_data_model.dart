@@ -21,5 +21,6 @@ class CatalogDataModel with _$CatalogDataModel {
     required String r,
     required String e,
     required String errorMessage,
+    required int discountFirstMobile,
   }) = _CatalogDataModel;
 }

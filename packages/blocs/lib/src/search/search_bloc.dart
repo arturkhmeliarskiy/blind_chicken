@@ -900,6 +900,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isYourPriceDisplayed: items.first.isYourPriceDisplayed,
           isShop: true,
           sz: [],
+          promo: '',
+          promoValue: 0,
         );
 
         listProducts[index] = product;

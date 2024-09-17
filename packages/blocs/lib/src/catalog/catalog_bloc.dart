@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:decimal/decimal.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
@@ -112,12 +113,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           seconds: 3,
         ),
       );
-      const mc = MethodChannel('blind_chicken/getToken');
-      pushToken = await mc.invokeMethod('getDeviceToken');
+      final tokens = await AppMetricaPush.getTokens();
+      pushToken = tokens['apns'] ?? '';
+
       _sharedPreferencesService.setString(
         key: SharedPrefKeys.pushToken,
         value: pushToken,
       );
+      AppMetricaStringAttribute.withValue('pushToken', pushToken);
       log('push token app bloc: $pushToken');
     }
 
@@ -134,6 +137,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         key: SharedPrefKeys.pushToken,
         value: pushToken,
       );
+      AppMetricaStringAttribute.withValue('pushToken', pushToken);
       log('push token app bloc: $pushToken');
     }
 
@@ -211,6 +215,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     FilterNotifcationDataModel? filterNotifcation;
     PushNotificationMessageDataModel? notitcationMessage;
     String appStoreInfoVersion = '';
+    String type = '';
+    String section = '';
+    String idMessage = '';
+    String sort = '';
+    String uid = '';
+    String codeProduct = '';
+    String idNews = '';
 
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
@@ -264,52 +275,82 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
     allBrands.sort();
 
-    const me = MethodChannel('blind_chicken/getMessages');
     if (Platform.isIOS) {
-      final type = await me.invokeMethod('type') as String;
-      if (type.isNotEmpty) {
-        final section = await me.invokeMethod('section') as String;
-        final idMessage = await me.invokeMethod('idMessage') as String;
-        final sort = await me.invokeMethod('sort') as String;
-        final uid = await me.invokeMethod('uid') as String;
-        final codeProduct = await me.invokeMethod('codeProduct') as String;
-        if (section.isNotEmpty) {
-          filterNotifcation = _filterService.converterNotificationInfo(value: section);
+      const platform = MethodChannel('blind_chicken/getMessages');
+      const platformAppMetrica = MethodChannel('blind_chicken/getMessagesAppMetrica');
+      final appMetrica = await platformAppMetrica.invokeMethod('appMetrica') as String;
+      if (appMetrica.isNotEmpty) {
+        final info = jsonDecode(appMetrica) as Map;
+        type = info['type'] as String;
+        section = info['section'] as String;
+        idMessage = info['id_message'] as String;
+        sort = info['sort'] as String;
+        uid = info['uid'] as String;
+        codeProduct = info['code_product'] as String;
+        idNews = info['id_news'] as String;
+      } else {
+        type = await platform.invokeMethod('type') as String;
+        if (type.isNotEmpty) {
+          section = await platform.invokeMethod('section') as String;
+          idMessage = await platform.invokeMethod('idMessage') as String;
+          sort = await platform.invokeMethod('sort') as String;
+          uid = await platform.invokeMethod('uid') as String;
+          codeProduct = await platform.invokeMethod('codeProduct') as String;
+          idNews = await platform.invokeMethod('idNews') as String;
         }
-
-        final idNews = await me.invokeMethod('idNews') as String;
-        notitcationMessage = PushNotificationMessageDataModel(
-          section: filterNotifcation?.url ?? '',
-          idMessage: idMessage,
-          type: type,
-          sort: sort,
-          uid: uid,
-          filterNotifcation: filterNotifcation ??
-              FilterNotifcationDataModel(
-                url: '',
-                filter: [],
-                fullFilter: [],
-              ),
-          codeProduct: codeProduct,
-          idNews: idNews,
-        );
       }
+    } else {
+      const platform = MethodChannel('appmetrica.push.notification');
+      final message = (await platform.invokeMethod('message') ?? '') as String;
+      if (message.isNotEmpty) {
+        final info = jsonDecode(message) as Map;
+        type = info['type'] as String;
+        section = info['section'] as String;
+        idMessage = info['id_message'] as String;
+        sort = info['sort'] as String;
+        uid = info['uid'] as String;
+        codeProduct = info['code_product'] as String;
+        idNews = info['id_news'] as String;
+      }
+    }
+
+    if (type.isNotEmpty) {
+      if (section.isNotEmpty) {
+        filterNotifcation = _filterService.converterNotificationInfo(value: section);
+      }
+      notitcationMessage = PushNotificationMessageDataModel(
+        section: filterNotifcation?.url ?? '',
+        idMessage: idMessage,
+        type: type,
+        sort: sort,
+        uid: uid,
+        filterNotifcation: filterNotifcation ??
+            FilterNotifcationDataModel(
+              url: '',
+              filter: [],
+              fullFilter: [],
+            ),
+        codeProduct: codeProduct,
+        idNews: idNews,
+      );
     }
 
     if (Platform.isAndroid) {
       final message = await FirebaseMessaging.instance.getInitialMessage();
-      final filterNotifcation =
-          _filterService.converterNotificationInfo(value: message?.data['section'] ?? '');
-      notitcationMessage = PushNotificationMessageDataModel(
-        uid: message?.data['uid'] ?? '',
-        section: filterNotifcation.url,
-        idMessage: message?.data['id_message'] ?? '',
-        type: message?.data['type'] ?? '',
-        sort: message?.data['sort'] ?? '',
-        filterNotifcation: filterNotifcation,
-        codeProduct: message?.data['code_product'] ?? '',
-        idNews: message?.data['id_news'] ?? '',
-      );
+      if (message?.data.isNotEmpty ?? false) {
+        final filterNotifcation =
+            _filterService.converterNotificationInfo(value: message?.data['section'] ?? '');
+        notitcationMessage = PushNotificationMessageDataModel(
+          uid: message?.data['uid'] ?? '',
+          section: filterNotifcation.url,
+          idMessage: message?.data['id_message'] ?? '',
+          type: message?.data['type'] ?? '',
+          sort: message?.data['sort'] ?? '',
+          filterNotifcation: filterNotifcation,
+          codeProduct: message?.data['code_product'] ?? '',
+          idNews: message?.data['id_news'] ?? '',
+        );
+      }
     }
 
     if (menu.errorMessage.isNotEmpty ||
@@ -358,6 +399,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           userDiscount: 0,
           isOpenGetSizeProduct: false,
           isButtonTop: false,
+          isPromotionsForPurchases: false,
         ),
       );
     }
@@ -959,6 +1001,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         userDiscount: catalogInfo.userDiscount,
         offset: 1,
         isButtonTop: false,
+        isPromotionsForPurchases: catalogInfo.discountFirstMobile == 1,
       ));
     });
   }
@@ -1147,6 +1190,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         userDiscount: catalogInfo.userDiscount,
         isOpenGetSizeProduct: false,
         isButtonTop: false,
+        isPromotionsForPurchases: false,
       ),
     );
   }
@@ -1907,6 +1951,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           isYourPriceDisplayed: items.first.isYourPriceDisplayed,
           isShop: true,
           sz: [],
+          promo: '',
+          promoValue: 0,
         );
 
         listProducts[index] = product;

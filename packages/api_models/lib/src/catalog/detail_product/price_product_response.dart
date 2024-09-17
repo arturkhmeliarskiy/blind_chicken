@@ -16,6 +16,8 @@ class PriceProductResponse with _$PriceProductResponse {
     @JsonKey(name: 'bonus_gift') int? bonusGift,
     @JsonKey(name: 'bonus_year') int? bonusYear,
     @JsonKey(name: 'discount_val') int? discountVal,
+    String? promo,
+    @JsonKey(name: 'promo_value') int? promoValue,
   }) = _PriceProductResponse;
   factory PriceProductResponse.fromJson(Map<String, dynamic> json) =>
       _$PriceProductResponseFromJson(json);

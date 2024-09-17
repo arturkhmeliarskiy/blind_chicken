@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:appmetrica_push_plugin/appmetrica_push_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/login/login_phone_screen.dart';
@@ -16,8 +17,6 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
-
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 @RoutePage()
 class DashboardPage extends StatefulWidget {
@@ -99,7 +98,7 @@ class _DashboardPageState extends State<DashboardPage> {
         context: context,
         useRootNavigator: false,
         barrierDismissible: false,
-        barrierColor: BlindChickenColors.activeBorderTextField.withOpacity(0.4),
+        barrierColor: Colors.transparent,
         pageBuilder: (context, __, ___) {
           return SafeArea(
             child: Column(
@@ -142,9 +141,8 @@ class _DashboardPageState extends State<DashboardPage> {
           seconds: 3,
         ),
       );
-      const mc = MethodChannel('blind_chicken/getToken');
-      deviceToken = await mc.invokeMethod('getDeviceToken');
-      log("push token: ${deviceToken ?? ''}");
+      final result = await AppMetricaPush.getTokens();
+      log("push token: ${result['apns'] ?? ''}");
     }
   }
 

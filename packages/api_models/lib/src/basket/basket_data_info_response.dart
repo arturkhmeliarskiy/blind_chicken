@@ -19,6 +19,8 @@ class BasketDataInfoResponse with _$BasketDataInfoResponse {
     BasketBrandResponse? brand,
     BasketCategoryResponse? category,
     @JsonKey(name: 'name_view') String? nameView,
+    String? promo,
+    @JsonKey(name: 'promo_value') int? promoValue,
   }) = _BasketDataInfoResponse;
   factory BasketDataInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$BasketDataInfoResponseFromJson(json);
