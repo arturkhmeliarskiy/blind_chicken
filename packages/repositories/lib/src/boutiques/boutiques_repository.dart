@@ -169,6 +169,7 @@ extension on AppointmentVisionCheckResponse {
 Map<int, List<DateTime>> _converSheduleTime(List<BoutiqueSheduleDataModel> sheduleInfo) {
   Map<int, List<DateTime>> result = {};
   List<DateTime> shedule = [];
+
   for (int i = 0; i < sheduleInfo.length; i++) {
     for (int j = sheduleInfo[i].s; j < sheduleInfo[i].e; j++) {
       shedule.add(DateTime(0, 0, 0, j));

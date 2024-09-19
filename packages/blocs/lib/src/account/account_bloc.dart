@@ -306,7 +306,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             key: SharedPrefKeys.deviceId,
           ) ??
           '';
+      bool isPromotionsForPurchases = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.isPromotionsForPurchases,
+          ) ??
+          false;
       String deviceid = deviceId;
+      bool ispromotionsForPurchases = isPromotionsForPurchases;
       _sharedPreferencesService.clear();
       _sharedPreferencesService.setBool(
         key: SharedPrefKeys.appInstalled,
@@ -315,6 +320,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       _sharedPreferencesService.setString(
         key: SharedPrefKeys.deviceId,
         value: deviceid,
+      );
+      _sharedPreferencesService.setBool(
+        key: SharedPrefKeys.isPromotionsForPurchases,
+        value: ispromotionsForPurchases,
       );
       _catalogRepository.deleteAllShoppingProducts();
       _catalogRepository.deleteAllFavouritesProducts();
@@ -328,7 +337,16 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     RemoveAccountEvent event,
     Emitter<AccountState> emit,
   ) async {
+    bool isPromotionsForPurchases = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.isPromotionsForPurchases,
+        ) ??
+        false;
+    bool ispromotionsForPurchases = isPromotionsForPurchases;
     _sharedPreferencesService.clear();
+    _sharedPreferencesService.setBool(
+      key: SharedPrefKeys.isPromotionsForPurchases,
+      value: ispromotionsForPurchases,
+    );
     _sharedPreferencesService.setBool(
       key: SharedPrefKeys.appInstalled,
       value: true,

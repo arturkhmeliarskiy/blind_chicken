@@ -29,10 +29,12 @@ class BoutiquesService {
       log(_dio.options.headers.toString());
       final response = await _dio.post(
         '/local/service/app/store_list.php',
+        queryParameters: {
+          if (optic != null) "optic": optic,
+        },
         data: {
           "token": token,
           "hash_token": hashToken,
-          if (optic != null) "optic": optic,
         },
       );
       log(response.data);

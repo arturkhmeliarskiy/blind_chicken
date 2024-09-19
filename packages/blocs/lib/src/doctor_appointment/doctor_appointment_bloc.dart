@@ -41,7 +41,7 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     int j = 0;
     List<DateTime> dateTime = [];
     DateTime dateTimeNow = DateTime.now();
-    final boutiques = await _boutiquesRepository.getBoutiques();
+    final boutiques = await _boutiquesRepository.getBoutiques(optic: 1);
     _updateDataService.boutiques = boutiques.data;
 
     final sheduleDateTimeInfo =
@@ -49,7 +49,25 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
 
     for (int i = 0; i < sheduleDateTimeInfo.length; i++) {
       if (dateTime.length < 8) {
-        dateTime.add(sheduleDateTimeInfo[i]);
+        if (sheduleDateTimeInfo[i].hour > dateTimeNow.hour) {
+          dateTime.add(
+            dateTimeNow.copyWith(
+              hour: sheduleDateTimeInfo[i].hour,
+              minute: sheduleDateTimeInfo[i].minute,
+            ),
+          );
+        } else {
+          if (sheduleDateTimeInfo[i].hour == dateTimeNow.hour &&
+              sheduleDateTimeInfo[i].minute > dateTimeNow.minute) {
+            dateTime.add(
+              dateTimeNow.copyWith(
+                hour: sheduleDateTimeInfo[i].hour,
+                minute: sheduleDateTimeInfo[i].minute,
+              ),
+            );
+          }
+        }
+
         time[j] = dateTime;
       } else {
         j++;
@@ -107,6 +125,7 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     Emitter<AppointmentState> emit,
   ) async {
     state.mapOrNull(preloadDataCompleted: (initState) {
+      DateTime dateTimeNow = DateTime.now();
       Map<int, List<DateTime>> time = {};
       int j = 0;
       List<DateTime> dateTime = [];
@@ -116,7 +135,29 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
 
       for (int i = 0; i < sheduleDateTimeInfo.length; i++) {
         if (dateTime.length < 8) {
-          dateTime.add(sheduleDateTimeInfo[i]);
+          DateTime sheduleDateTime = sheduleDateTimeInfo[i];
+          sheduleDateTime = DateTime(
+            event.selectDateTime.year,
+            event.selectDateTime.month,
+            event.selectDateTime.day,
+            sheduleDateTimeInfo[i].hour,
+            sheduleDateTimeInfo[i].minute,
+          );
+
+          if (sheduleDateTime.month == dateTimeNow.month &&
+              sheduleDateTime.day == dateTimeNow.day) {
+            if (sheduleDateTime.hour > dateTimeNow.hour) {
+              dateTime.add(sheduleDateTime);
+            } else {
+              if (sheduleDateTime.hour == dateTimeNow.hour &&
+                  sheduleDateTime.minute > dateTimeNow.minute) {
+                dateTime.add(sheduleDateTime);
+              }
+            }
+          } else {
+            dateTime.add(sheduleDateTime);
+          }
+
           time[j] = dateTime;
         } else {
           j++;
