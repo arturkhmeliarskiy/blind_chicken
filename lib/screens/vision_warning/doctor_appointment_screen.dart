@@ -54,87 +54,89 @@ class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreen> {
         return state.maybeMap(
           preloadDataCompleted: (initState) {
             return SafeArea(
-              child: Padding(
+              child: ListView(
                 padding: const EdgeInsets.only(left: 32, right: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Запись на проверку зрения',
-                          style: Theme.of(context).textTheme.titleSmall,
+                children: [
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Запись на проверку зрения',
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.navigateTo(VisionWarningRoute());
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 24),
+                          child: SvgPicture.asset(
+                            'assets/icons/x.svg',
+                            height: 28,
+                            width: 28,
+                          ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            context.navigateTo(VisionWarningRoute());
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 21,
+                  ),
+                  Text(
+                    'Выберите бутик:',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  const SizedBox(
+                    height: 10.5,
+                  ),
+                  DoctorAppointmentEditDeliveryInfo(
+                    mapPoint: initState.selectBoutique,
+                    onEditAddress: () {
+                      context.navigateTo(
+                        GiftYandexMapRoute(
+                          onMapPoint: (value) {
+                            context.read<AppointmentBloc>().add(
+                                  AppointmentEvent.selectBoutique(selectBoutique: value),
+                                );
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 24),
-                            child: SvgPicture.asset(
-                              'assets/icons/x.svg',
-                              height: 28,
-                              width: 28,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 21,
-                    ),
-                    Text(
-                      'Выберите бутик:',
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    const SizedBox(
-                      height: 10.5,
-                    ),
-                    DoctorAppointmentEditDeliveryInfo(
-                      mapPoint: initState.selectBoutique,
-                      onEditAddress: () {
-                        context.navigateTo(
-                          GiftYandexMapRoute(
-                            onMapPoint: (value) {
-                              context.read<AppointmentBloc>().add(
-                                    AppointmentEvent.selectBoutique(selectBoutique: value),
-                                  );
-                            },
-                            point: initState.selectBoutique,
-                            route: const DoctorAppointmentRoute(),
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    Text(
-                      'Выберите дату:',
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    DoctorAppointmentCalendar(
-                      selectDateTime: initState.selectDateTime,
-                      onSelectDate: (date) {
-                        context.read<AppointmentBloc>().add(
-                              AppointmentEvent.selectDateTime(selectDateTime: date),
-                            );
-                      },
-                    ),
-                    const SizedBox(
-                      height: 7,
-                    ),
-                    Text(
-                      'Выберите время:',
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    const SizedBox(
-                      height: 10.5,
-                    ),
+                          point: initState.selectBoutique,
+                          route: const DoctorAppointmentRoute(),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 28,
+                  ),
+                  Text(
+                    'Выберите дату:',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  DoctorAppointmentCalendar(
+                    selectDateTime: initState.selectDateTime,
+                    onSelectDate: (date) {
+                      context.read<AppointmentBloc>().add(
+                            AppointmentEvent.selectDateTime(selectDateTime: date),
+                          );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  Text(
+                    'Выберите время:',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  const SizedBox(
+                    height: 10.5,
+                  ),
+                  if (initState.time.isNotEmpty)
                     DoctorAppointmentTime(
                       onUpdateTime: (time) {
                         context.read<AppointmentBloc>().add(
@@ -142,61 +144,82 @@ class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreen> {
                             );
                       },
                       time: initState.time,
-                    ),
-                    const SizedBox(
-                      height: 28,
-                    ),
-                    Row(
+                    )
+                  else
+                    Column(
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            context.navigateTo(VisionWarningRoute());
-                          },
-                          child: Container(
-                            height: 44,
-                            width: 82,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(
-                                color: BlindChickenColors.activeBorderTextField,
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          'На сегодня запись завершена. Пожалуйста, выберите другую дату.',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.removeFilter,
                               ),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Отмена',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                          ),
+                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(
-                          width: 18,
+                          height: 15,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                      ],
+                    ),
+                  const SizedBox(
+                    height: 28,
+                  ),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.navigateTo(VisionWarningRoute());
+                        },
+                        child: Container(
+                          height: 44,
+                          width: 82,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(
+                              color: BlindChickenColors.activeBorderTextField,
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Отмена',
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 18,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          if (initState.time.isNotEmpty) {
                             context
                                 .read<AppointmentBloc>()
                                 .add(const AppointmentEvent.createDoctorAppointment());
-                          },
-                          child: Container(
-                            height: 44,
-                            width: 167,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: BlindChickenColors.activeBorderTextField,
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Подтвердить запись',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    color: BlindChickenColors.backgroundColor,
-                                  ),
-                            ),
+                          }
+                        },
+                        child: Container(
+                          height: 44,
+                          width: 167,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: initState.time.isNotEmpty
+                                ? BlindChickenColors.activeBorderTextField
+                                : BlindChickenColors.borderInput,
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Подтвердить запись',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
                           ),
                         ),
-                      ],
-                    )
-                  ],
-                ),
+                      ),
+                    ],
+                  )
+                ],
               ),
             );
           },
