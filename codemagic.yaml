@@ -1,6 +1,6 @@
 workflows:
   ios-workflow:
-    name: iOS Workflow
+    name: Слепая курица
     max_build_duration: 120
     integrations:
       app_store_connect: codemagic
