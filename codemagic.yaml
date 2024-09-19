@@ -29,10 +29,11 @@ workflows:
           flutter test
         ignore_failure: true
       - name: Flutter build ipa
-        script: | 
+        script: |
+          agvtool new-version -all $(($BUILD_NUMBER + 1))
           flutter build ipa --release \
-            --build-name=1.0.0 \
-            --build-number=$(($(app-store-connect get-latest-app-store-build-number "$APP_STORE_APPLE_ID") + 1)) \
+            --build-name=1000 + $BUILD_NUMBER \
+            --build-number=$BUILD_NUMBER \
             --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - build/ios/ipa/*.ipa
