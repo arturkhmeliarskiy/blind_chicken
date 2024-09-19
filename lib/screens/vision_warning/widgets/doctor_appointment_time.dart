@@ -7,10 +7,12 @@ class DoctorAppointmentTime extends StatefulWidget {
     super.key,
     required this.time,
     required this.onUpdateTime,
+    required this.selectedDateTime,
   });
 
   final Map<int, List<DateTime>> time;
   final ValueChanged<DateTime> onUpdateTime;
+  final DateTime selectedDateTime;
 
   @override
   State<DoctorAppointmentTime> createState() => _DoctorAppointmentTimeState();
@@ -18,13 +20,6 @@ class DoctorAppointmentTime extends StatefulWidget {
 
 class _DoctorAppointmentTimeState extends State<DoctorAppointmentTime> {
   final PageController _scrollController = PageController();
-  DateTime _selectedDateTime = DateTime(0);
-
-  @override
-  void initState() {
-    _selectedDateTime = widget.time.values.first.first;
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -67,14 +62,12 @@ class _DoctorAppointmentTimeState extends State<DoctorAppointmentTime> {
                             final dateTime = widget.time[index]?[indexTime] ?? DateTime(0);
                             return GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  _selectedDateTime = dateTime;
-                                });
                                 widget.onUpdateTime(dateTime);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: _selectedDateTime == dateTime
+                                  color: widget.selectedDateTime.hour == dateTime.hour &&
+                                          widget.selectedDateTime.minute == dateTime.minute
                                       ? BlindChickenColors.activeBorderTextField
                                       : null,
                                   border: Border.all(
@@ -93,7 +86,8 @@ class _DoctorAppointmentTimeState extends State<DoctorAppointmentTime> {
                                   '${dateTime.hour}:${dateTime.minute.toString().length == 1 ? '0${dateTime.minute}' : dateTime.minute}',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                         fontSize: 13,
-                                        color: _selectedDateTime == dateTime
+                                        color: widget.selectedDateTime.hour == dateTime.hour &&
+                                                widget.selectedDateTime.minute == dateTime.minute
                                             ? BlindChickenColors.backgroundColor
                                             : BlindChickenColors.activeBorderTextField,
                                       ),

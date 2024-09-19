@@ -74,12 +74,14 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
         dateTime = [];
       }
     }
+    List<DateTime> dateTimeInfo = time[0] ?? [];
+
     dateTimeNow = DateTime(
       dateTimeNow.year,
       dateTimeNow.month,
       dateTimeNow.day,
-      time[0]?.first.hour ?? 0,
-      time[0]?.first.minute ?? 0,
+      dateTimeInfo.isNotEmpty ? dateTimeInfo.first.hour : 0,
+      dateTimeInfo.isNotEmpty ? dateTimeInfo.first.minute : 0,
     );
 
     emit(
@@ -100,22 +102,62 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
       Map<int, List<DateTime>> time = {};
       int j = 0;
       List<DateTime> dateTime = [];
+      DateTime dateTimeNow = DateTime.now();
 
       final sheduleDateTimeInfo =
           event.selectBoutique.sheduleDateTimeInfo[initState.selectDateTime.weekday - 1] ?? [];
 
       for (int i = 0; i < sheduleDateTimeInfo.length; i++) {
         if (dateTime.length < 8) {
-          dateTime.add(sheduleDateTimeInfo[i]);
+          if (sheduleDateTimeInfo[i].month == dateTimeNow.month &&
+              sheduleDateTimeInfo[i].day == dateTimeNow.day) {
+            if (sheduleDateTimeInfo[i].hour > dateTimeNow.hour) {
+              dateTime.add(
+                dateTimeNow.copyWith(
+                  hour: sheduleDateTimeInfo[i].hour,
+                  minute: sheduleDateTimeInfo[i].minute,
+                ),
+              );
+            } else {
+              if (sheduleDateTimeInfo[i].hour == dateTimeNow.hour &&
+                  sheduleDateTimeInfo[i].minute > dateTimeNow.minute) {
+                dateTime.add(
+                  dateTimeNow.copyWith(
+                    hour: sheduleDateTimeInfo[i].hour,
+                    minute: sheduleDateTimeInfo[i].minute,
+                  ),
+                );
+              }
+            }
+          } else {
+            dateTime.add(
+              dateTimeNow.copyWith(
+                hour: sheduleDateTimeInfo[i].hour,
+                minute: sheduleDateTimeInfo[i].minute,
+              ),
+            );
+          }
+
           time[j] = dateTime;
         } else {
           j++;
           dateTime = [];
         }
       }
+      List<DateTime> dateTimeInfo = time[0] ?? [];
+
+      dateTimeNow = DateTime(
+        dateTimeNow.year,
+        dateTimeNow.month,
+        dateTimeNow.day,
+        dateTimeInfo.isNotEmpty ? dateTimeInfo.first.hour : 0,
+        dateTimeInfo.isNotEmpty ? dateTimeInfo.first.minute : 0,
+      );
+
       emit(initState.copyWith(
         selectBoutique: event.selectBoutique,
         time: time,
+        selectDateTime: dateTimeNow,
       ));
     });
   }
@@ -166,8 +208,18 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
       }
       log(event.selectDateTime.toString());
 
+      List<DateTime> dateTimeInfo = time[0] ?? [];
+
+      dateTimeNow = DateTime(
+        event.selectDateTime.year,
+        event.selectDateTime.month,
+        event.selectDateTime.day,
+        dateTimeInfo.isNotEmpty ? dateTimeInfo.first.hour : 0,
+        dateTimeInfo.isNotEmpty ? dateTimeInfo.first.minute : 0,
+      );
+
       emit(initState.copyWith(
-        selectDateTime: event.selectDateTime,
+        selectDateTime: dateTimeNow,
         time: time,
       ));
     });

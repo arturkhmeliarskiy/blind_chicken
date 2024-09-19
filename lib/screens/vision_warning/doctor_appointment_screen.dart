@@ -144,6 +144,7 @@ class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreen> {
                             );
                       },
                       time: initState.time,
+                      selectedDateTime: initState.selectDateTime,
                     )
                   else
                     Column(
