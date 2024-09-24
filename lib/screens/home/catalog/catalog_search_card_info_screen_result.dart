@@ -220,6 +220,11 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                               );
                                             }
                                           },
+                                          video: initState.detailsProduct?.video ??
+                                              DetailProductVideoDataModel(
+                                                i: '',
+                                                v: '',
+                                              ),
                                         ),
                                       );
                                     },
@@ -228,6 +233,11 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                           .read<SearchBloc>()
                                           .add(const SearchEvent.goBackProductInfo());
                                     },
+                                    video: initState.detailsProduct?.video ??
+                                        DetailProductVideoDataModel(
+                                          i: '',
+                                          v: '',
+                                        ),
                                   ),
                                   const SizedBox(
                                     height: 35,

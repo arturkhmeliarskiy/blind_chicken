@@ -1,3 +1,4 @@
+import 'package:api_models/api_models.dart';
 import 'package:api_models/src/catalog/detail_product/brand_product_response.dart';
 import 'package:api_models/src/catalog/detail_product/breacumb_product_response.dart';
 import 'package:api_models/src/catalog/detail_product/category_product_response.dart';
@@ -7,7 +8,6 @@ import 'package:api_models/src/catalog/detail_product/photo_product_response.dar
 import 'package:api_models/src/catalog/detail_product/place_product_response.dart';
 import 'package:api_models/src/catalog/detail_product/price_product_response.dart';
 import 'package:api_models/src/catalog/detail_product/section_item_product_response.dart';
-import 'package:api_models/src/catalog/detail_product/sections_product_response.dart';
 import 'package:api_models/src/catalog/detail_product/sku_product_response.dart';
 import 'package:api_models/src/catalog/detail_product/stock_product_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -43,6 +43,7 @@ class DetailProductResponse with _$DetailProductResponse {
     String? r,
     String? e,
     String? errorMessage,
+    DetailProductVideoResponse? video,
   }) = _DetailProductResponse;
   factory DetailProductResponse.fromJson(Map<String, dynamic> json) =>
       _$DetailProductResponseFromJson(json);

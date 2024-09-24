@@ -86,7 +86,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
-    implementation "com.yandex.android:maps.mobile:4.3.2-full"
+    implementation 'com.yandex.android:maps.mobile:4.6.1-full'
     implementation platform('com.google.firebase:firebase-bom:33.2.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation("io.appmetrica.analytics:analytics:7.0.0")

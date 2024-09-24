@@ -344,6 +344,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                               );
                                             }
                                           },
+                                          video: initState.detailsProduct?.video ??
+                                              DetailProductVideoDataModel(
+                                                i: '',
+                                                v: '',
+                                              ),
                                         ),
                                       );
                                     },
@@ -352,6 +357,11 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                           .read<ShoppingCartBloc>()
                                           .add(const ShoppingCartEvent.goBackProductInfo());
                                     },
+                                    video: initState.detailsProduct?.video ??
+                                        DetailProductVideoDataModel(
+                                          i: '',
+                                          v: '',
+                                        ),
                                   ),
                                   const SizedBox(
                                     height: 35,

@@ -33,5 +33,6 @@ class DetailProductDataModel with _$DetailProductDataModel {
     required String r,
     required String e,
     required String errorMessage,
+    required DetailProductVideoDataModel video,
   }) = _DetailProductDataModel;
 }

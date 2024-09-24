@@ -19,3 +19,4 @@ export 'pagination_scroll_controller.dart';
 export 'blind_chicken_button_order_info.dart';
 export 'blind_chicken_button.dart';
 export 'blind_chicken_promotions_for_purchases.dart';
+export 'photo_and_video_view_gallery/index.dart';

@@ -17,7 +17,7 @@ dependencies:
   internet_connection_checker_plus: ^2.2.0
   connectivity_plus: ^5.0.2
   json_annotation: ^4.8.1
-  yandex_mapkit: ^3.3.3
+  yandex_mapkit: ^4.1.0
   shared:
     path: ../shared
   repositories:

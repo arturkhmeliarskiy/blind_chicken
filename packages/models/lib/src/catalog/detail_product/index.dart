@@ -12,3 +12,4 @@ export 'brand_product_data_model.dart';
 export 'sections_product_data_model.dart';
 export 'section_item_product_data_model.dart';
 export 'additional_products_description_data_model.dart';
+export 'detail_product_video_data_model.dart';

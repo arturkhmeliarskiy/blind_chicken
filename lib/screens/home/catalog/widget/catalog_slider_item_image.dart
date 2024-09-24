@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view.dart' as photo_view;
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSliderItemImage extends StatefulWidget {
@@ -8,16 +11,20 @@ class CatalogSliderItemImage extends StatefulWidget {
     super.key,
     required this.isZoom,
     required this.image,
+    required this.index,
   });
 
   final bool isZoom;
   final String image;
+  final int index;
 
   @override
   State<CatalogSliderItemImage> createState() => _CatalogSliderItemImageState();
 }
 
 class _CatalogSliderItemImageState extends State<CatalogSliderItemImage> {
+  final PhotoViewController _controller = PhotoViewController();
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -29,16 +36,18 @@ class _CatalogSliderItemImageState extends State<CatalogSliderItemImage> {
       fit: BoxFit.cover,
       imageBuilder: widget.isZoom
           ? (context, imageProvider) => PhotoView(
-                tightMode: true,
-                imageProvider: imageProvider,
-                filterQuality: FilterQuality.high,
-                gaplessPlayback: false,
-                basePosition: Alignment.center,
+                imageProvider: NetworkImage('https://slepayakurica.ru/${widget.image}'),
+                controller: _controller,
                 minScale: PhotoViewComputedScale.contained,
-                customSize: MediaQuery.of(context).size * 0.99,
+                maxScale: PhotoViewComputedScale.contained * 5,
+                initialScale: PhotoViewComputedScale.contained,
+                heroAttributes: photo_view.PhotoViewHeroAttributes(tag: widget.index),
                 backgroundDecoration: const BoxDecoration(
                   color: BlindChickenColors.backgroundColorItemFilter,
                 ),
+                scaleStateChangedCallback: (value) {
+                  log(value.toString());
+                },
               )
           : null,
       errorWidget: (context, url, error) => const Icon(Icons.error),

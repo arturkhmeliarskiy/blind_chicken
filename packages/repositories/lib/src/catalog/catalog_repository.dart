@@ -782,12 +782,20 @@ extension on DetailProductResponse {
         );
       }
     }
+    List<String> photoMini = (photo?.mini ?? []).toList();
+    List<String> photoFull = (photo?.full ?? []).toList();
+    List<String> photoOrig = (photo?.orig ?? []).toList();
+    String videoImage = video?.i ?? '';
+    if (videoImage.isNotEmpty) {
+      photoMini.insert(1, videoImage);
+      photoFull.insert(1, videoImage);
+    }
     return DetailProductDataModel(
       code: code ?? 0,
       photo: PhotoDataModel(
-        full: photo?.full ?? [],
-        mini: photo?.mini ?? [],
-        orig: photo?.orig ?? [],
+        full: photoFull,
+        mini: photoMini,
+        orig: photoOrig,
       ),
       breadcrumb: List<BreacumbProductDataModel>.from(
         breadcrumb?.map(
@@ -907,6 +915,10 @@ extension on DetailProductResponse {
       userNextDiscount: userNextDiscount ?? 0,
       userBuyForNextDiscountVal: userBuyForNextDiscountVal ?? 0,
       errorMessage: errorMessage ?? '',
+      video: DetailProductVideoDataModel(
+        v: video?.v ?? '',
+        i: video?.i ?? '',
+      ),
     );
   }
 }

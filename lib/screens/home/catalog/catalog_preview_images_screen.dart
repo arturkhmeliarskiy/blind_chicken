@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:models/models.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:photo_view/photo_view_gallery.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
@@ -15,9 +15,11 @@ class CatalogPreviewImagesScreen extends StatefulWidget {
     required this.goBotton,
     required this.goBottonInfoProduct,
     required this.selectIndex,
+    required this.video,
   });
 
   final List<String> listImages;
+  final DetailProductVideoDataModel video;
   final VoidCallback goBotton;
   final VoidCallback goBottonInfoProduct;
   final int selectIndex;
@@ -89,17 +91,19 @@ class _CatalogPreviewImagesScreenState extends State<CatalogPreviewImagesScreen>
               body: Column(
                 children: [
                   Expanded(
-                    child: PhotoViewGallery.builder(
+                    child: PhotoAndVideoViewGallery.builder(
                       scrollPhysics: const BouncingScrollPhysics(),
                       builder: (BuildContext context, int index) {
                         _position = _pageController.position.pixels;
-                        return PhotoViewGalleryPageOptions(
+                        return PhotoAndVideoViewGalleryPageOptions(
                           imageProvider:
                               NetworkImage('https://slepayakurica.ru/${widget.listImages[index]}'),
                           initialScale: PhotoViewComputedScale.contained,
                           maxScale: PhotoViewComputedScale.contained * 5,
                           minScale: PhotoViewComputedScale.contained,
                           heroAttributes: PhotoViewHeroAttributes(tag: index),
+                          video: widget.video,
+                          isVideo: widget.video.v.isNotEmpty && index == 1,
                         );
                       },
                       itemCount: widget.listImages.length,

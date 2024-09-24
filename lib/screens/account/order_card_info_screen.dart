@@ -348,6 +348,11 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                 );
                                               }
                                             },
+                                            video: initState.detailsProduct?.video ??
+                                                DetailProductVideoDataModel(
+                                                  i: '',
+                                                  v: '',
+                                                ),
                                           ),
                                         );
                                       },
@@ -360,6 +365,11 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                           context.back();
                                         }
                                       },
+                                      video: initState.detailsProduct?.video ??
+                                          DetailProductVideoDataModel(
+                                            i: '',
+                                            v: '',
+                                          ),
                                     ),
                                     const SizedBox(
                                       height: 35,

@@ -3,7 +3,6 @@ import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugins.GeneratedPluginRegistrant
-import com.yandex.mapkit.MapKitFactory
 import io.appmetrica.analytics.AppMetricaConfig
 import io.appmetrica.analytics.AppMetrica
 import io.appmetrica.analytics.push.AppMetricaPush
@@ -17,7 +16,6 @@ class MainActivity: FlutterActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    MapKitFactory.setApiKey("6c8801e7-18fc-4835-b7bd-f60e7b42ce84") // Your generated API key
     val config = AppMetricaConfig.newConfigBuilder("0f36d6f0-0774-4cf2-ad27-20b0289ddcf1").build()
     // Initializing the AppMetrica SDK.
     AppMetrica.activate(this, config)

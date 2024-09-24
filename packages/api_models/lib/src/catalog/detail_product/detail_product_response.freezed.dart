@@ -55,6 +55,7 @@ mixin _$DetailProductResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  DetailProductVideoResponse? get video => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -97,13 +98,15 @@ abstract class $DetailProductResponseCopyWith<$Res> {
       PriceProductResponse? price,
       String? r,
       String? e,
-      String? errorMessage});
+      String? errorMessage,
+      DetailProductVideoResponse? video});
 
   $PhotoProductResponseCopyWith<$Res>? get photo;
   $BrandProductResponseCopyWith<$Res>? get brand;
   $CategoryProductResponseCopyWith<$Res>? get category;
   $PlaceProductResponseCopyWith<$Res>? get place;
   $PriceProductResponseCopyWith<$Res>? get price;
+  $DetailProductVideoResponseCopyWith<$Res>? get video;
 }
 
 /// @nodoc
@@ -143,6 +146,7 @@ class _$DetailProductResponseCopyWithImpl<$Res,
     Object? r = freezed,
     Object? e = freezed,
     Object? errorMessage = freezed,
+    Object? video = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -237,6 +241,10 @@ class _$DetailProductResponseCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoResponse?,
     ) as $Val);
   }
 
@@ -299,6 +307,18 @@ class _$DetailProductResponseCopyWithImpl<$Res,
       return _then(_value.copyWith(price: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductVideoResponseCopyWith<$Res>? get video {
+    if (_value.video == null) {
+      return null;
+    }
+
+    return $DetailProductVideoResponseCopyWith<$Res>(_value.video!, (value) {
+      return _then(_value.copyWith(video: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -339,7 +359,8 @@ abstract class _$$DetailProductResponseImplCopyWith<$Res>
       PriceProductResponse? price,
       String? r,
       String? e,
-      String? errorMessage});
+      String? errorMessage,
+      DetailProductVideoResponse? video});
 
   @override
   $PhotoProductResponseCopyWith<$Res>? get photo;
@@ -351,6 +372,8 @@ abstract class _$$DetailProductResponseImplCopyWith<$Res>
   $PlaceProductResponseCopyWith<$Res>? get place;
   @override
   $PriceProductResponseCopyWith<$Res>? get price;
+  @override
+  $DetailProductVideoResponseCopyWith<$Res>? get video;
 }
 
 /// @nodoc
@@ -388,6 +411,7 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
     Object? r = freezed,
     Object? e = freezed,
     Object? errorMessage = freezed,
+    Object? video = freezed,
   }) {
     return _then(_$DetailProductResponseImpl(
       code: freezed == code
@@ -482,6 +506,10 @@ class __$$DetailProductResponseImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoResponse?,
     ));
   }
 }
@@ -518,7 +546,8 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
       this.price,
       this.r,
       this.e,
-      this.errorMessage})
+      this.errorMessage,
+      this.video})
       : _breadcrumb = breadcrumb,
         _option = option,
         _sku = sku,
@@ -633,10 +662,12 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
   final String? e;
   @override
   final String? errorMessage;
+  @override
+  final DetailProductVideoResponse? video;
 
   @override
   String toString() {
-    return 'DetailProductResponse(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, r: $r, e: $e, errorMessage: $errorMessage)';
+    return 'DetailProductResponse(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, r: $r, e: $e, errorMessage: $errorMessage, video: $video)';
   }
 
   @override
@@ -675,7 +706,8 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.video, video) || other.video == video));
   }
 
   @JsonKey(ignore: true)
@@ -704,7 +736,8 @@ class _$DetailProductResponseImpl extends _DetailProductResponse {
         price,
         r,
         e,
-        errorMessage
+        errorMessage,
+        video
       ]);
 
   @JsonKey(ignore: true)
@@ -753,7 +786,8 @@ abstract class _DetailProductResponse extends DetailProductResponse {
       final PriceProductResponse? price,
       final String? r,
       final String? e,
-      final String? errorMessage}) = _$DetailProductResponseImpl;
+      final String? errorMessage,
+      final DetailProductVideoResponse? video}) = _$DetailProductResponseImpl;
   _DetailProductResponse._() : super._();
 
   factory _DetailProductResponse.fromJson(Map<String, dynamic> json) =
@@ -814,6 +848,8 @@ abstract class _DetailProductResponse extends DetailProductResponse {
   String? get e;
   @override
   String? get errorMessage;
+  @override
+  DetailProductVideoResponse? get video;
   @override
   @JsonKey(ignore: true)
   _$$DetailProductResponseImplCopyWith<_$DetailProductResponseImpl>

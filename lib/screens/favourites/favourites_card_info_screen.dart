@@ -213,6 +213,11 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                               );
                                             }
                                           },
+                                          video: initState.detailsProduct?.video ??
+                                              DetailProductVideoDataModel(
+                                                i: '',
+                                                v: '',
+                                              ),
                                         ),
                                       );
                                     },
@@ -225,6 +230,11 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                         context.back();
                                       }
                                     },
+                                    video: initState.detailsProduct?.video ??
+                                        DetailProductVideoDataModel(
+                                          i: '',
+                                          v: '',
+                                        ),
                                   ),
                                   const SizedBox(
                                     height: 35,

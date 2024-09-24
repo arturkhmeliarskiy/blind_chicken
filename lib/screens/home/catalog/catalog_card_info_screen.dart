@@ -385,6 +385,11 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                     );
                                                   }
                                                 },
+                                                video: initState.detailsProduct?.video ??
+                                                    DetailProductVideoDataModel(
+                                                      i: '',
+                                                      v: '',
+                                                    ),
                                               ),
                                             );
                                           },
@@ -393,6 +398,11 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                 .read<CatalogBloc>()
                                                 .add(const CatalogEvent.goBackProductInfo());
                                           },
+                                          video: initState.detailsProduct?.video ??
+                                              DetailProductVideoDataModel(
+                                                i: '',
+                                                v: '',
+                                              ),
                                         ),
                                         const SizedBox(
                                           height: 35,

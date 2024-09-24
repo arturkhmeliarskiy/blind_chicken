@@ -197,6 +197,7 @@ abstract class _$AppRouter extends RootStackRouter {
           goBotton: args.goBotton,
           goBottonInfoProduct: args.goBottonInfoProduct,
           selectIndex: args.selectIndex,
+          video: args.video,
         ),
       );
     },
@@ -1468,6 +1469,7 @@ class CatalogPreviewImagesRoute
     required void Function() goBotton,
     required void Function() goBottonInfoProduct,
     required int selectIndex,
+    required DetailProductVideoDataModel video,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogPreviewImagesRoute.name,
@@ -1477,6 +1479,7 @@ class CatalogPreviewImagesRoute
             goBotton: goBotton,
             goBottonInfoProduct: goBottonInfoProduct,
             selectIndex: selectIndex,
+            video: video,
           ),
           initialChildren: children,
         );
@@ -1494,6 +1497,7 @@ class CatalogPreviewImagesRouteArgs {
     required this.goBotton,
     required this.goBottonInfoProduct,
     required this.selectIndex,
+    required this.video,
   });
 
   final Key? key;
@@ -1506,9 +1510,11 @@ class CatalogPreviewImagesRouteArgs {
 
   final int selectIndex;
 
+  final DetailProductVideoDataModel video;
+
   @override
   String toString() {
-    return 'CatalogPreviewImagesRouteArgs{key: $key, listImages: $listImages, goBotton: $goBotton, goBottonInfoProduct: $goBottonInfoProduct, selectIndex: $selectIndex}';
+    return 'CatalogPreviewImagesRouteArgs{key: $key, listImages: $listImages, goBotton: $goBotton, goBottonInfoProduct: $goBottonInfoProduct, selectIndex: $selectIndex, video: $video}';
   }
 }
 

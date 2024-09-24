@@ -50,6 +50,10 @@ _$DetailProductResponseImpl _$$DetailProductResponseImplFromJson(
       r: json['r'] as String?,
       e: json['e'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      video: json['video'] == null
+          ? null
+          : DetailProductVideoResponse.fromJson(
+              json['video'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$DetailProductResponseImplToJson(
@@ -78,4 +82,5 @@ Map<String, dynamic> _$$DetailProductResponseImplToJson(
       'r': instance.r,
       'e': instance.e,
       'errorMessage': instance.errorMessage,
+      'video': instance.video,
     };

@@ -44,6 +44,7 @@ mixin _$DetailProductDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  DetailProductVideoDataModel get video => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DetailProductDataModelCopyWith<DetailProductDataModel> get copyWith =>
@@ -81,7 +82,8 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
       ProductDataModel product,
       String r,
       String e,
-      String errorMessage});
+      String errorMessage,
+      DetailProductVideoDataModel video});
 
   $PhotoDataModelCopyWith<$Res> get photo;
   $BrandProductDataModelCopyWith<$Res> get brand;
@@ -89,6 +91,7 @@ abstract class $DetailProductDataModelCopyWith<$Res> {
   $PlaceProductDataModelCopyWith<$Res> get place;
   $PriceProductDataModelCopyWith<$Res> get price;
   $ProductDataModelCopyWith<$Res> get product;
+  $DetailProductVideoDataModelCopyWith<$Res> get video;
 }
 
 /// @nodoc
@@ -130,6 +133,7 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
     Object? r = null,
     Object? e = null,
     Object? errorMessage = null,
+    Object? video = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -232,6 +236,10 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoDataModel,
     ) as $Val);
   }
 
@@ -282,6 +290,14 @@ class _$DetailProductDataModelCopyWithImpl<$Res,
       return _then(_value.copyWith(product: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductVideoDataModelCopyWith<$Res> get video {
+    return $DetailProductVideoDataModelCopyWith<$Res>(_value.video, (value) {
+      return _then(_value.copyWith(video: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -318,7 +334,8 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
       ProductDataModel product,
       String r,
       String e,
-      String errorMessage});
+      String errorMessage,
+      DetailProductVideoDataModel video});
 
   @override
   $PhotoDataModelCopyWith<$Res> get photo;
@@ -332,6 +349,8 @@ abstract class _$$DetailProductDataModelImplCopyWith<$Res>
   $PriceProductDataModelCopyWith<$Res> get price;
   @override
   $ProductDataModelCopyWith<$Res> get product;
+  @override
+  $DetailProductVideoDataModelCopyWith<$Res> get video;
 }
 
 /// @nodoc
@@ -372,6 +391,7 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
     Object? r = null,
     Object? e = null,
     Object? errorMessage = null,
+    Object? video = null,
   }) {
     return _then(_$DetailProductDataModelImpl(
       code: null == code
@@ -474,6 +494,10 @@ class __$$DetailProductDataModelImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoDataModel,
     ));
   }
 }
@@ -506,7 +530,8 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
       required this.product,
       required this.r,
       required this.e,
-      required this.errorMessage})
+      required this.errorMessage,
+      required this.video})
       : _breadcrumb = breadcrumb,
         _option = option,
         _sku = sku,
@@ -609,10 +634,12 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
   final String e;
   @override
   final String errorMessage;
+  @override
+  final DetailProductVideoDataModel video;
 
   @override
   String toString() {
-    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, skuToSoppingCart: $skuToSoppingCart, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e, errorMessage: $errorMessage)';
+    return 'DetailProductDataModel(code: $code, photo: $photo, breadcrumb: $breadcrumb, brand: $brand, category: $category, option: $option, sku: $sku, skuToSoppingCart: $skuToSoppingCart, stock: $stock, place: $place, char: $char, sections: $sections, text: $text, name: $name, quantity: $quantity, art: $art, userDiscount: $userDiscount, userBuyForNextDiscount: $userBuyForNextDiscount, userBuyForNextDiscountVal: $userBuyForNextDiscountVal, userNextDiscount: $userNextDiscount, price: $price, product: $product, r: $r, e: $e, errorMessage: $errorMessage, video: $video)';
   }
 
   @override
@@ -654,7 +681,8 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.video, video) || other.video == video));
   }
 
   @override
@@ -684,7 +712,8 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
         product,
         r,
         e,
-        errorMessage
+        errorMessage,
+        video
       ]);
 
   @JsonKey(ignore: true)
@@ -697,31 +726,33 @@ class _$DetailProductDataModelImpl extends _DetailProductDataModel {
 
 abstract class _DetailProductDataModel extends DetailProductDataModel {
   factory _DetailProductDataModel(
-      {required final int code,
-      required final PhotoDataModel photo,
-      required final List<BreacumbProductDataModel> breadcrumb,
-      required final BrandProductDataModel brand,
-      required final CategoryProductDataModel category,
-      required final List<OptionProductDataModel> option,
-      required final List<SkuProductDataModel> sku,
-      required final List<SkuProductDataModel> skuToSoppingCart,
-      required final List<StockProductDataModel> stock,
-      required final PlaceProductDataModel place,
-      required final List<CharProductDataModel> char,
-      required final List<SectionsProductDataModel> sections,
-      required final String text,
-      required final String name,
-      required final int quantity,
-      required final String art,
-      required final int userDiscount,
-      required final int userBuyForNextDiscount,
-      required final int userBuyForNextDiscountVal,
-      required final int userNextDiscount,
-      required final PriceProductDataModel price,
-      required final ProductDataModel product,
-      required final String r,
-      required final String e,
-      required final String errorMessage}) = _$DetailProductDataModelImpl;
+          {required final int code,
+          required final PhotoDataModel photo,
+          required final List<BreacumbProductDataModel> breadcrumb,
+          required final BrandProductDataModel brand,
+          required final CategoryProductDataModel category,
+          required final List<OptionProductDataModel> option,
+          required final List<SkuProductDataModel> sku,
+          required final List<SkuProductDataModel> skuToSoppingCart,
+          required final List<StockProductDataModel> stock,
+          required final PlaceProductDataModel place,
+          required final List<CharProductDataModel> char,
+          required final List<SectionsProductDataModel> sections,
+          required final String text,
+          required final String name,
+          required final int quantity,
+          required final String art,
+          required final int userDiscount,
+          required final int userBuyForNextDiscount,
+          required final int userBuyForNextDiscountVal,
+          required final int userNextDiscount,
+          required final PriceProductDataModel price,
+          required final ProductDataModel product,
+          required final String r,
+          required final String e,
+          required final String errorMessage,
+          required final DetailProductVideoDataModel video}) =
+      _$DetailProductDataModelImpl;
   _DetailProductDataModel._() : super._();
 
   @override
@@ -774,6 +805,8 @@ abstract class _DetailProductDataModel extends DetailProductDataModel {
   String get e;
   @override
   String get errorMessage;
+  @override
+  DetailProductVideoDataModel get video;
   @override
   @JsonKey(ignore: true)
   _$$DetailProductDataModelImplCopyWith<_$DetailProductDataModelImpl>
