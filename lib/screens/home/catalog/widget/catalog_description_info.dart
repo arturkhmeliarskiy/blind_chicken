@@ -16,7 +16,6 @@ class CatalogDescriptionInfo extends StatefulWidget {
 
 class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
   List<CharProductDataModel> char = [];
-  bool _isWrap = false;
 
   @override
   void initState() {
@@ -44,7 +43,7 @@ class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Table(
-            children: List.generate(_isWrap ? char.length : char.length ~/ 2, (index) {
+            children: List.generate(char.length, (index) {
           return TableRow(children: [
             Padding(
               padding: const EdgeInsets.only(
@@ -89,22 +88,6 @@ class _CatalogDescriptionInfoState extends State<CatalogDescriptionInfo> {
             ),
           ]);
         })),
-        const SizedBox(
-          height: 10,
-        ),
-        InkWell(
-          onTap: () {
-            setState(() {
-              _isWrap = !_isWrap;
-            });
-          },
-          child: Text(
-            _isWrap ? 'Свернуть характеристики' : 'Развернуть характеристики',
-            style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  decoration: TextDecoration.underline,
-                ),
-          ),
-        )
       ],
     );
   }

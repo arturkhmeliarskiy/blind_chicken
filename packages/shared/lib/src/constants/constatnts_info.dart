@@ -359,6 +359,21 @@ class ConstatntsInfo {
       imagePath: 'cosmetics_woman',
       pathMenu: '/kosmetika/',
     ),
+    MainCategoryModel(
+      title: 'Подарочная карта',
+      imagePath: 'giftcard',
+      pathMenu: '',
+    ),
+    MainCategoryModel(
+      title: 'Проверка зрения',
+      imagePath: 'vision',
+      pathMenu: '',
+    ),
+    MainCategoryModel(
+      title: 'Распродажа',
+      imagePath: 'sale',
+      pathMenu: '',
+    ),
   ];
 
   List<MainCategoryModel> categoryMan = const [
@@ -392,6 +407,21 @@ class ConstatntsInfo {
       imagePath: 'cosmetics_man',
       pathMenu: '/muzhchinam/kosmetika/',
     ),
+    MainCategoryModel(
+      title: 'Подарочная карта',
+      imagePath: 'giftcard',
+      pathMenu: '',
+    ),
+    MainCategoryModel(
+      title: 'Проверка зрения',
+      imagePath: 'vision',
+      pathMenu: '',
+    ),
+    MainCategoryModel(
+      title: 'Распродажа',
+      imagePath: 'sale',
+      pathMenu: '',
+    ),
   ];
 
   List<MainCategoryModel> categoryChild = const [
@@ -424,6 +454,21 @@ class ConstatntsInfo {
       title: 'Для малышей',
       imagePath: 'for_child',
       pathMenu: '/detyam/dlya-malyshey/',
+    ),
+    MainCategoryModel(
+      title: 'Подарочная карта',
+      imagePath: 'giftcard',
+      pathMenu: '',
+    ),
+    MainCategoryModel(
+      title: 'Проверка зрения',
+      imagePath: 'vision',
+      pathMenu: '',
+    ),
+    MainCategoryModel(
+      title: 'Распродажа',
+      imagePath: 'sale',
+      pathMenu: '',
     ),
   ];
 

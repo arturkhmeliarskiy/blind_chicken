@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_product_item.dart';
 import 'package:blocs/blocs.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
@@ -42,6 +45,12 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
 
   @override
   void didUpdateWidget(covariant MainCategoryScreen oldWidget) {
+    if (oldWidget.selectIndexType != widget.selectIndexType) {
+      _selectIndexType = widget.selectIndexType;
+      context.read<CatalogBloc>().add(
+            CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
+          );
+    }
     _scrollController.jumpTo(_historyPosition);
     super.didUpdateWidget(oldWidget);
   }
@@ -84,6 +93,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onVerticalDragUpdate: (details) {},
       onHorizontalDragEnd: (DragEndDetails details) {
@@ -241,23 +251,53 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                         children: List.generate(initState.category.length, (index) {
                           return GestureDetector(
                             onTap: () {
-                              context.read<CatalogBloc>().add(
-                                    CatalogEvent.getInfoProducts(
-                                      path: initState.category[index].pathMenu,
-                                      isCleanHistory: true,
-                                    ),
-                                  );
-                              context.navigateTo(
-                                CatalogRoute(
-                                  title: initState.category[index].title,
-                                  url: initState.category[index].pathMenu,
-                                ),
-                              );
+                              if (initState.category[index].title == 'Подарочная карта') {
+                                context.navigateTo(GiftCardRoute());
+                              } else if (initState.category[index].title == 'Проверка зрения') {
+                                context.navigateTo(VisionWarningRoute());
+                              } else if (initState.category[index].title == 'Распродажа') {
+                                context.read<CatalogBloc>().add(
+                                      CatalogEvent.getInfoProducts(
+                                        path: initState.menu[index].url,
+                                        isCleanHistory: true,
+                                      ),
+                                    );
+                                context.navigateTo(
+                                  CatalogRoute(
+                                    title: initState.menu[index].name,
+                                    url: initState.menu[index].url,
+                                  ),
+                                );
+                              } else {
+                                context.read<CatalogBloc>().add(
+                                      CatalogEvent.getInfoProducts(
+                                        path: initState.category[index].pathMenu,
+                                        isCleanHistory: true,
+                                      ),
+                                    );
+                                context.navigateTo(
+                                  CatalogRoute(
+                                    title: initState.category[index].title,
+                                    url: initState.category[index].pathMenu,
+                                  ),
+                                );
+                              }
                             },
-                            child: MainCategoryProductItem(
-                              image: initState.category[index].imagePath,
-                              title: initState.category[index].title,
-                            ),
+                            child: width > 1023 && index > 5
+                                ? MainCategoryItem(
+                                    image: '${initState.category[index].imagePath}_f',
+                                    title: initState.category[index].title,
+                                    width: width / 3 - 20,
+                                    padding: const EdgeInsets.only(
+                                      top: 14,
+                                      left: 7,
+                                      right: 7,
+                                    ),
+                                  )
+                                : MainCategoryProductItem(
+                                    image: initState.category[index].imagePath,
+                                    title: initState.category[index].title,
+                                  ),
                           );
                         }),
                       );
@@ -266,78 +306,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                   );
                 }),
                 const SizedBox(
-                  height: 16,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10.5,
-                    right: 10.5,
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      context.navigateTo(GiftCardRoute());
-                    },
-                    child: SizedBox(
-                      child: Image.asset(
-                        'assets/images/giftcard_f.jpg',
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Center(
-                  child: Text(
-                    'Подарочная карта',
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10.5,
-                    right: 10.5,
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      context.read<CatalogBloc>().add(
-                            CatalogEvent.getInfoProducts(
-                              path: checkPath(_selectIndexType),
-                              isCleanHistory: true,
-                            ),
-                          );
-                      context.navigateTo(
-                        CatalogRoute(
-                          title: '',
-                          url: checkPath(_selectIndexType),
-                        ),
-                      );
-                    },
-                    child: SizedBox(
-                      child: Image.asset(
-                        'assets/images/sale.jpg',
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Center(
-                  child: Text(
-                    'Распродажа',
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 28,
+                  height: 35,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10.6, right: 10.6),

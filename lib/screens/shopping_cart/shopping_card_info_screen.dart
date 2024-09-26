@@ -953,7 +953,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         const SizedBox(
-                                                          height: 40,
+                                                          height: 35,
                                                         ),
                                                         Text(
                                                           'Носят вместе',
@@ -1027,10 +1027,9 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        if (initState.listProdcutsComplect.isEmpty)
-                                                          const SizedBox(
-                                                            height: 40,
-                                                          ),
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
                                                         Text(
                                                           'Рекомендации стилистов',
                                                           style: Theme.of(context)
@@ -1101,12 +1100,9 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        if (initState
-                                                                .listProdcutsComplect.isEmpty &&
-                                                            initState.listProdcutsStyle.isEmpty)
-                                                          const SizedBox(
-                                                            height: 40,
-                                                          ),
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
                                                         Text(
                                                           'Смотрите также',
                                                           style: Theme.of(context)
@@ -1177,7 +1173,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       const SizedBox(
-                                                        height: 40,
+                                                        height: 35,
                                                       ),
                                                       Text(
                                                         'С этим товаром смотрят',
@@ -1219,9 +1215,6 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                           );
                                                         },
                                                       ),
-                                                      const SizedBox(
-                                                        height: 40,
-                                                      ),
                                                     ],
                                                   );
                                                 } else {
@@ -1240,6 +1233,9 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                                                   return Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
+                                                      const SizedBox(
+                                                        height: 35,
+                                                      ),
                                                       Text(
                                                         'Товары бренда',
                                                         style: Theme.of(context)

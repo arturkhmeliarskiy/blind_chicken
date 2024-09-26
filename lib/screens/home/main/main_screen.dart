@@ -473,9 +473,9 @@ class _MainScreenState extends State<MainScreen> {
                                               context.navigateTo(GiftCardRoute());
                                             },
                                             child: MainCategoryItem(
-                                              image: width > 767 ? 'giftcard_f' : 'giftcard_m',
+                                              image: width > 767 ? 'giftcard_f' : 'giftcard',
                                               title: 'Подарочная карта',
-                                              width: width > 767 ? width / 2 - 10 : width / 2 - 14,
+                                              width: width > 767 ? width / 3 - 7 : width / 2 - 14,
                                               padding: EdgeInsets.only(
                                                 top: 14,
                                                 left: 7,
@@ -483,6 +483,28 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             ),
                                           ),
+                                          if (width > 767)
+                                            GestureDetector(
+                                              onTap: () {
+                                                context.navigateTo(VisionWarningRoute());
+                                                final appMetricaEcommerce =
+                                                    GetIt.I.get<AppMetricaEcommerceService>();
+                                                appMetricaEcommerce.openPages(
+                                                  titleScreen:
+                                                      'Проверка зрения на главной странице',
+                                                );
+                                              },
+                                              child: MainCategoryItem(
+                                                image: 'vision_f',
+                                                title: 'Проверка зрения',
+                                                width: width / 3 - 7,
+                                                padding: const EdgeInsets.only(
+                                                  top: 14,
+                                                  right: 7,
+                                                  left: 7,
+                                                ),
+                                              ),
+                                            ),
                                           if (width > 767)
                                             GestureDetector(
                                               onTap: () {
@@ -498,21 +520,81 @@ class _MainScreenState extends State<MainScreen> {
                                                     url: '/sale/',
                                                   ),
                                                 );
+                                                final appMetricaEcommerce =
+                                                    GetIt.I.get<AppMetricaEcommerceService>();
+                                                appMetricaEcommerce.openPages(
+                                                  titleScreen: 'Раздел sale на главной странице',
+                                                );
                                               },
                                               child: MainCategoryItem(
-                                                image: width > 767 ? 'sale_f' : 'sale',
+                                                image: 'sale_f',
                                                 title: 'Распродажа',
-                                                width:
-                                                    width > 767 ? width / 2 - 10 : width / 2 - 14,
-                                                padding: EdgeInsets.only(
+                                                width: width / 3 - 7,
+                                                padding: const EdgeInsets.only(
                                                   top: 14,
                                                   right: 7,
-                                                  left: width > 767 ? 7 : 0,
+                                                  left: 7,
                                                 ),
                                               ),
                                             ),
                                         ],
                                       ),
+                                      if (width < 767)
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                context.navigateTo(VisionWarningRoute());
+                                                final appMetricaEcommerce =
+                                                    GetIt.I.get<AppMetricaEcommerceService>();
+                                                appMetricaEcommerce.openPages(
+                                                  titleScreen:
+                                                      'Проверка зрения на главной странице',
+                                                );
+                                              },
+                                              child: MainCategoryItem(
+                                                image: 'vision',
+                                                title: 'Проверка зрения',
+                                                width: width / 2 - 14,
+                                                padding: const EdgeInsets.only(
+                                                  top: 14,
+                                                  right: 7,
+                                                ),
+                                              ),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                context.read<CatalogBloc>().add(
+                                                      const CatalogEvent.getInfoProducts(
+                                                        path: '/sale/',
+                                                        isCleanHistory: true,
+                                                      ),
+                                                    );
+                                                context.navigateTo(
+                                                  CatalogRoute(
+                                                    title: '',
+                                                    url: '/sale/',
+                                                  ),
+                                                );
+                                                final appMetricaEcommerce =
+                                                    GetIt.I.get<AppMetricaEcommerceService>();
+                                                appMetricaEcommerce.openPages(
+                                                  titleScreen: 'Раздел sale на главной странице',
+                                                );
+                                              },
+                                              child: MainCategoryItem(
+                                                image: 'sale',
+                                                title: 'Распродажа',
+                                                width: width / 2 - 14,
+                                                padding: const EdgeInsets.only(
+                                                  top: 14,
+                                                  left: 7,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       GestureDetector(
                                         onTap: () {
                                           context.read<BrandBloc>().add(

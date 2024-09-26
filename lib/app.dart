@@ -35,7 +35,6 @@ class _AppState extends State<App> {
   @override
   void initState() {
     AppMetricaPush.requestPermission(alert: true, badge: true, sound: true);
-    AppMetricaPush.getTokens();
     initDeepLinks();
     super.initState();
   }
@@ -49,7 +48,7 @@ class _AppState extends State<App> {
 
       await Future<void>.delayed(
         const Duration(
-          milliseconds: 800,
+          milliseconds: 1200,
         ),
       );
       _appRouter.push(

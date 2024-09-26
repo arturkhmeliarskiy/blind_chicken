@@ -833,7 +833,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         const SizedBox(
-                                                          height: 40,
+                                                          height: 35,
                                                         ),
                                                         Text(
                                                           'Носят вместе',
@@ -907,10 +907,9 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        if (initState.listProdcutsComplect.isEmpty)
-                                                          const SizedBox(
-                                                            height: 40,
-                                                          ),
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
                                                         Text(
                                                           'Рекомендации стилистов',
                                                           style: Theme.of(context)
@@ -981,12 +980,9 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        if (initState
-                                                                .listProdcutsComplect.isEmpty &&
-                                                            initState.listProdcutsStyle.isEmpty)
-                                                          const SizedBox(
-                                                            height: 40,
-                                                          ),
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
                                                         Text(
                                                           'Смотрите также',
                                                           style: Theme.of(context)
@@ -1057,7 +1053,7 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       const SizedBox(
-                                                        height: 40,
+                                                        height: 35,
                                                       ),
                                                       Text(
                                                         'С этим товаром смотрят',
@@ -1099,9 +1095,6 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                           );
                                                         },
                                                       ),
-                                                      const SizedBox(
-                                                        height: 40,
-                                                      ),
                                                     ],
                                                   );
                                                 } else {
@@ -1120,6 +1113,9 @@ class _FavouritesCardInfoScreenState extends State<FavouritesCardInfoScreen> {
                                                   return Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
+                                                      const SizedBox(
+                                                        height: 35,
+                                                      ),
                                                       Text(
                                                         'Товары бренда',
                                                         style: Theme.of(context)

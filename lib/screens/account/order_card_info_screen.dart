@@ -967,7 +967,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                             CrossAxisAlignment.start,
                                                         children: [
                                                           const SizedBox(
-                                                            height: 40,
+                                                            height: 35,
                                                           ),
                                                           Text(
                                                             'Носят вместе',
@@ -1044,11 +1044,9 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment.start,
                                                         children: [
-                                                          if (initState
-                                                              .listProdcutsComplect.isEmpty)
-                                                            const SizedBox(
-                                                              height: 40,
-                                                            ),
+                                                          const SizedBox(
+                                                            height: 35,
+                                                          ),
                                                           Text(
                                                             'Рекомендации стилистов',
                                                             style: Theme.of(context)
@@ -1121,12 +1119,9 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment.start,
                                                         children: [
-                                                          if (initState.listProdcutsStyle.isEmpty &&
-                                                              initState
-                                                                  .listProdcutsComplect.isEmpty)
-                                                            const SizedBox(
-                                                              height: 40,
-                                                            ),
+                                                          const SizedBox(
+                                                            height: 35,
+                                                          ),
                                                           Text(
                                                             'Смотрите также',
                                                             style: Theme.of(context)
@@ -1201,7 +1196,7 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         const SizedBox(
-                                                          height: 40,
+                                                          height: 35,
                                                         ),
                                                         Text(
                                                           'С этим товаром смотрят',
@@ -1243,9 +1238,6 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                             );
                                                           },
                                                         ),
-                                                        const SizedBox(
-                                                          height: 40,
-                                                        ),
                                                       ],
                                                     );
                                                   } else {
@@ -1264,6 +1256,9 @@ class _OrderCardInfoScreenState extends State<OrderCardInfoScreen> {
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
                                                         Text(
                                                           'Товары бренда',
                                                           style: Theme.of(context)

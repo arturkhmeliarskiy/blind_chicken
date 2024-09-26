@@ -82,6 +82,7 @@ class _CatalogPreviewImagesScreenState extends State<CatalogPreviewImagesScreen>
         onPopInvoked: (vale) {
           if (_isSwipe) {
             widget.goBottonInfoProduct();
+            _isSwipe = false;
           }
         },
         child: Stack(

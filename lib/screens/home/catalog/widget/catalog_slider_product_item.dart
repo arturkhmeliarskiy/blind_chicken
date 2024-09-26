@@ -44,7 +44,6 @@ class _CatalogSliderProductItemState extends State<CatalogSliderProductItem> {
       onTap: widget.onTap,
       child: Container(
         width: 140,
-        height: 400,
         margin: const EdgeInsets.only(right: 8),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SizedBox(

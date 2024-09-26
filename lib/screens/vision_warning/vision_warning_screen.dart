@@ -94,7 +94,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Предупреждение зрения',
+                        'Проверка зрения',
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const SizedBox(
@@ -105,16 +105,22 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           left: 44.5,
                           right: 44.5,
                         ),
-                        child: CachedNetworkImage(
-                          fit: BoxFit.fill,
-                          imageUrl:
-                              'https://slepayakurica.ru/local/templates/m/content/vision/220524/w.jpg',
-                          placeholder: (context, url) => SizedBox(
-                            width: MediaQuery.of(context).size.width / 2 - 21,
-                            height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                            child: const LoadingImage(),
+                        child: Center(
+                          child: CachedNetworkImage(
+                            fit: BoxFit.fill,
+                            imageUrl:
+                                'https://slepayakurica.ru/local/templates/m/content/vision/220524/w.jpg',
+                            placeholder: (context, url) => Center(
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width / 2 - 21,
+                                height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                                child: const Center(
+                                  child: LoadingImage(),
+                                ),
+                              ),
+                            ),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
                           ),
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
                         ),
                       ),
                       const SizedBox(

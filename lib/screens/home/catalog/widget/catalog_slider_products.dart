@@ -28,12 +28,10 @@ class CatalogSliderProducts extends StatefulWidget {
 class _CatalogSliderProductsState extends State<CatalogSliderProducts> {
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(maxHeight: 390, minHeight: 250),
-      child: ListView.builder(
-        itemCount: widget.listProducts.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: List.generate(widget.listProducts.length, (index) {
           return CatalogSliderProductItem(
             onTap: () {
               widget.onSelectProduct(widget.listProducts[index]);
@@ -51,7 +49,7 @@ class _CatalogSliderProductsState extends State<CatalogSliderProducts> {
             },
             isAuth: widget.isAuth,
           );
-        },
+        }),
       ),
     );
   }

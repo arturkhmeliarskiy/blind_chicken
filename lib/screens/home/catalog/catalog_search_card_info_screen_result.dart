@@ -833,7 +833,7 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
                                                         const SizedBox(
-                                                          height: 40,
+                                                          height: 35,
                                                         ),
                                                         Text(
                                                           'Носят вместе',
@@ -892,9 +892,7 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                       ],
                                                     );
                                                   } else {
-                                                    return const SizedBox(
-                                                      height: 20,
-                                                    );
+                                                    return const SizedBox();
                                                   }
                                                 },
                                                 orElse: () => const SizedBox());
@@ -908,10 +906,9 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        if (initState.listProdcutsComplect.isEmpty)
-                                                          const SizedBox(
-                                                            height: 40,
-                                                          ),
+                                                        const SizedBox(
+                                                          height: 35,
+                                                        ),
                                                         Text(
                                                           'Рекомендации стилистов',
                                                           style: Theme.of(context)
@@ -981,13 +978,8 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                     return Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       children: [
-                                                        if (initState.listProdcutsStyle.isEmpty &&
-                                                            initState.listProdcutsComplect.isEmpty)
-                                                          const SizedBox(
-                                                            height: 40,
-                                                          ),
                                                         const SizedBox(
-                                                          height: 40,
+                                                          height: 35,
                                                         ),
                                                         Text(
                                                           'Смотрите также',
@@ -1058,7 +1050,7 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
                                                       const SizedBox(
-                                                        height: 40,
+                                                        height: 35,
                                                       ),
                                                       Text(
                                                         'С этим товаром смотрят',
@@ -1091,9 +1083,6 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                           );
                                                         },
                                                       ),
-                                                      const SizedBox(
-                                                        height: 40,
-                                                      ),
                                                     ],
                                                   );
                                                 } else {
@@ -1112,6 +1101,9 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                                   return Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
+                                                      const SizedBox(
+                                                        height: 35,
+                                                      ),
                                                       Text(
                                                         'Товары бренда',
                                                         style: Theme.of(context)

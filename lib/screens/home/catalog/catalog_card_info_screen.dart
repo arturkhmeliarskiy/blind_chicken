@@ -8,7 +8,7 @@ import 'package:blind_chicken/screens/home/catalog/widget/catalog_boutiques_info
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_cashback_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_category_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_info.dart';
-import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_product_info%20copy.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_description_product_info.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_products.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_variant_slider_images.dart';
@@ -1056,7 +1056,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                 CrossAxisAlignment.start,
                                                             children: [
                                                               const SizedBox(
-                                                                height: 40,
+                                                                height: 35,
                                                               ),
                                                               Text(
                                                                 'Носят вместе',
@@ -1118,9 +1118,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                             ],
                                                           );
                                                         } else {
-                                                          return const SizedBox(
-                                                            height: 20,
-                                                          );
+                                                          return const SizedBox();
                                                         }
                                                       },
                                                       orElse: () => const SizedBox());
@@ -1136,11 +1134,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment.start,
                                                             children: [
-                                                              if (initState
-                                                                  .listProdcutsComplect.isEmpty)
-                                                                const SizedBox(
-                                                                  height: 40,
-                                                                ),
+                                                              const SizedBox(
+                                                                height: 35,
+                                                              ),
                                                               Text(
                                                                 'Рекомендации стилистов',
                                                                 style: Theme.of(context)
@@ -1216,13 +1212,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment.start,
                                                             children: [
-                                                              if (initState
-                                                                      .listProdcutsStyle.isEmpty &&
-                                                                  initState
-                                                                      .listProdcutsComplect.isEmpty)
-                                                                const SizedBox(
-                                                                  height: 40,
-                                                                ),
+                                                              const SizedBox(
+                                                                height: 35,
+                                                              ),
                                                               Text(
                                                                 'Смотрите также',
                                                                 style: Theme.of(context)
@@ -1235,57 +1227,68 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                               const SizedBox(
                                                                 height: 10.5,
                                                               ),
-                                                              CatalogSliderProducts(
-                                                                onSelectProduct: (value) {
-                                                                  context.read<CatalogBloc>().add(
-                                                                        CatalogEvent.getInfoProduct(
-                                                                          code: value.id.toString(),
-                                                                          titleScreen:
-                                                                              'Описание товара в каталоге (Смотрите также)',
-                                                                          typeAddProductToShoppingCart:
-                                                                              'Карточка товара',
-                                                                          identifierAddProductToShoppingCart:
-                                                                              '1',
-                                                                        ),
-                                                                      );
-                                                                },
-                                                                listProducts:
-                                                                    initState.listProdcutsAlso,
-                                                                favouritesProductsId:
-                                                                    initState.favouritesProductsId,
-                                                                addLike: (index) {
-                                                                  context.read<CatalogBloc>().add(
-                                                                        CatalogEvent
-                                                                            .addFavouriteProduct(
-                                                                          product: initState
+                                                              LayoutBuilder(
+                                                                builder: (context, constraints) {
+                                                                  log(constraints.toString());
+                                                                  return CatalogSliderProducts(
+                                                                    onSelectProduct: (value) {
+                                                                      context
+                                                                          .read<CatalogBloc>()
+                                                                          .add(
+                                                                            CatalogEvent
+                                                                                .getInfoProduct(
+                                                                              code: value.id
+                                                                                  .toString(),
+                                                                              titleScreen:
+                                                                                  'Описание товара в каталоге (Смотрите также)',
+                                                                              typeAddProductToShoppingCart:
+                                                                                  'Карточка товара',
+                                                                              identifierAddProductToShoppingCart:
+                                                                                  '1',
+                                                                            ),
+                                                                          );
+                                                                    },
+                                                                    listProducts:
+                                                                        initState.listProdcutsAlso,
+                                                                    favouritesProductsId: initState
+                                                                        .favouritesProductsId,
+                                                                    addLike: (index) {
+                                                                      context
+                                                                          .read<CatalogBloc>()
+                                                                          .add(
+                                                                            CatalogEvent
+                                                                                .addFavouriteProduct(
+                                                                              product: initState
+                                                                                      .listProdcutsAlso[
+                                                                                  index],
+                                                                              index: initState
                                                                                   .listProdcutsAlso[
-                                                                              index],
-                                                                          index: initState
-                                                                              .listProdcutsAlso[
-                                                                                  index]
-                                                                              .id,
-                                                                        ),
-                                                                      );
+                                                                                      index]
+                                                                                  .id,
+                                                                            ),
+                                                                          );
+                                                                    },
+                                                                    deleteLike: (index) {
+                                                                      context
+                                                                          .read<CatalogBloc>()
+                                                                          .add(
+                                                                            CatalogEvent
+                                                                                .deleteFavouriteProduct(
+                                                                              index: initState
+                                                                                  .listProdcutsAlso[
+                                                                                      index]
+                                                                                  .id,
+                                                                            ),
+                                                                          );
+                                                                    },
+                                                                    isAuth: initState.isAuth,
+                                                                  );
                                                                 },
-                                                                deleteLike: (index) {
-                                                                  context.read<CatalogBloc>().add(
-                                                                        CatalogEvent
-                                                                            .deleteFavouriteProduct(
-                                                                          index: initState
-                                                                              .listProdcutsAlso[
-                                                                                  index]
-                                                                              .id,
-                                                                        ),
-                                                                      );
-                                                                },
-                                                                isAuth: initState.isAuth,
-                                                              )
+                                                              ),
                                                             ],
                                                           );
                                                         } else {
-                                                          return const SizedBox(
-                                                            height: 20,
-                                                          );
+                                                          return const SizedBox();
                                                         }
                                                       },
                                                       orElse: () => const SizedBox());
@@ -1302,6 +1305,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment.start,
                                                           children: [
+                                                            const SizedBox(
+                                                              height: 35,
+                                                            ),
                                                             Text(
                                                               'С этим товаром смотрят',
                                                               style: Theme.of(context)
@@ -1336,9 +1342,6 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                                 });
                                                               },
                                                             ),
-                                                            const SizedBox(
-                                                              height: 40,
-                                                            ),
                                                           ],
                                                         );
                                                       } else {
@@ -1358,6 +1361,9 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment.start,
                                                           children: [
+                                                            const SizedBox(
+                                                              height: 35,
+                                                            ),
                                                             Text(
                                                               'Товары бренда',
                                                               style: Theme.of(context)
@@ -1427,7 +1433,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                               ),
                                               const SizedBox(
                                                 height: 80,
-                                              )
+                                              ),
                                             ],
                                           ),
                                         )

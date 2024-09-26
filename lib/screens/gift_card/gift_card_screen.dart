@@ -75,8 +75,10 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
             searchQuery: widget.searchQuery ?? '',
           ));
       final updateDataService = GetIt.I.get<UpdateDataService>();
-      _address = updateDataService.boutiques[1].address;
-      _uidPickUpPoint = updateDataService.boutiques[1].uidStore;
+      if (updateDataService.boutiques.isNotEmpty) {
+        _address = updateDataService.boutiques[1].address;
+        _uidPickUpPoint = updateDataService.boutiques[1].uidStore;
+      }
       _typePay = updateDataService.payments.first;
     }
     super.didChangeDependencies();
