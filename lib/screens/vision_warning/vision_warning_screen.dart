@@ -109,7 +109,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                           child: CachedNetworkImage(
                             fit: BoxFit.fill,
                             imageUrl:
-                                'https://slepayakurica.ru/local/templates/m/content/vision/220524/w.jpg',
+                                'https://slepayakurica.ru/local/templates/m/content/vision/270924/vc.jpg',
                             placeholder: (context, url) => Center(
                               child: SizedBox(
                                 width: MediaQuery.of(context).size.width / 2 - 21,
