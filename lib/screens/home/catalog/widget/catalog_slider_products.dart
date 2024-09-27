@@ -31,6 +31,7 @@ class _CatalogSliderProductsState extends State<CatalogSliderProducts> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(widget.listProducts.length, (index) {
           return CatalogSliderProductItem(
             onTap: () {
