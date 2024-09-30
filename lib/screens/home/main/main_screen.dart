@@ -441,9 +441,10 @@ class _MainScreenState extends State<MainScreen> {
                                         ],
                                       ),
                                       Row(
-                                        mainAxisAlignment: !initState.isSaleSectionVisible
-                                            ? MainAxisAlignment.start
-                                            : MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            !initState.isSaleSectionVisible && width > 767
+                                                ? MainAxisAlignment.start
+                                                : MainAxisAlignment.center,
                                         children: [
                                           if (width < 767)
                                             GestureDetector(
@@ -483,7 +484,9 @@ class _MainScreenState extends State<MainScreen> {
                                                   : width / 2 - 14,
                                               padding: EdgeInsets.only(
                                                 top: 14,
-                                                left: !initState.isSaleSectionVisible ? 16 : 7,
+                                                left: width > 767 && !initState.isSaleSectionVisible
+                                                    ? 16
+                                                    : 7,
                                                 right: width > 767 ? 7 : 0,
                                               ),
                                             ),
@@ -507,7 +510,10 @@ class _MainScreenState extends State<MainScreen> {
                                                 padding: EdgeInsets.only(
                                                   top: 14,
                                                   right: 7,
-                                                  left: !initState.isSaleSectionVisible ? 14 : 7,
+                                                  left:
+                                                      width > 767 && !initState.isSaleSectionVisible
+                                                          ? 14
+                                                          : 7,
                                                 ),
                                               ),
                                             ),
