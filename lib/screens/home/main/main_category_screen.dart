@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/home/main/widgets/main_category_item.dart';
@@ -249,56 +247,62 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                         spacing: 14,
                         runSpacing: 14,
                         children: List.generate(initState.category.length, (index) {
-                          return GestureDetector(
-                            onTap: () {
-                              if (initState.category[index].title == 'Подарочная карта') {
-                                context.navigateTo(GiftCardRoute());
-                              } else if (initState.category[index].title == 'Проверка зрения') {
-                                context.navigateTo(VisionWarningRoute());
-                              } else if (initState.category[index].title == 'Распродажа') {
-                                context.read<CatalogBloc>().add(
-                                      CatalogEvent.getInfoProducts(
-                                        path: initState.menu[index].url,
-                                        isCleanHistory: true,
-                                      ),
-                                    );
-                                context.navigateTo(
-                                  CatalogRoute(
-                                    title: initState.menu[index].name,
-                                    url: initState.menu[index].url,
-                                  ),
-                                );
-                              } else {
-                                context.read<CatalogBloc>().add(
-                                      CatalogEvent.getInfoProducts(
-                                        path: initState.category[index].pathMenu,
-                                        isCleanHistory: true,
-                                      ),
-                                    );
-                                context.navigateTo(
-                                  CatalogRoute(
-                                    title: initState.category[index].title,
-                                    url: initState.category[index].pathMenu,
-                                  ),
-                                );
-                              }
-                            },
-                            child: width > 1023 && index > 5
-                                ? MainCategoryItem(
-                                    image: '${initState.category[index].imagePath}_f',
-                                    title: initState.category[index].title,
-                                    width: width / 3 - 20,
-                                    padding: const EdgeInsets.only(
-                                      top: 14,
-                                      left: 7,
-                                      right: 7,
+                          if (initState.category[index].title.isNotEmpty) {
+                            return GestureDetector(
+                              onTap: () {
+                                if (initState.category[index].title == 'Подарочная карта') {
+                                  context.navigateTo(GiftCardRoute());
+                                } else if (initState.category[index].title == 'Проверка зрения') {
+                                  context.navigateTo(VisionWarningRoute());
+                                } else if (initState.category[index].title == 'Распродажа') {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProducts(
+                                          path: initState.menu[index].url,
+                                          isCleanHistory: true,
+                                        ),
+                                      );
+                                  context.navigateTo(
+                                    CatalogRoute(
+                                      title: initState.menu[index].name,
+                                      url: initState.menu[index].url,
                                     ),
-                                  )
-                                : MainCategoryProductItem(
-                                    image: initState.category[index].imagePath,
-                                    title: initState.category[index].title,
-                                  ),
-                          );
+                                  );
+                                } else {
+                                  context.read<CatalogBloc>().add(
+                                        CatalogEvent.getInfoProducts(
+                                          path: initState.category[index].pathMenu,
+                                          isCleanHistory: true,
+                                        ),
+                                      );
+                                  context.navigateTo(
+                                    CatalogRoute(
+                                      title: initState.category[index].title,
+                                      url: initState.category[index].pathMenu,
+                                    ),
+                                  );
+                                }
+                              },
+                              child: width > 1023 && index > 5
+                                  ? MainCategoryItem(
+                                      image: '${initState.category[index].imagePath}_f',
+                                      title: initState.category[index].title,
+                                      width: width / 3 - 20,
+                                      padding: const EdgeInsets.only(
+                                        top: 14,
+                                        left: 7,
+                                        right: 7,
+                                      ),
+                                    )
+                                  : MainCategoryProductItem(
+                                      image: initState.category[index].imagePath,
+                                      title: initState.category[index].title,
+                                    ),
+                            );
+                          } else {
+                            return SizedBox(
+                              width: width / 3 - 18,
+                            );
+                          }
                         }),
                       );
                     },

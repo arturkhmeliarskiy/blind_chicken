@@ -414,7 +414,7 @@ class ConstatntsInfo {
     ),
     MainCategoryModel(
       title: 'Проверка зрения',
-      imagePath: 'vision',
+      imagePath: 'vision_m',
       pathMenu: '',
     ),
     MainCategoryModel(
@@ -462,7 +462,7 @@ class ConstatntsInfo {
     ),
     MainCategoryModel(
       title: 'Проверка зрения',
-      imagePath: 'vision',
+      imagePath: 'vision_c',
       pathMenu: '',
     ),
     MainCategoryModel(

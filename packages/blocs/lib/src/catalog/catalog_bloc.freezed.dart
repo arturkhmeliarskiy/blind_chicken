@@ -14617,6 +14617,7 @@ mixin _$CatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14685,6 +14686,7 @@ mixin _$CatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14753,6 +14755,7 @@ mixin _$CatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14920,6 +14923,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -14991,6 +14995,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15062,6 +15067,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15231,6 +15237,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15302,6 +15309,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15373,6 +15381,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15543,6 +15552,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15614,6 +15624,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15685,6 +15696,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15857,6 +15869,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15928,6 +15941,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -15999,6 +16013,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -16291,6 +16306,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -16363,6 +16379,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -16435,6 +16452,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -16706,6 +16724,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -16778,6 +16797,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -16850,6 +16870,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -17061,6 +17082,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -17132,6 +17154,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -17203,6 +17226,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -17328,6 +17352,7 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       bool isOpenGetSizeProduct,
       bool isButtonTop,
       bool isPromotionsForPurchases,
+      bool isSaleSectionVisible,
       PushNotificationMessageDataModel? notificationMessage,
       SkuProductDataModel? selectSizeProduct,
       String? errorMessage,
@@ -17391,6 +17416,7 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? isOpenGetSizeProduct = null,
     Object? isButtonTop = null,
     Object? isPromotionsForPurchases = null,
+    Object? isSaleSectionVisible = null,
     Object? notificationMessage = freezed,
     Object? selectSizeProduct = freezed,
     Object? errorMessage = freezed,
@@ -17535,6 +17561,10 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.isPromotionsForPurchases
           : isPromotionsForPurchases // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSaleSectionVisible: null == isSaleSectionVisible
+          ? _value.isSaleSectionVisible
+          : isSaleSectionVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
       notificationMessage: freezed == notificationMessage
           ? _value.notificationMessage
           : notificationMessage // ignore: cast_nullable_to_non_nullable
@@ -17663,6 +17693,7 @@ class _$PreloadDataCompletedCatalogStateImpl
       required this.isOpenGetSizeProduct,
       required this.isButtonTop,
       required this.isPromotionsForPurchases,
+      required this.isSaleSectionVisible,
       this.notificationMessage,
       this.selectSizeProduct,
       this.errorMessage,
@@ -17888,6 +17919,8 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final bool isPromotionsForPurchases;
   @override
+  final bool isSaleSectionVisible;
+  @override
   final PushNotificationMessageDataModel? notificationMessage;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -17910,7 +17943,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -17975,6 +18008,8 @@ class _$PreloadDataCompletedCatalogStateImpl
             (identical(
                     other.isPromotionsForPurchases, isPromotionsForPurchases) ||
                 other.isPromotionsForPurchases == isPromotionsForPurchases) &&
+            (identical(other.isSaleSectionVisible, isSaleSectionVisible) ||
+                other.isSaleSectionVisible == isSaleSectionVisible) &&
             (identical(other.notificationMessage, notificationMessage) ||
                 other.notificationMessage == notificationMessage) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -18033,6 +18068,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         isOpenGetSizeProduct,
         isButtonTop,
         isPromotionsForPurchases,
+        isSaleSectionVisible,
         notificationMessage,
         selectSizeProduct,
         errorMessage,
@@ -18109,6 +18145,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -18155,6 +18192,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         isOpenGetSizeProduct,
         isButtonTop,
         isPromotionsForPurchases,
+        isSaleSectionVisible,
         notificationMessage,
         selectSizeProduct,
         errorMessage,
@@ -18223,6 +18261,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -18269,6 +18308,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         isOpenGetSizeProduct,
         isButtonTop,
         isPromotionsForPurchases,
+        isSaleSectionVisible,
         notificationMessage,
         selectSizeProduct,
         errorMessage,
@@ -18337,6 +18377,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             bool isOpenGetSizeProduct,
             bool isButtonTop,
             bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
@@ -18385,6 +18426,7 @@ class _$PreloadDataCompletedCatalogStateImpl
           isOpenGetSizeProduct,
           isButtonTop,
           isPromotionsForPurchases,
+          isSaleSectionVisible,
           notificationMessage,
           selectSizeProduct,
           errorMessage,
@@ -18489,6 +18531,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       required final bool isOpenGetSizeProduct,
       required final bool isButtonTop,
       required final bool isPromotionsForPurchases,
+      required final bool isSaleSectionVisible,
       final PushNotificationMessageDataModel? notificationMessage,
       final SkuProductDataModel? selectSizeProduct,
       final String? errorMessage,
@@ -18533,6 +18576,7 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   bool get isOpenGetSizeProduct;
   bool get isButtonTop;
   bool get isPromotionsForPurchases;
+  bool get isSaleSectionVisible;
   PushNotificationMessageDataModel? get notificationMessage;
   SkuProductDataModel? get selectSizeProduct;
   String? get errorMessage;

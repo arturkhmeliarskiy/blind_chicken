@@ -248,6 +248,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       u: '',
       pid: 0,
     );
+
+    final countProductUrl = await _catalogRepository.getCountProductUrl(url: '/sale/');
     final result = await _storeVersionAppRepository.getStoreVersion();
     if (Platform.isIOS) {
       appStoreInfoVersion = result.version.ios;
@@ -400,6 +402,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           isOpenGetSizeProduct: false,
           isButtonTop: false,
           isPromotionsForPurchases: false,
+          isSaleSectionVisible: countProductUrl.count > 0,
         ),
       );
     }
@@ -893,17 +896,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       switch (event.selectIndexType) {
         case 1:
-          category = _constatntsInfo.categoryWoman;
+          category = _constatntsInfo.categoryWoman.toList();
           brands = _constatntsInfo.brandsWoman;
           _updateDataService.selectedIndexGender = 1;
           name = 'Женщинам';
         case 2:
-          category = _constatntsInfo.categoryMan;
+          category = _constatntsInfo.categoryMan.toList();
           brands = _constatntsInfo.brandsMan;
           _updateDataService.selectedIndexGender = 2;
           name = 'Мужчинам';
         case 3:
-          category = _constatntsInfo.categoryChild;
+          category = _constatntsInfo.categoryChild.toList();
           brands = _constatntsInfo.brandsChilren;
           _updateDataService.selectedIndexGender = 3;
           name = 'Детям';
@@ -921,6 +924,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           bold: 0,
         )
       ];
+
+      if (!initState.isSaleSectionVisible) {
+        category.removeLast();
+        category.add(const MainCategoryModel(
+          title: '',
+          imagePath: '',
+          pathMenu: '',
+        ));
+      }
 
       emit(
         initState.copyWith(
@@ -1191,6 +1203,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         isOpenGetSizeProduct: false,
         isButtonTop: false,
         isPromotionsForPurchases: false,
+        isSaleSectionVisible: false,
       ),
     );
   }

@@ -13,3 +13,4 @@ export 'catalog_search_response.dart';
 export 'catalog_search_info_response.dart';
 export 'brands/index.dart';
 export 'top_banner/index.dart';
+export 'catalog_count_product_url_response.dart';

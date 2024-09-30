@@ -16,3 +16,4 @@ export 'catalog_search_products_request.dart';
 export 'brands/index.dart';
 export 'top_banner/index.dart';
 export 'catalog_size_product_data_model.dart';
+export 'catalog_count_product_url_data_model.dart';

@@ -298,6 +298,15 @@ class CatalogRepository {
 
     return basketInfo;
   }
+
+  Future<CatalogCountProductUrlDataModel> getCountProductUrl({required String url}) async {
+    final topBanner = await _catalogService.getCountProductUrl(
+          url: url,
+        ) ??
+        CatalogCountProductUrlResponse();
+
+    return topBanner.toCountProductUrl();
+  }
 }
 
 extension on CatalogSearchInfoResponse {
@@ -1004,6 +1013,17 @@ extension on TopBannerResponse {
         uid: data?.uid ?? '',
         idNews: data?.idNews ?? '',
       ),
+    );
+  }
+}
+
+extension on CatalogCountProductUrlResponse {
+  CatalogCountProductUrlDataModel toCountProductUrl() {
+    return CatalogCountProductUrlDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+      count: count ?? 0,
     );
   }
 }

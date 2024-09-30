@@ -441,7 +441,9 @@ class _MainScreenState extends State<MainScreen> {
                                         ],
                                       ),
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment: !initState.isSaleSectionVisible
+                                            ? MainAxisAlignment.start
+                                            : MainAxisAlignment.center,
                                         children: [
                                           if (width < 767)
                                             GestureDetector(
@@ -475,10 +477,13 @@ class _MainScreenState extends State<MainScreen> {
                                             child: MainCategoryItem(
                                               image: width > 767 ? 'giftcard_f' : 'giftcard',
                                               title: 'Подарочная карта',
-                                              width: width > 767 ? width / 3 - 7 : width / 2 - 14,
+                                              width: width > 767
+                                                  ? width / 3 -
+                                                      (!initState.isSaleSectionVisible ? 0 : 7)
+                                                  : width / 2 - 14,
                                               padding: EdgeInsets.only(
                                                 top: 14,
-                                                left: 7,
+                                                left: !initState.isSaleSectionVisible ? 16 : 7,
                                                 right: width > 767 ? 7 : 0,
                                               ),
                                             ),
@@ -497,15 +502,16 @@ class _MainScreenState extends State<MainScreen> {
                                               child: MainCategoryItem(
                                                 image: 'vision_f',
                                                 title: 'Проверка зрения',
-                                                width: width / 3 - 7,
-                                                padding: const EdgeInsets.only(
+                                                width: width / 3 -
+                                                    (!initState.isSaleSectionVisible ? 0 : 7),
+                                                padding: EdgeInsets.only(
                                                   top: 14,
                                                   right: 7,
-                                                  left: 7,
+                                                  left: !initState.isSaleSectionVisible ? 14 : 7,
                                                 ),
                                               ),
                                             ),
-                                          if (width > 767)
+                                          if (width > 767 && initState.isSaleSectionVisible)
                                             GestureDetector(
                                               onTap: () {
                                                 context.read<CatalogBloc>().add(
@@ -541,7 +547,9 @@ class _MainScreenState extends State<MainScreen> {
                                       ),
                                       if (width < 767)
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment: !initState.isSaleSectionVisible
+                                              ? MainAxisAlignment.start
+                                              : MainAxisAlignment.center,
                                           children: [
                                             GestureDetector(
                                               onTap: () {
@@ -556,43 +564,46 @@ class _MainScreenState extends State<MainScreen> {
                                               child: MainCategoryItem(
                                                 image: 'vision',
                                                 title: 'Проверка зрения',
-                                                width: width / 2 - 14,
-                                                padding: const EdgeInsets.only(
+                                                width: width / 2 -
+                                                    (!initState.isSaleSectionVisible ? 0 : 14),
+                                                padding: EdgeInsets.only(
                                                   top: 14,
                                                   right: 7,
+                                                  left: !initState.isSaleSectionVisible ? 14 : 0,
                                                 ),
                                               ),
                                             ),
-                                            GestureDetector(
-                                              onTap: () {
-                                                context.read<CatalogBloc>().add(
-                                                      const CatalogEvent.getInfoProducts(
-                                                        path: '/sale/',
-                                                        isCleanHistory: true,
-                                                      ),
-                                                    );
-                                                context.navigateTo(
-                                                  CatalogRoute(
-                                                    title: '',
-                                                    url: '/sale/',
+                                            if (initState.isSaleSectionVisible)
+                                              GestureDetector(
+                                                onTap: () {
+                                                  context.read<CatalogBloc>().add(
+                                                        const CatalogEvent.getInfoProducts(
+                                                          path: '/sale/',
+                                                          isCleanHistory: true,
+                                                        ),
+                                                      );
+                                                  context.navigateTo(
+                                                    CatalogRoute(
+                                                      title: '',
+                                                      url: '/sale/',
+                                                    ),
+                                                  );
+                                                  final appMetricaEcommerce =
+                                                      GetIt.I.get<AppMetricaEcommerceService>();
+                                                  appMetricaEcommerce.openPages(
+                                                    titleScreen: 'Раздел sale на главной странице',
+                                                  );
+                                                },
+                                                child: MainCategoryItem(
+                                                  image: 'sale',
+                                                  title: 'Распродажа',
+                                                  width: width / 2 - 14,
+                                                  padding: const EdgeInsets.only(
+                                                    top: 14,
+                                                    left: 7,
                                                   ),
-                                                );
-                                                final appMetricaEcommerce =
-                                                    GetIt.I.get<AppMetricaEcommerceService>();
-                                                appMetricaEcommerce.openPages(
-                                                  titleScreen: 'Раздел sale на главной странице',
-                                                );
-                                              },
-                                              child: MainCategoryItem(
-                                                image: 'sale',
-                                                title: 'Распродажа',
-                                                width: width / 2 - 14,
-                                                padding: const EdgeInsets.only(
-                                                  top: 14,
-                                                  left: 7,
                                                 ),
                                               ),
-                                            ),
                                           ],
                                         ),
                                       GestureDetector(
