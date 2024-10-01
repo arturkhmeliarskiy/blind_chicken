@@ -77,7 +77,21 @@ class OrderUserInfoScreen extends StatelessWidget {
                                     height: 16,
                                   ),
                                   Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
+                                      InkWell(
+                                        onTap: () {
+                                          context.back();
+                                        },
+                                        child: SvgPicture.asset(
+                                          'assets/icons/arrow-left.svg',
+                                          height: 24,
+                                          width: 24,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
                                       GestureDetector(
                                         onTap: () {
                                           context
@@ -89,7 +103,9 @@ class OrderUserInfoScreen extends StatelessWidget {
                                         },
                                         child: Text(
                                           'Личный кабинет',
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                height: 1,
+                                              ),
                                         ),
                                       ),
                                       const SizedBox(
@@ -106,7 +122,9 @@ class OrderUserInfoScreen extends StatelessWidget {
                                         },
                                         child: Text(
                                           'Мои заказы',
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                height: 1,
+                                              ),
                                         ),
                                       ),
                                       const SizedBox(
@@ -116,6 +134,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                                         'Заказ №${initState.orderInfo?.id}',
                                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                               fontFamily: 'Roboto-Light',
+                                              height: 1,
                                             ),
                                       ),
                                     ],

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -52,9 +53,27 @@ class OrderPdfBlankViewScreen extends StatelessWidget {
                             return SfPdfViewerTheme(
                               data: const SfPdfViewerThemeData(
                                 progressBarColor: BlindChickenColors.activeBorderTextField,
+                                backgroundColor: BlindChickenColors.backgroundColor,
                               ),
-                              child: SfPdfViewer.memory(
-                                initState.file,
+                              child: Stack(
+                                children: [
+                                  SfPdfViewer.memory(
+                                    initState.file,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        context.back();
+                                      },
+                                      child: SvgPicture.asset(
+                                        'assets/icons/arrow-left.svg',
+                                        height: 24,
+                                        width: 24,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             );
                           },
