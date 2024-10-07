@@ -233,7 +233,7 @@ class _AppState extends State<App> {
               _appLinks = AppLinks();
 
               // Check initial link if app was in cold state (terminated)
-              final uri = await _appLinks.getLatestAppLink();
+              final uri = await _appLinks.getLatestLink();
               if (uri != null) {
                 log('getInitialAppLink: $uri');
                 final productCode = uri.path.replaceAll('/product/', '').replaceAll('/', '');
