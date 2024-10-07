@@ -77,8 +77,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
-    final boutiques = await _boutiquesRepository.getBoutiques();
-    _updateDataService.boutiques = boutiques.data;
+
     emit(
       ShoppingCartState.productsShoppingCart(
         shoppingCart: BasketFullInfoDataModel(
@@ -97,7 +96,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isLoadPaymentGift: false,
         isLoadPaymentPromoCode: false,
         boutiques: BoutiquesDataModel(
-          data: boutiques.data,
+          data: _updateDataService.boutiques,
           errorMessage: '',
         ),
         promoCodeMessage: '',
@@ -118,7 +117,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isUponReceipt: true,
         address: '',
         addressDelivery: BasketAddress(address: '', zip: ''),
-        uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
+        uidPickUpPoint: _updateDataService.boutiques.isNotEmpty
+            ? _updateDataService.boutiques.first.uidStore
+            : '',
         paymentId: '1',
         typePay: 'Банковской картой',
         titlePromocode: 'Активация промокода',

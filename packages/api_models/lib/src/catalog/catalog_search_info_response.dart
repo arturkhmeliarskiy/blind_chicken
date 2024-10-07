@@ -20,6 +20,7 @@ class CatalogSearchInfoResponse with _$CatalogSearchInfoResponse {
     List<CatalogProductResponse>? products,
     String? r,
     String? e,
+    String? errorMessage,
   }) = _CatalogSearchInfoResponse;
   factory CatalogSearchInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogSearchInfoResponseFromJson(json);

@@ -58,6 +58,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
   final constants = ConstatntsInfo();
   BlindChickenMessage message = BlindChickenMessage();
   final ScrollController _scrollController = ScrollController();
+  final BlindChickenShowDialogError _blindChickenCatalogProductShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogCatalogError = false;
   double _paginationPosition = 0.0;
   int _currentPage = 1;
   double _boundaryOffset = 0.5;
@@ -194,6 +197,91 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       },
                     );
                   });
+            }
+            final typeError = initState.typeError ?? '';
+
+            if (initState.isError ?? false) {
+              if (!_isShowDialogCatalogError &&
+                  typeError != 'выбрать фильтр' &&
+                  typeError != 'удалить фильтр' &&
+                  typeError != 'удалить фильтры из категории') {
+                _isShowDialogCatalogError = true;
+                _blindChickenCatalogProductShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<CatalogBloc, CatalogState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        loadErrorButton: (value) {
+                          return const SizedBox(
+                            height: 15,
+                            width: 15,
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                            ),
+                          );
+                        },
+                        preloadDataCompleted: (value) {
+                          return Text(
+                            'Повторить',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                            textAlign: TextAlign.center,
+                          );
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'каталог из уведомления':
+                        Timer(const Duration(milliseconds: 150), () {
+                          context.read<CatalogBloc>().add(
+                                CatalogEvent.getInfoProductsPushNotification(
+                                  path: widget.filterNotifcation?.url ?? '',
+                                  sort: widget.sort,
+                                  filterNotifcation: widget.filterNotifcation ??
+                                      FilterNotifcationDataModel(
+                                        filter: [],
+                                        fullFilter: [],
+                                        url: '',
+                                      ),
+                                  messageId: widget.messageId,
+                                  isError: true,
+                                ),
+                              );
+                        });
+                        break;
+                      case 'каталог':
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.getInfoProducts(
+                                path: initState.listCatalogPath.last,
+                              ),
+                            );
+                        break;
+                      case 'выбор размера каталог':
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.getInfoProductSize(
+                                code: initState.codeProduct ?? '',
+                                isShop: initState.isLoadGetSizeProduct,
+                                titleScreen: 'Каталог',
+                              ),
+                            );
+                        break;
+                    }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogCatalogError && !(initState.isError ?? false)) {
+                _isShowDialogCatalogError = false;
+                _blindChickenCatalogProductShowDialogError.closeShowDialog();
+              }
             }
           },
           getSizeProduct: (initState) {
@@ -665,18 +753,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           ),
                         ),
                       )
-                    : initState.isError ?? false
-                        ? BlindChickenErrorInfo(
-                            errorMessage: initState.errorMessage ?? '',
-                            onRepeatRequest: () {
-                              context.read<CatalogBloc>().add(
-                                    CatalogEvent.getInfoProducts(
-                                      path: widget.url,
-                                    ),
-                                  );
-                            },
-                          )
-                        : const SizedBox();
+                    : const SizedBox();
               },
               orElse: () => const SizedBox(),
             );

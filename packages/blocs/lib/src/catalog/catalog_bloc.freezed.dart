@@ -45,8 +45,12 @@ mixin _$CatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -106,8 +110,12 @@ mixin _$CatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -164,8 +172,12 @@ mixin _$CatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -433,8 +445,12 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -497,8 +513,12 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -558,8 +578,12 @@ class _$InitCatalogEventImpl implements InitCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -832,8 +856,12 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -896,8 +924,12 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -957,8 +989,12 @@ class _$PreloadDataCatalogEventImpl implements PreloadDataCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -1233,8 +1269,12 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -1297,8 +1337,12 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -1358,8 +1402,12 @@ class _$UpdateFavouritesProductsCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -1737,8 +1785,12 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -1801,8 +1853,12 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -1862,8 +1918,12 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -2181,8 +2241,12 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -2245,8 +2309,12 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -2306,8 +2374,12 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -2640,8 +2712,12 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -2704,8 +2780,12 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -2765,8 +2845,12 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -3104,8 +3188,12 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -3168,8 +3256,12 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -3229,8 +3321,12 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -3567,8 +3663,12 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -3631,8 +3731,12 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -3692,8 +3796,12 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -4025,8 +4133,12 @@ class _$AddFavouriteProductCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -4089,8 +4201,12 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -4150,8 +4266,12 @@ class _$AddFavouriteProductCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -4462,8 +4582,12 @@ class _$DeleteFavouriteProductCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -4526,8 +4650,12 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -4587,8 +4715,12 @@ class _$DeleteFavouriteProductCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -4870,8 +5002,12 @@ class _$PaginationProductCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -4934,8 +5070,12 @@ class _$PaginationProductCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -4995,8 +5135,12 @@ class _$PaginationProductCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -5296,8 +5440,12 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -5360,8 +5508,12 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -5421,8 +5573,12 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -5740,8 +5896,12 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -5804,8 +5964,12 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -5865,8 +6029,12 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -6179,8 +6347,12 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -6243,8 +6415,12 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -6304,8 +6480,12 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -6619,8 +6799,12 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -6683,8 +6867,12 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -6744,8 +6932,12 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -7054,8 +7246,12 @@ class _$SwitchTypePeopleCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -7118,8 +7314,12 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -7179,8 +7379,12 @@ class _$SwitchTypePeopleCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -7497,8 +7701,12 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -7561,8 +7769,12 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -7622,8 +7834,12 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -7934,8 +8150,12 @@ class _$UpdateInfoProductsCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -7998,8 +8218,12 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -8059,8 +8283,12 @@ class _$UpdateInfoProductsCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -8286,7 +8514,8 @@ abstract class _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
       {String path,
       String sort,
       FilterNotifcationDataModel filterNotifcation,
-      String? messageId});
+      String? messageId,
+      bool? isError});
 
   $FilterNotifcationDataModelCopyWith<$Res> get filterNotifcation;
 }
@@ -8309,6 +8538,7 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
     Object? sort = null,
     Object? filterNotifcation = null,
     Object? messageId = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_$GetInfoProductsPushNotificationCatalogEventImpl(
       path: null == path
@@ -8327,6 +8557,10 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
           ? _value.messageId
           : messageId // ignore: cast_nullable_to_non_nullable
               as String?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -8348,7 +8582,8 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
       {required this.path,
       required this.sort,
       required this.filterNotifcation,
-      this.messageId});
+      this.messageId,
+      this.isError});
 
   @override
   final String path;
@@ -8358,10 +8593,12 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
   final FilterNotifcationDataModel filterNotifcation;
   @override
   final String? messageId;
+  @override
+  final bool? isError;
 
   @override
   String toString() {
-    return 'CatalogEvent.getInfoProductsPushNotification(path: $path, sort: $sort, filterNotifcation: $filterNotifcation, messageId: $messageId)';
+    return 'CatalogEvent.getInfoProductsPushNotification(path: $path, sort: $sort, filterNotifcation: $filterNotifcation, messageId: $messageId, isError: $isError)';
   }
 
   @override
@@ -8374,12 +8611,13 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
             (identical(other.filterNotifcation, filterNotifcation) ||
                 other.filterNotifcation == filterNotifcation) &&
             (identical(other.messageId, messageId) ||
-                other.messageId == messageId));
+                other.messageId == messageId) &&
+            (identical(other.isError, isError) || other.isError == isError));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, path, sort, filterNotifcation, messageId);
+  int get hashCode => Object.hash(
+      runtimeType, path, sort, filterNotifcation, messageId, isError);
 
   @JsonKey(ignore: true)
   @override
@@ -8421,8 +8659,12 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -8457,7 +8699,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getInfoProductsPushNotification(
-        path, sort, filterNotifcation, messageId);
+        path, sort, filterNotifcation, messageId, isError);
   }
 
   @override
@@ -8486,8 +8728,12 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -8519,7 +8765,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getInfoProductsPushNotification?.call(
-        path, sort, filterNotifcation, messageId);
+        path, sort, filterNotifcation, messageId, isError);
   }
 
   @override
@@ -8548,8 +8794,12 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -8583,7 +8833,7 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
   }) {
     if (getInfoProductsPushNotification != null) {
       return getInfoProductsPushNotification(
-          path, sort, filterNotifcation, messageId);
+          path, sort, filterNotifcation, messageId, isError);
     }
     return orElse();
   }
@@ -8754,16 +9004,17 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
 abstract class GetInfoProductsPushNotificationCatalogEvent
     implements CatalogEvent {
   const factory GetInfoProductsPushNotificationCatalogEvent(
-          {required final String path,
-          required final String sort,
-          required final FilterNotifcationDataModel filterNotifcation,
-          final String? messageId}) =
-      _$GetInfoProductsPushNotificationCatalogEventImpl;
+      {required final String path,
+      required final String sort,
+      required final FilterNotifcationDataModel filterNotifcation,
+      final String? messageId,
+      final bool? isError}) = _$GetInfoProductsPushNotificationCatalogEventImpl;
 
   String get path;
   String get sort;
   FilterNotifcationDataModel get filterNotifcation;
   String? get messageId;
+  bool? get isError;
   @JsonKey(ignore: true)
   _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
           _$GetInfoProductsPushNotificationCatalogEventImpl>
@@ -8958,8 +9209,12 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -9023,8 +9278,12 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -9085,8 +9344,12 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -9404,8 +9667,12 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -9468,8 +9735,12 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -9529,8 +9800,12 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -9811,8 +10086,12 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -9875,8 +10154,12 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -9936,8 +10219,12 @@ class _$GoBackProductInfoCategotyCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -10213,8 +10500,12 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -10277,8 +10568,12 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -10338,8 +10633,12 @@ class _$GoBackCatalogInfoCategotyCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -10654,8 +10953,12 @@ class _$ChangeSizeProductCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -10718,8 +11021,12 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -10779,8 +11086,12 @@ class _$ChangeSizeProductCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -11091,8 +11402,12 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -11155,8 +11470,12 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -11216,8 +11535,12 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -11501,8 +11824,12 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -11565,8 +11892,12 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -11626,8 +11957,12 @@ class _$RemoveSelectAllFiltersCategotyCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -11996,8 +12331,12 @@ class _$AddProductToSoppingCartCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -12061,8 +12400,12 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -12123,8 +12466,12 @@ class _$AddProductToSoppingCartCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -12457,8 +12804,12 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -12521,8 +12872,12 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -12582,8 +12937,12 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -12911,8 +13270,12 @@ class _$GetInfoProductSizeCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -12975,8 +13338,12 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -13036,8 +13403,12 @@ class _$GetInfoProductSizeCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -13351,8 +13722,12 @@ class _$GetInfoServiceCardCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -13415,8 +13790,12 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -13476,8 +13855,12 @@ class _$GetInfoServiceCardCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -13789,8 +14172,12 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -13853,8 +14240,12 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -13914,8 +14305,12 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -14223,8 +14618,12 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     required TResult Function(String path, bool? isCleanHistory)
         getInfoProducts,
     required TResult Function(String titleScreen) updateInfoProducts,
-    required TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)
+    required TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)
         getInfoProductsPushNotification,
     required TResult Function(
             String code,
@@ -14287,8 +14686,12 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     TResult? Function(int selectIndexType)? switchTypePeople,
     TResult? Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult? Function(String titleScreen)? updateInfoProducts,
-    TResult? Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult? Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult? Function(
             String code,
@@ -14348,8 +14751,12 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
     TResult Function(int selectIndexType)? switchTypePeople,
     TResult Function(String path, bool? isCleanHistory)? getInfoProducts,
     TResult Function(String titleScreen)? updateInfoProducts,
-    TResult Function(String path, String sort,
-            FilterNotifcationDataModel filterNotifcation, String? messageId)?
+    TResult Function(
+            String path,
+            String sort,
+            FilterNotifcationDataModel filterNotifcation,
+            String? messageId,
+            bool? isError)?
         getInfoProductsPushNotification,
     TResult Function(
             String code,
@@ -14567,6 +14974,7 @@ mixin _$CatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -14621,10 +15029,16 @@ mixin _$CatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -14636,6 +15050,7 @@ mixin _$CatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -14690,10 +15105,16 @@ mixin _$CatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -14705,6 +15126,7 @@ mixin _$CatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -14759,10 +15181,16 @@ mixin _$CatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -14775,6 +15203,8 @@ mixin _$CatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -14790,6 +15220,7 @@ mixin _$CatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -14803,6 +15234,7 @@ mixin _$CatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -14873,6 +15305,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -14927,10 +15360,16 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -14945,6 +15384,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -14999,10 +15439,16 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15017,6 +15463,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -15071,10 +15518,16 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15093,6 +15546,8 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -15111,6 +15566,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -15127,6 +15583,7 @@ class _$InitCatalogStateImpl implements InitCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -15187,6 +15644,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -15241,10 +15699,16 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -15259,6 +15723,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -15313,10 +15778,16 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15331,6 +15802,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -15385,10 +15857,16 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15407,6 +15885,8 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -15425,6 +15905,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -15441,6 +15922,7 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -15502,6 +15984,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -15556,10 +16039,16 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -15574,6 +16063,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -15628,10 +16118,16 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15646,6 +16142,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -15700,10 +16197,16 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15722,6 +16225,8 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -15740,6 +16245,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -15756,6 +16262,7 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -15773,6 +16280,351 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
 
 abstract class LoadingCatalogState implements CatalogState {
   const factory LoadingCatalogState() = _$LoadingCatalogStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingErrorButtonCatalogStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonCatalogStateImplCopyWith(
+          _$LoadingErrorButtonCatalogStateImpl value,
+          $Res Function(_$LoadingErrorButtonCatalogStateImpl) then) =
+      __$$LoadingErrorButtonCatalogStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonCatalogStateImplCopyWithImpl<$Res>
+    extends _$CatalogStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonCatalogStateImpl>
+    implements _$$LoadingErrorButtonCatalogStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonCatalogStateImplCopyWithImpl(
+      _$LoadingErrorButtonCatalogStateImpl _value,
+      $Res Function(_$LoadingErrorButtonCatalogStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonCatalogStateImpl
+    implements LoadingErrorButtonCatalogState {
+  const _$LoadingErrorButtonCatalogStateImpl();
+
+  @override
+  String toString() {
+    return 'CatalogState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonCatalogStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() upload,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function() openSoppingCart,
+    required TResult Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen,
+            List<String> sectionCategoriesPath,
+            List<String> productCategoriesPath)
+        getSizeProduct,
+    required TResult Function(
+            String code,
+            String titleScreen,
+            List<String> sectionCategoriesPath,
+            List<String> productCategoriesPath)
+        addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
+            List<MenuItemDataModel> menu,
+            List<ProductDataModel> defaultProducts,
+            List<ProductDataModel> products,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<FilterInfoDataModel> filter,
+            List<String> listProductsCode,
+            List<String> listCatalogPath,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category,
+            CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
+            int userDiscount,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
+            bool isButtonTop,
+            bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
+            PushNotificationMessageDataModel? notificationMessage,
+            SkuProductDataModel? selectSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            String? codeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            DetailProductDataModel? detailsProduct,
+            CatalogDataModel? catalogInfo,
+            String? title)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? upload,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen,
+            List<String> sectionCategoriesPath,
+            List<String> productCategoriesPath)?
+        getSizeProduct,
+    TResult? Function(
+            String code,
+            String titleScreen,
+            List<String> sectionCategoriesPath,
+            List<String> productCategoriesPath)?
+        addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
+            List<MenuItemDataModel> menu,
+            List<ProductDataModel> defaultProducts,
+            List<ProductDataModel> products,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<FilterInfoDataModel> filter,
+            List<String> listProductsCode,
+            List<String> listCatalogPath,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category,
+            CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
+            int userDiscount,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
+            bool isButtonTop,
+            bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
+            PushNotificationMessageDataModel? notificationMessage,
+            SkuProductDataModel? selectSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            String? codeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            DetailProductDataModel? detailsProduct,
+            CatalogDataModel? catalogInfo,
+            String? title)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? upload,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function()? openSoppingCart,
+    TResult Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen,
+            List<String> sectionCategoriesPath,
+            List<String> productCategoriesPath)?
+        getSizeProduct,
+    TResult Function(
+            String code,
+            String titleScreen,
+            List<String> sectionCategoriesPath,
+            List<String> productCategoriesPath)?
+        addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<String> allBrands,
+            List<String> defaultBrands,
+            List<String> brands,
+            List<MenuItemDataModel> menu,
+            List<ProductDataModel> defaultProducts,
+            List<ProductDataModel> products,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<FilterInfoDataModel> filter,
+            List<String> listProductsCode,
+            List<String> listCatalogPath,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<MenuItemDataModel> pathMenu,
+            List<MainCategoryModel> category,
+            CatalogProductsRequest request,
+            int selectedGenderIndex,
+            bool isAuth,
+            int offset,
+            int userDiscount,
+            String nowVersionApp,
+            String updateVersionApp,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            bool isOpenGetSizeProduct,
+            bool isButtonTop,
+            bool isPromotionsForPurchases,
+            bool isSaleSectionVisible,
+            PushNotificationMessageDataModel? notificationMessage,
+            SkuProductDataModel? selectSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            String? codeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            DetailProductDataModel? detailsProduct,
+            CatalogDataModel? catalogInfo,
+            String? title)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitCatalogState value) init,
+    required TResult Function(UploadCatalogState value) upload,
+    required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
+    required TResult Function(OpenSoppingCartCatalogState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
+    required TResult Function(AddProductCatalogState value)
+        addProductToSoppingCart,
+    required TResult Function(ErrorCatalogState value) error,
+    required TResult Function(PreloadDataCompletedCatalogState value)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitCatalogState value)? init,
+    TResult? Function(UploadCatalogState value)? upload,
+    TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
+    TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
+    TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
+    TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
+    TResult? Function(ErrorCatalogState value)? error,
+    TResult? Function(PreloadDataCompletedCatalogState value)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitCatalogState value)? init,
+    TResult Function(UploadCatalogState value)? upload,
+    TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
+    TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
+    TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
+    TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
+    TResult Function(ErrorCatalogState value)? error,
+    TResult Function(PreloadDataCompletedCatalogState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonCatalogState implements CatalogState {
+  const factory LoadingErrorButtonCatalogState() =
+      _$LoadingErrorButtonCatalogStateImpl;
 }
 
 /// @nodoc
@@ -15819,6 +16671,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -15873,10 +16726,16 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -15891,6 +16750,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -15945,10 +16805,16 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -15963,6 +16829,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -16017,10 +16884,16 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -16039,6 +16912,8 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -16057,6 +16932,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -16073,6 +16949,7 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -16256,6 +17133,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -16310,10 +17188,16 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -16329,6 +17213,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -16383,10 +17268,16 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -16402,6 +17293,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -16456,10 +17348,16 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -16479,6 +17377,8 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -16497,6 +17397,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -16513,6 +17414,7 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -16674,6 +17576,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -16728,10 +17631,16 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -16747,6 +17656,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -16801,10 +17711,16 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -16820,6 +17736,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -16874,10 +17791,16 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -16897,6 +17820,8 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -16915,6 +17840,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -16931,6 +17857,7 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -17032,6 +17959,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -17086,10 +18014,16 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -17104,6 +18038,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -17158,10 +18093,16 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -17176,6 +18117,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -17230,10 +18172,16 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -17252,6 +18200,8 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -17270,6 +18220,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -17286,6 +18237,7 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -17356,16 +18308,23 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       PushNotificationMessageDataModel? notificationMessage,
       SkuProductDataModel? selectSizeProduct,
       String? errorMessage,
+      String? typeError,
       String? codeProduct,
       bool? isShoppingCart,
       bool? isShoppingCartDetailsProduct,
       bool? isError,
+      bool? isShopGetSizeProduct,
+      int? indexFileter,
+      int? indexItemFileter,
+      int? indexFilterCategory,
+      FilterItemDataModel? itemFileter,
       DetailProductDataModel? detailsProduct,
       CatalogDataModel? catalogInfo,
       String? title});
 
   $CatalogProductsRequestCopyWith<$Res> get request;
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
+  $FilterItemDataModelCopyWith<$Res>? get itemFileter;
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
   $CatalogDataModelCopyWith<$Res>? get catalogInfo;
 }
@@ -17420,10 +18379,16 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? notificationMessage = freezed,
     Object? selectSizeProduct = freezed,
     Object? errorMessage = freezed,
+    Object? typeError = freezed,
     Object? codeProduct = freezed,
     Object? isShoppingCart = freezed,
     Object? isShoppingCartDetailsProduct = freezed,
     Object? isError = freezed,
+    Object? isShopGetSizeProduct = freezed,
+    Object? indexFileter = freezed,
+    Object? indexItemFileter = freezed,
+    Object? indexFilterCategory = freezed,
+    Object? itemFileter = freezed,
     Object? detailsProduct = freezed,
     Object? catalogInfo = freezed,
     Object? title = freezed,
@@ -17577,6 +18542,10 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
       codeProduct: freezed == codeProduct
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
@@ -17593,6 +18562,26 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isShopGetSizeProduct: freezed == isShopGetSizeProduct
+          ? _value.isShopGetSizeProduct
+          : isShopGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      indexFileter: freezed == indexFileter
+          ? _value.indexFileter
+          : indexFileter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexItemFileter: freezed == indexItemFileter
+          ? _value.indexItemFileter
+          : indexItemFileter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexFilterCategory: freezed == indexFilterCategory
+          ? _value.indexFilterCategory
+          : indexFilterCategory // ignore: cast_nullable_to_non_nullable
+              as int?,
+      itemFileter: freezed == itemFileter
+          ? _value.itemFileter
+          : itemFileter // ignore: cast_nullable_to_non_nullable
+              as FilterItemDataModel?,
       detailsProduct: freezed == detailsProduct
           ? _value.detailsProduct
           : detailsProduct // ignore: cast_nullable_to_non_nullable
@@ -17626,6 +18615,18 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct!,
         (value) {
       return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterItemDataModelCopyWith<$Res>? get itemFileter {
+    if (_value.itemFileter == null) {
+      return null;
+    }
+
+    return $FilterItemDataModelCopyWith<$Res>(_value.itemFileter!, (value) {
+      return _then(_value.copyWith(itemFileter: value));
     });
   }
 
@@ -17697,10 +18698,16 @@ class _$PreloadDataCompletedCatalogStateImpl
       this.notificationMessage,
       this.selectSizeProduct,
       this.errorMessage,
+      this.typeError,
       this.codeProduct,
       this.isShoppingCart,
       this.isShoppingCartDetailsProduct,
       this.isError,
+      this.isShopGetSizeProduct,
+      this.indexFileter,
+      this.indexItemFileter,
+      this.indexFilterCategory,
+      this.itemFileter,
       this.detailsProduct,
       this.catalogInfo,
       this.title})
@@ -17927,6 +18934,8 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final String? errorMessage;
   @override
+  final String? typeError;
+  @override
   final String? codeProduct;
   @override
   final bool? isShoppingCart;
@@ -17934,6 +18943,16 @@ class _$PreloadDataCompletedCatalogStateImpl
   final bool? isShoppingCartDetailsProduct;
   @override
   final bool? isError;
+  @override
+  final bool? isShopGetSizeProduct;
+  @override
+  final int? indexFileter;
+  @override
+  final int? indexItemFileter;
+  @override
+  final int? indexFilterCategory;
+  @override
+  final FilterItemDataModel? itemFileter;
   @override
   final DetailProductDataModel? detailsProduct;
   @override
@@ -17943,7 +18962,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, typeError: $typeError, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, isShopGetSizeProduct: $isShopGetSizeProduct, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -18016,15 +19035,26 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
             (identical(other.isShoppingCart, isShoppingCart) ||
                 other.isShoppingCart == isShoppingCart) &&
-            (identical(other.isShoppingCartDetailsProduct,
-                    isShoppingCartDetailsProduct) ||
+            (identical(other.isShoppingCartDetailsProduct, isShoppingCartDetailsProduct) ||
                 other.isShoppingCartDetailsProduct ==
                     isShoppingCartDetailsProduct) &&
             (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isShopGetSizeProduct, isShopGetSizeProduct) ||
+                other.isShopGetSizeProduct == isShopGetSizeProduct) &&
+            (identical(other.indexFileter, indexFileter) ||
+                other.indexFileter == indexFileter) &&
+            (identical(other.indexItemFileter, indexItemFileter) ||
+                other.indexItemFileter == indexItemFileter) &&
+            (identical(other.indexFilterCategory, indexFilterCategory) ||
+                other.indexFilterCategory == indexFilterCategory) &&
+            (identical(other.itemFileter, itemFileter) ||
+                other.itemFileter == itemFileter) &&
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
             (identical(other.catalogInfo, catalogInfo) ||
@@ -18072,10 +19102,16 @@ class _$PreloadDataCompletedCatalogStateImpl
         notificationMessage,
         selectSizeProduct,
         errorMessage,
+        typeError,
         codeProduct,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isError,
+        isShopGetSizeProduct,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter,
         detailsProduct,
         catalogInfo,
         title
@@ -18095,6 +19131,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function() init,
     required TResult Function() upload,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(
             String code,
@@ -18149,10 +19186,16 @@ class _$PreloadDataCompletedCatalogStateImpl
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)
@@ -18196,10 +19239,16 @@ class _$PreloadDataCompletedCatalogStateImpl
         notificationMessage,
         selectSizeProduct,
         errorMessage,
+        typeError,
         codeProduct,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isError,
+        isShopGetSizeProduct,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter,
         detailsProduct,
         catalogInfo,
         title);
@@ -18211,6 +19260,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function()? init,
     TResult? Function()? upload,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -18265,10 +19315,16 @@ class _$PreloadDataCompletedCatalogStateImpl
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -18312,10 +19368,16 @@ class _$PreloadDataCompletedCatalogStateImpl
         notificationMessage,
         selectSizeProduct,
         errorMessage,
+        typeError,
         codeProduct,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isError,
+        isShopGetSizeProduct,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter,
         detailsProduct,
         catalogInfo,
         title);
@@ -18327,6 +19389,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function()? init,
     TResult Function()? upload,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -18381,10 +19444,16 @@ class _$PreloadDataCompletedCatalogStateImpl
             PushNotificationMessageDataModel? notificationMessage,
             SkuProductDataModel? selectSizeProduct,
             String? errorMessage,
+            String? typeError,
             String? codeProduct,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
+            bool? isShopGetSizeProduct,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
             DetailProductDataModel? detailsProduct,
             CatalogDataModel? catalogInfo,
             String? title)?
@@ -18430,10 +19499,16 @@ class _$PreloadDataCompletedCatalogStateImpl
           notificationMessage,
           selectSizeProduct,
           errorMessage,
+          typeError,
           codeProduct,
           isShoppingCart,
           isShoppingCartDetailsProduct,
           isError,
+          isShopGetSizeProduct,
+          indexFileter,
+          indexItemFileter,
+          indexFilterCategory,
+          itemFileter,
           detailsProduct,
           catalogInfo,
           title);
@@ -18447,6 +19522,8 @@ class _$PreloadDataCompletedCatalogStateImpl
     required TResult Function(InitCatalogState value) init,
     required TResult Function(UploadCatalogState value) upload,
     required TResult Function(LoadingCatalogState value) load,
+    required TResult Function(LoadingErrorButtonCatalogState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartCatalogState value)
         openSoppingCart,
     required TResult Function(GetSizeProductCatalogState value) getSizeProduct,
@@ -18465,6 +19542,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult? Function(InitCatalogState value)? init,
     TResult? Function(UploadCatalogState value)? upload,
     TResult? Function(LoadingCatalogState value)? load,
+    TResult? Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult? Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult? Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -18481,6 +19559,7 @@ class _$PreloadDataCompletedCatalogStateImpl
     TResult Function(InitCatalogState value)? init,
     TResult Function(UploadCatalogState value)? upload,
     TResult Function(LoadingCatalogState value)? load,
+    TResult Function(LoadingErrorButtonCatalogState value)? loadErrorButton,
     TResult Function(OpenSoppingCartCatalogState value)? openSoppingCart,
     TResult Function(GetSizeProductCatalogState value)? getSizeProduct,
     TResult Function(AddProductCatalogState value)? addProductToSoppingCart,
@@ -18535,10 +19614,16 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       final PushNotificationMessageDataModel? notificationMessage,
       final SkuProductDataModel? selectSizeProduct,
       final String? errorMessage,
+      final String? typeError,
       final String? codeProduct,
       final bool? isShoppingCart,
       final bool? isShoppingCartDetailsProduct,
       final bool? isError,
+      final bool? isShopGetSizeProduct,
+      final int? indexFileter,
+      final int? indexItemFileter,
+      final int? indexFilterCategory,
+      final FilterItemDataModel? itemFileter,
       final DetailProductDataModel? detailsProduct,
       final CatalogDataModel? catalogInfo,
       final String? title}) = _$PreloadDataCompletedCatalogStateImpl;
@@ -18580,10 +19665,16 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   PushNotificationMessageDataModel? get notificationMessage;
   SkuProductDataModel? get selectSizeProduct;
   String? get errorMessage;
+  String? get typeError;
   String? get codeProduct;
   bool? get isShoppingCart;
   bool? get isShoppingCartDetailsProduct;
   bool? get isError;
+  bool? get isShopGetSizeProduct;
+  int? get indexFileter;
+  int? get indexItemFileter;
+  int? get indexFilterCategory;
+  FilterItemDataModel? get itemFileter;
   DetailProductDataModel? get detailsProduct;
   CatalogDataModel? get catalogInfo;
   String? get title;

@@ -28,13 +28,22 @@ class TopBannerBloc extends Bloc<TopBannerEvent, TopBannerState> {
   ) async {
     emit(const TopBannerState.load());
 
-    final result = await _catalogRepository.postTopBanner();
-    await _authRepository.checkDiscount();
+    final topBanner = await _catalogRepository.postTopBanner();
+    final discount = await _authRepository.checkDiscount();
 
-    emit(
-      TopBannerState.preloadData(
-        info: result,
-      ),
-    );
+    if (topBanner.errorMessage.isNotEmpty) {
+      emit(
+        TopBannerState.error(
+          errorMessage:
+              topBanner.errorMessage.isNotEmpty ? topBanner.errorMessage : discount.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        TopBannerState.preloadData(
+          info: topBanner,
+        ),
+      );
+    }
   }
 }

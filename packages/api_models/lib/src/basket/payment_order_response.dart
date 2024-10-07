@@ -9,6 +9,7 @@ class PaymentOrderResponse with _$PaymentOrderResponse {
   factory PaymentOrderResponse({
     String? r,
     String? e,
+    String? errorMessage,
     int? id,
   }) = _PaymentOrderResponse;
   factory PaymentOrderResponse.fromJson(Map<String, dynamic> json) =>

@@ -13022,6 +13022,7 @@ mixin _$ShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -13084,6 +13085,7 @@ mixin _$ShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -13146,6 +13148,7 @@ mixin _$ShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -13209,6 +13212,7 @@ mixin _$ShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -13225,6 +13229,7 @@ mixin _$ShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -13238,6 +13243,7 @@ mixin _$ShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -13310,6 +13316,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -13375,6 +13382,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -13440,6 +13448,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -13509,6 +13518,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -13528,6 +13538,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -13544,6 +13555,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -13608,6 +13620,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -13673,6 +13686,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -13738,6 +13752,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -13807,6 +13822,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -13826,6 +13842,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -13842,6 +13859,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -13860,6 +13878,342 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
 
 abstract class LoadingShoppingCartState implements ShoppingCartState {
   const factory LoadingShoppingCartState() = _$LoadingShoppingCartStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorShoppingCartStateImplCopyWith<$Res> {
+  factory _$$ErrorShoppingCartStateImplCopyWith(
+          _$ErrorShoppingCartStateImpl value,
+          $Res Function(_$ErrorShoppingCartStateImpl) then) =
+      __$$ErrorShoppingCartStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res, _$ErrorShoppingCartStateImpl>
+    implements _$$ErrorShoppingCartStateImplCopyWith<$Res> {
+  __$$ErrorShoppingCartStateImplCopyWithImpl(
+      _$ErrorShoppingCartStateImpl _value,
+      $Res Function(_$ErrorShoppingCartStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorShoppingCartStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
+  const _$ErrorShoppingCartStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorShoppingCartStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorShoppingCartStateImplCopyWith<_$ErrorShoppingCartStateImpl>
+      get copyWith => __$$ErrorShoppingCartStateImplCopyWithImpl<
+          _$ErrorShoppingCartStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsShoppingCart,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorShoppingCartState implements ShoppingCartState {
+  const factory ErrorShoppingCartState({required final String errorMessage}) =
+      _$ErrorShoppingCartStateImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$ErrorShoppingCartStateImplCopyWith<_$ErrorShoppingCartStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -13935,6 +14289,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -14000,6 +14355,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -14065,6 +14421,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -14134,6 +14491,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -14153,6 +14511,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -14169,6 +14528,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -14243,6 +14603,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -14308,6 +14669,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -14373,6 +14735,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -14442,6 +14805,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -14461,6 +14825,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -14477,6 +14842,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -14611,6 +14977,7 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -14676,6 +15043,7 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -14741,6 +15109,7 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -14810,6 +15179,7 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -14829,6 +15199,7 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -14845,6 +15216,7 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -14947,6 +15319,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -15012,6 +15385,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -15077,6 +15451,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -15146,6 +15521,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -15165,6 +15541,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -15181,6 +15558,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -16006,6 +16384,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -16119,6 +16498,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
@@ -16232,6 +16612,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
@@ -16349,6 +16730,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
     required TResult Function(OpenSoppingCartShoppingCartState value)
@@ -16368,6 +16750,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
@@ -16384,6 +16767,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
     TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,

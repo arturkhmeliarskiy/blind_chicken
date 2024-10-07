@@ -20,6 +20,7 @@ _$CatalogSearchInfoResponseImpl _$$CatalogSearchInfoResponseImplFromJson(
           .toList(),
       r: json['r'] as String?,
       e: json['e'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$CatalogSearchInfoResponseImplToJson(
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$CatalogSearchInfoResponseImplToJson(
       'products': instance.products,
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
     };

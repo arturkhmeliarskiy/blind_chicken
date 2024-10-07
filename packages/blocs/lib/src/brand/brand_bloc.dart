@@ -38,8 +38,11 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
     List<BrandDataModel> listBrands = [];
     List<BrandItemDataModel> allBrands = [];
     String selectedTypePeople = '';
+    BrandsDataModel? brandsInfo;
 
     List<CountBrand> listCountBrand = [];
+
+    emit(const BrandState.load());
 
     listBrandsPath.add(event.selectTypePeople ?? 0);
 
@@ -51,7 +54,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
           'Детям',
         ];
         selectedTypePeople = '';
-        final brandsInfo = await _catalogRepository.getBrands(
+        brandsInfo = await _catalogRepository.getBrands(
           gender: 0,
         );
         listBrands = brandsInfo.brands;
@@ -67,7 +70,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
           'Детям',
         ];
         selectedTypePeople = 'Женщинам';
-        final brandsInfo = await _catalogRepository.getBrands(
+        brandsInfo = await _catalogRepository.getBrands(
           gender: 1,
         );
         listBrands = brandsInfo.brands;
@@ -84,7 +87,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
           'Детям',
         ];
         selectedTypePeople = 'Мужчинам';
-        final brandsInfo = await _catalogRepository.getBrands(
+        brandsInfo = await _catalogRepository.getBrands(
           gender: 2,
         );
         listBrands = brandsInfo.brands;
@@ -101,7 +104,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
           'Мужчинам',
         ];
         selectedTypePeople = 'Детям';
-        final brandsInfo = await _catalogRepository.getBrands(
+        brandsInfo = await _catalogRepository.getBrands(
           gender: 3,
         );
         listBrands = brandsInfo.brands;
@@ -116,17 +119,21 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
       allBrands.addAll(listBrands[i].value);
     }
 
-    emit(
-      BrandState.preloadDataCompleted(
-        listTypePeople: listTypePeople,
-        allBrands: allBrands,
-        listCountBrand: listCountBrand,
-        listBrands: listBrands,
-        defaultListBrands: listBrands,
-        selectedTypePeople: selectedTypePeople,
-        listBrandsPath: listBrandsPath,
-      ),
-    );
+    if (brandsInfo?.errorMessage.isNotEmpty ?? false) {
+      emit(BrandState.error(errorMessage: brandsInfo?.errorMessage ?? ''));
+    } else {
+      emit(
+        BrandState.preloadDataCompleted(
+          listTypePeople: listTypePeople,
+          allBrands: allBrands,
+          listCountBrand: listCountBrand,
+          listBrands: listBrands,
+          defaultListBrands: listBrands,
+          selectedTypePeople: selectedTypePeople,
+          listBrandsPath: listBrandsPath,
+        ),
+      );
+    }
   }
 
   Future<void> _search(

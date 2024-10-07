@@ -4,6 +4,9 @@ part of 'brand_bloc.dart';
 class BrandState with _$BrandState {
   const factory BrandState.init() = InitBrandState;
   const factory BrandState.load() = LoadingBrandState;
+  const factory BrandState.error({
+    required String errorMessage,
+  }) = ErrorBrandState;
   const factory BrandState.preloadDataCompleted({
     required String selectedTypePeople,
     required List<String> listTypePeople,

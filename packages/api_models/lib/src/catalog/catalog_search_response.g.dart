@@ -19,6 +19,7 @@ _$CatalogSearchResponseImpl _$$CatalogSearchResponseImplFromJson(
           ?.map(
               (e) => CatalogSectionResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$CatalogSearchResponseImplToJson(
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$CatalogSearchResponseImplToJson(
       'sections_count': instance.sectionsCount,
       'products': instance.products,
       'sections': instance.sections,
+      'errorMessage': instance.errorMessage,
     };

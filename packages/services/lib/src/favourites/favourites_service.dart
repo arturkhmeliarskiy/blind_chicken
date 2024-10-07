@@ -18,6 +18,7 @@ class FavouritesService {
   ) {
     _dio.options.baseUrl = 'https://slepayakurica.ru';
     _dio.options.headers["Content-Type"] = "application/x-www-form-urlencoded";
+    _dio.options.connectTimeout = const Duration(seconds: 10);
   }
 
   Future<FavouritesInfoResponse?> addFavouriteProdcut({

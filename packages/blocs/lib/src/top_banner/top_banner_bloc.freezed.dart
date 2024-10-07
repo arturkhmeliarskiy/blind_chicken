@@ -173,6 +173,7 @@ mixin _$TopBannerState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(TopBannerDataModel info) preloadData,
   }) =>
       throw _privateConstructorUsedError;
@@ -180,6 +181,7 @@ mixin _$TopBannerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(TopBannerDataModel info)? preloadData,
   }) =>
       throw _privateConstructorUsedError;
@@ -187,6 +189,7 @@ mixin _$TopBannerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(TopBannerDataModel info)? preloadData,
     required TResult orElse(),
   }) =>
@@ -195,6 +198,7 @@ mixin _$TopBannerState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitTopBannerState value) init,
     required TResult Function(LoadingTopBannerState value) load,
+    required TResult Function(ErrorTopBannerState value) error,
     required TResult Function(PreloadDataCompletedTopBannerState value)
         preloadData,
   }) =>
@@ -203,6 +207,7 @@ mixin _$TopBannerState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitTopBannerState value)? init,
     TResult? Function(LoadingTopBannerState value)? load,
+    TResult? Function(ErrorTopBannerState value)? error,
     TResult? Function(PreloadDataCompletedTopBannerState value)? preloadData,
   }) =>
       throw _privateConstructorUsedError;
@@ -210,6 +215,7 @@ mixin _$TopBannerState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitTopBannerState value)? init,
     TResult Function(LoadingTopBannerState value)? load,
+    TResult Function(ErrorTopBannerState value)? error,
     TResult Function(PreloadDataCompletedTopBannerState value)? preloadData,
     required TResult orElse(),
   }) =>
@@ -274,6 +280,7 @@ class _$InitTopBannerStateImpl implements InitTopBannerState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(TopBannerDataModel info) preloadData,
   }) {
     return init();
@@ -284,6 +291,7 @@ class _$InitTopBannerStateImpl implements InitTopBannerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(TopBannerDataModel info)? preloadData,
   }) {
     return init?.call();
@@ -294,6 +302,7 @@ class _$InitTopBannerStateImpl implements InitTopBannerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(TopBannerDataModel info)? preloadData,
     required TResult orElse(),
   }) {
@@ -308,6 +317,7 @@ class _$InitTopBannerStateImpl implements InitTopBannerState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitTopBannerState value) init,
     required TResult Function(LoadingTopBannerState value) load,
+    required TResult Function(ErrorTopBannerState value) error,
     required TResult Function(PreloadDataCompletedTopBannerState value)
         preloadData,
   }) {
@@ -319,6 +329,7 @@ class _$InitTopBannerStateImpl implements InitTopBannerState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitTopBannerState value)? init,
     TResult? Function(LoadingTopBannerState value)? load,
+    TResult? Function(ErrorTopBannerState value)? error,
     TResult? Function(PreloadDataCompletedTopBannerState value)? preloadData,
   }) {
     return init?.call(this);
@@ -329,6 +340,7 @@ class _$InitTopBannerStateImpl implements InitTopBannerState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitTopBannerState value)? init,
     TResult Function(LoadingTopBannerState value)? load,
+    TResult Function(ErrorTopBannerState value)? error,
     TResult Function(PreloadDataCompletedTopBannerState value)? preloadData,
     required TResult orElse(),
   }) {
@@ -385,6 +397,7 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(TopBannerDataModel info) preloadData,
   }) {
     return load();
@@ -395,6 +408,7 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(TopBannerDataModel info)? preloadData,
   }) {
     return load?.call();
@@ -405,6 +419,7 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(TopBannerDataModel info)? preloadData,
     required TResult orElse(),
   }) {
@@ -419,6 +434,7 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitTopBannerState value) init,
     required TResult Function(LoadingTopBannerState value) load,
+    required TResult Function(ErrorTopBannerState value) error,
     required TResult Function(PreloadDataCompletedTopBannerState value)
         preloadData,
   }) {
@@ -430,6 +446,7 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitTopBannerState value)? init,
     TResult? Function(LoadingTopBannerState value)? load,
+    TResult? Function(ErrorTopBannerState value)? error,
     TResult? Function(PreloadDataCompletedTopBannerState value)? preloadData,
   }) {
     return load?.call(this);
@@ -440,6 +457,7 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitTopBannerState value)? init,
     TResult Function(LoadingTopBannerState value)? load,
+    TResult Function(ErrorTopBannerState value)? error,
     TResult Function(PreloadDataCompletedTopBannerState value)? preloadData,
     required TResult orElse(),
   }) {
@@ -452,6 +470,155 @@ class _$LoadingTopBannerStateImpl implements LoadingTopBannerState {
 
 abstract class LoadingTopBannerState implements TopBannerState {
   const factory LoadingTopBannerState() = _$LoadingTopBannerStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorTopBannerStateImplCopyWith<$Res> {
+  factory _$$ErrorTopBannerStateImplCopyWith(_$ErrorTopBannerStateImpl value,
+          $Res Function(_$ErrorTopBannerStateImpl) then) =
+      __$$ErrorTopBannerStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorTopBannerStateImplCopyWithImpl<$Res>
+    extends _$TopBannerStateCopyWithImpl<$Res, _$ErrorTopBannerStateImpl>
+    implements _$$ErrorTopBannerStateImplCopyWith<$Res> {
+  __$$ErrorTopBannerStateImplCopyWithImpl(_$ErrorTopBannerStateImpl _value,
+      $Res Function(_$ErrorTopBannerStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorTopBannerStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorTopBannerStateImpl implements ErrorTopBannerState {
+  const _$ErrorTopBannerStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'TopBannerState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorTopBannerStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorTopBannerStateImplCopyWith<_$ErrorTopBannerStateImpl> get copyWith =>
+      __$$ErrorTopBannerStateImplCopyWithImpl<_$ErrorTopBannerStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(TopBannerDataModel info) preloadData,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(TopBannerDataModel info)? preloadData,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function(TopBannerDataModel info)? preloadData,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitTopBannerState value) init,
+    required TResult Function(LoadingTopBannerState value) load,
+    required TResult Function(ErrorTopBannerState value) error,
+    required TResult Function(PreloadDataCompletedTopBannerState value)
+        preloadData,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitTopBannerState value)? init,
+    TResult? Function(LoadingTopBannerState value)? load,
+    TResult? Function(ErrorTopBannerState value)? error,
+    TResult? Function(PreloadDataCompletedTopBannerState value)? preloadData,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitTopBannerState value)? init,
+    TResult Function(LoadingTopBannerState value)? load,
+    TResult Function(ErrorTopBannerState value)? error,
+    TResult Function(PreloadDataCompletedTopBannerState value)? preloadData,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorTopBannerState implements TopBannerState {
+  const factory ErrorTopBannerState({required final String errorMessage}) =
+      _$ErrorTopBannerStateImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$ErrorTopBannerStateImplCopyWith<_$ErrorTopBannerStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -536,6 +703,7 @@ class _$PreloadDataCompletedTopBannerStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(TopBannerDataModel info) preloadData,
   }) {
     return preloadData(info);
@@ -546,6 +714,7 @@ class _$PreloadDataCompletedTopBannerStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(TopBannerDataModel info)? preloadData,
   }) {
     return preloadData?.call(info);
@@ -556,6 +725,7 @@ class _$PreloadDataCompletedTopBannerStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(TopBannerDataModel info)? preloadData,
     required TResult orElse(),
   }) {
@@ -570,6 +740,7 @@ class _$PreloadDataCompletedTopBannerStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitTopBannerState value) init,
     required TResult Function(LoadingTopBannerState value) load,
+    required TResult Function(ErrorTopBannerState value) error,
     required TResult Function(PreloadDataCompletedTopBannerState value)
         preloadData,
   }) {
@@ -581,6 +752,7 @@ class _$PreloadDataCompletedTopBannerStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitTopBannerState value)? init,
     TResult? Function(LoadingTopBannerState value)? load,
+    TResult? Function(ErrorTopBannerState value)? error,
     TResult? Function(PreloadDataCompletedTopBannerState value)? preloadData,
   }) {
     return preloadData?.call(this);
@@ -591,6 +763,7 @@ class _$PreloadDataCompletedTopBannerStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitTopBannerState value)? init,
     TResult Function(LoadingTopBannerState value)? load,
+    TResult Function(ErrorTopBannerState value)? error,
     TResult Function(PreloadDataCompletedTopBannerState value)? preloadData,
     required TResult orElse(),
   }) {

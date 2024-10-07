@@ -5,6 +5,7 @@ class CatalogState with _$CatalogState {
   const factory CatalogState.init() = InitCatalogState;
   const factory CatalogState.upload() = UploadCatalogState;
   const factory CatalogState.load() = LoadingCatalogState;
+  const factory CatalogState.loadErrorButton() = LoadingErrorButtonCatalogState;
   const factory CatalogState.openSoppingCart() = OpenSoppingCartCatalogState;
   const factory CatalogState.getSizeProduct({
     required String code,
@@ -61,10 +62,16 @@ class CatalogState with _$CatalogState {
     PushNotificationMessageDataModel? notificationMessage,
     SkuProductDataModel? selectSizeProduct,
     String? errorMessage,
+    String? typeError,
     String? codeProduct,
     bool? isShoppingCart,
     bool? isShoppingCartDetailsProduct,
     bool? isError,
+    bool? isShopGetSizeProduct,
+    int? indexFileter,
+    int? indexItemFileter,
+    int? indexFilterCategory,
+    FilterItemDataModel? itemFileter,
     DetailProductDataModel? detailsProduct,
     CatalogDataModel? catalogInfo,
     String? title,

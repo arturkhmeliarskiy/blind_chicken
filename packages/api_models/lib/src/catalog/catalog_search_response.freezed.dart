@@ -29,6 +29,7 @@ mixin _$CatalogSearchResponse {
       throw _privateConstructorUsedError;
   List<CatalogSectionResponse>? get sections =>
       throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +47,8 @@ abstract class $CatalogSearchResponseCopyWith<$Res> {
       {@JsonKey(name: 'products_count') int? productsCount,
       @JsonKey(name: 'sections_count') int? sectionsCount,
       List<CatalogProductResponse>? products,
-      List<CatalogSectionResponse>? sections});
+      List<CatalogSectionResponse>? sections,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$CatalogSearchResponseCopyWithImpl<$Res,
     Object? sectionsCount = freezed,
     Object? products = freezed,
     Object? sections = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       productsCount: freezed == productsCount
@@ -85,6 +88,10 @@ class _$CatalogSearchResponseCopyWithImpl<$Res,
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<CatalogSectionResponse>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -102,7 +109,8 @@ abstract class _$$CatalogSearchResponseImplCopyWith<$Res>
       {@JsonKey(name: 'products_count') int? productsCount,
       @JsonKey(name: 'sections_count') int? sectionsCount,
       List<CatalogProductResponse>? products,
-      List<CatalogSectionResponse>? sections});
+      List<CatalogSectionResponse>? sections,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -121,6 +129,7 @@ class __$$CatalogSearchResponseImplCopyWithImpl<$Res>
     Object? sectionsCount = freezed,
     Object? products = freezed,
     Object? sections = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$CatalogSearchResponseImpl(
       productsCount: freezed == productsCount
@@ -139,6 +148,10 @@ class __$$CatalogSearchResponseImplCopyWithImpl<$Res>
           ? _value._sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<CatalogSectionResponse>?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
       {@JsonKey(name: 'products_count') this.productsCount,
       @JsonKey(name: 'sections_count') this.sectionsCount,
       final List<CatalogProductResponse>? products,
-      final List<CatalogSectionResponse>? sections})
+      final List<CatalogSectionResponse>? sections,
+      this.errorMessage})
       : _products = products,
         _sections = sections,
         super._();
@@ -185,8 +199,11 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
   }
 
   @override
+  final String? errorMessage;
+
+  @override
   String toString() {
-    return 'CatalogSearchResponse(productsCount: $productsCount, sectionsCount: $sectionsCount, products: $products, sections: $sections)';
+    return 'CatalogSearchResponse(productsCount: $productsCount, sectionsCount: $sectionsCount, products: $products, sections: $sections, errorMessage: $errorMessage)';
   }
 
   @override
@@ -199,7 +216,9 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
             (identical(other.sectionsCount, sectionsCount) ||
                 other.sectionsCount == sectionsCount) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
-            const DeepCollectionEquality().equals(other._sections, _sections));
+            const DeepCollectionEquality().equals(other._sections, _sections) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
@@ -209,7 +228,8 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
       productsCount,
       sectionsCount,
       const DeepCollectionEquality().hash(_products),
-      const DeepCollectionEquality().hash(_sections));
+      const DeepCollectionEquality().hash(_sections),
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -228,11 +248,11 @@ class _$CatalogSearchResponseImpl extends _CatalogSearchResponse {
 
 abstract class _CatalogSearchResponse extends CatalogSearchResponse {
   factory _CatalogSearchResponse(
-          {@JsonKey(name: 'products_count') final int? productsCount,
-          @JsonKey(name: 'sections_count') final int? sectionsCount,
-          final List<CatalogProductResponse>? products,
-          final List<CatalogSectionResponse>? sections}) =
-      _$CatalogSearchResponseImpl;
+      {@JsonKey(name: 'products_count') final int? productsCount,
+      @JsonKey(name: 'sections_count') final int? sectionsCount,
+      final List<CatalogProductResponse>? products,
+      final List<CatalogSectionResponse>? sections,
+      final String? errorMessage}) = _$CatalogSearchResponseImpl;
   _CatalogSearchResponse._() : super._();
 
   factory _CatalogSearchResponse.fromJson(Map<String, dynamic> json) =
@@ -248,6 +268,8 @@ abstract class _CatalogSearchResponse extends CatalogSearchResponse {
   List<CatalogProductResponse>? get products;
   @override
   List<CatalogSectionResponse>? get sections;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$CatalogSearchResponseImplCopyWith<_$CatalogSearchResponseImpl>

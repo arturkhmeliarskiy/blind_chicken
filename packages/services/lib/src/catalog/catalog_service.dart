@@ -18,6 +18,10 @@ class CatalogService {
   ) {
     _dio.options.baseUrl = 'https://slepayakurica.ru';
     _dio.options.headers["Content-Type"] = "application/x-www-form-urlencoded";
+    _dio.options.connectTimeout = const Duration(seconds: 10);
+    // Future.delayed(const Duration(seconds: 4), () {
+    //   _dio.options.connectTimeout = const Duration(seconds: 3);
+    // });
   }
 
   Future<MenuResponse?> postMenuItems({
@@ -467,13 +471,19 @@ class CatalogService {
           "city": request.city,
         },
       );
-      log(response.data);
 
-      paymentOrderResponse = PaymentOrderResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        paymentOrderResponse = PaymentOrderResponse.fromJson(
+          result,
+        );
+      } catch (e) {
+        paymentOrderResponse = PaymentOrderResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return paymentOrderResponse;
     } on DioError catch (e) {
@@ -486,8 +496,10 @@ class CatalogService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return PaymentOrderResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<CatalogSearchResponse?> searchProducts({
@@ -517,9 +529,19 @@ class CatalogService {
           "proverka_zreniya": 1,
         },
       );
-      log(response.data);
 
-      catalogSearchResponse = CatalogSearchResponse.fromJson(jsonDecode(response.data));
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        catalogSearchResponse = CatalogSearchResponse.fromJson(
+          result,
+        );
+      } catch (e) {
+        catalogSearchResponse = CatalogSearchResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return catalogSearchResponse;
     } on DioError catch (e) {
@@ -532,8 +554,10 @@ class CatalogService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return CatalogSearchResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<CatalogSearchInfoResponse?> searchProductsInfo({
@@ -570,9 +594,19 @@ class CatalogService {
           "discount_first_mobile": 1,
         },
       );
-      log(response.data);
 
-      catalogSearchInfoResponse = CatalogSearchInfoResponse.fromJson(jsonDecode(response.data));
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        catalogSearchInfoResponse = CatalogSearchInfoResponse.fromJson(
+          result,
+        );
+      } catch (e) {
+        catalogSearchInfoResponse = CatalogSearchInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return catalogSearchInfoResponse;
     } on DioError catch (e) {
@@ -585,8 +619,10 @@ class CatalogService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return CatalogSearchInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<CatalogCountProductUrlResponse?> getCountProductUrl({

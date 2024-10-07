@@ -289,7 +289,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       onTap: () {
                                         context.read<CatalogBloc>().add(
                                               CatalogEvent.backPathMenu(
-                                                idParent: initState.selectedGenderIndex + 1,
+                                                idParent: initState.selectedGenderIndex,
                                               ),
                                             );
                                       },

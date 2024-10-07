@@ -12,6 +12,7 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class NotificationInfoDescriptionScreen extends StatefulWidget {
@@ -202,6 +203,13 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                           HtmlWidget(
                             widget.info.description,
                             textStyle: Theme.of(context).textTheme.displayMedium,
+                            onTapUrl: (url) async {
+                              await launchUrl(
+                                Uri.parse(url),
+                                mode: LaunchMode.inAppWebView,
+                              );
+                              return true;
+                            },
                           ),
                           const SizedBox(
                             height: 10,

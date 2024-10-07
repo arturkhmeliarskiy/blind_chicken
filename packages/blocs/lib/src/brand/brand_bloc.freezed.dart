@@ -671,6 +671,7 @@ mixin _$BrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -686,6 +687,7 @@ mixin _$BrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -701,6 +703,7 @@ mixin _$BrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -717,6 +720,7 @@ mixin _$BrandState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitBrandState value) init,
     required TResult Function(LoadingBrandState value) load,
+    required TResult Function(ErrorBrandState value) error,
     required TResult Function(PreloadDataCompletedBrandState value)
         preloadDataCompleted,
   }) =>
@@ -725,6 +729,7 @@ mixin _$BrandState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBrandState value)? init,
     TResult? Function(LoadingBrandState value)? load,
+    TResult? Function(ErrorBrandState value)? error,
     TResult? Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
   }) =>
@@ -733,6 +738,7 @@ mixin _$BrandState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBrandState value)? init,
     TResult Function(LoadingBrandState value)? load,
+    TResult Function(ErrorBrandState value)? error,
     TResult Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -798,6 +804,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -816,6 +823,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -834,6 +842,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -856,6 +865,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitBrandState value) init,
     required TResult Function(LoadingBrandState value) load,
+    required TResult Function(ErrorBrandState value) error,
     required TResult Function(PreloadDataCompletedBrandState value)
         preloadDataCompleted,
   }) {
@@ -867,6 +877,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBrandState value)? init,
     TResult? Function(LoadingBrandState value)? load,
+    TResult? Function(ErrorBrandState value)? error,
     TResult? Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
   }) {
@@ -878,6 +889,7 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBrandState value)? init,
     TResult Function(LoadingBrandState value)? load,
+    TResult Function(ErrorBrandState value)? error,
     TResult Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -933,6 +945,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -951,6 +964,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -969,6 +983,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -991,6 +1006,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitBrandState value) init,
     required TResult Function(LoadingBrandState value) load,
+    required TResult Function(ErrorBrandState value) error,
     required TResult Function(PreloadDataCompletedBrandState value)
         preloadDataCompleted,
   }) {
@@ -1002,6 +1018,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBrandState value)? init,
     TResult? Function(LoadingBrandState value)? load,
+    TResult? Function(ErrorBrandState value)? error,
     TResult? Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
   }) {
@@ -1013,6 +1030,7 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBrandState value)? init,
     TResult Function(LoadingBrandState value)? load,
+    TResult Function(ErrorBrandState value)? error,
     TResult Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -1026,6 +1044,181 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
 
 abstract class LoadingBrandState implements BrandState {
   const factory LoadingBrandState() = _$LoadingBrandStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorBrandStateImplCopyWith<$Res> {
+  factory _$$ErrorBrandStateImplCopyWith(_$ErrorBrandStateImpl value,
+          $Res Function(_$ErrorBrandStateImpl) then) =
+      __$$ErrorBrandStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorBrandStateImplCopyWithImpl<$Res>
+    extends _$BrandStateCopyWithImpl<$Res, _$ErrorBrandStateImpl>
+    implements _$$ErrorBrandStateImplCopyWith<$Res> {
+  __$$ErrorBrandStateImplCopyWithImpl(
+      _$ErrorBrandStateImpl _value, $Res Function(_$ErrorBrandStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorBrandStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorBrandStateImpl implements ErrorBrandState {
+  const _$ErrorBrandStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'BrandState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorBrandStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorBrandStateImplCopyWith<_$ErrorBrandStateImpl> get copyWith =>
+      __$$ErrorBrandStateImplCopyWithImpl<_$ErrorBrandStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            String selectedTypePeople,
+            List<String> listTypePeople,
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)
+        preloadDataCompleted,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            String selectedTypePeople,
+            List<String> listTypePeople,
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            String selectedTypePeople,
+            List<String> listTypePeople,
+            List<BrandItemDataModel> allBrands,
+            List<BrandDataModel> listBrands,
+            List<BrandDataModel> defaultListBrands,
+            List<CountBrand> listCountBrand,
+            List<int> listBrandsPath)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitBrandState value) init,
+    required TResult Function(LoadingBrandState value) load,
+    required TResult Function(ErrorBrandState value) error,
+    required TResult Function(PreloadDataCompletedBrandState value)
+        preloadDataCompleted,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitBrandState value)? init,
+    TResult? Function(LoadingBrandState value)? load,
+    TResult? Function(ErrorBrandState value)? error,
+    TResult? Function(PreloadDataCompletedBrandState value)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitBrandState value)? init,
+    TResult Function(LoadingBrandState value)? load,
+    TResult Function(ErrorBrandState value)? error,
+    TResult Function(PreloadDataCompletedBrandState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorBrandState implements BrandState {
+  const factory ErrorBrandState({required final String errorMessage}) =
+      _$ErrorBrandStateImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$ErrorBrandStateImplCopyWith<_$ErrorBrandStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1218,6 +1411,7 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1237,6 +1431,7 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1262,6 +1457,7 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1285,6 +1481,7 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitBrandState value) init,
     required TResult Function(LoadingBrandState value) load,
+    required TResult Function(ErrorBrandState value) error,
     required TResult Function(PreloadDataCompletedBrandState value)
         preloadDataCompleted,
   }) {
@@ -1296,6 +1493,7 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBrandState value)? init,
     TResult? Function(LoadingBrandState value)? load,
+    TResult? Function(ErrorBrandState value)? error,
     TResult? Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
   }) {
@@ -1307,6 +1505,7 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBrandState value)? init,
     TResult Function(LoadingBrandState value)? load,
+    TResult Function(ErrorBrandState value)? error,
     TResult Function(PreloadDataCompletedBrandState value)?
         preloadDataCompleted,
     required TResult orElse(),

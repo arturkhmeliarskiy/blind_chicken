@@ -53,7 +53,7 @@ class OrderPdfBlankViewScreen extends StatelessWidget {
                             return SfPdfViewerTheme(
                               data: const SfPdfViewerThemeData(
                                 progressBarColor: BlindChickenColors.activeBorderTextField,
-                                backgroundColor: BlindChickenColors.backgroundColor,
+                                backgroundColor: BlindChickenColors.borderBottomColor,
                               ),
                               child: Stack(
                                 children: [

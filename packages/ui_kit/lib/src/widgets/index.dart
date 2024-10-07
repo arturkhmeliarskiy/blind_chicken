@@ -20,3 +20,5 @@ export 'blind_chicken_button_order_info.dart';
 export 'blind_chicken_button.dart';
 export 'blind_chicken_promotions_for_purchases.dart';
 export 'photo_and_video_view_gallery/index.dart';
+export 'blind_chicken_modal_error_info.dart';
+export 'blind_chicken_show_dialog_error.dart';

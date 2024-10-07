@@ -22,6 +22,7 @@ PaymentOrderResponse _$PaymentOrderResponseFromJson(Map<String, dynamic> json) {
 mixin _$PaymentOrderResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $PaymentOrderResponseCopyWith<$Res> {
           $Res Function(PaymentOrderResponse) then) =
       _$PaymentOrderResponseCopyWithImpl<$Res, PaymentOrderResponse>;
   @useResult
-  $Res call({String? r, String? e, int? id});
+  $Res call({String? r, String? e, String? errorMessage, int? id});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$PaymentOrderResponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? id = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +67,10 @@ class _$PaymentOrderResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       id: freezed == id
           ? _value.id
@@ -82,7 +88,7 @@ abstract class _$$PaymentOrderResponseImplCopyWith<$Res>
       __$$PaymentOrderResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? r, String? e, int? id});
+  $Res call({String? r, String? e, String? errorMessage, int? id});
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class __$$PaymentOrderResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? id = freezed,
   }) {
     return _then(_$PaymentOrderResponseImpl(
@@ -108,6 +115,10 @@ class __$$PaymentOrderResponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       id: freezed == id
           ? _value.id
@@ -120,7 +131,8 @@ class __$$PaymentOrderResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PaymentOrderResponseImpl extends _PaymentOrderResponse {
-  _$PaymentOrderResponseImpl({this.r, this.e, this.id}) : super._();
+  _$PaymentOrderResponseImpl({this.r, this.e, this.errorMessage, this.id})
+      : super._();
 
   factory _$PaymentOrderResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentOrderResponseImplFromJson(json);
@@ -130,11 +142,13 @@ class _$PaymentOrderResponseImpl extends _PaymentOrderResponse {
   @override
   final String? e;
   @override
+  final String? errorMessage;
+  @override
   final int? id;
 
   @override
   String toString() {
-    return 'PaymentOrderResponse(r: $r, e: $e, id: $id)';
+    return 'PaymentOrderResponse(r: $r, e: $e, errorMessage: $errorMessage, id: $id)';
   }
 
   @override
@@ -144,12 +158,14 @@ class _$PaymentOrderResponseImpl extends _PaymentOrderResponse {
             other is _$PaymentOrderResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, id);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage, id);
 
   @JsonKey(ignore: true)
   @override
@@ -171,6 +187,7 @@ abstract class _PaymentOrderResponse extends PaymentOrderResponse {
   factory _PaymentOrderResponse(
       {final String? r,
       final String? e,
+      final String? errorMessage,
       final int? id}) = _$PaymentOrderResponseImpl;
   _PaymentOrderResponse._() : super._();
 
@@ -181,6 +198,8 @@ abstract class _PaymentOrderResponse extends PaymentOrderResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   int? get id;
   @override

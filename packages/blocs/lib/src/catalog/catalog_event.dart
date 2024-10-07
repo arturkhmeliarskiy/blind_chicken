@@ -67,6 +67,7 @@ class CatalogEvent with _$CatalogEvent {
     required String sort,
     required FilterNotifcationDataModel filterNotifcation,
     String? messageId,
+    bool? isError,
   }) = GetInfoProductsPushNotificationCatalogEvent;
   const factory CatalogEvent.getInfoProduct({
     required String code,

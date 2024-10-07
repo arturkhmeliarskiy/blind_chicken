@@ -14,6 +14,7 @@ class CatalogSearchResponse with _$CatalogSearchResponse {
     @JsonKey(name: 'sections_count') int? sectionsCount,
     List<CatalogProductResponse>? products,
     List<CatalogSectionResponse>? sections,
+    String? errorMessage,
   }) = _CatalogSearchResponse;
   factory CatalogSearchResponse.fromJson(Map<String, dynamic> json) =>
       _$CatalogSearchResponseFromJson(json);

@@ -4,6 +4,9 @@ part of 'shopping_cart_bloc.dart';
 class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState.init() = InitShoppingCartState;
   const factory ShoppingCartState.load() = LoadingShoppingCartState;
+  const factory ShoppingCartState.error({
+    required String errorMessage,
+  }) = ErrorShoppingCartState;
   const factory ShoppingCartState.createOrderSuccessfully({
     required int orderId,
   }) = CreateOrderSuccessfullyShoppingCartState;
