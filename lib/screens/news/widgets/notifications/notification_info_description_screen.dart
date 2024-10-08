@@ -45,7 +45,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                     if (details.velocity.pixelsPerSecond.dx > 0) {
                       context.navigateTo(
                         NewsInfoRoute(
-                          indexPage: 0,
+                          indexPage: 2,
                         ),
                       );
                       AppMetrica.reportEvent('Список новостей');
@@ -60,7 +60,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                       if (_isSwipe && !value) {
                         context.navigateTo(
                           NewsInfoRoute(
-                            indexPage: 0,
+                            indexPage: 2,
                           ),
                         );
                         AppMetrica.reportEvent('Список новостей');
@@ -89,7 +89,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                                       onTap: () {
                                         context.navigateTo(
                                           NewsInfoRoute(
-                                            indexPage: 0,
+                                            indexPage: 2,
                                           ),
                                         );
                                         AppMetrica.reportEvent('Список новостей');
