@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/widgets/blind_chicken_discount_scale.dart';
 import 'package:blind_chicken/screens/account/account_virtual_card.dart';
@@ -100,6 +101,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   builder: (context, state) {
                     return state.maybeMap(
                         preloadDataCompleted: (initState) {
+                          final status = initState.user?.status ?? '';
                           return PopScope(
                             canPop: false,
                             onPopInvoked: (value) {
@@ -137,9 +139,14 @@ class _AccountScreenState extends State<AccountScreen> {
                                             const SizedBox(
                                               height: 17.5,
                                             ),
-                                            Text(
-                                              'Личный кабинет',
-                                              style: Theme.of(context).textTheme.titleSmall,
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Личный кабинет',
+                                                  style: Theme.of(context).textTheme.titleSmall,
+                                                ),
+                                              ],
                                             ),
                                             if (initState.virtualCardsCod.isNotEmpty)
                                               const SizedBox(
@@ -224,7 +231,75 @@ class _AccountScreenState extends State<AccountScreen> {
                                                                       ),
                                                                       Expanded(
                                                                         child: Column(
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment
+                                                                                  .end,
                                                                           children: [
+                                                                            if (status ==
+                                                                                    'VIP stylist' ||
+                                                                                status ==
+                                                                                    'Platinum')
+                                                                              AnimatedTextKit(
+                                                                                isRepeatingAnimation:
+                                                                                    true,
+                                                                                pause: Duration(
+                                                                                    milliseconds:
+                                                                                        0),
+                                                                                animatedTexts: [
+                                                                                  ColorizeAnimatedText(
+                                                                                    initState.user
+                                                                                            ?.status ??
+                                                                                        '',
+                                                                                    textStyle: Theme.of(
+                                                                                                context)
+                                                                                            .textTheme
+                                                                                            .headlineMedium
+                                                                                            ?.copyWith(
+                                                                                              fontWeight:
+                                                                                                  FontWeight.w700,
+                                                                                            ) ??
+                                                                                        TextStyle(),
+                                                                                    colors: [
+                                                                                      const Color
+                                                                                          .fromARGB(
+                                                                                          255,
+                                                                                          116,
+                                                                                          115,
+                                                                                          115),
+                                                                                      const Color
+                                                                                          .fromARGB(
+                                                                                          255,
+                                                                                          218,
+                                                                                          218,
+                                                                                          218),
+                                                                                      const Color
+                                                                                          .fromARGB(
+                                                                                          255,
+                                                                                          84,
+                                                                                          84,
+                                                                                          84),
+                                                                                    ],
+                                                                                  ),
+                                                                                ],
+                                                                                repeatForever: true,
+                                                                              ),
+                                                                            if (status == 'Stylist')
+                                                                              Text(
+                                                                                status,
+                                                                                style: Theme.of(
+                                                                                        context)
+                                                                                    .textTheme
+                                                                                    .headlineMedium
+                                                                                    ?.copyWith(
+                                                                                      fontWeight:
+                                                                                          FontWeight
+                                                                                              .w700,
+                                                                                    ),
+                                                                              ),
+                                                                            if (status.isNotEmpty)
+                                                                              const SizedBox(
+                                                                                height: 20,
+                                                                              ),
                                                                             Expanded(
                                                                               child: Container(
                                                                                 decoration:

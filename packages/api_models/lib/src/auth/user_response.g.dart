@@ -9,6 +9,7 @@ part of 'user_response.dart';
 _$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
     _$UserResponseImpl(
       phone: json['phone'] as String?,
+      status: json['status'] as String?,
       discount: json['discount'] as int?,
       rest: json['rest'] as int?,
       limit: json['limit'] as int?,
@@ -29,6 +30,7 @@ _$UserResponseImpl _$$UserResponseImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$UserResponseImplToJson(_$UserResponseImpl instance) =>
     <String, dynamic>{
       'phone': instance.phone,
+      'status': instance.status,
       'discount': instance.discount,
       'rest': instance.rest,
       'limit': instance.limit,

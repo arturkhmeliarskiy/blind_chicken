@@ -98,7 +98,13 @@ class _NotificationInfoNotificationDescriptionScreenState
                             return GestureDetector(
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
-                                  context.back();
+                                  context.navigateTo(
+                                    NewsRoute(children: [
+                                      NewsInfoRoute(
+                                        indexPage: 2,
+                                      )
+                                    ]),
+                                  );
                                   setState(() {
                                     _isSwipe = false;
                                   });
@@ -108,7 +114,13 @@ class _NotificationInfoNotificationDescriptionScreenState
                                 canPop: false,
                                 onPopInvoked: (value) {
                                   if (_isSwipe && !value) {
-                                    context.back();
+                                    context.navigateTo(
+                                      NewsRoute(children: [
+                                        NewsInfoRoute(
+                                          indexPage: 2,
+                                        )
+                                      ]),
+                                    );
                                   }
                                 },
                                 child: Padding(
@@ -132,7 +144,13 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                 ),
                                                 child: InkWell(
                                                   onTap: () {
-                                                    context.back();
+                                                    context.navigateTo(
+                                                      NewsRoute(children: [
+                                                        NewsInfoRoute(
+                                                          indexPage: 2,
+                                                        )
+                                                      ]),
+                                                    );
                                                   },
                                                   child: SvgPicture.asset(
                                                     'assets/icons/arrow-left.svg',
@@ -256,6 +274,13 @@ class _NotificationInfoNotificationDescriptionScreenState
                                       HtmlWidget(
                                         initState.oneNotification?.data.description ?? '',
                                         textStyle: Theme.of(context).textTheme.displayMedium,
+                                        onTapUrl: (url) async {
+                                          await launchUrl(
+                                            Uri.parse(url),
+                                            mode: LaunchMode.inAppWebView,
+                                          );
+                                          return true;
+                                        },
                                       ),
                                       const SizedBox(
                                         height: 10,

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserDataModel {
   String get phone => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   int get discount => throw _privateConstructorUsedError;
   int get rest => throw _privateConstructorUsedError;
   int get limit => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $UserDataModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String phone,
+      String status,
       int discount,
       int rest,
       int limit,
@@ -74,6 +76,7 @@ class _$UserDataModelCopyWithImpl<$Res, $Val extends UserDataModel>
   @override
   $Res call({
     Object? phone = null,
+    Object? status = null,
     Object? discount = null,
     Object? rest = null,
     Object? limit = null,
@@ -92,6 +95,10 @@ class _$UserDataModelCopyWithImpl<$Res, $Val extends UserDataModel>
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String,
       discount: null == discount
           ? _value.discount
@@ -159,6 +166,7 @@ abstract class _$$UserDataModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String phone,
+      String status,
       int discount,
       int rest,
       int limit,
@@ -186,6 +194,7 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phone = null,
+    Object? status = null,
     Object? discount = null,
     Object? rest = null,
     Object? limit = null,
@@ -204,6 +213,10 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
       phone: null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String,
       discount: null == discount
           ? _value.discount
@@ -266,6 +279,7 @@ class __$$UserDataModelImplCopyWithImpl<$Res>
 class _$UserDataModelImpl extends _UserDataModel {
   _$UserDataModelImpl(
       {required this.phone,
+      required this.status,
       required this.discount,
       required this.rest,
       required this.limit,
@@ -284,6 +298,8 @@ class _$UserDataModelImpl extends _UserDataModel {
 
   @override
   final String phone;
+  @override
+  final String status;
   @override
   final int discount;
   @override
@@ -318,7 +334,7 @@ class _$UserDataModelImpl extends _UserDataModel {
 
   @override
   String toString() {
-    return 'UserDataModel(phone: $phone, discount: $discount, rest: $rest, limit: $limit, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, virtualcardscod: $virtualcardscod, schemLoyalty: $schemLoyalty)';
+    return 'UserDataModel(phone: $phone, status: $status, discount: $discount, rest: $rest, limit: $limit, name: $name, email: $email, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, virtualcardscod: $virtualcardscod, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -327,6 +343,7 @@ class _$UserDataModelImpl extends _UserDataModel {
         (other.runtimeType == runtimeType &&
             other is _$UserDataModelImpl &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
             (identical(other.rest, rest) || other.rest == rest) &&
@@ -353,6 +370,7 @@ class _$UserDataModelImpl extends _UserDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       phone,
+      status,
       discount,
       rest,
       limit,
@@ -377,6 +395,7 @@ class _$UserDataModelImpl extends _UserDataModel {
 abstract class _UserDataModel extends UserDataModel {
   factory _UserDataModel(
           {required final String phone,
+          required final String status,
           required final int discount,
           required final int rest,
           required final int limit,
@@ -395,6 +414,8 @@ abstract class _UserDataModel extends UserDataModel {
 
   @override
   String get phone;
+  @override
+  String get status;
   @override
   int get discount;
   @override

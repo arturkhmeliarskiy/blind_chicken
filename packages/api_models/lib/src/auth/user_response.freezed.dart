@@ -21,6 +21,7 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserResponse {
   String? get phone => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   int? get discount => throw _privateConstructorUsedError;
   int? get rest => throw _privateConstructorUsedError;
   int? get limit => throw _privateConstructorUsedError;
@@ -57,6 +58,7 @@ abstract class $UserResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? phone,
+      String? status,
       int? discount,
       int? rest,
       int? limit,
@@ -87,6 +89,7 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
   @override
   $Res call({
     Object? phone = freezed,
+    Object? status = freezed,
     Object? discount = freezed,
     Object? rest = freezed,
     Object? limit = freezed,
@@ -105,6 +108,10 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String?,
       discount: freezed == discount
           ? _value.discount
@@ -172,6 +179,7 @@ abstract class _$$UserResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? phone,
+      String? status,
       int? discount,
       int? rest,
       int? limit,
@@ -200,6 +208,7 @@ class __$$UserResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phone = freezed,
+    Object? status = freezed,
     Object? discount = freezed,
     Object? rest = freezed,
     Object? limit = freezed,
@@ -218,6 +227,10 @@ class __$$UserResponseImplCopyWithImpl<$Res>
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as String?,
       discount: freezed == discount
           ? _value.discount
@@ -280,6 +293,7 @@ class __$$UserResponseImplCopyWithImpl<$Res>
 class _$UserResponseImpl extends _UserResponse {
   _$UserResponseImpl(
       {this.phone,
+      this.status,
       this.discount,
       this.rest,
       this.limit,
@@ -302,6 +316,8 @@ class _$UserResponseImpl extends _UserResponse {
 
   @override
   final String? phone;
+  @override
+  final String? status;
   @override
   final int? discount;
   @override
@@ -345,7 +361,7 @@ class _$UserResponseImpl extends _UserResponse {
 
   @override
   String toString() {
-    return 'UserResponse(phone: $phone, discount: $discount, rest: $rest, limit: $limit, name: $name, email: $email, virtualcardscod: $virtualcardscod, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
+    return 'UserResponse(phone: $phone, status: $status, discount: $discount, rest: $rest, limit: $limit, name: $name, email: $email, virtualcardscod: $virtualcardscod, message: $message, sumBuy: $sumBuy, nextDiscount: $nextDiscount, buyForNext: $buyForNext, activeBonus: $activeBonus, allBonus: $allBonus, schemLoyalty: $schemLoyalty)';
   }
 
   @override
@@ -354,6 +370,7 @@ class _$UserResponseImpl extends _UserResponse {
         (other.runtimeType == runtimeType &&
             other is _$UserResponseImpl &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.discount, discount) ||
                 other.discount == discount) &&
             (identical(other.rest, rest) || other.rest == rest) &&
@@ -381,6 +398,7 @@ class _$UserResponseImpl extends _UserResponse {
   int get hashCode => Object.hash(
       runtimeType,
       phone,
+      status,
       discount,
       rest,
       limit,
@@ -412,6 +430,7 @@ class _$UserResponseImpl extends _UserResponse {
 abstract class _UserResponse extends UserResponse {
   factory _UserResponse(
       {final String? phone,
+      final String? status,
       final int? discount,
       final int? rest,
       final int? limit,
@@ -433,6 +452,8 @@ abstract class _UserResponse extends UserResponse {
 
   @override
   String? get phone;
+  @override
+  String? get status;
   @override
   int? get discount;
   @override

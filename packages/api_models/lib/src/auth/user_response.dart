@@ -9,6 +9,7 @@ class UserResponse with _$UserResponse {
   const UserResponse._();
   factory UserResponse({
     String? phone,
+    String? status,
     int? discount,
     int? rest,
     int? limit,

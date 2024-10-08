@@ -8,6 +8,7 @@ class UserDataModel with _$UserDataModel {
   const UserDataModel._();
   factory UserDataModel({
     required String phone,
+    required String status,
     required int discount,
     required int rest,
     required int limit,

@@ -189,6 +189,7 @@ extension on UserInfoResponse {
         allBonus: user?.allBonus ?? 0,
         rest: user?.rest ?? 0,
         limit: user?.limit ?? 0,
+        status: user?.status ?? '',
       ),
     );
   }
