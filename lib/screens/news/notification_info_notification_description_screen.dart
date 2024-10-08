@@ -99,11 +99,9 @@ class _NotificationInfoNotificationDescriptionScreenState
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
                                   context.navigateTo(
-                                    NewsRoute(children: [
-                                      NewsInfoRoute(
-                                        indexPage: 2,
-                                      )
-                                    ]),
+                                    NewsInfoRoute(
+                                      indexPage: 2,
+                                    ),
                                   );
                                   setState(() {
                                     _isSwipe = false;
@@ -115,11 +113,9 @@ class _NotificationInfoNotificationDescriptionScreenState
                                 onPopInvoked: (value) {
                                   if (_isSwipe && !value) {
                                     context.navigateTo(
-                                      NewsRoute(children: [
-                                        NewsInfoRoute(
-                                          indexPage: 2,
-                                        )
-                                      ]),
+                                      NewsInfoRoute(
+                                        indexPage: 2,
+                                      ),
                                     );
                                   }
                                 },
@@ -145,11 +141,9 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                 child: InkWell(
                                                   onTap: () {
                                                     context.navigateTo(
-                                                      NewsRoute(children: [
-                                                        NewsInfoRoute(
-                                                          indexPage: 2,
-                                                        )
-                                                      ]),
+                                                      NewsInfoRoute(
+                                                        indexPage: 2,
+                                                      ),
                                                     );
                                                   },
                                                   child: SvgPicture.asset(
