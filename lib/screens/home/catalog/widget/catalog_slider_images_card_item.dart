@@ -15,7 +15,7 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
 }
 
 class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardItem> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _page = 0;
 
   @override
@@ -60,17 +60,17 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
               padding: const EdgeInsets.only(right: 7),
               child: SizedBox(
                 height: 12,
-                width: widget.images.length * 11,
+                width: widget.images.length * 9,
                 child: Row(
                   children: List.generate(widget.images.length, (index) {
                     return Container(
                       height: 2,
-                      width: 7,
-                      margin: EdgeInsets.only(left: 4),
+                      width: 6,
+                      margin: EdgeInsets.only(left: 3),
                       decoration: BoxDecoration(
                         color: _page == index
                             ? BlindChickenColors.backgroundColor
-                            : BlindChickenColors.borderSwitchCard,
+                            : BlindChickenColors.borderBottomColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     );
