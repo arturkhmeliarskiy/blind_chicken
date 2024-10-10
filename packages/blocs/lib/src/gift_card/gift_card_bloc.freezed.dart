@@ -78,6 +78,9 @@ class _$GiftCardEventCopyWithImpl<$Res, $Val extends GiftCardEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -97,6 +100,8 @@ class __$$InitGiftCardEventImplCopyWithImpl<$Res>
       $Res Function(_$InitGiftCardEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,7 +163,9 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
   int get hashCode =>
       Object.hash(runtimeType, isNotification, searchQuery, messageId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitGiftCardEventImplCopyWith<_$InitGiftCardEventImpl> get copyWith =>
@@ -243,7 +250,10 @@ abstract class InitGiftCardEvent implements GiftCardEvent {
   bool get isNotification;
   String get searchQuery;
   String? get messageId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitGiftCardEventImplCopyWith<_$InitGiftCardEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -269,6 +279,8 @@ class __$$CreateOrderGiftCardEventImplCopyWithImpl<$Res>
       $Res Function(_$CreateOrderGiftCardEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,6 +294,8 @@ class __$$CreateOrderGiftCardEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CatalogGiftCardRequestCopyWith<$Res> get request {
@@ -315,7 +329,9 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
   @override
   int get hashCode => Object.hash(runtimeType, request);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateOrderGiftCardEventImplCopyWith<_$CreateOrderGiftCardEventImpl>
@@ -397,7 +413,10 @@ abstract class CreateOrderGiftCardEvent implements GiftCardEvent {
       _$CreateOrderGiftCardEventImpl;
 
   CatalogGiftCardRequest get request;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateOrderGiftCardEventImplCopyWith<_$CreateOrderGiftCardEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -498,6 +517,9 @@ class _$GiftCardStateCopyWithImpl<$Res, $Val extends GiftCardState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -514,6 +536,9 @@ class __$$InitGiftCardStateImplCopyWithImpl<$Res>
   __$$InitGiftCardStateImplCopyWithImpl(_$InitGiftCardStateImpl _value,
       $Res Function(_$InitGiftCardStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -654,6 +679,9 @@ class __$$LoadingGiftCardStateImplCopyWithImpl<$Res>
   __$$LoadingGiftCardStateImplCopyWithImpl(_$LoadingGiftCardStateImpl _value,
       $Res Function(_$LoadingGiftCardStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -806,6 +834,8 @@ class __$$PreloadDataGiftCardStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataGiftCardStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -909,7 +939,9 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
       searchQuery,
       creatOrderMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataGiftCardStateImplCopyWith<_$PreloadDataGiftCardStateImpl>
@@ -1035,7 +1067,10 @@ abstract class PreloadDataGiftCardState implements GiftCardState {
   bool get isNotification;
   String get searchQuery;
   String? get creatOrderMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataGiftCardStateImplCopyWith<_$PreloadDataGiftCardStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1060,6 +1095,8 @@ class __$$CreateOrderSuccessfullyGiftCardStateImplCopyWithImpl<$Res>
       $Res Function(_$CreateOrderSuccessfullyGiftCardStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1109,7 +1146,9 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, orderId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateOrderSuccessfullyGiftCardStateImplCopyWith<
@@ -1225,7 +1264,10 @@ abstract class CreateOrderSuccessfullyGiftCardState implements GiftCardState {
 
   int get orderId;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateOrderSuccessfullyGiftCardStateImplCopyWith<
           _$CreateOrderSuccessfullyGiftCardStateImpl>
       get copyWith => throw _privateConstructorUsedError;

@@ -66,6 +66,9 @@ class _$YandexMapEventCopyWithImpl<$Res, $Val extends YandexMapEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of YandexMapEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -82,6 +85,9 @@ class __$$InitYandexMapEventImplCopyWithImpl<$Res>
   __$$InitYandexMapEventImplCopyWithImpl(_$InitYandexMapEventImpl _value,
       $Res Function(_$InitYandexMapEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of YandexMapEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -237,6 +243,9 @@ class _$YandexMapStateCopyWithImpl<$Res, $Val extends YandexMapState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of YandexMapState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -254,6 +263,9 @@ class __$$LoadingYandexMapStateImplCopyWithImpl<$Res>
   __$$LoadingYandexMapStateImplCopyWithImpl(_$LoadingYandexMapStateImpl _value,
       $Res Function(_$LoadingYandexMapStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of YandexMapState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -372,6 +384,9 @@ class __$$InitYandexMapStateImplCopyWithImpl<$Res>
   __$$InitYandexMapStateImplCopyWithImpl(_$InitYandexMapStateImpl _value,
       $Res Function(_$InitYandexMapStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of YandexMapState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -497,6 +512,8 @@ class __$$PreloadDataCompletedYandexMapStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedYandexMapStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of YandexMapState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -555,7 +572,9 @@ class _$PreloadDataCompletedYandexMapStateImpl
   int get hashCode => Object.hash(runtimeType, collection,
       const DeepCollectionEquality().hash(_listMapObject));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of YandexMapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedYandexMapStateImplCopyWith<
@@ -649,7 +668,10 @@ abstract class PreloadDataCompletedYandexMapState implements YandexMapState {
 
   ClusterizedPlacemarkCollection get collection;
   List<PlacemarkMapObject> get listMapObject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of YandexMapState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedYandexMapStateImplCopyWith<
           _$PreloadDataCompletedYandexMapStateImpl>
       get copyWith => throw _privateConstructorUsedError;

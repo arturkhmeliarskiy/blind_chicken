@@ -467,7 +467,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
-        emit(const CatalogState.loadErrorButton());
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
       }
       CatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
@@ -543,6 +545,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -580,7 +583,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
-        emit(const CatalogState.loadErrorButton());
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
       }
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
@@ -638,7 +643,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(
         initState.copyWith(
           filter: catalogInfo.errorMessage.isNotEmpty ? initState.filter : catalogInfo.filter,
-          request: request,
+          request: catalogInfo.errorMessage.isNotEmpty ? initState.request : request,
           selectFilter: catalogInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
           products: catalogInfo.errorMessage.isNotEmpty ? initState.products : catalogInfo.products,
           catalogInfo: catalogInfo.errorMessage.isNotEmpty ? initState.catalogInfo : catalogInfo,
@@ -653,6 +658,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           offset: 1,
           isNotification: false,
           isUpdateVersionApp: false,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -663,6 +669,11 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
       CatalogProductsRequest request = initState.request;
@@ -718,18 +729,29 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       listProducts = catalogInfo.products;
 
       log(allSelectFilter.length.toString());
-      emit(const CatalogState.load());
+      if (catalogInfo.errorMessage.isEmpty) {
+        emit(const CatalogState.load());
+      }
+
       emit(
         initState.copyWith(
-          filter: catalogInfo.filter,
-          selectFilter: selectFilter,
-          allSelectFilter: allSelectFilter,
-          products: listProducts,
-          catalogInfo: catalogInfo,
-          request: request,
+          filter: catalogInfo.errorMessage.isNotEmpty ? initState.filter : catalogInfo.filter,
+          request: catalogInfo.errorMessage.isNotEmpty ? initState.request : request,
+          selectFilter: catalogInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+          products: catalogInfo.errorMessage.isNotEmpty ? initState.products : listProducts,
+          catalogInfo: catalogInfo.errorMessage.isNotEmpty ? initState.catalogInfo : catalogInfo,
+          allSelectFilter:
+              catalogInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+          isError: catalogInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
           offset: 1,
+          keyFilterCatalog: event.key,
+          itemFileter: event.item,
+          indexFileter: event.index,
           isNotification: false,
           isUpdateVersionApp: false,
+          isLoadErrorButton: false,
+          typeError: 'удалить фильтр из каталога',
         ),
       );
     });
@@ -989,7 +1011,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     }
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
-        emit(const CatalogState.loadErrorButton());
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
       } else {
         emit(const CatalogState.load());
       }
@@ -1052,6 +1076,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         userDiscount: catalogInfo.userDiscount,
         offset: 1,
         isButtonTop: false,
+        isLoadErrorButton: false,
         isPromotionsForPurchases: catalogInfo.discountFirstMobile == 1,
       ));
     });
@@ -1442,7 +1467,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
-        emit(const CatalogState.loadErrorButton());
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
       } else {
         emit(initState.copyWith(
           isLoadGetSizeProduct: true,
@@ -1517,6 +1544,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         errorMessage: detailsProduct.errorMessage,
         isShopGetSizeProduct: event.isShop,
         typeError: 'выбор размера ${event.titleScreen.toLowerCase()}',
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -1526,6 +1554,11 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       String sort = '';
       if (event.value == 'Сначала новинки') {
         sort = 'n';
@@ -1546,12 +1579,17 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       );
 
       emit(initState.copyWith(
-        request: request,
-        products: catalogInfo.products,
-        catalogInfo: catalogInfo,
+        request: catalogInfo.errorMessage.isNotEmpty ? initState.request : request,
+        products: catalogInfo.errorMessage.isNotEmpty ? initState.products : catalogInfo.products,
+        catalogInfo: catalogInfo.errorMessage.isNotEmpty ? initState.catalogInfo : catalogInfo,
+        isError: catalogInfo.errorMessage.isNotEmpty,
+        typeError: 'сортировка',
+        errorMessage: MessageInfo.errorMessage,
+        sortInfo: event.value,
         offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -1562,7 +1600,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
-        emit(const CatalogState.loadErrorButton());
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
       }
       CatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
@@ -1631,6 +1671,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -1641,7 +1682,9 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       if (initState.isError ?? false) {
-        emit(const CatalogState.loadErrorButton());
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
       }
       CatalogProductsRequest request = initState.request;
       List<FilterCatalogDataModel> filtersInfo = [];
@@ -1672,6 +1715,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         offset: 1,
         isNotification: false,
         isUpdateVersionApp: false,
+        isLoadErrorButton: false,
       ));
     });
   }

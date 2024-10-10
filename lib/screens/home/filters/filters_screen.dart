@@ -44,26 +44,27 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     widget: BlocBuilder<CatalogBloc, CatalogState>(
                       builder: (context, state) {
                         return state.maybeMap(
-                          loadErrorButton: (value) {
-                            return const SizedBox(
-                              height: 15,
-                              width: 15,
-                              child: Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 3,
-                                  color: BlindChickenColors.backgroundColor,
-                                ),
-                              ),
-                            );
-                          },
                           preloadDataCompleted: (value) {
-                            return Text(
-                              'Повторить',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            if (value.isLoadErrorButton ?? false) {
+                              return const SizedBox(
+                                height: 15,
+                                width: 15,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 3,
                                     color: BlindChickenColors.backgroundColor,
                                   ),
-                              textAlign: TextAlign.center,
-                            );
+                                ),
+                              );
+                            } else {
+                              return Text(
+                                'Повторить',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      color: BlindChickenColors.backgroundColor,
+                                    ),
+                                textAlign: TextAlign.center,
+                              );
+                            }
                           },
                           orElse: () => const SizedBox(),
                         );

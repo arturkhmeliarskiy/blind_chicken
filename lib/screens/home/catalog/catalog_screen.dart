@@ -204,7 +204,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
               if (!_isShowDialogCatalogError &&
                   typeError != 'выбрать фильтр' &&
                   typeError != 'удалить фильтр' &&
-                  typeError != 'удалить фильтры из категории') {
+                  typeError != 'удалить фильтры из категории' &&
+                  typeError != 'информация о товаре') {
                 _isShowDialogCatalogError = true;
                 _blindChickenCatalogProductShowDialogError.openShowDualog(
                   context: context,
@@ -212,26 +213,27 @@ class _CatalogScreenState extends State<CatalogScreen> {
                   widget: BlocBuilder<CatalogBloc, CatalogState>(
                     builder: (context, state) {
                       return state.maybeMap(
-                        loadErrorButton: (value) {
-                          return const SizedBox(
-                            height: 15,
-                            width: 15,
-                            child: Center(
-                              child: CircularProgressIndicator(
-                                strokeWidth: 3,
-                                color: BlindChickenColors.backgroundColor,
-                              ),
-                            ),
-                          );
-                        },
                         preloadDataCompleted: (value) {
-                          return Text(
-                            'Повторить',
-                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
                                   color: BlindChickenColors.backgroundColor,
                                 ),
-                            textAlign: TextAlign.center,
-                          );
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
                         },
                         orElse: () => const SizedBox(),
                       );
@@ -270,6 +272,25 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                 code: initState.codeProduct ?? '',
                                 isShop: initState.isLoadGetSizeProduct,
                                 titleScreen: 'Каталог',
+                              ),
+                            );
+                        break;
+                      case 'сортировка':
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.sortProducts(value: initState.sortInfo ?? ''),
+                            );
+                        break;
+                      case 'удалить фильтр из каталога':
+                        context.read<CatalogBloc>().add(
+                              CatalogEvent.deleteCatalogFilter(
+                                key: initState.keyFilterCatalog ?? 0,
+                                index: initState.indexFileter ?? 0,
+                                item: initState.itemFileter ??
+                                    FilterItemDataModel(
+                                      id: 0,
+                                      value: '',
+                                      typeFilter: '',
+                                    ),
                               ),
                             );
                         break;
@@ -681,6 +702,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 sizeProduct: initState.products[index].sz,
                                                 promo: initState.products[index].promo,
                                                 promoValue: initState.products[index].promoValue,
+                                                images: initState.products[index].images,
                                               );
                                             }
                                           },

@@ -32,6 +32,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Generate files
+*.freezed.dart
+
 # Symbolication related
 app.*.symbols
 

@@ -11,6 +11,7 @@ _$CatalogProductResponseImpl _$$CatalogProductResponseImplFromJson(
     _$CatalogProductResponseImpl(
       c: json['c'] as String?,
       f: json['f'] as String?,
+      sl: (json['sl'] as List<dynamic>?)?.map((e) => e as String).toList(),
       b: json['b'] as String?,
       n: json['n'] as String?,
       p: json['p'] as String?,
@@ -32,6 +33,7 @@ Map<String, dynamic> _$$CatalogProductResponseImplToJson(
     <String, dynamic>{
       'c': instance.c,
       'f': instance.f,
+      'sl': instance.sl,
       'b': instance.b,
       'n': instance.n,
       'p': instance.p,

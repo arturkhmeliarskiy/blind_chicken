@@ -84,6 +84,9 @@ class _$InternetConnectionEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InternetConnectionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,9 @@ class __$$InitInternetConnectionEventImplCopyWithImpl<$Res>
       _$InitInternetConnectionEventImpl _value,
       $Res Function(_$InitInternetConnectionEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InternetConnectionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -221,6 +227,9 @@ class __$$PreloadDataInternetConnectionEventImplCopyWithImpl<$Res>
       _$PreloadDataInternetConnectionEventImpl _value,
       $Res Function(_$PreloadDataInternetConnectionEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InternetConnectionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -344,6 +353,8 @@ class __$$CheckInitInternetConnectionEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckInitInternetConnectionEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InternetConnectionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -384,7 +395,9 @@ class _$CheckInitInternetConnectionEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InternetConnectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckInitInternetConnectionEventImplCopyWith<
@@ -474,7 +487,10 @@ abstract class CheckInitInternetConnectionEvent
 
 // required InternetStatus status,
   ConnectivityResult get status;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InternetConnectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckInitInternetConnectionEventImplCopyWith<
           _$CheckInitInternetConnectionEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -551,6 +567,9 @@ class _$InternetConnectionStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InternetConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -570,6 +589,9 @@ class __$$LoadingInternetConnectionStateImplCopyWithImpl<$Res>
       _$LoadingInternetConnectionStateImpl _value,
       $Res Function(_$LoadingInternetConnectionStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InternetConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -691,6 +713,9 @@ class __$$InitInternetConnectionStateImplCopyWithImpl<$Res>
       _$InitInternetConnectionStateImpl _value,
       $Res Function(_$InitInternetConnectionStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InternetConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -810,6 +835,9 @@ class __$$ActiveInternetConnectionStateImplCopyWithImpl<$Res>
       _$ActiveInternetConnectionStateImpl _value,
       $Res Function(_$ActiveInternetConnectionStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InternetConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -931,6 +959,9 @@ class __$$NotActiveInternetConnectionStateImplCopyWithImpl<$Res>
       _$NotActiveInternetConnectionStateImpl _value,
       $Res Function(_$NotActiveInternetConnectionStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InternetConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

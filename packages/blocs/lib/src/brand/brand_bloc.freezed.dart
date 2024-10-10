@@ -86,6 +86,9 @@ class _$BrandEventCopyWithImpl<$Res, $Val extends BrandEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetBrandsBrandEventImplCopyWithImpl<$Res>
       $Res Function(_$GetBrandsBrandEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +149,9 @@ class _$GetBrandsBrandEventImpl implements GetBrandsBrandEvent {
   @override
   int get hashCode => Object.hash(runtimeType, selectTypePeople);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetBrandsBrandEventImplCopyWith<_$GetBrandsBrandEventImpl> get copyWith =>
@@ -233,7 +240,10 @@ abstract class GetBrandsBrandEvent implements BrandEvent {
       _$GetBrandsBrandEventImpl;
 
   int? get selectTypePeople;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetBrandsBrandEventImplCopyWith<_$GetBrandsBrandEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -257,6 +267,8 @@ class __$$SwitchGenderBrandsBrandEventImplCopyWithImpl<$Res>
       $Res Function(_$SwitchGenderBrandsBrandEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -297,7 +309,9 @@ class _$SwitchGenderBrandsBrandEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectTypePeople);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SwitchGenderBrandsBrandEventImplCopyWith<
@@ -388,7 +402,10 @@ abstract class SwitchGenderBrandsBrandEvent implements BrandEvent {
       _$SwitchGenderBrandsBrandEventImpl;
 
   int get selectTypePeople;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SwitchGenderBrandsBrandEventImplCopyWith<
           _$SwitchGenderBrandsBrandEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -411,6 +428,8 @@ class __$$SearchBrandEventImplCopyWithImpl<$Res>
       $Res Function(_$SearchBrandEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -449,7 +468,9 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   int get hashCode => Object.hash(runtimeType, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchBrandEventImplCopyWith<_$SearchBrandEventImpl> get copyWith =>
@@ -538,7 +559,10 @@ abstract class SearchBrandEvent implements BrandEvent {
       _$SearchBrandEventImpl;
 
   String get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchBrandEventImplCopyWith<_$SearchBrandEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -560,6 +584,9 @@ class __$$GoBackBrandInfoCategotyBrandEventImplCopyWithImpl<$Res>
       _$GoBackBrandInfoCategotyBrandEventImpl _value,
       $Res Function(_$GoBackBrandInfoCategotyBrandEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BrandEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -762,6 +789,9 @@ class _$BrandStateCopyWithImpl<$Res, $Val extends BrandState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -778,6 +808,9 @@ class __$$InitBrandStateImplCopyWithImpl<$Res>
   __$$InitBrandStateImplCopyWithImpl(
       _$InitBrandStateImpl _value, $Res Function(_$InitBrandStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -919,6 +952,9 @@ class __$$LoadingBrandStateImplCopyWithImpl<$Res>
   __$$LoadingBrandStateImplCopyWithImpl(_$LoadingBrandStateImpl _value,
       $Res Function(_$LoadingBrandStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1063,6 +1099,8 @@ class __$$ErrorBrandStateImplCopyWithImpl<$Res>
       _$ErrorBrandStateImpl _value, $Res Function(_$ErrorBrandStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1102,7 +1140,9 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorBrandStateImplCopyWith<_$ErrorBrandStateImpl> get copyWith =>
@@ -1216,7 +1256,10 @@ abstract class ErrorBrandState implements BrandState {
       _$ErrorBrandStateImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorBrandStateImplCopyWith<_$ErrorBrandStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1247,6 +1290,8 @@ class __$$PreloadDataCompletedBrandStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedBrandStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1398,7 +1443,9 @@ class _$PreloadDataCompletedBrandStateImpl
       const DeepCollectionEquality().hash(_listCountBrand),
       const DeepCollectionEquality().hash(_listBrandsPath));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedBrandStateImplCopyWith<
@@ -1535,7 +1582,10 @@ abstract class PreloadDataCompletedBrandState implements BrandState {
   List<BrandDataModel> get defaultListBrands;
   List<CountBrand> get listCountBrand;
   List<int> get listBrandsPath;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BrandState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedBrandStateImplCopyWith<
           _$PreloadDataCompletedBrandStateImpl>
       get copyWith => throw _privateConstructorUsedError;

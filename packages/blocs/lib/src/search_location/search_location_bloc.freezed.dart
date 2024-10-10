@@ -64,7 +64,9 @@ mixin _$SearchLocationEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchLocationEventCopyWith<SearchLocationEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -88,6 +90,8 @@ class _$SearchLocationEventCopyWithImpl<$Res, $Val extends SearchLocationEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +135,8 @@ class __$$SearchQuerySearchLocationEventImplCopyWithImpl<$Res>
       $Res Function(_$SearchQuerySearchLocationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,7 +235,9 @@ class _$SearchQuerySearchLocationEventImpl
   int get hashCode => Object.hash(runtimeType, contentType, query, cityId,
       streetId, withParent, limit, offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchQuerySearchLocationEventImplCopyWith<
@@ -329,8 +337,11 @@ abstract class SearchQuerySearchLocationEvent implements SearchLocationEvent {
   int? get withParent;
   int? get limit;
   int? get offset;
+
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchQuerySearchLocationEventImplCopyWith<
           _$SearchQuerySearchLocationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -358,6 +369,8 @@ class __$$SelectedAddressLocationEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectedAddressLocationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -414,7 +427,9 @@ class _$SelectedAddressLocationEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, zipcode, sum, cityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedAddressLocationEventImplCopyWith<
@@ -503,8 +518,11 @@ abstract class SelectedAddressLocationEvent implements SearchLocationEvent {
   int get sum;
   @override
   String get cityId;
+
+  /// Create a copy of SearchLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectedAddressLocationEventImplCopyWith<
           _$SelectedAddressLocationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -584,6 +602,9 @@ class _$SearchLocationStateCopyWithImpl<$Res, $Val extends SearchLocationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -603,6 +624,9 @@ class __$$InitSearchLocationStateImplCopyWithImpl<$Res>
       _$InitSearchLocationStateImpl _value,
       $Res Function(_$InitSearchLocationStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -725,6 +749,9 @@ class __$$LoadingSearchLocationStateImplCopyWithImpl<$Res>
       _$LoadingSearchLocationStateImpl _value,
       $Res Function(_$LoadingSearchLocationStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -852,6 +879,8 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedSearchLocationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -865,6 +894,8 @@ class __$$PreloadDataCompletedSearchLocationStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SearchLocationDataModelCopyWith<$Res> get searchResult {
@@ -901,7 +932,9 @@ class _$PreloadDataCompletedSearchLocationStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, searchResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedSearchLocationStateImplCopyWith<
@@ -996,7 +1029,10 @@ abstract class PreloadDataCompletedSearchLocationState
       _$PreloadDataCompletedSearchLocationStateImpl;
 
   SearchLocationDataModel get searchResult;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedSearchLocationStateImplCopyWith<
           _$PreloadDataCompletedSearchLocationStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1022,6 +1058,8 @@ class __$$SelectInfoCompletedSearchLocationStateImplCopyWithImpl<$Res>
       $Res Function(_$SelectInfoCompletedSearchLocationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1070,7 +1108,9 @@ class _$SelectInfoCompletedSearchLocationStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, price, cityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectInfoCompletedSearchLocationStateImplCopyWith<
@@ -1166,7 +1206,10 @@ abstract class SelectInfoCompletedSearchLocationState
 
   int get price;
   String get cityId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectInfoCompletedSearchLocationStateImplCopyWith<
           _$SelectInfoCompletedSearchLocationStateImpl>
       get copyWith => throw _privateConstructorUsedError;

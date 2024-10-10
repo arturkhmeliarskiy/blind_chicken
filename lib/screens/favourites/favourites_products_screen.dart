@@ -446,6 +446,8 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                   return CatalogCardItem(
                                                     isLike: true,
                                                     pb: initState.favouritesProducts[index].pb,
+                                                    images:
+                                                        initState.favouritesProducts[index].images,
                                                     onSelect: () {
                                                       context.read<FavouritesBloc>().add(
                                                             FavouritesEvent.getInfoProduct(

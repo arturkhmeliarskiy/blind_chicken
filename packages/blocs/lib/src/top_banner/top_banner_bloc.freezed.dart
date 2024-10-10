@@ -66,6 +66,9 @@ class _$TopBannerEventCopyWithImpl<$Res, $Val extends TopBannerEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TopBannerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -84,6 +87,9 @@ class __$$PreloadDataTopBannerEventImplCopyWithImpl<$Res>
       _$PreloadDataTopBannerEventImpl _value,
       $Res Function(_$PreloadDataTopBannerEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TopBannerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -238,6 +244,9 @@ class _$TopBannerStateCopyWithImpl<$Res, $Val extends TopBannerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -254,6 +263,9 @@ class __$$InitTopBannerStateImplCopyWithImpl<$Res>
   __$$InitTopBannerStateImplCopyWithImpl(_$InitTopBannerStateImpl _value,
       $Res Function(_$InitTopBannerStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -370,6 +382,9 @@ class __$$LoadingTopBannerStateImplCopyWithImpl<$Res>
   __$$LoadingTopBannerStateImplCopyWithImpl(_$LoadingTopBannerStateImpl _value,
       $Res Function(_$LoadingTopBannerStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -489,6 +504,8 @@ class __$$ErrorTopBannerStateImplCopyWithImpl<$Res>
       $Res Function(_$ErrorTopBannerStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -528,7 +545,9 @@ class _$ErrorTopBannerStateImpl implements ErrorTopBannerState {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorTopBannerStateImplCopyWith<_$ErrorTopBannerStateImpl> get copyWith =>
@@ -616,7 +635,10 @@ abstract class ErrorTopBannerState implements TopBannerState {
       _$ErrorTopBannerStateImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorTopBannerStateImplCopyWith<_$ErrorTopBannerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -643,6 +665,8 @@ class __$$PreloadDataCompletedTopBannerStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedTopBannerStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -656,6 +680,8 @@ class __$$PreloadDataCompletedTopBannerStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TopBannerDataModelCopyWith<$Res> get info {
@@ -690,7 +716,9 @@ class _$PreloadDataCompletedTopBannerStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, info);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedTopBannerStateImplCopyWith<
@@ -780,7 +808,10 @@ abstract class PreloadDataCompletedTopBannerState implements TopBannerState {
       _$PreloadDataCompletedTopBannerStateImpl;
 
   TopBannerDataModel get info;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TopBannerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedTopBannerStateImplCopyWith<
           _$PreloadDataCompletedTopBannerStateImpl>
       get copyWith => throw _privateConstructorUsedError;

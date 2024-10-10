@@ -255,6 +255,9 @@ class _$SearchEventCopyWithImpl<$Res, $Val extends SearchEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -271,6 +274,9 @@ class __$$InitSearchEventImplCopyWithImpl<$Res>
   __$$InitSearchEventImplCopyWithImpl(
       _$InitSearchEventImpl _value, $Res Function(_$InitSearchEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -559,6 +565,8 @@ class __$$ProfuctsSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$ProfuctsSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -597,7 +605,9 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
   @override
   int get hashCode => Object.hash(runtimeType, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProfuctsSearchEventImplCopyWith<_$ProfuctsSearchEventImpl> get copyWith =>
@@ -855,7 +865,10 @@ abstract class ProfuctsSearchEvent implements SearchEvent {
       _$ProfuctsSearchEventImpl;
 
   String get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfuctsSearchEventImplCopyWith<_$ProfuctsSearchEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -879,6 +892,8 @@ class __$$ProfuctsInfoSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$ProfuctsInfoSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -917,7 +932,9 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
   @override
   int get hashCode => Object.hash(runtimeType, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProfuctsInfoSearchEventImplCopyWith<_$ProfuctsInfoSearchEventImpl>
@@ -1175,7 +1192,10 @@ abstract class ProfuctsInfoSearchEvent implements SearchEvent {
       _$ProfuctsInfoSearchEventImpl;
 
   String get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProfuctsInfoSearchEventImplCopyWith<_$ProfuctsInfoSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1201,6 +1221,8 @@ class __$$SelectFilterSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectFilterSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1224,6 +1246,8 @@ class __$$SelectFilterSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -1265,7 +1289,9 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
   @override
   int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectFilterSearchEventImplCopyWith<_$SelectFilterSearchEventImpl>
@@ -1527,7 +1553,10 @@ abstract class SelectFilterSearchEvent implements SearchEvent {
   int get index;
   int get indexItem;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectFilterSearchEventImplCopyWith<_$SelectFilterSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1553,6 +1582,8 @@ class __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFilterSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1576,6 +1607,8 @@ class __$$DeleteFilterSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -1617,7 +1650,9 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
   @override
   int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFilterSearchEventImplCopyWith<_$DeleteFilterSearchEventImpl>
@@ -1879,7 +1914,10 @@ abstract class DeleteFilterSearchEvent implements SearchEvent {
   int get index;
   int get indexItem;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFilterSearchEventImplCopyWith<_$DeleteFilterSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1904,6 +1942,8 @@ class __$$RemoveSelectFilterCategotySearchEventImplCopyWithImpl<$Res>
       $Res Function(_$RemoveSelectFilterCategotySearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1943,7 +1983,9 @@ class _$RemoveSelectFilterCategotySearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemoveSelectFilterCategotySearchEventImplCopyWith<
@@ -2202,7 +2244,10 @@ abstract class RemoveSelectFilterCategotySearchEvent implements SearchEvent {
       {required final int index}) = _$RemoveSelectFilterCategotySearchEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveSelectFilterCategotySearchEventImplCopyWith<
           _$RemoveSelectFilterCategotySearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2225,6 +2270,9 @@ class __$$RemoveSelectAllFiltersCategotySearchEventImplCopyWithImpl<$Res>
       _$RemoveSelectAllFiltersCategotySearchEventImpl _value,
       $Res Function(_$RemoveSelectAllFiltersCategotySearchEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2521,6 +2569,8 @@ class __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteCatalogSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2544,6 +2594,8 @@ class __$$DeleteCatalogSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -2584,7 +2636,9 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
   @override
   int get hashCode => Object.hash(runtimeType, key, index, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteCatalogSearchEventImplCopyWith<_$DeleteCatalogSearchEventImpl>
@@ -2847,7 +2901,10 @@ abstract class DeleteCatalogSearchEvent implements SearchEvent {
   int get key;
   int get index;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteCatalogSearchEventImplCopyWith<_$DeleteCatalogSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2874,6 +2931,8 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$AddFavouriteProductSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2892,6 +2951,8 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -2930,7 +2991,9 @@ class _$AddFavouriteProductSearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index, product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddFavouriteProductSearchEventImplCopyWith<
@@ -3191,7 +3254,10 @@ abstract class AddFavouriteProductSearchEvent implements SearchEvent {
 
   int get index;
   ProductDataModel get product;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddFavouriteProductSearchEventImplCopyWith<
           _$AddFavouriteProductSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3217,6 +3283,8 @@ class __$$DeleteFavouriteProductSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFavouriteProductSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3256,7 +3324,9 @@ class _$DeleteFavouriteProductSearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFavouriteProductSearchEventImplCopyWith<
@@ -3515,7 +3585,10 @@ abstract class DeleteFavouriteProductSearchEvent implements SearchEvent {
       _$DeleteFavouriteProductSearchEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFavouriteProductSearchEventImplCopyWith<
           _$DeleteFavouriteProductSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3548,6 +3621,8 @@ class __$$GetInfoProductSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3587,6 +3662,8 @@ class __$$GetInfoProductSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -3660,7 +3737,9 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
       size,
       isUpdate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductSearchEventImplCopyWith<_$GetInfoProductSearchEventImpl>
@@ -3931,7 +4010,10 @@ abstract class GetInfoProductSearchEvent implements SearchEvent {
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductSearchEventImplCopyWith<_$GetInfoProductSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3957,6 +4039,8 @@ class __$$ChangeSizeProductSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeSizeProductSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3970,6 +4054,8 @@ class __$$ChangeSizeProductSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
@@ -4006,7 +4092,9 @@ class _$ChangeSizeProductSearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeSizeProductSearchEventImplCopyWith<
@@ -4266,7 +4354,10 @@ abstract class ChangeSizeProductSearchEvent implements SearchEvent {
       _$ChangeSizeProductSearchEventImpl;
 
   SkuProductDataModel get selectSizeProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeSizeProductSearchEventImplCopyWith<
           _$ChangeSizeProductSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4289,6 +4380,9 @@ class __$$GoBackProductInfoCategotySearchEventImplCopyWithImpl<$Res>
       _$GoBackProductInfoCategotySearchEventImpl _value,
       $Res Function(_$GoBackProductInfoCategotySearchEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4579,6 +4673,9 @@ class __$$PaginationProductSearchEventImplCopyWithImpl<$Res>
       _$PaginationProductSearchEventImpl _value,
       $Res Function(_$PaginationProductSearchEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4880,6 +4977,8 @@ class __$$AddProductToSoppingCartSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$AddProductToSoppingCartSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4914,6 +5013,8 @@ class __$$AddProductToSoppingCartSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -4977,7 +5078,9 @@ class _$AddProductToSoppingCartSearchEventImpl
   int get hashCode => Object.hash(runtimeType, code, titleScreen,
       typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductToSoppingCartSearchEventImplCopyWith<
@@ -5252,7 +5355,10 @@ abstract class AddProductToSoppingCartSearchEvent implements SearchEvent {
   String get typeAddProductToShoppingCart;
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductToSoppingCartSearchEventImplCopyWith<
           _$AddProductToSoppingCartSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5277,6 +5383,8 @@ class __$$CheckButtonTopSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckButtonTopSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5316,7 +5424,9 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
   @override
   int get hashCode => Object.hash(runtimeType, isButtonTop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckButtonTopSearchEventImplCopyWith<_$CheckButtonTopSearchEventImpl>
@@ -5574,7 +5684,10 @@ abstract class CheckButtonTopSearchEvent implements SearchEvent {
       _$CheckButtonTopSearchEventImpl;
 
   bool get isButtonTop;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckButtonTopSearchEventImplCopyWith<_$CheckButtonTopSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5601,6 +5714,8 @@ class __$$CheckProductToSoppingCartSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckProductToSoppingCartSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5614,6 +5729,8 @@ class __$$CheckProductToSoppingCartSearchEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get size {
@@ -5648,7 +5765,9 @@ class _$CheckProductToSoppingCartSearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckProductToSoppingCartSearchEventImplCopyWith<
@@ -5908,7 +6027,10 @@ abstract class CheckProductToSoppingCartSearchEvent implements SearchEvent {
       _$CheckProductToSoppingCartSearchEventImpl;
 
   SkuProductDataModel get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckProductToSoppingCartSearchEventImplCopyWith<
           _$CheckProductToSoppingCartSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5933,6 +6055,8 @@ class __$$GetInfoProductSizeSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductSizeSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5990,7 +6114,9 @@ class _$GetInfoProductSizeSearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code, isShop, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductSizeSearchEventImplCopyWith<
@@ -6253,7 +6379,10 @@ abstract class GetInfoProductSizeSearchEvent implements SearchEvent {
   String get code;
   bool get isShop;
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductSizeSearchEventImplCopyWith<
           _$GetInfoProductSizeSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6278,6 +6407,8 @@ class __$$UpdateInfoProductsSearchEventImplCopyWithImpl<$Res>
       $Res Function(_$UpdateInfoProductsSearchEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6318,7 +6449,9 @@ class _$UpdateInfoProductsSearchEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateInfoProductsSearchEventImplCopyWith<
@@ -6578,7 +6711,10 @@ abstract class UpdateInfoProductsSearchEvent implements SearchEvent {
       _$UpdateInfoProductsSearchEventImpl;
 
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateInfoProductsSearchEventImplCopyWith<
           _$UpdateInfoProductsSearchEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6784,6 +6920,9 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -6800,6 +6939,9 @@ class __$$InitSearchStateImplCopyWithImpl<$Res>
   __$$InitSearchStateImplCopyWithImpl(
       _$InitSearchStateImpl _value, $Res Function(_$InitSearchStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7044,6 +7186,9 @@ class __$$LoadingSearchStateImplCopyWithImpl<$Res>
   __$$LoadingSearchStateImplCopyWithImpl(_$LoadingSearchStateImpl _value,
       $Res Function(_$LoadingSearchStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7290,6 +7435,9 @@ class __$$OpenSoppingCartSearchStateImplCopyWithImpl<$Res>
       _$OpenSoppingCartSearchStateImpl _value,
       $Res Function(_$OpenSoppingCartSearchStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7545,6 +7693,8 @@ class __$$GetSizeProductSearchStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSizeProductSearchStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7643,7 +7793,9 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
       titleScreen,
       query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSizeProductSearchStateImplCopyWith<_$GetSizeProductSearchStateImpl>
@@ -7871,7 +8023,10 @@ abstract class GetSizeProductSearchState implements SearchState {
   List<SkuProductDataModel> get listSizeToSoppingCart;
   String get titleScreen;
   String get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSizeProductSearchStateImplCopyWith<_$GetSizeProductSearchStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -7894,6 +8049,8 @@ class __$$AddProductSearchStateImplCopyWithImpl<$Res>
       $Res Function(_$AddProductSearchStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7950,7 +8107,9 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
   @override
   int get hashCode => Object.hash(runtimeType, code, titleScreen, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductSearchStateImplCopyWith<_$AddProductSearchStateImpl>
@@ -8171,7 +8330,10 @@ abstract class AddProductSearchState implements SearchState {
   String get code;
   String get titleScreen;
   String get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductSearchStateImplCopyWith<_$AddProductSearchStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -8231,6 +8393,8 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
       $Res Function(_$SearchProductsResultSearchStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8389,6 +8553,8 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CatalogSearchProductsRequestCopyWith<$Res> get request {
@@ -8397,6 +8563,8 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
@@ -8410,6 +8578,8 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
@@ -8423,6 +8593,8 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo {
@@ -8751,7 +8923,9 @@ class _$SearchProductsResultSearchStateImpl
         searchResultInfo
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchProductsResultSearchStateImplCopyWith<
@@ -9118,7 +9292,10 @@ abstract class SearchProductsResultSearchState implements SearchState {
   DetailProductDataModel? get detailsProduct;
   List<ProductDataModel>? get favouritesProducts;
   CatalogSearchInfoDataModel? get searchResultInfo;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchProductsResultSearchStateImplCopyWith<
           _$SearchProductsResultSearchStateImpl>
       get copyWith => throw _privateConstructorUsedError;

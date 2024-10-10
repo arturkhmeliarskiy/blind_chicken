@@ -36,9 +36,9 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
   @override
   void didUpdateWidget(covariant NewsInfoScreen oldWidget) {
-    if (widget.indexPage != 0) {
-      _tabController.animateTo(widget.indexPage);
-    }
+    // if (widget.indexPage != 0) {
+    //   _tabController.animateTo(widget.indexPage);
+    // }
     super.didUpdateWidget(oldWidget);
   }
 

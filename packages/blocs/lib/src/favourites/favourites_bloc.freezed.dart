@@ -259,6 +259,9 @@ class _$FavouritesEventCopyWithImpl<$Res, $Val extends FavouritesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -275,6 +278,9 @@ class __$$InitFavouritesEventImplCopyWithImpl<$Res>
   __$$InitFavouritesEventImplCopyWithImpl(_$InitFavouritesEventImpl _value,
       $Res Function(_$InitFavouritesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -568,6 +574,9 @@ class __$$PreloadDataFavouritesEventImplCopyWithImpl<$Res>
       _$PreloadDataFavouritesEventImpl _value,
       $Res Function(_$PreloadDataFavouritesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -866,6 +875,8 @@ class __$$SelectFilterFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectFilterFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -889,6 +900,8 @@ class __$$SelectFilterFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -930,7 +943,9 @@ class _$SelectFilterFavouritesEventImpl implements SelectFilterFavouritesEvent {
   @override
   int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectFilterFavouritesEventImplCopyWith<_$SelectFilterFavouritesEventImpl>
@@ -1197,7 +1212,10 @@ abstract class SelectFilterFavouritesEvent implements FavouritesEvent {
   int get index;
   int get indexItem;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectFilterFavouritesEventImplCopyWith<_$SelectFilterFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1224,6 +1242,8 @@ class __$$DeleteFilterFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFilterFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1247,6 +1267,8 @@ class __$$DeleteFilterFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -1288,7 +1310,9 @@ class _$DeleteFilterFavouritesEventImpl implements DeleteFilterFavouritesEvent {
   @override
   int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFilterFavouritesEventImplCopyWith<_$DeleteFilterFavouritesEventImpl>
@@ -1555,7 +1579,10 @@ abstract class DeleteFilterFavouritesEvent implements FavouritesEvent {
   int get index;
   int get indexItem;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFilterFavouritesEventImplCopyWith<_$DeleteFilterFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1580,6 +1607,8 @@ class __$$RemoveSelectFilterCategotyFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$RemoveSelectFilterCategotyFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1619,7 +1648,9 @@ class _$RemoveSelectFilterCategotyFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemoveSelectFilterCategotyFavouritesEventImplCopyWith<
@@ -1886,7 +1917,10 @@ abstract class RemoveSelectFilterCategotyFavouritesEvent
       _$RemoveSelectFilterCategotyFavouritesEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveSelectFilterCategotyFavouritesEventImplCopyWith<
           _$RemoveSelectFilterCategotyFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1912,6 +1946,9 @@ class __$$RemoveSelectAllFiltersCategotyFavouritesEventImplCopyWithImpl<$Res>
       _$RemoveSelectAllFiltersCategotyFavouritesEventImpl _value,
       $Res Function(_$RemoveSelectAllFiltersCategotyFavouritesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2213,6 +2250,8 @@ class __$$DeleteCatalogFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteCatalogFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2236,6 +2275,8 @@ class __$$DeleteCatalogFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -2277,7 +2318,9 @@ class _$DeleteCatalogFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, key, index, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteCatalogFavouritesEventImplCopyWith<
@@ -2545,7 +2588,10 @@ abstract class DeleteCatalogFavouritesEvent implements FavouritesEvent {
   int get key;
   int get index;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteCatalogFavouritesEventImplCopyWith<
           _$DeleteCatalogFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2573,6 +2619,8 @@ class __$$AddFavouriteProductFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$AddFavouriteProductFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2591,6 +2639,8 @@ class __$$AddFavouriteProductFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -2629,7 +2679,9 @@ class _$AddFavouriteProductFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index, product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddFavouriteProductFavouritesEventImplCopyWith<
@@ -2894,7 +2946,10 @@ abstract class AddFavouriteProductFavouritesEvent implements FavouritesEvent {
 
   int get index;
   ProductDataModel get product;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddFavouriteProductFavouritesEventImplCopyWith<
           _$AddFavouriteProductFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2920,6 +2975,8 @@ class __$$DeleteFavouriteProductFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFavouriteProductFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2959,7 +3016,9 @@ class _$DeleteFavouriteProductFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFavouriteProductFavouritesEventImplCopyWith<
@@ -3223,7 +3282,10 @@ abstract class DeleteFavouriteProductFavouritesEvent
       {required final int index}) = _$DeleteFavouriteProductFavouritesEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFavouriteProductFavouritesEventImplCopyWith<
           _$DeleteFavouriteProductFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3257,6 +3319,8 @@ class __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3296,6 +3360,8 @@ class __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -3370,7 +3436,9 @@ class _$GetInfoProductFavouritesEventImpl
       size,
       isUpdate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductFavouritesEventImplCopyWith<
@@ -3646,7 +3714,10 @@ abstract class GetInfoProductFavouritesEvent implements FavouritesEvent {
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductFavouritesEventImplCopyWith<
           _$GetInfoProductFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3672,6 +3743,8 @@ class __$$CheckButtonTopFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckButtonTopFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3712,7 +3785,9 @@ class _$CheckButtonTopFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, isButtonTop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckButtonTopFavouritesEventImplCopyWith<
@@ -3975,7 +4050,10 @@ abstract class CheckButtonTopFavouritesEvent implements FavouritesEvent {
       {required final bool isButtonTop}) = _$CheckButtonTopFavouritesEventImpl;
 
   bool get isButtonTop;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckButtonTopFavouritesEventImplCopyWith<
           _$CheckButtonTopFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4003,6 +4081,8 @@ class __$$ChangeSizeProductFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeSizeProductFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4016,6 +4096,8 @@ class __$$ChangeSizeProductFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
@@ -4053,7 +4135,9 @@ class _$ChangeSizeProductFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeSizeProductFavouritesEventImplCopyWith<
@@ -4317,7 +4401,10 @@ abstract class ChangeSizeProductFavouritesEvent implements FavouritesEvent {
       _$ChangeSizeProductFavouritesEventImpl;
 
   SkuProductDataModel get selectSizeProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeSizeProductFavouritesEventImplCopyWith<
           _$ChangeSizeProductFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4340,6 +4427,9 @@ class __$$GoBackProductInfoCategotyFavouritesEventImplCopyWithImpl<$Res>
       _$GoBackProductInfoCategotyFavouritesEventImpl _value,
       $Res Function(_$GoBackProductInfoCategotyFavouritesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4636,6 +4726,9 @@ class __$$PaginationProductFavouritesEventImplCopyWithImpl<$Res>
       _$PaginationProductFavouritesEventImpl _value,
       $Res Function(_$PaginationProductFavouritesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4941,6 +5034,8 @@ class __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$AddProductToSoppingCartFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4975,6 +5070,8 @@ class __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -5038,7 +5135,9 @@ class _$AddProductToSoppingCartFavouritesEventImpl
   int get hashCode => Object.hash(runtimeType, code, titleScreen,
       typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductToSoppingCartFavouritesEventImplCopyWith<
@@ -5319,7 +5418,10 @@ abstract class AddProductToSoppingCartFavouritesEvent
   String get typeAddProductToShoppingCart;
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductToSoppingCartFavouritesEventImplCopyWith<
           _$AddProductToSoppingCartFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5347,6 +5449,8 @@ class __$$CheckProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckProductToSoppingCartFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5360,6 +5464,8 @@ class __$$CheckProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get size {
@@ -5394,7 +5500,9 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckProductToSoppingCartFavouritesEventImplCopyWith<
@@ -5660,7 +5768,10 @@ abstract class CheckProductToSoppingCartFavouritesEvent
       _$CheckProductToSoppingCartFavouritesEventImpl;
 
   SkuProductDataModel get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckProductToSoppingCartFavouritesEventImplCopyWith<
           _$CheckProductToSoppingCartFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -5686,6 +5797,8 @@ class __$$GetInfoProductSizeFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductSizeFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5743,7 +5856,9 @@ class _$GetInfoProductSizeFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code, isShop, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductSizeFavouritesEventImplCopyWith<
@@ -6011,7 +6126,10 @@ abstract class GetInfoProductSizeFavouritesEvent implements FavouritesEvent {
   String get code;
   bool get isShop;
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductSizeFavouritesEventImplCopyWith<
           _$GetInfoProductSizeFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6037,6 +6155,8 @@ class __$$UpdateInfoProductsFavouritesEventImplCopyWithImpl<$Res>
       $Res Function(_$UpdateInfoProductsFavouritesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6077,7 +6197,9 @@ class _$UpdateInfoProductsFavouritesEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateInfoProductsFavouritesEventImplCopyWith<
@@ -6341,7 +6463,10 @@ abstract class UpdateInfoProductsFavouritesEvent implements FavouritesEvent {
       _$UpdateInfoProductsFavouritesEventImpl;
 
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateInfoProductsFavouritesEventImplCopyWith<
           _$UpdateInfoProductsFavouritesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6523,6 +6648,9 @@ class _$FavouritesStateCopyWithImpl<$Res, $Val extends FavouritesState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -6539,6 +6667,9 @@ class __$$InitFavouritesStateImplCopyWithImpl<$Res>
   __$$InitFavouritesStateImplCopyWithImpl(_$InitFavouritesStateImpl _value,
       $Res Function(_$InitFavouritesStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -6762,6 +6893,9 @@ class __$$LoadingFavouritesStateImplCopyWithImpl<$Res>
       _$LoadingFavouritesStateImpl _value,
       $Res Function(_$LoadingFavouritesStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -6986,6 +7120,9 @@ class __$$OpenSoppingCartFavouritesStateImplCopyWithImpl<$Res>
       _$OpenSoppingCartFavouritesStateImpl _value,
       $Res Function(_$OpenSoppingCartFavouritesStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7219,6 +7356,8 @@ class __$$GetSizeProductFavouritesStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSizeProductFavouritesStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7308,7 +7447,9 @@ class _$GetSizeProductFavouritesStateImpl
       const DeepCollectionEquality().hash(_listSizeToSoppingCart),
       titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSizeProductFavouritesStateImplCopyWith<
@@ -7509,7 +7650,10 @@ abstract class GetSizeProductFavouritesState implements FavouritesState {
   List<SkuProductDataModel> get listSize;
   List<SkuProductDataModel> get listSizeToSoppingCart;
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSizeProductFavouritesStateImplCopyWith<
           _$GetSizeProductFavouritesStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -7534,6 +7678,8 @@ class __$$AddProductFavouritesStateImplCopyWithImpl<$Res>
       $Res Function(_$AddProductFavouritesStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7582,7 +7728,9 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   @override
   int get hashCode => Object.hash(runtimeType, code, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductFavouritesStateImplCopyWith<_$AddProductFavouritesStateImpl>
@@ -7777,7 +7925,10 @@ abstract class AddProductFavouritesState implements FavouritesState {
 
   String get code;
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductFavouritesStateImplCopyWith<_$AddProductFavouritesStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -7831,6 +7982,8 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
       $Res Function(_$ProductsFavouritesStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7964,6 +8117,8 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FavouritesCatalogProductsRequestCopyWith<$Res> get request {
@@ -7973,6 +8128,8 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
@@ -7986,6 +8143,8 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
@@ -7999,6 +8158,8 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
@@ -8275,7 +8436,9 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         detailsProduct
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductsFavouritesStateImplCopyWith<_$ProductsFavouritesStateImpl>
@@ -8592,7 +8755,10 @@ abstract class ProductsFavouritesState implements FavouritesState {
   bool? get isUpdate;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductsFavouritesStateImplCopyWith<_$ProductsFavouritesStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

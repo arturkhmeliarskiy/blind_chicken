@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
@@ -9,6 +9,7 @@ class CatalogCardItem extends StatefulWidget {
   const CatalogCardItem({
     super.key,
     required this.imageUrl,
+    required this.images,
     required this.brend,
     required this.category,
     required this.yourPrice,
@@ -33,6 +34,7 @@ class CatalogCardItem extends StatefulWidget {
   });
 
   final String imageUrl;
+  final List<String> images;
   final String brend;
   final String category;
   final String yourPrice;
@@ -93,17 +95,8 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
               children: [
                 Stack(
                   children: [
-                    CachedNetworkImage(
-                      imageUrl: widget.imageUrl,
-                      fit: BoxFit.fill,
-                      width: MediaQuery.of(context).size.width / 2 - 21,
-                      height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                      placeholder: (context, url) => SizedBox(
-                        width: MediaQuery.of(context).size.width / 2 - 21,
-                        height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                        child: const LoadingImage(),
-                      ),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                    CatalogSliderImagesCardItem(
+                      images: widget.images,
                     ),
                     if (widget.promoValue > 0)
                       Tooltip(

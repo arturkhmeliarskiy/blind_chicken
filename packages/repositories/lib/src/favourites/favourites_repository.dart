@@ -134,7 +134,8 @@ extension on FavouritesCatalogInfoResponse {
               (item) => ProductDataModel(
                 id: int.parse(item.c ?? '0'),
                 title: item.n ?? '',
-                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+                images:
+                    item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [],
                 brend: item.b ?? '',
                 category: item.n ?? '',
                 size: [],

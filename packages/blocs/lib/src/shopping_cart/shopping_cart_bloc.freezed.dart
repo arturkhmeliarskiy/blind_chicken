@@ -339,6 +339,9 @@ class _$ShoppingCartEventCopyWithImpl<$Res, $Val extends ShoppingCartEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -356,6 +359,9 @@ class __$$InitShoppingCartEventImplCopyWithImpl<$Res>
   __$$InitShoppingCartEventImplCopyWithImpl(_$InitShoppingCartEventImpl _value,
       $Res Function(_$InitShoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -729,6 +735,9 @@ class __$$PreloadDataShoppingCartEventImplCopyWithImpl<$Res>
       _$PreloadDataShoppingCartEventImpl _value,
       $Res Function(_$PreloadDataShoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1109,6 +1118,8 @@ class __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$AddProductToSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1122,6 +1133,8 @@ class __$$AddProductToSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketInfoItemDataModelCopyWith<$Res> get item {
@@ -1156,7 +1169,9 @@ class _$AddProductToSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductToSoppingCartEventImplCopyWith<
@@ -1500,7 +1515,10 @@ abstract class AddProductToSoppingCartEvent implements ShoppingCartEvent {
       _$AddProductToSoppingCartEventImpl;
 
   BasketInfoItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductToSoppingCartEventImplCopyWith<
           _$AddProductToSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1531,6 +1549,8 @@ class __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$AddOtherProductToSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1554,6 +1574,8 @@ class __$$AddOtherProductToSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketInfoItemDataModelCopyWith<$Res> get item {
@@ -1602,7 +1624,9 @@ class _$AddOtherProductToSoppingCartEventImpl
   int get hashCode =>
       Object.hash(runtimeType, item, titleScreen, typeAddProductToShoppingCart);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddOtherProductToSoppingCartEventImplCopyWith<
@@ -1953,7 +1977,10 @@ abstract class AddOtherProductToSoppingCartEvent implements ShoppingCartEvent {
   BasketInfoItemDataModel get item;
   String? get titleScreen;
   String? get typeAddProductToShoppingCart;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddOtherProductToSoppingCartEventImplCopyWith<
           _$AddOtherProductToSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1981,6 +2008,8 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteProductToSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1999,6 +2028,8 @@ class __$$DeleteProductToSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketInfoItemDataModelCopyWith<$Res> get item {
@@ -2037,7 +2068,9 @@ class _$DeleteProductToSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, item, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteProductToSoppingCartEventImplCopyWith<
@@ -2382,7 +2415,10 @@ abstract class DeleteProductToSoppingCartEvent implements ShoppingCartEvent {
 
   BasketInfoItemDataModel get item;
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteProductToSoppingCartEventImplCopyWith<
           _$DeleteProductToSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2410,6 +2446,8 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$UpdateProductToSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2428,6 +2466,8 @@ class __$$UpdateProductToSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketInfoItemDataModelCopyWith<$Res> get item {
@@ -2466,7 +2506,9 @@ class _$UpdateProductToSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, item, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateProductToSoppingCartEventImplCopyWith<
@@ -2811,7 +2853,10 @@ abstract class UpdateProductToSoppingCartEvent implements ShoppingCartEvent {
 
   BasketInfoItemDataModel get item;
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateProductToSoppingCartEventImplCopyWith<
           _$UpdateProductToSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2834,6 +2879,9 @@ class __$$PaymentBonusSoppingCartEventImplCopyWithImpl<$Res>
       _$PaymentBonusSoppingCartEventImpl _value,
       $Res Function(_$PaymentBonusSoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3209,6 +3257,9 @@ class __$$InitGiftCardSoppingCartEventImplCopyWithImpl<$Res>
       _$InitGiftCardSoppingCartEventImpl _value,
       $Res Function(_$InitGiftCardSoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3587,6 +3638,8 @@ class __$$GiftCardSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$GiftCardSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3634,7 +3687,9 @@ class _$GiftCardSoppingCartEventImpl implements GiftCardSoppingCartEvent {
   @override
   int get hashCode => Object.hash(runtimeType, number, pin);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GiftCardSoppingCartEventImplCopyWith<_$GiftCardSoppingCartEventImpl>
@@ -3978,7 +4033,10 @@ abstract class GiftCardSoppingCartEvent implements ShoppingCartEvent {
 
   String get number;
   String get pin;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GiftCardSoppingCartEventImplCopyWith<_$GiftCardSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4005,6 +4063,8 @@ class __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$AddGiftCardSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4018,6 +4078,8 @@ class __$$AddGiftCardSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketSertDeliveryRequestCopyWith<$Res> get giftCard {
@@ -4052,7 +4114,9 @@ class _$AddGiftCardSoppingCartEventImpl implements AddGiftCardSoppingCartEvent {
   @override
   int get hashCode => Object.hash(runtimeType, giftCard);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddGiftCardSoppingCartEventImplCopyWith<_$AddGiftCardSoppingCartEventImpl>
@@ -4395,7 +4459,10 @@ abstract class AddGiftCardSoppingCartEvent implements ShoppingCartEvent {
       _$AddGiftCardSoppingCartEventImpl;
 
   BasketSertDeliveryRequest get giftCard;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddGiftCardSoppingCartEventImplCopyWith<_$AddGiftCardSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4420,6 +4487,8 @@ class __$$DeliverySoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$DeliverySoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4468,7 +4537,9 @@ class _$DeliverySoppingCartEventImpl implements DeliverySoppingCartEvent {
   @override
   int get hashCode => Object.hash(runtimeType, delivery, cityId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliverySoppingCartEventImplCopyWith<_$DeliverySoppingCartEventImpl>
@@ -4812,7 +4883,10 @@ abstract class DeliverySoppingCartEvent implements ShoppingCartEvent {
 
   int get delivery;
   String get cityId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeliverySoppingCartEventImplCopyWith<_$DeliverySoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4837,6 +4911,8 @@ class __$$PromoCodeSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$PromoCodeSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4885,7 +4961,9 @@ class _$PromoCodeSoppingCartEventImpl implements PromoCodeSoppingCartEvent {
   @override
   int get hashCode => Object.hash(runtimeType, promoCode, uid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PromoCodeSoppingCartEventImplCopyWith<_$PromoCodeSoppingCartEventImpl>
@@ -5229,7 +5307,10 @@ abstract class PromoCodeSoppingCartEvent implements ShoppingCartEvent {
 
   String get promoCode;
   String get uid;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PromoCodeSoppingCartEventImplCopyWith<_$PromoCodeSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5251,6 +5332,9 @@ class __$$RemovePromoCodeSoppingCartEventImplCopyWithImpl<$Res>
       _$RemovePromoCodeSoppingCartEventImpl _value,
       $Res Function(_$RemovePromoCodeSoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5631,6 +5715,8 @@ class __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$CreateOrderPromoCodeSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5644,6 +5730,8 @@ class __$$CreateOrderPromoCodeSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketOrderRequestCopyWith<$Res> get request {
@@ -5678,7 +5766,9 @@ class _$CreateOrderPromoCodeSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, request);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<
@@ -6023,7 +6113,10 @@ abstract class CreateOrderPromoCodeSoppingCartEvent
       _$CreateOrderPromoCodeSoppingCartEventImpl;
 
   BasketOrderRequest get request;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateOrderPromoCodeSoppingCartEventImplCopyWith<
           _$CreateOrderPromoCodeSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6048,6 +6141,8 @@ class __$$BonusesSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$BonusesSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6086,7 +6181,9 @@ class _$BonusesSoppingCartEventImpl implements BonusesSoppingCartEvent {
   @override
   int get hashCode => Object.hash(runtimeType, bonuses);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BonusesSoppingCartEventImplCopyWith<_$BonusesSoppingCartEventImpl>
@@ -6428,7 +6525,10 @@ abstract class BonusesSoppingCartEvent implements ShoppingCartEvent {
       _$BonusesSoppingCartEventImpl;
 
   int get bonuses;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BonusesSoppingCartEventImplCopyWith<_$BonusesSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6461,6 +6561,8 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductShoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6500,6 +6602,8 @@ class __$$GetInfoProductShoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -6574,7 +6678,9 @@ class _$GetInfoProductShoppingCartEventImpl
       size,
       isUpdate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductShoppingCartEventImplCopyWith<
@@ -6930,7 +7036,10 @@ abstract class GetInfoProductShoppingCartEvent implements ShoppingCartEvent {
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductShoppingCartEventImplCopyWith<
           _$GetInfoProductShoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6954,6 +7063,9 @@ class __$$GoBackProductInfoCategotyShoppingCartEventImplCopyWithImpl<$Res>
       _$GoBackProductInfoCategotyShoppingCartEventImpl _value,
       $Res Function(_$GoBackProductInfoCategotyShoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7335,6 +7447,8 @@ class __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$AddFavouriteProductShoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7353,6 +7467,8 @@ class __$$AddFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -7391,7 +7507,9 @@ class _$AddFavouriteProductShoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index, product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddFavouriteProductShoppingCartEventImplCopyWith<
@@ -7737,7 +7855,10 @@ abstract class AddFavouriteProductShoppingCartEvent
 
   int get index;
   ProductDataModel get product;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddFavouriteProductShoppingCartEventImplCopyWith<
           _$AddFavouriteProductShoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -7763,6 +7884,8 @@ class __$$DeleteFavouriteProductShoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFavouriteProductShoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7802,7 +7925,9 @@ class _$DeleteFavouriteProductShoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFavouriteProductShoppingCartEventImplCopyWith<
@@ -8148,7 +8273,10 @@ abstract class DeleteFavouriteProductShoppingCartEvent
       _$DeleteFavouriteProductShoppingCartEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFavouriteProductShoppingCartEventImplCopyWith<
           _$DeleteFavouriteProductShoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -8171,6 +8299,9 @@ class __$$AddProductToSoppingCartInfoEventImplCopyWithImpl<$Res>
       _$AddProductToSoppingCartInfoEventImpl _value,
       $Res Function(_$AddProductToSoppingCartInfoEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -8551,6 +8682,8 @@ class __$$CheckProductToSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckProductToSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8564,6 +8697,8 @@ class __$$CheckProductToSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get size {
@@ -8598,7 +8733,9 @@ class _$CheckProductToSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckProductToSoppingCartEventImplCopyWith<
@@ -8942,7 +9079,10 @@ abstract class CheckProductToSoppingCartEvent implements ShoppingCartEvent {
       _$CheckProductToSoppingCartEventImpl;
 
   SkuProductDataModel get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckProductToSoppingCartEventImplCopyWith<
           _$CheckProductToSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -8970,6 +9110,8 @@ class __$$ChangeSizeProductSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeSizeProductSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8983,6 +9125,8 @@ class __$$ChangeSizeProductSoppingCartEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
@@ -9020,7 +9164,9 @@ class _$ChangeSizeProductSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeSizeProductSoppingCartEventImplCopyWith<
@@ -9364,7 +9510,10 @@ abstract class ChangeSizeProductSoppingCartEvent implements ShoppingCartEvent {
       _$ChangeSizeProductSoppingCartEventImpl;
 
   SkuProductDataModel get selectSizeProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeSizeProductSoppingCartEventImplCopyWith<
           _$ChangeSizeProductSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -9387,6 +9536,9 @@ class __$$OpenAuthModelSoppingCartEventImplCopyWithImpl<$Res>
       _$OpenAuthModelSoppingCartEventImpl _value,
       $Res Function(_$OpenAuthModelSoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -9762,6 +9914,9 @@ class __$$CloseAuthModelSoppingCartEventImplCopyWithImpl<$Res>
       _$CloseAuthModelSoppingCartEventImpl _value,
       $Res Function(_$CloseAuthModelSoppingCartEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -10140,6 +10295,8 @@ class __$$ChangeReceivingTypeSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeReceivingTypeSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -10181,7 +10338,9 @@ class _$ChangeReceivingTypeSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, receivingType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeReceivingTypeSoppingCartEventImplCopyWith<
@@ -10526,7 +10685,10 @@ abstract class ChangeReceivingTypeSoppingCartEvent
       _$ChangeReceivingTypeSoppingCartEventImpl;
 
   String get receivingType;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeReceivingTypeSoppingCartEventImplCopyWith<
           _$ChangeReceivingTypeSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -10552,6 +10714,8 @@ class __$$ChangeUidPickUpPointSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeUidPickUpPointSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -10593,7 +10757,9 @@ class _$ChangeUidPickUpPointSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, uidPickUpPoint);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith<
@@ -10938,7 +11104,10 @@ abstract class ChangeUidPickUpPointSoppingCartEvent
       _$ChangeUidPickUpPointSoppingCartEventImpl;
 
   String get uidPickUpPoint;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeUidPickUpPointSoppingCartEventImplCopyWith<
           _$ChangeUidPickUpPointSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -10964,6 +11133,8 @@ class __$$ChangeAddressSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeAddressSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11003,7 +11174,9 @@ class _$ChangeAddressSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, address);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeAddressSoppingCartEventImplCopyWith<
@@ -11346,7 +11519,10 @@ abstract class ChangeAddressSoppingCartEvent implements ShoppingCartEvent {
       _$ChangeAddressSoppingCartEventImpl;
 
   String get address;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeAddressSoppingCartEventImplCopyWith<
           _$ChangeAddressSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -11372,6 +11548,8 @@ class __$$ChangeAddressDeliverySoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeAddressDeliverySoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11413,7 +11591,9 @@ class _$ChangeAddressDeliverySoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, addressDelivery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeAddressDeliverySoppingCartEventImplCopyWith<
@@ -11758,7 +11938,10 @@ abstract class ChangeAddressDeliverySoppingCartEvent
       _$ChangeAddressDeliverySoppingCartEventImpl;
 
   BasketAddress get addressDelivery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeAddressDeliverySoppingCartEventImplCopyWith<
           _$ChangeAddressDeliverySoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -11784,6 +11967,8 @@ class __$$ChangePaymentTypeSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangePaymentTypeSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11833,7 +12018,9 @@ class _$ChangePaymentTypeSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, paymentId, typePay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangePaymentTypeSoppingCartEventImplCopyWith<
@@ -12178,7 +12365,10 @@ abstract class ChangePaymentTypeSoppingCartEvent implements ShoppingCartEvent {
 
   String get paymentId;
   String get typePay;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangePaymentTypeSoppingCartEventImplCopyWith<
           _$ChangePaymentTypeSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -12204,6 +12394,8 @@ class __$$ChangeTitlePromocodeSoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeTitlePromocodeSoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -12245,7 +12437,9 @@ class _$ChangeTitlePromocodeSoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, titlePromocode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith<
@@ -12590,7 +12784,10 @@ abstract class ChangeTitlePromocodeSoppingCartEvent
       _$ChangeTitlePromocodeSoppingCartEventImpl;
 
   String get titlePromocode;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeTitlePromocodeSoppingCartEventImplCopyWith<
           _$ChangeTitlePromocodeSoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -12616,6 +12813,8 @@ class __$$GetInfoProductSizeShoppingCartEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductSizeShoppingCartEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -12664,7 +12863,9 @@ class _$GetInfoProductSizeShoppingCartEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code, isShop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductSizeShoppingCartEventImplCopyWith<
@@ -13010,7 +13211,10 @@ abstract class GetInfoProductSizeShoppingCartEvent
 
   String get code;
   bool get isShop;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductSizeShoppingCartEventImplCopyWith<
           _$GetInfoProductSizeShoppingCartEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -13272,6 +13476,9 @@ class _$ShoppingCartStateCopyWithImpl<$Res, $Val extends ShoppingCartState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -13289,6 +13496,9 @@ class __$$InitShoppingCartStateImplCopyWithImpl<$Res>
   __$$InitShoppingCartStateImplCopyWithImpl(_$InitShoppingCartStateImpl _value,
       $Res Function(_$InitShoppingCartStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -13593,6 +13803,9 @@ class __$$LoadingShoppingCartStateImplCopyWithImpl<$Res>
       _$LoadingShoppingCartStateImpl _value,
       $Res Function(_$LoadingShoppingCartStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -13899,6 +14112,8 @@ class __$$ErrorShoppingCartStateImplCopyWithImpl<$Res>
       $Res Function(_$ErrorShoppingCartStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -13938,7 +14153,9 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorShoppingCartStateImplCopyWith<_$ErrorShoppingCartStateImpl>
@@ -14211,7 +14428,10 @@ abstract class ErrorShoppingCartState implements ShoppingCartState {
       _$ErrorShoppingCartStateImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorShoppingCartStateImplCopyWith<_$ErrorShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -14236,6 +14456,8 @@ class __$$CreateOrderSuccessfullyShoppingCartStateImplCopyWithImpl<$Res>
       $Res Function(_$CreateOrderSuccessfullyShoppingCartStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -14275,7 +14497,9 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, orderId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<
@@ -14552,7 +14776,10 @@ abstract class CreateOrderSuccessfullyShoppingCartState
       _$CreateOrderSuccessfullyShoppingCartStateImpl;
 
   int get orderId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateOrderSuccessfullyShoppingCartStateImplCopyWith<
           _$CreateOrderSuccessfullyShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -14575,6 +14802,9 @@ class __$$OpenSoppingCartShoppingCartStateImplCopyWithImpl<$Res>
       _$OpenSoppingCartShoppingCartStateImpl _value,
       $Res Function(_$OpenSoppingCartShoppingCartStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -14887,6 +15117,8 @@ class __$$GetSizeProductShoppingCartStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSizeProductShoppingCartStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -14964,7 +15196,9 @@ class _$GetSizeProductShoppingCartStateImpl
       const DeepCollectionEquality().hash(_listSize),
       const DeepCollectionEquality().hash(_listSizeToSoppingCart));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSizeProductShoppingCartStateImplCopyWith<
@@ -15243,7 +15477,10 @@ abstract class GetSizeProductShoppingCartState implements ShoppingCartState {
   String get code;
   List<SkuProductDataModel> get listSize;
   List<SkuProductDataModel> get listSizeToSoppingCart;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSizeProductShoppingCartStateImplCopyWith<
           _$GetSizeProductShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -15269,6 +15506,8 @@ class __$$AddProductShoppingCartStateImplCopyWithImpl<$Res>
       $Res Function(_$AddProductShoppingCartStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -15307,7 +15546,9 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   @override
   int get hashCode => Object.hash(runtimeType, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductShoppingCartStateImplCopyWith<_$AddProductShoppingCartStateImpl>
@@ -15580,7 +15821,10 @@ abstract class AddProductShoppingCartState implements ShoppingCartState {
       _$AddProductShoppingCartStateImpl;
 
   String get code;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductShoppingCartStateImplCopyWith<_$AddProductShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -15661,6 +15905,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
       $Res Function(_$ProductsShoppingCartStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -15909,6 +16155,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart {
@@ -15917,6 +16165,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiquesDataModelCopyWith<$Res> get boutiques {
@@ -15925,6 +16175,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentBonusDataModelCopyWith<$Res>? get paymentBonus {
@@ -15937,6 +16189,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentBonusDataModelCopyWith<$Res>? get paymentGift {
@@ -15949,6 +16203,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
@@ -15962,6 +16218,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
@@ -15975,6 +16233,8 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
@@ -16372,7 +16632,9 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         detailsProduct
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductsShoppingCartStateImplCopyWith<_$ProductsShoppingCartStateImpl>
@@ -16885,7 +17147,10 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   bool? get isAuthModel;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductsShoppingCartStateImplCopyWith<_$ProductsShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

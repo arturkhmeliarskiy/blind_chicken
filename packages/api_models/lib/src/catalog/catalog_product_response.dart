@@ -10,6 +10,7 @@ class CatalogProductResponse with _$CatalogProductResponse {
   factory CatalogProductResponse({
     String? c,
     String? f,
+    List<String>? sl,
     String? b,
     String? n,
     String? p,

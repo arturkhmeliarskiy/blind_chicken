@@ -282,6 +282,9 @@ class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -301,6 +304,8 @@ class __$$InitAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$InitAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -355,7 +360,9 @@ class _$InitAccountEventImpl implements InitAccountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, phone, name, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitAccountEventImplCopyWith<_$InitAccountEventImpl> get copyWith =>
@@ -644,7 +651,10 @@ abstract class InitAccountEvent implements AccountEvent {
   String? get phone;
   String? get name;
   String? get email;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitAccountEventImplCopyWith<_$InitAccountEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -668,6 +678,8 @@ class __$$UpdateInfoAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$UpdateInfoAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -722,7 +734,9 @@ class _$UpdateInfoAccountEventImpl implements UpdateInfoAccountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, phone, name, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateInfoAccountEventImplCopyWith<_$UpdateInfoAccountEventImpl>
@@ -1011,7 +1025,10 @@ abstract class UpdateInfoAccountEvent implements AccountEvent {
   String? get phone;
   String? get name;
   String? get email;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateInfoAccountEventImplCopyWith<_$UpdateInfoAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1032,6 +1049,9 @@ class __$$PaginationOrdersAccountEventImplCopyWithImpl<$Res>
       _$PaginationOrdersAccountEventImpl _value,
       $Res Function(_$PaginationOrdersAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1348,6 +1368,9 @@ class __$$GetOrdersAccountEventImplCopyWithImpl<$Res>
   __$$GetOrdersAccountEventImplCopyWithImpl(_$GetOrdersAccountEventImpl _value,
       $Res Function(_$GetOrdersAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1664,6 +1687,9 @@ class __$$PaginationListOrdersBlankAccountEventImplCopyWithImpl<$Res>
       _$PaginationListOrdersBlankAccountEventImpl _value,
       $Res Function(_$PaginationListOrdersBlankAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1982,6 +2008,9 @@ class __$$GetListOrdersBlankAccountEventImplCopyWithImpl<$Res>
       _$GetListOrdersBlankAccountEventImpl _value,
       $Res Function(_$GetListOrdersBlankAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2302,6 +2331,8 @@ class __$$GetOrderPdfBlankAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetOrderPdfBlankAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2351,7 +2382,9 @@ class _$GetOrderPdfBlankAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, fileName, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOrderPdfBlankAccountEventImplCopyWith<
@@ -2639,7 +2672,10 @@ abstract class GetOrderPdfBlankAccountEvent implements AccountEvent {
 
   String get fileName;
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOrderPdfBlankAccountEventImplCopyWith<
           _$GetOrderPdfBlankAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2662,6 +2698,9 @@ class __$$PaginationListTailoringBlankAccountEventImplCopyWithImpl<$Res>
       _$PaginationListTailoringBlankAccountEventImpl _value,
       $Res Function(_$PaginationListTailoringBlankAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2981,6 +3020,9 @@ class __$$GetListTailoringBlankAccountEventImplCopyWithImpl<$Res>
       _$GetListTailoringBlankAccountEventImpl _value,
       $Res Function(_$GetListTailoringBlankAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3302,6 +3344,8 @@ class __$$GetTailoringPdfBlankAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTailoringPdfBlankAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3351,7 +3395,9 @@ class _$GetTailoringPdfBlankAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, fileName, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTailoringPdfBlankAccountEventImplCopyWith<
@@ -3639,7 +3685,10 @@ abstract class GetTailoringPdfBlankAccountEvent implements AccountEvent {
 
   String get fileName;
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTailoringPdfBlankAccountEventImplCopyWith<
           _$GetTailoringPdfBlankAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -3664,6 +3713,8 @@ class __$$GetInfoOrderAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoOrderAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3702,7 +3753,9 @@ class _$GetInfoOrderAccountEventImpl implements GetInfoOrderAccountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoOrderAccountEventImplCopyWith<_$GetInfoOrderAccountEventImpl>
@@ -3987,7 +4040,10 @@ abstract class GetInfoOrderAccountEvent implements AccountEvent {
       _$GetInfoOrderAccountEventImpl;
 
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoOrderAccountEventImplCopyWith<_$GetInfoOrderAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4011,6 +4067,8 @@ class __$$GetInfoPayOrderAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoPayOrderAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4058,7 +4116,9 @@ class _$GetInfoPayOrderAccountEventImpl implements GetInfoPayOrderAccountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, id, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoPayOrderAccountEventImplCopyWith<_$GetInfoPayOrderAccountEventImpl>
@@ -4345,7 +4405,10 @@ abstract class GetInfoPayOrderAccountEvent implements AccountEvent {
 
   String get id;
   String? get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoPayOrderAccountEventImplCopyWith<_$GetInfoPayOrderAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4367,6 +4430,8 @@ class __$$PayOrderAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$PayOrderAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4406,7 +4471,9 @@ class _$PayOrderAccountEventImpl implements PayOrderAccountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, idForPay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PayOrderAccountEventImplCopyWith<_$PayOrderAccountEventImpl>
@@ -4692,7 +4759,10 @@ abstract class PayOrderAccountEvent implements AccountEvent {
       _$PayOrderAccountEventImpl;
 
   String get idForPay;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PayOrderAccountEventImplCopyWith<_$PayOrderAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4711,6 +4781,9 @@ class __$$LogOutAccountEventImplCopyWithImpl<$Res>
   __$$LogOutAccountEventImplCopyWithImpl(_$LogOutAccountEventImpl _value,
       $Res Function(_$LogOutAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5023,6 +5096,9 @@ class __$$RemoveAccountEventImplCopyWithImpl<$Res>
   __$$RemoveAccountEventImplCopyWithImpl(_$RemoveAccountEventImpl _value,
       $Res Function(_$RemoveAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5337,6 +5413,9 @@ class __$$VirtualCardsCodAccountEventImplCopyWithImpl<$Res>
       _$VirtualCardsCodAccountEventImpl _value,
       $Res Function(_$VirtualCardsCodAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5659,6 +5738,8 @@ class __$$AddFavouriteProductAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$AddFavouriteProductAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5677,6 +5758,8 @@ class __$$AddFavouriteProductAccountEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -5715,7 +5798,9 @@ class _$AddFavouriteProductAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index, product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddFavouriteProductAccountEventImplCopyWith<
@@ -6003,7 +6088,10 @@ abstract class AddFavouriteProductAccountEvent implements AccountEvent {
 
   int get index;
   ProductDataModel get product;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddFavouriteProductAccountEventImplCopyWith<
           _$AddFavouriteProductAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6029,6 +6117,8 @@ class __$$DeleteFavouriteProductAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFavouriteProductAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6068,7 +6158,9 @@ class _$DeleteFavouriteProductAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFavouriteProductAccountEventImplCopyWith<
@@ -6354,7 +6446,10 @@ abstract class DeleteFavouriteProductAccountEvent implements AccountEvent {
       _$DeleteFavouriteProductAccountEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFavouriteProductAccountEventImplCopyWith<
           _$DeleteFavouriteProductAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -6387,6 +6482,8 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6426,6 +6523,8 @@ class __$$GetInfoProductAccountEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -6499,7 +6598,9 @@ class _$GetInfoProductAccountEventImpl implements GetInfoProductAccountEvent {
       size,
       isUpdate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductAccountEventImplCopyWith<_$GetInfoProductAccountEventImpl>
@@ -6797,7 +6898,10 @@ abstract class GetInfoProductAccountEvent implements AccountEvent {
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductAccountEventImplCopyWith<_$GetInfoProductAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6824,6 +6928,8 @@ class __$$ChangeSizeProductAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeSizeProductAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6837,6 +6943,8 @@ class __$$ChangeSizeProductAccountEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
@@ -6873,7 +6981,9 @@ class _$ChangeSizeProductAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeSizeProductAccountEventImplCopyWith<
@@ -7160,7 +7270,10 @@ abstract class ChangeSizeProductAccountEvent implements AccountEvent {
       _$ChangeSizeProductAccountEventImpl;
 
   SkuProductDataModel get selectSizeProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeSizeProductAccountEventImplCopyWith<
           _$ChangeSizeProductAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -7185,6 +7298,8 @@ class __$$SaveDocumentAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$SaveDocumentAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7234,7 +7349,9 @@ class _$SaveDocumentAccountEventImpl implements SaveDocumentAccountEvent {
   int get hashCode => Object.hash(
       runtimeType, fileName, const DeepCollectionEquality().hash(bytes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SaveDocumentAccountEventImplCopyWith<_$SaveDocumentAccountEventImpl>
@@ -7521,7 +7638,10 @@ abstract class SaveDocumentAccountEvent implements AccountEvent {
 
   String get fileName;
   Uint8List get bytes;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveDocumentAccountEventImplCopyWith<_$SaveDocumentAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -7543,6 +7663,9 @@ class __$$GoBackProductInfoCategotyAccountEventImplCopyWithImpl<$Res>
       _$GoBackProductInfoCategotyAccountEventImpl _value,
       $Res Function(_$GoBackProductInfoCategotyAccountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7869,6 +7992,8 @@ class __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$AddProductToSoppingCartCAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7893,6 +8018,8 @@ class __$$AddProductToSoppingCartCAccountEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get size {
@@ -7943,7 +8070,9 @@ class _$AddProductToSoppingCartCAccountEventImpl
   int get hashCode => Object.hash(runtimeType, size,
       typeAddProductToShoppingCart, identifierAddProductToShoppingCart);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductToSoppingCartCAccountEventImplCopyWith<
@@ -8237,7 +8366,10 @@ abstract class AddProductToSoppingCartCAccountEvent implements AccountEvent {
   SkuProductDataModel get size;
   String get typeAddProductToShoppingCart;
   String get identifierAddProductToShoppingCart;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductToSoppingCartCAccountEventImplCopyWith<
           _$AddProductToSoppingCartCAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -8265,6 +8397,8 @@ class __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckProductToSoppingCartAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8278,6 +8412,8 @@ class __$$CheckProductToSoppingCartAccountEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get size {
@@ -8312,7 +8448,9 @@ class _$CheckProductToSoppingCartAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckProductToSoppingCartAccountEventImplCopyWith<
@@ -8599,7 +8737,10 @@ abstract class CheckProductToSoppingCartAccountEvent implements AccountEvent {
       _$CheckProductToSoppingCartAccountEventImpl;
 
   SkuProductDataModel get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckProductToSoppingCartAccountEventImplCopyWith<
           _$CheckProductToSoppingCartAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -8625,6 +8766,8 @@ class __$$GetInfoProductSizeAccountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductSizeAccountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8673,7 +8816,9 @@ class _$GetInfoProductSizeAccountEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code, isShop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductSizeAccountEventImplCopyWith<
@@ -8961,7 +9106,10 @@ abstract class GetInfoProductSizeAccountEvent implements AccountEvent {
 
   String get code;
   bool get isShop;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductSizeAccountEventImplCopyWith<
           _$GetInfoProductSizeAccountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -9204,6 +9352,9 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -9220,6 +9371,9 @@ class __$$InitAccountStateImplCopyWithImpl<$Res>
   __$$InitAccountStateImplCopyWithImpl(_$InitAccountStateImpl _value,
       $Res Function(_$InitAccountStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -9501,6 +9655,9 @@ class __$$LoadingAccountStateImplCopyWithImpl<$Res>
   __$$LoadingAccountStateImplCopyWithImpl(_$LoadingAccountStateImpl _value,
       $Res Function(_$LoadingAccountStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -9786,6 +9943,8 @@ class __$$ErrorAccountStateImplCopyWithImpl<$Res>
       $Res Function(_$ErrorAccountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -9824,7 +9983,9 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorAccountStateImplCopyWith<_$ErrorAccountStateImpl> get copyWith =>
@@ -10078,7 +10239,10 @@ abstract class ErrorAccountState implements AccountState {
       _$ErrorAccountStateImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorAccountStateImplCopyWith<_$ErrorAccountStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -10102,6 +10266,8 @@ class __$$ErrorOpenPdfAccountStateImplCopyWithImpl<$Res>
       $Res Function(_$ErrorOpenPdfAccountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -10140,7 +10306,9 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorOpenPdfAccountStateImplCopyWith<_$ErrorOpenPdfAccountStateImpl>
@@ -10394,7 +10562,10 @@ abstract class ErrorOpenPdfAccountState implements AccountState {
       _$ErrorOpenPdfAccountStateImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorOpenPdfAccountStateImplCopyWith<_$ErrorOpenPdfAccountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -10416,6 +10587,8 @@ class __$$PayOrderAccountStateImplCopyWithImpl<$Res>
       $Res Function(_$PayOrderAccountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -10454,7 +10627,9 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   @override
   int get hashCode => Object.hash(runtimeType, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PayOrderAccountStateImplCopyWith<_$PayOrderAccountStateImpl>
@@ -10709,7 +10884,10 @@ abstract class PayOrderAccountState implements AccountState {
       _$PayOrderAccountStateImpl;
 
   String get url;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PayOrderAccountStateImplCopyWith<_$PayOrderAccountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -10730,6 +10908,9 @@ class __$$OpenSoppingCartAccountStateImplCopyWithImpl<$Res>
       _$OpenSoppingCartAccountStateImpl _value,
       $Res Function(_$OpenSoppingCartAccountStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -11021,6 +11202,8 @@ class __$$GetSizeProductAccountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSizeProductAccountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11097,7 +11280,9 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
       const DeepCollectionEquality().hash(_listSize),
       const DeepCollectionEquality().hash(_listSizeToSoppingCart));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSizeProductAccountStateImplCopyWith<_$GetSizeProductAccountStateImpl>
@@ -11356,7 +11541,10 @@ abstract class GetSizeProductAccountState implements AccountState {
   String get code;
   List<SkuProductDataModel> get listSize;
   List<SkuProductDataModel> get listSizeToSoppingCart;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSizeProductAccountStateImplCopyWith<_$GetSizeProductAccountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -11380,6 +11568,8 @@ class __$$AddProductAccountStateImplCopyWithImpl<$Res>
       $Res Function(_$AddProductAccountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11418,7 +11608,9 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   @override
   int get hashCode => Object.hash(runtimeType, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductAccountStateImplCopyWith<_$AddProductAccountStateImpl>
@@ -11672,7 +11864,10 @@ abstract class AddProductAccountState implements AccountState {
       _$AddProductAccountStateImpl;
 
   String get code;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductAccountStateImplCopyWith<_$AddProductAccountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -11740,6 +11935,8 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedAccountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11933,6 +12130,8 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
@@ -11946,6 +12145,8 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
@@ -11959,6 +12160,8 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
@@ -11972,6 +12175,8 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserDataModelCopyWith<$Res>? get user {
@@ -11984,6 +12189,8 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderInfoDataModelCopyWith<$Res>? get orderInfo {
@@ -12322,7 +12529,9 @@ class _$PreloadDataCompletedAccountStateImpl
         orderInfo
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedAccountStateImplCopyWith<
@@ -12761,7 +12970,10 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   DetailProductDataModel? get detailsProduct;
   UserDataModel? get user;
   OrderInfoDataModel? get orderInfo;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedAccountStateImplCopyWith<
           _$PreloadDataCompletedAccountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -12781,6 +12993,9 @@ class __$$LogOutAccountStateImplCopyWithImpl<$Res>
   __$$LogOutAccountStateImplCopyWithImpl(_$LogOutAccountStateImpl _value,
       $Res Function(_$LogOutAccountStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -13062,6 +13277,9 @@ class __$$RemoveAccountStateImplCopyWithImpl<$Res>
   __$$RemoveAccountStateImplCopyWithImpl(_$RemoveAccountStateImpl _value,
       $Res Function(_$RemoveAccountStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

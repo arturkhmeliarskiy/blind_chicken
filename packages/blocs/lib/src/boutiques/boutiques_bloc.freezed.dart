@@ -76,6 +76,9 @@ class _$BoutiquesEventCopyWithImpl<$Res, $Val extends BoutiquesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BoutiquesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -92,6 +95,9 @@ class __$$InitBoutiquesEventImplCopyWithImpl<$Res>
   __$$InitBoutiquesEventImplCopyWithImpl(_$InitBoutiquesEventImpl _value,
       $Res Function(_$InitBoutiquesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BoutiquesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -202,6 +208,8 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoBoutiquesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiquesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -259,7 +267,9 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   @override
   int get hashCode => Object.hash(runtimeType, uid, isNotification, messageId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiquesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoBoutiquesEventImplCopyWith<_$GetInfoBoutiquesEventImpl>
@@ -342,7 +352,10 @@ abstract class GetInfoBoutiquesEvent implements BoutiquesEvent {
   String get uid;
   bool? get isNotification;
   String? get messageId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiquesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoBoutiquesEventImplCopyWith<_$GetInfoBoutiquesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -432,6 +445,9 @@ class _$BoutiquesStateCopyWithImpl<$Res, $Val extends BoutiquesState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -448,6 +464,9 @@ class __$$InitBoutiquesStateImplCopyWithImpl<$Res>
   __$$InitBoutiquesStateImplCopyWithImpl(_$InitBoutiquesStateImpl _value,
       $Res Function(_$InitBoutiquesStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -578,6 +597,9 @@ class __$$LoadingBoutiquesStateImplCopyWithImpl<$Res>
   __$$LoadingBoutiquesStateImplCopyWithImpl(_$LoadingBoutiquesStateImpl _value,
       $Res Function(_$LoadingBoutiquesStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -721,6 +743,8 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedBoutiquesStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -754,6 +778,8 @@ class __$$PreloadDataCompletedBoutiquesStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiqueDataInfoDataModelCopyWith<$Res>? get boutiqueDetails {
@@ -837,7 +863,9 @@ class _$PreloadDataCompletedBoutiquesStateImpl
       const DeepCollectionEquality().hash(_boutiqueInfo),
       boutiqueDetails);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedBoutiquesStateImplCopyWith<
@@ -952,7 +980,10 @@ abstract class PreloadDataCompletedBoutiquesState implements BoutiquesState {
   bool get isNotification;
   List<BoutiqueCategoryItemDataModel>? get boutiqueInfo;
   BoutiqueDataInfoDataModel? get boutiqueDetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedBoutiquesStateImplCopyWith<
           _$PreloadDataCompletedBoutiquesStateImpl>
       get copyWith => throw _privateConstructorUsedError;

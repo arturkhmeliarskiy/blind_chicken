@@ -95,6 +95,9 @@ class _$AppointmentEventCopyWithImpl<$Res, $Val extends AppointmentEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -111,6 +114,9 @@ class __$$InitAppointmentEventImplCopyWithImpl<$Res>
   __$$InitAppointmentEventImplCopyWithImpl(_$InitAppointmentEventImpl _value,
       $Res Function(_$InitAppointmentEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -245,6 +251,8 @@ class __$$SelectBoutiqueAppointmentEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectBoutiqueAppointmentEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -258,6 +266,8 @@ class __$$SelectBoutiqueAppointmentEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiqueDataModelCopyWith<$Res> get selectBoutique {
@@ -293,7 +303,9 @@ class _$SelectBoutiqueAppointmentEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectBoutique);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectBoutiqueAppointmentEventImplCopyWith<
@@ -393,7 +405,10 @@ abstract class SelectBoutiqueAppointmentEvent implements AppointmentEvent {
       _$SelectBoutiqueAppointmentEventImpl;
 
   BoutiqueDataModel get selectBoutique;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectBoutiqueAppointmentEventImplCopyWith<
           _$SelectBoutiqueAppointmentEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -419,6 +434,8 @@ class __$$SelectDateTimeAppointmentEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectDateTimeAppointmentEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,7 +476,9 @@ class _$SelectDateTimeAppointmentEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectDateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectDateTimeAppointmentEventImplCopyWith<
@@ -559,7 +578,10 @@ abstract class SelectDateTimeAppointmentEvent implements AppointmentEvent {
       _$SelectDateTimeAppointmentEventImpl;
 
   DateTime get selectDateTime;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectDateTimeAppointmentEventImplCopyWith<
           _$SelectDateTimeAppointmentEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -585,6 +607,8 @@ class __$$SelectTimeAppointmentEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectTimeAppointmentEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -624,7 +648,9 @@ class _$SelectTimeAppointmentEventImpl implements SelectTimeAppointmentEvent {
   @override
   int get hashCode => Object.hash(runtimeType, selectTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectTimeAppointmentEventImplCopyWith<_$SelectTimeAppointmentEventImpl>
@@ -722,7 +748,10 @@ abstract class SelectTimeAppointmentEvent implements AppointmentEvent {
       {required final DateTime selectTime}) = _$SelectTimeAppointmentEventImpl;
 
   DateTime get selectTime;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectTimeAppointmentEventImplCopyWith<_$SelectTimeAppointmentEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -744,6 +773,9 @@ class __$$CreateDoctorAppointmentAppointmentEventImplCopyWithImpl<$Res>
       _$CreateDoctorAppointmentAppointmentEventImpl _value,
       $Res Function(_$CreateDoctorAppointmentAppointmentEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppointmentEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -960,6 +992,9 @@ class _$AppointmentStateCopyWithImpl<$Res, $Val extends AppointmentState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -976,6 +1011,9 @@ class __$$InitAppointmentStateImplCopyWithImpl<$Res>
   __$$InitAppointmentStateImplCopyWithImpl(_$InitAppointmentStateImpl _value,
       $Res Function(_$InitAppointmentStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1124,6 +1162,9 @@ class __$$LoadingAppointmentStateImplCopyWithImpl<$Res>
       _$LoadingAppointmentStateImpl _value,
       $Res Function(_$LoadingAppointmentStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1273,6 +1314,9 @@ class __$$AuthorizationAppointmentStateImplCopyWithImpl<$Res>
       _$AuthorizationAppointmentStateImpl _value,
       $Res Function(_$AuthorizationAppointmentStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1427,6 +1471,8 @@ class __$$RecordCreatedSuccessfullyAppointmentStateImplCopyWithImpl<$Res>
       $Res Function(_$RecordCreatedSuccessfullyAppointmentStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1483,7 +1529,9 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, name, date, time);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RecordCreatedSuccessfullyAppointmentStateImplCopyWith<
@@ -1610,7 +1658,10 @@ abstract class RecordCreatedSuccessfullyAppointmentState
   String get name;
   String get date;
   String get time;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecordCreatedSuccessfullyAppointmentStateImplCopyWith<
           _$RecordCreatedSuccessfullyAppointmentStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1642,6 +1693,8 @@ class __$$PreloadDataCompletedAppointmentStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedAppointmentStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1670,6 +1723,8 @@ class __$$PreloadDataCompletedAppointmentStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BoutiqueDataModelCopyWith<$Res> get selectBoutique {
@@ -1739,7 +1794,9 @@ class _$PreloadDataCompletedAppointmentStateImpl
       const DeepCollectionEquality().hash(_time),
       selectDateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedAppointmentStateImplCopyWith<
@@ -1869,7 +1926,10 @@ abstract class PreloadDataCompletedAppointmentState
   BoutiqueDataModel get selectBoutique;
   Map<int, List<DateTime>> get time;
   DateTime get selectDateTime;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedAppointmentStateImplCopyWith<
           _$PreloadDataCompletedAppointmentStateImpl>
       get copyWith => throw _privateConstructorUsedError;

@@ -591,10 +591,31 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                         top: 7,
                                                         bottom: 14,
                                                       ),
-                                                      child: SvgPicture.asset(
-                                                        'assets/icons/info.svg',
-                                                        height: 14,
-                                                        width: 14,
+                                                      child: RichText(
+                                                        text: TextSpan(
+                                                          children: [
+                                                            WidgetSpan(
+                                                              alignment: PlaceholderAlignment.top,
+                                                              child: SvgPicture.asset(
+                                                                'assets/icons/info.svg',
+                                                                height: 14,
+                                                                width: 14,
+                                                              ),
+                                                            ),
+                                                            WidgetSpan(
+                                                              child: SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                            ),
+                                                            TextSpan(
+                                                              text: initState
+                                                                  .shoppingCart.promoDescription,
+                                                              style: Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
                                                     )
                                                   else

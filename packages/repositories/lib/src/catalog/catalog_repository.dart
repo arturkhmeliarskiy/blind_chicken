@@ -317,7 +317,8 @@ extension on CatalogSearchInfoResponse {
               (item) => ProductDataModel(
                 id: int.parse(item.c ?? '0'),
                 title: item.n ?? '',
-                images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+                images:
+                    item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [],
                 brend: item.b ?? '',
                 category: item.n ?? '',
                 pb: int.parse(item.pb ?? '0'),
@@ -735,7 +736,7 @@ extension on CatalogResponse {
             (item) => ProductDataModel(
               id: int.parse(item.c ?? '0'),
               title: item.n ?? '',
-              images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
+              images: item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [],
               brend: item.b ?? '',
               category: item.n ?? '',
               size: [],

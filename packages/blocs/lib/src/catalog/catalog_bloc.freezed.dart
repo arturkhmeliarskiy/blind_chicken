@@ -378,6 +378,9 @@ class _$CatalogEventCopyWithImpl<$Res, $Val extends CatalogEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -394,6 +397,9 @@ class __$$InitCatalogEventImplCopyWithImpl<$Res>
   __$$InitCatalogEventImplCopyWithImpl(_$InitCatalogEventImpl _value,
       $Res Function(_$InitCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -804,6 +810,9 @@ class __$$PreloadDataCatalogEventImplCopyWithImpl<$Res>
       _$PreloadDataCatalogEventImpl _value,
       $Res Function(_$PreloadDataCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1216,6 +1225,9 @@ class __$$UpdateFavouritesProductsCatalogEventImplCopyWithImpl<$Res>
       _$UpdateFavouritesProductsCatalogEventImpl _value,
       $Res Function(_$UpdateFavouritesProductsCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1641,6 +1653,8 @@ class __$$SubCategoryatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$SubCategoryatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1684,6 +1698,8 @@ class __$$SubCategoryatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MenuItemDataModelCopyWith<$Res>? get item {
@@ -1748,7 +1764,9 @@ class _$SubCategoryatalogEventImpl implements SubCategoryatalogEvent {
   int get hashCode =>
       Object.hash(runtimeType, a, b, id, u, pid, item, selectedGenderIndex);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubCategoryatalogEventImplCopyWith<_$SubCategoryatalogEventImpl>
@@ -2141,7 +2159,10 @@ abstract class SubCategoryatalogEvent implements CatalogEvent {
   int get pid;
   MenuItemDataModel? get item;
   int? get selectedGenderIndex;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubCategoryatalogEventImplCopyWith<_$SubCategoryatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2165,6 +2186,8 @@ class __$$BackPathMenuCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$BackPathMenuCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2204,7 +2227,9 @@ class _$BackPathMenuCatalogEventImpl implements BackPathMenuCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, idParent);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BackPathMenuCatalogEventImplCopyWith<_$BackPathMenuCatalogEventImpl>
@@ -2585,7 +2610,10 @@ abstract class BackPathMenuCatalogEvent implements CatalogEvent {
       _$BackPathMenuCatalogEventImpl;
 
   int get idParent;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BackPathMenuCatalogEventImplCopyWith<_$BackPathMenuCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2611,6 +2639,8 @@ class __$$SelectFilterCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$SelectFilterCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2634,6 +2664,8 @@ class __$$SelectFilterCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -2675,7 +2707,9 @@ class _$SelectFilterCatalogEventImpl implements SelectFilterCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectFilterCatalogEventImplCopyWith<_$SelectFilterCatalogEventImpl>
@@ -3061,7 +3095,10 @@ abstract class SelectFilterCatalogEvent implements CatalogEvent {
   int get index;
   int get indexItem;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectFilterCatalogEventImplCopyWith<_$SelectFilterCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3087,6 +3124,8 @@ class __$$DeleteFilterCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFilterCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3110,6 +3149,8 @@ class __$$DeleteFilterCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -3151,7 +3192,9 @@ class _$DeleteFilterCatalogEventImpl implements DeleteFilterCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, index, indexItem, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFilterCatalogEventImplCopyWith<_$DeleteFilterCatalogEventImpl>
@@ -3537,7 +3580,10 @@ abstract class DeleteFilterCatalogEvent implements CatalogEvent {
   int get index;
   int get indexItem;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFilterCatalogEventImplCopyWith<_$DeleteFilterCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3563,6 +3609,8 @@ class __$$DeleteCatalogFilterEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteCatalogFilterEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3586,6 +3634,8 @@ class __$$DeleteCatalogFilterEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res> get item {
@@ -3626,7 +3676,9 @@ class _$DeleteCatalogFilterEventImpl implements DeleteCatalogFilterEvent {
   @override
   int get hashCode => Object.hash(runtimeType, key, index, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteCatalogFilterEventImplCopyWith<_$DeleteCatalogFilterEventImpl>
@@ -4012,7 +4064,10 @@ abstract class DeleteCatalogFilterEvent implements CatalogEvent {
   int get key;
   int get index;
   FilterItemDataModel get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteCatalogFilterEventImplCopyWith<_$DeleteCatalogFilterEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4039,6 +4094,8 @@ class __$$AddFavouriteProductCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$AddFavouriteProductCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4057,6 +4114,8 @@ class __$$AddFavouriteProductCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductDataModelCopyWith<$Res> get product {
@@ -4095,7 +4154,9 @@ class _$AddFavouriteProductCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index, product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddFavouriteProductCatalogEventImplCopyWith<
@@ -4479,7 +4540,10 @@ abstract class AddFavouriteProductCatalogEvent implements CatalogEvent {
 
   int get index;
   ProductDataModel get product;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddFavouriteProductCatalogEventImplCopyWith<
           _$AddFavouriteProductCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4505,6 +4569,8 @@ class __$$DeleteFavouriteProductCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$DeleteFavouriteProductCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4544,7 +4610,9 @@ class _$DeleteFavouriteProductCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteFavouriteProductCatalogEventImplCopyWith<
@@ -4926,7 +4994,10 @@ abstract class DeleteFavouriteProductCatalogEvent implements CatalogEvent {
       _$DeleteFavouriteProductCatalogEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteFavouriteProductCatalogEventImplCopyWith<
           _$DeleteFavouriteProductCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -4949,6 +5020,9 @@ class __$$PaginationProductCatalogEventImplCopyWithImpl<$Res>
       _$PaginationProductCatalogEventImpl _value,
       $Res Function(_$PaginationProductCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5365,6 +5439,8 @@ class __$$SearchBrandCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$SearchBrandCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5403,7 +5479,9 @@ class _$SearchBrandCatalogEventImpl implements SearchBrandCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, query);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchBrandCatalogEventImplCopyWith<_$SearchBrandCatalogEventImpl>
@@ -5784,7 +5862,10 @@ abstract class SearchBrandCatalogEvent implements CatalogEvent {
       _$SearchBrandCatalogEventImpl;
 
   String get query;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchBrandCatalogEventImplCopyWith<_$SearchBrandCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5808,6 +5889,8 @@ class __$$PathMenuCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$PathMenuCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5821,6 +5904,8 @@ class __$$PathMenuCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MenuItemDataModelCopyWith<$Res>? get item {
@@ -5858,7 +5943,9 @@ class _$PathMenuCatalogEventImpl implements PathMenuCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, item);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PathMenuCatalogEventImplCopyWith<_$PathMenuCatalogEventImpl>
@@ -6240,7 +6327,10 @@ abstract class PathMenuCatalogEvent implements CatalogEvent {
       _$PathMenuCatalogEventImpl;
 
   MenuItemDataModel? get item;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PathMenuCatalogEventImplCopyWith<_$PathMenuCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6264,6 +6354,8 @@ class __$$RemovePathMenuCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$RemovePathMenuCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6310,7 +6402,9 @@ class _$RemovePathMenuCatalogEventImpl implements RemovePathMenuCatalogEvent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemovePathMenuCatalogEventImplCopyWith<_$RemovePathMenuCatalogEventImpl>
@@ -6692,7 +6786,10 @@ abstract class RemovePathMenuCatalogEvent implements CatalogEvent {
       _$RemovePathMenuCatalogEventImpl;
 
   List<MenuItemDataModel> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemovePathMenuCatalogEventImplCopyWith<_$RemovePathMenuCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -6716,6 +6813,8 @@ class __$$PathBrandMenuCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$PathBrandMenuCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6762,7 +6861,9 @@ class _$PathBrandMenuCatalogEventImpl implements PathBrandMenuCatalogEvent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PathBrandMenuCatalogEventImplCopyWith<_$PathBrandMenuCatalogEventImpl>
@@ -7144,7 +7245,10 @@ abstract class PathBrandMenuCatalogEvent implements CatalogEvent {
       _$PathBrandMenuCatalogEventImpl;
 
   List<MenuItemDataModel> get items;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PathBrandMenuCatalogEventImplCopyWith<_$PathBrandMenuCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -7168,6 +7272,8 @@ class __$$SwitchTypePeopleCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$SwitchTypePeopleCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7208,7 +7314,9 @@ class _$SwitchTypePeopleCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectIndexType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SwitchTypePeopleCatalogEventImplCopyWith<
@@ -7591,7 +7699,10 @@ abstract class SwitchTypePeopleCatalogEvent implements CatalogEvent {
       _$SwitchTypePeopleCatalogEventImpl;
 
   int get selectIndexType;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SwitchTypePeopleCatalogEventImplCopyWith<
           _$SwitchTypePeopleCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -7616,6 +7727,8 @@ class __$$GetInfoProductsCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductsCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7664,7 +7777,9 @@ class _$GetInfoProductsCatalogEventImpl implements GetInfoProductsCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, path, isCleanHistory);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductsCatalogEventImplCopyWith<_$GetInfoProductsCatalogEventImpl>
@@ -8047,7 +8162,10 @@ abstract class GetInfoProductsCatalogEvent implements CatalogEvent {
 
   String get path;
   bool? get isCleanHistory;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductsCatalogEventImplCopyWith<_$GetInfoProductsCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -8072,6 +8190,8 @@ class __$$UpdateInfoProductsCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$UpdateInfoProductsCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8112,7 +8232,9 @@ class _$UpdateInfoProductsCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateInfoProductsCatalogEventImplCopyWith<
@@ -8495,7 +8617,10 @@ abstract class UpdateInfoProductsCatalogEvent implements CatalogEvent {
       _$UpdateInfoProductsCatalogEventImpl;
 
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateInfoProductsCatalogEventImplCopyWith<
           _$UpdateInfoProductsCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -8531,6 +8656,8 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductsPushNotificationCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8564,6 +8691,8 @@ class __$$GetInfoProductsPushNotificationCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterNotifcationDataModelCopyWith<$Res> get filterNotifcation {
@@ -8619,7 +8748,9 @@ class _$GetInfoProductsPushNotificationCatalogEventImpl
   int get hashCode => Object.hash(
       runtimeType, path, sort, filterNotifcation, messageId, isError);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
@@ -9015,7 +9146,10 @@ abstract class GetInfoProductsPushNotificationCatalogEvent
   FilterNotifcationDataModel get filterNotifcation;
   String? get messageId;
   bool? get isError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductsPushNotificationCatalogEventImplCopyWith<
           _$GetInfoProductsPushNotificationCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -9049,6 +9183,8 @@ class __$$GetInfoProductCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -9093,6 +9229,8 @@ class __$$GetInfoProductCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -9172,7 +9310,9 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
       isUpdate,
       messageId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductCatalogEventImplCopyWith<_$GetInfoProductCatalogEventImpl>
@@ -9568,7 +9708,10 @@ abstract class GetInfoProductCatalogEvent implements CatalogEvent {
   SkuProductDataModel? get size;
   bool? get isUpdate;
   String? get messageId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductCatalogEventImplCopyWith<_$GetInfoProductCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -9592,6 +9735,8 @@ class __$$SortProductsCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$SortProductsCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -9630,7 +9775,9 @@ class _$SortProductsCatalogEventImpl implements SortProductsCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SortProductsCatalogEventImplCopyWith<_$SortProductsCatalogEventImpl>
@@ -10011,7 +10158,10 @@ abstract class SortProductsCatalogEvent implements CatalogEvent {
       _$SortProductsCatalogEventImpl;
 
   String get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SortProductsCatalogEventImplCopyWith<_$SortProductsCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -10033,6 +10183,9 @@ class __$$GoBackProductInfoCategotyCatalogEventImplCopyWithImpl<$Res>
       _$GoBackProductInfoCategotyCatalogEventImpl _value,
       $Res Function(_$GoBackProductInfoCategotyCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -10447,6 +10600,9 @@ class __$$GoBackCatalogInfoCategotyCatalogEventImplCopyWithImpl<$Res>
       _$GoBackCatalogInfoCategotyCatalogEventImpl _value,
       $Res Function(_$GoBackCatalogInfoCategotyCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -10866,6 +11022,8 @@ class __$$ChangeSizeProductCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$ChangeSizeProductCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -10879,6 +11037,8 @@ class __$$ChangeSizeProductCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
@@ -10915,7 +11075,9 @@ class _$ChangeSizeProductCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeSizeProductCatalogEventImplCopyWith<
@@ -11298,7 +11460,10 @@ abstract class ChangeSizeProductCatalogEvent implements CatalogEvent {
       _$ChangeSizeProductCatalogEventImpl;
 
   SkuProductDataModel get selectSizeProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeSizeProductCatalogEventImplCopyWith<
           _$ChangeSizeProductCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -11324,6 +11489,8 @@ class __$$RemoveSelectFilterCategotyCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$RemoveSelectFilterCategotyCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -11363,7 +11530,9 @@ class _$RemoveSelectFilterCategotyCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemoveSelectFilterCategotyCatalogEventImplCopyWith<
@@ -11747,7 +11916,10 @@ abstract class RemoveSelectFilterCategotyCatalogEvent implements CatalogEvent {
       _$RemoveSelectFilterCategotyCatalogEventImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveSelectFilterCategotyCatalogEventImplCopyWith<
           _$RemoveSelectFilterCategotyCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -11771,6 +11943,9 @@ class __$$RemoveSelectAllFiltersCategotyCatalogEventImplCopyWithImpl<$Res>
       _$RemoveSelectAllFiltersCategotyCatalogEventImpl _value,
       $Res Function(_$RemoveSelectAllFiltersCategotyCatalogEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -12196,6 +12371,8 @@ class __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$AddProductToSoppingCartCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -12230,6 +12407,8 @@ class __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get size {
@@ -12293,7 +12472,9 @@ class _$AddProductToSoppingCartCatalogEventImpl
   int get hashCode => Object.hash(runtimeType, code, titleScreen,
       typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductToSoppingCartCatalogEventImplCopyWith<
@@ -12691,7 +12872,10 @@ abstract class AddProductToSoppingCartCatalogEvent implements CatalogEvent {
   String get typeAddProductToShoppingCart;
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductToSoppingCartCatalogEventImplCopyWith<
           _$AddProductToSoppingCartCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -12719,6 +12903,8 @@ class __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckProductToSoppingCartCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -12732,6 +12918,8 @@ class __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res> get size {
@@ -12766,7 +12954,9 @@ class _$CheckProductToSoppingCartCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckProductToSoppingCartCatalogEventImplCopyWith<
@@ -13149,7 +13339,10 @@ abstract class CheckProductToSoppingCartCatalogEvent implements CatalogEvent {
       _$CheckProductToSoppingCartCatalogEventImpl;
 
   SkuProductDataModel get size;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckProductToSoppingCartCatalogEventImplCopyWith<
           _$CheckProductToSoppingCartCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -13175,6 +13368,8 @@ class __$$GetInfoProductSizeCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoProductSizeCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -13232,7 +13427,9 @@ class _$GetInfoProductSizeCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code, isShop, titleScreen);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoProductSizeCatalogEventImplCopyWith<
@@ -13619,7 +13816,10 @@ abstract class GetInfoProductSizeCatalogEvent implements CatalogEvent {
   String get code;
   bool get isShop;
   String get titleScreen;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoProductSizeCatalogEventImplCopyWith<
           _$GetInfoProductSizeCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -13645,6 +13845,8 @@ class __$$GetInfoServiceCardCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInfoServiceCardCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -13684,7 +13886,9 @@ class _$GetInfoServiceCardCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInfoServiceCardCatalogEventImplCopyWith<
@@ -14066,7 +14270,10 @@ abstract class GetInfoServiceCardCatalogEvent implements CatalogEvent {
       _$GetInfoServiceCardCatalogEventImpl;
 
   String get code;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInfoServiceCardCatalogEventImplCopyWith<
           _$GetInfoServiceCardCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -14092,6 +14299,8 @@ class __$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckOpenGetInfoProductSizeCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -14133,7 +14342,9 @@ class _$CheckOpenGetInfoProductSizeCatalogEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, isOpenGetSizeProduct);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith<
@@ -14517,7 +14728,10 @@ abstract class CheckOpenGetInfoProductSizeCatalogEvent implements CatalogEvent {
       _$CheckOpenGetInfoProductSizeCatalogEventImpl;
 
   bool get isOpenGetSizeProduct;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckOpenGetInfoProductSizeCatalogEventImplCopyWith<
           _$CheckOpenGetInfoProductSizeCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -14542,6 +14756,8 @@ class __$$CheckButtonTopCatalogEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckButtonTopCatalogEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -14581,7 +14797,9 @@ class _$CheckButtonTopCatalogEventImpl implements CheckButtonTopCatalogEvent {
   @override
   int get hashCode => Object.hash(runtimeType, isButtonTop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckButtonTopCatalogEventImplCopyWith<_$CheckButtonTopCatalogEventImpl>
@@ -14962,7 +15180,10 @@ abstract class CheckButtonTopCatalogEvent implements CatalogEvent {
       _$CheckButtonTopCatalogEventImpl;
 
   bool get isButtonTop;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckButtonTopCatalogEventImplCopyWith<_$CheckButtonTopCatalogEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -15031,10 +15252,13 @@ mixin _$CatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15107,10 +15331,13 @@ mixin _$CatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15183,10 +15410,13 @@ mixin _$CatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15262,6 +15492,9 @@ class _$CatalogStateCopyWithImpl<$Res, $Val extends CatalogState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -15278,6 +15511,9 @@ class __$$InitCatalogStateImplCopyWithImpl<$Res>
   __$$InitCatalogStateImplCopyWithImpl(_$InitCatalogStateImpl _value,
       $Res Function(_$InitCatalogStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -15362,10 +15598,13 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15441,10 +15680,13 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15520,10 +15762,13 @@ class _$InitCatalogStateImpl implements InitCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15617,6 +15862,9 @@ class __$$UploadCatalogStateImplCopyWithImpl<$Res>
   __$$UploadCatalogStateImplCopyWithImpl(_$UploadCatalogStateImpl _value,
       $Res Function(_$UploadCatalogStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -15701,10 +15949,13 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15780,10 +16031,13 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15859,10 +16113,13 @@ class _$UploadCatalogStateImpl implements UploadCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -15956,6 +16213,9 @@ class __$$LoadingCatalogStateImplCopyWithImpl<$Res>
   __$$LoadingCatalogStateImplCopyWithImpl(_$LoadingCatalogStateImpl _value,
       $Res Function(_$LoadingCatalogStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -16041,10 +16301,13 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16120,10 +16383,13 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16199,10 +16465,13 @@ class _$LoadingCatalogStateImpl implements LoadingCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16299,6 +16568,9 @@ class __$$LoadingErrorButtonCatalogStateImplCopyWithImpl<$Res>
       _$LoadingErrorButtonCatalogStateImpl _value,
       $Res Function(_$LoadingErrorButtonCatalogStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -16385,10 +16657,13 @@ class _$LoadingErrorButtonCatalogStateImpl
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16464,10 +16739,13 @@ class _$LoadingErrorButtonCatalogStateImpl
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16543,10 +16821,13 @@ class _$LoadingErrorButtonCatalogStateImpl
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16643,6 +16924,9 @@ class __$$OpenSoppingCartCatalogStateImplCopyWithImpl<$Res>
       _$OpenSoppingCartCatalogStateImpl _value,
       $Res Function(_$OpenSoppingCartCatalogStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -16728,10 +17012,13 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16807,10 +17094,13 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16886,10 +17176,13 @@ class _$OpenSoppingCartCatalogStateImpl implements OpenSoppingCartCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -16995,6 +17288,8 @@ class __$$GetSizeProductCatalogStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSizeProductCatalogStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -17120,7 +17415,9 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
       const DeepCollectionEquality().hash(_sectionCategoriesPath),
       const DeepCollectionEquality().hash(_productCategoriesPath));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSizeProductCatalogStateImplCopyWith<_$GetSizeProductCatalogStateImpl>
@@ -17190,10 +17487,13 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -17270,10 +17570,13 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -17350,10 +17653,13 @@ class _$GetSizeProductCatalogStateImpl implements GetSizeProductCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -17446,7 +17752,10 @@ abstract class GetSizeProductCatalogState implements CatalogState {
   String get titleScreen;
   List<String> get sectionCategoriesPath;
   List<String> get productCategoriesPath;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSizeProductCatalogStateImplCopyWith<_$GetSizeProductCatalogStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -17474,6 +17783,8 @@ class __$$AddProductCatalogStateImplCopyWithImpl<$Res>
       $Res Function(_$AddProductCatalogStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -17563,7 +17874,9 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
       const DeepCollectionEquality().hash(_sectionCategoriesPath),
       const DeepCollectionEquality().hash(_productCategoriesPath));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddProductCatalogStateImplCopyWith<_$AddProductCatalogStateImpl>
@@ -17633,10 +17946,13 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -17713,10 +18029,13 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -17793,10 +18112,13 @@ class _$AddProductCatalogStateImpl implements AddProductCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -17885,7 +18207,10 @@ abstract class AddProductCatalogState implements CatalogState {
   String get titleScreen;
   List<String> get sectionCategoriesPath;
   List<String> get productCategoriesPath;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductCatalogStateImplCopyWith<_$AddProductCatalogStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -17907,6 +18232,8 @@ class __$$ErrorCatalogStateImplCopyWithImpl<$Res>
       $Res Function(_$ErrorCatalogStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -17946,7 +18273,9 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorCatalogStateImplCopyWith<_$ErrorCatalogStateImpl> get copyWith =>
@@ -18016,10 +18345,13 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -18095,10 +18427,13 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -18174,10 +18509,13 @@ class _$ErrorCatalogStateImpl implements ErrorCatalogState {
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -18258,7 +18596,10 @@ abstract class ErrorCatalogState implements CatalogState {
       _$ErrorCatalogStateImpl;
 
   String get errorMessage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorCatalogStateImplCopyWith<_$ErrorCatalogStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -18310,10 +18651,13 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
       String? errorMessage,
       String? typeError,
       String? codeProduct,
+      String? sortInfo,
       bool? isShoppingCart,
       bool? isShoppingCartDetailsProduct,
       bool? isError,
       bool? isShopGetSizeProduct,
+      bool? isLoadErrorButton,
+      int? keyFilterCatalog,
       int? indexFileter,
       int? indexItemFileter,
       int? indexFilterCategory,
@@ -18339,6 +18683,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedCatalogStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -18381,10 +18727,13 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? typeError = freezed,
     Object? codeProduct = freezed,
+    Object? sortInfo = freezed,
     Object? isShoppingCart = freezed,
     Object? isShoppingCartDetailsProduct = freezed,
     Object? isError = freezed,
     Object? isShopGetSizeProduct = freezed,
+    Object? isLoadErrorButton = freezed,
+    Object? keyFilterCatalog = freezed,
     Object? indexFileter = freezed,
     Object? indexItemFileter = freezed,
     Object? indexFilterCategory = freezed,
@@ -18550,6 +18899,10 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
               as String?,
+      sortInfo: freezed == sortInfo
+          ? _value.sortInfo
+          : sortInfo // ignore: cast_nullable_to_non_nullable
+              as String?,
       isShoppingCart: freezed == isShoppingCart
           ? _value.isShoppingCart
           : isShoppingCart // ignore: cast_nullable_to_non_nullable
@@ -18566,6 +18919,14 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
           ? _value.isShopGetSizeProduct
           : isShopGetSizeProduct // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      keyFilterCatalog: freezed == keyFilterCatalog
+          ? _value.keyFilterCatalog
+          : keyFilterCatalog // ignore: cast_nullable_to_non_nullable
+              as int?,
       indexFileter: freezed == indexFileter
           ? _value.indexFileter
           : indexFileter // ignore: cast_nullable_to_non_nullable
@@ -18597,6 +18958,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CatalogProductsRequestCopyWith<$Res> get request {
@@ -18605,6 +18968,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
@@ -18618,6 +18983,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res>? get itemFileter {
@@ -18630,6 +18997,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
@@ -18643,6 +19012,8 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CatalogDataModelCopyWith<$Res>? get catalogInfo {
@@ -18700,10 +19071,13 @@ class _$PreloadDataCompletedCatalogStateImpl
       this.errorMessage,
       this.typeError,
       this.codeProduct,
+      this.sortInfo,
       this.isShoppingCart,
       this.isShoppingCartDetailsProduct,
       this.isError,
       this.isShopGetSizeProduct,
+      this.isLoadErrorButton,
+      this.keyFilterCatalog,
       this.indexFileter,
       this.indexItemFileter,
       this.indexFilterCategory,
@@ -18938,6 +19312,8 @@ class _$PreloadDataCompletedCatalogStateImpl
   @override
   final String? codeProduct;
   @override
+  final String? sortInfo;
+  @override
   final bool? isShoppingCart;
   @override
   final bool? isShoppingCartDetailsProduct;
@@ -18945,6 +19321,10 @@ class _$PreloadDataCompletedCatalogStateImpl
   final bool? isError;
   @override
   final bool? isShopGetSizeProduct;
+  @override
+  final bool? isLoadErrorButton;
+  @override
+  final int? keyFilterCatalog;
   @override
   final int? indexFileter;
   @override
@@ -18962,7 +19342,7 @@ class _$PreloadDataCompletedCatalogStateImpl
 
   @override
   String toString() {
-    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, typeError: $typeError, codeProduct: $codeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, isShopGetSizeProduct: $isShopGetSizeProduct, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
+    return 'CatalogState.preloadDataCompleted(allBrands: $allBrands, defaultBrands: $defaultBrands, brands: $brands, menu: $menu, defaultProducts: $defaultProducts, products: $products, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, filter: $filter, listProductsCode: $listProductsCode, listCatalogPath: $listCatalogPath, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, pathMenu: $pathMenu, category: $category, request: $request, selectedGenderIndex: $selectedGenderIndex, isAuth: $isAuth, offset: $offset, userDiscount: $userDiscount, nowVersionApp: $nowVersionApp, updateVersionApp: $updateVersionApp, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, isOpenGetSizeProduct: $isOpenGetSizeProduct, isButtonTop: $isButtonTop, isPromotionsForPurchases: $isPromotionsForPurchases, isSaleSectionVisible: $isSaleSectionVisible, notificationMessage: $notificationMessage, selectSizeProduct: $selectSizeProduct, errorMessage: $errorMessage, typeError: $typeError, codeProduct: $codeProduct, sortInfo: $sortInfo, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isError: $isError, isShopGetSizeProduct: $isShopGetSizeProduct, isLoadErrorButton: $isLoadErrorButton, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, detailsProduct: $detailsProduct, catalogInfo: $catalogInfo, title: $title)';
   }
 
   @override
@@ -19024,8 +19404,7 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.isOpenGetSizeProduct == isOpenGetSizeProduct) &&
             (identical(other.isButtonTop, isButtonTop) ||
                 other.isButtonTop == isButtonTop) &&
-            (identical(
-                    other.isPromotionsForPurchases, isPromotionsForPurchases) ||
+            (identical(other.isPromotionsForPurchases, isPromotionsForPurchases) ||
                 other.isPromotionsForPurchases == isPromotionsForPurchases) &&
             (identical(other.isSaleSectionVisible, isSaleSectionVisible) ||
                 other.isSaleSectionVisible == isSaleSectionVisible) &&
@@ -19039,6 +19418,8 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.typeError == typeError) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
+            (identical(other.sortInfo, sortInfo) ||
+                other.sortInfo == sortInfo) &&
             (identical(other.isShoppingCart, isShoppingCart) ||
                 other.isShoppingCart == isShoppingCart) &&
             (identical(other.isShoppingCartDetailsProduct, isShoppingCartDetailsProduct) ||
@@ -19047,6 +19428,10 @@ class _$PreloadDataCompletedCatalogStateImpl
             (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.isShopGetSizeProduct, isShopGetSizeProduct) ||
                 other.isShopGetSizeProduct == isShopGetSizeProduct) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton) &&
+            (identical(other.keyFilterCatalog, keyFilterCatalog) ||
+                other.keyFilterCatalog == keyFilterCatalog) &&
             (identical(other.indexFileter, indexFileter) ||
                 other.indexFileter == indexFileter) &&
             (identical(other.indexItemFileter, indexItemFileter) ||
@@ -19057,8 +19442,7 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.itemFileter == itemFileter) &&
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
-            (identical(other.catalogInfo, catalogInfo) ||
-                other.catalogInfo == catalogInfo) &&
+            (identical(other.catalogInfo, catalogInfo) || other.catalogInfo == catalogInfo) &&
             (identical(other.title, title) || other.title == title));
   }
 
@@ -19104,10 +19488,13 @@ class _$PreloadDataCompletedCatalogStateImpl
         errorMessage,
         typeError,
         codeProduct,
+        sortInfo,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isError,
         isShopGetSizeProduct,
+        isLoadErrorButton,
+        keyFilterCatalog,
         indexFileter,
         indexItemFileter,
         indexFilterCategory,
@@ -19117,7 +19504,9 @@ class _$PreloadDataCompletedCatalogStateImpl
         title
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedCatalogStateImplCopyWith<
@@ -19188,10 +19577,13 @@ class _$PreloadDataCompletedCatalogStateImpl
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -19241,10 +19633,13 @@ class _$PreloadDataCompletedCatalogStateImpl
         errorMessage,
         typeError,
         codeProduct,
+        sortInfo,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isError,
         isShopGetSizeProduct,
+        isLoadErrorButton,
+        keyFilterCatalog,
         indexFileter,
         indexItemFileter,
         indexFilterCategory,
@@ -19317,10 +19712,13 @@ class _$PreloadDataCompletedCatalogStateImpl
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -19370,10 +19768,13 @@ class _$PreloadDataCompletedCatalogStateImpl
         errorMessage,
         typeError,
         codeProduct,
+        sortInfo,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isError,
         isShopGetSizeProduct,
+        isLoadErrorButton,
+        keyFilterCatalog,
         indexFileter,
         indexItemFileter,
         indexFilterCategory,
@@ -19446,10 +19847,13 @@ class _$PreloadDataCompletedCatalogStateImpl
             String? errorMessage,
             String? typeError,
             String? codeProduct,
+            String? sortInfo,
             bool? isShoppingCart,
             bool? isShoppingCartDetailsProduct,
             bool? isError,
             bool? isShopGetSizeProduct,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
             int? indexFileter,
             int? indexItemFileter,
             int? indexFilterCategory,
@@ -19501,10 +19905,13 @@ class _$PreloadDataCompletedCatalogStateImpl
           errorMessage,
           typeError,
           codeProduct,
+          sortInfo,
           isShoppingCart,
           isShoppingCartDetailsProduct,
           isError,
           isShopGetSizeProduct,
+          isLoadErrorButton,
+          keyFilterCatalog,
           indexFileter,
           indexItemFileter,
           indexFilterCategory,
@@ -19616,10 +20023,13 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
       final String? errorMessage,
       final String? typeError,
       final String? codeProduct,
+      final String? sortInfo,
       final bool? isShoppingCart,
       final bool? isShoppingCartDetailsProduct,
       final bool? isError,
       final bool? isShopGetSizeProduct,
+      final bool? isLoadErrorButton,
+      final int? keyFilterCatalog,
       final int? indexFileter,
       final int? indexItemFileter,
       final int? indexFilterCategory,
@@ -19667,10 +20077,13 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   String? get errorMessage;
   String? get typeError;
   String? get codeProduct;
+  String? get sortInfo;
   bool? get isShoppingCart;
   bool? get isShoppingCartDetailsProduct;
   bool? get isError;
   bool? get isShopGetSizeProduct;
+  bool? get isLoadErrorButton;
+  int? get keyFilterCatalog;
   int? get indexFileter;
   int? get indexItemFileter;
   int? get indexFilterCategory;
@@ -19678,7 +20091,10 @@ abstract class PreloadDataCompletedCatalogState implements CatalogState {
   DetailProductDataModel? get detailsProduct;
   CatalogDataModel? get catalogInfo;
   String? get title;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedCatalogStateImplCopyWith<
           _$PreloadDataCompletedCatalogStateImpl>
       get copyWith => throw _privateConstructorUsedError;

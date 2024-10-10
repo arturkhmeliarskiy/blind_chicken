@@ -149,6 +149,9 @@ class _$NewsEventCopyWithImpl<$Res, $Val extends NewsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -165,6 +168,9 @@ class __$$InitNewsEventImplCopyWithImpl<$Res>
   __$$InitNewsEventImplCopyWithImpl(
       _$InitNewsEventImpl _value, $Res Function(_$InitNewsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -345,6 +351,9 @@ class __$$GetNewsEventImplCopyWithImpl<$Res>
   __$$GetNewsEventImplCopyWithImpl(
       _$GetNewsEventImpl _value, $Res Function(_$GetNewsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -530,6 +539,8 @@ class __$$GetNewsDescriptionInfoNewsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetNewsDescriptionInfoNewsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -588,7 +599,9 @@ class _$GetNewsDescriptionInfoNewsEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, id, isNotification, messageId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetNewsDescriptionInfoNewsEventImplCopyWith<
@@ -746,7 +759,10 @@ abstract class GetNewsDescriptionInfoNewsEvent implements NewsEvent {
   String get id;
   bool? get isNotification;
   String? get messageId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetNewsDescriptionInfoNewsEventImplCopyWith<
           _$GetNewsDescriptionInfoNewsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -766,6 +782,9 @@ class __$$GetMediaEventImplCopyWithImpl<$Res>
   __$$GetMediaEventImplCopyWithImpl(
       _$GetMediaEventImpl _value, $Res Function(_$GetMediaEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -952,6 +971,8 @@ class __$$GetMediaDescriptionInfoNewsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMediaDescriptionInfoNewsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1010,7 +1031,9 @@ class _$GetMediaDescriptionInfoNewsEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, id, isNotification, messageId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMediaDescriptionInfoNewsEventImplCopyWith<
@@ -1168,7 +1191,10 @@ abstract class GetMediaDescriptionInfoNewsEvent implements NewsEvent {
   String get id;
   bool? get isNotification;
   String? get messageId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMediaDescriptionInfoNewsEventImplCopyWith<
           _$GetMediaDescriptionInfoNewsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1189,6 +1215,9 @@ class __$$GetNotificationsEventImplCopyWithImpl<$Res>
   __$$GetNotificationsEventImplCopyWithImpl(_$GetNotificationsEventImpl _value,
       $Res Function(_$GetNotificationsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1376,6 +1405,8 @@ class __$$GetNotificationDescriptionInfoNewsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetNotificationDescriptionInfoNewsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1434,7 +1465,9 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, id, isNotification, messageId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetNotificationDescriptionInfoNewsEventImplCopyWith<
@@ -1593,7 +1626,10 @@ abstract class GetNotificationDescriptionInfoNewsEvent implements NewsEvent {
   String get id;
   bool? get isNotification;
   String? get messageId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetNotificationDescriptionInfoNewsEventImplCopyWith<
           _$GetNotificationDescriptionInfoNewsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1615,6 +1651,9 @@ class __$$PaginationNewsNewsEventImplCopyWithImpl<$Res>
       _$PaginationNewsNewsEventImpl _value,
       $Res Function(_$PaginationNewsNewsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1798,6 +1837,9 @@ class __$$PaginationMediasNewsEventImplCopyWithImpl<$Res>
       _$PaginationMediasNewsEventImpl _value,
       $Res Function(_$PaginationMediasNewsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1982,6 +2024,9 @@ class __$$PaginationNotificationsNewsEventImplCopyWithImpl<$Res>
       _$PaginationNotificationsNewsEventImpl _value,
       $Res Function(_$PaginationNotificationsNewsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2167,6 +2212,9 @@ class __$$GoBackNewsInfoNewsEventImplCopyWithImpl<$Res>
       _$GoBackNewsInfoNewsEventImpl _value,
       $Res Function(_$GoBackNewsInfoNewsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2438,6 +2486,9 @@ class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2454,6 +2505,9 @@ class __$$InitNewsStateImplCopyWithImpl<$Res>
   __$$InitNewsStateImplCopyWithImpl(
       _$InitNewsStateImpl _value, $Res Function(_$InitNewsStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2603,6 +2657,9 @@ class __$$LoadingNewsStateImplCopyWithImpl<$Res>
   __$$LoadingNewsStateImplCopyWithImpl(_$LoadingNewsStateImpl _value,
       $Res Function(_$LoadingNewsStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2776,6 +2833,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
       $Res Function(_$PreloadDataCompletedNewsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2844,6 +2903,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NewsInfoDataModelCopyWith<$Res> get news {
@@ -2852,6 +2913,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MediaInfoDataModelCopyWith<$Res> get media {
@@ -2860,6 +2923,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $NotificationInfoDataModelCopyWith<$Res> get notificatios {
@@ -2869,6 +2934,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OneNewsInfoDataModelCopyWith<$Res>? get oneNews {
@@ -2881,6 +2948,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OneMediaInfoDataModelCopyWith<$Res>? get oneMedia {
@@ -2893,6 +2962,8 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     });
   }
 
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OneNotificationInfoDataModelCopyWith<$Res>? get oneNotification {
@@ -3006,7 +3077,9 @@ class _$PreloadDataCompletedNewsStateImpl
       oneMedia,
       oneNotification);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreloadDataCompletedNewsStateImplCopyWith<
@@ -3188,7 +3261,10 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   OneNewsInfoDataModel? get oneNews;
   OneMediaInfoDataModel? get oneMedia;
   OneNotificationInfoDataModel? get oneNotification;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreloadDataCompletedNewsStateImplCopyWith<
           _$PreloadDataCompletedNewsStateImpl>
       get copyWith => throw _privateConstructorUsedError;

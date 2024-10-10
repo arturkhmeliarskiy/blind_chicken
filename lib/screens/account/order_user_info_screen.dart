@@ -354,6 +354,9 @@ class OrderUserInfoScreen extends StatelessWidget {
                                                               1 !=
                                                           index,
                                                   onSelectCard: () {
+                                                    context
+                                                        .read<ShoppingCartBloc>()
+                                                        .add(ShoppingCartEvent.init());
                                                     context.read<AccountBloc>().add(
                                                           AccountEvent.getInfoProduct(
                                                             code: orderInfo.products[index].id

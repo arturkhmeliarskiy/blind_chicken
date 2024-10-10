@@ -23,6 +23,7 @@ CatalogProductResponse _$CatalogProductResponseFromJson(
 mixin _$CatalogProductResponse {
   String? get c => throw _privateConstructorUsedError;
   String? get f => throw _privateConstructorUsedError;
+  List<String>? get sl => throw _privateConstructorUsedError;
   String? get b => throw _privateConstructorUsedError;
   String? get n => throw _privateConstructorUsedError;
   String? get p => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $CatalogProductResponseCopyWith<$Res> {
   $Res call(
       {String? c,
       String? f,
+      List<String>? sl,
       String? b,
       String? n,
       String? p,
@@ -81,6 +83,7 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
   $Res call({
     Object? c = freezed,
     Object? f = freezed,
+    Object? sl = freezed,
     Object? b = freezed,
     Object? n = freezed,
     Object? p = freezed,
@@ -102,6 +105,10 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
           ? _value.f
           : f // ignore: cast_nullable_to_non_nullable
               as String?,
+      sl: freezed == sl
+          ? _value.sl
+          : sl // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       b: freezed == b
           ? _value.b
           : b // ignore: cast_nullable_to_non_nullable
@@ -162,6 +169,7 @@ abstract class _$$CatalogProductResponseImplCopyWith<$Res>
   $Res call(
       {String? c,
       String? f,
+      List<String>? sl,
       String? b,
       String? n,
       String? p,
@@ -190,6 +198,7 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? c = freezed,
     Object? f = freezed,
+    Object? sl = freezed,
     Object? b = freezed,
     Object? n = freezed,
     Object? p = freezed,
@@ -211,6 +220,10 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
           ? _value.f
           : f // ignore: cast_nullable_to_non_nullable
               as String?,
+      sl: freezed == sl
+          ? _value._sl
+          : sl // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       b: freezed == b
           ? _value.b
           : b // ignore: cast_nullable_to_non_nullable
@@ -265,6 +278,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   _$CatalogProductResponseImpl(
       {this.c,
       this.f,
+      final List<String>? sl,
       this.b,
       this.n,
       this.p,
@@ -276,7 +290,8 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
       this.promo,
       @JsonKey(name: 'promo_value') this.promoValue,
       final List<CatalogSizeProductResponse>? sz})
-      : _sz = sz,
+      : _sl = sl,
+        _sz = sz,
         super._();
 
   factory _$CatalogProductResponseImpl.fromJson(Map<String, dynamic> json) =>
@@ -286,6 +301,16 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   final String? c;
   @override
   final String? f;
+  final List<String>? _sl;
+  @override
+  List<String>? get sl {
+    final value = _sl;
+    if (value == null) return null;
+    if (_sl is EqualUnmodifiableListView) return _sl;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? b;
   @override
@@ -319,7 +344,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
   @override
   String toString() {
-    return 'CatalogProductResponse(c: $c, f: $f, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, promo: $promo, promoValue: $promoValue, sz: $sz)';
+    return 'CatalogProductResponse(c: $c, f: $f, sl: $sl, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, promo: $promo, promoValue: $promoValue, sz: $sz)';
   }
 
   @override
@@ -329,6 +354,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
             other is _$CatalogProductResponseImpl &&
             (identical(other.c, c) || other.c == c) &&
             (identical(other.f, f) || other.f == f) &&
+            const DeepCollectionEquality().equals(other._sl, _sl) &&
             (identical(other.b, b) || other.b == b) &&
             (identical(other.n, n) || other.n == n) &&
             (identical(other.p, p) || other.p == p) &&
@@ -345,8 +371,22 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, c, f, b, n, p, pb, pc, pbc, ca,
-      dv, promo, promoValue, const DeepCollectionEquality().hash(_sz));
+  int get hashCode => Object.hash(
+      runtimeType,
+      c,
+      f,
+      const DeepCollectionEquality().hash(_sl),
+      b,
+      n,
+      p,
+      pb,
+      pc,
+      pbc,
+      ca,
+      dv,
+      promo,
+      promoValue,
+      const DeepCollectionEquality().hash(_sz));
 
   @JsonKey(ignore: true)
   @override
@@ -367,6 +407,7 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   factory _CatalogProductResponse(
           {final String? c,
           final String? f,
+          final List<String>? sl,
           final String? b,
           final String? n,
           final String? p,
@@ -388,6 +429,8 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   String? get c;
   @override
   String? get f;
+  @override
+  List<String>? get sl;
   @override
   String? get b;
   @override
