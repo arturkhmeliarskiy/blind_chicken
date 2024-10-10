@@ -70,7 +70,7 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
                       decoration: BoxDecoration(
                         color: _page == index
                             ? BlindChickenColors.backgroundColor
-                            : BlindChickenColors.borderBottomColor,
+                            : BlindChickenColors.borderSwitchCard,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     );
