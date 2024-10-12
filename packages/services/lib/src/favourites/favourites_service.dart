@@ -43,11 +43,25 @@ class FavouritesService {
       );
       log(response.data);
 
-      favouritesInfoResponse = FavouritesInfoResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+        if (result['r'] == '1') {
+          favouritesInfoResponse = FavouritesInfoResponse.fromJson(
+            jsonDecode(
+              response.data,
+            ),
+          );
+        } else {
+          favouritesInfoResponse = FavouritesInfoResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        favouritesInfoResponse = FavouritesInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return favouritesInfoResponse;
     } on DioError catch (e) {
@@ -60,8 +74,10 @@ class FavouritesService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return FavouritesInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<FavouritesInfoResponse?> deleteFavouriteProdcut({
@@ -86,11 +102,25 @@ class FavouritesService {
       );
       log(response.data);
 
-      favouritesInfoResponse = FavouritesInfoResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+        if (result['r'] == '1') {
+          favouritesInfoResponse = FavouritesInfoResponse.fromJson(
+            jsonDecode(
+              response.data,
+            ),
+          );
+        } else {
+          favouritesInfoResponse = FavouritesInfoResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        favouritesInfoResponse = FavouritesInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return favouritesInfoResponse;
     } on DioError catch (e) {
@@ -103,8 +133,10 @@ class FavouritesService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return FavouritesInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<FavouritesResponse?> getFavouritesProdcuts() async {
@@ -191,8 +223,15 @@ class FavouritesService {
       );
       log(response.data);
 
-      favouritesCatalogInfoResponse =
-          FavouritesCatalogInfoResponse.fromJson(jsonDecode(response.data));
+      try {
+        favouritesCatalogInfoResponse = FavouritesCatalogInfoResponse.fromJson(
+          jsonDecode(response.data),
+        );
+      } catch (e) {
+        favouritesCatalogInfoResponse = FavouritesCatalogInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return favouritesCatalogInfoResponse;
     } on DioError catch (e) {
@@ -205,7 +244,9 @@ class FavouritesService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return FavouritesCatalogInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 }

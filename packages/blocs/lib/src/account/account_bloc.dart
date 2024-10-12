@@ -76,17 +76,25 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     InitAccountEvent event,
     Emitter<AccountState> emit,
   ) async {
-    emit(const AccountState.load());
+    if (state is ErrorAccountState) {
+      emit(const AccountState.loadErrorButton());
+    } else {
+      emit(const AccountState.load());
+    }
+
     List<int> favouritesProductsId = [];
     List<ProductDataModel> favouritesProducts = [];
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
+    FavouritesDataModel? favouritesProductsInfo;
+
     if (isAuth) {
-      final result = await _favouritesRepository.getFavouritesProdcuts();
-      favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
-      log(result.toString());
+      favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
+      favouritesProductsId =
+          favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+      log(favouritesProductsInfo.toString());
     } else {
       favouritesProducts = _catalogRepository.getFavouritesProducts();
       favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
@@ -94,36 +102,44 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     final userInfo = await _authRepository.getUserInfo();
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    emit(AccountState.preloadDataCompleted(
-      applicationVersion: packageInfo.version,
-      phone: userInfo.user.phone,
-      name: userInfo.user.name,
-      email: userInfo.user.email,
-      favouritesProducts: favouritesProducts,
-      orders: [],
-      countOrders: '0',
-      user: userInfo.user,
-      listProductsCode: [],
-      listProdcutsStyle: [],
-      listProdcutsAlso: [],
-      listProdcutsBrand: [],
-      favouritesProductsId: favouritesProductsId,
-      isAuth: isAuth,
-      isError: userInfo.r != '1',
-      errorMessage: userInfo.errorMessage,
-      virtualCardsCod: userInfo.user.virtualcardscod,
-      isLoadVirtualCardsCod: false,
-      listOrdersBlank: [],
-      file: Uint8List(0),
-      fileName: '',
-      listTailoringBlank: [],
-      listProdcutsComplect: [],
-      listSize: [],
-      isLoadGetSizeProduct: false,
-      offsetOrders: 1,
-      offsetOrdersBlank: 1,
-      offsetTailoringBlank: 1,
-    ));
+
+    if ((favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+        userInfo.errorMessage.isNotEmpty) {
+      emit(AccountState.error(
+        errorMessage: MessageInfo.errorMessage,
+      ));
+    } else {
+      emit(AccountState.preloadDataCompleted(
+        applicationVersion: packageInfo.version,
+        phone: userInfo.user.phone,
+        name: userInfo.user.name,
+        email: userInfo.user.email,
+        favouritesProducts: favouritesProducts,
+        orders: [],
+        countOrders: '0',
+        user: userInfo.user,
+        listProductsCode: [],
+        listProdcutsStyle: [],
+        listProdcutsAlso: [],
+        listProdcutsBrand: [],
+        favouritesProductsId: favouritesProductsId,
+        isAuth: isAuth,
+        isError: userInfo.r != '1',
+        errorMessage: userInfo.errorMessage,
+        virtualCardsCod: userInfo.user.virtualcardscod,
+        isLoadVirtualCardsCod: false,
+        listOrdersBlank: [],
+        file: Uint8List(0),
+        fileName: '',
+        listTailoringBlank: [],
+        listProdcutsComplect: [],
+        listSize: [],
+        isLoadGetSizeProduct: false,
+        offsetOrders: 1,
+        offsetOrdersBlank: 1,
+        offsetTailoringBlank: 1,
+      ));
+    }
   }
 
   Future<void> _updateInfo(

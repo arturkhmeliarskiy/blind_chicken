@@ -92,8 +92,14 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     PreloadDataFavouritesEvent event,
     Emitter<FavouritesState> emit,
   ) async {
-    emit(const FavouritesState.load());
+    if (state is ErrorFavouritesState) {
+      emit(const FavouritesState.loadErrorButton());
+    } else {
+      emit(const FavouritesState.load());
+    }
+
     FavouritesCatalogInfoDataModel? favouritesInfo;
+    FavouritesDataModel? favouritesProductsInfo;
     FavouritesCatalogProductsRequest request = FavouritesCatalogProductsRequest();
     List<int> favouritesProductsId = [];
     bool isAuth = _sharedPreferencesService.getBool(
@@ -103,9 +109,10 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
     if (isAuth) {
       favouritesInfo = await _favouritesRepository.getFavouritesProdcutsInfo();
-      final result = await _favouritesRepository.getFavouritesProdcuts();
-      favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
-      log(result.toString());
+      favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
+      favouritesProductsId =
+          favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+      log(favouritesProductsInfo.toString());
     } else {
       favouritesInfo = await updateFavouritesProducts(
         request: request,
@@ -113,30 +120,39 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
     }
 
-    emit(
-      FavouritesState.productsFavourites(
-        favouritesProducts: favouritesInfo.products,
-        favouritesDefaultProducts: favouritesInfo.products,
-        favouritesProductsInfo: favouritesInfo,
-        filter: favouritesInfo.filter,
-        selectFilter: {},
-        allSelectFilter: [],
-        request: request,
-        listProductsCode: [],
-        listProdcutsStyle: [],
-        listProdcutsAlso: [],
-        listProdcutsBrand: [],
-        listProdcutsComplect: [],
-        offset: 1,
-        favouritesProductsId: favouritesProductsId,
-        isAuth: isAuth,
-        isButtonTop: false,
-        listSize: [],
-        isLoadGetSizeProduct: false,
-        codeProduct: null,
-        userDiscount: favouritesInfo.userDiscount,
-      ),
-    );
+    if (favouritesInfo.errorMessage.isNotEmpty ||
+        (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false)) {
+      emit(
+        FavouritesState.error(
+          errorMessage: MessageInfo.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        FavouritesState.productsFavourites(
+          favouritesProducts: favouritesInfo.products,
+          favouritesDefaultProducts: favouritesInfo.products,
+          favouritesProductsInfo: favouritesInfo,
+          filter: favouritesInfo.filter,
+          selectFilter: {},
+          allSelectFilter: [],
+          request: request,
+          listProductsCode: [],
+          listProdcutsStyle: [],
+          listProdcutsAlso: [],
+          listProdcutsBrand: [],
+          listProdcutsComplect: [],
+          offset: 1,
+          favouritesProductsId: favouritesProductsId,
+          isAuth: isAuth,
+          isButtonTop: false,
+          listSize: [],
+          isLoadGetSizeProduct: false,
+          codeProduct: null,
+          userDiscount: favouritesInfo.userDiscount,
+        ),
+      );
+    }
   }
 
   Future<void> _addFavouriteProduct(
@@ -144,36 +160,58 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogInfoDataModel? favouritesInfo;
+      FavouritesInfoDataModel? addFavouriteProdcut;
+      FavouritesDataModel? favouritesProductsInfo;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.addFavouriteProdcut(code: event.product.id.toString());
+        addFavouriteProdcut =
+            await _favouritesRepository.addFavouriteProdcut(code: event.product.id.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
           request: initState.request,
         );
-        final result = await _favouritesRepository.getFavouritesProdcuts();
-        favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
-        log(result.toString());
+        favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
+        favouritesProductsId =
+            favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+        log(favouritesProductsInfo.toString());
+        if (addFavouriteProdcut.errorMessage.isEmpty &&
+            favouritesInfo.errorMessage.isEmpty &&
+            favouritesProductsInfo.errorMessage.isEmpty) {
+          emit(const FavouritesState.load());
+        }
       } else {
         _catalogRepository.addFavouritesProduct(event.product);
         favouritesInfo = await updateFavouritesProducts(
           request: initState.request,
         );
         favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
+        emit(const FavouritesState.load());
       }
 
-      emit(const FavouritesState.load());
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
           favouritesDefaultProducts: favouritesInfo.products,
           favouritesProductsId: favouritesProductsId,
           filter: favouritesInfo.filter,
+          favouriteProduct: event.product,
+          indexProduct: event.index,
+          isLoadErrorButton: false,
+          typeError: 'добавить товар в избранное',
+          errorMessage: MessageInfo.errorMessage,
+          isError: (addFavouriteProdcut?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty ||
+              (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false),
         ),
       );
     });
@@ -184,6 +222,13 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
+      FavouritesInfoDataModel? deleteFavouriteProdcut;
+      FavouritesDataModel? favouritesProductsInfo;
       FavouritesCatalogInfoDataModel? favouritesInfo;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter;
@@ -193,23 +238,30 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        deleteFavouriteProdcut =
+            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
           request: initState.request,
         );
-        final result = await _favouritesRepository.getFavouritesProdcuts();
-        favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
-        log(result.toString());
+        favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
+        favouritesProductsId =
+            favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+        log(favouritesProductsInfo.toString());
+        if (deleteFavouriteProdcut.errorMessage.isEmpty &&
+            favouritesInfo.errorMessage.isEmpty &&
+            favouritesProductsInfo.errorMessage.isEmpty) {
+          emit(const FavouritesState.load());
+        }
       } else {
         _catalogRepository.deleteFavouritesProduct(event.index);
         favouritesInfo = await updateFavouritesProducts(
           request: initState.request,
         );
         favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
+        emit(const FavouritesState.load());
       }
 
-      emit(const FavouritesState.load());
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
@@ -217,6 +269,13 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           favouritesProductsId: favouritesProductsId,
           selectFilter: selectFilter,
           allSelectFilter: allSelectFilter,
+          indexProduct: event.index,
+          isLoadErrorButton: false,
+          typeError: 'удалить товар из избранного',
+          errorMessage: MessageInfo.errorMessage,
+          isError: (deleteFavouriteProdcut?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty ||
+              (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false),
         ),
       );
     });
@@ -227,15 +286,22 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
-      if (selectItem.contains(event.item)) {
-        selectItem.insert(event.indexItem, event.item);
-      } else {
-        selectItem.add(event.item);
+      if (!(initState.isError ?? false)) {
+        if (selectItem.contains(event.item)) {
+          selectItem.insert(event.indexItem, event.item);
+        } else {
+          selectItem.add(event.item);
+        }
       }
 
       selectFilter[event.index] = selectItem;
@@ -289,15 +355,33 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         );
       }
 
-      emit(const FavouritesState.load());
+      if (favouritesInfo.errorMessage.isEmpty) {
+        emit(const FavouritesState.load());
+      }
 
       emit(initState.copyWith(
-        selectFilter: selectFilter,
-        filter: favouritesInfo.filter,
-        allSelectFilter: allSelectFilter,
-        favouritesProducts: favouritesInfo.products,
-        favouritesProductsInfo: favouritesInfo,
+        selectFilter:
+            favouritesInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+        filter: favouritesInfo.errorMessage.isNotEmpty ? initState.filter : favouritesInfo.filter,
+        allSelectFilter:
+            favouritesInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+        favouritesProducts: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesProducts
+            : favouritesInfo.products,
+        favouritesDefaultProducts: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesDefaultProducts
+            : favouritesInfo.products,
+        favouritesProductsInfo: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesProductsInfo
+            : favouritesInfo,
+        isError: favouritesInfo.errorMessage.isNotEmpty,
+        typeError: 'выбрать фильтр',
+        errorMessage: MessageInfo.errorMessage,
+        indexFileter: event.index,
+        indexItemFileter: event.indexItem,
+        itemFileter: event.item,
         request: request,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -307,13 +391,21 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
       FavouritesCatalogProductsRequest request = initState.request;
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
 
-      selectItem.remove(event.item);
+      if (!(initState.isError ?? false)) {
+        selectItem.remove(event.item);
+      }
+
       selectFilter[event.index] = selectItem;
 
       log(selectFilter.toString());
@@ -366,17 +458,34 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       }
 
       log(allSelectFilter.length.toString());
-      emit(const FavouritesState.load());
+      if (favouritesInfo.errorMessage.isEmpty) {
+        emit(const FavouritesState.load());
+      }
       emit(
         initState.copyWith(
-          filter: favouritesInfo.filter,
-          favouritesProducts: favouritesInfo.products,
-          favouritesDefaultProducts: favouritesInfo.products,
+          selectFilter:
+              favouritesInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+          filter: favouritesInfo.errorMessage.isNotEmpty ? initState.filter : favouritesInfo.filter,
+          allSelectFilter:
+              favouritesInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+          favouritesProducts: favouritesInfo.errorMessage.isNotEmpty
+              ? initState.favouritesProducts
+              : favouritesInfo.products,
+          favouritesDefaultProducts: favouritesInfo.errorMessage.isNotEmpty
+              ? initState.favouritesDefaultProducts
+              : favouritesInfo.products,
+          favouritesProductsInfo: favouritesInfo.errorMessage.isNotEmpty
+              ? initState.favouritesProductsInfo
+              : favouritesInfo,
+          isError: favouritesInfo.errorMessage.isNotEmpty,
+          typeError: 'удалить фильтр',
+          errorMessage: MessageInfo.errorMessage,
           request: request,
-          selectFilter: selectFilter,
-          favouritesProductsInfo: favouritesInfo,
-          allSelectFilter: allSelectFilter,
+          indexFileter: event.index,
+          indexItemFileter: event.indexItem,
+          itemFileter: event.item,
           offset: 1,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -387,6 +496,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
       FavouritesCatalogProductsRequest request = initState.request;
@@ -449,17 +563,35 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       }
 
       log(allSelectFilter.length.toString());
-      emit(const FavouritesState.load());
+      if (favouritesInfo.errorMessage.isEmpty) {
+        emit(const FavouritesState.load());
+      }
+
       emit(
         initState.copyWith(
-          filter: favouritesInfo.filter,
-          favouritesProducts: favouritesInfo.products,
-          favouritesDefaultProducts: favouritesInfo.products,
-          request: request,
-          selectFilter: selectFilter,
-          favouritesProductsInfo: favouritesInfo,
-          allSelectFilter: allSelectFilter,
+          filter: favouritesInfo.errorMessage.isNotEmpty ? initState.filter : favouritesInfo.filter,
+          favouritesProducts: favouritesInfo.errorMessage.isNotEmpty
+              ? initState.favouritesProducts
+              : favouritesInfo.products,
+          favouritesDefaultProducts: favouritesInfo.errorMessage.isNotEmpty
+              ? initState.favouritesDefaultProducts
+              : favouritesInfo.products,
+          selectFilter:
+              favouritesInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+          favouritesProductsInfo: favouritesInfo.errorMessage.isNotEmpty
+              ? initState.favouritesProductsInfo
+              : favouritesInfo,
+          allSelectFilter:
+              favouritesInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+          isError: favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
           offset: 1,
+          request: request,
+          keyFilterCatalog: event.key,
+          itemFileter: event.item,
+          indexFileter: event.index,
+          isLoadErrorButton: false,
+          typeError: 'удалить фильтр из избранного',
         ),
       );
     });
@@ -470,6 +602,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
@@ -530,13 +667,25 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       selectFilter[event.index] = [];
       emit(initState.copyWith(
-        filter: favouritesInfo.filter,
-        favouritesProducts: favouritesInfo.products,
-        favouritesDefaultProducts: favouritesInfo.products,
+        selectFilter:
+            favouritesInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+        filter: favouritesInfo.errorMessage.isNotEmpty ? initState.filter : favouritesInfo.filter,
+        allSelectFilter:
+            favouritesInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+        favouritesProducts: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesProducts
+            : favouritesInfo.products,
+        favouritesDefaultProducts: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesDefaultProducts
+            : favouritesInfo.products,
+        favouritesProductsInfo: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesProductsInfo
+            : favouritesInfo,
+        isError: favouritesInfo.errorMessage.isNotEmpty,
+        indexFilterCategory: event.index,
+        errorMessage: MessageInfo.errorMessage,
+        typeError: 'удалить фильтры из категории',
         request: request,
-        selectFilter: selectFilter,
-        favouritesProductsInfo: favouritesInfo,
-        allSelectFilter: allSelectFilter,
       ));
     });
   }
@@ -546,6 +695,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogProductsRequest request = initState.request;
 
       request = request.copyWith(filters: [
@@ -572,12 +726,22 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       }
 
       emit(initState.copyWith(
-        selectFilter: {},
-        allSelectFilter: [],
-        filter: favouritesInfo.filter,
-        favouritesProductsInfo: favouritesInfo,
-        favouritesProducts: favouritesInfo.products,
-        favouritesDefaultProducts: favouritesInfo.products,
+        selectFilter: favouritesInfo.errorMessage.isNotEmpty ? initState.selectFilter : {},
+        allSelectFilter: favouritesInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : [],
+        filter: favouritesInfo.errorMessage.isNotEmpty ? initState.filter : favouritesInfo.filter,
+        favouritesProductsInfo: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesProductsInfo
+            : favouritesInfo,
+        favouritesProducts: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesProducts
+            : favouritesInfo.products,
+        favouritesDefaultProducts: favouritesInfo.errorMessage.isNotEmpty
+            ? initState.favouritesDefaultProducts
+            : favouritesInfo.products,
+        typeError: 'удалить все фильтры',
+        isLoadErrorButton: false,
+        isError: favouritesInfo.errorMessage.isNotEmpty,
+        errorMessage: MessageInfo.errorMessage,
       ));
     });
   }
@@ -590,11 +754,19 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isShoppingCartDetailsProduct = false;
+      String errorMessage = '';
+      bool isError = false;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
-      emit(const FavouritesState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const FavouritesState.load());
+      }
 
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
@@ -626,10 +798,6 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
         code: event.code,
         block: 'complect',
       );
-
-      if (!(event.isUpdate ?? false)) {
-        listProductsCode.add(event.code);
-      }
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
@@ -697,7 +865,24 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
             : [],
       );
 
+      if (detailsProduct.errorMessage.isNotEmpty ||
+          basketInfo.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionStyle.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionAlso.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionComplect.errorMessage.isNotEmpty) {
+        isError = true;
+        errorMessage = MessageInfo.errorMessage;
+      } else {
+        if (!(event.isUpdate ?? false)) {
+          listProductsCode.add(event.code);
+        }
+      }
+
       emit(initState.copyWith(
+        typeError: 'описание товара',
+        isError: isError,
+        errorMessage: errorMessage,
+        codeProduct: event.code,
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
@@ -833,23 +1018,42 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
     Emitter<FavouritesState> emit,
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
-      emit(initState.copyWith(
-        isLoadGetSizeProduct: true,
-        codeProduct: event.code,
-      ));
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoadGetSizeProduct: true,
+          codeProduct: event.code,
+        ));
+      }
+
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
-      if (detailsProduct.sku.isNotEmpty) {
-        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
-          emit(FavouritesState.getSizeProduct(
-            code: event.code,
-            listSize: detailsProduct.sku,
-            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
-            titleScreen: event.titleScreen,
-          ));
+      if (detailsProduct.errorMessage.isEmpty) {
+        if (detailsProduct.sku.isNotEmpty) {
+          if (detailsProduct.sku.first.id.contains('-') &&
+              detailsProduct.sku.first.id.length > 10) {
+            emit(FavouritesState.getSizeProduct(
+              code: event.code,
+              listSize: detailsProduct.sku,
+              listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+              titleScreen: event.titleScreen,
+            ));
+          } else {
+            if (event.isShop) {
+              emit(const FavouritesState.openSoppingCart());
+            } else {
+              emit(FavouritesState.addProductToSoppingCart(
+                code: event.code,
+                titleScreen: event.titleScreen,
+              ));
+            }
+          }
         } else {
           if (event.isShop) {
             emit(const FavouritesState.openSoppingCart());
@@ -860,22 +1064,19 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
             ));
           }
         }
-      } else {
-        if (event.isShop) {
-          emit(const FavouritesState.openSoppingCart());
-        } else {
-          emit(FavouritesState.addProductToSoppingCart(
-            code: event.code,
-            titleScreen: event.titleScreen,
-          ));
-        }
       }
 
       emit(initState.copyWith(
-        detailsProduct: detailsProduct,
+        detailsProduct:
+            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
+        isError: detailsProduct.errorMessage.isNotEmpty,
+        errorMessage: detailsProduct.errorMessage,
+        isShopGetSizeProduct: event.isShop,
+        typeError: 'выбор размера ${event.titleScreen.toLowerCase()}',
+        isLoadErrorButton: false,
       ));
     });
   }

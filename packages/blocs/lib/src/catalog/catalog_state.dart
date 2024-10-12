@@ -59,6 +59,8 @@ class CatalogState with _$CatalogState {
     required bool isButtonTop,
     required bool isPromotionsForPurchases,
     required bool isSaleSectionVisible,
+    int? indexProduct,
+    ProductDataModel? favouriteProduct,
     PushNotificationMessageDataModel? notificationMessage,
     SkuProductDataModel? selectSizeProduct,
     String? errorMessage,
@@ -77,6 +79,7 @@ class CatalogState with _$CatalogState {
     FilterItemDataModel? itemFileter,
     DetailProductDataModel? detailsProduct,
     CatalogDataModel? catalogInfo,
+    MenuItemDataModel? itemMenu,
     String? title,
   }) = PreloadDataCompletedCatalogState;
 }

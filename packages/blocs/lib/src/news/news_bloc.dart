@@ -65,10 +65,19 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const NewsState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const NewsState.load());
+      }
+
       List<String> listNewsPath = initState.listNewsPath.toList();
       NewsInfoDataModel news = await _newsRepository.getNews(page: 1);
-      listNewsPath.add('0');
+      if (news.errorMessage.isEmpty) {
+        listNewsPath.add('0');
+      }
 
       _news = NewsInfoDataModel(
         e: news.e,
@@ -83,6 +92,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           news: _news,
           offsetNews: 1,
           listNewsPath: listNewsPath,
+          isError: news.errorMessage.isNotEmpty,
+          errorMessage: news.errorMessage,
+          typeError: 'новости',
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -93,10 +106,18 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const NewsState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const NewsState.load());
+      }
       List<String> listNewsPath = initState.listNewsPath.toList();
       MediaInfoDataModel media = await _newsRepository.getMedia(page: 1);
-      listNewsPath.add('1');
+      if (media.errorMessage.isEmpty) {
+        listNewsPath.add('1');
+      }
 
       _media = MediaInfoDataModel(
         e: media.e,
@@ -111,6 +132,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           media: _media,
           offsetMedia: 1,
           listNewsPath: listNewsPath,
+          isError: media.errorMessage.isNotEmpty,
+          errorMessage: media.errorMessage,
+          typeError: 'медиа',
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -121,10 +146,18 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const NewsState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const NewsState.load());
+      }
       List<String> listNewsPath = initState.listNewsPath.toList();
       NotificationInfoDataModel notificatios = await _newsRepository.getNotifications(page: 1);
-      listNewsPath.add('2');
+      if (notificatios.errorMessage.isEmpty) {
+        listNewsPath.add('2');
+      }
 
       _notificatios = NotificationInfoDataModel(
         e: notificatios.e,
@@ -139,6 +172,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           notificatios: _notificatios,
           offsetNotificatios: 1,
           listNewsPath: listNewsPath,
+          isError: notificatios.errorMessage.isNotEmpty,
+          errorMessage: notificatios.errorMessage,
+          typeError: 'уведомления',
+          isLoadErrorButton: false,
         ),
       );
     });

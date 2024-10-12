@@ -11,6 +11,7 @@ class PaymentBonusResponse with _$PaymentBonusResponse {
     String? e,
     String? info,
     int? balance,
+    String? errorMessage,
   }) = _PaymentBonusResponse;
   factory PaymentBonusResponse.fromJson(Map<String, dynamic> json) =>
       _$PaymentBonusResponseFromJson(json);

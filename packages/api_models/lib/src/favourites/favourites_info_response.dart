@@ -9,6 +9,7 @@ class FavouritesInfoResponse with _$FavouritesInfoResponse {
   factory FavouritesInfoResponse({
     String? r,
     String? e,
+    String? errorMessage,
   }) = _FavouritesInfoResponse;
   factory FavouritesInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$FavouritesInfoResponseFromJson(json);

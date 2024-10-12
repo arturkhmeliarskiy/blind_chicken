@@ -8,5 +8,6 @@ class FavouritesInfoDataModel with _$FavouritesInfoDataModel {
   factory FavouritesInfoDataModel({
     required String r,
     required String e,
+    required String errorMessage,
   }) = _FavouritesInfoDataModel;
 }

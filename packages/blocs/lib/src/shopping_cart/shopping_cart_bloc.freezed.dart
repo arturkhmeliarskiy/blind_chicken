@@ -13226,13 +13226,20 @@ mixin _$ShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13281,7 +13288,18 @@ mixin _$ShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -13289,13 +13307,17 @@ mixin _$ShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13344,7 +13366,18 @@ mixin _$ShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -13352,13 +13385,17 @@ mixin _$ShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13407,7 +13444,18 @@ mixin _$ShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) =>
@@ -13416,6 +13464,8 @@ mixin _$ShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -13425,6 +13475,8 @@ mixin _$ShoppingCartState {
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) =>
@@ -13433,6 +13485,8 @@ mixin _$ShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -13440,6 +13494,7 @@ mixin _$ShoppingCartState {
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -13447,6 +13502,8 @@ mixin _$ShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -13454,6 +13511,7 @@ mixin _$ShoppingCartState {
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) =>
@@ -13526,13 +13584,20 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13581,7 +13646,18 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return init();
@@ -13592,13 +13668,17 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13647,7 +13727,18 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return init?.call();
@@ -13658,13 +13749,17 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13713,7 +13808,18 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -13728,6 +13834,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -13737,6 +13845,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -13748,6 +13858,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -13755,6 +13867,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return init?.call(this);
@@ -13765,6 +13878,8 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -13772,6 +13887,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -13833,13 +13949,20 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13888,7 +14011,18 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return load();
@@ -13899,13 +14033,17 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -13954,7 +14092,18 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return load?.call();
@@ -13965,13 +14114,17 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14020,7 +14173,18 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -14035,6 +14199,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -14044,6 +14210,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -14055,6 +14223,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -14062,6 +14232,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return load?.call(this);
@@ -14072,6 +14243,8 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -14079,6 +14252,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -14094,13 +14268,387 @@ abstract class LoadingShoppingCartState implements ShoppingCartState {
 }
 
 /// @nodoc
+abstract class _$$LoadingErrorButtonShoppingCartStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonShoppingCartStateImplCopyWith(
+          _$LoadingErrorButtonShoppingCartStateImpl value,
+          $Res Function(_$LoadingErrorButtonShoppingCartStateImpl) then) =
+      __$$LoadingErrorButtonShoppingCartStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonShoppingCartStateImpl>
+    implements _$$LoadingErrorButtonShoppingCartStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonShoppingCartStateImplCopyWithImpl(
+      _$LoadingErrorButtonShoppingCartStateImpl _value,
+      $Res Function(_$LoadingErrorButtonShoppingCartStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonShoppingCartStateImpl
+    implements LoadingErrorButtonShoppingCartState {
+  const _$LoadingErrorButtonShoppingCartStateImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonShoppingCartStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
+        productsShoppingCart,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
+        productsShoppingCart,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
+    required TResult Function(ErrorShoppingCartState value) error,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
+    TResult? Function(ErrorShoppingCartState value)? error,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
+    TResult Function(ErrorShoppingCartState value)? error,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonShoppingCartState
+    implements ShoppingCartState {
+  const factory LoadingErrorButtonShoppingCartState() =
+      _$LoadingErrorButtonShoppingCartStateImpl;
+}
+
+/// @nodoc
 abstract class _$$ErrorShoppingCartStateImplCopyWith<$Res> {
   factory _$$ErrorShoppingCartStateImplCopyWith(
           _$ErrorShoppingCartStateImpl value,
           $Res Function(_$ErrorShoppingCartStateImpl) then) =
       __$$ErrorShoppingCartStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String errorMessage});
+  $Res call(
+      {String errorMessage,
+      BasketInfoItemDataModel? item,
+      String? typeAddProductToShoppingCart,
+      String? titleScreen});
+
+  $BasketInfoItemDataModelCopyWith<$Res>? get item;
 }
 
 /// @nodoc
@@ -14118,27 +14666,66 @@ class __$$ErrorShoppingCartStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? errorMessage = null,
+    Object? item = freezed,
+    Object? typeAddProductToShoppingCart = freezed,
+    Object? titleScreen = freezed,
   }) {
     return _then(_$ErrorShoppingCartStateImpl(
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      item: freezed == item
+          ? _value.item
+          : item // ignore: cast_nullable_to_non_nullable
+              as BasketInfoItemDataModel?,
+      typeAddProductToShoppingCart: freezed == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
+  }
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res>? get item {
+    if (_value.item == null) {
+      return null;
+    }
+
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.item!, (value) {
+      return _then(_value.copyWith(item: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
-  const _$ErrorShoppingCartStateImpl({required this.errorMessage});
+  const _$ErrorShoppingCartStateImpl(
+      {required this.errorMessage,
+      this.item,
+      this.typeAddProductToShoppingCart,
+      this.titleScreen});
 
   @override
   final String errorMessage;
+  @override
+  final BasketInfoItemDataModel? item;
+  @override
+  final String? typeAddProductToShoppingCart;
+  @override
+  final String? titleScreen;
 
   @override
   String toString() {
-    return 'ShoppingCartState.error(errorMessage: $errorMessage)';
+    return 'ShoppingCartState.error(errorMessage: $errorMessage, item: $item, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, titleScreen: $titleScreen)';
   }
 
   @override
@@ -14147,11 +14734,19 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
         (other.runtimeType == runtimeType &&
             other is _$ErrorShoppingCartStateImpl &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.item, item) || other.item == item) &&
+            (identical(other.typeAddProductToShoppingCart,
+                    typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode => Object.hash(runtimeType, errorMessage, item,
+      typeAddProductToShoppingCart, titleScreen);
 
   /// Create a copy of ShoppingCartState
   /// with the given fields replaced by the non-null parameter values.
@@ -14167,13 +14762,20 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14222,10 +14824,21 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
-    return error(errorMessage);
+    return error(errorMessage, item, typeAddProductToShoppingCart, titleScreen);
   }
 
   @override
@@ -14233,13 +14846,17 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14288,10 +14905,22 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
-    return error?.call(errorMessage);
+    return error?.call(
+        errorMessage, item, typeAddProductToShoppingCart, titleScreen);
   }
 
   @override
@@ -14299,13 +14928,17 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14354,12 +14987,24 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(errorMessage);
+      return error(
+          errorMessage, item, typeAddProductToShoppingCart, titleScreen);
     }
     return orElse();
   }
@@ -14369,6 +15014,8 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -14378,6 +15025,8 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -14389,6 +15038,8 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -14396,6 +15047,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return error?.call(this);
@@ -14406,6 +15058,8 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -14413,6 +15067,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -14424,10 +15079,16 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
 }
 
 abstract class ErrorShoppingCartState implements ShoppingCartState {
-  const factory ErrorShoppingCartState({required final String errorMessage}) =
-      _$ErrorShoppingCartStateImpl;
+  const factory ErrorShoppingCartState(
+      {required final String errorMessage,
+      final BasketInfoItemDataModel? item,
+      final String? typeAddProductToShoppingCart,
+      final String? titleScreen}) = _$ErrorShoppingCartStateImpl;
 
   String get errorMessage;
+  BasketInfoItemDataModel? get item;
+  String? get typeAddProductToShoppingCart;
+  String? get titleScreen;
 
   /// Create a copy of ShoppingCartState
   /// with the given fields replaced by the non-null parameter values.
@@ -14513,13 +15174,20 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14568,7 +15236,18 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return createOrderSuccessfully(orderId);
@@ -14579,13 +15258,17 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14634,7 +15317,18 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return createOrderSuccessfully?.call(orderId);
@@ -14645,13 +15339,17 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14700,7 +15398,18 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -14715,6 +15424,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -14724,6 +15435,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -14735,6 +15448,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -14742,6 +15457,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return createOrderSuccessfully?.call(this);
@@ -14752,6 +15468,8 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -14759,6 +15477,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -14833,13 +15552,20 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14888,7 +15614,18 @@ class _$OpenSoppingCartShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return openSoppingCart();
@@ -14899,13 +15636,17 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -14954,7 +15695,18 @@ class _$OpenSoppingCartShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return openSoppingCart?.call();
@@ -14965,13 +15717,17 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15020,7 +15776,18 @@ class _$OpenSoppingCartShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -15035,6 +15802,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -15044,6 +15813,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -15055,6 +15826,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -15062,6 +15835,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return openSoppingCart?.call(this);
@@ -15072,6 +15846,8 @@ class _$OpenSoppingCartShoppingCartStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -15079,6 +15855,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -15211,13 +15988,20 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15266,7 +16050,18 @@ class _$GetSizeProductShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return getSizeProduct(code, listSize, listSizeToSoppingCart);
@@ -15277,13 +16072,17 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15332,7 +16131,18 @@ class _$GetSizeProductShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return getSizeProduct?.call(code, listSize, listSizeToSoppingCart);
@@ -15343,13 +16153,17 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15398,7 +16212,18 @@ class _$GetSizeProductShoppingCartStateImpl
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -15413,6 +16238,8 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -15422,6 +16249,8 @@ class _$GetSizeProductShoppingCartStateImpl
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -15433,6 +16262,8 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -15440,6 +16271,7 @@ class _$GetSizeProductShoppingCartStateImpl
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return getSizeProduct?.call(this);
@@ -15450,6 +16282,8 @@ class _$GetSizeProductShoppingCartStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -15457,6 +16291,7 @@ class _$GetSizeProductShoppingCartStateImpl
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -15560,13 +16395,20 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15615,7 +16457,18 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return addProductToSoppingCart(code);
@@ -15626,13 +16479,17 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15681,7 +16538,18 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return addProductToSoppingCart?.call(code);
@@ -15692,13 +16560,17 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -15747,7 +16619,18 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -15762,6 +16645,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -15771,6 +16656,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -15782,6 +16669,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -15789,6 +16678,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return addProductToSoppingCart?.call(this);
@@ -15799,6 +16689,8 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -15806,6 +16698,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -15827,6 +16720,373 @@ abstract class AddProductShoppingCartState implements ShoppingCartState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductShoppingCartStateImplCopyWith<_$AddProductShoppingCartStateImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OpenShowDialogShoppingCartStateImplCopyWith<$Res> {
+  factory _$$OpenShowDialogShoppingCartStateImplCopyWith(
+          _$OpenShowDialogShoppingCartStateImpl value,
+          $Res Function(_$OpenShowDialogShoppingCartStateImpl) then) =
+      __$$OpenShowDialogShoppingCartStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OpenShowDialogShoppingCartStateImplCopyWithImpl<$Res>
+    extends _$ShoppingCartStateCopyWithImpl<$Res,
+        _$OpenShowDialogShoppingCartStateImpl>
+    implements _$$OpenShowDialogShoppingCartStateImplCopyWith<$Res> {
+  __$$OpenShowDialogShoppingCartStateImplCopyWithImpl(
+      _$OpenShowDialogShoppingCartStateImpl _value,
+      $Res Function(_$OpenShowDialogShoppingCartStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$OpenShowDialogShoppingCartStateImpl
+    implements OpenShowDialogShoppingCartState {
+  const _$OpenShowDialogShoppingCartStateImpl();
+
+  @override
+  String toString() {
+    return 'ShoppingCartState.openShowDialog()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenShowDialogShoppingCartStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
+    required TResult Function(int orderId) createOrderSuccessfully,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
+    required TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
+        productsShoppingCart,
+  }) {
+    return openShowDialog();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
+    TResult? Function(int orderId)? createOrderSuccessfully,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
+    TResult? Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
+        productsShoppingCart,
+  }) {
+    return openShowDialog?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
+    TResult Function(int orderId)? createOrderSuccessfully,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
+    TResult Function(
+            BasketFullInfoDataModel shoppingCart,
+            List<PaymentItemDataModel> payments,
+            String promoCodeMessage,
+            int numberProducts,
+            int amountPaid,
+            int giftCards,
+            int bonuses,
+            bool isLoadPaymentBonus,
+            bool isLoadPaymentGift,
+            bool isLoadPaymentPromoCode,
+            bool isActivePromoCode,
+            bool isLoadCreateOrder,
+            String promoCode,
+            String pickup,
+            String receivingType,
+            BoutiquesDataModel boutiques,
+            bool isUponReceipt,
+            List<BasketSertDeliveryRequest> listGiftCard,
+            String address,
+            BasketAddress addressDelivery,
+            String uidPickUpPoint,
+            String paymentId,
+            String typePay,
+            String titlePromocode,
+            int? delivery,
+            String? creatOrderMessage,
+            PaymentBonusDataModel? paymentBonus,
+            PaymentBonusDataModel? paymentGift,
+            bool? isRemovePromoCode,
+            List<ProductDataModel> favouritesProducts,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<SkuProductDataModel> listSize,
+            List<int> favouritesProductsId,
+            bool isAuth,
+            bool isLoadGetSizeProduct,
+            bool isLoadAddProductToShopingCart,
+            bool isBlocBackBotton,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isAuthModel,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
+        productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (openShowDialog != null) {
+      return openShowDialog();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitShoppingCartState value) init,
+    required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
+    required TResult Function(ErrorShoppingCartState value) error,
+    required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
+        createOrderSuccessfully,
+    required TResult Function(OpenSoppingCartShoppingCartState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductShoppingCartState value)
+        getSizeProduct,
+    required TResult Function(AddProductShoppingCartState value)
+        addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
+    required TResult Function(ProductsShoppingCartState value)
+        productsShoppingCart,
+  }) {
+    return openShowDialog(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitShoppingCartState value)? init,
+    TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
+    TResult? Function(ErrorShoppingCartState value)? error,
+    TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult? Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult? Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
+    TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
+  }) {
+    return openShowDialog?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitShoppingCartState value)? init,
+    TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
+    TResult Function(ErrorShoppingCartState value)? error,
+    TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
+        createOrderSuccessfully,
+    TResult Function(OpenSoppingCartShoppingCartState value)? openSoppingCart,
+    TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
+    TResult Function(AddProductShoppingCartState value)?
+        addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
+    TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
+    required TResult orElse(),
+  }) {
+    if (openShowDialog != null) {
+      return openShowDialog(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OpenShowDialogShoppingCartState implements ShoppingCartState {
+  const factory OpenShowDialogShoppingCartState() =
+      _$OpenShowDialogShoppingCartStateImpl;
 }
 
 /// @nodoc
@@ -15884,7 +17144,18 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       bool? isShoppingCartDetailsProduct,
       bool? isAuthModel,
       FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-      DetailProductDataModel? detailsProduct});
+      DetailProductDataModel? detailsProduct,
+      BasketInfoItemDataModel? itemInfo,
+      ProductDataModel? product,
+      int? indexItem,
+      bool? isLoadErrorButton,
+      String? errorMessage,
+      String? typeError,
+      bool? isError,
+      String? titleScreen,
+      String? typeAddProductToShoppingCart,
+      String? identifierAddProductToShoppingCart,
+      bool? isShopGetSizeProduct});
 
   $BasketFullInfoDataModelCopyWith<$Res> get shoppingCart;
   $BoutiquesDataModelCopyWith<$Res> get boutiques;
@@ -15893,6 +17164,8 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
+  $BasketInfoItemDataModelCopyWith<$Res>? get itemInfo;
+  $ProductDataModelCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -15958,6 +17231,17 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? isAuthModel = freezed,
     Object? favouritesProductsInfo = freezed,
     Object? detailsProduct = freezed,
+    Object? itemInfo = freezed,
+    Object? product = freezed,
+    Object? indexItem = freezed,
+    Object? isLoadErrorButton = freezed,
+    Object? errorMessage = freezed,
+    Object? typeError = freezed,
+    Object? isError = freezed,
+    Object? titleScreen = freezed,
+    Object? typeAddProductToShoppingCart = freezed,
+    Object? identifierAddProductToShoppingCart = freezed,
+    Object? isShopGetSizeProduct = freezed,
   }) {
     return _then(_$ProductsShoppingCartStateImpl(
       shoppingCart: null == shoppingCart
@@ -16152,6 +17436,51 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
           ? _value.detailsProduct
           : detailsProduct // ignore: cast_nullable_to_non_nullable
               as DetailProductDataModel?,
+      itemInfo: freezed == itemInfo
+          ? _value.itemInfo
+          : itemInfo // ignore: cast_nullable_to_non_nullable
+              as BasketInfoItemDataModel?,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel?,
+      indexItem: freezed == indexItem
+          ? _value.indexItem
+          : indexItem // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeAddProductToShoppingCart: freezed == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identifierAddProductToShoppingCart: freezed ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isShopGetSizeProduct: freezed == isShopGetSizeProduct
+          ? _value.isShopGetSizeProduct
+          : isShopGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -16247,6 +17576,34 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
       return _then(_value.copyWith(detailsProduct: value));
     });
   }
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res>? get itemInfo {
+    if (_value.itemInfo == null) {
+      return null;
+    }
+
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.itemInfo!, (value) {
+      return _then(_value.copyWith(itemInfo: value));
+    });
+  }
+
+  /// Create a copy of ShoppingCartState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $ProductDataModelCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -16300,7 +17657,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       this.isShoppingCartDetailsProduct,
       this.isAuthModel,
       this.favouritesProductsInfo,
-      this.detailsProduct})
+      this.detailsProduct,
+      this.itemInfo,
+      this.product,
+      this.indexItem,
+      this.isLoadErrorButton,
+      this.errorMessage,
+      this.typeError,
+      this.isError,
+      this.titleScreen,
+      this.typeAddProductToShoppingCart,
+      this.identifierAddProductToShoppingCart,
+      this.isShopGetSizeProduct})
       : _payments = payments,
         _listGiftCard = listGiftCard,
         _favouritesProducts = favouritesProducts,
@@ -16476,10 +17844,32 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   final FavouritesCatalogInfoDataModel? favouritesProductsInfo;
   @override
   final DetailProductDataModel? detailsProduct;
+  @override
+  final BasketInfoItemDataModel? itemInfo;
+  @override
+  final ProductDataModel? product;
+  @override
+  final int? indexItem;
+  @override
+  final bool? isLoadErrorButton;
+  @override
+  final String? errorMessage;
+  @override
+  final String? typeError;
+  @override
+  final bool? isError;
+  @override
+  final String? titleScreen;
+  @override
+  final String? typeAddProductToShoppingCart;
+  @override
+  final String? identifierAddProductToShoppingCart;
+  @override
+  final bool? isShopGetSizeProduct;
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isLoadAddProductToShopingCart: $isLoadAddProductToShopingCart, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isLoadAddProductToShopingCart: $isLoadAddProductToShopingCart, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage, typeError: $typeError, isError: $isError, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct)';
   }
 
   @override
@@ -16576,7 +17966,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 other.isAuthModel == isAuthModel) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
                 other.favouritesProductsInfo == favouritesProductsInfo) &&
-            (identical(other.detailsProduct, detailsProduct) || other.detailsProduct == detailsProduct));
+            (identical(other.detailsProduct, detailsProduct) || other.detailsProduct == detailsProduct) &&
+            (identical(other.itemInfo, itemInfo) || other.itemInfo == itemInfo) &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.indexItem, indexItem) || other.indexItem == indexItem) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) || other.isLoadErrorButton == isLoadErrorButton) &&
+            (identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage) &&
+            (identical(other.typeError, typeError) || other.typeError == typeError) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.titleScreen, titleScreen) || other.titleScreen == titleScreen) &&
+            (identical(other.typeAddProductToShoppingCart, typeAddProductToShoppingCart) || other.typeAddProductToShoppingCart == typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart, identifierAddProductToShoppingCart) || other.identifierAddProductToShoppingCart == identifierAddProductToShoppingCart) &&
+            (identical(other.isShopGetSizeProduct, isShopGetSizeProduct) || other.isShopGetSizeProduct == isShopGetSizeProduct));
   }
 
   @override
@@ -16629,7 +18030,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isShoppingCartDetailsProduct,
         isAuthModel,
         favouritesProductsInfo,
-        detailsProduct
+        detailsProduct,
+        itemInfo,
+        product,
+        indexItem,
+        isLoadErrorButton,
+        errorMessage,
+        typeError,
+        isError,
+        titleScreen,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        isShopGetSizeProduct
       ]);
 
   /// Create a copy of ShoppingCartState
@@ -16646,13 +18058,20 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(
+            String errorMessage,
+            BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart,
+            String? titleScreen)
+        error,
     required TResult Function(int orderId) createOrderSuccessfully,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)
         getSizeProduct,
     required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function() openShowDialog,
     required TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16701,7 +18120,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)
         productsShoppingCart,
   }) {
     return productsShoppingCart(
@@ -16752,7 +18182,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isShoppingCartDetailsProduct,
         isAuthModel,
         favouritesProductsInfo,
-        detailsProduct);
+        detailsProduct,
+        itemInfo,
+        product,
+        indexItem,
+        isLoadErrorButton,
+        errorMessage,
+        typeError,
+        isError,
+        titleScreen,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        isShopGetSizeProduct);
   }
 
   @override
@@ -16760,13 +18201,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult? Function(int orderId)? createOrderSuccessfully,
     TResult? Function()? openSoppingCart,
     TResult? Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function()? openShowDialog,
     TResult? Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16815,7 +18260,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
   }) {
     return productsShoppingCart?.call(
@@ -16866,7 +18322,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         isShoppingCartDetailsProduct,
         isAuthModel,
         favouritesProductsInfo,
-        detailsProduct);
+        detailsProduct,
+        itemInfo,
+        product,
+        indexItem,
+        isLoadErrorButton,
+        errorMessage,
+        typeError,
+        isError,
+        titleScreen,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        isShopGetSizeProduct);
   }
 
   @override
@@ -16874,13 +18341,17 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage, BasketInfoItemDataModel? item,
+            String? typeAddProductToShoppingCart, String? titleScreen)?
+        error,
     TResult Function(int orderId)? createOrderSuccessfully,
     TResult Function()? openSoppingCart,
     TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart)?
         getSizeProduct,
     TResult Function(String code)? addProductToSoppingCart,
+    TResult Function()? openShowDialog,
     TResult Function(
             BasketFullInfoDataModel shoppingCart,
             List<PaymentItemDataModel> payments,
@@ -16929,7 +18400,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             bool? isShoppingCartDetailsProduct,
             bool? isAuthModel,
             FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-            DetailProductDataModel? detailsProduct)?
+            DetailProductDataModel? detailsProduct,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            int? indexItem,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            String? titleScreen,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            bool? isShopGetSizeProduct)?
         productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -16982,7 +18464,18 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           isShoppingCartDetailsProduct,
           isAuthModel,
           favouritesProductsInfo,
-          detailsProduct);
+          detailsProduct,
+          itemInfo,
+          product,
+          indexItem,
+          isLoadErrorButton,
+          errorMessage,
+          typeError,
+          isError,
+          titleScreen,
+          typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart,
+          isShopGetSizeProduct);
     }
     return orElse();
   }
@@ -16992,6 +18485,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitShoppingCartState value) init,
     required TResult Function(LoadingShoppingCartState value) load,
+    required TResult Function(LoadingErrorButtonShoppingCartState value)
+        loadErrorButton,
     required TResult Function(ErrorShoppingCartState value) error,
     required TResult Function(CreateOrderSuccessfullyShoppingCartState value)
         createOrderSuccessfully,
@@ -17001,6 +18496,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         getSizeProduct,
     required TResult Function(AddProductShoppingCartState value)
         addProductToSoppingCart,
+    required TResult Function(OpenShowDialogShoppingCartState value)
+        openShowDialog,
     required TResult Function(ProductsShoppingCartState value)
         productsShoppingCart,
   }) {
@@ -17012,6 +18509,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitShoppingCartState value)? init,
     TResult? Function(LoadingShoppingCartState value)? load,
+    TResult? Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult? Function(ErrorShoppingCartState value)? error,
     TResult? Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -17019,6 +18518,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     TResult? Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult? Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult? Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult? Function(ProductsShoppingCartState value)? productsShoppingCart,
   }) {
     return productsShoppingCart?.call(this);
@@ -17029,6 +18529,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitShoppingCartState value)? init,
     TResult Function(LoadingShoppingCartState value)? load,
+    TResult Function(LoadingErrorButtonShoppingCartState value)?
+        loadErrorButton,
     TResult Function(ErrorShoppingCartState value)? error,
     TResult Function(CreateOrderSuccessfullyShoppingCartState value)?
         createOrderSuccessfully,
@@ -17036,6 +18538,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
     TResult Function(GetSizeProductShoppingCartState value)? getSizeProduct,
     TResult Function(AddProductShoppingCartState value)?
         addProductToSoppingCart,
+    TResult Function(OpenShowDialogShoppingCartState value)? openShowDialog,
     TResult Function(ProductsShoppingCartState value)? productsShoppingCart,
     required TResult orElse(),
   }) {
@@ -17048,55 +18551,65 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
 abstract class ProductsShoppingCartState implements ShoppingCartState {
   const factory ProductsShoppingCartState(
-          {required final BasketFullInfoDataModel shoppingCart,
-          required final List<PaymentItemDataModel> payments,
-          required final String promoCodeMessage,
-          required final int numberProducts,
-          required final int amountPaid,
-          required final int giftCards,
-          required final int bonuses,
-          required final bool isLoadPaymentBonus,
-          required final bool isLoadPaymentGift,
-          required final bool isLoadPaymentPromoCode,
-          required final bool isActivePromoCode,
-          required final bool isLoadCreateOrder,
-          required final String promoCode,
-          required final String pickup,
-          required final String receivingType,
-          required final BoutiquesDataModel boutiques,
-          required final bool isUponReceipt,
-          required final List<BasketSertDeliveryRequest> listGiftCard,
-          required final String address,
-          required final BasketAddress addressDelivery,
-          required final String uidPickUpPoint,
-          required final String paymentId,
-          required final String typePay,
-          required final String titlePromocode,
-          final int? delivery,
-          final String? creatOrderMessage,
-          final PaymentBonusDataModel? paymentBonus,
-          final PaymentBonusDataModel? paymentGift,
-          final bool? isRemovePromoCode,
-          required final List<ProductDataModel> favouritesProducts,
-          required final List<String> listProductsCode,
-          required final List<ProductDataModel> listProdcutsStyle,
-          required final List<ProductDataModel> listProdcutsAlso,
-          required final List<ProductDataModel> listProdcutsBrand,
-          required final List<ProductDataModel> listProdcutsComplect,
-          required final List<SkuProductDataModel> listSize,
-          required final List<int> favouritesProductsId,
-          required final bool isAuth,
-          required final bool isLoadGetSizeProduct,
-          required final bool isLoadAddProductToShopingCart,
-          required final bool isBlocBackBotton,
-          final String? codeProduct,
-          final SkuProductDataModel? selectSizeProduct,
-          final bool? isShoppingCart,
-          final bool? isShoppingCartDetailsProduct,
-          final bool? isAuthModel,
-          final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
-          final DetailProductDataModel? detailsProduct}) =
-      _$ProductsShoppingCartStateImpl;
+      {required final BasketFullInfoDataModel shoppingCart,
+      required final List<PaymentItemDataModel> payments,
+      required final String promoCodeMessage,
+      required final int numberProducts,
+      required final int amountPaid,
+      required final int giftCards,
+      required final int bonuses,
+      required final bool isLoadPaymentBonus,
+      required final bool isLoadPaymentGift,
+      required final bool isLoadPaymentPromoCode,
+      required final bool isActivePromoCode,
+      required final bool isLoadCreateOrder,
+      required final String promoCode,
+      required final String pickup,
+      required final String receivingType,
+      required final BoutiquesDataModel boutiques,
+      required final bool isUponReceipt,
+      required final List<BasketSertDeliveryRequest> listGiftCard,
+      required final String address,
+      required final BasketAddress addressDelivery,
+      required final String uidPickUpPoint,
+      required final String paymentId,
+      required final String typePay,
+      required final String titlePromocode,
+      final int? delivery,
+      final String? creatOrderMessage,
+      final PaymentBonusDataModel? paymentBonus,
+      final PaymentBonusDataModel? paymentGift,
+      final bool? isRemovePromoCode,
+      required final List<ProductDataModel> favouritesProducts,
+      required final List<String> listProductsCode,
+      required final List<ProductDataModel> listProdcutsStyle,
+      required final List<ProductDataModel> listProdcutsAlso,
+      required final List<ProductDataModel> listProdcutsBrand,
+      required final List<ProductDataModel> listProdcutsComplect,
+      required final List<SkuProductDataModel> listSize,
+      required final List<int> favouritesProductsId,
+      required final bool isAuth,
+      required final bool isLoadGetSizeProduct,
+      required final bool isLoadAddProductToShopingCart,
+      required final bool isBlocBackBotton,
+      final String? codeProduct,
+      final SkuProductDataModel? selectSizeProduct,
+      final bool? isShoppingCart,
+      final bool? isShoppingCartDetailsProduct,
+      final bool? isAuthModel,
+      final FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+      final DetailProductDataModel? detailsProduct,
+      final BasketInfoItemDataModel? itemInfo,
+      final ProductDataModel? product,
+      final int? indexItem,
+      final bool? isLoadErrorButton,
+      final String? errorMessage,
+      final String? typeError,
+      final bool? isError,
+      final String? titleScreen,
+      final String? typeAddProductToShoppingCart,
+      final String? identifierAddProductToShoppingCart,
+      final bool? isShopGetSizeProduct}) = _$ProductsShoppingCartStateImpl;
 
   BasketFullInfoDataModel get shoppingCart;
   List<PaymentItemDataModel> get payments;
@@ -17147,6 +18660,17 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   bool? get isAuthModel;
   FavouritesCatalogInfoDataModel? get favouritesProductsInfo;
   DetailProductDataModel? get detailsProduct;
+  BasketInfoItemDataModel? get itemInfo;
+  ProductDataModel? get product;
+  int? get indexItem;
+  bool? get isLoadErrorButton;
+  String? get errorMessage;
+  String? get typeError;
+  bool? get isError;
+  String? get titleScreen;
+  String? get typeAddProductToShoppingCart;
+  String? get identifierAddProductToShoppingCart;
+  bool? get isShopGetSizeProduct;
 
   /// Create a copy of ShoppingCartState
   /// with the given fields replaced by the non-null parameter values.

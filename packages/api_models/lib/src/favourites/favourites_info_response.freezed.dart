@@ -23,6 +23,7 @@ FavouritesInfoResponse _$FavouritesInfoResponseFromJson(
 mixin _$FavouritesInfoResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $FavouritesInfoResponseCopyWith<$Res> {
           $Res Function(FavouritesInfoResponse) then) =
       _$FavouritesInfoResponseCopyWithImpl<$Res, FavouritesInfoResponse>;
   @useResult
-  $Res call({String? r, String? e});
+  $Res call({String? r, String? e, String? errorMessage});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$FavouritesInfoResponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       r: freezed == r
@@ -64,6 +66,10 @@ class _$FavouritesInfoResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -78,7 +84,7 @@ abstract class _$$FavouritesInfoResponseImplCopyWith<$Res>
       __$$FavouritesInfoResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? r, String? e});
+  $Res call({String? r, String? e, String? errorMessage});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$FavouritesInfoResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$FavouritesInfoResponseImpl(
       r: freezed == r
@@ -106,6 +113,10 @@ class __$$FavouritesInfoResponseImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -113,7 +124,7 @@ class __$$FavouritesInfoResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FavouritesInfoResponseImpl extends _FavouritesInfoResponse {
-  _$FavouritesInfoResponseImpl({this.r, this.e}) : super._();
+  _$FavouritesInfoResponseImpl({this.r, this.e, this.errorMessage}) : super._();
 
   factory _$FavouritesInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$FavouritesInfoResponseImplFromJson(json);
@@ -122,10 +133,12 @@ class _$FavouritesInfoResponseImpl extends _FavouritesInfoResponse {
   final String? r;
   @override
   final String? e;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'FavouritesInfoResponse(r: $r, e: $e)';
+    return 'FavouritesInfoResponse(r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -134,12 +147,14 @@ class _$FavouritesInfoResponseImpl extends _FavouritesInfoResponse {
         (other.runtimeType == runtimeType &&
             other is _$FavouritesInfoResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -157,8 +172,10 @@ class _$FavouritesInfoResponseImpl extends _FavouritesInfoResponse {
 }
 
 abstract class _FavouritesInfoResponse extends FavouritesInfoResponse {
-  factory _FavouritesInfoResponse({final String? r, final String? e}) =
-      _$FavouritesInfoResponseImpl;
+  factory _FavouritesInfoResponse(
+      {final String? r,
+      final String? e,
+      final String? errorMessage}) = _$FavouritesInfoResponseImpl;
   _FavouritesInfoResponse._() : super._();
 
   factory _FavouritesInfoResponse.fromJson(Map<String, dynamic> json) =
@@ -168,6 +185,8 @@ abstract class _FavouritesInfoResponse extends FavouritesInfoResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$FavouritesInfoResponseImplCopyWith<_$FavouritesInfoResponseImpl>

@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared/shared.dart';
 
 class ShoppingCartCheckCreateOrder extends StatefulWidget {
   const ShoppingCartCheckCreateOrder({
@@ -132,13 +133,14 @@ class _ShoppingCartCheckCreateOrderState extends State<ShoppingCartCheckCreateOr
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 28, right: 28, top: 24),
-                              child: Text(
-                                'Пожалуйста, исправьте ошибки и повторите попытку.',
-                                style: Theme.of(context).textTheme.displayMedium,
+                            if (initState.creatOrderMessage != MessageInfo.errorMessage)
+                              Padding(
+                                padding: const EdgeInsets.only(left: 28, right: 28, top: 24),
+                                child: Text(
+                                  'Пожалуйста, исправьте ошибки и повторите попытку.',
+                                  style: Theme.of(context).textTheme.displayMedium,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                     ],

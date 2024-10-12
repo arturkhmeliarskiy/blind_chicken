@@ -9121,7 +9121,8 @@ mixin _$AccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -9176,7 +9177,8 @@ mixin _$AccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -9231,7 +9233,8 @@ mixin _$AccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -9287,6 +9290,8 @@ mixin _$AccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -9305,6 +9310,7 @@ mixin _$AccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -9321,6 +9327,7 @@ mixin _$AccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -9400,7 +9407,8 @@ class _$InitAccountStateImpl implements InitAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -9458,7 +9466,8 @@ class _$InitAccountStateImpl implements InitAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -9516,7 +9525,8 @@ class _$InitAccountStateImpl implements InitAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -9578,6 +9588,8 @@ class _$InitAccountStateImpl implements InitAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -9599,6 +9611,7 @@ class _$InitAccountStateImpl implements InitAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -9618,6 +9631,7 @@ class _$InitAccountStateImpl implements InitAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -9685,7 +9699,8 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -9743,7 +9758,8 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -9801,7 +9817,8 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -9863,6 +9880,8 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -9884,6 +9903,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -9903,6 +9923,7 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -9927,77 +9948,55 @@ abstract class LoadingAccountState implements AccountState {
 }
 
 /// @nodoc
-abstract class _$$ErrorAccountStateImplCopyWith<$Res> {
-  factory _$$ErrorAccountStateImplCopyWith(_$ErrorAccountStateImpl value,
-          $Res Function(_$ErrorAccountStateImpl) then) =
-      __$$ErrorAccountStateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
+abstract class _$$LoadingErrorButtonAccountStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonAccountStateImplCopyWith(
+          _$LoadingErrorButtonAccountStateImpl value,
+          $Res Function(_$LoadingErrorButtonAccountStateImpl) then) =
+      __$$LoadingErrorButtonAccountStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ErrorAccountStateImplCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$ErrorAccountStateImpl>
-    implements _$$ErrorAccountStateImplCopyWith<$Res> {
-  __$$ErrorAccountStateImplCopyWithImpl(_$ErrorAccountStateImpl _value,
-      $Res Function(_$ErrorAccountStateImpl) _then)
+class __$$LoadingErrorButtonAccountStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonAccountStateImpl>
+    implements _$$LoadingErrorButtonAccountStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonAccountStateImplCopyWithImpl(
+      _$LoadingErrorButtonAccountStateImpl _value,
+      $Res Function(_$LoadingErrorButtonAccountStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$ErrorAccountStateImpl(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$ErrorAccountStateImpl implements ErrorAccountState {
-  const _$ErrorAccountStateImpl({required this.message});
-
-  @override
-  final String message;
+class _$LoadingErrorButtonAccountStateImpl
+    implements LoadingErrorButtonAccountState {
+  const _$LoadingErrorButtonAccountStateImpl();
 
   @override
   String toString() {
-    return 'AccountState.error(message: $message)';
+    return 'AccountState.loadErrorButton()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorAccountStateImpl &&
-            (identical(other.message, message) || other.message == message));
+            other is _$LoadingErrorButtonAccountStateImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of AccountState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ErrorAccountStateImplCopyWith<_$ErrorAccountStateImpl> get copyWith =>
-      __$$ErrorAccountStateImplCopyWithImpl<_$ErrorAccountStateImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -10047,7 +10046,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     required TResult Function() logOut,
     required TResult Function() removeAccount,
   }) {
-    return error(message);
+    return loadErrorButton();
   }
 
   @override
@@ -10055,7 +10054,8 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -10105,7 +10105,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     TResult? Function()? logOut,
     TResult? Function()? removeAccount,
   }) {
-    return error?.call(message);
+    return loadErrorButton?.call();
   }
 
   @override
@@ -10113,7 +10113,329 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(String message)? errorOpenPdf,
+    TResult Function(String url)? payOrder,
+    TResult Function()? openSoppingCart,
+    TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult Function(String code)? addProductToSoppingCart,
+    TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult Function()? logOut,
+    TResult Function()? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAccountState value) init,
+    required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
+    required TResult Function(ErrorAccountState value) error,
+    required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
+    required TResult Function(PayOrderAccountState value) payOrder,
+    required TResult Function(OpenSoppingCartAccountState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductAccountState value) getSizeProduct,
+    required TResult Function(AddProductAccountState value)
+        addProductToSoppingCart,
+    required TResult Function(PreloadDataCompletedAccountState value)
+        preloadDataCompleted,
+    required TResult Function(LogOutAccountState value) logOut,
+    required TResult Function(RemoveAccountState value) removeAccount,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAccountState value)? init,
+    TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
+    TResult? Function(ErrorAccountState value)? error,
+    TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult? Function(PayOrderAccountState value)? payOrder,
+    TResult? Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult? Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult? Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult? Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult? Function(LogOutAccountState value)? logOut,
+    TResult? Function(RemoveAccountState value)? removeAccount,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAccountState value)? init,
+    TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
+    TResult Function(ErrorAccountState value)? error,
+    TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
+    TResult Function(PayOrderAccountState value)? payOrder,
+    TResult Function(OpenSoppingCartAccountState value)? openSoppingCart,
+    TResult Function(GetSizeProductAccountState value)? getSizeProduct,
+    TResult Function(AddProductAccountState value)? addProductToSoppingCart,
+    TResult Function(PreloadDataCompletedAccountState value)?
+        preloadDataCompleted,
+    TResult Function(LogOutAccountState value)? logOut,
+    TResult Function(RemoveAccountState value)? removeAccount,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonAccountState implements AccountState {
+  const factory LoadingErrorButtonAccountState() =
+      _$LoadingErrorButtonAccountStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorAccountStateImplCopyWith<$Res> {
+  factory _$$ErrorAccountStateImplCopyWith(_$ErrorAccountStateImpl value,
+          $Res Function(_$ErrorAccountStateImpl) then) =
+      __$$ErrorAccountStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorAccountStateImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$ErrorAccountStateImpl>
+    implements _$$ErrorAccountStateImplCopyWith<$Res> {
+  __$$ErrorAccountStateImplCopyWithImpl(_$ErrorAccountStateImpl _value,
+      $Res Function(_$ErrorAccountStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorAccountStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorAccountStateImpl implements ErrorAccountState {
+  const _$ErrorAccountStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AccountState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorAccountStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorAccountStateImplCopyWith<_$ErrorAccountStateImpl> get copyWith =>
+      __$$ErrorAccountStateImplCopyWithImpl<_$ErrorAccountStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(String message) errorOpenPdf,
+    required TResult Function(String url) payOrder,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)
+        getSizeProduct,
+    required TResult Function(String code) addProductToSoppingCart,
+    required TResult Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)
+        preloadDataCompleted,
+    required TResult Function() logOut,
+    required TResult Function() removeAccount,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(String message)? errorOpenPdf,
+    TResult? Function(String url)? payOrder,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart)?
+        getSizeProduct,
+    TResult? Function(String code)? addProductToSoppingCart,
+    TResult? Function(
+            String phone,
+            String name,
+            String email,
+            String countOrders,
+            String applicationVersion,
+            List<OrderItemDataModel> orders,
+            List<ProductDataModel> favouritesProducts,
+            List<int> favouritesProductsId,
+            List<String> listProductsCode,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            String virtualCardsCod,
+            List<OrderBlankDataModel> listOrdersBlank,
+            List<OrderBlankDataModel> listTailoringBlank,
+            List<SkuProductDataModel> listSize,
+            Uint8List file,
+            String fileName,
+            bool isLoadGetSizeProduct,
+            int offsetOrders,
+            int offsetOrdersBlank,
+            int offsetTailoringBlank,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isError,
+            String? errorMessage,
+            bool? isShoppingCartDetailsProduct,
+            bool? isSuccessfullySavedFile,
+            bool? isLoadVirtualCardsCod,
+            bool? isLoadOpenPdf,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct,
+            UserDataModel? user,
+            OrderInfoDataModel? orderInfo)?
+        preloadDataCompleted,
+    TResult? Function()? logOut,
+    TResult? Function()? removeAccount,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -10165,7 +10487,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(errorMessage);
     }
     return orElse();
   }
@@ -10175,6 +10497,8 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -10196,6 +10520,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -10215,6 +10540,7 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -10235,10 +10561,10 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
 }
 
 abstract class ErrorAccountState implements AccountState {
-  const factory ErrorAccountState({required final String message}) =
+  const factory ErrorAccountState({required final String errorMessage}) =
       _$ErrorAccountStateImpl;
 
-  String get message;
+  String get errorMessage;
 
   /// Create a copy of AccountState
   /// with the given fields replaced by the non-null parameter values.
@@ -10320,7 +10646,8 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -10378,7 +10705,8 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -10436,7 +10764,8 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -10498,6 +10827,8 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -10519,6 +10850,7 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -10538,6 +10870,7 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -10642,7 +10975,8 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -10700,7 +11034,8 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -10758,7 +11093,8 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -10820,6 +11156,8 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -10841,6 +11179,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -10860,6 +11199,7 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -10938,7 +11278,8 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -10996,7 +11337,8 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -11054,7 +11396,8 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -11116,6 +11459,8 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -11137,6 +11482,7 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -11156,6 +11502,7 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -11294,7 +11641,8 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -11352,7 +11700,8 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -11410,7 +11759,8 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -11472,6 +11822,8 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -11493,6 +11845,7 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -11512,6 +11865,7 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -11622,7 +11976,8 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -11680,7 +12035,8 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -11738,7 +12094,8 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -11800,6 +12157,8 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -11821,6 +12180,7 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -11840,6 +12200,7 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -12544,7 +12905,8 @@ class _$PreloadDataCompletedAccountStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -12639,7 +13001,8 @@ class _$PreloadDataCompletedAccountStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -12734,7 +13097,8 @@ class _$PreloadDataCompletedAccountStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -12833,6 +13197,8 @@ class _$PreloadDataCompletedAccountStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -12854,6 +13220,7 @@ class _$PreloadDataCompletedAccountStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -12873,6 +13240,7 @@ class _$PreloadDataCompletedAccountStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -13022,7 +13390,8 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -13080,7 +13449,8 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -13138,7 +13508,8 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -13200,6 +13571,8 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -13221,6 +13594,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -13240,6 +13614,7 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,
@@ -13306,7 +13681,8 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String message) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String message) errorOpenPdf,
     required TResult Function(String url) payOrder,
     required TResult Function() openSoppingCart,
@@ -13364,7 +13740,8 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String message)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String message)? errorOpenPdf,
     TResult? Function(String url)? payOrder,
     TResult? Function()? openSoppingCart,
@@ -13422,7 +13799,8 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String message)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(String message)? errorOpenPdf,
     TResult Function(String url)? payOrder,
     TResult Function()? openSoppingCart,
@@ -13484,6 +13862,8 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAccountState value) init,
     required TResult Function(LoadingAccountState value) load,
+    required TResult Function(LoadingErrorButtonAccountState value)
+        loadErrorButton,
     required TResult Function(ErrorAccountState value) error,
     required TResult Function(ErrorOpenPdfAccountState value) errorOpenPdf,
     required TResult Function(PayOrderAccountState value) payOrder,
@@ -13505,6 +13885,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAccountState value)? init,
     TResult? Function(LoadingAccountState value)? load,
+    TResult? Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult? Function(ErrorAccountState value)? error,
     TResult? Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult? Function(PayOrderAccountState value)? payOrder,
@@ -13524,6 +13905,7 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAccountState value)? init,
     TResult Function(LoadingAccountState value)? load,
+    TResult Function(LoadingErrorButtonAccountState value)? loadErrorButton,
     TResult Function(ErrorAccountState value)? error,
     TResult Function(ErrorOpenPdfAccountState value)? errorOpenPdf,
     TResult Function(PayOrderAccountState value)? payOrder,

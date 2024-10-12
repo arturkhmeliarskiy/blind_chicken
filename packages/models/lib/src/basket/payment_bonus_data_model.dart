@@ -10,5 +10,6 @@ class PaymentBonusDataModel with _$PaymentBonusDataModel {
     required String e,
     required String info,
     required int balance,
+    required String errorMessage,
   }) = _PaymentBonusDataModel;
 }

@@ -27,6 +27,12 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
   bool _isSwipe = true;
   final ScrollController _scrollController = ScrollController();
   BlindChickenMessage message = BlindChickenMessage();
+  final BlindChickenShowDialogError _blindChickenFavouritesProductsShowDialogError =
+      BlindChickenShowDialogError();
+  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogFavouritesProductsError = false;
+  bool _isShowDialogShoppingCartError = false;
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
   int _currentPage = 1;
@@ -77,96 +83,255 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
       listener: (context, state) {
         state.maybeMap(
           productsFavourites: (initState) {
-            final updateData = GetIt.I.get<UpdateDataService>();
-            if (updateData.isOpenShowModalBottomSheetFavouritesScreen &&
-                !initState.isLoadGetSizeProduct &&
-                (initState.codeProduct?.isEmpty ?? true)) {
-              _historyPosition = 0;
-              Navigator.pop(context);
+            final typeError = initState.typeError ?? '';
+            if (initState.isError ?? false) {
+              if (!_isShowDialogFavouritesProductsError &&
+                  typeError != 'выбрать фильтр' &&
+                  typeError != 'удалить фильтр' &&
+                  typeError != 'удалить фильтры из категории' &&
+                  typeError != 'информация о товаре') {
+                _isShowDialogFavouritesProductsError = true;
+                _blindChickenFavouritesProductsShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<FavouritesBloc, FavouritesState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        productsFavourites: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        error: (value) {
+                          return Text(
+                            'Повторить',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                            textAlign: TextAlign.center,
+                          );
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'удалить фильтр из избранного':
+                        context.read<FavouritesBloc>().add(
+                              FavouritesEvent.deleteCatalogFilter(
+                                key: initState.keyFilterCatalog ?? 0,
+                                index: initState.indexFileter ?? 0,
+                                item: initState.itemFileter ??
+                                    FilterItemDataModel(
+                                      id: 0,
+                                      value: '',
+                                      typeFilter: '',
+                                    ),
+                              ),
+                            );
+                      case 'добавить товар в избранное':
+                        final product = initState.favouriteProduct;
+                        if (product != null) {
+                          context.read<FavouritesBloc>().add(
+                                FavouritesEvent.addFavouriteProduct(
+                                  index: initState.indexProduct ?? 0,
+                                  product: product,
+                                ),
+                              );
+                        }
+                        break;
+                      case 'удалить товар из избранного':
+                        context.read<FavouritesBloc>().add(
+                              FavouritesEvent.deleteFavouriteProduct(
+                                index: initState.indexProduct ?? 0,
+                              ),
+                            );
+                        break;
+                      case 'выбор размера избранное':
+                        context.read<FavouritesBloc>().add(
+                              FavouritesEvent.getInfoProductSize(
+                                code: initState.codeProduct ?? '',
+                                isShop: initState.isShopGetSizeProduct ?? false,
+                                titleScreen: 'Избранное',
+                              ),
+                            );
+
+                        break;
+                      case 'выбор размера карточка товара в избранном':
+                        context.read<FavouritesBloc>().add(
+                              FavouritesEvent.getInfoProductSize(
+                                code: initState.codeProduct ?? '',
+                                isShop: initState.isShopGetSizeProduct ?? false,
+                                titleScreen: 'Карточка товара в избранном',
+                              ),
+                            );
+                        break;
+                    }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogFavouritesProductsError) {
+                _isShowDialogFavouritesProductsError = false;
+                _blindChickenFavouritesProductsShowDialogError.closeShowDialog();
+              }
+              final updateData = GetIt.I.get<UpdateDataService>();
+              if (updateData.isOpenShowModalBottomSheetFavouritesScreen &&
+                  !initState.isLoadGetSizeProduct &&
+                  (initState.codeProduct?.isEmpty ?? true)) {
+                _historyPosition = 0;
+                Navigator.pop(context);
+              }
             }
           },
-          getSizeProduct: (initState) {
-            final updateData = GetIt.I.get<UpdateDataService>();
-            updateData.isOpenShowModalBottomSheetFavouritesScreen = true;
-            showModalBottomSheet<void>(
-              isScrollControlled: true,
-              context: context,
-              builder: (context) {
-                return CatalogSizeProductInfo(
-                  listSize: initState.listSize,
-                  listSizeToSoppingCart: initState.listSizeToSoppingCart,
-                  openSoppingCart: () {
-                    Navigator.pop(context);
-                    updateData.lastScreen = 'favourites_products';
-                    Timer(const Duration(milliseconds: 150), () {
-                      context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
-                    });
-                    context.navigateTo(
-                      const ShoppingCartAutoRouterRoute(
-                        children: [
-                          ShoppingCartRoute(),
-                        ],
-                      ),
-                    );
-                  },
-                  addProductToSoppingCart: (size) {
-                    context.read<FavouritesBloc>().add(
-                          FavouritesEvent.addProductToSoppingCart(
-                            code: int.parse(initState.code),
-                            size: size,
-                            titleScreen: initState.titleScreen,
-                            typeAddProductToShoppingCart: 'Выпадающий список',
-                            identifierAddProductToShoppingCart: '2',
-                          ),
-                        );
-
-                    context.read<ShoppingCartBloc>().add(
-                          ShoppingCartEvent.addOtherProductToSoppingCart(
-                            item: BasketInfoItemDataModel(
-                              code: initState.code,
-                              sku: size.id,
-                              count: 1,
-                              titleScreen: initState.titleScreen,
-                              searchQuery: '',
-                              typeAddProductToShoppingCart: 'Выпадающий список',
-                              identifierAddProductToShoppingCart: '2',
-                              sectionCategoriesPath: [],
-                              productCategoriesPath: [],
+          error: (value) {
+            if (!_isShowDialogFavouritesProductsError) {
+              _isShowDialogFavouritesProductsError = true;
+              _blindChickenFavouritesProductsShowDialogError.openShowDualog(
+                context: context,
+                errorMessage: value.errorMessage,
+                widget: BlocBuilder<FavouritesBloc, FavouritesState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loadErrorButton: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
                             ),
                           ),
                         );
-                    message.showOverlay(
-                      context,
-                      'Размер ${size.value} добавлен в корзину',
-                      () {
-                        Timer(const Duration(milliseconds: 150), () {
-                          context
-                              .read<ShoppingCartBloc>()
-                              .add(const ShoppingCartEvent.preloadData());
-                        });
-                        context.navigateTo(
-                          const ShoppingCartAutoRouterRoute(
-                            children: [
-                              ShoppingCartRoute(),
-                            ],
-                          ),
-                        );
-                        Navigator.pop(context);
                       },
-                      boxShadow: const BoxShadow(),
-                      time: 5,
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
                     );
                   },
-                );
-              },
-            ).whenComplete(() {
+                ),
+                onRepeatRequest: () {
+                  final updateData = GetIt.I.get<UpdateDataService>();
+                  if (!updateData.isOpenShowModalBottomSheetFavouritesScreen) {
+                    Timer(const Duration(milliseconds: 150), () {
+                      context.read<FavouritesBloc>().add(const FavouritesEvent.preloadData());
+                      context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
+                    });
+                  }
+                },
+              );
+            }
+          },
+          getSizeProduct: (initState) {
+            if (!_isShowDialogFavouritesProductsError) {
               final updateData = GetIt.I.get<UpdateDataService>();
-              updateData.isOpenShowModalBottomSheetFavouritesScreen = false;
-              if (message.isVisible) {
-                message.overlayEntry?.remove();
-                message.overlayEntry = null;
-              }
-            });
+              updateData.isOpenShowModalBottomSheetFavouritesScreen = true;
+              showModalBottomSheet<void>(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return CatalogSizeProductInfo(
+                    listSize: initState.listSize,
+                    listSizeToSoppingCart: initState.listSizeToSoppingCart,
+                    openSoppingCart: () {
+                      Navigator.pop(context);
+                      updateData.lastScreen = 'favourites_products';
+                      Timer(const Duration(milliseconds: 150), () {
+                        context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                      });
+                      context.navigateTo(
+                        const ShoppingCartAutoRouterRoute(
+                          children: [
+                            ShoppingCartRoute(),
+                          ],
+                        ),
+                      );
+                    },
+                    addProductToSoppingCart: (size) {
+                      context.read<FavouritesBloc>().add(
+                            FavouritesEvent.addProductToSoppingCart(
+                              code: int.parse(initState.code),
+                              size: size,
+                              titleScreen: initState.titleScreen,
+                              typeAddProductToShoppingCart: 'Выпадающий список',
+                              identifierAddProductToShoppingCart: '2',
+                            ),
+                          );
+
+                      context.read<ShoppingCartBloc>().add(
+                            ShoppingCartEvent.addOtherProductToSoppingCart(
+                              item: BasketInfoItemDataModel(
+                                code: initState.code,
+                                sku: size.id,
+                                count: 1,
+                                titleScreen: initState.titleScreen,
+                                searchQuery: '',
+                                typeAddProductToShoppingCart: 'Выпадающий список',
+                                identifierAddProductToShoppingCart: '2',
+                                sectionCategoriesPath: [],
+                                productCategoriesPath: [],
+                              ),
+                            ),
+                          );
+                      message.showOverlay(
+                        context,
+                        'Размер ${size.value} добавлен в корзину',
+                        () {
+                          Timer(const Duration(milliseconds: 150), () {
+                            context
+                                .read<ShoppingCartBloc>()
+                                .add(const ShoppingCartEvent.preloadData());
+                          });
+                          context.navigateTo(
+                            const ShoppingCartAutoRouterRoute(
+                              children: [
+                                ShoppingCartRoute(),
+                              ],
+                            ),
+                          );
+                          Navigator.pop(context);
+                        },
+                        boxShadow: const BoxShadow(),
+                        time: 5,
+                      );
+                    },
+                  );
+                },
+              ).whenComplete(() {
+                final updateData = GetIt.I.get<UpdateDataService>();
+                updateData.isOpenShowModalBottomSheetFavouritesScreen = false;
+                if (message.isVisible) {
+                  message.overlayEntry?.remove();
+                  message.overlayEntry = null;
+                }
+              });
+            }
           },
           addProductToSoppingCart: (initState) {
             context.read<FavouritesBloc>().add(
@@ -226,393 +391,475 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
           orElse: () => const SizedBox(),
         );
       },
-      child: GestureDetector(
-        onVerticalDragUpdate: (details) {},
-        onHorizontalDragEnd: (DragEndDetails details) {
-          if (details.velocity.pixelsPerSecond.dx > 0) {
-            context.back();
-            setState(() {
-              _isSwipe = true;
-            });
-          }
-        },
-        child: Stack(
-          children: [
-            Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                SafeArea(
-                  child: Scaffold(
-                    body: PopScope(
-                      canPop: false,
-                      onPopInvoked: (value) {
-                        if (_isSwipe) {
-                          context.back();
-                        }
-                      },
-                      child: ListView(
-                        controller: _scrollController,
-                        children: [
-                          const AppBarBlindChicken(),
-                          const SizedBox(
-                            height: 17.5,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 10.5,
-                              right: 10.5,
-                            ),
-                            child: Text(
-                              'Избранное',
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                          ),
-                          BlocBuilder<FavouritesBloc, FavouritesState>(
-                            builder: (context, state) {
-                              return state.maybeMap(
-                                  productsFavourites: (initState) {
-                                    if (_scrollController.position.pixels == 0) {
-                                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                                        _scrollController.jumpTo(_historyPosition);
-                                      });
-                                    }
-                                    if (initState.offset == 1) {
-                                      _paginationPosition = 0;
-                                    }
-                                    return initState.favouritesProducts.isEmpty &&
-                                            initState.selectFilter.isEmpty
-                                        ? Padding(
-                                            padding: const EdgeInsets.only(
-                                              top: 14.0,
-                                              left: 10.5,
-                                              right: 10.5,
-                                            ),
-                                            child: Text(
-                                              'В избранном пока пусто.',
-                                              style: Theme.of(context).textTheme.displayMedium,
-                                            ),
-                                          )
-                                        : Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  left: 10.5,
-                                                  right: 10.5,
-                                                ),
-                                                height: 60,
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    context
-                                                        .navigateTo(const FavouritesFiltersRoute());
-                                                  },
-                                                  child: Row(
-                                                    children: [
-                                                      SvgPicture.asset(
-                                                        'assets/icons/filter.svg',
-                                                        height: 17.5,
-                                                        width: 17.5,
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 3.5,
-                                                      ),
-                                                      Text(
-                                                        'Фильтры',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .displayMedium
-                                                            ?.copyWith(
-                                                              fontWeight: FontWeight.w700,
-                                                            ),
-                                                      ),
-                                                      if (initState.allSelectFilter.isNotEmpty)
-                                                        Container(
-                                                          height: 14,
-                                                          padding: const EdgeInsets.only(
-                                                            right: 4,
-                                                            left: 4,
-                                                          ),
-                                                          margin: const EdgeInsets.only(left: 6),
-                                                          alignment: Alignment.center,
-                                                          decoration: BoxDecoration(
-                                                            color: BlindChickenColors
-                                                                .activeBorderTextField,
-                                                            borderRadius: BorderRadius.circular(8),
-                                                          ),
-                                                          child: Text(
-                                                            initState.allSelectFilter.length
-                                                                .toString(),
-                                                            style: Theme.of(context)
-                                                                .textTheme
-                                                                .bodyLarge
-                                                                ?.copyWith(
-                                                                  color: BlindChickenColors
-                                                                      .backgroundColor,
-                                                                  height: 1,
-                                                                ),
-                                                          ),
-                                                        )
-                                                      else
-                                                        const SizedBox(),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              if (initState.allSelectFilter.isNotEmpty)
-                                                Container(
-                                                  margin: const EdgeInsets.only(
-                                                    left: 12,
-                                                    right: 12,
-                                                  ),
-                                                  height: 34,
-                                                  child: ListView(
-                                                      scrollDirection: Axis.horizontal,
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment.start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment.start,
-                                                          children: List.generate(
-                                                              initState.allSelectFilter.length,
-                                                              (index) {
-                                                            return InkWell(
-                                                              onTap: () {
-                                                                context.read<FavouritesBloc>().add(
-                                                                      FavouritesEvent
-                                                                          .deleteCatalogFilter(
-                                                                        key: initState
-                                                                            .allSelectFilter[index]
-                                                                            .keys
-                                                                            .first,
-                                                                        index: index,
-                                                                        item: initState
-                                                                            .allSelectFilter[index]
-                                                                            .values
-                                                                            .first,
-                                                                      ),
-                                                                    );
-                                                              },
-                                                              child: Container(
-                                                                decoration: BoxDecoration(
-                                                                  color: BlindChickenColors
-                                                                      .backgroundColorItemFilter,
-                                                                  borderRadius:
-                                                                      BorderRadius.circular(4),
-                                                                ),
-                                                                margin: EdgeInsets.only(
-                                                                  right: initState.allSelectFilter
-                                                                                  .length -
-                                                                              1 !=
-                                                                          index
-                                                                      ? 12
-                                                                      : 0,
-                                                                ),
-                                                                padding: const EdgeInsets.all(3.5),
-                                                                height: 27,
-                                                                child: Row(
-                                                                  children: [
-                                                                    Text(
-                                                                      initState
-                                                                          .allSelectFilter[index]
-                                                                          .values
-                                                                          .first
-                                                                          .value,
-                                                                      style: Theme.of(context)
-                                                                          .textTheme
-                                                                          .displaySmall,
-                                                                    ),
-                                                                    const SizedBox(
-                                                                      width: 7,
-                                                                    ),
-                                                                    SvgPicture.asset(
-                                                                      'assets/icons/x.svg',
-                                                                      width: 13.3,
-                                                                      height: 13.3,
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }),
-                                                        ),
-                                                      ]),
-                                                )
-                                              else
-                                                const SizedBox(),
-                                              Wrap(
-                                                children: List.generate(
-                                                    initState.favouritesProducts.length, (index) {
-                                                  return CatalogCardItem(
-                                                    isLike: true,
-                                                    pb: initState.favouritesProducts[index].pb,
-                                                    images:
-                                                        initState.favouritesProducts[index].images,
-                                                    onSelect: () {
-                                                      context.read<FavouritesBloc>().add(
-                                                            FavouritesEvent.getInfoProduct(
-                                                              code: initState
-                                                                  .favouritesProducts[index].id
-                                                                  .toString(),
-                                                              titleScreen:
-                                                                  'Карточка товара в избранном',
-                                                              typeAddProductToShoppingCart:
-                                                                  'Карточка товара',
-                                                              identifierAddProductToShoppingCart:
-                                                                  '1',
-                                                            ),
-                                                          );
-                                                      context.navigateTo(
-                                                        FavouritesCardInfoRoute(
-                                                          isChildRoute: false,
-                                                          item: initState.favouritesProducts[index],
-                                                          isLike: true,
-                                                          listItems: initState.favouritesProducts,
-                                                          favouritesProducts:
-                                                              initState.favouritesProducts,
-                                                        ),
-                                                      );
-                                                    },
-                                                    isYourPriceDisplayed: initState
-                                                        .favouritesProducts[index]
-                                                        .isYourPriceDisplayed,
-                                                    imageUrl: initState
-                                                        .favouritesProducts[index].images[0],
-                                                    brend:
-                                                        initState.favouritesProducts[index].brend,
-                                                    category: initState
-                                                        .favouritesProducts[index].category,
-                                                    yourPrice: initState
-                                                        .favouritesProducts[index].yourPrice
-                                                        .toString(),
-                                                    maximumCashback: initState
-                                                        .favouritesProducts[index].maximumCashback,
-                                                    maximumPersonalDiscount: initState
-                                                        .favouritesProducts[index]
-                                                        .maximumPersonalDiscount,
-                                                    isAuth: initState.isAuth,
-                                                    price: initState.favouritesProducts[index].price
-                                                        .toString(),
-                                                    onAddFavouriteProduct: () {
-                                                      context.read<FavouritesBloc>().add(
-                                                            FavouritesEvent.addFavouriteProduct(
-                                                              product: initState
-                                                                  .favouritesProducts[index],
-                                                              index: initState
-                                                                  .favouritesProducts[index].id,
-                                                            ),
-                                                          );
-                                                    },
-                                                    onDeleteFavouriteProduct: () {
-                                                      context.read<FavouritesBloc>().add(
-                                                            FavouritesEvent.deleteFavouriteProduct(
-                                                              index: initState
-                                                                  .favouritesProducts[index].id,
-                                                            ),
-                                                          );
-                                                      context.read<CatalogBloc>().add(
-                                                          const CatalogEvent
-                                                              .updateFavouritesProducts());
-                                                    },
-                                                    isShop:
-                                                        initState.favouritesProducts[index].isShop,
-                                                    onAddProductToSoppingCart: () {
-                                                      context.read<FavouritesBloc>().add(
-                                                            FavouritesEvent.getInfoProductSize(
-                                                              code: initState
-                                                                  .favouritesProducts[index].id
-                                                                  .toString(),
-                                                              isShop: initState
-                                                                  .favouritesProducts[index].isShop,
-                                                              titleScreen: 'Избранное',
-                                                            ),
-                                                          );
-                                                    },
-                                                    listSize: initState.listSize,
-                                                    userDiscount: initState.userDiscount,
-                                                    isLoad:
-                                                        int.parse(initState.codeProduct ?? '0') ==
-                                                                initState
-                                                                    .favouritesProducts[index].id &&
-                                                            initState.isLoadGetSizeProduct,
-                                                    sizeProduct: const [],
-                                                    promo:
-                                                        initState.favouritesProducts[index].promo,
-                                                    promoValue: initState
-                                                        .favouritesProducts[index].promoValue,
-                                                  );
-                                                }),
-                                              ),
-                                            ],
-                                          );
-                                  },
-                                  orElse: () => const SizedBox());
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                BlocBuilder<FavouritesBloc, FavouritesState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      productsFavourites: (initState) {
-                        if (initState.isButtonTop && !isLoading) {
-                          return GestureDetector(
-                            onTap: () {
-                              _scrollController.jumpTo(0.0);
-                            },
-                            child: Container(
-                              height: 45,
-                              width: 45,
-                              margin: const EdgeInsets.only(left: 15, bottom: 15),
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: BlindChickenColors.activeBorderTextField,
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: SvgPicture.asset(
-                                'assets/icons/chevron-top.svg',
+      child: BlocListener<ShoppingCartBloc, ShoppingCartState>(
+        listener: (context, state) {
+          state.maybeMap(
+            error: (value) {
+              if (!_isShowDialogShoppingCartError &&
+                  !_isShowDialogFavouritesProductsError &&
+                  value.titleScreen == 'Избранное') {
+                _isShowDialogShoppingCartError = true;
+                _blindChickenShoppingCartShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: value.errorMessage,
+                  widget: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        loadErrorButton: (value) {
+                          return const SizedBox(
+                            height: 15,
+                            width: 15,
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                                color: BlindChickenColors.backgroundColor,
                               ),
                             ),
                           );
-                        } else {
-                          return const SizedBox();
-                        }
-                      },
-                      orElse: () => const SizedBox(),
-                    );
-                  },
-                )
-              ],
-            ),
-            BlocBuilder<FavouritesBloc, FavouritesState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  load: (value) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        backgroundColor: Colors.grey.shade400,
-                      ),
-                    );
-                  },
-                  productsFavourites: (initState) {
-                    return isLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                              backgroundColor: Colors.grey.shade400,
+                        },
+                        error: (value) {
+                          return Text(
+                            'Повторить',
+                            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                            textAlign: TextAlign.center,
+                          );
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    context.read<ShoppingCartBloc>().add(
+                          ShoppingCartEvent.addOtherProductToSoppingCart(
+                            item: BasketInfoItemDataModel(
+                              titleScreen: value.item?.titleScreen ?? '',
+                              typeAddProductToShoppingCart:
+                                  value.item?.typeAddProductToShoppingCart ?? '',
+                              searchQuery: '',
+                              identifierAddProductToShoppingCart: '2',
+                              sectionCategoriesPath: value.item?.sectionCategoriesPath ?? [],
+                              productCategoriesPath: value.item?.productCategoriesPath ?? [],
+                              code: value.item?.code ?? '',
+                              sku: value.item?.sku ?? '',
+                              count: 1,
                             ),
-                          )
-                        : const SizedBox();
+                          ),
+                        );
                   },
-                  orElse: () => const SizedBox(),
                 );
-              },
-            ),
-          ],
+              }
+            },
+            productsShoppingCart: (value) {
+              if (_isShowDialogShoppingCartError) {
+                _isShowDialogShoppingCartError = false;
+                _blindChickenShoppingCartShowDialogError.closeShowDialog();
+              }
+            },
+            orElse: () {},
+          );
+        },
+        child: GestureDetector(
+          onVerticalDragUpdate: (details) {},
+          onHorizontalDragEnd: (DragEndDetails details) {
+            if (details.velocity.pixelsPerSecond.dx > 0) {
+              context.back();
+              setState(() {
+                _isSwipe = true;
+              });
+            }
+          },
+          child: Stack(
+            children: [
+              Stack(
+                alignment: Alignment.bottomLeft,
+                children: [
+                  SafeArea(
+                    child: Scaffold(
+                      body: PopScope(
+                        canPop: false,
+                        onPopInvoked: (value) {
+                          if (_isSwipe) {
+                            context.back();
+                          }
+                        },
+                        child: ListView(
+                          controller: _scrollController,
+                          children: [
+                            const AppBarBlindChicken(),
+                            const SizedBox(
+                              height: 17.5,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10.5,
+                                right: 10.5,
+                              ),
+                              child: Text(
+                                'Избранное',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ),
+                            BlocBuilder<FavouritesBloc, FavouritesState>(
+                              builder: (context, state) {
+                                return state.maybeMap(
+                                    productsFavourites: (initState) {
+                                      if (_scrollController.position.pixels == 0) {
+                                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                                          _scrollController.jumpTo(_historyPosition);
+                                        });
+                                      }
+                                      if (initState.offset == 1) {
+                                        _paginationPosition = 0;
+                                      }
+                                      return initState.favouritesProducts.isEmpty &&
+                                              initState.selectFilter.isEmpty
+                                          ? Padding(
+                                              padding: const EdgeInsets.only(
+                                                top: 14.0,
+                                                left: 10.5,
+                                                right: 10.5,
+                                              ),
+                                              child: Text(
+                                                'В избранном пока пусто.',
+                                                style: Theme.of(context).textTheme.displayMedium,
+                                              ),
+                                            )
+                                          : Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  margin: const EdgeInsets.only(
+                                                    left: 10.5,
+                                                    right: 10.5,
+                                                  ),
+                                                  height: 60,
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      context.navigateTo(
+                                                          const FavouritesFiltersRoute());
+                                                    },
+                                                    child: Row(
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          'assets/icons/filter.svg',
+                                                          height: 17.5,
+                                                          width: 17.5,
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 3.5,
+                                                        ),
+                                                        Text(
+                                                          'Фильтры',
+                                                          style: Theme.of(context)
+                                                              .textTheme
+                                                              .displayMedium
+                                                              ?.copyWith(
+                                                                fontWeight: FontWeight.w700,
+                                                              ),
+                                                        ),
+                                                        if (initState.allSelectFilter.isNotEmpty)
+                                                          Container(
+                                                            height: 14,
+                                                            padding: const EdgeInsets.only(
+                                                              right: 4,
+                                                              left: 4,
+                                                            ),
+                                                            margin: const EdgeInsets.only(left: 6),
+                                                            alignment: Alignment.center,
+                                                            decoration: BoxDecoration(
+                                                              color: BlindChickenColors
+                                                                  .activeBorderTextField,
+                                                              borderRadius:
+                                                                  BorderRadius.circular(8),
+                                                            ),
+                                                            child: Text(
+                                                              initState.allSelectFilter.length
+                                                                  .toString(),
+                                                              style: Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyLarge
+                                                                  ?.copyWith(
+                                                                    color: BlindChickenColors
+                                                                        .backgroundColor,
+                                                                    height: 1,
+                                                                  ),
+                                                            ),
+                                                          )
+                                                        else
+                                                          const SizedBox(),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                if (initState.allSelectFilter.isNotEmpty)
+                                                  Container(
+                                                    margin: const EdgeInsets.only(
+                                                      left: 12,
+                                                      right: 12,
+                                                    ),
+                                                    height: 34,
+                                                    child: ListView(
+                                                        scrollDirection: Axis.horizontal,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment.start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment.start,
+                                                            children: List.generate(
+                                                                initState.allSelectFilter.length,
+                                                                (index) {
+                                                              return InkWell(
+                                                                onTap: () {
+                                                                  context
+                                                                      .read<FavouritesBloc>()
+                                                                      .add(
+                                                                        FavouritesEvent
+                                                                            .deleteCatalogFilter(
+                                                                          key: initState
+                                                                              .allSelectFilter[
+                                                                                  index]
+                                                                              .keys
+                                                                              .first,
+                                                                          index: index,
+                                                                          item: initState
+                                                                              .allSelectFilter[
+                                                                                  index]
+                                                                              .values
+                                                                              .first,
+                                                                        ),
+                                                                      );
+                                                                },
+                                                                child: Container(
+                                                                  decoration: BoxDecoration(
+                                                                    color: BlindChickenColors
+                                                                        .backgroundColorItemFilter,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(4),
+                                                                  ),
+                                                                  margin: EdgeInsets.only(
+                                                                    right: initState.allSelectFilter
+                                                                                    .length -
+                                                                                1 !=
+                                                                            index
+                                                                        ? 12
+                                                                        : 0,
+                                                                  ),
+                                                                  padding:
+                                                                      const EdgeInsets.all(3.5),
+                                                                  height: 27,
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Text(
+                                                                        initState
+                                                                            .allSelectFilter[index]
+                                                                            .values
+                                                                            .first
+                                                                            .value,
+                                                                        style: Theme.of(context)
+                                                                            .textTheme
+                                                                            .displaySmall,
+                                                                      ),
+                                                                      const SizedBox(
+                                                                        width: 7,
+                                                                      ),
+                                                                      SvgPicture.asset(
+                                                                        'assets/icons/x.svg',
+                                                                        width: 13.3,
+                                                                        height: 13.3,
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }),
+                                                          ),
+                                                        ]),
+                                                  )
+                                                else
+                                                  const SizedBox(),
+                                                Wrap(
+                                                  children: List.generate(
+                                                      initState.favouritesProducts.length, (index) {
+                                                    return CatalogCardItem(
+                                                      isLike: true,
+                                                      pb: initState.favouritesProducts[index].pb,
+                                                      images: initState
+                                                          .favouritesProducts[index].images,
+                                                      onSelect: () {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent.getInfoProduct(
+                                                                code: initState
+                                                                    .favouritesProducts[index].id
+                                                                    .toString(),
+                                                                titleScreen:
+                                                                    'Карточка товара в избранном',
+                                                                typeAddProductToShoppingCart:
+                                                                    'Карточка товара',
+                                                                identifierAddProductToShoppingCart:
+                                                                    '1',
+                                                              ),
+                                                            );
+                                                        context.navigateTo(
+                                                          FavouritesCardInfoRoute(
+                                                            isChildRoute: false,
+                                                            item:
+                                                                initState.favouritesProducts[index],
+                                                            isLike: true,
+                                                            listItems: initState.favouritesProducts,
+                                                            favouritesProducts:
+                                                                initState.favouritesProducts,
+                                                          ),
+                                                        );
+                                                      },
+                                                      isYourPriceDisplayed: initState
+                                                          .favouritesProducts[index]
+                                                          .isYourPriceDisplayed,
+                                                      imageUrl: initState
+                                                          .favouritesProducts[index].images[0],
+                                                      brend:
+                                                          initState.favouritesProducts[index].brend,
+                                                      category: initState
+                                                          .favouritesProducts[index].category,
+                                                      yourPrice: initState
+                                                          .favouritesProducts[index].yourPrice
+                                                          .toString(),
+                                                      maximumCashback: initState
+                                                          .favouritesProducts[index]
+                                                          .maximumCashback,
+                                                      maximumPersonalDiscount: initState
+                                                          .favouritesProducts[index]
+                                                          .maximumPersonalDiscount,
+                                                      isAuth: initState.isAuth,
+                                                      price: initState
+                                                          .favouritesProducts[index].price
+                                                          .toString(),
+                                                      onAddFavouriteProduct: () {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent.addFavouriteProduct(
+                                                                product: initState
+                                                                    .favouritesProducts[index],
+                                                                index: initState
+                                                                    .favouritesProducts[index].id,
+                                                              ),
+                                                            );
+                                                      },
+                                                      onDeleteFavouriteProduct: () {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent
+                                                                  .deleteFavouriteProduct(
+                                                                index: initState
+                                                                    .favouritesProducts[index].id,
+                                                              ),
+                                                            );
+                                                        context.read<CatalogBloc>().add(
+                                                            const CatalogEvent
+                                                                .updateFavouritesProducts());
+                                                      },
+                                                      isShop: initState
+                                                          .favouritesProducts[index].isShop,
+                                                      onAddProductToSoppingCart: () {
+                                                        context.read<FavouritesBloc>().add(
+                                                              FavouritesEvent.getInfoProductSize(
+                                                                code: initState
+                                                                    .favouritesProducts[index].id
+                                                                    .toString(),
+                                                                isShop: initState
+                                                                    .favouritesProducts[index]
+                                                                    .isShop,
+                                                                titleScreen: 'Избранное',
+                                                              ),
+                                                            );
+                                                      },
+                                                      listSize: initState.listSize,
+                                                      userDiscount: initState.userDiscount,
+                                                      isLoad:
+                                                          int.parse(initState.codeProduct ?? '0') ==
+                                                                  initState
+                                                                      .favouritesProducts[index]
+                                                                      .id &&
+                                                              initState.isLoadGetSizeProduct,
+                                                      sizeProduct: const [],
+                                                      promo:
+                                                          initState.favouritesProducts[index].promo,
+                                                      promoValue: initState
+                                                          .favouritesProducts[index].promoValue,
+                                                    );
+                                                  }),
+                                                ),
+                                              ],
+                                            );
+                                    },
+                                    orElse: () => const SizedBox());
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  BlocBuilder<FavouritesBloc, FavouritesState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        productsFavourites: (initState) {
+                          if (initState.isButtonTop && !isLoading) {
+                            return GestureDetector(
+                              onTap: () {
+                                _scrollController.jumpTo(0.0);
+                              },
+                              child: Container(
+                                height: 45,
+                                width: 45,
+                                margin: const EdgeInsets.only(left: 15, bottom: 15),
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: BlindChickenColors.activeBorderTextField,
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                                child: SvgPicture.asset(
+                                  'assets/icons/chevron-top.svg',
+                                ),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  )
+                ],
+              ),
+              BlocBuilder<FavouritesBloc, FavouritesState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    load: (value) {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.black,
+                          backgroundColor: Colors.grey.shade400,
+                        ),
+                      );
+                    },
+                    productsFavourites: (initState) {
+                      return isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.black,
+                                backgroundColor: Colors.grey.shade400,
+                              ),
+                            )
+                          : const SizedBox();
+                    },
+                    orElse: () => const SizedBox(),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

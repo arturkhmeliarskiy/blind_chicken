@@ -21,6 +21,7 @@ mixin _$CatalogSearchDataModel {
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
   List<CatalogSectionDataModel> get sections =>
       throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogSearchDataModelCopyWith<CatalogSearchDataModel> get copyWith =>
@@ -37,7 +38,8 @@ abstract class $CatalogSearchDataModelCopyWith<$Res> {
       {int productsCount,
       int sectionsCount,
       List<ProductDataModel> products,
-      List<CatalogSectionDataModel> sections});
+      List<CatalogSectionDataModel> sections,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -58,6 +60,7 @@ class _$CatalogSearchDataModelCopyWithImpl<$Res,
     Object? sectionsCount = null,
     Object? products = null,
     Object? sections = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       productsCount: null == productsCount
@@ -76,6 +79,10 @@ class _$CatalogSearchDataModelCopyWithImpl<$Res,
           ? _value.sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<CatalogSectionDataModel>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -93,7 +100,8 @@ abstract class _$$CatalogSearchDataModelImplCopyWith<$Res>
       {int productsCount,
       int sectionsCount,
       List<ProductDataModel> products,
-      List<CatalogSectionDataModel> sections});
+      List<CatalogSectionDataModel> sections,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$CatalogSearchDataModelImplCopyWithImpl<$Res>
     Object? sectionsCount = null,
     Object? products = null,
     Object? sections = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$CatalogSearchDataModelImpl(
       productsCount: null == productsCount
@@ -131,6 +140,10 @@ class __$$CatalogSearchDataModelImplCopyWithImpl<$Res>
           ? _value._sections
           : sections // ignore: cast_nullable_to_non_nullable
               as List<CatalogSectionDataModel>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -142,7 +155,8 @@ class _$CatalogSearchDataModelImpl extends _CatalogSearchDataModel {
       {required this.productsCount,
       required this.sectionsCount,
       required final List<ProductDataModel> products,
-      required final List<CatalogSectionDataModel> sections})
+      required final List<CatalogSectionDataModel> sections,
+      required this.errorMessage})
       : _products = products,
         _sections = sections,
         super._();
@@ -168,8 +182,11 @@ class _$CatalogSearchDataModelImpl extends _CatalogSearchDataModel {
   }
 
   @override
+  final String errorMessage;
+
+  @override
   String toString() {
-    return 'CatalogSearchDataModel(productsCount: $productsCount, sectionsCount: $sectionsCount, products: $products, sections: $sections)';
+    return 'CatalogSearchDataModel(productsCount: $productsCount, sectionsCount: $sectionsCount, products: $products, sections: $sections, errorMessage: $errorMessage)';
   }
 
   @override
@@ -182,7 +199,9 @@ class _$CatalogSearchDataModelImpl extends _CatalogSearchDataModel {
             (identical(other.sectionsCount, sectionsCount) ||
                 other.sectionsCount == sectionsCount) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
-            const DeepCollectionEquality().equals(other._sections, _sections));
+            const DeepCollectionEquality().equals(other._sections, _sections) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -191,7 +210,8 @@ class _$CatalogSearchDataModelImpl extends _CatalogSearchDataModel {
       productsCount,
       sectionsCount,
       const DeepCollectionEquality().hash(_products),
-      const DeepCollectionEquality().hash(_sections));
+      const DeepCollectionEquality().hash(_sections),
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -203,11 +223,11 @@ class _$CatalogSearchDataModelImpl extends _CatalogSearchDataModel {
 
 abstract class _CatalogSearchDataModel extends CatalogSearchDataModel {
   factory _CatalogSearchDataModel(
-          {required final int productsCount,
-          required final int sectionsCount,
-          required final List<ProductDataModel> products,
-          required final List<CatalogSectionDataModel> sections}) =
-      _$CatalogSearchDataModelImpl;
+      {required final int productsCount,
+      required final int sectionsCount,
+      required final List<ProductDataModel> products,
+      required final List<CatalogSectionDataModel> sections,
+      required final String errorMessage}) = _$CatalogSearchDataModelImpl;
   _CatalogSearchDataModel._() : super._();
 
   @override
@@ -218,6 +238,8 @@ abstract class _CatalogSearchDataModel extends CatalogSearchDataModel {
   List<ProductDataModel> get products;
   @override
   List<CatalogSectionDataModel> get sections;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$CatalogSearchDataModelImplCopyWith<_$CatalogSearchDataModelImpl>

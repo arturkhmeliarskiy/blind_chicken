@@ -108,6 +108,7 @@ extension on FavouritesCatalogInfoResponse {
     return FavouritesCatalogInfoDataModel(
       r: r ?? '',
       e: e ?? '',
+      errorMessage: errorMessage ?? '',
       userDiscount: int.parse(userDiscount ?? '0'),
       h1: h1 ?? '',
       count: count ?? '',
@@ -170,6 +171,7 @@ extension on FavouritesInfoResponse {
     return FavouritesInfoDataModel(
       r: r ?? '',
       e: e ?? '',
+      errorMessage: errorMessage ?? '',
     );
   }
 }

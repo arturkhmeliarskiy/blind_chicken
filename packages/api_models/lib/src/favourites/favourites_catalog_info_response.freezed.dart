@@ -34,6 +34,7 @@ mixin _$FavouritesCatalogInfoResponse {
       throw _privateConstructorUsedError;
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +59,8 @@ abstract class $FavouritesCatalogInfoResponseCopyWith<$Res> {
       List<FilterCatalogInfoResponse>? filter,
       List<CatalogProductResponse>? products,
       String? r,
-      String? e});
+      String? e,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -83,6 +85,7 @@ class _$FavouritesCatalogInfoResponseCopyWithImpl<$Res,
     Object? products = freezed,
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       userDiscount: freezed == userDiscount
@@ -117,6 +120,10 @@ class _$FavouritesCatalogInfoResponseCopyWithImpl<$Res,
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -139,7 +146,8 @@ abstract class _$$FavouritesCatalogInfoResponseImplCopyWith<$Res>
       List<FilterCatalogInfoResponse>? filter,
       List<CatalogProductResponse>? products,
       String? r,
-      String? e});
+      String? e,
+      String? errorMessage});
 }
 
 /// @nodoc
@@ -163,6 +171,7 @@ class __$$FavouritesCatalogInfoResponseImplCopyWithImpl<$Res>
     Object? products = freezed,
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$FavouritesCatalogInfoResponseImpl(
       userDiscount: freezed == userDiscount
@@ -197,6 +206,10 @@ class __$$FavouritesCatalogInfoResponseImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -214,7 +227,8 @@ class _$FavouritesCatalogInfoResponseImpl
       final List<FilterCatalogInfoResponse>? filter,
       final List<CatalogProductResponse>? products,
       this.r,
-      this.e})
+      this.e,
+      this.errorMessage})
       : _filter = filter,
         _products = products,
         super._();
@@ -258,10 +272,12 @@ class _$FavouritesCatalogInfoResponseImpl
   final String? r;
   @override
   final String? e;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'FavouritesCatalogInfoResponse(userDiscount: $userDiscount, h1: $h1, count: $count, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'FavouritesCatalogInfoResponse(userDiscount: $userDiscount, h1: $h1, count: $count, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -278,7 +294,9 @@ class _$FavouritesCatalogInfoResponseImpl
             const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
@@ -292,7 +310,8 @@ class _$FavouritesCatalogInfoResponseImpl
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
-      e);
+      e,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -321,7 +340,8 @@ abstract class _FavouritesCatalogInfoResponse
       final List<FilterCatalogInfoResponse>? filter,
       final List<CatalogProductResponse>? products,
       final String? r,
-      final String? e}) = _$FavouritesCatalogInfoResponseImpl;
+      final String? e,
+      final String? errorMessage}) = _$FavouritesCatalogInfoResponseImpl;
   _FavouritesCatalogInfoResponse._() : super._();
 
   factory _FavouritesCatalogInfoResponse.fromJson(Map<String, dynamic> json) =
@@ -346,6 +366,8 @@ abstract class _FavouritesCatalogInfoResponse
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$FavouritesCatalogInfoResponseImplCopyWith<

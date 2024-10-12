@@ -20,6 +20,7 @@ class FavouritesCatalogInfoResponse with _$FavouritesCatalogInfoResponse {
     List<CatalogProductResponse>? products,
     String? r,
     String? e,
+    String? errorMessage,
   }) = _FavouritesCatalogInfoResponse;
   factory FavouritesCatalogInfoResponse.fromJson(Map<String, dynamic> json) =>
       _$FavouritesCatalogInfoResponseFromJson(json);

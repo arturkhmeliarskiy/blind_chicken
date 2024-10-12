@@ -97,9 +97,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
-      emit(initState.copyWith(
-        isLoading: true,
-      ));
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoading: true,
+        ));
+      }
 
       final searchResult = await _catalogRepository.searchProducts(
         search: event.query,
@@ -108,8 +114,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       emit(initState.copyWith(
         searchProducts: searchResult.products,
         searchSections: searchResult.sections,
+        isError: searchResult.errorMessage.isNotEmpty,
+        errorMessage: MessageInfo.errorMessage,
+        typeError: 'поиск товаров',
         query: event.query,
         isLoading: false,
+        isLoadErrorButton: false,
         productsCount: searchResult.productsCount,
         codeProduct: null,
         offset: 1,
@@ -122,7 +132,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
-      emit(const SearchState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const SearchState.load());
+      }
+
       CatalogSearchProductsRequest request = initState.request;
 
       request = request.copyWith(query: event.query);
@@ -140,14 +157,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       List<ProductDataModel> favouritesProducts = [];
       List<int> favouritesProductsId = [];
+      FavouritesDataModel? favouritesProductsInfo;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        final result = await _favouritesRepository.getFavouritesProdcuts();
-        favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
-        log(result.toString());
+        favouritesProductsInfo = await _favouritesRepository.getFavouritesProdcuts();
+        favouritesProductsId =
+            favouritesProductsInfo.favorites.map((item) => int.parse(item)).toList();
+        log(favouritesProductsInfo.toString());
       } else {
         favouritesProducts = _catalogRepository.getFavouritesProducts();
         favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
@@ -159,6 +178,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         products: searchResultInfo.products,
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        typeError: 'результат поиска',
+        isError: searchResultInfo.errorMessage.isNotEmpty ||
+            (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false),
+        isLoadErrorButton: false,
         listProductsCode: [],
         filter: searchResultInfo.filter,
         request: request,
@@ -173,15 +196,22 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       CatalogSearchProductsRequest request = initState.request;
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
-      if (selectItem.contains(event.item)) {
-        selectItem.insert(event.indexItem, event.item);
-      } else {
-        selectItem.add(event.item);
+      if (!(initState.isError ?? false)) {
+        if (selectItem.contains(event.item)) {
+          selectItem.insert(event.indexItem, event.item);
+        } else {
+          selectItem.add(event.item);
+        }
       }
 
       selectFilter[event.index] = selectItem;
@@ -223,16 +253,32 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         request: request,
       );
 
-      emit(const SearchState.load());
+      if (searchResultInfo.errorMessage.isEmpty) {
+        emit(const SearchState.load());
+      }
 
       emit(initState.copyWith(
-        selectFilter: selectFilter,
-        filter: searchResultInfo.filter,
-        allSelectFilter: allSelectFilter,
-        products: searchResultInfo.products,
-        searchResultInfo: searchResultInfo,
+        selectFilter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+        filter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.filter : searchResultInfo.filter,
+        allSelectFilter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+        products: searchResultInfo.errorMessage.isNotEmpty
+            ? initState.products
+            : searchResultInfo.products,
+        searchResultInfo: searchResultInfo.errorMessage.isNotEmpty
+            ? initState.searchResultInfo
+            : searchResultInfo,
+        isError: searchResultInfo.errorMessage.isNotEmpty,
+        typeError: 'выбрать фильтр',
+        errorMessage: MessageInfo.errorMessage,
+        indexFileter: event.index,
+        indexItemFileter: event.indexItem,
+        itemFileter: event.item,
         request: request,
         offset: 1,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -242,13 +288,21 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
       CatalogSearchProductsRequest request = initState.request;
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
       Map<String, FilterCatalogDataModel> filtersInfo = {};
 
-      selectItem.remove(event.item);
+      if (!(initState.isError ?? false)) {
+        selectItem.remove(event.item);
+      }
+
       selectFilter[event.index] = selectItem;
 
       log(selectFilter.toString());
@@ -289,16 +343,33 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       );
 
       log(allSelectFilter.length.toString());
-      emit(const SearchState.load());
+      if (searchResultInfo.errorMessage.isEmpty) {
+        emit(const SearchState.load());
+      }
       emit(
         initState.copyWith(
-          filter: searchResultInfo.filter,
-          products: searchResultInfo.products,
+          selectFilter:
+              searchResultInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+          filter:
+              searchResultInfo.errorMessage.isNotEmpty ? initState.filter : searchResultInfo.filter,
+          allSelectFilter: searchResultInfo.errorMessage.isNotEmpty
+              ? initState.allSelectFilter
+              : allSelectFilter,
+          products: searchResultInfo.errorMessage.isNotEmpty
+              ? initState.products
+              : searchResultInfo.products,
+          searchResultInfo: searchResultInfo.errorMessage.isNotEmpty
+              ? initState.searchResultInfo
+              : searchResultInfo,
+          isError: searchResultInfo.errorMessage.isNotEmpty,
+          typeError: 'удалить фильтр',
+          errorMessage: MessageInfo.errorMessage,
+          indexFileter: event.index,
+          indexItemFileter: event.indexItem,
+          itemFileter: event.item,
           request: request,
-          selectFilter: selectFilter,
-          searchResultInfo: searchResultInfo,
-          allSelectFilter: allSelectFilter,
           offset: 1,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -309,6 +380,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       CatalogSearchProductsRequest request = initState.request;
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
@@ -362,12 +438,22 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       selectFilter[event.index] = [];
       emit(initState.copyWith(
-        selectFilter: selectFilter,
-        allSelectFilter: allSelectFilter,
-        filter: searchResultInfo.filter,
-        searchResultInfo: searchResultInfo,
+        selectFilter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+        filter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.filter : searchResultInfo.filter,
+        allSelectFilter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : allSelectFilter,
+        products: searchResultInfo.errorMessage.isNotEmpty ? initState.products : listProducts,
+        searchResultInfo: searchResultInfo.errorMessage.isNotEmpty
+            ? initState.searchResultInfo
+            : searchResultInfo,
+        isError: searchResultInfo.errorMessage.isNotEmpty,
+        typeError: 'удалить фильтры из категории',
+        indexFilterCategory: event.index,
+        errorMessage: MessageInfo.errorMessage,
         request: request,
-        products: listProducts,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -377,6 +463,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       CatalogSearchProductsRequest request = initState.request;
       List<FilterCatalogDataModel> filtersInfo = [];
       filtersInfo.add(
@@ -395,12 +486,21 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       );
 
       emit(initState.copyWith(
-        selectFilter: {},
-        allSelectFilter: [],
+        selectFilter: searchResultInfo.errorMessage.isNotEmpty ? initState.selectFilter : {},
+        allSelectFilter: searchResultInfo.errorMessage.isNotEmpty ? initState.allSelectFilter : [],
         offset: 1,
-        filter: searchResultInfo.filter,
-        searchResultInfo: searchResultInfo,
-        products: searchResultInfo.products,
+        typeError: 'удалить все фильтры',
+        isError: searchResultInfo.errorMessage.isNotEmpty,
+        errorMessage: MessageInfo.errorMessage,
+        filter:
+            searchResultInfo.errorMessage.isNotEmpty ? initState.filter : searchResultInfo.filter,
+        searchResultInfo: searchResultInfo.errorMessage.isNotEmpty
+            ? initState.searchResultInfo
+            : searchResultInfo,
+        products: searchResultInfo.errorMessage.isNotEmpty
+            ? initState.products
+            : searchResultInfo.products,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -410,6 +510,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = initState.allSelectFilter.toList();
@@ -466,16 +571,32 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       listProducts = searchResultInfo.products;
 
       log(allSelectFilter.length.toString());
-      emit(const SearchState.load());
+      if (searchResultInfo.errorMessage.isEmpty) {
+        emit(const SearchState.load());
+      }
+
       emit(
         initState.copyWith(
-          filter: searchResultInfo.filter,
-          selectFilter: selectFilter,
-          allSelectFilter: allSelectFilter,
-          products: listProducts,
-          searchResultInfo: searchResultInfo,
-          request: request,
+          filter:
+              searchResultInfo.errorMessage.isNotEmpty ? initState.filter : searchResultInfo.filter,
+          request: searchResultInfo.errorMessage.isNotEmpty ? initState.request : request,
+          selectFilter:
+              searchResultInfo.errorMessage.isNotEmpty ? initState.selectFilter : selectFilter,
+          products: searchResultInfo.errorMessage.isNotEmpty ? initState.products : listProducts,
+          searchResultInfo: searchResultInfo.errorMessage.isNotEmpty
+              ? initState.searchResultInfo
+              : searchResultInfo,
+          allSelectFilter: searchResultInfo.errorMessage.isNotEmpty
+              ? initState.allSelectFilter
+              : allSelectFilter,
+          isError: searchResultInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
           offset: 1,
+          keyFilterCatalog: event.key,
+          itemFileter: event.item,
+          indexFileter: event.index,
+          isLoadErrorButton: false,
+          typeError: 'удалить фильтр из результатов поиска',
         ),
       );
     });
@@ -486,27 +607,43 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       List<ProductDataModel> favouritesProducts = [];
+      FavouritesInfoDataModel? addFavouriteProdcut;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.addFavouriteProdcut(code: event.product.id.toString());
+        addFavouriteProdcut =
+            await _favouritesRepository.addFavouriteProdcut(code: event.product.id.toString());
         final result = await _favouritesRepository.getFavouritesProdcuts();
         favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
         log(result.toString());
+        if (addFavouriteProdcut.errorMessage.isEmpty) {
+          emit(const SearchState.load());
+        }
       } else {
         _catalogRepository.addFavouritesProduct(event.product);
         favouritesProducts = _catalogRepository.getFavouritesProducts();
         favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+        emit(const SearchState.load());
       }
 
-      emit(const SearchState.load());
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        isError: (addFavouriteProdcut?.errorMessage.isNotEmpty ?? false),
+        typeError: event.typeError,
+        errorMessage: MessageInfo.errorMessage,
+        favouriteProduct: event.product,
+        indexProduct: event.index,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -516,27 +653,42 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       List<ProductDataModel> favouritesProducts = [];
+      FavouritesInfoDataModel? deleteFavouriteProdcut;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        deleteFavouriteProdcut =
+            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         final result = await _favouritesRepository.getFavouritesProdcuts();
         favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
         log(result.toString());
+        if (deleteFavouriteProdcut.errorMessage.isEmpty) {
+          emit(const SearchState.load());
+        }
       } else {
         _catalogRepository.deleteFavouritesProduct(event.index);
         favouritesProducts = _catalogRepository.getFavouritesProducts();
         favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+        emit(const SearchState.load());
       }
 
-      emit(const SearchState.load());
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        isError: deleteFavouriteProdcut?.errorMessage.isNotEmpty ?? false,
+        typeError: event.typeError,
+        errorMessage: MessageInfo.errorMessage,
+        indexProduct: event.index,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -547,13 +699,21 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      String errorMessage = '';
       bool isShoppingCartDetailsProduct = false;
+      bool isError = false;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
-      emit(const SearchState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const SearchState.load());
+      }
 
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
@@ -585,10 +745,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         code: event.code,
         block: 'complect',
       );
-
-      if (!(event.isUpdate ?? false)) {
-        listProductsCode.add(event.code);
-      }
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
@@ -656,7 +812,24 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             : [],
       );
 
+      if (detailsProduct.errorMessage.isNotEmpty ||
+          basketInfo.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionStyle.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionAlso.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionComplect.errorMessage.isNotEmpty) {
+        isError = true;
+        errorMessage = MessageInfo.errorMessage;
+      } else {
+        if (!(event.isUpdate ?? false)) {
+          listProductsCode.add(event.code);
+        }
+      }
+
       emit(initState.copyWith(
+        typeError: event.typeError ?? '',
+        isError: isError,
+        errorMessage: errorMessage,
+        codeProduct: event.code,
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
@@ -1056,24 +1229,44 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
-      emit(initState.copyWith(
-        isLoadGetSizeProduct: true,
-        codeProduct: event.code,
-      ));
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoadGetSizeProduct: true,
+          codeProduct: event.code,
+        ));
+      }
+
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
-      if (detailsProduct.sku.isNotEmpty) {
-        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
-          emit(SearchState.getSizeProduct(
-            code: event.code,
-            listSize: detailsProduct.sku,
-            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
-            titleScreen: event.titleScreen,
-            query: initState.query,
-          ));
+      if (detailsProduct.errorMessage.isEmpty) {
+        if (detailsProduct.sku.isNotEmpty) {
+          if (detailsProduct.sku.first.id.contains('-') &&
+              detailsProduct.sku.first.id.length > 10) {
+            emit(SearchState.getSizeProduct(
+              code: event.code,
+              listSize: detailsProduct.sku,
+              listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+              titleScreen: event.titleScreen,
+              query: initState.query,
+            ));
+          } else {
+            if (event.isShop) {
+              emit(const SearchState.openSoppingCart());
+            } else {
+              emit(SearchState.addProductToSoppingCart(
+                code: event.code,
+                titleScreen: event.titleScreen,
+                query: initState.query,
+              ));
+            }
+          }
         } else {
           if (event.isShop) {
             emit(const SearchState.openSoppingCart());
@@ -1085,23 +1278,19 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             ));
           }
         }
-      } else {
-        if (event.isShop) {
-          emit(const SearchState.openSoppingCart());
-        } else {
-          emit(SearchState.addProductToSoppingCart(
-            code: event.code,
-            titleScreen: event.titleScreen,
-            query: initState.query,
-          ));
-        }
       }
 
       emit(initState.copyWith(
-        detailsProduct: detailsProduct,
+        detailsProduct:
+            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
+        isError: detailsProduct.errorMessage.isNotEmpty,
+        errorMessage: detailsProduct.errorMessage,
+        isShopGetSizeProduct: event.isShop,
+        typeError: 'выбор размера ${event.titleScreen.toLowerCase()}',
+        isLoadErrorButton: false,
       ));
     });
   }

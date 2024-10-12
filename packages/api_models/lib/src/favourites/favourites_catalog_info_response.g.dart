@@ -20,6 +20,7 @@ _$FavouritesCatalogInfoResponseImpl
               .toList(),
           r: json['r'] as String?,
           e: json['e'] as String?,
+          errorMessage: json['errorMessage'] as String?,
         );
 
 Map<String, dynamic> _$$FavouritesCatalogInfoResponseImplToJson(
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$FavouritesCatalogInfoResponseImplToJson(
       'products': instance.products,
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
     };

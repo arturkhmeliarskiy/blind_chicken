@@ -31,16 +31,19 @@ mixin _$SearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -74,15 +77,17 @@ mixin _$SearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -114,15 +119,17 @@ mixin _$SearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -314,16 +321,19 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -360,15 +370,17 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -403,15 +415,17 @@ class _$InitSearchEventImpl implements InitSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -630,16 +644,19 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -676,15 +693,17 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -719,15 +738,17 @@ class _$ProfuctsSearchEventImpl implements ProfuctsSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -957,16 +978,19 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -1003,15 +1027,17 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -1046,15 +1072,17 @@ class _$ProfuctsInfoSearchEventImpl implements ProfuctsInfoSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -1314,16 +1342,19 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -1360,15 +1391,17 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -1403,15 +1436,17 @@ class _$SelectFilterSearchEventImpl implements SelectFilterSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -1675,16 +1710,19 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -1721,15 +1759,17 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -1764,15 +1804,17 @@ class _$DeleteFilterSearchEventImpl implements DeleteFilterSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -2009,16 +2051,19 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -2055,15 +2100,17 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -2098,15 +2145,17 @@ class _$RemoveSelectFilterCategotySearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -2312,16 +2361,19 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -2358,15 +2410,17 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -2401,15 +2455,17 @@ class _$RemoveSelectAllFiltersCategotySearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -2661,16 +2717,19 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -2707,15 +2766,17 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -2750,15 +2811,17 @@ class _$DeleteCatalogSearchEventImpl implements DeleteCatalogSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -2916,7 +2979,7 @@ abstract class _$$AddFavouriteProductSearchEventImplCopyWith<$Res> {
           $Res Function(_$AddFavouriteProductSearchEventImpl) then) =
       __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index, ProductDataModel product});
+  $Res call({int index, ProductDataModel product, String? typeError});
 
   $ProductDataModelCopyWith<$Res> get product;
 }
@@ -2938,6 +3001,7 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
     Object? product = null,
+    Object? typeError = freezed,
   }) {
     return _then(_$AddFavouriteProductSearchEventImpl(
       index: null == index
@@ -2948,6 +3012,10 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as ProductDataModel,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -2967,16 +3035,18 @@ class __$$AddFavouriteProductSearchEventImplCopyWithImpl<$Res>
 class _$AddFavouriteProductSearchEventImpl
     implements AddFavouriteProductSearchEvent {
   const _$AddFavouriteProductSearchEventImpl(
-      {required this.index, required this.product});
+      {required this.index, required this.product, this.typeError});
 
   @override
   final int index;
   @override
   final ProductDataModel product;
+  @override
+  final String? typeError;
 
   @override
   String toString() {
-    return 'SearchEvent.addFavouriteProduct(index: $index, product: $product)';
+    return 'SearchEvent.addFavouriteProduct(index: $index, product: $product, typeError: $typeError)';
   }
 
   @override
@@ -2985,11 +3055,13 @@ class _$AddFavouriteProductSearchEventImpl
         (other.runtimeType == runtimeType &&
             other is _$AddFavouriteProductSearchEventImpl &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, product);
+  int get hashCode => Object.hash(runtimeType, index, product, typeError);
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -3017,16 +3089,19 @@ class _$AddFavouriteProductSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -3046,7 +3121,7 @@ class _$AddFavouriteProductSearchEventImpl
         getInfoProductSize,
     required TResult Function(String titleScreen) updateInfoProducts,
   }) {
-    return addFavouriteProduct(index, product);
+    return addFavouriteProduct(index, product, typeError);
   }
 
   @override
@@ -3063,15 +3138,17 @@ class _$AddFavouriteProductSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -3089,7 +3166,7 @@ class _$AddFavouriteProductSearchEventImpl
         getInfoProductSize,
     TResult? Function(String titleScreen)? updateInfoProducts,
   }) {
-    return addFavouriteProduct?.call(index, product);
+    return addFavouriteProduct?.call(index, product, typeError);
   }
 
   @override
@@ -3106,15 +3183,17 @@ class _$AddFavouriteProductSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -3134,7 +3213,7 @@ class _$AddFavouriteProductSearchEventImpl
     required TResult orElse(),
   }) {
     if (addFavouriteProduct != null) {
-      return addFavouriteProduct(index, product);
+      return addFavouriteProduct(index, product, typeError);
     }
     return orElse();
   }
@@ -3249,11 +3328,13 @@ class _$AddFavouriteProductSearchEventImpl
 
 abstract class AddFavouriteProductSearchEvent implements SearchEvent {
   const factory AddFavouriteProductSearchEvent(
-          {required final int index, required final ProductDataModel product}) =
-      _$AddFavouriteProductSearchEventImpl;
+      {required final int index,
+      required final ProductDataModel product,
+      final String? typeError}) = _$AddFavouriteProductSearchEventImpl;
 
   int get index;
   ProductDataModel get product;
+  String? get typeError;
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -3270,7 +3351,7 @@ abstract class _$$DeleteFavouriteProductSearchEventImplCopyWith<$Res> {
           $Res Function(_$DeleteFavouriteProductSearchEventImpl) then) =
       __$$DeleteFavouriteProductSearchEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index});
+  $Res call({int index, String? typeError});
 }
 
 /// @nodoc
@@ -3289,12 +3370,17 @@ class __$$DeleteFavouriteProductSearchEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
+    Object? typeError = freezed,
   }) {
     return _then(_$DeleteFavouriteProductSearchEventImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -3303,14 +3389,17 @@ class __$$DeleteFavouriteProductSearchEventImplCopyWithImpl<$Res>
 
 class _$DeleteFavouriteProductSearchEventImpl
     implements DeleteFavouriteProductSearchEvent {
-  const _$DeleteFavouriteProductSearchEventImpl({required this.index});
+  const _$DeleteFavouriteProductSearchEventImpl(
+      {required this.index, this.typeError});
 
   @override
   final int index;
+  @override
+  final String? typeError;
 
   @override
   String toString() {
-    return 'SearchEvent.deleteFavouriteProduct(index: $index)';
+    return 'SearchEvent.deleteFavouriteProduct(index: $index, typeError: $typeError)';
   }
 
   @override
@@ -3318,11 +3407,13 @@ class _$DeleteFavouriteProductSearchEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFavouriteProductSearchEventImpl &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, index, typeError);
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -3350,16 +3441,19 @@ class _$DeleteFavouriteProductSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -3379,7 +3473,7 @@ class _$DeleteFavouriteProductSearchEventImpl
         getInfoProductSize,
     required TResult Function(String titleScreen) updateInfoProducts,
   }) {
-    return deleteFavouriteProduct(index);
+    return deleteFavouriteProduct(index, typeError);
   }
 
   @override
@@ -3396,15 +3490,17 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -3422,7 +3518,7 @@ class _$DeleteFavouriteProductSearchEventImpl
         getInfoProductSize,
     TResult? Function(String titleScreen)? updateInfoProducts,
   }) {
-    return deleteFavouriteProduct?.call(index);
+    return deleteFavouriteProduct?.call(index, typeError);
   }
 
   @override
@@ -3439,15 +3535,17 @@ class _$DeleteFavouriteProductSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -3467,7 +3565,7 @@ class _$DeleteFavouriteProductSearchEventImpl
     required TResult orElse(),
   }) {
     if (deleteFavouriteProduct != null) {
-      return deleteFavouriteProduct(index);
+      return deleteFavouriteProduct(index, typeError);
     }
     return orElse();
   }
@@ -3581,10 +3679,12 @@ class _$DeleteFavouriteProductSearchEventImpl
 }
 
 abstract class DeleteFavouriteProductSearchEvent implements SearchEvent {
-  const factory DeleteFavouriteProductSearchEvent({required final int index}) =
-      _$DeleteFavouriteProductSearchEventImpl;
+  const factory DeleteFavouriteProductSearchEvent(
+      {required final int index,
+      final String? typeError}) = _$DeleteFavouriteProductSearchEventImpl;
 
   int get index;
+  String? get typeError;
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -3607,7 +3707,8 @@ abstract class _$$GetInfoProductSearchEventImplCopyWith<$Res> {
       String typeAddProductToShoppingCart,
       String identifierAddProductToShoppingCart,
       SkuProductDataModel? size,
-      bool? isUpdate});
+      bool? isUpdate,
+      String? typeError});
 
   $SkuProductDataModelCopyWith<$Res>? get size;
 }
@@ -3632,6 +3733,7 @@ class __$$GetInfoProductSearchEventImplCopyWithImpl<$Res>
     Object? identifierAddProductToShoppingCart = null,
     Object? size = freezed,
     Object? isUpdate = freezed,
+    Object? typeError = freezed,
   }) {
     return _then(_$GetInfoProductSearchEventImpl(
       code: null == code
@@ -3659,6 +3761,10 @@ class __$$GetInfoProductSearchEventImplCopyWithImpl<$Res>
           ? _value.isUpdate
           : isUpdate // ignore: cast_nullable_to_non_nullable
               as bool?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -3686,7 +3792,8 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
       required this.typeAddProductToShoppingCart,
       required this.identifierAddProductToShoppingCart,
       this.size,
-      this.isUpdate});
+      this.isUpdate,
+      this.typeError});
 
   @override
   final String code;
@@ -3700,10 +3807,12 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
   final SkuProductDataModel? size;
   @override
   final bool? isUpdate;
+  @override
+  final String? typeError;
 
   @override
   String toString() {
-    return 'SearchEvent.getInfoProduct(code: $code, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, size: $size, isUpdate: $isUpdate)';
+    return 'SearchEvent.getInfoProduct(code: $code, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, size: $size, isUpdate: $isUpdate, typeError: $typeError)';
   }
 
   @override
@@ -3724,7 +3833,9 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
                     identifierAddProductToShoppingCart) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
-                other.isUpdate == isUpdate));
+                other.isUpdate == isUpdate) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError));
   }
 
   @override
@@ -3735,7 +3846,8 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
       typeAddProductToShoppingCart,
       identifierAddProductToShoppingCart,
       size,
-      isUpdate);
+      isUpdate,
+      typeError);
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -3762,16 +3874,19 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -3792,7 +3907,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     required TResult Function(String titleScreen) updateInfoProducts,
   }) {
     return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
-        identifierAddProductToShoppingCart, size, isUpdate);
+        identifierAddProductToShoppingCart, size, isUpdate, typeError);
   }
 
   @override
@@ -3809,15 +3924,17 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -3836,7 +3953,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult? Function(String titleScreen)? updateInfoProducts,
   }) {
     return getInfoProduct?.call(code, titleScreen, typeAddProductToShoppingCart,
-        identifierAddProductToShoppingCart, size, isUpdate);
+        identifierAddProductToShoppingCart, size, isUpdate, typeError);
   }
 
   @override
@@ -3853,15 +3970,17 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -3882,7 +4001,7 @@ class _$GetInfoProductSearchEventImpl implements GetInfoProductSearchEvent {
   }) {
     if (getInfoProduct != null) {
       return getInfoProduct(code, titleScreen, typeAddProductToShoppingCart,
-          identifierAddProductToShoppingCart, size, isUpdate);
+          identifierAddProductToShoppingCart, size, isUpdate, typeError);
     }
     return orElse();
   }
@@ -4002,7 +4121,8 @@ abstract class GetInfoProductSearchEvent implements SearchEvent {
       required final String typeAddProductToShoppingCart,
       required final String identifierAddProductToShoppingCart,
       final SkuProductDataModel? size,
-      final bool? isUpdate}) = _$GetInfoProductSearchEventImpl;
+      final bool? isUpdate,
+      final String? typeError}) = _$GetInfoProductSearchEventImpl;
 
   String get code;
   String get titleScreen;
@@ -4010,6 +4130,7 @@ abstract class GetInfoProductSearchEvent implements SearchEvent {
   String get identifierAddProductToShoppingCart;
   SkuProductDataModel? get size;
   bool? get isUpdate;
+  String? get typeError;
 
   /// Create a copy of SearchEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -4118,16 +4239,19 @@ class _$ChangeSizeProductSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -4164,15 +4288,17 @@ class _$ChangeSizeProductSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -4207,15 +4333,17 @@ class _$ChangeSizeProductSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -4422,16 +4550,19 @@ class _$GoBackProductInfoCategotySearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -4468,15 +4599,17 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -4511,15 +4644,17 @@ class _$GoBackProductInfoCategotySearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -4715,16 +4850,19 @@ class _$PaginationProductSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -4761,15 +4899,17 @@ class _$PaginationProductSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -4804,15 +4944,17 @@ class _$PaginationProductSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -5104,16 +5246,19 @@ class _$AddProductToSoppingCartSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -5151,15 +5296,17 @@ class _$AddProductToSoppingCartSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -5195,15 +5342,17 @@ class _$AddProductToSoppingCartSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -5449,16 +5598,19 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -5495,15 +5647,17 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -5538,15 +5692,17 @@ class _$CheckButtonTopSearchEventImpl implements CheckButtonTopSearchEvent {
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -5791,16 +5947,19 @@ class _$CheckProductToSoppingCartSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -5837,15 +5996,17 @@ class _$CheckProductToSoppingCartSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -5880,15 +6041,17 @@ class _$CheckProductToSoppingCartSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -6140,16 +6303,19 @@ class _$GetInfoProductSizeSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -6186,15 +6352,17 @@ class _$GetInfoProductSizeSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -6229,15 +6397,17 @@ class _$GetInfoProductSizeSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -6475,16 +6645,19 @@ class _$UpdateInfoProductsSearchEventImpl
     required TResult Function() removeSelectAllFilters,
     required TResult Function(int key, int index, FilterItemDataModel item)
         deleteCatalogFilter,
-    required TResult Function(int index, ProductDataModel product)
+    required TResult Function(
+            int index, ProductDataModel product, String? typeError)
         addFavouriteProduct,
-    required TResult Function(int index) deleteFavouriteProduct,
+    required TResult Function(int index, String? typeError)
+        deleteFavouriteProduct,
     required TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)
+            bool? isUpdate,
+            String? typeError)
         getInfoProduct,
     required TResult Function(SkuProductDataModel selectSizeProduct)
         changeSizeProduct,
@@ -6521,15 +6694,17 @@ class _$UpdateInfoProductsSearchEventImpl
     TResult? Function()? removeSelectAllFilters,
     TResult? Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult? Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult? Function(int index)? deleteFavouriteProduct,
+    TResult? Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult? Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult? Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult? Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult? Function()? goBackProductInfo,
@@ -6564,15 +6739,17 @@ class _$UpdateInfoProductsSearchEventImpl
     TResult Function()? removeSelectAllFilters,
     TResult Function(int key, int index, FilterItemDataModel item)?
         deleteCatalogFilter,
-    TResult Function(int index, ProductDataModel product)? addFavouriteProduct,
-    TResult Function(int index)? deleteFavouriteProduct,
+    TResult Function(int index, ProductDataModel product, String? typeError)?
+        addFavouriteProduct,
+    TResult Function(int index, String? typeError)? deleteFavouriteProduct,
     TResult Function(
             String code,
             String titleScreen,
             String typeAddProductToShoppingCart,
             String identifierAddProductToShoppingCart,
             SkuProductDataModel? size,
-            bool? isUpdate)?
+            bool? isUpdate,
+            String? typeError)?
         getInfoProduct,
     TResult Function(SkuProductDataModel selectSizeProduct)? changeSizeProduct,
     TResult Function()? goBackProductInfo,
@@ -6734,6 +6911,7 @@ mixin _$SearchState {
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -6766,7 +6944,19 @@ mixin _$SearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) =>
       throw _privateConstructorUsedError;
@@ -6782,6 +6972,7 @@ mixin _$SearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -6814,7 +7005,19 @@ mixin _$SearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) =>
       throw _privateConstructorUsedError;
@@ -6830,6 +7033,7 @@ mixin _$SearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -6862,7 +7066,19 @@ mixin _$SearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) =>
@@ -6873,6 +7089,7 @@ mixin _$SearchState {
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -6885,6 +7102,7 @@ mixin _$SearchState {
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -6896,6 +7114,7 @@ mixin _$SearchState {
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -6976,6 +7195,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -7008,7 +7228,19 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) {
     return init();
@@ -7027,6 +7259,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -7059,7 +7292,19 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) {
     return init?.call();
@@ -7078,6 +7323,7 @@ class _$InitSearchStateImpl implements InitSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -7110,7 +7356,19 @@ class _$InitSearchStateImpl implements InitSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -7127,6 +7385,7 @@ class _$InitSearchStateImpl implements InitSearchState {
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -7142,6 +7401,7 @@ class _$InitSearchStateImpl implements InitSearchState {
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7156,6 +7416,7 @@ class _$InitSearchStateImpl implements InitSearchState {
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7223,6 +7484,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -7255,7 +7517,19 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) {
     return load();
@@ -7274,6 +7548,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -7306,7 +7581,19 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) {
     return load?.call();
@@ -7325,6 +7612,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -7357,7 +7645,19 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -7374,6 +7674,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -7389,6 +7690,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7403,6 +7705,7 @@ class _$LoadingSearchStateImpl implements LoadingSearchState {
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7473,6 +7776,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -7505,7 +7809,19 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) {
     return openSoppingCart();
@@ -7524,6 +7840,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -7556,7 +7873,19 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) {
     return openSoppingCart?.call();
@@ -7575,6 +7904,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -7607,7 +7937,19 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -7624,6 +7966,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -7639,6 +7982,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7653,6 +7997,7 @@ class _$OpenSoppingCartSearchStateImpl implements OpenSoppingCartSearchState {
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7815,6 +8160,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -7847,7 +8193,19 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) {
     return getSizeProduct(
@@ -7867,6 +8225,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -7899,7 +8258,19 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) {
     return getSizeProduct?.call(
@@ -7919,6 +8290,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -7951,7 +8323,19 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -7969,6 +8353,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -7984,6 +8369,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -7998,6 +8384,7 @@ class _$GetSizeProductSearchStateImpl implements GetSizeProductSearchState {
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -8029,6 +8416,333 @@ abstract class GetSizeProductSearchState implements SearchState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSizeProductSearchStateImplCopyWith<_$GetSizeProductSearchStateImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorSearchStateImplCopyWith<$Res> {
+  factory _$$ErrorSearchStateImplCopyWith(_$ErrorSearchStateImpl value,
+          $Res Function(_$ErrorSearchStateImpl) then) =
+      __$$ErrorSearchStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorSearchStateImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$ErrorSearchStateImpl>
+    implements _$$ErrorSearchStateImplCopyWith<$Res> {
+  __$$ErrorSearchStateImplCopyWithImpl(_$ErrorSearchStateImpl _value,
+      $Res Function(_$ErrorSearchStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorSearchStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorSearchStateImpl implements ErrorSearchState {
+  const _$ErrorSearchStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'SearchState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorSearchStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorSearchStateImplCopyWith<_$ErrorSearchStateImpl> get copyWith =>
+      __$$ErrorSearchStateImplCopyWithImpl<_$ErrorSearchStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() openSoppingCart,
+    required TResult Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen,
+            String query)
+        getSizeProduct,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(String code, String titleScreen, String query)
+        addProductToSoppingCart,
+    required TResult Function(
+            List<ProductDataModel> searchDefaultProducts,
+            List<ProductDataModel> searchProducts,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<int> favouritesProductsId,
+            String query,
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            int productsCount,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
+        searchProductsResult,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen,
+            String query)?
+        getSizeProduct,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(String code, String titleScreen, String query)?
+        addProductToSoppingCart,
+    TResult? Function(
+            List<ProductDataModel> searchDefaultProducts,
+            List<ProductDataModel> searchProducts,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<int> favouritesProductsId,
+            String query,
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            int productsCount,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
+        searchProductsResult,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? openSoppingCart,
+    TResult Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen,
+            String query)?
+        getSizeProduct,
+    TResult Function(String errorMessage)? error,
+    TResult Function(String code, String titleScreen, String query)?
+        addProductToSoppingCart,
+    TResult Function(
+            List<ProductDataModel> searchDefaultProducts,
+            List<ProductDataModel> searchProducts,
+            List<ProductDataModel> products,
+            List<CatalogSectionDataModel> searchSections,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            List<int> favouritesProductsId,
+            String query,
+            bool isLoading,
+            CatalogSearchProductsRequest request,
+            List<String> listProductsCode,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            int productsCount,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            DetailProductDataModel? detailsProduct,
+            List<ProductDataModel>? favouritesProducts,
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
+        searchProductsResult,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitSearchState value) init,
+    required TResult Function(LoadingSearchState value) load,
+    required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
+    required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
+    required TResult Function(AddProductSearchState value)
+        addProductToSoppingCart,
+    required TResult Function(SearchProductsResultSearchState value)
+        searchProductsResult,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitSearchState value)? init,
+    TResult? Function(LoadingSearchState value)? load,
+    TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
+    TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
+    TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
+    TResult? Function(SearchProductsResultSearchState value)?
+        searchProductsResult,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitSearchState value)? init,
+    TResult Function(LoadingSearchState value)? load,
+    TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
+    TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
+    TResult Function(AddProductSearchState value)? addProductToSoppingCart,
+    TResult Function(SearchProductsResultSearchState value)?
+        searchProductsResult,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorSearchState implements SearchState {
+  const factory ErrorSearchState({required final String errorMessage}) =
+      _$ErrorSearchStateImpl;
+
+  String get errorMessage;
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorSearchStateImplCopyWith<_$ErrorSearchStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -8129,6 +8843,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -8161,7 +8876,19 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) {
     return addProductToSoppingCart(code, titleScreen, query);
@@ -8180,6 +8907,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -8212,7 +8940,19 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) {
     return addProductToSoppingCart?.call(code, titleScreen, query);
@@ -8231,6 +8971,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -8263,7 +9004,19 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -8280,6 +9033,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -8295,6 +9049,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -8309,6 +9064,7 @@ class _$AddProductSearchStateImpl implements AddProductSearchState {
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -8375,12 +9131,26 @@ abstract class _$$SearchProductsResultSearchStateImplCopyWith<$Res> {
       bool? isShoppingCartDetailsProduct,
       DetailProductDataModel? detailsProduct,
       List<ProductDataModel>? favouritesProducts,
-      CatalogSearchInfoDataModel? searchResultInfo});
+      bool? isLoadErrorButton,
+      CatalogSearchInfoDataModel? searchResultInfo,
+      int? indexProduct,
+      ProductDataModel? favouriteProduct,
+      bool? isShopGetSizeProduct,
+      String? errorMessage,
+      String? typeError,
+      bool? isError,
+      int? keyFilterCatalog,
+      int? indexFileter,
+      int? indexItemFileter,
+      int? indexFilterCategory,
+      FilterItemDataModel? itemFileter});
 
   $CatalogSearchProductsRequestCopyWith<$Res> get request;
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
   $CatalogSearchInfoDataModelCopyWith<$Res>? get searchResultInfo;
+  $ProductDataModelCopyWith<$Res>? get favouriteProduct;
+  $FilterItemDataModelCopyWith<$Res>? get itemFileter;
 }
 
 /// @nodoc
@@ -8427,7 +9197,19 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
     Object? isShoppingCartDetailsProduct = freezed,
     Object? detailsProduct = freezed,
     Object? favouritesProducts = freezed,
+    Object? isLoadErrorButton = freezed,
     Object? searchResultInfo = freezed,
+    Object? indexProduct = freezed,
+    Object? favouriteProduct = freezed,
+    Object? isShopGetSizeProduct = freezed,
+    Object? errorMessage = freezed,
+    Object? typeError = freezed,
+    Object? isError = freezed,
+    Object? keyFilterCatalog = freezed,
+    Object? indexFileter = freezed,
+    Object? indexItemFileter = freezed,
+    Object? indexFilterCategory = freezed,
+    Object? itemFileter = freezed,
   }) {
     return _then(_$SearchProductsResultSearchStateImpl(
       searchDefaultProducts: null == searchDefaultProducts
@@ -8546,10 +9328,58 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
           ? _value._favouritesProducts
           : favouritesProducts // ignore: cast_nullable_to_non_nullable
               as List<ProductDataModel>?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
       searchResultInfo: freezed == searchResultInfo
           ? _value.searchResultInfo
           : searchResultInfo // ignore: cast_nullable_to_non_nullable
               as CatalogSearchInfoDataModel?,
+      indexProduct: freezed == indexProduct
+          ? _value.indexProduct
+          : indexProduct // ignore: cast_nullable_to_non_nullable
+              as int?,
+      favouriteProduct: freezed == favouriteProduct
+          ? _value.favouriteProduct
+          : favouriteProduct // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel?,
+      isShopGetSizeProduct: freezed == isShopGetSizeProduct
+          ? _value.isShopGetSizeProduct
+          : isShopGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      keyFilterCatalog: freezed == keyFilterCatalog
+          ? _value.keyFilterCatalog
+          : keyFilterCatalog // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexFileter: freezed == indexFileter
+          ? _value.indexFileter
+          : indexFileter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexItemFileter: freezed == indexItemFileter
+          ? _value.indexItemFileter
+          : indexItemFileter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexFilterCategory: freezed == indexFilterCategory
+          ? _value.indexFilterCategory
+          : indexFilterCategory // ignore: cast_nullable_to_non_nullable
+              as int?,
+      itemFileter: freezed == itemFileter
+          ? _value.itemFileter
+          : itemFileter // ignore: cast_nullable_to_non_nullable
+              as FilterItemDataModel?,
     ));
   }
 
@@ -8607,6 +9437,34 @@ class __$$SearchProductsResultSearchStateImplCopyWithImpl<$Res>
       return _then(_value.copyWith(searchResultInfo: value));
     });
   }
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res>? get favouriteProduct {
+    if (_value.favouriteProduct == null) {
+      return null;
+    }
+
+    return $ProductDataModelCopyWith<$Res>(_value.favouriteProduct!, (value) {
+      return _then(_value.copyWith(favouriteProduct: value));
+    });
+  }
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterItemDataModelCopyWith<$Res>? get itemFileter {
+    if (_value.itemFileter == null) {
+      return null;
+    }
+
+    return $FilterItemDataModelCopyWith<$Res>(_value.itemFileter!, (value) {
+      return _then(_value.copyWith(itemFileter: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -8643,7 +9501,19 @@ class _$SearchProductsResultSearchStateImpl
       this.isShoppingCartDetailsProduct,
       this.detailsProduct,
       final List<ProductDataModel>? favouritesProducts,
-      this.searchResultInfo})
+      this.isLoadErrorButton,
+      this.searchResultInfo,
+      this.indexProduct,
+      this.favouriteProduct,
+      this.isShopGetSizeProduct,
+      this.errorMessage,
+      this.typeError,
+      this.isError,
+      this.keyFilterCatalog,
+      this.indexFileter,
+      this.indexItemFileter,
+      this.indexFilterCategory,
+      this.itemFileter})
       : _searchDefaultProducts = searchDefaultProducts,
         _searchProducts = searchProducts,
         _products = products,
@@ -8819,11 +9689,35 @@ class _$SearchProductsResultSearchStateImpl
   }
 
   @override
+  final bool? isLoadErrorButton;
+  @override
   final CatalogSearchInfoDataModel? searchResultInfo;
+  @override
+  final int? indexProduct;
+  @override
+  final ProductDataModel? favouriteProduct;
+  @override
+  final bool? isShopGetSizeProduct;
+  @override
+  final String? errorMessage;
+  @override
+  final String? typeError;
+  @override
+  final bool? isError;
+  @override
+  final int? keyFilterCatalog;
+  @override
+  final int? indexFileter;
+  @override
+  final int? indexItemFileter;
+  @override
+  final int? indexFilterCategory;
+  @override
+  final FilterItemDataModel? itemFileter;
 
   @override
   String toString() {
-    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, productsCount: $productsCount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, searchResultInfo: $searchResultInfo)';
+    return 'SearchState.searchProductsResult(searchDefaultProducts: $searchDefaultProducts, searchProducts: $searchProducts, products: $products, searchSections: $searchSections, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, favouritesProductsId: $favouritesProductsId, query: $query, isLoading: $isLoading, request: $request, listProductsCode: $listProductsCode, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, productsCount: $productsCount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, detailsProduct: $detailsProduct, favouritesProducts: $favouritesProducts, isLoadErrorButton: $isLoadErrorButton, searchResultInfo: $searchResultInfo, indexProduct: $indexProduct, favouriteProduct: $favouriteProduct, isShopGetSizeProduct: $isShopGetSizeProduct, errorMessage: $errorMessage, typeError: $typeError, isError: $isError, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter)';
   }
 
   @override
@@ -8884,8 +9778,31 @@ class _$SearchProductsResultSearchStateImpl
                 other.detailsProduct == detailsProduct) &&
             const DeepCollectionEquality()
                 .equals(other._favouritesProducts, _favouritesProducts) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton) &&
             (identical(other.searchResultInfo, searchResultInfo) ||
-                other.searchResultInfo == searchResultInfo));
+                other.searchResultInfo == searchResultInfo) &&
+            (identical(other.indexProduct, indexProduct) ||
+                other.indexProduct == indexProduct) &&
+            (identical(other.favouriteProduct, favouriteProduct) ||
+                other.favouriteProduct == favouriteProduct) &&
+            (identical(other.isShopGetSizeProduct, isShopGetSizeProduct) ||
+                other.isShopGetSizeProduct == isShopGetSizeProduct) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.keyFilterCatalog, keyFilterCatalog) ||
+                other.keyFilterCatalog == keyFilterCatalog) &&
+            (identical(other.indexFileter, indexFileter) ||
+                other.indexFileter == indexFileter) &&
+            (identical(other.indexItemFileter, indexItemFileter) ||
+                other.indexItemFileter == indexItemFileter) &&
+            (identical(other.indexFilterCategory, indexFilterCategory) ||
+                other.indexFilterCategory == indexFilterCategory) &&
+            (identical(other.itemFileter, itemFileter) ||
+                other.itemFileter == itemFileter));
   }
 
   @override
@@ -8920,7 +9837,19 @@ class _$SearchProductsResultSearchStateImpl
         isShoppingCartDetailsProduct,
         detailsProduct,
         const DeepCollectionEquality().hash(_favouritesProducts),
-        searchResultInfo
+        isLoadErrorButton,
+        searchResultInfo,
+        indexProduct,
+        favouriteProduct,
+        isShopGetSizeProduct,
+        errorMessage,
+        typeError,
+        isError,
+        keyFilterCatalog,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter
       ]);
 
   /// Create a copy of SearchState
@@ -8946,6 +9875,7 @@ class _$SearchProductsResultSearchStateImpl
             String titleScreen,
             String query)
         getSizeProduct,
+    required TResult Function(String errorMessage) error,
     required TResult Function(String code, String titleScreen, String query)
         addProductToSoppingCart,
     required TResult Function(
@@ -8978,7 +9908,19 @@ class _$SearchProductsResultSearchStateImpl
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)
         searchProductsResult,
   }) {
     return searchProductsResult(
@@ -9011,7 +9953,19 @@ class _$SearchProductsResultSearchStateImpl
         isShoppingCartDetailsProduct,
         detailsProduct,
         favouritesProducts,
-        searchResultInfo);
+        isLoadErrorButton,
+        searchResultInfo,
+        indexProduct,
+        favouriteProduct,
+        isShopGetSizeProduct,
+        errorMessage,
+        typeError,
+        isError,
+        keyFilterCatalog,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter);
   }
 
   @override
@@ -9027,6 +9981,7 @@ class _$SearchProductsResultSearchStateImpl
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult? Function(
@@ -9059,7 +10014,19 @@ class _$SearchProductsResultSearchStateImpl
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
   }) {
     return searchProductsResult?.call(
@@ -9092,7 +10059,19 @@ class _$SearchProductsResultSearchStateImpl
         isShoppingCartDetailsProduct,
         detailsProduct,
         favouritesProducts,
-        searchResultInfo);
+        isLoadErrorButton,
+        searchResultInfo,
+        indexProduct,
+        favouriteProduct,
+        isShopGetSizeProduct,
+        errorMessage,
+        typeError,
+        isError,
+        keyFilterCatalog,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter);
   }
 
   @override
@@ -9108,6 +10087,7 @@ class _$SearchProductsResultSearchStateImpl
             String titleScreen,
             String query)?
         getSizeProduct,
+    TResult Function(String errorMessage)? error,
     TResult Function(String code, String titleScreen, String query)?
         addProductToSoppingCart,
     TResult Function(
@@ -9140,7 +10120,19 @@ class _$SearchProductsResultSearchStateImpl
             bool? isShoppingCartDetailsProduct,
             DetailProductDataModel? detailsProduct,
             List<ProductDataModel>? favouritesProducts,
-            CatalogSearchInfoDataModel? searchResultInfo)?
+            bool? isLoadErrorButton,
+            CatalogSearchInfoDataModel? searchResultInfo,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? errorMessage,
+            String? typeError,
+            bool? isError,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter)?
         searchProductsResult,
     required TResult orElse(),
   }) {
@@ -9175,7 +10167,19 @@ class _$SearchProductsResultSearchStateImpl
           isShoppingCartDetailsProduct,
           detailsProduct,
           favouritesProducts,
-          searchResultInfo);
+          isLoadErrorButton,
+          searchResultInfo,
+          indexProduct,
+          favouriteProduct,
+          isShopGetSizeProduct,
+          errorMessage,
+          typeError,
+          isError,
+          keyFilterCatalog,
+          indexFileter,
+          indexItemFileter,
+          indexFilterCategory,
+          itemFileter);
     }
     return orElse();
   }
@@ -9187,6 +10191,7 @@ class _$SearchProductsResultSearchStateImpl
     required TResult Function(LoadingSearchState value) load,
     required TResult Function(OpenSoppingCartSearchState value) openSoppingCart,
     required TResult Function(GetSizeProductSearchState value) getSizeProduct,
+    required TResult Function(ErrorSearchState value) error,
     required TResult Function(AddProductSearchState value)
         addProductToSoppingCart,
     required TResult Function(SearchProductsResultSearchState value)
@@ -9202,6 +10207,7 @@ class _$SearchProductsResultSearchStateImpl
     TResult? Function(LoadingSearchState value)? load,
     TResult? Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult? Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult? Function(ErrorSearchState value)? error,
     TResult? Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult? Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -9216,6 +10222,7 @@ class _$SearchProductsResultSearchStateImpl
     TResult Function(LoadingSearchState value)? load,
     TResult Function(OpenSoppingCartSearchState value)? openSoppingCart,
     TResult Function(GetSizeProductSearchState value)? getSizeProduct,
+    TResult Function(ErrorSearchState value)? error,
     TResult Function(AddProductSearchState value)? addProductToSoppingCart,
     TResult Function(SearchProductsResultSearchState value)?
         searchProductsResult,
@@ -9259,7 +10266,19 @@ abstract class SearchProductsResultSearchState implements SearchState {
           final bool? isShoppingCartDetailsProduct,
           final DetailProductDataModel? detailsProduct,
           final List<ProductDataModel>? favouritesProducts,
-          final CatalogSearchInfoDataModel? searchResultInfo}) =
+          final bool? isLoadErrorButton,
+          final CatalogSearchInfoDataModel? searchResultInfo,
+          final int? indexProduct,
+          final ProductDataModel? favouriteProduct,
+          final bool? isShopGetSizeProduct,
+          final String? errorMessage,
+          final String? typeError,
+          final bool? isError,
+          final int? keyFilterCatalog,
+          final int? indexFileter,
+          final int? indexItemFileter,
+          final int? indexFilterCategory,
+          final FilterItemDataModel? itemFileter}) =
       _$SearchProductsResultSearchStateImpl;
 
   List<ProductDataModel> get searchDefaultProducts;
@@ -9291,7 +10310,19 @@ abstract class SearchProductsResultSearchState implements SearchState {
   bool? get isShoppingCartDetailsProduct;
   DetailProductDataModel? get detailsProduct;
   List<ProductDataModel>? get favouritesProducts;
+  bool? get isLoadErrorButton;
   CatalogSearchInfoDataModel? get searchResultInfo;
+  int? get indexProduct;
+  ProductDataModel? get favouriteProduct;
+  bool? get isShopGetSizeProduct;
+  String? get errorMessage;
+  String? get typeError;
+  bool? get isError;
+  int? get keyFilterCatalog;
+  int? get indexFileter;
+  int? get indexItemFileter;
+  int? get indexFilterCategory;
+  FilterItemDataModel? get itemFileter;
 
   /// Create a copy of SearchState
   /// with the given fields replaced by the non-null parameter values.

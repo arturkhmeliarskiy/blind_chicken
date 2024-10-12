@@ -6478,12 +6478,14 @@ mixin _$FavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6503,6 +6505,18 @@ mixin _$FavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6517,6 +6531,7 @@ mixin _$FavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -6525,6 +6540,7 @@ mixin _$FavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6544,6 +6560,18 @@ mixin _$FavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6558,6 +6586,7 @@ mixin _$FavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -6566,6 +6595,7 @@ mixin _$FavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6585,6 +6615,18 @@ mixin _$FavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6600,12 +6642,15 @@ mixin _$FavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) =>
       throw _privateConstructorUsedError;
@@ -6613,9 +6658,11 @@ mixin _$FavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) =>
       throw _privateConstructorUsedError;
@@ -6623,9 +6670,11 @@ mixin _$FavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) =>
@@ -6697,12 +6746,14 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6722,6 +6773,18 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6739,6 +6802,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -6747,6 +6811,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6766,6 +6831,18 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6783,6 +6860,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -6791,6 +6869,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6810,6 +6889,18 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6831,12 +6922,15 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return init(this);
@@ -6847,9 +6941,11 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return init?.call(this);
@@ -6860,9 +6956,11 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -6923,12 +7021,14 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6948,6 +7048,18 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -6965,6 +7077,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -6973,6 +7086,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -6992,6 +7106,18 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7009,6 +7135,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -7017,6 +7144,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7036,6 +7164,18 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7057,12 +7197,15 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return load(this);
@@ -7073,9 +7216,11 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return load?.call(this);
@@ -7086,9 +7231,11 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -7101,6 +7248,284 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
 
 abstract class LoadingFavouritesState implements FavouritesState {
   const factory LoadingFavouritesState() = _$LoadingFavouritesStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingErrorButtonFavouritesStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonFavouritesStateImplCopyWith(
+          _$LoadingErrorButtonFavouritesStateImpl value,
+          $Res Function(_$LoadingErrorButtonFavouritesStateImpl) then) =
+      __$$LoadingErrorButtonFavouritesStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonFavouritesStateImplCopyWithImpl<$Res>
+    extends _$FavouritesStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonFavouritesStateImpl>
+    implements _$$LoadingErrorButtonFavouritesStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonFavouritesStateImplCopyWithImpl(
+      _$LoadingErrorButtonFavouritesStateImpl _value,
+      $Res Function(_$LoadingErrorButtonFavouritesStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonFavouritesStateImpl
+    implements LoadingErrorButtonFavouritesState {
+  const _$LoadingErrorButtonFavouritesStateImpl();
+
+  @override
+  String toString() {
+    return 'FavouritesState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonFavouritesStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
+        getSizeProduct,
+    required TResult Function(String code, String titleScreen)
+        addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsFavourites,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen)?
+        getSizeProduct,
+    TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function()? openSoppingCart,
+    TResult Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen)?
+        getSizeProduct,
+    TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesState value) init,
+    required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
+    required TResult Function(ProductsFavouritesState value) productsFavourites,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesState value)? init,
+    TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
+    TResult? Function(ProductsFavouritesState value)? productsFavourites,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesState value)? init,
+    TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
+    TResult Function(ProductsFavouritesState value)? productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonFavouritesState implements FavouritesState {
+  const factory LoadingErrorButtonFavouritesState() =
+      _$LoadingErrorButtonFavouritesStateImpl;
 }
 
 /// @nodoc
@@ -7151,12 +7576,14 @@ class _$OpenSoppingCartFavouritesStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7176,6 +7603,18 @@ class _$OpenSoppingCartFavouritesStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7193,6 +7632,7 @@ class _$OpenSoppingCartFavouritesStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -7201,6 +7641,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7220,6 +7661,18 @@ class _$OpenSoppingCartFavouritesStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7237,6 +7690,7 @@ class _$OpenSoppingCartFavouritesStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -7245,6 +7699,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7264,6 +7719,18 @@ class _$OpenSoppingCartFavouritesStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7285,12 +7752,15 @@ class _$OpenSoppingCartFavouritesStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return openSoppingCart(this);
@@ -7301,9 +7771,11 @@ class _$OpenSoppingCartFavouritesStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return openSoppingCart?.call(this);
@@ -7314,9 +7786,11 @@ class _$OpenSoppingCartFavouritesStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -7462,12 +7936,14 @@ class _$GetSizeProductFavouritesStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7487,6 +7963,18 @@ class _$GetSizeProductFavouritesStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7504,6 +7992,7 @@ class _$GetSizeProductFavouritesStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -7512,6 +8001,7 @@ class _$GetSizeProductFavouritesStateImpl
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7531,6 +8021,18 @@ class _$GetSizeProductFavouritesStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7549,6 +8051,7 @@ class _$GetSizeProductFavouritesStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -7557,6 +8060,7 @@ class _$GetSizeProductFavouritesStateImpl
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7576,6 +8080,18 @@ class _$GetSizeProductFavouritesStateImpl
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7597,12 +8113,15 @@ class _$GetSizeProductFavouritesStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return getSizeProduct(this);
@@ -7613,9 +8132,11 @@ class _$GetSizeProductFavouritesStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return getSizeProduct?.call(this);
@@ -7626,9 +8147,11 @@ class _$GetSizeProductFavouritesStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -7742,12 +8265,14 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7767,6 +8292,18 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7784,6 +8321,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -7792,6 +8330,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7811,6 +8350,18 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7828,6 +8379,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -7836,6 +8388,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -7855,6 +8408,18 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -7876,12 +8441,15 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return addProductToSoppingCart(this);
@@ -7892,9 +8460,11 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return addProductToSoppingCart?.call(this);
@@ -7905,9 +8475,11 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -7930,6 +8502,317 @@ abstract class AddProductFavouritesState implements FavouritesState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddProductFavouritesStateImplCopyWith<_$AddProductFavouritesStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ErrorFavouritesStateImplCopyWith<$Res> {
+  factory _$$ErrorFavouritesStateImplCopyWith(_$ErrorFavouritesStateImpl value,
+          $Res Function(_$ErrorFavouritesStateImpl) then) =
+      __$$ErrorFavouritesStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorFavouritesStateImplCopyWithImpl<$Res>
+    extends _$FavouritesStateCopyWithImpl<$Res, _$ErrorFavouritesStateImpl>
+    implements _$$ErrorFavouritesStateImplCopyWith<$Res> {
+  __$$ErrorFavouritesStateImplCopyWithImpl(_$ErrorFavouritesStateImpl _value,
+      $Res Function(_$ErrorFavouritesStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorFavouritesStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorFavouritesStateImpl implements ErrorFavouritesState {
+  const _$ErrorFavouritesStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'FavouritesState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorFavouritesStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorFavouritesStateImplCopyWith<_$ErrorFavouritesStateImpl>
+      get copyWith =>
+          __$$ErrorFavouritesStateImplCopyWithImpl<_$ErrorFavouritesStateImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function() openSoppingCart,
+    required TResult Function(String code, List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
+        getSizeProduct,
+    required TResult Function(String code, String titleScreen)
+        addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)
+        productsFavourites,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function()? openSoppingCart,
+    TResult? Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen)?
+        getSizeProduct,
+    TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function()? openSoppingCart,
+    TResult Function(
+            String code,
+            List<SkuProductDataModel> listSize,
+            List<SkuProductDataModel> listSizeToSoppingCart,
+            String titleScreen)?
+        getSizeProduct,
+    TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<ProductDataModel> favouritesProducts,
+            List<ProductDataModel> favouritesDefaultProducts,
+            List<FilterInfoDataModel> filter,
+            Map<int, List<FilterItemDataModel>> selectFilter,
+            List<Map<int, FilterItemDataModel>> allSelectFilter,
+            FavouritesCatalogProductsRequest request,
+            List<String> listProductsCode,
+            List<int> favouritesProductsId,
+            List<ProductDataModel> listProdcutsStyle,
+            List<ProductDataModel> listProdcutsAlso,
+            List<ProductDataModel> listProdcutsBrand,
+            List<ProductDataModel> listProdcutsComplect,
+            bool isAuth,
+            int offset,
+            bool isButtonTop,
+            List<SkuProductDataModel> listSize,
+            bool isLoadGetSizeProduct,
+            int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
+            String? codeProduct,
+            SkuProductDataModel? selectSizeProduct,
+            bool? isShoppingCart,
+            bool? isShoppingCartDetailsProduct,
+            bool? isUpdate,
+            FavouritesCatalogInfoDataModel? favouritesProductsInfo,
+            DetailProductDataModel? detailsProduct)?
+        productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitFavouritesState value) init,
+    required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
+    required TResult Function(OpenSoppingCartFavouritesState value)
+        openSoppingCart,
+    required TResult Function(GetSizeProductFavouritesState value)
+        getSizeProduct,
+    required TResult Function(AddProductFavouritesState value)
+        addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
+    required TResult Function(ProductsFavouritesState value) productsFavourites,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitFavouritesState value)? init,
+    TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
+    TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
+    TResult? Function(ProductsFavouritesState value)? productsFavourites,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitFavouritesState value)? init,
+    TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
+    TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
+    TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
+    TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
+    TResult Function(ProductsFavouritesState value)? productsFavourites,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorFavouritesState implements FavouritesState {
+  const factory ErrorFavouritesState({required final String errorMessage}) =
+      _$ErrorFavouritesStateImpl;
+
+  String get errorMessage;
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorFavouritesStateImplCopyWith<_$ErrorFavouritesStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -7959,6 +8842,18 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       List<SkuProductDataModel> listSize,
       bool isLoadGetSizeProduct,
       int userDiscount,
+      String? typeError,
+      String? errorMessage,
+      bool? isError,
+      bool? isLoadErrorButton,
+      int? keyFilterCatalog,
+      int? indexFileter,
+      int? indexItemFileter,
+      int? indexFilterCategory,
+      FilterItemDataModel? itemFileter,
+      int? indexProduct,
+      ProductDataModel? favouriteProduct,
+      bool? isShopGetSizeProduct,
       String? codeProduct,
       SkuProductDataModel? selectSizeProduct,
       bool? isShoppingCart,
@@ -7968,6 +8863,8 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       DetailProductDataModel? detailsProduct});
 
   $FavouritesCatalogProductsRequestCopyWith<$Res> get request;
+  $FilterItemDataModelCopyWith<$Res>? get itemFileter;
+  $ProductDataModelCopyWith<$Res>? get favouriteProduct;
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
@@ -8005,6 +8902,18 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? listSize = null,
     Object? isLoadGetSizeProduct = null,
     Object? userDiscount = null,
+    Object? typeError = freezed,
+    Object? errorMessage = freezed,
+    Object? isError = freezed,
+    Object? isLoadErrorButton = freezed,
+    Object? keyFilterCatalog = freezed,
+    Object? indexFileter = freezed,
+    Object? indexItemFileter = freezed,
+    Object? indexFilterCategory = freezed,
+    Object? itemFileter = freezed,
+    Object? indexProduct = freezed,
+    Object? favouriteProduct = freezed,
+    Object? isShopGetSizeProduct = freezed,
     Object? codeProduct = freezed,
     Object? selectSizeProduct = freezed,
     Object? isShoppingCart = freezed,
@@ -8086,6 +8995,54 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
           ? _value.userDiscount
           : userDiscount // ignore: cast_nullable_to_non_nullable
               as int,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      keyFilterCatalog: freezed == keyFilterCatalog
+          ? _value.keyFilterCatalog
+          : keyFilterCatalog // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexFileter: freezed == indexFileter
+          ? _value.indexFileter
+          : indexFileter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexItemFileter: freezed == indexItemFileter
+          ? _value.indexItemFileter
+          : indexItemFileter // ignore: cast_nullable_to_non_nullable
+              as int?,
+      indexFilterCategory: freezed == indexFilterCategory
+          ? _value.indexFilterCategory
+          : indexFilterCategory // ignore: cast_nullable_to_non_nullable
+              as int?,
+      itemFileter: freezed == itemFileter
+          ? _value.itemFileter
+          : itemFileter // ignore: cast_nullable_to_non_nullable
+              as FilterItemDataModel?,
+      indexProduct: freezed == indexProduct
+          ? _value.indexProduct
+          : indexProduct // ignore: cast_nullable_to_non_nullable
+              as int?,
+      favouriteProduct: freezed == favouriteProduct
+          ? _value.favouriteProduct
+          : favouriteProduct // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel?,
+      isShopGetSizeProduct: freezed == isShopGetSizeProduct
+          ? _value.isShopGetSizeProduct
+          : isShopGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool?,
       codeProduct: freezed == codeProduct
           ? _value.codeProduct
           : codeProduct // ignore: cast_nullable_to_non_nullable
@@ -8125,6 +9082,34 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     return $FavouritesCatalogProductsRequestCopyWith<$Res>(_value.request,
         (value) {
       return _then(_value.copyWith(request: value));
+    });
+  }
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterItemDataModelCopyWith<$Res>? get itemFileter {
+    if (_value.itemFileter == null) {
+      return null;
+    }
+
+    return $FilterItemDataModelCopyWith<$Res>(_value.itemFileter!, (value) {
+      return _then(_value.copyWith(itemFileter: value));
+    });
+  }
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res>? get favouriteProduct {
+    if (_value.favouriteProduct == null) {
+      return null;
+    }
+
+    return $ProductDataModelCopyWith<$Res>(_value.favouriteProduct!, (value) {
+      return _then(_value.copyWith(favouriteProduct: value));
     });
   }
 
@@ -8196,6 +9181,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       required final List<SkuProductDataModel> listSize,
       required this.isLoadGetSizeProduct,
       required this.userDiscount,
+      this.typeError,
+      this.errorMessage,
+      this.isError,
+      this.isLoadErrorButton,
+      this.keyFilterCatalog,
+      this.indexFileter,
+      this.indexItemFileter,
+      this.indexFilterCategory,
+      this.itemFileter,
+      this.indexProduct,
+      this.favouriteProduct,
+      this.isShopGetSizeProduct,
       this.codeProduct,
       this.selectSizeProduct,
       this.isShoppingCart,
@@ -8333,6 +9330,30 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   @override
   final int userDiscount;
   @override
+  final String? typeError;
+  @override
+  final String? errorMessage;
+  @override
+  final bool? isError;
+  @override
+  final bool? isLoadErrorButton;
+  @override
+  final int? keyFilterCatalog;
+  @override
+  final int? indexFileter;
+  @override
+  final int? indexItemFileter;
+  @override
+  final int? indexFilterCategory;
+  @override
+  final FilterItemDataModel? itemFileter;
+  @override
+  final int? indexProduct;
+  @override
+  final ProductDataModel? favouriteProduct;
+  @override
+  final bool? isShopGetSizeProduct;
+  @override
   final String? codeProduct;
   @override
   final SkuProductDataModel? selectSizeProduct;
@@ -8349,7 +9370,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
 
   @override
   String toString() {
-    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, indexProduct: $indexProduct, favouriteProduct: $favouriteProduct, isShopGetSizeProduct: $isShopGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -8388,6 +9409,29 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 other.isLoadGetSizeProduct == isLoadGetSizeProduct) &&
             (identical(other.userDiscount, userDiscount) ||
                 other.userDiscount == userDiscount) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton) &&
+            (identical(other.keyFilterCatalog, keyFilterCatalog) ||
+                other.keyFilterCatalog == keyFilterCatalog) &&
+            (identical(other.indexFileter, indexFileter) ||
+                other.indexFileter == indexFileter) &&
+            (identical(other.indexItemFileter, indexItemFileter) ||
+                other.indexItemFileter == indexItemFileter) &&
+            (identical(other.indexFilterCategory, indexFilterCategory) ||
+                other.indexFilterCategory == indexFilterCategory) &&
+            (identical(other.itemFileter, itemFileter) ||
+                other.itemFileter == itemFileter) &&
+            (identical(other.indexProduct, indexProduct) ||
+                other.indexProduct == indexProduct) &&
+            (identical(other.favouriteProduct, favouriteProduct) ||
+                other.favouriteProduct == favouriteProduct) &&
+            (identical(other.isShopGetSizeProduct, isShopGetSizeProduct) ||
+                other.isShopGetSizeProduct == isShopGetSizeProduct) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
             (identical(other.selectSizeProduct, selectSizeProduct) ||
@@ -8427,6 +9471,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         const DeepCollectionEquality().hash(_listSize),
         isLoadGetSizeProduct,
         userDiscount,
+        typeError,
+        errorMessage,
+        isError,
+        isLoadErrorButton,
+        keyFilterCatalog,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter,
+        indexProduct,
+        favouriteProduct,
+        isShopGetSizeProduct,
         codeProduct,
         selectSizeProduct,
         isShoppingCart,
@@ -8450,12 +9506,14 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
     required TResult Function() openSoppingCart,
     required TResult Function(String code, List<SkuProductDataModel> listSize,
             List<SkuProductDataModel> listSizeToSoppingCart, String titleScreen)
         getSizeProduct,
     required TResult Function(String code, String titleScreen)
         addProductToSoppingCart,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -8475,6 +9533,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -8503,6 +9573,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         listSize,
         isLoadGetSizeProduct,
         userDiscount,
+        typeError,
+        errorMessage,
+        isError,
+        isLoadErrorButton,
+        keyFilterCatalog,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter,
+        indexProduct,
+        favouriteProduct,
+        isShopGetSizeProduct,
         codeProduct,
         selectSizeProduct,
         isShoppingCart,
@@ -8517,6 +9599,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? openSoppingCart,
     TResult? Function(
             String code,
@@ -8525,6 +9608,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult? Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -8544,6 +9628,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -8572,6 +9668,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         listSize,
         isLoadGetSizeProduct,
         userDiscount,
+        typeError,
+        errorMessage,
+        isError,
+        isLoadErrorButton,
+        keyFilterCatalog,
+        indexFileter,
+        indexItemFileter,
+        indexFilterCategory,
+        itemFileter,
+        indexProduct,
+        favouriteProduct,
+        isShopGetSizeProduct,
         codeProduct,
         selectSizeProduct,
         isShoppingCart,
@@ -8586,6 +9694,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
     TResult Function()? openSoppingCart,
     TResult Function(
             String code,
@@ -8594,6 +9703,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             String titleScreen)?
         getSizeProduct,
     TResult Function(String code, String titleScreen)? addProductToSoppingCart,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<ProductDataModel> favouritesProducts,
             List<ProductDataModel> favouritesDefaultProducts,
@@ -8613,6 +9723,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             List<SkuProductDataModel> listSize,
             bool isLoadGetSizeProduct,
             int userDiscount,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton,
+            int? keyFilterCatalog,
+            int? indexFileter,
+            int? indexItemFileter,
+            int? indexFilterCategory,
+            FilterItemDataModel? itemFileter,
+            int? indexProduct,
+            ProductDataModel? favouriteProduct,
+            bool? isShopGetSizeProduct,
             String? codeProduct,
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
@@ -8643,6 +9765,18 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
           listSize,
           isLoadGetSizeProduct,
           userDiscount,
+          typeError,
+          errorMessage,
+          isError,
+          isLoadErrorButton,
+          keyFilterCatalog,
+          indexFileter,
+          indexItemFileter,
+          indexFilterCategory,
+          itemFileter,
+          indexProduct,
+          favouriteProduct,
+          isShopGetSizeProduct,
           codeProduct,
           selectSizeProduct,
           isShoppingCart,
@@ -8659,12 +9793,15 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitFavouritesState value) init,
     required TResult Function(LoadingFavouritesState value) load,
+    required TResult Function(LoadingErrorButtonFavouritesState value)
+        loadErrorButton,
     required TResult Function(OpenSoppingCartFavouritesState value)
         openSoppingCart,
     required TResult Function(GetSizeProductFavouritesState value)
         getSizeProduct,
     required TResult Function(AddProductFavouritesState value)
         addProductToSoppingCart,
+    required TResult Function(ErrorFavouritesState value) error,
     required TResult Function(ProductsFavouritesState value) productsFavourites,
   }) {
     return productsFavourites(this);
@@ -8675,9 +9812,11 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitFavouritesState value)? init,
     TResult? Function(LoadingFavouritesState value)? load,
+    TResult? Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult? Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult? Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult? Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult? Function(ErrorFavouritesState value)? error,
     TResult? Function(ProductsFavouritesState value)? productsFavourites,
   }) {
     return productsFavourites?.call(this);
@@ -8688,9 +9827,11 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitFavouritesState value)? init,
     TResult Function(LoadingFavouritesState value)? load,
+    TResult Function(LoadingErrorButtonFavouritesState value)? loadErrorButton,
     TResult Function(OpenSoppingCartFavouritesState value)? openSoppingCart,
     TResult Function(GetSizeProductFavouritesState value)? getSizeProduct,
     TResult Function(AddProductFavouritesState value)? addProductToSoppingCart,
+    TResult Function(ErrorFavouritesState value)? error,
     TResult Function(ProductsFavouritesState value)? productsFavourites,
     required TResult orElse(),
   }) {
@@ -8721,6 +9862,18 @@ abstract class ProductsFavouritesState implements FavouritesState {
           required final List<SkuProductDataModel> listSize,
           required final bool isLoadGetSizeProduct,
           required final int userDiscount,
+          final String? typeError,
+          final String? errorMessage,
+          final bool? isError,
+          final bool? isLoadErrorButton,
+          final int? keyFilterCatalog,
+          final int? indexFileter,
+          final int? indexItemFileter,
+          final int? indexFilterCategory,
+          final FilterItemDataModel? itemFileter,
+          final int? indexProduct,
+          final ProductDataModel? favouriteProduct,
+          final bool? isShopGetSizeProduct,
           final String? codeProduct,
           final SkuProductDataModel? selectSizeProduct,
           final bool? isShoppingCart,
@@ -8748,6 +9901,18 @@ abstract class ProductsFavouritesState implements FavouritesState {
   List<SkuProductDataModel> get listSize;
   bool get isLoadGetSizeProduct;
   int get userDiscount;
+  String? get typeError;
+  String? get errorMessage;
+  bool? get isError;
+  bool? get isLoadErrorButton;
+  int? get keyFilterCatalog;
+  int? get indexFileter;
+  int? get indexItemFileter;
+  int? get indexFilterCategory;
+  FilterItemDataModel? get itemFileter;
+  int? get indexProduct;
+  ProductDataModel? get favouriteProduct;
+  bool? get isShopGetSizeProduct;
   String? get codeProduct;
   SkuProductDataModel? get selectSizeProduct;
   bool? get isShoppingCart;

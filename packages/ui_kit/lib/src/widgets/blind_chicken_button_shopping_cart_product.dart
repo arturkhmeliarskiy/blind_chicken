@@ -45,6 +45,26 @@ class BlindChickenButtonShoppingCartProduct extends StatelessWidget {
                 ),
               );
             },
+            loadErrorButton: (value) {
+              return Text(
+                title,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: BlindChickenColors.backgroundColorItemFilter,
+                      height: 1,
+                    ),
+                textAlign: TextAlign.center,
+              );
+            },
+            error: (value) {
+              return Text(
+                title,
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: BlindChickenColors.backgroundColorItemFilter,
+                      height: 1,
+                    ),
+                textAlign: TextAlign.center,
+              );
+            },
             productsShoppingCart: (initState) {
               return Text(
                 title,

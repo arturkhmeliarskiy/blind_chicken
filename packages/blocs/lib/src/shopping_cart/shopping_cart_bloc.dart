@@ -135,21 +135,28 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     PreloadDataShoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
-    emit(const ShoppingCartState.load());
+    if (state is ErrorShoppingCartState) {
+      emit(const ShoppingCartState.loadErrorButton());
+    } else {
+      emit(const ShoppingCartState.load());
+    }
+
     _appMetricaEcommerceService.openPages(titleScreen: 'Корзина');
     List<ProductDataModel> favouritesProducts = [];
     List<int> favouritesProductsId = [];
     BasketFullInfoDataModel? basketInfo;
+    FavouritesDataModel? favouritesProdcutsInfo;
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
     if (isAuth) {
       basketInfo = await _basketRepository.getProductToBasketFullInfo();
-      final favouritesProdcuts = await _favouritesRepository.getFavouritesProdcuts();
-      favouritesProductsId = favouritesProdcuts.favorites.map((item) => int.parse(item)).toList();
+      favouritesProdcutsInfo = await _favouritesRepository.getFavouritesProdcuts();
+      favouritesProductsId =
+          favouritesProdcutsInfo.favorites.map((item) => int.parse(item)).toList();
       log(basketInfo.toString());
-      log(favouritesProdcuts.toString());
+      log(favouritesProdcutsInfo.toString());
     } else {
       basketInfo = await updateBasket(promo: '', pickup: '');
       favouritesProducts = _catalogRepository.getFavouritesProducts();
@@ -165,109 +172,135 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       amountPaid = amountPaid + basketInfo.basket[i].data.price;
     }
 
-    emit(
-      ShoppingCartState.productsShoppingCart(
-        shoppingCart: basketInfo,
-        numberProducts: numberProducts,
-        amountPaid: amountPaid,
-        favouritesProducts: favouritesProducts,
-        payments: _updateDataService.payments,
-        isLoadPaymentBonus: false,
-        isLoadPaymentGift: false,
-        isLoadPaymentPromoCode: false,
-        boutiques: BoutiquesDataModel(
-          data: boutiques.data,
-          errorMessage: '',
+    if (basketInfo.errorMessage.isNotEmpty ||
+        (favouritesProdcutsInfo?.errorMessage.isNotEmpty ?? false) ||
+        (boutiques.errorMessage?.isNotEmpty ?? false)) {
+      emit(
+        ShoppingCartState.error(
+          errorMessage: MessageInfo.errorMessage,
         ),
-        receivingType: 'Самовывоз',
-        promoCodeMessage: '',
-        isActivePromoCode: false,
-        promoCode: '',
-        pickup: '',
-        listGiftCard: [],
-        giftCards: 0,
-        bonuses: 0,
-        isLoadCreateOrder: false,
-        isUponReceipt: true,
-        listProductsCode: [],
-        listProdcutsStyle: [],
-        listProdcutsAlso: [],
-        listProdcutsBrand: [],
-        listProdcutsComplect: [],
-        favouritesProductsId: favouritesProductsId,
-        isAuth: isAuth,
-        address: '',
-        addressDelivery: BasketAddress(address: '', zip: ''),
-        uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
-        paymentId: '1',
-        typePay: 'Банковской картой',
-        titlePromocode: 'Активация промокода',
-        listSize: [],
-        isLoadGetSizeProduct: false,
-        isLoadAddProductToShopingCart: false,
-        isBlocBackBotton: false,
-      ),
-    );
+      );
+    } else {
+      emit(
+        ShoppingCartState.productsShoppingCart(
+          shoppingCart: basketInfo,
+          numberProducts: numberProducts,
+          amountPaid: amountPaid,
+          favouritesProducts: favouritesProducts,
+          payments: _updateDataService.payments,
+          isLoadPaymentBonus: false,
+          isLoadPaymentGift: false,
+          isLoadPaymentPromoCode: false,
+          boutiques: BoutiquesDataModel(
+            data: boutiques.data,
+            errorMessage: '',
+          ),
+          receivingType: 'Самовывоз',
+          promoCodeMessage: '',
+          isActivePromoCode: false,
+          promoCode: '',
+          pickup: '',
+          listGiftCard: [],
+          giftCards: 0,
+          bonuses: 0,
+          isLoadCreateOrder: false,
+          isUponReceipt: true,
+          listProductsCode: [],
+          listProdcutsStyle: [],
+          listProdcutsAlso: [],
+          listProdcutsBrand: [],
+          listProdcutsComplect: [],
+          favouritesProductsId: favouritesProductsId,
+          isAuth: isAuth,
+          address: '',
+          addressDelivery: BasketAddress(address: '', zip: ''),
+          uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
+          paymentId: '1',
+          typePay: 'Банковской картой',
+          titlePromocode: 'Активация промокода',
+          listSize: [],
+          isLoadGetSizeProduct: false,
+          isLoadAddProductToShopingCart: false,
+          isBlocBackBotton: false,
+        ),
+      );
+    }
   }
 
   Future<void> _addOtherProductToSoppingCart(
     AddOtherProductToSoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
+    bool isListProductsCode = false;
     if (state is ProductsShoppingCartState) {
-      final stateInfo = state as ProductsShoppingCartState;
-      if (stateInfo.listProductsCode.isNotEmpty) {
-        add(
-          AddProductToSoppingCartEvent(
-            item: event.item,
-          ),
-        );
+      isListProductsCode = (state as ProductsShoppingCartState).listProductsCode.isNotEmpty;
+    }
+    if (isListProductsCode) {
+      add(
+        AddProductToSoppingCartEvent(
+          item: event.item,
+        ),
+      );
+    } else {
+      if (state is ErrorShoppingCartState) {
+        emit(const ShoppingCartState.loadErrorButton());
       } else {
         emit(const ShoppingCartState.load());
-        BasketFullInfoDataModel? basketInfo;
-        bool isAuth = _sharedPreferencesService.getBool(
-              key: SharedPrefKeys.userAuthorized,
-            ) ??
-            false;
+      }
 
-        if (isAuth) {
-          await _basketRepository.addProductToBasket(
-            code: event.item.code,
-            sku: event.item.sku.contains('-') ? event.item.sku : '',
-            count: event.item.count,
-            titleScreen: event.item.titleScreen,
-            searchQuery: event.item.searchQuery,
-            typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
-            identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
-            sectionCategoriesPath: event.item.sectionCategoriesPath,
-            productCategoriesPath: event.item.productCategoriesPath,
-          );
-          basketInfo = await updateBasket(
-            isLocal: false,
-            promo: '',
-            pickup: '',
-          );
-          log(basketInfo.toString());
-        } else {
-          _catalogRepository.addShoppingCartProduct(
-            event.item,
-          );
-          basketInfo = await updateBasket(
-            promo: '',
-            pickup: '',
-          );
-        }
+      BasketFullInfoDataModel? basketInfo;
+      BasketDataModel? addBasketInfo;
+      bool isAuth = _sharedPreferencesService.getBool(
+            key: SharedPrefKeys.userAuthorized,
+          ) ??
+          false;
 
-        int numberProducts = 0;
-        int amountPaid = 0;
-        for (int i = 0; i < basketInfo.basket.length; i++) {
-          numberProducts = numberProducts + basketInfo.basket[i].count;
-          amountPaid = amountPaid + basketInfo.basket[i].data.price;
-        }
+      if (isAuth) {
+        addBasketInfo = await _basketRepository.addProductToBasket(
+          code: event.item.code,
+          sku: event.item.sku.contains('-') ? event.item.sku : '',
+          count: event.item.count,
+          titleScreen: event.item.titleScreen,
+          searchQuery: event.item.searchQuery,
+          typeAddProductToShoppingCart: event.item.typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart: event.item.identifierAddProductToShoppingCart,
+          sectionCategoriesPath: event.item.sectionCategoriesPath,
+          productCategoriesPath: event.item.productCategoriesPath,
+        );
+        basketInfo = await updateBasket(
+          isLocal: false,
+          promo: '',
+          pickup: '',
+        );
+        log(basketInfo.toString());
+      } else {
+        _catalogRepository.addShoppingCartProduct(
+          event.item,
+        );
+        basketInfo = await updateBasket(
+          promo: '',
+          pickup: '',
+        );
+      }
 
-        final boutiques = await _boutiquesRepository.getBoutiques();
-        _updateDataService.boutiques = boutiques.data;
+      int numberProducts = 0;
+      int amountPaid = 0;
+      for (int i = 0; i < basketInfo.basket.length; i++) {
+        numberProducts = numberProducts + basketInfo.basket[i].count;
+        amountPaid = amountPaid + basketInfo.basket[i].data.price;
+      }
 
+      final boutiques = await _boutiquesRepository.getBoutiques();
+      _updateDataService.boutiques = boutiques.data;
+
+      if ((boutiques.errorMessage?.isNotEmpty ?? false) ||
+          (addBasketInfo?.errorMessage.isNotEmpty ?? false)) {
+        emit(ShoppingCartState.error(
+          errorMessage: MessageInfo.errorMessage,
+          titleScreen: event.item.titleScreen,
+          item: event.item,
+        ));
+      } else {
         emit(
           ShoppingCartState.productsShoppingCart(
             shoppingCart: BasketFullInfoDataModel(
@@ -363,12 +396,22 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           );
         }
 
-        emit(
-          initState.copyWith(
-            isLoadAddProductToShopingCart: true,
-          ),
-        );
+        if (initState.isError ?? false) {
+          emit(
+            initState.copyWith(
+              isLoadErrorButton: true,
+            ),
+          );
+        } else {
+          emit(
+            initState.copyWith(
+              isLoadAddProductToShopingCart: true,
+            ),
+          );
+        }
+
         BasketFullInfoDataModel? basketInfo;
+        BasketDataModel? basketProductInfo;
         bool isShoppingCart = false;
         bool isShoppingCartDetailsProduct = false;
         final detailsProduct = initState.detailsProduct;
@@ -378,7 +421,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             false;
 
         if (isAuth) {
-          await _basketRepository.addProductToBasket(
+          basketProductInfo = await _basketRepository.addProductToBasket(
             code: event.item.code,
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: event.item.count,
@@ -446,12 +489,18 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
 
         emit(
           initState.copyWith(
+            isError: basketProductInfo?.errorMessage.isNotEmpty ??
+                false || basketInfo.errorMessage.isNotEmpty,
+            errorMessage: MessageInfo.errorMessage,
+            itemInfo: event.item,
+            typeError: 'добавить товар в корзину',
             shoppingCart: basketInfo,
             numberProducts: numberProducts,
             amountPaid: amountPaid,
             isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
             isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
             isLoadAddProductToShopingCart: false,
+            isLoadErrorButton: false,
           ),
         );
       },
@@ -464,6 +513,12 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
+        if (initState.isError ?? false) {
+          emit(initState.copyWith(
+            isLoadErrorButton: true,
+          ));
+        }
+
         final count = initState.shoppingCart.basket[event.index].count;
         final yourPrice = initState.shoppingCart.basket[event.index].product.yourPrice;
         final pb = initState.shoppingCart.basket[event.index].product.pb;
@@ -506,12 +561,13 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         }
 
         BasketFullInfoDataModel? basketInfo;
+        BasketDataModel? basketProductInfo;
         bool isAuth = _sharedPreferencesService.getBool(
               key: SharedPrefKeys.userAuthorized,
             ) ??
             false;
         if (isAuth) {
-          await _basketRepository.addProductToBasket(
+          basketProductInfo = await _basketRepository.addProductToBasket(
             code: event.item.code,
             sku: event.item.sku.contains('-') ? event.item.sku : '',
             count: 0,
@@ -541,12 +597,23 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           numberProducts = numberProducts + basketInfo.basket[i].count;
           amountPaid = amountPaid + basketInfo.basket[i].data.price;
         }
-        emit(const ShoppingCartState.load());
+
+        if ((basketProductInfo?.errorMessage.isEmpty ?? false) || basketInfo.errorMessage.isEmpty) {
+          emit(const ShoppingCartState.load());
+        }
+
         emit(
           initState.copyWith(
+            isError: (basketProductInfo?.errorMessage.isNotEmpty ?? false) ||
+                basketInfo.errorMessage.isNotEmpty,
+            errorMessage: MessageInfo.errorMessage,
+            typeError: 'удалить товар из корзины',
+            itemInfo: event.item,
+            indexItem: event.index,
             shoppingCart: basketInfo,
             numberProducts: numberProducts,
             amountPaid: amountPaid,
+            isLoadErrorButton: false,
           ),
         );
       },
@@ -559,14 +626,20 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
+        if (initState.isError ?? false) {
+          emit(initState.copyWith(
+            isLoadErrorButton: true,
+          ));
+        }
         BasketFullInfoDataModel? basketInfo;
+        BasketDataModel? basketProductInfo;
         bool isAuth = _sharedPreferencesService.getBool(
               key: SharedPrefKeys.userAuthorized,
             ) ??
             false;
         if (event.item.count == 0) {
           if (isAuth) {
-            await _basketRepository.addProductToBasket(
+            basketProductInfo = await _basketRepository.addProductToBasket(
               code: event.item.code,
               sku: event.item.sku,
               count: 0,
@@ -582,7 +655,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           }
         } else {
           if (isAuth) {
-            await _basketRepository.addProductToBasket(
+            basketProductInfo = await _basketRepository.addProductToBasket(
               code: event.item.code,
               sku: event.item.sku,
               count: event.item.count,
@@ -705,14 +778,24 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           );
         }
 
-        emit(const ShoppingCartState.load());
+        if ((basketProductInfo?.errorMessage.isEmpty ?? false) || basketInfo.errorMessage.isEmpty) {
+          emit(const ShoppingCartState.load());
+        }
+
         final result = _catalogRepository.getShoppingCartProducts();
         log(result.toString());
         emit(
           initState.copyWith(
+            isError: (basketProductInfo?.errorMessage.isNotEmpty ?? false) ||
+                basketInfo.errorMessage.isNotEmpty,
+            errorMessage: MessageInfo.errorMessage,
+            typeError: 'изменить количство тоаров в корзине',
+            itemInfo: event.item,
+            indexItem: event.index,
             shoppingCart: basketInfo,
             numberProducts: numberProducts,
             amountPaid: amountPaid,
+            isLoadErrorButton: false,
           ),
         );
       },
@@ -778,17 +861,34 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
-        emit(
-          initState.copyWith(
-            isLoadPaymentBonus: true,
-          ),
-        );
+        if (initState.isError ?? false) {
+          emit(
+            initState.copyWith(
+              isLoadErrorButton: true,
+            ),
+          );
+        } else {
+          emit(
+            initState.copyWith(
+              isLoadPaymentBonus: true,
+            ),
+          );
+        }
+
         final paymentBonus = await _basketRepository.getPaymentBonus();
+
+        if (paymentBonus.errorMessage.isEmpty) {
+          emit(ShoppingCartState.openShowDialog());
+        }
 
         emit(
           initState.copyWith(
             paymentBonus: paymentBonus,
+            isError: paymentBonus.errorMessage.isNotEmpty,
+            errorMessage: MessageInfo.errorMessage,
+            typeError: 'проверка бонусов',
             isLoadPaymentBonus: false,
+            isLoadErrorButton: false,
           ),
         );
       },
@@ -1023,7 +1123,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             emit(
               initState.copyWith(
                 isLoadCreateOrder: false,
-                creatOrderMessage: result.e,
+                creatOrderMessage: result.errorMessage,
               ),
             );
           }
@@ -1046,12 +1146,20 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     await state.mapOrNull(productsShoppingCart: (initState) async {
       SkuProductDataModel? selectSizeProduct;
       bool isShoppingCartDetailsProduct = false;
+      String errorMessage = '';
+      bool isError = false;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
-      emit(const ShoppingCartState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const ShoppingCartState.load());
+      }
 
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
@@ -1083,10 +1191,6 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         code: event.code,
         block: 'complect',
       );
-
-      if (!(event.isUpdate ?? false)) {
-        listProductsCode.add(event.code);
-      }
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
@@ -1154,7 +1258,22 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             : [],
       );
 
+      if (detailsProduct.errorMessage.isNotEmpty ||
+          basketInfo.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionStyle.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionAlso.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionComplect.errorMessage.isNotEmpty) {
+        isError = true;
+        errorMessage = MessageInfo.errorMessage;
+      } else {
+        if (!(event.isUpdate ?? false)) {
+          listProductsCode.add(event.code);
+        }
+      }
+
       emit(initState.copyWith(
+        isError: isError,
+        errorMessage: errorMessage,
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
@@ -1166,6 +1285,11 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         selectSizeProduct: selectSizeProduct ?? event.size,
         isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
         isBlocBackBotton: false,
+        codeProduct: event.code,
+        titleScreen: event.titleScreen,
+        typeAddProductToShoppingCart: event.typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart: event.identifierAddProductToShoppingCart,
+        typeError: 'описание товара',
       ));
     });
   }
@@ -1234,29 +1358,43 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     Emitter<ShoppingCartState> emit,
   ) async {
     await state.mapOrNull(productsShoppingCart: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogInfoDataModel? favouritesInfo;
+      FavouritesInfoDataModel? favouritesProductsInfo;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.addFavouriteProdcut(
+        favouritesProductsInfo = await _favouritesRepository.addFavouriteProdcut(
           code: event.product.id.toString(),
         );
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
         );
-        final result = await _favouritesRepository.getFavouritesProdcuts();
-        log(result.toString());
       } else {
         _catalogRepository.addFavouritesProduct(event.product);
         favouritesInfo = await updateFavouritesProducts();
       }
 
-      emit(const ShoppingCartState.load());
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
+        emit(const ShoppingCartState.load());
+      }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          typeError: 'добавить товар в избранное',
+          indexItem: event.index,
+          product: event.product,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -1267,28 +1405,41 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     Emitter<ShoppingCartState> emit,
   ) async {
     await state.mapOrNull(productsShoppingCart: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogInfoDataModel? favouritesInfo;
-
+      FavouritesInfoDataModel? favouritesProductsInfo;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        favouritesProductsInfo =
+            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
         );
-        final result = await _favouritesRepository.getFavouritesProdcuts();
-        log(result.toString());
       } else {
         _catalogRepository.deleteFavouritesProduct(event.index);
         favouritesInfo = await updateFavouritesProducts();
       }
 
-      emit(const ShoppingCartState.load());
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
+        emit(const ShoppingCartState.load());
+      }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          typeError: 'удалить товар из избранного',
+          indexItem: event.index,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -1434,22 +1585,39 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     Emitter<ShoppingCartState> emit,
   ) async {
     await state.mapOrNull(productsShoppingCart: (initState) async {
-      emit(initState.copyWith(
-        isLoadGetSizeProduct: true,
-        codeProduct: event.code,
-      ));
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoadGetSizeProduct: true,
+          codeProduct: event.code,
+        ));
+      }
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
-      if (detailsProduct.sku.isNotEmpty) {
-        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
-          emit(ShoppingCartState.getSizeProduct(
-            code: event.code,
-            listSize: detailsProduct.sku,
-            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
-          ));
+      if (detailsProduct.errorMessage.isEmpty) {
+        if (detailsProduct.sku.isNotEmpty) {
+          if (detailsProduct.sku.first.id.contains('-') &&
+              detailsProduct.sku.first.id.length > 10) {
+            emit(ShoppingCartState.getSizeProduct(
+              code: event.code,
+              listSize: detailsProduct.sku,
+              listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            ));
+          } else {
+            if (event.isShop) {
+              emit(const ShoppingCartState.openSoppingCart());
+            } else {
+              emit(ShoppingCartState.addProductToSoppingCart(
+                code: event.code,
+              ));
+            }
+          }
         } else {
           if (event.isShop) {
             emit(const ShoppingCartState.openSoppingCart());
@@ -1459,21 +1627,19 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             ));
           }
         }
-      } else {
-        if (event.isShop) {
-          emit(const ShoppingCartState.openSoppingCart());
-        } else {
-          emit(ShoppingCartState.addProductToSoppingCart(
-            code: event.code,
-          ));
-        }
       }
 
       emit(initState.copyWith(
-        detailsProduct: detailsProduct,
+        detailsProduct:
+            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
+        isError: detailsProduct.errorMessage.isNotEmpty,
+        errorMessage: detailsProduct.errorMessage,
+        isShopGetSizeProduct: event.isShop,
+        typeError: 'выбор размера описание товара',
+        isLoadErrorButton: false,
       ));
     });
   }

@@ -8,6 +8,7 @@ class BasketDataModel with _$BasketDataModel {
   factory BasketDataModel({
     required String r,
     required String e,
+    required String errorMessage,
     required int count,
   }) = _BasketDataModel;
 }

@@ -12,6 +12,9 @@ class SearchState with _$SearchState {
     required String titleScreen,
     required String query,
   }) = GetSizeProductSearchState;
+  const factory SearchState.error({
+    required String errorMessage,
+  }) = ErrorSearchState;
   const factory SearchState.addProductToSoppingCart({
     required String code,
     required String titleScreen,
@@ -47,6 +50,18 @@ class SearchState with _$SearchState {
     bool? isShoppingCartDetailsProduct,
     DetailProductDataModel? detailsProduct,
     List<ProductDataModel>? favouritesProducts,
+    bool? isLoadErrorButton,
     CatalogSearchInfoDataModel? searchResultInfo,
+    int? indexProduct,
+    ProductDataModel? favouriteProduct,
+    bool? isShopGetSizeProduct,
+    String? errorMessage,
+    String? typeError,
+    bool? isError,
+    int? keyFilterCatalog,
+    int? indexFileter,
+    int? indexItemFileter,
+    int? indexFilterCategory,
+    FilterItemDataModel? itemFileter,
   }) = SearchProductsResultSearchState;
 }

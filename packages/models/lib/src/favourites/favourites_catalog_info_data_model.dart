@@ -15,5 +15,6 @@ class FavouritesCatalogInfoDataModel with _$FavouritesCatalogInfoDataModel {
     required List<ProductDataModel> products,
     required String r,
     required String e,
+    required String errorMessage,
   }) = _FavouritesCatalogInfoDataModel;
 }

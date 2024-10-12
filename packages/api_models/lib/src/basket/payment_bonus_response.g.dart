@@ -13,6 +13,7 @@ _$PaymentBonusResponseImpl _$$PaymentBonusResponseImplFromJson(
       e: json['e'] as String?,
       info: json['info'] as String?,
       balance: json['balance'] as int?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$$PaymentBonusResponseImplToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$PaymentBonusResponseImplToJson(
       'e': instance.e,
       'info': instance.info,
       'balance': instance.balance,
+      'errorMessage': instance.errorMessage,
     };

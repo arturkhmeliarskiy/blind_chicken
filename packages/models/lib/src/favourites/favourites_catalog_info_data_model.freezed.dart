@@ -24,6 +24,7 @@ mixin _$FavouritesCatalogInfoDataModel {
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FavouritesCatalogInfoDataModelCopyWith<FavouritesCatalogInfoDataModel>
@@ -46,7 +47,8 @@ abstract class $FavouritesCatalogInfoDataModelCopyWith<$Res> {
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$FavouritesCatalogInfoDataModelCopyWithImpl<$Res,
     Object? products = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       userDiscount: null == userDiscount
@@ -105,6 +108,10 @@ class _$FavouritesCatalogInfoDataModelCopyWithImpl<$Res,
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -126,7 +133,8 @@ abstract class _$$FavouritesCatalogInfoDataModelImplCopyWith<$Res>
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -150,6 +158,7 @@ class __$$FavouritesCatalogInfoDataModelImplCopyWithImpl<$Res>
     Object? products = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$FavouritesCatalogInfoDataModelImpl(
       userDiscount: null == userDiscount
@@ -184,6 +193,10 @@ class __$$FavouritesCatalogInfoDataModelImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -200,7 +213,8 @@ class _$FavouritesCatalogInfoDataModelImpl
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required this.r,
-      required this.e})
+      required this.e,
+      required this.errorMessage})
       : _filter = filter,
         _products = products,
         super._();
@@ -233,10 +247,12 @@ class _$FavouritesCatalogInfoDataModelImpl
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'FavouritesCatalogInfoDataModel(userDiscount: $userDiscount, h1: $h1, count: $count, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'FavouritesCatalogInfoDataModel(userDiscount: $userDiscount, h1: $h1, count: $count, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -253,7 +269,9 @@ class _$FavouritesCatalogInfoDataModelImpl
             const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -266,7 +284,8 @@ class _$FavouritesCatalogInfoDataModelImpl
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
-      e);
+      e,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -280,14 +299,16 @@ class _$FavouritesCatalogInfoDataModelImpl
 abstract class _FavouritesCatalogInfoDataModel
     extends FavouritesCatalogInfoDataModel {
   factory _FavouritesCatalogInfoDataModel(
-      {required final int userDiscount,
-      required final String h1,
-      required final String count,
-      required final String countFilter,
-      required final List<FilterInfoDataModel> filter,
-      required final List<ProductDataModel> products,
-      required final String r,
-      required final String e}) = _$FavouritesCatalogInfoDataModelImpl;
+          {required final int userDiscount,
+          required final String h1,
+          required final String count,
+          required final String countFilter,
+          required final List<FilterInfoDataModel> filter,
+          required final List<ProductDataModel> products,
+          required final String r,
+          required final String e,
+          required final String errorMessage}) =
+      _$FavouritesCatalogInfoDataModelImpl;
   _FavouritesCatalogInfoDataModel._() : super._();
 
   @override
@@ -306,6 +327,8 @@ abstract class _FavouritesCatalogInfoDataModel
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$FavouritesCatalogInfoDataModelImplCopyWith<

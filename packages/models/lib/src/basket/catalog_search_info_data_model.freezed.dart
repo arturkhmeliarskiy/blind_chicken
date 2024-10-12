@@ -24,6 +24,7 @@ mixin _$CatalogSearchInfoDataModel {
   List<ProductDataModel> get products => throw _privateConstructorUsedError;
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogSearchInfoDataModelCopyWith<CatalogSearchInfoDataModel>
@@ -45,7 +46,8 @@ abstract class $CatalogSearchInfoDataModelCopyWith<$Res> {
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$CatalogSearchInfoDataModelCopyWithImpl<$Res,
     Object? products = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       userDiscount: null == userDiscount
@@ -104,6 +107,10 @@ class _$CatalogSearchInfoDataModelCopyWithImpl<$Res,
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -125,7 +132,8 @@ abstract class _$$CatalogSearchInfoDataModelImplCopyWith<$Res>
       List<FilterInfoDataModel> filter,
       List<ProductDataModel> products,
       String r,
-      String e});
+      String e,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$$CatalogSearchInfoDataModelImplCopyWithImpl<$Res>
     Object? products = null,
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$CatalogSearchInfoDataModelImpl(
       userDiscount: null == userDiscount
@@ -183,6 +192,10 @@ class __$$CatalogSearchInfoDataModelImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -198,7 +211,8 @@ class _$CatalogSearchInfoDataModelImpl extends _CatalogSearchInfoDataModel {
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required this.r,
-      required this.e})
+      required this.e,
+      required this.errorMessage})
       : _filter = filter,
         _products = products,
         super._();
@@ -231,10 +245,12 @@ class _$CatalogSearchInfoDataModelImpl extends _CatalogSearchInfoDataModel {
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'CatalogSearchInfoDataModel(userDiscount: $userDiscount, h1: $h1, count: $count, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e)';
+    return 'CatalogSearchInfoDataModel(userDiscount: $userDiscount, h1: $h1, count: $count, countFilter: $countFilter, filter: $filter, products: $products, r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -251,7 +267,9 @@ class _$CatalogSearchInfoDataModelImpl extends _CatalogSearchInfoDataModel {
             const DeepCollectionEquality().equals(other._filter, _filter) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -264,7 +282,8 @@ class _$CatalogSearchInfoDataModelImpl extends _CatalogSearchInfoDataModel {
       const DeepCollectionEquality().hash(_filter),
       const DeepCollectionEquality().hash(_products),
       r,
-      e);
+      e,
+      errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -283,7 +302,8 @@ abstract class _CatalogSearchInfoDataModel extends CatalogSearchInfoDataModel {
       required final List<FilterInfoDataModel> filter,
       required final List<ProductDataModel> products,
       required final String r,
-      required final String e}) = _$CatalogSearchInfoDataModelImpl;
+      required final String e,
+      required final String errorMessage}) = _$CatalogSearchInfoDataModelImpl;
   _CatalogSearchInfoDataModel._() : super._();
 
   @override
@@ -302,6 +322,8 @@ abstract class _CatalogSearchInfoDataModel extends CatalogSearchInfoDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$CatalogSearchInfoDataModelImplCopyWith<_$CatalogSearchInfoDataModelImpl>

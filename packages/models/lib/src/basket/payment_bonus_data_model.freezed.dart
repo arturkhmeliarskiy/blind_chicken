@@ -20,6 +20,7 @@ mixin _$PaymentBonusDataModel {
   String get e => throw _privateConstructorUsedError;
   String get info => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentBonusDataModelCopyWith<PaymentBonusDataModel> get copyWith =>
@@ -32,7 +33,8 @@ abstract class $PaymentBonusDataModelCopyWith<$Res> {
           $Res Function(PaymentBonusDataModel) then) =
       _$PaymentBonusDataModelCopyWithImpl<$Res, PaymentBonusDataModel>;
   @useResult
-  $Res call({String r, String e, String info, int balance});
+  $Res call(
+      {String r, String e, String info, int balance, String errorMessage});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$PaymentBonusDataModelCopyWithImpl<$Res,
     Object? e = null,
     Object? info = null,
     Object? balance = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       r: null == r
@@ -71,6 +74,10 @@ class _$PaymentBonusDataModelCopyWithImpl<$Res,
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as int,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -84,7 +91,8 @@ abstract class _$$PaymentBonusDataModelImplCopyWith<$Res>
       __$$PaymentBonusDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e, String info, int balance});
+  $Res call(
+      {String r, String e, String info, int balance, String errorMessage});
 }
 
 /// @nodoc
@@ -103,6 +111,7 @@ class __$$PaymentBonusDataModelImplCopyWithImpl<$Res>
     Object? e = null,
     Object? info = null,
     Object? balance = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$PaymentBonusDataModelImpl(
       r: null == r
@@ -121,6 +130,10 @@ class __$$PaymentBonusDataModelImplCopyWithImpl<$Res>
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
               as int,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -132,7 +145,8 @@ class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
       {required this.r,
       required this.e,
       required this.info,
-      required this.balance})
+      required this.balance,
+      required this.errorMessage})
       : super._();
 
   @override
@@ -143,10 +157,12 @@ class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
   final String info;
   @override
   final int balance;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'PaymentBonusDataModel(r: $r, e: $e, info: $info, balance: $balance)';
+    return 'PaymentBonusDataModel(r: $r, e: $e, info: $info, balance: $balance, errorMessage: $errorMessage)';
   }
 
   @override
@@ -157,11 +173,14 @@ class _$PaymentBonusDataModelImpl extends _PaymentBonusDataModel {
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
             (identical(other.info, info) || other.info == info) &&
-            (identical(other.balance, balance) || other.balance == balance));
+            (identical(other.balance, balance) || other.balance == balance) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, info, balance);
+  int get hashCode =>
+      Object.hash(runtimeType, r, e, info, balance, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -176,7 +195,8 @@ abstract class _PaymentBonusDataModel extends PaymentBonusDataModel {
       {required final String r,
       required final String e,
       required final String info,
-      required final int balance}) = _$PaymentBonusDataModelImpl;
+      required final int balance,
+      required final String errorMessage}) = _$PaymentBonusDataModelImpl;
   _PaymentBonusDataModel._() : super._();
 
   @override
@@ -187,6 +207,8 @@ abstract class _PaymentBonusDataModel extends PaymentBonusDataModel {
   String get info;
   @override
   int get balance;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$PaymentBonusDataModelImplCopyWith<_$PaymentBonusDataModelImpl>

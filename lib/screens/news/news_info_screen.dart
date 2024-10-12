@@ -21,6 +21,9 @@ class NewsInfoScreen extends StatefulWidget {
 }
 
 class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStateMixin {
+  final BlindChickenShowDialogError _blindChickenNewsInfoShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogNewsInfoError = false;
   late final TabController _tabController;
   bool _isSwipe = true;
   // int _selectedIndex = 0;
@@ -54,22 +57,79 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (initState) {
-            if (initState.listNewsPath.isEmpty) {
-              context.back();
-              setState(() {
-                _isSwipe = false;
-              });
-            } else {
-              _tabController.animateTo(
-                int.parse(
-                  initState.listNewsPath.last,
-                ),
-              );
-              setState(() {
-                _tabController.index = int.parse(
-                  initState.listNewsPath.last,
+            if (initState.isError ?? false) {
+              final typeError = initState.typeError ?? '';
+              if (!_isShowDialogNewsInfoError) {
+                _isShowDialogNewsInfoError = true;
+                _blindChickenNewsInfoShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<NewsBloc, NewsState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'новости':
+                        context.read<NewsBloc>().add(const NewsEvent.getNews());
+                        break;
+                      case 'медиа':
+                        context.read<NewsBloc>().add(const NewsEvent.getMedia());
+                        break;
+                      case 'уведомления':
+                        context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+                        break;
+                    }
+                  },
                 );
-              });
+              }
+            } else {
+              if (_isShowDialogNewsInfoError) {
+                _isShowDialogNewsInfoError = false;
+                _blindChickenNewsInfoShowDialogError.closeShowDialog();
+              }
+              if (initState.listNewsPath.isEmpty) {
+                context.back();
+                setState(() {
+                  _isSwipe = false;
+                });
+              } else {
+                _tabController.animateTo(
+                  int.parse(
+                    initState.listNewsPath.last,
+                  ),
+                );
+                setState(() {
+                  _tabController.index = int.parse(
+                    initState.listNewsPath.last,
+                  );
+                });
+              }
             }
           },
           orElse: () {},

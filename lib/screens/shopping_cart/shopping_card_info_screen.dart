@@ -45,6 +45,9 @@ class ShoppingCardInfoScreen extends StatefulWidget {
 class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
   final ScrollController _scrollController = ScrollController();
   BlindChickenMessage message = BlindChickenMessage();
+  final BlindChickenShowDialogError _blindChickenShoppingCardInfoProductShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogShoppingCardInfoProductError = false;
   bool _isShoppingCartButton = true;
   bool _isSwipe = true;
   bool _isChildRoute = false;
@@ -108,89 +111,191 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
     return BlocListener<ShoppingCartBloc, ShoppingCartState>(
       listener: (context, state) {
         state.maybeMap(
-          productsShoppingCart: (value) {
-            final updateData = GetIt.I.get<UpdateDataService>();
-            if (value.listProductsCode.isEmpty &&
-                !updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
-                !value.isBlocBackBotton) {
-              context.back();
+          productsShoppingCart: (initState) {
+            if (initState.isError ?? false) {
+              final typeError = initState.typeError ?? '';
+              if (!_isShowDialogShoppingCardInfoProductError &&
+                  (typeError == 'описание товара' ||
+                      typeError == 'выбор размера описание товара' ||
+                      typeError == 'добавить товар в корзину' ||
+                      typeError == 'добавить товар в избранное' ||
+                      typeError == 'удалить товар из избранного')) {
+                _isShowDialogShoppingCardInfoProductError = true;
+                _blindChickenShoppingCardInfoProductShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        productsShoppingCart: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'описание товара':
+                        context.read<ShoppingCartBloc>().add(
+                              ShoppingCartEvent.getInfoProduct(
+                                code: initState.codeProduct ?? '',
+                                titleScreen: initState.titleScreen ?? '',
+                                typeAddProductToShoppingCart:
+                                    initState.typeAddProductToShoppingCart ?? '',
+                                identifierAddProductToShoppingCart:
+                                    initState.identifierAddProductToShoppingCart ?? '',
+                              ),
+                            );
+                        break;
+                      case 'выбор размера описание товара':
+                        context.read<ShoppingCartBloc>().add(
+                              ShoppingCartEvent.getInfoProductSize(
+                                code: (initState.detailsProduct?.code ?? 0).toString(),
+                                isShop: initState.isShoppingCart ?? false,
+                              ),
+                            );
+                        break;
+                      case 'добавить товар в корзину':
+                        final itemInfo = initState.itemInfo;
+                        if (itemInfo != null) {
+                          context.read<ShoppingCartBloc>().add(
+                                ShoppingCartEvent.addProductToSoppingCart(
+                                  item: itemInfo,
+                                ),
+                              );
+                        }
+                      case 'добавить товар в избранное':
+                        final product = initState.product;
+                        if (product != null) {
+                          context.read<ShoppingCartBloc>().add(
+                                ShoppingCartEvent.addFavouriteProduct(
+                                  product: product,
+                                  index: initState.indexItem ?? 0,
+                                ),
+                              );
+                        }
+                        break;
+                      case 'удалить товар из избранного':
+                        context.read<ShoppingCartBloc>().add(
+                              ShoppingCartEvent.deleteFavouriteProduct(
+                                index: initState.indexItem ?? 0,
+                              ),
+                            );
+                        break;
+                    }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogShoppingCardInfoProductError && !(initState.isError ?? false)) {
+                _isShowDialogShoppingCardInfoProductError = false;
+                _blindChickenShoppingCardInfoProductShowDialogError.closeShowDialog();
+              }
+              final updateData = GetIt.I.get<UpdateDataService>();
+              if (initState.listProductsCode.isEmpty &&
+                  !updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen &&
+                  !initState.isBlocBackBotton) {
+                context.back();
+              }
             }
           },
           getSizeProduct: (initState) {
-            final updateData = GetIt.I.get<UpdateDataService>();
-            updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen = true;
-            showModalBottomSheet(
-              isScrollControlled: true,
-              context: context,
-              builder: (context) {
-                return CatalogSizeProductInfo(
-                  listSize: initState.listSize,
-                  listSizeToSoppingCart: initState.listSizeToSoppingCart,
-                  openSoppingCart: () {
-                    updateData.lastScreen = 'shopping_cart';
-                    Navigator.pop(context);
-                    Timer(const Duration(milliseconds: 150), () {
-                      context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
-                    });
-                    context.navigateTo(
-                      const ShoppingCartAutoRouterRoute(
-                        children: [
-                          ShoppingCartRoute(),
-                        ],
-                      ),
-                    );
-                  },
-                  addProductToSoppingCart: (size) {
-                    context.read<ShoppingCartBloc>().add(
-                          ShoppingCartEvent.addProductToSoppingCart(
-                            item: BasketInfoItemDataModel(
-                              code: initState.code,
-                              sku: size.id,
-                              skuName: size.value,
-                              count: 1,
-                              titleScreen: 'Карточка товара в корзине',
-                              searchQuery: '',
-                              typeAddProductToShoppingCart: 'Выпадающий список',
-                              identifierAddProductToShoppingCart: '2',
-                              sectionCategoriesPath: [],
-                              productCategoriesPath: [],
-                            ),
-                          ),
-                        );
-                    message.showOverlay(
-                      context,
-                      'Размер ${size.value} добавлен в корзину',
-                      () {
-                        updateData.lastScreen = 'shopping_cart';
-                        Timer(const Duration(milliseconds: 150), () {
-                          context
-                              .read<ShoppingCartBloc>()
-                              .add(const ShoppingCartEvent.preloadData());
-                        });
-                        context.navigateTo(
-                          const ShoppingCartAutoRouterRoute(
-                            children: [
-                              ShoppingCartRoute(),
-                            ],
-                          ),
-                        );
-                        Navigator.pop(context);
-                      },
-                      boxShadow: const BoxShadow(),
-                      time: 5,
-                    );
-                  },
-                );
-              },
-            ).whenComplete(() {
+            if (!_isShowDialogShoppingCardInfoProductError) {
               final updateData = GetIt.I.get<UpdateDataService>();
-              updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen = false;
+              updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen = true;
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return CatalogSizeProductInfo(
+                    listSize: initState.listSize,
+                    listSizeToSoppingCart: initState.listSizeToSoppingCart,
+                    openSoppingCart: () {
+                      updateData.lastScreen = 'shopping_cart';
+                      Navigator.pop(context);
+                      Timer(const Duration(milliseconds: 150), () {
+                        context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                      });
+                      context.navigateTo(
+                        const ShoppingCartAutoRouterRoute(
+                          children: [
+                            ShoppingCartRoute(),
+                          ],
+                        ),
+                      );
+                    },
+                    addProductToSoppingCart: (size) {
+                      context.read<ShoppingCartBloc>().add(
+                            ShoppingCartEvent.addProductToSoppingCart(
+                              item: BasketInfoItemDataModel(
+                                code: initState.code,
+                                sku: size.id,
+                                skuName: size.value,
+                                count: 1,
+                                titleScreen: 'Карточка товара в корзине',
+                                searchQuery: '',
+                                typeAddProductToShoppingCart: 'Выпадающий список',
+                                identifierAddProductToShoppingCart: '2',
+                                sectionCategoriesPath: [],
+                                productCategoriesPath: [],
+                              ),
+                            ),
+                          );
+                      message.showOverlay(
+                        context,
+                        'Размер ${size.value} добавлен в корзину',
+                        () {
+                          updateData.lastScreen = 'shopping_cart';
+                          Timer(const Duration(milliseconds: 150), () {
+                            context
+                                .read<ShoppingCartBloc>()
+                                .add(const ShoppingCartEvent.preloadData());
+                          });
+                          context.navigateTo(
+                            const ShoppingCartAutoRouterRoute(
+                              children: [
+                                ShoppingCartRoute(),
+                              ],
+                            ),
+                          );
+                          Navigator.pop(context);
+                        },
+                        boxShadow: const BoxShadow(),
+                        time: 5,
+                      );
+                    },
+                  );
+                },
+              ).whenComplete(() {
+                final updateData = GetIt.I.get<UpdateDataService>();
+                updateData.isOpenShowModalBottomSheetShoppingCardInfoScreen = false;
 
-              if (message.isVisible) {
-                message.overlayEntry?.remove();
-                message.overlayEntry = null;
-              }
-            });
+                if (message.isVisible) {
+                  message.overlayEntry?.remove();
+                  message.overlayEntry = null;
+                }
+              });
+            }
           },
           addProductToSoppingCart: (initState) {
             context.read<ShoppingCartBloc>().add(

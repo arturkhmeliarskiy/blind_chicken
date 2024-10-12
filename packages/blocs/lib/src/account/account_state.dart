@@ -4,8 +4,9 @@ part of 'account_bloc.dart';
 class AccountState with _$AccountState {
   const factory AccountState.init() = InitAccountState;
   const factory AccountState.load() = LoadingAccountState;
+  const factory AccountState.loadErrorButton() = LoadingErrorButtonAccountState;
   const factory AccountState.error({
-    required String message,
+    required String errorMessage,
   }) = ErrorAccountState;
   const factory AccountState.errorOpenPdf({
     required String message,

@@ -2388,6 +2388,8 @@ mixin _$NewsState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2400,7 +2402,11 @@ mixin _$NewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -2408,6 +2414,8 @@ mixin _$NewsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2420,7 +2428,11 @@ mixin _$NewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -2428,6 +2440,8 @@ mixin _$NewsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2440,7 +2454,11 @@ mixin _$NewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -2449,6 +2467,9 @@ mixin _$NewsState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsState value) init,
     required TResult Function(LoadingNewsState value) load,
+    required TResult Function(LoadingErrorButtonNewsState value)
+        loadErrorButton,
+    required TResult Function(ErrorNewsState value) error,
     required TResult Function(PreloadDataCompletedNewsState value)
         preloadDataCompleted,
   }) =>
@@ -2457,6 +2478,8 @@ mixin _$NewsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsState value)? init,
     TResult? Function(LoadingNewsState value)? load,
+    TResult? Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult? Function(ErrorNewsState value)? error,
     TResult? Function(PreloadDataCompletedNewsState value)?
         preloadDataCompleted,
   }) =>
@@ -2465,6 +2488,8 @@ mixin _$NewsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsState value)? init,
     TResult Function(LoadingNewsState value)? load,
+    TResult Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult Function(ErrorNewsState value)? error,
     TResult Function(PreloadDataCompletedNewsState value)? preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -2534,6 +2559,8 @@ class _$InitNewsStateImpl implements InitNewsState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2546,7 +2573,11 @@ class _$InitNewsStateImpl implements InitNewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)
         preloadDataCompleted,
   }) {
     return init();
@@ -2557,6 +2588,8 @@ class _$InitNewsStateImpl implements InitNewsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2569,7 +2602,11 @@ class _$InitNewsStateImpl implements InitNewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
   }) {
     return init?.call();
@@ -2580,6 +2617,8 @@ class _$InitNewsStateImpl implements InitNewsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2592,7 +2631,11 @@ class _$InitNewsStateImpl implements InitNewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -2607,6 +2650,9 @@ class _$InitNewsStateImpl implements InitNewsState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsState value) init,
     required TResult Function(LoadingNewsState value) load,
+    required TResult Function(LoadingErrorButtonNewsState value)
+        loadErrorButton,
+    required TResult Function(ErrorNewsState value) error,
     required TResult Function(PreloadDataCompletedNewsState value)
         preloadDataCompleted,
   }) {
@@ -2618,6 +2664,8 @@ class _$InitNewsStateImpl implements InitNewsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsState value)? init,
     TResult? Function(LoadingNewsState value)? load,
+    TResult? Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult? Function(ErrorNewsState value)? error,
     TResult? Function(PreloadDataCompletedNewsState value)?
         preloadDataCompleted,
   }) {
@@ -2629,6 +2677,8 @@ class _$InitNewsStateImpl implements InitNewsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsState value)? init,
     TResult Function(LoadingNewsState value)? load,
+    TResult Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult Function(ErrorNewsState value)? error,
     TResult Function(PreloadDataCompletedNewsState value)? preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -2686,6 +2736,8 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2698,7 +2750,11 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)
         preloadDataCompleted,
   }) {
     return load();
@@ -2709,6 +2765,8 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2721,7 +2779,11 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
   }) {
     return load?.call();
@@ -2732,6 +2794,8 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -2744,7 +2808,11 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -2759,6 +2827,9 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsState value) init,
     required TResult Function(LoadingNewsState value) load,
+    required TResult Function(LoadingErrorButtonNewsState value)
+        loadErrorButton,
+    required TResult Function(ErrorNewsState value) error,
     required TResult Function(PreloadDataCompletedNewsState value)
         preloadDataCompleted,
   }) {
@@ -2770,6 +2841,8 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsState value)? init,
     TResult? Function(LoadingNewsState value)? load,
+    TResult? Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult? Function(ErrorNewsState value)? error,
     TResult? Function(PreloadDataCompletedNewsState value)?
         preloadDataCompleted,
   }) {
@@ -2781,6 +2854,8 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsState value)? init,
     TResult Function(LoadingNewsState value)? load,
+    TResult Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult Function(ErrorNewsState value)? error,
     TResult Function(PreloadDataCompletedNewsState value)? preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -2793,6 +2868,402 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
 
 abstract class LoadingNewsState implements NewsState {
   const factory LoadingNewsState() = _$LoadingNewsStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingErrorButtonNewsStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonNewsStateImplCopyWith(
+          _$LoadingErrorButtonNewsStateImpl value,
+          $Res Function(_$LoadingErrorButtonNewsStateImpl) then) =
+      __$$LoadingErrorButtonNewsStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonNewsStateImplCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$LoadingErrorButtonNewsStateImpl>
+    implements _$$LoadingErrorButtonNewsStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonNewsStateImplCopyWithImpl(
+      _$LoadingErrorButtonNewsStateImpl _value,
+      $Res Function(_$LoadingErrorButtonNewsStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
+  const _$LoadingErrorButtonNewsStateImpl();
+
+  @override
+  String toString() {
+    return 'NewsState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonNewsStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            NewsInfoDataModel news,
+            MediaInfoDataModel media,
+            NotificationInfoDataModel notificatios,
+            int offsetNews,
+            int offsetMedia,
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia,
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            NewsInfoDataModel news,
+            MediaInfoDataModel media,
+            NotificationInfoDataModel notificatios,
+            int offsetNews,
+            int offsetMedia,
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia,
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            NewsInfoDataModel news,
+            MediaInfoDataModel media,
+            NotificationInfoDataModel notificatios,
+            int offsetNews,
+            int offsetMedia,
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia,
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitNewsState value) init,
+    required TResult Function(LoadingNewsState value) load,
+    required TResult Function(LoadingErrorButtonNewsState value)
+        loadErrorButton,
+    required TResult Function(ErrorNewsState value) error,
+    required TResult Function(PreloadDataCompletedNewsState value)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitNewsState value)? init,
+    TResult? Function(LoadingNewsState value)? load,
+    TResult? Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult? Function(ErrorNewsState value)? error,
+    TResult? Function(PreloadDataCompletedNewsState value)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitNewsState value)? init,
+    TResult Function(LoadingNewsState value)? load,
+    TResult Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult Function(ErrorNewsState value)? error,
+    TResult Function(PreloadDataCompletedNewsState value)? preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonNewsState implements NewsState {
+  const factory LoadingErrorButtonNewsState() =
+      _$LoadingErrorButtonNewsStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorNewsStateImplCopyWith<$Res> {
+  factory _$$ErrorNewsStateImplCopyWith(_$ErrorNewsStateImpl value,
+          $Res Function(_$ErrorNewsStateImpl) then) =
+      __$$ErrorNewsStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorNewsStateImplCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$ErrorNewsStateImpl>
+    implements _$$ErrorNewsStateImplCopyWith<$Res> {
+  __$$ErrorNewsStateImplCopyWithImpl(
+      _$ErrorNewsStateImpl _value, $Res Function(_$ErrorNewsStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorNewsStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorNewsStateImpl implements ErrorNewsState {
+  const _$ErrorNewsStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'NewsState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorNewsStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorNewsStateImplCopyWith<_$ErrorNewsStateImpl> get copyWith =>
+      __$$ErrorNewsStateImplCopyWithImpl<_$ErrorNewsStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            NewsInfoDataModel news,
+            MediaInfoDataModel media,
+            NotificationInfoDataModel notificatios,
+            int offsetNews,
+            int offsetMedia,
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia,
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)
+        preloadDataCompleted,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            NewsInfoDataModel news,
+            MediaInfoDataModel media,
+            NotificationInfoDataModel notificatios,
+            int offsetNews,
+            int offsetMedia,
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia,
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            NewsInfoDataModel news,
+            MediaInfoDataModel media,
+            NotificationInfoDataModel notificatios,
+            int offsetNews,
+            int offsetMedia,
+            int offsetNotificatios,
+            List<String> listNewsPath,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            OneNewsInfoDataModel? oneNews,
+            OneMediaInfoDataModel? oneMedia,
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitNewsState value) init,
+    required TResult Function(LoadingNewsState value) load,
+    required TResult Function(LoadingErrorButtonNewsState value)
+        loadErrorButton,
+    required TResult Function(ErrorNewsState value) error,
+    required TResult Function(PreloadDataCompletedNewsState value)
+        preloadDataCompleted,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitNewsState value)? init,
+    TResult? Function(LoadingNewsState value)? load,
+    TResult? Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult? Function(ErrorNewsState value)? error,
+    TResult? Function(PreloadDataCompletedNewsState value)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitNewsState value)? init,
+    TResult Function(LoadingNewsState value)? load,
+    TResult Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult Function(ErrorNewsState value)? error,
+    TResult Function(PreloadDataCompletedNewsState value)? preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorNewsState implements NewsState {
+  const factory ErrorNewsState({required final String errorMessage}) =
+      _$ErrorNewsStateImpl;
+
+  String get errorMessage;
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorNewsStateImplCopyWith<_$ErrorNewsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2814,7 +3285,11 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
       bool isNotification,
       OneNewsInfoDataModel? oneNews,
       OneMediaInfoDataModel? oneMedia,
-      OneNotificationInfoDataModel? oneNotification});
+      OneNotificationInfoDataModel? oneNotification,
+      String? typeError,
+      String? errorMessage,
+      bool? isError,
+      bool? isLoadErrorButton});
 
   $NewsInfoDataModelCopyWith<$Res> get news;
   $MediaInfoDataModelCopyWith<$Res> get media;
@@ -2850,6 +3325,10 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     Object? oneNews = freezed,
     Object? oneMedia = freezed,
     Object? oneNotification = freezed,
+    Object? typeError = freezed,
+    Object? errorMessage = freezed,
+    Object? isError = freezed,
+    Object? isLoadErrorButton = freezed,
   }) {
     return _then(_$PreloadDataCompletedNewsStateImpl(
       news: null == news
@@ -2900,6 +3379,22 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
           ? _value.oneNotification
           : oneNotification // ignore: cast_nullable_to_non_nullable
               as OneNotificationInfoDataModel?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -2994,7 +3489,11 @@ class _$PreloadDataCompletedNewsStateImpl
       required this.isNotification,
       this.oneNews,
       this.oneMedia,
-      this.oneNotification})
+      this.oneNotification,
+      this.typeError,
+      this.errorMessage,
+      this.isError,
+      this.isLoadErrorButton})
       : _listNewsPath = listNewsPath;
 
   @override
@@ -3027,10 +3526,18 @@ class _$PreloadDataCompletedNewsStateImpl
   final OneMediaInfoDataModel? oneMedia;
   @override
   final OneNotificationInfoDataModel? oneNotification;
+  @override
+  final String? typeError;
+  @override
+  final String? errorMessage;
+  @override
+  final bool? isError;
+  @override
+  final bool? isLoadErrorButton;
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton)';
   }
 
   @override
@@ -3058,7 +3565,14 @@ class _$PreloadDataCompletedNewsStateImpl
             (identical(other.oneMedia, oneMedia) ||
                 other.oneMedia == oneMedia) &&
             (identical(other.oneNotification, oneNotification) ||
-                other.oneNotification == oneNotification));
+                other.oneNotification == oneNotification) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton));
   }
 
   @override
@@ -3075,7 +3589,11 @@ class _$PreloadDataCompletedNewsStateImpl
       isNotification,
       oneNews,
       oneMedia,
-      oneNotification);
+      oneNotification,
+      typeError,
+      errorMessage,
+      isError,
+      isLoadErrorButton);
 
   /// Create a copy of NewsState
   /// with the given fields replaced by the non-null parameter values.
@@ -3092,6 +3610,8 @@ class _$PreloadDataCompletedNewsStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -3104,7 +3624,11 @@ class _$PreloadDataCompletedNewsStateImpl
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)
         preloadDataCompleted,
   }) {
     return preloadDataCompleted(
@@ -3119,7 +3643,11 @@ class _$PreloadDataCompletedNewsStateImpl
         isNotification,
         oneNews,
         oneMedia,
-        oneNotification);
+        oneNotification,
+        typeError,
+        errorMessage,
+        isError,
+        isLoadErrorButton);
   }
 
   @override
@@ -3127,6 +3655,8 @@ class _$PreloadDataCompletedNewsStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -3139,7 +3669,11 @@ class _$PreloadDataCompletedNewsStateImpl
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
   }) {
     return preloadDataCompleted?.call(
@@ -3154,7 +3688,11 @@ class _$PreloadDataCompletedNewsStateImpl
         isNotification,
         oneNews,
         oneMedia,
-        oneNotification);
+        oneNotification,
+        typeError,
+        errorMessage,
+        isError,
+        isLoadErrorButton);
   }
 
   @override
@@ -3162,6 +3700,8 @@ class _$PreloadDataCompletedNewsStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             NewsInfoDataModel news,
             MediaInfoDataModel media,
@@ -3174,7 +3714,11 @@ class _$PreloadDataCompletedNewsStateImpl
             bool isNotification,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
-            OneNotificationInfoDataModel? oneNotification)?
+            OneNotificationInfoDataModel? oneNotification,
+            String? typeError,
+            String? errorMessage,
+            bool? isError,
+            bool? isLoadErrorButton)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -3191,7 +3735,11 @@ class _$PreloadDataCompletedNewsStateImpl
           isNotification,
           oneNews,
           oneMedia,
-          oneNotification);
+          oneNotification,
+          typeError,
+          errorMessage,
+          isError,
+          isLoadErrorButton);
     }
     return orElse();
   }
@@ -3201,6 +3749,9 @@ class _$PreloadDataCompletedNewsStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitNewsState value) init,
     required TResult Function(LoadingNewsState value) load,
+    required TResult Function(LoadingErrorButtonNewsState value)
+        loadErrorButton,
+    required TResult Function(ErrorNewsState value) error,
     required TResult Function(PreloadDataCompletedNewsState value)
         preloadDataCompleted,
   }) {
@@ -3212,6 +3763,8 @@ class _$PreloadDataCompletedNewsStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitNewsState value)? init,
     TResult? Function(LoadingNewsState value)? load,
+    TResult? Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult? Function(ErrorNewsState value)? error,
     TResult? Function(PreloadDataCompletedNewsState value)?
         preloadDataCompleted,
   }) {
@@ -3223,6 +3776,8 @@ class _$PreloadDataCompletedNewsStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitNewsState value)? init,
     TResult Function(LoadingNewsState value)? load,
+    TResult Function(LoadingErrorButtonNewsState value)? loadErrorButton,
+    TResult Function(ErrorNewsState value)? error,
     TResult Function(PreloadDataCompletedNewsState value)? preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -3235,19 +3790,22 @@ class _$PreloadDataCompletedNewsStateImpl
 
 abstract class PreloadDataCompletedNewsState implements NewsState {
   const factory PreloadDataCompletedNewsState(
-          {required final NewsInfoDataModel news,
-          required final MediaInfoDataModel media,
-          required final NotificationInfoDataModel notificatios,
-          required final int offsetNews,
-          required final int offsetMedia,
-          required final int offsetNotificatios,
-          required final List<String> listNewsPath,
-          required final bool isUpdateVersionApp,
-          required final bool isNotification,
-          final OneNewsInfoDataModel? oneNews,
-          final OneMediaInfoDataModel? oneMedia,
-          final OneNotificationInfoDataModel? oneNotification}) =
-      _$PreloadDataCompletedNewsStateImpl;
+      {required final NewsInfoDataModel news,
+      required final MediaInfoDataModel media,
+      required final NotificationInfoDataModel notificatios,
+      required final int offsetNews,
+      required final int offsetMedia,
+      required final int offsetNotificatios,
+      required final List<String> listNewsPath,
+      required final bool isUpdateVersionApp,
+      required final bool isNotification,
+      final OneNewsInfoDataModel? oneNews,
+      final OneMediaInfoDataModel? oneMedia,
+      final OneNotificationInfoDataModel? oneNotification,
+      final String? typeError,
+      final String? errorMessage,
+      final bool? isError,
+      final bool? isLoadErrorButton}) = _$PreloadDataCompletedNewsStateImpl;
 
   NewsInfoDataModel get news;
   MediaInfoDataModel get media;
@@ -3261,6 +3819,10 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   OneNewsInfoDataModel? get oneNews;
   OneMediaInfoDataModel? get oneMedia;
   OneNotificationInfoDataModel? get oneNotification;
+  String? get typeError;
+  String? get errorMessage;
+  bool? get isError;
+  bool? get isLoadErrorButton;
 
   /// Create a copy of NewsState
   /// with the given fields replaced by the non-null parameter values.

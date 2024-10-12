@@ -149,6 +149,7 @@ extension on PaymentOrderResponse {
       r: r ?? '',
       e: e ?? '',
       id: id ?? 0,
+      errorMessage: errorMessage ?? '',
     );
   }
 }
@@ -160,6 +161,7 @@ extension on PaymentBonusResponse {
       e: e ?? '',
       balance: balance ?? 0,
       info: info ?? '',
+      errorMessage: errorMessage ?? '',
     );
   }
 }
@@ -189,6 +191,7 @@ extension on BasketResponse {
       r: r ?? '',
       e: e ?? '',
       count: count ?? 0,
+      errorMessage: errorMessage ?? '',
     );
   }
 }

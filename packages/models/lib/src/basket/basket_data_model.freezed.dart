@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BasketDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,7 @@ abstract class $BasketDataModelCopyWith<$Res> {
           BasketDataModel value, $Res Function(BasketDataModel) then) =
       _$BasketDataModelCopyWithImpl<$Res, BasketDataModel>;
   @useResult
-  $Res call({String r, String e, int count});
+  $Res call({String r, String e, String errorMessage, int count});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$BasketDataModelCopyWithImpl<$Res, $Val extends BasketDataModel>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? count = null,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +61,10 @@ class _$BasketDataModelCopyWithImpl<$Res, $Val extends BasketDataModel>
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       count: null == count
           ? _value.count
@@ -76,7 +82,7 @@ abstract class _$$BasketDataModelImplCopyWith<$Res>
       __$$BasketDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e, int count});
+  $Res call({String r, String e, String errorMessage, int count});
 }
 
 /// @nodoc
@@ -92,6 +98,7 @@ class __$$BasketDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? count = null,
   }) {
     return _then(_$BasketDataModelImpl(
@@ -102,6 +109,10 @@ class __$$BasketDataModelImplCopyWithImpl<$Res>
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       count: null == count
           ? _value.count
@@ -114,7 +125,11 @@ class __$$BasketDataModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BasketDataModelImpl extends _BasketDataModel {
-  _$BasketDataModelImpl({required this.r, required this.e, required this.count})
+  _$BasketDataModelImpl(
+      {required this.r,
+      required this.e,
+      required this.errorMessage,
+      required this.count})
       : super._();
 
   @override
@@ -122,11 +137,13 @@ class _$BasketDataModelImpl extends _BasketDataModel {
   @override
   final String e;
   @override
+  final String errorMessage;
+  @override
   final int count;
 
   @override
   String toString() {
-    return 'BasketDataModel(r: $r, e: $e, count: $count)';
+    return 'BasketDataModel(r: $r, e: $e, errorMessage: $errorMessage, count: $count)';
   }
 
   @override
@@ -136,11 +153,13 @@ class _$BasketDataModelImpl extends _BasketDataModel {
             other is _$BasketDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, count);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage, count);
 
   @JsonKey(ignore: true)
   @override
@@ -154,6 +173,7 @@ abstract class _BasketDataModel extends BasketDataModel {
   factory _BasketDataModel(
       {required final String r,
       required final String e,
+      required final String errorMessage,
       required final int count}) = _$BasketDataModelImpl;
   _BasketDataModel._() : super._();
 
@@ -161,6 +181,8 @@ abstract class _BasketDataModel extends BasketDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   int get count;
   @override

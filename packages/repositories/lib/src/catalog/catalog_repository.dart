@@ -312,6 +312,7 @@ class CatalogRepository {
 extension on CatalogSearchInfoResponse {
   CatalogSearchInfoDataModel toSearchProductsInfo(BasketInfoDataModel basketInfo) {
     return CatalogSearchInfoDataModel(
+      errorMessage: errorMessage ?? '',
       products: List<ProductDataModel>.from(
         products?.map(
               (item) => ProductDataModel(
@@ -376,6 +377,7 @@ extension on CatalogSearchResponse {
     return CatalogSearchDataModel(
       productsCount: productsCount ?? 0,
       sectionsCount: sectionsCount ?? 0,
+      errorMessage: errorMessage ?? '',
       products: List<ProductDataModel>.from(
         products?.map(
               (item) => ProductDataModel(
@@ -427,6 +429,7 @@ extension on PaymentOrderResponse {
       r: r ?? '',
       e: e ?? '',
       id: id ?? 0,
+      errorMessage: errorMessage ?? '',
     );
   }
 }

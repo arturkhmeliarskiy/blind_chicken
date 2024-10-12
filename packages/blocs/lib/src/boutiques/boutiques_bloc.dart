@@ -35,17 +35,29 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     InitBoutiquesEvent event,
     Emitter<BoutiquesState> emit,
   ) async {
+    if (state is ErrorBoutiquesState) {
+      emit(BoutiquesState.loadErrorButton());
+    }
     final boutiques = await _boutiquesRepository.getBoutiques();
     _updateDataService.boutiques = boutiques.data;
     _boutiques = boutiques.data;
     AppMetrica.reportEvent('Список бутиков');
-    emit(
-      BoutiquesState.preloadDataCompleted(
-        boutiques: _boutiques,
-        isUpdateVersionApp: false,
-        isNotification: false,
-      ),
-    );
+
+    if (boutiques.errorMessage?.isNotEmpty ?? false) {
+      emit(
+        BoutiquesState.error(
+          errorMessage: MessageInfo.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        BoutiquesState.preloadDataCompleted(
+          boutiques: _boutiques,
+          isUpdateVersionApp: false,
+          isNotification: false,
+        ),
+      );
+    }
   }
 
   Future<void> _getInfoBoutique(

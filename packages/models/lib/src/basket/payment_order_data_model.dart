@@ -9,5 +9,6 @@ class PaymentOrderDataModel with _$PaymentOrderDataModel {
     required String r,
     required String e,
     required int id,
+    required String errorMessage,
   }) = _PaymentOrderDataModel;
 }

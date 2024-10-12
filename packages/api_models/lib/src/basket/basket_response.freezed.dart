@@ -23,6 +23,7 @@ mixin _$BasketResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $BasketResponseCopyWith<$Res> {
           BasketResponse value, $Res Function(BasketResponse) then) =
       _$BasketResponseCopyWithImpl<$Res, BasketResponse>;
   @useResult
-  $Res call({String? r, String? e, int? count});
+  $Res call({String? r, String? e, int? count, String? errorMessage});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$BasketResponseCopyWithImpl<$Res, $Val extends BasketResponse>
     Object? r = freezed,
     Object? e = freezed,
     Object? count = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       r: freezed == r
@@ -69,6 +71,10 @@ class _$BasketResponseCopyWithImpl<$Res, $Val extends BasketResponse>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -81,7 +87,7 @@ abstract class _$$BasketResponseImplCopyWith<$Res>
       __$$BasketResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? r, String? e, int? count});
+  $Res call({String? r, String? e, int? count, String? errorMessage});
 }
 
 /// @nodoc
@@ -98,6 +104,7 @@ class __$$BasketResponseImplCopyWithImpl<$Res>
     Object? r = freezed,
     Object? e = freezed,
     Object? count = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$BasketResponseImpl(
       r: freezed == r
@@ -112,6 +119,10 @@ class __$$BasketResponseImplCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +130,8 @@ class __$$BasketResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BasketResponseImpl extends _BasketResponse {
-  _$BasketResponseImpl({this.r, this.e, this.count}) : super._();
+  _$BasketResponseImpl({this.r, this.e, this.count, this.errorMessage})
+      : super._();
 
   factory _$BasketResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$BasketResponseImplFromJson(json);
@@ -130,10 +142,12 @@ class _$BasketResponseImpl extends _BasketResponse {
   final String? e;
   @override
   final int? count;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'BasketResponse(r: $r, e: $e, count: $count)';
+    return 'BasketResponse(r: $r, e: $e, count: $count, errorMessage: $errorMessage)';
   }
 
   @override
@@ -143,12 +157,14 @@ class _$BasketResponseImpl extends _BasketResponse {
             other is _$BasketResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
-            (identical(other.count, count) || other.count == count));
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, count);
+  int get hashCode => Object.hash(runtimeType, r, e, count, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +185,8 @@ abstract class _BasketResponse extends BasketResponse {
   factory _BasketResponse(
       {final String? r,
       final String? e,
-      final int? count}) = _$BasketResponseImpl;
+      final int? count,
+      final String? errorMessage}) = _$BasketResponseImpl;
   _BasketResponse._() : super._();
 
   factory _BasketResponse.fromJson(Map<String, dynamic> json) =
@@ -181,6 +198,8 @@ abstract class _BasketResponse extends BasketResponse {
   String? get e;
   @override
   int? get count;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$BasketResponseImplCopyWith<_$BasketResponseImpl> get copyWith =>

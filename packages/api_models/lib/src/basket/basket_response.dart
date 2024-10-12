@@ -10,6 +10,7 @@ class BasketResponse with _$BasketResponse {
     String? r,
     String? e,
     int? count,
+    String? errorMessage,
   }) = _BasketResponse;
   factory BasketResponse.fromJson(Map<String, dynamic> json) => _$BasketResponseFromJson(json);
 }

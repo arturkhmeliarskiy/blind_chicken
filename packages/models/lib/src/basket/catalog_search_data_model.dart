@@ -11,5 +11,6 @@ class CatalogSearchDataModel with _$CatalogSearchDataModel {
     required int sectionsCount,
     required List<ProductDataModel> products,
     required List<CatalogSectionDataModel> sections,
+    required String errorMessage,
   }) = _CatalogSearchDataModel;
 }

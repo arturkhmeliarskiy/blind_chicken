@@ -366,6 +366,8 @@ mixin _$BoutiquesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -379,6 +381,8 @@ mixin _$BoutiquesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -392,6 +396,8 @@ mixin _$BoutiquesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -406,6 +412,9 @@ mixin _$BoutiquesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitBoutiquesState value) init,
     required TResult Function(LoadingBoutiquesState value) load,
+    required TResult Function(LoadingErrorButtonBoutiquesState value)
+        loadErrorButton,
+    required TResult Function(ErrorBoutiquesState value) error,
     required TResult Function(PreloadDataCompletedBoutiquesState value)
         preloadDataCompleted,
   }) =>
@@ -414,6 +423,8 @@ mixin _$BoutiquesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBoutiquesState value)? init,
     TResult? Function(LoadingBoutiquesState value)? load,
+    TResult? Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult? Function(ErrorBoutiquesState value)? error,
     TResult? Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
   }) =>
@@ -422,6 +433,8 @@ mixin _$BoutiquesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBoutiquesState value)? init,
     TResult Function(LoadingBoutiquesState value)? load,
+    TResult Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult Function(ErrorBoutiquesState value)? error,
     TResult Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -493,6 +506,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -509,6 +524,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -525,6 +542,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -545,6 +564,9 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitBoutiquesState value) init,
     required TResult Function(LoadingBoutiquesState value) load,
+    required TResult Function(LoadingErrorButtonBoutiquesState value)
+        loadErrorButton,
+    required TResult Function(ErrorBoutiquesState value) error,
     required TResult Function(PreloadDataCompletedBoutiquesState value)
         preloadDataCompleted,
   }) {
@@ -556,6 +578,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBoutiquesState value)? init,
     TResult? Function(LoadingBoutiquesState value)? load,
+    TResult? Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult? Function(ErrorBoutiquesState value)? error,
     TResult? Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
   }) {
@@ -567,6 +591,8 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBoutiquesState value)? init,
     TResult Function(LoadingBoutiquesState value)? load,
+    TResult Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult Function(ErrorBoutiquesState value)? error,
     TResult Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -627,6 +653,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -643,6 +671,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -659,6 +689,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -679,6 +711,9 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitBoutiquesState value) init,
     required TResult Function(LoadingBoutiquesState value) load,
+    required TResult Function(LoadingErrorButtonBoutiquesState value)
+        loadErrorButton,
+    required TResult Function(ErrorBoutiquesState value) error,
     required TResult Function(PreloadDataCompletedBoutiquesState value)
         preloadDataCompleted,
   }) {
@@ -690,6 +725,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBoutiquesState value)? init,
     TResult? Function(LoadingBoutiquesState value)? load,
+    TResult? Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult? Function(ErrorBoutiquesState value)? error,
     TResult? Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
   }) {
@@ -701,6 +738,8 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBoutiquesState value)? init,
     TResult Function(LoadingBoutiquesState value)? load,
+    TResult Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult Function(ErrorBoutiquesState value)? error,
     TResult Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
     required TResult orElse(),
@@ -714,6 +753,340 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
 
 abstract class LoadingBoutiquesState implements BoutiquesState {
   const factory LoadingBoutiquesState() = _$LoadingBoutiquesStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingErrorButtonBoutiquesStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonBoutiquesStateImplCopyWith(
+          _$LoadingErrorButtonBoutiquesStateImpl value,
+          $Res Function(_$LoadingErrorButtonBoutiquesStateImpl) then) =
+      __$$LoadingErrorButtonBoutiquesStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonBoutiquesStateImplCopyWithImpl<$Res>
+    extends _$BoutiquesStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonBoutiquesStateImpl>
+    implements _$$LoadingErrorButtonBoutiquesStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonBoutiquesStateImplCopyWithImpl(
+      _$LoadingErrorButtonBoutiquesStateImpl _value,
+      $Res Function(_$LoadingErrorButtonBoutiquesStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonBoutiquesStateImpl
+    implements LoadingErrorButtonBoutiquesState {
+  const _$LoadingErrorButtonBoutiquesStateImpl();
+
+  @override
+  String toString() {
+    return 'BoutiquesState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonBoutiquesStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitBoutiquesState value) init,
+    required TResult Function(LoadingBoutiquesState value) load,
+    required TResult Function(LoadingErrorButtonBoutiquesState value)
+        loadErrorButton,
+    required TResult Function(ErrorBoutiquesState value) error,
+    required TResult Function(PreloadDataCompletedBoutiquesState value)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitBoutiquesState value)? init,
+    TResult? Function(LoadingBoutiquesState value)? load,
+    TResult? Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult? Function(ErrorBoutiquesState value)? error,
+    TResult? Function(PreloadDataCompletedBoutiquesState value)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitBoutiquesState value)? init,
+    TResult Function(LoadingBoutiquesState value)? load,
+    TResult Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult Function(ErrorBoutiquesState value)? error,
+    TResult Function(PreloadDataCompletedBoutiquesState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonBoutiquesState implements BoutiquesState {
+  const factory LoadingErrorButtonBoutiquesState() =
+      _$LoadingErrorButtonBoutiquesStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorBoutiquesStateImplCopyWith<$Res> {
+  factory _$$ErrorBoutiquesStateImplCopyWith(_$ErrorBoutiquesStateImpl value,
+          $Res Function(_$ErrorBoutiquesStateImpl) then) =
+      __$$ErrorBoutiquesStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorBoutiquesStateImplCopyWithImpl<$Res>
+    extends _$BoutiquesStateCopyWithImpl<$Res, _$ErrorBoutiquesStateImpl>
+    implements _$$ErrorBoutiquesStateImplCopyWith<$Res> {
+  __$$ErrorBoutiquesStateImplCopyWithImpl(_$ErrorBoutiquesStateImpl _value,
+      $Res Function(_$ErrorBoutiquesStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorBoutiquesStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
+  const _$ErrorBoutiquesStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'BoutiquesState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorBoutiquesStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorBoutiquesStateImplCopyWith<_$ErrorBoutiquesStateImpl> get copyWith =>
+      __$$ErrorBoutiquesStateImplCopyWithImpl<_$ErrorBoutiquesStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)
+        preloadDataCompleted,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            List<BoutiqueCategoryItemDataModel>? boutiqueInfo,
+            BoutiqueDataInfoDataModel? boutiqueDetails)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitBoutiquesState value) init,
+    required TResult Function(LoadingBoutiquesState value) load,
+    required TResult Function(LoadingErrorButtonBoutiquesState value)
+        loadErrorButton,
+    required TResult Function(ErrorBoutiquesState value) error,
+    required TResult Function(PreloadDataCompletedBoutiquesState value)
+        preloadDataCompleted,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitBoutiquesState value)? init,
+    TResult? Function(LoadingBoutiquesState value)? load,
+    TResult? Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult? Function(ErrorBoutiquesState value)? error,
+    TResult? Function(PreloadDataCompletedBoutiquesState value)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitBoutiquesState value)? init,
+    TResult Function(LoadingBoutiquesState value)? load,
+    TResult Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult Function(ErrorBoutiquesState value)? error,
+    TResult Function(PreloadDataCompletedBoutiquesState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorBoutiquesState implements BoutiquesState {
+  const factory ErrorBoutiquesState({required final String errorMessage}) =
+      _$ErrorBoutiquesStateImpl;
+
+  String get errorMessage;
+
+  /// Create a copy of BoutiquesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorBoutiquesStateImplCopyWith<_$ErrorBoutiquesStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -878,6 +1251,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -895,6 +1270,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -912,6 +1289,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -933,6 +1312,9 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitBoutiquesState value) init,
     required TResult Function(LoadingBoutiquesState value) load,
+    required TResult Function(LoadingErrorButtonBoutiquesState value)
+        loadErrorButton,
+    required TResult Function(ErrorBoutiquesState value) error,
     required TResult Function(PreloadDataCompletedBoutiquesState value)
         preloadDataCompleted,
   }) {
@@ -944,6 +1326,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitBoutiquesState value)? init,
     TResult? Function(LoadingBoutiquesState value)? load,
+    TResult? Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult? Function(ErrorBoutiquesState value)? error,
     TResult? Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
   }) {
@@ -955,6 +1339,8 @@ class _$PreloadDataCompletedBoutiquesStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitBoutiquesState value)? init,
     TResult Function(LoadingBoutiquesState value)? load,
+    TResult Function(LoadingErrorButtonBoutiquesState value)? loadErrorButton,
+    TResult Function(ErrorBoutiquesState value)? error,
     TResult Function(PreloadDataCompletedBoutiquesState value)?
         preloadDataCompleted,
     required TResult orElse(),

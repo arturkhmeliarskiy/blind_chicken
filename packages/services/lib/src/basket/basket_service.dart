@@ -60,13 +60,24 @@ class BasketService {
           "search_query": searchQuery,
         },
       );
-      log(response.data);
 
-      basketResponse = BasketResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+        if (result['r'] == '1') {
+          basketResponse = BasketResponse.fromJson(
+            result,
+          );
+        } else {
+          basketResponse = BasketResponse.fromJson(
+            result,
+          );
+        }
+      } catch (e) {
+        basketResponse = BasketResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return basketResponse;
     } on DioError catch (e) {
@@ -79,8 +90,10 @@ class BasketService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return BasketResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<BasketInfoResponse?> getProductToBasket() async {
@@ -158,6 +171,7 @@ class BasketService {
           "discount_first_mobile": 1,
         },
       );
+      log(response.data);
       try {
         log(response.data);
         final result = jsonDecode(response.data);
@@ -256,11 +270,17 @@ class BasketService {
       );
       log(response.data);
 
-      paymentBonusResponse = PaymentBonusResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        paymentBonusResponse = PaymentBonusResponse.fromJson(
+          jsonDecode(
+            response.data,
+          ),
+        );
+      } catch (e) {
+        paymentBonusResponse = PaymentBonusResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return paymentBonusResponse;
     } on DioError catch (e) {
@@ -273,8 +293,10 @@ class BasketService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return PaymentBonusResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<PaymentBonusResponse?> checkingGiftCardGettingBalance({
@@ -367,11 +389,17 @@ class BasketService {
       );
       log(response.data);
 
-      paymentOrderResponse = PaymentOrderResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        paymentOrderResponse = PaymentOrderResponse.fromJson(
+          jsonDecode(
+            response.data,
+          ),
+        );
+      } catch (e) {
+        paymentOrderResponse = PaymentOrderResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return paymentOrderResponse;
     } on DioError catch (e) {
@@ -384,8 +412,10 @@ class BasketService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return PaymentOrderResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<PayOrderResponse?> payOrder({

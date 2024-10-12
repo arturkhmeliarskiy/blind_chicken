@@ -4,6 +4,10 @@ part of 'news_bloc.dart';
 class NewsState with _$NewsState {
   const factory NewsState.init() = InitNewsState;
   const factory NewsState.load() = LoadingNewsState;
+  const factory NewsState.loadErrorButton() = LoadingErrorButtonNewsState;
+  const factory NewsState.error({
+    required String errorMessage,
+  }) = ErrorNewsState;
   const factory NewsState.preloadDataCompleted({
     required NewsInfoDataModel news,
     required MediaInfoDataModel media,
@@ -17,5 +21,9 @@ class NewsState with _$NewsState {
     OneNewsInfoDataModel? oneNews,
     OneMediaInfoDataModel? oneMedia,
     OneNotificationInfoDataModel? oneNotification,
+    String? typeError,
+    String? errorMessage,
+    bool? isError,
+    bool? isLoadErrorButton,
   }) = PreloadDataCompletedNewsState;
 }

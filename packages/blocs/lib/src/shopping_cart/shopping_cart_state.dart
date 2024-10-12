@@ -4,8 +4,12 @@ part of 'shopping_cart_bloc.dart';
 class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState.init() = InitShoppingCartState;
   const factory ShoppingCartState.load() = LoadingShoppingCartState;
+  const factory ShoppingCartState.loadErrorButton() = LoadingErrorButtonShoppingCartState;
   const factory ShoppingCartState.error({
     required String errorMessage,
+    BasketInfoItemDataModel? item,
+    String? typeAddProductToShoppingCart,
+    String? titleScreen,
   }) = ErrorShoppingCartState;
   const factory ShoppingCartState.createOrderSuccessfully({
     required int orderId,
@@ -19,6 +23,7 @@ class ShoppingCartState with _$ShoppingCartState {
   const factory ShoppingCartState.addProductToSoppingCart({
     required String code,
   }) = AddProductShoppingCartState;
+  const factory ShoppingCartState.openShowDialog() = OpenShowDialogShoppingCartState;
   const factory ShoppingCartState.productsShoppingCart({
     required BasketFullInfoDataModel shoppingCart,
     required List<PaymentItemDataModel> payments,
@@ -68,5 +73,16 @@ class ShoppingCartState with _$ShoppingCartState {
     bool? isAuthModel,
     FavouritesCatalogInfoDataModel? favouritesProductsInfo,
     DetailProductDataModel? detailsProduct,
+    BasketInfoItemDataModel? itemInfo,
+    ProductDataModel? product,
+    int? indexItem,
+    bool? isLoadErrorButton,
+    String? errorMessage,
+    String? typeError,
+    bool? isError,
+    String? titleScreen,
+    String? typeAddProductToShoppingCart,
+    String? identifierAddProductToShoppingCart,
+    bool? isShopGetSizeProduct,
   }) = ProductsShoppingCartState;
 }

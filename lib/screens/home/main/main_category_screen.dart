@@ -325,6 +325,15 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                         url: initState.menu[index].url,
                                       ),
                                     );
+                                  } else if (initState.category[index].title == 'Каталог брендов') {
+                                    context.read<BrandBloc>().add(
+                                          BrandEvent.getBrands(
+                                            selectTypePeople: _selectIndexType,
+                                          ),
+                                        );
+                                    context.navigateTo(
+                                      const BrandsRoute(),
+                                    );
                                   } else {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(

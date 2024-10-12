@@ -27,6 +27,9 @@ class ShoppingCartScreen extends StatefulWidget {
 
 class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   final ScrollController _scrollController = ScrollController();
+  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogShoppingCartError = false;
   bool _isButtonTop = false;
   bool _isSwipe = true;
   double _historyPosition = 0.0;
@@ -63,6 +66,126 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     return BlocListener<ShoppingCartBloc, ShoppingCartState>(
       listener: (context, state) {
         state.maybeMap(
+          productsShoppingCart: (initState) {
+            final typeError = initState.typeError ?? '';
+            if (initState.isError ?? false) {
+              if (!_isShowDialogShoppingCartError &&
+                  typeError != 'проверка бонусов' &&
+                  typeError != 'описание товара' &&
+                  typeError != 'выбор размера описание товара' &&
+                  typeError != 'добавить товар в корзину' &&
+                  typeError != 'добавить товар в избранное' &&
+                  typeError != 'удалить товар из избранного') {
+                _isShowDialogShoppingCartError = true;
+                _blindChickenShoppingCartShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        productsShoppingCart: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'изменить количство тоаров в корзине':
+                        final itemInfo = initState.itemInfo;
+                        if (itemInfo != null) {
+                          context.read<ShoppingCartBloc>().add(
+                                ShoppingCartEvent.updateProductToSoppingCart(
+                                  index: initState.indexItem ?? 0,
+                                  item: itemInfo,
+                                ),
+                              );
+                        }
+                        break;
+                      case 'удалить товар из корзины':
+                        final itemInfo = initState.itemInfo;
+                        if (itemInfo != null) {
+                          context.read<ShoppingCartBloc>().add(
+                                ShoppingCartEvent.deleteProductToSoppingCart(
+                                  index: initState.indexItem ?? 0,
+                                  item: itemInfo,
+                                ),
+                              );
+                        }
+                        break;
+                    }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogShoppingCartError) {
+                _isShowDialogShoppingCartError = false;
+                _blindChickenShoppingCartShowDialogError.closeShowDialog();
+              }
+            }
+          },
+          error: (value) {
+            if (!_isShowDialogShoppingCartError) {
+              _isShowDialogShoppingCartError = true;
+              _blindChickenShoppingCartShowDialogError.openShowDualog(
+                context: context,
+                errorMessage: value.errorMessage,
+                widget: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loadErrorButton: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
+                            ),
+                          ),
+                        );
+                      },
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+                onRepeatRequest: () {
+                  Timer(const Duration(milliseconds: 150), () {
+                    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.preloadData());
+                  });
+                },
+              );
+            }
+          },
           createOrderSuccessfully: (value) {
             Timer(const Duration(milliseconds: 150), () {
               context.read<AccountBloc>().add(

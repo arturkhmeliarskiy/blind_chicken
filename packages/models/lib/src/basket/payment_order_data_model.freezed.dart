@@ -19,6 +19,7 @@ mixin _$PaymentOrderDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PaymentOrderDataModelCopyWith<PaymentOrderDataModel> get copyWith =>
@@ -31,7 +32,7 @@ abstract class $PaymentOrderDataModelCopyWith<$Res> {
           $Res Function(PaymentOrderDataModel) then) =
       _$PaymentOrderDataModelCopyWithImpl<$Res, PaymentOrderDataModel>;
   @useResult
-  $Res call({String r, String e, int id});
+  $Res call({String r, String e, int id, String errorMessage});
 }
 
 /// @nodoc
@@ -51,6 +52,7 @@ class _$PaymentOrderDataModelCopyWithImpl<$Res,
     Object? r = null,
     Object? e = null,
     Object? id = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       r: null == r
@@ -65,6 +67,10 @@ class _$PaymentOrderDataModelCopyWithImpl<$Res,
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -78,7 +84,7 @@ abstract class _$$PaymentOrderDataModelImplCopyWith<$Res>
       __$$PaymentOrderDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e, int id});
+  $Res call({String r, String e, int id, String errorMessage});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$PaymentOrderDataModelImplCopyWithImpl<$Res>
     Object? r = null,
     Object? e = null,
     Object? id = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$PaymentOrderDataModelImpl(
       r: null == r
@@ -110,6 +117,10 @@ class __$$PaymentOrderDataModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,7 +129,10 @@ class __$$PaymentOrderDataModelImplCopyWithImpl<$Res>
 
 class _$PaymentOrderDataModelImpl extends _PaymentOrderDataModel {
   _$PaymentOrderDataModelImpl(
-      {required this.r, required this.e, required this.id})
+      {required this.r,
+      required this.e,
+      required this.id,
+      required this.errorMessage})
       : super._();
 
   @override
@@ -127,10 +141,12 @@ class _$PaymentOrderDataModelImpl extends _PaymentOrderDataModel {
   final String e;
   @override
   final int id;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'PaymentOrderDataModel(r: $r, e: $e, id: $id)';
+    return 'PaymentOrderDataModel(r: $r, e: $e, id: $id, errorMessage: $errorMessage)';
   }
 
   @override
@@ -140,11 +156,13 @@ class _$PaymentOrderDataModelImpl extends _PaymentOrderDataModel {
             other is _$PaymentOrderDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, id);
+  int get hashCode => Object.hash(runtimeType, r, e, id, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -158,7 +176,8 @@ abstract class _PaymentOrderDataModel extends PaymentOrderDataModel {
   factory _PaymentOrderDataModel(
       {required final String r,
       required final String e,
-      required final int id}) = _$PaymentOrderDataModelImpl;
+      required final int id,
+      required final String errorMessage}) = _$PaymentOrderDataModelImpl;
   _PaymentOrderDataModel._() : super._();
 
   @override
@@ -167,6 +186,8 @@ abstract class _PaymentOrderDataModel extends PaymentOrderDataModel {
   String get e;
   @override
   int get id;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$PaymentOrderDataModelImplCopyWith<_$PaymentOrderDataModelImpl>

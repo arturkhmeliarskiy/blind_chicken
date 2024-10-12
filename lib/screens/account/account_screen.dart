@@ -23,6 +23,9 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+  final BlindChickenShowDialogError _blindChickenAccountShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogAccountError = false;
   Timer? timer;
   bool _isSwipe = true;
 
@@ -79,6 +82,53 @@ class _AccountScreenState extends State<AccountScreen> {
                 ],
               ),
             );
+          },
+          error: (value) {
+            if (!_isShowDialogAccountError) {
+              _isShowDialogAccountError = true;
+              _blindChickenAccountShowDialogError.openShowDualog(
+                context: context,
+                errorMessage: value.errorMessage,
+                widget: BlocBuilder<AccountBloc, AccountState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loadErrorButton: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
+                            ),
+                          ),
+                        );
+                      },
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+                onRepeatRequest: () {
+                  context.read<AccountBloc>().add(const AccountEvent.preloadData());
+                  context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
+                },
+              );
+            }
+          },
+          preloadDataCompleted: (value) {
+            if (_isShowDialogAccountError) {
+              _isShowDialogAccountError = false;
+              _blindChickenAccountShowDialogError.closeShowDialog();
+            }
           },
           orElse: () {},
         );

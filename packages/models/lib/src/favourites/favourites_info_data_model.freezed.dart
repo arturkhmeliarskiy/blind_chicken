@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FavouritesInfoDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FavouritesInfoDataModelCopyWith<FavouritesInfoDataModel> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $FavouritesInfoDataModelCopyWith<$Res> {
           $Res Function(FavouritesInfoDataModel) then) =
       _$FavouritesInfoDataModelCopyWithImpl<$Res, FavouritesInfoDataModel>;
   @useResult
-  $Res call({String r, String e});
+  $Res call({String r, String e, String errorMessage});
 }
 
 /// @nodoc
@@ -49,6 +50,7 @@ class _$FavouritesInfoDataModelCopyWithImpl<$Res,
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       r: null == r
@@ -58,6 +60,10 @@ class _$FavouritesInfoDataModelCopyWithImpl<$Res,
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -72,7 +78,7 @@ abstract class _$$FavouritesInfoDataModelImplCopyWith<$Res>
       __$$FavouritesInfoDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e});
+  $Res call({String r, String e, String errorMessage});
 }
 
 /// @nodoc
@@ -90,6 +96,7 @@ class __$$FavouritesInfoDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$FavouritesInfoDataModelImpl(
       r: null == r
@@ -100,6 +107,10 @@ class __$$FavouritesInfoDataModelImplCopyWithImpl<$Res>
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
               as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -107,16 +118,20 @@ class __$$FavouritesInfoDataModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FavouritesInfoDataModelImpl extends _FavouritesInfoDataModel {
-  _$FavouritesInfoDataModelImpl({required this.r, required this.e}) : super._();
+  _$FavouritesInfoDataModelImpl(
+      {required this.r, required this.e, required this.errorMessage})
+      : super._();
 
   @override
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
 
   @override
   String toString() {
-    return 'FavouritesInfoDataModel(r: $r, e: $e)';
+    return 'FavouritesInfoDataModel(r: $r, e: $e, errorMessage: $errorMessage)';
   }
 
   @override
@@ -125,11 +140,13 @@ class _$FavouritesInfoDataModelImpl extends _FavouritesInfoDataModel {
         (other.runtimeType == runtimeType &&
             other is _$FavouritesInfoDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.e, e) || other.e == e));
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -142,13 +159,16 @@ class _$FavouritesInfoDataModelImpl extends _FavouritesInfoDataModel {
 abstract class _FavouritesInfoDataModel extends FavouritesInfoDataModel {
   factory _FavouritesInfoDataModel(
       {required final String r,
-      required final String e}) = _$FavouritesInfoDataModelImpl;
+      required final String e,
+      required final String errorMessage}) = _$FavouritesInfoDataModelImpl;
   _FavouritesInfoDataModel._() : super._();
 
   @override
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$FavouritesInfoDataModelImplCopyWith<_$FavouritesInfoDataModelImpl>

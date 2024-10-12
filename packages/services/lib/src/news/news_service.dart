@@ -39,13 +39,8 @@ class NewsService {
       );
       try {
         final result = jsonDecode(response.data);
-        if (result["r"] == '1') {
-          newsInfoResponse = NewsInfoResponse.fromJson(result);
-        } else {
-          newsInfoResponse = NewsInfoResponse(
-            errorMessage: MessageInfo.errorMessage,
-          );
-        }
+
+        newsInfoResponse = NewsInfoResponse.fromJson(result);
       } catch (e) {
         newsInfoResponse = NewsInfoResponse(
           errorMessage: MessageInfo.errorMessage,
@@ -148,13 +143,7 @@ class NewsService {
 
       try {
         final result = await jsonDecode(response.data);
-        if (result["r"] == '1') {
-          mediaInfoResponse = MediaInfoResponse.fromJson(result);
-        } else {
-          mediaInfoResponse = MediaInfoResponse(
-            errorMessage: MessageInfo.errorMessage,
-          );
-        }
+        mediaInfoResponse = MediaInfoResponse.fromJson(result);
       } catch (e) {
         mediaInfoResponse = MediaInfoResponse(
           errorMessage: MessageInfo.errorMessage,
@@ -265,13 +254,8 @@ class NewsService {
       );
       try {
         final result = await jsonDecode(response.data);
-        if (result["r"] == '1') {
-          notificationInfoResponse = NotificationInfoResponse.fromJson(result);
-        } else {
-          notificationInfoResponse = NotificationInfoResponse(
-            errorMessage: MessageInfo.errorMessage,
-          );
-        }
+
+        notificationInfoResponse = NotificationInfoResponse.fromJson(result);
       } catch (e) {
         notificationInfoResponse = NotificationInfoResponse(
           errorMessage: MessageInfo.errorMessage,

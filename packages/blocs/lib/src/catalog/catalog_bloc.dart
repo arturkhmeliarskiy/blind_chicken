@@ -420,7 +420,15 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       add(const PreloadDataCatalogEvent());
     }
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const CatalogState.load());
+      if (initState.isError ?? false) {
+        emit(
+          initState.copyWith(
+            isLoadErrorButton: true,
+          ),
+        );
+      } else {
+        emit(const CatalogState.load());
+      }
 
       final menu = await _catalogRepository.postMenuItems(
         a: event.a,
@@ -434,30 +442,29 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       MenuItemDataModel? item = event.item;
 
-      if (item != null) {
-        pathMenu.add(item);
-      } else {
-        pathMenu = [];
+      if (menu.errorMessage.isEmpty) {
+        if (item != null) {
+          pathMenu.add(item);
+        } else {
+          pathMenu = [];
+        }
       }
 
       _updateDataService.selectedIndexGender =
           event.selectedGenderIndex ?? initState.selectedGenderIndex;
 
-      if (menu.errorMessage.isNotEmpty) {
-        emit(
-          CatalogState.error(
-            errorMessage: menu.errorMessage,
-          ),
-        );
-      } else {
-        emit(initState.copyWith(
-          menu: menu.items,
-          pathMenu: pathMenu,
-          selectedGenderIndex: event.selectedGenderIndex ?? initState.selectedGenderIndex,
-          isNotification: false,
-          isUpdateVersionApp: false,
-        ));
-      }
+      emit(initState.copyWith(
+        isError: menu.errorMessage.isNotEmpty,
+        errorMessage: MessageInfo.errorMessage,
+        typeError: 'подраздел в меню',
+        itemMenu: event.item,
+        menu: menu.errorMessage.isNotEmpty ? initState.menu : menu.items,
+        pathMenu: menu.errorMessage.isNotEmpty ? initState.pathMenu : pathMenu,
+        selectedGenderIndex: event.selectedGenderIndex ?? initState.selectedGenderIndex,
+        isNotification: false,
+        isUpdateVersionApp: false,
+        isLoadErrorButton: false,
+      ));
     });
   }
 
@@ -762,29 +769,45 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       List<ProductDataModel> favouritesProducts = [];
       List<int> favouritesProductsId = [];
+      FavouritesInfoDataModel? addFavouriteProdcut;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.addFavouriteProdcut(code: event.product.id.toString());
+        addFavouriteProdcut =
+            await _favouritesRepository.addFavouriteProdcut(code: event.product.id.toString());
         final result = await _favouritesRepository.getFavouritesProdcuts();
         favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
         log(result.toString());
+        if (addFavouriteProdcut.errorMessage.isEmpty) {
+          emit(const CatalogState.load());
+        }
       } else {
         _catalogRepository.addFavouritesProduct(event.product);
         favouritesProducts = _catalogRepository.getFavouritesProducts();
         favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+        emit(const CatalogState.load());
       }
 
-      emit(const CatalogState.load());
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        isError: addFavouriteProdcut?.errorMessage.isNotEmpty ?? false,
+        typeError: 'добавить товар в избранное',
+        errorMessage: MessageInfo.errorMessage,
+        favouriteProduct: event.product,
+        indexProduct: event.index,
         isNotification: false,
         isUpdateVersionApp: false,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -794,29 +817,44 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     Emitter<CatalogState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       List<ProductDataModel> favouritesProducts = [];
       List<int> favouritesProductsId = [];
+      FavouritesInfoDataModel? deleteFavouriteProdcut;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        deleteFavouriteProdcut =
+            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         final result = await _favouritesRepository.getFavouritesProdcuts();
         favouritesProductsId = result.favorites.map((item) => int.parse(item)).toList();
         log(result.toString());
+        if (deleteFavouriteProdcut.errorMessage.isEmpty) {
+          emit(const CatalogState.load());
+        }
       } else {
         _catalogRepository.deleteFavouritesProduct(event.index);
         favouritesProducts = _catalogRepository.getFavouritesProducts();
         favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
+        emit(const CatalogState.load());
       }
 
-      emit(const CatalogState.load());
       emit(initState.copyWith(
         favouritesProducts: favouritesProducts,
         favouritesProductsId: favouritesProductsId,
+        isError: deleteFavouriteProdcut?.errorMessage.isNotEmpty ?? false,
+        typeError: 'удалить товар из избранного',
+        errorMessage: MessageInfo.errorMessage,
+        indexProduct: event.index,
         isNotification: false,
         isUpdateVersionApp: false,
+        isLoadErrorButton: false,
       ));
     });
   }
@@ -983,8 +1021,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       if (!initState.isSaleSectionVisible) {
         category.removeLast();
         category.add(const MainCategoryModel(
-          title: '',
-          imagePath: '',
+          title: 'Каталог брендов',
+          imagePath: 'brands',
           pathMenu: '',
         ));
       }
@@ -1291,7 +1329,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       bool isError = false;
       bool isShoppingCartDetailsProduct = false;
       String errorMessage = '';
-      emit(const CatalogState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const CatalogState.load());
+      }
 
       final basketInfo = await getBasketInfo(isLocal: !isAuth);
 
@@ -1324,10 +1368,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         code: event.code,
         block: 'complect',
       );
-
-      if (!(event.isUpdate ?? false)) {
-        listProductsCode.add(event.code);
-      }
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
@@ -1404,12 +1444,21 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             : [],
       );
 
-      if (detailsProduct.errorMessage.isNotEmpty || basketInfo.errorMessage.isNotEmpty) {
+      if (detailsProduct.errorMessage.isNotEmpty ||
+          basketInfo.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionStyle.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionAlso.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionComplect.errorMessage.isNotEmpty) {
         isError = true;
         errorMessage = MessageInfo.errorMessage;
+      } else {
+        if (!(event.isUpdate ?? false)) {
+          listProductsCode.add(event.code);
+        }
       }
 
       emit(initState.copyWith(
+        codeProduct: event.code,
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
@@ -1536,7 +1585,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       }
 
       emit(initState.copyWith(
-        detailsProduct: detailsProduct,
+        detailsProduct:
+            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,

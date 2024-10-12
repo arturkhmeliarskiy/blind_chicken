@@ -40,6 +40,9 @@ class ShoppingCartPayUserInfo extends StatefulWidget {
 
 class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
   PaymentItemDataModel _selectedItem = PaymentItemDataModel(id: '', name: '');
+  final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogShoppingCartError = false;
 
   @override
   void initState() {
@@ -67,176 +70,234 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topLeft,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            widget.title,
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.titleSmall,
-          ),
-          const SizedBox(
-            height: 14,
-          ),
-          if (widget.isAuth)
-            Column(
-              children: [
-                Column(
-                  children: List.generate(widget.payments.length, (index) {
-                    return Padding(
-                      padding: EdgeInsets.only(top: index > 0 ? 16 : 0),
-                      child: InkWell(
-                        onTap: () {
-                          if (widget.isUponReceipt ||
-                              widget.payments[index].name != 'При получении') {
-                            setState(() {
-                              _selectedItem = widget.payments[index];
-                              widget.onTypePay(_selectedItem);
-                            });
-                          }
-                        },
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 17.5,
-                              width: 17.5,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: BlindChickenColors.borderSwitchCard,
+    return BlocListener<ShoppingCartBloc, ShoppingCartState>(
+      listener: (context, state) {
+        state.maybeMap(
+          productsShoppingCart: (initState) {
+            final typeError = initState.typeError ?? '';
+            if (initState.isError ?? false) {
+              if (!_isShowDialogShoppingCartError && typeError == 'проверка бонусов') {
+                _isShowDialogShoppingCartError = true;
+                _blindChickenShoppingCartShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<ShoppingCartBloc, ShoppingCartState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        productsShoppingCart: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
                                 ),
                               ),
-                              alignment: Alignment.center,
-                              child: widget.payments[index].id == _selectedItem.id
-                                  ? Container(
-                                      height: 8,
-                                      width: 8,
-                                      decoration: BoxDecoration(
-                                        color: BlindChickenColors.activeBorderTextField,
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: BlindChickenColors.activeBorderTextField,
-                                        ),
-                                      ),
-                                    )
-                                  : const SizedBox(),
-                            ),
-                            const SizedBox(
-                              width: 7,
-                            ),
-                            Text(
-                              widget.payments[index].name,
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
                               style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    color: widget.isUponReceipt ||
-                                            widget.payments[index].name != 'При получении'
-                                        ? BlindChickenColors.activeBorderTextField
-                                        : BlindChickenColors.textInput,
+                                    color: BlindChickenColors.backgroundColor,
                                   ),
-                            ),
-                          ],
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.paymentBonus());
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogShoppingCartError) {
+                _isShowDialogShoppingCartError = false;
+                _blindChickenShoppingCartShowDialogError.closeShowDialog();
+              }
+            }
+          },
+          openShowDialog: (value) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return ShoppingCartPaymentBonuses(
+                  onAddPayment: widget.onAddPayment,
+                );
+              },
+            );
+          },
+          orElse: () {},
+        );
+      },
+      child: Container(
+        alignment: Alignment.topLeft,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              widget.title,
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(
+              height: 14,
+            ),
+            if (widget.isAuth)
+              Column(
+                children: [
+                  Column(
+                    children: List.generate(widget.payments.length, (index) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: index > 0 ? 16 : 0),
+                        child: InkWell(
+                          onTap: () {
+                            if (widget.isUponReceipt ||
+                                widget.payments[index].name != 'При получении') {
+                              setState(() {
+                                _selectedItem = widget.payments[index];
+                                widget.onTypePay(_selectedItem);
+                              });
+                            }
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 17.5,
+                                width: 17.5,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: BlindChickenColors.borderSwitchCard,
+                                  ),
+                                ),
+                                alignment: Alignment.center,
+                                child: widget.payments[index].id == _selectedItem.id
+                                    ? Container(
+                                        height: 8,
+                                        width: 8,
+                                        decoration: BoxDecoration(
+                                          color: BlindChickenColors.activeBorderTextField,
+                                          borderRadius: BorderRadius.circular(10),
+                                          border: Border.all(
+                                            color: BlindChickenColors.activeBorderTextField,
+                                          ),
+                                        ),
+                                      )
+                                    : const SizedBox(),
+                              ),
+                              const SizedBox(
+                                width: 7,
+                              ),
+                              Text(
+                                widget.payments[index].name,
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      color: widget.isUponReceipt ||
+                                              widget.payments[index].name != 'При получении'
+                                          ? BlindChickenColors.activeBorderTextField
+                                          : BlindChickenColors.textInput,
+                                    ),
+                              ),
+                            ],
+                          ),
                         ),
+                      );
+                    }),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    children: [
+                      BlindChickenBorderButton(
+                        title: 'Бонусы',
+                        onTap: () {
+                          context
+                              .read<ShoppingCartBloc>()
+                              .add(const ShoppingCartEvent.paymentBonus());
+                        },
                       ),
-                    );
-                  }),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Row(
-                  children: [
-                    BlindChickenBorderButton(
-                      title: 'Бонусы',
-                      onTap: () {
-                        context
-                            .read<ShoppingCartBloc>()
-                            .add(const ShoppingCartEvent.paymentBonus());
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return ShoppingCartPaymentBonuses(
-                              onAddPayment: widget.onAddPayment,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    BlindChickenBorderButton(
-                      title: 'Подарочная карта',
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return ShoppingCartPaymentGiftCard(
-                              onAddGiftPayment: widget.onAddGiftPayment,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                )
-              ],
-            )
-          else
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        context.read<LoginBloc>().add(const LoginEvent.init());
-                        showDialog(
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      BlindChickenBorderButton(
+                        title: 'Подарочная карта',
+                        onTap: () {
+                          showDialog(
                             context: context,
                             builder: (context) {
-                              return LoginPhoneScreen(
-                                successfully: () {
-                                  Navigator.of(context, rootNavigator: true).pop();
-                                  context.read<ShoppingCartBloc>().add(
-                                        const ShoppingCartEvent.preloadData(),
-                                      );
-                                },
-                                onBack: () {
-                                  context.popRoute();
-                                },
+                              return ShoppingCartPaymentGiftCard(
+                                onAddGiftPayment: widget.onAddGiftPayment,
                               );
-                            });
-                      },
-                      child: Text(
-                        widget.subTitle,
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              decoration: TextDecoration.underline,
-                            ),
+                            },
+                          );
+                        },
                       ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        widget.subTitle2,
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.displayMedium,
+                    ],
+                  )
+                ],
+              )
+            else
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.read<LoginBloc>().add(const LoginEvent.init());
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return LoginPhoneScreen(
+                                  successfully: () {
+                                    Navigator.of(context, rootNavigator: true).pop();
+                                    context.read<ShoppingCartBloc>().add(
+                                          const ShoppingCartEvent.preloadData(),
+                                        );
+                                  },
+                                  onBack: () {
+                                    context.popRoute();
+                                  },
+                                );
+                              });
+                        },
+                        child: Text(
+                          widget.subTitle,
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                decoration: TextDecoration.underline,
+                              ),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  widget.subTitle3,
-                  textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.displayMedium,
-                ),
-              ],
-            ),
-        ],
+                      Expanded(
+                        child: Text(
+                          widget.subTitle2,
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    widget.subTitle3,
+                    textAlign: TextAlign.start,
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                ],
+              ),
+          ],
+        ),
       ),
     );
   }

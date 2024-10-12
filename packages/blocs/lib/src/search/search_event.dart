@@ -31,9 +31,11 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.addFavouriteProduct({
     required int index,
     required ProductDataModel product,
+    String? typeError,
   }) = AddFavouriteProductSearchEvent;
   const factory SearchEvent.deleteFavouriteProduct({
     required int index,
+    String? typeError,
   }) = DeleteFavouriteProductSearchEvent;
   const factory SearchEvent.getInfoProduct({
     required String code,
@@ -42,6 +44,7 @@ class SearchEvent with _$SearchEvent {
     required String identifierAddProductToShoppingCart,
     SkuProductDataModel? size,
     bool? isUpdate,
+    String? typeError,
   }) = GetInfoProductSearchEvent;
   const factory SearchEvent.changeSizeProduct({
     required SkuProductDataModel selectSizeProduct,
