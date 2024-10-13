@@ -1,5 +1,4 @@
 import 'package:api_models/src/boutiques/boutique_category_item_response.dart';
-import 'package:api_models/src/boutiques/boutique_info_data_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'boutique_info_detail_response.freezed.dart';
@@ -11,6 +10,7 @@ class BoutiqueInfoDetailResponse with _$BoutiqueInfoDetailResponse {
   factory BoutiqueInfoDetailResponse({
     String? r,
     String? e,
+    String? errorMessage,
     @JsonKey(
       name: 'category',
       fromJson: _convertCategory,

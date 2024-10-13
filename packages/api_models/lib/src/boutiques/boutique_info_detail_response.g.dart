@@ -11,6 +11,7 @@ _$BoutiqueInfoDetailResponseImpl _$$BoutiqueInfoDetailResponseImplFromJson(
     _$BoutiqueInfoDetailResponseImpl(
       r: json['r'] as String?,
       e: json['e'] as String?,
+      errorMessage: json['errorMessage'] as String?,
       category: _convertCategory(json['category']),
     );
 
@@ -19,5 +20,6 @@ Map<String, dynamic> _$$BoutiqueInfoDetailResponseImplToJson(
     <String, dynamic>{
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
       'category': instance.category,
     };

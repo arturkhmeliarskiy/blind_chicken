@@ -779,9 +779,7 @@ class _MainScreenState extends State<MainScreen> {
                                           ),
                                           if (width < 767)
                                             Row(
-                                              mainAxisAlignment: !initState.isSaleSectionVisible
-                                                  ? MainAxisAlignment.start
-                                                  : MainAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 GestureDetector(
                                                   onTap: () {
@@ -840,8 +838,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     onTap: () {
                                                       context.read<BrandBloc>().add(
                                                             BrandEvent.getBrands(
-                                                              selectTypePeople:
-                                                                  initState.selectedGenderIndex,
+                                                              selectTypePeople: 0,
                                                             ),
                                                           );
                                                       context.navigateTo(

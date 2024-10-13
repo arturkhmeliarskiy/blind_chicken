@@ -9,6 +9,7 @@ class BoutiqueInfoDataModel with _$BoutiqueInfoDataModel {
   factory BoutiqueInfoDataModel({
     required String r,
     required String e,
+    required String errorMessage,
     required BoutiqueDataInfoDataModel data,
   }) = _BoutiqueInfoDataModel;
 }

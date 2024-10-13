@@ -249,7 +249,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     GetNewsDescriptionInfoNewsEvent event,
     Emitter<NewsState> emit,
   ) async {
-    emit(const NewsState.load());
+    if (state is ErrorNewsState) {
+      emit(const NewsState.loadErrorButton());
+    } else {
+      emit(const NewsState.load());
+    }
+
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
@@ -273,27 +278,39 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
     }
 
-    emit(
-      NewsState.preloadDataCompleted(
-        news: _news,
-        media: _media,
-        notificatios: _notificatios,
-        offsetNews: 1,
-        offsetMedia: 1,
-        offsetNotificatios: 1,
-        oneNews: oneNews,
-        listNewsPath: [],
-        isNotification: true,
-        isUpdateVersionApp: isUpdateVersionApp,
-      ),
-    );
+    if (oneNews.errorMessage.isNotEmpty) {
+      emit(
+        NewsState.error(
+          errorMessage: oneNews.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        NewsState.preloadDataCompleted(
+          news: _news,
+          media: _media,
+          notificatios: _notificatios,
+          offsetNews: 1,
+          offsetMedia: 1,
+          offsetNotificatios: 1,
+          oneNews: oneNews,
+          listNewsPath: [],
+          isNotification: true,
+          isUpdateVersionApp: isUpdateVersionApp,
+        ),
+      );
+    }
   }
 
   Future<void> _getMediaDescriptionInfo(
     GetMediaDescriptionInfoNewsEvent event,
     Emitter<NewsState> emit,
   ) async {
-    emit(const NewsState.load());
+    if (state is ErrorNewsState) {
+      emit(const NewsState.loadErrorButton());
+    } else {
+      emit(const NewsState.load());
+    }
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
@@ -317,27 +334,39 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
     }
 
-    emit(
-      NewsState.preloadDataCompleted(
-        news: _news,
-        media: _media,
-        notificatios: _notificatios,
-        offsetNews: 1,
-        offsetMedia: 1,
-        offsetNotificatios: 1,
-        oneMedia: oneMedia,
-        listNewsPath: [],
-        isNotification: true,
-        isUpdateVersionApp: isUpdateVersionApp,
-      ),
-    );
+    if (oneMedia.errorMessage.isNotEmpty) {
+      emit(
+        NewsState.error(
+          errorMessage: oneMedia.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        NewsState.preloadDataCompleted(
+          news: _news,
+          media: _media,
+          notificatios: _notificatios,
+          offsetNews: 1,
+          offsetMedia: 1,
+          offsetNotificatios: 1,
+          oneMedia: oneMedia,
+          listNewsPath: [],
+          isNotification: true,
+          isUpdateVersionApp: isUpdateVersionApp,
+        ),
+      );
+    }
   }
 
   Future<void> _getNotificationDescriptionInfo(
     GetNotificationDescriptionInfoNewsEvent event,
     Emitter<NewsState> emit,
   ) async {
-    emit(const NewsState.load());
+    if (state is ErrorNewsState) {
+      emit(const NewsState.loadErrorButton());
+    } else {
+      emit(const NewsState.load());
+    }
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
@@ -361,20 +390,28 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
     }
 
-    emit(
-      NewsState.preloadDataCompleted(
-        news: _news,
-        media: _media,
-        notificatios: _notificatios,
-        offsetNews: 1,
-        offsetMedia: 1,
-        offsetNotificatios: 1,
-        oneNotification: oneNotifcation,
-        listNewsPath: [],
-        isNotification: true,
-        isUpdateVersionApp: isUpdateVersionApp,
-      ),
-    );
+    if (oneNotifcation.errorMessage.isNotEmpty) {
+      emit(
+        NewsState.error(
+          errorMessage: oneNotifcation.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        NewsState.preloadDataCompleted(
+          news: _news,
+          media: _media,
+          notificatios: _notificatios,
+          offsetNews: 1,
+          offsetMedia: 1,
+          offsetNotificatios: 1,
+          oneNotification: oneNotifcation,
+          listNewsPath: [],
+          isNotification: true,
+          isUpdateVersionApp: isUpdateVersionApp,
+        ),
+      );
+    }
   }
 
   Future<void> _goBackNewsInfo(

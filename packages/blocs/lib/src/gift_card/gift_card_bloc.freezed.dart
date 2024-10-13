@@ -427,6 +427,8 @@ mixin _$GiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -443,6 +445,8 @@ mixin _$GiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -458,6 +462,8 @@ mixin _$GiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -474,6 +480,9 @@ mixin _$GiftCardState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitGiftCardState value) init,
     required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
     required TResult Function(PreloadDataGiftCardState value)
         preloadDataCompleted,
     required TResult Function(CreateOrderSuccessfullyGiftCardState value)
@@ -484,6 +493,8 @@ mixin _$GiftCardState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitGiftCardState value)? init,
     TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
     TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -493,6 +504,8 @@ mixin _$GiftCardState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardState value)? init,
     TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
     TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -565,6 +578,8 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -584,6 +599,8 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -602,6 +619,8 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -624,6 +643,9 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitGiftCardState value) init,
     required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
     required TResult Function(PreloadDataGiftCardState value)
         preloadDataCompleted,
     required TResult Function(CreateOrderSuccessfullyGiftCardState value)
@@ -637,6 +659,8 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitGiftCardState value)? init,
     TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
     TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -649,6 +673,8 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardState value)? init,
     TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
     TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -709,6 +735,8 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -728,6 +756,8 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -746,6 +776,8 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -768,6 +800,9 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitGiftCardState value) init,
     required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
     required TResult Function(PreloadDataGiftCardState value)
         preloadDataCompleted,
     required TResult Function(CreateOrderSuccessfullyGiftCardState value)
@@ -781,6 +816,8 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitGiftCardState value)? init,
     TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
     TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -793,6 +830,8 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardState value)? init,
     TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
     TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -807,6 +846,362 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
 
 abstract class LoadingGiftCardState implements GiftCardState {
   const factory LoadingGiftCardState() = _$LoadingGiftCardStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingErrorButtonGiftCardStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonGiftCardStateImplCopyWith(
+          _$LoadingErrorButtonGiftCardStateImpl value,
+          $Res Function(_$LoadingErrorButtonGiftCardStateImpl) then) =
+      __$$LoadingErrorButtonGiftCardStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonGiftCardStateImplCopyWithImpl<$Res>
+    extends _$GiftCardStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonGiftCardStateImpl>
+    implements _$$LoadingErrorButtonGiftCardStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonGiftCardStateImplCopyWithImpl(
+      _$LoadingErrorButtonGiftCardStateImpl _value,
+      $Res Function(_$LoadingErrorButtonGiftCardStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonGiftCardStateImpl
+    implements LoadingErrorButtonGiftCardState {
+  const _$LoadingErrorButtonGiftCardStateImpl();
+
+  @override
+  String toString() {
+    return 'GiftCardState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonGiftCardStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String searchQuery,
+            String? creatOrderMessage)
+        preloadDataCompleted,
+    required TResult Function(int orderId, String searchQuery)
+        createOrderSuccessfully,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String searchQuery,
+            String? creatOrderMessage)?
+        preloadDataCompleted,
+    TResult? Function(int orderId, String searchQuery)? createOrderSuccessfully,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String searchQuery,
+            String? creatOrderMessage)?
+        preloadDataCompleted,
+    TResult Function(int orderId, String searchQuery)? createOrderSuccessfully,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitGiftCardState value) init,
+    required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
+    required TResult Function(PreloadDataGiftCardState value)
+        preloadDataCompleted,
+    required TResult Function(CreateOrderSuccessfullyGiftCardState value)
+        createOrderSuccessfully,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitGiftCardState value)? init,
+    TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
+    TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
+    TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
+        createOrderSuccessfully,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitGiftCardState value)? init,
+    TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
+    TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
+    TResult Function(CreateOrderSuccessfullyGiftCardState value)?
+        createOrderSuccessfully,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonGiftCardState implements GiftCardState {
+  const factory LoadingErrorButtonGiftCardState() =
+      _$LoadingErrorButtonGiftCardStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorGiftCardStateImplCopyWith<$Res> {
+  factory _$$ErrorGiftCardStateImplCopyWith(_$ErrorGiftCardStateImpl value,
+          $Res Function(_$ErrorGiftCardStateImpl) then) =
+      __$$ErrorGiftCardStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorGiftCardStateImplCopyWithImpl<$Res>
+    extends _$GiftCardStateCopyWithImpl<$Res, _$ErrorGiftCardStateImpl>
+    implements _$$ErrorGiftCardStateImplCopyWith<$Res> {
+  __$$ErrorGiftCardStateImplCopyWithImpl(_$ErrorGiftCardStateImpl _value,
+      $Res Function(_$ErrorGiftCardStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorGiftCardStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorGiftCardStateImpl implements ErrorGiftCardState {
+  const _$ErrorGiftCardStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'GiftCardState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorGiftCardStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorGiftCardStateImplCopyWith<_$ErrorGiftCardStateImpl> get copyWith =>
+      __$$ErrorGiftCardStateImplCopyWithImpl<_$ErrorGiftCardStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String searchQuery,
+            String? creatOrderMessage)
+        preloadDataCompleted,
+    required TResult Function(int orderId, String searchQuery)
+        createOrderSuccessfully,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String searchQuery,
+            String? creatOrderMessage)?
+        preloadDataCompleted,
+    TResult? Function(int orderId, String searchQuery)? createOrderSuccessfully,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
+    TResult Function(
+            List<PaymentItemDataModel> payments,
+            bool isLoadCreateOrder,
+            bool isUpdateVersionApp,
+            bool isNotification,
+            String searchQuery,
+            String? creatOrderMessage)?
+        preloadDataCompleted,
+    TResult Function(int orderId, String searchQuery)? createOrderSuccessfully,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitGiftCardState value) init,
+    required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
+    required TResult Function(PreloadDataGiftCardState value)
+        preloadDataCompleted,
+    required TResult Function(CreateOrderSuccessfullyGiftCardState value)
+        createOrderSuccessfully,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitGiftCardState value)? init,
+    TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
+    TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
+    TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
+        createOrderSuccessfully,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitGiftCardState value)? init,
+    TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
+    TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
+    TResult Function(CreateOrderSuccessfullyGiftCardState value)?
+        createOrderSuccessfully,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorGiftCardState implements GiftCardState {
+  const factory ErrorGiftCardState({required final String errorMessage}) =
+      _$ErrorGiftCardStateImpl;
+
+  String get errorMessage;
+
+  /// Create a copy of GiftCardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorGiftCardStateImplCopyWith<_$ErrorGiftCardStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -953,6 +1348,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -973,6 +1370,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -992,6 +1391,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -1015,6 +1416,9 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitGiftCardState value) init,
     required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
     required TResult Function(PreloadDataGiftCardState value)
         preloadDataCompleted,
     required TResult Function(CreateOrderSuccessfullyGiftCardState value)
@@ -1028,6 +1432,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitGiftCardState value)? init,
     TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
     TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -1040,6 +1446,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardState value)? init,
     TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
     TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -1161,6 +1569,8 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function() loadErrorButton,
+    required TResult Function(String errorMessage) error,
     required TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -1180,6 +1590,8 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function()? loadErrorButton,
+    TResult? Function(String errorMessage)? error,
     TResult? Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -1198,6 +1610,8 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function()? loadErrorButton,
+    TResult Function(String errorMessage)? error,
     TResult Function(
             List<PaymentItemDataModel> payments,
             bool isLoadCreateOrder,
@@ -1220,6 +1634,9 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitGiftCardState value) init,
     required TResult Function(LoadingGiftCardState value) load,
+    required TResult Function(LoadingErrorButtonGiftCardState value)
+        loadErrorButton,
+    required TResult Function(ErrorGiftCardState value) error,
     required TResult Function(PreloadDataGiftCardState value)
         preloadDataCompleted,
     required TResult Function(CreateOrderSuccessfullyGiftCardState value)
@@ -1233,6 +1650,8 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitGiftCardState value)? init,
     TResult? Function(LoadingGiftCardState value)? load,
+    TResult? Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult? Function(ErrorGiftCardState value)? error,
     TResult? Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult? Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,
@@ -1245,6 +1664,8 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardState value)? init,
     TResult Function(LoadingGiftCardState value)? load,
+    TResult Function(LoadingErrorButtonGiftCardState value)? loadErrorButton,
+    TResult Function(ErrorGiftCardState value)? error,
     TResult Function(PreloadDataGiftCardState value)? preloadDataCompleted,
     TResult Function(CreateOrderSuccessfullyGiftCardState value)?
         createOrderSuccessfully,

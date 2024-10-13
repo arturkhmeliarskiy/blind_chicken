@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BoutiqueInfoDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   BoutiqueDataInfoDataModel get data => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,11 @@ abstract class $BoutiqueInfoDataModelCopyWith<$Res> {
           $Res Function(BoutiqueInfoDataModel) then) =
       _$BoutiqueInfoDataModelCopyWithImpl<$Res, BoutiqueInfoDataModel>;
   @useResult
-  $Res call({String r, String e, BoutiqueDataInfoDataModel data});
+  $Res call(
+      {String r,
+      String e,
+      String errorMessage,
+      BoutiqueDataInfoDataModel data});
 
   $BoutiqueDataInfoDataModelCopyWith<$Res> get data;
 }
@@ -52,6 +57,7 @@ class _$BoutiqueInfoDataModelCopyWithImpl<$Res,
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
@@ -62,6 +68,10 @@ class _$BoutiqueInfoDataModelCopyWithImpl<$Res,
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       data: null == data
           ? _value.data
@@ -88,7 +98,11 @@ abstract class _$$BoutiqueInfoDataModelImplCopyWith<$Res>
       __$$BoutiqueInfoDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e, BoutiqueDataInfoDataModel data});
+  $Res call(
+      {String r,
+      String e,
+      String errorMessage,
+      BoutiqueDataInfoDataModel data});
 
   @override
   $BoutiqueDataInfoDataModelCopyWith<$Res> get data;
@@ -108,6 +122,7 @@ class __$$BoutiqueInfoDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? data = null,
   }) {
     return _then(_$BoutiqueInfoDataModelImpl(
@@ -118,6 +133,10 @@ class __$$BoutiqueInfoDataModelImplCopyWithImpl<$Res>
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       data: null == data
           ? _value.data
@@ -131,7 +150,10 @@ class __$$BoutiqueInfoDataModelImplCopyWithImpl<$Res>
 
 class _$BoutiqueInfoDataModelImpl extends _BoutiqueInfoDataModel {
   _$BoutiqueInfoDataModelImpl(
-      {required this.r, required this.e, required this.data})
+      {required this.r,
+      required this.e,
+      required this.errorMessage,
+      required this.data})
       : super._();
 
   @override
@@ -139,11 +161,13 @@ class _$BoutiqueInfoDataModelImpl extends _BoutiqueInfoDataModel {
   @override
   final String e;
   @override
+  final String errorMessage;
+  @override
   final BoutiqueDataInfoDataModel data;
 
   @override
   String toString() {
-    return 'BoutiqueInfoDataModel(r: $r, e: $e, data: $data)';
+    return 'BoutiqueInfoDataModel(r: $r, e: $e, errorMessage: $errorMessage, data: $data)';
   }
 
   @override
@@ -153,11 +177,13 @@ class _$BoutiqueInfoDataModelImpl extends _BoutiqueInfoDataModel {
             other is _$BoutiqueInfoDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, data);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
   @JsonKey(ignore: true)
   @override
@@ -171,6 +197,7 @@ abstract class _BoutiqueInfoDataModel extends BoutiqueInfoDataModel {
   factory _BoutiqueInfoDataModel(
           {required final String r,
           required final String e,
+          required final String errorMessage,
           required final BoutiqueDataInfoDataModel data}) =
       _$BoutiqueInfoDataModelImpl;
   _BoutiqueInfoDataModel._() : super._();
@@ -179,6 +206,8 @@ abstract class _BoutiqueInfoDataModel extends BoutiqueInfoDataModel {
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   BoutiqueDataInfoDataModel get data;
   @override

@@ -64,7 +64,12 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     GetInfoBoutiquesEvent event,
     Emitter<BoutiquesState> emit,
   ) async {
-    emit(const BoutiquesState.load());
+    if (state is ErrorBoutiquesState) {
+      emit(BoutiquesState.loadErrorButton());
+    } else {
+      emit(const BoutiquesState.load());
+    }
+
     bool isUpdateVersionApp = false;
     String appStoreInfoVersion = '';
     final detailsBoutique = await _boutiquesRepository.getInfoBoutique(
@@ -91,14 +96,24 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     }
 
     AppMetrica.reportEvent('Страница бутика');
-    emit(
-      BoutiquesState.preloadDataCompleted(
-        boutiques: _boutiques,
-        boutiqueDetails: detailsBoutique.data,
-        boutiqueInfo: boutiqueInfo.category,
-        isUpdateVersionApp: isUpdateVersionApp,
-        isNotification: event.isNotification ?? false,
-      ),
-    );
+
+    if (detailsBoutique.errorMessage.isNotEmpty || boutiqueInfo.errorMessage.isNotEmpty) {
+      emit(
+        BoutiquesState.error(
+          errorMessage: MessageInfo.errorMessage,
+          uid: event.uid,
+        ),
+      );
+    } else {
+      emit(
+        BoutiquesState.preloadDataCompleted(
+          boutiques: _boutiques,
+          boutiqueDetails: detailsBoutique.data,
+          boutiqueInfo: boutiqueInfo.category,
+          isUpdateVersionApp: isUpdateVersionApp,
+          isNotification: event.isNotification ?? false,
+        ),
+      );
+    }
   }
 }

@@ -99,11 +99,17 @@ class BoutiquesService {
       );
       log(response.data);
 
-      boutiqueInfoResponse = BoutiqueInfoResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        boutiqueInfoResponse = BoutiqueInfoResponse.fromJson(
+          jsonDecode(
+            response.data,
+          ),
+        );
+      } catch (e) {
+        boutiqueInfoResponse = BoutiqueInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return boutiqueInfoResponse;
     } on DioError catch (e) {
@@ -116,8 +122,10 @@ class BoutiquesService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return BoutiqueInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<BoutiqueInfoDetailResponse?> getInfoBoutiqueDetail({
@@ -138,11 +146,17 @@ class BoutiquesService {
       );
       log(response.data);
 
-      boutiqueInfoDetailResponse = BoutiqueInfoDetailResponse.fromJson(
-        jsonDecode(
-          response.data,
-        ),
-      );
+      try {
+        boutiqueInfoDetailResponse = BoutiqueInfoDetailResponse.fromJson(
+          jsonDecode(
+            response.data,
+          ),
+        );
+      } catch (e) {
+        boutiqueInfoDetailResponse = BoutiqueInfoDetailResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return boutiqueInfoDetailResponse;
     } on DioError catch (e) {
@@ -155,8 +169,10 @@ class BoutiquesService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return BoutiqueInfoDetailResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
   }
 
   Future<AppointmentVisionCheckResponse?> createVc({

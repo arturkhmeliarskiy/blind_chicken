@@ -367,7 +367,7 @@ mixin _$BoutiquesState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() loadErrorButton,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(String errorMessage, String? uid) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -382,7 +382,7 @@ mixin _$BoutiquesState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function()? loadErrorButton,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(String errorMessage, String? uid)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -397,7 +397,7 @@ mixin _$BoutiquesState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? loadErrorButton,
-    TResult Function(String errorMessage)? error,
+    TResult Function(String errorMessage, String? uid)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -507,7 +507,7 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() loadErrorButton,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(String errorMessage, String? uid) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -525,7 +525,7 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function()? loadErrorButton,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(String errorMessage, String? uid)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -543,7 +543,7 @@ class _$InitBoutiquesStateImpl implements InitBoutiquesState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? loadErrorButton,
-    TResult Function(String errorMessage)? error,
+    TResult Function(String errorMessage, String? uid)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -654,7 +654,7 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() loadErrorButton,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(String errorMessage, String? uid) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -672,7 +672,7 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function()? loadErrorButton,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(String errorMessage, String? uid)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -690,7 +690,7 @@ class _$LoadingBoutiquesStateImpl implements LoadingBoutiquesState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? loadErrorButton,
-    TResult Function(String errorMessage)? error,
+    TResult Function(String errorMessage, String? uid)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -804,7 +804,7 @@ class _$LoadingErrorButtonBoutiquesStateImpl
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() loadErrorButton,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(String errorMessage, String? uid) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -822,7 +822,7 @@ class _$LoadingErrorButtonBoutiquesStateImpl
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function()? loadErrorButton,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(String errorMessage, String? uid)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -840,7 +840,7 @@ class _$LoadingErrorButtonBoutiquesStateImpl
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? loadErrorButton,
-    TResult Function(String errorMessage)? error,
+    TResult Function(String errorMessage, String? uid)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -912,7 +912,7 @@ abstract class _$$ErrorBoutiquesStateImplCopyWith<$Res> {
           $Res Function(_$ErrorBoutiquesStateImpl) then) =
       __$$ErrorBoutiquesStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String errorMessage});
+  $Res call({String errorMessage, String? uid});
 }
 
 /// @nodoc
@@ -929,12 +929,17 @@ class __$$ErrorBoutiquesStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? errorMessage = null,
+    Object? uid = freezed,
   }) {
     return _then(_$ErrorBoutiquesStateImpl(
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      uid: freezed == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -942,14 +947,16 @@ class __$$ErrorBoutiquesStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
-  const _$ErrorBoutiquesStateImpl({required this.errorMessage});
+  const _$ErrorBoutiquesStateImpl({required this.errorMessage, this.uid});
 
   @override
   final String errorMessage;
+  @override
+  final String? uid;
 
   @override
   String toString() {
-    return 'BoutiquesState.error(errorMessage: $errorMessage)';
+    return 'BoutiquesState.error(errorMessage: $errorMessage, uid: $uid)';
   }
 
   @override
@@ -958,11 +965,12 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
         (other.runtimeType == runtimeType &&
             other is _$ErrorBoutiquesStateImpl &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode => Object.hash(runtimeType, errorMessage, uid);
 
   /// Create a copy of BoutiquesState
   /// with the given fields replaced by the non-null parameter values.
@@ -979,7 +987,7 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() loadErrorButton,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(String errorMessage, String? uid) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -988,7 +996,7 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
             BoutiqueDataInfoDataModel? boutiqueDetails)
         preloadDataCompleted,
   }) {
-    return error(errorMessage);
+    return error(errorMessage, uid);
   }
 
   @override
@@ -997,7 +1005,7 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function()? loadErrorButton,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(String errorMessage, String? uid)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -1006,7 +1014,7 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
             BoutiqueDataInfoDataModel? boutiqueDetails)?
         preloadDataCompleted,
   }) {
-    return error?.call(errorMessage);
+    return error?.call(errorMessage, uid);
   }
 
   @override
@@ -1015,7 +1023,7 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? loadErrorButton,
-    TResult Function(String errorMessage)? error,
+    TResult Function(String errorMessage, String? uid)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -1026,7 +1034,7 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(errorMessage);
+      return error(errorMessage, uid);
     }
     return orElse();
   }
@@ -1077,10 +1085,12 @@ class _$ErrorBoutiquesStateImpl implements ErrorBoutiquesState {
 }
 
 abstract class ErrorBoutiquesState implements BoutiquesState {
-  const factory ErrorBoutiquesState({required final String errorMessage}) =
-      _$ErrorBoutiquesStateImpl;
+  const factory ErrorBoutiquesState(
+      {required final String errorMessage,
+      final String? uid}) = _$ErrorBoutiquesStateImpl;
 
   String get errorMessage;
+  String? get uid;
 
   /// Create a copy of BoutiquesState
   /// with the given fields replaced by the non-null parameter values.
@@ -1252,7 +1262,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     required TResult Function() init,
     required TResult Function() load,
     required TResult Function() loadErrorButton,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(String errorMessage, String? uid) error,
     required TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -1271,7 +1281,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     TResult? Function()? init,
     TResult? Function()? load,
     TResult? Function()? loadErrorButton,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(String errorMessage, String? uid)? error,
     TResult? Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,
@@ -1290,7 +1300,7 @@ class _$PreloadDataCompletedBoutiquesStateImpl
     TResult Function()? init,
     TResult Function()? load,
     TResult Function()? loadErrorButton,
-    TResult Function(String errorMessage)? error,
+    TResult Function(String errorMessage, String? uid)? error,
     TResult Function(
             List<BoutiqueDataModel> boutiques,
             bool isUpdateVersionApp,

@@ -9,6 +9,7 @@ class BoutiqueInfoDetailDataModel with _$BoutiqueInfoDetailDataModel {
   factory BoutiqueInfoDetailDataModel({
     required String r,
     required String e,
+    required String errorMessage,
     required List<BoutiqueCategoryItemDataModel> category,
   }) = _BoutiqueInfoDetailDataModel;
 }

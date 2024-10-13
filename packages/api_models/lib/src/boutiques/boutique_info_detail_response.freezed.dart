@@ -23,6 +23,7 @@ BoutiqueInfoDetailResponse _$BoutiqueInfoDetailResponseFromJson(
 mixin _$BoutiqueInfoDetailResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   @JsonKey(name: 'category', fromJson: _convertCategory)
   List<BoutiqueCategoryItemResponse>? get category =>
       throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $BoutiqueInfoDetailResponseCopyWith<$Res> {
   $Res call(
       {String? r,
       String? e,
+      String? errorMessage,
       @JsonKey(name: 'category', fromJson: _convertCategory)
       List<BoutiqueCategoryItemResponse>? category});
 }
@@ -63,6 +65,7 @@ class _$BoutiqueInfoDetailResponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? category = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,6 +76,10 @@ class _$BoutiqueInfoDetailResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       category: freezed == category
           ? _value.category
@@ -94,6 +101,7 @@ abstract class _$$BoutiqueInfoDetailResponseImplCopyWith<$Res>
   $Res call(
       {String? r,
       String? e,
+      String? errorMessage,
       @JsonKey(name: 'category', fromJson: _convertCategory)
       List<BoutiqueCategoryItemResponse>? category});
 }
@@ -113,6 +121,7 @@ class __$$BoutiqueInfoDetailResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? category = freezed,
   }) {
     return _then(_$BoutiqueInfoDetailResponseImpl(
@@ -123,6 +132,10 @@ class __$$BoutiqueInfoDetailResponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       category: freezed == category
           ? _value._category
@@ -138,6 +151,7 @@ class _$BoutiqueInfoDetailResponseImpl extends _BoutiqueInfoDetailResponse {
   _$BoutiqueInfoDetailResponseImpl(
       {this.r,
       this.e,
+      this.errorMessage,
       @JsonKey(name: 'category', fromJson: _convertCategory)
       final List<BoutiqueCategoryItemResponse>? category})
       : _category = category,
@@ -151,6 +165,8 @@ class _$BoutiqueInfoDetailResponseImpl extends _BoutiqueInfoDetailResponse {
   final String? r;
   @override
   final String? e;
+  @override
+  final String? errorMessage;
   final List<BoutiqueCategoryItemResponse>? _category;
   @override
   @JsonKey(name: 'category', fromJson: _convertCategory)
@@ -164,7 +180,7 @@ class _$BoutiqueInfoDetailResponseImpl extends _BoutiqueInfoDetailResponse {
 
   @override
   String toString() {
-    return 'BoutiqueInfoDetailResponse(r: $r, e: $e, category: $category)';
+    return 'BoutiqueInfoDetailResponse(r: $r, e: $e, errorMessage: $errorMessage, category: $category)';
   }
 
   @override
@@ -174,13 +190,15 @@ class _$BoutiqueInfoDetailResponseImpl extends _BoutiqueInfoDetailResponse {
             other is _$BoutiqueInfoDetailResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._category, _category));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, r, e, const DeepCollectionEquality().hash(_category));
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
+      const DeepCollectionEquality().hash(_category));
 
   @JsonKey(ignore: true)
   @override
@@ -201,6 +219,7 @@ abstract class _BoutiqueInfoDetailResponse extends BoutiqueInfoDetailResponse {
   factory _BoutiqueInfoDetailResponse(
           {final String? r,
           final String? e,
+          final String? errorMessage,
           @JsonKey(name: 'category', fromJson: _convertCategory)
           final List<BoutiqueCategoryItemResponse>? category}) =
       _$BoutiqueInfoDetailResponseImpl;
@@ -213,6 +232,8 @@ abstract class _BoutiqueInfoDetailResponse extends BoutiqueInfoDetailResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   @JsonKey(name: 'category', fromJson: _convertCategory)
   List<BoutiqueCategoryItemResponse>? get category;

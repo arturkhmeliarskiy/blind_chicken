@@ -7,6 +7,7 @@ class BoutiquesState with _$BoutiquesState {
   const factory BoutiquesState.loadErrorButton() = LoadingErrorButtonBoutiquesState;
   const factory BoutiquesState.error({
     required String errorMessage,
+    String? uid,
   }) = ErrorBoutiquesState;
   const factory BoutiquesState.preloadDataCompleted({
     required List<BoutiqueDataModel> boutiques,

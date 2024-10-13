@@ -35,6 +35,9 @@ class NotificationInfoNotificationDescriptionScreen extends StatefulWidget {
 
 class _NotificationInfoNotificationDescriptionScreenState
     extends State<NotificationInfoNotificationDescriptionScreen> {
+  final BlindChickenShowDialogError _blindChickenNotificationShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogNotificatioInfoError = false;
   bool _isFullScreenVideo = false;
   bool _isSwipe = true;
 
@@ -59,6 +62,10 @@ class _NotificationInfoNotificationDescriptionScreenState
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (initState) {
+            if (_isShowDialogNotificatioInfoError) {
+              _isShowDialogNotificatioInfoError = false;
+              _blindChickenNotificationShowDialogError.closeShowDialog();
+            }
             if (initState.isUpdateVersionApp && initState.isNotification) {
               final updateData = GetIt.I.get<UpdateDataService>();
               if (updateData.isOpenUpdateModalWindow) {
@@ -80,6 +87,54 @@ class _NotificationInfoNotificationDescriptionScreenState
                   );
                 }
               });
+            }
+          },
+          error: (value) {
+            if (!_isShowDialogNotificatioInfoError) {
+              _isShowDialogNotificatioInfoError = true;
+              _blindChickenNotificationShowDialogError.openShowDualog(
+                context: context,
+                errorMessage: value.errorMessage,
+                widget: BlocBuilder<NewsBloc, NewsState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loadErrorButton: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
+                            ),
+                          ),
+                        );
+                      },
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+                onRepeatRequest: () {
+                  if (widget.idNews.isNotEmpty) {
+                    context.read<NewsBloc>().add(
+                          NewsEvent.getNotificationDescriptionInfo(
+                            id: widget.idNews,
+                            isNotification: widget.isNotification,
+                            messageId: widget.messageId,
+                          ),
+                        );
+                  }
+                },
+              );
             }
           },
           orElse: () {},

@@ -4,6 +4,10 @@ part of 'gift_card_bloc.dart';
 class GiftCardState with _$GiftCardState {
   const factory GiftCardState.init() = InitGiftCardState;
   const factory GiftCardState.load() = LoadingGiftCardState;
+  const factory GiftCardState.loadErrorButton() = LoadingErrorButtonGiftCardState;
+  const factory GiftCardState.error({
+    required String errorMessage,
+  }) = ErrorGiftCardState;
   const factory GiftCardState.preloadDataCompleted({
     required List<PaymentItemDataModel> payments,
     required bool isLoadCreateOrder,

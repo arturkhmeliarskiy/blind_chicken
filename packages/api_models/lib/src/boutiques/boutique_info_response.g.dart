@@ -11,6 +11,7 @@ _$BoutiqueInfoResponseImpl _$$BoutiqueInfoResponseImplFromJson(
     _$BoutiqueInfoResponseImpl(
       r: json['r'] as String?,
       e: json['e'] as String?,
+      errorMessage: json['errorMessage'] as String?,
       data: json['data'] == null
           ? null
           : BoutiqueInfoDataResponse.fromJson(
@@ -22,5 +23,6 @@ Map<String, dynamic> _$$BoutiqueInfoResponseImplToJson(
     <String, dynamic>{
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
       'data': instance.data,
     };

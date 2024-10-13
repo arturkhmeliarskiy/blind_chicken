@@ -55,17 +55,19 @@ class BoutiquesRepository {
 extension on BoutiqueInfoDetailResponse {
   BoutiqueInfoDetailDataModel toInfoBoutiqueDetail() {
     return BoutiqueInfoDetailDataModel(
-        category: List<BoutiqueCategoryItemDataModel>.from(
-          category?.map(
-                (item) => BoutiqueCategoryItemDataModel(
-                  title: item.title ?? '',
-                  listInfo: item.listInfo ?? [],
-                ),
-              ) ??
-              [],
-        ),
-        r: r ?? '',
-        e: e ?? '');
+      category: List<BoutiqueCategoryItemDataModel>.from(
+        category?.map(
+              (item) => BoutiqueCategoryItemDataModel(
+                title: item.title ?? '',
+                listInfo: item.listInfo ?? [],
+              ),
+            ) ??
+            [],
+      ),
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+    );
   }
 }
 
@@ -122,6 +124,7 @@ extension on BoutiqueInfoResponse {
     return BoutiqueInfoDataModel(
       r: r ?? '',
       e: e ?? '',
+      errorMessage: errorMessage ?? '',
       data: BoutiqueDataInfoDataModel(
         fotoDetail: List<BoutiqueFotoDetailDataModel>.from(
           data?.fotoDetail?.map(

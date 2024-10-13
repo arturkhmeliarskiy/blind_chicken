@@ -42,6 +42,9 @@ class BoutiquesDescriptionScreen extends StatefulWidget {
 }
 
 class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen> {
+  final BlindChickenShowDialogError _blindChickenBoutiquesDescriptionShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogBoutiquesDescriptionInfoError = false;
   @override
   void didChangeDependencies() {
     if (widget.uidStore.isNotEmpty && widget.isNotification) {
@@ -65,6 +68,10 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (initState) {
+            if (_isShowDialogBoutiquesDescriptionInfoError) {
+              _isShowDialogBoutiquesDescriptionInfoError = false;
+              _blindChickenBoutiquesDescriptionShowDialogError.closeShowDialog();
+            }
             if (initState.isUpdateVersionApp && initState.isNotification) {
               final updateData = GetIt.I.get<UpdateDataService>();
               if (updateData.isOpenUpdateModalWindow) {
@@ -86,6 +93,62 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                   );
                 }
               });
+            }
+          },
+          error: (value) {
+            if (!_isShowDialogBoutiquesDescriptionInfoError) {
+              _isShowDialogBoutiquesDescriptionInfoError = true;
+              _blindChickenBoutiquesDescriptionShowDialogError.openShowDualog(
+                context: context,
+                errorMessage: value.errorMessage,
+                widget: BlocBuilder<BoutiquesBloc, BoutiquesState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loadErrorButton: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
+                            ),
+                          ),
+                        );
+                      },
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+                onRepeatRequest: () {
+                  if (widget.uidStore.isNotEmpty && widget.isNotification) {
+                    Timer(const Duration(milliseconds: 150), () {
+                      context.read<BoutiquesBloc>().add(
+                            BoutiquesEvent.getInfoBoutique(
+                              uid: widget.uidStore,
+                              isNotification: widget.isNotification,
+                              messageId: widget.messageId,
+                            ),
+                          );
+                    });
+                  } else {
+                    context.read<BoutiquesBloc>().add(
+                          BoutiquesEvent.getInfoBoutique(
+                            uid: value.uid ?? '',
+                          ),
+                        );
+                  }
+                },
+              );
             }
           },
           orElse: () {},

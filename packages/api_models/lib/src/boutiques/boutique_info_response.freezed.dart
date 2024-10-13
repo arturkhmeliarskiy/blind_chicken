@@ -22,6 +22,7 @@ BoutiqueInfoResponse _$BoutiqueInfoResponseFromJson(Map<String, dynamic> json) {
 mixin _$BoutiqueInfoResponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   BoutiqueInfoDataResponse? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,11 @@ abstract class $BoutiqueInfoResponseCopyWith<$Res> {
           $Res Function(BoutiqueInfoResponse) then) =
       _$BoutiqueInfoResponseCopyWithImpl<$Res, BoutiqueInfoResponse>;
   @useResult
-  $Res call({String? r, String? e, BoutiqueInfoDataResponse? data});
+  $Res call(
+      {String? r,
+      String? e,
+      String? errorMessage,
+      BoutiqueInfoDataResponse? data});
 
   $BoutiqueInfoDataResponseCopyWith<$Res>? get data;
 }
@@ -57,6 +62,7 @@ class _$BoutiqueInfoResponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +73,10 @@ class _$BoutiqueInfoResponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       data: freezed == data
           ? _value.data
@@ -96,7 +106,11 @@ abstract class _$$BoutiqueInfoResponseImplCopyWith<$Res>
       __$$BoutiqueInfoResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? r, String? e, BoutiqueInfoDataResponse? data});
+  $Res call(
+      {String? r,
+      String? e,
+      String? errorMessage,
+      BoutiqueInfoDataResponse? data});
 
   @override
   $BoutiqueInfoDataResponseCopyWith<$Res>? get data;
@@ -115,6 +129,7 @@ class __$$BoutiqueInfoResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? data = freezed,
   }) {
     return _then(_$BoutiqueInfoResponseImpl(
@@ -125,6 +140,10 @@ class __$$BoutiqueInfoResponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       data: freezed == data
           ? _value.data
@@ -137,7 +156,8 @@ class __$$BoutiqueInfoResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BoutiqueInfoResponseImpl extends _BoutiqueInfoResponse {
-  _$BoutiqueInfoResponseImpl({this.r, this.e, this.data}) : super._();
+  _$BoutiqueInfoResponseImpl({this.r, this.e, this.errorMessage, this.data})
+      : super._();
 
   factory _$BoutiqueInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$BoutiqueInfoResponseImplFromJson(json);
@@ -147,11 +167,13 @@ class _$BoutiqueInfoResponseImpl extends _BoutiqueInfoResponse {
   @override
   final String? e;
   @override
+  final String? errorMessage;
+  @override
   final BoutiqueInfoDataResponse? data;
 
   @override
   String toString() {
-    return 'BoutiqueInfoResponse(r: $r, e: $e, data: $data)';
+    return 'BoutiqueInfoResponse(r: $r, e: $e, errorMessage: $errorMessage, data: $data)';
   }
 
   @override
@@ -161,12 +183,14 @@ class _$BoutiqueInfoResponseImpl extends _BoutiqueInfoResponse {
             other is _$BoutiqueInfoResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, data);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage, data);
 
   @JsonKey(ignore: true)
   @override
@@ -188,6 +212,7 @@ abstract class _BoutiqueInfoResponse extends BoutiqueInfoResponse {
   factory _BoutiqueInfoResponse(
       {final String? r,
       final String? e,
+      final String? errorMessage,
       final BoutiqueInfoDataResponse? data}) = _$BoutiqueInfoResponseImpl;
   _BoutiqueInfoResponse._() : super._();
 
@@ -198,6 +223,8 @@ abstract class _BoutiqueInfoResponse extends BoutiqueInfoResponse {
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   BoutiqueInfoDataResponse? get data;
   @override

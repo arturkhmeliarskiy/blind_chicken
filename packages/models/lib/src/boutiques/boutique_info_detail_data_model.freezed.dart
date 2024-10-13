@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BoutiqueInfoDetailDataModel {
   String get r => throw _privateConstructorUsedError;
   String get e => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
   List<BoutiqueCategoryItemDataModel> get category =>
       throw _privateConstructorUsedError;
 
@@ -34,7 +35,11 @@ abstract class $BoutiqueInfoDetailDataModelCopyWith<$Res> {
       _$BoutiqueInfoDetailDataModelCopyWithImpl<$Res,
           BoutiqueInfoDetailDataModel>;
   @useResult
-  $Res call({String r, String e, List<BoutiqueCategoryItemDataModel> category});
+  $Res call(
+      {String r,
+      String e,
+      String errorMessage,
+      List<BoutiqueCategoryItemDataModel> category});
 }
 
 /// @nodoc
@@ -53,6 +58,7 @@ class _$BoutiqueInfoDetailDataModelCopyWithImpl<$Res,
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? category = null,
   }) {
     return _then(_value.copyWith(
@@ -63,6 +69,10 @@ class _$BoutiqueInfoDetailDataModelCopyWithImpl<$Res,
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
           ? _value.category
@@ -81,7 +91,11 @@ abstract class _$$BoutiqueInfoDetailDataModelImplCopyWith<$Res>
       __$$BoutiqueInfoDetailDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String e, List<BoutiqueCategoryItemDataModel> category});
+  $Res call(
+      {String r,
+      String e,
+      String errorMessage,
+      List<BoutiqueCategoryItemDataModel> category});
 }
 
 /// @nodoc
@@ -99,6 +113,7 @@ class __$$BoutiqueInfoDetailDataModelImplCopyWithImpl<$Res>
   $Res call({
     Object? r = null,
     Object? e = null,
+    Object? errorMessage = null,
     Object? category = null,
   }) {
     return _then(_$BoutiqueInfoDetailDataModelImpl(
@@ -109,6 +124,10 @@ class __$$BoutiqueInfoDetailDataModelImplCopyWithImpl<$Res>
       e: null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
           ? _value._category
@@ -124,6 +143,7 @@ class _$BoutiqueInfoDetailDataModelImpl extends _BoutiqueInfoDetailDataModel {
   _$BoutiqueInfoDetailDataModelImpl(
       {required this.r,
       required this.e,
+      required this.errorMessage,
       required final List<BoutiqueCategoryItemDataModel> category})
       : _category = category,
         super._();
@@ -132,6 +152,8 @@ class _$BoutiqueInfoDetailDataModelImpl extends _BoutiqueInfoDetailDataModel {
   final String r;
   @override
   final String e;
+  @override
+  final String errorMessage;
   final List<BoutiqueCategoryItemDataModel> _category;
   @override
   List<BoutiqueCategoryItemDataModel> get category {
@@ -142,7 +164,7 @@ class _$BoutiqueInfoDetailDataModelImpl extends _BoutiqueInfoDetailDataModel {
 
   @override
   String toString() {
-    return 'BoutiqueInfoDetailDataModel(r: $r, e: $e, category: $category)';
+    return 'BoutiqueInfoDetailDataModel(r: $r, e: $e, errorMessage: $errorMessage, category: $category)';
   }
 
   @override
@@ -152,12 +174,14 @@ class _$BoutiqueInfoDetailDataModelImpl extends _BoutiqueInfoDetailDataModel {
             other is _$BoutiqueInfoDetailDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._category, _category));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, r, e, const DeepCollectionEquality().hash(_category));
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
+      const DeepCollectionEquality().hash(_category));
 
   @JsonKey(ignore: true)
   @override
@@ -172,6 +196,7 @@ abstract class _BoutiqueInfoDetailDataModel
   factory _BoutiqueInfoDetailDataModel(
           {required final String r,
           required final String e,
+          required final String errorMessage,
           required final List<BoutiqueCategoryItemDataModel> category}) =
       _$BoutiqueInfoDetailDataModelImpl;
   _BoutiqueInfoDetailDataModel._() : super._();
@@ -180,6 +205,8 @@ abstract class _BoutiqueInfoDetailDataModel
   String get r;
   @override
   String get e;
+  @override
+  String get errorMessage;
   @override
   List<BoutiqueCategoryItemDataModel> get category;
   @override

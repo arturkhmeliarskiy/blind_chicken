@@ -10,6 +10,7 @@ class BoutiqueInfoResponse with _$BoutiqueInfoResponse {
   factory BoutiqueInfoResponse({
     String? r,
     String? e,
+    String? errorMessage,
     BoutiqueInfoDataResponse? data,
   }) = _BoutiqueInfoResponse;
   factory BoutiqueInfoResponse.fromJson(Map<String, dynamic> json) =>
