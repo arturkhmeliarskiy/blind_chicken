@@ -28,6 +28,7 @@ class ProductDataModel with _$ProductDataModel {
     required List<CatalogSizeProductDataModel> sz,
     required String promo,
     required int promoValue,
+    required DetailProductVideoDataModel video,
     String? titleScreen, // экран добавления в корзину
     String? searchQuery, // поисковой запрос
     String? typeAddProductToShoppingCart, // с помощью чего добавляется в корзину

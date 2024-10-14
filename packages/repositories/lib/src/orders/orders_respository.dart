@@ -96,6 +96,10 @@ extension on OrderInfoResponse {
                 productCategoriesPath: item.productCategoriesPath ?? [],
                 promo: item.promo ?? '',
                 promoValue: item.promoValue ?? 0,
+                video: DetailProductVideoDataModel(
+                  v: '',
+                  i: '',
+                ),
               ),
             ) ??
             [],

@@ -786,6 +786,8 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                           initState.favouritesProducts[index].promo,
                                                       promoValue: initState
                                                           .favouritesProducts[index].promoValue,
+                                                      video:
+                                                          initState.favouritesProducts[index].video,
                                                     );
                                                   }),
                                                 ),

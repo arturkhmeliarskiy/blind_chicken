@@ -315,33 +315,46 @@ extension on CatalogSearchInfoResponse {
       errorMessage: errorMessage ?? '',
       products: List<ProductDataModel>.from(
         products?.map(
-              (item) => ProductDataModel(
-                id: int.parse(item.c ?? '0'),
-                title: item.n ?? '',
-                images:
-                    item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [],
-                brend: item.b ?? '',
-                category: item.n ?? '',
-                pb: int.parse(item.pb ?? '0'),
-                size: [],
-                lensDiameter: 0,
-                price: int.parse(item.p ?? '0'),
-                templeLength: 0,
-                country: '',
-                variants: [],
-                maximumCashback: item.ca ?? 0,
-                maximumPersonalDiscount: item.dv ?? 0,
-                yourPrice: item.pc ?? 0,
-                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
-                isShop: basketInfo.basket
-                    .where(
-                      (element) => element.code == (item.c ?? ''),
-                    )
-                    .isNotEmpty,
-                sz: [],
-                promo: item.promo ?? '',
-                promoValue: item.promoValue ?? 0,
-              ),
+              (item) {
+                List<String> images =
+                    item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [];
+
+                String imageVideo = item.v?.i ?? '';
+                if (imageVideo.isNotEmpty) {
+                  images.insert(1, imageVideo);
+                }
+
+                return ProductDataModel(
+                  id: int.parse(item.c ?? '0'),
+                  title: item.n ?? '',
+                  images: images,
+                  brend: item.b ?? '',
+                  category: item.n ?? '',
+                  pb: int.parse(item.pb ?? '0'),
+                  size: [],
+                  lensDiameter: 0,
+                  price: int.parse(item.p ?? '0'),
+                  templeLength: 0,
+                  country: '',
+                  variants: [],
+                  maximumCashback: item.ca ?? 0,
+                  maximumPersonalDiscount: item.dv ?? 0,
+                  yourPrice: item.pc ?? 0,
+                  isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                  isShop: basketInfo.basket
+                      .where(
+                        (element) => element.code == (item.c ?? ''),
+                      )
+                      .isNotEmpty,
+                  sz: [],
+                  promo: item.promo ?? '',
+                  promoValue: item.promoValue ?? 0,
+                  video: DetailProductVideoDataModel(
+                    v: item.v?.v ?? '',
+                    i: item.v?.i ?? '',
+                  ),
+                );
+              },
             ) ??
             [],
       ),
@@ -379,8 +392,8 @@ extension on CatalogSearchResponse {
       sectionsCount: sectionsCount ?? 0,
       errorMessage: errorMessage ?? '',
       products: List<ProductDataModel>.from(
-        products?.map(
-              (item) => ProductDataModel(
+        products?.map((item) {
+              return ProductDataModel(
                 id: int.parse(item.c ?? '0'),
                 title: item.n ?? '',
                 images: [item.f?.isNotEmpty ?? false ? 'https://slepayakurica.ru${item.f}' : ''],
@@ -405,8 +418,12 @@ extension on CatalogSearchResponse {
                 sz: [],
                 promo: item.promo ?? '',
                 promoValue: item.promoValue ?? 0,
-              ),
-            ) ??
+                video: DetailProductVideoDataModel(
+                  v: item.v?.v ?? '',
+                  i: item.v?.i ?? '',
+                ),
+              );
+            }) ??
             [],
       ),
       sections: List<CatalogSectionDataModel>.from(
@@ -453,37 +470,6 @@ extension on List<FilterInfoResponse> {
                 ) ??
                 <FilterItemDataModel>[],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-extension on List<ProductResponse> {
-  List<ProductDataModel> toProducts(List<ProductResponse> listProducts) {
-    return List<ProductDataModel>.from(
-      listProducts.map(
-        (item) => ProductDataModel(
-          id: item.id ?? 0,
-          title: item.title ?? '',
-          category: item.category ?? '',
-          size: item.size ?? [],
-          price: item.price ?? 0,
-          pb: item.price ?? 0,
-          brend: item.brend ?? '',
-          lensDiameter: item.lensDiameter ?? 0,
-          templeLength: item.templeLength ?? 0,
-          country: item.country ?? '',
-          images: item.images ?? [],
-          variants: item.variants ?? [],
-          maximumCashback: 0,
-          maximumPersonalDiscount: 0,
-          yourPrice: 0,
-          isYourPriceDisplayed: false,
-          isShop: false,
-          sz: [],
-          promo: '',
-          promoValue: 0,
         ),
       ),
     );
@@ -543,6 +529,10 @@ extension on List<ProductFavouriteModel> {
           productCategoriesPath: item.productCategoriesPath,
           promo: item.promo,
           promoValue: item.promoValue,
+          video: DetailProductVideoDataModel(
+            v: item.videoUrl,
+            i: item.imageVideo,
+          ),
         ),
       ),
     );
@@ -658,6 +648,8 @@ extension on ProductDataModel {
       productCategoriesPath: productCategoriesPath ?? [],
       promo: promo,
       promoValue: promoValue,
+      videoUrl: video.v,
+      imageVideo: video.i,
     );
   }
 }
@@ -736,38 +728,52 @@ extension on CatalogResponse {
           }) ??
           []),
       products: List<ProductDataModel>.from(products?.map(
-            (item) => ProductDataModel(
-              id: int.parse(item.c ?? '0'),
-              title: item.n ?? '',
-              images: item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [],
-              brend: item.b ?? '',
-              category: item.n ?? '',
-              size: [],
-              pb: int.parse(item.pb ?? '0'),
-              lensDiameter: 0,
-              price: int.parse(item.p ?? '0'),
-              templeLength: 0,
-              country: '',
-              isShop: basketInfo.basket
-                  .where(
-                    (element) => element.code == (item.c ?? ''),
-                  )
-                  .isNotEmpty,
-              variants: [],
-              maximumCashback: item.ca ?? 0,
-              maximumPersonalDiscount: item.dv ?? 0,
-              yourPrice: item.pc ?? 0,
-              isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
-              sz: List<CatalogSizeProductDataModel>.from(item.sz?.map((element) {
-                    return CatalogSizeProductDataModel(
-                      id: element.id ?? '',
-                      name: element.name ?? '',
-                    );
-                  }) ??
-                  []),
-              promo: item.promo ?? '',
-              promoValue: item.promoValue ?? 0,
-            ),
+            (item) {
+              List<String> images =
+                  item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [];
+
+              String imageVideo = item.v?.i ?? '';
+              if (imageVideo.isNotEmpty) {
+                images.insert(1, imageVideo);
+              }
+
+              return ProductDataModel(
+                id: int.parse(item.c ?? '0'),
+                title: item.n ?? '',
+                images: images,
+                brend: item.b ?? '',
+                category: item.n ?? '',
+                size: [],
+                pb: int.parse(item.pb ?? '0'),
+                lensDiameter: 0,
+                price: int.parse(item.p ?? '0'),
+                templeLength: 0,
+                country: '',
+                isShop: basketInfo.basket
+                    .where(
+                      (element) => element.code == (item.c ?? ''),
+                    )
+                    .isNotEmpty,
+                variants: [],
+                maximumCashback: item.ca ?? 0,
+                maximumPersonalDiscount: item.dv ?? 0,
+                yourPrice: item.pc ?? 0,
+                isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
+                sz: List<CatalogSizeProductDataModel>.from(item.sz?.map((element) {
+                      return CatalogSizeProductDataModel(
+                        id: element.id ?? '',
+                        name: element.name ?? '',
+                      );
+                    }) ??
+                    []),
+                promo: item.promo ?? '',
+                promoValue: item.promoValue ?? 0,
+                video: DetailProductVideoDataModel(
+                  v: item.v?.v ?? '',
+                  i: item.v?.i ?? '',
+                ),
+              );
+            },
           ) ??
           []),
       r: r ?? '',
@@ -909,6 +915,10 @@ extension on DetailProductResponse {
         sz: [],
         promo: price?.promo ?? '',
         promoValue: price?.promoValue ?? 0,
+        video: DetailProductVideoDataModel(
+          v: video?.v ?? '',
+          i: video?.i ?? '',
+        ),
       ),
       price: PriceProductDataModel(
         p: price?.p ?? '0',
@@ -992,6 +1002,10 @@ extension on AdditionalProductsDescriptionResponse {
                 sz: [],
                 promo: item.promo ?? '',
                 promoValue: item.promoValue ?? 0,
+                video: DetailProductVideoDataModel(
+                  v: item.v?.v ?? '',
+                  i: item.v?.i ?? '',
+                ),
               );
             }) ??
             [],

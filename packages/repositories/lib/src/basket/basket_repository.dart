@@ -292,6 +292,10 @@ extension on BasketFullInfoResponse {
                     productCategoriesPath: item.productCategoriesPath ?? [],
                     promo: item.data?.promo ?? '',
                     promoValue: item.data?.promoValue ?? 0,
+                    video: DetailProductVideoDataModel(
+                      v: '',
+                      i: '',
+                    ),
                   ),
                 );
               },

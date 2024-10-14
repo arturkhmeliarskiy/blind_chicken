@@ -31,6 +31,7 @@ class CatalogCardItem extends StatefulWidget {
     required this.sizeProduct,
     required this.promo,
     required this.promoValue,
+    required this.video,
   });
 
   final String imageUrl;
@@ -56,6 +57,7 @@ class CatalogCardItem extends StatefulWidget {
   final List<CatalogSizeProductDataModel> sizeProduct;
   final String promo;
   final int promoValue;
+  final DetailProductVideoDataModel video;
 
   @override
   State<CatalogCardItem> createState() => _CatalogCardItemState();
@@ -97,6 +99,7 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                   children: [
                     CatalogSliderImagesCardItem(
                       images: widget.images,
+                      video: widget.video,
                     ),
                     if (widget.promoValue > 0)
                       Tooltip(

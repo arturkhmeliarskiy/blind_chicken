@@ -1,14 +1,18 @@
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_video.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSliderImagesCardItem extends StatefulWidget {
   const CatalogSliderImagesCardItem({
     super.key,
     required this.images,
+    required this.video,
   });
 
   final List<String> images;
+  final DetailProductVideoDataModel video;
 
   @override
   State<CatalogSliderImagesCardItem> createState() => _CatalogSliderImagesCardItemState();
@@ -41,18 +45,27 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
               });
             },
             itemBuilder: (context, index) {
-              return CachedNetworkImage(
-                imageUrl: widget.images[index],
-                fit: BoxFit.fill,
-                width: MediaQuery.of(context).size.width / 2 - 21,
-                height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                placeholder: (context, url) => SizedBox(
+              if (widget.video.i.isNotEmpty && index == 1) {
+                return CatalogSliderItemVideo(
+                  video: widget.video.v,
+                  image: widget.images[index],
+                  isProgressBar: false,
+                  isPlayIcon: false,
+                );
+              } else {
+                return CachedNetworkImage(
+                  imageUrl: widget.images[index],
+                  fit: BoxFit.fill,
                   width: MediaQuery.of(context).size.width / 2 - 21,
                   height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                  child: const LoadingImage(),
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              );
+                  placeholder: (context, url) => SizedBox(
+                    width: MediaQuery.of(context).size.width / 2 - 21,
+                    height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                    child: const LoadingImage(),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                );
+              }
             },
           ),
           if (widget.images.length > 1)

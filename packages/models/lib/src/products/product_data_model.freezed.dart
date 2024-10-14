@@ -37,6 +37,7 @@ mixin _$ProductDataModel {
       throw _privateConstructorUsedError;
   String get promo => throw _privateConstructorUsedError;
   int get promoValue => throw _privateConstructorUsedError;
+  DetailProductVideoDataModel get video => throw _privateConstructorUsedError;
   String? get titleScreen =>
       throw _privateConstructorUsedError; // экран добавления в корзину
   String? get searchQuery =>
@@ -84,6 +85,7 @@ abstract class $ProductDataModelCopyWith<$Res> {
       List<CatalogSizeProductDataModel> sz,
       String promo,
       int promoValue,
+      DetailProductVideoDataModel video,
       String? titleScreen,
       String? searchQuery,
       String? typeAddProductToShoppingCart,
@@ -92,6 +94,8 @@ abstract class $ProductDataModelCopyWith<$Res> {
       List<String>? productCategoriesPath,
       String? count,
       Color? color});
+
+  $DetailProductVideoDataModelCopyWith<$Res> get video;
 }
 
 /// @nodoc
@@ -127,6 +131,7 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? sz = null,
     Object? promo = null,
     Object? promoValue = null,
+    Object? video = null,
     Object? titleScreen = freezed,
     Object? searchQuery = freezed,
     Object? typeAddProductToShoppingCart = freezed,
@@ -217,6 +222,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
           ? _value.promoValue
           : promoValue // ignore: cast_nullable_to_non_nullable
               as int,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoDataModel,
       titleScreen: freezed == titleScreen
           ? _value.titleScreen
           : titleScreen // ignore: cast_nullable_to_non_nullable
@@ -252,6 +261,14 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
               as Color?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductVideoDataModelCopyWith<$Res> get video {
+    return $DetailProductVideoDataModelCopyWith<$Res>(_value.video, (value) {
+      return _then(_value.copyWith(video: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -283,6 +300,7 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       List<CatalogSizeProductDataModel> sz,
       String promo,
       int promoValue,
+      DetailProductVideoDataModel video,
       String? titleScreen,
       String? searchQuery,
       String? typeAddProductToShoppingCart,
@@ -291,6 +309,9 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       List<String>? productCategoriesPath,
       String? count,
       Color? color});
+
+  @override
+  $DetailProductVideoDataModelCopyWith<$Res> get video;
 }
 
 /// @nodoc
@@ -324,6 +345,7 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? sz = null,
     Object? promo = null,
     Object? promoValue = null,
+    Object? video = null,
     Object? titleScreen = freezed,
     Object? searchQuery = freezed,
     Object? typeAddProductToShoppingCart = freezed,
@@ -414,6 +436,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
           ? _value.promoValue
           : promoValue // ignore: cast_nullable_to_non_nullable
               as int,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoDataModel,
       titleScreen: freezed == titleScreen
           ? _value.titleScreen
           : titleScreen // ignore: cast_nullable_to_non_nullable
@@ -475,6 +501,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required final List<CatalogSizeProductDataModel> sz,
       required this.promo,
       required this.promoValue,
+      required this.video,
       this.titleScreen,
       this.searchQuery,
       this.typeAddProductToShoppingCart,
@@ -556,6 +583,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   @override
   final int promoValue;
   @override
+  final DetailProductVideoDataModel video;
+  @override
   final String? titleScreen;
 // экран добавления в корзину
   @override
@@ -600,7 +629,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, promo: $promo, promoValue: $promoValue, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, promo: $promo, promoValue: $promoValue, video: $video, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
   }
 
   @override
@@ -637,6 +666,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             (identical(other.promo, promo) || other.promo == promo) &&
             (identical(other.promoValue, promoValue) ||
                 other.promoValue == promoValue) &&
+            (identical(other.video, video) || other.video == video) &&
             (identical(other.titleScreen, titleScreen) ||
                 other.titleScreen == titleScreen) &&
             (identical(other.searchQuery, searchQuery) ||
@@ -680,6 +710,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         const DeepCollectionEquality().hash(_sz),
         promo,
         promoValue,
+        video,
         titleScreen,
         searchQuery,
         typeAddProductToShoppingCart,
@@ -720,6 +751,7 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final List<CatalogSizeProductDataModel> sz,
       required final String promo,
       required final int promoValue,
+      required final DetailProductVideoDataModel video,
       final String? titleScreen,
       final String? searchQuery,
       final String? typeAddProductToShoppingCart,
@@ -770,6 +802,8 @@ abstract class _ProductDataModel extends ProductDataModel {
   String get promo;
   @override
   int get promoValue;
+  @override
+  DetailProductVideoDataModel get video;
   @override
   String? get titleScreen;
   @override // экран добавления в корзину

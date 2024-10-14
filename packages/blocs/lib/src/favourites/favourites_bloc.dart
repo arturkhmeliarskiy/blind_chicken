@@ -1285,6 +1285,10 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
           sz: [],
           promo: '',
           promoValue: 0,
+          video: DetailProductVideoDataModel(
+            i: '',
+            v: '',
+          ),
         );
 
         listProducts[index] = product;

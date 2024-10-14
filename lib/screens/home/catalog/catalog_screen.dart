@@ -807,6 +807,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                   promo: initState.products[index].promo,
                                                   promoValue: initState.products[index].promoValue,
                                                   images: initState.products[index].images,
+                                                  video: initState.products[index].video,
                                                 );
                                               }
                                             },

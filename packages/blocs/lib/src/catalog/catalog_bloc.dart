@@ -2133,6 +2133,10 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
           sz: [],
           promo: '',
           promoValue: 0,
+          video: DetailProductVideoDataModel(
+            i: '',
+            v: '',
+          ),
         );
 
         listProducts[index] = product;

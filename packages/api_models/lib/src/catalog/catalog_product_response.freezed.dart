@@ -21,6 +21,7 @@ CatalogProductResponse _$CatalogProductResponseFromJson(
 
 /// @nodoc
 mixin _$CatalogProductResponse {
+  DetailProductVideoResponse? get v => throw _privateConstructorUsedError;
   String? get c => throw _privateConstructorUsedError;
   String? get f => throw _privateConstructorUsedError;
   List<String>? get sl => throw _privateConstructorUsedError;
@@ -51,7 +52,8 @@ abstract class $CatalogProductResponseCopyWith<$Res> {
       _$CatalogProductResponseCopyWithImpl<$Res, CatalogProductResponse>;
   @useResult
   $Res call(
-      {String? c,
+      {DetailProductVideoResponse? v,
+      String? c,
       String? f,
       List<String>? sl,
       String? b,
@@ -65,6 +67,8 @@ abstract class $CatalogProductResponseCopyWith<$Res> {
       String? promo,
       @JsonKey(name: 'promo_value') int? promoValue,
       List<CatalogSizeProductResponse>? sz});
+
+  $DetailProductVideoResponseCopyWith<$Res>? get v;
 }
 
 /// @nodoc
@@ -81,6 +85,7 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? v = freezed,
     Object? c = freezed,
     Object? f = freezed,
     Object? sl = freezed,
@@ -97,6 +102,10 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
     Object? sz = freezed,
   }) {
     return _then(_value.copyWith(
+      v: freezed == v
+          ? _value.v
+          : v // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoResponse?,
       c: freezed == c
           ? _value.c
           : c // ignore: cast_nullable_to_non_nullable
@@ -155,6 +164,18 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
               as List<CatalogSizeProductResponse>?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductVideoResponseCopyWith<$Res>? get v {
+    if (_value.v == null) {
+      return null;
+    }
+
+    return $DetailProductVideoResponseCopyWith<$Res>(_value.v!, (value) {
+      return _then(_value.copyWith(v: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -167,7 +188,8 @@ abstract class _$$CatalogProductResponseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? c,
+      {DetailProductVideoResponse? v,
+      String? c,
       String? f,
       List<String>? sl,
       String? b,
@@ -181,6 +203,9 @@ abstract class _$$CatalogProductResponseImplCopyWith<$Res>
       String? promo,
       @JsonKey(name: 'promo_value') int? promoValue,
       List<CatalogSizeProductResponse>? sz});
+
+  @override
+  $DetailProductVideoResponseCopyWith<$Res>? get v;
 }
 
 /// @nodoc
@@ -196,6 +221,7 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? v = freezed,
     Object? c = freezed,
     Object? f = freezed,
     Object? sl = freezed,
@@ -212,6 +238,10 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
     Object? sz = freezed,
   }) {
     return _then(_$CatalogProductResponseImpl(
+      v: freezed == v
+          ? _value.v
+          : v // ignore: cast_nullable_to_non_nullable
+              as DetailProductVideoResponse?,
       c: freezed == c
           ? _value.c
           : c // ignore: cast_nullable_to_non_nullable
@@ -276,7 +306,8 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   _$CatalogProductResponseImpl(
-      {this.c,
+      {this.v,
+      this.c,
       this.f,
       final List<String>? sl,
       this.b,
@@ -297,6 +328,8 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   factory _$CatalogProductResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CatalogProductResponseImplFromJson(json);
 
+  @override
+  final DetailProductVideoResponse? v;
   @override
   final String? c;
   @override
@@ -344,7 +377,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
   @override
   String toString() {
-    return 'CatalogProductResponse(c: $c, f: $f, sl: $sl, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, promo: $promo, promoValue: $promoValue, sz: $sz)';
+    return 'CatalogProductResponse(v: $v, c: $c, f: $f, sl: $sl, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, promo: $promo, promoValue: $promoValue, sz: $sz)';
   }
 
   @override
@@ -352,6 +385,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CatalogProductResponseImpl &&
+            (identical(other.v, v) || other.v == v) &&
             (identical(other.c, c) || other.c == c) &&
             (identical(other.f, f) || other.f == f) &&
             const DeepCollectionEquality().equals(other._sl, _sl) &&
@@ -373,6 +407,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      v,
       c,
       f,
       const DeepCollectionEquality().hash(_sl),
@@ -405,7 +440,8 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
 abstract class _CatalogProductResponse extends CatalogProductResponse {
   factory _CatalogProductResponse(
-          {final String? c,
+          {final DetailProductVideoResponse? v,
+          final String? c,
           final String? f,
           final List<String>? sl,
           final String? b,
@@ -425,6 +461,8 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   factory _CatalogProductResponse.fromJson(Map<String, dynamic> json) =
       _$CatalogProductResponseImpl.fromJson;
 
+  @override
+  DetailProductVideoResponse? get v;
   @override
   String? get c;
   @override

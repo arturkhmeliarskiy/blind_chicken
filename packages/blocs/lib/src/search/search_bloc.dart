@@ -1075,6 +1075,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           sz: [],
           promo: '',
           promoValue: 0,
+          video: DetailProductVideoDataModel(
+            i: '',
+            v: '',
+          ),
         );
 
         listProducts[index] = product;

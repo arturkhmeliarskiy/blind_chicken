@@ -25,6 +25,8 @@ class ProductFavouriteModel {
     required this.identifierAddProductToShoppingCart,
     required this.sectionCategoriesPath,
     required this.productCategoriesPath,
+    required this.imageVideo,
+    required this.videoUrl,
   });
 
   @HiveField(0)
@@ -88,4 +90,10 @@ class ProductFavouriteModel {
 
   @HiveField(19)
   List<String> productCategoriesPath; // категории тоарва "Продукты", "Молочные продукты", "Йогурты"
+
+  @HiveField(20)
+  String imageVideo; // превью видео
+
+  @HiveField(21)
+  String videoUrl; // превью видео
 }

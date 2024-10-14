@@ -71,6 +71,7 @@ class CatalogListProducts extends StatelessWidget {
               userDiscount: initState.userDiscount,
               pb: initState.products[index].pb,
               isShop: initState.products[index].isShop,
+              video: initState.products[index].video,
               onAddProductToSoppingCart: () {
                 context.read<CatalogBloc>().add(
                       CatalogEvent.getInfoProductSize(

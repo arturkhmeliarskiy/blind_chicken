@@ -1,3 +1,4 @@
+import 'package:api_models/api_models.dart';
 import 'package:api_models/src/catalog/catalog_size_product_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -8,6 +9,7 @@ part 'catalog_product_response.g.dart';
 class CatalogProductResponse with _$CatalogProductResponse {
   const CatalogProductResponse._();
   factory CatalogProductResponse({
+    DetailProductVideoResponse? v,
     String? c,
     String? f,
     List<String>? sl,

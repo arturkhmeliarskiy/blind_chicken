@@ -131,12 +131,19 @@ extension on FavouritesCatalogInfoResponse {
           }) ??
           []),
       products: List<ProductDataModel>.from(
-        products?.map(
-              (item) => ProductDataModel(
+        products?.map((item) {
+              List<String> images =
+                  item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [];
+
+              String imageVideo = item.v?.i ?? '';
+              if (imageVideo.isNotEmpty) {
+                images.insert(1, imageVideo);
+              }
+
+              return ProductDataModel(
                 id: int.parse(item.c ?? '0'),
                 title: item.n ?? '',
-                images:
-                    item.sl?.map((element) => 'https://slepayakurica.ru$element').toList() ?? [],
+                images: images,
                 brend: item.b ?? '',
                 category: item.n ?? '',
                 size: [],
@@ -158,8 +165,12 @@ extension on FavouritesCatalogInfoResponse {
                 sz: [],
                 promo: item.promo ?? '',
                 promoValue: item.promoValue ?? 0,
-              ),
-            ) ??
+                video: DetailProductVideoDataModel(
+                  v: item.v?.v ?? '',
+                  i: item.v?.i ?? '',
+                ),
+              );
+            }) ??
             [],
       ),
     );

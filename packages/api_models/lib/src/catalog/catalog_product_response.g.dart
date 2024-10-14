@@ -9,6 +9,10 @@ part of 'catalog_product_response.dart';
 _$CatalogProductResponseImpl _$$CatalogProductResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CatalogProductResponseImpl(
+      v: json['v'] == null
+          ? null
+          : DetailProductVideoResponse.fromJson(
+              json['v'] as Map<String, dynamic>),
       c: json['c'] as String?,
       f: json['f'] as String?,
       sl: (json['sl'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -31,6 +35,7 @@ _$CatalogProductResponseImpl _$$CatalogProductResponseImplFromJson(
 Map<String, dynamic> _$$CatalogProductResponseImplToJson(
         _$CatalogProductResponseImpl instance) =>
     <String, dynamic>{
+      'v': instance.v,
       'c': instance.c,
       'f': instance.f,
       'sl': instance.sl,

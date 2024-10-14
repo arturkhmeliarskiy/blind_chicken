@@ -47,6 +47,10 @@ class CatalogVariantSliderImages extends StatelessWidget {
                   sz: [],
                   promo: '',
                   promoValue: 0,
+                  video: DetailProductVideoDataModel(
+                    i: '',
+                    v: '',
+                  ),
                 ),
               );
             },

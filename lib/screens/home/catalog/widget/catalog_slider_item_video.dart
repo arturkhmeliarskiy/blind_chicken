@@ -8,10 +8,14 @@ class CatalogSliderItemVideo extends StatefulWidget {
     super.key,
     required this.image,
     required this.video,
+    this.isProgressBar = true,
+    this.isPlayIcon = true,
   });
 
   final String image;
   final String video;
+  final bool isProgressBar;
+  final bool isPlayIcon;
 
   @override
   State<CatalogSliderItemVideo> createState() => _CatalogSliderItemVideoState();
@@ -35,6 +39,7 @@ class _CatalogSliderItemVideoState extends State<CatalogSliderItemVideo> {
               _controller.setLooping(true);
             });
           });
+    _controller.setLooping(true);
   }
 
   @override
@@ -65,54 +70,56 @@ class _CatalogSliderItemVideoState extends State<CatalogSliderItemVideo> {
                                   _controller,
                                 ),
                               ),
-                              Container(
-                                height: 42,
-                                width: width,
-                                color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          _isPlay = !_isPlay;
-                                          if (_isPlay) {
-                                            _controller.play();
-                                          } else {
-                                            _controller.pause();
-                                          }
-                                        });
-                                      },
-                                      child: SizedBox(
-                                        width: 56,
-                                        height: 42,
-                                        child: Icon(
-                                          _isPlay ? Icons.pause : Icons.play_arrow,
-                                          size: 30,
-                                          color: BlindChickenColors.backgroundColor,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: SizedBox(
-                                        height: 6,
-                                        child: VideoProgressIndicator(
-                                          _controller,
-                                          allowScrubbing: true,
-                                          padding: EdgeInsets.zero,
-                                          colors: const VideoProgressColors(
-                                            playedColor: BlindChickenColors.backgroundColor,
-                                            bufferedColor: BlindChickenColors.borderTextFieldSearch,
+                              if (widget.isProgressBar)
+                                Container(
+                                  height: 42,
+                                  width: width,
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _isPlay = !_isPlay;
+                                            if (_isPlay) {
+                                              _controller.play();
+                                            } else {
+                                              _controller.pause();
+                                            }
+                                          });
+                                        },
+                                        child: SizedBox(
+                                          width: 56,
+                                          height: 42,
+                                          child: Icon(
+                                            _isPlay ? Icons.pause : Icons.play_arrow,
+                                            size: 30,
+                                            color: BlindChickenColors.backgroundColor,
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      width: 14,
-                                    ),
-                                  ],
+                                      Expanded(
+                                        child: SizedBox(
+                                          height: 6,
+                                          child: VideoProgressIndicator(
+                                            _controller,
+                                            allowScrubbing: true,
+                                            padding: EdgeInsets.zero,
+                                            colors: const VideoProgressColors(
+                                              playedColor: BlindChickenColors.backgroundColor,
+                                              bufferedColor:
+                                                  BlindChickenColors.borderTextFieldSearch,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 14,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
                             ],
                           ),
                           if (!_isPlay)
@@ -188,19 +195,20 @@ class _CatalogSliderItemVideoState extends State<CatalogSliderItemVideo> {
                         fit: BoxFit.cover,
                         errorWidget: (context, url, error) => const Icon(Icons.error),
                       ),
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
-                        ),
-                        child: const Icon(
-                          Icons.play_arrow,
-                          color: BlindChickenColors.backgroundColor,
-                          size: 40,
-                        ),
-                      )
+                      if (widget.isPlayIcon)
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                          ),
+                          child: const Icon(
+                            Icons.play_arrow,
+                            color: BlindChickenColors.backgroundColor,
+                            size: 40,
+                          ),
+                        )
                     ],
                   ),
                 ),
