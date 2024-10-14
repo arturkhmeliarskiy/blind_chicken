@@ -686,7 +686,7 @@ class _MainScreenState extends State<MainScreen> {
                                                   padding: EdgeInsets.only(
                                                     top: 14,
                                                     left: 7,
-                                                    right: 7,
+                                                    right: width > 767 ? 7 : 0,
                                                   ),
                                                 ),
                                               ),
