@@ -62,7 +62,7 @@ class _ShoppingCartPaymentPromoCodeState extends State<ShoppingCartPaymentPromoC
                         ),
                         GestureDetector(
                           onTap: () {
-                            context.popRoute();
+                            context.maybePop();
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10.5),

@@ -456,7 +456,7 @@ class _DashboardPageState extends State<DashboardPage> {
                             );
                           },
                           onBack: () {
-                            context.popRoute();
+                            context.maybePop();
                           },
                         );
                       });

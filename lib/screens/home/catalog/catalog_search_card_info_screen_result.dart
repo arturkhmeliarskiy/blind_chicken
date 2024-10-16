@@ -293,7 +293,7 @@ class _CatalogSearchCardInfoResultScreenState extends State<CatalogSearchCardInf
                                     } else {
                                       WidgetsBinding.instance.addPostFrameCallback((_) {
                                         if (Platform.isIOS) {
-                                          context.popRoute();
+                                          context.maybePop();
                                         } else {
                                           context.back();
                                         }

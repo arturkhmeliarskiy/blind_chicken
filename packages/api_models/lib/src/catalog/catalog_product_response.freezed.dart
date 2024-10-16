@@ -33,6 +33,7 @@ mixin _$CatalogProductResponse {
   int? get pbc => throw _privateConstructorUsedError;
   int? get ca => throw _privateConstructorUsedError;
   int? get dv => throw _privateConstructorUsedError;
+  int? get d => throw _privateConstructorUsedError;
   String? get promo => throw _privateConstructorUsedError;
   @JsonKey(name: 'promo_value')
   int? get promoValue => throw _privateConstructorUsedError;
@@ -64,6 +65,7 @@ abstract class $CatalogProductResponseCopyWith<$Res> {
       int? pbc,
       int? ca,
       int? dv,
+      int? d,
       String? promo,
       @JsonKey(name: 'promo_value') int? promoValue,
       List<CatalogSizeProductResponse>? sz});
@@ -97,6 +99,7 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
     Object? pbc = freezed,
     Object? ca = freezed,
     Object? dv = freezed,
+    Object? d = freezed,
     Object? promo = freezed,
     Object? promoValue = freezed,
     Object? sz = freezed,
@@ -150,6 +153,10 @@ class _$CatalogProductResponseCopyWithImpl<$Res,
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int?,
+      d: freezed == d
+          ? _value.d
+          : d // ignore: cast_nullable_to_non_nullable
+              as int?,
       promo: freezed == promo
           ? _value.promo
           : promo // ignore: cast_nullable_to_non_nullable
@@ -200,6 +207,7 @@ abstract class _$$CatalogProductResponseImplCopyWith<$Res>
       int? pbc,
       int? ca,
       int? dv,
+      int? d,
       String? promo,
       @JsonKey(name: 'promo_value') int? promoValue,
       List<CatalogSizeProductResponse>? sz});
@@ -233,6 +241,7 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
     Object? pbc = freezed,
     Object? ca = freezed,
     Object? dv = freezed,
+    Object? d = freezed,
     Object? promo = freezed,
     Object? promoValue = freezed,
     Object? sz = freezed,
@@ -286,6 +295,10 @@ class __$$CatalogProductResponseImplCopyWithImpl<$Res>
           ? _value.dv
           : dv // ignore: cast_nullable_to_non_nullable
               as int?,
+      d: freezed == d
+          ? _value.d
+          : d // ignore: cast_nullable_to_non_nullable
+              as int?,
       promo: freezed == promo
           ? _value.promo
           : promo // ignore: cast_nullable_to_non_nullable
@@ -318,6 +331,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
       this.pbc,
       this.ca,
       this.dv,
+      this.d,
       this.promo,
       @JsonKey(name: 'promo_value') this.promoValue,
       final List<CatalogSizeProductResponse>? sz})
@@ -361,6 +375,8 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
   @override
   final int? dv;
   @override
+  final int? d;
+  @override
   final String? promo;
   @override
   @JsonKey(name: 'promo_value')
@@ -377,7 +393,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
 
   @override
   String toString() {
-    return 'CatalogProductResponse(v: $v, c: $c, f: $f, sl: $sl, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, promo: $promo, promoValue: $promoValue, sz: $sz)';
+    return 'CatalogProductResponse(v: $v, c: $c, f: $f, sl: $sl, b: $b, n: $n, p: $p, pb: $pb, pc: $pc, pbc: $pbc, ca: $ca, dv: $dv, d: $d, promo: $promo, promoValue: $promoValue, sz: $sz)';
   }
 
   @override
@@ -397,6 +413,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
             (identical(other.pbc, pbc) || other.pbc == pbc) &&
             (identical(other.ca, ca) || other.ca == ca) &&
             (identical(other.dv, dv) || other.dv == dv) &&
+            (identical(other.d, d) || other.d == d) &&
             (identical(other.promo, promo) || other.promo == promo) &&
             (identical(other.promoValue, promoValue) ||
                 other.promoValue == promoValue) &&
@@ -419,6 +436,7 @@ class _$CatalogProductResponseImpl extends _CatalogProductResponse {
       pbc,
       ca,
       dv,
+      d,
       promo,
       promoValue,
       const DeepCollectionEquality().hash(_sz));
@@ -452,6 +470,7 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
           final int? pbc,
           final int? ca,
           final int? dv,
+          final int? d,
           final String? promo,
           @JsonKey(name: 'promo_value') final int? promoValue,
           final List<CatalogSizeProductResponse>? sz}) =
@@ -485,6 +504,8 @@ abstract class _CatalogProductResponse extends CatalogProductResponse {
   int? get ca;
   @override
   int? get dv;
+  @override
+  int? get d;
   @override
   String? get promo;
   @override

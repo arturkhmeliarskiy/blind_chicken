@@ -10,5 +10,6 @@ class OrdersBlankDataModel with _$OrdersBlankDataModel {
     required String r,
     required String message,
     required List<OrderBlankDataModel> orders,
+    required String errorMessage,
   }) = _OrdersBlankDataModel;
 }

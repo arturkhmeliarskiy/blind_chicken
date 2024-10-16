@@ -6507,6 +6507,7 @@ mixin _$FavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -6562,6 +6563,7 @@ mixin _$FavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -6617,6 +6619,7 @@ mixin _$FavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -6775,6 +6778,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -6833,6 +6837,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -6891,6 +6896,7 @@ class _$InitFavouritesStateImpl implements InitFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7050,6 +7056,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7108,6 +7115,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7166,6 +7174,7 @@ class _$LoadingFavouritesStateImpl implements LoadingFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7327,6 +7336,7 @@ class _$LoadingErrorButtonFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7385,6 +7395,7 @@ class _$LoadingErrorButtonFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7443,6 +7454,7 @@ class _$LoadingErrorButtonFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7605,6 +7617,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7663,6 +7676,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7721,6 +7735,7 @@ class _$OpenSoppingCartFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -7965,6 +7980,7 @@ class _$GetSizeProductFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8023,6 +8039,7 @@ class _$GetSizeProductFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8082,6 +8099,7 @@ class _$GetSizeProductFavouritesStateImpl
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8294,6 +8312,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8352,6 +8371,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8410,6 +8430,7 @@ class _$AddProductFavouritesStateImpl implements AddProductFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8607,6 +8628,7 @@ class _$ErrorFavouritesStateImpl implements ErrorFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8665,6 +8687,7 @@ class _$ErrorFavouritesStateImpl implements ErrorFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8723,6 +8746,7 @@ class _$ErrorFavouritesStateImpl implements ErrorFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -8844,6 +8868,7 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
       int userDiscount,
       String? typeError,
       String? errorMessage,
+      String? titleScreen,
       bool? isError,
       bool? isLoadErrorButton,
       int? keyFilterCatalog,
@@ -8904,6 +8929,7 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     Object? userDiscount = null,
     Object? typeError = freezed,
     Object? errorMessage = freezed,
+    Object? titleScreen = freezed,
     Object? isError = freezed,
     Object? isLoadErrorButton = freezed,
     Object? keyFilterCatalog = freezed,
@@ -9002,6 +9028,10 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
               as String?,
       isError: freezed == isError
           ? _value.isError
@@ -9183,6 +9213,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
       required this.userDiscount,
       this.typeError,
       this.errorMessage,
+      this.titleScreen,
       this.isError,
       this.isLoadErrorButton,
       this.keyFilterCatalog,
@@ -9334,6 +9365,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
   @override
   final String? errorMessage;
   @override
+  final String? titleScreen;
+  @override
   final bool? isError;
   @override
   final bool? isLoadErrorButton;
@@ -9370,7 +9403,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
 
   @override
   String toString() {
-    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, indexProduct: $indexProduct, favouriteProduct: $favouriteProduct, isShopGetSizeProduct: $isShopGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
+    return 'FavouritesState.productsFavourites(favouritesProducts: $favouritesProducts, favouritesDefaultProducts: $favouritesDefaultProducts, filter: $filter, selectFilter: $selectFilter, allSelectFilter: $allSelectFilter, request: $request, listProductsCode: $listProductsCode, favouritesProductsId: $favouritesProductsId, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, offset: $offset, isButtonTop: $isButtonTop, listSize: $listSize, isLoadGetSizeProduct: $isLoadGetSizeProduct, userDiscount: $userDiscount, typeError: $typeError, errorMessage: $errorMessage, titleScreen: $titleScreen, isError: $isError, isLoadErrorButton: $isLoadErrorButton, keyFilterCatalog: $keyFilterCatalog, indexFileter: $indexFileter, indexItemFileter: $indexItemFileter, indexFilterCategory: $indexFilterCategory, itemFileter: $itemFileter, indexProduct: $indexProduct, favouriteProduct: $favouriteProduct, isShopGetSizeProduct: $isShopGetSizeProduct, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isUpdate: $isUpdate, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct)';
   }
 
   @override
@@ -9413,6 +9446,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 other.typeError == typeError) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
             (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.isLoadErrorButton, isLoadErrorButton) ||
                 other.isLoadErrorButton == isLoadErrorButton) &&
@@ -9473,6 +9508,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         userDiscount,
         typeError,
         errorMessage,
+        titleScreen,
         isError,
         isLoadErrorButton,
         keyFilterCatalog,
@@ -9535,6 +9571,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -9575,6 +9612,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         userDiscount,
         typeError,
         errorMessage,
+        titleScreen,
         isError,
         isLoadErrorButton,
         keyFilterCatalog,
@@ -9630,6 +9668,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -9670,6 +9709,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         userDiscount,
         typeError,
         errorMessage,
+        titleScreen,
         isError,
         isLoadErrorButton,
         keyFilterCatalog,
@@ -9725,6 +9765,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
             int userDiscount,
             String? typeError,
             String? errorMessage,
+            String? titleScreen,
             bool? isError,
             bool? isLoadErrorButton,
             int? keyFilterCatalog,
@@ -9767,6 +9808,7 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
           userDiscount,
           typeError,
           errorMessage,
+          titleScreen,
           isError,
           isLoadErrorButton,
           keyFilterCatalog,
@@ -9864,6 +9906,7 @@ abstract class ProductsFavouritesState implements FavouritesState {
           required final int userDiscount,
           final String? typeError,
           final String? errorMessage,
+          final String? titleScreen,
           final bool? isError,
           final bool? isLoadErrorButton,
           final int? keyFilterCatalog,
@@ -9903,6 +9946,7 @@ abstract class ProductsFavouritesState implements FavouritesState {
   int get userDiscount;
   String? get typeError;
   String? get errorMessage;
+  String? get titleScreen;
   bool? get isError;
   bool? get isLoadErrorButton;
   int? get keyFilterCatalog;

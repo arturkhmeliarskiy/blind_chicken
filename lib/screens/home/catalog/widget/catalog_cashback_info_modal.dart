@@ -84,7 +84,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.popRoute();
+                    context.maybePop();
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(10.5),
@@ -305,7 +305,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                                           );
                                         },
                                         onBack: () {
-                                          context.popRoute();
+                                          context.maybePop();
                                         },
                                       );
                                     });
@@ -423,7 +423,7 @@ class _CatalogCashbackInfoModalState extends State<CatalogCashbackInfoModal> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.popRoute();
+                        context.maybePop();
                         context.navigateTo(BlindChickenCashbackAndDiscountsRoute(
                           onBack: widget.onBack,
                         ));

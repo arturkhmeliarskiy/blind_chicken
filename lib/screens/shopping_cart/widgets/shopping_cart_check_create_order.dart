@@ -29,7 +29,7 @@ class _ShoppingCartCheckCreateOrderState extends State<ShoppingCartCheckCreateOr
               }
             },
             createOrderSuccessfully: (value) {
-              context.popRoute();
+              context.maybePop();
             },
             orElse: () {},
           );

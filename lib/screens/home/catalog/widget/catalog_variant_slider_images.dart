@@ -40,6 +40,7 @@ class CatalogVariantSliderImages extends StatelessWidget {
                   ],
                   variants: [],
                   maximumCashback: 0,
+                  discount: 0,
                   maximumPersonalDiscount: 0,
                   isYourPriceDisplayed: false,
                   pb: double.parse(listOptionProduct[index].pr).toInt(),

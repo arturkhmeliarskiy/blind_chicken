@@ -196,7 +196,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const AccountState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const AccountState.load());
+      }
+
       final ordersInfo = await _ordersRepository.getListOrders();
 
       emit(initState.copyWith(
@@ -205,6 +212,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         isError: ordersInfo.r != '1',
         errorMessage: ordersInfo.errorMessage,
         offsetOrders: 1,
+        isLoadErrorButton: false,
+        typeError: 'мои заказы',
       ));
     });
   }
@@ -214,13 +223,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const AccountState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const AccountState.load());
+      }
       final orderInfo = await _ordersRepository.getOrderInfo(id: event.id);
 
       emit(initState.copyWith(
         orderInfo: orderInfo,
         isError: orderInfo.r != '1',
         errorMessage: orderInfo.errorMessage,
+        isLoadErrorButton: false,
+        typeError: 'заказ',
       ));
     });
   }
@@ -380,11 +397,19 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       SkuProductDataModel? selectSizeProduct;
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isShoppingCartDetailsProduct = false;
+      String errorMessage = '';
+      bool isError = false;
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
-      emit(const AccountState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const AccountState.load());
+      }
 
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
@@ -416,10 +441,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         code: event.code,
         block: 'complect',
       );
-
-      if (!(event.isUpdate ?? false)) {
-        listProductsCode.add(event.code);
-      }
 
       List<BasketFullInfoItemDataModel> soppingCart = [];
 
@@ -487,7 +508,22 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             : [],
       );
 
+      if (detailsProduct.errorMessage.isNotEmpty ||
+          basketInfo.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionStyle.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionAlso.errorMessage.isNotEmpty ||
+          additionalProductsDescriptionComplect.errorMessage.isNotEmpty) {
+        isError = true;
+        errorMessage = MessageInfo.errorMessage;
+      } else {
+        if (!(event.isUpdate ?? false)) {
+          listProductsCode.add(event.code);
+        }
+      }
+
       emit(initState.copyWith(
+        isError: isError,
+        errorMessage: errorMessage,
         detailsProduct: detailsProduct,
         listProdcutsStyle: additionalProductsDescriptionStyle.products,
         listProdcutsAlso: additionalProductsDescriptionAlso.products,
@@ -498,6 +534,11 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         isShoppingCart: soppingCart.isNotEmpty,
         selectSizeProduct: selectSizeProduct ?? event.size,
         isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
+        codeProduct: event.code,
+        titleScreen: event.titleScreen,
+        typeAddProductToShoppingCart: event.typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart: event.identifierAddProductToShoppingCart,
+        typeError: 'описание товара',
       ));
     });
   }
@@ -566,14 +607,20 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogInfoDataModel? favouritesInfo;
+      FavouritesInfoDataModel? favouritesProductsInfo;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.addFavouriteProdcut(
+        favouritesProductsInfo = await _favouritesRepository.addFavouriteProdcut(
           code: event.product.id.toString(),
         );
         favouritesInfo = await updateFavouritesProducts(
@@ -588,11 +635,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
       }
 
-      emit(const AccountState.load());
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
+        emit(const AccountState.load());
+      }
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
           favouritesProductsId: favouritesProductsId,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          typeError: 'добавить товар в избранное',
+          indexItem: event.index,
+          product: event.product,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -603,14 +660,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       FavouritesCatalogInfoDataModel? favouritesInfo;
+      FavouritesInfoDataModel? favouritesProductsInfo;
       List<int> favouritesProductsId = [];
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
           false;
       if (isAuth) {
-        await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
+        favouritesProductsInfo =
+            await _favouritesRepository.deleteFavouriteProdcut(code: event.index.toString());
         favouritesInfo = await updateFavouritesProducts(
           isLocal: false,
         );
@@ -623,11 +687,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
         favouritesProductsId = favouritesInfo.products.map((item) => item.id).toList();
       }
 
-      emit(const AccountState.load());
+      if ((favouritesProductsInfo?.errorMessage.isEmpty ?? false) ||
+          favouritesInfo.errorMessage.isEmpty) {
+        emit(const AccountState.load());
+      }
+
       emit(
         initState.copyWith(
           favouritesProducts: favouritesInfo.products,
           favouritesProductsId: favouritesProductsId,
+          isError: (favouritesProductsInfo?.errorMessage.isNotEmpty ?? false) ||
+              favouritesInfo.errorMessage.isNotEmpty,
+          errorMessage: MessageInfo.errorMessage,
+          typeError: 'удалить товар из избранного',
+          indexItem: event.index,
+          isLoadErrorButton: false,
         ),
       );
     });
@@ -820,11 +894,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const AccountState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const AccountState.load());
+      }
       final ordersBlank = await _authRepository.getListOrdersBlank();
 
       emit(initState.copyWith(
         listOrdersBlank: ordersBlank.orders,
+        isLoadErrorButton: false,
+        isError: ordersBlank.errorMessage.isNotEmpty,
+        errorMessage: MessageInfo.errorMessage,
+        typeError: 'электронный список заказов',
       ));
     });
   }
@@ -834,11 +918,21 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(const AccountState.load());
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(const AccountState.load());
+      }
       final tailoringBlank = await _authRepository.getListTailoringBlank();
 
       emit(initState.copyWith(
         listTailoringBlank: tailoringBlank.orders,
+        isLoadErrorButton: false,
+        isError: tailoringBlank.errorMessage.isNotEmpty,
+        errorMessage: MessageInfo.errorMessage,
+        typeError: 'список заказов на подшив',
       ));
     });
   }
@@ -938,22 +1032,39 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     Emitter<AccountState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
-      emit(initState.copyWith(
-        isLoadGetSizeProduct: true,
-        codeProduct: event.code,
-      ));
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      } else {
+        emit(initState.copyWith(
+          isLoadGetSizeProduct: true,
+          codeProduct: event.code,
+        ));
+      }
       final detailsProduct = await _catalogRepository.getDetailsProduct(
         code: event.code,
         genderIndex: _updateDataService.selectedIndexGender.toString(),
       );
 
-      if (detailsProduct.sku.isNotEmpty) {
-        if (detailsProduct.sku.first.id.contains('-') && detailsProduct.sku.first.id.length > 10) {
-          emit(AccountState.getSizeProduct(
-            code: event.code,
-            listSize: detailsProduct.sku,
-            listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
-          ));
+      if (detailsProduct.errorMessage.isEmpty) {
+        if (detailsProduct.sku.isNotEmpty) {
+          if (detailsProduct.sku.first.id.contains('-') &&
+              detailsProduct.sku.first.id.length > 10) {
+            emit(AccountState.getSizeProduct(
+              code: event.code,
+              listSize: detailsProduct.sku,
+              listSizeToSoppingCart: detailsProduct.skuToSoppingCart,
+            ));
+          } else {
+            if (event.isShop) {
+              emit(const AccountState.openSoppingCart());
+            } else {
+              emit(AccountState.addProductToSoppingCart(
+                code: event.code,
+              ));
+            }
+          }
         } else {
           if (event.isShop) {
             emit(const AccountState.openSoppingCart());
@@ -963,20 +1074,19 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             ));
           }
         }
-      } else {
-        if (event.isShop) {
-          emit(const AccountState.openSoppingCart());
-        } else {
-          emit(AccountState.addProductToSoppingCart(
-            code: event.code,
-          ));
-        }
       }
 
       emit(initState.copyWith(
+        detailsProduct:
+            detailsProduct.errorMessage.isNotEmpty ? initState.detailsProduct : detailsProduct,
         listSize: detailsProduct.sku,
         isLoadGetSizeProduct: false,
         codeProduct: event.code,
+        isError: detailsProduct.errorMessage.isNotEmpty,
+        errorMessage: detailsProduct.errorMessage,
+        isShopGetSizeProduct: event.isShop,
+        typeError: 'выбор размера описание товара',
+        isLoadErrorButton: false,
       ));
     });
   }

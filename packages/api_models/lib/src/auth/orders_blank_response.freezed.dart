@@ -21,8 +21,8 @@ OrdersBlankResponse _$OrdersBlankResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrdersBlankResponse {
   String? get r => throw _privateConstructorUsedError;
-  @JsonKey(name: 'e')
-  String? get message => throw _privateConstructorUsedError;
+  String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   List<OrderBlankResponse>? get orders => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +39,8 @@ abstract class $OrdersBlankResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {String? r,
-      @JsonKey(name: 'e') String? message,
+      String? e,
+      String? errorMessage,
       List<OrderBlankResponse>? orders});
 }
 
@@ -57,7 +58,8 @@ class _$OrdersBlankResponseCopyWithImpl<$Res, $Val extends OrdersBlankResponse>
   @override
   $Res call({
     Object? r = freezed,
-    Object? message = freezed,
+    Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? orders = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,9 +67,13 @@ class _$OrdersBlankResponseCopyWithImpl<$Res, $Val extends OrdersBlankResponse>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      e: freezed == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       orders: freezed == orders
           ? _value.orders
@@ -87,7 +93,8 @@ abstract class _$$OrdersBlankResponseImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? r,
-      @JsonKey(name: 'e') String? message,
+      String? e,
+      String? errorMessage,
       List<OrderBlankResponse>? orders});
 }
 
@@ -103,7 +110,8 @@ class __$$OrdersBlankResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? r = freezed,
-    Object? message = freezed,
+    Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? orders = freezed,
   }) {
     return _then(_$OrdersBlankResponseImpl(
@@ -111,9 +119,13 @@ class __$$OrdersBlankResponseImplCopyWithImpl<$Res>
           ? _value.r
           : r // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      e: freezed == e
+          ? _value.e
+          : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       orders: freezed == orders
           ? _value._orders
@@ -128,7 +140,8 @@ class __$$OrdersBlankResponseImplCopyWithImpl<$Res>
 class _$OrdersBlankResponseImpl extends _OrdersBlankResponse {
   _$OrdersBlankResponseImpl(
       {this.r,
-      @JsonKey(name: 'e') this.message,
+      this.e,
+      this.errorMessage,
       final List<OrderBlankResponse>? orders})
       : _orders = orders,
         super._();
@@ -139,8 +152,9 @@ class _$OrdersBlankResponseImpl extends _OrdersBlankResponse {
   @override
   final String? r;
   @override
-  @JsonKey(name: 'e')
-  final String? message;
+  final String? e;
+  @override
+  final String? errorMessage;
   final List<OrderBlankResponse>? _orders;
   @override
   List<OrderBlankResponse>? get orders {
@@ -153,7 +167,7 @@ class _$OrdersBlankResponseImpl extends _OrdersBlankResponse {
 
   @override
   String toString() {
-    return 'OrdersBlankResponse(r: $r, message: $message, orders: $orders)';
+    return 'OrdersBlankResponse(r: $r, e: $e, errorMessage: $errorMessage, orders: $orders)';
   }
 
   @override
@@ -162,14 +176,16 @@ class _$OrdersBlankResponseImpl extends _OrdersBlankResponse {
         (other.runtimeType == runtimeType &&
             other is _$OrdersBlankResponseImpl &&
             (identical(other.r, r) || other.r == r) &&
-            (identical(other.message, message) || other.message == message) &&
+            (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._orders, _orders));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, r, message, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
+      const DeepCollectionEquality().hash(_orders));
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +205,8 @@ class _$OrdersBlankResponseImpl extends _OrdersBlankResponse {
 abstract class _OrdersBlankResponse extends OrdersBlankResponse {
   factory _OrdersBlankResponse(
       {final String? r,
-      @JsonKey(name: 'e') final String? message,
+      final String? e,
+      final String? errorMessage,
       final List<OrderBlankResponse>? orders}) = _$OrdersBlankResponseImpl;
   _OrdersBlankResponse._() : super._();
 
@@ -199,8 +216,9 @@ abstract class _OrdersBlankResponse extends OrdersBlankResponse {
   @override
   String? get r;
   @override
-  @JsonKey(name: 'e')
-  String? get message;
+  String? get e;
+  @override
+  String? get errorMessage;
   @override
   List<OrderBlankResponse>? get orders;
   @override

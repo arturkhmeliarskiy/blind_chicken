@@ -4,6 +4,7 @@ part of 'brand_bloc.dart';
 class BrandEvent with _$BrandEvent {
   const factory BrandEvent.getBrands({
     int? selectTypePeople,
+    String? titleScreen,
   }) = GetBrandsBrandEvent;
   const factory BrandEvent.switchGenderBrands({
     required int selectTypePeople,

@@ -44,8 +44,6 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
 
     emit(const BrandState.load());
 
-    listBrandsPath.add(event.selectTypePeople ?? 0);
-
     switch (event.selectTypePeople) {
       case 0:
         listTypePeople = [
@@ -115,12 +113,19 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
         }
     }
 
-    for (int i = 0; i < listBrands.length; i++) {
-      allBrands.addAll(listBrands[i].value);
+    if (brandsInfo?.errorMessage.isEmpty ?? false) {
+      listBrandsPath.add(event.selectTypePeople ?? 0);
+      for (int i = 0; i < listBrands.length; i++) {
+        allBrands.addAll(listBrands[i].value);
+      }
     }
 
     if (brandsInfo?.errorMessage.isNotEmpty ?? false) {
-      emit(BrandState.error(errorMessage: brandsInfo?.errorMessage ?? ''));
+      emit(BrandState.error(
+        errorMessage: brandsInfo?.errorMessage ?? '',
+        titleScreen: event.titleScreen,
+        selectTypePeople: event.selectTypePeople,
+      ));
     } else {
       emit(
         BrandState.preloadDataCompleted(
@@ -192,7 +197,13 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
     Emitter<BrandState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       List<int> listBrandsPath = initState.listBrandsPath.toList();
+      List<int> deafultListBrandsPath = initState.listBrandsPath.toList();
 
       if (listBrandsPath.isNotEmpty) {
         listBrandsPath.removeLast();
@@ -211,6 +222,7 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
         ];
         List<BrandDataModel> listBrands = [];
         List<BrandItemDataModel> allBrands = [];
+        BrandsDataModel? brandsInfo;
         String selectedTypePeople = '';
 
         List<CountBrand> listCountBrand = [];
@@ -223,14 +235,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
               'Детям',
             ];
             selectedTypePeople = '';
-            final brandsInfo = await _catalogRepository.getBrands(
+            brandsInfo = await _catalogRepository.getBrands(
               gender: 0,
             );
             listBrands = brandsInfo.brands;
-            for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-              listCountBrand.add(calculatePosition);
+
+            if (brandsInfo.errorMessage.isEmpty) {
+              for (int i = 0; i < listBrands.length; i++) {
+                final calculatePosition =
+                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                listCountBrand.add(calculatePosition);
+              }
             }
 
           case 1:
@@ -240,15 +255,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
               'Детям',
             ];
             selectedTypePeople = 'Женщинам';
-            final brandsInfo = await _catalogRepository.getBrands(
+            brandsInfo = await _catalogRepository.getBrands(
               gender: 1,
             );
             listBrands = brandsInfo.brands;
 
-            for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-              listCountBrand.add(calculatePosition);
+            if (brandsInfo.errorMessage.isEmpty) {
+              for (int i = 0; i < listBrands.length; i++) {
+                final calculatePosition =
+                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                listCountBrand.add(calculatePosition);
+              }
             }
 
           case 2:
@@ -258,15 +275,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
               'Детям',
             ];
             selectedTypePeople = 'Мужчинам';
-            final brandsInfo = await _catalogRepository.getBrands(
+            brandsInfo = await _catalogRepository.getBrands(
               gender: 2,
             );
             listBrands = brandsInfo.brands;
 
-            for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-              listCountBrand.add(calculatePosition);
+            if (brandsInfo.errorMessage.isEmpty) {
+              for (int i = 0; i < listBrands.length; i++) {
+                final calculatePosition =
+                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                listCountBrand.add(calculatePosition);
+              }
             }
 
           case 3:
@@ -276,31 +295,51 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
               'Мужчинам',
             ];
             selectedTypePeople = 'Детям';
-            final brandsInfo = await _catalogRepository.getBrands(
+            brandsInfo = await _catalogRepository.getBrands(
               gender: 3,
             );
             listBrands = brandsInfo.brands;
 
-            for (int i = 0; i < listBrands.length; i++) {
-              final calculatePosition =
-                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-              listCountBrand.add(calculatePosition);
+            if (brandsInfo.errorMessage.isEmpty) {
+              for (int i = 0; i < listBrands.length; i++) {
+                final calculatePosition =
+                    _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+                listCountBrand.add(calculatePosition);
+              }
             }
         }
 
-        for (int i = 0; i < listBrands.length; i++) {
-          allBrands.addAll(listBrands[i].value);
+        if (brandsInfo?.errorMessage.isEmpty ?? false) {
+          for (int i = 0; i < listBrands.length; i++) {
+            allBrands.addAll(listBrands[i].value);
+          }
         }
 
         emit(
           initState.copyWith(
-            listTypePeople: listTypePeople,
-            allBrands: allBrands,
-            listCountBrand: listCountBrand,
-            listBrands: listBrands,
-            defaultListBrands: listBrands,
-            selectedTypePeople: selectedTypePeople,
-            listBrandsPath: listBrandsPath,
+            isLoadErrorButton: false,
+            isError: brandsInfo?.errorMessage.isNotEmpty ?? false,
+            typeError: 'назад в бренды',
+            errorMessage: MessageInfo.errorMessage,
+            listTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
+                ? initState.listTypePeople
+                : listTypePeople,
+            allBrands:
+                brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.allBrands : allBrands,
+            listCountBrand: brandsInfo?.errorMessage.isNotEmpty ?? false
+                ? initState.listCountBrand
+                : listCountBrand,
+            listBrands:
+                brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrands : listBrands,
+            defaultListBrands: brandsInfo?.errorMessage.isNotEmpty ?? false
+                ? initState.defaultListBrands
+                : listBrands,
+            selectedTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
+                ? initState.selectedTypePeople
+                : selectedTypePeople,
+            listBrandsPath: brandsInfo?.errorMessage.isNotEmpty ?? false
+                ? deafultListBrandsPath
+                : listBrandsPath,
           ),
         );
       }
@@ -312,14 +351,18 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
     Emitter<BrandState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       List<int> listBrandsPath = initState.listBrandsPath.toList();
       List<String> listTypePeople = [];
       List<BrandDataModel> listBrands = [];
       List<BrandItemDataModel> allBrands = [];
       String selectedTypePeople = '';
+      BrandsDataModel? brandsInfo;
       List<CountBrand> listCountBrand = [];
-
-      listBrandsPath.add(event.selectTypePeople);
 
       switch (event.selectTypePeople) {
         case 0:
@@ -329,13 +372,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
             'Детям',
           ];
           selectedTypePeople = '';
-          final brandsInfo = await _catalogRepository.getBrands(
+          brandsInfo = await _catalogRepository.getBrands(
             gender: 0,
           );
           listBrands = brandsInfo.brands;
-          for (int i = 0; i < listBrands.length; i++) {
-            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-            listCountBrand.add(calculatePosition);
+
+          if (brandsInfo.errorMessage.isEmpty) {
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
           }
 
         case 1:
@@ -345,14 +392,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
             'Детям',
           ];
           selectedTypePeople = 'Женщинам';
-          final brandsInfo = await _catalogRepository.getBrands(
+          brandsInfo = await _catalogRepository.getBrands(
             gender: 1,
           );
           listBrands = brandsInfo.brands;
 
-          for (int i = 0; i < listBrands.length; i++) {
-            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-            listCountBrand.add(calculatePosition);
+          if (brandsInfo.errorMessage.isEmpty) {
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
           }
 
         case 2:
@@ -362,14 +412,17 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
             'Детям',
           ];
           selectedTypePeople = 'Мужчинам';
-          final brandsInfo = await _catalogRepository.getBrands(
+          brandsInfo = await _catalogRepository.getBrands(
             gender: 2,
           );
           listBrands = brandsInfo.brands;
 
-          for (int i = 0; i < listBrands.length; i++) {
-            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-            listCountBrand.add(calculatePosition);
+          if (brandsInfo.errorMessage.isEmpty) {
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
           }
 
         case 3:
@@ -379,30 +432,52 @@ class BrandBloc extends Bloc<BrandEvent, BrandState> {
             'Мужчинам',
           ];
           selectedTypePeople = 'Детям';
-          final brandsInfo = await _catalogRepository.getBrands(
+          brandsInfo = await _catalogRepository.getBrands(
             gender: 3,
           );
           listBrands = brandsInfo.brands;
 
-          for (int i = 0; i < listBrands.length; i++) {
-            final calculatePosition = _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
-            listCountBrand.add(calculatePosition);
+          if (brandsInfo.errorMessage.isEmpty) {
+            for (int i = 0; i < listBrands.length; i++) {
+              final calculatePosition =
+                  _getCalculatePosition(brandsInfo.brands, listBrands[i].title);
+              listCountBrand.add(calculatePosition);
+            }
           }
       }
 
-      for (int i = 0; i < listBrands.length; i++) {
-        allBrands.addAll(listBrands[i].value);
+      if (brandsInfo?.errorMessage.isEmpty ?? false) {
+        for (int i = 0; i < listBrands.length; i++) {
+          allBrands.addAll(listBrands[i].value);
+        }
+        listBrandsPath.add(event.selectTypePeople);
       }
 
       emit(
         initState.copyWith(
-          listTypePeople: listTypePeople,
-          allBrands: allBrands,
-          listCountBrand: listCountBrand,
-          listBrands: listBrands,
-          defaultListBrands: listBrands,
-          selectedTypePeople: selectedTypePeople,
-          listBrandsPath: listBrandsPath,
+          isLoadErrorButton: false,
+          typeError: 'переключение гендерности',
+          selectTypePeopleIndex: event.selectTypePeople,
+          isError: brandsInfo?.errorMessage.isNotEmpty ?? false,
+          errorMessage: MessageInfo.errorMessage,
+          listTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
+              ? initState.listTypePeople
+              : listTypePeople,
+          allBrands: brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.allBrands : allBrands,
+          listCountBrand: brandsInfo?.errorMessage.isNotEmpty ?? false
+              ? initState.listCountBrand
+              : listCountBrand,
+          listBrands:
+              brandsInfo?.errorMessage.isNotEmpty ?? false ? initState.listBrands : listBrands,
+          defaultListBrands: brandsInfo?.errorMessage.isNotEmpty ?? false
+              ? initState.defaultListBrands
+              : listBrands,
+          selectedTypePeople: brandsInfo?.errorMessage.isNotEmpty ?? false
+              ? initState.selectedTypePeople
+              : selectedTypePeople,
+          listBrandsPath: brandsInfo?.errorMessage.isNotEmpty ?? false
+              ? initState.listBrandsPath
+              : listBrandsPath,
         ),
       );
     });

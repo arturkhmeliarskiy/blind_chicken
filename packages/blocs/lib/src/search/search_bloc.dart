@@ -1069,6 +1069,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           images: items.first.images,
           variants: items.first.variants,
           maximumCashback: items.first.maximumCashback,
+          discount: 0,
           maximumPersonalDiscount: items.first.maximumPersonalDiscount,
           isYourPriceDisplayed: items.first.isYourPriceDisplayed,
           isShop: true,

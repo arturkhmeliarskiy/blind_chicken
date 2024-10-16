@@ -15,6 +15,7 @@ class CatalogCardItem extends StatefulWidget {
     required this.yourPrice,
     required this.price,
     required this.maximumCashback,
+    required this.discount,
     required this.maximumPersonalDiscount,
     required this.onSelect,
     required this.onAddFavouriteProduct,
@@ -42,6 +43,7 @@ class CatalogCardItem extends StatefulWidget {
   final String price;
   final int pb;
   final int maximumCashback;
+  final int discount;
   final int maximumPersonalDiscount;
   final int userDiscount;
   final bool isAuth;
@@ -140,7 +142,28 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                                 ),
                           ),
                         ),
-                      )
+                      ),
+                    if (widget.discount > 0)
+                      Container(
+                        padding: const EdgeInsets.only(
+                          top: 1,
+                          left: 4,
+                          right: 4,
+                          bottom: 1,
+                        ),
+                        margin: const EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: BlindChickenColors.activeBorderTextField,
+                        ),
+                        child: Text(
+                          '-${widget.discount}%',
+                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                                fontWeight: FontWeight.w700,
+                              ),
+                        ),
+                      ),
                   ],
                 ),
                 SizedBox(

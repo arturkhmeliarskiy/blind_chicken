@@ -84,7 +84,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  context.popRoute();
+                                  context.maybePop();
                                 },
                                 child: SizedBox(
                                   height: 21,
@@ -218,7 +218,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                                   return GestureDetector(
                                     onTap: () {
                                       widget.selectItem(initState.searchResult.result[index]);
-                                      context.popRoute();
+                                      context.maybePop();
                                     },
                                     child: Container(
                                       height: 50,
@@ -289,7 +289,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
             BlindChickenTitleButton(
               title: 'Закрыть',
               onChange: () {
-                context.popRoute();
+                context.maybePop();
               },
             ),
           ],

@@ -41,7 +41,7 @@ class MapBoutiquesInfo extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () {
-                    context.popRoute();
+                    context.maybePop();
                   },
                   child: SvgPicture.asset(
                     'assets/icons/x.svg',
@@ -83,7 +83,7 @@ class MapBoutiquesInfo extends StatelessWidget {
                         ),
                         index,
                       );
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Container(
                       margin: const EdgeInsets.only(

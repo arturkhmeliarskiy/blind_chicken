@@ -43,7 +43,7 @@ class ShoppingMapPointInfo extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        context.popRoute();
+                        context.maybePop();
                       },
                       child: Align(
                         alignment: Alignment.topRight,

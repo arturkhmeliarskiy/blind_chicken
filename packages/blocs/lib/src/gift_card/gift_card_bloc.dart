@@ -110,7 +110,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
           emit(
             initState.copyWith(
               isLoadCreateOrder: false,
-              creatOrderMessage: result.e,
+              creatOrderMessage: result.errorMessage,
             ),
           );
         }

@@ -71,7 +71,7 @@ class CatalogInformationPanel extends StatelessWidget {
                                     selectTypePeople: 0,
                                   ),
                                 );
-                            context.popRoute(const HomeAutoRouterRoute(
+                            context.maybePop(const HomeAutoRouterRoute(
                               children: [
                                 BrandsRoute(),
                               ],
@@ -217,7 +217,7 @@ class CatalogInformationPanel extends StatelessWidget {
                     context.navigateTo(
                       SortRoute(
                         onChange: (value) {
-                          context.popRoute();
+                          context.maybePop();
 
                           context.read<CatalogBloc>().add(
                                 CatalogEvent.sortProducts(value: value),

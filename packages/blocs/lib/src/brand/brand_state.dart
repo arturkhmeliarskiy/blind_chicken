@@ -6,6 +6,8 @@ class BrandState with _$BrandState {
   const factory BrandState.load() = LoadingBrandState;
   const factory BrandState.error({
     required String errorMessage,
+    String? titleScreen,
+    int? selectTypePeople,
   }) = ErrorBrandState;
   const factory BrandState.preloadDataCompleted({
     required String selectedTypePeople,
@@ -15,5 +17,10 @@ class BrandState with _$BrandState {
     required List<BrandDataModel> defaultListBrands,
     required List<CountBrand> listCountBrand,
     required List<int> listBrandsPath,
+    bool? isError,
+    bool? isLoadErrorButton,
+    String? errorMessage,
+    String? typeError,
+    int? selectTypePeopleIndex,
   }) = PreloadDataCompletedBrandState;
 }

@@ -71,6 +71,6 @@ Future<void> sendError({
   required String stack,
   required String exception,
 }) async {
-  final errorAnalyzer = GetIt.I.get<ErrorAnalyzerRepository>();
-  await errorAnalyzer.sendError(stack: stack, exception: exception);
+  // final errorAnalyzer = GetIt.I.get<ErrorAnalyzerRepository>();
+  // await errorAnalyzer.sendError(stack: stack, exception: exception);
 }

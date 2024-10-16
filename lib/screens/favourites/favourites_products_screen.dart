@@ -170,7 +170,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                               FavouritesEvent.getInfoProductSize(
                                 code: initState.codeProduct ?? '',
                                 isShop: initState.isShopGetSizeProduct ?? false,
-                                titleScreen: 'Избранное',
+                                titleScreen: initState.titleScreen ?? '',
                               ),
                             );
 
@@ -729,6 +729,8 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                       maximumCashback: initState
                                                           .favouritesProducts[index]
                                                           .maximumCashback,
+                                                      discount: initState
+                                                          .favouritesProducts[index].discount,
                                                       maximumPersonalDiscount: initState
                                                           .favouritesProducts[index]
                                                           .maximumPersonalDiscount,

@@ -327,7 +327,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                     builder: (context) {
                       return BlindChickenPromotionsForPurchases(
                         onBack: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                       );
                     });
@@ -782,6 +782,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       .products[index].isYourPriceDisplayed,
                                                   maximumCashback:
                                                       initState.products[index].maximumCashback,
+                                                  discount: initState.products[index].discount,
                                                   maximumPersonalDiscount: initState
                                                       .products[index].maximumPersonalDiscount,
                                                   isAuth: initState.isAuth,

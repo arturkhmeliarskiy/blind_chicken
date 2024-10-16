@@ -338,6 +338,7 @@ extension on CatalogSearchInfoResponse {
                   country: '',
                   variants: [],
                   maximumCashback: item.ca ?? 0,
+                  discount: item.d ?? 0,
                   maximumPersonalDiscount: item.dv ?? 0,
                   yourPrice: item.pc ?? 0,
                   isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
@@ -406,6 +407,7 @@ extension on CatalogSearchResponse {
                 templeLength: 0,
                 country: '',
                 variants: [],
+                discount: 0,
                 maximumCashback: item.ca ?? 0,
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
@@ -533,6 +535,7 @@ extension on List<ProductFavouriteModel> {
             v: item.videoUrl,
             i: item.imageVideo,
           ),
+          discount: item.discount,
         ),
       ),
     );
@@ -650,6 +653,7 @@ extension on ProductDataModel {
       promoValue: promoValue,
       videoUrl: video.v,
       imageVideo: video.i,
+      discount: discount,
     );
   }
 }
@@ -756,6 +760,7 @@ extension on CatalogResponse {
                     .isNotEmpty,
                 variants: [],
                 maximumCashback: item.ca ?? 0,
+                discount: item.d ?? 0,
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
@@ -909,6 +914,7 @@ extension on DetailProductResponse {
         images: photo?.mini ?? [],
         variants: [],
         maximumCashback: price?.cashback ?? 0,
+        discount: 0,
         maximumPersonalDiscount: price?.discountVal ?? 0,
         isYourPriceDisplayed: int.parse(price?.p ?? '0') != (price?.pc ?? 0),
         isShop: skuToSoppingCart.isNotEmpty,
@@ -996,6 +1002,7 @@ extension on AdditionalProductsDescriptionResponse {
                 country: '',
                 variants: [],
                 maximumCashback: item.ca ?? 0,
+                discount: 0,
                 maximumPersonalDiscount: item.dv ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),
                 isShop: false,

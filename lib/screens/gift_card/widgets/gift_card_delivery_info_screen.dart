@@ -113,7 +113,7 @@ class _GiftCardDeliveryInfoScreenState extends State<GiftCardDeliveryInfoScreen>
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  context.popRoute();
+                                  context.maybePop();
                                 },
                                 child: SizedBox(
                                   height: 21,
@@ -219,7 +219,7 @@ class _GiftCardDeliveryInfoScreenState extends State<GiftCardDeliveryInfoScreen>
                           return GestureDetector(
                             onTap: () {
                               widget.selectItem(_searchResultCities[index]);
-                              context.popRoute();
+                              context.maybePop();
                             },
                             child: Container(
                               height: 50,
@@ -257,7 +257,7 @@ class _GiftCardDeliveryInfoScreenState extends State<GiftCardDeliveryInfoScreen>
               title: 'Закрыть',
               onChange: () {
                 widget.selectItem(_title.text);
-                context.popRoute();
+                context.maybePop();
               },
             ),
           ],

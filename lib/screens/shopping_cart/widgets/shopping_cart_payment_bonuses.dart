@@ -53,7 +53,7 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                         ),
                         GestureDetector(
                           onTap: () {
-                            context.popRoute();
+                            context.maybePop();
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10.5),
@@ -177,7 +177,7 @@ class _ShoppingCartPaymentBonusesState extends State<ShoppingCartPaymentBonuses>
                               widget.onAddPayment(
                                 result,
                               );
-                              context.popRoute();
+                              context.maybePop();
                             },
                             child: Container(
                               height: 44,

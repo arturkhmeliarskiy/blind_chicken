@@ -121,17 +121,17 @@ packages:
     dependency: transitive
     description:
       name: auto_route
-      sha256: "9a2579b115cc42eb3c787c86deae2ffc4128dc6f1af976580e7f8e4bb7f803c6"
+      sha256: bb673104dbdc22667d01ec668df3d2a358b6e3da481428eeb1151933cfc1a7d6
       url: "https://pub.dev"
     source: hosted
-    version: "6.4.0"
+    version: "9.2.0"
   blind_chicken:
     dependency: transitive
     description:
       path: "../.."
       relative: true
     source: path
-    version: "1.0.65+84"
+    version: "1.0.66+85"
   bloc:
     dependency: transitive
     description:

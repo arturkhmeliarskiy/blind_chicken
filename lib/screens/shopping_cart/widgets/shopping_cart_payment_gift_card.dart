@@ -97,7 +97,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                         ),
                         GestureDetector(
                           onTap: () {
-                            context.popRoute();
+                            context.maybePop();
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10.5),
@@ -396,7 +396,7 @@ class _ShoppingCartPaymentGiftCardState extends State<ShoppingCartPaymentGiftCar
                                       ),
                                     );
                                   }
-                                  context.popRoute();
+                                  context.maybePop();
                                 },
                                 child: Container(
                                   height: 44,

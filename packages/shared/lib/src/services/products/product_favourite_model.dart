@@ -27,6 +27,7 @@ class ProductFavouriteModel {
     required this.productCategoriesPath,
     required this.imageVideo,
     required this.videoUrl,
+    required this.discount,
   });
 
   @HiveField(0)
@@ -96,4 +97,7 @@ class ProductFavouriteModel {
 
   @HiveField(21)
   String videoUrl; // превью видео
+
+  @HiveField(22)
+  int discount; // скидка
 }

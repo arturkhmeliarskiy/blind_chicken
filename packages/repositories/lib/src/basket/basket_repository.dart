@@ -274,6 +274,7 @@ extension on BasketFullInfoResponse {
                     images: [],
                     variants: [],
                     maximumCashback: 0,
+                    discount: 0,
                     maximumPersonalDiscount: 0,
                     isYourPriceDisplayed: false,
                     pb: item.data?.price1 ?? 0,

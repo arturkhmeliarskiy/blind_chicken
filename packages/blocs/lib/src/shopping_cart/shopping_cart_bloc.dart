@@ -126,7 +126,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         listSize: [],
         isLoadGetSizeProduct: false,
         isLoadAddProductToShopingCart: false,
-        isBlocBackBotton: false,
+        isBlocBackBotton: true,
       ),
     );
   }

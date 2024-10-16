@@ -9159,6 +9159,15 @@ mixin _$AccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9215,6 +9224,15 @@ mixin _$AccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9271,6 +9289,15 @@ mixin _$AccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9445,6 +9472,15 @@ class _$InitAccountStateImpl implements InitAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9504,6 +9540,15 @@ class _$InitAccountStateImpl implements InitAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9563,6 +9608,15 @@ class _$InitAccountStateImpl implements InitAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9737,6 +9791,15 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9796,6 +9859,15 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -9855,6 +9927,15 @@ class _$LoadingAccountStateImpl implements LoadingAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10033,6 +10114,15 @@ class _$LoadingErrorButtonAccountStateImpl
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10092,6 +10182,15 @@ class _$LoadingErrorButtonAccountStateImpl
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10151,6 +10250,15 @@ class _$LoadingErrorButtonAccountStateImpl
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10354,6 +10462,15 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10413,6 +10530,15 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10472,6 +10598,15 @@ class _$ErrorAccountStateImpl implements ErrorAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10684,6 +10819,15 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10743,6 +10887,15 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -10802,6 +10955,15 @@ class _$ErrorOpenPdfAccountStateImpl implements ErrorOpenPdfAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11013,6 +11175,15 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11072,6 +11243,15 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11131,6 +11311,15 @@ class _$PayOrderAccountStateImpl implements PayOrderAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11316,6 +11505,15 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11375,6 +11573,15 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11434,6 +11641,15 @@ class _$OpenSoppingCartAccountStateImpl implements OpenSoppingCartAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11679,6 +11895,15 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11738,6 +11963,15 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -11797,6 +12031,15 @@ class _$GetSizeProductAccountStateImpl implements GetSizeProductAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -12014,6 +12257,15 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -12073,6 +12325,15 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -12132,6 +12393,15 @@ class _$AddProductAccountStateImpl implements AddProductAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -12269,6 +12539,15 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       SkuProductDataModel? selectSizeProduct,
       bool? isShoppingCart,
       bool? isError,
+      bool? isLoadErrorButton,
+      bool? isShopGetSizeProduct,
+      String? typeError,
+      String? titleScreen,
+      BasketInfoItemDataModel? itemInfo,
+      ProductDataModel? product,
+      String? typeAddProductToShoppingCart,
+      String? identifierAddProductToShoppingCart,
+      int? indexItem,
       String? errorMessage,
       bool? isShoppingCartDetailsProduct,
       bool? isSuccessfullySavedFile,
@@ -12280,6 +12559,8 @@ abstract class _$$PreloadDataCompletedAccountStateImplCopyWith<$Res> {
       OrderInfoDataModel? orderInfo});
 
   $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
+  $BasketInfoItemDataModelCopyWith<$Res>? get itemInfo;
+  $ProductDataModelCopyWith<$Res>? get product;
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
   $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
   $UserDataModelCopyWith<$Res>? get user;
@@ -12329,6 +12610,15 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     Object? selectSizeProduct = freezed,
     Object? isShoppingCart = freezed,
     Object? isError = freezed,
+    Object? isLoadErrorButton = freezed,
+    Object? isShopGetSizeProduct = freezed,
+    Object? typeError = freezed,
+    Object? titleScreen = freezed,
+    Object? itemInfo = freezed,
+    Object? product = freezed,
+    Object? typeAddProductToShoppingCart = freezed,
+    Object? identifierAddProductToShoppingCart = freezed,
+    Object? indexItem = freezed,
     Object? errorMessage = freezed,
     Object? isShoppingCartDetailsProduct = freezed,
     Object? isSuccessfullySavedFile = freezed,
@@ -12452,6 +12742,43 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isShopGetSizeProduct: freezed == isShopGetSizeProduct
+          ? _value.isShopGetSizeProduct
+          : isShopGetSizeProduct // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      itemInfo: freezed == itemInfo
+          ? _value.itemInfo
+          : itemInfo // ignore: cast_nullable_to_non_nullable
+              as BasketInfoItemDataModel?,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDataModel?,
+      typeAddProductToShoppingCart: freezed == typeAddProductToShoppingCart
+          ? _value.typeAddProductToShoppingCart
+          : typeAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identifierAddProductToShoppingCart: freezed ==
+              identifierAddProductToShoppingCart
+          ? _value.identifierAddProductToShoppingCart
+          : identifierAddProductToShoppingCart // ignore: cast_nullable_to_non_nullable
+              as String?,
+      indexItem: freezed == indexItem
+          ? _value.indexItem
+          : indexItem // ignore: cast_nullable_to_non_nullable
+              as int?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -12503,6 +12830,34 @@ class __$$PreloadDataCompletedAccountStateImplCopyWithImpl<$Res>
     return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct!,
         (value) {
       return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BasketInfoItemDataModelCopyWith<$Res>? get itemInfo {
+    if (_value.itemInfo == null) {
+      return null;
+    }
+
+    return $BasketInfoItemDataModelCopyWith<$Res>(_value.itemInfo!, (value) {
+      return _then(_value.copyWith(itemInfo: value));
+    });
+  }
+
+  /// Create a copy of AccountState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDataModelCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $ProductDataModelCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value));
     });
   }
 
@@ -12598,6 +12953,15 @@ class _$PreloadDataCompletedAccountStateImpl
       this.selectSizeProduct,
       this.isShoppingCart,
       this.isError,
+      this.isLoadErrorButton,
+      this.isShopGetSizeProduct,
+      this.typeError,
+      this.titleScreen,
+      this.itemInfo,
+      this.product,
+      this.typeAddProductToShoppingCart,
+      this.identifierAddProductToShoppingCart,
+      this.indexItem,
       this.errorMessage,
       this.isShoppingCartDetailsProduct,
       this.isSuccessfullySavedFile,
@@ -12750,6 +13114,24 @@ class _$PreloadDataCompletedAccountStateImpl
   @override
   final bool? isError;
   @override
+  final bool? isLoadErrorButton;
+  @override
+  final bool? isShopGetSizeProduct;
+  @override
+  final String? typeError;
+  @override
+  final String? titleScreen;
+  @override
+  final BasketInfoItemDataModel? itemInfo;
+  @override
+  final ProductDataModel? product;
+  @override
+  final String? typeAddProductToShoppingCart;
+  @override
+  final String? identifierAddProductToShoppingCart;
+  @override
+  final int? indexItem;
+  @override
   final String? errorMessage;
   @override
   final bool? isShoppingCartDetailsProduct;
@@ -12770,7 +13152,7 @@ class _$PreloadDataCompletedAccountStateImpl
 
   @override
   String toString() {
-    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, listOrdersBlank: $listOrdersBlank, listTailoringBlank: $listTailoringBlank, listSize: $listSize, file: $file, fileName: $fileName, isLoadGetSizeProduct: $isLoadGetSizeProduct, offsetOrders: $offsetOrders, offsetOrdersBlank: $offsetOrdersBlank, offsetTailoringBlank: $offsetTailoringBlank, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isError: $isError, errorMessage: $errorMessage, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isSuccessfullySavedFile: $isSuccessfullySavedFile, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, isLoadOpenPdf: $isLoadOpenPdf, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
+    return 'AccountState.preloadDataCompleted(phone: $phone, name: $name, email: $email, countOrders: $countOrders, applicationVersion: $applicationVersion, orders: $orders, favouritesProducts: $favouritesProducts, favouritesProductsId: $favouritesProductsId, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, isAuth: $isAuth, virtualCardsCod: $virtualCardsCod, listOrdersBlank: $listOrdersBlank, listTailoringBlank: $listTailoringBlank, listSize: $listSize, file: $file, fileName: $fileName, isLoadGetSizeProduct: $isLoadGetSizeProduct, offsetOrders: $offsetOrders, offsetOrdersBlank: $offsetOrdersBlank, offsetTailoringBlank: $offsetTailoringBlank, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isError: $isError, isLoadErrorButton: $isLoadErrorButton, isShopGetSizeProduct: $isShopGetSizeProduct, typeError: $typeError, titleScreen: $titleScreen, itemInfo: $itemInfo, product: $product, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, indexItem: $indexItem, errorMessage: $errorMessage, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isSuccessfullySavedFile: $isSuccessfullySavedFile, isLoadVirtualCardsCod: $isLoadVirtualCardsCod, isLoadOpenPdf: $isLoadOpenPdf, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, user: $user, orderInfo: $orderInfo)';
   }
 
   @override
@@ -12826,14 +13208,32 @@ class _$PreloadDataCompletedAccountStateImpl
             (identical(other.isShoppingCart, isShoppingCart) ||
                 other.isShoppingCart == isShoppingCart) &&
             (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton) &&
+            (identical(other.isShopGetSizeProduct, isShopGetSizeProduct) ||
+                other.isShopGetSizeProduct == isShopGetSizeProduct) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.itemInfo, itemInfo) ||
+                other.itemInfo == itemInfo) &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.typeAddProductToShoppingCart, typeAddProductToShoppingCart) ||
+                other.typeAddProductToShoppingCart ==
+                    typeAddProductToShoppingCart) &&
+            (identical(other.identifierAddProductToShoppingCart,
+                    identifierAddProductToShoppingCart) ||
+                other.identifierAddProductToShoppingCart ==
+                    identifierAddProductToShoppingCart) &&
+            (identical(other.indexItem, indexItem) ||
+                other.indexItem == indexItem) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.isShoppingCartDetailsProduct,
-                    isShoppingCartDetailsProduct) ||
+            (identical(other.isShoppingCartDetailsProduct, isShoppingCartDetailsProduct) ||
                 other.isShoppingCartDetailsProduct ==
                     isShoppingCartDetailsProduct) &&
-            (identical(
-                    other.isSuccessfullySavedFile, isSuccessfullySavedFile) ||
+            (identical(other.isSuccessfullySavedFile, isSuccessfullySavedFile) ||
                 other.isSuccessfullySavedFile == isSuccessfullySavedFile) &&
             (identical(other.isLoadVirtualCardsCod, isLoadVirtualCardsCod) ||
                 other.isLoadVirtualCardsCod == isLoadVirtualCardsCod) &&
@@ -12844,8 +13244,7 @@ class _$PreloadDataCompletedAccountStateImpl
             (identical(other.detailsProduct, detailsProduct) ||
                 other.detailsProduct == detailsProduct) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.orderInfo, orderInfo) ||
-                other.orderInfo == orderInfo));
+            (identical(other.orderInfo, orderInfo) || other.orderInfo == orderInfo));
   }
 
   @override
@@ -12879,6 +13278,15 @@ class _$PreloadDataCompletedAccountStateImpl
         selectSizeProduct,
         isShoppingCart,
         isError,
+        isLoadErrorButton,
+        isShopGetSizeProduct,
+        typeError,
+        titleScreen,
+        itemInfo,
+        product,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        indexItem,
         errorMessage,
         isShoppingCartDetailsProduct,
         isSuccessfullySavedFile,
@@ -12943,6 +13351,15 @@ class _$PreloadDataCompletedAccountStateImpl
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -12985,6 +13402,15 @@ class _$PreloadDataCompletedAccountStateImpl
         selectSizeProduct,
         isShoppingCart,
         isError,
+        isLoadErrorButton,
+        isShopGetSizeProduct,
+        typeError,
+        titleScreen,
+        itemInfo,
+        product,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        indexItem,
         errorMessage,
         isShoppingCartDetailsProduct,
         isSuccessfullySavedFile,
@@ -13039,6 +13465,15 @@ class _$PreloadDataCompletedAccountStateImpl
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13081,6 +13516,15 @@ class _$PreloadDataCompletedAccountStateImpl
         selectSizeProduct,
         isShoppingCart,
         isError,
+        isLoadErrorButton,
+        isShopGetSizeProduct,
+        typeError,
+        titleScreen,
+        itemInfo,
+        product,
+        typeAddProductToShoppingCart,
+        identifierAddProductToShoppingCart,
+        indexItem,
         errorMessage,
         isShoppingCartDetailsProduct,
         isSuccessfullySavedFile,
@@ -13135,6 +13579,15 @@ class _$PreloadDataCompletedAccountStateImpl
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13179,6 +13632,15 @@ class _$PreloadDataCompletedAccountStateImpl
           selectSizeProduct,
           isShoppingCart,
           isError,
+          isLoadErrorButton,
+          isShopGetSizeProduct,
+          typeError,
+          titleScreen,
+          itemInfo,
+          product,
+          typeAddProductToShoppingCart,
+          identifierAddProductToShoppingCart,
+          indexItem,
           errorMessage,
           isShoppingCartDetailsProduct,
           isSuccessfullySavedFile,
@@ -13290,6 +13752,15 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
           final SkuProductDataModel? selectSizeProduct,
           final bool? isShoppingCart,
           final bool? isError,
+          final bool? isLoadErrorButton,
+          final bool? isShopGetSizeProduct,
+          final String? typeError,
+          final String? titleScreen,
+          final BasketInfoItemDataModel? itemInfo,
+          final ProductDataModel? product,
+          final String? typeAddProductToShoppingCart,
+          final String? identifierAddProductToShoppingCart,
+          final int? indexItem,
           final String? errorMessage,
           final bool? isShoppingCartDetailsProduct,
           final bool? isSuccessfullySavedFile,
@@ -13329,6 +13800,15 @@ abstract class PreloadDataCompletedAccountState implements AccountState {
   SkuProductDataModel? get selectSizeProduct;
   bool? get isShoppingCart;
   bool? get isError;
+  bool? get isLoadErrorButton;
+  bool? get isShopGetSizeProduct;
+  String? get typeError;
+  String? get titleScreen;
+  BasketInfoItemDataModel? get itemInfo;
+  ProductDataModel? get product;
+  String? get typeAddProductToShoppingCart;
+  String? get identifierAddProductToShoppingCart;
+  int? get indexItem;
   String? get errorMessage;
   bool? get isShoppingCartDetailsProduct;
   bool? get isSuccessfullySavedFile;
@@ -13428,6 +13908,15 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13487,6 +13976,15 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13546,6 +14044,15 @@ class _$LogOutAccountStateImpl implements LogOutAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13719,6 +14226,15 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13778,6 +14294,15 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,
@@ -13837,6 +14362,15 @@ class _$RemoveAccountStateImpl implements RemoveAccountState {
             SkuProductDataModel? selectSizeProduct,
             bool? isShoppingCart,
             bool? isError,
+            bool? isLoadErrorButton,
+            bool? isShopGetSizeProduct,
+            String? typeError,
+            String? titleScreen,
+            BasketInfoItemDataModel? itemInfo,
+            ProductDataModel? product,
+            String? typeAddProductToShoppingCart,
+            String? identifierAddProductToShoppingCart,
+            int? indexItem,
             String? errorMessage,
             bool? isShoppingCartDetailsProduct,
             bool? isSuccessfullySavedFile,

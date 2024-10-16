@@ -18,6 +18,7 @@ class ProductDataModel with _$ProductDataModel {
     required String brend,
     required int lensDiameter,
     required int templeLength,
+    required int discount,
     required String country,
     required List<String> images,
     required List<String> variants,

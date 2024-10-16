@@ -66,6 +66,7 @@ class CatalogListProducts extends StatelessWidget {
               price: initState.products[index].price.toString(),
               isYourPriceDisplayed: initState.products[index].isYourPriceDisplayed,
               maximumCashback: initState.products[index].maximumCashback,
+              discount: initState.products[index].discount,
               maximumPersonalDiscount: initState.products[index].maximumPersonalDiscount,
               isAuth: initState.isAuth,
               userDiscount: initState.userDiscount,

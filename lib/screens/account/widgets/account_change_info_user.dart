@@ -77,7 +77,7 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
                     }),
                     GestureDetector(
                       onTap: () {
-                        context.popRoute();
+                        context.maybePop();
                       },
                       child: SizedBox(
                         height: 50,
@@ -188,7 +188,7 @@ class _AccountChangeInfoUserState extends State<AccountChangeInfoUser> {
                     title: 'Сохранить',
                     onChenge: () {
                       if (_title.text.isNotEmpty) {
-                        context.popRoute();
+                        context.maybePop();
                         widget.onChange(_title.text);
                         setState(() {
                           _isWarning = false;

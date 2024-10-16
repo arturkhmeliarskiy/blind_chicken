@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BrandEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int? selectTypePeople, String? titleScreen)
+        getBrands,
     required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
     required TResult Function() goBackBrandInfo,
@@ -26,7 +27,7 @@ mixin _$BrandEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
     TResult? Function()? goBackBrandInfo,
@@ -34,7 +35,7 @@ mixin _$BrandEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
     TResult Function()? goBackBrandInfo,
@@ -97,7 +98,7 @@ abstract class _$$GetBrandsBrandEventImplCopyWith<$Res> {
           $Res Function(_$GetBrandsBrandEventImpl) then) =
       __$$GetBrandsBrandEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int? selectTypePeople});
+  $Res call({int? selectTypePeople, String? titleScreen});
 }
 
 /// @nodoc
@@ -114,12 +115,17 @@ class __$$GetBrandsBrandEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectTypePeople = freezed,
+    Object? titleScreen = freezed,
   }) {
     return _then(_$GetBrandsBrandEventImpl(
       selectTypePeople: freezed == selectTypePeople
           ? _value.selectTypePeople
           : selectTypePeople // ignore: cast_nullable_to_non_nullable
               as int?,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,14 +133,16 @@ class __$$GetBrandsBrandEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetBrandsBrandEventImpl implements GetBrandsBrandEvent {
-  const _$GetBrandsBrandEventImpl({this.selectTypePeople});
+  const _$GetBrandsBrandEventImpl({this.selectTypePeople, this.titleScreen});
 
   @override
   final int? selectTypePeople;
+  @override
+  final String? titleScreen;
 
   @override
   String toString() {
-    return 'BrandEvent.getBrands(selectTypePeople: $selectTypePeople)';
+    return 'BrandEvent.getBrands(selectTypePeople: $selectTypePeople, titleScreen: $titleScreen)';
   }
 
   @override
@@ -143,11 +151,13 @@ class _$GetBrandsBrandEventImpl implements GetBrandsBrandEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetBrandsBrandEventImpl &&
             (identical(other.selectTypePeople, selectTypePeople) ||
-                other.selectTypePeople == selectTypePeople));
+                other.selectTypePeople == selectTypePeople) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectTypePeople);
+  int get hashCode => Object.hash(runtimeType, selectTypePeople, titleScreen);
 
   /// Create a copy of BrandEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -161,36 +171,37 @@ class _$GetBrandsBrandEventImpl implements GetBrandsBrandEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int? selectTypePeople, String? titleScreen)
+        getBrands,
     required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
     required TResult Function() goBackBrandInfo,
   }) {
-    return getBrands(selectTypePeople);
+    return getBrands(selectTypePeople, titleScreen);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
     TResult? Function()? goBackBrandInfo,
   }) {
-    return getBrands?.call(selectTypePeople);
+    return getBrands?.call(selectTypePeople, titleScreen);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
     TResult Function()? goBackBrandInfo,
     required TResult orElse(),
   }) {
     if (getBrands != null) {
-      return getBrands(selectTypePeople);
+      return getBrands(selectTypePeople, titleScreen);
     }
     return orElse();
   }
@@ -236,10 +247,12 @@ class _$GetBrandsBrandEventImpl implements GetBrandsBrandEvent {
 }
 
 abstract class GetBrandsBrandEvent implements BrandEvent {
-  const factory GetBrandsBrandEvent({final int? selectTypePeople}) =
-      _$GetBrandsBrandEventImpl;
+  const factory GetBrandsBrandEvent(
+      {final int? selectTypePeople,
+      final String? titleScreen}) = _$GetBrandsBrandEventImpl;
 
   int? get selectTypePeople;
+  String? get titleScreen;
 
   /// Create a copy of BrandEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -322,7 +335,8 @@ class _$SwitchGenderBrandsBrandEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int? selectTypePeople, String? titleScreen)
+        getBrands,
     required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
     required TResult Function() goBackBrandInfo,
@@ -333,7 +347,7 @@ class _$SwitchGenderBrandsBrandEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
     TResult? Function()? goBackBrandInfo,
@@ -344,7 +358,7 @@ class _$SwitchGenderBrandsBrandEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
     TResult Function()? goBackBrandInfo,
@@ -480,7 +494,8 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int? selectTypePeople, String? titleScreen)
+        getBrands,
     required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
     required TResult Function() goBackBrandInfo,
@@ -491,7 +506,7 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
     TResult? Function()? goBackBrandInfo,
@@ -502,7 +517,7 @@ class _$SearchBrandEventImpl implements SearchBrandEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
     TResult Function()? goBackBrandInfo,
@@ -613,7 +628,8 @@ class _$GoBackBrandInfoCategotyBrandEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int? selectTypePeople) getBrands,
+    required TResult Function(int? selectTypePeople, String? titleScreen)
+        getBrands,
     required TResult Function(int selectTypePeople) switchGenderBrands,
     required TResult Function(String query) search,
     required TResult Function() goBackBrandInfo,
@@ -624,7 +640,7 @@ class _$GoBackBrandInfoCategotyBrandEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int? selectTypePeople)? getBrands,
+    TResult? Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult? Function(int selectTypePeople)? switchGenderBrands,
     TResult? Function(String query)? search,
     TResult? Function()? goBackBrandInfo,
@@ -635,7 +651,7 @@ class _$GoBackBrandInfoCategotyBrandEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int? selectTypePeople)? getBrands,
+    TResult Function(int? selectTypePeople, String? titleScreen)? getBrands,
     TResult Function(int selectTypePeople)? switchGenderBrands,
     TResult Function(String query)? search,
     TResult Function()? goBackBrandInfo,
@@ -698,7 +714,9 @@ mixin _$BrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)
+        error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -706,7 +724,12 @@ mixin _$BrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -714,7 +737,9 @@ mixin _$BrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -722,7 +747,12 @@ mixin _$BrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -730,7 +760,9 @@ mixin _$BrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -738,7 +770,12 @@ mixin _$BrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -837,7 +874,9 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)
+        error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -845,7 +884,12 @@ class _$InitBrandStateImpl implements InitBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)
         preloadDataCompleted,
   }) {
     return init();
@@ -856,7 +900,9 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -864,7 +910,12 @@ class _$InitBrandStateImpl implements InitBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
   }) {
     return init?.call();
@@ -875,7 +926,9 @@ class _$InitBrandStateImpl implements InitBrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -883,7 +936,12 @@ class _$InitBrandStateImpl implements InitBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -981,7 +1039,9 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)
+        error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -989,7 +1049,12 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)
         preloadDataCompleted,
   }) {
     return load();
@@ -1000,7 +1065,9 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1008,7 +1075,12 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
   }) {
     return load?.call();
@@ -1019,7 +1091,9 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1027,7 +1101,12 @@ class _$LoadingBrandStateImpl implements LoadingBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1088,7 +1167,7 @@ abstract class _$$ErrorBrandStateImplCopyWith<$Res> {
           $Res Function(_$ErrorBrandStateImpl) then) =
       __$$ErrorBrandStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String errorMessage});
+  $Res call({String errorMessage, String? titleScreen, int? selectTypePeople});
 }
 
 /// @nodoc
@@ -1105,12 +1184,22 @@ class __$$ErrorBrandStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? errorMessage = null,
+    Object? titleScreen = freezed,
+    Object? selectTypePeople = freezed,
   }) {
     return _then(_$ErrorBrandStateImpl(
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      titleScreen: freezed == titleScreen
+          ? _value.titleScreen
+          : titleScreen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectTypePeople: freezed == selectTypePeople
+          ? _value.selectTypePeople
+          : selectTypePeople // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -1118,14 +1207,19 @@ class __$$ErrorBrandStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorBrandStateImpl implements ErrorBrandState {
-  const _$ErrorBrandStateImpl({required this.errorMessage});
+  const _$ErrorBrandStateImpl(
+      {required this.errorMessage, this.titleScreen, this.selectTypePeople});
 
   @override
   final String errorMessage;
+  @override
+  final String? titleScreen;
+  @override
+  final int? selectTypePeople;
 
   @override
   String toString() {
-    return 'BrandState.error(errorMessage: $errorMessage)';
+    return 'BrandState.error(errorMessage: $errorMessage, titleScreen: $titleScreen, selectTypePeople: $selectTypePeople)';
   }
 
   @override
@@ -1134,11 +1228,16 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
         (other.runtimeType == runtimeType &&
             other is _$ErrorBrandStateImpl &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.titleScreen, titleScreen) ||
+                other.titleScreen == titleScreen) &&
+            (identical(other.selectTypePeople, selectTypePeople) ||
+                other.selectTypePeople == selectTypePeople));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, errorMessage, titleScreen, selectTypePeople);
 
   /// Create a copy of BrandState
   /// with the given fields replaced by the non-null parameter values.
@@ -1154,7 +1253,9 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)
+        error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1162,10 +1263,15 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)
         preloadDataCompleted,
   }) {
-    return error(errorMessage);
+    return error(errorMessage, titleScreen, selectTypePeople);
   }
 
   @override
@@ -1173,7 +1279,9 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1181,10 +1289,15 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
   }) {
-    return error?.call(errorMessage);
+    return error?.call(errorMessage, titleScreen, selectTypePeople);
   }
 
   @override
@@ -1192,7 +1305,9 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1200,12 +1315,17 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(errorMessage);
+      return error(errorMessage, titleScreen, selectTypePeople);
     }
     return orElse();
   }
@@ -1252,10 +1372,14 @@ class _$ErrorBrandStateImpl implements ErrorBrandState {
 }
 
 abstract class ErrorBrandState implements BrandState {
-  const factory ErrorBrandState({required final String errorMessage}) =
-      _$ErrorBrandStateImpl;
+  const factory ErrorBrandState(
+      {required final String errorMessage,
+      final String? titleScreen,
+      final int? selectTypePeople}) = _$ErrorBrandStateImpl;
 
   String get errorMessage;
+  String? get titleScreen;
+  int? get selectTypePeople;
 
   /// Create a copy of BrandState
   /// with the given fields replaced by the non-null parameter values.
@@ -1278,7 +1402,12 @@ abstract class _$$PreloadDataCompletedBrandStateImplCopyWith<$Res> {
       List<BrandDataModel> listBrands,
       List<BrandDataModel> defaultListBrands,
       List<CountBrand> listCountBrand,
-      List<int> listBrandsPath});
+      List<int> listBrandsPath,
+      bool? isError,
+      bool? isLoadErrorButton,
+      String? errorMessage,
+      String? typeError,
+      int? selectTypePeopleIndex});
 }
 
 /// @nodoc
@@ -1302,6 +1431,11 @@ class __$$PreloadDataCompletedBrandStateImplCopyWithImpl<$Res>
     Object? defaultListBrands = null,
     Object? listCountBrand = null,
     Object? listBrandsPath = null,
+    Object? isError = freezed,
+    Object? isLoadErrorButton = freezed,
+    Object? errorMessage = freezed,
+    Object? typeError = freezed,
+    Object? selectTypePeopleIndex = freezed,
   }) {
     return _then(_$PreloadDataCompletedBrandStateImpl(
       selectedTypePeople: null == selectedTypePeople
@@ -1332,6 +1466,26 @@ class __$$PreloadDataCompletedBrandStateImplCopyWithImpl<$Res>
           ? _value._listBrandsPath
           : listBrandsPath // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeError: freezed == typeError
+          ? _value.typeError
+          : typeError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectTypePeopleIndex: freezed == selectTypePeopleIndex
+          ? _value.selectTypePeopleIndex
+          : selectTypePeopleIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -1347,7 +1501,12 @@ class _$PreloadDataCompletedBrandStateImpl
       required final List<BrandDataModel> listBrands,
       required final List<BrandDataModel> defaultListBrands,
       required final List<CountBrand> listCountBrand,
-      required final List<int> listBrandsPath})
+      required final List<int> listBrandsPath,
+      this.isError,
+      this.isLoadErrorButton,
+      this.errorMessage,
+      this.typeError,
+      this.selectTypePeopleIndex})
       : _listTypePeople = listTypePeople,
         _allBrands = allBrands,
         _listBrands = listBrands,
@@ -1407,8 +1566,19 @@ class _$PreloadDataCompletedBrandStateImpl
   }
 
   @override
+  final bool? isError;
+  @override
+  final bool? isLoadErrorButton;
+  @override
+  final String? errorMessage;
+  @override
+  final String? typeError;
+  @override
+  final int? selectTypePeopleIndex;
+
+  @override
   String toString() {
-    return 'BrandState.preloadDataCompleted(selectedTypePeople: $selectedTypePeople, listTypePeople: $listTypePeople, allBrands: $allBrands, listBrands: $listBrands, defaultListBrands: $defaultListBrands, listCountBrand: $listCountBrand, listBrandsPath: $listBrandsPath)';
+    return 'BrandState.preloadDataCompleted(selectedTypePeople: $selectedTypePeople, listTypePeople: $listTypePeople, allBrands: $allBrands, listBrands: $listBrands, defaultListBrands: $defaultListBrands, listCountBrand: $listCountBrand, listBrandsPath: $listBrandsPath, isError: $isError, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage, typeError: $typeError, selectTypePeopleIndex: $selectTypePeopleIndex)';
   }
 
   @override
@@ -1429,7 +1599,16 @@ class _$PreloadDataCompletedBrandStateImpl
             const DeepCollectionEquality()
                 .equals(other._listCountBrand, _listCountBrand) &&
             const DeepCollectionEquality()
-                .equals(other._listBrandsPath, _listBrandsPath));
+                .equals(other._listBrandsPath, _listBrandsPath) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.typeError, typeError) ||
+                other.typeError == typeError) &&
+            (identical(other.selectTypePeopleIndex, selectTypePeopleIndex) ||
+                other.selectTypePeopleIndex == selectTypePeopleIndex));
   }
 
   @override
@@ -1441,7 +1620,12 @@ class _$PreloadDataCompletedBrandStateImpl
       const DeepCollectionEquality().hash(_listBrands),
       const DeepCollectionEquality().hash(_defaultListBrands),
       const DeepCollectionEquality().hash(_listCountBrand),
-      const DeepCollectionEquality().hash(_listBrandsPath));
+      const DeepCollectionEquality().hash(_listBrandsPath),
+      isError,
+      isLoadErrorButton,
+      errorMessage,
+      typeError,
+      selectTypePeopleIndex);
 
   /// Create a copy of BrandState
   /// with the given fields replaced by the non-null parameter values.
@@ -1458,7 +1642,9 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
-    required TResult Function(String errorMessage) error,
+    required TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)
+        error,
     required TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1466,11 +1652,27 @@ class _$PreloadDataCompletedBrandStateImpl
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted(selectedTypePeople, listTypePeople, allBrands,
-        listBrands, defaultListBrands, listCountBrand, listBrandsPath);
+    return preloadDataCompleted(
+        selectedTypePeople,
+        listTypePeople,
+        allBrands,
+        listBrands,
+        defaultListBrands,
+        listCountBrand,
+        listBrandsPath,
+        isError,
+        isLoadErrorButton,
+        errorMessage,
+        typeError,
+        selectTypePeopleIndex);
   }
 
   @override
@@ -1478,7 +1680,9 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
-    TResult? Function(String errorMessage)? error,
+    TResult? Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult? Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1486,7 +1690,12 @@ class _$PreloadDataCompletedBrandStateImpl
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
   }) {
     return preloadDataCompleted?.call(
@@ -1496,7 +1705,12 @@ class _$PreloadDataCompletedBrandStateImpl
         listBrands,
         defaultListBrands,
         listCountBrand,
-        listBrandsPath);
+        listBrandsPath,
+        isError,
+        isLoadErrorButton,
+        errorMessage,
+        typeError,
+        selectTypePeopleIndex);
   }
 
   @override
@@ -1504,7 +1718,9 @@ class _$PreloadDataCompletedBrandStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
-    TResult Function(String errorMessage)? error,
+    TResult Function(
+            String errorMessage, String? titleScreen, int? selectTypePeople)?
+        error,
     TResult Function(
             String selectedTypePeople,
             List<String> listTypePeople,
@@ -1512,13 +1728,29 @@ class _$PreloadDataCompletedBrandStateImpl
             List<BrandDataModel> listBrands,
             List<BrandDataModel> defaultListBrands,
             List<CountBrand> listCountBrand,
-            List<int> listBrandsPath)?
+            List<int> listBrandsPath,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage,
+            String? typeError,
+            int? selectTypePeopleIndex)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(selectedTypePeople, listTypePeople, allBrands,
-          listBrands, defaultListBrands, listCountBrand, listBrandsPath);
+      return preloadDataCompleted(
+          selectedTypePeople,
+          listTypePeople,
+          allBrands,
+          listBrands,
+          defaultListBrands,
+          listCountBrand,
+          listBrandsPath,
+          isError,
+          isLoadErrorButton,
+          errorMessage,
+          typeError,
+          selectTypePeopleIndex);
     }
     return orElse();
   }
@@ -1566,14 +1798,18 @@ class _$PreloadDataCompletedBrandStateImpl
 
 abstract class PreloadDataCompletedBrandState implements BrandState {
   const factory PreloadDataCompletedBrandState(
-          {required final String selectedTypePeople,
-          required final List<String> listTypePeople,
-          required final List<BrandItemDataModel> allBrands,
-          required final List<BrandDataModel> listBrands,
-          required final List<BrandDataModel> defaultListBrands,
-          required final List<CountBrand> listCountBrand,
-          required final List<int> listBrandsPath}) =
-      _$PreloadDataCompletedBrandStateImpl;
+      {required final String selectedTypePeople,
+      required final List<String> listTypePeople,
+      required final List<BrandItemDataModel> allBrands,
+      required final List<BrandDataModel> listBrands,
+      required final List<BrandDataModel> defaultListBrands,
+      required final List<CountBrand> listCountBrand,
+      required final List<int> listBrandsPath,
+      final bool? isError,
+      final bool? isLoadErrorButton,
+      final String? errorMessage,
+      final String? typeError,
+      final int? selectTypePeopleIndex}) = _$PreloadDataCompletedBrandStateImpl;
 
   String get selectedTypePeople;
   List<String> get listTypePeople;
@@ -1582,6 +1818,11 @@ abstract class PreloadDataCompletedBrandState implements BrandState {
   List<BrandDataModel> get defaultListBrands;
   List<CountBrand> get listCountBrand;
   List<int> get listBrandsPath;
+  bool? get isError;
+  bool? get isLoadErrorButton;
+  String? get errorMessage;
+  String? get typeError;
+  int? get selectTypePeopleIndex;
 
   /// Create a copy of BrandState
   /// with the given fields replaced by the non-null parameter values.

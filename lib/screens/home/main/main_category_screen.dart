@@ -104,7 +104,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
             }
           },
           error: (value) {
-            if (!_isShowDialogError) {
+            if (!_isShowDialogError && value.titleScreen == 'подраздел') {
               _isShowDialogError = true;
               _blindChickenShowDialogError.openShowDualog(
                 errorMessage: value.errorMessage,
@@ -112,7 +112,8 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                 onRepeatRequest: () {
                   context.read<BrandBloc>().add(
                         BrandEvent.getBrands(
-                          selectTypePeople: _selectIndexType,
+                          selectTypePeople: value.selectTypePeople,
+                          titleScreen: 'подраздел',
                         ),
                       );
                 },
@@ -182,6 +183,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                 context.read<BrandBloc>().add(
                                       const BrandEvent.getBrands(
                                         selectTypePeople: 1,
+                                        titleScreen: 'подраздел',
                                       ),
                                     );
                                 context.read<CatalogBloc>().add(
@@ -220,6 +222,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                 context.read<BrandBloc>().add(
                                       const BrandEvent.getBrands(
                                         selectTypePeople: 2,
+                                        titleScreen: 'подраздел',
                                       ),
                                     );
                                 context.read<CatalogBloc>().add(
@@ -258,6 +261,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                 context.read<BrandBloc>().add(
                                       const BrandEvent.getBrands(
                                         selectTypePeople: 3,
+                                        titleScreen: 'подраздел',
                                       ),
                                     );
                                 context.read<CatalogBloc>().add(
@@ -312,7 +316,8 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                     context.navigateTo(GiftCardRoute());
                                   } else if (initState.category[index].title == 'Проверка зрения') {
                                     context.navigateTo(VisionWarningRoute());
-                                  } else if (initState.category[index].title == 'Распродажа') {
+                                  } else if (initState.category[index].title ==
+                                      'Специальные предложения') {
                                     context.read<CatalogBloc>().add(
                                           CatalogEvent.getInfoProducts(
                                             path: initState.menu[index].url,
@@ -329,6 +334,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                     context.read<BrandBloc>().add(
                                           BrandEvent.getBrands(
                                             selectTypePeople: _selectIndexType,
+                                            titleScreen: 'бренды',
                                           ),
                                         );
                                     context.navigateTo(
@@ -389,6 +395,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                             context.read<BrandBloc>().add(
                                   BrandEvent.getBrands(
                                     selectTypePeople: _selectIndexType,
+                                    titleScreen: 'бренды',
                                   ),
                                 );
                             context.navigateTo(

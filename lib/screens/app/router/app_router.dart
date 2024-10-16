@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/%D1%81ashback_and_discounts/blind_chicken_%D1%81ashback_and_discounts_screen.dart';
 import 'package:blind_chicken/screens/account/account_screen.dart';
 import 'package:blind_chicken/screens/account/electronic_order_forms_screen.dart';
-import 'package:blind_chicken/screens/account/my_purchases_screen.dart';
+import 'package:blind_chicken/screens/account/my_orders_screen.dart';
 import 'package:blind_chicken/screens/account/order_card_info_screen.dart';
 import 'package:blind_chicken/screens/account/order_pdf_blank_view.dart';
 import 'package:blind_chicken/screens/account/tailoring_order_forms_screen.dart';
@@ -80,7 +80,7 @@ import '../../contacts/contacts_screen.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(path: '/dashboard', page: DashboardRoute.page, initial: true, children: [

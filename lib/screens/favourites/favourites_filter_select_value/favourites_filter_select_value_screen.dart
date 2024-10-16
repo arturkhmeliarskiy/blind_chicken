@@ -52,7 +52,7 @@ class _FavouritesFilterSelectValueScreenState extends State<FavouritesFilterSele
                 children: [
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Row(
                       children: [
@@ -75,7 +75,7 @@ class _FavouritesFilterSelectValueScreenState extends State<FavouritesFilterSele
                   ),
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: SvgPicture.asset(
                       'assets/icons/x.svg',

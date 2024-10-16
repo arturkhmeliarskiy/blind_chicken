@@ -171,7 +171,7 @@ class _ShoppingCardInfoScreenState extends State<ShoppingCardInfoScreen> {
                         context.read<ShoppingCartBloc>().add(
                               ShoppingCartEvent.getInfoProductSize(
                                 code: (initState.detailsProduct?.code ?? 0).toString(),
-                                isShop: initState.isShoppingCart ?? false,
+                                isShop: initState.isShopGetSizeProduct ?? false,
                               ),
                             );
                         break;

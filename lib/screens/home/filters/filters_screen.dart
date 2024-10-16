@@ -136,7 +136,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       return CatalogHeaderInfo(
                         title: 'Фильтры',
                         onClose: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                         onRemoveAllFilters: () {
                           context
@@ -247,7 +247,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     preloadDataCompleted: (initState) {
                       return BlindChickenFilterButton(
                         onOpen: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                         countProducts: initState.catalogInfo?.count ?? '',
                       );

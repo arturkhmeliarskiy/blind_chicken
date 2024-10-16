@@ -278,7 +278,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
                                     children: [
                                       InkWell(
                                         onTap: () {
-                                          context.popRoute();
+                                          context.maybePop();
                                         },
                                         child: Text(
                                           'Бутики',

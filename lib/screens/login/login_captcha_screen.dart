@@ -59,7 +59,7 @@ class _LoginCaptchaScreenState extends State<LoginCaptchaScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: SizedBox(
                       height: 50,
@@ -168,7 +168,7 @@ class _LoginCaptchaScreenState extends State<LoginCaptchaScreen> {
                 child: BlindChickenButton(
                   title: 'Продолжить',
                   onChenge: () {
-                    // context.popRoute();
+                    // context.maybePop();
                     // context.navigateTo(const AccountRoute());
                     context.read<LoginBloc>().add(
                           LoginEvent.checkCaptcha(

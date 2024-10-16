@@ -131,7 +131,8 @@ extension on OrdersBlankResponse {
   OrdersBlankDataModel toListOrdersBlank() {
     return OrdersBlankDataModel(
       r: r ?? '',
-      message: message ?? '',
+      message: e ?? '',
+      errorMessage: errorMessage ?? '',
       orders: List<OrderBlankDataModel>.from(
         orders?.map(
               (item) {

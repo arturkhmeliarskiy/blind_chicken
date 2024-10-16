@@ -26,6 +26,7 @@ mixin _$ProductDataModel {
   String get brend => throw _privateConstructorUsedError;
   int get lensDiameter => throw _privateConstructorUsedError;
   int get templeLength => throw _privateConstructorUsedError;
+  int get discount => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   List<String> get variants => throw _privateConstructorUsedError;
@@ -75,6 +76,7 @@ abstract class $ProductDataModelCopyWith<$Res> {
       String brend,
       int lensDiameter,
       int templeLength,
+      int discount,
       String country,
       List<String> images,
       List<String> variants,
@@ -121,6 +123,7 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
     Object? brend = null,
     Object? lensDiameter = null,
     Object? templeLength = null,
+    Object? discount = null,
     Object? country = null,
     Object? images = null,
     Object? variants = null,
@@ -181,6 +184,10 @@ class _$ProductDataModelCopyWithImpl<$Res, $Val extends ProductDataModel>
       templeLength: null == templeLength
           ? _value.templeLength
           : templeLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
               as int,
       country: null == country
           ? _value.country
@@ -290,6 +297,7 @@ abstract class _$$ProductDataModelImplCopyWith<$Res>
       String brend,
       int lensDiameter,
       int templeLength,
+      int discount,
       String country,
       List<String> images,
       List<String> variants,
@@ -335,6 +343,7 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
     Object? brend = null,
     Object? lensDiameter = null,
     Object? templeLength = null,
+    Object? discount = null,
     Object? country = null,
     Object? images = null,
     Object? variants = null,
@@ -395,6 +404,10 @@ class __$$ProductDataModelImplCopyWithImpl<$Res>
       templeLength: null == templeLength
           ? _value.templeLength
           : templeLength // ignore: cast_nullable_to_non_nullable
+              as int,
+      discount: null == discount
+          ? _value.discount
+          : discount // ignore: cast_nullable_to_non_nullable
               as int,
       country: null == country
           ? _value.country
@@ -491,6 +504,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
       required this.brend,
       required this.lensDiameter,
       required this.templeLength,
+      required this.discount,
       required this.country,
       required final List<String> images,
       required final List<String> variants,
@@ -544,6 +558,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
   final int lensDiameter;
   @override
   final int templeLength;
+  @override
+  final int discount;
   @override
   final String country;
   final List<String> _images;
@@ -629,7 +645,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
 
   @override
   String toString() {
-    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, promo: $promo, promoValue: $promoValue, video: $video, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
+    return 'ProductDataModel(id: $id, title: $title, category: $category, size: $size, price: $price, pb: $pb, yourPrice: $yourPrice, brend: $brend, lensDiameter: $lensDiameter, templeLength: $templeLength, discount: $discount, country: $country, images: $images, variants: $variants, maximumCashback: $maximumCashback, maximumPersonalDiscount: $maximumPersonalDiscount, isYourPriceDisplayed: $isYourPriceDisplayed, isShop: $isShop, sz: $sz, promo: $promo, promoValue: $promoValue, video: $video, titleScreen: $titleScreen, searchQuery: $searchQuery, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, sectionCategoriesPath: $sectionCategoriesPath, productCategoriesPath: $productCategoriesPath, count: $count, color: $color)';
   }
 
   @override
@@ -651,6 +667,8 @@ class _$ProductDataModelImpl extends _ProductDataModel {
                 other.lensDiameter == lensDiameter) &&
             (identical(other.templeLength, templeLength) ||
                 other.templeLength == templeLength) &&
+            (identical(other.discount, discount) ||
+                other.discount == discount) &&
             (identical(other.country, country) || other.country == country) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other._variants, _variants) &&
@@ -684,7 +702,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             const DeepCollectionEquality()
                 .equals(other._productCategoriesPath, _productCategoriesPath) &&
             (identical(other.count, count) || other.count == count) &&
-            (identical(other.color, color) || other.color == color));
+            const DeepCollectionEquality().equals(other.color, color));
   }
 
   @override
@@ -700,6 +718,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         brend,
         lensDiameter,
         templeLength,
+        discount,
         country,
         const DeepCollectionEquality().hash(_images),
         const DeepCollectionEquality().hash(_variants),
@@ -718,7 +737,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         const DeepCollectionEquality().hash(_sectionCategoriesPath),
         const DeepCollectionEquality().hash(_productCategoriesPath),
         count,
-        color
+        const DeepCollectionEquality().hash(color)
       ]);
 
   @JsonKey(ignore: true)
@@ -741,6 +760,7 @@ abstract class _ProductDataModel extends ProductDataModel {
       required final String brend,
       required final int lensDiameter,
       required final int templeLength,
+      required final int discount,
       required final String country,
       required final List<String> images,
       required final List<String> variants,
@@ -782,6 +802,8 @@ abstract class _ProductDataModel extends ProductDataModel {
   int get lensDiameter;
   @override
   int get templeLength;
+  @override
+  int get discount;
   @override
   String get country;
   @override

@@ -20,7 +20,7 @@ class _GiftCardCheckCreateOrderState extends State<GiftCardCheckCreateOrder> {
         listener: (context, state) {
           state.maybeMap(
             createOrderSuccessfully: (value) {
-              context.popRoute();
+              context.maybePop();
             },
             orElse: () {},
           );

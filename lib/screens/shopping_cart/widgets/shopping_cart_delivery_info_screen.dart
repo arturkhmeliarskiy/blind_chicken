@@ -113,7 +113,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  context.popRoute();
+                                  context.maybePop();
                                 },
                                 child: SizedBox(
                                   height: 21,
@@ -219,7 +219,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
                           return GestureDetector(
                             onTap: () {
                               widget.selectItem(_searchResultCities[index]);
-                              context.popRoute();
+                              context.maybePop();
                             },
                             child: Container(
                               height: 50,
@@ -257,7 +257,7 @@ class _ShoppingCartDeliveryInfoScreenState extends State<ShoppingCartDeliveryInf
               title: 'Закрыть',
               onChange: () {
                 widget.selectItem(_title.text);
-                context.popRoute();
+                context.maybePop();
               },
             ),
           ],

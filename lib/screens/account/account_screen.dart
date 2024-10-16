@@ -1025,7 +1025,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                                                         children: [
                                                                           GestureDetector(
                                                                             onTap: () {
-                                                                              context.popRoute();
+                                                                              context.maybePop();
                                                                             },
                                                                             child: Container(
                                                                               height: 34,
@@ -1060,7 +1060,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                                                           ),
                                                                           GestureDetector(
                                                                             onTap: () {
-                                                                              context.popRoute();
+                                                                              context.maybePop();
                                                                               context
                                                                                   .read<
                                                                                       AccountBloc>()

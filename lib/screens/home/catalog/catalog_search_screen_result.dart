@@ -678,6 +678,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                       .products[index].isYourPriceDisplayed,
                                                   maximumCashback:
                                                       initState.products[index].maximumCashback,
+                                                  discount: initState.products[index].discount,
                                                   maximumPersonalDiscount: initState
                                                       .products[index].maximumPersonalDiscount,
                                                   isAuth: initState.isAuth,

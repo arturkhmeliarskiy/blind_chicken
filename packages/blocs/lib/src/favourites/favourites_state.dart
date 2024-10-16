@@ -40,6 +40,7 @@ class FavouritesState with _$FavouritesState {
     required int userDiscount,
     String? typeError,
     String? errorMessage,
+    String? titleScreen,
     bool? isError,
     bool? isLoadErrorButton,
     int? keyFilterCatalog,

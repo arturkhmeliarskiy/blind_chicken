@@ -18,6 +18,9 @@ class ElectronicOrderFormsScreen extends StatefulWidget {
 
 class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen> {
   final ScrollController _scrollController = ScrollController();
+  final BlindChickenShowDialogError _blindChickenElectronicOrderFormsShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogElectronicOrderFormsError = false;
   bool _isButtonTop = false;
   bool _isLoading = false;
   bool _isSwipe = true;
@@ -68,10 +71,58 @@ class _ElectronicOrderFormsScreenState extends State<ElectronicOrderFormsScreen>
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (initState) {
-            if (initState.file.isNotEmpty) {
-              context.navigateTo(
-                const OrderPdfBlankViewRoute(),
-              );
+            if (initState.isError ?? false) {
+              final typeError = initState.typeError ?? '';
+              if (!_isShowDialogElectronicOrderFormsError &&
+                  typeError == 'электронный список заказов') {
+                _isShowDialogElectronicOrderFormsError = true;
+                _blindChickenElectronicOrderFormsShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<AccountBloc, AccountState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    context.read<AccountBloc>().add(const AccountEvent.getListOrdersBlank());
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogElectronicOrderFormsError && !(initState.isError ?? false)) {
+                _isShowDialogElectronicOrderFormsError = false;
+                _blindChickenElectronicOrderFormsShowDialogError.closeShowDialog();
+              }
+              if (initState.file.isNotEmpty) {
+                context.navigateTo(
+                  const OrderPdfBlankViewRoute(),
+                );
+              }
             }
           },
           errorOpenPdf: (initState) {

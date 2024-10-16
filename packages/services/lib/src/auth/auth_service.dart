@@ -364,12 +364,12 @@ class AuthService {
           );
         } else {
           ordersBlankResponse = OrdersBlankResponse(
-            message: MessageInfo.errorMessage,
+            errorMessage: MessageInfo.errorMessage,
           );
         }
       } catch (e) {
         ordersBlankResponse = OrdersBlankResponse(
-          message: MessageInfo.errorMessage,
+          errorMessage: MessageInfo.errorMessage,
         );
       }
       return ordersBlankResponse;
@@ -384,7 +384,7 @@ class AuthService {
         log(e.message.toString());
       }
       return OrdersBlankResponse(
-        message: MessageInfo.errorMessage,
+        errorMessage: MessageInfo.errorMessage,
       );
     }
   }
@@ -487,12 +487,12 @@ class AuthService {
           );
         } else {
           ordersBlankResponse = OrdersBlankResponse(
-            message: MessageInfo.errorMessage,
+            errorMessage: MessageInfo.errorMessage,
           );
         }
       } catch (e) {
         ordersBlankResponse = OrdersBlankResponse(
-          message: MessageInfo.errorMessage,
+          errorMessage: MessageInfo.errorMessage,
         );
       }
       return ordersBlankResponse;
@@ -507,7 +507,7 @@ class AuthService {
         log(e.message.toString());
       }
       return OrdersBlankResponse(
-        message: MessageInfo.errorMessage,
+        errorMessage: MessageInfo.errorMessage,
       );
     }
   }

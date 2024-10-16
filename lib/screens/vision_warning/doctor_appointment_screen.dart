@@ -36,7 +36,7 @@ class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreen> {
                           .add(const AppointmentEvent.createDoctorAppointment());
                     },
                     onBack: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                   );
                 });

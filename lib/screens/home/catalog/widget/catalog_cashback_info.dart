@@ -259,7 +259,7 @@ class _CatalogCashbackInfoState extends State<CatalogCashbackInfo> {
                                 return LoginPhoneScreen(
                                   successfully: widget.successfullyLogin,
                                   onBack: () {
-                                    context.popRoute();
+                                    context.maybePop();
                                   },
                                 );
                               });

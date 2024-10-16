@@ -264,7 +264,7 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                                         );
                                   },
                                   onBack: () {
-                                    context.popRoute();
+                                    context.maybePop();
                                   },
                                 );
                               });

@@ -133,7 +133,7 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                       return CatalogHeaderInfo(
                         title: 'Фильтры',
                         onClose: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                         onRemoveAllFilters: () {
                           context
@@ -244,7 +244,7 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                     searchProductsResult: (initState) {
                       return BlindChickenFilterButton(
                         onOpen: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                         countProducts: initState.searchResultInfo?.count ?? '',
                       );

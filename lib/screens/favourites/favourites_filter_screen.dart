@@ -134,7 +134,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                       return CatalogHeaderInfo(
                         title: 'Фильтры',
                         onClose: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                         onRemoveAllFilters: () {
                           context.read<FavouritesBloc>().add(
@@ -245,7 +245,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                     productsFavourites: (initState) {
                       return BlindChickenFilterButton(
                         onOpen: () {
-                          context.popRoute();
+                          context.maybePop();
                         },
                         countProducts: initState.favouritesProductsInfo?.count ?? '',
                       );

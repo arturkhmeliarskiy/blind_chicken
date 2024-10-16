@@ -45,7 +45,7 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
             CatalogHeaderInfo(
               title: 'Выберите цвет',
               onClose: () {
-                context.popRoute();
+                context.maybePop();
               },
             ),
             Expanded(
@@ -58,7 +58,7 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
                         _selectedColor = BlindChickenGiftCardColors.listColors[index];
                       });
                       widget.onChange(BlindChickenGiftCardColors.listColors[index]);
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Container(
                       padding: const EdgeInsets.only(
@@ -98,7 +98,7 @@ class _GiftVirualCardColorsScreenState extends State<GiftVirualCardColorsScreen>
             BlindChickenTitleButton(
               title: 'Закрыть',
               onChange: () {
-                context.popRoute();
+                context.maybePop();
               },
             ),
           ],

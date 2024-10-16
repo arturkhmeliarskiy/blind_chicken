@@ -21,6 +21,7 @@ class CatalogProductResponse with _$CatalogProductResponse {
     int? pbc,
     int? ca,
     int? dv,
+    int? d,
     String? promo,
     @JsonKey(name: 'promo_value') int? promoValue,
     List<CatalogSizeProductResponse>? sz,

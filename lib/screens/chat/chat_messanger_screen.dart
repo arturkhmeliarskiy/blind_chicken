@@ -29,7 +29,7 @@ class _ChatMessangerScreenState extends State<ChatMessangerScreen> {
         backgroundColor: BlindChickenColors.backgroundIamge,
         leading: InkWell(
           onTap: () {
-            context.popRoute();
+            context.maybePop();
           },
           child: Padding(
             padding: const EdgeInsets.all(16.0),

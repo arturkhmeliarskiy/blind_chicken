@@ -85,7 +85,7 @@ class _CatalogFilterSelectValueSearchScreenState
                 children: [
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Row(
                       children: [
@@ -108,7 +108,7 @@ class _CatalogFilterSelectValueSearchScreenState
                   ),
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: SvgPicture.asset(
                       'assets/icons/x.svg',

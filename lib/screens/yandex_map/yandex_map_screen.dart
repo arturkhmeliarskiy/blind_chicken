@@ -182,7 +182,7 @@ class _YandexMapScreenState extends State<YandexMapScreen> {
               children: [
                 InkWell(
                   onTap: () {
-                    context.popRoute();
+                    context.maybePop();
                   },
                   child: Align(
                     alignment: Alignment.topRight,

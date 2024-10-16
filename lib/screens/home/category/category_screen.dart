@@ -468,7 +468,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 _selectedIndexGender = 1;
                               });
                             } else {
-                              // context.popRoute();
+                              // context.maybePop();
                             }
                           }
                         }
@@ -498,7 +498,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 _selectedIndexGender = 1;
                               });
                             } else {
-                              // context.popRoute();
+                              // context.maybePop();
                             }
                           }
                         },
@@ -544,6 +544,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                       context.read<BrandBloc>().add(
                                             BrandEvent.getBrands(
                                               selectTypePeople: initState.selectedGenderIndex,
+                                              titleScreen: 'бренды',
                                             ),
                                           );
                                       context.navigateTo(

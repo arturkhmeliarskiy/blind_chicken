@@ -77,6 +77,7 @@ extension on OrderInfoResponse {
                 variants: [],
                 maximumCashback: 0,
                 pb: int.parse(item.price ?? '0'),
+                discount: 0,
                 maximumPersonalDiscount: 0,
                 yourPrice: int.parse(item.price ?? '0'),
                 isYourPriceDisplayed: false,

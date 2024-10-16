@@ -370,7 +370,7 @@ class ConstatntsInfo {
       pathMenu: '',
     ),
     MainCategoryModel(
-      title: 'Распродажа',
+      title: 'Специальные предложения',
       imagePath: 'sale',
       pathMenu: '',
     ),
@@ -418,7 +418,7 @@ class ConstatntsInfo {
       pathMenu: '',
     ),
     MainCategoryModel(
-      title: 'Распродажа',
+      title: 'Специальные предложения',
       imagePath: 'sale',
       pathMenu: '',
     ),
@@ -466,7 +466,7 @@ class ConstatntsInfo {
       pathMenu: '',
     ),
     MainCategoryModel(
-      title: 'Распродажа',
+      title: 'Специальные предложения',
       imagePath: 'sale',
       pathMenu: '',
     ),

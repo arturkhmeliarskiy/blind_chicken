@@ -19,6 +19,8 @@ class BrandsScreen extends StatefulWidget {
 }
 
 class _BrandsScreenState extends State<BrandsScreen> {
+  final BlindChickenShowDialogError _blindChickenShowDialogError = BlindChickenShowDialogError();
+  bool _isShowDialogError = false;
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _search = TextEditingController();
   bool _isButtonTop = false;
@@ -75,8 +77,114 @@ class _BrandsScreenState extends State<BrandsScreen> {
       listener: (context, state) {
         state.maybeMap(
           preloadDataCompleted: (initState) {
-            if (initState.listBrandsPath.isEmpty) {
-              context.back();
+            final typeError = initState.typeError ?? '';
+            if (initState.isError ?? false) {
+              if (!_isShowDialogError &&
+                  (typeError == 'переключение гендерности' || typeError == 'назад в бренды')) {
+                _isShowDialogError = true;
+                _blindChickenShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<BrandBloc, BrandState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    switch (typeError) {
+                      case 'переключение гендерности':
+                        context.read<BrandBloc>().add(
+                              BrandEvent.switchGenderBrands(
+                                selectTypePeople: initState.selectTypePeopleIndex ?? 0,
+                              ),
+                            );
+                        break;
+                      case 'назад в бренды':
+                        context.read<BrandBloc>().add(
+                              const BrandEvent.goBackBrandInfo(),
+                            );
+                        break;
+                    }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogError) {
+                _isShowDialogError = false;
+                _blindChickenShowDialogError.closeShowDialog();
+              }
+              if (initState.listBrandsPath.isEmpty) {
+                context.back();
+              }
+            }
+          },
+          error: (value) {
+            if (!_isShowDialogError && value.titleScreen == 'бренды') {
+              _isShowDialogError = true;
+              _blindChickenShowDialogError.openShowDualog(
+                errorMessage: value.errorMessage,
+                context: context,
+                onRepeatRequest: () {
+                  context.read<BrandBloc>().add(
+                        BrandEvent.getBrands(
+                          selectTypePeople: value.selectTypePeople,
+                          titleScreen: 'бренды',
+                        ),
+                      );
+                },
+                widget: BlocBuilder<BrandBloc, BrandState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      load: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
+                            ),
+                          ),
+                        );
+                      },
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+              );
             }
           },
           orElse: () => const SizedBox(),

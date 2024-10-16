@@ -141,7 +141,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
               children: [
                 InkWell(
                   onTap: () {
-                    context.popRoute();
+                    context.maybePop();
                   },
                   child: Align(
                     alignment: Alignment.topRight,
@@ -434,7 +434,7 @@ class _BoutiqueYandexMapScreenState extends State<BoutiqueYandexMapScreen> {
                                   padding: const EdgeInsets.all(4),
                                   child: GestureDetector(
                                     onTap: () {
-                                      context.popRoute();
+                                      context.maybePop();
                                     },
                                     child: SvgPicture.asset(
                                       'assets/icons/x.svg',

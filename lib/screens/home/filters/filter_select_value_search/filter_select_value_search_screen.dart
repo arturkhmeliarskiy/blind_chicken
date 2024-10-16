@@ -83,7 +83,7 @@ class _FilterSelectValueSearchScreenState extends State<FilterSelectValueSearchS
                 children: [
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Row(
                       children: [
@@ -106,7 +106,7 @@ class _FilterSelectValueSearchScreenState extends State<FilterSelectValueSearchS
                   ),
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: SvgPicture.asset(
                       'assets/icons/x.svg',

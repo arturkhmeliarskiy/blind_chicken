@@ -40,7 +40,7 @@ class _SortScreenState extends State<SortScreen> {
             CatalogHeaderInfo(
               title: 'Сортировка',
               onClose: () {
-                context.popRoute();
+                context.maybePop();
               },
             ),
             Expanded(
@@ -80,7 +80,7 @@ class _SortScreenState extends State<SortScreen> {
             BlindChickenTitleButton(
               title: 'Закрыть',
               onChange: () {
-                context.popRoute();
+                context.maybePop();
               },
             ),
           ],

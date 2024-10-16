@@ -11,7 +11,7 @@ import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 @RoutePage()
-class OrderUserInfoScreen extends StatelessWidget {
+class OrderUserInfoScreen extends StatefulWidget {
   const OrderUserInfoScreen({
     super.key,
     required this.isPay,
@@ -22,10 +22,72 @@ class OrderUserInfoScreen extends StatelessWidget {
   final String orderId;
 
   @override
+  State<OrderUserInfoScreen> createState() => _OrderUserInfoScreenState();
+}
+
+class _OrderUserInfoScreenState extends State<OrderUserInfoScreen> {
+  final BlindChickenShowDialogError _blindChickenOrderUserInfoShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogMyOrdersError = false;
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<AccountBloc, AccountState>(
       listener: (context, state) {
         state.maybeMap(
+          preloadDataCompleted: (initState) {
+            if (initState.isError ?? false) {
+              final typeError = initState.typeError ?? '';
+              if (!_isShowDialogMyOrdersError && typeError == 'заказ') {
+                _isShowDialogMyOrdersError = true;
+                _blindChickenOrderUserInfoShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: initState.errorMessage ?? '',
+                  widget: BlocBuilder<AccountBloc, AccountState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    context.read<AccountBloc>().add(
+                          AccountEvent.getInfoOrder(
+                            id: widget.orderId,
+                          ),
+                        );
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogMyOrdersError && !(initState.isError ?? false)) {
+                _isShowDialogMyOrdersError = false;
+                _blindChickenOrderUserInfoShowDialogError.closeShowDialog();
+              }
+            }
+          },
           payOrder: (value) {
             context.navigateTo(
               SberbankPaymentWebViewRoute(
@@ -44,28 +106,12 @@ class OrderUserInfoScreen extends StatelessWidget {
                   final paidInfo = initState.orderInfo?.paidInfo ?? '';
                   final status = (initState.orderInfo?.status ?? '').toLowerCase();
                   final idForPay = initState.orderInfo?.idForPay ?? '';
-                  return initState.isError ?? false
-                      ? Column(
-                          children: [
-                            const AppBarBlindChicken(),
-                            Expanded(
-                              child: BlindChickenErrorInfo(
-                                errorMessage: initState.errorMessage ?? '',
-                                onRepeatRequest: () {
-                                  context.read<AccountBloc>().add(
-                                        AccountEvent.getInfoOrder(
-                                          id: orderId,
-                                        ),
-                                      );
-                                },
-                              ),
-                            ),
-                          ],
-                        )
-                      : ListView(
-                          children: [
-                            const AppBarBlindChicken(),
-                            Padding(
+                  return ListView(
+                    children: [
+                      const AppBarBlindChicken(),
+                      initState.isError ?? false
+                          ? SizedBox()
+                          : Padding(
                               padding: const EdgeInsets.only(
                                 left: 10.5,
                                 right: 10.5,
@@ -199,7 +245,7 @@ class OrderUserInfoScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  if (isPay ||
+                                  if (widget.isPay ||
                                       (paidInfo == 'не оплачено' &&
                                           status == 'принят' &&
                                           idForPay.isNotEmpty))
@@ -401,8 +447,8 @@ class OrderUserInfoScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          ],
-                        );
+                    ],
+                  );
                 },
                 orElse: () => const SizedBox(),
                 load: (value) {

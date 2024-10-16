@@ -41,7 +41,7 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () {
-                    context.popRoute();
+                    context.maybePop();
                   },
                   child: SvgPicture.asset(
                     'assets/icons/x.svg',
@@ -67,7 +67,7 @@ class ShoppingMapBoutiquesInfo extends StatelessWidget {
                             lat: point.coordinates.latitude, long: point.coordinates.longitude),
                         index,
                       );
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Container(
                         padding: const EdgeInsets.only(

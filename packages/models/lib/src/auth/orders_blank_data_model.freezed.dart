@@ -19,6 +19,7 @@ mixin _$OrdersBlankDataModel {
   String get r => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   List<OrderBlankDataModel> get orders => throw _privateConstructorUsedError;
+  String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrdersBlankDataModelCopyWith<OrdersBlankDataModel> get copyWith =>
@@ -31,7 +32,11 @@ abstract class $OrdersBlankDataModelCopyWith<$Res> {
           $Res Function(OrdersBlankDataModel) then) =
       _$OrdersBlankDataModelCopyWithImpl<$Res, OrdersBlankDataModel>;
   @useResult
-  $Res call({String r, String message, List<OrderBlankDataModel> orders});
+  $Res call(
+      {String r,
+      String message,
+      List<OrderBlankDataModel> orders,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -51,6 +56,7 @@ class _$OrdersBlankDataModelCopyWithImpl<$Res,
     Object? r = null,
     Object? message = null,
     Object? orders = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       r: null == r
@@ -65,6 +71,10 @@ class _$OrdersBlankDataModelCopyWithImpl<$Res,
           ? _value.orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderBlankDataModel>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -77,7 +87,11 @@ abstract class _$$OrdersBlankDataModelImplCopyWith<$Res>
       __$$OrdersBlankDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String r, String message, List<OrderBlankDataModel> orders});
+  $Res call(
+      {String r,
+      String message,
+      List<OrderBlankDataModel> orders,
+      String errorMessage});
 }
 
 /// @nodoc
@@ -94,6 +108,7 @@ class __$$OrdersBlankDataModelImplCopyWithImpl<$Res>
     Object? r = null,
     Object? message = null,
     Object? orders = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$OrdersBlankDataModelImpl(
       r: null == r
@@ -108,6 +123,10 @@ class __$$OrdersBlankDataModelImplCopyWithImpl<$Res>
           ? _value._orders
           : orders // ignore: cast_nullable_to_non_nullable
               as List<OrderBlankDataModel>,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -118,7 +137,8 @@ class _$OrdersBlankDataModelImpl extends _OrdersBlankDataModel {
   _$OrdersBlankDataModelImpl(
       {required this.r,
       required this.message,
-      required final List<OrderBlankDataModel> orders})
+      required final List<OrderBlankDataModel> orders,
+      required this.errorMessage})
       : _orders = orders,
         super._();
 
@@ -135,8 +155,11 @@ class _$OrdersBlankDataModelImpl extends _OrdersBlankDataModel {
   }
 
   @override
+  final String errorMessage;
+
+  @override
   String toString() {
-    return 'OrdersBlankDataModel(r: $r, message: $message, orders: $orders)';
+    return 'OrdersBlankDataModel(r: $r, message: $message, orders: $orders, errorMessage: $errorMessage)';
   }
 
   @override
@@ -146,12 +169,14 @@ class _$OrdersBlankDataModelImpl extends _OrdersBlankDataModel {
             other is _$OrdersBlankDataModelImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other._orders, _orders));
+            const DeepCollectionEquality().equals(other._orders, _orders) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, r, message, const DeepCollectionEquality().hash(_orders));
+  int get hashCode => Object.hash(runtimeType, r, message,
+      const DeepCollectionEquality().hash(_orders), errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -164,10 +189,10 @@ class _$OrdersBlankDataModelImpl extends _OrdersBlankDataModel {
 
 abstract class _OrdersBlankDataModel extends OrdersBlankDataModel {
   factory _OrdersBlankDataModel(
-          {required final String r,
-          required final String message,
-          required final List<OrderBlankDataModel> orders}) =
-      _$OrdersBlankDataModelImpl;
+      {required final String r,
+      required final String message,
+      required final List<OrderBlankDataModel> orders,
+      required final String errorMessage}) = _$OrdersBlankDataModelImpl;
   _OrdersBlankDataModel._() : super._();
 
   @override
@@ -176,6 +201,8 @@ abstract class _OrdersBlankDataModel extends OrdersBlankDataModel {
   String get message;
   @override
   List<OrderBlankDataModel> get orders;
+  @override
+  String get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$OrdersBlankDataModelImplCopyWith<_$OrdersBlankDataModelImpl>

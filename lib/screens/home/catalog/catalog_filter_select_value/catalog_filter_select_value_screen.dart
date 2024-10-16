@@ -51,7 +51,7 @@ class _CatalogFilterSelectValueScreenState extends State<CatalogFilterSelectValu
                 children: [
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: Row(
                       children: [
@@ -74,7 +74,7 @@ class _CatalogFilterSelectValueScreenState extends State<CatalogFilterSelectValu
                   ),
                   InkWell(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: SvgPicture.asset(
                       'assets/icons/x.svg',

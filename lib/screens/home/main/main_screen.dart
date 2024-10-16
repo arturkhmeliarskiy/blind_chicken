@@ -51,7 +51,10 @@ class _MainScreenState extends State<MainScreen> {
     _init();
     context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-    context.read<BrandBloc>().add(const BrandEvent.getBrands(selectTypePeople: 0));
+    context.read<BrandBloc>().add(const BrandEvent.getBrands(
+          selectTypePeople: 0,
+          titleScreen: 'home',
+        ));
     context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
     timer = Timer.periodic(
       const Duration(hours: 1),
@@ -119,10 +122,10 @@ class _MainScreenState extends State<MainScreen> {
             nowVersionApp: nowVersionApp,
             updateVersionApp: updateVersionApp,
             onBack: () {
-              context.popRoute();
+              context.maybePop();
             },
             onUpdate: () {
-              context.popRoute();
+              context.maybePop();
               if (Platform.isAndroid || Platform.isIOS) {
                 final url = Uri.parse(
                   Platform.isAndroid
@@ -292,11 +295,11 @@ class _MainScreenState extends State<MainScreen> {
                         nowVersionApp: initState.nowVersionApp,
                         updateVersionApp: initState.updateVersionApp,
                         onBack: () {
-                          context.popRoute();
+                          context.maybePop();
                           updateData.isScapeUpdateApp = true;
                         },
                         onUpdate: () {
-                          context.popRoute();
+                          context.maybePop();
                           if (Platform.isAndroid || Platform.isIOS) {
                             final url = Uri.parse(
                               Platform.isAndroid
@@ -366,9 +369,10 @@ class _MainScreenState extends State<MainScreen> {
                     onRepeatRequest: () {
                       context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
                       context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-                      context
-                          .read<BrandBloc>()
-                          .add(const BrandEvent.getBrands(selectTypePeople: 0));
+                      context.read<BrandBloc>().add(const BrandEvent.getBrands(
+                            selectTypePeople: 0,
+                            titleScreen: 'home',
+                          ));
                       context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
                       timer = Timer.periodic(
                         const Duration(hours: 1),
@@ -396,7 +400,8 @@ class _MainScreenState extends State<MainScreen> {
                 error: (value) {
                   if (!_isShowDialogCatalogError &&
                       !_isShowDialogBrandError &&
-                      !_isShowDialogTopBannerError) {
+                      !_isShowDialogTopBannerError &&
+                      value.titleScreen == 'home') {
                     _isShowDialogBrandError = true;
                     _blindChickenBrandShowDialogError.openShowDualog(
                       context: context,
@@ -432,9 +437,10 @@ class _MainScreenState extends State<MainScreen> {
                       onRepeatRequest: () {
                         context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
                         context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-                        context
-                            .read<BrandBloc>()
-                            .add(const BrandEvent.getBrands(selectTypePeople: 0));
+                        context.read<BrandBloc>().add(const BrandEvent.getBrands(
+                              selectTypePeople: 0,
+                              titleScreen: 'home',
+                            ));
                         context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
                         timer = Timer.periodic(
                           const Duration(hours: 1),
@@ -498,9 +504,10 @@ class _MainScreenState extends State<MainScreen> {
                         onRepeatRequest: () {
                           context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
                           context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
-                          context
-                              .read<BrandBloc>()
-                              .add(const BrandEvent.getBrands(selectTypePeople: 0));
+                          context.read<BrandBloc>().add(const BrandEvent.getBrands(
+                                selectTypePeople: 0,
+                                titleScreen: 'home',
+                              ));
                           context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
                           timer = Timer.periodic(
                             const Duration(hours: 1),
@@ -551,6 +558,7 @@ class _MainScreenState extends State<MainScreen> {
                                                   context.read<BrandBloc>().add(
                                                         const BrandEvent.getBrands(
                                                           selectTypePeople: 1,
+                                                          titleScreen: 'подраздел',
                                                         ),
                                                       );
                                                   context.navigateTo(
@@ -583,6 +591,7 @@ class _MainScreenState extends State<MainScreen> {
                                                   context.read<BrandBloc>().add(
                                                         const BrandEvent.getBrands(
                                                           selectTypePeople: 2,
+                                                          titleScreen: 'подраздел',
                                                         ),
                                                       );
                                                   context.navigateTo(
@@ -616,6 +625,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     context.read<BrandBloc>().add(
                                                           const BrandEvent.getBrands(
                                                             selectTypePeople: 3,
+                                                            titleScreen: 'подраздел',
                                                           ),
                                                         );
                                                     context.navigateTo(
@@ -655,6 +665,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     context.read<BrandBloc>().add(
                                                           const BrandEvent.getBrands(
                                                             selectTypePeople: 3,
+                                                            titleScreen: 'подраздел',
                                                           ),
                                                         );
                                                     context.navigateTo(
@@ -736,7 +747,7 @@ class _MainScreenState extends State<MainScreen> {
                                                   },
                                                   child: MainCategoryItem(
                                                     image: 'sale_f',
-                                                    title: 'Распродажа',
+                                                    title: 'Спецпредложения',
                                                     width: width / 3 - 7,
                                                     padding: const EdgeInsets.only(
                                                       top: 14,
@@ -750,8 +761,8 @@ class _MainScreenState extends State<MainScreen> {
                                                   onTap: () {
                                                     context.read<BrandBloc>().add(
                                                           BrandEvent.getBrands(
-                                                            selectTypePeople:
-                                                                initState.selectedGenderIndex,
+                                                            selectTypePeople: 0,
+                                                            titleScreen: 'бренды',
                                                           ),
                                                         );
                                                     context.navigateTo(
@@ -825,7 +836,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     },
                                                     child: MainCategoryItem(
                                                       image: 'sale',
-                                                      title: 'Распродажа',
+                                                      title: 'Спецпредложения',
                                                       width: width / 2 - 14,
                                                       padding: const EdgeInsets.only(
                                                         top: 14,
@@ -839,6 +850,7 @@ class _MainScreenState extends State<MainScreen> {
                                                       context.read<BrandBloc>().add(
                                                             BrandEvent.getBrands(
                                                               selectTypePeople: 0,
+                                                              titleScreen: 'бренды',
                                                             ),
                                                           );
                                                       context.navigateTo(
@@ -868,6 +880,7 @@ class _MainScreenState extends State<MainScreen> {
                                               context.read<BrandBloc>().add(
                                                     const BrandEvent.getBrands(
                                                       selectTypePeople: 0,
+                                                      titleScreen: 'бренды',
                                                     ),
                                                   );
                                               context.navigateTo(

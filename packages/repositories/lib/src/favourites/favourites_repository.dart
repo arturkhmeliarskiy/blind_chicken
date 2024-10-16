@@ -153,6 +153,7 @@ extension on FavouritesCatalogInfoResponse {
                 country: '',
                 variants: [],
                 maximumCashback: item.ca ?? 0,
+                discount: item.d ?? 0,
                 maximumPersonalDiscount: item.dv ?? 0,
                 yourPrice: item.pc ?? 0,
                 isYourPriceDisplayed: int.parse(item.p ?? '0') != (item.pc ?? 0),

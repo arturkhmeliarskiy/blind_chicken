@@ -9,7 +9,8 @@ class OrdersBlankResponse with _$OrdersBlankResponse {
   const OrdersBlankResponse._();
   factory OrdersBlankResponse({
     String? r,
-    @JsonKey(name: 'e') String? message,
+    String? e,
+    String? errorMessage,
     List<OrderBlankResponse>? orders,
   }) = _OrdersBlankResponse;
   factory OrdersBlankResponse.fromJson(Map<String, dynamic> json) =>

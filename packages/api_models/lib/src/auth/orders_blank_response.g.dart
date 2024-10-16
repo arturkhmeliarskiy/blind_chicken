@@ -10,7 +10,8 @@ _$OrdersBlankResponseImpl _$$OrdersBlankResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$OrdersBlankResponseImpl(
       r: json['r'] as String?,
-      message: json['e'] as String?,
+      e: json['e'] as String?,
+      errorMessage: json['errorMessage'] as String?,
       orders: (json['orders'] as List<dynamic>?)
           ?.map((e) => OrderBlankResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$OrdersBlankResponseImplToJson(
         _$OrdersBlankResponseImpl instance) =>
     <String, dynamic>{
       'r': instance.r,
-      'e': instance.message,
+      'e': instance.e,
+      'errorMessage': instance.errorMessage,
       'orders': instance.orders,
     };

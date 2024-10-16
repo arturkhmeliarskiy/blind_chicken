@@ -57,7 +57,7 @@ class _LoginSmsCodeScreenState extends State<LoginSmsCodeScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      context.popRoute();
+                      context.maybePop();
                     },
                     child: SizedBox(
                       height: 50,
