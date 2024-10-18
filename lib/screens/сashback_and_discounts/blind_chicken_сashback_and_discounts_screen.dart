@@ -56,32 +56,11 @@ class BlindChickenCashbackAndDiscountsScreen extends StatelessWidget {
                       const SizedBox(
                         height: 14.0,
                       ),
-                      RichText(
-                        text: TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Шопинг должен быть приятным и выгодным!\n'
-                                  'Получите кэшбэк до ',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            TextSpan(
-                              text: '27%',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            TextSpan(
-                              text: ', скидки до ',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            TextSpan(
-                              text: '15%',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                            TextSpan(
-                              text: ' и бесплатную доставку по всей России!',
-                              style: Theme.of(context).textTheme.displayMedium,
-                            ),
-                          ],
-                        ),
+                      Text(
+                        'Шопинг должен быть приятным и выгодным!\n'
+                        'Получите кэшбэк до 27%, скидки до 15% '
+                        'и бесплатную доставку по всей России!',
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       const SizedBox(
                         height: 30,

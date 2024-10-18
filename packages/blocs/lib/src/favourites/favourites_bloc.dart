@@ -296,12 +296,11 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
       Map<String, FilterCatalogDataModel> filtersInfo = {};
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
-      if (!(initState.isError ?? false)) {
-        if (selectItem.contains(event.item)) {
-          selectItem.insert(event.indexItem, event.item);
-        } else {
-          selectItem.add(event.item);
-        }
+
+      if (selectItem.contains(event.item)) {
+        selectItem.insert(event.indexItem, event.item);
+      } else {
+        selectItem.add(event.item);
       }
 
       selectFilter[event.index] = selectItem;
@@ -357,6 +356,8 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
 
       if (favouritesInfo.errorMessage.isEmpty) {
         emit(const FavouritesState.load());
+      } else {
+        selectItem.remove(event.item);
       }
 
       emit(initState.copyWith(
@@ -402,10 +403,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       FavouritesCatalogProductsRequest request = initState.request;
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
 
-      if (!(initState.isError ?? false)) {
-        selectItem.remove(event.item);
-      }
-
+      selectItem.remove(event.item);
       selectFilter[event.index] = selectItem;
 
       log(selectFilter.toString());
@@ -460,7 +458,15 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
       log(allSelectFilter.length.toString());
       if (favouritesInfo.errorMessage.isEmpty) {
         emit(const FavouritesState.load());
+        if (initState.isError ?? false) {
+          selectItem.remove(event.item);
+          selectFilter[event.index] = selectItem;
+        }
+      } else {
+        selectItem.insert(event.indexItem, event.item);
+        selectFilter[event.index] = selectItem;
       }
+
       emit(
         initState.copyWith(
           selectFilter:

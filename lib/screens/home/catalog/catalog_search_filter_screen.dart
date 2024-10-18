@@ -38,6 +38,11 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                 _blindChickenFilterShowDialogError.openShowDualog(
                     context: context,
                     errorMessage: initState.errorMessage ?? '',
+                    isClose: true,
+                    onCloseRequest: () {
+                      _blindChickenFilterShowDialogError.closeShowDialog();
+                      _isShowDialogFilterError = false;
+                    },
                     widget: BlocBuilder<SearchBloc, SearchState>(
                       builder: (context, state) {
                         return state.maybeMap(
@@ -174,7 +179,7 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                                       context.read<SearchBloc>().add(
                                             SearchEvent.deleteFilter(
                                               index: index,
-                                              indexItem: indexItem,
+                                              indexItem: indexItem - 1,
                                               item: item,
                                             ),
                                           );
@@ -199,7 +204,7 @@ class _CatalogSearchFiltersScreenState extends State<CatalogSearchFiltersScreen>
                                       context.read<SearchBloc>().add(
                                             SearchEvent.deleteFilter(
                                               index: index,
-                                              indexItem: indexItem,
+                                              indexItem: indexItem - 1,
                                               item: item,
                                             ),
                                           );

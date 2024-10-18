@@ -36,7 +36,12 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     InitAppointmentEvent event,
     Emitter<AppointmentState> emit,
   ) async {
-    emit(const AppointmentState.load());
+    if (state is ErrorAppointmentState) {
+      emit(AppointmentState.loadErrorButton());
+    } else {
+      emit(const AppointmentState.load());
+    }
+
     Map<int, List<DateTime>> time = {};
     int j = 0;
     List<DateTime> dateTime = [];
@@ -44,54 +49,64 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     final boutiques = await _boutiquesRepository.getBoutiques(optic: 1);
     _updateDataService.boutiques = boutiques.data;
 
-    final sheduleDateTimeInfo =
-        boutiques.data.first.sheduleDateTimeInfo[dateTimeNow.weekday - 1] ?? [];
+    if (boutiques.errorMessage?.isEmpty ?? false) {
+      final sheduleDateTimeInfo =
+          boutiques.data.first.sheduleDateTimeInfo[dateTimeNow.weekday - 1] ?? [];
 
-    for (int i = 0; i < sheduleDateTimeInfo.length; i++) {
-      if (dateTime.length < 8) {
-        if (sheduleDateTimeInfo[i].hour > dateTimeNow.hour) {
-          dateTime.add(
-            dateTimeNow.copyWith(
-              hour: sheduleDateTimeInfo[i].hour,
-              minute: sheduleDateTimeInfo[i].minute,
-            ),
-          );
-        } else {
-          if (sheduleDateTimeInfo[i].hour == dateTimeNow.hour &&
-              sheduleDateTimeInfo[i].minute > dateTimeNow.minute) {
+      for (int i = 0; i < sheduleDateTimeInfo.length; i++) {
+        if (dateTime.length < 8) {
+          if (sheduleDateTimeInfo[i].hour > dateTimeNow.hour) {
             dateTime.add(
               dateTimeNow.copyWith(
                 hour: sheduleDateTimeInfo[i].hour,
                 minute: sheduleDateTimeInfo[i].minute,
               ),
             );
+          } else {
+            if (sheduleDateTimeInfo[i].hour == dateTimeNow.hour &&
+                sheduleDateTimeInfo[i].minute > dateTimeNow.minute) {
+              dateTime.add(
+                dateTimeNow.copyWith(
+                  hour: sheduleDateTimeInfo[i].hour,
+                  minute: sheduleDateTimeInfo[i].minute,
+                ),
+              );
+            }
           }
+
+          time[j] = dateTime;
+        } else {
+          j++;
+          dateTime = [];
         }
-
-        time[j] = dateTime;
-      } else {
-        j++;
-        dateTime = [];
       }
+      List<DateTime> dateTimeInfo = time[0] ?? [];
+
+      dateTimeNow = DateTime(
+        dateTimeNow.year,
+        dateTimeNow.month,
+        dateTimeNow.day,
+        dateTimeInfo.isNotEmpty ? dateTimeInfo.first.hour : 0,
+        dateTimeInfo.isNotEmpty ? dateTimeInfo.first.minute : 0,
+      );
     }
-    List<DateTime> dateTimeInfo = time[0] ?? [];
 
-    dateTimeNow = DateTime(
-      dateTimeNow.year,
-      dateTimeNow.month,
-      dateTimeNow.day,
-      dateTimeInfo.isNotEmpty ? dateTimeInfo.first.hour : 0,
-      dateTimeInfo.isNotEmpty ? dateTimeInfo.first.minute : 0,
-    );
-
-    emit(
-      AppointmentState.preloadDataCompleted(
-        boutiques: boutiques.data,
-        selectBoutique: boutiques.data.first,
-        time: time,
-        selectDateTime: dateTimeNow,
-      ),
-    );
+    if (boutiques.errorMessage?.isNotEmpty ?? false) {
+      emit(
+        AppointmentState.error(
+          errorMessage: MessageInfo.errorMessage,
+        ),
+      );
+    } else {
+      emit(
+        AppointmentState.preloadDataCompleted(
+          boutiques: boutiques.data,
+          selectBoutique: boutiques.data.first,
+          time: time,
+          selectDateTime: dateTimeNow,
+        ),
+      );
+    }
   }
 
   Future<void> _selectBoutique(
@@ -250,6 +265,11 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     Emitter<AppointmentState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,
           ) ??
@@ -269,14 +289,20 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
               time: result.time,
             ),
           );
+        } else {
+          emit(initState.copyWith(
+            isError: result.errorMessage.isNotEmpty,
+            errorMessage: result.errorMessage,
+            isLoadErrorButton: false,
+          ));
         }
       } else {
         emit(const AppointmentState.authorization());
+        emit(initState.copyWith(
+          selectDateTime: initState.selectDateTime,
+          isLoadErrorButton: false,
+        ));
       }
-
-      emit(initState.copyWith(
-        selectDateTime: initState.selectDateTime,
-      ));
     });
   }
 }

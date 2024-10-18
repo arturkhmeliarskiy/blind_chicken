@@ -38,6 +38,11 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                 _blindChickenFilterShowDialogError.openShowDualog(
                     context: context,
                     errorMessage: initState.errorMessage ?? '',
+                    isClose: true,
+                    onCloseRequest: () {
+                      _blindChickenFilterShowDialogError.closeShowDialog();
+                      _isShowDialogFilterError = false;
+                    },
                     widget: BlocBuilder<FavouritesBloc, FavouritesState>(
                       builder: (context, state) {
                         return state.maybeMap(
@@ -175,7 +180,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                                       context.read<FavouritesBloc>().add(
                                             FavouritesEvent.deleteFilter(
                                               index: index,
-                                              indexItem: indexItem,
+                                              indexItem: indexItem - 1,
                                               item: item,
                                             ),
                                           );
@@ -200,7 +205,7 @@ class _FavouritesFiltersScreenState extends State<FavouritesFiltersScreen> {
                                       context.read<FavouritesBloc>().add(
                                             FavouritesEvent.deleteFilter(
                                               index: index,
-                                              indexItem: indexItem,
+                                              indexItem: indexItem - 1,
                                               item: item,
                                             ),
                                           );

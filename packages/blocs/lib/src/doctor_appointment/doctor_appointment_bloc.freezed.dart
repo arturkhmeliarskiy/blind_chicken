@@ -897,6 +897,8 @@ mixin _$AppointmentState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
     required TResult Function() authorization,
     required TResult Function(String name, String date, String time)
         recordCreatedSuccessfully,
@@ -904,7 +906,10 @@ mixin _$AppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -912,6 +917,8 @@ mixin _$AppointmentState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? authorization,
     TResult? Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -919,7 +926,10 @@ mixin _$AppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -927,6 +937,8 @@ mixin _$AppointmentState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
     TResult Function()? authorization,
     TResult Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -934,7 +946,10 @@ mixin _$AppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
     required TResult orElse(),
   }) =>
@@ -943,6 +958,9 @@ mixin _$AppointmentState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAppointmentState value) init,
     required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
     required TResult Function(AuthorizationAppointmentState value)
         authorization,
     required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
@@ -955,6 +973,9 @@ mixin _$AppointmentState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAppointmentState value)? init,
     TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
     TResult? Function(AuthorizationAppointmentState value)? authorization,
     TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -966,6 +987,8 @@ mixin _$AppointmentState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAppointmentState value)? init,
     TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
     TResult Function(AuthorizationAppointmentState value)? authorization,
     TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1041,6 +1064,8 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
     required TResult Function() authorization,
     required TResult Function(String name, String date, String time)
         recordCreatedSuccessfully,
@@ -1048,7 +1073,10 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
         preloadDataCompleted,
   }) {
     return init();
@@ -1059,6 +1087,8 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? authorization,
     TResult? Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1066,7 +1096,10 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
   }) {
     return init?.call();
@@ -1077,6 +1110,8 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
     TResult Function()? authorization,
     TResult Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1084,7 +1119,10 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1099,6 +1137,9 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAppointmentState value) init,
     required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
     required TResult Function(AuthorizationAppointmentState value)
         authorization,
     required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
@@ -1114,6 +1155,9 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAppointmentState value)? init,
     TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
     TResult? Function(AuthorizationAppointmentState value)? authorization,
     TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1128,6 +1172,8 @@ class _$InitAppointmentStateImpl implements InitAppointmentState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAppointmentState value)? init,
     TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
     TResult Function(AuthorizationAppointmentState value)? authorization,
     TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1192,6 +1238,8 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
     required TResult Function() authorization,
     required TResult Function(String name, String date, String time)
         recordCreatedSuccessfully,
@@ -1199,7 +1247,10 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
         preloadDataCompleted,
   }) {
     return load();
@@ -1210,6 +1261,8 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? authorization,
     TResult? Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1217,7 +1270,10 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
   }) {
     return load?.call();
@@ -1228,6 +1284,8 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
     TResult Function()? authorization,
     TResult Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1235,7 +1293,10 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1250,6 +1311,9 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitAppointmentState value) init,
     required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
     required TResult Function(AuthorizationAppointmentState value)
         authorization,
     required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
@@ -1265,6 +1329,9 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAppointmentState value)? init,
     TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
     TResult? Function(AuthorizationAppointmentState value)? authorization,
     TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1279,6 +1346,8 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAppointmentState value)? init,
     TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
     TResult Function(AuthorizationAppointmentState value)? authorization,
     TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1295,6 +1364,393 @@ class _$LoadingAppointmentStateImpl implements LoadingAppointmentState {
 
 abstract class LoadingAppointmentState implements AppointmentState {
   const factory LoadingAppointmentState() = _$LoadingAppointmentStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorAppointmentStateImplCopyWith<$Res> {
+  factory _$$ErrorAppointmentStateImplCopyWith(
+          _$ErrorAppointmentStateImpl value,
+          $Res Function(_$ErrorAppointmentStateImpl) then) =
+      __$$ErrorAppointmentStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$ErrorAppointmentStateImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res, _$ErrorAppointmentStateImpl>
+    implements _$$ErrorAppointmentStateImplCopyWith<$Res> {
+  __$$ErrorAppointmentStateImplCopyWithImpl(_$ErrorAppointmentStateImpl _value,
+      $Res Function(_$ErrorAppointmentStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$ErrorAppointmentStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorAppointmentStateImpl implements ErrorAppointmentState {
+  const _$ErrorAppointmentStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AppointmentState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorAppointmentStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorAppointmentStateImplCopyWith<_$ErrorAppointmentStateImpl>
+      get copyWith => __$$ErrorAppointmentStateImplCopyWithImpl<
+          _$ErrorAppointmentStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function() authorization,
+    required TResult Function(String name, String date, String time)
+        recordCreatedSuccessfully,
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            BoutiqueDataModel selectBoutique,
+            Map<int, List<DateTime>> time,
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
+        preloadDataCompleted,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function()? authorization,
+    TResult? Function(String name, String date, String time)?
+        recordCreatedSuccessfully,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            BoutiqueDataModel selectBoutique,
+            Map<int, List<DateTime>> time,
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function()? authorization,
+    TResult Function(String name, String date, String time)?
+        recordCreatedSuccessfully,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            BoutiqueDataModel selectBoutique,
+            Map<int, List<DateTime>> time,
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAppointmentState value) init,
+    required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
+    required TResult Function(AuthorizationAppointmentState value)
+        authorization,
+    required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
+        recordCreatedSuccessfully,
+    required TResult Function(PreloadDataCompletedAppointmentState value)
+        preloadDataCompleted,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAppointmentState value)? init,
+    TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
+    TResult? Function(AuthorizationAppointmentState value)? authorization,
+    TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
+        recordCreatedSuccessfully,
+    TResult? Function(PreloadDataCompletedAppointmentState value)?
+        preloadDataCompleted,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAppointmentState value)? init,
+    TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
+    TResult Function(AuthorizationAppointmentState value)? authorization,
+    TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
+        recordCreatedSuccessfully,
+    TResult Function(PreloadDataCompletedAppointmentState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ErrorAppointmentState implements AppointmentState {
+  const factory ErrorAppointmentState({required final String errorMessage}) =
+      _$ErrorAppointmentStateImpl;
+
+  String get errorMessage;
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ErrorAppointmentStateImplCopyWith<_$ErrorAppointmentStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingErrorButtonAppointmentStateImplCopyWith<$Res> {
+  factory _$$LoadingErrorButtonAppointmentStateImplCopyWith(
+          _$LoadingErrorButtonAppointmentStateImpl value,
+          $Res Function(_$LoadingErrorButtonAppointmentStateImpl) then) =
+      __$$LoadingErrorButtonAppointmentStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingErrorButtonAppointmentStateImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res,
+        _$LoadingErrorButtonAppointmentStateImpl>
+    implements _$$LoadingErrorButtonAppointmentStateImplCopyWith<$Res> {
+  __$$LoadingErrorButtonAppointmentStateImplCopyWithImpl(
+      _$LoadingErrorButtonAppointmentStateImpl _value,
+      $Res Function(_$LoadingErrorButtonAppointmentStateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppointmentState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadingErrorButtonAppointmentStateImpl
+    implements LoadingErrorButtonAppointmentState {
+  const _$LoadingErrorButtonAppointmentStateImpl();
+
+  @override
+  String toString() {
+    return 'AppointmentState.loadErrorButton()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingErrorButtonAppointmentStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
+    required TResult Function() authorization,
+    required TResult Function(String name, String date, String time)
+        recordCreatedSuccessfully,
+    required TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            BoutiqueDataModel selectBoutique,
+            Map<int, List<DateTime>> time,
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
+    TResult? Function()? authorization,
+    TResult? Function(String name, String date, String time)?
+        recordCreatedSuccessfully,
+    TResult? Function(
+            List<BoutiqueDataModel> boutiques,
+            BoutiqueDataModel selectBoutique,
+            Map<int, List<DateTime>> time,
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
+    TResult Function()? authorization,
+    TResult Function(String name, String date, String time)?
+        recordCreatedSuccessfully,
+    TResult Function(
+            List<BoutiqueDataModel> boutiques,
+            BoutiqueDataModel selectBoutique,
+            Map<int, List<DateTime>> time,
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitAppointmentState value) init,
+    required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
+    required TResult Function(AuthorizationAppointmentState value)
+        authorization,
+    required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
+        recordCreatedSuccessfully,
+    required TResult Function(PreloadDataCompletedAppointmentState value)
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitAppointmentState value)? init,
+    TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
+    TResult? Function(AuthorizationAppointmentState value)? authorization,
+    TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
+        recordCreatedSuccessfully,
+    TResult? Function(PreloadDataCompletedAppointmentState value)?
+        preloadDataCompleted,
+  }) {
+    return loadErrorButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitAppointmentState value)? init,
+    TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
+    TResult Function(AuthorizationAppointmentState value)? authorization,
+    TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
+        recordCreatedSuccessfully,
+    TResult Function(PreloadDataCompletedAppointmentState value)?
+        preloadDataCompleted,
+    required TResult orElse(),
+  }) {
+    if (loadErrorButton != null) {
+      return loadErrorButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingErrorButtonAppointmentState implements AppointmentState {
+  const factory LoadingErrorButtonAppointmentState() =
+      _$LoadingErrorButtonAppointmentStateImpl;
 }
 
 /// @nodoc
@@ -1345,6 +1801,8 @@ class _$AuthorizationAppointmentStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
     required TResult Function() authorization,
     required TResult Function(String name, String date, String time)
         recordCreatedSuccessfully,
@@ -1352,7 +1810,10 @@ class _$AuthorizationAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
         preloadDataCompleted,
   }) {
     return authorization();
@@ -1363,6 +1824,8 @@ class _$AuthorizationAppointmentStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? authorization,
     TResult? Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1370,7 +1833,10 @@ class _$AuthorizationAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
   }) {
     return authorization?.call();
@@ -1381,6 +1847,8 @@ class _$AuthorizationAppointmentStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
     TResult Function()? authorization,
     TResult Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1388,7 +1856,10 @@ class _$AuthorizationAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1403,6 +1874,9 @@ class _$AuthorizationAppointmentStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitAppointmentState value) init,
     required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
     required TResult Function(AuthorizationAppointmentState value)
         authorization,
     required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
@@ -1418,6 +1892,9 @@ class _$AuthorizationAppointmentStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAppointmentState value)? init,
     TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
     TResult? Function(AuthorizationAppointmentState value)? authorization,
     TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1432,6 +1909,8 @@ class _$AuthorizationAppointmentStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAppointmentState value)? init,
     TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
     TResult Function(AuthorizationAppointmentState value)? authorization,
     TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1546,6 +2025,8 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
     required TResult Function() authorization,
     required TResult Function(String name, String date, String time)
         recordCreatedSuccessfully,
@@ -1553,7 +2034,10 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
         preloadDataCompleted,
   }) {
     return recordCreatedSuccessfully(name, date, time);
@@ -1564,6 +2048,8 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? authorization,
     TResult? Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1571,7 +2057,10 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
   }) {
     return recordCreatedSuccessfully?.call(name, date, time);
@@ -1582,6 +2071,8 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
     TResult Function()? authorization,
     TResult Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1589,7 +2080,10 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
@@ -1604,6 +2098,9 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitAppointmentState value) init,
     required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
     required TResult Function(AuthorizationAppointmentState value)
         authorization,
     required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
@@ -1619,6 +2116,9 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAppointmentState value)? init,
     TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
     TResult? Function(AuthorizationAppointmentState value)? authorization,
     TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1633,6 +2133,8 @@ class _$RecordCreatedSuccessfullyAppointmentStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAppointmentState value)? init,
     TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
     TResult Function(AuthorizationAppointmentState value)? authorization,
     TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1678,7 +2180,10 @@ abstract class _$$PreloadDataCompletedAppointmentStateImplCopyWith<$Res> {
       {List<BoutiqueDataModel> boutiques,
       BoutiqueDataModel selectBoutique,
       Map<int, List<DateTime>> time,
-      DateTime selectDateTime});
+      DateTime selectDateTime,
+      bool? isError,
+      bool? isLoadErrorButton,
+      String? errorMessage});
 
   $BoutiqueDataModelCopyWith<$Res> get selectBoutique;
 }
@@ -1702,6 +2207,9 @@ class __$$PreloadDataCompletedAppointmentStateImplCopyWithImpl<$Res>
     Object? selectBoutique = null,
     Object? time = null,
     Object? selectDateTime = null,
+    Object? isError = freezed,
+    Object? isLoadErrorButton = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$PreloadDataCompletedAppointmentStateImpl(
       boutiques: null == boutiques
@@ -1720,6 +2228,18 @@ class __$$PreloadDataCompletedAppointmentStateImplCopyWithImpl<$Res>
           ? _value.selectDateTime
           : selectDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isError: freezed == isError
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isLoadErrorButton: freezed == isLoadErrorButton
+          ? _value.isLoadErrorButton
+          : isLoadErrorButton // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -1742,7 +2262,10 @@ class _$PreloadDataCompletedAppointmentStateImpl
       {required final List<BoutiqueDataModel> boutiques,
       required this.selectBoutique,
       required final Map<int, List<DateTime>> time,
-      required this.selectDateTime})
+      required this.selectDateTime,
+      this.isError,
+      this.isLoadErrorButton,
+      this.errorMessage})
       : _boutiques = boutiques,
         _time = time;
 
@@ -1766,10 +2289,16 @@ class _$PreloadDataCompletedAppointmentStateImpl
 
   @override
   final DateTime selectDateTime;
+  @override
+  final bool? isError;
+  @override
+  final bool? isLoadErrorButton;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'AppointmentState.preloadDataCompleted(boutiques: $boutiques, selectBoutique: $selectBoutique, time: $time, selectDateTime: $selectDateTime)';
+    return 'AppointmentState.preloadDataCompleted(boutiques: $boutiques, selectBoutique: $selectBoutique, time: $time, selectDateTime: $selectDateTime, isError: $isError, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage)';
   }
 
   @override
@@ -1783,7 +2312,12 @@ class _$PreloadDataCompletedAppointmentStateImpl
                 other.selectBoutique == selectBoutique) &&
             const DeepCollectionEquality().equals(other._time, _time) &&
             (identical(other.selectDateTime, selectDateTime) ||
-                other.selectDateTime == selectDateTime));
+                other.selectDateTime == selectDateTime) &&
+            (identical(other.isError, isError) || other.isError == isError) &&
+            (identical(other.isLoadErrorButton, isLoadErrorButton) ||
+                other.isLoadErrorButton == isLoadErrorButton) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
@@ -1792,7 +2326,10 @@ class _$PreloadDataCompletedAppointmentStateImpl
       const DeepCollectionEquality().hash(_boutiques),
       selectBoutique,
       const DeepCollectionEquality().hash(_time),
-      selectDateTime);
+      selectDateTime,
+      isError,
+      isLoadErrorButton,
+      errorMessage);
 
   /// Create a copy of AppointmentState
   /// with the given fields replaced by the non-null parameter values.
@@ -1809,6 +2346,8 @@ class _$PreloadDataCompletedAppointmentStateImpl
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() load,
+    required TResult Function(String errorMessage) error,
+    required TResult Function() loadErrorButton,
     required TResult Function() authorization,
     required TResult Function(String name, String date, String time)
         recordCreatedSuccessfully,
@@ -1816,11 +2355,14 @@ class _$PreloadDataCompletedAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted(
-        boutiques, selectBoutique, time, selectDateTime);
+    return preloadDataCompleted(boutiques, selectBoutique, time, selectDateTime,
+        isError, isLoadErrorButton, errorMessage);
   }
 
   @override
@@ -1828,6 +2370,8 @@ class _$PreloadDataCompletedAppointmentStateImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function()? load,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function()? loadErrorButton,
     TResult? Function()? authorization,
     TResult? Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1835,11 +2379,14 @@ class _$PreloadDataCompletedAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
   }) {
-    return preloadDataCompleted?.call(
-        boutiques, selectBoutique, time, selectDateTime);
+    return preloadDataCompleted?.call(boutiques, selectBoutique, time,
+        selectDateTime, isError, isLoadErrorButton, errorMessage);
   }
 
   @override
@@ -1847,6 +2394,8 @@ class _$PreloadDataCompletedAppointmentStateImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? load,
+    TResult Function(String errorMessage)? error,
+    TResult Function()? loadErrorButton,
     TResult Function()? authorization,
     TResult Function(String name, String date, String time)?
         recordCreatedSuccessfully,
@@ -1854,13 +2403,16 @@ class _$PreloadDataCompletedAppointmentStateImpl
             List<BoutiqueDataModel> boutiques,
             BoutiqueDataModel selectBoutique,
             Map<int, List<DateTime>> time,
-            DateTime selectDateTime)?
+            DateTime selectDateTime,
+            bool? isError,
+            bool? isLoadErrorButton,
+            String? errorMessage)?
         preloadDataCompleted,
     required TResult orElse(),
   }) {
     if (preloadDataCompleted != null) {
-      return preloadDataCompleted(
-          boutiques, selectBoutique, time, selectDateTime);
+      return preloadDataCompleted(boutiques, selectBoutique, time,
+          selectDateTime, isError, isLoadErrorButton, errorMessage);
     }
     return orElse();
   }
@@ -1870,6 +2422,9 @@ class _$PreloadDataCompletedAppointmentStateImpl
   TResult map<TResult extends Object?>({
     required TResult Function(InitAppointmentState value) init,
     required TResult Function(LoadingAppointmentState value) load,
+    required TResult Function(ErrorAppointmentState value) error,
+    required TResult Function(LoadingErrorButtonAppointmentState value)
+        loadErrorButton,
     required TResult Function(AuthorizationAppointmentState value)
         authorization,
     required TResult Function(RecordCreatedSuccessfullyAppointmentState value)
@@ -1885,6 +2440,9 @@ class _$PreloadDataCompletedAppointmentStateImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitAppointmentState value)? init,
     TResult? Function(LoadingAppointmentState value)? load,
+    TResult? Function(ErrorAppointmentState value)? error,
+    TResult? Function(LoadingErrorButtonAppointmentState value)?
+        loadErrorButton,
     TResult? Function(AuthorizationAppointmentState value)? authorization,
     TResult? Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1899,6 +2457,8 @@ class _$PreloadDataCompletedAppointmentStateImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitAppointmentState value)? init,
     TResult Function(LoadingAppointmentState value)? load,
+    TResult Function(ErrorAppointmentState value)? error,
+    TResult Function(LoadingErrorButtonAppointmentState value)? loadErrorButton,
     TResult Function(AuthorizationAppointmentState value)? authorization,
     TResult Function(RecordCreatedSuccessfullyAppointmentState value)?
         recordCreatedSuccessfully,
@@ -1916,16 +2476,21 @@ class _$PreloadDataCompletedAppointmentStateImpl
 abstract class PreloadDataCompletedAppointmentState
     implements AppointmentState {
   const factory PreloadDataCompletedAppointmentState(
-          {required final List<BoutiqueDataModel> boutiques,
-          required final BoutiqueDataModel selectBoutique,
-          required final Map<int, List<DateTime>> time,
-          required final DateTime selectDateTime}) =
-      _$PreloadDataCompletedAppointmentStateImpl;
+      {required final List<BoutiqueDataModel> boutiques,
+      required final BoutiqueDataModel selectBoutique,
+      required final Map<int, List<DateTime>> time,
+      required final DateTime selectDateTime,
+      final bool? isError,
+      final bool? isLoadErrorButton,
+      final String? errorMessage}) = _$PreloadDataCompletedAppointmentStateImpl;
 
   List<BoutiqueDataModel> get boutiques;
   BoutiqueDataModel get selectBoutique;
   Map<int, List<DateTime>> get time;
   DateTime get selectDateTime;
+  bool? get isError;
+  bool? get isLoadErrorButton;
+  String? get errorMessage;
 
   /// Create a copy of AppointmentState
   /// with the given fields replaced by the non-null parameter values.

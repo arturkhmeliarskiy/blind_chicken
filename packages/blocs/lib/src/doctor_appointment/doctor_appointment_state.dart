@@ -4,6 +4,10 @@ part of 'doctor_appointment_bloc.dart';
 class AppointmentState with _$AppointmentState {
   const factory AppointmentState.init() = InitAppointmentState;
   const factory AppointmentState.load() = LoadingAppointmentState;
+  const factory AppointmentState.error({
+    required String errorMessage,
+  }) = ErrorAppointmentState;
+  const factory AppointmentState.loadErrorButton() = LoadingErrorButtonAppointmentState;
   const factory AppointmentState.authorization() = AuthorizationAppointmentState;
   const factory AppointmentState.recordCreatedSuccessfully({
     required String name,
@@ -15,5 +19,8 @@ class AppointmentState with _$AppointmentState {
     required BoutiqueDataModel selectBoutique,
     required Map<int, List<DateTime>> time,
     required DateTime selectDateTime,
+    bool? isError,
+    bool? isLoadErrorButton,
+    String? errorMessage,
   }) = PreloadDataCompletedAppointmentState;
 }

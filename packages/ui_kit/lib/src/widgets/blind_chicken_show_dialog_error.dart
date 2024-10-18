@@ -8,7 +8,9 @@ class BlindChickenShowDialogError {
     required String errorMessage,
     required BuildContext context,
     required VoidCallback onRepeatRequest,
+    VoidCallback? onCloseRequest,
     Widget? widget,
+    bool isClose = false,
   }) {
     showGeneralDialog(
       context: context,
@@ -20,7 +22,12 @@ class BlindChickenShowDialogError {
         return BlindChickenModalErrorInfo(
           errorMessage: errorMessage,
           onRepeatRequest: onRepeatRequest,
+          onCloseRequest: onCloseRequest ??
+              () {
+                Navigator.pop(_dialogContext!);
+              },
           widget: widget,
+          isClose: isClose,
         );
       },
     );

@@ -19,10 +19,65 @@ class DoctorAppointmentScreen extends StatefulWidget {
 }
 
 class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreen> {
+  final BlindChickenShowDialogError _blindChickenDoctorAppointmentShowDialogError =
+      BlindChickenShowDialogError();
+  bool _isShowDialogDoctorAppointmentError = false;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AppointmentBloc, AppointmentState>(listener: (context, state) {
       state.maybeMap(
+          preloadDataCompleted: (value) {
+            if (value.errorMessage?.isNotEmpty ?? false) {
+              if (!_isShowDialogDoctorAppointmentError) {
+                _isShowDialogDoctorAppointmentError = true;
+                _blindChickenDoctorAppointmentShowDialogError.openShowDualog(
+                  context: context,
+                  errorMessage: value.errorMessage ?? '',
+                  widget: BlocBuilder<AppointmentBloc, AppointmentState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        preloadDataCompleted: (value) {
+                          if (value.isLoadErrorButton ?? false) {
+                            return const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  color: BlindChickenColors.backgroundColor,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Text(
+                              'Повторить',
+                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                    color: BlindChickenColors.backgroundColor,
+                                  ),
+                              textAlign: TextAlign.center,
+                            );
+                          }
+                        },
+                        orElse: () => const SizedBox(),
+                      );
+                    },
+                  ),
+                  onRepeatRequest: () {
+                    if (value.time.isNotEmpty) {
+                      context
+                          .read<AppointmentBloc>()
+                          .add(const AppointmentEvent.createDoctorAppointment());
+                    }
+                  },
+                );
+              }
+            } else {
+              if (_isShowDialogDoctorAppointmentError) {
+                _isShowDialogDoctorAppointmentError = false;
+                _blindChickenDoctorAppointmentShowDialogError.closeShowDialog();
+              }
+            }
+          },
           authorization: (value) {
             context.read<LoginBloc>().add(const LoginEvent.init());
             showDialog(
@@ -40,6 +95,46 @@ class _DoctorAppointmentScreenState extends State<DoctorAppointmentScreen> {
                     },
                   );
                 });
+          },
+          error: (value) {
+            if (!_isShowDialogDoctorAppointmentError) {
+              _isShowDialogDoctorAppointmentError = true;
+              _blindChickenDoctorAppointmentShowDialogError.openShowDualog(
+                context: context,
+                errorMessage: value.errorMessage,
+                widget: BlocBuilder<AppointmentBloc, AppointmentState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      loadErrorButton: (value) {
+                        return const SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: BlindChickenColors.backgroundColor,
+                            ),
+                          ),
+                        );
+                      },
+                      error: (value) {
+                        return Text(
+                          'Повторить',
+                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                              ),
+                          textAlign: TextAlign.center,
+                        );
+                      },
+                      orElse: () => const SizedBox(),
+                    );
+                  },
+                ),
+                onRepeatRequest: () {
+                  context.read<AppointmentBloc>().add(const AppointmentEvent.preloadData());
+                },
+              );
+            }
           },
           recordCreatedSuccessfully: (value) {
             context.navigateTo(VisionWarningRoute(

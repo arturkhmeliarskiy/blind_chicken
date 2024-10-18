@@ -206,12 +206,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       Map<int, List<FilterItemDataModel>> selectFilter = Map.of(initState.selectFilter);
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
       List<FilterItemDataModel> selectItem = selectFilter[event.index] ?? [];
-      if (!(initState.isError ?? false)) {
-        if (selectItem.contains(event.item)) {
-          selectItem.insert(event.indexItem, event.item);
-        } else {
-          selectItem.add(event.item);
-        }
+
+      if (selectItem.contains(event.item)) {
+        selectItem.insert(event.indexItem, event.item);
+      } else {
+        selectItem.add(event.item);
       }
 
       selectFilter[event.index] = selectItem;
@@ -255,6 +254,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       if (searchResultInfo.errorMessage.isEmpty) {
         emit(const SearchState.load());
+      } else {
+        selectItem.remove(event.item);
       }
 
       emit(initState.copyWith(
@@ -299,10 +300,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       List<Map<int, FilterItemDataModel>> allSelectFilter = [];
       Map<String, FilterCatalogDataModel> filtersInfo = {};
 
-      if (!(initState.isError ?? false)) {
-        selectItem.remove(event.item);
-      }
-
+      selectItem.remove(event.item);
       selectFilter[event.index] = selectItem;
 
       log(selectFilter.toString());
@@ -345,7 +343,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       log(allSelectFilter.length.toString());
       if (searchResultInfo.errorMessage.isEmpty) {
         emit(const SearchState.load());
+        if (initState.isError ?? false) {
+          selectItem.remove(event.item);
+          selectFilter[event.index] = selectItem;
+        }
+      } else {
+        selectItem.insert(event.indexItem, event.item);
+        selectFilter[event.index] = selectItem;
       }
+
       emit(
         initState.copyWith(
           selectFilter:
