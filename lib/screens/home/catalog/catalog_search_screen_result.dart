@@ -724,6 +724,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                   promoValue: initState.products[index].promoValue,
                                                   images: initState.products[index].images,
                                                   video: initState.products[index].video,
+                                                  goSwipeBack: () {
+                                                    context.back();
+                                                  },
                                                 );
                                               },
                                             ),

@@ -35,11 +35,13 @@ class CatalogScreen extends StatefulWidget {
     this.newsMediaInfo,
     this.newsNotificationInfo,
     this.messageId,
+    this.idNews,
   });
 
   final bool isBack;
   final bool isNotification;
   final VoidCallback? onBack;
+  final String? idNews;
   final String? messageId;
   final String title;
   final FilterNotifcationDataModel? filterNotifcation;
@@ -635,6 +637,33 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                 ),
                                               );
                                             }
+                                          } else if (widget.lastPath ==
+                                              'media_notiifcation_description') {
+                                            context.navigateTo(
+                                              MediaNotificationDescriptionRoute(
+                                                idNews: widget.idNews ?? '',
+                                                isNotification: true,
+                                                messageId: widget.messageId,
+                                              ),
+                                            );
+                                          } else if (widget.lastPath ==
+                                              'news_notification_description') {
+                                            context.navigateTo(
+                                              NewsNotificationDescriptionRoute(
+                                                idNews: widget.idNews ?? '',
+                                                isNotification: true,
+                                                messageId: widget.messageId,
+                                              ),
+                                            );
+                                          } else if (widget.lastPath ==
+                                              'notfication_info_notfication_description') {
+                                            context.navigateTo(
+                                              NotificationInfoNotificationDescriptionRoute(
+                                                idNews: widget.idNews ?? '',
+                                                isNotification: true,
+                                                messageId: widget.messageId,
+                                              ),
+                                            );
                                           }
                                         } else {
                                           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -702,6 +731,33 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                   ),
                                                 );
                                               }
+                                            } else if (widget.lastPath ==
+                                                'media_notiifcation_description') {
+                                              context.navigateTo(
+                                                MediaNotificationDescriptionRoute(
+                                                  idNews: widget.idNews ?? '',
+                                                  isNotification: true,
+                                                  messageId: widget.messageId,
+                                                ),
+                                              );
+                                            } else if (widget.lastPath ==
+                                                'news_notification_description') {
+                                              context.navigateTo(
+                                                NewsNotificationDescriptionRoute(
+                                                  idNews: widget.idNews ?? '',
+                                                  isNotification: true,
+                                                  messageId: widget.messageId,
+                                                ),
+                                              );
+                                            } else if (widget.lastPath ==
+                                                'notfication_info_notfication_description') {
+                                              context.navigateTo(
+                                                NotificationInfoNotificationDescriptionRoute(
+                                                  idNews: widget.idNews ?? '',
+                                                  isNotification: true,
+                                                  messageId: widget.messageId,
+                                                ),
+                                              );
                                             }
                                           } else {
                                             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -809,6 +865,98 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                   promoValue: initState.products[index].promoValue,
                                                   images: initState.products[index].images,
                                                   video: initState.products[index].video,
+                                                  goSwipeBack: () {
+                                                    if (index.isEven) {
+                                                      context.read<CatalogBloc>().add(
+                                                            const CatalogEvent.goBackCatalogInfo(),
+                                                          );
+                                                      if (initState.listCatalogPath.isEmpty ||
+                                                          initState.listCatalogPath.length == 1) {
+                                                        if (widget.lastPath.isNotEmpty) {
+                                                          if (widget.lastPath == 'news') {
+                                                            context.navigateTo(
+                                                              NewsRoute(children: [
+                                                                NewsInfoRoute(
+                                                                  indexPage: 0,
+                                                                ),
+                                                              ]),
+                                                            );
+                                                            AppMetrica.reportEvent(
+                                                                'Список новостей');
+                                                          } else if (widget.lastPath ==
+                                                              'news_info_description') {
+                                                            final newsInfo = widget.newsInfo;
+                                                            if (newsInfo != null) {
+                                                              context.navigateTo(
+                                                                NewsInfoDescriptionRoute(
+                                                                  info: newsInfo,
+                                                                ),
+                                                              );
+                                                              AppMetrica.reportEvent(
+                                                                  'Страница новостей');
+                                                            }
+                                                          } else if (widget.lastPath ==
+                                                              'media_info_description') {
+                                                            final newsMediaInfo =
+                                                                widget.newsMediaInfo;
+                                                            if (newsMediaInfo != null) {
+                                                              context.navigateTo(
+                                                                MediaInfoDescriptionRoute(
+                                                                  info: newsMediaInfo,
+                                                                ),
+                                                              );
+                                                            }
+                                                          } else if (widget.lastPath ==
+                                                              'notfication_info_description') {
+                                                            final newsNotificationInfo =
+                                                                widget.newsNotificationInfo;
+                                                            if (newsNotificationInfo != null) {
+                                                              context.navigateTo(
+                                                                NotificationInfoDescriptionRoute(
+                                                                  info: newsNotificationInfo,
+                                                                ),
+                                                              );
+                                                            }
+                                                          } else if (widget.lastPath ==
+                                                              'media_notiifcation_description') {
+                                                            context.navigateTo(
+                                                              MediaNotificationDescriptionRoute(
+                                                                idNews: widget.idNews ?? '',
+                                                                isNotification: true,
+                                                                messageId: widget.messageId,
+                                                              ),
+                                                            );
+                                                          } else if (widget.lastPath ==
+                                                              'news_notification_description') {
+                                                            context.navigateTo(
+                                                              NewsNotificationDescriptionRoute(
+                                                                idNews: widget.idNews ?? '',
+                                                                isNotification: true,
+                                                                messageId: widget.messageId,
+                                                              ),
+                                                            );
+                                                          } else if (widget.lastPath ==
+                                                              'notfication_info_notfication_description') {
+                                                            context.navigateTo(
+                                                              NotificationInfoNotificationDescriptionRoute(
+                                                                idNews: widget.idNews ?? '',
+                                                                isNotification: true,
+                                                                messageId: widget.messageId,
+                                                              ),
+                                                            );
+                                                          }
+                                                        } else {
+                                                          WidgetsBinding.instance
+                                                              .addPostFrameCallback((_) {
+                                                            context.back();
+                                                          });
+                                                        }
+                                                      }
+                                                      setState(() {
+                                                        _isSwipe = false;
+                                                      });
+                                                    }
+                                                  },
                                                 );
                                               }
                                             },

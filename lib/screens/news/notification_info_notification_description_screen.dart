@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
@@ -9,7 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -324,11 +325,13 @@ class _NotificationInfoNotificationDescriptionScreenState
                                         initState.oneNotification?.data.description ?? '',
                                         textStyle: Theme.of(context).textTheme.displayMedium,
                                         onTapUrl: (url) async {
-                                          await launchUrl(
-                                            Uri.parse(url),
-                                            mode: LaunchMode.inAppWebView,
+                                          return HandlerLinksNews.handlerLinks(
+                                            context: context,
+                                            url: url,
+                                            titleScreen: 'notfication_info_notfication_description',
+                                            idNews: widget.idNews,
+                                            messageId: widget.messageId,
                                           );
-                                          return true;
                                         },
                                       ),
                                       const SizedBox(
@@ -353,7 +356,8 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                       title: '',
                                                       url: initState.oneNotification?.data.path ??
                                                           '',
-                                                      lastPath: 'notfication_info_description',
+                                                      lastPath:
+                                                          'notfication_info_notfication_description',
                                                       newsNotificationInfo:
                                                           initState.oneNotification?.data,
                                                     ),
@@ -382,7 +386,8 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                           listItems: const [],
                                                           favouritesProducts: const [],
                                                           isChildRoute: false,
-                                                          lastPath: 'notfication_info_description',
+                                                          lastPath:
+                                                              'notfication_info_notfication_description',
                                                           newsNotificationInfo:
                                                               initState.oneNotification?.data,
                                                         ),
@@ -407,7 +412,8 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                     HomeAutoRouterRoute(
                                                       children: [
                                                         BoutiquesDescriptionRoute(
-                                                          lastPath: 'notfication_info_description',
+                                                          lastPath:
+                                                              'notfication_info_notfication_description',
                                                           newsNotificationInfo:
                                                               initState.oneNotification?.data,
                                                         ),
@@ -425,7 +431,8 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                     HomeAutoRouterRoute(
                                                       children: [
                                                         GiftCardRoute(
-                                                          lastPath: 'notfication_info_description',
+                                                          lastPath:
+                                                              'notfication_info_notfication_description',
                                                           newsNotificationInfo:
                                                               initState.oneNotification?.data,
                                                         ),

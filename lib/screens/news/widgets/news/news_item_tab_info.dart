@@ -1,6 +1,7 @@
+import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
@@ -71,22 +72,17 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                 const SizedBox(
                   height: 8,
                 ),
-                LayoutBuilder(builder: (context, constraints) {
-                  if (widget.item.announcement.length > 140) {
-                    return SizedBox(
-                      height: 60,
-                      child: HtmlWidget(
-                        widget.item.announcement,
-                        textStyle: Theme.of(context).textTheme.displayMedium,
-                      ),
+                HtmlWidget(
+                  widget.item.announcement,
+                  textStyle: Theme.of(context).textTheme.displayMedium,
+                  onTapUrl: (url) async {
+                    return HandlerLinksNews.handlerLinks(
+                      context: context,
+                      url: url,
+                      titleScreen: 'news',
                     );
-                  } else {
-                    return HtmlWidget(
-                      widget.item.announcement,
-                      textStyle: Theme.of(context).textTheme.displayMedium,
-                    );
-                  }
-                }),
+                  },
+                ),
                 if (widget.item.typeMedia == 'images' && widget.item.images.isNotEmpty)
                   Column(
                     children: [
@@ -96,7 +92,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                       LayoutBuilder(builder: (context, constraints) {
                         return CachedNetworkImage(
                           imageUrl: widget.item.images.first,
-                          height: 250,
                           width: constraints.maxWidth,
                           fit: BoxFit.cover,
                           placeholder: (context, url) => const SizedBox(

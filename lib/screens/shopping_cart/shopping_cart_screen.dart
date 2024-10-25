@@ -351,7 +351,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                                       ),
                                                                     );
                                                                 context.navigateTo(
-                                                                  const HomeAutoRouterRoute(
+                                                                  HomeAutoRouterRoute(
                                                                     children: [
                                                                       ServiceCardRoute(),
                                                                     ],

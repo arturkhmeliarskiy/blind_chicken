@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_video.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +10,12 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
   const CatalogSliderImagesCardItem({
     super.key,
     required this.images,
+    required this.goSwipeBack,
     required this.video,
   });
 
   final List<String> images;
+  final VoidCallback goSwipeBack;
   final DetailProductVideoDataModel video;
 
   @override
@@ -20,7 +24,25 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
 
 class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardItem> {
   final PageController _pageController = PageController();
+  bool _isSwipe = true;
   int _page = 0;
+
+  @override
+  void initState() {
+    _pageController.addListener(_scrollListener);
+    super.initState();
+  }
+
+  _scrollListener() {
+    setState(() {
+      log(_pageController.position.pixels.toString());
+
+      if (_pageController.position.pixels < -60 && _isSwipe) {
+        widget.goSwipeBack();
+        _isSwipe = false;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -38,6 +60,7 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
         children: [
           PageView.builder(
             controller: _pageController,
+            physics: const BouncingScrollPhysics(),
             itemCount: widget.images.length,
             onPageChanged: (value) {
               setState(() {

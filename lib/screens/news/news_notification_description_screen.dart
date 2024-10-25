@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
@@ -305,11 +306,13 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                         initState.oneNews?.data.description ?? '',
                                         textStyle: Theme.of(context).textTheme.displayMedium,
                                         onTapUrl: (url) async {
-                                          await launchUrl(
-                                            Uri.parse(url),
-                                            mode: LaunchMode.inAppWebView,
+                                          return HandlerLinksNews.handlerLinks(
+                                            context: context,
+                                            url: url,
+                                            titleScreen: 'news_notification_description',
+                                            idNews: widget.idNews,
+                                            messageId: widget.messageId,
                                           );
-                                          return true;
                                         },
                                       ),
                                       // Container(
@@ -361,7 +364,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     CatalogRoute(
                                                       title: '',
                                                       url: initState.oneNews?.data.path ?? '',
-                                                      lastPath: 'news_info_description',
+                                                      lastPath: 'news_notification_description',
                                                       newsInfo: initState.oneNews?.data,
                                                     ),
                                                   ],
@@ -388,7 +391,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                           listItems: const [],
                                                           favouritesProducts: const [],
                                                           isChildRoute: false,
-                                                          lastPath: 'news_info_description',
+                                                          lastPath: 'news_notification_description',
                                                           newsInfo: initState.oneNews?.data,
                                                         ),
                                                       ],
@@ -409,7 +412,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     HomeAutoRouterRoute(
                                                       children: [
                                                         BoutiquesDescriptionRoute(
-                                                          lastPath: 'news_info_description',
+                                                          lastPath: 'news_notification_description',
                                                           newsInfo: initState.oneNews?.data,
                                                         ),
                                                       ],
@@ -425,7 +428,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                     HomeAutoRouterRoute(
                                                       children: [
                                                         GiftCardRoute(
-                                                          lastPath: 'news_info_description',
+                                                          lastPath: 'news_notification_description',
                                                           newsInfo: initState.oneNews?.data,
                                                         ),
                                                       ],

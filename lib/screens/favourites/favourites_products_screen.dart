@@ -790,6 +790,12 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                           .favouritesProducts[index].promoValue,
                                                       video:
                                                           initState.favouritesProducts[index].video,
+                                                      goSwipeBack: () {
+                                                        context.back();
+                                                        setState(() {
+                                                          _isSwipe = true;
+                                                        });
+                                                      },
                                                     );
                                                   }),
                                                 ),

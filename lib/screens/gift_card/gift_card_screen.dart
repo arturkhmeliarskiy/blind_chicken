@@ -28,6 +28,7 @@ class GiftCardScreen extends StatefulWidget {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.idNews,
     this.messageId,
     this.searchQuery,
   });
@@ -35,6 +36,7 @@ class GiftCardScreen extends StatefulWidget {
   final bool isNotification;
   final String lastPath;
   final String? searchQuery;
+  final String? idNews;
   final String? messageId;
   final NewsInfoItemDataModel? newsInfo;
   final MediaInfoItemDataModel? newsMediaInfo;
@@ -185,6 +187,30 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                             ),
                           );
                         }
+                      } else if (widget.lastPath == 'media_notiifcation_description') {
+                        context.navigateTo(
+                          MediaNotificationDescriptionRoute(
+                            idNews: widget.idNews ?? '',
+                            isNotification: true,
+                            messageId: widget.messageId,
+                          ),
+                        );
+                      } else if (widget.lastPath == 'news_notification_description') {
+                        context.navigateTo(
+                          NewsNotificationDescriptionRoute(
+                            idNews: widget.idNews ?? '',
+                            isNotification: true,
+                            messageId: widget.messageId,
+                          ),
+                        );
+                      } else if (widget.lastPath == 'notfication_info_notfication_description') {
+                        context.navigateTo(
+                          NotificationInfoNotificationDescriptionRoute(
+                            idNews: widget.idNews ?? '',
+                            isNotification: true,
+                            messageId: widget.messageId,
+                          ),
+                        );
                       }
                     } else {
                       context.back();
@@ -235,6 +261,30 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                               ),
                             );
                           }
+                        } else if (widget.lastPath == 'media_notiifcation_description') {
+                          context.navigateTo(
+                            MediaNotificationDescriptionRoute(
+                              idNews: widget.idNews ?? '',
+                              isNotification: true,
+                              messageId: widget.messageId,
+                            ),
+                          );
+                        } else if (widget.lastPath == 'news_notification_description') {
+                          context.navigateTo(
+                            NewsNotificationDescriptionRoute(
+                              idNews: widget.idNews ?? '',
+                              isNotification: true,
+                              messageId: widget.messageId,
+                            ),
+                          );
+                        } else if (widget.lastPath == 'notfication_info_notfication_description') {
+                          context.navigateTo(
+                            NotificationInfoNotificationDescriptionRoute(
+                              idNews: widget.idNews ?? '',
+                              isNotification: true,
+                              messageId: widget.messageId,
+                            ),
+                          );
                         }
                       } else {
                         context.back();

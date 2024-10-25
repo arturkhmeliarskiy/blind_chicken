@@ -537,7 +537,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                               code: '15846',
                                             ),
                                           );
-                                      context.navigateTo(const ServiceCardRoute());
+                                      context.navigateTo(ServiceCardRoute());
                                     } else if (initState.menu[index].url == '/proverka-zreniya/') {
                                       context.navigateTo(VisionWarningRoute());
                                     } else if (initState.menu[index].name == 'Бренды') {
@@ -548,7 +548,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                             ),
                                           );
                                       context.navigateTo(
-                                        const BrandsRoute(),
+                                        BrandsRoute(),
                                       );
                                     } else if (initState.menu[index].name == 'Sale') {
                                       context.read<CatalogBloc>().add(

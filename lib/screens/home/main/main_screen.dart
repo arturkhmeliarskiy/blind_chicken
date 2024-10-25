@@ -766,7 +766,7 @@ class _MainScreenState extends State<MainScreen> {
                                                           ),
                                                         );
                                                     context.navigateTo(
-                                                      const BrandsRoute(),
+                                                      BrandsRoute(),
                                                     );
                                                     final appMetricaEcommerce =
                                                         GetIt.I.get<AppMetricaEcommerceService>();
@@ -854,7 +854,7 @@ class _MainScreenState extends State<MainScreen> {
                                                             ),
                                                           );
                                                       context.navigateTo(
-                                                        const BrandsRoute(),
+                                                        BrandsRoute(),
                                                       );
                                                       final appMetricaEcommerce =
                                                           GetIt.I.get<AppMetricaEcommerceService>();
@@ -884,7 +884,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     ),
                                                   );
                                               context.navigateTo(
-                                                const BrandsRoute(),
+                                                BrandsRoute(),
                                               );
                                             },
                                             child: Padding(

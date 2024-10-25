@@ -284,8 +284,7 @@ class _CatalogSearchScreenState extends State<CatalogSearchScreen> {
                                                                   code: '15846',
                                                                 ),
                                                               );
-                                                          context
-                                                              .navigateTo(const ServiceCardRoute());
+                                                          context.navigateTo(ServiceCardRoute());
                                                         } else if (initState
                                                                 .searchSections[index].u ==
                                                             '/giftcard/') {

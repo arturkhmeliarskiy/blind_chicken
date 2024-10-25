@@ -20,21 +20,23 @@ mixin _$BoutiquesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
     required TResult Function(
-            String uid, bool? isNotification, String? messageId)
+            String uid, String? path, bool? isNotification, String? messageId)
         getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid, bool? isNotification, String? messageId)?
+    TResult? Function(
+            String uid, String? path, bool? isNotification, String? messageId)?
         getInfoBoutique,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid, bool? isNotification, String? messageId)?
+    TResult Function(
+            String uid, String? path, bool? isNotification, String? messageId)?
         getInfoBoutique,
     required TResult orElse(),
   }) =>
@@ -124,7 +126,7 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
     required TResult Function(
-            String uid, bool? isNotification, String? messageId)
+            String uid, String? path, bool? isNotification, String? messageId)
         getInfoBoutique,
   }) {
     return preloadData();
@@ -134,7 +136,8 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid, bool? isNotification, String? messageId)?
+    TResult? Function(
+            String uid, String? path, bool? isNotification, String? messageId)?
         getInfoBoutique,
   }) {
     return preloadData?.call();
@@ -144,7 +147,8 @@ class _$InitBoutiquesEventImpl implements InitBoutiquesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid, bool? isNotification, String? messageId)?
+    TResult Function(
+            String uid, String? path, bool? isNotification, String? messageId)?
         getInfoBoutique,
     required TResult orElse(),
   }) {
@@ -197,7 +201,8 @@ abstract class _$$GetInfoBoutiquesEventImplCopyWith<$Res> {
           $Res Function(_$GetInfoBoutiquesEventImpl) then) =
       __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String uid, bool? isNotification, String? messageId});
+  $Res call(
+      {String uid, String? path, bool? isNotification, String? messageId});
 }
 
 /// @nodoc
@@ -214,6 +219,7 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = null,
+    Object? path = freezed,
     Object? isNotification = freezed,
     Object? messageId = freezed,
   }) {
@@ -222,6 +228,10 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      path: freezed == path
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String?,
       isNotification: freezed == isNotification
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
@@ -238,10 +248,12 @@ class __$$GetInfoBoutiquesEventImplCopyWithImpl<$Res>
 
 class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   const _$GetInfoBoutiquesEventImpl(
-      {required this.uid, this.isNotification, this.messageId});
+      {required this.uid, this.path, this.isNotification, this.messageId});
 
   @override
   final String uid;
+  @override
+  final String? path;
   @override
   final bool? isNotification;
   @override
@@ -249,7 +261,7 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
 
   @override
   String toString() {
-    return 'BoutiquesEvent.getInfoBoutique(uid: $uid, isNotification: $isNotification, messageId: $messageId)';
+    return 'BoutiquesEvent.getInfoBoutique(uid: $uid, path: $path, isNotification: $isNotification, messageId: $messageId)';
   }
 
   @override
@@ -258,6 +270,7 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
         (other.runtimeType == runtimeType &&
             other is _$GetInfoBoutiquesEventImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.path, path) || other.path == path) &&
             (identical(other.isNotification, isNotification) ||
                 other.isNotification == isNotification) &&
             (identical(other.messageId, messageId) ||
@@ -265,7 +278,8 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, uid, isNotification, messageId);
+  int get hashCode =>
+      Object.hash(runtimeType, uid, path, isNotification, messageId);
 
   /// Create a copy of BoutiquesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -281,32 +295,34 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() preloadData,
     required TResult Function(
-            String uid, bool? isNotification, String? messageId)
+            String uid, String? path, bool? isNotification, String? messageId)
         getInfoBoutique,
   }) {
-    return getInfoBoutique(uid, isNotification, messageId);
+    return getInfoBoutique(uid, path, isNotification, messageId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? preloadData,
-    TResult? Function(String uid, bool? isNotification, String? messageId)?
+    TResult? Function(
+            String uid, String? path, bool? isNotification, String? messageId)?
         getInfoBoutique,
   }) {
-    return getInfoBoutique?.call(uid, isNotification, messageId);
+    return getInfoBoutique?.call(uid, path, isNotification, messageId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? preloadData,
-    TResult Function(String uid, bool? isNotification, String? messageId)?
+    TResult Function(
+            String uid, String? path, bool? isNotification, String? messageId)?
         getInfoBoutique,
     required TResult orElse(),
   }) {
     if (getInfoBoutique != null) {
-      return getInfoBoutique(uid, isNotification, messageId);
+      return getInfoBoutique(uid, path, isNotification, messageId);
     }
     return orElse();
   }
@@ -346,10 +362,12 @@ class _$GetInfoBoutiquesEventImpl implements GetInfoBoutiquesEvent {
 abstract class GetInfoBoutiquesEvent implements BoutiquesEvent {
   const factory GetInfoBoutiquesEvent(
       {required final String uid,
+      final String? path,
       final bool? isNotification,
       final String? messageId}) = _$GetInfoBoutiquesEventImpl;
 
   String get uid;
+  String? get path;
   bool? get isNotification;
   String? get messageId;
 

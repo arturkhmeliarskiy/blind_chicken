@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
@@ -285,6 +286,15 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                       HtmlWidget(
                                         initState.oneMedia?.data.description ?? '',
                                         textStyle: Theme.of(context).textTheme.displayMedium,
+                                        onTapUrl: (url) async {
+                                          return HandlerLinksNews.handlerLinks(
+                                            context: context,
+                                            url: url,
+                                            titleScreen: 'media_notiifcation_description',
+                                            idNews: widget.idNews,
+                                            messageId: widget.messageId,
+                                          );
+                                        },
                                       ),
                                       // Container(
                                       //   height: 40,
@@ -333,10 +343,11 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                 HomeAutoRouterRoute(
                                                   children: [
                                                     CatalogRoute(
-                                                        title: '',
-                                                        url: initState.oneMedia?.data.path ?? '',
-                                                        lastPath: 'media_info_description',
-                                                        newsMediaInfo: initState.oneMedia?.data),
+                                                      title: '',
+                                                      url: initState.oneMedia?.data.path ?? '',
+                                                      lastPath: 'media_notiifcation_description',
+                                                      newsMediaInfo: initState.oneMedia?.data,
+                                                    ),
                                                   ],
                                                 ),
                                               ]));
@@ -360,7 +371,8 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                           listItems: const [],
                                                           favouritesProducts: const [],
                                                           isChildRoute: false,
-                                                          lastPath: 'media_info_description',
+                                                          lastPath:
+                                                              'media_notiifcation_description',
                                                           newsMediaInfo: initState.oneMedia?.data,
                                                         ),
                                                       ],
@@ -381,7 +393,8 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                     HomeAutoRouterRoute(
                                                       children: [
                                                         BoutiquesDescriptionRoute(
-                                                          lastPath: 'media_info_description',
+                                                          lastPath:
+                                                              'media_notiifcation_description',
                                                           newsMediaInfo: initState.oneMedia?.data,
                                                         ),
                                                       ],
@@ -397,7 +410,8 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                     HomeAutoRouterRoute(
                                                       children: [
                                                         GiftCardRoute(
-                                                          lastPath: 'media_info_description',
+                                                          lastPath:
+                                                              'media_notiifcation_description',
                                                           newsMediaInfo: initState.oneMedia?.data,
                                                         ),
                                                       ],

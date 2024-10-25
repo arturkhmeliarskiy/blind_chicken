@@ -88,6 +88,7 @@ class CatalogListProducts extends StatelessWidget {
               promo: initState.products[index].promo,
               promoValue: initState.products[index].promoValue,
               images: initState.products[index].images,
+              goSwipeBack: () {},
             );
           },
         ));

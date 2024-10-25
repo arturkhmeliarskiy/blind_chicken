@@ -294,6 +294,7 @@ class BoutiquesDescriptionRoute
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
     String? messageId,
+    String? idNews,
     List<PageRouteInfo>? children,
   }) : super(
           BoutiquesDescriptionRoute.name,
@@ -306,6 +307,7 @@ class BoutiquesDescriptionRoute
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
             messageId: messageId,
+            idNews: idNews,
           ),
           initialChildren: children,
         );
@@ -326,6 +328,7 @@ class BoutiquesDescriptionRoute
         newsMediaInfo: args.newsMediaInfo,
         newsNotificationInfo: args.newsNotificationInfo,
         messageId: args.messageId,
+        idNews: args.idNews,
       );
     },
   );
@@ -341,6 +344,7 @@ class BoutiquesDescriptionRouteArgs {
     this.newsMediaInfo,
     this.newsNotificationInfo,
     this.messageId,
+    this.idNews,
   });
 
   final Key? key;
@@ -359,9 +363,11 @@ class BoutiquesDescriptionRouteArgs {
 
   final String? messageId;
 
+  final String? idNews;
+
   @override
   String toString() {
-    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId}';
+    return 'BoutiquesDescriptionRouteArgs{key: $key, uidStore: $uidStore, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
   }
 }
 
@@ -386,10 +392,27 @@ class BoutiquesRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [BrandsScreen]
-class BrandsRoute extends PageRouteInfo<void> {
-  const BrandsRoute({List<PageRouteInfo>? children})
-      : super(
+class BrandsRoute extends PageRouteInfo<BrandsRouteArgs> {
+  BrandsRoute({
+    Key? key,
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
+    String? idNews,
+    List<PageRouteInfo>? children,
+  }) : super(
           BrandsRoute.name,
+          args: BrandsRouteArgs(
+            key: key,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
+            idNews: idNews,
+          ),
           initialChildren: children,
         );
 
@@ -398,9 +421,50 @@ class BrandsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const BrandsScreen();
+      final args =
+          data.argsAs<BrandsRouteArgs>(orElse: () => const BrandsRouteArgs());
+      return BrandsScreen(
+        key: args.key,
+        lastPath: args.lastPath,
+        newsInfo: args.newsInfo,
+        newsMediaInfo: args.newsMediaInfo,
+        newsNotificationInfo: args.newsNotificationInfo,
+        messageId: args.messageId,
+        idNews: args.idNews,
+      );
     },
   );
+}
+
+class BrandsRouteArgs {
+  const BrandsRouteArgs({
+    this.key,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
+    this.messageId,
+    this.idNews,
+  });
+
+  final Key? key;
+
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
+  final String? messageId;
+
+  final String? idNews;
+
+  @override
+  String toString() {
+    return 'BrandsRouteArgs{key: $key, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
+  }
 }
 
 /// generated route for
@@ -419,6 +483,7 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
     String? messageId,
+    String? idNews,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogCardInfoRoute.name,
@@ -435,6 +500,7 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
             messageId: messageId,
+            idNews: idNews,
           ),
           initialChildren: children,
         );
@@ -458,6 +524,7 @@ class CatalogCardInfoRoute extends PageRouteInfo<CatalogCardInfoRouteArgs> {
         newsMediaInfo: args.newsMediaInfo,
         newsNotificationInfo: args.newsNotificationInfo,
         messageId: args.messageId,
+        idNews: args.idNews,
       );
     },
   );
@@ -477,6 +544,7 @@ class CatalogCardInfoRouteArgs {
     this.newsMediaInfo,
     this.newsNotificationInfo,
     this.messageId,
+    this.idNews,
   });
 
   final Key? key;
@@ -503,9 +571,11 @@ class CatalogCardInfoRouteArgs {
 
   final String? messageId;
 
+  final String? idNews;
+
   @override
   String toString() {
-    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId}';
+    return 'CatalogCardInfoRouteArgs{key: $key, item: $item, code: $code, isLike: $isLike, listItems: $listItems, favouritesProducts: $favouritesProducts, isChildRoute: $isChildRoute, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
   }
 }
 
@@ -775,6 +845,7 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
     String? messageId,
+    String? idNews,
     List<PageRouteInfo>? children,
   }) : super(
           CatalogRoute.name,
@@ -792,6 +863,7 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
             messageId: messageId,
+            idNews: idNews,
           ),
           initialChildren: children,
         );
@@ -816,6 +888,7 @@ class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
         newsMediaInfo: args.newsMediaInfo,
         newsNotificationInfo: args.newsNotificationInfo,
         messageId: args.messageId,
+        idNews: args.idNews,
       );
     },
   );
@@ -836,6 +909,7 @@ class CatalogRouteArgs {
     this.newsMediaInfo,
     this.newsNotificationInfo,
     this.messageId,
+    this.idNews,
   });
 
   final Key? key;
@@ -864,9 +938,11 @@ class CatalogRouteArgs {
 
   final String? messageId;
 
+  final String? idNews;
+
   @override
   String toString() {
-    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterNotifcation: $filterNotifcation, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId}';
+    return 'CatalogRouteArgs{key: $key, isBack: $isBack, onBack: $onBack, title: $title, url: $url, isNotification: $isNotification, sort: $sort, filterNotifcation: $filterNotifcation, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
   }
 }
 
@@ -1845,6 +1921,7 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
     NewsInfoItemDataModel? newsInfo,
     MediaInfoItemDataModel? newsMediaInfo,
     NotificationInfoItemDataModel? newsNotificationInfo,
+    String? idNews,
     String? messageId,
     String? searchQuery,
     List<PageRouteInfo>? children,
@@ -1857,6 +1934,7 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
             newsInfo: newsInfo,
             newsMediaInfo: newsMediaInfo,
             newsNotificationInfo: newsNotificationInfo,
+            idNews: idNews,
             messageId: messageId,
             searchQuery: searchQuery,
           ),
@@ -1877,6 +1955,7 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
         newsInfo: args.newsInfo,
         newsMediaInfo: args.newsMediaInfo,
         newsNotificationInfo: args.newsNotificationInfo,
+        idNews: args.idNews,
         messageId: args.messageId,
         searchQuery: args.searchQuery,
       );
@@ -1892,6 +1971,7 @@ class GiftCardRouteArgs {
     this.newsInfo,
     this.newsMediaInfo,
     this.newsNotificationInfo,
+    this.idNews,
     this.messageId,
     this.searchQuery,
   });
@@ -1908,13 +1988,15 @@ class GiftCardRouteArgs {
 
   final NotificationInfoItemDataModel? newsNotificationInfo;
 
+  final String? idNews;
+
   final String? messageId;
 
   final String? searchQuery;
 
   @override
   String toString() {
-    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, searchQuery: $searchQuery}';
+    return 'GiftCardRouteArgs{key: $key, isNotification: $isNotification, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, idNews: $idNews, messageId: $messageId, searchQuery: $searchQuery}';
   }
 }
 
@@ -3013,10 +3095,27 @@ class SearchLocationRouteArgs {
 
 /// generated route for
 /// [ServiceCardScreen]
-class ServiceCardRoute extends PageRouteInfo<void> {
-  const ServiceCardRoute({List<PageRouteInfo>? children})
-      : super(
+class ServiceCardRoute extends PageRouteInfo<ServiceCardRouteArgs> {
+  ServiceCardRoute({
+    Key? key,
+    String lastPath = '',
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
+    String? idNews,
+    List<PageRouteInfo>? children,
+  }) : super(
           ServiceCardRoute.name,
+          args: ServiceCardRouteArgs(
+            key: key,
+            lastPath: lastPath,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+            messageId: messageId,
+            idNews: idNews,
+          ),
           initialChildren: children,
         );
 
@@ -3025,9 +3124,50 @@ class ServiceCardRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ServiceCardScreen();
+      final args = data.argsAs<ServiceCardRouteArgs>(
+          orElse: () => const ServiceCardRouteArgs());
+      return ServiceCardScreen(
+        key: args.key,
+        lastPath: args.lastPath,
+        newsInfo: args.newsInfo,
+        newsMediaInfo: args.newsMediaInfo,
+        newsNotificationInfo: args.newsNotificationInfo,
+        messageId: args.messageId,
+        idNews: args.idNews,
+      );
     },
   );
+}
+
+class ServiceCardRouteArgs {
+  const ServiceCardRouteArgs({
+    this.key,
+    this.lastPath = '',
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
+    this.messageId,
+    this.idNews,
+  });
+
+  final Key? key;
+
+  final String lastPath;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
+  final String? messageId;
+
+  final String? idNews;
+
+  @override
+  String toString() {
+    return 'ServiceCardRouteArgs{key: $key, lastPath: $lastPath, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo, messageId: $messageId, idNews: $idNews}';
+  }
 }
 
 /// generated route for
@@ -3328,6 +3468,12 @@ class VisionWarningRoute extends PageRouteInfo<VisionWarningRouteArgs> {
     String? name,
     String? date,
     String? time,
+    String lastPath = '',
+    String? messageId,
+    String? idNews,
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
     List<PageRouteInfo>? children,
   }) : super(
           VisionWarningRoute.name,
@@ -3336,6 +3482,12 @@ class VisionWarningRoute extends PageRouteInfo<VisionWarningRouteArgs> {
             name: name,
             date: date,
             time: time,
+            lastPath: lastPath,
+            messageId: messageId,
+            idNews: idNews,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
           ),
           initialChildren: children,
         );
@@ -3352,6 +3504,12 @@ class VisionWarningRoute extends PageRouteInfo<VisionWarningRouteArgs> {
         name: args.name,
         date: args.date,
         time: args.time,
+        lastPath: args.lastPath,
+        messageId: args.messageId,
+        idNews: args.idNews,
+        newsInfo: args.newsInfo,
+        newsMediaInfo: args.newsMediaInfo,
+        newsNotificationInfo: args.newsNotificationInfo,
       );
     },
   );
@@ -3363,6 +3521,12 @@ class VisionWarningRouteArgs {
     this.name,
     this.date,
     this.time,
+    this.lastPath = '',
+    this.messageId,
+    this.idNews,
+    this.newsInfo,
+    this.newsMediaInfo,
+    this.newsNotificationInfo,
   });
 
   final Key? key;
@@ -3373,9 +3537,21 @@ class VisionWarningRouteArgs {
 
   final String? time;
 
+  final String lastPath;
+
+  final String? messageId;
+
+  final String? idNews;
+
+  final NewsInfoItemDataModel? newsInfo;
+
+  final MediaInfoItemDataModel? newsMediaInfo;
+
+  final NotificationInfoItemDataModel? newsNotificationInfo;
+
   @override
   String toString() {
-    return 'VisionWarningRouteArgs{key: $key, name: $name, date: $date, time: $time}';
+    return 'VisionWarningRouteArgs{key: $key, name: $name, date: $date, time: $time, lastPath: $lastPath, messageId: $messageId, idNews: $idNews, newsInfo: $newsInfo, newsMediaInfo: $newsMediaInfo, newsNotificationInfo: $newsNotificationInfo}';
   }
 }
 

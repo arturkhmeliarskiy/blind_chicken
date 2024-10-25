@@ -21,19 +21,25 @@ class BoutiquesRepository {
 
   Future<BoutiqueInfoDataModel> getInfoBoutique({
     required String uid,
+    String? path,
     String? messageId,
   }) async {
     final boutiques = await _boutiquesService.getInfoBoutique(
           uid: uid,
+          path: path,
           messageId: messageId,
         ) ??
         BoutiqueInfoResponse();
     return boutiques.toInfoBoutique();
   }
 
-  Future<BoutiqueInfoDetailDataModel> getInfoBoutiqueDetail({required String uid}) async {
+  Future<BoutiqueInfoDetailDataModel> getInfoBoutiqueDetail({
+    required String uid,
+    String? path,
+  }) async {
     final boutiques = await _boutiquesService.getInfoBoutiqueDetail(
           uid: uid,
+          path: path,
         ) ??
         BoutiqueInfoDetailResponse();
     return boutiques.toInfoBoutiqueDetail();

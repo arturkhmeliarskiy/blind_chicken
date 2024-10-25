@@ -34,6 +34,7 @@ class NewsService {
         data: {
           "token": token,
           "hash_token": hashToken,
+          "innerlink": 1,
           "show": 1,
         },
       );

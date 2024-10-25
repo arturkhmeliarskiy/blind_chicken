@@ -75,9 +75,11 @@ class BoutiquesBloc extends Bloc<BoutiquesEvent, BoutiquesState> {
     final detailsBoutique = await _boutiquesRepository.getInfoBoutique(
       messageId: event.messageId,
       uid: event.uid,
+      path: event.path,
     );
     final boutiqueInfo = await _boutiquesRepository.getInfoBoutiqueDetail(
       uid: event.uid,
+      path: event.path,
     );
 
     final result = await _storeVersionAppRepository.getStoreVersion();

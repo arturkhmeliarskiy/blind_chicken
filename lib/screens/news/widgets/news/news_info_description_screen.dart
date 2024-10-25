@@ -1,6 +1,7 @@
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
@@ -144,7 +145,6 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                         MediaQuery.of(context).orientation == Orientation.portrait
                                             ? width
                                             : width / 2,
-                                    height: 250,
                                     fit: BoxFit.cover,
                                     errorWidget: (context, url, error) => const Icon(Icons.error),
                                   ),
@@ -199,6 +199,13 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                           HtmlWidget(
                             widget.info.description,
                             textStyle: Theme.of(context).textTheme.displayMedium,
+                            onTapUrl: (url) async {
+                              return HandlerLinksNews.handlerLinks(
+                                context: context,
+                                url: url,
+                                titleScreen: 'news_info_description',
+                              );
+                            },
                           ),
                           // Container(
                           //   height: 40,

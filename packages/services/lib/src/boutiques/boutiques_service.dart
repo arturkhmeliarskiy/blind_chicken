@@ -71,6 +71,7 @@ class BoutiquesService {
 
   Future<BoutiqueInfoResponse?> getInfoBoutique({
     required String uid,
+    String? path,
     String? messageId,
   }) async {
     BoutiqueInfoResponse? boutiqueInfoResponse;
@@ -88,6 +89,7 @@ class BoutiquesService {
           "token": token,
           "hash_token": hashToken,
           "uid": uid,
+          if (path != null) "path": path,
           if (messageId != null)
             "push_open": {
               "message_id": messageId,
@@ -130,6 +132,7 @@ class BoutiquesService {
 
   Future<BoutiqueInfoDetailResponse?> getInfoBoutiqueDetail({
     required String uid,
+    String? path,
   }) async {
     BoutiqueInfoDetailResponse? boutiqueInfoDetailResponse;
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
@@ -142,6 +145,7 @@ class BoutiquesService {
           "token": token,
           "hash_token": hashToken,
           "uid": uid,
+          if (path != null) "path": path,
         },
       );
       log(response.data);

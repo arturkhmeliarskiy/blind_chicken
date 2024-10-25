@@ -71,7 +71,7 @@ class CatalogInformationPanel extends StatelessWidget {
                                     selectTypePeople: 0,
                                   ),
                                 );
-                            context.maybePop(const HomeAutoRouterRoute(
+                            context.maybePop(HomeAutoRouterRoute(
                               children: [
                                 BrandsRoute(),
                               ],

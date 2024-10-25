@@ -37,6 +37,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
     this.newsMediaInfo,
     this.newsNotificationInfo,
     this.messageId,
+    this.idNews,
   });
 
   final ProductDataModel? item;
@@ -45,6 +46,7 @@ class CatalogCardInfoScreen extends StatefulWidget {
   final bool isLike;
   final String? code;
   final String? messageId;
+  final String? idNews;
   final bool isChildRoute;
   final String lastPath;
   final NewsInfoItemDataModel? newsInfo;
@@ -281,6 +283,30 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                         ),
                       );
                     }
+                  } else if (widget.lastPath == 'media_notiifcation_description') {
+                    context.navigateTo(
+                      MediaNotificationDescriptionRoute(
+                        idNews: widget.idNews ?? '',
+                        isNotification: true,
+                        messageId: widget.messageId,
+                      ),
+                    );
+                  } else if (widget.lastPath == 'news_notification_description') {
+                    context.navigateTo(
+                      NewsNotificationDescriptionRoute(
+                        idNews: widget.idNews ?? '',
+                        isNotification: true,
+                        messageId: widget.messageId,
+                      ),
+                    );
+                  } else if (widget.lastPath == 'notfication_info_notfication_description') {
+                    context.navigateTo(
+                      NotificationInfoNotificationDescriptionRoute(
+                        idNews: widget.idNews ?? '',
+                        isNotification: true,
+                        messageId: widget.messageId,
+                      ),
+                    );
                   }
                 } else {
                   final sharedService = GetIt.I.get<SharedPreferencesService>();
@@ -450,6 +476,33 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                               ),
                                             );
                                           }
+                                        } else if (widget.lastPath ==
+                                            'media_notiifcation_description') {
+                                          context.navigateTo(
+                                            MediaNotificationDescriptionRoute(
+                                              idNews: widget.idNews ?? '',
+                                              isNotification: true,
+                                              messageId: widget.messageId,
+                                            ),
+                                          );
+                                        } else if (widget.lastPath ==
+                                            'news_notification_description') {
+                                          context.navigateTo(
+                                            NewsNotificationDescriptionRoute(
+                                              idNews: widget.idNews ?? '',
+                                              isNotification: true,
+                                              messageId: widget.messageId,
+                                            ),
+                                          );
+                                        } else if (widget.lastPath ==
+                                            'notfication_info_notfication_description') {
+                                          context.navigateTo(
+                                            NotificationInfoNotificationDescriptionRoute(
+                                              idNews: widget.idNews ?? '',
+                                              isNotification: true,
+                                              messageId: widget.messageId,
+                                            ),
+                                          );
                                         }
                                       } else {
                                         WidgetsBinding.instance.addPostFrameCallback((_) {

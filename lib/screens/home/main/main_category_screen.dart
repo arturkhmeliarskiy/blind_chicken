@@ -338,7 +338,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                           ),
                                         );
                                     context.navigateTo(
-                                      const BrandsRoute(),
+                                      BrandsRoute(),
                                     );
                                   } else {
                                     context.read<CatalogBloc>().add(
@@ -399,7 +399,7 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
                                   ),
                                 );
                             context.navigateTo(
-                              const BrandsRoute(),
+                              BrandsRoute(),
                             );
                           },
                           child: Text(
