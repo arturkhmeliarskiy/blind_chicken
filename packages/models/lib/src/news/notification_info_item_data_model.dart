@@ -11,6 +11,8 @@ class NotificationInfoItemDataModel with _$NotificationInfoItemDataModel {
     required String createAt,
     required List<String> images,
     required String video,
+    required String typeVideo,
+    required String videoImage,
     required String typeMedia,
     required String description,
     required String titleButton,

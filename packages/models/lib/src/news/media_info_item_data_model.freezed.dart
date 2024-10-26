@@ -21,6 +21,8 @@ mixin _$MediaInfoItemDataModel {
   String get createAt => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   String get video => throw _privateConstructorUsedError;
+  String get typeVideo => throw _privateConstructorUsedError;
+  String get videoImage => throw _privateConstructorUsedError;
   String get typeMedia => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get titleButton => throw _privateConstructorUsedError;
@@ -50,6 +52,8 @@ abstract class $MediaInfoItemDataModelCopyWith<$Res> {
       String createAt,
       List<String> images,
       String video,
+      String typeVideo,
+      String videoImage,
       String typeMedia,
       String description,
       String titleButton,
@@ -82,6 +86,8 @@ class _$MediaInfoItemDataModelCopyWithImpl<$Res,
     Object? createAt = null,
     Object? images = null,
     Object? video = null,
+    Object? typeVideo = null,
+    Object? videoImage = null,
     Object? typeMedia = null,
     Object? description = null,
     Object? titleButton = null,
@@ -114,6 +120,14 @@ class _$MediaInfoItemDataModelCopyWithImpl<$Res,
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeVideo: null == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImage: null == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
               as String,
       typeMedia: null == typeMedia
           ? _value.typeMedia
@@ -178,6 +192,8 @@ abstract class _$$MediaInfoItemDataModelImplCopyWith<$Res>
       String createAt,
       List<String> images,
       String video,
+      String typeVideo,
+      String videoImage,
       String typeMedia,
       String description,
       String titleButton,
@@ -209,6 +225,8 @@ class __$$MediaInfoItemDataModelImplCopyWithImpl<$Res>
     Object? createAt = null,
     Object? images = null,
     Object? video = null,
+    Object? typeVideo = null,
+    Object? videoImage = null,
     Object? typeMedia = null,
     Object? description = null,
     Object? titleButton = null,
@@ -241,6 +259,14 @@ class __$$MediaInfoItemDataModelImplCopyWithImpl<$Res>
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeVideo: null == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImage: null == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
               as String,
       typeMedia: null == typeMedia
           ? _value.typeMedia
@@ -299,6 +325,8 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
       required this.createAt,
       required final List<String> images,
       required this.video,
+      required this.typeVideo,
+      required this.videoImage,
       required this.typeMedia,
       required this.description,
       required this.titleButton,
@@ -330,6 +358,10 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
   @override
   final String video;
   @override
+  final String typeVideo;
+  @override
+  final String videoImage;
+  @override
   final String typeMedia;
   @override
   final String description;
@@ -354,7 +386,7 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
 
   @override
   String toString() {
-    return 'MediaInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'MediaInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -368,6 +400,10 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.video, video) || other.video == video) &&
+            (identical(other.typeVideo, typeVideo) ||
+                other.typeVideo == typeVideo) &&
+            (identical(other.videoImage, videoImage) ||
+                other.videoImage == videoImage) &&
             (identical(other.typeMedia, typeMedia) ||
                 other.typeMedia == typeMedia) &&
             (identical(other.description, description) ||
@@ -397,6 +433,8 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
       createAt,
       const DeepCollectionEquality().hash(_images),
       video,
+      typeVideo,
+      videoImage,
       typeMedia,
       description,
       titleButton,
@@ -424,6 +462,8 @@ abstract class _MediaInfoItemDataModel extends MediaInfoItemDataModel {
       required final String createAt,
       required final List<String> images,
       required final String video,
+      required final String typeVideo,
+      required final String videoImage,
       required final String typeMedia,
       required final String description,
       required final String titleButton,
@@ -447,6 +487,10 @@ abstract class _MediaInfoItemDataModel extends MediaInfoItemDataModel {
   List<String> get images;
   @override
   String get video;
+  @override
+  String get typeVideo;
+  @override
+  String get videoImage;
   @override
   String get typeMedia;
   @override

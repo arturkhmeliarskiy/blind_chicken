@@ -21,6 +21,8 @@ mixin _$NotificationInfoItemDataModel {
   String get createAt => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
   String get video => throw _privateConstructorUsedError;
+  String get typeVideo => throw _privateConstructorUsedError;
+  String get videoImage => throw _privateConstructorUsedError;
   String get typeMedia => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get titleButton => throw _privateConstructorUsedError;
@@ -51,6 +53,8 @@ abstract class $NotificationInfoItemDataModelCopyWith<$Res> {
       String createAt,
       List<String> images,
       String video,
+      String typeVideo,
+      String videoImage,
       String typeMedia,
       String description,
       String titleButton,
@@ -82,6 +86,8 @@ class _$NotificationInfoItemDataModelCopyWithImpl<$Res,
     Object? createAt = null,
     Object? images = null,
     Object? video = null,
+    Object? typeVideo = null,
+    Object? videoImage = null,
     Object? typeMedia = null,
     Object? description = null,
     Object? titleButton = null,
@@ -113,6 +119,14 @@ class _$NotificationInfoItemDataModelCopyWithImpl<$Res,
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeVideo: null == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImage: null == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
               as String,
       typeMedia: null == typeMedia
           ? _value.typeMedia
@@ -173,6 +187,8 @@ abstract class _$$NotificationInfoItemDataModelImplCopyWith<$Res>
       String createAt,
       List<String> images,
       String video,
+      String typeVideo,
+      String videoImage,
       String typeMedia,
       String description,
       String titleButton,
@@ -203,6 +219,8 @@ class __$$NotificationInfoItemDataModelImplCopyWithImpl<$Res>
     Object? createAt = null,
     Object? images = null,
     Object? video = null,
+    Object? typeVideo = null,
+    Object? videoImage = null,
     Object? typeMedia = null,
     Object? description = null,
     Object? titleButton = null,
@@ -234,6 +252,14 @@ class __$$NotificationInfoItemDataModelImplCopyWithImpl<$Res>
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String,
+      typeVideo: null == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImage: null == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
               as String,
       typeMedia: null == typeMedia
           ? _value.typeMedia
@@ -289,6 +315,8 @@ class _$NotificationInfoItemDataModelImpl
       required this.createAt,
       required final List<String> images,
       required this.video,
+      required this.typeVideo,
+      required this.videoImage,
       required this.typeMedia,
       required this.description,
       required this.titleButton,
@@ -319,6 +347,10 @@ class _$NotificationInfoItemDataModelImpl
   @override
   final String video;
   @override
+  final String typeVideo;
+  @override
+  final String videoImage;
+  @override
   final String typeMedia;
   @override
   final String description;
@@ -341,7 +373,7 @@ class _$NotificationInfoItemDataModelImpl
 
   @override
   String toString() {
-    return 'NotificationInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, isViewed: $isViewed)';
+    return 'NotificationInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, isViewed: $isViewed)';
   }
 
   @override
@@ -355,6 +387,10 @@ class _$NotificationInfoItemDataModelImpl
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.video, video) || other.video == video) &&
+            (identical(other.typeVideo, typeVideo) ||
+                other.typeVideo == typeVideo) &&
+            (identical(other.videoImage, videoImage) ||
+                other.videoImage == videoImage) &&
             (identical(other.typeMedia, typeMedia) ||
                 other.typeMedia == typeMedia) &&
             (identical(other.description, description) ||
@@ -382,6 +418,8 @@ class _$NotificationInfoItemDataModelImpl
       createAt,
       const DeepCollectionEquality().hash(_images),
       video,
+      typeVideo,
+      videoImage,
       typeMedia,
       description,
       titleButton,
@@ -410,6 +448,8 @@ abstract class _NotificationInfoItemDataModel
       required final String createAt,
       required final List<String> images,
       required final String video,
+      required final String typeVideo,
+      required final String videoImage,
       required final String typeMedia,
       required final String description,
       required final String titleButton,
@@ -432,6 +472,10 @@ abstract class _NotificationInfoItemDataModel
   List<String> get images;
   @override
   String get video;
+  @override
+  String get typeVideo;
+  @override
+  String get videoImage;
   @override
   String get typeMedia;
   @override

@@ -702,7 +702,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
             const DeepCollectionEquality()
                 .equals(other._productCategoriesPath, _productCategoriesPath) &&
             (identical(other.count, count) || other.count == count) &&
-            const DeepCollectionEquality().equals(other.color, color));
+            (identical(other.color, color) || other.color == color));
   }
 
   @override
@@ -737,7 +737,7 @@ class _$ProductDataModelImpl extends _ProductDataModel {
         const DeepCollectionEquality().hash(_sectionCategoriesPath),
         const DeepCollectionEquality().hash(_productCategoriesPath),
         count,
-        const DeepCollectionEquality().hash(color)
+        color
       ]);
 
   @JsonKey(ignore: true)

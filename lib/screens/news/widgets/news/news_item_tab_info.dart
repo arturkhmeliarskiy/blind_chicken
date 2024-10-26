@@ -102,7 +102,30 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                       }),
                     ],
                   ),
-                if (widget.item.typeMedia == 'video' && widget.item.video.isNotEmpty)
+                if (widget.item.typeMedia == 'video' &&
+                    widget.item.video.isNotEmpty &&
+                    widget.item.typeVideo == 'original')
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      LayoutBuilder(builder: (context, constraints) {
+                        return CachedNetworkImage(
+                          imageUrl: widget.item.videoImage,
+                          width: constraints.maxWidth,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => const SizedBox(
+                            height: 250,
+                            child: LoadingImage(),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                if (widget.item.typeMedia == 'video' &&
+                    widget.item.video.isNotEmpty &&
+                    widget.item.typeVideo == 'youtube')
                   Column(
                     children: [
                       const SizedBox(

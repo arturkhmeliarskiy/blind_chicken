@@ -44,6 +44,9 @@ Future<void> initShared(GetIt getIt) async {
     )
     ..registerSingleton(
       FilterService(),
+    )
+    ..registerSingleton(
+      ImageService(),
     );
   await getIt.get<SharedPreferencesService>().initialize();
   await getIt.get<ProductsFavouritesService>().initFavouritesProductsHave();

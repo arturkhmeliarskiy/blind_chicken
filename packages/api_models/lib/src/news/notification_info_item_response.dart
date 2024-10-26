@@ -12,6 +12,8 @@ class NotificationInfoItemResponse with _$NotificationInfoItemResponse {
     @JsonKey(name: 'create_at') String? createAt,
     List<String>? images,
     String? video,
+    @JsonKey(name: 'type_video') String? typeVideo,
+    @JsonKey(name: 'video_image') String? videoImage,
     @JsonKey(name: 'type_media') String? typeMedia,
     String? description,
     @JsonKey(name: 'title_button') String? titleButton,

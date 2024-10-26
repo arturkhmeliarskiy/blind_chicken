@@ -15,6 +15,8 @@ _$NewsInfoItemResponseImpl _$$NewsInfoItemResponseImplFromJson(
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       video: json['video'] as String?,
+      typeVideo: json['type_video'] as String?,
+      videoImage: json['video_image'] as String?,
       announcement: json['announcement'] as String?,
       typeMedia: json['type_media'] as String?,
       description: json['description'] as String?,
@@ -37,6 +39,8 @@ Map<String, dynamic> _$$NewsInfoItemResponseImplToJson(
       'create_at': instance.createAt,
       'images': instance.images,
       'video': instance.video,
+      'type_video': instance.typeVideo,
+      'video_image': instance.videoImage,
       'announcement': instance.announcement,
       'type_media': instance.typeMedia,
       'description': instance.description,

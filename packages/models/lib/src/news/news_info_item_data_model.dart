@@ -21,6 +21,10 @@ class NewsInfoItemDataModel with _$NewsInfoItemDataModel {
     required String sort,
     required String filterSelect,
     required String uidStore,
+    required String typeVideo,
+    required String videoImage,
+    required double videoImageHeight,
+    required double videoImageWeight,
     required int numberViews,
     required bool isViewed,
   }) = _NewsInfoItemDataModel;

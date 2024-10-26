@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:video_player/video_player.dart';
 
@@ -6,9 +8,25 @@ class NewsVideoPlayer extends StatefulWidget {
   const NewsVideoPlayer({
     super.key,
     required this.url,
+    required this.image,
+    this.isProgressBar = true,
+    this.isPlayIcon = true,
+    this.isFullScreenVideo = false,
+    required this.onEnterFullScreen,
+    required this.onExitFullScreen,
+    this.videoImageHeight = 0.0,
+    this.videoImageWeight = 0.0,
   });
 
   final String url;
+  final String image;
+  final bool isProgressBar;
+  final bool isPlayIcon;
+  final bool isFullScreenVideo;
+  final double videoImageHeight;
+  final double videoImageWeight;
+  final VoidCallback onEnterFullScreen;
+  final VoidCallback onExitFullScreen;
 
   @override
   NewsVideoPlayerState createState() => NewsVideoPlayerState();
@@ -16,20 +34,25 @@ class NewsVideoPlayer extends StatefulWidget {
 
 class NewsVideoPlayerState extends State<NewsVideoPlayer> {
   late VideoPlayerController _controller;
+  bool _isPlayScreen = false;
+  bool _isFullScreenVideo = false;
+  bool _isPlay = false;
 
   @override
   void initState() {
     super.initState();
+    _isFullScreenVideo = widget.isFullScreenVideo;
     _controller = VideoPlayerController.networkUrl(
       Uri.parse(widget.url),
-      videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-    );
-
-    _controller.addListener(() {
-      setState(() {});
-    });
-    // _controller.setLooping(true);
-    _controller.initialize();
+    )..initialize().then((_) {
+        setState(() {
+          _isPlayScreen = true;
+          _isPlay = true;
+          _controller.play();
+          _controller.setLooping(true);
+        });
+      });
+    _controller.setLooping(true);
   }
 
   @override
@@ -40,116 +63,228 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: _controller.value.aspectRatio,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: <Widget>[
-          VideoPlayer(_controller),
-          _ControlsOverlay(controller: _controller),
-          VideoProgressIndicator(
-            _controller,
-            allowScrubbing: true,
-            colors: const VideoProgressColors(
-              playedColor: BlindChickenColors.activeBorderTextField,
-              backgroundColor: BlindChickenColors.backgroundColor,
-              bufferedColor: BlindChickenColors.backgroundColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ControlsOverlay extends StatelessWidget {
-  const _ControlsOverlay({required this.controller});
-
-  final VideoPlayerController controller;
-
-  @override
-  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Stack(
-      children: <Widget>[
-        AnimatedSwitcher(
-          duration: const Duration(milliseconds: 50),
-          reverseDuration: const Duration(milliseconds: 200),
-          child: controller.value.isPlaying
-              ? const SizedBox.shrink()
-              : const ColoredBox(
-                  color: Colors.black26,
-                  child: Center(
-                    child: Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                      size: 100.0,
-                      semanticLabel: 'Play',
-                    ),
+      alignment: Alignment.center,
+      children: [
+        _isPlayScreen
+            ? Center(
+                child: _controller.value.isInitialized
+                    ? Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              _isFullScreenVideo
+                                  ? VideoPlayer(
+                                      _controller,
+                                    )
+                                  : SizedBox(
+                                      height: widget.videoImageHeight *
+                                          (widget.videoImageHeight < widget.videoImageWeight
+                                              ? 0.25
+                                              : 0.35),
+                                      width: width,
+                                      child: VideoPlayer(
+                                        _controller,
+                                      ),
+                                    ),
+                              if (widget.isProgressBar)
+                                Container(
+                                  height: 42,
+                                  width: width,
+                                  margin: EdgeInsets.only(
+                                      bottom: _isFullScreenVideo
+                                          ? MediaQuery.of(context).orientation ==
+                                                  Orientation.portrait
+                                              ? 20
+                                              : 10
+                                          : 0),
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _isPlay = !_isPlay;
+                                            if (_isPlay) {
+                                              _controller.play();
+                                            } else {
+                                              _controller.pause();
+                                            }
+                                          });
+                                        },
+                                        child: SizedBox(
+                                          width: 56,
+                                          height: 42,
+                                          child: Icon(
+                                            _isPlay ? Icons.pause : Icons.play_arrow,
+                                            size: 30,
+                                            color: BlindChickenColors.backgroundColor,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: SizedBox(
+                                          height: 6,
+                                          child: VideoProgressIndicator(
+                                            _controller,
+                                            allowScrubbing: true,
+                                            padding: EdgeInsets.zero,
+                                            colors: const VideoProgressColors(
+                                              playedColor: BlindChickenColors.backgroundColor,
+                                              bufferedColor:
+                                                  BlindChickenColors.borderTextFieldSearch,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _isFullScreenVideo = !_isFullScreenVideo;
+                                            if (_isFullScreenVideo) {
+                                              if (widget.videoImageHeight <
+                                                  widget.videoImageWeight) {
+                                                SystemChrome.setPreferredOrientations(
+                                                    [DeviceOrientation.landscapeRight]);
+                                              }
+
+                                              widget.onEnterFullScreen();
+                                            } else {
+                                              SystemChrome.setPreferredOrientations(
+                                                  [DeviceOrientation.portraitUp]);
+
+                                              widget.onExitFullScreen();
+                                            }
+                                          });
+                                        },
+                                        child: SizedBox(
+                                          width: 48,
+                                          height: 42,
+                                          child: Icon(
+                                            _isFullScreenVideo
+                                                ? Icons.fullscreen_exit
+                                                : Icons.fullscreen,
+                                            size: 30,
+                                            color: BlindChickenColors.backgroundColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
+                          if (!_isPlay)
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _isPlay = !_isPlay;
+                                  if (_isPlay) {
+                                    _controller.play();
+                                  } else {
+                                    _controller.pause();
+                                  }
+                                });
+                              },
+                              child: Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                                ),
+                                child: const Icon(
+                                  Icons.play_arrow,
+                                  color: BlindChickenColors.backgroundColor,
+                                  size: 40,
+                                ),
+                              ),
+                            )
+                        ],
+                      )
+                    : SizedBox(
+                        height: _isFullScreenVideo
+                            ? height
+                            : widget.videoImageHeight *
+                                (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.35),
+                        child: Stack(
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: widget.image,
+                              width: MediaQuery.of(context).orientation == Orientation.portrait
+                                  ? width
+                                  : width,
+                              height: _isFullScreenVideo
+                                  ? height
+                                  : widget.videoImageHeight *
+                                      (widget.videoImageHeight < widget.videoImageWeight
+                                          ? 0.25
+                                          : 0.35),
+                              fit: BoxFit.cover,
+                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                            ),
+                            Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.black,
+                                backgroundColor: Colors.grey.shade400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+              )
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isPlayScreen = true;
+                    _isPlay = true;
+                    _controller.play();
+                  });
+                },
+                child: SizedBox(
+                  height: _isFullScreenVideo
+                      ? height
+                      : widget.videoImageHeight *
+                          (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.3),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      CachedNetworkImage(
+                        imageUrl: widget.image,
+                        width: MediaQuery.of(context).orientation == Orientation.portrait
+                            ? width
+                            : width,
+                        height: _isFullScreenVideo
+                            ? height
+                            : widget.videoImageHeight *
+                                (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.3),
+                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) => const Icon(Icons.error),
+                      ),
+                      if (widget.isPlayIcon)
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                          ),
+                          child: const Icon(
+                            Icons.play_arrow,
+                            color: BlindChickenColors.backgroundColor,
+                            size: 40,
+                          ),
+                        )
+                    ],
                   ),
                 ),
-        ),
-        GestureDetector(
-          onTap: () {
-            controller.value.isPlaying ? controller.pause() : controller.play();
-          },
-        ),
+              )
       ],
-    );
-  }
-}
-
-class _PlayerVideoAndPopPage extends StatefulWidget {
-  @override
-  _PlayerVideoAndPopPageState createState() => _PlayerVideoAndPopPageState();
-}
-
-class _PlayerVideoAndPopPageState extends State<_PlayerVideoAndPopPage> {
-  late VideoPlayerController _videoPlayerController;
-  bool startedPlaying = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _videoPlayerController = VideoPlayerController.asset('assets/Butterfly-209.mp4');
-    _videoPlayerController.addListener(() {
-      if (startedPlaying && !_videoPlayerController.value.isPlaying) {
-        Navigator.pop(context);
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-
-  Future<bool> started() async {
-    await _videoPlayerController.initialize();
-    await _videoPlayerController.play();
-    startedPlaying = true;
-    return true;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: Center(
-        child: FutureBuilder<bool>(
-          future: started(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.data ?? false) {
-              return AspectRatio(
-                aspectRatio: _videoPlayerController.value.aspectRatio,
-                child: VideoPlayer(_videoPlayerController),
-              );
-            } else {
-              return const Text('waiting for video to load');
-            }
-          },
-        ),
-      ),
     );
   }
 }

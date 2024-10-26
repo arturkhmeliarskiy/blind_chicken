@@ -31,6 +31,10 @@ mixin _$NewsInfoItemDataModel {
   String get sort => throw _privateConstructorUsedError;
   String get filterSelect => throw _privateConstructorUsedError;
   String get uidStore => throw _privateConstructorUsedError;
+  String get typeVideo => throw _privateConstructorUsedError;
+  String get videoImage => throw _privateConstructorUsedError;
+  double get videoImageHeight => throw _privateConstructorUsedError;
+  double get videoImageWeight => throw _privateConstructorUsedError;
   int get numberViews => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
@@ -61,6 +65,10 @@ abstract class $NewsInfoItemDataModelCopyWith<$Res> {
       String sort,
       String filterSelect,
       String uidStore,
+      String typeVideo,
+      String videoImage,
+      double videoImageHeight,
+      double videoImageWeight,
       int numberViews,
       bool isViewed});
 }
@@ -94,6 +102,10 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
     Object? sort = null,
     Object? filterSelect = null,
     Object? uidStore = null,
+    Object? typeVideo = null,
+    Object? videoImage = null,
+    Object? videoImageHeight = null,
+    Object? videoImageWeight = null,
     Object? numberViews = null,
     Object? isViewed = null,
   }) {
@@ -158,6 +170,22 @@ class _$NewsInfoItemDataModelCopyWithImpl<$Res,
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
               as String,
+      typeVideo: null == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImage: null == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImageHeight: null == videoImageHeight
+          ? _value.videoImageHeight
+          : videoImageHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      videoImageWeight: null == videoImageWeight
+          ? _value.videoImageWeight
+          : videoImageWeight // ignore: cast_nullable_to_non_nullable
+              as double,
       numberViews: null == numberViews
           ? _value.numberViews
           : numberViews // ignore: cast_nullable_to_non_nullable
@@ -195,6 +223,10 @@ abstract class _$$NewsInfoItemDataModelImplCopyWith<$Res>
       String sort,
       String filterSelect,
       String uidStore,
+      String typeVideo,
+      String videoImage,
+      double videoImageHeight,
+      double videoImageWeight,
       int numberViews,
       bool isViewed});
 }
@@ -226,6 +258,10 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
     Object? sort = null,
     Object? filterSelect = null,
     Object? uidStore = null,
+    Object? typeVideo = null,
+    Object? videoImage = null,
+    Object? videoImageHeight = null,
+    Object? videoImageWeight = null,
     Object? numberViews = null,
     Object? isViewed = null,
   }) {
@@ -290,6 +326,22 @@ class __$$NewsInfoItemDataModelImplCopyWithImpl<$Res>
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
               as String,
+      typeVideo: null == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImage: null == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoImageHeight: null == videoImageHeight
+          ? _value.videoImageHeight
+          : videoImageHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      videoImageWeight: null == videoImageWeight
+          ? _value.videoImageWeight
+          : videoImageWeight // ignore: cast_nullable_to_non_nullable
+              as double,
       numberViews: null == numberViews
           ? _value.numberViews
           : numberViews // ignore: cast_nullable_to_non_nullable
@@ -321,6 +373,10 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
       required this.sort,
       required this.filterSelect,
       required this.uidStore,
+      required this.typeVideo,
+      required this.videoImage,
+      required this.videoImageHeight,
+      required this.videoImageWeight,
       required this.numberViews,
       required this.isViewed})
       : _images = images,
@@ -363,13 +419,21 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
   @override
   final String uidStore;
   @override
+  final String typeVideo;
+  @override
+  final String videoImage;
+  @override
+  final double videoImageHeight;
+  @override
+  final double videoImageWeight;
+  @override
   final int numberViews;
   @override
   final bool isViewed;
 
   @override
   String toString() {
-    return 'NewsInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'NewsInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, announcement: $announcement, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, typeVideo: $typeVideo, videoImage: $videoImage, videoImageHeight: $videoImageHeight, videoImageWeight: $videoImageWeight, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -400,6 +464,14 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
                 other.filterSelect == filterSelect) &&
             (identical(other.uidStore, uidStore) ||
                 other.uidStore == uidStore) &&
+            (identical(other.typeVideo, typeVideo) ||
+                other.typeVideo == typeVideo) &&
+            (identical(other.videoImage, videoImage) ||
+                other.videoImage == videoImage) &&
+            (identical(other.videoImageHeight, videoImageHeight) ||
+                other.videoImageHeight == videoImageHeight) &&
+            (identical(other.videoImageWeight, videoImageWeight) ||
+                other.videoImageWeight == videoImageWeight) &&
             (identical(other.numberViews, numberViews) ||
                 other.numberViews == numberViews) &&
             (identical(other.isViewed, isViewed) ||
@@ -407,25 +479,30 @@ class _$NewsInfoItemDataModelImpl extends _NewsInfoItemDataModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      createAt,
-      const DeepCollectionEquality().hash(_images),
-      video,
-      announcement,
-      typeMedia,
-      description,
-      titleButton,
-      typePath,
-      path,
-      code,
-      sort,
-      filterSelect,
-      uidStore,
-      numberViews,
-      isViewed);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        title,
+        createAt,
+        const DeepCollectionEquality().hash(_images),
+        video,
+        announcement,
+        typeMedia,
+        description,
+        titleButton,
+        typePath,
+        path,
+        code,
+        sort,
+        filterSelect,
+        uidStore,
+        typeVideo,
+        videoImage,
+        videoImageHeight,
+        videoImageWeight,
+        numberViews,
+        isViewed
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -452,6 +529,10 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
       required final String sort,
       required final String filterSelect,
       required final String uidStore,
+      required final String typeVideo,
+      required final String videoImage,
+      required final double videoImageHeight,
+      required final double videoImageWeight,
       required final int numberViews,
       required final bool isViewed}) = _$NewsInfoItemDataModelImpl;
   _NewsInfoItemDataModel._() : super._();
@@ -486,6 +567,14 @@ abstract class _NewsInfoItemDataModel extends NewsInfoItemDataModel {
   String get filterSelect;
   @override
   String get uidStore;
+  @override
+  String get typeVideo;
+  @override
+  String get videoImage;
+  @override
+  double get videoImageHeight;
+  @override
+  double get videoImageWeight;
   @override
   int get numberViews;
   @override

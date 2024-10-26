@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:models/models.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:repositories/repositories.dart';
+import 'package:shared/shared.dart';
 
 part 'news_bloc.freezed.dart';
 part 'news_event.dart';
@@ -13,6 +14,7 @@ part 'news_state.dart';
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final NewsRepository _newsRepository;
   final StoreVersionAppRepository _storeVersionAppRepository;
+  final ImageService _imageService;
   NewsInfoDataModel _news =
       NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
   MediaInfoDataModel _media =
@@ -23,6 +25,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   NewsBloc(
     this._newsRepository,
     this._storeVersionAppRepository,
+    this._imageService,
   ) : super(const NewsState.init()) {
     on<NewsEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -65,6 +68,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<NewsInfoItemDataModel> listNews = [];
       if (initState.isError ?? false) {
         emit(initState.copyWith(
           isLoadErrorButton: true,
@@ -79,11 +83,25 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         listNewsPath.add('0');
       }
 
+      for (int i = 0; i < news.list.length; i++) {
+        double videoImageHeight = 0.0;
+        double videoImageWeight = 0.0;
+        if (news.list[i].videoImage.isNotEmpty) {
+          final imageInfo = await _imageService.getImageUrlInfo(news.list[i].videoImage);
+          videoImageHeight = imageInfo.image.height.toDouble();
+          videoImageWeight = imageInfo.image.width.toDouble();
+        }
+
+        listNews.add(news.list[i].copyWith(
+          videoImageHeight: videoImageHeight,
+          videoImageWeight: videoImageWeight,
+        ));
+      }
       _news = NewsInfoDataModel(
         e: news.e,
         r: news.r,
         errorMessage: news.errorMessage,
-        list: news.list,
+        list: listNews,
         isViewed: news.isViewed,
       );
 

@@ -69,15 +69,21 @@ extension on NewsInfoResponse {
       e: e ?? '',
       errorMessage: errorMessage ?? '',
       list: List<NewsInfoItemDataModel>.from(
-        list?.map(
-              (item) => NewsInfoItemDataModel(
+        list?.map((item) {
+              final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
+
+              return NewsInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
                 images: item.images?.isNotEmpty ?? false
                     ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
                     : [],
-                video: item.video ?? '',
+                video: (item.typeVideo ?? '') == 'original'
+                    ? "https://slepayakurica.ru${item.video ?? ''}"
+                    : item.video ?? '',
+                typeVideo: item.typeVideo ?? '',
+                videoImage: item.videoImage?.isNotEmpty ?? false ? videoImage : '',
                 announcement: item.announcement ?? '',
                 typeMedia: item.typeMedia ?? '',
                 description: item.description ?? '',
@@ -90,8 +96,10 @@ extension on NewsInfoResponse {
                 uidStore: item.uidStore ?? '',
                 numberViews: item.numberViews ?? 0,
                 isViewed: item.isViewed ?? false,
-              ),
-            ) ??
+                videoImageHeight: 0,
+                videoImageWeight: 0,
+              );
+            }) ??
             [],
       ),
       isViewed: isViewed ?? false,
@@ -106,15 +114,20 @@ extension on MediaInfoResponse {
       e: e ?? '',
       errorMessage: errorMessage ?? '',
       list: List<MediaInfoItemDataModel>.from(
-        list?.map(
-              (item) => MediaInfoItemDataModel(
+        list?.map((item) {
+              final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
+              return MediaInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
                 images: item.images?.isNotEmpty ?? false
                     ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
                     : [],
-                video: item.video ?? '',
+                video: (item.typeVideo ?? '') == 'original'
+                    ? "https://slepayakurica.ru${item.video ?? ''}"
+                    : item.video ?? '',
+                typeVideo: item.typeVideo ?? '',
+                videoImage: item.videoImage?.isNotEmpty ?? false ? videoImage : '',
                 typeMedia: item.typeMedia ?? '',
                 description: item.description ?? '',
                 titleButton: item.titleButton ?? '',
@@ -126,8 +139,8 @@ extension on MediaInfoResponse {
                 uidStore: item.uidStore ?? '',
                 numberViews: item.numberViews ?? 0,
                 isViewed: item.isViewed ?? false,
-              ),
-            ) ??
+              );
+            }) ??
             [],
       ),
       isViewed: isViewed ?? false,
@@ -142,15 +155,20 @@ extension on NotificationInfoResponse {
       e: e ?? '',
       errorMessage: errorMessage ?? '',
       list: List<NotificationInfoItemDataModel>.from(
-        list?.map(
-              (item) => NotificationInfoItemDataModel(
+        list?.map((item) {
+              final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
+              return NotificationInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
                 images: item.images?.isNotEmpty ?? false
                     ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
                     : [],
-                video: item.video ?? '',
+                video: (item.typeVideo ?? '') == 'original'
+                    ? "https://slepayakurica.ru${item.video ?? ''}"
+                    : item.video ?? '',
+                typeVideo: item.typeVideo ?? '',
+                videoImage: item.videoImage?.isNotEmpty ?? false ? videoImage : '',
                 typeMedia: item.typeMedia ?? '',
                 description: item.description ?? '',
                 titleButton: item.titleButton ?? '',
@@ -161,8 +179,8 @@ extension on NotificationInfoResponse {
                 filterSelect: item.filterSelect ?? '',
                 uidStore: item.uidStore ?? '',
                 isViewed: item.isViewed ?? false,
-              ),
-            ) ??
+              );
+            }) ??
             [],
       ),
       isViewed: isViewed ?? false,
@@ -172,6 +190,8 @@ extension on NotificationInfoResponse {
 
 extension on OneNewsInfoResponse {
   OneNewsInfoDataModel toOneNews() {
+    final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
+
     return OneNewsInfoDataModel(
       r: r ?? '',
       e: e ?? '',
@@ -183,7 +203,11 @@ extension on OneNewsInfoResponse {
         images: data?.images?.isNotEmpty ?? false
             ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
             : [],
-        video: data?.video ?? '',
+        video: (data?.typeVideo ?? '') == 'original'
+            ? "https://slepayakurica.ru${data?.video ?? ''}"
+            : data?.video ?? '',
+        typeVideo: data?.typeVideo ?? '',
+        videoImage: data?.videoImage?.isNotEmpty ?? false ? videoImage : '',
         announcement: data?.announcement ?? '',
         typeMedia: data?.typeMedia ?? '',
         description: data?.description ?? '',
@@ -196,6 +220,8 @@ extension on OneNewsInfoResponse {
         uidStore: data?.uidStore ?? '',
         numberViews: data?.numberViews ?? 0,
         isViewed: data?.isViewed ?? false,
+        videoImageHeight: 0,
+        videoImageWeight: 0,
       ),
       isViewed: isViewed ?? false,
     );
@@ -204,6 +230,7 @@ extension on OneNewsInfoResponse {
 
 extension on OneMediaInfoResponse {
   OneMediaInfoDataModel toOneMedia() {
+    final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
     return OneMediaInfoDataModel(
       r: r ?? '',
       e: e ?? '',
@@ -215,7 +242,11 @@ extension on OneMediaInfoResponse {
         images: data?.images?.isNotEmpty ?? false
             ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
             : [],
-        video: data?.video ?? '',
+        video: (data?.typeVideo ?? '') == 'original'
+            ? "https://slepayakurica.ru${data?.video ?? ''}"
+            : data?.video ?? '',
+        typeVideo: data?.typeVideo ?? '',
+        videoImage: data?.videoImage?.isNotEmpty ?? false ? videoImage : '',
         typeMedia: data?.typeMedia ?? '',
         description: data?.description ?? '',
         titleButton: data?.titleButton ?? '',
@@ -235,6 +266,7 @@ extension on OneMediaInfoResponse {
 
 extension on OneNotificationInfoResponse {
   OneNotificationInfoDataModel toOneNotification() {
+    final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
     return OneNotificationInfoDataModel(
       r: r ?? '',
       e: e ?? '',
@@ -246,7 +278,11 @@ extension on OneNotificationInfoResponse {
         images: data?.images?.isNotEmpty ?? false
             ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
             : [],
-        video: data?.video ?? '',
+        video: (data?.typeVideo ?? '') == 'original'
+            ? "https://slepayakurica.ru${data?.video ?? ''}"
+            : data?.video ?? '',
+        typeVideo: data?.typeVideo ?? '',
+        videoImage: data?.videoImage?.isNotEmpty ?? false ? videoImage : '',
         typeMedia: data?.typeMedia ?? '',
         description: data?.description ?? '',
         titleButton: data?.titleButton ?? '',

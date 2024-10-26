@@ -36,6 +36,7 @@ class NewsService {
           "hash_token": hashToken,
           "innerlink": 1,
           "show": 1,
+          "video_original": 1,
         },
       );
       try {
@@ -139,6 +140,9 @@ class NewsService {
         data: {
           "token": token,
           "hash_token": hashToken,
+          "innerlink": 1,
+          "show": 1,
+          "video_original": 1,
         },
       );
 
@@ -251,6 +255,9 @@ class NewsService {
           "hash_token": hashToken,
           "tel": tel,
           "hash_token_tel": hashTokenTel,
+          "innerlink": 1,
+          "show": 1,
+          "video_original": 1,
         },
       );
       try {

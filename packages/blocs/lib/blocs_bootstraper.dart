@@ -111,6 +111,7 @@ Future<void> initBloc(GetIt getIt) async {
       () => NewsBloc(
         getIt.get<NewsRepository>(),
         getIt.get<StoreVersionAppRepository>(),
+        getIt.get<ImageService>(),
       ),
     )
     ..registerFactory(

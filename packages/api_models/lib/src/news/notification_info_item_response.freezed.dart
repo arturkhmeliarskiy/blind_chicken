@@ -27,6 +27,10 @@ mixin _$NotificationInfoItemResponse {
   String? get createAt => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
   String? get video => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type_video')
+  String? get typeVideo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'video_image')
+  String? get videoImage => throw _privateConstructorUsedError;
   @JsonKey(name: 'type_media')
   String? get typeMedia => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -65,6 +69,8 @@ abstract class $NotificationInfoItemResponseCopyWith<$Res> {
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
       String? video,
+      @JsonKey(name: 'type_video') String? typeVideo,
+      @JsonKey(name: 'video_image') String? videoImage,
       @JsonKey(name: 'type_media') String? typeMedia,
       String? description,
       @JsonKey(name: 'title_button') String? titleButton,
@@ -96,6 +102,8 @@ class _$NotificationInfoItemResponseCopyWithImpl<$Res,
     Object? createAt = freezed,
     Object? images = freezed,
     Object? video = freezed,
+    Object? typeVideo = freezed,
+    Object? videoImage = freezed,
     Object? typeMedia = freezed,
     Object? description = freezed,
     Object? titleButton = freezed,
@@ -127,6 +135,14 @@ class _$NotificationInfoItemResponseCopyWithImpl<$Res,
       video: freezed == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeVideo: freezed == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoImage: freezed == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
               as String?,
       typeMedia: freezed == typeMedia
           ? _value.typeMedia
@@ -187,6 +203,8 @@ abstract class _$$NotificationInfoItemResponseImplCopyWith<$Res>
       @JsonKey(name: 'create_at') String? createAt,
       List<String>? images,
       String? video,
+      @JsonKey(name: 'type_video') String? typeVideo,
+      @JsonKey(name: 'video_image') String? videoImage,
       @JsonKey(name: 'type_media') String? typeMedia,
       String? description,
       @JsonKey(name: 'title_button') String? titleButton,
@@ -217,6 +235,8 @@ class __$$NotificationInfoItemResponseImplCopyWithImpl<$Res>
     Object? createAt = freezed,
     Object? images = freezed,
     Object? video = freezed,
+    Object? typeVideo = freezed,
+    Object? videoImage = freezed,
     Object? typeMedia = freezed,
     Object? description = freezed,
     Object? titleButton = freezed,
@@ -248,6 +268,14 @@ class __$$NotificationInfoItemResponseImplCopyWithImpl<$Res>
       video: freezed == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeVideo: freezed == typeVideo
+          ? _value.typeVideo
+          : typeVideo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      videoImage: freezed == videoImage
+          ? _value.videoImage
+          : videoImage // ignore: cast_nullable_to_non_nullable
               as String?,
       typeMedia: freezed == typeMedia
           ? _value.typeMedia
@@ -302,6 +330,8 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
       @JsonKey(name: 'create_at') this.createAt,
       final List<String>? images,
       this.video,
+      @JsonKey(name: 'type_video') this.typeVideo,
+      @JsonKey(name: 'video_image') this.videoImage,
       @JsonKey(name: 'type_media') this.typeMedia,
       this.description,
       @JsonKey(name: 'title_button') this.titleButton,
@@ -339,6 +369,12 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
   @override
   final String? video;
   @override
+  @JsonKey(name: 'type_video')
+  final String? typeVideo;
+  @override
+  @JsonKey(name: 'video_image')
+  final String? videoImage;
+  @override
   @JsonKey(name: 'type_media')
   final String? typeMedia;
   @override
@@ -368,7 +404,7 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
 
   @override
   String toString() {
-    return 'NotificationInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, isViewed: $isViewed)';
+    return 'NotificationInfoItemResponse(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, isViewed: $isViewed)';
   }
 
   @override
@@ -382,6 +418,10 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
                 other.createAt == createAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.video, video) || other.video == video) &&
+            (identical(other.typeVideo, typeVideo) ||
+                other.typeVideo == typeVideo) &&
+            (identical(other.videoImage, videoImage) ||
+                other.videoImage == videoImage) &&
             (identical(other.typeMedia, typeMedia) ||
                 other.typeMedia == typeMedia) &&
             (identical(other.description, description) ||
@@ -410,6 +450,8 @@ class _$NotificationInfoItemResponseImpl extends _NotificationInfoItemResponse {
       createAt,
       const DeepCollectionEquality().hash(_images),
       video,
+      typeVideo,
+      videoImage,
       typeMedia,
       description,
       titleButton,
@@ -445,6 +487,8 @@ abstract class _NotificationInfoItemResponse
           @JsonKey(name: 'create_at') final String? createAt,
           final List<String>? images,
           final String? video,
+          @JsonKey(name: 'type_video') final String? typeVideo,
+          @JsonKey(name: 'video_image') final String? videoImage,
           @JsonKey(name: 'type_media') final String? typeMedia,
           final String? description,
           @JsonKey(name: 'title_button') final String? titleButton,
@@ -472,6 +516,12 @@ abstract class _NotificationInfoItemResponse
   List<String>? get images;
   @override
   String? get video;
+  @override
+  @JsonKey(name: 'type_video')
+  String? get typeVideo;
+  @override
+  @JsonKey(name: 'video_image')
+  String? get videoImage;
   @override
   @JsonKey(name: 'type_media')
   String? get typeMedia;
