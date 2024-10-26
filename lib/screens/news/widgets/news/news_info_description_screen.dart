@@ -30,6 +30,7 @@ class NewsInfoDescriptionScreen extends StatefulWidget {
 
 class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
   bool _isFullScreenVideo = false;
+  double _aspectRatio = 0.0;
   bool _isSwipe = true;
 
   @override
@@ -178,7 +179,6 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                               ],
                             ),
                           if (widget.info.typeMedia == 'video' &&
-                              widget.info.video.isNotEmpty &&
                               widget.info.typeVideo == 'youtube')
                             Column(
                               children: [
@@ -197,7 +197,6 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                               ],
                             ),
                           if (widget.info.typeMedia == 'video' &&
-                              widget.info.video.isNotEmpty &&
                               widget.info.typeVideo == 'original')
                             Column(
                               children: [
@@ -210,9 +209,10 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                   isFullScreenVideo: _isFullScreenVideo,
                                   videoImageHeight: widget.info.videoImageHeight,
                                   videoImageWeight: widget.info.videoImageWeight,
-                                  onEnterFullScreen: () {
+                                  onEnterFullScreen: (aspectRatio) {
                                     setState(() {
                                       _isFullScreenVideo = true;
+                                      _aspectRatio = aspectRatio;
                                     });
                                   },
                                   onExitFullScreen: () {},
@@ -379,16 +379,20 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
             ),
           )
         : widget.info.typeVideo == 'original'
-            ? NewsVideoPlayer(
-                url: widget.info.video,
-                image: widget.info.videoImage,
-                isFullScreenVideo: _isFullScreenVideo,
-                onEnterFullScreen: () {},
-                onExitFullScreen: () {
-                  setState(() {
-                    _isFullScreenVideo = false;
-                  });
-                },
+            ? Scaffold(
+                backgroundColor: BlindChickenColors.backgroundColor,
+                body: NewsVideoPlayer(
+                  url: widget.info.video,
+                  image: widget.info.videoImage,
+                  isFullScreenVideo: _isFullScreenVideo,
+                  onEnterFullScreen: (aspectRatio) {},
+                  aspectRatio: _aspectRatio,
+                  onExitFullScreen: () {
+                    setState(() {
+                      _isFullScreenVideo = false;
+                    });
+                  },
+                ),
               )
             : NewsYouTubeVideoPlayer(
                 url: widget.info.video,

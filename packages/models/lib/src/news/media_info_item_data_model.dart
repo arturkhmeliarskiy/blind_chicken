@@ -22,6 +22,8 @@ class MediaInfoItemDataModel with _$MediaInfoItemDataModel {
     required String sort,
     required String filterSelect,
     required String uidStore,
+    required double videoImageHeight,
+    required double videoImageWeight,
     required int numberViews,
     required bool isViewed,
   }) = _MediaInfoItemDataModel;

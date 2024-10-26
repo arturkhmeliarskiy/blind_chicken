@@ -32,6 +32,8 @@ mixin _$NotificationInfoItemDataModel {
   String get sort => throw _privateConstructorUsedError;
   String get filterSelect => throw _privateConstructorUsedError;
   String get uidStore => throw _privateConstructorUsedError;
+  double get videoImageHeight => throw _privateConstructorUsedError;
+  double get videoImageWeight => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -64,6 +66,8 @@ abstract class $NotificationInfoItemDataModelCopyWith<$Res> {
       String sort,
       String filterSelect,
       String uidStore,
+      double videoImageHeight,
+      double videoImageWeight,
       bool isViewed});
 }
 
@@ -97,6 +101,8 @@ class _$NotificationInfoItemDataModelCopyWithImpl<$Res,
     Object? sort = null,
     Object? filterSelect = null,
     Object? uidStore = null,
+    Object? videoImageHeight = null,
+    Object? videoImageWeight = null,
     Object? isViewed = null,
   }) {
     return _then(_value.copyWith(
@@ -164,6 +170,14 @@ class _$NotificationInfoItemDataModelCopyWithImpl<$Res,
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
               as String,
+      videoImageHeight: null == videoImageHeight
+          ? _value.videoImageHeight
+          : videoImageHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      videoImageWeight: null == videoImageWeight
+          ? _value.videoImageWeight
+          : videoImageWeight // ignore: cast_nullable_to_non_nullable
+              as double,
       isViewed: null == isViewed
           ? _value.isViewed
           : isViewed // ignore: cast_nullable_to_non_nullable
@@ -198,6 +212,8 @@ abstract class _$$NotificationInfoItemDataModelImplCopyWith<$Res>
       String sort,
       String filterSelect,
       String uidStore,
+      double videoImageHeight,
+      double videoImageWeight,
       bool isViewed});
 }
 
@@ -230,6 +246,8 @@ class __$$NotificationInfoItemDataModelImplCopyWithImpl<$Res>
     Object? sort = null,
     Object? filterSelect = null,
     Object? uidStore = null,
+    Object? videoImageHeight = null,
+    Object? videoImageWeight = null,
     Object? isViewed = null,
   }) {
     return _then(_$NotificationInfoItemDataModelImpl(
@@ -297,6 +315,14 @@ class __$$NotificationInfoItemDataModelImplCopyWithImpl<$Res>
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
               as String,
+      videoImageHeight: null == videoImageHeight
+          ? _value.videoImageHeight
+          : videoImageHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      videoImageWeight: null == videoImageWeight
+          ? _value.videoImageWeight
+          : videoImageWeight // ignore: cast_nullable_to_non_nullable
+              as double,
       isViewed: null == isViewed
           ? _value.isViewed
           : isViewed // ignore: cast_nullable_to_non_nullable
@@ -326,6 +352,8 @@ class _$NotificationInfoItemDataModelImpl
       required this.sort,
       required this.filterSelect,
       required this.uidStore,
+      required this.videoImageHeight,
+      required this.videoImageWeight,
       required this.isViewed})
       : _images = images,
         super._();
@@ -369,11 +397,15 @@ class _$NotificationInfoItemDataModelImpl
   @override
   final String uidStore;
   @override
+  final double videoImageHeight;
+  @override
+  final double videoImageWeight;
+  @override
   final bool isViewed;
 
   @override
   String toString() {
-    return 'NotificationInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, isViewed: $isViewed)';
+    return 'NotificationInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, videoImageHeight: $videoImageHeight, videoImageWeight: $videoImageWeight, isViewed: $isViewed)';
   }
 
   @override
@@ -406,30 +438,37 @@ class _$NotificationInfoItemDataModelImpl
                 other.filterSelect == filterSelect) &&
             (identical(other.uidStore, uidStore) ||
                 other.uidStore == uidStore) &&
+            (identical(other.videoImageHeight, videoImageHeight) ||
+                other.videoImageHeight == videoImageHeight) &&
+            (identical(other.videoImageWeight, videoImageWeight) ||
+                other.videoImageWeight == videoImageWeight) &&
             (identical(other.isViewed, isViewed) ||
                 other.isViewed == isViewed));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      createAt,
-      const DeepCollectionEquality().hash(_images),
-      video,
-      typeVideo,
-      videoImage,
-      typeMedia,
-      description,
-      titleButton,
-      typePath,
-      path,
-      code,
-      sort,
-      filterSelect,
-      uidStore,
-      isViewed);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        title,
+        createAt,
+        const DeepCollectionEquality().hash(_images),
+        video,
+        typeVideo,
+        videoImage,
+        typeMedia,
+        description,
+        titleButton,
+        typePath,
+        path,
+        code,
+        sort,
+        filterSelect,
+        uidStore,
+        videoImageHeight,
+        videoImageWeight,
+        isViewed
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -459,6 +498,8 @@ abstract class _NotificationInfoItemDataModel
       required final String sort,
       required final String filterSelect,
       required final String uidStore,
+      required final double videoImageHeight,
+      required final double videoImageWeight,
       required final bool isViewed}) = _$NotificationInfoItemDataModelImpl;
   _NotificationInfoItemDataModel._() : super._();
 
@@ -494,6 +535,10 @@ abstract class _NotificationInfoItemDataModel
   String get filterSelect;
   @override
   String get uidStore;
+  @override
+  double get videoImageHeight;
+  @override
+  double get videoImageWeight;
   @override
   bool get isViewed;
   @override

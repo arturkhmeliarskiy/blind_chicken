@@ -124,6 +124,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<MediaInfoItemDataModel> listMedia = [];
       if (initState.isError ?? false) {
         emit(initState.copyWith(
           isLoadErrorButton: true,
@@ -137,11 +138,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         listNewsPath.add('1');
       }
 
+      for (int i = 0; i < media.list.length; i++) {
+        double videoImageHeight = 0.0;
+        double videoImageWeight = 0.0;
+        if (media.list[i].videoImage.isNotEmpty) {
+          final imageInfo = await _imageService.getImageUrlInfo(media.list[i].videoImage);
+          videoImageHeight = imageInfo.image.height.toDouble();
+          videoImageWeight = imageInfo.image.width.toDouble();
+        }
+
+        listMedia.add(media.list[i].copyWith(
+          videoImageHeight: videoImageHeight,
+          videoImageWeight: videoImageWeight,
+        ));
+      }
+
       _media = MediaInfoDataModel(
         e: media.e,
         r: media.r,
         errorMessage: media.errorMessage,
-        list: media.list,
+        list: listMedia,
         isViewed: media.isViewed,
       );
 
@@ -164,6 +180,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     Emitter<NewsState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
+      List<NotificationInfoItemDataModel> listNotifications = [];
       if (initState.isError ?? false) {
         emit(initState.copyWith(
           isLoadErrorButton: true,
@@ -177,11 +194,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         listNewsPath.add('2');
       }
 
+      for (int i = 0; i < notificatios.list.length; i++) {
+        double videoImageHeight = 0.0;
+        double videoImageWeight = 0.0;
+        if (notificatios.list[i].videoImage.isNotEmpty) {
+          final imageInfo = await _imageService.getImageUrlInfo(notificatios.list[i].videoImage);
+          videoImageHeight = imageInfo.image.height.toDouble();
+          videoImageWeight = imageInfo.image.width.toDouble();
+        }
+
+        listNotifications.add(notificatios.list[i].copyWith(
+          videoImageHeight: videoImageHeight,
+          videoImageWeight: videoImageWeight,
+        ));
+      }
+
       _notificatios = NotificationInfoDataModel(
         e: notificatios.e,
         r: notificatios.r,
         errorMessage: notificatios.errorMessage,
-        list: notificatios.list,
+        list: listNotifications,
         isViewed: notificatios.isViewed,
       );
 
@@ -205,16 +237,33 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       int offsetNews = initState.offsetNews + 1;
-
+      List<NewsInfoItemDataModel> listNews = [];
       NewsInfoDataModel news = await _newsRepository.getNews(page: offsetNews);
 
+      for (int i = 0; i < news.list.length; i++) {
+        double videoImageHeight = 0.0;
+        double videoImageWeight = 0.0;
+        if (news.list[i].videoImage.isNotEmpty) {
+          final imageInfo = await _imageService.getImageUrlInfo(news.list[i].videoImage);
+          videoImageHeight = imageInfo.image.height.toDouble();
+          videoImageWeight = imageInfo.image.width.toDouble();
+        }
+
+        listNews.add(news.list[i].copyWith(
+          videoImageHeight: videoImageHeight,
+          videoImageWeight: videoImageWeight,
+        ));
+      }
+
+      _news = initState.news.copyWith(
+        list: [
+          ...initState.news.list,
+          ...listNews,
+        ],
+      );
+
       emit(initState.copyWith(
-        news: initState.news.copyWith(
-          list: [
-            ...initState.news.list,
-            ...news.list,
-          ],
-        ),
+        news: _news,
         offsetNews: offsetNews,
       ));
     });
@@ -226,16 +275,33 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       int offsetMedia = initState.offsetMedia + 1;
-
+      List<MediaInfoItemDataModel> listMedia = [];
       MediaInfoDataModel media = await _newsRepository.getMedia(page: offsetMedia);
 
+      for (int i = 0; i < media.list.length; i++) {
+        double videoImageHeight = 0.0;
+        double videoImageWeight = 0.0;
+        if (media.list[i].videoImage.isNotEmpty) {
+          final imageInfo = await _imageService.getImageUrlInfo(media.list[i].videoImage);
+          videoImageHeight = imageInfo.image.height.toDouble();
+          videoImageWeight = imageInfo.image.width.toDouble();
+        }
+
+        listMedia.add(media.list[i].copyWith(
+          videoImageHeight: videoImageHeight,
+          videoImageWeight: videoImageWeight,
+        ));
+      }
+
+      _media = initState.media.copyWith(
+        list: [
+          ...initState.media.list,
+          ...listMedia,
+        ],
+      );
+
       emit(initState.copyWith(
-        media: initState.media.copyWith(
-          list: [
-            ...initState.media.list,
-            ...media.list,
-          ],
-        ),
+        media: _media,
         offsetMedia: offsetMedia,
       ));
     });
@@ -247,17 +313,34 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       int offsetNotificatios = initState.offsetNotificatios + 1;
-
+      List<NotificationInfoItemDataModel> listNotifications = [];
       NotificationInfoDataModel notificatios =
           await _newsRepository.getNotifications(page: offsetNotificatios);
 
+      for (int i = 0; i < notificatios.list.length; i++) {
+        double videoImageHeight = 0.0;
+        double videoImageWeight = 0.0;
+        if (notificatios.list[i].videoImage.isNotEmpty) {
+          final imageInfo = await _imageService.getImageUrlInfo(notificatios.list[i].videoImage);
+          videoImageHeight = imageInfo.image.height.toDouble();
+          videoImageWeight = imageInfo.image.width.toDouble();
+        }
+
+        listNotifications.add(notificatios.list[i].copyWith(
+          videoImageHeight: videoImageHeight,
+          videoImageWeight: videoImageWeight,
+        ));
+      }
+
+      _notificatios = initState.notificatios.copyWith(
+        list: [
+          ...initState.notificatios.list,
+          ...listNotifications,
+        ],
+      );
+
       emit(initState.copyWith(
-        notificatios: initState.notificatios.copyWith(
-          list: [
-            ...initState.notificatios.list,
-            ...notificatios.list,
-          ],
-        ),
+        notificatios: _notificatios,
         offsetNotificatios: offsetNotificatios,
       ));
     });
@@ -276,9 +359,28 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
-    final oneNews = await _newsRepository.getOneNews(
+    OneNewsInfoDataModel oneNews = await _newsRepository.getOneNews(
       id: event.id,
       messageId: event.messageId,
+    );
+
+    double videoImageHeight = 0.0;
+    double videoImageWeight = 0.0;
+    if (oneNews.data.videoImage.isNotEmpty) {
+      final imageInfo = await _imageService.getImageUrlInfo(oneNews.data.videoImage);
+      videoImageHeight = imageInfo.image.height.toDouble();
+      videoImageWeight = imageInfo.image.width.toDouble();
+    }
+
+    oneNews = OneNewsInfoDataModel(
+      r: oneNews.r,
+      e: oneNews.e,
+      errorMessage: oneNews.errorMessage,
+      data: oneNews.data.copyWith(
+        videoImageHeight: videoImageHeight,
+        videoImageWeight: videoImageWeight,
+      ),
+      isViewed: oneNews.isViewed,
     );
 
     final result = await _storeVersionAppRepository.getStoreVersion();
@@ -332,9 +434,28 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
-    final oneMedia = await _newsRepository.getOneMedia(
+    OneMediaInfoDataModel oneMedia = await _newsRepository.getOneMedia(
       id: event.id,
       messageId: event.messageId,
+    );
+
+    double videoImageHeight = 0.0;
+    double videoImageWeight = 0.0;
+    if (oneMedia.data.videoImage.isNotEmpty) {
+      final imageInfo = await _imageService.getImageUrlInfo(oneMedia.data.videoImage);
+      videoImageHeight = imageInfo.image.height.toDouble();
+      videoImageWeight = imageInfo.image.width.toDouble();
+    }
+
+    oneMedia = OneMediaInfoDataModel(
+      r: oneMedia.r,
+      e: oneMedia.e,
+      errorMessage: oneMedia.errorMessage,
+      data: oneMedia.data.copyWith(
+        videoImageHeight: videoImageHeight,
+        videoImageWeight: videoImageWeight,
+      ),
+      isViewed: oneMedia.isViewed,
     );
 
     final result = await _storeVersionAppRepository.getStoreVersion();
@@ -388,9 +509,27 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
 
-    final oneNotifcation = await _newsRepository.getOneNotifcation(
+    OneNotificationInfoDataModel oneNotifcation = await _newsRepository.getOneNotifcation(
       id: event.id,
       messageId: event.messageId,
+    );
+
+    double videoImageHeight = 0.0;
+    double videoImageWeight = 0.0;
+    if (oneNotifcation.data.videoImage.isNotEmpty) {
+      final imageInfo = await _imageService.getImageUrlInfo(oneNotifcation.data.videoImage);
+      videoImageHeight = imageInfo.image.height.toDouble();
+      videoImageWeight = imageInfo.image.width.toDouble();
+    }
+
+    oneNotifcation = OneNotificationInfoDataModel(
+      r: oneNotifcation.r,
+      e: oneNotifcation.e,
+      errorMessage: oneNotifcation.errorMessage,
+      data: oneNotifcation.data.copyWith(
+        videoImageHeight: videoImageHeight,
+        videoImageWeight: videoImageWeight,
+      ),
     );
 
     final result = await _storeVersionAppRepository.getStoreVersion();

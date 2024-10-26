@@ -22,6 +22,8 @@ class NotificationInfoItemDataModel with _$NotificationInfoItemDataModel {
     required String sort,
     required String filterSelect,
     required String uidStore,
+    required double videoImageHeight,
+    required double videoImageWeight,
     required bool isViewed,
   }) = _NotificationInfoItemDataModel;
 }

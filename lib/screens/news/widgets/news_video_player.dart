@@ -16,6 +16,7 @@ class NewsVideoPlayer extends StatefulWidget {
     required this.onExitFullScreen,
     this.videoImageHeight = 0.0,
     this.videoImageWeight = 0.0,
+    this.aspectRatio = 0.0,
   });
 
   final String url;
@@ -25,7 +26,8 @@ class NewsVideoPlayer extends StatefulWidget {
   final bool isFullScreenVideo;
   final double videoImageHeight;
   final double videoImageWeight;
-  final VoidCallback onEnterFullScreen;
+  final double aspectRatio;
+  final ValueChanged<double> onEnterFullScreen;
   final VoidCallback onExitFullScreen;
 
   @override
@@ -78,9 +80,16 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                             alignment: Alignment.bottomCenter,
                             children: [
                               _isFullScreenVideo
-                                  ? VideoPlayer(
-                                      _controller,
-                                    )
+                                  ? MediaQuery.of(context).orientation == Orientation.portrait
+                                      ? AspectRatio(
+                                          aspectRatio: _controller.value.aspectRatio,
+                                          child: VideoPlayer(
+                                            _controller,
+                                          ),
+                                        )
+                                      : VideoPlayer(
+                                          _controller,
+                                        )
                                   : SizedBox(
                                       height: widget.videoImageHeight *
                                           (widget.videoImageHeight < widget.videoImageWeight
@@ -99,7 +108,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                       bottom: _isFullScreenVideo
                                           ? MediaQuery.of(context).orientation ==
                                                   Orientation.portrait
-                                              ? 20
+                                              ? 0
                                               : 10
                                           : 0),
                                   color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
@@ -153,7 +162,8 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                     [DeviceOrientation.landscapeRight]);
                                               }
 
-                                              widget.onEnterFullScreen();
+                                              widget
+                                                  .onEnterFullScreen(_controller.value.aspectRatio);
                                             } else {
                                               SystemChrome.setPreferredOrientations(
                                                   [DeviceOrientation.portraitUp]);
@@ -207,12 +217,110 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                             )
                         ],
                       )
+                    : _isFullScreenVideo &&
+                            MediaQuery.of(context).orientation == Orientation.portrait
+                        ? AspectRatio(
+                            aspectRatio: widget.aspectRatio,
+                            child: Stack(
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: widget.image,
+                                  width: width,
+                                  height: height,
+                                  fit: BoxFit.cover,
+                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                ),
+                                Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                    backgroundColor: Colors.grey.shade400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : SizedBox(
+                            height: _isFullScreenVideo
+                                ? height
+                                : widget.videoImageHeight *
+                                    (widget.videoImageHeight < widget.videoImageWeight
+                                        ? 0.25
+                                        : 0.35),
+                            child: Stack(
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: widget.image,
+                                  width: MediaQuery.of(context).orientation == Orientation.portrait
+                                      ? width
+                                      : width,
+                                  height: _isFullScreenVideo
+                                      ? height
+                                      : widget.videoImageHeight *
+                                          (widget.videoImageHeight < widget.videoImageWeight
+                                              ? 0.25
+                                              : 0.35),
+                                  fit: BoxFit.cover,
+                                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                                ),
+                                Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                    backgroundColor: Colors.grey.shade400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+              )
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isPlayScreen = true;
+                    _isPlay = true;
+                    _controller.play();
+                  });
+                },
+                child: _isFullScreenVideo &&
+                        MediaQuery.of(context).orientation == Orientation.portrait
+                    ? Center(
+                        child: AspectRatio(
+                          aspectRatio: widget.aspectRatio,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl: widget.image,
+                                width: width,
+                                height: height,
+                                fit: BoxFit.cover,
+                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                              ),
+                              if (widget.isPlayIcon)
+                                Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    color:
+                                        BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                                  ),
+                                  child: const Icon(
+                                    Icons.play_arrow,
+                                    color: BlindChickenColors.backgroundColor,
+                                    size: 40,
+                                  ),
+                                )
+                            ],
+                          ),
+                        ),
+                      )
                     : SizedBox(
                         height: _isFullScreenVideo
                             ? height
                             : widget.videoImageHeight *
                                 (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.35),
                         child: Stack(
+                          alignment: Alignment.center,
                           children: [
                             CachedNetworkImage(
                               imageUrl: widget.image,
@@ -228,61 +336,23 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                               fit: BoxFit.cover,
                               errorWidget: (context, url, error) => const Icon(Icons.error),
                             ),
-                            Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.black,
-                                backgroundColor: Colors.grey.shade400,
-                              ),
-                            ),
+                            if (widget.isPlayIcon)
+                              Container(
+                                height: 60,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
+                                ),
+                                child: const Icon(
+                                  Icons.play_arrow,
+                                  color: BlindChickenColors.backgroundColor,
+                                  size: 40,
+                                ),
+                              )
                           ],
                         ),
                       ),
-              )
-            : GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _isPlayScreen = true;
-                    _isPlay = true;
-                    _controller.play();
-                  });
-                },
-                child: SizedBox(
-                  height: _isFullScreenVideo
-                      ? height
-                      : widget.videoImageHeight *
-                          (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.3),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      CachedNetworkImage(
-                        imageUrl: widget.image,
-                        width: MediaQuery.of(context).orientation == Orientation.portrait
-                            ? width
-                            : width,
-                        height: _isFullScreenVideo
-                            ? height
-                            : widget.videoImageHeight *
-                                (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.3),
-                        fit: BoxFit.cover,
-                        errorWidget: (context, url, error) => const Icon(Icons.error),
-                      ),
-                      if (widget.isPlayIcon)
-                        Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: BlindChickenColors.activeBorderTextField.withOpacity(0.2),
-                          ),
-                          child: const Icon(
-                            Icons.play_arrow,
-                            color: BlindChickenColors.backgroundColor,
-                            size: 40,
-                          ),
-                        )
-                    ],
-                  ),
-                ),
               )
       ],
     );

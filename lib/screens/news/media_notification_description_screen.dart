@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -39,6 +40,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
       BlindChickenShowDialogError();
   bool _isShowDialogNotificatioInfoError = false;
   bool _isFullScreenVideo = false;
+  double _aspectRatio = 0.0;
   bool _isSwipe = true;
 
   @override
@@ -267,18 +269,34 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                             );
                                           },
                                         ),
-                                      if ((initState.oneMedia?.data.typeMedia ?? '') == 'video')
-                                        SizedBox(
-                                          height: 250,
-                                          child: NewsYouTubeVideoPlayer(
-                                            url: initState.oneMedia?.data.video ?? '',
-                                            onEnterFullScreen: () {
-                                              setState(() {
-                                                _isFullScreenVideo = true;
-                                              });
-                                            },
-                                            onExitFullScreen: () {},
-                                          ),
+                                      if ((initState.oneMedia?.data.typeMedia ?? '') == 'video' &&
+                                          (initState.oneMedia?.data.typeVideo ?? '') == 'youtube')
+                                        NewsYouTubeVideoPlayer(
+                                          url: initState.oneMedia?.data.video ?? '',
+                                          onEnterFullScreen: () {
+                                            setState(() {
+                                              _isFullScreenVideo = true;
+                                            });
+                                          },
+                                          onExitFullScreen: () {},
+                                        ),
+                                      if ((initState.oneMedia?.data.typeMedia ?? '') == 'video' &&
+                                          (initState.oneMedia?.data.typeVideo ?? '') == 'original')
+                                        NewsVideoPlayer(
+                                          url: initState.oneMedia?.data.video ?? '',
+                                          image: initState.oneMedia?.data.videoImage ?? '',
+                                          isFullScreenVideo: _isFullScreenVideo,
+                                          videoImageHeight:
+                                              initState.oneMedia?.data.videoImageHeight ?? 0,
+                                          videoImageWeight:
+                                              initState.oneMedia?.data.videoImageWeight ?? 0,
+                                          onEnterFullScreen: (aspectRatio) {
+                                            setState(() {
+                                              _isFullScreenVideo = true;
+                                              _aspectRatio = aspectRatio;
+                                            });
+                                          },
+                                          onExitFullScreen: () {},
                                         ),
                                       const SizedBox(
                                         height: 8,
@@ -478,15 +496,31 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
               builder: (context, state) {
                 return state.maybeMap(
                   preloadDataCompleted: (initState) {
-                    return NewsYouTubeVideoPlayer(
-                      url: initState.oneMedia?.data.video ?? '',
-                      onEnterFullScreen: () {},
-                      onExitFullScreen: () {
-                        setState(() {
-                          _isFullScreenVideo = false;
-                        });
-                      },
-                    );
+                    return (initState.oneMedia?.data.typeVideo ?? '') == 'original'
+                        ? Scaffold(
+                            backgroundColor: BlindChickenColors.backgroundColor,
+                            body: NewsVideoPlayer(
+                              url: initState.oneMedia?.data.video ?? '',
+                              image: initState.oneMedia?.data.videoImage ?? '',
+                              isFullScreenVideo: _isFullScreenVideo,
+                              onEnterFullScreen: (aspectRatio) {},
+                              aspectRatio: _aspectRatio,
+                              onExitFullScreen: () {
+                                setState(() {
+                                  _isFullScreenVideo = false;
+                                });
+                              },
+                            ),
+                          )
+                        : NewsYouTubeVideoPlayer(
+                            url: initState.oneMedia?.data.video ?? '',
+                            onEnterFullScreen: () {},
+                            onExitFullScreen: () {
+                              setState(() {
+                                _isFullScreenVideo = false;
+                              });
+                            },
+                          );
                   },
                   orElse: () => const SizedBox(),
                 );

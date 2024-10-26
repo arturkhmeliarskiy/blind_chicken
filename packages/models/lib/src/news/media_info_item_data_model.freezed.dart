@@ -32,6 +32,8 @@ mixin _$MediaInfoItemDataModel {
   String get sort => throw _privateConstructorUsedError;
   String get filterSelect => throw _privateConstructorUsedError;
   String get uidStore => throw _privateConstructorUsedError;
+  double get videoImageHeight => throw _privateConstructorUsedError;
+  double get videoImageWeight => throw _privateConstructorUsedError;
   int get numberViews => throw _privateConstructorUsedError;
   bool get isViewed => throw _privateConstructorUsedError;
 
@@ -63,6 +65,8 @@ abstract class $MediaInfoItemDataModelCopyWith<$Res> {
       String sort,
       String filterSelect,
       String uidStore,
+      double videoImageHeight,
+      double videoImageWeight,
       int numberViews,
       bool isViewed});
 }
@@ -97,6 +101,8 @@ class _$MediaInfoItemDataModelCopyWithImpl<$Res,
     Object? sort = null,
     Object? filterSelect = null,
     Object? uidStore = null,
+    Object? videoImageHeight = null,
+    Object? videoImageWeight = null,
     Object? numberViews = null,
     Object? isViewed = null,
   }) {
@@ -165,6 +171,14 @@ class _$MediaInfoItemDataModelCopyWithImpl<$Res,
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
               as String,
+      videoImageHeight: null == videoImageHeight
+          ? _value.videoImageHeight
+          : videoImageHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      videoImageWeight: null == videoImageWeight
+          ? _value.videoImageWeight
+          : videoImageWeight // ignore: cast_nullable_to_non_nullable
+              as double,
       numberViews: null == numberViews
           ? _value.numberViews
           : numberViews // ignore: cast_nullable_to_non_nullable
@@ -203,6 +217,8 @@ abstract class _$$MediaInfoItemDataModelImplCopyWith<$Res>
       String sort,
       String filterSelect,
       String uidStore,
+      double videoImageHeight,
+      double videoImageWeight,
       int numberViews,
       bool isViewed});
 }
@@ -236,6 +252,8 @@ class __$$MediaInfoItemDataModelImplCopyWithImpl<$Res>
     Object? sort = null,
     Object? filterSelect = null,
     Object? uidStore = null,
+    Object? videoImageHeight = null,
+    Object? videoImageWeight = null,
     Object? numberViews = null,
     Object? isViewed = null,
   }) {
@@ -304,6 +322,14 @@ class __$$MediaInfoItemDataModelImplCopyWithImpl<$Res>
           ? _value.uidStore
           : uidStore // ignore: cast_nullable_to_non_nullable
               as String,
+      videoImageHeight: null == videoImageHeight
+          ? _value.videoImageHeight
+          : videoImageHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      videoImageWeight: null == videoImageWeight
+          ? _value.videoImageWeight
+          : videoImageWeight // ignore: cast_nullable_to_non_nullable
+              as double,
       numberViews: null == numberViews
           ? _value.numberViews
           : numberViews // ignore: cast_nullable_to_non_nullable
@@ -336,6 +362,8 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
       required this.sort,
       required this.filterSelect,
       required this.uidStore,
+      required this.videoImageHeight,
+      required this.videoImageWeight,
       required this.numberViews,
       required this.isViewed})
       : _images = images,
@@ -380,13 +408,17 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
   @override
   final String uidStore;
   @override
+  final double videoImageHeight;
+  @override
+  final double videoImageWeight;
+  @override
   final int numberViews;
   @override
   final bool isViewed;
 
   @override
   String toString() {
-    return 'MediaInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, numberViews: $numberViews, isViewed: $isViewed)';
+    return 'MediaInfoItemDataModel(id: $id, title: $title, createAt: $createAt, images: $images, video: $video, typeVideo: $typeVideo, videoImage: $videoImage, typeMedia: $typeMedia, description: $description, titleButton: $titleButton, typePath: $typePath, path: $path, code: $code, sort: $sort, filterSelect: $filterSelect, uidStore: $uidStore, videoImageHeight: $videoImageHeight, videoImageWeight: $videoImageWeight, numberViews: $numberViews, isViewed: $isViewed)';
   }
 
   @override
@@ -419,6 +451,10 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
                 other.filterSelect == filterSelect) &&
             (identical(other.uidStore, uidStore) ||
                 other.uidStore == uidStore) &&
+            (identical(other.videoImageHeight, videoImageHeight) ||
+                other.videoImageHeight == videoImageHeight) &&
+            (identical(other.videoImageWeight, videoImageWeight) ||
+                other.videoImageWeight == videoImageWeight) &&
             (identical(other.numberViews, numberViews) ||
                 other.numberViews == numberViews) &&
             (identical(other.isViewed, isViewed) ||
@@ -426,26 +462,29 @@ class _$MediaInfoItemDataModelImpl extends _MediaInfoItemDataModel {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      createAt,
-      const DeepCollectionEquality().hash(_images),
-      video,
-      typeVideo,
-      videoImage,
-      typeMedia,
-      description,
-      titleButton,
-      typePath,
-      path,
-      code,
-      sort,
-      filterSelect,
-      uidStore,
-      numberViews,
-      isViewed);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        title,
+        createAt,
+        const DeepCollectionEquality().hash(_images),
+        video,
+        typeVideo,
+        videoImage,
+        typeMedia,
+        description,
+        titleButton,
+        typePath,
+        path,
+        code,
+        sort,
+        filterSelect,
+        uidStore,
+        videoImageHeight,
+        videoImageWeight,
+        numberViews,
+        isViewed
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -473,6 +512,8 @@ abstract class _MediaInfoItemDataModel extends MediaInfoItemDataModel {
       required final String sort,
       required final String filterSelect,
       required final String uidStore,
+      required final double videoImageHeight,
+      required final double videoImageWeight,
       required final int numberViews,
       required final bool isViewed}) = _$MediaInfoItemDataModelImpl;
   _MediaInfoItemDataModel._() : super._();
@@ -509,6 +550,10 @@ abstract class _MediaInfoItemDataModel extends MediaInfoItemDataModel {
   String get filterSelect;
   @override
   String get uidStore;
+  @override
+  double get videoImageHeight;
+  @override
+  double get videoImageWeight;
   @override
   int get numberViews;
   @override

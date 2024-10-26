@@ -281,7 +281,14 @@ Widget _itemMediaSize({
           ),
         );
       } else {
-        final videoId = YoutubePlayer.convertUrlToId(info.video) ?? '';
+        String imageUrl = '';
+        if (info.typeVideo == 'youtube') {
+          final videoId = YoutubePlayer.convertUrlToId(info.video) ?? '';
+          imageUrl = 'https://img.youtube.com/vi/$videoId/0.jpg';
+        } else {
+          imageUrl = info.videoImage;
+        }
+
         return GestureDetector(
           onTap: () {
             context.navigateTo(
@@ -294,7 +301,7 @@ Widget _itemMediaSize({
               SizedBox(
                 width: width,
                 child: CachedNetworkImage(
-                  imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
+                  imageUrl: imageUrl,
                   width: width,
                   height: height,
                   fit: BoxFit.cover,
@@ -366,7 +373,14 @@ Widget _itemMediaExpandex({
           ),
         );
       } else {
-        final videoId = YoutubePlayer.convertUrlToId(info.video) ?? '';
+        String imageUrl = '';
+        if (info.typeVideo == 'youtube') {
+          final videoId = YoutubePlayer.convertUrlToId(info.video) ?? '';
+          imageUrl = 'https://img.youtube.com/vi/$videoId/0.jpg';
+        } else {
+          imageUrl = info.videoImage;
+        }
+
         return GestureDetector(
           onTap: () {
             context.navigateTo(
@@ -377,7 +391,7 @@ Widget _itemMediaExpandex({
             alignment: Alignment.topRight,
             children: [
               CachedNetworkImage(
-                imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
+                imageUrl: imageUrl,
                 fit: BoxFit.cover,
                 height: constraints.maxHeight,
                 width: constraints.maxWidth,

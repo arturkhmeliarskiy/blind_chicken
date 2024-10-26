@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:blocs/blocs.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -29,6 +30,7 @@ class MediaInfoDescriptionScreen extends StatefulWidget {
 
 class _MediaInfoDescriptionScreenState extends State<MediaInfoDescriptionScreen> {
   bool _isFullScreenVideo = false;
+  double _aspectRatio = 0.0;
   bool _isSwipe = true;
 
   @override
@@ -164,18 +166,32 @@ class _MediaInfoDescriptionScreenState extends State<MediaInfoDescriptionScreen>
                                 );
                               },
                             ),
-                          if (widget.info.typeMedia == 'video')
-                            SizedBox(
-                              height: 250,
-                              child: NewsYouTubeVideoPlayer(
-                                url: widget.info.video,
-                                onEnterFullScreen: () {
-                                  setState(() {
-                                    _isFullScreenVideo = true;
-                                  });
-                                },
-                                onExitFullScreen: () {},
-                              ),
+                          if (widget.info.typeMedia == 'video' &&
+                              widget.info.typeVideo == 'youtube')
+                            NewsYouTubeVideoPlayer(
+                              url: widget.info.video,
+                              onEnterFullScreen: () {
+                                setState(() {
+                                  _isFullScreenVideo = true;
+                                });
+                              },
+                              onExitFullScreen: () {},
+                            ),
+                          if (widget.info.typeMedia == 'video' &&
+                              widget.info.typeVideo == 'original')
+                            NewsVideoPlayer(
+                              url: widget.info.video,
+                              image: widget.info.videoImage,
+                              isFullScreenVideo: _isFullScreenVideo,
+                              videoImageHeight: widget.info.videoImageHeight,
+                              videoImageWeight: widget.info.videoImageWeight,
+                              onEnterFullScreen: (aspectRatio) {
+                                setState(() {
+                                  _isFullScreenVideo = true;
+                                  _aspectRatio = aspectRatio;
+                                });
+                              },
+                              onExitFullScreen: () {},
                             ),
                           const SizedBox(
                             height: 8,
@@ -335,14 +351,30 @@ class _MediaInfoDescriptionScreenState extends State<MediaInfoDescriptionScreen>
               ]),
             ),
           )
-        : NewsYouTubeVideoPlayer(
-            url: widget.info.video,
-            onEnterFullScreen: () {},
-            onExitFullScreen: () {
-              setState(() {
-                _isFullScreenVideo = false;
-              });
-            },
-          );
+        : widget.info.typeVideo == 'original'
+            ? Scaffold(
+                backgroundColor: BlindChickenColors.backgroundColor,
+                body: NewsVideoPlayer(
+                  url: widget.info.video,
+                  image: widget.info.videoImage,
+                  isFullScreenVideo: _isFullScreenVideo,
+                  onEnterFullScreen: (aspectRatio) {},
+                  aspectRatio: _aspectRatio,
+                  onExitFullScreen: () {
+                    setState(() {
+                      _isFullScreenVideo = false;
+                    });
+                  },
+                ),
+              )
+            : NewsYouTubeVideoPlayer(
+                url: widget.info.video,
+                onEnterFullScreen: () {},
+                onExitFullScreen: () {
+                  setState(() {
+                    _isFullScreenVideo = false;
+                  });
+                },
+              );
   }
 }

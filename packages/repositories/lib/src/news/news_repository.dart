@@ -139,6 +139,8 @@ extension on MediaInfoResponse {
                 uidStore: item.uidStore ?? '',
                 numberViews: item.numberViews ?? 0,
                 isViewed: item.isViewed ?? false,
+                videoImageHeight: 0,
+                videoImageWeight: 0,
               );
             }) ??
             [],
@@ -179,6 +181,8 @@ extension on NotificationInfoResponse {
                 filterSelect: item.filterSelect ?? '',
                 uidStore: item.uidStore ?? '',
                 isViewed: item.isViewed ?? false,
+                videoImageHeight: 0,
+                videoImageWeight: 0,
               );
             }) ??
             [],
@@ -258,6 +262,8 @@ extension on OneMediaInfoResponse {
         uidStore: data?.uidStore ?? '',
         numberViews: data?.numberViews ?? 0,
         isViewed: data?.isViewed ?? false,
+        videoImageHeight: 0,
+        videoImageWeight: 0,
       ),
       isViewed: isViewed ?? false,
     );
@@ -293,6 +299,8 @@ extension on OneNotificationInfoResponse {
         filterSelect: data?.filterSelect ?? '',
         uidStore: data?.uidStore ?? '',
         isViewed: data?.isViewed ?? false,
+        videoImageHeight: 0,
+        videoImageWeight: 0,
       ),
     );
   }
