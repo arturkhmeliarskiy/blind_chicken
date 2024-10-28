@@ -261,24 +261,14 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                 ),
                               )
                             : SizedBox(
-                                height: _isFullScreenVideo
-                                    ? height
-                                    : widget.videoImageHeight < widget.videoImageWeight
-                                        ? widget.videoImageHeight * 0.25
-                                        : null,
+                                height: _isFullScreenVideo ? height : null,
                                 child: Stack(
+                                  alignment: Alignment.center,
                                   children: [
                                     CachedNetworkImage(
                                       imageUrl: widget.image,
-                                      width:
-                                          MediaQuery.of(context).orientation == Orientation.portrait
-                                              ? width
-                                              : width,
-                                      height: _isFullScreenVideo
-                                          ? height
-                                          : widget.videoImageHeight < widget.videoImageWeight
-                                              ? widget.videoImageHeight * 0.25
-                                              : null,
+                                      width: width,
+                                      height: _isFullScreenVideo ? height : null,
                                       fit: BoxFit.cover,
                                       errorWidget: (context, url, error) => const Icon(Icons.error),
                                     ),
