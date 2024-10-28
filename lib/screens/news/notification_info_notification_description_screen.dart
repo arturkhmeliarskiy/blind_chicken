@@ -532,7 +532,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                   preloadDataCompleted: (initState) {
                     return (initState.oneNotification?.data.typeVideo ?? '') == 'original'
                         ? Scaffold(
-                            backgroundColor: BlindChickenColors.backgroundColor,
+                            backgroundColor: BlindChickenColors.activeBorderTextField,
                             body: NewsVideoPlayer(
                               url: initState.oneNotification?.data.video ?? '',
                               image: initState.oneNotification?.data.videoImage ?? '',

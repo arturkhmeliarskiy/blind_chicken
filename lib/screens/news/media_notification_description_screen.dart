@@ -498,7 +498,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                   preloadDataCompleted: (initState) {
                     return (initState.oneMedia?.data.typeVideo ?? '') == 'original'
                         ? Scaffold(
-                            backgroundColor: BlindChickenColors.backgroundColor,
+                            backgroundColor: BlindChickenColors.activeBorderTextField,
                             body: NewsVideoPlayer(
                               url: initState.oneMedia?.data.video ?? '',
                               image: initState.oneMedia?.data.videoImage ?? '',

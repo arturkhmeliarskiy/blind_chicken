@@ -380,7 +380,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
           )
         : widget.info.typeVideo == 'original'
             ? Scaffold(
-                backgroundColor: BlindChickenColors.backgroundColor,
+                backgroundColor: BlindChickenColors.activeBorderTextField,
                 body: NewsVideoPlayer(
                   url: widget.info.video,
                   image: widget.info.videoImage,

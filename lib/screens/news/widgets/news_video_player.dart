@@ -38,6 +38,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
   late VideoPlayerController _controller;
   bool _isPlayScreen = false;
   bool _isFullScreenVideo = false;
+  bool _isRotateScreen = false;
   bool _isPlay = false;
 
   @override
@@ -80,22 +81,15 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                             alignment: Alignment.bottomCenter,
                             children: [
                               _isFullScreenVideo
-                                  ? MediaQuery.of(context).orientation == Orientation.portrait
-                                      ? AspectRatio(
-                                          aspectRatio: _controller.value.aspectRatio,
-                                          child: VideoPlayer(
-                                            _controller,
-                                          ),
-                                        )
-                                      : VideoPlayer(
-                                          _controller,
-                                        )
-                                  : SizedBox(
-                                      height: widget.videoImageHeight *
-                                          (widget.videoImageHeight < widget.videoImageWeight
-                                              ? 0.25
-                                              : 0.35),
-                                      width: width,
+                                  ? AspectRatio(
+                                      aspectRatio: _controller.value.aspectRatio,
+                                      child: VideoPlayer(
+                                        _controller,
+                                      ),
+                                    )
+                                  : AspectRatio(
+                                      aspectRatio:
+                                          widget.videoImageWeight / widget.videoImageHeight,
                                       child: VideoPlayer(
                                         _controller,
                                       ),
@@ -151,23 +145,45 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                           ),
                                         ),
                                       ),
+                                      if (_isFullScreenVideo)
+                                        GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _isRotateScreen = !_isRotateScreen;
+                                              if (_isRotateScreen) {
+                                                SystemChrome.setPreferredOrientations(
+                                                    [DeviceOrientation.landscapeRight]);
+                                              } else {
+                                                SystemChrome.setPreferredOrientations(
+                                                    [DeviceOrientation.portraitUp]);
+                                              }
+                                            });
+                                          },
+                                          child: Container(
+                                            width: 48,
+                                            height: 42,
+                                            padding: EdgeInsets.only(
+                                              left: 8,
+                                              top: 3,
+                                              bottom: 3,
+                                            ),
+                                            child: Icon(
+                                              Icons.screen_rotation,
+                                              size: 26,
+                                              color: BlindChickenColors.backgroundColor,
+                                            ),
+                                          ),
+                                        ),
                                       GestureDetector(
                                         onTap: () {
                                           setState(() {
                                             _isFullScreenVideo = !_isFullScreenVideo;
                                             if (_isFullScreenVideo) {
-                                              if (widget.videoImageHeight <
-                                                  widget.videoImageWeight) {
-                                                SystemChrome.setPreferredOrientations(
-                                                    [DeviceOrientation.landscapeRight]);
-                                              }
-
                                               widget
                                                   .onEnterFullScreen(_controller.value.aspectRatio);
                                             } else {
                                               SystemChrome.setPreferredOrientations(
                                                   [DeviceOrientation.portraitUp]);
-
                                               widget.onExitFullScreen();
                                             }
                                           });
@@ -242,10 +258,9 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                         : SizedBox(
                             height: _isFullScreenVideo
                                 ? height
-                                : widget.videoImageHeight *
-                                    (widget.videoImageHeight < widget.videoImageWeight
-                                        ? 0.25
-                                        : 0.35),
+                                : widget.videoImageHeight < widget.videoImageWeight
+                                    ? widget.videoImageHeight * 0.25
+                                    : null,
                             child: Stack(
                               children: [
                                 CachedNetworkImage(
@@ -255,10 +270,9 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                       : width,
                                   height: _isFullScreenVideo
                                       ? height
-                                      : widget.videoImageHeight *
-                                          (widget.videoImageHeight < widget.videoImageWeight
-                                              ? 0.25
-                                              : 0.35),
+                                      : widget.videoImageHeight < widget.videoImageWeight
+                                          ? widget.videoImageHeight * 0.25
+                                          : null,
                                   fit: BoxFit.cover,
                                   errorWidget: (context, url, error) => const Icon(Icons.error),
                                 ),
@@ -315,24 +329,14 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                         ),
                       )
                     : SizedBox(
-                        height: _isFullScreenVideo
-                            ? height
-                            : widget.videoImageHeight *
-                                (widget.videoImageHeight < widget.videoImageWeight ? 0.25 : 0.35),
+                        height: _isFullScreenVideo ? height : null,
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
                             CachedNetworkImage(
                               imageUrl: widget.image,
-                              width: MediaQuery.of(context).orientation == Orientation.portrait
-                                  ? width
-                                  : width,
-                              height: _isFullScreenVideo
-                                  ? height
-                                  : widget.videoImageHeight *
-                                      (widget.videoImageHeight < widget.videoImageWeight
-                                          ? 0.25
-                                          : 0.35),
+                              width: width,
+                              height: _isFullScreenVideo ? height : null,
                               fit: BoxFit.cover,
                               errorWidget: (context, url, error) => const Icon(Icons.error),
                             ),

@@ -351,7 +351,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
           )
         : widget.info.typeVideo == 'original'
             ? Scaffold(
-                backgroundColor: BlindChickenColors.backgroundColor,
+                backgroundColor: BlindChickenColors.activeBorderTextField,
                 body: NewsVideoPlayer(
                   url: widget.info.video,
                   image: widget.info.videoImage,
