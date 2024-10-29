@@ -361,6 +361,9 @@ class _NotificationInfoNotificationDescriptionScreenState
                                             titleScreen: 'notfication_info_notfication_description',
                                             idNews: widget.idNews,
                                             messageId: widget.messageId,
+                                            titleAppMetrica:
+                                                'Переход по ссылке из cтраницы push-уведомления описания уведомления',
+                                            newsNotificationInfo: initState.oneNotification?.data,
                                           );
                                         },
                                       ),

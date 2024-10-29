@@ -336,6 +336,9 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                             titleScreen: 'news_notification_description',
                                             idNews: widget.idNews,
                                             messageId: widget.messageId,
+                                            titleAppMetrica:
+                                                'Переход по ссылке из cтраницы push-уведомления описания новости',
+                                            newsInfo: initState.oneNews?.data,
                                           );
                                         },
                                       ),

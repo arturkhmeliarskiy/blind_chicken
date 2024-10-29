@@ -311,6 +311,9 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                             titleScreen: 'media_notiifcation_description',
                                             idNews: widget.idNews,
                                             messageId: widget.messageId,
+                                            titleAppMetrica:
+                                                'Переход по ссылке из cтраницы push-уведомления описания медиа',
+                                            newsMediaInfo: initState.oneMedia?.data,
                                           );
                                         },
                                       ),

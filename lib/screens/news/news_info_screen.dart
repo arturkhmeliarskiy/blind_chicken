@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/news/widgets/media/media_tab_info.dart';
 import 'package:blind_chicken/screens/news/widgets/news/news_tab_info.dart';
@@ -34,6 +35,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
     if (widget.indexPage != 0) {
       _tabController.animateTo(widget.indexPage);
     }
+    AppMetrica.reportEvent('Страница новостей');
     super.initState();
   }
 
@@ -42,6 +44,7 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
     // if (widget.indexPage != 0) {
     //   _tabController.animateTo(widget.indexPage);
     // }
+    AppMetrica.reportEvent('Страница новостей');
     super.didUpdateWidget(oldWidget);
   }
 
@@ -167,6 +170,14 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
                       if (index == 0) {
                         context.read<NewsBloc>().add(const NewsEvent.getNews());
+                        AppMetrica.reportEvent(
+                            'Переход на страницу новостей из верхней панели навигации');
+                      } else if (index == 1) {
+                        AppMetrica.reportEvent(
+                            'Переход на страницу медиа из верхней панели навигации');
+                      } else if (index == 2) {
+                        AppMetrica.reportEvent(
+                            'Переход на страницу уведомлений из верхней панели навигации');
                       }
                     },
                     tabs: <Widget>[

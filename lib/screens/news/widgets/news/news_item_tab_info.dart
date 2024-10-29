@@ -80,6 +80,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                       context: context,
                       url: url,
                       titleScreen: 'news',
+                      titleAppMetrica: 'Переход по ссылке из cтраницы новостей',
                     );
                   },
                 ),

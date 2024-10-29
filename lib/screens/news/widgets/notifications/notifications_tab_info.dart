@@ -118,30 +118,38 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
                   orElse: () => const SizedBox(),
                 );
               }),
-              if (_isButtonTop)
-                GestureDetector(
-                  onTap: () {
-                    _scrollController.jumpTo(0.0);
-                    setState(() {
-                      _isButtonTop = false;
-                    });
+              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+                return state.maybeMap(
+                  preloadDataCompleted: (value) {
+                    if (_isButtonTop) {
+                      return GestureDetector(
+                        onTap: () {
+                          _scrollController.jumpTo(0.0);
+                          setState(() {
+                            _isButtonTop = false;
+                          });
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          margin: const EdgeInsets.only(left: 15, bottom: 15),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: BlindChickenColors.activeBorderTextField,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-top.svg',
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
                   },
-                  child: Container(
-                    height: 45,
-                    width: 45,
-                    margin: const EdgeInsets.only(left: 15, bottom: 15),
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: BlindChickenColors.activeBorderTextField,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/chevron-top.svg',
-                    ),
-                  ),
-                )
-              else
-                const SizedBox()
+                  orElse: () => const SizedBox(),
+                );
+              })
             ],
           ),
           BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {

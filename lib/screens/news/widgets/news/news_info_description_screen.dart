@@ -34,6 +34,12 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
   bool _isSwipe = true;
 
   @override
+  void initState() {
+    AppMetrica.reportEvent('Страница описания новости id ${widget.info.id}');
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return !_isFullScreenVideo
@@ -230,6 +236,8 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                 context: context,
                                 url: url,
                                 titleScreen: 'news_info_description',
+                                titleAppMetrica: 'Переход по ссылке из cтраницы описания новости',
+                                newsInfo: widget.info,
                               );
                             },
                           ),

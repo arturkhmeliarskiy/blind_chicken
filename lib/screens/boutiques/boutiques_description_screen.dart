@@ -49,6 +49,7 @@ class _BoutiquesDescriptionScreenState extends State<BoutiquesDescriptionScreen>
   bool _isShowDialogBoutiquesDescriptionInfoError = false;
   @override
   void didChangeDependencies() {
+    AppMetrica.reportEvent('Страница описания бутика');
     if (widget.uidStore.isNotEmpty && widget.isNotification) {
       Timer(const Duration(milliseconds: 150), () {
         context.read<BoutiquesBloc>().add(

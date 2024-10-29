@@ -231,6 +231,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     AddOtherProductToSoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
+    AppMetrica.reportEvent('Товар добавлен в корзину');
+
     bool isListProductsCode = false;
     if (state is ProductsShoppingCartState) {
       isListProductsCode = (state as ProductsShoppingCartState).listProductsCode.isNotEmpty;
@@ -360,6 +362,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   ) async {
     await state.mapOrNull(
       productsShoppingCart: (initState) async {
+        AppMetrica.reportEvent('Товар добавлен в корзину');
         if (event.item.typeAddProductToShoppingCart != '') {
           _appMetricaEcommerceService.addOrRemoveProductToSoppingCart(
             titleScreen: event.item.titleScreen,

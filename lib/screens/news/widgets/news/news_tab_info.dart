@@ -96,10 +96,11 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     info: initState.news.list[index],
                                   ),
                                 );
-                                AppMetrica.reportEvent('Страница новостей');
                               },
                               onGoTap: () {
                                 if (initState.news.list[index].typePath == 'catalog') {
+                                  AppMetrica.reportEvent(
+                                      'Переход в каталог из списка новостей по кнопке');
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.getInfoProducts(
                                           path: initState.news.list[index].path,
@@ -119,6 +120,8 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     ),
                                   );
                                 } else if (initState.news.list[index].typePath == 'product') {
+                                  AppMetrica.reportEvent(
+                                      'Переход в описание товара из списка новостей по кнопке');
                                   context.read<CatalogBloc>().add(
                                         CatalogEvent.getInfoProduct(
                                           code: initState.news.list[index].code,
@@ -141,6 +144,8 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     ),
                                   );
                                 } else if (initState.news.list[index].typePath == 'boutique') {
+                                  AppMetrica.reportEvent(
+                                      'Переход в описание бутика из списка новостей по кнопке');
                                   context.read<BoutiquesBloc>().add(
                                         BoutiquesEvent.getInfoBoutique(
                                           uid: initState.news.list[index].uidStore,
@@ -156,6 +161,8 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                     ),
                                   );
                                 } else if (initState.news.list[index].typePath == 'gift_card') {
+                                  AppMetrica.reportEvent(
+                                      'Переход на страницу подарочной карты из списка новостей по кнопке');
                                   context.navigateTo(
                                     HomeAutoRouterRoute(
                                       children: [
@@ -189,30 +196,38 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                   orElse: () => const SizedBox(),
                 );
               }),
-              if (_isButtonTop)
-                GestureDetector(
-                  onTap: () {
-                    _scrollController.jumpTo(0.0);
-                    setState(() {
-                      _isButtonTop = false;
-                    });
+              BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+                return state.maybeMap(
+                  preloadDataCompleted: (value) {
+                    if (_isButtonTop) {
+                      return GestureDetector(
+                        onTap: () {
+                          _scrollController.jumpTo(0.0);
+                          setState(() {
+                            _isButtonTop = false;
+                          });
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 45,
+                          margin: const EdgeInsets.only(left: 15, bottom: 15),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: BlindChickenColors.activeBorderTextField,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: SvgPicture.asset(
+                            'assets/icons/chevron-top.svg',
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
                   },
-                  child: Container(
-                    height: 45,
-                    width: 45,
-                    margin: const EdgeInsets.only(left: 15, bottom: 15),
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: BlindChickenColors.activeBorderTextField,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/chevron-top.svg',
-                    ),
-                  ),
-                )
-              else
-                const SizedBox()
+                  orElse: () => const SizedBox(),
+                );
+              })
             ],
           ),
           BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
