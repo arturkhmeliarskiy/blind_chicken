@@ -1,3 +1,4 @@
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/boutiques/widgets/boutique_card.dart';
@@ -26,6 +27,7 @@ class _BoutiquesScreenState extends State<BoutiquesScreen> {
 
   @override
   void initState() {
+    AppMetrica.reportEvent('Список бутиков');
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }

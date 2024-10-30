@@ -7,6 +7,8 @@ import AppMetricaPush
 @objc class AppDelegate: FlutterAppDelegate {
   var methodChannel: FlutterMethodChannel? = nil
   var methodChannelAppMetrica: FlutterMethodChannel? = nil
+  var methodChannelCountBadges: FlutterMethodChannel? = nil
+  var badgeCount = 0 
 
   override func application(
     _ application: UIApplication,
@@ -20,7 +22,9 @@ import AppMetricaPush
     methodChannel = FlutterMethodChannel(name: "blind_chicken/getMessages", binaryMessenger: controller.binaryMessenger)
     let controllerAppMetrica : FlutterViewController = window?.rootViewController as! FlutterViewController
     methodChannelAppMetrica = FlutterMethodChannel(name: "blind_chicken/getMessagesAppMetrica", binaryMessenger: controllerAppMetrica.binaryMessenger)
-    
+    let controllerCountBadges : FlutterViewController = window?.rootViewController as! FlutterViewController
+    methodChannelCountBadges = FlutterMethodChannel(name: "blind_chicken/countBages", binaryMessenger: controllerCountBadges.binaryMessenger)
+
     methodChannelAppMetrica?.setMethodCallHandler({
     (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
     if (call.method == "appMetrica") {
@@ -37,6 +41,20 @@ import AppMetricaPush
       return
       }
       return
+    })
+
+    methodChannelCountBadges?.setMethodCallHandler({
+      (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+      if call.method == "updateBadgeCount" {
+        if let count = call.arguments as? Int {
+          UIApplication.shared.applicationIconBadgeNumber = count
+          result(nil)
+        } else {
+          result(FlutterError(code: "INVALID_ARGUMENT", message: "Invalid argument", details: nil))
+        }
+      } else {
+        result(FlutterMethodNotImplemented)
+      }
     })
 
     if #available(iOS 10.0, *) {
@@ -200,6 +218,11 @@ import AppMetricaPush
       self.handlePushNotification(userInfo)
       print("Received remote notification: \(userInfo)")
       completionHandler(.newData)
+  }
+
+  override func applicationWillEnterForeground(_ application: UIApplication) {
+      UserDefaults(suiteName: "group.com.slepayakurica.app")?.set(1, forKey: "count")      
+      UIApplication.shared.applicationIconBadgeNumber = 0  
   }
 
   func handlePushNotification(_ userInfo: [AnyHashable : Any])

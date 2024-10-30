@@ -48,6 +48,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
 
   @override
   void initState() {
+    AppMetrica.reportEvent('Проверка зрения');
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }

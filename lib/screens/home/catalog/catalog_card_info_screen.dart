@@ -92,7 +92,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
               CatalogEvent.getInfoProduct(
                 code: widget.code ?? '',
                 messageId: widget.messageId,
-                titleScreen: 'Описание товара в каталоге',
+                titleScreen: 'Описание товара из push-уведомления',
                 typeAddProductToShoppingCart: 'Уведомление',
                 identifierAddProductToShoppingCart: '2',
               ),

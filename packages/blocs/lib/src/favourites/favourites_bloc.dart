@@ -758,6 +758,7 @@ class FavouritesBloc extends Bloc<FavouritesEvent, FavouritesState> {
   ) async {
     await state.mapOrNull(productsFavourites: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      AppMetrica.reportEvent(event.titleScreen);
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isShoppingCartDetailsProduct = false;
       String errorMessage = '';

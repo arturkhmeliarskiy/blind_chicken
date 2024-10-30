@@ -1064,6 +1064,8 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       List<String> listCatalogPath = initState.listCatalogPath.toList();
 
+      AppMetrica.reportEvent('Каталог ${event.path}');
+
       CatalogProductsRequest request = CatalogProductsRequest(
         url: event.path,
         sort: 'n',
@@ -1136,6 +1138,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       emit(const CatalogState.load());
     }
 
+    AppMetrica.reportEvent('Каталог ${event.path} из push-уведомления');
     List<FilterItemDataModel> selectItems = [];
     Map<int, List<FilterItemDataModel>> selectFilter = {};
     List<Map<int, FilterItemDataModel>> allSelectFilter = [];
@@ -1327,6 +1330,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      AppMetrica.reportEvent(event.titleScreen);
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isAuth = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.userAuthorized,

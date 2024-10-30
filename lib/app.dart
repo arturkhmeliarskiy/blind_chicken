@@ -302,7 +302,7 @@ class _AppState extends State<App> {
 
             if (type.isNotEmpty) {
               if (iDMessage != updateData.idMessageNotification) {
-                AppMetrica.reportEvent('Открытие PUSH-уведомления');
+                AppMetrica.reportEvent('Открытие PUSH-уведомления (Приложение было свернуто)');
                 if (type == 'catalog' && updateData.isInitApp) {
                   final info = filterService.converterNotificationInfo(
                     value: section,

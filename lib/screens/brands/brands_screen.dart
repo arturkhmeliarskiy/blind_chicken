@@ -46,6 +46,7 @@ class _BrandsScreenState extends State<BrandsScreen> {
 
   @override
   void initState() {
+    AppMetrica.reportEvent('Страница брендов');
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }

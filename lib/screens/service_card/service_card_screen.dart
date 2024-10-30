@@ -36,6 +36,13 @@ class _ServiceCardScreenState extends State<ServiceCardScreen> {
   final BlindChickenShowDialogError _blindChickenShoppingCartShowDialogError =
       BlindChickenShowDialogError();
   bool _isShowDialogShoppingCartError = false;
+
+  @override
+  void initState() {
+    AppMetrica.reportEvent('Сервисная карта');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<ShoppingCartBloc, ShoppingCartState>(

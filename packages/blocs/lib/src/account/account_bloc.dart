@@ -395,6 +395,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      AppMetrica.reportEvent(event.titleScreen);
       List<String> listProductsCode = initState.listProductsCode.toList();
       bool isShoppingCartDetailsProduct = false;
       String errorMessage = '';

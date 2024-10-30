@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
@@ -46,6 +47,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
   @override
   void initState() {
     if (widget.idNews.isNotEmpty) {
+      AppMetrica.reportEvent('Страница описания медиа из push-уведомления id ${widget.idNews}');
       context.read<NewsBloc>().add(
             NewsEvent.getMediaDescriptionInfo(
               id: widget.idNews,

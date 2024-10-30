@@ -60,6 +60,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
   @override
   void didChangeDependencies() {
     if (widget.isNotification) {
+      AppMetrica.reportEvent('Подарочная карта из push-уведомления');
       Timer(const Duration(milliseconds: 500), () {
         context.read<GiftCardBloc>().add(GiftCardEvent.preloadData(
               isNotification: widget.isNotification,
@@ -72,6 +73,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
         _typePay = updateDataService.payments.first;
       });
     } else {
+      AppMetrica.reportEvent('Подарочная карта');
       context.read<GiftCardBloc>().add(GiftCardEvent.preloadData(
             isNotification: widget.isNotification,
             searchQuery: widget.searchQuery ?? '',

@@ -705,6 +705,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) async {
     await state.mapOrNull(searchProductsResult: (initState) async {
       SkuProductDataModel? selectSizeProduct;
+      AppMetrica.reportEvent(event.titleScreen);
       String errorMessage = '';
       bool isShoppingCartDetailsProduct = false;
       bool isError = false;
