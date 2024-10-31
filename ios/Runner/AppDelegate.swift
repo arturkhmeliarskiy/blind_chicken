@@ -8,7 +8,6 @@ import AppMetricaPush
   var methodChannel: FlutterMethodChannel? = nil
   var methodChannelAppMetrica: FlutterMethodChannel? = nil
   var methodChannelCountBadges: FlutterMethodChannel? = nil
-  var badgeCount = 0 
 
   override func application(
     _ application: UIApplication,
@@ -218,11 +217,6 @@ import AppMetricaPush
       self.handlePushNotification(userInfo)
       print("Received remote notification: \(userInfo)")
       completionHandler(.newData)
-  }
-
-  override func applicationWillEnterForeground(_ application: UIApplication) {
-      UserDefaults(suiteName: "group.com.slepayakurica.app")?.set(1, forKey: "count")      
-      UIApplication.shared.applicationIconBadgeNumber = 0  
   }
 
   func handlePushNotification(_ userInfo: [AnyHashable : Any])
