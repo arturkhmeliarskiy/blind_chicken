@@ -257,9 +257,9 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                 );
                                               },
                                               child: CachedNetworkImage(
-                                                imageUrl:
-                                                    initState.oneNotification?.data.images.first ??
-                                                        '',
+                                                imageUrl: initState.oneNotification?.data.images
+                                                        .first.imageUrl ??
+                                                    '',
                                                 width: MediaQuery.of(context).orientation ==
                                                         Orientation.portrait
                                                     ? width

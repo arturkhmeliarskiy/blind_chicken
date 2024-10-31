@@ -244,7 +244,8 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                               },
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    initState.oneNews?.data.images.first ?? '',
+                                                    initState.oneNews?.data.images.first.imageUrl ??
+                                                        '',
                                                 width: MediaQuery.of(context).orientation ==
                                                         Orientation.portrait
                                                     ? width

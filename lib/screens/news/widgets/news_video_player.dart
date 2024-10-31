@@ -83,20 +83,12 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                               Stack(
                                 alignment: Alignment.bottomCenter,
                                 children: [
-                                  _isFullScreenVideo
-                                      ? AspectRatio(
-                                          aspectRatio: _controller.value.aspectRatio,
-                                          child: VideoPlayer(
-                                            _controller,
-                                          ),
-                                        )
-                                      : AspectRatio(
-                                          aspectRatio:
-                                              widget.videoImageWeight / widget.videoImageHeight,
-                                          child: VideoPlayer(
-                                            _controller,
-                                          ),
-                                        ),
+                                  AspectRatio(
+                                    aspectRatio: _controller.value.aspectRatio,
+                                    child: VideoPlayer(
+                                      _controller,
+                                    ),
+                                  ),
                                   if (widget.isProgressBar)
                                     Container(
                                       height: 42,

@@ -7,3 +7,4 @@ export 'notification_info_data_model.dart';
 export 'one_media_info_data_model.dart';
 export 'one_news_info_data_model.dart';
 export 'one_notification_info_data_model.dart';
+export 'news_slider_image_item_data_model.dart';

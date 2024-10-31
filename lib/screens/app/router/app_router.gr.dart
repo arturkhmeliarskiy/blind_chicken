@@ -2523,7 +2523,7 @@ class NewsNotificationDescriptionRouteArgs {
 class NewsPreviewMediaRoute extends PageRouteInfo<NewsPreviewMediaRouteArgs> {
   NewsPreviewMediaRoute({
     Key? key,
-    required List<String> media,
+    required List<NewsSliderImageItemDataModel> media,
     required VoidCallback goBotton,
     required int selectIndex,
     List<PageRouteInfo>? children,
@@ -2564,7 +2564,7 @@ class NewsPreviewMediaRouteArgs {
 
   final Key? key;
 
-  final List<String> media;
+  final List<NewsSliderImageItemDataModel> media;
 
   final VoidCallback goBotton;
 

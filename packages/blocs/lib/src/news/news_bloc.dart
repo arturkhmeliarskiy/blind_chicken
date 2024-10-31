@@ -92,10 +92,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           videoImageWeight = imageInfo.image.width.toDouble();
         }
 
-        listNews.add(news.list[i].copyWith(
-          videoImageHeight: videoImageHeight,
-          videoImageWeight: videoImageWeight,
-        ));
+        if (news.list[i].typeMedia == 'images' && news.list[i].images.length > 1) {
+          List<NewsSliderImageItemDataModel> images = [];
+          for (int j = 0; j < news.list[i].images.length; j++) {
+            final imageInfo = await _imageService.getImageUrlInfo(news.list[i].images[j].imageUrl);
+            images.add(NewsSliderImageItemDataModel(
+              imageUrl: news.list[i].images[j].imageUrl,
+              imageHeight: imageInfo.image.height.toDouble(),
+              imageWeight: imageInfo.image.width.toDouble(),
+            ));
+          }
+
+          listNews.add(news.list[i].copyWith(
+            images: images,
+          ));
+        } else {
+          listNews.add(news.list[i].copyWith(
+            videoImageHeight: videoImageHeight,
+            videoImageWeight: videoImageWeight,
+          ));
+        }
       }
       _news = NewsInfoDataModel(
         e: news.e,
@@ -147,10 +163,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           videoImageWeight = imageInfo.image.width.toDouble();
         }
 
-        listMedia.add(media.list[i].copyWith(
-          videoImageHeight: videoImageHeight,
-          videoImageWeight: videoImageWeight,
-        ));
+        if (media.list[i].typeMedia == 'images' && media.list[i].images.length > 1) {
+          List<NewsSliderImageItemDataModel> images = [];
+          for (int j = 0; j < media.list[i].images.length; j++) {
+            final imageInfo = await _imageService.getImageUrlInfo(media.list[i].images[j].imageUrl);
+            images.add(NewsSliderImageItemDataModel(
+              imageUrl: media.list[i].images[j].imageUrl,
+              imageHeight: imageInfo.image.height.toDouble(),
+              imageWeight: imageInfo.image.width.toDouble(),
+            ));
+          }
+
+          listMedia.add(media.list[i].copyWith(
+            images: images,
+          ));
+        } else {
+          listMedia.add(media.list[i].copyWith(
+            videoImageHeight: videoImageHeight,
+            videoImageWeight: videoImageWeight,
+          ));
+        }
       }
 
       _media = MediaInfoDataModel(
@@ -203,10 +235,27 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           videoImageWeight = imageInfo.image.width.toDouble();
         }
 
-        listNotifications.add(notificatios.list[i].copyWith(
-          videoImageHeight: videoImageHeight,
-          videoImageWeight: videoImageWeight,
-        ));
+        if (notificatios.list[i].typeMedia == 'images' && notificatios.list[i].images.length > 1) {
+          List<NewsSliderImageItemDataModel> images = [];
+          for (int j = 0; j < notificatios.list[i].images.length; j++) {
+            final imageInfo =
+                await _imageService.getImageUrlInfo(notificatios.list[i].images[j].imageUrl);
+            images.add(NewsSliderImageItemDataModel(
+              imageUrl: notificatios.list[i].images[j].imageUrl,
+              imageHeight: imageInfo.image.height.toDouble(),
+              imageWeight: imageInfo.image.width.toDouble(),
+            ));
+          }
+
+          listNotifications.add(notificatios.list[i].copyWith(
+            images: images,
+          ));
+        } else {
+          listNotifications.add(notificatios.list[i].copyWith(
+            videoImageHeight: videoImageHeight,
+            videoImageWeight: videoImageWeight,
+          ));
+        }
       }
 
       _notificatios = NotificationInfoDataModel(
@@ -240,32 +289,51 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       List<NewsInfoItemDataModel> listNews = [];
       NewsInfoDataModel news = await _newsRepository.getNews(page: offsetNews);
 
-      for (int i = 0; i < news.list.length; i++) {
-        double videoImageHeight = 0.0;
-        double videoImageWeight = 0.0;
-        if (news.list[i].videoImage.isNotEmpty) {
-          final imageInfo = await _imageService.getImageUrlInfo(news.list[i].videoImage);
-          videoImageHeight = imageInfo.image.height.toDouble();
-          videoImageWeight = imageInfo.image.width.toDouble();
+      if (news.errorMessage.isEmpty) {
+        for (int i = 0; i < news.list.length; i++) {
+          double videoImageHeight = 0.0;
+          double videoImageWeight = 0.0;
+          if (news.list[i].videoImage.isNotEmpty) {
+            final imageInfo = await _imageService.getImageUrlInfo(news.list[i].videoImage);
+            videoImageHeight = imageInfo.image.height.toDouble();
+            videoImageWeight = imageInfo.image.width.toDouble();
+          }
+
+          if (news.list[i].typeMedia == 'images' && news.list[i].images.length > 1) {
+            List<NewsSliderImageItemDataModel> images = [];
+            for (int j = 0; j < news.list[i].images.length; j++) {
+              final imageInfo =
+                  await _imageService.getImageUrlInfo(news.list[i].images[j].imageUrl);
+              images.add(NewsSliderImageItemDataModel(
+                imageUrl: news.list[i].images[j].imageUrl,
+                imageHeight: imageInfo.image.height.toDouble(),
+                imageWeight: imageInfo.image.width.toDouble(),
+              ));
+            }
+
+            listNews.add(news.list[i].copyWith(
+              images: images,
+            ));
+          } else {
+            listNews.add(news.list[i].copyWith(
+              videoImageHeight: videoImageHeight,
+              videoImageWeight: videoImageWeight,
+            ));
+          }
         }
 
-        listNews.add(news.list[i].copyWith(
-          videoImageHeight: videoImageHeight,
-          videoImageWeight: videoImageWeight,
+        _news = initState.news.copyWith(
+          list: [
+            ...initState.news.list,
+            ...listNews,
+          ],
+        );
+
+        emit(initState.copyWith(
+          news: _news,
+          offsetNews: offsetNews,
         ));
       }
-
-      _news = initState.news.copyWith(
-        list: [
-          ...initState.news.list,
-          ...listNews,
-        ],
-      );
-
-      emit(initState.copyWith(
-        news: _news,
-        offsetNews: offsetNews,
-      ));
     });
   }
 
@@ -278,32 +346,51 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       List<MediaInfoItemDataModel> listMedia = [];
       MediaInfoDataModel media = await _newsRepository.getMedia(page: offsetMedia);
 
-      for (int i = 0; i < media.list.length; i++) {
-        double videoImageHeight = 0.0;
-        double videoImageWeight = 0.0;
-        if (media.list[i].videoImage.isNotEmpty) {
-          final imageInfo = await _imageService.getImageUrlInfo(media.list[i].videoImage);
-          videoImageHeight = imageInfo.image.height.toDouble();
-          videoImageWeight = imageInfo.image.width.toDouble();
+      if (media.errorMessage.isEmpty) {
+        for (int i = 0; i < media.list.length; i++) {
+          double videoImageHeight = 0.0;
+          double videoImageWeight = 0.0;
+          if (media.list[i].videoImage.isNotEmpty) {
+            final imageInfo = await _imageService.getImageUrlInfo(media.list[i].videoImage);
+            videoImageHeight = imageInfo.image.height.toDouble();
+            videoImageWeight = imageInfo.image.width.toDouble();
+          }
+
+          if (media.list[i].typeMedia == 'images' && media.list[i].images.length > 1) {
+            List<NewsSliderImageItemDataModel> images = [];
+            for (int j = 0; j < media.list[i].images.length; j++) {
+              final imageInfo =
+                  await _imageService.getImageUrlInfo(media.list[i].images[j].imageUrl);
+              images.add(NewsSliderImageItemDataModel(
+                imageUrl: media.list[i].images[j].imageUrl,
+                imageHeight: imageInfo.image.height.toDouble(),
+                imageWeight: imageInfo.image.width.toDouble(),
+              ));
+            }
+
+            listMedia.add(media.list[i].copyWith(
+              images: images,
+            ));
+          } else {
+            listMedia.add(media.list[i].copyWith(
+              videoImageHeight: videoImageHeight,
+              videoImageWeight: videoImageWeight,
+            ));
+          }
         }
 
-        listMedia.add(media.list[i].copyWith(
-          videoImageHeight: videoImageHeight,
-          videoImageWeight: videoImageWeight,
+        _media = initState.media.copyWith(
+          list: [
+            ...initState.media.list,
+            ...listMedia,
+          ],
+        );
+
+        emit(initState.copyWith(
+          media: _media,
+          offsetMedia: offsetMedia,
         ));
       }
-
-      _media = initState.media.copyWith(
-        list: [
-          ...initState.media.list,
-          ...listMedia,
-        ],
-      );
-
-      emit(initState.copyWith(
-        media: _media,
-        offsetMedia: offsetMedia,
-      ));
     });
   }
 
@@ -317,32 +404,52 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       NotificationInfoDataModel notificatios =
           await _newsRepository.getNotifications(page: offsetNotificatios);
 
-      for (int i = 0; i < notificatios.list.length; i++) {
-        double videoImageHeight = 0.0;
-        double videoImageWeight = 0.0;
-        if (notificatios.list[i].videoImage.isNotEmpty) {
-          final imageInfo = await _imageService.getImageUrlInfo(notificatios.list[i].videoImage);
-          videoImageHeight = imageInfo.image.height.toDouble();
-          videoImageWeight = imageInfo.image.width.toDouble();
+      if (notificatios.errorMessage.isEmpty) {
+        for (int i = 0; i < notificatios.list.length; i++) {
+          double videoImageHeight = 0.0;
+          double videoImageWeight = 0.0;
+          if (notificatios.list[i].videoImage.isNotEmpty) {
+            final imageInfo = await _imageService.getImageUrlInfo(notificatios.list[i].videoImage);
+            videoImageHeight = imageInfo.image.height.toDouble();
+            videoImageWeight = imageInfo.image.width.toDouble();
+          }
+
+          if (notificatios.list[i].typeMedia == 'images' &&
+              notificatios.list[i].images.length > 1) {
+            List<NewsSliderImageItemDataModel> images = [];
+            for (int j = 0; j < notificatios.list[i].images.length; j++) {
+              final imageInfo =
+                  await _imageService.getImageUrlInfo(notificatios.list[i].images[j].imageUrl);
+              images.add(NewsSliderImageItemDataModel(
+                imageUrl: notificatios.list[i].images[j].imageUrl,
+                imageHeight: imageInfo.image.height.toDouble(),
+                imageWeight: imageInfo.image.width.toDouble(),
+              ));
+            }
+
+            listNotifications.add(notificatios.list[i].copyWith(
+              images: images,
+            ));
+          } else {
+            listNotifications.add(notificatios.list[i].copyWith(
+              videoImageHeight: videoImageHeight,
+              videoImageWeight: videoImageWeight,
+            ));
+          }
         }
 
-        listNotifications.add(notificatios.list[i].copyWith(
-          videoImageHeight: videoImageHeight,
-          videoImageWeight: videoImageWeight,
+        _notificatios = initState.notificatios.copyWith(
+          list: [
+            ...initState.notificatios.list,
+            ...listNotifications,
+          ],
+        );
+
+        emit(initState.copyWith(
+          notificatios: _notificatios,
+          offsetNotificatios: offsetNotificatios,
         ));
       }
-
-      _notificatios = initState.notificatios.copyWith(
-        list: [
-          ...initState.notificatios.list,
-          ...listNotifications,
-        ],
-      );
-
-      emit(initState.copyWith(
-        notificatios: _notificatios,
-        offsetNotificatios: offsetNotificatios,
-      ));
     });
   }
 
@@ -358,6 +465,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
+    List<NewsSliderImageItemDataModel> images = [];
 
     OneNewsInfoDataModel oneNews = await _newsRepository.getOneNews(
       id: event.id,
@@ -372,6 +480,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       videoImageWeight = imageInfo.image.width.toDouble();
     }
 
+    if (oneNews.data.typeMedia == 'images' && oneNews.data.images.length > 1) {
+      for (int j = 0; j < oneNews.data.images.length; j++) {
+        final imageInfo = await _imageService.getImageUrlInfo(oneNews.data.images[j].imageUrl);
+        images.add(NewsSliderImageItemDataModel(
+          imageUrl: oneNews.data.images[j].imageUrl,
+          imageHeight: imageInfo.image.height.toDouble(),
+          imageWeight: imageInfo.image.width.toDouble(),
+        ));
+      }
+    }
+
     oneNews = OneNewsInfoDataModel(
       r: oneNews.r,
       e: oneNews.e,
@@ -379,6 +498,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       data: oneNews.data.copyWith(
         videoImageHeight: videoImageHeight,
         videoImageWeight: videoImageWeight,
+        images: images,
       ),
       isViewed: oneNews.isViewed,
     );
@@ -433,6 +553,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
+    List<NewsSliderImageItemDataModel> images = [];
 
     OneMediaInfoDataModel oneMedia = await _newsRepository.getOneMedia(
       id: event.id,
@@ -447,6 +568,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       videoImageWeight = imageInfo.image.width.toDouble();
     }
 
+    if (oneMedia.data.typeMedia == 'images' && oneMedia.data.images.length > 1) {
+      for (int j = 0; j < oneMedia.data.images.length; j++) {
+        final imageInfo = await _imageService.getImageUrlInfo(oneMedia.data.images[j].imageUrl);
+        images.add(NewsSliderImageItemDataModel(
+          imageUrl: oneMedia.data.images[j].imageUrl,
+          imageHeight: imageInfo.image.height.toDouble(),
+          imageWeight: imageInfo.image.width.toDouble(),
+        ));
+      }
+    }
+
     oneMedia = OneMediaInfoDataModel(
       r: oneMedia.r,
       e: oneMedia.e,
@@ -454,6 +586,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       data: oneMedia.data.copyWith(
         videoImageHeight: videoImageHeight,
         videoImageWeight: videoImageWeight,
+        images: images,
       ),
       isViewed: oneMedia.isViewed,
     );
@@ -508,6 +641,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     }
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
+    List<NewsSliderImageItemDataModel> images = [];
 
     OneNotificationInfoDataModel oneNotifcation = await _newsRepository.getOneNotifcation(
       id: event.id,
@@ -522,6 +656,18 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       videoImageWeight = imageInfo.image.width.toDouble();
     }
 
+    if (oneNotifcation.data.typeMedia == 'images' && oneNotifcation.data.images.length > 1) {
+      for (int j = 0; j < oneNotifcation.data.images.length; j++) {
+        final imageInfo =
+            await _imageService.getImageUrlInfo(oneNotifcation.data.images[j].imageUrl);
+        images.add(NewsSliderImageItemDataModel(
+          imageUrl: oneNotifcation.data.images[j].imageUrl,
+          imageHeight: imageInfo.image.height.toDouble(),
+          imageWeight: imageInfo.image.width.toDouble(),
+        ));
+      }
+    }
+
     oneNotifcation = OneNotificationInfoDataModel(
       r: oneNotifcation.r,
       e: oneNotifcation.e,
@@ -529,6 +675,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       data: oneNotifcation.data.copyWith(
         videoImageHeight: videoImageHeight,
         videoImageWeight: videoImageWeight,
+        images: images,
       ),
     );
 

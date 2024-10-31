@@ -249,7 +249,7 @@ Widget _itemMediaSize({
               SizedBox(
                 width: width,
                 child: CachedNetworkImage(
-                  imageUrl: info.images.first,
+                  imageUrl: info.images.first.imageUrl,
                   width: width,
                   height: height,
                   fit: BoxFit.cover,
@@ -345,7 +345,7 @@ Widget _itemMediaExpandex({
             alignment: Alignment.topRight,
             children: [
               CachedNetworkImage(
-                imageUrl: info.images.first,
+                imageUrl: info.images.first.imageUrl,
                 fit: BoxFit.cover,
                 height: constraints.maxHeight,
                 width: constraints.maxWidth,

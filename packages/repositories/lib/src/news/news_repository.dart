@@ -71,14 +71,22 @@ extension on NewsInfoResponse {
       list: List<NewsInfoItemDataModel>.from(
         list?.map((item) {
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
+              List<NewsSliderImageItemDataModel> images = item.images
+                      ?.map(
+                        (item) => NewsSliderImageItemDataModel(
+                          imageUrl: "https://slepayakurica.ru$item",
+                          imageHeight: 0,
+                          imageWeight: 0,
+                        ),
+                      )
+                      .toList() ??
+                  [];
 
               return NewsInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
-                images: item.images?.isNotEmpty ?? false
-                    ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
-                    : [],
+                images: images.isNotEmpty ? images : [],
                 video: (item.typeVideo ?? '') == 'original'
                     ? "https://slepayakurica.ru${item.video ?? ''}"
                     : item.video ?? '',
@@ -116,13 +124,21 @@ extension on MediaInfoResponse {
       list: List<MediaInfoItemDataModel>.from(
         list?.map((item) {
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
+              List<NewsSliderImageItemDataModel> images = item.images
+                      ?.map(
+                        (item) => NewsSliderImageItemDataModel(
+                          imageUrl: "https://slepayakurica.ru$item",
+                          imageHeight: 0,
+                          imageWeight: 0,
+                        ),
+                      )
+                      .toList() ??
+                  [];
               return MediaInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
-                images: item.images?.isNotEmpty ?? false
-                    ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
-                    : [],
+                images: images.isNotEmpty ? images : [],
                 video: (item.typeVideo ?? '') == 'original'
                     ? "https://slepayakurica.ru${item.video ?? ''}"
                     : item.video ?? '',
@@ -159,13 +175,21 @@ extension on NotificationInfoResponse {
       list: List<NotificationInfoItemDataModel>.from(
         list?.map((item) {
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
+              List<NewsSliderImageItemDataModel> images = item.images
+                      ?.map(
+                        (item) => NewsSliderImageItemDataModel(
+                          imageUrl: "https://slepayakurica.ru$item",
+                          imageHeight: 0,
+                          imageWeight: 0,
+                        ),
+                      )
+                      .toList() ??
+                  [];
               return NotificationInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
                 createAt: item.createAt ?? '',
-                images: item.images?.isNotEmpty ?? false
-                    ? item.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
-                    : [],
+                images: images.isNotEmpty ? images : [],
                 video: (item.typeVideo ?? '') == 'original'
                     ? "https://slepayakurica.ru${item.video ?? ''}"
                     : item.video ?? '',
@@ -195,6 +219,16 @@ extension on NotificationInfoResponse {
 extension on OneNewsInfoResponse {
   OneNewsInfoDataModel toOneNews() {
     final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
+    List<NewsSliderImageItemDataModel> images = data?.images
+            ?.map(
+              (item) => NewsSliderImageItemDataModel(
+                imageUrl: "https://slepayakurica.ru$item",
+                imageHeight: 0,
+                imageWeight: 0,
+              ),
+            )
+            .toList() ??
+        [];
 
     return OneNewsInfoDataModel(
       r: r ?? '',
@@ -204,9 +238,7 @@ extension on OneNewsInfoResponse {
         id: data?.id ?? '',
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
-        images: data?.images?.isNotEmpty ?? false
-            ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
-            : [],
+        images: images.isNotEmpty ? images : [],
         video: (data?.typeVideo ?? '') == 'original'
             ? "https://slepayakurica.ru${data?.video ?? ''}"
             : data?.video ?? '',
@@ -235,6 +267,16 @@ extension on OneNewsInfoResponse {
 extension on OneMediaInfoResponse {
   OneMediaInfoDataModel toOneMedia() {
     final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
+    List<NewsSliderImageItemDataModel> images = data?.images
+            ?.map(
+              (item) => NewsSliderImageItemDataModel(
+                imageUrl: "https://slepayakurica.ru$item",
+                imageHeight: 0,
+                imageWeight: 0,
+              ),
+            )
+            .toList() ??
+        [];
     return OneMediaInfoDataModel(
       r: r ?? '',
       e: e ?? '',
@@ -243,9 +285,7 @@ extension on OneMediaInfoResponse {
         id: data?.id ?? '',
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
-        images: data?.images?.isNotEmpty ?? false
-            ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
-            : [],
+        images: images.isNotEmpty ? images : [],
         video: (data?.typeVideo ?? '') == 'original'
             ? "https://slepayakurica.ru${data?.video ?? ''}"
             : data?.video ?? '',
@@ -273,6 +313,16 @@ extension on OneMediaInfoResponse {
 extension on OneNotificationInfoResponse {
   OneNotificationInfoDataModel toOneNotification() {
     final videoImage = "https://slepayakurica.ru${data?.videoImage ?? ''}";
+    List<NewsSliderImageItemDataModel> images = data?.images
+            ?.map(
+              (item) => NewsSliderImageItemDataModel(
+                imageUrl: "https://slepayakurica.ru$item",
+                imageHeight: 0,
+                imageWeight: 0,
+              ),
+            )
+            .toList() ??
+        [];
     return OneNotificationInfoDataModel(
       r: r ?? '',
       e: e ?? '',
@@ -281,9 +331,7 @@ extension on OneNotificationInfoResponse {
         id: data?.id ?? '',
         title: data?.title ?? '',
         createAt: data?.createAt ?? '',
-        images: data?.images?.isNotEmpty ?? false
-            ? data?.images?.map((item) => "https://slepayakurica.ru$item").toList() ?? []
-            : [],
+        images: images.isNotEmpty ? images : [],
         video: (data?.typeVideo ?? '') == 'original'
             ? "https://slepayakurica.ru${data?.video ?? ''}"
             : data?.video ?? '',

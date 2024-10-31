@@ -92,7 +92,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                       ),
                       LayoutBuilder(builder: (context, constraints) {
                         return CachedNetworkImage(
-                          imageUrl: widget.item.images.first,
+                          imageUrl: widget.item.images.first.imageUrl,
                           width: constraints.maxWidth,
                           fit: BoxFit.cover,
                           placeholder: (context, url) => const SizedBox(

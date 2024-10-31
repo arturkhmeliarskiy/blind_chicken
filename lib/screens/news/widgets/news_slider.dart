@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:models/models.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -16,7 +17,7 @@ class NewsSlider extends StatefulWidget {
     this.borderRadius = 4,
   });
 
-  final List<String> media;
+  final List<NewsSliderImageItemDataModel> media;
   final VoidCallback goBotton;
   final ValueChanged<int> onTap;
   final double borderRadius;
@@ -29,11 +30,13 @@ class NewsSlider extends StatefulWidget {
 
 class _NewsSliderState extends State<NewsSlider> {
   final PageController _scrollController = PageController();
+  double _aspectRatio = 0.0;
 
   int _indexItem = 0;
 
   @override
   void initState() {
+    _aspectRatio = widget.media.first.imageWeight / widget.media.first.imageHeight;
     _scrollController.addListener(_scrollListener);
     super.initState();
   }
@@ -57,9 +60,8 @@ class _NewsSliderState extends State<NewsSlider> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return SizedBox(
-      height: 250,
-      width: width,
+    return AspectRatio(
+      aspectRatio: _aspectRatio,
       child: Stack(
         children: [
           Column(
@@ -69,6 +71,12 @@ class _NewsSliderState extends State<NewsSlider> {
                   scrollDirection: Axis.horizontal,
                   itemCount: widget.media.length,
                   controller: _scrollController,
+                  onPageChanged: (value) {
+                    setState(() {
+                      _aspectRatio =
+                          widget.media[value].imageWeight / widget.media[value].imageHeight;
+                    });
+                  },
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
@@ -77,7 +85,7 @@ class _NewsSliderState extends State<NewsSlider> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(widget.borderRadius),
                         child: CachedNetworkImage(
-                          imageUrl: widget.media[index],
+                          imageUrl: widget.media[index].imageUrl,
                           width: MediaQuery.of(context).orientation == Orientation.portrait
                               ? width
                               : width / 2,
@@ -117,6 +125,8 @@ class _NewsSliderState extends State<NewsSlider> {
                                 milliseconds: 500,
                               ),
                             );
+                            _aspectRatio = widget.media[_indexItem].imageWeight /
+                                widget.media[_indexItem].imageHeight;
                           }
                         });
                       },
@@ -146,6 +156,8 @@ class _NewsSliderState extends State<NewsSlider> {
                                 milliseconds: 500,
                               ),
                             );
+                            _aspectRatio = widget.media[_indexItem].imageWeight /
+                                widget.media[_indexItem].imageHeight;
                           }
                         });
                       },

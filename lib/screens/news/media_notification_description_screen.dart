@@ -241,7 +241,9 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                             );
                                           },
                                           child: CachedNetworkImage(
-                                            imageUrl: initState.oneMedia?.data.images.first ?? '',
+                                            imageUrl:
+                                                initState.oneMedia?.data.images.first.imageUrl ??
+                                                    '',
                                             width: MediaQuery.of(context).orientation ==
                                                     Orientation.portrait
                                                 ? width

@@ -148,7 +148,7 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                                     );
                                   },
                                   child: CachedNetworkImage(
-                                    imageUrl: widget.info.images.first,
+                                    imageUrl: widget.info.images.first.imageUrl,
                                     width:
                                         MediaQuery.of(context).orientation == Orientation.portrait
                                             ? width
