@@ -497,7 +497,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                   ]),
                 );
-                BadgeService.updateBadgeCount(0);
+                // BadgeService.updateBadgeCount(0);
                 AppMetrica.reportEvent('Список новостей');
                 // showDialog(
                 //     barrierColor: Colors.transparent,
