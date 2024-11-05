@@ -45,10 +45,12 @@ class _MainScreenState extends State<MainScreen> {
   bool _isButtonTop = false;
   double _historyPosition = 0.0;
   Timer? timer;
+  Timer? timerNews;
 
   @override
   void initState() {
     _init();
+
     context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
     context.read<ShoppingCartBloc>().add(const ShoppingCartEvent.init());
     context.read<BrandBloc>().add(const BrandEvent.getBrands(
@@ -62,6 +64,12 @@ class _MainScreenState extends State<MainScreen> {
         context.read<TopBannerBloc>().add(const TopBannerEvent.preloadData());
         _updateVersionApp();
         _checkPushToken();
+      },
+    );
+    timerNews = Timer.periodic(
+      const Duration(seconds: 10),
+      (timer) {
+        context.read<NewsBloc>().add(const NewsEvent.checkingReadNews());
       },
     );
 
@@ -194,6 +202,7 @@ class _MainScreenState extends State<MainScreen> {
     _search.dispose();
     _scrollController.dispose();
     timer?.cancel();
+    timerNews?.cancel();
     super.dispose();
   }
 

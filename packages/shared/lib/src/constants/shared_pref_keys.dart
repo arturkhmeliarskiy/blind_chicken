@@ -17,4 +17,5 @@ class SharedPrefKeys {
   static const String notification = 'notification';
   static const String numberUnreadMessages = 'number_unread_messages';
   static const String isPromotionsForPurchases = 'is_promotions_purchases';
+  static const String dateReceiptNewNews = 'date_receipt_new_news';
 }

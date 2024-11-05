@@ -1,31 +1,73 @@
 import 'package:api_models/api_models.dart';
 import 'package:models/models.dart';
 import 'package:services/services.dart';
+import 'package:shared/shared.dart';
 
 class NewsRepository {
   final NewsService _newsService;
+  final NewsNotificationsService _newsNotificationsService;
+  final SharedPreferencesService _sharedPreferencesService;
 
-  NewsRepository(this._newsService);
+  NewsRepository(
+    this._newsService,
+    this._newsNotificationsService,
+    this._sharedPreferencesService,
+  );
+
+  //news notifications
+
+  List<NewsNotificationInfoDataModel> getNewsNotifications() {
+    final listnewsNotifications = _newsNotificationsService.listNewsNotifications();
+    return listnewsNotifications.toNewsNotifications(listnewsNotifications);
+  }
+
+  void addNewsNotification(NewsNotificationInfoDataModel news) {
+    _newsNotificationsService.addNewsNotification(news.toNewsNotification());
+  }
+
+  void deleteFavouritesProduct(int index) {
+    _newsNotificationsService.deleteNewsNotification(index);
+  }
+
+  void deleteAllFavouritesProducts() {
+    _newsNotificationsService.deleteAllNewsNotifications();
+  }
+  //favourites end
 
   Future<NewsInfoDataModel> getNews({
     required int page,
   }) async {
     final news = await _newsService.getNews(page: page);
-    return news.toNews();
+    String dateReceiptNewNews = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.dateReceiptNewNews,
+        ) ??
+        '';
+    final listnewsNotifications = getNewsNotifications();
+    return news.toNews(dateReceiptNewNews, listnewsNotifications);
   }
 
   Future<MediaInfoDataModel> getMedia({
     required int page,
   }) async {
     final media = await _newsService.getMedia(page: page);
-    return media.toMedia();
+    String dateReceiptNewNews = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.dateReceiptNewNews,
+        ) ??
+        '';
+    final listnewsNotifications = getNewsNotifications();
+    return media.toMedia(dateReceiptNewNews, listnewsNotifications);
   }
 
   Future<NotificationInfoDataModel> getNotifications({
     required int page,
   }) async {
     final media = await _newsService.getNotifications(page: page);
-    return media.toNotifications();
+    String dateReceiptNewNews = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.dateReceiptNewNews,
+        ) ??
+        '';
+    final listnewsNotifications = getNewsNotifications();
+    return media.toNotifications(dateReceiptNewNews, listnewsNotifications);
   }
 
   Future<OneNewsInfoDataModel> getOneNews({
@@ -60,16 +102,40 @@ class NewsRepository {
     );
     return media.toOneNotification();
   }
+
+  Future<BadgeOperationInfoDataModel> getNumberUnreaNews() async {
+    final news = await _newsService.getNumberUnreaNews();
+    return news.toNumberUnreaNews();
+  }
+
+  Future<BadgeOperationInfoDataModel> postReadNews({
+    required String idRead,
+    required String idTypeContent,
+  }) async {
+    final news = await _newsService.postReadNews(
+      idRead: idRead,
+      idTypeContent: idTypeContent,
+    );
+    return news.toNumberUnreaNews();
+  }
 }
 
 extension on NewsInfoResponse {
-  NewsInfoDataModel toNews() {
+  NewsInfoDataModel toNews(
+    String dateReceiptNewNews,
+    List<NewsNotificationInfoDataModel> listnewsNotifications,
+  ) {
     return NewsInfoDataModel(
       r: r ?? '',
       e: e ?? '',
       errorMessage: errorMessage ?? '',
       list: List<NewsInfoItemDataModel>.from(
         list?.map((item) {
+              final isViewed = listnewsNotifications
+                  .where(
+                    (element) => element.id == (item.id ?? '') && element.typeNews == 'news',
+                  )
+                  .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
               List<NewsSliderImageItemDataModel> images = item.images
                       ?.map(
@@ -103,7 +169,10 @@ extension on NewsInfoResponse {
                 filterSelect: item.filterSelect ?? '',
                 uidStore: item.uidStore ?? '',
                 numberViews: item.numberViews ?? 0,
-                isViewed: item.isViewed ?? false,
+                isViewed: DateTime.parse(item.createAt ?? '').isAfter(
+                      DateTime.parse(dateReceiptNewNews),
+                    ) &&
+                    isViewed,
                 videoImageHeight: 0,
                 videoImageWeight: 0,
               );
@@ -116,13 +185,21 @@ extension on NewsInfoResponse {
 }
 
 extension on MediaInfoResponse {
-  MediaInfoDataModel toMedia() {
+  MediaInfoDataModel toMedia(
+    String dateReceiptNewNews,
+    List<NewsNotificationInfoDataModel> listnewsNotifications,
+  ) {
     return MediaInfoDataModel(
       r: r ?? '',
       e: e ?? '',
       errorMessage: errorMessage ?? '',
       list: List<MediaInfoItemDataModel>.from(
         list?.map((item) {
+              final isViewed = listnewsNotifications
+                  .where(
+                    (element) => element.id == (item.id ?? '') && element.typeNews == 'media',
+                  )
+                  .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
               List<NewsSliderImageItemDataModel> images = item.images
                       ?.map(
@@ -134,6 +211,7 @@ extension on MediaInfoResponse {
                       )
                       .toList() ??
                   [];
+
               return MediaInfoItemDataModel(
                 id: item.id ?? '',
                 title: item.title ?? '',
@@ -154,7 +232,10 @@ extension on MediaInfoResponse {
                 filterSelect: item.filterSelect ?? '',
                 uidStore: item.uidStore ?? '',
                 numberViews: item.numberViews ?? 0,
-                isViewed: item.isViewed ?? false,
+                isViewed: DateTime.parse(item.createAt ?? '').isAfter(
+                      DateTime.parse(dateReceiptNewNews),
+                    ) &&
+                    isViewed,
                 videoImageHeight: 0,
                 videoImageWeight: 0,
               );
@@ -167,13 +248,21 @@ extension on MediaInfoResponse {
 }
 
 extension on NotificationInfoResponse {
-  NotificationInfoDataModel toNotifications() {
+  NotificationInfoDataModel toNotifications(
+    String dateReceiptNewNews,
+    List<NewsNotificationInfoDataModel> listnewsNotifications,
+  ) {
     return NotificationInfoDataModel(
       r: r ?? '',
       e: e ?? '',
       errorMessage: errorMessage ?? '',
       list: List<NotificationInfoItemDataModel>.from(
         list?.map((item) {
+              final isViewed = listnewsNotifications
+                  .where(
+                    (element) => element.id == (item.id ?? '') && element.typeNews == 'notice',
+                  )
+                  .isEmpty;
               final videoImage = "https://slepayakurica.ru${item.videoImage ?? ''}";
               List<NewsSliderImageItemDataModel> images = item.images
                       ?.map(
@@ -204,7 +293,10 @@ extension on NotificationInfoResponse {
                 sort: item.sort ?? '',
                 filterSelect: item.filterSelect ?? '',
                 uidStore: item.uidStore ?? '',
-                isViewed: item.isViewed ?? false,
+                isViewed: DateTime.parse(item.createAt ?? '').isAfter(
+                      DateTime.parse(dateReceiptNewNews),
+                    ) &&
+                    isViewed,
                 videoImageHeight: 0,
                 videoImageWeight: 0,
               );
@@ -349,6 +441,46 @@ extension on OneNotificationInfoResponse {
         isViewed: data?.isViewed ?? false,
         videoImageHeight: 0,
         videoImageWeight: 0,
+      ),
+    );
+  }
+}
+
+extension on BadgeOperationInfoResponse {
+  BadgeOperationInfoDataModel toNumberUnreaNews() {
+    return BadgeOperationInfoDataModel(
+      r: r ?? '',
+      errorMessage: errorMessage ?? '',
+      e: e ?? '',
+      news: news ?? 0,
+      media: media ?? 0,
+      notice: notice ?? 0,
+      total: total ?? 0,
+    );
+  }
+}
+
+extension on NewsNotificationInfoDataModel {
+  NewsNotificationDataModel toNewsNotification() {
+    return NewsNotificationDataModel(
+      id: id,
+      typeNews: typeNews,
+    );
+  }
+}
+
+extension on List<NewsNotificationDataModel> {
+  List<NewsNotificationInfoDataModel> toNewsNotifications(
+    List<NewsNotificationDataModel> listnewsNotifications,
+  ) {
+    return List<NewsNotificationInfoDataModel>.from(
+      listnewsNotifications.map(
+        (item) {
+          return NewsNotificationInfoDataModel(
+            id: item.id,
+            typeNews: item.typeNews,
+          );
+        },
       ),
     );
   }

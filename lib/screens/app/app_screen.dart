@@ -322,14 +322,14 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 label: '',
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/icons/bell.svg',
-                  fit: BoxFit.cover,
-                  height: 21,
-                ),
-                label: '',
-              ),
+              // BottomNavigationBarItem(
+              //   icon: SvgPicture.asset(
+              //     'assets/icons/bell.svg',
+              //     fit: BoxFit.cover,
+              //     height: 21,
+              //   ),
+              //   label: '',
+              // ),
               // BottomNavigationBarItem(
               //   icon: SvgPicture.asset(
               //     'assets/icons/message-circle.svg',
@@ -338,40 +338,82 @@ class _DashboardPageState extends State<DashboardPage> {
               //   ),
               //   label: '',
               // ),
-              // BottomNavigationBarItem(
-              //   icon: SizedBox(
-              //     height: 25,
-              //     child: Stack(
-              //       alignment: Alignment.topRight,
-              //       children: [
-              //         Padding(
-              //           padding: const EdgeInsets.only(top: 4),
-              //           child: SvgPicture.asset(
-              //             'assets/icons/bell.svg',
-              //             fit: BoxFit.cover,
-              //             height: 21,
-              //           ),
-              //         ),
-              //         Container(
-              //           height: 12,
-              //           width: 12,
-              //           decoration: BoxDecoration(
-              //             borderRadius: BorderRadius.circular(5),
-              //             color: Colors.white,
-              //           ),
-              //           padding: const EdgeInsets.all(3),
-              //           child: Container(
-              //             decoration: BoxDecoration(
-              //               borderRadius: BorderRadius.circular(5),
-              //               color: Colors.black,
-              //             ),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              //   label: '',
-              // ),
+              BottomNavigationBarItem(
+                icon: BlocBuilder<NewsBloc, NewsState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      preloadDataCompleted: (initState) {
+                        return SizedBox(
+                          height: 26,
+                          child: Stack(
+                            alignment: initState.countBadges > 0
+                                ? Alignment.bottomCenter
+                                : Alignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/icons/bell.svg',
+                                fit: BoxFit.cover,
+                                height: 21,
+                              ),
+                              initState.countBadges > 0
+                                  ? Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(9),
+                                                color: Colors.black,
+                                              ),
+                                              padding: EdgeInsets.symmetric(
+                                                vertical: 2,
+                                                horizontal: 5,
+                                              ),
+                                              margin: EdgeInsets.only(left: 3),
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                initState.countBadges > 10
+                                                    ? '+10'
+                                                    : initState.countBadges.toString(),
+                                                style:
+                                                    Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                                          color: BlindChickenColors.backgroundColor,
+                                                          fontWeight: FontWeight.w700,
+                                                          height: 1,
+                                                        ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )
+                                  : SizedBox(),
+                            ],
+                          ),
+                        );
+                      },
+                      orElse: () => SizedBox(
+                        height: 26,
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: SvgPicture.asset(
+                            'assets/icons/bell.svg',
+                            fit: BoxFit.cover,
+                            height: 21,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                label: '',
+              ),
             ],
             currentIndex: tabsRouter.activeIndex,
             type: BottomNavigationBarType.fixed,
@@ -497,7 +539,6 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                   ]),
                 );
-                // BadgeService.updateBadgeCount(0);
                 AppMetrica.reportEvent('Список новостей');
                 // showDialog(
                 //     barrierColor: Colors.transparent,

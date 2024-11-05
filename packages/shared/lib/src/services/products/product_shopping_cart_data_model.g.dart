@@ -6,8 +6,7 @@ part of 'product_shopping_cart_data_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ProductShoppingCartDataModelAdapter
-    extends TypeAdapter<ProductShoppingCartDataModel> {
+class ProductShoppingCartDataModelAdapter extends TypeAdapter<ProductShoppingCartDataModel> {
   @override
   final int typeId = 1;
 

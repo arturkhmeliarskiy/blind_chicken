@@ -58,6 +58,8 @@ Future<void> initRepositories(GetIt getIt) async {
     ..registerFactory(
       () => NewsRepository(
         getIt.get<NewsService>(),
+        getIt.get<NewsNotificationsService>(),
+        getIt.get<SharedPreferencesService>(),
       ),
     )
     ..registerFactory(

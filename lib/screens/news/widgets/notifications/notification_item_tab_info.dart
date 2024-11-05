@@ -1,3 +1,4 @@
+import 'package:blind_chicken/screens/news/widgets/notifications/notification_item_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
@@ -54,7 +55,7 @@ class _NotificationItemTabInfoState extends State<NotificationItemTabInfo> {
               ],
             ),
           ),
-          // if (!widget.item.isViewed) const NotificationItemIndicator()
+          if (widget.item.isViewed) const NotificationItemIndicator()
         ],
       ),
     );

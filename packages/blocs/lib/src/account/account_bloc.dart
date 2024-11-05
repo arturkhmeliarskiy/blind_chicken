@@ -339,12 +339,18 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             key: SharedPrefKeys.deviceId,
           ) ??
           '';
+      String dateReceiptNewNews = _sharedPreferencesService.getString(
+            key: SharedPrefKeys.dateReceiptNewNews,
+          ) ??
+          '';
       bool isPromotionsForPurchases = _sharedPreferencesService.getBool(
             key: SharedPrefKeys.isPromotionsForPurchases,
           ) ??
           false;
       String deviceid = deviceId;
+      String datereceiptNewNews = dateReceiptNewNews;
       bool ispromotionsForPurchases = isPromotionsForPurchases;
+
       _sharedPreferencesService.clear();
       _sharedPreferencesService.setBool(
         key: SharedPrefKeys.appInstalled,
@@ -353,6 +359,10 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       _sharedPreferencesService.setString(
         key: SharedPrefKeys.deviceId,
         value: deviceid,
+      );
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.dateReceiptNewNews,
+        value: datereceiptNewNews,
       );
       _sharedPreferencesService.setBool(
         key: SharedPrefKeys.isPromotionsForPurchases,
@@ -374,6 +384,16 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
           key: SharedPrefKeys.isPromotionsForPurchases,
         ) ??
         false;
+    String deviceId = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.deviceId,
+        ) ??
+        '';
+    String dateReceiptNewNews = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.dateReceiptNewNews,
+        ) ??
+        '';
+    String deviceid = deviceId;
+    String datereceiptNewNews = dateReceiptNewNews;
     bool ispromotionsForPurchases = isPromotionsForPurchases;
     _sharedPreferencesService.clear();
     _sharedPreferencesService.setBool(
@@ -383,6 +403,14 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     _sharedPreferencesService.setBool(
       key: SharedPrefKeys.appInstalled,
       value: true,
+    );
+    _sharedPreferencesService.setString(
+      key: SharedPrefKeys.deviceId,
+      value: deviceid,
+    );
+    _sharedPreferencesService.setString(
+      key: SharedPrefKeys.dateReceiptNewNews,
+      value: datereceiptNewNews,
     );
     _catalogRepository.deleteAllShoppingProducts();
     _catalogRepository.deleteAllFavouritesProducts();

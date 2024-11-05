@@ -47,6 +47,7 @@ Future<void> main() async {
       log('Dispatcher $error $stack');
       return true;
     };
+
     runApp(const App());
     if (Platform.isAndroid) {
       await initializeDefault();

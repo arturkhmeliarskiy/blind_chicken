@@ -13,3 +13,4 @@ export 'app_metrica_ecommerce_service.dart';
 export 'filter_service.dart';
 export 'image_service.dart';
 export 'badge_service.dart';
+export 'news_notifications/index.dart';

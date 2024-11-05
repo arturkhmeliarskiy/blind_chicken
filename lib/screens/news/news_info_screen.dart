@@ -62,7 +62,10 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
           preloadDataCompleted: (initState) {
             if (initState.isError ?? false) {
               final typeError = initState.typeError ?? '';
-              if (!_isShowDialogNewsInfoError) {
+              if (!_isShowDialogNewsInfoError &&
+                  typeError != 'описание news' &&
+                  typeError != 'описание media' &&
+                  typeError != 'описание notice') {
                 _isShowDialogNewsInfoError = true;
                 _blindChickenNewsInfoShowDialogError.openShowDualog(
                   context: context,

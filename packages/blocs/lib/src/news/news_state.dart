@@ -18,6 +18,7 @@ class NewsState with _$NewsState {
     required List<String> listNewsPath,
     required bool isUpdateVersionApp,
     required bool isNotification,
+    required int countBadges,
     OneNewsInfoDataModel? oneNews,
     OneMediaInfoDataModel? oneMedia,
     OneNotificationInfoDataModel? oneNotification,

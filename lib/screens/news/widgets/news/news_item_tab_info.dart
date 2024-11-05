@@ -1,4 +1,5 @@
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
+import 'package:blind_chicken/screens/news/widgets/news/news_item_indicator.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -219,11 +220,11 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
               ],
             ),
           ),
-          // if (!widget.item.isViewed)
-          //   const Padding(
-          //     padding: EdgeInsets.all(8.0),
-          //     child: NewsItemIndicator(),
-          //   )
+          if (widget.item.isViewed)
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: NewsItemIndicator(),
+            )
         ],
       ),
     );

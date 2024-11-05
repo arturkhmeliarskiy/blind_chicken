@@ -112,6 +112,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<NewsRepository>(),
         getIt.get<StoreVersionAppRepository>(),
         getIt.get<ImageService>(),
+        getIt.get<SharedPreferencesService>(),
       ),
     )
     ..registerFactory(

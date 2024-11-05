@@ -14,6 +14,7 @@ part 'news_state.dart';
 class NewsBloc extends Bloc<NewsEvent, NewsState> {
   final NewsRepository _newsRepository;
   final StoreVersionAppRepository _storeVersionAppRepository;
+  final SharedPreferencesService _sharedPreferencesService;
   final ImageService _imageService;
   NewsInfoDataModel _news =
       NewsInfoDataModel(e: '', r: '', errorMessage: '', list: [], isViewed: false);
@@ -26,6 +27,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     this._newsRepository,
     this._storeVersionAppRepository,
     this._imageService,
+    this._sharedPreferencesService,
   ) : super(const NewsState.init()) {
     on<NewsEvent>(
       (event, emit) => event.map<Future<void>>(
@@ -40,6 +42,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         getMediaDescriptionInfo: (event) => _getMediaDescriptionInfo(event, emit),
         getNotificationDescriptionInfo: (event) => _getNotificationDescriptionInfo(event, emit),
         goBackNewsInfo: (event) => _goBackNewsInfo(event, emit),
+        updateReadNews: (event) => _updateReadNews(event, emit),
+        checkingReadNews: (event) => _checkingReadNews(event, emit),
       ),
     );
   }
@@ -48,6 +52,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     InitNewsEvent event,
     Emitter<NewsState> emit,
   ) async {
+    final countBadges = await _newsRepository.getNumberUnreaNews();
     emit(
       NewsState.preloadDataCompleted(
         news: _news,
@@ -59,6 +64,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         listNewsPath: [],
         isUpdateVersionApp: false,
         isNotification: false,
+        countBadges: countBadges.total,
       ),
     );
   }
@@ -466,6 +472,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
     List<NewsSliderImageItemDataModel> images = [];
+    BadgeOperationInfoDataModel? countBadges;
 
     OneNewsInfoDataModel oneNews = await _newsRepository.getOneNews(
       id: event.id,
@@ -518,7 +525,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
     }
 
-    if (oneNews.errorMessage.isNotEmpty) {
+    final listNewsNotifications = _newsRepository.getNewsNotifications();
+
+    final isCheckReadNews = listNewsNotifications
+        .where((element) => element.id == event.id && element.typeNews == 'news')
+        .isEmpty;
+
+    if (isCheckReadNews) {
+      countBadges = await _newsRepository.postReadNews(
+        idRead: event.id,
+        idTypeContent: 'news',
+      );
+      _newsRepository.addNewsNotification(
+        NewsNotificationInfoDataModel(
+          id: event.id,
+          typeNews: 'news',
+        ),
+      );
+    }
+
+    if (oneNews.errorMessage.isNotEmpty || (countBadges?.errorMessage.isNotEmpty ?? false)) {
       emit(
         NewsState.error(
           errorMessage: oneNews.errorMessage,
@@ -537,6 +563,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           listNewsPath: [],
           isNotification: true,
           isUpdateVersionApp: isUpdateVersionApp,
+          countBadges: countBadges?.total ?? 0,
         ),
       );
     }
@@ -554,6 +581,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
     List<NewsSliderImageItemDataModel> images = [];
+    BadgeOperationInfoDataModel? countBadges;
 
     OneMediaInfoDataModel oneMedia = await _newsRepository.getOneMedia(
       id: event.id,
@@ -606,7 +634,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
     }
 
-    if (oneMedia.errorMessage.isNotEmpty) {
+    final listNewsNotifications = _newsRepository.getNewsNotifications();
+
+    final isCheckReadNews = listNewsNotifications
+        .where((element) => element.id == event.id && element.typeNews == 'media')
+        .isEmpty;
+
+    if (isCheckReadNews) {
+      countBadges = await _newsRepository.postReadNews(
+        idRead: event.id,
+        idTypeContent: 'media',
+      );
+      _newsRepository.addNewsNotification(
+        NewsNotificationInfoDataModel(
+          id: event.id,
+          typeNews: 'media',
+        ),
+      );
+    }
+
+    if (oneMedia.errorMessage.isNotEmpty || (countBadges?.errorMessage.isNotEmpty ?? false)) {
       emit(
         NewsState.error(
           errorMessage: oneMedia.errorMessage,
@@ -625,6 +672,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           listNewsPath: [],
           isNotification: true,
           isUpdateVersionApp: isUpdateVersionApp,
+          countBadges: countBadges?.total ?? 0,
         ),
       );
     }
@@ -642,6 +690,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     String appStoreInfoVersion = '';
     bool isUpdateVersionApp = false;
     List<NewsSliderImageItemDataModel> images = [];
+    BadgeOperationInfoDataModel? countBadges;
 
     OneNotificationInfoDataModel oneNotifcation = await _newsRepository.getOneNotifcation(
       id: event.id,
@@ -694,7 +743,26 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       }
     }
 
-    if (oneNotifcation.errorMessage.isNotEmpty) {
+    final listNewsNotifications = _newsRepository.getNewsNotifications();
+
+    final isCheckReadNews = listNewsNotifications
+        .where((element) => element.id == event.id && element.typeNews == 'notice')
+        .isEmpty;
+
+    if (isCheckReadNews) {
+      countBadges = await _newsRepository.postReadNews(
+        idRead: event.id,
+        idTypeContent: 'notice',
+      );
+      _newsRepository.addNewsNotification(
+        NewsNotificationInfoDataModel(
+          id: event.id,
+          typeNews: 'notice',
+        ),
+      );
+    }
+
+    if (oneNotifcation.errorMessage.isNotEmpty || (countBadges?.errorMessage.isNotEmpty ?? false)) {
       emit(
         NewsState.error(
           errorMessage: oneNotifcation.errorMessage,
@@ -713,6 +781,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           listNewsPath: [],
           isNotification: true,
           isUpdateVersionApp: isUpdateVersionApp,
+          countBadges: countBadges?.total ?? 0,
         ),
       );
     }
@@ -763,6 +832,130 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           );
         }
       }
+    });
+  }
+
+  Future<void> _updateReadNews(
+    UpdateReadNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      if (initState.isError ?? false) {
+        emit(initState.copyWith(
+          isLoadErrorButton: true,
+        ));
+      }
+      int indexNews = 0;
+      BadgeOperationInfoDataModel? countBadges;
+      final listNewsNotifications = _newsRepository.getNewsNotifications();
+
+      String dateReceiptNewNews = _sharedPreferencesService.getString(
+            key: SharedPrefKeys.dateReceiptNewNews,
+          ) ??
+          '';
+
+      final isCheckReadNews = listNewsNotifications
+          .where((element) => element.id == event.id && element.typeNews == event.typeNews)
+          .isEmpty;
+
+      if (isCheckReadNews) {
+        switch (event.typeNews) {
+          case 'news':
+            indexNews = _news.list.indexWhere((element) => element.id == event.id);
+            List<NewsInfoItemDataModel> listNews = _news.list.toList();
+            NewsInfoItemDataModel item = listNews[indexNews].copyWith(isViewed: false);
+            if (DateTime.parse(item.createAt).isAfter(
+              DateTime.parse(dateReceiptNewNews),
+            )) {
+              countBadges = await _newsRepository.postReadNews(
+                idRead: event.id,
+                idTypeContent: event.typeNews,
+              );
+              _newsRepository.addNewsNotification(
+                NewsNotificationInfoDataModel(
+                  id: event.id,
+                  typeNews: event.typeNews,
+                ),
+              );
+              listNews[indexNews] = item;
+              _news = initState.news.copyWith(list: listNews);
+            }
+
+            break;
+          case 'media':
+            indexNews = _media.list.indexWhere((element) => element.id == event.id);
+            List<MediaInfoItemDataModel> listMedia = _media.list.toList();
+            MediaInfoItemDataModel item = _media.list[indexNews];
+            if (DateTime.parse(item.createAt).isAfter(
+              DateTime.parse(dateReceiptNewNews),
+            )) {
+              countBadges = await _newsRepository.postReadNews(
+                idRead: event.id,
+                idTypeContent: event.typeNews,
+              );
+              _newsRepository.addNewsNotification(
+                NewsNotificationInfoDataModel(
+                  id: event.id,
+                  typeNews: event.typeNews,
+                ),
+              );
+              listMedia[indexNews] = listMedia[indexNews].copyWith(isViewed: false);
+              _media = initState.media.copyWith(list: listMedia);
+            }
+
+            break;
+          case 'notice':
+            indexNews = _notificatios.list.indexWhere((element) => element.id == event.id);
+            List<NotificationInfoItemDataModel> listNotificatios = _notificatios.list.toList();
+            NotificationInfoItemDataModel item = _notificatios.list[indexNews];
+            if (DateTime.parse(item.createAt).isAfter(
+              DateTime.parse(dateReceiptNewNews),
+            )) {
+              countBadges = await _newsRepository.postReadNews(
+                idRead: event.id,
+                idTypeContent: event.typeNews,
+              );
+              _newsRepository.addNewsNotification(
+                NewsNotificationInfoDataModel(
+                  id: event.id,
+                  typeNews: event.typeNews,
+                ),
+              );
+              listNotificatios[indexNews] = listNotificatios[indexNews].copyWith(isViewed: false);
+              _notificatios = initState.notificatios.copyWith(list: listNotificatios);
+            }
+
+            break;
+        }
+      }
+
+      emit(
+        initState.copyWith(
+          news: _news,
+          media: _media,
+          notificatios: _notificatios,
+          countBadges: countBadges?.total ?? 0,
+          isError: countBadges?.errorMessage.isNotEmpty ?? false,
+          errorMessage: countBadges?.errorMessage ?? '',
+          typeError: 'описание ${event.typeNews}',
+          isLoadErrorButton: false,
+        ),
+      );
+    });
+  }
+
+  Future<void> _checkingReadNews(
+    CheckingReadNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      final countBadges = await _newsRepository.getNumberUnreaNews();
+
+      emit(
+        initState.copyWith(
+          countBadges: countBadges.total,
+        ),
+      );
     });
   }
 }

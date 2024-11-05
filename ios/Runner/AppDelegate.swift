@@ -5,7 +5,7 @@ import AppMetricaPush
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
-  var methodChannel: FlutterMethodChannel? = nil
+  var methodChannelGetMessages: FlutterMethodChannel? = nil
   var methodChannelAppMetrica: FlutterMethodChannel? = nil
   var methodChannelCountBadges: FlutterMethodChannel? = nil
 
@@ -17,8 +17,8 @@ import AppMetricaPush
     YMKMapKit.setApiKey("6c8801e7-18fc-4835-b7bd-f60e7b42ce84") // Your generated API key
     AppMetricaPush.setExtensionAppGroup("group.push.slepayakurica")
 
-    let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
-    methodChannel = FlutterMethodChannel(name: "blind_chicken/getMessages", binaryMessenger: controller.binaryMessenger)
+    let controllerGetMessages : FlutterViewController = window?.rootViewController as! FlutterViewController
+    methodChannelGetMessages = FlutterMethodChannel(name: "blind_chicken/getMessages", binaryMessenger: controllerGetMessages.binaryMessenger)
     let controllerAppMetrica : FlutterViewController = window?.rootViewController as! FlutterViewController
     methodChannelAppMetrica = FlutterMethodChannel(name: "blind_chicken/getMessagesAppMetrica", binaryMessenger: controllerAppMetrica.binaryMessenger)
     let controllerCountBadges : FlutterViewController = window?.rootViewController as! FlutterViewController
@@ -33,7 +33,7 @@ import AppMetricaPush
       return
     })
 
-    methodChannel?.setMethodCallHandler({
+    methodChannelGetMessages?.setMethodCallHandler({
     (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
     if (call.method == "type") {
       result("")
@@ -68,7 +68,6 @@ import AppMetricaPush
         UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
     }
-    
     
     AppMetricaPush.handleApplicationDidFinishLaunching(options: launchOptions)
 
@@ -160,7 +159,7 @@ import AppMetricaPush
         guard let idNews = userInfo["id_news"] as? String
             else { return }
 
-          methodChannel?.setMethodCallHandler({
+          methodChannelGetMessages?.setMethodCallHandler({
             (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in  
             if (call.method == "type") {
               result("\("\(type)")")

@@ -245,6 +245,18 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     _updateDataService.boutiques = boutiques.data;
     _updateDataService.payments = paymentsInfo.payments;
 
+    String dateReceiptNewNews = _sharedPreferencesService.getString(
+          key: SharedPrefKeys.dateReceiptNewNews,
+        ) ??
+        '';
+
+    if (dateReceiptNewNews.isEmpty) {
+      _sharedPreferencesService.setString(
+        key: SharedPrefKeys.dateReceiptNewNews,
+        value: DateTime.now().toString(),
+      );
+    }
+
     final menu = await _catalogRepository.postMenuItems(
       a: 'get-main-menu',
       b: 0,

@@ -353,4 +353,125 @@ class NewsService {
       );
     }
   }
+
+  Future<BadgeOperationInfoResponse> getNumberUnreaNews() async {
+    BadgeOperationInfoResponse? badgeOperationInfoResponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    final platformDevice =
+        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/badge_operation.php',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "platform_device": platformDevice == 'IOS' ? 1 : 2,
+        },
+      );
+      try {
+        final result = await jsonDecode(response.data);
+        if (result["r"] == '1') {
+          badgeOperationInfoResponse = BadgeOperationInfoResponse.fromJson(result);
+        } else {
+          badgeOperationInfoResponse = BadgeOperationInfoResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        badgeOperationInfoResponse = BadgeOperationInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return badgeOperationInfoResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return BadgeOperationInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<BadgeOperationInfoResponse> postReadNews({
+    required String idRead,
+    required String idTypeContent,
+  }) async {
+    BadgeOperationInfoResponse? badgeOperationInfoResponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    final platformDevice =
+        _sharedPreferencesService.getString(key: SharedPrefKeys.platformDevice) ?? '';
+
+    try {
+      log(_dio.options.headers.toString());
+      final response = await _dio.post(
+        '/local/service/app/badge_operation.php?a=read',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "platform_device": platformDevice == 'IOS' ? 1 : 2,
+          "id_read": idRead,
+          "id_type_content": idTypeContent,
+        },
+      );
+      try {
+        final result = await jsonDecode(response.data);
+        if (result["r"] == '1') {
+          badgeOperationInfoResponse = BadgeOperationInfoResponse.fromJson(result);
+        } else {
+          badgeOperationInfoResponse = BadgeOperationInfoResponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        badgeOperationInfoResponse = BadgeOperationInfoResponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return badgeOperationInfoResponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return BadgeOperationInfoResponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
 }

@@ -25,4 +25,9 @@ class NewsEvent with _$NewsEvent {
   const factory NewsEvent.paginationMedia() = PaginationMediasNewsEvent;
   const factory NewsEvent.paginationNotifications() = PaginationNotificationsNewsEvent;
   const factory NewsEvent.goBackNewsInfo() = GoBackNewsInfoNewsEvent;
+  const factory NewsEvent.updateReadNews({
+    required String id,
+    required String typeNews,
+  }) = UpdateReadNewsEvent;
+  const factory NewsEvent.checkingReadNews() = CheckingReadNewsEvent;
 }
