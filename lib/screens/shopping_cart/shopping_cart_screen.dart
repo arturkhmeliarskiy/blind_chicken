@@ -408,6 +408,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                       context.read<ShoppingCartBloc>().add(
                                                             ShoppingCartEvent.changeAddress(
                                                               address: value.address,
+                                                              info: value,
                                                             ),
                                                           );
                                                       context.read<ShoppingCartBloc>().add(
@@ -419,7 +420,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                     onAddressDelivery: (value) {
                                                       context.read<ShoppingCartBloc>().add(
                                                             ShoppingCartEvent.changeAddressDelivery(
-                                                              addressDelivery: BasketAddress(
+                                                              addressDelivery:
+                                                                  BasketAddressDataModel(
                                                                 address: value.address
                                                                         .replaceAll(
                                                                             RegExp(r"\s+"), '')

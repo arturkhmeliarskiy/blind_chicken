@@ -2971,7 +2971,9 @@ mixin _$NewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() load,
+    required TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)
+        load,
     required TResult Function() loadErrorButton,
     required TResult Function(String errorMessage) error,
     required TResult Function(
@@ -2984,7 +2986,10 @@ mixin _$NewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -2998,7 +3003,9 @@ mixin _$NewsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? load,
+    TResult? Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult? Function()? loadErrorButton,
     TResult? Function(String errorMessage)? error,
     TResult? Function(
@@ -3011,7 +3018,10 @@ mixin _$NewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3025,7 +3035,9 @@ mixin _$NewsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? load,
+    TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult Function()? loadErrorButton,
     TResult Function(String errorMessage)? error,
     TResult Function(
@@ -3038,7 +3050,10 @@ mixin _$NewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3145,7 +3160,9 @@ class _$InitNewsStateImpl implements InitNewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() load,
+    required TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)
+        load,
     required TResult Function() loadErrorButton,
     required TResult Function(String errorMessage) error,
     required TResult Function(
@@ -3158,7 +3175,10 @@ class _$InitNewsStateImpl implements InitNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3175,7 +3195,9 @@ class _$InitNewsStateImpl implements InitNewsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? load,
+    TResult? Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult? Function()? loadErrorButton,
     TResult? Function(String errorMessage)? error,
     TResult? Function(
@@ -3188,7 +3210,10 @@ class _$InitNewsStateImpl implements InitNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3205,7 +3230,9 @@ class _$InitNewsStateImpl implements InitNewsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? load,
+    TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult Function()? loadErrorButton,
     TResult Function(String errorMessage)? error,
     TResult Function(
@@ -3218,7 +3245,10 @@ class _$InitNewsStateImpl implements InitNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3288,6 +3318,12 @@ abstract class _$$LoadingNewsStateImplCopyWith<$Res> {
   factory _$$LoadingNewsStateImplCopyWith(_$LoadingNewsStateImpl value,
           $Res Function(_$LoadingNewsStateImpl) then) =
       __$$LoadingNewsStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {int? countBadgesTotal,
+      int? countBadgesNews,
+      int? countBadgesMedia,
+      int? countBadgesNotificatios});
 }
 
 /// @nodoc
@@ -3300,32 +3336,94 @@ class __$$LoadingNewsStateImplCopyWithImpl<$Res>
 
   /// Create a copy of NewsState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? countBadgesTotal = freezed,
+    Object? countBadgesNews = freezed,
+    Object? countBadgesMedia = freezed,
+    Object? countBadgesNotificatios = freezed,
+  }) {
+    return _then(_$LoadingNewsStateImpl(
+      countBadgesTotal: freezed == countBadgesTotal
+          ? _value.countBadgesTotal
+          : countBadgesTotal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      countBadgesNews: freezed == countBadgesNews
+          ? _value.countBadgesNews
+          : countBadgesNews // ignore: cast_nullable_to_non_nullable
+              as int?,
+      countBadgesMedia: freezed == countBadgesMedia
+          ? _value.countBadgesMedia
+          : countBadgesMedia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      countBadgesNotificatios: freezed == countBadgesNotificatios
+          ? _value.countBadgesNotificatios
+          : countBadgesNotificatios // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadingNewsStateImpl implements LoadingNewsState {
-  const _$LoadingNewsStateImpl();
+  const _$LoadingNewsStateImpl(
+      {this.countBadgesTotal,
+      this.countBadgesNews,
+      this.countBadgesMedia,
+      this.countBadgesNotificatios});
+
+  @override
+  final int? countBadgesTotal;
+  @override
+  final int? countBadgesNews;
+  @override
+  final int? countBadgesMedia;
+  @override
+  final int? countBadgesNotificatios;
 
   @override
   String toString() {
-    return 'NewsState.load()';
+    return 'NewsState.load(countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingNewsStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingNewsStateImpl &&
+            (identical(other.countBadgesTotal, countBadgesTotal) ||
+                other.countBadgesTotal == countBadgesTotal) &&
+            (identical(other.countBadgesNews, countBadgesNews) ||
+                other.countBadgesNews == countBadgesNews) &&
+            (identical(other.countBadgesMedia, countBadgesMedia) ||
+                other.countBadgesMedia == countBadgesMedia) &&
+            (identical(
+                    other.countBadgesNotificatios, countBadgesNotificatios) ||
+                other.countBadgesNotificatios == countBadgesNotificatios));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, countBadgesTotal,
+      countBadgesNews, countBadgesMedia, countBadgesNotificatios);
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingNewsStateImplCopyWith<_$LoadingNewsStateImpl> get copyWith =>
+      __$$LoadingNewsStateImplCopyWithImpl<_$LoadingNewsStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() load,
+    required TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)
+        load,
     required TResult Function() loadErrorButton,
     required TResult Function(String errorMessage) error,
     required TResult Function(
@@ -3338,7 +3436,10 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3348,14 +3449,17 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             bool? isLoadErrorButton)
         preloadDataCompleted,
   }) {
-    return load();
+    return load(countBadgesTotal, countBadgesNews, countBadgesMedia,
+        countBadgesNotificatios);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? load,
+    TResult? Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult? Function()? loadErrorButton,
     TResult? Function(String errorMessage)? error,
     TResult? Function(
@@ -3368,7 +3472,10 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3378,14 +3485,17 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             bool? isLoadErrorButton)?
         preloadDataCompleted,
   }) {
-    return load?.call();
+    return load?.call(countBadgesTotal, countBadgesNews, countBadgesMedia,
+        countBadgesNotificatios);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? load,
+    TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult Function()? loadErrorButton,
     TResult Function(String errorMessage)? error,
     TResult Function(
@@ -3398,7 +3508,10 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3410,7 +3523,8 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load();
+      return load(countBadgesTotal, countBadgesNews, countBadgesMedia,
+          countBadgesNotificatios);
     }
     return orElse();
   }
@@ -3460,7 +3574,22 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
 }
 
 abstract class LoadingNewsState implements NewsState {
-  const factory LoadingNewsState() = _$LoadingNewsStateImpl;
+  const factory LoadingNewsState(
+      {final int? countBadgesTotal,
+      final int? countBadgesNews,
+      final int? countBadgesMedia,
+      final int? countBadgesNotificatios}) = _$LoadingNewsStateImpl;
+
+  int? get countBadgesTotal;
+  int? get countBadgesNews;
+  int? get countBadgesMedia;
+  int? get countBadgesNotificatios;
+
+  /// Create a copy of NewsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadingNewsStateImplCopyWith<_$LoadingNewsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3508,7 +3637,9 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() load,
+    required TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)
+        load,
     required TResult Function() loadErrorButton,
     required TResult Function(String errorMessage) error,
     required TResult Function(
@@ -3521,7 +3652,10 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3538,7 +3672,9 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? load,
+    TResult? Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult? Function()? loadErrorButton,
     TResult? Function(String errorMessage)? error,
     TResult? Function(
@@ -3551,7 +3687,10 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3568,7 +3707,9 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? load,
+    TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult Function()? loadErrorButton,
     TResult Function(String errorMessage)? error,
     TResult Function(
@@ -3581,7 +3722,10 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3718,7 +3862,9 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() load,
+    required TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)
+        load,
     required TResult Function() loadErrorButton,
     required TResult Function(String errorMessage) error,
     required TResult Function(
@@ -3731,7 +3877,10 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3748,7 +3897,9 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? load,
+    TResult? Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult? Function()? loadErrorButton,
     TResult? Function(String errorMessage)? error,
     TResult? Function(
@@ -3761,7 +3912,10 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3778,7 +3932,9 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? load,
+    TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult Function()? loadErrorButton,
     TResult Function(String errorMessage)? error,
     TResult Function(
@@ -3791,7 +3947,10 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3882,7 +4041,10 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
       List<String> listNewsPath,
       bool isUpdateVersionApp,
       bool isNotification,
-      int countBadges,
+      int countBadgesTotal,
+      int countBadgesNews,
+      int countBadgesMedia,
+      int countBadgesNotificatios,
       OneNewsInfoDataModel? oneNews,
       OneMediaInfoDataModel? oneMedia,
       OneNotificationInfoDataModel? oneNotification,
@@ -3922,7 +4084,10 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     Object? listNewsPath = null,
     Object? isUpdateVersionApp = null,
     Object? isNotification = null,
-    Object? countBadges = null,
+    Object? countBadgesTotal = null,
+    Object? countBadgesNews = null,
+    Object? countBadgesMedia = null,
+    Object? countBadgesNotificatios = null,
     Object? oneNews = freezed,
     Object? oneMedia = freezed,
     Object? oneNotification = freezed,
@@ -3968,9 +4133,21 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
           ? _value.isNotification
           : isNotification // ignore: cast_nullable_to_non_nullable
               as bool,
-      countBadges: null == countBadges
-          ? _value.countBadges
-          : countBadges // ignore: cast_nullable_to_non_nullable
+      countBadgesTotal: null == countBadgesTotal
+          ? _value.countBadgesTotal
+          : countBadgesTotal // ignore: cast_nullable_to_non_nullable
+              as int,
+      countBadgesNews: null == countBadgesNews
+          ? _value.countBadgesNews
+          : countBadgesNews // ignore: cast_nullable_to_non_nullable
+              as int,
+      countBadgesMedia: null == countBadgesMedia
+          ? _value.countBadgesMedia
+          : countBadgesMedia // ignore: cast_nullable_to_non_nullable
+              as int,
+      countBadgesNotificatios: null == countBadgesNotificatios
+          ? _value.countBadgesNotificatios
+          : countBadgesNotificatios // ignore: cast_nullable_to_non_nullable
               as int,
       oneNews: freezed == oneNews
           ? _value.oneNews
@@ -4092,7 +4269,10 @@ class _$PreloadDataCompletedNewsStateImpl
       required final List<String> listNewsPath,
       required this.isUpdateVersionApp,
       required this.isNotification,
-      required this.countBadges,
+      required this.countBadgesTotal,
+      required this.countBadgesNews,
+      required this.countBadgesMedia,
+      required this.countBadgesNotificatios,
       this.oneNews,
       this.oneMedia,
       this.oneNotification,
@@ -4127,7 +4307,13 @@ class _$PreloadDataCompletedNewsStateImpl
   @override
   final bool isNotification;
   @override
-  final int countBadges;
+  final int countBadgesTotal;
+  @override
+  final int countBadgesNews;
+  @override
+  final int countBadgesMedia;
+  @override
+  final int countBadgesNotificatios;
   @override
   final OneNewsInfoDataModel? oneNews;
   @override
@@ -4145,7 +4331,7 @@ class _$PreloadDataCompletedNewsStateImpl
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadges: $countBadges, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton)';
   }
 
   @override
@@ -4169,8 +4355,15 @@ class _$PreloadDataCompletedNewsStateImpl
                 other.isUpdateVersionApp == isUpdateVersionApp) &&
             (identical(other.isNotification, isNotification) ||
                 other.isNotification == isNotification) &&
-            (identical(other.countBadges, countBadges) ||
-                other.countBadges == countBadges) &&
+            (identical(other.countBadgesTotal, countBadgesTotal) ||
+                other.countBadgesTotal == countBadgesTotal) &&
+            (identical(other.countBadgesNews, countBadgesNews) ||
+                other.countBadgesNews == countBadgesNews) &&
+            (identical(other.countBadgesMedia, countBadgesMedia) ||
+                other.countBadgesMedia == countBadgesMedia) &&
+            (identical(
+                    other.countBadgesNotificatios, countBadgesNotificatios) ||
+                other.countBadgesNotificatios == countBadgesNotificatios) &&
             (identical(other.oneNews, oneNews) || other.oneNews == oneNews) &&
             (identical(other.oneMedia, oneMedia) ||
                 other.oneMedia == oneMedia) &&
@@ -4186,25 +4379,29 @@ class _$PreloadDataCompletedNewsStateImpl
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      news,
-      media,
-      notificatios,
-      offsetNews,
-      offsetMedia,
-      offsetNotificatios,
-      const DeepCollectionEquality().hash(_listNewsPath),
-      isUpdateVersionApp,
-      isNotification,
-      countBadges,
-      oneNews,
-      oneMedia,
-      oneNotification,
-      typeError,
-      errorMessage,
-      isError,
-      isLoadErrorButton);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        news,
+        media,
+        notificatios,
+        offsetNews,
+        offsetMedia,
+        offsetNotificatios,
+        const DeepCollectionEquality().hash(_listNewsPath),
+        isUpdateVersionApp,
+        isNotification,
+        countBadgesTotal,
+        countBadgesNews,
+        countBadgesMedia,
+        countBadgesNotificatios,
+        oneNews,
+        oneMedia,
+        oneNotification,
+        typeError,
+        errorMessage,
+        isError,
+        isLoadErrorButton
+      ]);
 
   /// Create a copy of NewsState
   /// with the given fields replaced by the non-null parameter values.
@@ -4220,7 +4417,9 @@ class _$PreloadDataCompletedNewsStateImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() load,
+    required TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)
+        load,
     required TResult Function() loadErrorButton,
     required TResult Function(String errorMessage) error,
     required TResult Function(
@@ -4233,7 +4432,10 @@ class _$PreloadDataCompletedNewsStateImpl
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4253,7 +4455,10 @@ class _$PreloadDataCompletedNewsStateImpl
         listNewsPath,
         isUpdateVersionApp,
         isNotification,
-        countBadges,
+        countBadgesTotal,
+        countBadgesNews,
+        countBadgesMedia,
+        countBadgesNotificatios,
         oneNews,
         oneMedia,
         oneNotification,
@@ -4267,7 +4472,9 @@ class _$PreloadDataCompletedNewsStateImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? load,
+    TResult? Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult? Function()? loadErrorButton,
     TResult? Function(String errorMessage)? error,
     TResult? Function(
@@ -4280,7 +4487,10 @@ class _$PreloadDataCompletedNewsStateImpl
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4300,7 +4510,10 @@ class _$PreloadDataCompletedNewsStateImpl
         listNewsPath,
         isUpdateVersionApp,
         isNotification,
-        countBadges,
+        countBadgesTotal,
+        countBadgesNews,
+        countBadgesMedia,
+        countBadgesNotificatios,
         oneNews,
         oneMedia,
         oneNotification,
@@ -4314,7 +4527,9 @@ class _$PreloadDataCompletedNewsStateImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? load,
+    TResult Function(int? countBadgesTotal, int? countBadgesNews,
+            int? countBadgesMedia, int? countBadgesNotificatios)?
+        load,
     TResult Function()? loadErrorButton,
     TResult Function(String errorMessage)? error,
     TResult Function(
@@ -4327,7 +4542,10 @@ class _$PreloadDataCompletedNewsStateImpl
             List<String> listNewsPath,
             bool isUpdateVersionApp,
             bool isNotification,
-            int countBadges,
+            int countBadgesTotal,
+            int countBadgesNews,
+            int countBadgesMedia,
+            int countBadgesNotificatios,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4349,7 +4567,10 @@ class _$PreloadDataCompletedNewsStateImpl
           listNewsPath,
           isUpdateVersionApp,
           isNotification,
-          countBadges,
+          countBadgesTotal,
+          countBadgesNews,
+          countBadgesMedia,
+          countBadgesNotificatios,
           oneNews,
           oneMedia,
           oneNotification,
@@ -4416,7 +4637,10 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
       required final List<String> listNewsPath,
       required final bool isUpdateVersionApp,
       required final bool isNotification,
-      required final int countBadges,
+      required final int countBadgesTotal,
+      required final int countBadgesNews,
+      required final int countBadgesMedia,
+      required final int countBadgesNotificatios,
       final OneNewsInfoDataModel? oneNews,
       final OneMediaInfoDataModel? oneMedia,
       final OneNotificationInfoDataModel? oneNotification,
@@ -4434,7 +4658,10 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   List<String> get listNewsPath;
   bool get isUpdateVersionApp;
   bool get isNotification;
-  int get countBadges;
+  int get countBadgesTotal;
+  int get countBadgesNews;
+  int get countBadgesMedia;
+  int get countBadgesNotificatios;
   OneNewsInfoDataModel? get oneNews;
   OneMediaInfoDataModel? get oneMedia;
   OneNotificationInfoDataModel? get oneNotification;

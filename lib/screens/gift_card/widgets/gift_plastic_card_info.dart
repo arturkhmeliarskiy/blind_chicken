@@ -23,7 +23,7 @@ class GiftPlasticCardInfo extends StatefulWidget {
 
   final ValueChanged<PaymentItemDataModel> onTypePay;
   final ValueChanged<String> onReceivingType;
-  final ValueChanged<BasketAddress> onAddressDelivery;
+  final ValueChanged<BasketAddressDataModel> onAddressDelivery;
   final List<PaymentItemDataModel> payments;
   final ValueChanged<BoutiqueDataModel> onAddressPickup;
   final ValueChanged<String> onSum;

@@ -13,7 +13,7 @@ export 'payment_order_data_model.dart';
 export 'basket_order_request.dart';
 export 'basket_sert_delivery_request.dart';
 export 'basket_order_delivery_request.dart';
-export 'basket_address.dart';
+export 'basket_address_data_model.dart';
 export 'catalog_search_data_model.dart';
 export 'catalog_section_data_model.dart';
 export 'catalog_search_info_data_model.dart';

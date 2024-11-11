@@ -31,7 +31,7 @@ class ShoppingCartDeliveryUserInfo extends StatefulWidget {
   final bool isAuth;
   final ValueChanged<String> onReceivingType;
   final Function(BoutiqueDataModel) onAddressPickup;
-  final ValueChanged<BasketAddress> onAddressDelivery;
+  final ValueChanged<BasketAddressDataModel> onAddressDelivery;
   final BoutiquesDataModel boutiques;
   final int sum;
 
@@ -42,9 +42,9 @@ class ShoppingCartDeliveryUserInfo extends StatefulWidget {
 class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserInfo> {
   String _receivingType = 'Самовывоз';
   BoutiqueDataModel? boutique;
-  BasketAddress city = BasketAddress(address: '', zip: '');
-  BasketAddress street = BasketAddress(address: '', zip: '');
-  BasketAddress house = BasketAddress(address: '', zip: '');
+  BasketAddressDataModel city = BasketAddressDataModel(address: '', zip: '');
+  BasketAddressDataModel street = BasketAddressDataModel(address: '', zip: '');
+  BasketAddressDataModel house = BasketAddressDataModel(address: '', zip: '');
   String flat = '';
 
   @override
@@ -129,13 +129,13 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                     onCity: (value) {
                       final item = value;
                       if (item != null) {
-                        city = BasketAddress(
+                        city = BasketAddressDataModel(
                           address: item.name,
                           zip: item.zip.toString(),
                           cityId: item.id,
                         );
                       } else {
-                        city = BasketAddress(
+                        city = BasketAddressDataModel(
                           address: '',
                           zip: '',
                           cityId: '',
@@ -146,13 +146,13 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                     onStreet: (value) {
                       final item = value;
                       if (item != null) {
-                        street = BasketAddress(
+                        street = BasketAddressDataModel(
                           address: '${item.typeShort}. ${item.name}',
                           zip: item.zip.toString(),
                         );
                         widget.onAddressDelivery(_address(city, street, house, flat));
                       } else {
-                        street = BasketAddress(
+                        street = BasketAddressDataModel(
                           address: '',
                           zip: '',
                         );
@@ -163,12 +163,12 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
                     onHouse: (value) {
                       final item = value;
                       if (item != null) {
-                        house = BasketAddress(
+                        house = BasketAddressDataModel(
                           address: item.name,
                           zip: item.zip.toString(),
                         );
                       } else {
-                        house = BasketAddress(
+                        house = BasketAddressDataModel(
                           address: '',
                           zip: '',
                         );
@@ -240,10 +240,10 @@ class _ShoppingCartDeliveryUserInfoState extends State<ShoppingCartDeliveryUserI
   }
 }
 
-BasketAddress _address(
-  BasketAddress city,
-  BasketAddress street,
-  BasketAddress house,
+BasketAddressDataModel _address(
+  BasketAddressDataModel city,
+  BasketAddressDataModel street,
+  BasketAddressDataModel house,
   String flat,
 ) {
   String _address = '';
@@ -285,7 +285,7 @@ BasketAddress _address(
   }
 
   _address = _city + _street + _house + _flat;
-  return BasketAddress(
+  return BasketAddressDataModel(
     address: _address,
     zip: zip,
     cityId: city.cityId,

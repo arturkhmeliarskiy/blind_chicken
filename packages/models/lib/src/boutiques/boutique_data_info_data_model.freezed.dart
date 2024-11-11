@@ -59,8 +59,6 @@ abstract class $BoutiqueDataInfoDataModelCopyWith<$Res> {
       String nameShort,
       String name,
       String iconPath});
-
-  $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates;
 }
 
 /// @nodoc
@@ -151,15 +149,6 @@ class _$BoutiqueDataInfoDataModelCopyWithImpl<$Res,
               as String,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates {
-    return $BoutiqueCoordinatesDataModelCopyWith<$Res>(_value.coordinates,
-        (value) {
-      return _then(_value.copyWith(coordinates: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -186,9 +175,6 @@ abstract class _$$BoutiqueDataInfoDataModelImplCopyWith<$Res>
       String nameShort,
       String name,
       String iconPath});
-
-  @override
-  $BoutiqueCoordinatesDataModelCopyWith<$Res> get coordinates;
 }
 
 /// @nodoc

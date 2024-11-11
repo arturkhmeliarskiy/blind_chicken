@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -116,7 +117,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         isAuth: isAuth,
         isUponReceipt: true,
         address: '',
-        addressDelivery: BasketAddress(address: '', zip: ''),
+        addressDelivery: BasketAddressDataModel(address: '', zip: ''),
         uidPickUpPoint: _updateDataService.boutiques.isNotEmpty
             ? _updateDataService.boutiques.first.uidStore
             : '',
@@ -213,7 +214,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           favouritesProductsId: favouritesProductsId,
           isAuth: isAuth,
           address: '',
-          addressDelivery: BasketAddress(address: '', zip: ''),
+          addressDelivery: BasketAddressDataModel(address: '', zip: ''),
           uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
           paymentId: '1',
           typePay: 'Банковской картой',
@@ -341,7 +342,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             isAuth: isAuth,
             isUponReceipt: true,
             address: '',
-            addressDelivery: BasketAddress(address: '', zip: ''),
+            addressDelivery: BasketAddressDataModel(address: '', zip: ''),
             uidPickUpPoint: boutiques.data.first.uidStore,
             paymentId: '1',
             typePay: 'Банковской картой',

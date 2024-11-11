@@ -3,7 +3,12 @@ part of 'news_bloc.dart';
 @freezed
 class NewsState with _$NewsState {
   const factory NewsState.init() = InitNewsState;
-  const factory NewsState.load() = LoadingNewsState;
+  const factory NewsState.load({
+    int? countBadgesTotal,
+    int? countBadgesNews,
+    int? countBadgesMedia,
+    int? countBadgesNotificatios,
+  }) = LoadingNewsState;
   const factory NewsState.loadErrorButton() = LoadingErrorButtonNewsState;
   const factory NewsState.error({
     required String errorMessage,
@@ -18,7 +23,10 @@ class NewsState with _$NewsState {
     required List<String> listNewsPath,
     required bool isUpdateVersionApp,
     required bool isNotification,
-    required int countBadges,
+    required int countBadgesTotal,
+    required int countBadgesNews,
+    required int countBadgesMedia,
+    required int countBadgesNotificatios,
     OneNewsInfoDataModel? oneNews,
     OneMediaInfoDataModel? oneMedia,
     OneNotificationInfoDataModel? oneNotification,

@@ -322,81 +322,15 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 label: '',
               ),
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(
-              //     'assets/icons/bell.svg',
-              //     fit: BoxFit.cover,
-              //     height: 21,
-              //   ),
-              //   label: '',
-              // ),
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(
-              //     'assets/icons/message-circle.svg',
-              //     fit: BoxFit.cover,
-              //     height: 21,
-              //   ),
-              //   label: '',
-              // ),
               BottomNavigationBarItem(
                 icon: BlocBuilder<NewsBloc, NewsState>(
                   builder: (context, state) {
                     return state.maybeMap(
                       preloadDataCompleted: (initState) {
-                        return SizedBox(
-                          height: 26,
-                          child: Stack(
-                            alignment: initState.countBadges > 0
-                                ? Alignment.bottomCenter
-                                : Alignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/icons/bell.svg',
-                                fit: BoxFit.cover,
-                                height: 21,
-                              ),
-                              initState.countBadges > 0
-                                  ? Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(9),
-                                                color: Colors.black,
-                                              ),
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: 2,
-                                                horizontal: 5,
-                                              ),
-                                              margin: EdgeInsets.only(left: 3),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                initState.countBadges > 10
-                                                    ? '+10'
-                                                    : initState.countBadges.toString(),
-                                                style:
-                                                    Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                                          color: BlindChickenColors.backgroundColor,
-                                                          fontWeight: FontWeight.w700,
-                                                          height: 1,
-                                                        ),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    )
-                                  : SizedBox(),
-                            ],
-                          ),
-                        );
+                        return _bellWithCountBadges(initState.countBadgesTotal, context);
+                      },
+                      load: (initState) {
+                        return _bellWithCountBadges(initState.countBadgesTotal ?? 0, context);
                       },
                       orElse: () => SizedBox(
                         height: 26,
@@ -421,24 +355,6 @@ class _DashboardPageState extends State<DashboardPage> {
             onTap: (int index) {
               final updateData = GetIt.I.get<UpdateDataService>();
               if (index == 0) {
-                // if (_isMain) {
-                //   context.navigateTo(
-                //     const HomeAutoRouterRoute(
-                //       children: [
-                //         MainRoute(),
-                //       ],
-                //     ),
-                //   );
-                // } else {
-                //   context.read<CatalogBloc>().add(const CatalogEvent.preloadData());
-                //   context.navigateTo(
-                //     const HomeAutoRouterRoute(
-                //       children: [
-                //         CategoryRoute(),
-                //       ],
-                //     ),
-                //   );
-                // }
                 if (mounted) {
                   Timer(const Duration(milliseconds: 250), () {
                     final updateData = GetIt.I.get<UpdateDataService>();
@@ -540,87 +456,6 @@ class _DashboardPageState extends State<DashboardPage> {
                   ]),
                 );
                 AppMetrica.reportEvent('Список новостей');
-                // showDialog(
-                //     barrierColor: Colors.transparent,
-                //     context: context,
-                //     builder: (context) {
-                //       return Container(
-                //         margin: const EdgeInsets.only(bottom: 56),
-                //         alignment: Alignment.bottomRight,
-                //         child: GestureDetector(
-                //           onTap: () {
-                //             Navigator.of(context, rootNavigator: true).pop();
-                //           },
-                //           child: SafeArea(
-                //             top: true,
-                //             bottom: true,
-                //             child: Row(
-                //               mainAxisAlignment: MainAxisAlignment.end,
-                //               children: [
-                //                 Container(
-                //                   height: 94,
-                //                   width: 220,
-                //                   decoration: BoxDecoration(
-                //                     color: Colors.white,
-                //                     borderRadius: BorderRadius.circular(
-                //                       5,
-                //                     ),
-                //                     boxShadow: [
-                //                       BoxShadow(
-                //                         color: BlindChickenColors.activeBorderTextField
-                //                             .withOpacity(0.1),
-                //                         blurRadius: 3,
-                //                         offset: const Offset(0, 3), // Shadow position
-                //                       ),
-                //                     ],
-                //                   ),
-                //                   child: Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       top: 10.5,
-                //                       bottom: 10.5,
-                //                     ),
-                //                     child: Column(
-                //                       crossAxisAlignment: CrossAxisAlignment.start,
-                //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                       children: List.generate(listItems.length, (index) {
-                //                         return GestureDetector(
-                //                           onTap: () async {
-                //                             Navigator.of(context, rootNavigator: true).pop();
-                //                             if (listItems[index].route == 'phone') {
-                //                               await LaunchService.makePhoneCall(
-                //                                   listItems[index].title);
-                //                             } else if (listItems[index].route == 'WhatsApp') {
-                //                               await LaunchService.launchWhatsapp(
-                //                                   context, '79093335046');
-                //                             } else {
-                //                               context.navigateNamedTo(listItems[index].route);
-                //                             }
-                //                           },
-                //                           child: Container(
-                //                             padding: const EdgeInsets.only(
-                //                               top: 7,
-                //                               bottom: 7,
-                //                               left: 24.5,
-                //                               right: 24.5,
-                //                             ),
-                //                             color: Colors.transparent,
-                //                             alignment: Alignment.centerLeft,
-                //                             child: Text(
-                //                               listItems[index].title,
-                //                               style: Theme.of(context).textTheme.displayMedium,
-                //                             ),
-                //                           ),
-                //                         );
-                //                       }),
-                //                     ),
-                //                   ),
-                //                 ),
-                //               ],
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     });
               } else if (tabsRouter.activeIndex != index) {
                 tabsRouter.setActiveIndex(index);
               } else {
@@ -636,4 +471,56 @@ class _DashboardPageState extends State<DashboardPage> {
       },
     );
   }
+}
+
+Widget _bellWithCountBadges(int count, BuildContext context) {
+  return SizedBox(
+    height: 26,
+    child: Stack(
+      alignment: count > 0 ? Alignment.bottomCenter : Alignment.center,
+      children: [
+        SvgPicture.asset(
+          'assets/icons/bell.svg',
+          fit: BoxFit.cover,
+          height: 21,
+        ),
+        count > 0
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9),
+                          color: Colors.black,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 2,
+                          horizontal: 5,
+                        ),
+                        margin: EdgeInsets.only(left: 3),
+                        alignment: Alignment.center,
+                        child: Text(
+                          count > 10 ? '+10' : count.toString(),
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                color: BlindChickenColors.backgroundColor,
+                                fontWeight: FontWeight.w700,
+                                height: 1,
+                              ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : SizedBox(),
+      ],
+    ),
+  );
 }

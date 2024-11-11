@@ -64,7 +64,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         listNewsPath: [],
         isUpdateVersionApp: false,
         isNotification: false,
-        countBadges: countBadges.total,
+        countBadgesTotal: countBadges.total,
+        countBadgesNews: countBadges.news,
+        countBadgesMedia: countBadges.media,
+        countBadgesNotificatios: countBadges.notice,
       ),
     );
   }
@@ -80,7 +83,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           isLoadErrorButton: true,
         ));
       } else {
-        emit(const NewsState.load());
+        emit(NewsState.load(
+          countBadgesTotal: initState.countBadgesTotal,
+          countBadgesNews: initState.countBadgesNews,
+          countBadgesMedia: initState.countBadgesMedia,
+          countBadgesNotificatios: initState.countBadgesNotificatios,
+        ));
       }
 
       List<String> listNewsPath = initState.listNewsPath.toList();
@@ -152,7 +160,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           isLoadErrorButton: true,
         ));
       } else {
-        emit(const NewsState.load());
+        emit(NewsState.load(
+          countBadgesTotal: initState.countBadgesTotal,
+          countBadgesNews: initState.countBadgesNews,
+          countBadgesMedia: initState.countBadgesMedia,
+          countBadgesNotificatios: initState.countBadgesNotificatios,
+        ));
       }
       List<String> listNewsPath = initState.listNewsPath.toList();
       MediaInfoDataModel media = await _newsRepository.getMedia(page: 1);
@@ -224,7 +237,12 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           isLoadErrorButton: true,
         ));
       } else {
-        emit(const NewsState.load());
+        emit(NewsState.load(
+          countBadgesTotal: initState.countBadgesTotal,
+          countBadgesNews: initState.countBadgesNews,
+          countBadgesMedia: initState.countBadgesMedia,
+          countBadgesNotificatios: initState.countBadgesNotificatios,
+        ));
       }
       List<String> listNewsPath = initState.listNewsPath.toList();
       NotificationInfoDataModel notificatios = await _newsRepository.getNotifications(page: 1);
@@ -563,7 +581,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           listNewsPath: [],
           isNotification: true,
           isUpdateVersionApp: isUpdateVersionApp,
-          countBadges: countBadges?.total ?? 0,
+          countBadgesTotal: countBadges?.total ?? 0,
+          countBadgesNews: countBadges?.news ?? 0,
+          countBadgesMedia: countBadges?.media ?? 0,
+          countBadgesNotificatios: countBadges?.notice ?? 0,
         ),
       );
     }
@@ -672,7 +693,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           listNewsPath: [],
           isNotification: true,
           isUpdateVersionApp: isUpdateVersionApp,
-          countBadges: countBadges?.total ?? 0,
+          countBadgesTotal: countBadges?.total ?? 0,
+          countBadgesNews: countBadges?.news ?? 0,
+          countBadgesMedia: countBadges?.media ?? 0,
+          countBadgesNotificatios: countBadges?.notice ?? 0,
         ),
       );
     }
@@ -781,7 +805,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           listNewsPath: [],
           isNotification: true,
           isUpdateVersionApp: isUpdateVersionApp,
-          countBadges: countBadges?.total ?? 0,
+          countBadgesTotal: countBadges?.total ?? 0,
+          countBadgesNews: countBadges?.news ?? 0,
+          countBadgesMedia: countBadges?.media ?? 0,
+          countBadgesNotificatios: countBadges?.notice ?? 0,
         ),
       );
     }
@@ -934,11 +961,14 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           news: _news,
           media: _media,
           notificatios: _notificatios,
-          countBadges: countBadges?.total ?? 0,
           isError: countBadges?.errorMessage.isNotEmpty ?? false,
           errorMessage: countBadges?.errorMessage ?? '',
           typeError: 'описание ${event.typeNews}',
           isLoadErrorButton: false,
+          countBadgesTotal: countBadges?.total ?? 0,
+          countBadgesNews: countBadges?.news ?? 0,
+          countBadgesMedia: countBadges?.media ?? 0,
+          countBadgesNotificatios: countBadges?.notice ?? 0,
         ),
       );
     });
@@ -953,7 +983,10 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
       emit(
         initState.copyWith(
-          countBadges: countBadges.total,
+          countBadgesTotal: countBadges.total,
+          countBadgesNews: countBadges.news,
+          countBadgesMedia: countBadges.media,
+          countBadgesNotificatios: countBadges.notice,
         ),
       );
     });

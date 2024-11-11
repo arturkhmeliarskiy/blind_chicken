@@ -77,9 +77,10 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   }) = ChangeUidPickUpPointSoppingCartEvent;
   const factory ShoppingCartEvent.changeAddress({
     required String address,
+    required BoutiqueDataModel info,
   }) = ChangeAddressSoppingCartEvent;
   const factory ShoppingCartEvent.changeAddressDelivery({
-    required BasketAddress addressDelivery,
+    required BasketAddressDataModel addressDelivery,
   }) = ChangeAddressDeliverySoppingCartEvent;
   const factory ShoppingCartEvent.changePaymentType({
     required String paymentId,

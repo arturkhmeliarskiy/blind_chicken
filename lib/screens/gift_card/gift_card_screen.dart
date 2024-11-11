@@ -49,7 +49,7 @@ class GiftCardScreen extends StatefulWidget {
 class _GiftCardScreenState extends State<GiftCardScreen> {
   String _selectedItem = 'Виртуальная';
   GiftCardModel _selectedColor = BlindChickenGiftCardColors.listColors.first;
-  BasketAddress _addressDelivery = BasketAddress(address: '', zip: '');
+  BasketAddressDataModel _addressDelivery = BasketAddressDataModel(address: '', zip: '');
   PaymentItemDataModel _typePay = PaymentItemDataModel(id: '', name: '');
   String _uidPickUpPoint = '';
   String _address = '';
@@ -382,7 +382,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                   onAddressDelivery: (value) {
                                     setState(
                                       () {
-                                        _addressDelivery = BasketAddress(
+                                        _addressDelivery = BasketAddressDataModel(
                                           address: value.address,
                                           zip: value.zip,
                                           cityId: value.cityId,

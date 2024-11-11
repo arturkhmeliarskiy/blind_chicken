@@ -57,7 +57,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                             ),
                       ),
                     ),
-                    if (!widget.item.isViewed)
+                    if (widget.item.isViewed)
                       const SizedBox(
                         height: 15,
                         width: 25,

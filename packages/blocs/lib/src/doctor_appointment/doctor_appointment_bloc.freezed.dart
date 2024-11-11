@@ -237,8 +237,6 @@ abstract class _$$SelectBoutiqueAppointmentEventImplCopyWith<$Res> {
       __$$SelectBoutiqueAppointmentEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BoutiqueDataModel selectBoutique});
-
-  $BoutiqueDataModelCopyWith<$Res> get selectBoutique;
 }
 
 /// @nodoc
@@ -264,16 +262,6 @@ class __$$SelectBoutiqueAppointmentEventImplCopyWithImpl<$Res>
           : selectBoutique // ignore: cast_nullable_to_non_nullable
               as BoutiqueDataModel,
     ));
-  }
-
-  /// Create a copy of AppointmentEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BoutiqueDataModelCopyWith<$Res> get selectBoutique {
-    return $BoutiqueDataModelCopyWith<$Res>(_value.selectBoutique, (value) {
-      return _then(_value.copyWith(selectBoutique: value));
-    });
   }
 }
 
@@ -2184,8 +2172,6 @@ abstract class _$$PreloadDataCompletedAppointmentStateImplCopyWith<$Res> {
       bool? isError,
       bool? isLoadErrorButton,
       String? errorMessage});
-
-  $BoutiqueDataModelCopyWith<$Res> get selectBoutique;
 }
 
 /// @nodoc
@@ -2241,16 +2227,6 @@ class __$$PreloadDataCompletedAppointmentStateImplCopyWithImpl<$Res>
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
-  }
-
-  /// Create a copy of AppointmentState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BoutiqueDataModelCopyWith<$Res> get selectBoutique {
-    return $BoutiqueDataModelCopyWith<$Res>(_value.selectBoutique, (value) {
-      return _then(_value.copyWith(selectBoutique: value));
-    });
   }
 }
 

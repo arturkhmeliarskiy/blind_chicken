@@ -194,19 +194,19 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                     fontWeight: _tabController.index == 0 ? FontWeight.w700 : null,
                                   ),
                             ),
-                            // Container(
-                            //   height: 18,
-                            //   width: 10,
-                            //   alignment: Alignment.topCenter,
-                            //   child: Container(
-                            //     height: 5,
-                            //     width: 5,
-                            //     decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.circular(10),
-                            //       color: BlindChickenColors.activeBorderTextField,
-                            //     ),
-                            //   ),
-                            // ),
+                            BlocBuilder<NewsBloc, NewsState>(
+                              builder: (context, state) {
+                                return state.maybeMap(
+                                  preloadDataCompleted: (initState) {
+                                    return _countBadges(initState.countBadgesNews, context);
+                                  },
+                                  load: (initState) {
+                                    return _countBadges(initState.countBadgesNews ?? 0, context);
+                                  },
+                                  orElse: () => SizedBox(),
+                                );
+                              },
+                            )
                           ],
                         ),
                       ),
@@ -221,19 +221,19 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                     fontSize: _tabController.index == 1 ? 13.8 : null,
                                   ),
                             ),
-                            // Container(
-                            //   height: 18,
-                            //   width: 10,
-                            //   alignment: Alignment.topCenter,
-                            //   child: Container(
-                            //     height: 5,
-                            //     width: 5,
-                            //     decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.circular(10),
-                            //       color: BlindChickenColors.activeBorderTextField,
-                            //     ),
-                            //   ),
-                            // ),
+                            BlocBuilder<NewsBloc, NewsState>(
+                              builder: (context, state) {
+                                return state.maybeMap(
+                                  preloadDataCompleted: (initState) {
+                                    return _countBadges(initState.countBadgesMedia, context);
+                                  },
+                                  load: (initState) {
+                                    return _countBadges(initState.countBadgesMedia ?? 0, context);
+                                  },
+                                  orElse: () => SizedBox(),
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -247,19 +247,20 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                                     fontWeight: _tabController.index == 2 ? FontWeight.w700 : null,
                                   ),
                             ),
-                            // Container(
-                            //   height: 18,
-                            //   width: 10,
-                            //   alignment: Alignment.topCenter,
-                            //   child: Container(
-                            //     height: 5,
-                            //     width: 5,
-                            //     decoration: BoxDecoration(
-                            //       borderRadius: BorderRadius.circular(10),
-                            //       color: BlindChickenColors.activeBorderTextField,
-                            //     ),
-                            //   ),
-                            // ),
+                            BlocBuilder<NewsBloc, NewsState>(
+                              builder: (context, state) {
+                                return state.maybeMap(
+                                  preloadDataCompleted: (initState) {
+                                    return _countBadges(initState.countBadgesNotificatios, context);
+                                  },
+                                  load: (initState) {
+                                    return _countBadges(
+                                        initState.countBadgesNotificatios ?? 0, context);
+                                  },
+                                  orElse: () => SizedBox(),
+                                );
+                              },
+                            )
                           ],
                         ),
                       ),
@@ -299,4 +300,42 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
       ),
     );
   }
+}
+
+Widget _countBadges(int count, BuildContext context) {
+  return count > 0
+      ? Row(
+          children: [
+            SizedBox(
+              width: 5,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(9),
+                    color: Colors.black,
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    vertical: 2,
+                    horizontal: 5,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    count > 10 ? '+10' : count.toString(),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: BlindChickenColors.backgroundColor,
+                          fontWeight: FontWeight.w700,
+                          height: 1,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        )
+      : SizedBox();
 }

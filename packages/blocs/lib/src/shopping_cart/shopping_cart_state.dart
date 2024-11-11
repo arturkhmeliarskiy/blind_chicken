@@ -44,7 +44,7 @@ class ShoppingCartState with _$ShoppingCartState {
     required bool isUponReceipt,
     required List<BasketSertDeliveryRequest> listGiftCard,
     required String address,
-    required BasketAddress addressDelivery,
+    required BasketAddressDataModel addressDelivery,
     required String uidPickUpPoint,
     required String paymentId,
     required String typePay,

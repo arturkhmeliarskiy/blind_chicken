@@ -1,12 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'boutique_shedule_data_model.freezed.dart';
+part 'boutique_shedule_data_model.g.dart';
 
-@freezed
-class BoutiqueSheduleDataModel with _$BoutiqueSheduleDataModel {
-  const BoutiqueSheduleDataModel._();
-  factory BoutiqueSheduleDataModel({
-    required int s,
-    required int e,
-  }) = _BoutiqueSheduleDataModel;
+@JsonSerializable()
+class BoutiqueSheduleDataModel {
+  final int s;
+  final int e;
+
+  BoutiqueSheduleDataModel({
+    required this.s,
+    required this.e,
+  });
+
+  factory BoutiqueSheduleDataModel.fromJson(Map<String, dynamic> json) =>
+      _$BoutiqueSheduleDataModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BoutiqueSheduleDataModelToJson(this);
 }
