@@ -303,6 +303,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
         ),
         delivery: delivery,
         selectIndexAddress: event.index,
+        isUponReceipt: cityId == '7700000000000',
       ));
     });
   }
