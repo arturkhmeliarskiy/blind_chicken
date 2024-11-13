@@ -363,6 +363,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                           )
                                         else
                                           GiftPlasticCardInfo(
+                                            isAuth: initState.isAuth,
                                             selectIndexAddres: initState.selectIndexAddress ?? 0,
                                             deleteIndexAddress: initState.deleteIndexAddress ?? 0,
                                             listAddress: initState.deliveryInfo?.address ?? [],

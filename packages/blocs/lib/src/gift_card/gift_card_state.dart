@@ -24,6 +24,7 @@ class GiftCardState with _$GiftCardState {
     required String uidPickUpPoint,
     required BoutiquesDataModel boutiques,
     required String paymentId,
+    required bool isAuth,
     String? creatOrderMessage,
     DeliveryDataModel? deliveryInfo,
     BoutiqueDataModel? boutique,

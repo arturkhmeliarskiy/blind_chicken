@@ -2516,6 +2516,7 @@ mixin _$GiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2550,6 +2551,7 @@ mixin _$GiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2583,6 +2585,7 @@ mixin _$GiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2715,6 +2718,7 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2752,6 +2756,7 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2788,6 +2793,7 @@ class _$InitGiftCardStateImpl implements InitGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2920,6 +2926,7 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2957,6 +2964,7 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -2993,6 +3001,7 @@ class _$LoadingGiftCardStateImpl implements LoadingGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3129,6 +3138,7 @@ class _$LoadingErrorButtonGiftCardStateImpl
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3166,6 +3176,7 @@ class _$LoadingErrorButtonGiftCardStateImpl
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3202,6 +3213,7 @@ class _$LoadingErrorButtonGiftCardStateImpl
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3363,6 +3375,7 @@ class _$ErrorGiftCardStateImpl implements ErrorGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3400,6 +3413,7 @@ class _$ErrorGiftCardStateImpl implements ErrorGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3436,6 +3450,7 @@ class _$ErrorGiftCardStateImpl implements ErrorGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3538,6 +3553,7 @@ abstract class _$$PreloadDataGiftCardStateImplCopyWith<$Res> {
       String uidPickUpPoint,
       BoutiquesDataModel boutiques,
       String paymentId,
+      bool isAuth,
       String? creatOrderMessage,
       DeliveryDataModel? deliveryInfo,
       BoutiqueDataModel? boutique,
@@ -3580,6 +3596,7 @@ class __$$PreloadDataGiftCardStateImplCopyWithImpl<$Res>
     Object? uidPickUpPoint = null,
     Object? boutiques = null,
     Object? paymentId = null,
+    Object? isAuth = null,
     Object? creatOrderMessage = freezed,
     Object? deliveryInfo = freezed,
     Object? boutique = freezed,
@@ -3649,6 +3666,10 @@ class __$$PreloadDataGiftCardStateImplCopyWithImpl<$Res>
           ? _value.paymentId
           : paymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      isAuth: null == isAuth
+          ? _value.isAuth
+          : isAuth // ignore: cast_nullable_to_non_nullable
+              as bool,
       creatOrderMessage: freezed == creatOrderMessage
           ? _value.creatOrderMessage
           : creatOrderMessage // ignore: cast_nullable_to_non_nullable
@@ -3734,6 +3755,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
       required this.uidPickUpPoint,
       required this.boutiques,
       required this.paymentId,
+      required this.isAuth,
       this.creatOrderMessage,
       this.deliveryInfo,
       this.boutique,
@@ -3780,6 +3802,8 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
   @override
   final String paymentId;
   @override
+  final bool isAuth;
+  @override
   final String? creatOrderMessage;
   @override
   final DeliveryDataModel? deliveryInfo;
@@ -3796,7 +3820,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
 
   @override
   String toString() {
-    return 'GiftCardState.preloadDataCompleted(payments: $payments, isLoadCreateOrder: $isLoadCreateOrder, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, searchQuery: $searchQuery, address: $address, typePay: $typePay, addressDelivery: $addressDelivery, receivingType: $receivingType, isUponReceipt: $isUponReceipt, typeGiftCard: $typeGiftCard, amountPaid: $amountPaid, uidPickUpPoint: $uidPickUpPoint, boutiques: $boutiques, paymentId: $paymentId, creatOrderMessage: $creatOrderMessage, deliveryInfo: $deliveryInfo, boutique: $boutique, selectIndexAddress: $selectIndexAddress, deleteIndexAddress: $deleteIndexAddress, delivery: $delivery, isLoadDeleteAddress: $isLoadDeleteAddress)';
+    return 'GiftCardState.preloadDataCompleted(payments: $payments, isLoadCreateOrder: $isLoadCreateOrder, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, searchQuery: $searchQuery, address: $address, typePay: $typePay, addressDelivery: $addressDelivery, receivingType: $receivingType, isUponReceipt: $isUponReceipt, typeGiftCard: $typeGiftCard, amountPaid: $amountPaid, uidPickUpPoint: $uidPickUpPoint, boutiques: $boutiques, paymentId: $paymentId, isAuth: $isAuth, creatOrderMessage: $creatOrderMessage, deliveryInfo: $deliveryInfo, boutique: $boutique, selectIndexAddress: $selectIndexAddress, deleteIndexAddress: $deleteIndexAddress, delivery: $delivery, isLoadDeleteAddress: $isLoadDeleteAddress)';
   }
 
   @override
@@ -3831,6 +3855,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
                 other.boutiques == boutiques) &&
             (identical(other.paymentId, paymentId) ||
                 other.paymentId == paymentId) &&
+            (identical(other.isAuth, isAuth) || other.isAuth == isAuth) &&
             (identical(other.creatOrderMessage, creatOrderMessage) ||
                 other.creatOrderMessage == creatOrderMessage) &&
             (identical(other.deliveryInfo, deliveryInfo) ||
@@ -3865,6 +3890,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
         uidPickUpPoint,
         boutiques,
         paymentId,
+        isAuth,
         creatOrderMessage,
         deliveryInfo,
         boutique,
@@ -3906,6 +3932,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3933,6 +3960,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
         uidPickUpPoint,
         boutiques,
         paymentId,
+        isAuth,
         creatOrderMessage,
         deliveryInfo,
         boutique,
@@ -3965,6 +3993,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -3991,6 +4020,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
         uidPickUpPoint,
         boutiques,
         paymentId,
+        isAuth,
         creatOrderMessage,
         deliveryInfo,
         boutique,
@@ -4023,6 +4053,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -4051,6 +4082,7 @@ class _$PreloadDataGiftCardStateImpl implements PreloadDataGiftCardState {
           uidPickUpPoint,
           boutiques,
           paymentId,
+          isAuth,
           creatOrderMessage,
           deliveryInfo,
           boutique,
@@ -4128,6 +4160,7 @@ abstract class PreloadDataGiftCardState implements GiftCardState {
       required final String uidPickUpPoint,
       required final BoutiquesDataModel boutiques,
       required final String paymentId,
+      required final bool isAuth,
       final String? creatOrderMessage,
       final DeliveryDataModel? deliveryInfo,
       final BoutiqueDataModel? boutique,
@@ -4151,6 +4184,7 @@ abstract class PreloadDataGiftCardState implements GiftCardState {
   String get uidPickUpPoint;
   BoutiquesDataModel get boutiques;
   String get paymentId;
+  bool get isAuth;
   String? get creatOrderMessage;
   DeliveryDataModel? get deliveryInfo;
   BoutiqueDataModel? get boutique;
@@ -4270,6 +4304,7 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -4307,6 +4342,7 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,
@@ -4343,6 +4379,7 @@ class _$CreateOrderSuccessfullyGiftCardStateImpl
             String uidPickUpPoint,
             BoutiquesDataModel boutiques,
             String paymentId,
+            bool isAuth,
             String? creatOrderMessage,
             DeliveryDataModel? deliveryInfo,
             BoutiqueDataModel? boutique,

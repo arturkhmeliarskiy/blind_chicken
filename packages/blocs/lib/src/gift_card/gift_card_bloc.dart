@@ -133,6 +133,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
         boutiques: boutiques,
         uidPickUpPoint: deliveryInfo.pick.id,
         paymentId: '1',
+        isAuth: isAuth,
       ),
     );
   }
