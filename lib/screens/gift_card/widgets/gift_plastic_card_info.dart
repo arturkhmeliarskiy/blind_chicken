@@ -74,6 +74,22 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
   }
 
   @override
+  void didUpdateWidget(covariant GiftPlasticCardInfo oldWidget) {
+    if (_selectedItem.name == 'При получении' && !widget.isUponReceipt) {
+      setState(() {
+        _selectedItem = widget.payments.first;
+      });
+
+      context.read<GiftCardBloc>().add(
+            GiftCardEvent.changePaymentType(
+              typePay: _selectedItem,
+            ),
+          );
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
     _sum.dispose();
     super.dispose();
