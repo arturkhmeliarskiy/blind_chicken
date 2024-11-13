@@ -448,7 +448,7 @@ extension on PaymentOrderResponse {
       r: r ?? '',
       e: e ?? '',
       id: id ?? 0,
-      errorMessage: errorMessage ?? '',
+      errorMessage: e?.isNotEmpty ?? false ? e ?? '' : '',
     );
   }
 }

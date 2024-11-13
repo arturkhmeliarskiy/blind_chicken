@@ -19,6 +19,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
   final GiftCardRepository _giftCardRepository;
   final BoutiquesRepository _boutiquesRepository;
   final LocationRepository _locationRepository;
+  final SharedPreferencesService _sharedPreferencesService;
   final StoreVersionAppRepository _storeVersionAppRepository;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
 
@@ -28,6 +29,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
     this._giftCardRepository,
     this._boutiquesRepository,
     this._locationRepository,
+    this._sharedPreferencesService,
     this._storeVersionAppRepository,
     this._appMetricaEcommerceService,
   ) : super(const GiftCardState.init()) {
@@ -65,6 +67,11 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
       appStoreInfoVersion = result.version.ios;
     }
 
+    bool isAuth = _sharedPreferencesService.getBool(
+          key: SharedPrefKeys.userAuthorized,
+        ) ??
+        false;
+
     if (event.isNotification) {
       await _giftCardRepository.pushOpenGiftcard(
         messageId: event.messageId,
@@ -74,8 +81,10 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
     _updateDataService.boutiques = boutiques.data;
 
     deliveryInfo = await _locationRepository.getDelivery();
-    boutique = _updateDataService.boutiques
-        .firstWhere((item) => item.uidStore == (deliveryInfo?.pick.id ?? ''));
+    if (isAuth) {
+      boutique = _updateDataService.boutiques
+          .firstWhere((item) => item.uidStore == (deliveryInfo?.pick.id ?? ''));
+    }
 
     if (deliveryInfo.deliveryId == '2') {
       CalculationCostDeliveryDataModel calculationCostDelivery =
@@ -107,7 +116,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
         isUponReceipt: deliveryInfo.address.isNotEmpty
             ? deliveryInfo.address.first.cityId == '7700000000000'
             : true,
-        address: boutique.name,
+        address: boutique?.name ?? '',
         addressDelivery: BasketAddressDataModel(
           address: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.addr : '',
           zip: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.zip : '',

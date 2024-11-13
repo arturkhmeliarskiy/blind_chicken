@@ -477,6 +477,12 @@ class CatalogService {
         log(response.data);
         final result = jsonDecode(response.data);
 
+        if (result['r'] == '1') {
+          paymentOrderResponse = PaymentOrderResponse.fromJson(result);
+        } else {
+          paymentOrderResponse = PaymentOrderResponse(errorMessage: result['e']);
+        }
+
         paymentOrderResponse = PaymentOrderResponse.fromJson(
           result,
         );
