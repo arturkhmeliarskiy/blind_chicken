@@ -6,13 +6,13 @@ part 'type_receipt_data_model.g.dart';
 @JsonSerializable()
 class TypeReceiptDataModel {
   final String phoneNumber;
-  final BoutiqueDataModel pickup;
-  final BasketAddressDataModel delivery;
+  BoutiqueDataModel? pickup;
+  final List<BasketAddressDataModel> delivery;
   final String typeReceipt;
 
   TypeReceiptDataModel({
     required this.phoneNumber,
-    required this.pickup,
+    this.pickup,
     required this.delivery,
     required this.typeReceipt,
   });

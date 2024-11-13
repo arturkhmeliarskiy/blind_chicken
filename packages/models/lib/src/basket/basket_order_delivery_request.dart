@@ -9,6 +9,7 @@ class BasketOrderDeliveryRequest with _$BasketOrderDeliveryRequest {
     required String id,
     required String pck,
     required String adr,
+    required String adrId,
     required String zip,
   }) = _BasketOrderDeliveryRequest;
 }

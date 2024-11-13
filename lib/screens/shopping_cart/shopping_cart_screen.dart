@@ -388,7 +388,17 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                     height: 64,
                                                   ),
                                                   ShoppingCartDeliveryUserInfo(
+                                                    listAddress:
+                                                        initState.deliveryInfo?.address ?? [],
+                                                    isLoadDeleteAddress:
+                                                        initState.isLoadDeleteAddress ?? false,
                                                     boutiques: initState.boutiques,
+                                                    boutique: initState.boutique ??
+                                                        initState.boutiques.data.first,
+                                                    selectIndexAddres:
+                                                        initState.selectIndexAddress ?? 0,
+                                                    deleteIndexAddress:
+                                                        initState.deleteIndexAddress ?? 0,
                                                     sum: initState.amountPaid +
                                                         (initState.delivery ?? 0) -
                                                         initState.bonuses -
@@ -406,38 +416,50 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                     },
                                                     onAddressPickup: (value) {
                                                       context.read<ShoppingCartBloc>().add(
-                                                            ShoppingCartEvent.changeAddress(
-                                                              address: value.address,
-                                                              info: value,
-                                                            ),
-                                                          );
-                                                      context.read<ShoppingCartBloc>().add(
                                                             ShoppingCartEvent.changeUidPickUpPoint(
                                                               uidPickUpPoint: value.uidStore,
                                                             ),
                                                           );
                                                     },
-                                                    onAddressDelivery: (value) {
+                                                    onAddressDelivery:
+                                                        (price, cityId, addressDelivery) {
                                                       context.read<ShoppingCartBloc>().add(
-                                                            ShoppingCartEvent.changeAddressDelivery(
+                                                            ShoppingCartEvent.addAddressDelivery(
                                                               addressDelivery:
                                                                   BasketAddressDataModel(
-                                                                address: value.address
+                                                                address: addressDelivery.address
                                                                         .replaceAll(
                                                                             RegExp(r"\s+"), '')
                                                                         .isNotEmpty
-                                                                    ? value.address
+                                                                    ? addressDelivery.address
                                                                     : '',
-                                                                zip: value.zip,
-                                                                cityId: value.cityId,
-                                                                city: value.city,
-                                                                street: value.street,
-                                                                house: value.house,
-                                                                flat: value.flat,
+                                                                zip: addressDelivery.zip,
+                                                                cityId: addressDelivery.cityId,
+                                                                city: addressDelivery.city,
+                                                                street: addressDelivery.street,
+                                                                house: addressDelivery.house,
+                                                                flat: addressDelivery.flat,
                                                               ),
+                                                              delivery: price,
+                                                              cityId: cityId,
                                                             ),
                                                           );
                                                     },
+                                                    onSelectAddressDelivery: (index) {
+                                                      context.read<ShoppingCartBloc>().add(
+                                                            ShoppingCartEvent.selectAddressDelivery(
+                                                              index: index,
+                                                            ),
+                                                          );
+                                                    },
+                                                    deleteAddressDelivery: (id) {
+                                                      context.read<ShoppingCartBloc>().add(
+                                                            ShoppingCartEvent.deleteAddressDelivery(
+                                                              id: id,
+                                                            ),
+                                                          );
+                                                    },
+                                                    receivingType: initState.receivingType,
                                                   ),
                                                   const SizedBox(
                                                     height: 64,
@@ -665,13 +687,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                           initState.isActivePromoCode,
                                                       promoCode: initState.promoCode,
                                                       onSendPromotional: (value) {
-                                                        // context.read<ShoppingCartBloc>().add(
-                                                        //       const ShoppingCartEvent
-                                                        //           .changeTitlePromocode(
-                                                        //         titlePromocode:
-                                                        //             'Активация промокода',
-                                                        //       ),
-                                                        //     );
                                                         context.read<ShoppingCartBloc>().add(
                                                               ShoppingCartEvent.promoCode(
                                                                 promoCode: value,
@@ -689,12 +704,6 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                         );
                                                       },
                                                       onRemovePromotional: () {
-                                                        // context.read<ShoppingCartBloc>().add(
-                                                        //       const ShoppingCartEvent
-                                                        //           .changeTitlePromocode(
-                                                        //         titlePromocode: 'Отмена промокода',
-                                                        //       ),
-                                                        //     );
                                                         context.read<ShoppingCartBloc>().add(
                                                               const ShoppingCartEvent
                                                                   .removePromoCode(),
@@ -778,19 +787,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                   BlindChickenButtonShoppingCartProduct(
                                                     title: 'Заказать',
                                                     onChenge: () {
-                                                      bool isValidAddress = ((initState
-                                                                  .addressDelivery
-                                                                  .city
-                                                                  ?.isNotEmpty ??
-                                                              false) &&
-                                                          (initState.addressDelivery.street
-                                                                  ?.replaceAll(RegExp(r"\s+"), '')
-                                                                  .isNotEmpty ??
-                                                              false) &&
-                                                          (initState.addressDelivery.house
-                                                                  ?.replaceAll(RegExp(r"\s+"), '')
-                                                                  .isNotEmpty ??
-                                                              false));
+                                                      bool isValidAddress = initState
+                                                          .addressDelivery.address.isNotEmpty;
+
                                                       context.read<ShoppingCartBloc>().add(
                                                             ShoppingCartEvent.createOrder(
                                                                 request: BasketOrderRequest(
@@ -815,6 +814,12 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                                 zip: initState.receivingType !=
                                                                         'Самовывоз'
                                                                     ? initState.addressDelivery.zip
+                                                                    : '',
+                                                                adrId: initState.receivingType !=
+                                                                        'Самовывоз'
+                                                                    ? initState.addressDelivery
+                                                                            .adrId ??
+                                                                        ''
                                                                     : '',
                                                               ),
                                                               payment: initState.paymentId,

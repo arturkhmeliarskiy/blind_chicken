@@ -19,6 +19,7 @@ mixin _$BasketOrderDeliveryRequest {
   String get id => throw _privateConstructorUsedError;
   String get pck => throw _privateConstructorUsedError;
   String get adr => throw _privateConstructorUsedError;
+  String get adrId => throw _privateConstructorUsedError;
   String get zip => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $BasketOrderDeliveryRequestCopyWith<$Res> {
       _$BasketOrderDeliveryRequestCopyWithImpl<$Res,
           BasketOrderDeliveryRequest>;
   @useResult
-  $Res call({String id, String pck, String adr, String zip});
+  $Res call({String id, String pck, String adr, String adrId, String zip});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$BasketOrderDeliveryRequestCopyWithImpl<$Res,
     Object? id = null,
     Object? pck = null,
     Object? adr = null,
+    Object? adrId = null,
     Object? zip = null,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +69,10 @@ class _$BasketOrderDeliveryRequestCopyWithImpl<$Res,
       adr: null == adr
           ? _value.adr
           : adr // ignore: cast_nullable_to_non_nullable
+              as String,
+      adrId: null == adrId
+          ? _value.adrId
+          : adrId // ignore: cast_nullable_to_non_nullable
               as String,
       zip: null == zip
           ? _value.zip
@@ -85,7 +91,7 @@ abstract class _$$BasketOrderDeliveryRequestImplCopyWith<$Res>
       __$$BasketOrderDeliveryRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String pck, String adr, String zip});
+  $Res call({String id, String pck, String adr, String adrId, String zip});
 }
 
 /// @nodoc
@@ -104,6 +110,7 @@ class __$$BasketOrderDeliveryRequestImplCopyWithImpl<$Res>
     Object? id = null,
     Object? pck = null,
     Object? adr = null,
+    Object? adrId = null,
     Object? zip = null,
   }) {
     return _then(_$BasketOrderDeliveryRequestImpl(
@@ -118,6 +125,10 @@ class __$$BasketOrderDeliveryRequestImplCopyWithImpl<$Res>
       adr: null == adr
           ? _value.adr
           : adr // ignore: cast_nullable_to_non_nullable
+              as String,
+      adrId: null == adrId
+          ? _value.adrId
+          : adrId // ignore: cast_nullable_to_non_nullable
               as String,
       zip: null == zip
           ? _value.zip
@@ -134,6 +145,7 @@ class _$BasketOrderDeliveryRequestImpl extends _BasketOrderDeliveryRequest {
       {required this.id,
       required this.pck,
       required this.adr,
+      required this.adrId,
       required this.zip})
       : super._();
 
@@ -144,11 +156,13 @@ class _$BasketOrderDeliveryRequestImpl extends _BasketOrderDeliveryRequest {
   @override
   final String adr;
   @override
+  final String adrId;
+  @override
   final String zip;
 
   @override
   String toString() {
-    return 'BasketOrderDeliveryRequest(id: $id, pck: $pck, adr: $adr, zip: $zip)';
+    return 'BasketOrderDeliveryRequest(id: $id, pck: $pck, adr: $adr, adrId: $adrId, zip: $zip)';
   }
 
   @override
@@ -159,11 +173,12 @@ class _$BasketOrderDeliveryRequestImpl extends _BasketOrderDeliveryRequest {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.pck, pck) || other.pck == pck) &&
             (identical(other.adr, adr) || other.adr == adr) &&
+            (identical(other.adrId, adrId) || other.adrId == adrId) &&
             (identical(other.zip, zip) || other.zip == zip));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, pck, adr, zip);
+  int get hashCode => Object.hash(runtimeType, id, pck, adr, adrId, zip);
 
   @JsonKey(ignore: true)
   @override
@@ -178,6 +193,7 @@ abstract class _BasketOrderDeliveryRequest extends BasketOrderDeliveryRequest {
       {required final String id,
       required final String pck,
       required final String adr,
+      required final String adrId,
       required final String zip}) = _$BasketOrderDeliveryRequestImpl;
   _BasketOrderDeliveryRequest._() : super._();
 
@@ -187,6 +203,8 @@ abstract class _BasketOrderDeliveryRequest extends BasketOrderDeliveryRequest {
   String get pck;
   @override
   String get adr;
+  @override
+  String get adrId;
   @override
   String get zip;
   @override

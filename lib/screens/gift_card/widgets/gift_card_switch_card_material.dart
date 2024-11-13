@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class GiftCardSwitchCardMaterial extends StatefulWidget {
-  const GiftCardSwitchCardMaterial({super.key, required this.onChangeTypeCard});
+  const GiftCardSwitchCardMaterial({
+    super.key,
+    required this.onChangeTypeCard,
+    required this.typeGiftCard,
+  });
 
   final ValueChanged<String> onChangeTypeCard;
+  final String typeGiftCard;
 
   @override
   State<GiftCardSwitchCardMaterial> createState() => _GiftCardSwitchCardMaterialState();
@@ -12,6 +17,12 @@ class GiftCardSwitchCardMaterial extends StatefulWidget {
 
 class _GiftCardSwitchCardMaterialState extends State<GiftCardSwitchCardMaterial> {
   String _selectedItem = 'Виртуальная';
+
+  @override
+  void initState() {
+    _selectedItem = widget.typeGiftCard;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

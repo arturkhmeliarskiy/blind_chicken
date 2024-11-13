@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
@@ -21,6 +20,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
   final FavouritesRepository _favouritesRepository;
   final UpdateDataService _updateDataService;
   final BoutiquesRepository _boutiquesRepository;
+  final LocationRepository _locationRepository;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
 
   ShoppingCartBloc(
@@ -30,6 +30,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     this._favouritesRepository,
     this._updateDataService,
     this._boutiquesRepository,
+    this._locationRepository,
     this._appMetricaEcommerceService,
   ) : super(const ShoppingCartState.init()) {
     on<ShoppingCartEvent>(
@@ -44,7 +45,6 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         initGiftCard: (event) => _initGiftCard(event, emit),
         giftCard: (event) => _giftCard(event, emit),
         addGiftCard: (event) => _addGiftCard(event, emit),
-        delivery: (event) => _delivery(event, emit),
         promoCode: (event) => _promoCode(event, emit),
         removePromoCode: (event) => _removePromoCode(event, emit),
         createOrder: (event) => _createOrder(event, emit),
@@ -60,8 +60,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         changeSizeProduct: (event) => _changeSizeProduct(event, emit),
         changeReceivingType: (event) => _changeReceivingType(event, emit),
         changeUidPickUpPoint: (event) => _changeUidPickUpPoint(event, emit),
-        changeAddress: (event) => _changeAddress(event, emit),
-        changeAddressDelivery: (event) => _changeAddressDelivery(event, emit),
+        selectAddressDelivery: (event) => _selectAddressDelivery(event, emit),
+        addAddressDelivery: (event) => _addAddressDelivery(event, emit),
+        deleteAddressDelivery: (event) => _deleteAddressDelivery(event, emit),
         changePaymentType: (event) => _changePaymentType(event, emit),
         changeTitlePromocode: (event) => _changeTitlePromocode(event, emit),
         getInfoProductSize: (event) => _getInfoProductSize(event, emit),
@@ -145,17 +146,26 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     _appMetricaEcommerceService.openPages(titleScreen: 'Корзина');
     List<ProductDataModel> favouritesProducts = [];
     List<int> favouritesProductsId = [];
+    int delivery = 0;
     BasketFullInfoDataModel? basketInfo;
     FavouritesDataModel? favouritesProdcutsInfo;
+    DeliveryDataModel? deliveryInfo;
+    BoutiqueDataModel? boutique;
     bool isAuth = _sharedPreferencesService.getBool(
           key: SharedPrefKeys.userAuthorized,
         ) ??
         false;
+    final boutiques = await _boutiquesRepository.getBoutiques();
+    _updateDataService.boutiques = boutiques.data;
+
     if (isAuth) {
       basketInfo = await _basketRepository.getProductToBasketFullInfo();
       favouritesProdcutsInfo = await _favouritesRepository.getFavouritesProdcuts();
       favouritesProductsId =
           favouritesProdcutsInfo.favorites.map((item) => int.parse(item)).toList();
+      deliveryInfo = await _locationRepository.getDelivery();
+      boutique = _updateDataService.boutiques
+          .firstWhere((item) => item.uidStore == (deliveryInfo?.pick.id ?? ''));
       log(basketInfo.toString());
       log(favouritesProdcutsInfo.toString());
     } else {
@@ -163,14 +173,22 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       favouritesProducts = _catalogRepository.getFavouritesProducts();
       favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
     }
-    final boutiques = await _boutiquesRepository.getBoutiques();
-    _updateDataService.boutiques = boutiques.data;
 
     int numberProducts = 0;
     int amountPaid = 0;
     for (int i = 0; i < basketInfo.basket.length; i++) {
       numberProducts = numberProducts + basketInfo.basket[i].count;
       amountPaid = amountPaid + basketInfo.basket[i].data.price;
+    }
+
+    if ((deliveryInfo?.deliveryId ?? '') == '2') {
+      CalculationCostDeliveryDataModel calculationCostDelivery =
+          await _locationRepository.calculationCostDelivery(
+        zipcode: deliveryInfo?.address.first.zip ?? '',
+        sum: amountPaid,
+        cityId: deliveryInfo?.address.first.cityId ?? '',
+      );
+      delivery = calculationCostDelivery.price;
     }
 
     if (basketInfo.errorMessage.isNotEmpty ||
@@ -196,7 +214,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             data: boutiques.data,
             errorMessage: '',
           ),
-          receivingType: 'Самовывоз',
+          receivingType: (deliveryInfo?.deliveryId ?? '') == '1' ? 'Самовывоз' : 'Доставка',
           promoCodeMessage: '',
           isActivePromoCode: false,
           promoCode: '',
@@ -205,7 +223,9 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           giftCards: 0,
           bonuses: 0,
           isLoadCreateOrder: false,
-          isUponReceipt: true,
+          isUponReceipt: (deliveryInfo?.address.isNotEmpty ?? false)
+              ? (deliveryInfo?.address.first.cityId ?? '') == '7700000000000'
+              : true,
           listProductsCode: [],
           listProdcutsStyle: [],
           listProdcutsAlso: [],
@@ -213,9 +233,22 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           listProdcutsComplect: [],
           favouritesProductsId: favouritesProductsId,
           isAuth: isAuth,
-          address: '',
-          addressDelivery: BasketAddressDataModel(address: '', zip: ''),
-          uidPickUpPoint: boutiques.data.isNotEmpty ? boutiques.data.first.uidStore : '',
+          address: boutique?.name ?? '',
+          addressDelivery: BasketAddressDataModel(
+            address: (deliveryInfo?.address.isNotEmpty ?? false)
+                ? deliveryInfo?.address.first.addr ?? ''
+                : '',
+            zip: (deliveryInfo?.address.isNotEmpty ?? false)
+                ? deliveryInfo?.address.first.zip ?? ''
+                : '',
+            cityId: (deliveryInfo?.address.isNotEmpty ?? false)
+                ? deliveryInfo?.address.first.cityId ?? ''
+                : '',
+            adrId: (deliveryInfo?.address.isNotEmpty ?? false)
+                ? deliveryInfo?.address.first.id ?? ''
+                : '',
+          ),
+          uidPickUpPoint: deliveryInfo?.pick.id ?? '',
           paymentId: '1',
           typePay: 'Банковской картой',
           titlePromocode: 'Активация промокода',
@@ -223,6 +256,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           isLoadGetSizeProduct: false,
           isLoadAddProductToShopingCart: false,
           isBlocBackBotton: false,
+          deliveryInfo: deliveryInfo,
+          boutique: boutique,
+          delivery: delivery,
+          selectIndexAddress: 0,
         ),
       );
     }
@@ -965,23 +1002,6 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     );
   }
 
-  Future<void> _delivery(
-    DeliverySoppingCartEvent event,
-    Emitter<ShoppingCartState> emit,
-  ) async {
-    state.mapOrNull(
-      productsShoppingCart: (initState) {
-        emit(const ShoppingCartState.load());
-        emit(
-          initState.copyWith(
-            delivery: event.delivery,
-            isUponReceipt: event.cityId.isNotEmpty ? event.cityId == '7700000000000' : true,
-          ),
-        );
-      },
-    );
-  }
-
   Future<void> _promoCode(
     PromoCodeSoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
@@ -1464,7 +1484,10 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     ChangeReceivingTypeSoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
-    state.mapOrNull(productsShoppingCart: (initState) {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      await _locationRepository.switchTypeDelivery(
+        deliveryId: event.receivingType == 'Самовывоз' ? '1' : '2',
+      );
       emit(initState.copyWith(
         receivingType: event.receivingType,
       ));
@@ -1475,33 +1498,141 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
     ChangeUidPickUpPointSoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
-    state.mapOrNull(productsShoppingCart: (initState) {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      await _locationRepository.addPickUpPoint(pickId: event.uidPickUpPoint);
+      BoutiqueDataModel boutique = _updateDataService.boutiques.firstWhere(
+        (item) => item.uidStore == event.uidPickUpPoint,
+      );
+      log(boutique.toString());
+
       emit(initState.copyWith(
         uidPickUpPoint: event.uidPickUpPoint.isNotEmpty
             ? event.uidPickUpPoint
             : initState.boutiques.data.first.uidStore,
+        boutique: boutique,
+        address: boutique.name,
       ));
     });
   }
 
-  Future<void> _changeAddress(
-    ChangeAddressSoppingCartEvent event,
+  Future<void> _selectAddressDelivery(
+    SelectAddressDeliverySoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
-    state.mapOrNull(productsShoppingCart: (initState) {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      String address = '';
+      String zip = '';
+      String cityId = '';
+      String id = '';
+
+      address = initState.deliveryInfo?.address[event.index].addr ?? '';
+      zip = initState.deliveryInfo?.address[event.index].zip ?? '';
+      cityId = initState.deliveryInfo?.address[event.index].cityId ?? '';
+      id = initState.deliveryInfo?.address[event.index].id ?? '';
+
+      CalculationCostDeliveryDataModel calculationCostDelivery =
+          await _locationRepository.calculationCostDelivery(
+        zipcode: zip,
+        sum: initState.amountPaid,
+        cityId: cityId,
+      );
+      int delivery = calculationCostDelivery.price;
+
       emit(initState.copyWith(
-        address: event.address,
+        addressDelivery: BasketAddressDataModel(
+          address: address,
+          zip: zip,
+          cityId: cityId,
+          adrId: id,
+        ),
+        delivery: delivery,
+        selectIndexAddress: event.index,
       ));
     });
   }
 
-  Future<void> _changeAddressDelivery(
-    ChangeAddressDeliverySoppingCartEvent event,
+  Future<void> _addAddressDelivery(
+    AddAddressDeliverySoppingCartEvent event,
     Emitter<ShoppingCartState> emit,
   ) async {
-    state.mapOrNull(productsShoppingCart: (initState) {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      await _locationRepository.addDeliveryAddress(
+        addr: event.addressDelivery.address,
+        city: event.addressDelivery.cityId ?? '',
+        zip: event.addressDelivery.zip,
+      );
+
+      DeliveryDataModel deliveryInfo = await _locationRepository.getDelivery();
+
+      CalculationCostDeliveryDataModel calculationCostDelivery =
+          await _locationRepository.calculationCostDelivery(
+        zipcode: deliveryInfo.address.first.zip,
+        sum: initState.amountPaid,
+        cityId: deliveryInfo.address.first.cityId,
+      );
+      int delivery = calculationCostDelivery.price;
+
       emit(initState.copyWith(
-        addressDelivery: event.addressDelivery,
+        delivery: delivery,
+        isUponReceipt: deliveryInfo.address.isNotEmpty
+            ? deliveryInfo.address.first.cityId == '7700000000000'
+            : true,
+        deliveryInfo: deliveryInfo,
+        addressDelivery: BasketAddressDataModel(
+          address: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.addr : '',
+          zip: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.zip : '',
+          cityId: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.cityId : '',
+          adrId: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.id : '',
+        ),
+      ));
+    });
+  }
+
+  Future<void> _deleteAddressDelivery(
+    DeleteAddressDeliverySoppingCartEvent event,
+    Emitter<ShoppingCartState> emit,
+  ) async {
+    await state.mapOrNull(productsShoppingCart: (initState) async {
+      CalculationCostDeliveryDataModel? calculationCostDelivery;
+      int delivery = 0;
+      int selectIndexAddress =
+          initState.deliveryInfo?.address.indexWhere((item) => item.id == event.id) ?? 0;
+
+      emit(initState.copyWith(
+        deleteIndexAddress: selectIndexAddress,
+        isLoadDeleteAddress: true,
+      ));
+
+      await _locationRepository.deleteDeliveryAddress(
+        id: event.id,
+      );
+
+      DeliveryDataModel deliveryInfo = await _locationRepository.getDelivery();
+
+      if (deliveryInfo.address.isNotEmpty) {
+        calculationCostDelivery = await _locationRepository.calculationCostDelivery(
+          zipcode: deliveryInfo.address.first.zip,
+          sum: initState.amountPaid,
+          cityId: deliveryInfo.address.first.cityId,
+        );
+        delivery = calculationCostDelivery.price;
+      }
+
+      emit(initState.copyWith(
+        delivery: delivery != 0 ? delivery : null,
+        isUponReceipt: deliveryInfo.address.isNotEmpty
+            ? deliveryInfo.address.first.cityId == '7700000000000'
+            : true,
+        selectIndexAddress:
+            selectIndexAddress == initState.selectIndexAddress ? 0 : initState.selectIndexAddress,
+        deliveryInfo: deliveryInfo,
+        isLoadDeleteAddress: false,
+        addressDelivery: BasketAddressDataModel(
+          address: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.addr : '',
+          zip: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.zip : '',
+          cityId: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.cityId : '',
+          adrId: deliveryInfo.address.isNotEmpty ? deliveryInfo.address.first.id : '',
+        ),
       ));
     });
   }

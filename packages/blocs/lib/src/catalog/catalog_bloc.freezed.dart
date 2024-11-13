@@ -9170,6 +9170,8 @@ abstract class _$$GetInfoProductCatalogEventImplCopyWith<$Res> {
       SkuProductDataModel? size,
       bool? isUpdate,
       String? messageId});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -9226,6 +9228,20 @@ class __$$GetInfoProductCatalogEventImplCopyWithImpl<$Res>
               as String?,
     ));
   }
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -9276,7 +9292,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
                     identifierAddProductToShoppingCart) ||
                 other.identifierAddProductToShoppingCart ==
                     identifierAddProductToShoppingCart) &&
-            const DeepCollectionEquality().equals(other.size, size) &&
+            (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate) &&
             (identical(other.messageId, messageId) ||
@@ -9290,7 +9306,7 @@ class _$GetInfoProductCatalogEventImpl implements GetInfoProductCatalogEvent {
       titleScreen,
       typeAddProductToShoppingCart,
       identifierAddProductToShoppingCart,
-      const DeepCollectionEquality().hash(size),
+      size,
       isUpdate,
       messageId);
 
@@ -10992,6 +11008,8 @@ abstract class _$$ChangeSizeProductCatalogEventImplCopyWith<$Res> {
       __$$ChangeSizeProductCatalogEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel selectSizeProduct});
+
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct;
 }
 
 /// @nodoc
@@ -11009,14 +11027,25 @@ class __$$ChangeSizeProductCatalogEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectSizeProduct = freezed,
+    Object? selectSizeProduct = null,
   }) {
     return _then(_$ChangeSizeProductCatalogEventImpl(
-      selectSizeProduct: freezed == selectSizeProduct
+      selectSizeProduct: null == selectSizeProduct
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
+  }
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
   }
 }
 
@@ -11039,13 +11068,12 @@ class _$ChangeSizeProductCatalogEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeSizeProductCatalogEventImpl &&
-            const DeepCollectionEquality()
-                .equals(other.selectSizeProduct, selectSizeProduct));
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(selectSizeProduct));
+  int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -12329,6 +12357,8 @@ abstract class _$$AddProductToSoppingCartCatalogEventImplCopyWith<$Res> {
       String typeAddProductToShoppingCart,
       String identifierAddProductToShoppingCart,
       SkuProductDataModel? size});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -12376,6 +12406,20 @@ class __$$AddProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
               as SkuProductDataModel?,
     ));
   }
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -12421,17 +12465,12 @@ class _$AddProductToSoppingCartCatalogEventImpl
                     identifierAddProductToShoppingCart) ||
                 other.identifierAddProductToShoppingCart ==
                     identifierAddProductToShoppingCart) &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      code,
-      titleScreen,
-      typeAddProductToShoppingCart,
-      identifierAddProductToShoppingCart,
-      const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, code, titleScreen,
+      typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -12850,6 +12889,8 @@ abstract class _$$CheckProductToSoppingCartCatalogEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -12867,14 +12908,24 @@ class __$$CheckProductToSoppingCartCatalogEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = freezed,
+    Object? size = null,
   }) {
     return _then(_$CheckProductToSoppingCartCatalogEventImpl(
-      size: freezed == size
+      size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
+  }
+
+  /// Create a copy of CatalogEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -12897,12 +12948,11 @@ class _$CheckProductToSoppingCartCatalogEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartCatalogEventImpl &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   /// Create a copy of CatalogEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -18702,7 +18752,9 @@ abstract class _$$PreloadDataCompletedCatalogStateImplCopyWith<$Res> {
 
   $CatalogProductsRequestCopyWith<$Res> get request;
   $ProductDataModelCopyWith<$Res>? get favouriteProduct;
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
   $FilterItemDataModelCopyWith<$Res>? get itemFileter;
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
   $CatalogDataModelCopyWith<$Res>? get catalogInfo;
   $MenuItemDataModelCopyWith<$Res>? get itemMenu;
 }
@@ -19035,6 +19087,21 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
+    if (_value.selectSizeProduct == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct!,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $FilterItemDataModelCopyWith<$Res>? get itemFileter {
     if (_value.itemFileter == null) {
       return null;
@@ -19042,6 +19109,21 @@ class __$$PreloadDataCompletedCatalogStateImplCopyWithImpl<$Res>
 
     return $FilterItemDataModelCopyWith<$Res>(_value.itemFileter!, (value) {
       return _then(_value.copyWith(itemFileter: value));
+    });
+  }
+
+  /// Create a copy of CatalogState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
+    if (_value.detailsProduct == null) {
+      return null;
+    }
+
+    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
+        (value) {
+      return _then(_value.copyWith(detailsProduct: value));
     });
   }
 
@@ -19470,8 +19552,8 @@ class _$PreloadDataCompletedCatalogStateImpl
                 other.favouriteProduct == favouriteProduct) &&
             (identical(other.notificationMessage, notificationMessage) ||
                 other.notificationMessage == notificationMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.selectSizeProduct, selectSizeProduct) &&
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.typeError, typeError) ||
@@ -19499,7 +19581,7 @@ class _$PreloadDataCompletedCatalogStateImpl
             (identical(other.indexFilterCategory, indexFilterCategory) ||
                 other.indexFilterCategory == indexFilterCategory) &&
             (identical(other.itemFileter, itemFileter) || other.itemFileter == itemFileter) &&
-            const DeepCollectionEquality().equals(other.detailsProduct, detailsProduct) &&
+            (identical(other.detailsProduct, detailsProduct) || other.detailsProduct == detailsProduct) &&
             (identical(other.catalogInfo, catalogInfo) || other.catalogInfo == catalogInfo) &&
             (identical(other.itemMenu, itemMenu) || other.itemMenu == itemMenu) &&
             (identical(other.title, title) || other.title == title));
@@ -19545,7 +19627,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         indexProduct,
         favouriteProduct,
         notificationMessage,
-        const DeepCollectionEquality().hash(selectSizeProduct),
+        selectSizeProduct,
         errorMessage,
         typeError,
         codeProduct,
@@ -19560,7 +19642,7 @@ class _$PreloadDataCompletedCatalogStateImpl
         indexItemFileter,
         indexFilterCategory,
         itemFileter,
-        const DeepCollectionEquality().hash(detailsProduct),
+        detailsProduct,
         catalogInfo,
         itemMenu,
         title

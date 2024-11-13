@@ -1,4 +1,4 @@
-import 'package:blind_chicken/screens/location/location_delivery_info.dart';
+import 'package:blind_chicken/screens/location/add_location_delivery_info.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 
@@ -6,36 +6,35 @@ class GiftCardDeliveryInfo extends StatefulWidget {
   const GiftCardDeliveryInfo({
     super.key,
     required this.sum,
+    required this.delivery,
+    required this.selectIndexAddres,
+    required this.deleteIndexAddress,
+    required this.listAddress,
+    required this.isLoadDeleteAddress,
     required this.onAddressDelivery,
+    required this.onSelectAddressDelivery,
+    required this.deleteAddressDelivery,
   });
 
-  final ValueChanged<BasketAddressDataModel> onAddressDelivery;
   final int sum;
+  final int delivery;
+  final int selectIndexAddres;
+  final int deleteIndexAddress;
+  final List<DeliveryAddressDataModel> listAddress;
+  final bool isLoadDeleteAddress;
+  final Function(int, String, BasketAddressDataModel) onAddressDelivery;
+  final ValueChanged<int> onSelectAddressDelivery;
+  final ValueChanged<String> deleteAddressDelivery;
 
   @override
   State<GiftCardDeliveryInfo> createState() => _GiftCardDeliveryInfoState();
 }
 
 class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
-  int _deliveryPrice = 0;
-  int _total = 0;
   BasketAddressDataModel city = BasketAddressDataModel(address: '', zip: '');
   BasketAddressDataModel street = BasketAddressDataModel(address: '', zip: '');
   BasketAddressDataModel house = BasketAddressDataModel(address: '', zip: '');
   String flat = '';
-
-  @override
-  void initState() {
-    _total = widget.sum;
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant GiftCardDeliveryInfo oldWidget) {
-    _total = widget.sum;
-
-    super.didUpdateWidget(oldWidget);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,71 +42,17 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LocationDeliveryInfo(
+          AddLocationDeliveryInfo(
             sum: widget.sum,
-            city: city.address,
-            street: street.address,
-            house: house.address,
-            flat: flat,
-            onDeliveryInfo: (price, cityId) {
-              setState(() {
-                _deliveryPrice = price;
-              });
-            },
-            onCity: (value) {
-              final item = value;
-              if (item != null) {
-                city = BasketAddressDataModel(
-                  address: item.name,
-                  zip: item.zip.toString(),
-                  cityId: item.id,
-                );
-              } else {
-                city = BasketAddressDataModel(
-                  address: '',
-                  zip: '',
-                  cityId: '',
-                );
-              }
-              widget.onAddressDelivery(_address(city, street, house, flat));
-            },
-            onStreet: (value) {
-              final item = value;
-              if (item != null) {
-                street = BasketAddressDataModel(
-                  address: '${item.typeShort}. ${item.name}',
-                  zip: item.zip.toString(),
-                );
-                widget.onAddressDelivery(_address(city, street, house, flat));
-              } else {
-                street = BasketAddressDataModel(
-                  address: '',
-                  zip: '',
-                );
-              }
-              widget.onAddressDelivery(_address(city, street, house, flat));
-            },
-            onHouse: (value) {
-              final item = value;
-              if (item != null) {
-                house = BasketAddressDataModel(
-                  address: item.name,
-                  zip: item.zip.toString(),
-                );
-              } else {
-                house = BasketAddressDataModel(
-                  address: '',
-                  zip: '',
-                );
-              }
-              widget.onAddressDelivery(_address(city, street, house, flat));
-            },
-            onFlat: (value) {
-              flat = value;
-              widget.onAddressDelivery(_address(city, street, house, flat));
-            },
+            selectIndexAddres: widget.selectIndexAddres,
+            deleteIndexAddress: widget.deleteIndexAddress,
+            listAddress: widget.listAddress,
+            isLoadDeleteAddress: widget.isLoadDeleteAddress,
+            onAddressDelivery: widget.onAddressDelivery,
+            onSelectAddressDelivery: widget.onSelectAddressDelivery,
+            deleteAddressDelivery: widget.deleteAddressDelivery,
           ),
-          if (city.address.isNotEmpty)
+          if (widget.listAddress.isNotEmpty)
             Column(
               children: [
                 const SizedBox(
@@ -126,7 +71,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                             style: Theme.of(context).textTheme.displayMedium,
                           ),
                           Text(
-                            '$_deliveryPrice ₽',
+                            '${widget.delivery} ₽',
                             style: Theme.of(context).textTheme.displayMedium,
                           ),
                         ],
@@ -141,7 +86,7 @@ class _GiftCardDeliveryInfoState extends State<GiftCardDeliveryInfo> {
                                 ),
                           ),
                           Text(
-                            '${_total + _deliveryPrice} ₽',
+                            '${widget.sum + widget.delivery} ₽',
                             style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontWeight: FontWeight.w700,
                                 ),

@@ -9,6 +9,7 @@ class CalculationCostDeliveryRsponse with _$CalculationCostDeliveryRsponse {
   factory CalculationCostDeliveryRsponse({
     String? r,
     String? e,
+    String? errorMessage,
     int? price,
   }) = _CalculationCostDeliveryRsponse;
   factory CalculationCostDeliveryRsponse.fromJson(Map<String, dynamic> json) =>

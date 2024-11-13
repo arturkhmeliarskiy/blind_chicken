@@ -3305,6 +3305,8 @@ abstract class _$$GetInfoProductFavouritesEventImplCopyWith<$Res> {
       String identifierAddProductToShoppingCart,
       SkuProductDataModel? size,
       bool? isUpdate});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -3357,6 +3359,20 @@ class __$$GetInfoProductFavouritesEventImplCopyWithImpl<$Res>
               as bool?,
     ));
   }
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -3405,7 +3421,7 @@ class _$GetInfoProductFavouritesEventImpl
                     identifierAddProductToShoppingCart) ||
                 other.identifierAddProductToShoppingCart ==
                     identifierAddProductToShoppingCart) &&
-            const DeepCollectionEquality().equals(other.size, size) &&
+            (identical(other.size, size) || other.size == size) &&
             (identical(other.isUpdate, isUpdate) ||
                 other.isUpdate == isUpdate));
   }
@@ -3417,7 +3433,7 @@ class _$GetInfoProductFavouritesEventImpl
       titleScreen,
       typeAddProductToShoppingCart,
       identifierAddProductToShoppingCart,
-      const DeepCollectionEquality().hash(size),
+      size,
       isUpdate);
 
   /// Create a copy of FavouritesEvent
@@ -4051,6 +4067,8 @@ abstract class _$$ChangeSizeProductFavouritesEventImplCopyWith<$Res> {
       __$$ChangeSizeProductFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel selectSizeProduct});
+
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct;
 }
 
 /// @nodoc
@@ -4068,14 +4086,25 @@ class __$$ChangeSizeProductFavouritesEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectSizeProduct = freezed,
+    Object? selectSizeProduct = null,
   }) {
     return _then(_$ChangeSizeProductFavouritesEventImpl(
-      selectSizeProduct: freezed == selectSizeProduct
+      selectSizeProduct: null == selectSizeProduct
           ? _value.selectSizeProduct
           : selectSizeProduct // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
+  }
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get selectSizeProduct {
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
   }
 }
 
@@ -4099,13 +4128,12 @@ class _$ChangeSizeProductFavouritesEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeSizeProductFavouritesEventImpl &&
-            const DeepCollectionEquality()
-                .equals(other.selectSizeProduct, selectSizeProduct));
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(selectSizeProduct));
+  int get hashCode => Object.hash(runtimeType, selectSizeProduct);
 
   /// Create a copy of FavouritesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -4992,6 +5020,8 @@ abstract class _$$AddProductToSoppingCartFavouritesEventImplCopyWith<$Res> {
       String typeAddProductToShoppingCart,
       String identifierAddProductToShoppingCart,
       SkuProductDataModel? size});
+
+  $SkuProductDataModelCopyWith<$Res>? get size;
 }
 
 /// @nodoc
@@ -5039,6 +5069,20 @@ class __$$AddProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
               as SkuProductDataModel?,
     ));
   }
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get size {
+    if (_value.size == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.size!, (value) {
+      return _then(_value.copyWith(size: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -5084,17 +5128,12 @@ class _$AddProductToSoppingCartFavouritesEventImpl
                     identifierAddProductToShoppingCart) ||
                 other.identifierAddProductToShoppingCart ==
                     identifierAddProductToShoppingCart) &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      code,
-      titleScreen,
-      typeAddProductToShoppingCart,
-      identifierAddProductToShoppingCart,
-      const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, code, titleScreen,
+      typeAddProductToShoppingCart, identifierAddProductToShoppingCart, size);
 
   /// Create a copy of FavouritesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -5396,6 +5435,8 @@ abstract class _$$CheckProductToSoppingCartFavouritesEventImplCopyWith<$Res> {
       __$$CheckProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SkuProductDataModel size});
+
+  $SkuProductDataModelCopyWith<$Res> get size;
 }
 
 /// @nodoc
@@ -5413,14 +5454,24 @@ class __$$CheckProductToSoppingCartFavouritesEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? size = freezed,
+    Object? size = null,
   }) {
     return _then(_$CheckProductToSoppingCartFavouritesEventImpl(
-      size: freezed == size
+      size: null == size
           ? _value.size
           : size // ignore: cast_nullable_to_non_nullable
               as SkuProductDataModel,
     ));
+  }
+
+  /// Create a copy of FavouritesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res> get size {
+    return $SkuProductDataModelCopyWith<$Res>(_value.size, (value) {
+      return _then(_value.copyWith(size: value));
+    });
   }
 }
 
@@ -5443,12 +5494,11 @@ class _$CheckProductToSoppingCartFavouritesEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CheckProductToSoppingCartFavouritesEventImpl &&
-            const DeepCollectionEquality().equals(other.size, size));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(size));
+  int get hashCode => Object.hash(runtimeType, size);
 
   /// Create a copy of FavouritesEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -8840,7 +8890,9 @@ abstract class _$$ProductsFavouritesStateImplCopyWith<$Res> {
   $FavouritesCatalogProductsRequestCopyWith<$Res> get request;
   $FilterItemDataModelCopyWith<$Res>? get itemFileter;
   $ProductDataModelCopyWith<$Res>? get favouriteProduct;
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct;
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo;
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct;
 }
 
 /// @nodoc
@@ -9095,6 +9147,21 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $SkuProductDataModelCopyWith<$Res>? get selectSizeProduct {
+    if (_value.selectSizeProduct == null) {
+      return null;
+    }
+
+    return $SkuProductDataModelCopyWith<$Res>(_value.selectSizeProduct!,
+        (value) {
+      return _then(_value.copyWith(selectSizeProduct: value));
+    });
+  }
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $FavouritesCatalogInfoDataModelCopyWith<$Res>? get favouritesProductsInfo {
     if (_value.favouritesProductsInfo == null) {
       return null;
@@ -9103,6 +9170,21 @@ class __$$ProductsFavouritesStateImplCopyWithImpl<$Res>
     return $FavouritesCatalogInfoDataModelCopyWith<$Res>(
         _value.favouritesProductsInfo!, (value) {
       return _then(_value.copyWith(favouritesProductsInfo: value));
+    });
+  }
+
+  /// Create a copy of FavouritesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailProductDataModelCopyWith<$Res>? get detailsProduct {
+    if (_value.detailsProduct == null) {
+      return null;
+    }
+
+    return $DetailProductDataModelCopyWith<$Res>(_value.detailsProduct!,
+        (value) {
+      return _then(_value.copyWith(detailsProduct: value));
     });
   }
 }
@@ -9387,8 +9469,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 other.isShopGetSizeProduct == isShopGetSizeProduct) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
-            const DeepCollectionEquality()
-                .equals(other.selectSizeProduct, selectSizeProduct) &&
+            (identical(other.selectSizeProduct, selectSizeProduct) ||
+                other.selectSizeProduct == selectSizeProduct) &&
             (identical(other.isShoppingCart, isShoppingCart) ||
                 other.isShoppingCart == isShoppingCart) &&
             (identical(other.isShoppingCartDetailsProduct,
@@ -9399,8 +9481,8 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
                 other.isUpdate == isUpdate) &&
             (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
                 other.favouritesProductsInfo == favouritesProductsInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.detailsProduct, detailsProduct));
+            (identical(other.detailsProduct, detailsProduct) ||
+                other.detailsProduct == detailsProduct));
   }
 
   @override
@@ -9438,12 +9520,12 @@ class _$ProductsFavouritesStateImpl implements ProductsFavouritesState {
         favouriteProduct,
         isShopGetSizeProduct,
         codeProduct,
-        const DeepCollectionEquality().hash(selectSizeProduct),
+        selectSizeProduct,
         isShoppingCart,
         isShoppingCartDetailsProduct,
         isUpdate,
         favouritesProductsInfo,
-        const DeepCollectionEquality().hash(detailsProduct)
+        detailsProduct
       ]);
 
   /// Create a copy of FavouritesState

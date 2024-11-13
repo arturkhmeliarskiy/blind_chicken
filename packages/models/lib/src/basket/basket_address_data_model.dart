@@ -11,6 +11,7 @@ class BasketAddressDataModel {
   String? house;
   String? flat;
   String? cityId;
+  String? adrId;
 
   BasketAddressDataModel({
     required this.address,
@@ -20,6 +21,7 @@ class BasketAddressDataModel {
     this.house,
     this.flat,
     this.cityId,
+    this.adrId,
   });
 
   factory BasketAddressDataModel.fromJson(Map<String, dynamic> json) =>

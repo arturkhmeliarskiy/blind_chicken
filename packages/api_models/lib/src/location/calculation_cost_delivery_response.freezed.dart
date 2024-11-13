@@ -23,6 +23,7 @@ CalculationCostDeliveryRsponse _$CalculationCostDeliveryRsponseFromJson(
 mixin _$CalculationCostDeliveryRsponse {
   String? get r => throw _privateConstructorUsedError;
   String? get e => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $CalculationCostDeliveryRsponseCopyWith<$Res> {
       _$CalculationCostDeliveryRsponseCopyWithImpl<$Res,
           CalculationCostDeliveryRsponse>;
   @useResult
-  $Res call({String? r, String? e, int? price});
+  $Res call({String? r, String? e, String? errorMessage, int? price});
 }
 
 /// @nodoc
@@ -58,6 +59,7 @@ class _$CalculationCostDeliveryRsponseCopyWithImpl<$Res,
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? price = freezed,
   }) {
     return _then(_value.copyWith(
@@ -68,6 +70,10 @@ class _$CalculationCostDeliveryRsponseCopyWithImpl<$Res,
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       price: freezed == price
           ? _value.price
@@ -86,7 +92,7 @@ abstract class _$$CalculationCostDeliveryRsponseImplCopyWith<$Res>
       __$$CalculationCostDeliveryRsponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? r, String? e, int? price});
+  $Res call({String? r, String? e, String? errorMessage, int? price});
 }
 
 /// @nodoc
@@ -104,6 +110,7 @@ class __$$CalculationCostDeliveryRsponseImplCopyWithImpl<$Res>
   $Res call({
     Object? r = freezed,
     Object? e = freezed,
+    Object? errorMessage = freezed,
     Object? price = freezed,
   }) {
     return _then(_$CalculationCostDeliveryRsponseImpl(
@@ -114,6 +121,10 @@ class __$$CalculationCostDeliveryRsponseImplCopyWithImpl<$Res>
       e: freezed == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
       price: freezed == price
           ? _value.price
@@ -127,7 +138,8 @@ class __$$CalculationCostDeliveryRsponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CalculationCostDeliveryRsponseImpl
     extends _CalculationCostDeliveryRsponse {
-  _$CalculationCostDeliveryRsponseImpl({this.r, this.e, this.price})
+  _$CalculationCostDeliveryRsponseImpl(
+      {this.r, this.e, this.errorMessage, this.price})
       : super._();
 
   factory _$CalculationCostDeliveryRsponseImpl.fromJson(
@@ -139,11 +151,13 @@ class _$CalculationCostDeliveryRsponseImpl
   @override
   final String? e;
   @override
+  final String? errorMessage;
+  @override
   final int? price;
 
   @override
   String toString() {
-    return 'CalculationCostDeliveryRsponse(r: $r, e: $e, price: $price)';
+    return 'CalculationCostDeliveryRsponse(r: $r, e: $e, errorMessage: $errorMessage, price: $price)';
   }
 
   @override
@@ -153,12 +167,14 @@ class _$CalculationCostDeliveryRsponseImpl
             other is _$CalculationCostDeliveryRsponseImpl &&
             (identical(other.r, r) || other.r == r) &&
             (identical(other.e, e) || other.e == e) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             (identical(other.price, price) || other.price == price));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, r, e, price);
+  int get hashCode => Object.hash(runtimeType, r, e, errorMessage, price);
 
   @JsonKey(ignore: true)
   @override
@@ -181,6 +197,7 @@ abstract class _CalculationCostDeliveryRsponse
   factory _CalculationCostDeliveryRsponse(
       {final String? r,
       final String? e,
+      final String? errorMessage,
       final int? price}) = _$CalculationCostDeliveryRsponseImpl;
   _CalculationCostDeliveryRsponse._() : super._();
 
@@ -191,6 +208,8 @@ abstract class _CalculationCostDeliveryRsponse
   String? get r;
   @override
   String? get e;
+  @override
+  String? get errorMessage;
   @override
   int? get price;
   @override

@@ -23,3 +23,4 @@ export 'store_version_app/index.dart';
 export 'error_analyzer/index.dart';
 export 'app_metrica/index.dart';
 export 'appointment_vision_check/index.dart';
+export 'type_receipt/index.dart';

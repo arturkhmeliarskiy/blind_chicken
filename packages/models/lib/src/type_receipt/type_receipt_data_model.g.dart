@@ -10,10 +10,13 @@ TypeReceiptDataModel _$TypeReceiptDataModelFromJson(
         Map<String, dynamic> json) =>
     TypeReceiptDataModel(
       phoneNumber: json['phoneNumber'] as String,
-      pickup:
-          BoutiqueDataModel.fromJson(json['pickup'] as Map<String, dynamic>),
-      delivery: BasketAddressDataModel.fromJson(
-          json['delivery'] as Map<String, dynamic>),
+      pickup: json['pickup'] == null
+          ? null
+          : BoutiqueDataModel.fromJson(json['pickup'] as Map<String, dynamic>),
+      delivery: (json['delivery'] as List<dynamic>)
+          .map(
+              (e) => BasketAddressDataModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       typeReceipt: json['typeReceipt'] as String,
     );
 

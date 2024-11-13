@@ -84,5 +84,10 @@ class ShoppingCartState with _$ShoppingCartState {
     String? typeAddProductToShoppingCart,
     String? identifierAddProductToShoppingCart,
     bool? isShopGetSizeProduct,
+    DeliveryDataModel? deliveryInfo,
+    BoutiqueDataModel? boutique,
+    int? selectIndexAddress,
+    int? deleteIndexAddress,
+    bool? isLoadDeleteAddress,
   }) = ProductsShoppingCartState;
 }

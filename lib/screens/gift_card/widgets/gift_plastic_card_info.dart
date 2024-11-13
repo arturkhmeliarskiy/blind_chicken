@@ -5,9 +5,7 @@ import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_edit_d
 import 'package:blind_chicken/screens/gift_card/widgets/gift_plastic_card_switch_delivery_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get_it/get_it.dart';
 import 'package:models/models.dart';
-import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class GiftPlasticCardInfo extends StatefulWidget {
@@ -17,16 +15,38 @@ class GiftPlasticCardInfo extends StatefulWidget {
     required this.onAddressPickup,
     required this.onTypePay,
     required this.payments,
+    required this.selectIndexAddres,
+    required this.deleteIndexAddress,
+    required this.listAddress,
+    required this.isLoadDeleteAddress,
     required this.onAddressDelivery,
+    required this.onSelectAddressDelivery,
+    required this.deleteAddressDelivery,
+    required this.delivery,
     required this.onSum,
+    required this.receivingType,
+    required this.isUponReceipt,
+    required this.boutique,
+    required this.boutiques,
   });
 
   final ValueChanged<PaymentItemDataModel> onTypePay;
   final ValueChanged<String> onReceivingType;
-  final ValueChanged<BasketAddressDataModel> onAddressDelivery;
+  final int selectIndexAddres;
+  final int deleteIndexAddress;
+  final int delivery;
+  final List<DeliveryAddressDataModel> listAddress;
+  final bool isLoadDeleteAddress;
+  final Function(int, String, BasketAddressDataModel) onAddressDelivery;
+  final ValueChanged<int> onSelectAddressDelivery;
+  final ValueChanged<String> deleteAddressDelivery;
   final List<PaymentItemDataModel> payments;
   final ValueChanged<BoutiqueDataModel> onAddressPickup;
   final ValueChanged<String> onSum;
+  final String receivingType;
+  final bool isUponReceipt;
+  final BoutiqueDataModel boutique;
+  final BoutiquesDataModel boutiques;
 
   @override
   State<GiftPlasticCardInfo> createState() => _GiftPlasticCardInfoState();
@@ -37,19 +57,15 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
   PaymentItemDataModel _selectedItem = PaymentItemDataModel(id: '', name: '');
   String _receivingType = 'Самовывоз';
 
-  late BoutiqueDataModel _mapPoint;
+  BoutiqueDataModel? _boutique;
 
   @override
   void initState() {
-    init();
+    _boutique = widget.boutique;
+    _receivingType = widget.receivingType;
     _selectedItem = widget.payments[0];
     _sum = TextEditingController(text: '50000');
     super.initState();
-  }
-
-  init() async {
-    final updateDataService = GetIt.I.get<UpdateDataService>();
-    _mapPoint = updateDataService.boutiques[0];
   }
 
   @override
@@ -80,7 +96,13 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
           child: TextField(
             onTap: () {},
             onChanged: (value) {
-              widget.onSum(value);
+              if (value.isNotEmpty) {
+                _sum.text = value.replaceAll(RegExp(r'^0+(?=.)'), '');
+                widget.onSum(_sum.text);
+              } else {
+                _sum.text = '0';
+                widget.onSum(_sum.text);
+              }
             },
             controller: _sum,
             inputFormatters: <TextInputFormatter>[
@@ -131,10 +153,12 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
               padding: EdgeInsets.only(left: index > 0 ? 21 : 0),
               child: InkWell(
                 onTap: () {
-                  setState(() {
-                    _selectedItem = widget.payments[index];
-                    widget.onTypePay(_selectedItem);
-                  });
+                  if (widget.isUponReceipt || widget.payments[index].name != 'При получении') {
+                    setState(() {
+                      _selectedItem = widget.payments[index];
+                      widget.onTypePay(_selectedItem);
+                    });
+                  }
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -168,7 +192,12 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
                     ),
                     Text(
                       widget.payments[index].name,
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            color: widget.isUponReceipt ||
+                                    widget.payments[index].name != 'При получении'
+                                ? BlindChickenColors.activeBorderTextField
+                                : BlindChickenColors.textInput,
+                          ),
                     ),
                   ],
                 ),
@@ -176,100 +205,6 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
             );
           }),
         ),
-
-        // Row(
-        //   children: [
-        //     InkWell(
-        //       onTap: () {
-        //         setState(() {
-        //           _selectedItem = 'Банковской картой';
-        //         });
-        //       },
-        //       child: Row(
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           Container(
-        //             height: 17.5,
-        //             width: 17.5,
-        //             decoration: BoxDecoration(
-        //               borderRadius: BorderRadius.circular(10),
-        //               border: Border.all(
-        //                 color: BlindChickenColors.borderSwitchCard,
-        //               ),
-        //             ),
-        //             alignment: Alignment.center,
-        //             child: _selectedItem == 'Банковской картой'
-        //                 ? Container(
-        //                     height: 8,
-        //                     width: 8,
-        //                     decoration: BoxDecoration(
-        //                       color: BlindChickenColors.activeBorderTextField,
-        //                       borderRadius: BorderRadius.circular(10),
-        //                       border: Border.all(
-        //                         color: BlindChickenColors.activeBorderTextField,
-        //                       ),
-        //                     ),
-        //                   )
-        //                 : const SizedBox(),
-        //           ),
-        //           const SizedBox(
-        //             width: 7,
-        //           ),
-        //           Text(
-        //             'Банковской картой',
-        //             style: Theme.of(context).textTheme.displayMedium,
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //     const SizedBox(
-        //       width: 21,
-        //     ),
-        //     InkWell(
-        //       onTap: () {
-        //         setState(() {
-        //           _selectedItem = 'При получении';
-        //         });
-        //       },
-        //       child: Row(
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           Container(
-        //             height: 17.5,
-        //             width: 17.5,
-        //             decoration: BoxDecoration(
-        //               borderRadius: BorderRadius.circular(10),
-        //               border: Border.all(
-        //                 color: BlindChickenColors.borderSwitchCard,
-        //               ),
-        //             ),
-        //             alignment: Alignment.center,
-        //             child: _selectedItem == 'При получении'
-        //                 ? Container(
-        //                     height: 8,
-        //                     width: 8,
-        //                     decoration: BoxDecoration(
-        //                       color: BlindChickenColors.activeBorderTextField,
-        //                       borderRadius: BorderRadius.circular(10),
-        //                       border: Border.all(
-        //                         color: BlindChickenColors.activeBorderTextField,
-        //                       ),
-        //                     ),
-        //                   )
-        //                 : const SizedBox(),
-        //           ),
-        //           const SizedBox(
-        //             width: 7,
-        //           ),
-        //           Text(
-        //             'При получении',
-        //             style: Theme.of(context).textTheme.displayMedium,
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ],
-        // ),
         Padding(
           padding: const EdgeInsets.only(
             top: 28,
@@ -284,23 +219,12 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
         ),
         GiftPlasticCardSwitchDeliveryType(
           isSwitch: true,
+          indexSelect: _receivingType == 'Самовывоз' ? 0 : 1,
           navigateToMap: () {
             setState(() {
               _receivingType = 'Доставка';
             });
             widget.onReceivingType(_receivingType);
-            // if (_selectedItem != 'При получении') {
-            //   context.navigateTo(
-            //     GiftYandexMapRoute(
-            //       onMapPoint: (value) {
-            //         setState(() {
-            //           _mapPoint = value;
-            //         });
-            //       },
-            //       point: _mapPoint,
-            //     ),
-            //   );
-            // }
           },
           navigateToBoutiques: () {
             setState(() {
@@ -314,16 +238,17 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
         ),
         if (_receivingType != 'Доставка')
           GiftPlasticCardEditDeliveryInfo(
-            mapPoint: _mapPoint,
+            mapPoint: _boutique ?? widget.boutiques.data.first,
             onEditAddress: () {
               context.navigateTo(
                 GiftYandexMapRoute(
                   onMapPoint: (value) {
                     setState(() {
-                      _mapPoint = value;
+                      _boutique = value;
                     });
+                    widget.onAddressPickup(value);
                   },
-                  point: _mapPoint,
+                  point: _boutique ?? widget.boutiques.data.first,
                   route: GiftCardRoute(),
                 ),
               );
@@ -332,7 +257,14 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
         else
           GiftCardDeliveryInfo(
             sum: int.parse(_sum.text),
+            delivery: widget.delivery,
             onAddressDelivery: widget.onAddressDelivery,
+            selectIndexAddres: widget.selectIndexAddres,
+            deleteIndexAddress: widget.deleteIndexAddress,
+            listAddress: widget.listAddress,
+            isLoadDeleteAddress: widget.isLoadDeleteAddress,
+            onSelectAddressDelivery: widget.onSelectAddressDelivery,
+            deleteAddressDelivery: widget.deleteAddressDelivery,
           )
       ],
     );

@@ -29,10 +29,6 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.addGiftCard({
     required BasketSertDeliveryRequest giftCard,
   }) = AddGiftCardSoppingCartEvent;
-  const factory ShoppingCartEvent.delivery({
-    required int delivery,
-    required String cityId,
-  }) = DeliverySoppingCartEvent;
   const factory ShoppingCartEvent.promoCode({
     required String promoCode,
     required String uid,
@@ -75,13 +71,17 @@ class ShoppingCartEvent with _$ShoppingCartEvent {
   const factory ShoppingCartEvent.changeUidPickUpPoint({
     required String uidPickUpPoint,
   }) = ChangeUidPickUpPointSoppingCartEvent;
-  const factory ShoppingCartEvent.changeAddress({
-    required String address,
-    required BoutiqueDataModel info,
-  }) = ChangeAddressSoppingCartEvent;
-  const factory ShoppingCartEvent.changeAddressDelivery({
+  const factory ShoppingCartEvent.selectAddressDelivery({
+    required int index,
+  }) = SelectAddressDeliverySoppingCartEvent;
+  const factory ShoppingCartEvent.addAddressDelivery({
     required BasketAddressDataModel addressDelivery,
-  }) = ChangeAddressDeliverySoppingCartEvent;
+    required int delivery,
+    required String cityId,
+  }) = AddAddressDeliverySoppingCartEvent;
+  const factory ShoppingCartEvent.deleteAddressDelivery({
+    required String id,
+  }) = DeleteAddressDeliverySoppingCartEvent;
   const factory ShoppingCartEvent.changePaymentType({
     required String paymentId,
     required String typePay,

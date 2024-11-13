@@ -86,9 +86,22 @@ class LocationService {
       );
       log(response.data);
 
-      calculationCostDeliveryRsponse = CalculationCostDeliveryRsponse.fromJson(
-        jsonDecode(response.data),
-      );
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          calculationCostDeliveryRsponse = CalculationCostDeliveryRsponse.fromJson(result);
+        } else {
+          calculationCostDeliveryRsponse = CalculationCostDeliveryRsponse(
+            errorMessage: result["e"],
+          );
+        }
+      } catch (e) {
+        calculationCostDeliveryRsponse = CalculationCostDeliveryRsponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
 
       return calculationCostDeliveryRsponse;
     } on DioError catch (e) {
@@ -101,7 +114,328 @@ class LocationService {
         log(e.requestOptions.toString());
         log(e.message.toString());
       }
+      return calculationCostDeliveryRsponse = CalculationCostDeliveryRsponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
     }
-    return null;
+  }
+
+  Future<DeliveryRsponse?> getDelivery() async {
+    DeliveryRsponse? deliveryRsponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    log(hashTokenTel);
+    try {
+      log(_dio.options.headers.toString());
+      _dio.options.baseUrl = 'https://slepayakurica.ru';
+      final response = await _dio.post(
+        '/local/service/app/save_delivery.php?a=get',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+        },
+      );
+      log(response.data);
+
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          deliveryRsponse = DeliveryRsponse.fromJson(result);
+        } else {
+          deliveryRsponse = DeliveryRsponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        deliveryRsponse = DeliveryRsponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return deliveryRsponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return DeliveryRsponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<DeliveryInfoRsponse?> addPickUpPoint({
+    required String pickId,
+  }) async {
+    DeliveryInfoRsponse? deliveryInfoRsponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    log(hashTokenTel);
+    try {
+      log(_dio.options.headers.toString());
+      _dio.options.baseUrl = 'https://slepayakurica.ru';
+      final response = await _dio.post(
+        '/local/service/app/save_delivery.php',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "delivery_id": 1,
+          "pick_id": pickId,
+        },
+      );
+      log(response.data);
+
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          deliveryInfoRsponse = DeliveryInfoRsponse.fromJson(result);
+        } else {
+          deliveryInfoRsponse = DeliveryInfoRsponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        deliveryInfoRsponse = DeliveryInfoRsponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return deliveryInfoRsponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return DeliveryInfoRsponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<DeliveryInfoRsponse?> addDeliveryAddress({
+    required String addr,
+    required String city,
+    required String zip,
+  }) async {
+    DeliveryInfoRsponse? deliveryInfoRsponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    log(hashTokenTel);
+    try {
+      log(_dio.options.headers.toString());
+      _dio.options.baseUrl = 'https://slepayakurica.ru';
+      final response = await _dio.post(
+        '/local/service/app/save_delivery.php?a=add',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "delivery_id": 2,
+          "addr": addr,
+          "city": city,
+          "zip": zip,
+        },
+      );
+      log(response.data);
+
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          deliveryInfoRsponse = DeliveryInfoRsponse.fromJson(result);
+        } else {
+          deliveryInfoRsponse = DeliveryInfoRsponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        deliveryInfoRsponse = DeliveryInfoRsponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return deliveryInfoRsponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return DeliveryInfoRsponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<DeliveryInfoRsponse?> deleteDeliveryAddress({
+    required String id,
+  }) async {
+    DeliveryInfoRsponse? deliveryInfoRsponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    log(hashTokenTel);
+    try {
+      log(_dio.options.headers.toString());
+      _dio.options.baseUrl = 'https://slepayakurica.ru';
+      final response = await _dio.post(
+        '/local/service/app/save_delivery.php?a=del',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "delivery_id": 2,
+          "id": id,
+        },
+      );
+      log(response.data);
+
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          deliveryInfoRsponse = DeliveryInfoRsponse.fromJson(result);
+        } else {
+          deliveryInfoRsponse = DeliveryInfoRsponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        deliveryInfoRsponse = DeliveryInfoRsponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return deliveryInfoRsponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return DeliveryInfoRsponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
+  }
+
+  Future<DeliveryInfoRsponse?> switchTypeDelivery({
+    required String deliveryId,
+  }) async {
+    DeliveryInfoRsponse? deliveryInfoRsponse;
+    String hashTokenTel = '';
+    final isAuth = _sharedPreferencesService.getBool(key: SharedPrefKeys.userAuthorized) ?? false;
+    final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
+    final tel = _sharedPreferencesService.getString(key: SharedPrefKeys.userPhoneNumber) ?? '';
+    final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
+    if (tel.isNotEmpty) {
+      hashTokenTel = _converterService.generateMd5("Hf5_dfg23fhh9p$tel");
+    }
+    log(hashTokenTel);
+    try {
+      log(_dio.options.headers.toString());
+      _dio.options.baseUrl = 'https://slepayakurica.ru';
+      final response = await _dio.post(
+        '/local/service/app/save_delivery.php?a=delivery',
+        data: {
+          "auth": isAuth ? 1 : 0,
+          "token": token,
+          "hash_token": hashToken,
+          "tel": tel,
+          "hash_token_tel": hashTokenTel,
+          "delivery_id": deliveryId,
+        },
+      );
+      log(response.data);
+
+      try {
+        log(response.data);
+        final result = jsonDecode(response.data);
+
+        if (result["r"] == '1') {
+          deliveryInfoRsponse = DeliveryInfoRsponse.fromJson(result);
+        } else {
+          deliveryInfoRsponse = DeliveryInfoRsponse(
+            errorMessage: MessageInfo.errorMessage,
+          );
+        }
+      } catch (e) {
+        deliveryInfoRsponse = DeliveryInfoRsponse(
+          errorMessage: MessageInfo.errorMessage,
+        );
+      }
+
+      return deliveryInfoRsponse;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        log(e.response!.data.toString());
+        log(e.response!.headers.toString());
+        log(e.response!.requestOptions.toString());
+      } else {
+        // Something happened in setting up or sending the request that triggered an Error
+        log(e.requestOptions.toString());
+        log(e.message.toString());
+      }
+      return DeliveryInfoRsponse(
+        errorMessage: MessageInfo.errorMessage,
+      );
+    }
   }
 }

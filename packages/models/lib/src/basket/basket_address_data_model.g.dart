@@ -16,6 +16,7 @@ BasketAddressDataModel _$BasketAddressDataModelFromJson(
       house: json['house'] as String?,
       flat: json['flat'] as String?,
       cityId: json['cityId'] as String?,
+      adrId: json['adrId'] as String?,
     );
 
 Map<String, dynamic> _$BasketAddressDataModelToJson(
@@ -28,4 +29,5 @@ Map<String, dynamic> _$BasketAddressDataModelToJson(
       'house': instance.house,
       'flat': instance.flat,
       'cityId': instance.cityId,
+      'adrId': instance.adrId,
     };

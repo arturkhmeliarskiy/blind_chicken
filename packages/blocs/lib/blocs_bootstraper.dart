@@ -13,6 +13,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<FavouritesRepository>(),
         getIt.get<UpdateDataService>(),
         getIt.get<BoutiquesRepository>(),
+        getIt.get<LocationRepository>(),
         getIt.get<AppMetricaEcommerceService>(),
       ),
     )
@@ -100,6 +101,8 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<CatalogRepository>(),
         getIt.get<UpdateDataService>(),
         getIt.get<GiftCardRepository>(),
+        getIt.get<BoutiquesRepository>(),
+        getIt.get<LocationRepository>(),
         getIt.get<StoreVersionAppRepository>(),
         getIt.get<AppMetricaEcommerceService>(),
       ),

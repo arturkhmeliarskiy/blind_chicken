@@ -42,6 +42,55 @@ class LocationRepository {
         CalculationCostDeliveryRsponse();
     return location.toCalculationCostDelivery();
   }
+
+  Future<DeliveryDataModel> getDelivery() async {
+    final delivery = await _locationService.getDelivery() ?? DeliveryRsponse();
+    return delivery.toDelivery();
+  }
+
+  Future<DeliveryInfoDataModel> addPickUpPoint({
+    required String pickId,
+  }) async {
+    final delivery = await _locationService.addPickUpPoint(
+          pickId: pickId,
+        ) ??
+        DeliveryInfoRsponse();
+    return delivery.toDeliveryInfo();
+  }
+
+  Future<DeliveryInfoDataModel> addDeliveryAddress({
+    required String addr,
+    required String city,
+    required String zip,
+  }) async {
+    final delivery = await _locationService.addDeliveryAddress(
+          addr: addr,
+          city: city,
+          zip: zip,
+        ) ??
+        DeliveryInfoRsponse();
+    return delivery.toDeliveryInfo();
+  }
+
+  Future<DeliveryInfoDataModel> deleteDeliveryAddress({
+    required String id,
+  }) async {
+    final delivery = await _locationService.deleteDeliveryAddress(
+          id: id,
+        ) ??
+        DeliveryInfoRsponse();
+    return delivery.toDeliveryInfo();
+  }
+
+  Future<DeliveryInfoDataModel> switchTypeDelivery({
+    required String deliveryId,
+  }) async {
+    final delivery = await _locationService.switchTypeDelivery(
+          deliveryId: deliveryId,
+        ) ??
+        DeliveryInfoRsponse();
+    return delivery.toDeliveryInfo();
+  }
 }
 
 extension on SearchLocationResponse {
@@ -99,6 +148,45 @@ extension on CalculationCostDeliveryRsponse {
       r: r ?? '',
       e: e ?? '',
       price: price ?? 0,
+    );
+  }
+}
+
+extension on DeliveryRsponse {
+  DeliveryDataModel toDelivery() {
+    return DeliveryDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
+      pick: DeliveryPickDataModel(
+        id: pick?.id ?? '',
+        name: pick?.name ?? '',
+        shedule: pick?.shedule ?? '',
+      ),
+      deliveryId: deliveryId ?? '',
+      address: List<DeliveryAddressDataModel>.from(
+        address?.map(
+              (item) {
+                return DeliveryAddressDataModel(
+                  id: item.id ?? '',
+                  addr: item.addr ?? '',
+                  zip: item.zip ?? '',
+                  cityId: item.cityId ?? '',
+                );
+              },
+            ) ??
+            [],
+      ),
+    );
+  }
+}
+
+extension on DeliveryInfoRsponse {
+  DeliveryInfoDataModel toDeliveryInfo() {
+    return DeliveryInfoDataModel(
+      r: r ?? '',
+      e: e ?? '',
+      errorMessage: errorMessage ?? '',
     );
   }
 }

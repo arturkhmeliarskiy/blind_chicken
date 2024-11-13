@@ -77,7 +77,13 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
           child: TextField(
             onTap: () {},
             onChanged: (value) {
-              widget.onSum(value);
+              if (value.isNotEmpty) {
+                _sum.text = value.replaceAll(RegExp(r'^0+(?=.)'), '');
+                widget.onSum(_sum.text);
+              } else {
+                _sum.text = '0';
+                widget.onSum(_sum.text);
+              }
             },
             controller: _sum,
             inputFormatters: <TextInputFormatter>[

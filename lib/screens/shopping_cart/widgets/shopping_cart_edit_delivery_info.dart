@@ -20,53 +20,51 @@ class ShoppingCartEditDeliveryInfo extends StatefulWidget {
 class _ShoppingCartEditDeliveryInfoState extends State<ShoppingCartEditDeliveryInfo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: BlindChickenColors.borderBottomColor,
+    return GestureDetector(
+      onTap: widget.onEditAddress,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: BlindChickenColors.borderBottomColor,
+          ),
+          borderRadius: BorderRadius.circular(4),
         ),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      padding: const EdgeInsets.only(bottom: 15),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 17,
-                left: 17.5,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.boutique.name,
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                  Text(
-                    widget.boutique.schedule,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
+        padding: const EdgeInsets.only(bottom: 15),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 17,
+                  left: 17.5,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.boutique.name,
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
+                    const SizedBox(
+                      height: 7,
+                    ),
+                    Text(
+                      widget.boutique.schedule,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {
-              widget.onEditAddress();
-            },
-            child: Container(
+            Container(
               width: 45,
               height: 45,
               padding: const EdgeInsets.all(12),
               child: SvgPicture.asset('assets/icons/pencil.svg'),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }

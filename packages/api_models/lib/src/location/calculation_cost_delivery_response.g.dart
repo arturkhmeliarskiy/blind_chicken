@@ -11,6 +11,7 @@ _$CalculationCostDeliveryRsponseImpl
         _$CalculationCostDeliveryRsponseImpl(
           r: json['r'] as String?,
           e: json['e'] as String?,
+          errorMessage: json['errorMessage'] as String?,
           price: json['price'] as int?,
         );
 
@@ -19,5 +20,6 @@ Map<String, dynamic> _$$CalculationCostDeliveryRsponseImplToJson(
     <String, dynamic>{
       'r': instance.r,
       'e': instance.e,
+      'errorMessage': instance.errorMessage,
       'price': instance.price,
     };

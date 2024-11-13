@@ -19,45 +19,46 @@ class GiftMapPointInfo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 180),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 220,
-                width: 300,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
-                      blurRadius: 4,
-                      offset: const Offset(0, 3), // Shadow position
+              Expanded(
+                child: Container(
+                  width: 300,
+                  margin: EdgeInsets.symmetric(horizontal: 50),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(
+                      10,
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        context.maybePop();
-                      },
-                      child: Align(
-                        alignment: Alignment.topRight,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SvgPicture.asset(
-                            'assets/icons/x.svg',
+                    boxShadow: [
+                      BoxShadow(
+                        color: BlindChickenColors.activeBorderTextField.withOpacity(0.1),
+                        blurRadius: 4,
+                        offset: const Offset(0, 3), // Shadow position
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.maybePop();
+                        },
+                        child: Align(
+                          alignment: Alignment.topRight,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SvgPicture.asset(
+                              'assets/icons/x.svg',
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 110,
-                      child: ListView(
+                      ListView(
+                        shrinkWrap: true,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 5, left: 16),
@@ -93,34 +94,37 @@ class GiftMapPointInfo extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: onMoreDetailed,
-                      child: Container(
-                        height: 50,
-                        margin: const EdgeInsets.only(
-                          top: 14,
-                          left: 16,
-                          right: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: BlindChickenColors.activeBorderTextField,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Выбрать',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    color: BlindChickenColors.backgroundColor,
-                                  ),
-                            ),
-                          ],
+                      GestureDetector(
+                        onTap: onMoreDetailed,
+                        child: Container(
+                          height: 50,
+                          margin: const EdgeInsets.only(
+                            top: 14,
+                            left: 16,
+                            right: 16,
+                          ),
+                          decoration: BoxDecoration(
+                            color: BlindChickenColors.activeBorderTextField,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Выбрать',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      color: BlindChickenColors.backgroundColor,
+                                    ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
