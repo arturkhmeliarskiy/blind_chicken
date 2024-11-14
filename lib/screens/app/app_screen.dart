@@ -327,15 +327,28 @@ class _DashboardPageState extends State<DashboardPage> {
                   builder: (context, state) {
                     return state.maybeMap(
                       preloadDataCompleted: (initState) {
-                        return _bellWithCountBadges(initState.countBadgesTotal, context);
+                        return _bellWithCountBadges(
+                          initState.countBadgesTotal,
+                          context,
+                          Platform.isAndroid,
+                        );
                       },
                       load: (initState) {
-                        return _bellWithCountBadges(initState.countBadgesTotal ?? 0, context);
+                        return _bellWithCountBadges(
+                          initState.countBadgesTotal ?? 0,
+                          context,
+                          Platform.isAndroid,
+                        );
                       },
                       orElse: () => SizedBox(
-                        height: 26,
+                        height: Platform.isAndroid ? 25 : 26,
                         child: Padding(
-                          padding: const EdgeInsets.all(3.0),
+                          padding: EdgeInsets.only(
+                            top: Platform.isAndroid ? 4 : 3,
+                            left: 3,
+                            right: 3,
+                            bottom: Platform.isAndroid ? 2 : 3,
+                          ),
                           child: SvgPicture.asset(
                             'assets/icons/bell.svg',
                             fit: BoxFit.cover,
@@ -473,16 +486,23 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 }
 
-Widget _bellWithCountBadges(int count, BuildContext context) {
+Widget _bellWithCountBadges(
+  int count,
+  BuildContext context,
+  bool isAndroid,
+) {
   return SizedBox(
-    height: 26,
+    height: isAndroid ? 25 : 26,
     child: Stack(
       alignment: count > 0 ? Alignment.bottomCenter : Alignment.center,
       children: [
-        SvgPicture.asset(
-          'assets/icons/bell.svg',
-          fit: BoxFit.cover,
-          height: 21,
+        Padding(
+          padding: EdgeInsets.only(top: isAndroid ? 2 : 0),
+          child: SvgPicture.asset(
+            'assets/icons/bell.svg',
+            fit: BoxFit.cover,
+            height: 21,
+          ),
         ),
         count > 0
             ? Row(
