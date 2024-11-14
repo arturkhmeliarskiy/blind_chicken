@@ -59,7 +59,8 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                   onTap: () {
                     widget.onSelectAddressDelivery(index);
                   },
-                  child: SizedBox(
+                  child: Container(
+                    color: Colors.transparent,
                     height: 50,
                     child: Row(
                       children: [
