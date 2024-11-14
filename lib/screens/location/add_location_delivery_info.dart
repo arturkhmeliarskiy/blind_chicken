@@ -30,24 +30,27 @@ class AddLocationDeliveryInfo extends StatefulWidget {
 }
 
 class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
-  BasketAddressDataModel city = BasketAddressDataModel(address: '', zip: '');
-  BasketAddressDataModel street = BasketAddressDataModel(address: '', zip: '');
-  BasketAddressDataModel house = BasketAddressDataModel(address: '', zip: '');
-  String flat = '';
-  String cityIdInfo = '';
-  int priceInfo = 0;
+  BasketAddressDataModel _city = BasketAddressDataModel(address: '', zip: '');
+  BasketAddressDataModel _street = BasketAddressDataModel(address: '', zip: '');
+  BasketAddressDataModel _house = BasketAddressDataModel(address: '', zip: '');
+  String _flat = '';
+  String _cityIdInfo = '';
+  int _priceInfo = 0;
+  bool _isFullListAddress = false;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: 0,
-            maxHeight: 174,
+            maxHeight: _isFullListAddress ? double.infinity : 174,
           ),
           child: ListView.builder(
             shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemCount: widget.listAddress.length,
             itemBuilder: (context, index) {
               return Padding(
@@ -104,18 +107,35 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
             },
           ),
         ),
+        if (widget.listAddress.length > 3)
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _isFullListAddress = !_isFullListAddress;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 15),
+              child: Text(
+                _isFullListAddress ? 'Скрыть' : 'Показать все',
+                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+            ),
+          ),
         SizedBox(
           height: 4,
         ),
         GestureDetector(
           onTap: () {
             setState(() {
-              city = BasketAddressDataModel(address: '', zip: '');
-              street = BasketAddressDataModel(address: '', zip: '');
-              house = BasketAddressDataModel(address: '', zip: '');
-              flat = '';
-              cityIdInfo = '';
-              priceInfo = 0;
+              _city = BasketAddressDataModel(address: '', zip: '');
+              _street = BasketAddressDataModel(address: '', zip: '');
+              _house = BasketAddressDataModel(address: '', zip: '');
+              _flat = '';
+              _cityIdInfo = '';
+              _priceInfo = 0;
             });
             showDialog(
               context: context,
@@ -146,13 +166,13 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                                   final item = value;
                                   setStateInfo(() {
                                     if (item != null) {
-                                      city = BasketAddressDataModel(
+                                      _city = BasketAddressDataModel(
                                         address: item.name,
                                         zip: item.zip.toString(),
                                         cityId: item.id,
                                       );
                                     } else {
-                                      city = BasketAddressDataModel(
+                                      _city = BasketAddressDataModel(
                                         address: '',
                                         zip: '',
                                         cityId: '',
@@ -164,12 +184,12 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                                   final item = value;
                                   setStateInfo(() {
                                     if (item != null) {
-                                      street = BasketAddressDataModel(
+                                      _street = BasketAddressDataModel(
                                         address: '${item.typeShort}. ${item.name}',
                                         zip: item.zip.toString(),
                                       );
                                     } else {
-                                      street = BasketAddressDataModel(
+                                      _street = BasketAddressDataModel(
                                         address: '',
                                         zip: '',
                                       );
@@ -180,12 +200,12 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                                   final item = value;
                                   setStateInfo(() {
                                     if (item != null) {
-                                      house = BasketAddressDataModel(
+                                      _house = BasketAddressDataModel(
                                         address: item.name,
                                         zip: item.zip.toString(),
                                       );
                                     } else {
-                                      house = BasketAddressDataModel(
+                                      _house = BasketAddressDataModel(
                                         address: '',
                                         zip: '',
                                       );
@@ -194,18 +214,18 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                                 },
                                 onFlat: (value) {
                                   setStateInfo(() {
-                                    flat = value;
+                                    _flat = value;
                                   });
                                 },
                                 sum: widget.sum,
-                                city: city.address,
-                                street: street.address,
-                                house: house.address,
-                                flat: flat,
+                                city: _city.address,
+                                street: _street.address,
+                                house: _house.address,
+                                flat: _flat,
                                 onDeliveryInfo: (price, cityId) {
                                   setStateInfo(() {
-                                    priceInfo = price;
-                                    cityIdInfo = cityId;
+                                    _priceInfo = price;
+                                    _cityIdInfo = cityId;
                                   });
                                 },
                               ),
@@ -237,13 +257,13 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      if (city.address.isNotEmpty &&
-                                          street.address.isNotEmpty &&
-                                          house.address.isNotEmpty) {
+                                      if (_city.address.isNotEmpty &&
+                                          _street.address.isNotEmpty &&
+                                          _house.address.isNotEmpty) {
                                         widget.onAddressDelivery(
-                                          priceInfo,
-                                          cityIdInfo,
-                                          _address(city, street, house, flat),
+                                          _priceInfo,
+                                          _cityIdInfo,
+                                          _address(_city, _street, _house, _flat),
                                         );
                                         Navigator.pop(context);
                                       }
@@ -253,9 +273,9 @@ class _AddLocationDeliveryInfoState extends State<AddLocationDeliveryInfo> {
                                       padding: EdgeInsets.symmetric(horizontal: 12),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
-                                        color: city.address.isNotEmpty &&
-                                                street.address.isNotEmpty &&
-                                                house.address.isNotEmpty
+                                        color: _city.address.isNotEmpty &&
+                                                _street.address.isNotEmpty &&
+                                                _house.address.isNotEmpty
                                             ? BlindChickenColors.activeBorderTextField
                                             : BlindChickenColors.weekdayColorCalendar,
                                       ),

@@ -248,3 +248,32 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
     );
   }
 }
+
+// class ForegroundDetector extends StatefulWidget {
+//   const ForegroundDetector({
+//     super.key,
+//     required this.child,
+//     required this.onForegroundChanged,
+//   });
+
+//   final ValueChanged<bool> onForegroundChanged;
+//   final Widget child;
+
+//   @override
+//   ForegroundDetectorState createState() => ForegroundDetectorState();
+// }
+
+// class ForegroundDetectorState extends State<ForegroundDetector> {
+//   bool get isForeground => _isForeground ?? false;
+//   bool? _isForeground;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final isForeground = TickerMode.of(context);
+//     if (_isForeground != isForeground) {
+//       _isForeground = isForeground;
+//       widget.onForegroundChanged(isForeground);
+//     }
+//     return widget.child;
+//   }
+// }
