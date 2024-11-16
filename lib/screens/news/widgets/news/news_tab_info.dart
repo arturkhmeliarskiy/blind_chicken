@@ -83,7 +83,9 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                     }
                     if (initState.news.list.isNotEmpty) {
                       return Container(
-                        color: BlindChickenColors.borderBottomColor,
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.borderBottomColor,
+                        ),
                         child: ListView.builder(
                           controller: _scrollController,
                           itemCount: initState.news.list.length,

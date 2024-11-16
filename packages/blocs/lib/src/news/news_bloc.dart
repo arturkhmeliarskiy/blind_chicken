@@ -135,6 +135,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         isViewed: news.isViewed,
       );
 
+      final countBadges = await _newsRepository.getNumberUnreaNews();
+
       emit(
         initState.copyWith(
           news: _news,
@@ -144,6 +146,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           errorMessage: news.errorMessage,
           typeError: 'новости',
           isLoadErrorButton: false,
+          countBadgesTotal: countBadges.total,
+          countBadgesNews: countBadges.news,
+          countBadgesMedia: countBadges.media,
+          countBadgesNotificatios: countBadges.notice,
+          isNotification: false,
         ),
       );
     });
@@ -212,6 +219,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         isViewed: media.isViewed,
       );
 
+      final countBadges = await _newsRepository.getNumberUnreaNews();
+
       emit(
         initState.copyWith(
           media: _media,
@@ -221,6 +230,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           errorMessage: media.errorMessage,
           typeError: 'медиа',
           isLoadErrorButton: false,
+          countBadgesTotal: countBadges.total,
+          countBadgesNews: countBadges.news,
+          countBadgesMedia: countBadges.media,
+          countBadgesNotificatios: countBadges.notice,
+          isNotification: false,
         ),
       );
     });
@@ -290,6 +304,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         isViewed: notificatios.isViewed,
       );
 
+      final countBadges = await _newsRepository.getNumberUnreaNews();
+
       emit(
         initState.copyWith(
           notificatios: _notificatios,
@@ -299,6 +315,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           errorMessage: notificatios.errorMessage,
           typeError: 'уведомления',
           isLoadErrorButton: false,
+          countBadgesTotal: countBadges.total,
+          countBadgesNews: countBadges.news,
+          countBadgesMedia: countBadges.media,
+          countBadgesNotificatios: countBadges.notice,
+          isNotification: false,
         ),
       );
     });
@@ -356,6 +377,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         emit(initState.copyWith(
           news: _news,
           offsetNews: offsetNews,
+          isNotification: false,
         ));
       }
     });
@@ -413,6 +435,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         emit(initState.copyWith(
           media: _media,
           offsetMedia: offsetMedia,
+          isNotification: false,
         ));
       }
     });
@@ -472,6 +495,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         emit(initState.copyWith(
           notificatios: _notificatios,
           offsetNotificatios: offsetNotificatios,
+          isNotification: false,
         ));
       }
     });
@@ -505,7 +529,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       videoImageWeight = imageInfo.image.width.toDouble();
     }
 
-    if (oneNews.data.typeMedia == 'images' && oneNews.data.images.length > 1) {
+    if (oneNews.data.typeMedia == 'images') {
       for (int j = 0; j < oneNews.data.images.length; j++) {
         final imageInfo = await _imageService.getImageUrlInfo(oneNews.data.images[j].imageUrl);
         images.add(NewsSliderImageItemDataModel(
@@ -617,7 +641,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       videoImageWeight = imageInfo.image.width.toDouble();
     }
 
-    if (oneMedia.data.typeMedia == 'images' && oneMedia.data.images.length > 1) {
+    if (oneMedia.data.typeMedia == 'images') {
       for (int j = 0; j < oneMedia.data.images.length; j++) {
         final imageInfo = await _imageService.getImageUrlInfo(oneMedia.data.images[j].imageUrl);
         images.add(NewsSliderImageItemDataModel(
@@ -729,7 +753,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       videoImageWeight = imageInfo.image.width.toDouble();
     }
 
-    if (oneNotifcation.data.typeMedia == 'images' && oneNotifcation.data.images.length > 1) {
+    if (oneNotifcation.data.typeMedia == 'images') {
       for (int j = 0; j < oneNotifcation.data.images.length; j++) {
         final imageInfo =
             await _imageService.getImageUrlInfo(oneNotifcation.data.images[j].imageUrl);
@@ -820,6 +844,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       List<String> listNewsPath = initState.listNewsPath.toList();
+
       if (listNewsPath.isNotEmpty) {
         listNewsPath.removeLast();
       }
@@ -855,6 +880,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
               notificatios: notificatios,
               offsetNotificatios: 1,
               listNewsPath: listNewsPath,
+              isNotification: false,
             ),
           );
         }
@@ -912,7 +938,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           case 'media':
             indexNews = _media.list.indexWhere((element) => element.id == event.id);
             List<MediaInfoItemDataModel> listMedia = _media.list.toList();
-            MediaInfoItemDataModel item = _media.list[indexNews];
+            MediaInfoItemDataModel item = _media.list[indexNews].copyWith(isViewed: false);
             if (DateTime.parse(item.createAt).isAfter(
               DateTime.parse(dateReceiptNewNews),
             )) {
@@ -926,7 +952,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
                   typeNews: event.typeNews,
                 ),
               );
-              listMedia[indexNews] = listMedia[indexNews].copyWith(isViewed: false);
+              listMedia[indexNews] = item;
               _media = initState.media.copyWith(list: listMedia);
             }
 
@@ -934,7 +960,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           case 'notice':
             indexNews = _notificatios.list.indexWhere((element) => element.id == event.id);
             List<NotificationInfoItemDataModel> listNotificatios = _notificatios.list.toList();
-            NotificationInfoItemDataModel item = _notificatios.list[indexNews];
+            NotificationInfoItemDataModel item =
+                _notificatios.list[indexNews].copyWith(isViewed: false);
             if (DateTime.parse(item.createAt).isAfter(
               DateTime.parse(dateReceiptNewNews),
             )) {
@@ -948,7 +975,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
                   typeNews: event.typeNews,
                 ),
               );
-              listNotificatios[indexNews] = listNotificatios[indexNews].copyWith(isViewed: false);
+              listNotificatios[indexNews] = item;
               _notificatios = initState.notificatios.copyWith(list: listNotificatios);
             }
 
@@ -969,6 +996,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNews: countBadges?.news ?? 0,
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
+          isNotification: false,
         ),
       );
     });

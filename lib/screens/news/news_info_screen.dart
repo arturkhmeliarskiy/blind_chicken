@@ -13,9 +13,11 @@ class NewsInfoScreen extends StatefulWidget {
   const NewsInfoScreen({
     super.key,
     required this.indexPage,
+    this.idNews,
   });
 
   final int indexPage;
+  final String? idNews;
 
   @override
   State<NewsInfoScreen> createState() => _NewsInfoScreenState();
@@ -34,6 +36,12 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
     _tabController = TabController(length: 3, vsync: this);
     if (widget.indexPage != 0) {
       _tabController.animateTo(widget.indexPage);
+    } else {
+      context.read<NewsBloc>().add(const NewsEvent.getNews());
+      final idNews = widget.idNews;
+      if (idNews != null) {
+        context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: idNews, typeNews: 'news'));
+      }
     }
     AppMetrica.reportEvent('Страница новостей');
     super.initState();
@@ -119,22 +127,24 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                 _isShowDialogNewsInfoError = false;
                 _blindChickenNewsInfoShowDialogError.closeShowDialog();
               }
-              if (initState.listNewsPath.isEmpty) {
-                context.back();
-                setState(() {
-                  _isSwipe = false;
-                });
-              } else {
-                _tabController.animateTo(
-                  int.parse(
-                    initState.listNewsPath.last,
-                  ),
-                );
-                setState(() {
-                  _tabController.index = int.parse(
-                    initState.listNewsPath.last,
+              if (!initState.isNotification) {
+                if (initState.listNewsPath.isEmpty) {
+                  context.back();
+                  setState(() {
+                    _isSwipe = false;
+                  });
+                } else {
+                  _tabController.animateTo(
+                    int.parse(
+                      initState.listNewsPath.last,
+                    ),
                   );
-                });
+                  setState(() {
+                    _tabController.index = int.parse(
+                      initState.listNewsPath.last,
+                    );
+                  });
+                }
               }
             }
           },
@@ -283,11 +293,13 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
                           goBack: () {
                             context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
                           },
+                          idNews: widget.idNews,
                         ),
                         NotificationsTabInfo(
                           goBack: () {
                             context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
                           },
+                          idNews: widget.idNews,
                         ),
                       ],
                     ),

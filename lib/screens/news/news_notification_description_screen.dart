@@ -155,11 +155,17 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                       BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
                         return state.maybeMap(
                           preloadDataCompleted: (initState) {
+                            final createAt = initState.oneNews?.data.createAt ?? '';
                             return GestureDetector(
                               onHorizontalDragUpdate: (details) {},
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
-                                  context.back();
+                                  context.navigateTo(
+                                    NewsInfoRoute(
+                                      indexPage: 0,
+                                      idNews: widget.idNews,
+                                    ),
+                                  );
                                   setState(() {
                                     _isSwipe = false;
                                   });
@@ -169,7 +175,12 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                 canPop: false,
                                 onPopInvoked: (value) {
                                   if (_isSwipe && !value) {
-                                    context.back();
+                                    context.navigateTo(
+                                      NewsInfoRoute(
+                                        indexPage: 0,
+                                        idNews: widget.idNews,
+                                      ),
+                                    );
                                   }
                                 },
                                 child: Padding(
@@ -193,7 +204,12 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                 ),
                                                 child: InkWell(
                                                   onTap: () {
-                                                    context.back();
+                                                    context.navigateTo(
+                                                      NewsInfoRoute(
+                                                        indexPage: 0,
+                                                        idNews: widget.idNews,
+                                                      ),
+                                                    );
                                                   },
                                                   child: SvgPicture.asset(
                                                     'assets/icons/arrow-left.svg',
@@ -218,7 +234,7 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                         height: 6,
                                       ),
                                       Text(
-                                        DateInfo.dateFormat(initState.oneNews?.data.createAt ?? ''),
+                                        createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
                                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                               color: BlindChickenColors.textInput,
                                             ),
@@ -250,7 +266,6 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                                         Orientation.portrait
                                                     ? width
                                                     : width / 2,
-                                                height: 250,
                                                 fit: BoxFit.cover,
                                                 errorWidget: (context, url, error) =>
                                                     const Icon(Icons.error),

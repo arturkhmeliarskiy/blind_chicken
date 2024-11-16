@@ -154,11 +154,17 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                       BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
                         return state.maybeMap(
                           preloadDataCompleted: (initState) {
+                            final createAt = initState.oneNews?.data.createAt ?? '';
                             return GestureDetector(
                               onHorizontalDragUpdate: (details) {},
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
-                                  context.back();
+                                  context.navigateTo(
+                                    NewsInfoRoute(
+                                      indexPage: 1,
+                                      idNews: widget.idNews,
+                                    ),
+                                  );
                                   setState(() {
                                     _isSwipe = false;
                                   });
@@ -168,7 +174,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                 canPop: false,
                                 onPopInvoked: (value) {
                                   if (_isSwipe && !value) {
-                                    context.back();
+                                    context.navigateTo(
+                                      NewsInfoRoute(
+                                        indexPage: 1,
+                                        idNews: widget.idNews,
+                                      ),
+                                    );
                                   }
                                 },
                                 child: Padding(
@@ -192,7 +203,12 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                                 ),
                                                 child: InkWell(
                                                   onTap: () {
-                                                    context.back();
+                                                    context.navigateTo(
+                                                      NewsInfoRoute(
+                                                        indexPage: 1,
+                                                        idNews: widget.idNews,
+                                                      ),
+                                                    );
                                                   },
                                                   child: SvgPicture.asset(
                                                     'assets/icons/arrow-left.svg',
@@ -217,8 +233,7 @@ class _MediaNotificationDescriptionScreenState extends State<MediaNotificationDe
                                         height: 6,
                                       ),
                                       Text(
-                                        DateInfo.dateFormat(
-                                            initState.oneMedia?.data.createAt ?? ''),
+                                        createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
                                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                               color: BlindChickenColors.textInput,
                                             ),

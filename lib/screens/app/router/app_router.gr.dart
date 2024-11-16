@@ -2418,12 +2418,14 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
   NewsInfoRoute({
     Key? key,
     required int indexPage,
+    String? idNews,
     List<PageRouteInfo>? children,
   }) : super(
           NewsInfoRoute.name,
           args: NewsInfoRouteArgs(
             key: key,
             indexPage: indexPage,
+            idNews: idNews,
           ),
           initialChildren: children,
         );
@@ -2437,6 +2439,7 @@ class NewsInfoRoute extends PageRouteInfo<NewsInfoRouteArgs> {
       return NewsInfoScreen(
         key: args.key,
         indexPage: args.indexPage,
+        idNews: args.idNews,
       );
     },
   );
@@ -2446,15 +2449,18 @@ class NewsInfoRouteArgs {
   const NewsInfoRouteArgs({
     this.key,
     required this.indexPage,
+    this.idNews,
   });
 
   final Key? key;
 
   final int indexPage;
 
+  final String? idNews;
+
   @override
   String toString() {
-    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage}';
+    return 'NewsInfoRouteArgs{key: $key, indexPage: $indexPage, idNews: $idNews}';
   }
 }
 

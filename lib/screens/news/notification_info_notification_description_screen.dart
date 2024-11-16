@@ -155,12 +155,14 @@ class _NotificationInfoNotificationDescriptionScreenState
                       BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
                         return state.maybeMap(
                           preloadDataCompleted: (initState) {
+                            final createAt = initState.oneNews?.data.createAt ?? '';
                             return GestureDetector(
                               onHorizontalDragEnd: (DragEndDetails details) {
                                 if (details.velocity.pixelsPerSecond.dx > 0) {
                                   context.navigateTo(
                                     NewsInfoRoute(
                                       indexPage: 2,
+                                      idNews: widget.idNews,
                                     ),
                                   );
                                   setState(() {
@@ -175,6 +177,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                     context.navigateTo(
                                       NewsInfoRoute(
                                         indexPage: 2,
+                                        idNews: widget.idNews,
                                       ),
                                     );
                                   }
@@ -203,6 +206,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                                     context.navigateTo(
                                                       NewsInfoRoute(
                                                         indexPage: 2,
+                                                        idNews: widget.idNews,
                                                       ),
                                                     );
                                                   },
@@ -229,8 +233,7 @@ class _NotificationInfoNotificationDescriptionScreenState
                                         height: 6,
                                       ),
                                       Text(
-                                        DateInfo.dateFormat(
-                                            initState.oneNotification?.data.createAt ?? ''),
+                                        createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
                                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
                                               color: BlindChickenColors.textInput,
                                             ),

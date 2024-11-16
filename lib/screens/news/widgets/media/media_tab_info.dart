@@ -10,9 +10,11 @@ class MediaTabInfo extends StatefulWidget {
   const MediaTabInfo({
     super.key,
     required this.goBack,
+    this.idNews,
   });
 
   final VoidCallback goBack;
+  final String? idNews;
 
   @override
   State<MediaTabInfo> createState() => _MediaTabInfoState();
@@ -27,6 +29,10 @@ class _MediaTabInfoState extends State<MediaTabInfo> {
   @override
   void initState() {
     context.read<NewsBloc>().add(const NewsEvent.getMedia());
+    final idNews = widget.idNews;
+    if (idNews != null) {
+      context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: idNews, typeNews: 'media'));
+    }
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }

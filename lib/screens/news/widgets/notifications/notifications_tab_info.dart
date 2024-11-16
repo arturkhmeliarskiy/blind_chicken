@@ -11,9 +11,11 @@ class NotificationsTabInfo extends StatefulWidget {
   const NotificationsTabInfo({
     super.key,
     required this.goBack,
+    this.idNews,
   });
 
   final VoidCallback goBack;
+  final String? idNews;
 
   @override
   State<NotificationsTabInfo> createState() => _NotificationsTabInfoState();
@@ -28,6 +30,10 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
   @override
   void initState() {
     context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+    final idNews = widget.idNews;
+    if (idNews != null) {
+      context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: idNews, typeNews: 'notice'));
+    }
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }
