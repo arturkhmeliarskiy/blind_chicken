@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:blocs/blocs.dart';
@@ -71,6 +69,10 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
           title: GestureDetector(
             onTap: () {
               final onBack = widget.onBack;
+              final updateData = GetIt.I.get<UpdateDataService>();
+              if (updateData.videoController.value.isInitialized) {
+                updateData.videoController.dispose();
+              }
               if (onBack != null) {
                 onBack();
               } else {
@@ -96,6 +98,10 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
             GestureDetector(
               onTap: () {
                 context.navigateNamedTo('/dashboard/home/boutiques');
+                final updateData = GetIt.I.get<UpdateDataService>();
+                if (updateData.videoController.value.isInitialized) {
+                  updateData.videoController.pause();
+                }
               },
               child: Container(
                 padding: const EdgeInsets.only(
@@ -113,6 +119,10 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
             GestureDetector(
               onTap: () {
                 context.navigateNamedTo('/search');
+                final updateData = GetIt.I.get<UpdateDataService>();
+                if (updateData.videoController.value.isInitialized) {
+                  updateData.videoController.pause();
+                }
               },
               child: Container(
                 padding: const EdgeInsets.only(
@@ -293,6 +303,11 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
                                                     '/dashboard/home${listItems[index].route}');
                                                 if (listItems[index].route == '/contacts') {
                                                   AppMetrica.reportEvent('Контакты');
+                                                }
+                                                final updateData = GetIt.I.get<UpdateDataService>();
+                                                if (updateData
+                                                    .videoController.value.isInitialized) {
+                                                  updateData.videoController.pause();
                                                 }
                                               },
                                               child: Container(

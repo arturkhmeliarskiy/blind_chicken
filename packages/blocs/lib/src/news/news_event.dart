@@ -30,4 +30,7 @@ class NewsEvent with _$NewsEvent {
     required String typeNews,
   }) = UpdateReadNewsEvent;
   const factory NewsEvent.checkingReadNews() = CheckingReadNewsEvent;
+  const factory NewsEvent.checkButtonTop({
+    required bool isButtonTop,
+  }) = CheckButtonTopNewsEvent;
 }

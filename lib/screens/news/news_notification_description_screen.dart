@@ -150,371 +150,387 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
               children: [
                 Scaffold(
                   body: SafeArea(
-                    child: ListView(children: [
-                      const AppBarBlindChicken(),
-                      BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
-                        return state.maybeMap(
-                          preloadDataCompleted: (initState) {
-                            final createAt = initState.oneNews?.data.createAt ?? '';
-                            return GestureDetector(
-                              onHorizontalDragUpdate: (details) {},
-                              onHorizontalDragEnd: (DragEndDetails details) {
-                                if (details.velocity.pixelsPerSecond.dx > 0) {
-                                  context.navigateTo(
-                                    NewsInfoRoute(
-                                      indexPage: 0,
-                                      idNews: widget.idNews,
-                                    ),
-                                  );
-                                  setState(() {
-                                    _isSwipe = false;
-                                  });
-                                }
-                              },
-                              child: PopScope(
-                                canPop: false,
-                                onPopInvoked: (value) {
-                                  if (_isSwipe && !value) {
+                    bottom: false,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: BlindChickenColors.borderBottomColor,
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/news_background.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: ListView(children: [
+                        const AppBarBlindChicken(),
+                        BlocBuilder<NewsBloc, NewsState>(builder: (context, state) {
+                          return state.maybeMap(
+                            preloadDataCompleted: (initState) {
+                              final createAt = initState.oneNews?.data.createAt ?? '';
+                              return GestureDetector(
+                                onHorizontalDragUpdate: (details) {},
+                                onHorizontalDragEnd: (DragEndDetails details) {
+                                  if (details.velocity.pixelsPerSecond.dx > 0) {
                                     context.navigateTo(
                                       NewsInfoRoute(
                                         indexPage: 0,
                                         idNews: widget.idNews,
                                       ),
                                     );
+                                    setState(() {
+                                      _isSwipe = false;
+                                    });
                                   }
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 16,
-                                    right: 16,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      RichText(
-                                        text: TextSpan(
-                                          children: [
-                                            WidgetSpan(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                  right: 8,
-                                                ),
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    context.navigateTo(
-                                                      NewsInfoRoute(
-                                                        indexPage: 0,
-                                                        idNews: widget.idNews,
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: SvgPicture.asset(
-                                                    'assets/icons/arrow-left.svg',
-                                                    height: 24,
-                                                    width: 24,
+                                child: PopScope(
+                                  canPop: false,
+                                  onPopInvoked: (value) {
+                                    if (_isSwipe && !value) {
+                                      context.navigateTo(
+                                        NewsInfoRoute(
+                                          indexPage: 0,
+                                          idNews: widget.idNews,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 16,
+                                      right: 16,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        const SizedBox(
+                                          height: 12,
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            children: [
+                                              WidgetSpan(
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(
+                                                    right: 8,
+                                                  ),
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      context.navigateTo(
+                                                        NewsInfoRoute(
+                                                          indexPage: 0,
+                                                          idNews: widget.idNews,
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      'assets/icons/arrow-left.svg',
+                                                      height: 24,
+                                                      width: 24,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            TextSpan(
-                                              text: initState.oneNews?.data.title ?? '',
-                                              style:
-                                                  Theme.of(context).textTheme.titleSmall?.copyWith(
-                                                        fontWeight: FontWeight.w700,
-                                                        height: 1.2,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 6,
-                                      ),
-                                      Text(
-                                        createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
-                                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                              color: BlindChickenColors.textInput,
-                                            ),
-                                      ),
-                                      if ((initState.oneNews?.data.typeMedia ?? '') == 'images' &&
-                                          (initState.oneNews?.data.images.length ?? 0) == 1)
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            InkWell(
-                                              onTap: () {
-                                                context.navigateTo(
-                                                  NewsPreviewMediaRoute(
-                                                    media: initState.oneNews?.data.images ?? [],
-                                                    goBotton: () {
-                                                      context.back();
-                                                    },
-                                                    selectIndex: 0,
-                                                  ),
-                                                );
-                                              },
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    initState.oneNews?.data.images.first.imageUrl ??
-                                                        '',
-                                                width: MediaQuery.of(context).orientation ==
-                                                        Orientation.portrait
-                                                    ? width
-                                                    : width / 2,
-                                                fit: BoxFit.cover,
-                                                errorWidget: (context, url, error) =>
-                                                    const Icon(Icons.error),
+                                              TextSpan(
+                                                text: initState.oneNews?.data.title ?? '',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                      fontWeight: FontWeight.w700,
+                                                      height: 1.2,
+                                                    ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      if ((initState.oneNews?.data.typeMedia ?? '') == 'images' &&
-                                          (initState.oneNews?.data.images.length ?? 0) > 1)
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            NewsSlider(
-                                              media: initState.oneNews?.data.images ?? [],
-                                              goBotton: () {
-                                                context.back();
-                                              },
-                                              onTap: (index) {
-                                                context.pushRoute(
-                                                  NewsPreviewMediaRoute(
-                                                    selectIndex: index,
-                                                    media: initState.oneNews?.data.images ?? [],
-                                                    goBotton: () {
-                                                      context.back();
-                                                    },
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      if ((initState.oneNews?.data.typeMedia ?? '') == 'video' &&
-                                          (initState.oneNews?.data.typeVideo ?? '') == 'youtube')
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            NewsYouTubeVideoPlayer(
-                                              url: initState.oneNews?.data.video ?? '',
-                                              onEnterFullScreen: () {
-                                                setState(() {
-                                                  _isFullScreenVideo = true;
-                                                });
-                                              },
-                                              onExitFullScreen: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      if ((initState.oneNews?.data.typeMedia ?? '') == 'video' &&
-                                          (initState.oneNews?.data.typeVideo ?? '') == 'original')
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 12,
-                                            ),
-                                            NewsVideoPlayer(
-                                              url: initState.oneNews?.data.video ?? '',
-                                              image: initState.oneNews?.data.videoImage ?? '',
-                                              isFullScreenVideo: _isFullScreenVideo,
-                                              videoImageHeight:
-                                                  initState.oneNews?.data.videoImageHeight ?? 0,
-                                              videoImageWeight:
-                                                  initState.oneNews?.data.videoImageWeight ?? 0,
-                                              onEnterFullScreen: (aspectRatio) {
-                                                setState(() {
-                                                  _isFullScreenVideo = true;
-                                                  _aspectRatio = aspectRatio;
-                                                });
-                                              },
-                                              onExitFullScreen: () {},
-                                            ),
-                                          ],
-                                        ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      HtmlWidget(
-                                        initState.oneNews?.data.description ?? '',
-                                        textStyle: Theme.of(context).textTheme.displayMedium,
-                                        onTapUrl: (url) async {
-                                          return HandlerLinksNews.handlerLinks(
-                                            context: context,
-                                            url: url,
-                                            titleScreen: 'news_notification_description',
-                                            idNews: widget.idNews,
-                                            messageId: widget.messageId,
-                                            titleAppMetrica:
-                                                'Переход по ссылке из cтраницы push-уведомления описания новости',
-                                            newsInfo: initState.oneNews?.data,
-                                          );
-                                        },
-                                      ),
-                                      // Container(
-                                      //   height: 40,
-                                      //   color: BlindChickenColors.backgroundColor,
-                                      //   child: Row(
-                                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      //     children: [
-                                      //       const SizedBox(),
-                                      //       Row(
-                                      //         children: [
-                                      //           const Icon(
-                                      //             Icons.remove_red_eye,
-                                      //             size: 14,
-                                      //             color: BlindChickenColors.borderInput,
-                                      //           ),
-                                      //           const SizedBox(
-                                      //             width: 4,
-                                      //           ),
-                                      //           Text(
-                                      //             widget.info.numberViews.toString(),
-                                      //             style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      //                   fontSize: 12,
-                                      //                   color: BlindChickenColors.borderInput,
-                                      //                 ),
-                                      //           )
-                                      //         ],
-                                      //       )
-                                      //     ],
-                                      //   ),
-                                      // ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      if (initState.oneNews?.data.path.isNotEmpty ?? false)
-                                        GestureDetector(
-                                          onTap: () {
-                                            if ((initState.oneNews?.data.typePath ?? '') ==
-                                                'catalog') {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProducts(
-                                                      path: initState.oneNews?.data.path ?? '',
-                                                      isCleanHistory: true,
-                                                    ),
-                                                  );
-                                              context.navigateTo(DashboardRoute(children: [
-                                                HomeAutoRouterRoute(
-                                                  children: [
-                                                    CatalogRoute(
-                                                      title: '',
-                                                      url: initState.oneNews?.data.path ?? '',
-                                                      lastPath: 'news_notification_description',
-                                                      newsInfo: initState.oneNews?.data,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ]));
-                                            } else if ((initState.oneNews?.data.typePath ?? '') ==
-                                                'product') {
-                                              context.read<CatalogBloc>().add(
-                                                    CatalogEvent.getInfoProduct(
-                                                      code: initState.oneNews?.data.code ?? '',
-                                                      titleScreen:
-                                                          'Описнаие новостей (уведомление)',
-                                                      typeAddProductToShoppingCart: 'Кнопка',
-                                                      identifierAddProductToShoppingCart: '4',
-                                                    ),
-                                                  );
-                                              context.navigateTo(
-                                                DashboardRoute(
-                                                  children: [
-                                                    HomeAutoRouterRoute(
-                                                      children: [
-                                                        CatalogCardInfoRoute(
-                                                          isLike: false,
-                                                          listItems: const [],
-                                                          favouritesProducts: const [],
-                                                          isChildRoute: false,
-                                                          lastPath: 'news_notification_description',
-                                                          newsInfo: initState.oneNews?.data,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            } else if ((initState.oneNews?.data.typePath ?? '') ==
-                                                'boutique') {
-                                              context.read<BoutiquesBloc>().add(
-                                                    BoutiquesEvent.getInfoBoutique(
-                                                      uid: initState.oneNews?.data.uidStore ?? '',
-                                                    ),
-                                                  );
-                                              context.navigateTo(
-                                                DashboardRoute(
-                                                  children: [
-                                                    HomeAutoRouterRoute(
-                                                      children: [
-                                                        BoutiquesDescriptionRoute(
-                                                          lastPath: 'news_notification_description',
-                                                          newsInfo: initState.oneNews?.data,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            } else if ((initState.oneNews?.data.typePath ?? '') ==
-                                                'gift_card') {
-                                              context.navigateTo(
-                                                DashboardRoute(
-                                                  children: [
-                                                    HomeAutoRouterRoute(
-                                                      children: [
-                                                        GiftCardRoute(
-                                                          lastPath: 'news_notification_description',
-                                                          newsInfo: initState.oneNews?.data,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              );
-                                            }
-                                          },
-                                          child: Container(
-                                            height: 50,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(5),
-                                              color: BlindChickenColors.borderBottomColor,
-                                            ),
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              initState.oneNews?.data.titleButton ?? '',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .displayMedium
-                                                  ?.copyWith(
-                                                    color: BlindChickenColors.activeBorderTextField,
-                                                  ),
-                                            ),
+                                            ],
                                           ),
                                         ),
-                                      const SizedBox(
-                                        height: 40,
-                                      ),
-                                    ],
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        Text(
+                                          createAt.isNotEmpty ? DateInfo.dateFormat(createAt) : '',
+                                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                                color: BlindChickenColors.textInput,
+                                              ),
+                                        ),
+                                        if ((initState.oneNews?.data.typeMedia ?? '') == 'images' &&
+                                            (initState.oneNews?.data.images.length ?? 0) == 1)
+                                          Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  context.navigateTo(
+                                                    NewsPreviewMediaRoute(
+                                                      media: initState.oneNews?.data.images ?? [],
+                                                      goBotton: () {
+                                                        context.back();
+                                                      },
+                                                      selectIndex: 0,
+                                                    ),
+                                                  );
+                                                },
+                                                child: CachedNetworkImage(
+                                                  imageUrl: initState
+                                                          .oneNews?.data.images.first.imageUrl ??
+                                                      '',
+                                                  width: MediaQuery.of(context).orientation ==
+                                                          Orientation.portrait
+                                                      ? width
+                                                      : width / 2,
+                                                  fit: BoxFit.cover,
+                                                  errorWidget: (context, url, error) =>
+                                                      const Icon(Icons.error),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        if ((initState.oneNews?.data.typeMedia ?? '') == 'images' &&
+                                            (initState.oneNews?.data.images.length ?? 0) > 1)
+                                          Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              NewsSlider(
+                                                media: initState.oneNews?.data.images ?? [],
+                                                goBotton: () {
+                                                  context.back();
+                                                },
+                                                onTap: (index) {
+                                                  context.pushRoute(
+                                                    NewsPreviewMediaRoute(
+                                                      selectIndex: index,
+                                                      media: initState.oneNews?.data.images ?? [],
+                                                      goBotton: () {
+                                                        context.back();
+                                                      },
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        if ((initState.oneNews?.data.typeMedia ?? '') == 'video' &&
+                                            (initState.oneNews?.data.typeVideo ?? '') == 'youtube')
+                                          Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              NewsYouTubeVideoPlayer(
+                                                url: initState.oneNews?.data.video ?? '',
+                                                onEnterFullScreen: () {
+                                                  setState(() {
+                                                    _isFullScreenVideo = true;
+                                                  });
+                                                },
+                                                onExitFullScreen: () {},
+                                              ),
+                                            ],
+                                          ),
+                                        if ((initState.oneNews?.data.typeMedia ?? '') == 'video' &&
+                                            (initState.oneNews?.data.typeVideo ?? '') == 'original')
+                                          Column(
+                                            children: [
+                                              const SizedBox(
+                                                height: 12,
+                                              ),
+                                              NewsVideoPlayer(
+                                                url: initState.oneNews?.data.video ?? '',
+                                                image: initState.oneNews?.data.videoImage ?? '',
+                                                isFullScreenVideo: _isFullScreenVideo,
+                                                videoImageHeight:
+                                                    initState.oneNews?.data.videoImageHeight ?? 0,
+                                                videoImageWeight:
+                                                    initState.oneNews?.data.videoImageWeight ?? 0,
+                                                onEnterFullScreen: (aspectRatio) {
+                                                  setState(() {
+                                                    _isFullScreenVideo = true;
+                                                    _aspectRatio = aspectRatio;
+                                                  });
+                                                },
+                                                onExitFullScreen: () {},
+                                              ),
+                                            ],
+                                          ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        HtmlWidget(
+                                          initState.oneNews?.data.description ?? '',
+                                          textStyle: Theme.of(context).textTheme.displayMedium,
+                                          onTapUrl: (url) async {
+                                            return HandlerLinksNews.handlerLinks(
+                                              context: context,
+                                              url: url,
+                                              titleScreen: 'news_notification_description',
+                                              idNews: widget.idNews,
+                                              messageId: widget.messageId,
+                                              titleAppMetrica:
+                                                  'Переход по ссылке из cтраницы push-уведомления описания новости',
+                                              newsInfo: initState.oneNews?.data,
+                                            );
+                                          },
+                                        ),
+                                        // Container(
+                                        //   height: 40,
+                                        //   color: BlindChickenColors.backgroundColor,
+                                        //   child: Row(
+                                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        //     children: [
+                                        //       const SizedBox(),
+                                        //       Row(
+                                        //         children: [
+                                        //           const Icon(
+                                        //             Icons.remove_red_eye,
+                                        //             size: 14,
+                                        //             color: BlindChickenColors.borderInput,
+                                        //           ),
+                                        //           const SizedBox(
+                                        //             width: 4,
+                                        //           ),
+                                        //           Text(
+                                        //             widget.info.numberViews.toString(),
+                                        //             style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                        //                   fontSize: 12,
+                                        //                   color: BlindChickenColors.borderInput,
+                                        //                 ),
+                                        //           )
+                                        //         ],
+                                        //       )
+                                        //     ],
+                                        //   ),
+                                        // ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        if (initState.oneNews?.data.path.isNotEmpty ?? false)
+                                          GestureDetector(
+                                            onTap: () {
+                                              if ((initState.oneNews?.data.typePath ?? '') ==
+                                                  'catalog') {
+                                                context.read<CatalogBloc>().add(
+                                                      CatalogEvent.getInfoProducts(
+                                                        path: initState.oneNews?.data.path ?? '',
+                                                        isCleanHistory: true,
+                                                      ),
+                                                    );
+                                                context.navigateTo(DashboardRoute(children: [
+                                                  HomeAutoRouterRoute(
+                                                    children: [
+                                                      CatalogRoute(
+                                                        title: '',
+                                                        url: initState.oneNews?.data.path ?? '',
+                                                        lastPath: 'news_notification_description',
+                                                        newsInfo: initState.oneNews?.data,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ]));
+                                              } else if ((initState.oneNews?.data.typePath ?? '') ==
+                                                  'product') {
+                                                context.read<CatalogBloc>().add(
+                                                      CatalogEvent.getInfoProduct(
+                                                        code: initState.oneNews?.data.code ?? '',
+                                                        titleScreen:
+                                                            'Описнаие новостей (уведомление)',
+                                                        typeAddProductToShoppingCart: 'Кнопка',
+                                                        identifierAddProductToShoppingCart: '4',
+                                                      ),
+                                                    );
+                                                context.navigateTo(
+                                                  DashboardRoute(
+                                                    children: [
+                                                      HomeAutoRouterRoute(
+                                                        children: [
+                                                          CatalogCardInfoRoute(
+                                                            isLike: false,
+                                                            listItems: const [],
+                                                            favouritesProducts: const [],
+                                                            isChildRoute: false,
+                                                            lastPath:
+                                                                'news_notification_description',
+                                                            newsInfo: initState.oneNews?.data,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              } else if ((initState.oneNews?.data.typePath ?? '') ==
+                                                  'boutique') {
+                                                context.read<BoutiquesBloc>().add(
+                                                      BoutiquesEvent.getInfoBoutique(
+                                                        uid: initState.oneNews?.data.uidStore ?? '',
+                                                      ),
+                                                    );
+                                                context.navigateTo(
+                                                  DashboardRoute(
+                                                    children: [
+                                                      HomeAutoRouterRoute(
+                                                        children: [
+                                                          BoutiquesDescriptionRoute(
+                                                            lastPath:
+                                                                'news_notification_description',
+                                                            newsInfo: initState.oneNews?.data,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              } else if ((initState.oneNews?.data.typePath ?? '') ==
+                                                  'gift_card') {
+                                                context.navigateTo(
+                                                  DashboardRoute(
+                                                    children: [
+                                                      HomeAutoRouterRoute(
+                                                        children: [
+                                                          GiftCardRoute(
+                                                            lastPath:
+                                                                'news_notification_description',
+                                                            newsInfo: initState.oneNews?.data,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            child: Container(
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(5),
+                                                color: BlindChickenColors.borderBottomColor,
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                initState.oneNews?.data.titleButton ?? '',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .displayMedium
+                                                    ?.copyWith(
+                                                      color:
+                                                          BlindChickenColors.activeBorderTextField,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        const SizedBox(
+                                          height: 40,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                          orElse: () => const SizedBox(),
-                        );
-                      }),
-                    ]),
+                              );
+                            },
+                            orElse: () => const SizedBox(),
+                          );
+                        }),
+                      ]),
+                    ),
                   ),
                 ),
                 BlocBuilder<NewsBloc, NewsState>(

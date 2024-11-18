@@ -29,7 +29,6 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   bool _isShowDialogNewsInfoError = false;
   late final TabController _tabController;
   bool _isSwipe = true;
-  // int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -65,252 +64,255 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
   @override
   Widget build(BuildContext context) {
     return BlocListener<NewsBloc, NewsState>(
-      listener: (context, state) {
-        state.maybeMap(
-          preloadDataCompleted: (initState) {
-            if (initState.isError ?? false) {
-              final typeError = initState.typeError ?? '';
-              if (!_isShowDialogNewsInfoError &&
-                  typeError != 'описание news' &&
-                  typeError != 'описание media' &&
-                  typeError != 'описание notice') {
-                _isShowDialogNewsInfoError = true;
-                _blindChickenNewsInfoShowDialogError.openShowDualog(
-                  context: context,
-                  errorMessage: initState.errorMessage ?? '',
-                  widget: BlocBuilder<NewsBloc, NewsState>(
-                    builder: (context, state) {
-                      return state.maybeMap(
-                        preloadDataCompleted: (value) {
-                          if (value.isLoadErrorButton ?? false) {
-                            return const SizedBox(
-                              height: 15,
-                              width: 15,
-                              child: Center(
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 3,
-                                  color: BlindChickenColors.backgroundColor,
-                                ),
-                              ),
-                            );
-                          } else {
-                            return Text(
-                              'Повторить',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
+        listener: (context, state) {
+          state.maybeMap(
+            preloadDataCompleted: (initState) {
+              if (initState.isError ?? false) {
+                final typeError = initState.typeError ?? '';
+                if (!_isShowDialogNewsInfoError &&
+                    typeError != 'описание news' &&
+                    typeError != 'описание media' &&
+                    typeError != 'описание notice') {
+                  _isShowDialogNewsInfoError = true;
+                  _blindChickenNewsInfoShowDialogError.openShowDualog(
+                    context: context,
+                    errorMessage: initState.errorMessage ?? '',
+                    widget: BlocBuilder<NewsBloc, NewsState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          preloadDataCompleted: (value) {
+                            if (value.isLoadErrorButton ?? false) {
+                              return const SizedBox(
+                                height: 15,
+                                width: 15,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 3,
                                     color: BlindChickenColors.backgroundColor,
                                   ),
-                              textAlign: TextAlign.center,
-                            );
-                          }
-                        },
-                        orElse: () => const SizedBox(),
-                      );
-                    },
-                  ),
-                  onRepeatRequest: () {
-                    switch (typeError) {
-                      case 'новости':
-                        context.read<NewsBloc>().add(const NewsEvent.getNews());
-                        break;
-                      case 'медиа':
-                        context.read<NewsBloc>().add(const NewsEvent.getMedia());
-                        break;
-                      case 'уведомления':
-                        context.read<NewsBloc>().add(const NewsEvent.getNotifications());
-                        break;
-                    }
-                  },
-                );
-              }
-            } else {
-              if (_isShowDialogNewsInfoError) {
-                _isShowDialogNewsInfoError = false;
-                _blindChickenNewsInfoShowDialogError.closeShowDialog();
-              }
-              if (!initState.isNotification) {
-                if (initState.listNewsPath.isEmpty) {
-                  context.back();
-                  setState(() {
-                    _isSwipe = false;
-                  });
-                } else {
-                  _tabController.animateTo(
-                    int.parse(
-                      initState.listNewsPath.last,
+                                ),
+                              );
+                            } else {
+                              return Text(
+                                'Повторить',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      color: BlindChickenColors.backgroundColor,
+                                    ),
+                                textAlign: TextAlign.center,
+                              );
+                            }
+                          },
+                          orElse: () => const SizedBox(),
+                        );
+                      },
                     ),
+                    onRepeatRequest: () {
+                      switch (typeError) {
+                        case 'новости':
+                          context.read<NewsBloc>().add(const NewsEvent.getNews());
+                          break;
+                        case 'медиа':
+                          context.read<NewsBloc>().add(const NewsEvent.getMedia());
+                          break;
+                        case 'уведомления':
+                          context.read<NewsBloc>().add(const NewsEvent.getNotifications());
+                          break;
+                      }
+                    },
                   );
-                  setState(() {
-                    _tabController.index = int.parse(
-                      initState.listNewsPath.last,
+                }
+              } else {
+                if (_isShowDialogNewsInfoError) {
+                  _isShowDialogNewsInfoError = false;
+                  _blindChickenNewsInfoShowDialogError.closeShowDialog();
+                }
+                if (!initState.isNotification) {
+                  if (initState.listNewsPath.isEmpty) {
+                    context.back();
+                    setState(() {
+                      _isSwipe = false;
+                    });
+                  } else {
+                    _tabController.animateTo(
+                      int.parse(
+                        initState.listNewsPath.last,
+                      ),
                     );
-                  });
+                    setState(() {
+                      _tabController.index = int.parse(
+                        initState.listNewsPath.last,
+                      );
+                    });
+                  }
                 }
               }
-            }
-          },
-          orElse: () {},
-        );
-      },
-      child: GestureDetector(
-        onVerticalDragUpdate: (details) {},
-        onHorizontalDragEnd: (DragEndDetails details) {
-          if (details.velocity.pixelsPerSecond.dx > 0) {
-            context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-          }
+            },
+            orElse: () {},
+          );
         },
-        child: PopScope(
-          canPop: false,
-          onPopInvoked: (value) {
-            if (_isSwipe && !value) {
+        child: GestureDetector(
+          onVerticalDragUpdate: (details) {},
+          onHorizontalDragEnd: (DragEndDetails details) {
+            if (details.velocity.pixelsPerSecond.dx > 0) {
               context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
             }
           },
-          child: SafeArea(
-            child: Scaffold(
-              body: Column(
-                children: <Widget>[
-                  const AppBarBlindChicken(),
-                  TabBar.secondary(
-                    padding: EdgeInsets.zero,
-                    labelPadding: EdgeInsets.zero,
-                    indicatorPadding: EdgeInsets.zero,
-                    controller: _tabController,
-                    onTap: (index) {
-                      setState(() {
-                        _tabController.index = index;
-                        // _selectedIndex = index;
-                      });
-
-                      if (index == 0) {
-                        context.read<NewsBloc>().add(const NewsEvent.getNews());
-                        AppMetrica.reportEvent(
-                            'Переход на страницу новостей из верхней панели навигации');
-                      } else if (index == 1) {
-                        AppMetrica.reportEvent(
-                            'Переход на страницу медиа из верхней панели навигации');
-                      } else if (index == 2) {
-                        AppMetrica.reportEvent(
-                            'Переход на страницу уведомлений из верхней панели навигации');
-                      }
-                    },
-                    tabs: <Widget>[
-                      Tab(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Новости',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    fontWeight: _tabController.index == 0 ? FontWeight.w700 : null,
-                                  ),
-                            ),
-                            BlocBuilder<NewsBloc, NewsState>(
-                              builder: (context, state) {
-                                return state.maybeMap(
-                                  preloadDataCompleted: (initState) {
-                                    return _countBadges(initState.countBadgesNews, context);
-                                  },
-                                  load: (initState) {
-                                    return _countBadges(initState.countBadgesNews ?? 0, context);
-                                  },
-                                  orElse: () => SizedBox(),
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                      ),
-                      Tab(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Медиа',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    fontWeight: _tabController.index == 1 ? FontWeight.w700 : null,
-                                    fontSize: _tabController.index == 1 ? 13.8 : null,
-                                  ),
-                            ),
-                            BlocBuilder<NewsBloc, NewsState>(
-                              builder: (context, state) {
-                                return state.maybeMap(
-                                  preloadDataCompleted: (initState) {
-                                    return _countBadges(initState.countBadgesMedia, context);
-                                  },
-                                  load: (initState) {
-                                    return _countBadges(initState.countBadgesMedia ?? 0, context);
-                                  },
-                                  orElse: () => SizedBox(),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      Tab(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Уведомления',
-                              style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                    fontWeight: _tabController.index == 2 ? FontWeight.w700 : null,
-                                  ),
-                            ),
-                            BlocBuilder<NewsBloc, NewsState>(
-                              builder: (context, state) {
-                                return state.maybeMap(
-                                  preloadDataCompleted: (initState) {
-                                    return _countBadges(initState.countBadgesNotificatios, context);
-                                  },
-                                  load: (initState) {
-                                    return _countBadges(
-                                        initState.countBadgesNotificatios ?? 0, context);
-                                  },
-                                  orElse: () => SizedBox(),
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(
-                    height: 1,
-                    color: BlindChickenColors.borderBottomColor,
-                  ),
-                  Expanded(
-                    child: TabBarView(
+          child: PopScope(
+            canPop: false,
+            onPopInvoked: (value) {
+              if (_isSwipe && !value) {
+                context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+              }
+            },
+            child: SafeArea(
+              child: Scaffold(
+                body: Column(
+                  children: <Widget>[
+                    const AppBarBlindChicken(),
+                    TabBar.secondary(
+                      padding: EdgeInsets.zero,
+                      labelPadding: EdgeInsets.zero,
+                      indicatorPadding: EdgeInsets.zero,
                       controller: _tabController,
-                      children: <Widget>[
-                        NewsTabInfo(
-                          goBack: () {
-                            context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-                          },
+                      onTap: (index) {
+                        setState(() {
+                          _tabController.index = index;
+                          // _selectedIndex = index;
+                        });
+
+                        if (index == 0) {
+                          context.read<NewsBloc>().add(const NewsEvent.getNews());
+                          AppMetrica.reportEvent(
+                              'Переход на страницу новостей из верхней панели навигации');
+                        } else if (index == 1) {
+                          AppMetrica.reportEvent(
+                              'Переход на страницу медиа из верхней панели навигации');
+                        } else if (index == 2) {
+                          AppMetrica.reportEvent(
+                              'Переход на страницу уведомлений из верхней панели навигации');
+                        }
+                      },
+                      tabs: <Widget>[
+                        Tab(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Новости',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      fontWeight:
+                                          _tabController.index == 0 ? FontWeight.w700 : null,
+                                    ),
+                              ),
+                              BlocBuilder<NewsBloc, NewsState>(
+                                builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      return _countBadges(initState.countBadgesNews, context);
+                                    },
+                                    load: (initState) {
+                                      return _countBadges(initState.countBadgesNews ?? 0, context);
+                                    },
+                                    orElse: () => SizedBox(),
+                                  );
+                                },
+                              )
+                            ],
+                          ),
                         ),
-                        MediaTabInfo(
-                          goBack: () {
-                            context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-                          },
-                          idNews: widget.idNews,
+                        Tab(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Медиа',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      fontWeight:
+                                          _tabController.index == 1 ? FontWeight.w700 : null,
+                                      fontSize: _tabController.index == 1 ? 13.8 : null,
+                                    ),
+                              ),
+                              BlocBuilder<NewsBloc, NewsState>(
+                                builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      return _countBadges(initState.countBadgesMedia, context);
+                                    },
+                                    load: (initState) {
+                                      return _countBadges(initState.countBadgesMedia ?? 0, context);
+                                    },
+                                    orElse: () => SizedBox(),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                        NotificationsTabInfo(
-                          goBack: () {
-                            context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
-                          },
-                          idNews: widget.idNews,
+                        Tab(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Уведомления',
+                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                      fontWeight:
+                                          _tabController.index == 2 ? FontWeight.w700 : null,
+                                    ),
+                              ),
+                              BlocBuilder<NewsBloc, NewsState>(
+                                builder: (context, state) {
+                                  return state.maybeMap(
+                                    preloadDataCompleted: (initState) {
+                                      return _countBadges(
+                                          initState.countBadgesNotificatios, context);
+                                    },
+                                    load: (initState) {
+                                      return _countBadges(
+                                          initState.countBadgesNotificatios ?? 0, context);
+                                    },
+                                    orElse: () => SizedBox(),
+                                  );
+                                },
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const Divider(
+                      height: 1,
+                      color: BlindChickenColors.borderBottomColor,
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        controller: _tabController,
+                        children: <Widget>[
+                          NewsTabInfo(
+                            goBack: () {
+                              context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+                            },
+                          ),
+                          MediaTabInfo(
+                            goBack: () {
+                              context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+                            },
+                            idNews: widget.idNews,
+                          ),
+                          NotificationsTabInfo(
+                            goBack: () {
+                              context.read<NewsBloc>().add(const NewsEvent.goBackNewsInfo());
+                            },
+                            idNews: widget.idNews,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 

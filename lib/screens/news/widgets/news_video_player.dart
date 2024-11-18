@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:video_player/video_player.dart';
 
@@ -13,6 +15,7 @@ class NewsVideoPlayer extends StatefulWidget {
     this.isProgressBar = true,
     this.isPlayIcon = true,
     this.isFullScreenVideo = false,
+    this.isTapVideoFullScreen = false,
     required this.onEnterFullScreen,
     required this.onExitFullScreen,
     this.videoImageHeight = 0.0,
@@ -24,6 +27,7 @@ class NewsVideoPlayer extends StatefulWidget {
   final String image;
   final bool isProgressBar;
   final bool isPlayIcon;
+  final bool isTapVideoFullScreen;
   final bool isFullScreenVideo;
   final double videoImageHeight;
   final double videoImageWeight;
@@ -46,6 +50,8 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
   void initState() {
     super.initState();
     _isFullScreenVideo = widget.isFullScreenVideo;
+    final updateData = GetIt.I.get<UpdateDataService>();
+
     _controller = VideoPlayerController.networkUrl(
       Uri.parse(widget.url),
     )..initialize().then((_) {
@@ -54,9 +60,23 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
           _isPlay = true;
           _controller.play();
           _controller.setLooping(true);
+          if (widget.isFullScreenVideo) {
+            _controller.setVolume(1.0);
+          } else {
+            _controller.setVolume(0.0);
+          }
         });
       });
+    updateData.videoController = _controller;
     _controller.setLooping(true);
+  }
+
+  @override
+  void didUpdateWidget(covariant NewsVideoPlayer oldWidget) {
+    if (!widget.isFullScreenVideo) {
+      _controller.play();
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -83,10 +103,18 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                               Stack(
                                 alignment: Alignment.bottomCenter,
                                 children: [
-                                  AspectRatio(
-                                    aspectRatio: _controller.value.aspectRatio,
-                                    child: VideoPlayer(
-                                      _controller,
+                                  InkWell(
+                                    onTap: widget.isTapVideoFullScreen
+                                        ? () {
+                                            widget.onEnterFullScreen(_controller.value.aspectRatio);
+                                            _controller.pause();
+                                          }
+                                        : null,
+                                    child: AspectRatio(
+                                      aspectRatio: _controller.value.aspectRatio,
+                                      child: VideoPlayer(
+                                        _controller,
+                                      ),
                                     ),
                                   ),
                                   if (widget.isProgressBar)
@@ -391,5 +419,15 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
               )
       ],
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!ModalRoute.of(context)!.isCurrent) {
+        _controller.pause();
+      }
+    });
   }
 }

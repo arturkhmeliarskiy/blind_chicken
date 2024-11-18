@@ -1,4 +1,5 @@
 import 'package:models/models.dart';
+import 'package:video_player/video_player.dart';
 
 class UpdateDataService {
   int? _selectedIndexGender;
@@ -18,7 +19,16 @@ class UpdateDataService {
   String? _lastScreen;
   List<String>? _pathHistory;
   List<PaymentItemDataModel>? _payments;
+  VideoPlayerController? _videoController;
   List<BoutiqueDataModel>? _boutiques;
+
+  VideoPlayerController get videoController {
+    return _videoController ?? VideoPlayerController.networkUrl(Uri());
+  }
+
+  set videoController(VideoPlayerController value) {
+    _videoController = value;
+  }
 
   String get lastScreen {
     return _lastScreen ?? '';

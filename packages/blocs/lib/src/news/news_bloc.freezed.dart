@@ -37,6 +37,7 @@ mixin _$NewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +58,7 @@ mixin _$NewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +79,7 @@ mixin _$NewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -99,6 +102,7 @@ mixin _$NewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -120,6 +124,7 @@ mixin _$NewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -141,6 +146,7 @@ mixin _$NewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -226,6 +232,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return init();
   }
@@ -249,6 +256,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return init?.call();
   }
@@ -272,6 +280,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -300,6 +309,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return init(this);
   }
@@ -324,6 +334,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return init?.call(this);
   }
@@ -348,6 +359,7 @@ class _$InitNewsEventImpl implements InitNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -421,6 +433,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getNews();
   }
@@ -444,6 +457,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getNews?.call();
   }
@@ -467,6 +481,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNews != null) {
@@ -495,6 +510,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return getNews(this);
   }
@@ -519,6 +535,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return getNews?.call(this);
   }
@@ -543,6 +560,7 @@ class _$GetNewsEventImpl implements GetNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNews != null) {
@@ -667,6 +685,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getNewsDescriptionInfo(id, isNotification, messageId);
   }
@@ -690,6 +709,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getNewsDescriptionInfo?.call(id, isNotification, messageId);
   }
@@ -713,6 +733,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNewsDescriptionInfo != null) {
@@ -741,6 +762,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return getNewsDescriptionInfo(this);
   }
@@ -765,6 +787,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return getNewsDescriptionInfo?.call(this);
   }
@@ -789,6 +812,7 @@ class _$GetNewsDescriptionInfoNewsEventImpl
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNewsDescriptionInfo != null) {
@@ -876,6 +900,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getMedia();
   }
@@ -899,6 +924,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getMedia?.call();
   }
@@ -922,6 +948,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getMedia != null) {
@@ -950,6 +977,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return getMedia(this);
   }
@@ -974,6 +1002,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return getMedia?.call(this);
   }
@@ -998,6 +1027,7 @@ class _$GetMediaEventImpl implements GetMediaEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getMedia != null) {
@@ -1123,6 +1153,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getMediaDescriptionInfo(id, isNotification, messageId);
   }
@@ -1146,6 +1177,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getMediaDescriptionInfo?.call(id, isNotification, messageId);
   }
@@ -1169,6 +1201,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getMediaDescriptionInfo != null) {
@@ -1197,6 +1230,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return getMediaDescriptionInfo(this);
   }
@@ -1221,6 +1255,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return getMediaDescriptionInfo?.call(this);
   }
@@ -1245,6 +1280,7 @@ class _$GetMediaDescriptionInfoNewsEventImpl
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getMediaDescriptionInfo != null) {
@@ -1334,6 +1370,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getNotifications();
   }
@@ -1357,6 +1394,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getNotifications?.call();
   }
@@ -1380,6 +1418,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNotifications != null) {
@@ -1408,6 +1447,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return getNotifications(this);
   }
@@ -1432,6 +1472,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return getNotifications?.call(this);
   }
@@ -1456,6 +1497,7 @@ class _$GetNotificationsEventImpl implements GetNotificationsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNotifications != null) {
@@ -1582,6 +1624,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return getNotificationDescriptionInfo(id, isNotification, messageId);
   }
@@ -1605,6 +1648,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return getNotificationDescriptionInfo?.call(id, isNotification, messageId);
   }
@@ -1628,6 +1672,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNotificationDescriptionInfo != null) {
@@ -1656,6 +1701,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return getNotificationDescriptionInfo(this);
   }
@@ -1680,6 +1726,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return getNotificationDescriptionInfo?.call(this);
   }
@@ -1704,6 +1751,7 @@ class _$GetNotificationDescriptionInfoNewsEventImpl
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (getNotificationDescriptionInfo != null) {
@@ -1794,6 +1842,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return paginationNews();
   }
@@ -1817,6 +1866,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return paginationNews?.call();
   }
@@ -1840,6 +1890,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (paginationNews != null) {
@@ -1868,6 +1919,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return paginationNews(this);
   }
@@ -1892,6 +1944,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return paginationNews?.call(this);
   }
@@ -1916,6 +1969,7 @@ class _$PaginationNewsNewsEventImpl implements PaginationNewsNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (paginationNews != null) {
@@ -1992,6 +2046,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return paginationMedia();
   }
@@ -2015,6 +2070,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return paginationMedia?.call();
   }
@@ -2038,6 +2094,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (paginationMedia != null) {
@@ -2066,6 +2123,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return paginationMedia(this);
   }
@@ -2090,6 +2148,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return paginationMedia?.call(this);
   }
@@ -2114,6 +2173,7 @@ class _$PaginationMediasNewsEventImpl implements PaginationMediasNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (paginationMedia != null) {
@@ -2192,6 +2252,7 @@ class _$PaginationNotificationsNewsEventImpl
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return paginationNotifications();
   }
@@ -2215,6 +2276,7 @@ class _$PaginationNotificationsNewsEventImpl
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return paginationNotifications?.call();
   }
@@ -2238,6 +2300,7 @@ class _$PaginationNotificationsNewsEventImpl
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (paginationNotifications != null) {
@@ -2266,6 +2329,7 @@ class _$PaginationNotificationsNewsEventImpl
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return paginationNotifications(this);
   }
@@ -2290,6 +2354,7 @@ class _$PaginationNotificationsNewsEventImpl
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return paginationNotifications?.call(this);
   }
@@ -2314,6 +2379,7 @@ class _$PaginationNotificationsNewsEventImpl
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (paginationNotifications != null) {
@@ -2391,6 +2457,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return goBackNewsInfo();
   }
@@ -2414,6 +2481,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return goBackNewsInfo?.call();
   }
@@ -2437,6 +2505,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (goBackNewsInfo != null) {
@@ -2465,6 +2534,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return goBackNewsInfo(this);
   }
@@ -2489,6 +2559,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return goBackNewsInfo?.call(this);
   }
@@ -2513,6 +2584,7 @@ class _$GoBackNewsInfoNewsEventImpl implements GoBackNewsInfoNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (goBackNewsInfo != null) {
@@ -2623,6 +2695,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return updateReadNews(id, typeNews);
   }
@@ -2646,6 +2719,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return updateReadNews?.call(id, typeNews);
   }
@@ -2669,6 +2743,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (updateReadNews != null) {
@@ -2697,6 +2772,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return updateReadNews(this);
   }
@@ -2721,6 +2797,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return updateReadNews?.call(this);
   }
@@ -2745,6 +2822,7 @@ class _$UpdateReadNewsEventImpl implements UpdateReadNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (updateReadNews != null) {
@@ -2831,6 +2909,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
     required TResult Function() goBackNewsInfo,
     required TResult Function(String id, String typeNews) updateReadNews,
     required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
   }) {
     return checkingReadNews();
   }
@@ -2854,6 +2933,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
     TResult? Function()? goBackNewsInfo,
     TResult? Function(String id, String typeNews)? updateReadNews,
     TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
   }) {
     return checkingReadNews?.call();
   }
@@ -2877,6 +2957,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
     TResult Function()? goBackNewsInfo,
     TResult Function(String id, String typeNews)? updateReadNews,
     TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (checkingReadNews != null) {
@@ -2905,6 +2986,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
     required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
     required TResult Function(UpdateReadNewsEvent value) updateReadNews,
     required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
   }) {
     return checkingReadNews(this);
   }
@@ -2929,6 +3011,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
     TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
   }) {
     return checkingReadNews?.call(this);
   }
@@ -2953,6 +3036,7 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
     TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
     TResult Function(UpdateReadNewsEvent value)? updateReadNews,
     TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
     required TResult orElse(),
   }) {
     if (checkingReadNews != null) {
@@ -2964,6 +3048,247 @@ class _$CheckingReadNewsEventImpl implements CheckingReadNewsEvent {
 
 abstract class CheckingReadNewsEvent implements NewsEvent {
   const factory CheckingReadNewsEvent() = _$CheckingReadNewsEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckButtonTopNewsEventImplCopyWith<$Res> {
+  factory _$$CheckButtonTopNewsEventImplCopyWith(
+          _$CheckButtonTopNewsEventImpl value,
+          $Res Function(_$CheckButtonTopNewsEventImpl) then) =
+      __$$CheckButtonTopNewsEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isButtonTop});
+}
+
+/// @nodoc
+class __$$CheckButtonTopNewsEventImplCopyWithImpl<$Res>
+    extends _$NewsEventCopyWithImpl<$Res, _$CheckButtonTopNewsEventImpl>
+    implements _$$CheckButtonTopNewsEventImplCopyWith<$Res> {
+  __$$CheckButtonTopNewsEventImplCopyWithImpl(
+      _$CheckButtonTopNewsEventImpl _value,
+      $Res Function(_$CheckButtonTopNewsEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isButtonTop = null,
+  }) {
+    return _then(_$CheckButtonTopNewsEventImpl(
+      isButtonTop: null == isButtonTop
+          ? _value.isButtonTop
+          : isButtonTop // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckButtonTopNewsEventImpl implements CheckButtonTopNewsEvent {
+  const _$CheckButtonTopNewsEventImpl({required this.isButtonTop});
+
+  @override
+  final bool isButtonTop;
+
+  @override
+  String toString() {
+    return 'NewsEvent.checkButtonTop(isButtonTop: $isButtonTop)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckButtonTopNewsEventImpl &&
+            (identical(other.isButtonTop, isButtonTop) ||
+                other.isButtonTop == isButtonTop));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isButtonTop);
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckButtonTopNewsEventImplCopyWith<_$CheckButtonTopNewsEventImpl>
+      get copyWith => __$$CheckButtonTopNewsEventImplCopyWithImpl<
+          _$CheckButtonTopNewsEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() getNews,
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
+        getNewsDescriptionInfo,
+    required TResult Function() getMedia,
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
+        getMediaDescriptionInfo,
+    required TResult Function() getNotifications,
+    required TResult Function(
+            String id, bool? isNotification, String? messageId)
+        getNotificationDescriptionInfo,
+    required TResult Function() paginationNews,
+    required TResult Function() paginationMedia,
+    required TResult Function() paginationNotifications,
+    required TResult Function() goBackNewsInfo,
+    required TResult Function(String id, String typeNews) updateReadNews,
+    required TResult Function() checkingReadNews,
+    required TResult Function(bool isButtonTop) checkButtonTop,
+  }) {
+    return checkButtonTop(isButtonTop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? getNews,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
+    TResult? Function()? getMedia,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
+    TResult? Function()? getNotifications,
+    TResult? Function(String id, bool? isNotification, String? messageId)?
+        getNotificationDescriptionInfo,
+    TResult? Function()? paginationNews,
+    TResult? Function()? paginationMedia,
+    TResult? Function()? paginationNotifications,
+    TResult? Function()? goBackNewsInfo,
+    TResult? Function(String id, String typeNews)? updateReadNews,
+    TResult? Function()? checkingReadNews,
+    TResult? Function(bool isButtonTop)? checkButtonTop,
+  }) {
+    return checkButtonTop?.call(isButtonTop);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? getNews,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNewsDescriptionInfo,
+    TResult Function()? getMedia,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getMediaDescriptionInfo,
+    TResult Function()? getNotifications,
+    TResult Function(String id, bool? isNotification, String? messageId)?
+        getNotificationDescriptionInfo,
+    TResult Function()? paginationNews,
+    TResult Function()? paginationMedia,
+    TResult Function()? paginationNotifications,
+    TResult Function()? goBackNewsInfo,
+    TResult Function(String id, String typeNews)? updateReadNews,
+    TResult Function()? checkingReadNews,
+    TResult Function(bool isButtonTop)? checkButtonTop,
+    required TResult orElse(),
+  }) {
+    if (checkButtonTop != null) {
+      return checkButtonTop(isButtonTop);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitNewsEvent value) init,
+    required TResult Function(GetNewsEvent value) getNews,
+    required TResult Function(GetNewsDescriptionInfoNewsEvent value)
+        getNewsDescriptionInfo,
+    required TResult Function(GetMediaEvent value) getMedia,
+    required TResult Function(GetMediaDescriptionInfoNewsEvent value)
+        getMediaDescriptionInfo,
+    required TResult Function(GetNotificationsEvent value) getNotifications,
+    required TResult Function(GetNotificationDescriptionInfoNewsEvent value)
+        getNotificationDescriptionInfo,
+    required TResult Function(PaginationNewsNewsEvent value) paginationNews,
+    required TResult Function(PaginationMediasNewsEvent value) paginationMedia,
+    required TResult Function(PaginationNotificationsNewsEvent value)
+        paginationNotifications,
+    required TResult Function(GoBackNewsInfoNewsEvent value) goBackNewsInfo,
+    required TResult Function(UpdateReadNewsEvent value) updateReadNews,
+    required TResult Function(CheckingReadNewsEvent value) checkingReadNews,
+    required TResult Function(CheckButtonTopNewsEvent value) checkButtonTop,
+  }) {
+    return checkButtonTop(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitNewsEvent value)? init,
+    TResult? Function(GetNewsEvent value)? getNews,
+    TResult? Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult? Function(GetMediaEvent value)? getMedia,
+    TResult? Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult? Function(GetNotificationsEvent value)? getNotifications,
+    TResult? Function(GetNotificationDescriptionInfoNewsEvent value)?
+        getNotificationDescriptionInfo,
+    TResult? Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult? Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult? Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult? Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+    TResult? Function(UpdateReadNewsEvent value)? updateReadNews,
+    TResult? Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult? Function(CheckButtonTopNewsEvent value)? checkButtonTop,
+  }) {
+    return checkButtonTop?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitNewsEvent value)? init,
+    TResult Function(GetNewsEvent value)? getNews,
+    TResult Function(GetNewsDescriptionInfoNewsEvent value)?
+        getNewsDescriptionInfo,
+    TResult Function(GetMediaEvent value)? getMedia,
+    TResult Function(GetMediaDescriptionInfoNewsEvent value)?
+        getMediaDescriptionInfo,
+    TResult Function(GetNotificationsEvent value)? getNotifications,
+    TResult Function(GetNotificationDescriptionInfoNewsEvent value)?
+        getNotificationDescriptionInfo,
+    TResult Function(PaginationNewsNewsEvent value)? paginationNews,
+    TResult Function(PaginationMediasNewsEvent value)? paginationMedia,
+    TResult Function(PaginationNotificationsNewsEvent value)?
+        paginationNotifications,
+    TResult Function(GoBackNewsInfoNewsEvent value)? goBackNewsInfo,
+    TResult Function(UpdateReadNewsEvent value)? updateReadNews,
+    TResult Function(CheckingReadNewsEvent value)? checkingReadNews,
+    TResult Function(CheckButtonTopNewsEvent value)? checkButtonTop,
+    required TResult orElse(),
+  }) {
+    if (checkButtonTop != null) {
+      return checkButtonTop(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckButtonTopNewsEvent implements NewsEvent {
+  const factory CheckButtonTopNewsEvent({required final bool isButtonTop}) =
+      _$CheckButtonTopNewsEventImpl;
+
+  bool get isButtonTop;
+
+  /// Create a copy of NewsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CheckButtonTopNewsEventImplCopyWith<_$CheckButtonTopNewsEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2990,6 +3315,7 @@ mixin _$NewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3022,6 +3348,7 @@ mixin _$NewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3054,6 +3381,7 @@ mixin _$NewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3179,6 +3507,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3214,6 +3543,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3249,6 +3579,7 @@ class _$InitNewsStateImpl implements InitNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3440,6 +3771,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3476,6 +3808,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3512,6 +3845,7 @@ class _$LoadingNewsStateImpl implements LoadingNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3656,6 +3990,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3691,6 +4026,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3726,6 +4062,7 @@ class _$LoadingErrorButtonNewsStateImpl implements LoadingErrorButtonNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3881,6 +4218,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3916,6 +4254,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -3951,6 +4290,7 @@ class _$ErrorNewsStateImpl implements ErrorNewsState {
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4045,6 +4385,7 @@ abstract class _$$PreloadDataCompletedNewsStateImplCopyWith<$Res> {
       int countBadgesNews,
       int countBadgesMedia,
       int countBadgesNotificatios,
+      bool isButtonTop,
       OneNewsInfoDataModel? oneNews,
       OneMediaInfoDataModel? oneMedia,
       OneNotificationInfoDataModel? oneNotification,
@@ -4088,6 +4429,7 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
     Object? countBadgesNews = null,
     Object? countBadgesMedia = null,
     Object? countBadgesNotificatios = null,
+    Object? isButtonTop = null,
     Object? oneNews = freezed,
     Object? oneMedia = freezed,
     Object? oneNotification = freezed,
@@ -4149,6 +4491,10 @@ class __$$PreloadDataCompletedNewsStateImplCopyWithImpl<$Res>
           ? _value.countBadgesNotificatios
           : countBadgesNotificatios // ignore: cast_nullable_to_non_nullable
               as int,
+      isButtonTop: null == isButtonTop
+          ? _value.isButtonTop
+          : isButtonTop // ignore: cast_nullable_to_non_nullable
+              as bool,
       oneNews: freezed == oneNews
           ? _value.oneNews
           : oneNews // ignore: cast_nullable_to_non_nullable
@@ -4273,6 +4619,7 @@ class _$PreloadDataCompletedNewsStateImpl
       required this.countBadgesNews,
       required this.countBadgesMedia,
       required this.countBadgesNotificatios,
+      required this.isButtonTop,
       this.oneNews,
       this.oneMedia,
       this.oneNotification,
@@ -4315,6 +4662,8 @@ class _$PreloadDataCompletedNewsStateImpl
   @override
   final int countBadgesNotificatios;
   @override
+  final bool isButtonTop;
+  @override
   final OneNewsInfoDataModel? oneNews;
   @override
   final OneMediaInfoDataModel? oneMedia;
@@ -4331,7 +4680,7 @@ class _$PreloadDataCompletedNewsStateImpl
 
   @override
   String toString() {
-    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton)';
+    return 'NewsState.preloadDataCompleted(news: $news, media: $media, notificatios: $notificatios, offsetNews: $offsetNews, offsetMedia: $offsetMedia, offsetNotificatios: $offsetNotificatios, listNewsPath: $listNewsPath, isUpdateVersionApp: $isUpdateVersionApp, isNotification: $isNotification, countBadgesTotal: $countBadgesTotal, countBadgesNews: $countBadgesNews, countBadgesMedia: $countBadgesMedia, countBadgesNotificatios: $countBadgesNotificatios, isButtonTop: $isButtonTop, oneNews: $oneNews, oneMedia: $oneMedia, oneNotification: $oneNotification, typeError: $typeError, errorMessage: $errorMessage, isError: $isError, isLoadErrorButton: $isLoadErrorButton)';
   }
 
   @override
@@ -4364,6 +4713,8 @@ class _$PreloadDataCompletedNewsStateImpl
             (identical(
                     other.countBadgesNotificatios, countBadgesNotificatios) ||
                 other.countBadgesNotificatios == countBadgesNotificatios) &&
+            (identical(other.isButtonTop, isButtonTop) ||
+                other.isButtonTop == isButtonTop) &&
             (identical(other.oneNews, oneNews) || other.oneNews == oneNews) &&
             (identical(other.oneMedia, oneMedia) ||
                 other.oneMedia == oneMedia) &&
@@ -4394,6 +4745,7 @@ class _$PreloadDataCompletedNewsStateImpl
         countBadgesNews,
         countBadgesMedia,
         countBadgesNotificatios,
+        isButtonTop,
         oneNews,
         oneMedia,
         oneNotification,
@@ -4436,6 +4788,7 @@ class _$PreloadDataCompletedNewsStateImpl
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4459,6 +4812,7 @@ class _$PreloadDataCompletedNewsStateImpl
         countBadgesNews,
         countBadgesMedia,
         countBadgesNotificatios,
+        isButtonTop,
         oneNews,
         oneMedia,
         oneNotification,
@@ -4491,6 +4845,7 @@ class _$PreloadDataCompletedNewsStateImpl
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4514,6 +4869,7 @@ class _$PreloadDataCompletedNewsStateImpl
         countBadgesNews,
         countBadgesMedia,
         countBadgesNotificatios,
+        isButtonTop,
         oneNews,
         oneMedia,
         oneNotification,
@@ -4546,6 +4902,7 @@ class _$PreloadDataCompletedNewsStateImpl
             int countBadgesNews,
             int countBadgesMedia,
             int countBadgesNotificatios,
+            bool isButtonTop,
             OneNewsInfoDataModel? oneNews,
             OneMediaInfoDataModel? oneMedia,
             OneNotificationInfoDataModel? oneNotification,
@@ -4571,6 +4928,7 @@ class _$PreloadDataCompletedNewsStateImpl
           countBadgesNews,
           countBadgesMedia,
           countBadgesNotificatios,
+          isButtonTop,
           oneNews,
           oneMedia,
           oneNotification,
@@ -4641,6 +4999,7 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
       required final int countBadgesNews,
       required final int countBadgesMedia,
       required final int countBadgesNotificatios,
+      required final bool isButtonTop,
       final OneNewsInfoDataModel? oneNews,
       final OneMediaInfoDataModel? oneMedia,
       final OneNotificationInfoDataModel? oneNotification,
@@ -4662,6 +5021,7 @@ abstract class PreloadDataCompletedNewsState implements NewsState {
   int get countBadgesNews;
   int get countBadgesMedia;
   int get countBadgesNotificatios;
+  bool get isButtonTop;
   OneNewsInfoDataModel? get oneNews;
   OneMediaInfoDataModel? get oneMedia;
   OneNotificationInfoDataModel? get oneNotification;

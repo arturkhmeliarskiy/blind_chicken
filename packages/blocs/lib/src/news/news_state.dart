@@ -27,6 +27,7 @@ class NewsState with _$NewsState {
     required int countBadgesNews,
     required int countBadgesMedia,
     required int countBadgesNotificatios,
+    required bool isButtonTop,
     OneNewsInfoDataModel? oneNews,
     OneMediaInfoDataModel? oneMedia,
     OneNotificationInfoDataModel? oneNotification,

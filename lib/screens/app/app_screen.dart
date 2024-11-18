@@ -367,6 +367,10 @@ class _DashboardPageState extends State<DashboardPage> {
             selectedItemColor: Colors.green[500],
             onTap: (int index) {
               final updateData = GetIt.I.get<UpdateDataService>();
+              if (updateData.videoController.value.isInitialized) {
+                updateData.videoController.dispose();
+              }
+
               if (index == 0) {
                 if (mounted) {
                   Timer(const Duration(milliseconds: 250), () {

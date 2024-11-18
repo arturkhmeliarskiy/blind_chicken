@@ -44,6 +44,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         goBackNewsInfo: (event) => _goBackNewsInfo(event, emit),
         updateReadNews: (event) => _updateReadNews(event, emit),
         checkingReadNews: (event) => _checkingReadNews(event, emit),
+        checkButtonTop: (event) => _checkButtonTop(event, emit),
       ),
     );
   }
@@ -64,6 +65,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         listNewsPath: [],
         isUpdateVersionApp: false,
         isNotification: false,
+        isButtonTop: false,
         countBadgesTotal: countBadges.total,
         countBadgesNews: countBadges.news,
         countBadgesMedia: countBadges.media,
@@ -604,6 +606,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           oneNews: oneNews,
           listNewsPath: [],
           isNotification: true,
+          isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
           countBadgesTotal: countBadges?.total ?? 0,
           countBadgesNews: countBadges?.news ?? 0,
@@ -716,6 +719,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           oneMedia: oneMedia,
           listNewsPath: [],
           isNotification: true,
+          isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
           countBadgesTotal: countBadges?.total ?? 0,
           countBadgesNews: countBadges?.news ?? 0,
@@ -828,6 +832,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           oneNotification: oneNotifcation,
           listNewsPath: [],
           isNotification: true,
+          isButtonTop: false,
           isUpdateVersionApp: isUpdateVersionApp,
           countBadgesTotal: countBadges?.total ?? 0,
           countBadgesNews: countBadges?.news ?? 0,
@@ -1017,6 +1022,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNotificatios: countBadges.notice,
         ),
       );
+    });
+  }
+
+  Future<void> _checkButtonTop(
+    CheckButtonTopNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      emit(initState.copyWith(
+        isButtonTop: event.isButtonTop,
+      ));
     });
   }
 }

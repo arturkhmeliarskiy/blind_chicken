@@ -1,12 +1,15 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
-import 'package:blind_chicken/screens/news/widgets/news/news_item_indicator.dart';
+import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
+import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class NewsItemTabInfo extends StatefulWidget {
   const NewsItemTabInfo({
@@ -25,6 +28,8 @@ class NewsItemTabInfo extends StatefulWidget {
 }
 
 class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
+  bool _isFullScreenVideo = false;
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -34,12 +39,14 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
         alignment: Alignment.topRight,
         children: [
           Container(
-            margin: const EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
             padding: const EdgeInsets.only(left: 12, right: 12),
             width: width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: BlindChickenColors.backgroundColor,
+              color: widget.item.isViewed
+                  ? BlindChickenColors.backgroundColorItemFilter
+                  : BlindChickenColors.backgroundColor,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,69 +92,136 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                     );
                   },
                 ),
-                if (widget.item.typeMedia == 'images' && widget.item.images.isNotEmpty)
+                if (widget.item.typeMedia == 'images' && widget.item.images.length == 1)
                   Column(
                     children: [
                       const SizedBox(
                         height: 12,
                       ),
-                      LayoutBuilder(builder: (context, constraints) {
-                        return CachedNetworkImage(
+                      InkWell(
+                        onTap: () {
+                          context.navigateTo(
+                            NewsPreviewMediaRoute(
+                              media: widget.item.images,
+                              goBotton: () {
+                                context.back();
+                              },
+                              selectIndex: 0,
+                            ),
+                          );
+                        },
+                        child: CachedNetworkImage(
                           imageUrl: widget.item.images.first.imageUrl,
-                          width: constraints.maxWidth,
+                          width: MediaQuery.of(context).orientation == Orientation.portrait
+                              ? width
+                              : width / 2,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) => const SizedBox(
-                            height: 250,
-                            child: LoadingImage(),
-                          ),
-                        );
-                      }),
+                          errorWidget: (context, url, error) => const Icon(Icons.error),
+                        ),
+                      ),
                     ],
                   ),
-                if (widget.item.typeMedia == 'video' &&
-                    widget.item.video.isNotEmpty &&
-                    widget.item.typeVideo == 'original')
+                if (widget.item.typeMedia == 'images' && widget.item.images.length > 1)
                   Column(
                     children: [
                       const SizedBox(
                         height: 12,
                       ),
-                      LayoutBuilder(builder: (context, constraints) {
-                        return CachedNetworkImage(
-                          imageUrl: widget.item.videoImage,
-                          width: constraints.maxWidth,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => const SizedBox(
-                            height: 250,
-                            child: LoadingImage(),
-                          ),
-                        );
-                      }),
+                      NewsSlider(
+                        media: widget.item.images,
+                        goBotton: () {
+                          context.back();
+                        },
+                        onTap: (index) {
+                          context.pushRoute(
+                            NewsPreviewMediaRoute(
+                              selectIndex: index,
+                              media: widget.item.images,
+                              goBotton: () {
+                                context.back();
+                              },
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
-                if (widget.item.typeMedia == 'video' &&
-                    widget.item.video.isNotEmpty &&
-                    widget.item.typeVideo == 'youtube')
+                if (widget.item.typeMedia == 'video' && widget.item.typeVideo == 'youtube')
                   Column(
                     children: [
                       const SizedBox(
                         height: 12,
                       ),
-                      LayoutBuilder(builder: (context, constraints) {
-                        final videoId = YoutubePlayer.convertUrlToId(widget.item.video) ?? '';
-
-                        return CachedNetworkImage(
-                          imageUrl: 'https://img.youtube.com/vi/$videoId/0.jpg',
-                          fit: BoxFit.cover,
-                          height: 9 / 16 * constraints.maxWidth,
-                          width: constraints.maxWidth,
-                          placeholder: (context, url) => SizedBox(
-                            height: 9 / 16 * constraints.maxWidth,
-                            width: constraints.maxWidth,
-                            child: const LoadingImage(),
-                          ),
-                        );
-                      }),
+                      NewsYouTubeVideoPlayer(
+                        url: widget.item.video,
+                        isAutoPlay: true,
+                        isTapVideoFullScreen: true,
+                        onEnterFullScreen: () {
+                          showDialog(
+                              context: context,
+                              barrierColor: BlindChickenColors.activeBorderTextField,
+                              builder: (context) {
+                                return Scaffold(
+                                    body: SafeArea(
+                                  bottom: false,
+                                  child: NewsYouTubeVideoPlayer(
+                                    url: widget.item.video,
+                                    isAutoPlay: true,
+                                    onEnterFullScreen: () {},
+                                    onExitFullScreen: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ));
+                              });
+                        },
+                        onExitFullScreen: () {},
+                      ),
+                    ],
+                  ),
+                if (widget.item.typeMedia == 'video' && widget.item.typeVideo == 'original')
+                  Column(
+                    children: [
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      NewsVideoPlayer(
+                        url: widget.item.video,
+                        image: widget.item.videoImage,
+                        isProgressBar: false,
+                        isTapVideoFullScreen: true,
+                        isFullScreenVideo: _isFullScreenVideo,
+                        videoImageHeight: widget.item.videoImageHeight,
+                        videoImageWeight: widget.item.videoImageWeight,
+                        onEnterFullScreen: (aspectRatio) {
+                          setState(() {
+                            _isFullScreenVideo = true;
+                          });
+                          showDialog(
+                            context: context,
+                            barrierColor: BlindChickenColors.activeBorderTextField,
+                            builder: (context) {
+                              return Scaffold(
+                                backgroundColor: BlindChickenColors.activeBorderTextField,
+                                body: NewsVideoPlayer(
+                                  url: widget.item.video,
+                                  image: widget.item.videoImage,
+                                  isFullScreenVideo: _isFullScreenVideo,
+                                  onEnterFullScreen: (aspectRatio) {},
+                                  aspectRatio: aspectRatio,
+                                  onExitFullScreen: () {
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      _isFullScreenVideo = false;
+                                    });
+                                  },
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        onExitFullScreen: () {},
+                      ),
                     ],
                   ),
                 if (widget.item.titleButton.isNotEmpty)
@@ -215,16 +289,11 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                   )
                 else
                   const SizedBox(
-                    height: 10,
+                    height: 12,
                   )
               ],
             ),
           ),
-          if (widget.item.isViewed)
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: NewsItemIndicator(),
-            )
         ],
       ),
     );
