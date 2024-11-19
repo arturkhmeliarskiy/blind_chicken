@@ -38,11 +38,11 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                 _scrollController.position.pixels > 0,
           ),
         );
-    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 2500) &&
-        (_scrollController.position.maxScrollExtent - 2500) > _paginationPosition &&
+    if (_scrollController.position.pixels > (_scrollController.position.maxScrollExtent - 3500) &&
+        (_scrollController.position.maxScrollExtent - 3500) > _paginationPosition &&
         _scrollController.position.pixels != _scrollController.position.maxScrollExtent) {
       setState(() {
-        _paginationPosition = _scrollController.position.maxScrollExtent - 2500;
+        _paginationPosition = _scrollController.position.maxScrollExtent - 3500;
       });
       context.read<NewsBloc>().add(const NewsEvent.paginationNews());
     }
@@ -78,122 +78,116 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                     }
                     if (initState.news.list.isNotEmpty) {
                       return Container(
-                          decoration: BoxDecoration(
-                            color: BlindChickenColors.borderBottomColor,
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/news_background.png'),
-                              fit: BoxFit.cover,
-                            ),
+                        decoration: BoxDecoration(
+                          color: BlindChickenColors.borderBottomColor,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/news_background.png'),
+                            fit: BoxFit.cover,
                           ),
-                          child: ListView(
+                        ),
+                        child: ListView.builder(
                             controller: _scrollController,
-                            children: [
-                              Wrap(
-                                children: List.generate(initState.news.list.length, (index) {
-                                  return ForegroundDetector(
-                                    onForegroundChanged: (value) {
-                                      context.read<NewsBloc>().add(
-                                            NewsEvent.updateReadNews(
-                                              id: initState.news.list[index].id,
-                                              typeNews: 'news',
+                            itemCount: initState.news.list.length,
+                            itemBuilder: (context, index) {
+                              return ForegroundDetector(
+                                onForegroundChanged: (value) {
+                                  context.read<NewsBloc>().add(
+                                        NewsEvent.updateReadNews(
+                                          id: initState.news.list[index].id,
+                                          typeNews: 'news',
+                                        ),
+                                      );
+                                },
+                                child: NewsItemTabInfo(
+                                  item: initState.news.list[index],
+                                  onTap: () {
+                                    context.navigateTo(
+                                      NewsInfoDescriptionRoute(
+                                        info: initState.news.list[index],
+                                      ),
+                                    );
+                                  },
+                                  onGoTap: () {
+                                    if (initState.news.list[index].typePath == 'catalog') {
+                                      AppMetrica.reportEvent(
+                                          'Переход в каталог из списка новостей по кнопке');
+                                      context.read<CatalogBloc>().add(
+                                            CatalogEvent.getInfoProducts(
+                                              path: initState.news.list[index].path,
+                                              isCleanHistory: true,
                                             ),
                                           );
-                                    },
-                                    child: NewsItemTabInfo(
-                                      item: initState.news.list[index],
-                                      onTap: () {
-                                        context.navigateTo(
-                                          NewsInfoDescriptionRoute(
-                                            info: initState.news.list[index],
-                                          ),
-                                        );
-                                      },
-                                      onGoTap: () {
-                                        if (initState.news.list[index].typePath == 'catalog') {
-                                          AppMetrica.reportEvent(
-                                              'Переход в каталог из списка новостей по кнопке');
-                                          context.read<CatalogBloc>().add(
-                                                CatalogEvent.getInfoProducts(
-                                                  path: initState.news.list[index].path,
-                                                  isCleanHistory: true,
-                                                ),
-                                              );
 
-                                          context.navigateTo(
-                                            HomeAutoRouterRoute(
-                                              children: [
-                                                CatalogRoute(
-                                                  title: '',
-                                                  url: initState.news.list[index].path,
-                                                  lastPath: 'news',
-                                                ),
-                                              ],
+                                      context.navigateTo(
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            CatalogRoute(
+                                              title: '',
+                                              url: initState.news.list[index].path,
+                                              lastPath: 'news',
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else if (initState.news.list[index].typePath == 'product') {
+                                      AppMetrica.reportEvent(
+                                          'Переход в описание товара из списка новостей по кнопке');
+                                      context.read<CatalogBloc>().add(
+                                            CatalogEvent.getInfoProduct(
+                                              code: initState.news.list[index].code,
+                                              titleScreen: 'Список новостей',
+                                              typeAddProductToShoppingCart: 'Кнопка',
+                                              identifierAddProductToShoppingCart: '4',
                                             ),
                                           );
-                                        } else if (initState.news.list[index].typePath ==
-                                            'product') {
-                                          AppMetrica.reportEvent(
-                                              'Переход в описание товара из списка новостей по кнопке');
-                                          context.read<CatalogBloc>().add(
-                                                CatalogEvent.getInfoProduct(
-                                                  code: initState.news.list[index].code,
-                                                  titleScreen: 'Список новостей',
-                                                  typeAddProductToShoppingCart: 'Кнопка',
-                                                  identifierAddProductToShoppingCart: '4',
-                                                ),
-                                              );
-                                          context.navigateTo(
-                                            HomeAutoRouterRoute(
-                                              children: [
-                                                CatalogCardInfoRoute(
-                                                  isLike: false,
-                                                  listItems: const [],
-                                                  favouritesProducts: const [],
-                                                  isChildRoute: false,
-                                                  lastPath: 'news',
-                                                ),
-                                              ],
+                                      context.navigateTo(
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            CatalogCardInfoRoute(
+                                              isLike: false,
+                                              listItems: const [],
+                                              favouritesProducts: const [],
+                                              isChildRoute: false,
+                                              lastPath: 'news',
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else if (initState.news.list[index].typePath == 'boutique') {
+                                      AppMetrica.reportEvent(
+                                          'Переход в описание бутика из списка новостей по кнопке');
+                                      context.read<BoutiquesBloc>().add(
+                                            BoutiquesEvent.getInfoBoutique(
+                                              uid: initState.news.list[index].uidStore,
                                             ),
                                           );
-                                        } else if (initState.news.list[index].typePath ==
-                                            'boutique') {
-                                          AppMetrica.reportEvent(
-                                              'Переход в описание бутика из списка новостей по кнопке');
-                                          context.read<BoutiquesBloc>().add(
-                                                BoutiquesEvent.getInfoBoutique(
-                                                  uid: initState.news.list[index].uidStore,
-                                                ),
-                                              );
-                                          context.navigateTo(
-                                            HomeAutoRouterRoute(
-                                              children: [
-                                                BoutiquesDescriptionRoute(
-                                                  lastPath: 'news',
-                                                ),
-                                              ],
+                                      context.navigateTo(
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            BoutiquesDescriptionRoute(
+                                              lastPath: 'news',
                                             ),
-                                          );
-                                        } else if (initState.news.list[index].typePath ==
-                                            'gift_card') {
-                                          AppMetrica.reportEvent(
-                                              'Переход на страницу подарочной карты из списка новостей по кнопке');
-                                          context.navigateTo(
-                                            HomeAutoRouterRoute(
-                                              children: [
-                                                GiftCardRoute(
-                                                  lastPath: 'news',
-                                                ),
-                                              ],
+                                          ],
+                                        ),
+                                      );
+                                    } else if (initState.news.list[index].typePath == 'gift_card') {
+                                      AppMetrica.reportEvent(
+                                          'Переход на страницу подарочной карты из списка новостей по кнопке');
+                                      context.navigateTo(
+                                        HomeAutoRouterRoute(
+                                          children: [
+                                            GiftCardRoute(
+                                              lastPath: 'news',
                                             ),
-                                          );
-                                        }
-                                      },
-                                    ),
-                                  );
-                                }),
-                              ),
-                            ],
-                          ));
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
+                              );
+                            }),
+                      );
                     } else {
                       return LayoutBuilder(builder: (context, constraint) {
                         return Container(
