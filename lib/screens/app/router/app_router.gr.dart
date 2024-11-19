@@ -78,8 +78,7 @@ class BlindChickenCashbackAndDiscountsRouteArgs {
 
 /// generated route for
 /// [BlindChickenPdfViewScreen]
-class BlindChickenPdfViewRoute
-    extends PageRouteInfo<BlindChickenPdfViewRouteArgs> {
+class BlindChickenPdfViewRoute extends PageRouteInfo<BlindChickenPdfViewRouteArgs> {
   BlindChickenPdfViewRoute({
     Key? key,
     required String url,
@@ -125,8 +124,7 @@ class BlindChickenPdfViewRouteArgs {
 
 /// generated route for
 /// [BlindChickenWebViewScreen]
-class BlindChickenWebViewRoute
-    extends PageRouteInfo<BlindChickenWebViewRouteArgs> {
+class BlindChickenWebViewRoute extends PageRouteInfo<BlindChickenWebViewRouteArgs> {
   BlindChickenWebViewRoute({
     Key? key,
     required String url,
@@ -172,8 +170,7 @@ class BlindChickenWebViewRouteArgs {
 
 /// generated route for
 /// [BoutiquePreviewMediaScreen]
-class BoutiquePreviewMediaRoute
-    extends PageRouteInfo<BoutiquePreviewMediaRouteArgs> {
+class BoutiquePreviewMediaRoute extends PageRouteInfo<BoutiquePreviewMediaRouteArgs> {
   BoutiquePreviewMediaRoute({
     Key? key,
     required List<String> media,
@@ -283,8 +280,7 @@ class BoutiqueYandexMapRouteArgs {
 
 /// generated route for
 /// [BoutiquesDescriptionScreen]
-class BoutiquesDescriptionRoute
-    extends PageRouteInfo<BoutiquesDescriptionRouteArgs> {
+class BoutiquesDescriptionRoute extends PageRouteInfo<BoutiquesDescriptionRouteArgs> {
   BoutiquesDescriptionRoute({
     Key? key,
     String uidStore = '',
@@ -421,8 +417,7 @@ class BrandsRoute extends PageRouteInfo<BrandsRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<BrandsRouteArgs>(orElse: () => const BrandsRouteArgs());
+      final args = data.argsAs<BrandsRouteArgs>(orElse: () => const BrandsRouteArgs());
       return BrandsScreen(
         key: args.key,
         lastPath: args.lastPath,
@@ -581,8 +576,7 @@ class CatalogCardInfoRouteArgs {
 
 /// generated route for
 /// [CatalogFilterSelectValueScreen]
-class CatalogFilterSelectValueRoute
-    extends PageRouteInfo<CatalogFilterSelectValueRouteArgs> {
+class CatalogFilterSelectValueRoute extends PageRouteInfo<CatalogFilterSelectValueRouteArgs> {
   CatalogFilterSelectValueRoute({
     Key? key,
     required int index,
@@ -759,8 +753,7 @@ class CatalogFilterSelectValueSearchRouteArgs {
 
 /// generated route for
 /// [CatalogPreviewImagesScreen]
-class CatalogPreviewImagesRoute
-    extends PageRouteInfo<CatalogPreviewImagesRouteArgs> {
+class CatalogPreviewImagesRoute extends PageRouteInfo<CatalogPreviewImagesRouteArgs> {
   CatalogPreviewImagesRoute({
     Key? key,
     required List<String> listImages,
@@ -967,8 +960,7 @@ class CatalogSearchAutoRouterRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CatalogSearchCardInfoResultScreen]
-class CatalogSearchCardInfoResultRoute
-    extends PageRouteInfo<CatalogSearchCardInfoResultRouteArgs> {
+class CatalogSearchCardInfoResultRoute extends PageRouteInfo<CatalogSearchCardInfoResultRouteArgs> {
   CatalogSearchCardInfoResultRoute({
     Key? key,
     required ProductDataModel item,
@@ -1038,8 +1030,7 @@ class CatalogSearchCardInfoResultRouteArgs {
 
 /// generated route for
 /// [CatalogSearchCardInfoScreen]
-class CatalogSearchCardInfoRoute
-    extends PageRouteInfo<CatalogSearchCardInfoRouteArgs> {
+class CatalogSearchCardInfoRoute extends PageRouteInfo<CatalogSearchCardInfoRouteArgs> {
   CatalogSearchCardInfoRoute({
     Key? key,
     required ProductDataModel item,
@@ -1166,8 +1157,7 @@ class CatalogSearchRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CatalogSizeProductScreen]
-class CatalogSizeProductRoute
-    extends PageRouteInfo<CatalogSizeProductRouteArgs> {
+class CatalogSizeProductRoute extends PageRouteInfo<CatalogSizeProductRouteArgs> {
   CatalogSizeProductRoute({
     Key? key,
     required ValueChanged<SkuProductDataModel> onChange,
@@ -1358,8 +1348,7 @@ class ElectronicOrderFormsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [FavouritesCardInfoScreen]
-class FavouritesCardInfoRoute
-    extends PageRouteInfo<FavouritesCardInfoRouteArgs> {
+class FavouritesCardInfoRoute extends PageRouteInfo<FavouritesCardInfoRouteArgs> {
   FavouritesCardInfoRoute({
     Key? key,
     required ProductDataModel item,
@@ -1429,8 +1418,7 @@ class FavouritesCardInfoRouteArgs {
 
 /// generated route for
 /// [FavouritesFilterSelectValueScreen]
-class FavouritesFilterSelectValueRoute
-    extends PageRouteInfo<FavouritesFilterSelectValueRouteArgs> {
+class FavouritesFilterSelectValueRoute extends PageRouteInfo<FavouritesFilterSelectValueRouteArgs> {
   FavouritesFilterSelectValueRoute({
     Key? key,
     required int index,
@@ -1752,8 +1740,7 @@ class FilterSelectValueRouteArgs {
 
 /// generated route for
 /// [FilterSelectValueSearchScreen]
-class FilterSelectValueSearchRoute
-    extends PageRouteInfo<FilterSelectValueSearchRouteArgs> {
+class FilterSelectValueSearchRoute extends PageRouteInfo<FilterSelectValueSearchRouteArgs> {
   FilterSelectValueSearchRoute({
     Key? key,
     required int index,
@@ -1860,8 +1847,7 @@ class FiltersRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [GiftCardDeliveryInfoScreen]
-class GiftCardDeliveryInfoRoute
-    extends PageRouteInfo<GiftCardDeliveryInfoRouteArgs> {
+class GiftCardDeliveryInfoRoute extends PageRouteInfo<GiftCardDeliveryInfoRouteArgs> {
   GiftCardDeliveryInfoRoute({
     Key? key,
     required String title,
@@ -1946,8 +1932,7 @@ class GiftCardRoute extends PageRouteInfo<GiftCardRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<GiftCardRouteArgs>(
-          orElse: () => const GiftCardRouteArgs());
+      final args = data.argsAs<GiftCardRouteArgs>(orElse: () => const GiftCardRouteArgs());
       return GiftCardScreen(
         key: args.key,
         isNotification: args.isNotification,
@@ -2002,8 +1987,7 @@ class GiftCardRouteArgs {
 
 /// generated route for
 /// [GiftVirualCardColorsScreen]
-class GiftVirualCardColorsRoute
-    extends PageRouteInfo<GiftVirualCardColorsRouteArgs> {
+class GiftVirualCardColorsRoute extends PageRouteInfo<GiftVirualCardColorsRouteArgs> {
   GiftVirualCardColorsRoute({
     Key? key,
     required GiftCardModel selectedColor,
@@ -2241,8 +2225,7 @@ class MainRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [MediaInfoDescriptionScreen]
-class MediaInfoDescriptionRoute
-    extends PageRouteInfo<MediaInfoDescriptionRouteArgs> {
+class MediaInfoDescriptionRoute extends PageRouteInfo<MediaInfoDescriptionRouteArgs> {
   MediaInfoDescriptionRoute({
     Key? key,
     required MediaInfoItemDataModel info,
@@ -2367,8 +2350,7 @@ class MyOrdersRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [NewsInfoDescriptionScreen]
-class NewsInfoDescriptionRoute
-    extends PageRouteInfo<NewsInfoDescriptionRouteArgs> {
+class NewsInfoDescriptionRoute extends PageRouteInfo<NewsInfoDescriptionRouteArgs> {
   NewsInfoDescriptionRoute({
     Key? key,
     required NewsInfoItemDataModel info,
@@ -2466,8 +2448,7 @@ class NewsInfoRouteArgs {
 
 /// generated route for
 /// [NewsNotificationDescriptionScreen]
-class NewsNotificationDescriptionRoute
-    extends PageRouteInfo<NewsNotificationDescriptionRouteArgs> {
+class NewsNotificationDescriptionRoute extends PageRouteInfo<NewsNotificationDescriptionRouteArgs> {
   NewsNotificationDescriptionRoute({
     Key? key,
     String idNews = '',
@@ -2675,8 +2656,7 @@ class NoInternetRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [NotificationInfoDescriptionScreen]
-class NotificationInfoDescriptionRoute
-    extends PageRouteInfo<NotificationInfoDescriptionRouteArgs> {
+class NotificationInfoDescriptionRoute extends PageRouteInfo<NotificationInfoDescriptionRouteArgs> {
   NotificationInfoDescriptionRoute({
     Key? key,
     required NotificationInfoItemDataModel info,
@@ -2746,10 +2726,8 @@ class NotificationInfoNotificationDescriptionRoute
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args =
-          data.argsAs<NotificationInfoNotificationDescriptionRouteArgs>(
-              orElse: () =>
-                  const NotificationInfoNotificationDescriptionRouteArgs());
+      final args = data.argsAs<NotificationInfoNotificationDescriptionRouteArgs>(
+          orElse: () => const NotificationInfoNotificationDescriptionRouteArgs());
       return NotificationInfoNotificationDescriptionScreen(
         key: args.key,
         idNews: args.idNews,
@@ -2925,8 +2903,7 @@ class OrderUserInfoRouteArgs {
 
 /// generated route for
 /// [PaymentVerificationScreen]
-class PaymentVerificationRoute
-    extends PageRouteInfo<PaymentVerificationRouteArgs> {
+class PaymentVerificationRoute extends PageRouteInfo<PaymentVerificationRouteArgs> {
   PaymentVerificationRoute({
     Key? key,
     required String orderId,
@@ -2972,8 +2949,7 @@ class PaymentVerificationRouteArgs {
 
 /// generated route for
 /// [SberbankPaymentWebViewScreen]
-class SberbankPaymentWebViewRoute
-    extends PageRouteInfo<SberbankPaymentWebViewRouteArgs> {
+class SberbankPaymentWebViewRoute extends PageRouteInfo<SberbankPaymentWebViewRouteArgs> {
   SberbankPaymentWebViewRoute({
     Key? key,
     required String url,
@@ -3130,8 +3106,7 @@ class ServiceCardRoute extends PageRouteInfo<ServiceCardRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ServiceCardRouteArgs>(
-          orElse: () => const ServiceCardRouteArgs());
+      final args = data.argsAs<ServiceCardRouteArgs>(orElse: () => const ServiceCardRouteArgs());
       return ServiceCardScreen(
         key: args.key,
         lastPath: args.lastPath,
@@ -3267,8 +3242,7 @@ class ShoppingCartAutoRouterRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ShoppingCartDeliveryInfoScreen]
-class ShoppingCartDeliveryInfoRoute
-    extends PageRouteInfo<ShoppingCartDeliveryInfoRouteArgs> {
+class ShoppingCartDeliveryInfoRoute extends PageRouteInfo<ShoppingCartDeliveryInfoRouteArgs> {
   ShoppingCartDeliveryInfoRoute({
     Key? key,
     required String title,
@@ -3503,8 +3477,8 @@ class VisionWarningRoute extends PageRouteInfo<VisionWarningRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<VisionWarningRouteArgs>(
-          orElse: () => const VisionWarningRouteArgs());
+      final args =
+          data.argsAs<VisionWarningRouteArgs>(orElse: () => const VisionWarningRouteArgs());
       return VisionWarningScreen(
         key: args.key,
         name: args.name,

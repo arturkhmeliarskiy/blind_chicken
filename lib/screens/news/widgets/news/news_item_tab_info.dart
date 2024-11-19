@@ -40,7 +40,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
         children: [
           Container(
             margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
-            padding: const EdgeInsets.only(left: 12, right: 12),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             width: width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),

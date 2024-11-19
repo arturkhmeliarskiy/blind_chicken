@@ -179,7 +179,7 @@ class _VisionWarningScreenState extends State<VisionWarningScreen> {
                   child: PopScope(
                     canPop: false,
                     onPopInvoked: (value) {
-                      if (_isSwipe) {
+                      if (_isSwipe && !value) {
                         if (widget.lastPath.isNotEmpty) {
                           if (widget.lastPath == 'news') {
                             context.navigateTo(

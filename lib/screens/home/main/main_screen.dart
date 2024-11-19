@@ -576,6 +576,10 @@ class _MainScreenState extends State<MainScreen> {
                                                       selectIndexType: 1,
                                                     ),
                                                   );
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.switchTypePeople(
+                                                            selectIndexType: 1),
+                                                      );
                                                   final appMetricaEcommerce =
                                                       GetIt.I.get<AppMetricaEcommerceService>();
                                                   appMetricaEcommerce.openPages(
@@ -609,6 +613,10 @@ class _MainScreenState extends State<MainScreen> {
                                                       selectIndexType: 2,
                                                     ),
                                                   );
+                                                  context.read<CatalogBloc>().add(
+                                                        CatalogEvent.switchTypePeople(
+                                                            selectIndexType: 2),
+                                                      );
                                                   final appMetricaEcommerce =
                                                       GetIt.I.get<AppMetricaEcommerceService>();
                                                   appMetricaEcommerce.openPages(
@@ -643,6 +651,10 @@ class _MainScreenState extends State<MainScreen> {
                                                         selectIndexType: 3,
                                                       ),
                                                     );
+                                                    context.read<CatalogBloc>().add(
+                                                          CatalogEvent.switchTypePeople(
+                                                              selectIndexType: 3),
+                                                        );
                                                     final appMetricaEcommerce =
                                                         GetIt.I.get<AppMetricaEcommerceService>();
                                                     appMetricaEcommerce.openPages(
