@@ -456,9 +456,6 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                       ),
                                     ),
                                   ),
-                                const SizedBox(
-                                  height: 40,
-                                ),
                               ],
                             ),
                           ),
