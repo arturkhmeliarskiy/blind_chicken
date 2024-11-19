@@ -334,10 +334,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       int offsetNews = initState.offsetNews + 1;
       List<NewsInfoItemDataModel> listNews = [];
-      NewsInfoDataModel news = await _newsRepository.getNews(page: offsetNews);
+      late final NewsInfoDataModel news;
+
+      if (initState.offsetNews != offsetNews) {
+        news = await _newsRepository.getNews(page: offsetNews);
+        emit(initState.copyWith(
+          offsetNews: offsetNews,
+        ));
+      }
 
       if (news.errorMessage.isEmpty) {
-        for (int i = 0; i < news.list.length; i++) {
+        for (int i = 0; i < (news.list.length); i++) {
           double videoImageHeight = 0.0;
           double videoImageWeight = 0.0;
           if (news.list[i].videoImage.isNotEmpty) {
@@ -346,9 +353,9 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
             videoImageWeight = imageInfo.image.width.toDouble();
           }
 
-          if (news.list[i].typeMedia == 'images' && news.list[i].images.length > 1) {
+          if ((news.list[i].typeMedia) == 'images' && (news.list[i].images.length) > 1) {
             List<NewsSliderImageItemDataModel> images = [];
-            for (int j = 0; j < news.list[i].images.length; j++) {
+            for (int j = 0; j < (news.list[i].images.length); j++) {
               final imageInfo =
                   await _imageService.getImageUrlInfo(news.list[i].images[j].imageUrl);
               images.add(NewsSliderImageItemDataModel(
