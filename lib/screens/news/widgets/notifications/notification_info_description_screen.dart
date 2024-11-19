@@ -39,7 +39,10 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: widget.info.id, typeNews: 'notice'));
+    context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+          id: widget.info.id,
+          typeNews: 'notice',
+        ));
     AppMetrica.reportEvent('Страница описания уведомления id ${widget.info.id}');
     super.initState();
   }
@@ -88,9 +91,10 @@ class _NotificationInfoDescriptionScreenState extends State<NotificationInfoDesc
                     },
                   ),
                   onRepeatRequest: () {
-                    context
-                        .read<NewsBloc>()
-                        .add(NewsEvent.updateReadNews(id: widget.info.id, typeNews: 'notice'));
+                    context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+                          id: widget.info.id,
+                          typeNews: 'notice',
+                        ));
                   },
                 );
               }

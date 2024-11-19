@@ -32,7 +32,10 @@ class _NotificationsTabInfoState extends State<NotificationsTabInfo> {
     context.read<NewsBloc>().add(const NewsEvent.getNotifications());
     final idNews = widget.idNews;
     if (idNews != null) {
-      context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: idNews, typeNews: 'notice'));
+      context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+            id: idNews,
+            typeNews: 'notice',
+          ));
     }
     _scrollController.addListener(_loadMoreData);
     super.initState();

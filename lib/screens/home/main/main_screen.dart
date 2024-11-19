@@ -645,16 +645,17 @@ class _MainScreenState extends State<MainScreen> {
                                                             titleScreen: 'подраздел',
                                                           ),
                                                         );
+                                                    context.read<CatalogBloc>().add(
+                                                          CatalogEvent.switchTypePeople(
+                                                              selectIndexType: 3),
+                                                        );
                                                     context.navigateTo(
                                                       MainCategoryRoute(
                                                         title: 'Детям',
                                                         selectIndexType: 3,
                                                       ),
                                                     );
-                                                    context.read<CatalogBloc>().add(
-                                                          CatalogEvent.switchTypePeople(
-                                                              selectIndexType: 3),
-                                                        );
+
                                                     final appMetricaEcommerce =
                                                         GetIt.I.get<AppMetricaEcommerceService>();
                                                     appMetricaEcommerce.openPages(

@@ -39,7 +39,10 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
       context.read<NewsBloc>().add(const NewsEvent.getNews());
       final idNews = widget.idNews;
       if (idNews != null) {
-        context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: idNews, typeNews: 'news'));
+        context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+              id: idNews,
+              typeNews: 'news',
+            ));
       }
     }
     AppMetrica.reportEvent('Страница новостей');

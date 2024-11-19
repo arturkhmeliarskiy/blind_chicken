@@ -38,7 +38,10 @@ class _MediaInfoDescriptionScreenState extends State<MediaInfoDescriptionScreen>
 
   @override
   void initState() {
-    context.read<NewsBloc>().add(NewsEvent.updateReadNews(id: widget.info.id, typeNews: 'media'));
+    context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+          id: widget.info.id,
+          typeNews: 'media',
+        ));
     AppMetrica.reportEvent('Страница описания медиа id ${widget.info.id}');
     super.initState();
   }
@@ -87,9 +90,10 @@ class _MediaInfoDescriptionScreenState extends State<MediaInfoDescriptionScreen>
                     },
                   ),
                   onRepeatRequest: () {
-                    context
-                        .read<NewsBloc>()
-                        .add(NewsEvent.updateReadNews(id: widget.info.id, typeNews: 'media'));
+                    context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+                          id: widget.info.id,
+                          typeNews: 'media',
+                        ));
                   },
                 );
               }

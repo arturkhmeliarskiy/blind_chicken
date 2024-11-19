@@ -17,6 +17,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
+import 'package:video_player/video_player.dart';
 
 @RoutePage()
 class DashboardPage extends StatefulWidget {
@@ -367,8 +368,10 @@ class _DashboardPageState extends State<DashboardPage> {
             selectedItemColor: Colors.green[500],
             onTap: (int index) {
               final updateData = GetIt.I.get<UpdateDataService>();
-              if (updateData.videoController.value.isInitialized) {
+              if (updateData.videoController.value.isInitialized &&
+                  updateData.videoController.value.duration != Duration.zero) {
                 updateData.videoController.dispose();
+                updateData.videoController = VideoPlayerController.networkUrl(Uri());
               }
 
               if (index == 0) {

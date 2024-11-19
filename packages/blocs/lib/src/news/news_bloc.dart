@@ -1008,7 +1008,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           countBadgesNews: countBadges?.news ?? 0,
           countBadgesMedia: countBadges?.media ?? 0,
           countBadgesNotificatios: countBadges?.notice ?? 0,
-          isNotification: false,
+          isNotification: initState.isNotification,
         ),
       );
     });

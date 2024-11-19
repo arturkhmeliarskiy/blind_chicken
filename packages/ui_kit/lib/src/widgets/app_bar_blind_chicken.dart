@@ -9,6 +9,7 @@ import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/src/widgets/blind_chicken_top_banner.dart';
 import 'package:ui_kit/ui_kit.dart';
+import 'package:video_player/video_player.dart';
 
 class AppBarBlindChicken extends StatefulWidget {
   const AppBarBlindChicken({super.key, this.onBack});
@@ -70,8 +71,10 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
             onTap: () {
               final onBack = widget.onBack;
               final updateData = GetIt.I.get<UpdateDataService>();
-              if (updateData.videoController.value.isInitialized) {
+              if (updateData.videoController.value.isInitialized &&
+                  updateData.videoController.value.duration != Duration.zero) {
                 updateData.videoController.dispose();
+                updateData.videoController = VideoPlayerController.networkUrl(Uri());
               }
               if (onBack != null) {
                 onBack();
@@ -99,7 +102,8 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
               onTap: () {
                 context.navigateNamedTo('/dashboard/home/boutiques');
                 final updateData = GetIt.I.get<UpdateDataService>();
-                if (updateData.videoController.value.isInitialized) {
+                if (updateData.videoController.value.isInitialized &&
+                    updateData.videoController.value.duration != Duration.zero) {
                   updateData.videoController.pause();
                 }
               },
@@ -120,7 +124,8 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
               onTap: () {
                 context.navigateNamedTo('/search');
                 final updateData = GetIt.I.get<UpdateDataService>();
-                if (updateData.videoController.value.isInitialized) {
+                if (updateData.videoController.value.isInitialized &&
+                    updateData.videoController.value.duration != Duration.zero) {
                   updateData.videoController.pause();
                 }
               },
@@ -306,7 +311,9 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
                                                 }
                                                 final updateData = GetIt.I.get<UpdateDataService>();
                                                 if (updateData
-                                                    .videoController.value.isInitialized) {
+                                                        .videoController.value.isInitialized &&
+                                                    updateData.videoController.value.duration !=
+                                                        Duration.zero) {
                                                   updateData.videoController.pause();
                                                 }
                                               },

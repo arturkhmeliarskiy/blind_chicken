@@ -36,6 +36,9 @@ class _MainCategoryScreenState extends State<MainCategoryScreen> {
   @override
   void initState() {
     _selectIndexType = widget.selectIndexType;
+    context.read<CatalogBloc>().add(
+          CatalogEvent.switchTypePeople(selectIndexType: _selectIndexType),
+        );
     _scrollController.addListener(_loadMoreData);
     super.initState();
   }
