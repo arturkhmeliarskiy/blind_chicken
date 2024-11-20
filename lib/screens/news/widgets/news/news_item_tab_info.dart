@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
@@ -17,11 +19,15 @@ class NewsItemTabInfo extends StatefulWidget {
     required this.item,
     required this.onTap,
     required this.onGoTap,
+    required this.onGoBack,
+    required this.isDisabledVideo,
   });
 
   final NewsInfoItemDataModel item;
   final VoidCallback onTap;
   final VoidCallback onGoTap;
+  final VoidCallback onGoBack;
+  final bool isDisabledVideo;
 
   @override
   State<NewsItemTabInfo> createState() => _NewsItemTabInfoState();
@@ -104,7 +110,10 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                             NewsPreviewMediaRoute(
                               media: widget.item.images,
                               goBotton: () {
-                                context.back();
+                                widget.onGoBack();
+                                Timer(Duration(milliseconds: 150), () {
+                                  context.back();
+                                });
                               },
                               selectIndex: 0,
                             ),
@@ -138,7 +147,10 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                               selectIndex: index,
                               media: widget.item.images,
                               goBotton: () {
-                                context.back();
+                                widget.onGoBack();
+                                Timer(Duration(milliseconds: 150), () {
+                                  context.back();
+                                });
                               },
                             ),
                           );
@@ -156,6 +168,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                         url: widget.item.video,
                         isAutoPlay: true,
                         isTapVideoFullScreen: true,
+                        isDisabledVideo: widget.isDisabledVideo,
                         onEnterFullScreen: () {
                           showDialog(
                               context: context,
@@ -193,6 +206,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                         isFullScreenVideo: _isFullScreenVideo,
                         videoImageHeight: widget.item.videoImageHeight,
                         videoImageWeight: widget.item.videoImageWeight,
+                        isDisabledVideo: widget.isDisabledVideo,
                         onEnterFullScreen: (aspectRatio) {
                           setState(() {
                             _isFullScreenVideo = true;

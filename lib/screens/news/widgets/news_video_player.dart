@@ -16,6 +16,7 @@ class NewsVideoPlayer extends StatefulWidget {
     this.isPlayIcon = true,
     this.isFullScreenVideo = false,
     this.isTapVideoFullScreen = false,
+    this.isDisabledVideo = false,
     required this.onEnterFullScreen,
     required this.onExitFullScreen,
     this.videoImageHeight = 0.0,
@@ -34,6 +35,7 @@ class NewsVideoPlayer extends StatefulWidget {
   final double aspectRatio;
   final ValueChanged<double> onEnterFullScreen;
   final VoidCallback onExitFullScreen;
+  final bool isDisabledVideo;
 
   @override
   NewsVideoPlayerState createState() => NewsVideoPlayerState();
@@ -76,6 +78,11 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
     if (!widget.isFullScreenVideo) {
       _controller.play();
     }
+    if (widget.isDisabledVideo) {
+      _controller.pause();
+    }
+    final updateData = GetIt.I.get<UpdateDataService>();
+    updateData.videoController = _controller;
     super.didUpdateWidget(oldWidget);
   }
 

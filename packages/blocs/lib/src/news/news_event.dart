@@ -33,4 +33,7 @@ class NewsEvent with _$NewsEvent {
   const factory NewsEvent.checkButtonTop({
     required bool isButtonTop,
   }) = CheckButtonTopNewsEvent;
+  const factory NewsEvent.checkiDisabledVideo({
+    required bool isDisabledVideo,
+  }) = CheckDisabledVideoNewsEvent;
 }

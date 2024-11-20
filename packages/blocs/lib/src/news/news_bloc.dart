@@ -45,6 +45,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         updateReadNews: (event) => _updateReadNews(event, emit),
         checkingReadNews: (event) => _checkingReadNews(event, emit),
         checkButtonTop: (event) => _checkButtonTop(event, emit),
+        checkiDisabledVideo: (event) => _checkiDisabledVideo(event, emit),
       ),
     );
   }
@@ -1039,6 +1040,17 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
     state.mapOrNull(preloadDataCompleted: (initState) {
       emit(initState.copyWith(
         isButtonTop: event.isButtonTop,
+      ));
+    });
+  }
+
+  Future<void> _checkiDisabledVideo(
+    CheckDisabledVideoNewsEvent event,
+    Emitter<NewsState> emit,
+  ) async {
+    state.mapOrNull(preloadDataCompleted: (initState) {
+      emit(initState.copyWith(
+        isDisabledVideo: event.isDisabledVideo,
       ));
     });
   }
