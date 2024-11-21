@@ -9,7 +9,6 @@ import 'package:models/models.dart';
 import 'package:shared/shared.dart';
 import 'package:ui_kit/src/widgets/blind_chicken_top_banner.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:video_player/video_player.dart';
 
 class AppBarBlindChicken extends StatefulWidget {
   const AppBarBlindChicken({super.key, this.onBack});
@@ -70,12 +69,12 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
           title: GestureDetector(
             onTap: () {
               final onBack = widget.onBack;
-              final updateData = GetIt.I.get<UpdateDataService>();
-              if (updateData.videoController.value.isInitialized &&
-                  updateData.videoController.value.duration != Duration.zero) {
-                updateData.videoController.dispose();
-                updateData.videoController = VideoPlayerController.networkUrl(Uri());
-              }
+              // final updateData = GetIt.I.get<UpdateDataService>();
+              // if (updateData.videoController.value.isInitialized &&
+              //     updateData.videoController.value.duration != Duration.zero) {
+              //   updateData.videoController.dispose();
+              //   updateData.videoController = VideoPlayerController.networkUrl(Uri());
+              // }
               if (onBack != null) {
                 onBack();
               } else {
@@ -309,13 +308,13 @@ class _AppBarBlindChickenState extends State<AppBarBlindChicken> {
                                                 if (listItems[index].route == '/contacts') {
                                                   AppMetrica.reportEvent('Контакты');
                                                 }
-                                                final updateData = GetIt.I.get<UpdateDataService>();
-                                                if (updateData
-                                                        .videoController.value.isInitialized &&
-                                                    updateData.videoController.value.duration !=
-                                                        Duration.zero) {
-                                                  updateData.videoController.pause();
-                                                }
+                                                // final updateData = GetIt.I.get<UpdateDataService>();
+                                                // if (updateData
+                                                //         .videoController.value.isInitialized &&
+                                                //     updateData.videoController.value.duration !=
+                                                //         Duration.zero) {
+                                                //   updateData.videoController.pause();
+                                                // }
                                               },
                                               child: Container(
                                                 padding: const EdgeInsets.only(

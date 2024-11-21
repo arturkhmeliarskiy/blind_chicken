@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
@@ -19,25 +17,24 @@ class NewsItemTabInfo extends StatefulWidget {
     required this.item,
     required this.onTap,
     required this.onGoTap,
-    required this.onGoBack,
     required this.isDisabledVideo,
   });
 
   final NewsInfoItemDataModel item;
   final VoidCallback onTap;
   final VoidCallback onGoTap;
-  final VoidCallback onGoBack;
   final bool isDisabledVideo;
 
   @override
   State<NewsItemTabInfo> createState() => _NewsItemTabInfoState();
 }
 
-class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
+class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAliveClientMixin {
   bool _isFullScreenVideo = false;
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); //this line is needed
     final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: widget.onTap,
@@ -110,10 +107,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                             NewsPreviewMediaRoute(
                               media: widget.item.images,
                               goBotton: () {
-                                widget.onGoBack();
-                                Timer(Duration(milliseconds: 150), () {
-                                  context.back();
-                                });
+                                context.back();
                               },
                               selectIndex: 0,
                             ),
@@ -121,6 +115,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                         },
                         child: CachedNetworkImage(
                           imageUrl: widget.item.images.first.imageUrl,
+                          repeat: ImageRepeat.repeat,
                           width: MediaQuery.of(context).orientation == Orientation.portrait
                               ? width
                               : width / 2,
@@ -147,10 +142,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
                               selectIndex: index,
                               media: widget.item.images,
                               goBotton: () {
-                                widget.onGoBack();
-                                Timer(Duration(milliseconds: 150), () {
-                                  context.back();
-                                });
+                                context.back();
                               },
                             ),
                           );
@@ -312,4 +304,8 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

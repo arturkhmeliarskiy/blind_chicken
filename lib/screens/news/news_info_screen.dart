@@ -51,9 +51,15 @@ class _NewsInfoScreenState extends State<NewsInfoScreen> with TickerProviderStat
 
   @override
   void didUpdateWidget(covariant NewsInfoScreen oldWidget) {
-    // if (widget.indexPage != 0) {
-    //   _tabController.animateTo(widget.indexPage);
-    // }
+    final idNews = widget.idNews;
+    if (idNews != null) {
+      context.read<NewsBloc>().add(const NewsEvent.getNews());
+      context.read<NewsBloc>().add(NewsEvent.updateReadNews(
+            id: idNews,
+            typeNews: 'news',
+          ));
+    }
+
     AppMetrica.reportEvent('Страница новостей');
     super.didUpdateWidget(oldWidget);
   }

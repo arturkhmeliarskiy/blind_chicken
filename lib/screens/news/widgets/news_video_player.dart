@@ -427,14 +427,4 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
       ],
     );
   }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!ModalRoute.of(context)!.isCurrent) {
-        _controller.pause();
-      }
-    });
-  }
 }

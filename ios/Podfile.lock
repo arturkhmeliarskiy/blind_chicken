@@ -75,6 +75,13 @@ PODS:
     - AppMetricaLog (= 5.8.1)
   - audio_session (0.0.1):
     - Flutter
+  - better_player (0.0.1):
+    - Cache (~> 6.0.0)
+    - Flutter
+    - GCDWebServer
+    - HLSCachingReverseProxyServer
+    - PINCache
+  - Cache (6.0.0)
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
@@ -156,6 +163,9 @@ PODS:
     - OrderedSet (~> 6.0.3)
   - flutter_upgrade_version (1.1.6):
     - Flutter
+  - GCDWebServer (3.5.4):
+    - GCDWebServer/Core (= 3.5.4)
+  - GCDWebServer/Core (3.5.4)
   - geolocator_apple (1.2.0):
     - Flutter
   - GoogleDataTransport (9.4.1):
@@ -187,6 +197,9 @@ PODS:
   - GoogleUtilities/UserDefaults (7.13.3):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
+  - HLSCachingReverseProxyServer (0.1.0):
+    - GCDWebServer (~> 3.5)
+    - PINCache (>= 3.0.1-beta.3)
   - just_audio (0.0.1):
     - Flutter
   - KSCrash/Core (2.0.0-rc.3)
@@ -207,6 +220,14 @@ PODS:
     - FlutterMacOS
   - permission_handler_apple (9.3.0):
     - Flutter
+  - PINCache (3.0.4):
+    - PINCache/Arc-exception-safe (= 3.0.4)
+    - PINCache/Core (= 3.0.4)
+  - PINCache/Arc-exception-safe (3.0.4):
+    - PINCache/Core
+  - PINCache/Core (3.0.4):
+    - PINOperation (~> 1.2.3)
+  - PINOperation (1.2.3)
   - PromisesObjC (2.4.0)
   - ReachabilitySwift (5.2.4)
   - SDWebImage (5.19.7):
@@ -244,6 +265,7 @@ DEPENDENCIES:
   - appmetrica_push_plugin (from `.symlinks/plugins/appmetrica_push_plugin/ios`)
   - AppMetricaPush
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - better_player (from `.symlinks/plugins/better_player/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
@@ -286,6 +308,7 @@ SPEC REPOS:
     - AppMetricaPush
     - AppMetricaStorageUtils
     - AppMetricaWebKit
+    - Cache
     - DKImagePickerController
     - DKPhotoGallery
     - Firebase
@@ -293,11 +316,15 @@ SPEC REPOS:
     - FirebaseCoreInternal
     - FirebaseInstallations
     - FirebaseMessaging
+    - GCDWebServer
     - GoogleDataTransport
     - GoogleUtilities
+    - HLSCachingReverseProxyServer
     - KSCrash
     - nanopb
     - OrderedSet
+    - PINCache
+    - PINOperation
     - PromisesObjC
     - ReachabilitySwift
     - SDWebImage
@@ -313,6 +340,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/appmetrica_push_plugin/ios"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
+  better_player:
+    :path: ".symlinks/plugins/better_player/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
@@ -380,6 +409,8 @@ SPEC CHECKSUMS:
   AppMetricaStorageUtils: 56a5345e7b82e7d778708b973fdcf0c657b49aca
   AppMetricaWebKit: b15a5c78fdeaca729a5b218509459d17d357b293
   audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
+  better_player: 2406bfe8175203c7a46fa15f9d778d73b12e1646
+  Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
   connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
   device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
   DKImagePickerController: 946cec48c7873164274ecc4624d19e3da4c1ef3c
@@ -395,9 +426,11 @@ SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_inappwebview_ios: 6f63631e2c62a7c350263b13fa5427aedefe81d4
   flutter_upgrade_version: 056fb7aec8e30182a1db6d436b4fdc615582d996
+  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   geolocator_apple: 6cbaf322953988e009e5ecb481f07efece75c450
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
+  HLSCachingReverseProxyServer: 59935e1e0244ad7f3375d75b5ef46e8eb26ab181
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   KSCrash: 6104c0ff6df6818d69b706f72c5152f0ac2c2236
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
@@ -405,6 +438,8 @@ SPEC CHECKSUMS:
   package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
+  PINCache: d9a87a0ff397acffe9e2f0db972ac14680441158
+  PINOperation: fb563bcc9c32c26d6c78aaff967d405aa2ee74a7
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   ReachabilitySwift: 32793e867593cfc1177f5d16491e3a197d2fccda
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
