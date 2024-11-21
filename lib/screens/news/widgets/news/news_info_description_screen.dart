@@ -448,6 +448,7 @@ class _NewsInfoDescriptionScreenState extends State<NewsInfoDescriptionScreen> {
                                     },
                                     child: Container(
                                       height: 50,
+                                      margin: EdgeInsets.only(bottom: 12),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
                                         color: BlindChickenColors.borderBottomColor,

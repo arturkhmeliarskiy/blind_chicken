@@ -7,7 +7,6 @@ class NewsYouTubeVideoPlayer extends StatefulWidget {
     required this.url,
     this.isAutoPlay = false,
     this.isTapVideoFullScreen = false,
-    this.isDisabledVideo = false,
     required this.onEnterFullScreen,
     required this.onExitFullScreen,
   });
@@ -17,7 +16,6 @@ class NewsYouTubeVideoPlayer extends StatefulWidget {
   final bool isTapVideoFullScreen;
   final VoidCallback onEnterFullScreen;
   final VoidCallback onExitFullScreen;
-  final bool isDisabledVideo;
 
   @override
   NewsYouTubeVideoPlayerState createState() => NewsYouTubeVideoPlayerState();
@@ -43,14 +41,6 @@ class NewsYouTubeVideoPlayerState extends State<NewsYouTubeVideoPlayer> {
     }
 
     super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant NewsYouTubeVideoPlayer oldWidget) {
-    if (widget.isDisabledVideo) {
-      _controller.dispose();
-    }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
+import 'package:blind_chicken/screens/news/widgets/BetterPlayerPage.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
+import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
@@ -17,13 +19,11 @@ class NewsItemTabInfo extends StatefulWidget {
     required this.item,
     required this.onTap,
     required this.onGoTap,
-    required this.isDisabledVideo,
   });
 
   final NewsInfoItemDataModel item;
   final VoidCallback onTap;
   final VoidCallback onGoTap;
-  final bool isDisabledVideo;
 
   @override
   State<NewsItemTabInfo> createState() => _NewsItemTabInfoState();
@@ -160,7 +160,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                         url: widget.item.video,
                         isAutoPlay: true,
                         isTapVideoFullScreen: true,
-                        isDisabledVideo: widget.isDisabledVideo,
                         onEnterFullScreen: () {
                           showDialog(
                               context: context,
@@ -190,7 +189,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       const SizedBox(
                         height: 12,
                       ),
-                      NewsVideoPlayer(
+                      NewsBetterVideoPlayer(
                         url: widget.item.video,
                         image: widget.item.videoImage,
                         isProgressBar: false,
@@ -198,7 +197,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                         isFullScreenVideo: _isFullScreenVideo,
                         videoImageHeight: widget.item.videoImageHeight,
                         videoImageWeight: widget.item.videoImageWeight,
-                        isDisabledVideo: widget.isDisabledVideo,
                         onEnterFullScreen: (aspectRatio) {
                           setState(() {
                             _isFullScreenVideo = true;
@@ -209,7 +207,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             builder: (context) {
                               return Scaffold(
                                 backgroundColor: BlindChickenColors.activeBorderTextField,
-                                body: NewsVideoPlayer(
+                                body: NewsBetterVideoPlayer(
                                   url: widget.item.video,
                                   image: widget.item.videoImage,
                                   isFullScreenVideo: _isFullScreenVideo,

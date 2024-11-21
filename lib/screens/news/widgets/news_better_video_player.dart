@@ -1,14 +1,13 @@
+import 'package:better_player/better_player.dart';
+import 'package:blind_chicken/screens/news/widgets/news_video_scrubber.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_it/get_it.dart';
-import 'package:shared/shared.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:video_player/video_player.dart';
 
-class NewsVideoPlayer extends StatefulWidget {
-  const NewsVideoPlayer({
+class NewsBetterVideoPlayer extends StatefulWidget {
+  const NewsBetterVideoPlayer({
     super.key,
     required this.url,
     required this.image,
@@ -36,11 +35,11 @@ class NewsVideoPlayer extends StatefulWidget {
   final VoidCallback onExitFullScreen;
 
   @override
-  NewsVideoPlayerState createState() => NewsVideoPlayerState();
+  NewsBetterVideoPlayerState createState() => NewsBetterVideoPlayerState();
 }
 
-class NewsVideoPlayerState extends State<NewsVideoPlayer> {
-  late VideoPlayerController _controller;
+class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
+  late BetterPlayerController _controller;
   bool _isPlayScreen = false;
   bool _isFullScreenVideo = false;
   bool _isRotateScreen = false;
@@ -50,34 +49,30 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
   void initState() {
     super.initState();
     _isFullScreenVideo = widget.isFullScreenVideo;
-    final updateData = GetIt.I.get<UpdateDataService>();
 
-    _controller = VideoPlayerController.networkUrl(
-      Uri.parse(widget.url),
-    )..initialize().then((_) {
-        setState(() {
-          _isPlayScreen = true;
-          _isPlay = true;
-          _controller.play();
-          _controller.setLooping(true);
-          if (widget.isFullScreenVideo) {
-            _controller.setVolume(1.0);
-          } else {
-            _controller.setVolume(0.0);
-          }
-        });
-      });
-    updateData.videoController = _controller;
+    _controller = BetterPlayerController(
+      BetterPlayerConfiguration(
+        autoDispose: true,
+        controlsConfiguration: BetterPlayerControlsConfiguration(
+          controlsHideTime: const Duration(seconds: 1),
+          playerTheme: BetterPlayerTheme.custom,
+          customControlsBuilder: (videoController, onPlayerVisibilityChanged) => SizedBox(),
+        ),
+        aspectRatio: 16 / 9,
+        looping: true,
+        autoPlay: true,
+      ),
+      betterPlayerDataSource:
+          BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.url),
+    );
     _controller.setLooping(true);
   }
 
   @override
-  void didUpdateWidget(covariant NewsVideoPlayer oldWidget) {
+  void didUpdateWidget(covariant NewsBetterVideoPlayer oldWidget) {
     if (!widget.isFullScreenVideo) {
       _controller.play();
     }
-    final updateData = GetIt.I.get<UpdateDataService>();
-    updateData.videoController = _controller;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -98,7 +93,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
             ? Stack(
                 children: [
                   Center(
-                    child: _controller.value.isInitialized
+                    child: _controller.isVideoInitialized() ?? false
                         ? Stack(
                             alignment: Alignment.center,
                             children: [
@@ -108,14 +103,15 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                   InkWell(
                                     onTap: widget.isTapVideoFullScreen
                                         ? () {
-                                            widget.onEnterFullScreen(_controller.value.aspectRatio);
+                                            widget.onEnterFullScreen(
+                                                _controller.getAspectRatio() ?? 0);
                                             _controller.pause();
                                           }
                                         : null,
                                     child: AspectRatio(
-                                      aspectRatio: _controller.value.aspectRatio,
-                                      child: VideoPlayer(
-                                        _controller,
+                                      aspectRatio: _controller.getAspectRatio() ?? 0,
+                                      child: BetterPlayer(
+                                        controller: _controller,
                                       ),
                                     ),
                                   ),
@@ -158,18 +154,16 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                           ),
                                           Expanded(
                                             child: SizedBox(
-                                              height: 6,
-                                              child: VideoProgressIndicator(
-                                                _controller,
-                                                allowScrubbing: true,
-                                                padding: EdgeInsets.zero,
-                                                colors: const VideoProgressColors(
-                                                  playedColor: BlindChickenColors.backgroundColor,
-                                                  bufferedColor:
-                                                      BlindChickenColors.borderTextFieldSearch,
-                                                ),
-                                              ),
-                                            ),
+                                                height: 6,
+                                                child: ValueListenableBuilder(
+                                                    valueListenable:
+                                                        _controller.videoPlayerController!,
+                                                    builder: (context, value, child) {
+                                                      return NewsVideoScrubber(
+                                                        controller: _controller,
+                                                        playerValue: value,
+                                                      );
+                                                    })),
                                           ),
                                           if (_isFullScreenVideo)
                                             GestureDetector(
@@ -206,7 +200,7 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
                                                 _isFullScreenVideo = !_isFullScreenVideo;
                                                 if (_isFullScreenVideo) {
                                                   widget.onEnterFullScreen(
-                                                      _controller.value.aspectRatio);
+                                                      _controller.getAspectRatio() ?? 0);
                                                 } else {
                                                   SystemChrome.setPreferredOrientations(
                                                       [DeviceOrientation.portraitUp]);

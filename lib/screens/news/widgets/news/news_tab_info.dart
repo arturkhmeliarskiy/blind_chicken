@@ -94,8 +94,6 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                             controller: _scrollController,
                             itemCount: initState.news.list.length,
                             padding: EdgeInsets.zero,
-                            addAutomaticKeepAlives: true,
-                            cacheExtent: 1000,
                             itemBuilder: (context, index) {
                               return VisibilityDetector(
                                 key: Key(index.toString()),
@@ -126,7 +124,6 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                                   }
                                 },
                                 child: NewsItemTabInfo(
-                                  isDisabledVideo: false,
                                   item: initState.news.list[index],
                                   onTap: () {
                                     context.navigateTo(
