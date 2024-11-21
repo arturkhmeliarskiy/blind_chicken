@@ -94,7 +94,7 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                             controller: _scrollController,
                             itemCount: initState.news.list.length,
                             padding: EdgeInsets.zero,
-                            // addAutomaticKeepAlives: true,
+                            addAutomaticKeepAlives: true,
                             itemBuilder: (context, index) {
                               return VisibilityDetector(
                                 key: Key(index.toString()),
