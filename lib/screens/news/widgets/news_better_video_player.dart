@@ -18,6 +18,7 @@ class NewsBetterVideoPlayer extends StatefulWidget {
     this.isPlayIcon = true,
     this.isFullScreenVideo = false,
     this.isTapVideoFullScreen = false,
+    this.isVisibilityDetector = false,
     required this.onEnterFullScreen,
     required this.onExitFullScreen,
     this.videoImageHeight = 0.0,
@@ -34,6 +35,7 @@ class NewsBetterVideoPlayer extends StatefulWidget {
   final double videoImageHeight;
   final double videoImageWeight;
   final double aspectRatio;
+  final bool isVisibilityDetector;
   final ValueChanged<double> onEnterFullScreen;
   final VoidCallback onExitFullScreen;
 
@@ -66,14 +68,11 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
           BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.url),
     );
     _controller.setLooping(true);
-  }
-
-  @override
-  void didUpdateWidget(covariant NewsBetterVideoPlayer oldWidget) {
-    if (!widget.isFullScreenVideo) {
-      _controller.play();
+    if (widget.isFullScreenVideo) {
+      _controller.setVolume(1.0);
+    } else {
+      _controller.setVolume(0.0);
     }
-    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -88,24 +87,26 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
     final height = MediaQuery.of(context).size.height;
     return VisibilityDetector(
       key: Key('video_${widget.url}'),
-      onVisibilityChanged: (visibilityInfo) {
-        double visiblePercentage = visibilityInfo.visibleFraction * 100;
-        log("Video visibility: $visiblePercentage%", name: "Visibility");
+      onVisibilityChanged: widget.isVisibilityDetector
+          ? (visibilityInfo) {
+              double visiblePercentage = visibilityInfo.visibleFraction * 100;
+              log("Video visibility: $visiblePercentage%", name: "Visibility");
 
-        if (visiblePercentage > 50) {
-          // Check if the video is already playing, if not, play it
-          if (_controller.videoPlayerController?.value.isPlaying ?? false) {
-            _controller.play();
-            log("Video started playing", name: "VideoState");
-          }
-        } else {
-          // Pause the video if it's not the active video or is less than 50% visible
-          if (_controller.videoPlayerController?.value.initialized ?? false) {
-            _controller.pause();
-            log("Video paused", name: "VideoState");
-          }
-        }
-      },
+              if (visiblePercentage > 50) {
+                // Check if the video is already playing, if not, play it
+                if (_controller.videoPlayerController?.value.isPlaying ?? false) {
+                  _controller.play();
+                  log("Video started playing", name: "VideoState");
+                }
+              } else {
+                // Pause the video if it's not the active video or is less than 50% visible
+                if (_controller.videoPlayerController?.value.initialized ?? false) {
+                  _controller.pause();
+                  log("Video paused", name: "VideoState");
+                }
+              }
+            }
+          : (value) {},
       child: Stack(
         alignment: Alignment.center,
         children: [

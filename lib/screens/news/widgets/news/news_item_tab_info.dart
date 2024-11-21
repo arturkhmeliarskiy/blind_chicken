@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
+import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
@@ -187,11 +188,10 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       const SizedBox(
                         height: 12,
                       ),
-                      NewsVideoPlayer(
+                      NewsBetterVideoPlayer(
                         url: widget.item.video,
                         image: widget.item.videoImage,
                         isProgressBar: false,
-                        isVisibilityDetector: true,
                         isTapVideoFullScreen: true,
                         isFullScreenVideo: _isFullScreenVideo,
                         videoImageHeight: widget.item.videoImageHeight,
