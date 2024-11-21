@@ -194,6 +194,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                         isProgressBar: false,
                         isTapVideoFullScreen: true,
                         isFullScreenVideo: _isFullScreenVideo,
+                        isVisibilityDetector: true,
                         videoImageHeight: widget.item.videoImageHeight,
                         videoImageWeight: widget.item.videoImageWeight,
                         onEnterFullScreen: (aspectRatio) {

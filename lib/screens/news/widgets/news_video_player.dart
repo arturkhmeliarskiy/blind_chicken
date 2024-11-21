@@ -64,13 +64,13 @@ class NewsVideoPlayerState extends State<NewsVideoPlayer> {
           _isPlayScreen = true;
           _isPlay = true;
           _controller.play();
-          _controller.setLooping(true);
-          if (widget.isFullScreenVideo) {
-            _controller.setVolume(1.0);
-          } else {
-            _controller.setVolume(0.0);
-          }
         });
+        if (widget.isFullScreenVideo) {
+          _controller.setVolume(1.0);
+        } else {
+          _controller.setVolume(0.0);
+        }
+        _controller.setLooping(true);
       });
     updateData.videoController = _controller;
     _controller.setLooping(true);

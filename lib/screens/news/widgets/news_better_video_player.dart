@@ -52,9 +52,12 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
 
   @override
   void initState() {
+    init();
     super.initState();
-    _isFullScreenVideo = widget.isFullScreenVideo;
+  }
 
+  init() {
+    _isFullScreenVideo = widget.isFullScreenVideo;
     _controller = BetterPlayerController(
       BetterPlayerConfiguration(
         controlsConfiguration: BetterPlayerControlsConfiguration(
@@ -63,10 +66,12 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         ),
         looping: true,
         autoPlay: true,
+        aspectRatio: 1,
       ),
       betterPlayerDataSource:
           BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.url),
     );
+
     _controller.setLooping(true);
     if (widget.isFullScreenVideo) {
       _controller.setVolume(1.0);
@@ -92,9 +97,13 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
               double visiblePercentage = visibilityInfo.visibleFraction * 100;
               log("Video visibility: $visiblePercentage%", name: "Visibility");
 
-              if (visiblePercentage > 50) {
+              if (visiblePercentage > 20) {
                 // Check if the video is already playing, if not, play it
-                if (_controller.videoPlayerController?.value.isPlaying ?? false) {
+                if (!(_controller.videoPlayerController?.value.isPlaying ?? false)) {
+                  setState(() {
+                    _isPlayScreen = true;
+                    _isPlay = true;
+                  });
                   _controller.play();
                   log("Video started playing", name: "VideoState");
                 }
