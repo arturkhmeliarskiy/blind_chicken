@@ -23,7 +23,6 @@ class NewsBetterVideoPlayer extends StatefulWidget {
     required this.onExitFullScreen,
     this.videoImageHeight = 0.0,
     this.videoImageWeight = 0.0,
-    this.aspectRatio = 0.0,
   });
 
   final String url;
@@ -34,7 +33,6 @@ class NewsBetterVideoPlayer extends StatefulWidget {
   final bool isFullScreenVideo;
   final double videoImageHeight;
   final double videoImageWeight;
-  final double aspectRatio;
   final bool isVisibilityDetector;
   final ValueChanged<double> onEnterFullScreen;
   final VoidCallback onExitFullScreen;
@@ -66,11 +64,20 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         ),
         looping: true,
         autoPlay: true,
-        aspectRatio: 1,
       ),
-      betterPlayerDataSource:
-          BetterPlayerDataSource(BetterPlayerDataSourceType.network, widget.url),
+      betterPlayerDataSource: BetterPlayerDataSource(
+        BetterPlayerDataSourceType.network,
+        widget.url,
+      ),
     );
+
+    _controller.addEventsListener((BetterPlayerEvent event) {
+      if (event.betterPlayerEventType == BetterPlayerEventType.initialized) {
+        _controller
+            .setOverriddenAspectRatio(_controller.videoPlayerController?.value.aspectRatio ?? 0);
+        setState(() {});
+      }
+    });
 
     _controller.setLooping(true);
     if (widget.isFullScreenVideo) {
@@ -287,7 +294,8 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
                           : _isFullScreenVideo &&
                                   MediaQuery.of(context).orientation == Orientation.portrait
                               ? AspectRatio(
-                                  aspectRatio: widget.aspectRatio,
+                                  aspectRatio:
+                                      _controller.videoPlayerController?.value.aspectRatio ?? 0,
                                   child: Stack(
                                     children: [
                                       CachedNetworkImage(
@@ -385,7 +393,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
                           MediaQuery.of(context).orientation == Orientation.portrait
                       ? Center(
                           child: AspectRatio(
-                            aspectRatio: widget.aspectRatio,
+                            aspectRatio: _controller.videoPlayerController?.value.aspectRatio ?? 0,
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
