@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/app/router/app_router.dart';
-import 'package:blind_chicken/screens/news/widgets/BetterPlayerPage.dart';
 import 'package:blind_chicken/screens/news/widgets/handler_links_news.dart';
-import 'package:blind_chicken/screens/news/widgets/news_better_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_slider.dart';
 import 'package:blind_chicken/screens/news/widgets/news_video_player.dart';
 import 'package:blind_chicken/screens/news/widgets/news_youtube_video_player.dart';
@@ -189,7 +187,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       const SizedBox(
                         height: 12,
                       ),
-                      NewsBetterVideoPlayer(
+                      NewsVideoPlayer(
                         url: widget.item.video,
                         image: widget.item.videoImage,
                         isProgressBar: false,
@@ -207,7 +205,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             builder: (context) {
                               return Scaffold(
                                 backgroundColor: BlindChickenColors.activeBorderTextField,
-                                body: NewsBetterVideoPlayer(
+                                body: NewsVideoPlayer(
                                   url: widget.item.video,
                                   image: widget.item.videoImage,
                                   isFullScreenVideo: _isFullScreenVideo,

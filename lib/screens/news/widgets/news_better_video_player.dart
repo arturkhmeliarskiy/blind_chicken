@@ -52,9 +52,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
 
     _controller = BetterPlayerController(
       BetterPlayerConfiguration(
-        autoDispose: true,
         controlsConfiguration: BetterPlayerControlsConfiguration(
-          controlsHideTime: const Duration(seconds: 1),
           playerTheme: BetterPlayerTheme.custom,
           customControlsBuilder: (videoController, onPlayerVisibilityChanged) => SizedBox(),
         ),
