@@ -191,13 +191,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                       NewsBetterVideoPlayer(
                         url: widget.item.video,
                         image: widget.item.videoImage,
-                        isProgressBar: false,
-                        isTapVideoFullScreen: true,
-                        isFullScreenVideo: _isFullScreenVideo,
-                        isVisibilityDetector: true,
-                        videoImageHeight: widget.item.videoImageHeight,
-                        videoImageWeight: widget.item.videoImageWeight,
-                        onEnterFullScreen: (aspectRatio) {
+                        onTap: (aspectRatio) {
                           setState(() {
                             _isFullScreenVideo = true;
                           });
@@ -224,7 +218,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                             },
                           );
                         },
-                        onExitFullScreen: () {},
                       ),
                     ],
                   ),
