@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:better_player/better_player.dart';
+import 'package:blind_chicken/screens/news/widgets/better_video_player.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -40,6 +41,7 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         ),
         looping: true,
         autoPlay: true,
+        rotation: 1,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
@@ -60,12 +62,6 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
         _controller.play();
       }
     });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -90,24 +86,40 @@ class NewsBetterVideoPlayerState extends State<NewsBetterVideoPlayer> {
           }
         }
       },
-      child: InkWell(
-        onTap: () {
-          widget.onTap(_controller.getAspectRatio() ?? 0);
-          _controller.pause();
-        },
-        child: _controller.isVideoInitialized() ?? false
-            ? AspectRatio(
-                aspectRatio: _controller.getAspectRatio() ?? 0,
-                child: BetterPlayer(
+      child: _controller.isVideoInitialized() ?? false
+          ? Stack(
+              children: [
+                BetterVideoPlayer(
                   controller: _controller,
                 ),
-              )
-            : CachedNetworkImage(
+                GestureDetector(
+                  onTap: () {
+                    widget.onTap(_controller.getAspectRatio() ?? 0);
+                    _controller.pause();
+                  },
+                  child: Container(
+                    color: Colors.transparent,
+                  ),
+                )
+              ],
+            )
+          : GestureDetector(
+              onTap: () {
+                widget.onTap(_controller.getAspectRatio() ?? 0);
+                _controller.pause();
+              },
+              child: CachedNetworkImage(
                 imageUrl: widget.image,
                 fit: BoxFit.cover,
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
-      ),
+            ),
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
