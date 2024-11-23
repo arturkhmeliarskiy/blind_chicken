@@ -33,7 +33,6 @@ class NewsItemTabInfo extends StatefulWidget {
 }
 
 class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAliveClientMixin {
-  bool _isFullScreenVideo = false;
   BetterPlayerController? _controller;
 
   @override
@@ -54,7 +53,7 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
         ),
         looping: true,
         autoPlay: true,
-        aspectRatio: 1,
+        aspectRatio: widget.item.videoImageWeight / widget.item.videoImageHeight,
       ),
       betterPlayerDataSource: BetterPlayerDataSource(
         BetterPlayerDataSourceType.network,
@@ -266,28 +265,35 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
                                   BetterVideoPlayer(
                                     controller: videoController,
                                   ),
-                                  GestureDetector(
+                                  InkWell(
                                     onTap: () {
                                       videoController.pause();
-                                      setState(() {
-                                        _isFullScreenVideo = true;
-                                      });
-                                      _opevVideoPlayer(
-                                        aspectRatio: videoController.getAspectRatio() ?? 0,
-                                        videoUrl: widget.item.video,
-                                        videoImage: widget.item.videoImage,
+                                      showDialog(
                                         context: context,
-                                        isFullScreenVideo: _isFullScreenVideo,
-                                        onExitFullScreen: () {
-                                          Navigator.pop(context);
-                                          setState(() {
-                                            _isFullScreenVideo = false;
-                                          });
+                                        barrierColor: BlindChickenColors.activeBorderTextField,
+                                        builder: (context) {
+                                          return Scaffold(
+                                            backgroundColor:
+                                                BlindChickenColors.activeBorderTextField,
+                                            body: NewsVideoPlayer(
+                                              url: widget.item.video,
+                                              image: widget.item.videoImage,
+                                              isFullScreenVideo: true,
+                                              onEnterFullScreen: (aspectRatio) {},
+                                              aspectRatio: videoController.getAspectRatio() ?? 0,
+                                              onExitFullScreen: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                            ),
+                                          );
                                         },
                                       );
                                     },
-                                    child: Container(
-                                      color: Colors.transparent,
+                                    child: AspectRatio(
+                                      aspectRatio: videoController.getAspectRatio() ?? 0,
+                                      child: Container(
+                                        color: Colors.transparent,
+                                      ),
                                     ),
                                   )
                                 ],
@@ -408,33 +414,6 @@ class _NewsItemTabInfoState extends State<NewsItemTabInfo> with AutomaticKeepAli
           ),
         ],
       ),
-    );
-  }
-
-  _opevVideoPlayer({
-    required BuildContext context,
-    required String videoUrl,
-    required String videoImage,
-    required bool isFullScreenVideo,
-    required double aspectRatio,
-    required VoidCallback onExitFullScreen,
-  }) {
-    showDialog(
-      context: context,
-      barrierColor: BlindChickenColors.activeBorderTextField,
-      builder: (context) {
-        return Scaffold(
-          backgroundColor: BlindChickenColors.activeBorderTextField,
-          body: NewsVideoPlayer(
-            url: videoUrl,
-            image: videoImage,
-            isFullScreenVideo: isFullScreenVideo,
-            onEnterFullScreen: (aspectRatio) {},
-            aspectRatio: aspectRatio,
-            onExitFullScreen: onExitFullScreen,
-          ),
-        );
-      },
     );
   }
 
