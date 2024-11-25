@@ -22,7 +22,8 @@ mixin _$GiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -40,7 +41,8 @@ mixin _$GiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -58,7 +60,8 @@ mixin _$GiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -76,8 +79,10 @@ mixin _$GiftCardEvent {
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -98,7 +103,10 @@ mixin _$GiftCardEvent {
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -117,7 +125,10 @@ mixin _$GiftCardEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -251,7 +262,8 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -272,7 +284,8 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -293,7 +306,8 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -317,8 +331,10 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -342,7 +358,10 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -364,7 +383,10 @@ class _$InitGiftCardEventImpl implements InitGiftCardEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -481,7 +503,8 @@ class _$ChangeTypeGiftCardGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -502,7 +525,8 @@ class _$ChangeTypeGiftCardGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -523,7 +547,8 @@ class _$ChangeTypeGiftCardGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -547,8 +572,10 @@ class _$ChangeTypeGiftCardGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -572,7 +599,10 @@ class _$ChangeTypeGiftCardGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -594,7 +624,10 @@ class _$ChangeTypeGiftCardGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -631,23 +664,23 @@ abstract class ChangeTypeGiftCardGiftCardEvent implements GiftCardEvent {
 }
 
 /// @nodoc
-abstract class _$$ChangeAmountPaidGiftCardEventImplCopyWith<$Res> {
-  factory _$$ChangeAmountPaidGiftCardEventImplCopyWith(
-          _$ChangeAmountPaidGiftCardEventImpl value,
-          $Res Function(_$ChangeAmountPaidGiftCardEventImpl) then) =
-      __$$ChangeAmountPaidGiftCardEventImplCopyWithImpl<$Res>;
+abstract class _$$ChangeAmountPaidPlasticGiftCardEventImplCopyWith<$Res> {
+  factory _$$ChangeAmountPaidPlasticGiftCardEventImplCopyWith(
+          _$ChangeAmountPaidPlasticGiftCardEventImpl value,
+          $Res Function(_$ChangeAmountPaidPlasticGiftCardEventImpl) then) =
+      __$$ChangeAmountPaidPlasticGiftCardEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int amountPaid});
 }
 
 /// @nodoc
-class __$$ChangeAmountPaidGiftCardEventImplCopyWithImpl<$Res>
+class __$$ChangeAmountPaidPlasticGiftCardEventImplCopyWithImpl<$Res>
     extends _$GiftCardEventCopyWithImpl<$Res,
-        _$ChangeAmountPaidGiftCardEventImpl>
-    implements _$$ChangeAmountPaidGiftCardEventImplCopyWith<$Res> {
-  __$$ChangeAmountPaidGiftCardEventImplCopyWithImpl(
-      _$ChangeAmountPaidGiftCardEventImpl _value,
-      $Res Function(_$ChangeAmountPaidGiftCardEventImpl) _then)
+        _$ChangeAmountPaidPlasticGiftCardEventImpl>
+    implements _$$ChangeAmountPaidPlasticGiftCardEventImplCopyWith<$Res> {
+  __$$ChangeAmountPaidPlasticGiftCardEventImplCopyWithImpl(
+      _$ChangeAmountPaidPlasticGiftCardEventImpl _value,
+      $Res Function(_$ChangeAmountPaidPlasticGiftCardEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of GiftCardEvent
@@ -657,7 +690,7 @@ class __$$ChangeAmountPaidGiftCardEventImplCopyWithImpl<$Res>
   $Res call({
     Object? amountPaid = null,
   }) {
-    return _then(_$ChangeAmountPaidGiftCardEventImpl(
+    return _then(_$ChangeAmountPaidPlasticGiftCardEventImpl(
       amountPaid: null == amountPaid
           ? _value.amountPaid
           : amountPaid // ignore: cast_nullable_to_non_nullable
@@ -668,23 +701,23 @@ class __$$ChangeAmountPaidGiftCardEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChangeAmountPaidGiftCardEventImpl
-    implements ChangeAmountPaidGiftCardEvent {
-  const _$ChangeAmountPaidGiftCardEventImpl({required this.amountPaid});
+class _$ChangeAmountPaidPlasticGiftCardEventImpl
+    implements ChangeAmountPaidPlasticGiftCardEvent {
+  const _$ChangeAmountPaidPlasticGiftCardEventImpl({required this.amountPaid});
 
   @override
   final int amountPaid;
 
   @override
   String toString() {
-    return 'GiftCardEvent.changeAmountPaid(amountPaid: $amountPaid)';
+    return 'GiftCardEvent.changeAmountPaidPlasticCard(amountPaid: $amountPaid)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeAmountPaidGiftCardEventImpl &&
+            other is _$ChangeAmountPaidPlasticGiftCardEventImpl &&
             (identical(other.amountPaid, amountPaid) ||
                 other.amountPaid == amountPaid));
   }
@@ -697,10 +730,10 @@ class _$ChangeAmountPaidGiftCardEventImpl
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChangeAmountPaidGiftCardEventImplCopyWith<
-          _$ChangeAmountPaidGiftCardEventImpl>
-      get copyWith => __$$ChangeAmountPaidGiftCardEventImplCopyWithImpl<
-          _$ChangeAmountPaidGiftCardEventImpl>(this, _$identity);
+  _$$ChangeAmountPaidPlasticGiftCardEventImplCopyWith<
+          _$ChangeAmountPaidPlasticGiftCardEventImpl>
+      get copyWith => __$$ChangeAmountPaidPlasticGiftCardEventImplCopyWithImpl<
+          _$ChangeAmountPaidPlasticGiftCardEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -709,7 +742,8 @@ class _$ChangeAmountPaidGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -720,7 +754,7 @@ class _$ChangeAmountPaidGiftCardEventImpl
     required TResult Function(PaymentItemDataModel typePay) changePaymentType,
     required TResult Function(CatalogGiftCardRequest request) createOrder,
   }) {
-    return changeAmountPaid(amountPaid);
+    return changeAmountPaidPlasticCard(amountPaid);
   }
 
   @override
@@ -730,7 +764,8 @@ class _$ChangeAmountPaidGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -741,7 +776,7 @@ class _$ChangeAmountPaidGiftCardEventImpl
     TResult? Function(PaymentItemDataModel typePay)? changePaymentType,
     TResult? Function(CatalogGiftCardRequest request)? createOrder,
   }) {
-    return changeAmountPaid?.call(amountPaid);
+    return changeAmountPaidPlasticCard?.call(amountPaid);
   }
 
   @override
@@ -751,7 +786,8 @@ class _$ChangeAmountPaidGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -763,8 +799,8 @@ class _$ChangeAmountPaidGiftCardEventImpl
     TResult Function(CatalogGiftCardRequest request)? createOrder,
     required TResult orElse(),
   }) {
-    if (changeAmountPaid != null) {
-      return changeAmountPaid(amountPaid);
+    if (changeAmountPaidPlasticCard != null) {
+      return changeAmountPaidPlasticCard(amountPaid);
     }
     return orElse();
   }
@@ -775,8 +811,10 @@ class _$ChangeAmountPaidGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -791,7 +829,7 @@ class _$ChangeAmountPaidGiftCardEventImpl
         changePaymentType,
     required TResult Function(CreateOrderGiftCardEvent value) createOrder,
   }) {
-    return changeAmountPaid(this);
+    return changeAmountPaidPlasticCard(this);
   }
 
   @override
@@ -800,7 +838,10 @@ class _$ChangeAmountPaidGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -814,7 +855,7 @@ class _$ChangeAmountPaidGiftCardEventImpl
     TResult? Function(ChangePaymentTypeGiftCardEvent value)? changePaymentType,
     TResult? Function(CreateOrderGiftCardEvent value)? createOrder,
   }) {
-    return changeAmountPaid?.call(this);
+    return changeAmountPaidPlasticCard?.call(this);
   }
 
   @override
@@ -822,7 +863,10 @@ class _$ChangeAmountPaidGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -836,24 +880,264 @@ class _$ChangeAmountPaidGiftCardEventImpl
     TResult Function(CreateOrderGiftCardEvent value)? createOrder,
     required TResult orElse(),
   }) {
-    if (changeAmountPaid != null) {
-      return changeAmountPaid(this);
+    if (changeAmountPaidPlasticCard != null) {
+      return changeAmountPaidPlasticCard(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangeAmountPaidGiftCardEvent implements GiftCardEvent {
-  const factory ChangeAmountPaidGiftCardEvent({required final int amountPaid}) =
-      _$ChangeAmountPaidGiftCardEventImpl;
+abstract class ChangeAmountPaidPlasticGiftCardEvent implements GiftCardEvent {
+  const factory ChangeAmountPaidPlasticGiftCardEvent(
+          {required final int amountPaid}) =
+      _$ChangeAmountPaidPlasticGiftCardEventImpl;
 
   int get amountPaid;
 
   /// Create a copy of GiftCardEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChangeAmountPaidGiftCardEventImplCopyWith<
-          _$ChangeAmountPaidGiftCardEventImpl>
+  _$$ChangeAmountPaidPlasticGiftCardEventImplCopyWith<
+          _$ChangeAmountPaidPlasticGiftCardEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeAmountPaidVirtualGiftCardEventImplCopyWith<$Res> {
+  factory _$$ChangeAmountPaidVirtualGiftCardEventImplCopyWith(
+          _$ChangeAmountPaidVirtualGiftCardEventImpl value,
+          $Res Function(_$ChangeAmountPaidVirtualGiftCardEventImpl) then) =
+      __$$ChangeAmountPaidVirtualGiftCardEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int amountPaid});
+}
+
+/// @nodoc
+class __$$ChangeAmountPaidVirtualGiftCardEventImplCopyWithImpl<$Res>
+    extends _$GiftCardEventCopyWithImpl<$Res,
+        _$ChangeAmountPaidVirtualGiftCardEventImpl>
+    implements _$$ChangeAmountPaidVirtualGiftCardEventImplCopyWith<$Res> {
+  __$$ChangeAmountPaidVirtualGiftCardEventImplCopyWithImpl(
+      _$ChangeAmountPaidVirtualGiftCardEventImpl _value,
+      $Res Function(_$ChangeAmountPaidVirtualGiftCardEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? amountPaid = null,
+  }) {
+    return _then(_$ChangeAmountPaidVirtualGiftCardEventImpl(
+      amountPaid: null == amountPaid
+          ? _value.amountPaid
+          : amountPaid // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeAmountPaidVirtualGiftCardEventImpl
+    implements ChangeAmountPaidVirtualGiftCardEvent {
+  const _$ChangeAmountPaidVirtualGiftCardEventImpl({required this.amountPaid});
+
+  @override
+  final int amountPaid;
+
+  @override
+  String toString() {
+    return 'GiftCardEvent.changeAmountPaidVirtualCard(amountPaid: $amountPaid)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeAmountPaidVirtualGiftCardEventImpl &&
+            (identical(other.amountPaid, amountPaid) ||
+                other.amountPaid == amountPaid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, amountPaid);
+
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeAmountPaidVirtualGiftCardEventImplCopyWith<
+          _$ChangeAmountPaidVirtualGiftCardEventImpl>
+      get copyWith => __$$ChangeAmountPaidVirtualGiftCardEventImplCopyWithImpl<
+          _$ChangeAmountPaidVirtualGiftCardEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            bool isNotification, String searchQuery, String? messageId)
+        preloadData,
+    required TResult Function(String typeGiftCard) changeTypeGiftCard,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
+    required TResult Function(String receivingType) changeReceivingType,
+    required TResult Function(
+            BasketAddressDataModel addressDelivery, int delivery, String cityId)
+        addAddressDelivery,
+    required TResult Function(int index) selectAddressDelivery,
+    required TResult Function(String id) deleteAddressDelivery,
+    required TResult Function(String uidPickUpPoint) changeUidPickUpPoint,
+    required TResult Function(PaymentItemDataModel typePay) changePaymentType,
+    required TResult Function(CatalogGiftCardRequest request) createOrder,
+  }) {
+    return changeAmountPaidVirtualCard(amountPaid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            bool isNotification, String searchQuery, String? messageId)?
+        preloadData,
+    TResult? Function(String typeGiftCard)? changeTypeGiftCard,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
+    TResult? Function(String receivingType)? changeReceivingType,
+    TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
+            String cityId)?
+        addAddressDelivery,
+    TResult? Function(int index)? selectAddressDelivery,
+    TResult? Function(String id)? deleteAddressDelivery,
+    TResult? Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult? Function(PaymentItemDataModel typePay)? changePaymentType,
+    TResult? Function(CatalogGiftCardRequest request)? createOrder,
+  }) {
+    return changeAmountPaidVirtualCard?.call(amountPaid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            bool isNotification, String searchQuery, String? messageId)?
+        preloadData,
+    TResult Function(String typeGiftCard)? changeTypeGiftCard,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
+    TResult Function(String receivingType)? changeReceivingType,
+    TResult Function(BasketAddressDataModel addressDelivery, int delivery,
+            String cityId)?
+        addAddressDelivery,
+    TResult Function(int index)? selectAddressDelivery,
+    TResult Function(String id)? deleteAddressDelivery,
+    TResult Function(String uidPickUpPoint)? changeUidPickUpPoint,
+    TResult Function(PaymentItemDataModel typePay)? changePaymentType,
+    TResult Function(CatalogGiftCardRequest request)? createOrder,
+    required TResult orElse(),
+  }) {
+    if (changeAmountPaidVirtualCard != null) {
+      return changeAmountPaidVirtualCard(amountPaid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitGiftCardEvent value) preloadData,
+    required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
+        changeTypeGiftCard,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
+    required TResult Function(ChangeReceivingTypeGiftCardEvent value)
+        changeReceivingType,
+    required TResult Function(AddAddressDeliveryGiftCardEvent value)
+        addAddressDelivery,
+    required TResult Function(SelectAddressDeliveryGiftCardEvent value)
+        selectAddressDelivery,
+    required TResult Function(DeleteAddressDeliveryGiftCardEvent value)
+        deleteAddressDelivery,
+    required TResult Function(ChangeUidPickUpPointGiftCardEvent value)
+        changeUidPickUpPoint,
+    required TResult Function(ChangePaymentTypeGiftCardEvent value)
+        changePaymentType,
+    required TResult Function(CreateOrderGiftCardEvent value) createOrder,
+  }) {
+    return changeAmountPaidVirtualCard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitGiftCardEvent value)? preloadData,
+    TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
+        changeTypeGiftCard,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
+    TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
+        changeReceivingType,
+    TResult? Function(AddAddressDeliveryGiftCardEvent value)?
+        addAddressDelivery,
+    TResult? Function(SelectAddressDeliveryGiftCardEvent value)?
+        selectAddressDelivery,
+    TResult? Function(DeleteAddressDeliveryGiftCardEvent value)?
+        deleteAddressDelivery,
+    TResult? Function(ChangeUidPickUpPointGiftCardEvent value)?
+        changeUidPickUpPoint,
+    TResult? Function(ChangePaymentTypeGiftCardEvent value)? changePaymentType,
+    TResult? Function(CreateOrderGiftCardEvent value)? createOrder,
+  }) {
+    return changeAmountPaidVirtualCard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitGiftCardEvent value)? preloadData,
+    TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
+    TResult Function(ChangeReceivingTypeGiftCardEvent value)?
+        changeReceivingType,
+    TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
+    TResult Function(SelectAddressDeliveryGiftCardEvent value)?
+        selectAddressDelivery,
+    TResult Function(DeleteAddressDeliveryGiftCardEvent value)?
+        deleteAddressDelivery,
+    TResult Function(ChangeUidPickUpPointGiftCardEvent value)?
+        changeUidPickUpPoint,
+    TResult Function(ChangePaymentTypeGiftCardEvent value)? changePaymentType,
+    TResult Function(CreateOrderGiftCardEvent value)? createOrder,
+    required TResult orElse(),
+  }) {
+    if (changeAmountPaidVirtualCard != null) {
+      return changeAmountPaidVirtualCard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeAmountPaidVirtualGiftCardEvent implements GiftCardEvent {
+  const factory ChangeAmountPaidVirtualGiftCardEvent(
+          {required final int amountPaid}) =
+      _$ChangeAmountPaidVirtualGiftCardEventImpl;
+
+  int get amountPaid;
+
+  /// Create a copy of GiftCardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangeAmountPaidVirtualGiftCardEventImplCopyWith<
+          _$ChangeAmountPaidVirtualGiftCardEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -936,7 +1220,8 @@ class _$ChangeReceivingTypeGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -957,7 +1242,8 @@ class _$ChangeReceivingTypeGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -978,7 +1264,8 @@ class _$ChangeReceivingTypeGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1002,8 +1289,10 @@ class _$ChangeReceivingTypeGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -1027,7 +1316,10 @@ class _$ChangeReceivingTypeGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -1049,7 +1341,10 @@ class _$ChangeReceivingTypeGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -1186,7 +1481,8 @@ class _$AddAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -1207,7 +1503,8 @@ class _$AddAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1228,7 +1525,8 @@ class _$AddAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1252,8 +1550,10 @@ class _$AddAddressDeliveryGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -1277,7 +1577,10 @@ class _$AddAddressDeliveryGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -1299,7 +1602,10 @@ class _$AddAddressDeliveryGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -1416,7 +1722,8 @@ class _$SelectAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -1437,7 +1744,8 @@ class _$SelectAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1458,7 +1766,8 @@ class _$SelectAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1482,8 +1791,10 @@ class _$SelectAddressDeliveryGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -1507,7 +1818,10 @@ class _$SelectAddressDeliveryGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -1529,7 +1843,10 @@ class _$SelectAddressDeliveryGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -1642,7 +1959,8 @@ class _$DeleteAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -1663,7 +1981,8 @@ class _$DeleteAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1684,7 +2003,8 @@ class _$DeleteAddressDeliveryGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1708,8 +2028,10 @@ class _$DeleteAddressDeliveryGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -1733,7 +2055,10 @@ class _$DeleteAddressDeliveryGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -1755,7 +2080,10 @@ class _$DeleteAddressDeliveryGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -1869,7 +2197,8 @@ class _$ChangeUidPickUpPointGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -1890,7 +2219,8 @@ class _$ChangeUidPickUpPointGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1911,7 +2241,8 @@ class _$ChangeUidPickUpPointGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -1935,8 +2266,10 @@ class _$ChangeUidPickUpPointGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -1960,7 +2293,10 @@ class _$ChangeUidPickUpPointGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -1982,7 +2318,10 @@ class _$ChangeUidPickUpPointGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -2108,7 +2447,8 @@ class _$ChangePaymentTypeGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -2129,7 +2469,8 @@ class _$ChangePaymentTypeGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -2150,7 +2491,8 @@ class _$ChangePaymentTypeGiftCardEventImpl
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -2174,8 +2516,10 @@ class _$ChangePaymentTypeGiftCardEventImpl
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -2199,7 +2543,10 @@ class _$ChangePaymentTypeGiftCardEventImpl
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -2221,7 +2568,10 @@ class _$ChangePaymentTypeGiftCardEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,
@@ -2344,7 +2694,8 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)
         preloadData,
     required TResult Function(String typeGiftCard) changeTypeGiftCard,
-    required TResult Function(int amountPaid) changeAmountPaid,
+    required TResult Function(int amountPaid) changeAmountPaidPlasticCard,
+    required TResult Function(int amountPaid) changeAmountPaidVirtualCard,
     required TResult Function(String receivingType) changeReceivingType,
     required TResult Function(
             BasketAddressDataModel addressDelivery, int delivery, String cityId)
@@ -2365,7 +2716,8 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult? Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult? Function(int amountPaid)? changeAmountPaid,
+    TResult? Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult? Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult? Function(String receivingType)? changeReceivingType,
     TResult? Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -2386,7 +2738,8 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
             bool isNotification, String searchQuery, String? messageId)?
         preloadData,
     TResult Function(String typeGiftCard)? changeTypeGiftCard,
-    TResult Function(int amountPaid)? changeAmountPaid,
+    TResult Function(int amountPaid)? changeAmountPaidPlasticCard,
+    TResult Function(int amountPaid)? changeAmountPaidVirtualCard,
     TResult Function(String receivingType)? changeReceivingType,
     TResult Function(BasketAddressDataModel addressDelivery, int delivery,
             String cityId)?
@@ -2410,8 +2763,10 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
     required TResult Function(InitGiftCardEvent value) preloadData,
     required TResult Function(ChangeTypeGiftCardGiftCardEvent value)
         changeTypeGiftCard,
-    required TResult Function(ChangeAmountPaidGiftCardEvent value)
-        changeAmountPaid,
+    required TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)
+        changeAmountPaidPlasticCard,
+    required TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)
+        changeAmountPaidVirtualCard,
     required TResult Function(ChangeReceivingTypeGiftCardEvent value)
         changeReceivingType,
     required TResult Function(AddAddressDeliveryGiftCardEvent value)
@@ -2435,7 +2790,10 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
     TResult? Function(InitGiftCardEvent value)? preloadData,
     TResult? Function(ChangeTypeGiftCardGiftCardEvent value)?
         changeTypeGiftCard,
-    TResult? Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult? Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult? Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult? Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult? Function(AddAddressDeliveryGiftCardEvent value)?
@@ -2457,7 +2815,10 @@ class _$CreateOrderGiftCardEventImpl implements CreateOrderGiftCardEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitGiftCardEvent value)? preloadData,
     TResult Function(ChangeTypeGiftCardGiftCardEvent value)? changeTypeGiftCard,
-    TResult Function(ChangeAmountPaidGiftCardEvent value)? changeAmountPaid,
+    TResult Function(ChangeAmountPaidPlasticGiftCardEvent value)?
+        changeAmountPaidPlasticCard,
+    TResult Function(ChangeAmountPaidVirtualGiftCardEvent value)?
+        changeAmountPaidVirtualCard,
     TResult Function(ChangeReceivingTypeGiftCardEvent value)?
         changeReceivingType,
     TResult Function(AddAddressDeliveryGiftCardEvent value)? addAddressDelivery,

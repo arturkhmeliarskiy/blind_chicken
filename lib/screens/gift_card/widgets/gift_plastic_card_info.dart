@@ -32,6 +32,7 @@ class GiftPlasticCardInfo extends StatefulWidget {
     required this.isUponReceipt,
     required this.boutique,
     required this.boutiques,
+    required this.sum,
   });
 
   final ValueChanged<PaymentItemDataModel> onTypePay;
@@ -52,6 +53,7 @@ class GiftPlasticCardInfo extends StatefulWidget {
   final bool isUponReceipt;
   final BoutiqueDataModel boutique;
   final BoutiquesDataModel boutiques;
+  final int sum;
 
   @override
   State<GiftPlasticCardInfo> createState() => _GiftPlasticCardInfoState();
@@ -69,7 +71,7 @@ class _GiftPlasticCardInfoState extends State<GiftPlasticCardInfo> {
     _boutique = widget.boutique;
     _receivingType = widget.receivingType;
     _selectedItem = widget.payments[0];
-    _sum = TextEditingController(text: '50000');
+    _sum = TextEditingController(text: widget.sum.toString());
     super.initState();
   }
 

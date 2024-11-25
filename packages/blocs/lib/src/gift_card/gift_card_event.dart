@@ -10,9 +10,12 @@ class GiftCardEvent with _$GiftCardEvent {
   const factory GiftCardEvent.changeTypeGiftCard({
     required String typeGiftCard,
   }) = ChangeTypeGiftCardGiftCardEvent;
-  const factory GiftCardEvent.changeAmountPaid({
+  const factory GiftCardEvent.changeAmountPaidPlasticCard({
     required int amountPaid,
-  }) = ChangeAmountPaidGiftCardEvent;
+  }) = ChangeAmountPaidPlasticGiftCardEvent;
+  const factory GiftCardEvent.changeAmountPaidVirtualCard({
+    required int amountPaid,
+  }) = ChangeAmountPaidVirtualGiftCardEvent;
   const factory GiftCardEvent.changeReceivingType({
     required String receivingType,
   }) = ChangeReceivingTypeGiftCardEvent;

@@ -97,29 +97,32 @@ class _NewsTabInfoState extends State<NewsTabInfo> {
                               return VisibilityDetector(
                                 key: Key(index.toString()),
                                 onVisibilityChanged: (visibilityInfo) {
-                                  context.read<NewsBloc>().add(
-                                        NewsEvent.updateReadNews(
-                                          id: initState.news.list[index].id,
-                                          typeNews: 'news',
-                                        ),
-                                      );
-                                  log(index.toString());
+                                  if (visibilityInfo.visibleFraction > 0.0) {
+                                    context.read<NewsBloc>().add(
+                                          NewsEvent.updateReadNews(
+                                            id: initState.news.list[index].id,
+                                            typeNews: 'news',
+                                          ),
+                                        );
+                                    log(index.toString());
+                                  }
+
                                   final updateData = GetIt.I.get<UpdateDataService>();
                                   if (initState.news.list[index].typeMedia != 'video' &&
                                       initState.news.list[index].typeVideo != 'original' &&
                                       updateData.videoController.value.isInitialized &&
                                       updateData.videoController.value.duration != Duration.zero) {
-                                    context.read<NewsBloc>().add(
-                                          NewsEvent.checkiDisabledVideo(
-                                            isDisabledVideo: true,
-                                          ),
-                                        );
+                                    // context.read<NewsBloc>().add(
+                                    //       NewsEvent.checkiDisabledVideo(
+                                    //         isDisabledVideo: true,
+                                    //       ),
+                                    //     );
                                   } else {
-                                    context.read<NewsBloc>().add(
-                                          NewsEvent.checkiDisabledVideo(
-                                            isDisabledVideo: false,
-                                          ),
-                                        );
+                                    // context.read<NewsBloc>().add(
+                                    //       NewsEvent.checkiDisabledVideo(
+                                    //         isDisabledVideo: false,
+                                    //       ),
+                                    //     );
                                   }
                                 },
                                 child: NewsItemTabInfo(

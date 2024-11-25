@@ -103,30 +103,104 @@ class HandlerLinksNews {
         );
         AppMetrica.reportEvent('$titleAppMetrica в описание товара');
       } else if (url.contains('brands')) {
-        context.read<BrandBloc>().add(
-              BrandEvent.getBrands(
-                selectTypePeople: 0,
-                titleScreen: 'бренды',
-              ),
-            );
-        context.navigateTo(
-          DashboardRoute(
-            children: [
-              HomeAutoRouterRoute(
-                children: [
-                  BrandsRoute(
-                    lastPath: titleScreen,
-                    messageId: messageId,
-                    idNews: idNews,
-                    newsInfo: newsInfo,
-                    newsMediaInfo: newsMediaInfo,
-                    newsNotificationInfo: newsNotificationInfo,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
+        if (url == 'https://slepayakurica.ru/brands/') {
+          context.read<BrandBloc>().add(
+                BrandEvent.getBrands(
+                  selectTypePeople: 0,
+                  titleScreen: 'бренды',
+                ),
+              );
+          navigateToBrandsScreen(
+            titleScreen: titleScreen,
+            messageId: messageId ?? '',
+            idNews: idNews ?? '',
+            context: context,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+          );
+        } else if (url.contains('zhenshchinam')) {
+          context.read<BrandBloc>().add(
+                BrandEvent.getBrands(
+                  selectTypePeople: 1,
+                  titleScreen: 'бренды',
+                ),
+              );
+          navigateToBrandsScreen(
+            titleScreen: titleScreen,
+            messageId: messageId ?? '',
+            idNews: idNews ?? '',
+            context: context,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+          );
+        } else if (url.contains('muzhchinam')) {
+          context.read<BrandBloc>().add(
+                BrandEvent.getBrands(
+                  selectTypePeople: 2,
+                  titleScreen: 'бренды',
+                ),
+              );
+          navigateToBrandsScreen(
+            titleScreen: titleScreen,
+            messageId: messageId ?? '',
+            idNews: idNews ?? '',
+            context: context,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+          );
+        } else if (url.contains('detyam')) {
+          context.read<BrandBloc>().add(
+                BrandEvent.getBrands(
+                  selectTypePeople: 3,
+                  titleScreen: 'бренды',
+                ),
+              );
+          navigateToBrandsScreen(
+            titleScreen: titleScreen,
+            messageId: messageId ?? '',
+            idNews: idNews ?? '',
+            context: context,
+            newsInfo: newsInfo,
+            newsMediaInfo: newsMediaInfo,
+            newsNotificationInfo: newsNotificationInfo,
+          );
+        } else {
+          final path = url.replaceAll('https://slepayakurica.ru', '');
+          final filterService = GetIt.I.get<FilterService>();
+          final info = filterService.converterNotificationInfo(
+            value: path,
+          );
+          context.read<CatalogBloc>().add(
+                CatalogEvent.getInfoProductsPushNotification(
+                  path: info.url,
+                  sort: 'n',
+                  filterNotifcation: info,
+                ),
+              );
+          context.navigateTo(
+            DashboardRoute(
+              children: [
+                HomeAutoRouterRoute(
+                  children: [
+                    CatalogRoute(
+                      title: '',
+                      url: path,
+                      lastPath: titleScreen,
+                      messageId: messageId,
+                      idNews: idNews,
+                      newsInfo: newsInfo,
+                      newsMediaInfo: newsMediaInfo,
+                      newsNotificationInfo: newsNotificationInfo,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          );
+        }
         AppMetrica.reportEvent('$titleAppMetrica в бренды');
       } else if (url.contains('servisnaya-karta')) {
         context.read<CatalogBloc>().add(
@@ -227,5 +301,34 @@ class HandlerLinksNews {
       );
     }
     return true;
+  }
+
+  static navigateToBrandsScreen({
+    required String titleScreen,
+    NewsInfoItemDataModel? newsInfo,
+    MediaInfoItemDataModel? newsMediaInfo,
+    NotificationInfoItemDataModel? newsNotificationInfo,
+    String? messageId,
+    String? idNews,
+    required BuildContext context,
+  }) {
+    context.navigateTo(
+      DashboardRoute(
+        children: [
+          HomeAutoRouterRoute(
+            children: [
+              BrandsRoute(
+                lastPath: titleScreen,
+                messageId: messageId,
+                idNews: idNews,
+                newsInfo: newsInfo,
+                newsMediaInfo: newsMediaInfo,
+                newsNotificationInfo: newsNotificationInfo,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

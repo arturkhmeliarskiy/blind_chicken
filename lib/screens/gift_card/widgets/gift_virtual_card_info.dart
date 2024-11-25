@@ -10,11 +10,13 @@ class GiftVirtualCardInfo extends StatefulWidget {
     required this.selectedColor,
     required this.onSelectedColor,
     required this.onSum,
+    required this.sum,
   });
 
   final GiftCardModel selectedColor;
   final ValueChanged<GiftCardModel> onSelectedColor;
   final ValueChanged<String> onSum;
+  final int sum;
 
   @override
   State<GiftVirtualCardInfo> createState() => _GiftVirtualCardInfoState();
@@ -25,7 +27,7 @@ class _GiftVirtualCardInfoState extends State<GiftVirtualCardInfo> {
 
   @override
   void initState() {
-    _sum = TextEditingController(text: '50000');
+    _sum = TextEditingController(text: widget.sum.toString());
     super.initState();
   }
 

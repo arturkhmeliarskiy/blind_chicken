@@ -38,7 +38,8 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
         preloadData: (event) => _preloadData(event, emit),
         createOrder: (event) => _createOrder(event, emit),
         changeTypeGiftCard: (event) => _changeTypeGiftCard(event, emit),
-        changeAmountPaid: (event) => _changeAmountPaid(event, emit),
+        changeAmountPaidVirtualCard: (event) => _changeAmountPaidVirtualCard(event, emit),
+        changeAmountPaidPlasticCard: (event) => _changeAmountPaidPlasticCard(event, emit),
         changeReceivingType: (event) => _changeReceivingType(event, emit),
         addAddressDelivery: (event) => _addAddressDelivery(event, emit),
         selectAddressDelivery: (event) => _selectAddressDelivery(event, emit),
@@ -193,24 +194,41 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
     });
   }
 
-  Future<void> _changeAmountPaid(
-    ChangeAmountPaidGiftCardEvent event,
+  Future<void> _changeAmountPaidVirtualCard(
+    ChangeAmountPaidVirtualGiftCardEvent event,
+    Emitter<GiftCardState> emit,
+  ) async {
+    await state.mapOrNull(preloadDataCompleted: (initState) async {
+      emit(
+        initState.copyWith(
+          amountPaid: event.amountPaid,
+        ),
+      );
+    });
+  }
+
+  Future<void> _changeAmountPaidPlasticCard(
+    ChangeAmountPaidPlasticGiftCardEvent event,
     Emitter<GiftCardState> emit,
   ) async {
     await state.mapOrNull(preloadDataCompleted: (initState) async {
       String zip = '';
       String cityId = '';
+      int delivery = 0;
 
-      zip = initState.deliveryInfo?.address[initState.selectIndexAddress ?? 0].zip ?? '';
-      cityId = initState.deliveryInfo?.address[initState.selectIndexAddress ?? 0].cityId ?? '';
+      if (initState.deliveryInfo?.address.isNotEmpty ?? false) {
+        zip = initState.deliveryInfo?.address[initState.selectIndexAddress ?? 0].zip ?? '';
+        cityId = initState.deliveryInfo?.address[initState.selectIndexAddress ?? 0].cityId ?? '';
 
-      CalculationCostDeliveryDataModel calculationCostDelivery =
-          await _locationRepository.calculationCostDelivery(
-        zipcode: zip,
-        sum: event.amountPaid,
-        cityId: cityId,
-      );
-      int delivery = calculationCostDelivery.price;
+        CalculationCostDeliveryDataModel calculationCostDelivery =
+            await _locationRepository.calculationCostDelivery(
+          zipcode: zip,
+          sum: event.amountPaid,
+          cityId: cityId,
+        );
+        delivery = calculationCostDelivery.price;
+      }
+
       emit(
         initState.copyWith(
           amountPaid: event.amountPaid,

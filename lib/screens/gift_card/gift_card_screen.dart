@@ -348,6 +348,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                         if (initState.typeGiftCard == 'Виртуальная')
                                           GiftVirtualCardInfo(
                                             selectedColor: _selectedColor,
+                                            sum: initState.amountPaid,
                                             onSelectedColor: (value) {
                                               setState(() {
                                                 _selectedColor = value;
@@ -355,7 +356,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                             },
                                             onSum: (value) {
                                               context.read<GiftCardBloc>().add(
-                                                    GiftCardEvent.changeAmountPaid(
+                                                    GiftCardEvent.changeAmountPaidVirtualCard(
                                                       amountPaid: int.parse(value),
                                                     ),
                                                   );
@@ -364,6 +365,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                         else
                                           GiftPlasticCardInfo(
                                             isAuth: initState.isAuth,
+                                            sum: initState.amountPaid,
                                             selectIndexAddres: initState.selectIndexAddress ?? 0,
                                             deleteIndexAddress: initState.deleteIndexAddress ?? 0,
                                             listAddress: initState.deliveryInfo?.address ?? [],
@@ -389,7 +391,7 @@ class _GiftCardScreenState extends State<GiftCardScreen> {
                                             },
                                             onSum: (value) {
                                               context.read<GiftCardBloc>().add(
-                                                    GiftCardEvent.changeAmountPaid(
+                                                    GiftCardEvent.changeAmountPaidPlasticCard(
                                                       amountPaid: int.parse(value),
                                                     ),
                                                   );
