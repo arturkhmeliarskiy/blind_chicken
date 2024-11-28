@@ -42,6 +42,7 @@ class ShoppingCartState with _$ShoppingCartState {
     required String receivingType,
     required BoutiquesDataModel boutiques,
     required bool isUponReceipt,
+    required bool isPayInstallmentsSberbank,
     required List<BasketSertDeliveryRequest> listGiftCard,
     required String address,
     required BasketAddressDataModel addressDelivery,

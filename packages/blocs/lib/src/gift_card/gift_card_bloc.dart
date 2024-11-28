@@ -22,6 +22,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
   final SharedPreferencesService _sharedPreferencesService;
   final StoreVersionAppRepository _storeVersionAppRepository;
   final AppMetricaEcommerceService _appMetricaEcommerceService;
+  final BasketRepository _basketRepository;
 
   GiftCardBloc(
     this._catalogRepository,
@@ -32,6 +33,7 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
     this._sharedPreferencesService,
     this._storeVersionAppRepository,
     this._appMetricaEcommerceService,
+    this._basketRepository,
   ) : super(const GiftCardState.init()) {
     on<GiftCardEvent>(
       (event, emit) => event.map(
@@ -85,6 +87,8 @@ class GiftCardBloc extends Bloc<GiftCardEvent, GiftCardState> {
     if (isAuth) {
       boutique = _updateDataService.boutiques
           .firstWhere((item) => item.uidStore == (deliveryInfo?.pick.id ?? ''));
+      final paymentsInfo = await _basketRepository.getPaymentMethods();
+      _updateDataService.payments = paymentsInfo.payments;
     }
 
     if (deliveryInfo.deliveryId == '2') {

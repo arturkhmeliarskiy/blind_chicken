@@ -13594,6 +13594,7 @@ mixin _$ShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -13677,6 +13678,7 @@ mixin _$ShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -13760,6 +13762,7 @@ mixin _$ShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -13967,6 +13970,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14053,6 +14057,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14139,6 +14144,7 @@ class _$InitShoppingCartStateImpl implements InitShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14347,6 +14353,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14433,6 +14440,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14519,6 +14527,7 @@ class _$LoadingShoppingCartStateImpl implements LoadingShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14728,6 +14737,7 @@ class _$LoadingErrorButtonShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14814,6 +14824,7 @@ class _$LoadingErrorButtonShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -14900,6 +14911,7 @@ class _$LoadingErrorButtonShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -15190,6 +15202,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -15276,6 +15289,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -15363,6 +15377,7 @@ class _$ErrorShoppingCartStateImpl implements ErrorShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -15617,6 +15632,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -15703,6 +15719,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -15789,6 +15806,7 @@ class _$CreateOrderSuccessfullyShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16010,6 +16028,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16096,6 +16115,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16182,6 +16202,7 @@ class _$OpenSoppingCartShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16461,6 +16482,7 @@ class _$GetSizeProductShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16547,6 +16569,7 @@ class _$GetSizeProductShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16633,6 +16656,7 @@ class _$GetSizeProductShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16883,6 +16907,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -16969,6 +16994,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -17055,6 +17081,7 @@ class _$AddProductShoppingCartStateImpl implements AddProductShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -17273,6 +17300,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -17359,6 +17387,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -17445,6 +17474,7 @@ class _$OpenShowDialogShoppingCartStateImpl
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -17600,6 +17630,7 @@ abstract class _$$ProductsShoppingCartStateImplCopyWith<$Res> {
       String receivingType,
       BoutiquesDataModel boutiques,
       bool isUponReceipt,
+      bool isPayInstallmentsSberbank,
       List<BasketSertDeliveryRequest> listGiftCard,
       String address,
       BasketAddressDataModel addressDelivery,
@@ -17692,6 +17723,7 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
     Object? receivingType = null,
     Object? boutiques = null,
     Object? isUponReceipt = null,
+    Object? isPayInstallmentsSberbank = null,
     Object? listGiftCard = null,
     Object? address = null,
     Object? addressDelivery = null,
@@ -17808,6 +17840,10 @@ class __$$ProductsShoppingCartStateImplCopyWithImpl<$Res>
       isUponReceipt: null == isUponReceipt
           ? _value.isUponReceipt
           : isUponReceipt // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPayInstallmentsSberbank: null == isPayInstallmentsSberbank
+          ? _value.isPayInstallmentsSberbank
+          : isPayInstallmentsSberbank // ignore: cast_nullable_to_non_nullable
               as bool,
       listGiftCard: null == listGiftCard
           ? _value._listGiftCard
@@ -18158,6 +18194,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
       required this.receivingType,
       required this.boutiques,
       required this.isUponReceipt,
+      required this.isPayInstallmentsSberbank,
       required final List<BasketSertDeliveryRequest> listGiftCard,
       required this.address,
       required this.addressDelivery,
@@ -18256,6 +18293,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
   final BoutiquesDataModel boutiques;
   @override
   final bool isUponReceipt;
+  @override
+  final bool isPayInstallmentsSberbank;
   final List<BasketSertDeliveryRequest> _listGiftCard;
   @override
   List<BasketSertDeliveryRequest> get listGiftCard {
@@ -18415,7 +18454,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
 
   @override
   String toString() {
-    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isLoadAddProductToShopingCart: $isLoadAddProductToShopingCart, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage, typeError: $typeError, isError: $isError, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct, deliveryInfo: $deliveryInfo, boutique: $boutique, selectIndexAddress: $selectIndexAddress, deleteIndexAddress: $deleteIndexAddress, isLoadDeleteAddress: $isLoadDeleteAddress)';
+    return 'ShoppingCartState.productsShoppingCart(shoppingCart: $shoppingCart, payments: $payments, promoCodeMessage: $promoCodeMessage, numberProducts: $numberProducts, amountPaid: $amountPaid, giftCards: $giftCards, bonuses: $bonuses, isLoadPaymentBonus: $isLoadPaymentBonus, isLoadPaymentGift: $isLoadPaymentGift, isLoadPaymentPromoCode: $isLoadPaymentPromoCode, isActivePromoCode: $isActivePromoCode, isLoadCreateOrder: $isLoadCreateOrder, promoCode: $promoCode, pickup: $pickup, receivingType: $receivingType, boutiques: $boutiques, isUponReceipt: $isUponReceipt, isPayInstallmentsSberbank: $isPayInstallmentsSberbank, listGiftCard: $listGiftCard, address: $address, addressDelivery: $addressDelivery, uidPickUpPoint: $uidPickUpPoint, paymentId: $paymentId, typePay: $typePay, titlePromocode: $titlePromocode, delivery: $delivery, creatOrderMessage: $creatOrderMessage, paymentBonus: $paymentBonus, paymentGift: $paymentGift, isRemovePromoCode: $isRemovePromoCode, favouritesProducts: $favouritesProducts, listProductsCode: $listProductsCode, listProdcutsStyle: $listProdcutsStyle, listProdcutsAlso: $listProdcutsAlso, listProdcutsBrand: $listProdcutsBrand, listProdcutsComplect: $listProdcutsComplect, listSize: $listSize, favouritesProductsId: $favouritesProductsId, isAuth: $isAuth, isLoadGetSizeProduct: $isLoadGetSizeProduct, isLoadAddProductToShopingCart: $isLoadAddProductToShopingCart, isBlocBackBotton: $isBlocBackBotton, codeProduct: $codeProduct, selectSizeProduct: $selectSizeProduct, isShoppingCart: $isShoppingCart, isShoppingCartDetailsProduct: $isShoppingCartDetailsProduct, isAuthModel: $isAuthModel, favouritesProductsInfo: $favouritesProductsInfo, detailsProduct: $detailsProduct, itemInfo: $itemInfo, product: $product, indexItem: $indexItem, isLoadErrorButton: $isLoadErrorButton, errorMessage: $errorMessage, typeError: $typeError, isError: $isError, titleScreen: $titleScreen, typeAddProductToShoppingCart: $typeAddProductToShoppingCart, identifierAddProductToShoppingCart: $identifierAddProductToShoppingCart, isShopGetSizeProduct: $isShopGetSizeProduct, deliveryInfo: $deliveryInfo, boutique: $boutique, selectIndexAddress: $selectIndexAddress, deleteIndexAddress: $deleteIndexAddress, isLoadDeleteAddress: $isLoadDeleteAddress)';
   }
 
   @override
@@ -18454,6 +18493,8 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 other.boutiques == boutiques) &&
             (identical(other.isUponReceipt, isUponReceipt) ||
                 other.isUponReceipt == isUponReceipt) &&
+            (identical(other.isPayInstallmentsSberbank, isPayInstallmentsSberbank) ||
+                other.isPayInstallmentsSberbank == isPayInstallmentsSberbank) &&
             const DeepCollectionEquality()
                 .equals(other._listGiftCard, _listGiftCard) &&
             (identical(other.address, address) || other.address == address) &&
@@ -18501,17 +18542,11 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
                 other.isBlocBackBotton == isBlocBackBotton) &&
             (identical(other.codeProduct, codeProduct) ||
                 other.codeProduct == codeProduct) &&
-            (identical(other.selectSizeProduct, selectSizeProduct) ||
-                other.selectSizeProduct == selectSizeProduct) &&
-            (identical(other.isShoppingCart, isShoppingCart) ||
-                other.isShoppingCart == isShoppingCart) &&
-            (identical(other.isShoppingCartDetailsProduct, isShoppingCartDetailsProduct) ||
-                other.isShoppingCartDetailsProduct ==
-                    isShoppingCartDetailsProduct) &&
-            (identical(other.isAuthModel, isAuthModel) ||
-                other.isAuthModel == isAuthModel) &&
-            (identical(other.favouritesProductsInfo, favouritesProductsInfo) ||
-                other.favouritesProductsInfo == favouritesProductsInfo) &&
+            (identical(other.selectSizeProduct, selectSizeProduct) || other.selectSizeProduct == selectSizeProduct) &&
+            (identical(other.isShoppingCart, isShoppingCart) || other.isShoppingCart == isShoppingCart) &&
+            (identical(other.isShoppingCartDetailsProduct, isShoppingCartDetailsProduct) || other.isShoppingCartDetailsProduct == isShoppingCartDetailsProduct) &&
+            (identical(other.isAuthModel, isAuthModel) || other.isAuthModel == isAuthModel) &&
+            (identical(other.favouritesProductsInfo, favouritesProductsInfo) || other.favouritesProductsInfo == favouritesProductsInfo) &&
             (identical(other.detailsProduct, detailsProduct) || other.detailsProduct == detailsProduct) &&
             (identical(other.itemInfo, itemInfo) || other.itemInfo == itemInfo) &&
             (identical(other.product, product) || other.product == product) &&
@@ -18551,6 +18586,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         receivingType,
         boutiques,
         isUponReceipt,
+        isPayInstallmentsSberbank,
         const DeepCollectionEquality().hash(_listGiftCard),
         address,
         addressDelivery,
@@ -18646,6 +18682,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -18713,6 +18750,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         receivingType,
         boutiques,
         isUponReceipt,
+        isPayInstallmentsSberbank,
         listGiftCard,
         address,
         addressDelivery,
@@ -18796,6 +18834,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -18863,6 +18902,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
         receivingType,
         boutiques,
         isUponReceipt,
+        isPayInstallmentsSberbank,
         listGiftCard,
         address,
         addressDelivery,
@@ -18946,6 +18986,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
             String receivingType,
             BoutiquesDataModel boutiques,
             bool isUponReceipt,
+            bool isPayInstallmentsSberbank,
             List<BasketSertDeliveryRequest> listGiftCard,
             String address,
             BasketAddressDataModel addressDelivery,
@@ -19015,6 +19056,7 @@ class _$ProductsShoppingCartStateImpl implements ProductsShoppingCartState {
           receivingType,
           boutiques,
           isUponReceipt,
+          isPayInstallmentsSberbank,
           listGiftCard,
           address,
           addressDelivery,
@@ -19154,6 +19196,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
       required final String receivingType,
       required final BoutiquesDataModel boutiques,
       required final bool isUponReceipt,
+      required final bool isPayInstallmentsSberbank,
       required final List<BasketSertDeliveryRequest> listGiftCard,
       required final String address,
       required final BasketAddressDataModel addressDelivery,
@@ -19219,6 +19262,7 @@ abstract class ProductsShoppingCartState implements ShoppingCartState {
   String get receivingType;
   BoutiquesDataModel get boutiques;
   bool get isUponReceipt;
+  bool get isPayInstallmentsSberbank;
   List<BasketSertDeliveryRequest> get listGiftCard;
   String get address;
   BasketAddressDataModel get addressDelivery;

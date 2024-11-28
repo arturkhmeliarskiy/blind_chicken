@@ -12,6 +12,7 @@ _$BasketFullInfoResponseImpl _$$BasketFullInfoResponseImplFromJson(
       r: json['r'] as String?,
       e: json['e'] as String?,
       errorMessage: json['errorMessage'] as String?,
+      info: json['info'] as String?,
       promoDescription: json['promo_description'] as String?,
       basket: (json['basket'] as List<dynamic>?)
           ?.map((e) =>
@@ -25,6 +26,7 @@ Map<String, dynamic> _$$BasketFullInfoResponseImplToJson(
       'r': instance.r,
       'e': instance.e,
       'errorMessage': instance.errorMessage,
+      'info': instance.info,
       'promo_description': instance.promoDescription,
       'basket': instance.basket,
     };

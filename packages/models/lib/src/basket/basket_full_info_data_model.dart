@@ -11,6 +11,7 @@ class BasketFullInfoDataModel with _$BasketFullInfoDataModel {
     required String e,
     required String errorMessage,
     required String promoDescription,
+    required String info,
     required List<BasketFullInfoItemDataModel> basket,
   }) = _BasketFullInfoDataModel;
 }

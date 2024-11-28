@@ -88,6 +88,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           e: '',
           promoDescription: '',
           errorMessage: '',
+          info: '',
         ),
         receivingType: 'Самовывоз',
         numberProducts: 0,
@@ -117,6 +118,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
         favouritesProductsId: [],
         isAuth: isAuth,
         isUponReceipt: true,
+        isPayInstallmentsSberbank: true,
         address: '',
         addressDelivery: BasketAddressDataModel(address: '', zip: ''),
         uidPickUpPoint: _updateDataService.boutiques.isNotEmpty
@@ -164,6 +166,8 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       favouritesProductsId =
           favouritesProdcutsInfo.favorites.map((item) => int.parse(item)).toList();
       deliveryInfo = await _locationRepository.getDelivery();
+      final paymentsInfo = await _basketRepository.getPaymentMethods();
+      _updateDataService.payments = paymentsInfo.payments;
       boutique = _updateDataService.boutiques
           .firstWhere((item) => item.uidStore == (deliveryInfo?.pick.id ?? ''));
       log(basketInfo.toString());
@@ -226,6 +230,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
           isUponReceipt: (deliveryInfo?.address.isNotEmpty ?? false)
               ? (deliveryInfo?.address.first.cityId ?? '') == '7700000000000'
               : true,
+          isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
           listProductsCode: [],
           listProdcutsStyle: [],
           listProdcutsAlso: [],
@@ -349,6 +354,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               e: '',
               promoDescription: '',
               errorMessage: '',
+              info: '',
             ),
             receivingType: 'Самовывоз',
             numberProducts: 0,
@@ -378,6 +384,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             favouritesProductsId: [],
             isAuth: isAuth,
             isUponReceipt: true,
+            isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
             address: '',
             addressDelivery: BasketAddressDataModel(address: '', zip: ''),
             uidPickUpPoint: boutiques.data.first.uidStore,
@@ -538,6 +545,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             shoppingCart: basketInfo,
             numberProducts: numberProducts,
             amountPaid: amountPaid,
+            isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
             isShoppingCartDetailsProduct: isShoppingCartDetailsProduct,
             isShoppingCart: (initState.isShoppingCart ?? false) || isShoppingCart,
             isLoadAddProductToShopingCart: false,
@@ -654,6 +662,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             shoppingCart: basketInfo,
             numberProducts: numberProducts,
             amountPaid: amountPaid,
+            isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
             isLoadErrorButton: false,
           ),
         );
@@ -836,6 +845,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
             shoppingCart: basketInfo,
             numberProducts: numberProducts,
             amountPaid: amountPaid,
+            isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
             isLoadErrorButton: false,
           ),
         );
@@ -1032,6 +1042,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               isLoadPaymentPromoCode: false,
               isActivePromoCode: event.promoCode.isNotEmpty,
               isRemovePromoCode: false,
+              isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
               promoCodeMessage: '',
               promoCode: event.promoCode,
               pickup: event.uid,
@@ -1075,6 +1086,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
               shoppingCart: basketInfo,
               numberProducts: numberProducts,
               amountPaid: amountPaid,
+              isPayInstallmentsSberbank: amountPaid >= 1000 && amountPaid <= 150000,
               isLoadPaymentPromoCode: false,
               isActivePromoCode: false,
               isRemovePromoCode: true,

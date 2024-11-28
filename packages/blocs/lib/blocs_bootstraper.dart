@@ -106,6 +106,7 @@ Future<void> initBloc(GetIt getIt) async {
         getIt.get<SharedPreferencesService>(),
         getIt.get<StoreVersionAppRepository>(),
         getIt.get<AppMetricaEcommerceService>(),
+        getIt.get<BasketRepository>(),
       ),
     )
     ..registerFactory(

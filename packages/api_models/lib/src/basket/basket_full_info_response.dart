@@ -11,6 +11,7 @@ class BasketFullInfoResponse with _$BasketFullInfoResponse {
     String? r,
     String? e,
     String? errorMessage,
+    String? info,
     @JsonKey(name: 'promo_description') String? promoDescription,
     List<BasketFullInfoItemResponse>? basket,
   }) = _BasketFullInfoResponse;

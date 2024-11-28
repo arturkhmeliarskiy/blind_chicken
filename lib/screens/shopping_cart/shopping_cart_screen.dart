@@ -481,8 +481,10 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                       context.read<ShoppingCartBloc>().add(
                                                             ShoppingCartEvent.changePaymentType(
                                                               paymentId: value.id,
-                                                              typePay:
-                                                                  'Оплата ${value.name.toLowerCase()}',
+                                                              typePay: value.name ==
+                                                                      'Плати Частями от Сбербанка'
+                                                                  ? 'Плати Частями от Сбербанка'
+                                                                  : 'Оплата ${value.name.toLowerCase()}',
                                                             ),
                                                           );
                                                     },
@@ -497,6 +499,8 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                         initState.receivingType != 'Самовывоз'
                                                             ? initState.isUponReceipt
                                                             : true,
+                                                    isPayInstallmentsSberbank:
+                                                        initState.isPayInstallmentsSberbank,
                                                   ),
                                                   const SizedBox(
                                                     height: 56,
@@ -781,9 +785,42 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                                                       ),
                                                     ],
                                                   ),
-                                                  const SizedBox(
-                                                    height: 16,
-                                                  ),
+                                                  if (initState.shoppingCart.info.isNotEmpty)
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(
+                                                        top: 14,
+                                                        bottom: 14,
+                                                      ),
+                                                      child: RichText(
+                                                        text: TextSpan(
+                                                          children: [
+                                                            WidgetSpan(
+                                                              alignment: PlaceholderAlignment.top,
+                                                              child: SvgPicture.asset(
+                                                                'assets/icons/info.svg',
+                                                                height: 14,
+                                                                width: 14,
+                                                              ),
+                                                            ),
+                                                            WidgetSpan(
+                                                              child: SizedBox(
+                                                                width: 5,
+                                                              ),
+                                                            ),
+                                                            TextSpan(
+                                                              text: initState.shoppingCart.info,
+                                                              style: Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyMedium,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    )
+                                                  else
+                                                    const SizedBox(
+                                                      height: 16,
+                                                    ),
                                                   BlindChickenButtonShoppingCartProduct(
                                                     title: 'Заказать',
                                                     onChenge: () {

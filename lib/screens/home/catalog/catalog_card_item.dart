@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_images_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -356,6 +357,52 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                                         ),
                                   ),
                                 ],
+                              ),
+                            ),
+                          if (int.parse(widget.price) >= 1000 && int.parse(widget.price) <= 150000)
+                            GestureDetector(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return BlindChickenPayInstallmentsSberbank(
+                                      onBack: () {
+                                        context.maybePop();
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                height: 21,
+                                margin: EdgeInsets.only(top: 7),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: BlindChickenColors.backgroundColorItemFilter,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    SvgPicture.asset(
+                                      'assets/icons/pchsbch.svg',
+                                      height: 10.5,
+                                      width: 10.5,
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    Text(
+                                      'Плати частями',
+                                      style: Theme.of(context).textTheme.labelLarge,
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                         ],

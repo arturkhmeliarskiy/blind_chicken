@@ -5,6 +5,7 @@ import 'package:blind_chicken/screens/shopping_cart/widgets/shopping_cart_paymen
 import 'package:blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -21,6 +22,7 @@ class ShoppingCartPayUserInfo extends StatefulWidget {
     required this.onAddPayment,
     required this.onAddGiftPayment,
     required this.isUponReceipt,
+    required this.isPayInstallmentsSberbank,
   });
 
   final String title;
@@ -29,6 +31,7 @@ class ShoppingCartPayUserInfo extends StatefulWidget {
   final String subTitle3;
   final bool isAuth;
   final bool isUponReceipt;
+  final bool isPayInstallmentsSberbank;
   final ValueChanged<PaymentItemDataModel> onTypePay;
   final List<PaymentItemDataModel> payments;
   final ValueChanged<int> onAddPayment;
@@ -54,7 +57,8 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
 
   @override
   void didUpdateWidget(covariant ShoppingCartPayUserInfo oldWidget) {
-    if (_selectedItem.name == 'При получении' && !widget.isUponReceipt) {
+    if ((_selectedItem.name == 'При получении' && !widget.isUponReceipt) ||
+        (_selectedItem.name == 'Плати Частями от Сбербанка' && !widget.isPayInstallmentsSberbank)) {
       setState(() {
         _selectedItem = widget.payments.first;
       });
@@ -158,8 +162,11 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                         padding: EdgeInsets.only(top: index > 0 ? 16 : 0),
                         child: InkWell(
                           onTap: () {
-                            if (widget.isUponReceipt ||
-                                widget.payments[index].name != 'При получении') {
+                            if (checkPayments(
+                              isPayInstallmentsSberbank: widget.isPayInstallmentsSberbank,
+                              isUponReceipt: widget.isUponReceipt,
+                              name: widget.payments[index].name,
+                            )) {
                               setState(() {
                                 _selectedItem = widget.payments[index];
                                 widget.onTypePay(_selectedItem);
@@ -167,7 +174,10 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                             }
                           },
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment:
+                                widget.payments[index].name == "Плати Частями от Сбербанка"
+                                    ? CrossAxisAlignment.start
+                                    : CrossAxisAlignment.center,
                             children: [
                               Container(
                                 height: 17.5,
@@ -196,14 +206,84 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
                               const SizedBox(
                                 width: 7,
                               ),
-                              Text(
-                                widget.payments[index].name,
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: widget.isUponReceipt ||
-                                              widget.payments[index].name != 'При получении'
-                                          ? BlindChickenColors.activeBorderTextField
-                                          : BlindChickenColors.textInput,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        widget.payments[index].name,
+                                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                              color: checkPayments(
+                                                isPayInstallmentsSberbank:
+                                                    widget.isPayInstallmentsSberbank,
+                                                isUponReceipt: widget.isUponReceipt,
+                                                name: widget.payments[index].name,
+                                              )
+                                                  ? BlindChickenColors.activeBorderTextField
+                                                  : BlindChickenColors.textInput,
+                                            ),
+                                      ),
+                                      if (widget.payments[index].name ==
+                                          "Плати Частями от Сбербанка")
+                                        GestureDetector(
+                                          onTap: () {
+                                            if (checkPayments(
+                                              isPayInstallmentsSberbank:
+                                                  widget.isPayInstallmentsSberbank,
+                                              isUponReceipt: widget.isUponReceipt,
+                                              name: widget.payments[index].name,
+                                            )) {
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return BlindChickenPayInstallmentsSberbank(
+                                                    onBack: () {
+                                                      context.maybePop();
+                                                    },
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 4),
+                                            child: SvgPicture.asset(
+                                              'assets/icons/info.svg',
+                                              height: 14,
+                                              width: 14,
+                                              color: checkPayments(
+                                                isPayInstallmentsSberbank:
+                                                    widget.isPayInstallmentsSberbank,
+                                                isUponReceipt: widget.isUponReceipt,
+                                                name: widget.payments[index].name,
+                                              )
+                                                  ? BlindChickenColors.activeBorderTextField
+                                                  : BlindChickenColors.textInput,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                  if (widget.payments[index].name == "Плати Частями от Сбербанка")
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "от 1 000 ₽ до 150 000 ₽",
+                                          style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                                color: checkPayments(
+                                                  isPayInstallmentsSberbank:
+                                                      widget.isPayInstallmentsSberbank,
+                                                  isUponReceipt: widget.isUponReceipt,
+                                                  name: widget.payments[index].name,
+                                                )
+                                                    ? BlindChickenColors.textInput
+                                                    : BlindChickenColors.borderTextField,
+                                              ),
+                                        ),
+                                      ],
                                     ),
+                                ],
                               ),
                             ],
                           ),
@@ -300,5 +380,19 @@ class _ShoppingCartPayUserInfoState extends State<ShoppingCartPayUserInfo> {
         ),
       ),
     );
+  }
+}
+
+bool checkPayments({
+  required bool isUponReceipt,
+  required String name,
+  required bool isPayInstallmentsSberbank,
+}) {
+  if (name == "При получении") {
+    return isUponReceipt;
+  } else if (name == "Плати Частями от Сбербанка") {
+    return isPayInstallmentsSberbank;
+  } else {
+    return true;
   }
 }

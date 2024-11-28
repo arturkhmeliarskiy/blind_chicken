@@ -213,6 +213,7 @@ class BasketService {
         data: {
           "token": token,
           "hash_token": hashToken,
+          "bnpl": 1,
         },
       );
       log(response.data);

@@ -991,6 +991,8 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
 
             break;
         }
+      } else {
+        countBadges = await _newsRepository.getNumberUnreaNews();
       }
 
       emit(

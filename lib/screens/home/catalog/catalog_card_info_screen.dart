@@ -425,7 +425,7 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                           return state.maybeMap(
                             preloadDataCompleted: (initState) {
                               final sky = initState.detailsProduct?.sku ?? [];
-
+                              final price = int.parse(initState.detailsProduct?.price.pc ?? '0');
                               return PopScope(
                                 canPop: false,
                                 onPopInvoked: (value) {
@@ -885,6 +885,64 @@ class _CatalogCardInfoScreenState extends State<CatalogCardInfoScreen> {
                                                       color: BlindChickenColors.backgroundColor,
                                                       height: 16,
                                                       width: 16,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          if (price >= 1000 && price <= 150000)
+                                            GestureDetector(
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return BlindChickenPayInstallmentsSberbank(
+                                                      onBack: () {
+                                                        context.maybePop();
+                                                      },
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                height: 26,
+                                                margin: EdgeInsets.only(
+                                                  top: 7,
+                                                  bottom: 7,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(4),
+                                                  color:
+                                                      BlindChickenColors.backgroundColorItemFilter,
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    SizedBox(
+                                                      width: 7,
+                                                    ),
+                                                    SvgPicture.asset(
+                                                      'assets/icons/pchsbch.svg',
+                                                      height: 14,
+                                                      width: 14,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 7,
+                                                    ),
+                                                    Text(
+                                                      'Доступна оплата частями',
+                                                      style: Theme.of(context).textTheme.bodyMedium,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 7,
+                                                    ),
+                                                    SvgPicture.asset(
+                                                      'assets/icons/info.svg',
+                                                      height: 14,
+                                                      width: 14,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 7,
                                                     ),
                                                   ],
                                                 ),

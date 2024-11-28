@@ -1243,27 +1243,46 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
     if (event.filterNotifcation.filter.isNotEmpty) {
       for (int j = 0; j < selectItems.length; j++) {
         final index = catalogInfo.filter.indexWhere(
-          (element) => element.typeFilter == selectItems[j].typeFilter,
+          (element) {
+            if (element.typeFilter.contains('ct_')) {
+              return element.typeFilter.contains(selectItems[j].typeFilter) &&
+                  element.items.where((item) => item.id == selectItems[j].id).isNotEmpty;
+            } else {
+              return element.typeFilter == selectItems[j].typeFilter;
+            }
+          },
         );
         List<FilterItemDataModel> filters = [];
         for (int k = 0; k < catalogInfo.filter.length; k++) {
           for (int m = 0; m < catalogInfo.filter[k].items.length; m++) {
-            if (catalogInfo.filter[k].typeFilter == selectItems[j].typeFilter &&
-                catalogInfo.filter[k].items[m].id == selectItems[j].id) {
-              filters.add(catalogInfo.filter[k].items[m]);
+            if (catalogInfo.filter[k].typeFilter.contains('ct_')) {
+              if (catalogInfo.filter[k].typeFilter.contains(selectItems[j].typeFilter) &&
+                  catalogInfo.filter[k].items[m].id == selectItems[j].id) {
+                filters.add(catalogInfo.filter[k].items[m]);
+              }
+            } else {
+              if (catalogInfo.filter[k].typeFilter == selectItems[j].typeFilter &&
+                  catalogInfo.filter[k].items[m].id == selectItems[j].id) {
+                filters.add(catalogInfo.filter[k].items[m]);
+              }
             }
           }
         }
 
         selectItems[j] = selectItems[j].copyWith(
+          typeFilter: filters.isNotEmpty ? filters.first.typeFilter : '',
           value: filters.isNotEmpty ? filters.first.value : '',
         );
 
-        allSelectFilter.add({
-          index: selectItems[j].copyWith(
-            value: filters.isNotEmpty ? filters.first.value : '',
-          )
-        });
+        if (filters.isNotEmpty) {
+          allSelectFilter.add({
+            index: selectItems[j].copyWith(
+              typeFilter: filters.isNotEmpty ? filters.first.typeFilter : '',
+              value: filters.isNotEmpty ? filters.first.value : '',
+            )
+          });
+        }
+
         if (selectFilter.containsKey(index)) {
           List<FilterItemDataModel> listItems = selectFilter[index]?.toList() ?? [];
 
@@ -1281,7 +1300,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         idParent: 0,
         id: 0,
         url: '',
-        name: catalogInfo.breadcrumbs.first.name,
+        name: catalogInfo.breadcrumbs.isNotEmpty ? catalogInfo.breadcrumbs.first.name : '',
         sub: 0,
         title: 0,
         brand: 0,

@@ -20,6 +20,7 @@ mixin _$BasketFullInfoDataModel {
   String get e => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   String get promoDescription => throw _privateConstructorUsedError;
+  String get info => throw _privateConstructorUsedError;
   List<BasketFullInfoItemDataModel> get basket =>
       throw _privateConstructorUsedError;
 
@@ -39,6 +40,7 @@ abstract class $BasketFullInfoDataModelCopyWith<$Res> {
       String e,
       String errorMessage,
       String promoDescription,
+      String info,
       List<BasketFullInfoItemDataModel> basket});
 }
 
@@ -60,6 +62,7 @@ class _$BasketFullInfoDataModelCopyWithImpl<$Res,
     Object? e = null,
     Object? errorMessage = null,
     Object? promoDescription = null,
+    Object? info = null,
     Object? basket = null,
   }) {
     return _then(_value.copyWith(
@@ -78,6 +81,10 @@ class _$BasketFullInfoDataModelCopyWithImpl<$Res,
       promoDescription: null == promoDescription
           ? _value.promoDescription
           : promoDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
               as String,
       basket: null == basket
           ? _value.basket
@@ -101,6 +108,7 @@ abstract class _$$BasketFullInfoDataModelImplCopyWith<$Res>
       String e,
       String errorMessage,
       String promoDescription,
+      String info,
       List<BasketFullInfoItemDataModel> basket});
 }
 
@@ -121,6 +129,7 @@ class __$$BasketFullInfoDataModelImplCopyWithImpl<$Res>
     Object? e = null,
     Object? errorMessage = null,
     Object? promoDescription = null,
+    Object? info = null,
     Object? basket = null,
   }) {
     return _then(_$BasketFullInfoDataModelImpl(
@@ -140,6 +149,10 @@ class __$$BasketFullInfoDataModelImplCopyWithImpl<$Res>
           ? _value.promoDescription
           : promoDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      info: null == info
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as String,
       basket: null == basket
           ? _value._basket
           : basket // ignore: cast_nullable_to_non_nullable
@@ -156,6 +169,7 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
       required this.e,
       required this.errorMessage,
       required this.promoDescription,
+      required this.info,
       required final List<BasketFullInfoItemDataModel> basket})
       : _basket = basket,
         super._();
@@ -168,6 +182,8 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
   final String errorMessage;
   @override
   final String promoDescription;
+  @override
+  final String info;
   final List<BasketFullInfoItemDataModel> _basket;
   @override
   List<BasketFullInfoItemDataModel> get basket {
@@ -178,7 +194,7 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
 
   @override
   String toString() {
-    return 'BasketFullInfoDataModel(r: $r, e: $e, errorMessage: $errorMessage, promoDescription: $promoDescription, basket: $basket)';
+    return 'BasketFullInfoDataModel(r: $r, e: $e, errorMessage: $errorMessage, promoDescription: $promoDescription, info: $info, basket: $basket)';
   }
 
   @override
@@ -192,12 +208,13 @@ class _$BasketFullInfoDataModelImpl extends _BasketFullInfoDataModel {
                 other.errorMessage == errorMessage) &&
             (identical(other.promoDescription, promoDescription) ||
                 other.promoDescription == promoDescription) &&
+            (identical(other.info, info) || other.info == info) &&
             const DeepCollectionEquality().equals(other._basket, _basket));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, r, e, errorMessage,
-      promoDescription, const DeepCollectionEquality().hash(_basket));
+      promoDescription, info, const DeepCollectionEquality().hash(_basket));
 
   @JsonKey(ignore: true)
   @override
@@ -213,6 +230,7 @@ abstract class _BasketFullInfoDataModel extends BasketFullInfoDataModel {
           required final String e,
           required final String errorMessage,
           required final String promoDescription,
+          required final String info,
           required final List<BasketFullInfoItemDataModel> basket}) =
       _$BasketFullInfoDataModelImpl;
   _BasketFullInfoDataModel._() : super._();
@@ -225,6 +243,8 @@ abstract class _BasketFullInfoDataModel extends BasketFullInfoDataModel {
   String get errorMessage;
   @override
   String get promoDescription;
+  @override
+  String get info;
   @override
   List<BasketFullInfoItemDataModel> get basket;
   @override

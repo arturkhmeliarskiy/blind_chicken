@@ -227,6 +227,7 @@ extension on BasketFullInfoResponse {
       r: r ?? '',
       e: e ?? '',
       errorMessage: errorMessage ?? '',
+      info: info ?? '',
       basket: List<BasketFullInfoItemDataModel>.from(
         basket?.map(
               (item) {
