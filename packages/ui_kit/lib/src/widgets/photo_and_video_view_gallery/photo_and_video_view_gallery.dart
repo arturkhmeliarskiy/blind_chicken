@@ -304,6 +304,8 @@ class _PhotoViewGalleryState extends State<PhotoAndVideoViewGallery> {
         ? VideoItemGallery(
             image: pageOption.video?.i ?? '',
             video: pageOption.video?.v ?? '',
+            isProgressBar: pageOption.isProgressBar ?? false,
+            isPlay: pageOption.isPlay ?? false,
           )
         : ClipRect(
             child: photoView,
@@ -343,6 +345,8 @@ class PhotoAndVideoViewGalleryPageOptions {
     this.disableGestures,
     this.errorBuilder,
     this.isVideo,
+    this.isProgressBar,
+    this.isPlay,
     this.video,
   })  : child = null,
         childSize = null,
@@ -367,6 +371,8 @@ class PhotoAndVideoViewGalleryPageOptions {
     this.filterQuality,
     this.disableGestures,
     this.isVideo,
+    this.isProgressBar,
+    this.isPlay,
     this.video,
   })  : errorBuilder = null,
         imageProvider = null;
@@ -430,6 +436,12 @@ class PhotoAndVideoViewGalleryPageOptions {
 
   /// Check is video
   final bool? isVideo;
+
+  /// Check is progress bar
+  final bool? isProgressBar;
+
+  /// Check is play video
+  final bool? isPlay;
 
   /// Video info
   final DetailProductVideoDataModel? video;

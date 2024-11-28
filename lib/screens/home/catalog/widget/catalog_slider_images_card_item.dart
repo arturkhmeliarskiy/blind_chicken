@@ -1,8 +1,4 @@
 import 'dart:developer';
-
-import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_video.dart';
-import 'package:photo_view/photo_view.dart' as photo_view;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 import 'package:photo_view/photo_view.dart';
@@ -26,7 +22,6 @@ class CatalogSliderImagesCardItem extends StatefulWidget {
 
 class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardItem> {
   final PageController _pageController = PageController();
-  final PhotoViewController _controller = PhotoViewController();
   bool _isSwipe = true;
   int _page = 0;
 
@@ -61,59 +56,36 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
       child: Stack(
         alignment: Alignment.bottomRight,
         children: [
-          PageView.builder(
-            controller: _pageController,
-            physics: const BouncingScrollPhysics(),
-            itemCount: widget.images.length,
-            onPageChanged: (value) {
+          PhotoAndVideoViewGallery.builder(
+            scrollPhysics: const BouncingScrollPhysics(),
+            onPageChanged: (index) {
               setState(() {
-                _page = value;
+                _page = index;
               });
             },
-            itemBuilder: (context, index) {
-              if (widget.video.i.isNotEmpty && index == 1) {
-                return CatalogSliderItemVideo(
-                  video: widget.video.v,
-                  image: widget.images[index],
-                  isProgressBar: false,
-                  isPlayIcon: false,
-                );
-              } else {
-                return CachedNetworkImage(
-                  imageUrl: widget.images[index],
-                  fit: BoxFit.fill,
-                  width: MediaQuery.of(context).size.width / 2 - 21,
-                  height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                  placeholder: (context, url) => SizedBox(
-                    width: MediaQuery.of(context).size.width / 2 - 21,
-                    height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                    child: const LoadingImage(),
-                  ),
-                  imageBuilder: (context, imageProvider) => PhotoView(
-                    imageProvider: NetworkImage(widget.images[index]),
-                    controller: _controller,
-                    minScale: PhotoViewComputedScale.contained,
-                    maxScale: PhotoViewComputedScale.contained * 5,
-                    initialScale: PhotoViewComputedScale.contained,
-                    heroAttributes: photo_view.PhotoViewHeroAttributes(tag: index),
-                    backgroundDecoration: const BoxDecoration(
-                      color: BlindChickenColors.backgroundColorItemFilter,
-                    ),
-                    loadingBuilder: (context, event) {
-                      return SizedBox(
-                        width: MediaQuery.of(context).size.width / 2 - 21,
-                        height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
-                        child: const LoadingImage(),
-                      );
-                    },
-                    scaleStateChangedCallback: (value) {
-                      log(value.toString());
-                    },
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                );
-              }
+            builder: (BuildContext context, int index) {
+              return PhotoAndVideoViewGalleryPageOptions(
+                imageProvider: NetworkImage(widget.images[index]),
+                initialScale: PhotoViewComputedScale.contained,
+                maxScale: PhotoViewComputedScale.contained * 5,
+                minScale: PhotoViewComputedScale.contained,
+                heroAttributes: PhotoViewHeroAttributes(tag: index),
+                video: widget.video,
+                isVideo: widget.video.v.isNotEmpty && index == 1,
+                isProgressBar: false,
+                isPlay: false,
+              );
             },
+            itemCount: widget.images.length,
+            loadingBuilder: (context, event) => Center(
+              child: Center(
+                child: LoadingImage(),
+              ),
+            ),
+            backgroundDecoration: const BoxDecoration(
+              color: BlindChickenColors.backgroundColor,
+            ),
+            pageController: _pageController,
           ),
           if (widget.images.length > 1)
             Padding(
