@@ -76,7 +76,8 @@ class BasketRepository {
   Future<PaymentsDataModel> getPaymentMethods({
     int? bnpl,
   }) async {
-    final productToBasket = await _basketService.getPaymentMethods() ?? PaymentsResponse();
+    final productToBasket =
+        await _basketService.getPaymentMethods(bnpl: bnpl) ?? PaymentsResponse();
 
     return productToBasket.toPaymentMethods();
   }
