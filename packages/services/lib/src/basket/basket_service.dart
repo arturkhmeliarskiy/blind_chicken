@@ -202,7 +202,9 @@ class BasketService {
     }
   }
 
-  Future<PaymentsResponse?> getPaymentMethods() async {
+  Future<PaymentsResponse?> getPaymentMethods({
+    int? bnpl,
+  }) async {
     PaymentsResponse? paymentsResponse;
     final token = _sharedPreferencesService.getString(key: SharedPrefKeys.deviceId) ?? '';
     final hashToken = _converterService.generateMd5("Hf5_dfg23fhh9p$token");
@@ -213,7 +215,7 @@ class BasketService {
         data: {
           "token": token,
           "hash_token": hashToken,
-          "bnpl": 1,
+          if (bnpl != null) "bnpl": 1,
         },
       );
       log(response.data);

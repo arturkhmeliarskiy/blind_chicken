@@ -240,7 +240,7 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
       favouritesProductsId = favouritesProducts.map((item) => item.id).toList();
     }
     final boutiques = await _boutiquesRepository.getBoutiques();
-    final paymentsInfo = await _basketRepository.getPaymentMethods();
+    final paymentsInfo = await _basketRepository.getPaymentMethods(bnpl: 1);
 
     _updateDataService.boutiques = boutiques.data;
     _updateDataService.payments = paymentsInfo.payments;

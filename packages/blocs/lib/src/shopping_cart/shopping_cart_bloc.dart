@@ -166,7 +166,7 @@ class ShoppingCartBloc extends Bloc<ShoppingCartEvent, ShoppingCartState> {
       favouritesProductsId =
           favouritesProdcutsInfo.favorites.map((item) => int.parse(item)).toList();
       deliveryInfo = await _locationRepository.getDelivery();
-      final paymentsInfo = await _basketRepository.getPaymentMethods();
+      final paymentsInfo = await _basketRepository.getPaymentMethods(bnpl: 1);
       _updateDataService.payments = paymentsInfo.payments;
       boutique = _updateDataService.boutiques
           .firstWhere((item) => item.uidStore == (deliveryInfo?.pick.id ?? ''));
