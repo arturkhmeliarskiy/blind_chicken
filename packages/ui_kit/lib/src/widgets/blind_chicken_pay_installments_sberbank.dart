@@ -54,7 +54,7 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                   GestureDetector(
                     onTap: onBack,
                     child: Padding(
-                      padding: const EdgeInsets.all(10.5),
+                      padding: const EdgeInsets.only(right: 12.5),
                       child: SvgPicture.asset(
                         'assets/icons/x.svg',
                       ),
@@ -72,14 +72,14 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: 'Плати частями',
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                               fontWeight: FontWeight.w700,
                             ),
                       ),
                       TextSpan(
                         text:
                             ' – новый сервис, позволяющий разделить оплату за товар на равные части. Первая часть списывается сразу, оставшиеся платежи через каждые 2 недели или 1 месяц в зависимости от выбранного срока.',
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.headlineLarge,
                       ),
                     ],
                   ),
@@ -92,7 +92,7 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 32),
                 child: Text(
                   'Преимущества сервиса:',
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),
@@ -107,19 +107,19 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                   children: [
                     Text(
                       '•  Быстрое оформление, как при оплате картой.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     Text(
                       '•  Никаких переплат на срок 2 месяца.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     Text(
                       '•  Без скрытых платежей.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     Text(
                       '•  Для клиентов любых банков.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ],
                 ),
@@ -131,7 +131,7 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 32),
                 child: Text(
                   'Условия:',
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                 ),
@@ -146,15 +146,15 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                   children: [
                     Text(
                       '• Первый платеж списывается сразу.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     Text(
                       '•  Срок оплаты – 2, 4 и 6 мес.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                     Text(
                       '•  Сумма от 1 000 до 150 000 р.',
-                      style: Theme.of(context).textTheme.displayMedium,
+                      style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ],
                 ),
@@ -171,7 +171,7 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                     children: [
                       Text(
                         'Подробнее о сервисе на сайте',
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context).textTheme.headlineLarge,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -182,7 +182,7 @@ class BlindChickenPayInstallmentsSberbank extends StatelessWidget {
                         },
                         child: Text(
                           'platichastyami.ru',
-                          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                                 decoration: TextDecoration.underline,
                               ),
                         ),
