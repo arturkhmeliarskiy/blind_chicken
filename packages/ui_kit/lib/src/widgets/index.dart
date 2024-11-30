@@ -25,3 +25,4 @@ export 'blind_chicken_show_dialog_error.dart';
 export 'blind_chicken_shimmer_loading.dart';
 export 'blind_chicken_show_dialog.dart';
 export 'blind_chicken_pay_installments_sberbank.dart';
+export 'blind_chicken_pinch_zoom_rlease_unzoom_widget.dart';

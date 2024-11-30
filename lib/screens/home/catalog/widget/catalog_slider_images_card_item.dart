@@ -1,7 +1,8 @@
 import 'dart:developer';
+import 'package:blind_chicken/screens/home/catalog/widget/catalog_slider_item_video.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
-import 'package:photo_view/photo_view.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CatalogSliderImagesCardItem extends StatefulWidget {
@@ -56,36 +57,50 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
       child: Stack(
         alignment: Alignment.bottomRight,
         children: [
-          PhotoAndVideoViewGallery.builder(
-            scrollPhysics: const BouncingScrollPhysics(),
-            onPageChanged: (index) {
+          PageView.builder(
+            controller: _pageController,
+            physics: const BouncingScrollPhysics(),
+            itemCount: widget.images.length,
+            onPageChanged: (value) {
               setState(() {
-                _page = index;
+                _page = value;
               });
             },
-            builder: (BuildContext context, int index) {
-              return PhotoAndVideoViewGalleryPageOptions(
-                imageProvider: NetworkImage(widget.images[index]),
-                initialScale: PhotoViewComputedScale.contained,
-                maxScale: PhotoViewComputedScale.contained * 5,
-                minScale: PhotoViewComputedScale.contained,
-                heroAttributes: PhotoViewHeroAttributes(tag: index),
-                video: widget.video,
-                isVideo: widget.video.v.isNotEmpty && index == 1,
-                isProgressBar: false,
-                isPlay: false,
-              );
+            itemBuilder: (context, index) {
+              if (widget.video.i.isNotEmpty && index == 1) {
+                return CatalogSliderItemVideo(
+                  video: widget.video.v,
+                  image: widget.images[index],
+                  isProgressBar: false,
+                  isPlayIcon: false,
+                );
+              } else {
+                return BlindChickenPinchZoomReleaseUnzoomWidget(
+                  minScale: 1,
+                  maxScale: 4,
+                  resetDuration: const Duration(milliseconds: 200),
+                  boundaryMargin: const EdgeInsets.only(bottom: 0),
+                  clipBehavior: Clip.none,
+                  useOverlay: true,
+                  rootOverlay: true,
+                  maxOverlayOpacity: 0.5,
+                  overlayColor: BlindChickenColors.activeBorderTextField,
+                  fingersRequiredToPinch: 2,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.images[index],
+                    fit: BoxFit.fill,
+                    width: MediaQuery.of(context).size.width / 2 - 21,
+                    height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                    placeholder: (context, url) => SizedBox(
+                      width: MediaQuery.of(context).size.width / 2 - 21,
+                      height: (MediaQuery.of(context).size.width / 2 - 21) * 4 / 3,
+                      child: const LoadingImage(),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                  ),
+                );
+              }
             },
-            itemCount: widget.images.length,
-            loadingBuilder: (context, event) => Center(
-              child: Center(
-                child: LoadingImage(),
-              ),
-            ),
-            backgroundDecoration: const BoxDecoration(
-              color: BlindChickenColors.backgroundColor,
-            ),
-            pageController: _pageController,
           ),
           if (widget.images.length > 1)
             Padding(
