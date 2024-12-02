@@ -61,6 +61,18 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
   }
 
   @override
+  void didUpdateWidget(covariant NewsNotificationDescriptionScreen oldWidget) {
+    context.read<NewsBloc>().add(
+          NewsEvent.getNewsDescriptionInfo(
+            id: widget.idNews,
+            isNotification: widget.isNotification,
+            messageId: widget.messageId,
+          ),
+        );
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return BlocListener<NewsBloc, NewsState>(
@@ -388,35 +400,6 @@ class _NewsNotificationDescriptionScreenState extends State<NewsNotificationDesc
                                               );
                                             },
                                           ),
-                                          // Container(
-                                          //   height: 40,
-                                          //   color: BlindChickenColors.backgroundColor,
-                                          //   child: Row(
-                                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          //     children: [
-                                          //       const SizedBox(),
-                                          //       Row(
-                                          //         children: [
-                                          //           const Icon(
-                                          //             Icons.remove_red_eye,
-                                          //             size: 14,
-                                          //             color: BlindChickenColors.borderInput,
-                                          //           ),
-                                          //           const SizedBox(
-                                          //             width: 4,
-                                          //           ),
-                                          //           Text(
-                                          //             widget.info.numberViews.toString(),
-                                          //             style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                          //                   fontSize: 12,
-                                          //                   color: BlindChickenColors.borderInput,
-                                          //                 ),
-                                          //           )
-                                          //         ],
-                                          //       )
-                                          //     ],
-                                          //   ),
-                                          // ),
                                           const SizedBox(
                                             height: 10,
                                           ),
