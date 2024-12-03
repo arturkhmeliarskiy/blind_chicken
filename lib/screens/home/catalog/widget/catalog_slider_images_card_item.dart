@@ -86,6 +86,7 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
                           300), // Defaults to 100 Milliseconds. Recommended duration is 300 milliseconds for Curves.fastOutSlowIn
                   onScaleStart: () {}, // optional VoidCallback
                   onScaleStop: () {}, // optional VoidCallback
+                  twoTouchOnly: true,
                   child: CachedNetworkImage(
                     imageUrl: widget.images[index],
                     fit: BoxFit.fill,
