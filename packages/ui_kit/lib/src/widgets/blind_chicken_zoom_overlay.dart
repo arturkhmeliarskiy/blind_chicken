@@ -95,11 +95,13 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
     with TickerProviderStateMixin {
   Matrix4? _matrix = Matrix4.identity();
   Matrix4? _scale;
+  Matrix4 _translate = Matrix4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   late Offset _startFocalPoint;
   late Animation<Matrix4> _animationReset;
   late AnimationController _controllerReset;
   OverlayEntry? _overlayEntry;
   bool _isZooming = false;
+  bool _isPosition = false;
   int _touchCount = 0;
   Matrix4 _transformMatrix = Matrix4.identity();
 
@@ -168,6 +170,7 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
 
     setState(() {
       _isZooming = true;
+      _isPosition = true;
     });
   }
 
@@ -176,9 +179,21 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
 
     final translationDelta = details.focalPoint - _startFocalPoint;
 
-    final translate = Matrix4.translation(
-      Vector3(translationDelta.dx, translationDelta.dy, 0),
-    );
+    if (details.pointerCount > 1) {
+      _translate = Matrix4.translation(
+        Vector3(translationDelta.dx, translationDelta.dy, 0),
+      );
+    } else {
+      if (!_isPosition) {
+        _translate = Matrix4.translation(
+          Vector3(translationDelta.dx, translationDelta.dy, 0),
+        );
+      } else {
+        setState(() {
+          _isPosition = false;
+        });
+      }
+    }
 
     final renderBox = context.findRenderObject() as RenderBox;
     final focalPoint = renderBox.globalToLocal(
@@ -201,7 +216,7 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
       _scale = Matrix4(scaleby, 0, 0, 0, 0, scaleby, 0, 0, 0, 0, 1, 0, dx, dy, 0, 1);
     }
 
-    _matrix = translate * _scale;
+    _matrix = _translate * _scale;
 
     if (_transformWidget.currentState != null) {
       _transformWidget.currentState!.setMatrix(_matrix);
