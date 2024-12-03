@@ -94,6 +94,7 @@ class BlindChickenZoomOverlay extends StatefulWidget {
 class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
     with TickerProviderStateMixin {
   Matrix4? _matrix = Matrix4.identity();
+  Matrix4? _scale;
   late Offset _startFocalPoint;
   late Animation<Matrix4> _animationReset;
   late AnimationController _controllerReset;
@@ -134,8 +135,10 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
         onScaleStart: onScaleStart,
         onScaleUpdate: onScaleUpdate,
         onScaleEnd: (details) {
-          onScaleEnd(details);
-          hide();
+          if (details.pointerCount == 0) {
+            onScaleEnd(details);
+            hide();
+          }
         },
         child: Opacity(opacity: _isZooming ? 0 : 1, child: widget.child),
       ),
@@ -194,9 +197,11 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
     final dx = (1 - scaleby) * focalPoint.dx;
     final dy = (1 - scaleby) * focalPoint.dy;
 
-    final scale = Matrix4(scaleby, 0, 0, 0, 0, scaleby, 0, 0, 0, 0, 1, 0, dx, dy, 0, 1);
+    if (details.pointerCount > 1) {
+      _scale = Matrix4(scaleby, 0, 0, 0, 0, scaleby, 0, 0, 0, 0, 1, 0, dx, dy, 0, 1);
+    }
 
-    _matrix = translate * scale;
+    _matrix = translate * _scale;
 
     if (_transformWidget.currentState != null) {
       _transformWidget.currentState!.setMatrix(_matrix);
