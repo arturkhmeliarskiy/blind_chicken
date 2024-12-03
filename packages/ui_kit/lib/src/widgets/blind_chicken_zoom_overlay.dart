@@ -104,6 +104,7 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
   bool _isPosition = false;
   int _touchCount = 0;
   Offset _translationDelta = Offset(0, 0);
+  Offset _differenceFocalPoint = Offset(0, 0);
   Matrix4 _transformMatrix = Matrix4.identity();
 
   final _transformWidget = GlobalKey<_TransformWidgetState>();
@@ -185,14 +186,14 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
       );
     } else {
       if (!_isPosition) {
-        _translationDelta =
-            Offset(details.horizontalScale, details.verticalScale) - _startFocalPoint;
+        _translationDelta = details.focalPoint + _differenceFocalPoint - _startFocalPoint;
         _translate = Matrix4.translation(
           Vector3(_translationDelta.dx, _translationDelta.dy, 0),
         );
       } else {
         setState(() {
           _isPosition = false;
+          _differenceFocalPoint = (details.focalPoint - _startFocalPoint) - _translationDelta;
         });
       }
     }
