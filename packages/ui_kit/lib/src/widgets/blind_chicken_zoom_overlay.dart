@@ -185,7 +185,7 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
       );
     } else {
       if (!_isPosition) {
-        translationDelta = details.focalPointDelta - _startFocalPoint;
+        translationDelta = details.focalPoint;
         _translate = Matrix4.translation(
           Vector3(translationDelta.dx, translationDelta.dy, 0),
         );
