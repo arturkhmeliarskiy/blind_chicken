@@ -176,15 +176,16 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
 
   void onScaleUpdate(ScaleUpdateDetails details) {
     if (!_isZooming || _controllerReset.isAnimating) return;
-
-    final translationDelta = details.focalPoint - _startFocalPoint;
+    Offset translationDelta = Offset(0, 0);
 
     if (details.pointerCount > 1) {
+      translationDelta = details.focalPoint - _startFocalPoint;
       _translate = Matrix4.translation(
         Vector3(translationDelta.dx, translationDelta.dy, 0),
       );
     } else {
       if (!_isPosition) {
+        translationDelta = details.focalPointDelta - _startFocalPoint;
         _translate = Matrix4.translation(
           Vector3(translationDelta.dx, translationDelta.dy, 0),
         );
