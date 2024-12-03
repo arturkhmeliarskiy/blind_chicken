@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
 class CatalogSliderImagesCardItem extends StatefulWidget {
   const CatalogSliderImagesCardItem({
@@ -76,7 +75,7 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
                   isPlayIcon: false,
                 );
               } else {
-                return ZoomOverlay(
+                return BlindChickenZoomOverlay(
                   modalBarrierColor: Colors.black12, // Optional
                   minScale: 1, // Optional
                   maxScale: 4, // Optional
@@ -85,7 +84,6 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
                   animationDuration: Duration(
                       milliseconds:
                           300), // Defaults to 100 Milliseconds. Recommended duration is 300 milliseconds for Curves.fastOutSlowIn
-                  twoTouchOnly: true, // Defaults to false
                   onScaleStart: () {}, // optional VoidCallback
                   onScaleStop: () {}, // optional VoidCallback
                   child: CachedNetworkImage(
