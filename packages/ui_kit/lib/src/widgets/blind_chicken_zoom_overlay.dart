@@ -101,8 +101,8 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
   late AnimationController _controllerReset;
   OverlayEntry? _overlayEntry;
   bool _isZooming = false;
-  bool _isPosition = false;
   int _touchCount = 0;
+  Offset _translationDelta = Offset(0, 0);
   Matrix4 _transformMatrix = Matrix4.identity();
 
   final _transformWidget = GlobalKey<_TransformWidgetState>();
@@ -170,35 +170,22 @@ class _BlindChickenZoomOverlayState extends State<BlindChickenZoomOverlay>
 
     setState(() {
       _isZooming = true;
-      _isPosition = true;
     });
   }
 
   void onScaleUpdate(ScaleUpdateDetails details) {
     if (!_isZooming || _controllerReset.isAnimating) return;
-    Offset translationDelta = Offset(0, 0);
 
     if (details.pointerCount > 1) {
-      translationDelta = details.focalPoint - _startFocalPoint;
+      _translationDelta = details.focalPoint - _startFocalPoint;
       _translate = Matrix4.translation(
-        Vector3(translationDelta.dx, translationDelta.dy, 0),
+        Vector3(_translationDelta.dx, _translationDelta.dy, 0),
       );
-    } else {
-      if (!_isPosition) {
-        translationDelta = details.focalPoint + details.focalPointDelta - _startFocalPoint;
-        _translate = Matrix4.translation(
-          Vector3(translationDelta.dx, translationDelta.dy, 0),
-        );
-      } else {
-        setState(() {
-          _isPosition = false;
-        });
-      }
     }
 
     final renderBox = context.findRenderObject() as RenderBox;
     final focalPoint = renderBox.globalToLocal(
-      details.focalPoint - translationDelta,
+      details.focalPoint - _translationDelta,
     );
 
     var scaleby = details.scale;
