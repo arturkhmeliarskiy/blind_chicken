@@ -81,6 +81,7 @@ dependencies:
   inview_notifier_list: ^3.0.0
   visibility_detector: ^0.4.0+2
   better_player: ^0.0.84
+  zoom_pinch_overlay: ^1.4.3
   
 dev_dependencies:
   flutter_test:

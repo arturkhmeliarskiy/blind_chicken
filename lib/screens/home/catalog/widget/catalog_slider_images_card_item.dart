@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 import 'package:ui_kit/ui_kit.dart';
+import 'package:zoom_pinch_overlay/zoom_pinch_overlay.dart';
 
 class CatalogSliderImagesCardItem extends StatefulWidget {
   const CatalogSliderImagesCardItem({
@@ -75,17 +76,18 @@ class _CatalogSliderImagesCardItemState extends State<CatalogSliderImagesCardIte
                   isPlayIcon: false,
                 );
               } else {
-                return BlindChickenPinchZoomReleaseUnzoomWidget(
-                  minScale: 1,
-                  maxScale: 4,
-                  resetDuration: const Duration(milliseconds: 200),
-                  boundaryMargin: const EdgeInsets.only(bottom: 0),
-                  clipBehavior: Clip.none,
-                  useOverlay: true,
-                  rootOverlay: true,
-                  maxOverlayOpacity: 0.5,
-                  overlayColor: BlindChickenColors.activeBorderTextField,
-                  fingersRequiredToPinch: 2,
+                return ZoomOverlay(
+                  modalBarrierColor: Colors.black12, // Optional
+                  minScale: 1, // Optional
+                  maxScale: 4, // Optional
+                  animationCurve: Curves
+                      .fastOutSlowIn, // Defaults to fastOutSlowIn which mimics IOS instagram behavior
+                  animationDuration: Duration(
+                      milliseconds:
+                          300), // Defaults to 100 Milliseconds. Recommended duration is 300 milliseconds for Curves.fastOutSlowIn
+                  twoTouchOnly: true, // Defaults to false
+                  onScaleStart: () {}, // optional VoidCallback
+                  onScaleStop: () {}, // optional VoidCallback
                   child: CachedNetworkImage(
                     imageUrl: widget.images[index],
                     fit: BoxFit.fill,
