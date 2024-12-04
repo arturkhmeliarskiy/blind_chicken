@@ -419,7 +419,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
           );
         },
         child: AbsorbPointer(
-          absorbing: !_isScroll,
+          absorbing: _isZoom,
           child: Stack(
             children: [
               Stack(
