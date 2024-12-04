@@ -856,11 +856,13 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                           onScaleStart: () {
                                                             setState(() {
                                                               _isZoom = true;
+                                                              _isScroll = false;
                                                             });
                                                           },
                                                           onScaleStop: () {
                                                             setState(() {
                                                               _isZoom = false;
+                                                              _isScroll = true;
                                                             });
                                                           },
                                                         ),

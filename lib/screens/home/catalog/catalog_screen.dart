@@ -1013,11 +1013,13 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       onScaleStart: () {
                                                         setState(() {
                                                           _isZoom = true;
+                                                          _isScroll = false;
                                                         });
                                                       },
                                                       onScaleStop: () {
                                                         setState(() {
                                                           _isZoom = false;
+                                                          _isScroll = true;
                                                         });
                                                       },
                                                     ),
