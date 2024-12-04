@@ -72,6 +72,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
   bool isButtonTop = false;
   bool _isSwipe = true;
   bool _isScroll = true;
+  bool _isZoom = false;
   double _historyPosition = 0.0;
   int _touchCount = 0;
 
@@ -798,7 +799,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                   return Listener(
                                                     onPointerDown: (details) {
                                                       _touchCount++;
-                                                      if (_touchCount > 1) {
+                                                      if (_touchCount > 1 || _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -810,7 +811,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                     },
                                                     onPointerUp: (details) {
                                                       _touchCount--;
-                                                      if (_touchCount > 1) {
+                                                      if (_touchCount > 1 || _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -822,7 +823,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                     },
                                                     onPointerCancel: (details) {
                                                       _touchCount--;
-                                                      if (_touchCount > 1) {
+                                                      if (_touchCount > 1 || _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -1011,12 +1012,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                       },
                                                       onScaleStart: () {
                                                         setState(() {
-                                                          _isScroll = false;
+                                                          _isZoom = true;
                                                         });
                                                       },
                                                       onScaleStop: () {
                                                         setState(() {
-                                                          _isScroll = true;
+                                                          _isZoom = false;
                                                         });
                                                       },
                                                     ),

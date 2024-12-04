@@ -31,6 +31,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   bool _isShowDialogShoppingCartError = false;
   bool isLoading = false;
   bool _isScroll = true;
+  bool _isZoom = false;
   int _touchCount = 0;
   double _paginationPosition = 0.0;
   double _historyPosition = 0.0;
@@ -652,7 +653,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                   return Listener(
                                                     onPointerDown: (details) {
                                                       _touchCount++;
-                                                      if (_touchCount > 1) {
+                                                      if (_touchCount > 1 || _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -664,7 +665,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                     },
                                                     onPointerUp: (details) {
                                                       _touchCount--;
-                                                      if (_touchCount > 1) {
+                                                      if (_touchCount > 1 || _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -676,7 +677,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                     },
                                                     onPointerCancel: (details) {
                                                       _touchCount--;
-                                                      if (_touchCount > 1) {
+                                                      if (_touchCount > 1 || _isZoom) {
                                                         setState(() {
                                                           _isScroll = false;
                                                         });
@@ -782,12 +783,12 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                       },
                                                       onScaleStart: () {
                                                         setState(() {
-                                                          _isScroll = false;
+                                                          _isZoom = true;
                                                         });
                                                       },
                                                       onScaleStop: () {
                                                         setState(() {
-                                                          _isScroll = true;
+                                                          _isZoom = false;
                                                         });
                                                       },
                                                     ),

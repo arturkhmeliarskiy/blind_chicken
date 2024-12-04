@@ -34,6 +34,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
   bool _isShowDialogFavouritesProductsError = false;
   bool _isShowDialogShoppingCartError = false;
   bool _isScroll = true;
+  bool _isZoom = false;
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
   int _currentPage = 1;
@@ -697,7 +698,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                       return Listener(
                                                         onPointerDown: (details) {
                                                           _touchCount++;
-                                                          if (_touchCount > 1) {
+                                                          if (_touchCount > 1 || _isZoom) {
                                                             setState(() {
                                                               _isScroll = false;
                                                             });
@@ -709,7 +710,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                         },
                                                         onPointerUp: (details) {
                                                           _touchCount--;
-                                                          if (_touchCount > 1) {
+                                                          if (_touchCount > 1 || _isZoom) {
                                                             setState(() {
                                                               _isScroll = false;
                                                             });
@@ -721,7 +722,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                         },
                                                         onPointerCancel: (details) {
                                                           _touchCount--;
-                                                          if (_touchCount > 1) {
+                                                          if (_touchCount > 1 || _isZoom) {
                                                             setState(() {
                                                               _isScroll = false;
                                                             });
@@ -854,12 +855,12 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                           },
                                                           onScaleStart: () {
                                                             setState(() {
-                                                              _isScroll = false;
+                                                              _isZoom = true;
                                                             });
                                                           },
                                                           onScaleStop: () {
                                                             setState(() {
-                                                              _isScroll = true;
+                                                              _isZoom = false;
                                                             });
                                                           },
                                                         ),
