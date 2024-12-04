@@ -558,8 +558,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
             orElse: () {},
           );
         },
-        child: IgnorePointer(
-          ignoring: !_isScroll,
+        child: AbsorbPointer(
+          absorbing: !_isScroll,
           child: Stack(
             children: [
               Stack(

@@ -462,8 +462,8 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
             orElse: () {},
           );
         },
-        child: IgnorePointer(
-          ignoring: !_isScroll,
+        child: AbsorbPointer(
+          absorbing: !_isScroll,
           child: GestureDetector(
             onVerticalDragUpdate: (details) {},
             onHorizontalDragEnd: (DragEndDetails details) {

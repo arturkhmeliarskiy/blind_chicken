@@ -417,8 +417,8 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
             orElse: () {},
           );
         },
-        child: IgnorePointer(
-          ignoring: !_isScroll,
+        child: AbsorbPointer(
+          absorbing: !_isScroll,
           child: Stack(
             children: [
               Stack(
