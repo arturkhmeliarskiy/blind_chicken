@@ -35,6 +35,8 @@ class CatalogCardItem extends StatefulWidget {
     required this.promoValue,
     required this.video,
     required this.goSwipeBack,
+    required this.onScaleStart,
+    required this.onScaleStop,
   });
 
   final String imageUrl;
@@ -63,6 +65,8 @@ class CatalogCardItem extends StatefulWidget {
   final int promoValue;
   final DetailProductVideoDataModel video;
   final VoidCallback goSwipeBack;
+  final VoidCallback onScaleStart;
+  final VoidCallback onScaleStop;
 
   @override
   State<CatalogCardItem> createState() => _CatalogCardItemState();
@@ -106,6 +110,12 @@ class _CatalogCardItemState extends State<CatalogCardItem> {
                       images: widget.images,
                       video: widget.video,
                       goSwipeBack: widget.goSwipeBack,
+                      onScaleStart: () {
+                        widget.onScaleStart();
+                      },
+                      onScaleStop: () {
+                        widget.onScaleStop();
+                      },
                     ),
                     if (widget.promoValue > 0)
                       Tooltip(

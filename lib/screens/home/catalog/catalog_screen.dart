@@ -71,6 +71,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
   double _boundaryOffset = 0.5;
   bool isButtonTop = false;
   bool _isSwipe = true;
+  bool _isScroll = true;
   double _historyPosition = 0.0;
 
   @override
@@ -580,6 +581,9 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       },
                       child: ListView(
                         controller: _scrollController,
+                        physics: _isScroll
+                            ? const BouncingScrollPhysics()
+                            : NeverScrollableScrollPhysics(),
                         children: [
                           const AppBarBlindChicken(),
                           BlocBuilder<CatalogBloc, CatalogState>(builder: (context, state) {
@@ -956,6 +960,16 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                                         _isSwipe = false;
                                                       });
                                                     }
+                                                  },
+                                                  onScaleStart: () {
+                                                    setState(() {
+                                                      _isScroll = false;
+                                                    });
+                                                  },
+                                                  onScaleStop: () {
+                                                    setState(() {
+                                                      _isScroll = true;
+                                                    });
                                                   },
                                                 );
                                               }

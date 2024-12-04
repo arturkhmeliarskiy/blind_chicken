@@ -30,6 +30,7 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
   bool _isShowDialogCatalogSearchError = false;
   bool _isShowDialogShoppingCartError = false;
   bool isLoading = false;
+  bool _isScroll = true;
   double _paginationPosition = 0.0;
   double _historyPosition = 0.0;
   int _currentPage = 1;
@@ -425,6 +426,9 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                   body: SafeArea(
                     child: ListView(
                       controller: _scrollController,
+                      physics: _isScroll
+                          ? const BouncingScrollPhysics()
+                          : NeverScrollableScrollPhysics(),
                       cacheExtent: _historyPosition,
                       children: [
                         const AppBarBlindChicken(),
@@ -726,6 +730,16 @@ class _CatalogSearchResultScreenState extends State<CatalogSearchResultScreen> {
                                                   video: initState.products[index].video,
                                                   goSwipeBack: () {
                                                     context.back();
+                                                  },
+                                                  onScaleStart: () {
+                                                    setState(() {
+                                                      _isScroll = false;
+                                                    });
+                                                  },
+                                                  onScaleStop: () {
+                                                    setState(() {
+                                                      _isScroll = true;
+                                                    });
                                                   },
                                                 );
                                               },

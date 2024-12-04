@@ -33,6 +33,7 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
       BlindChickenShowDialogError();
   bool _isShowDialogFavouritesProductsError = false;
   bool _isShowDialogShoppingCartError = false;
+  bool _isScroll = true;
   double _historyPosition = 0.0;
   double _paginationPosition = 0.0;
   int _currentPage = 1;
@@ -486,6 +487,9 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                         },
                         child: ListView(
                           controller: _scrollController,
+                          physics: _isScroll
+                              ? const BouncingScrollPhysics()
+                              : NeverScrollableScrollPhysics(),
                           children: [
                             const AppBarBlindChicken(),
                             const SizedBox(
@@ -794,6 +798,16 @@ class _FavouritesProductsScreenState extends State<FavouritesProductsScreen> {
                                                         context.back();
                                                         setState(() {
                                                           _isSwipe = true;
+                                                        });
+                                                      },
+                                                      onScaleStart: () {
+                                                        setState(() {
+                                                          _isScroll = false;
+                                                        });
+                                                      },
+                                                      onScaleStop: () {
+                                                        setState(() {
+                                                          _isScroll = true;
                                                         });
                                                       },
                                                     );
